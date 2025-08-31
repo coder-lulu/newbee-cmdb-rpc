@@ -24,6 +24,8 @@
 .idea/
 .vscode/
 
+./cmdb/cndb
+
 # config file avoid exposing private data
 *_dev.yaml
 
