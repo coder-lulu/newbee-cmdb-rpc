@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 	"github.com/gofrs/uuid/v5"
 )
 

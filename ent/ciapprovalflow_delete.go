@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/ciapprovalflow"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiApprovalFlowDelete is the builder for deleting a CiApprovalFlow entity.
@@ -20,56 +20,56 @@ type CiApprovalFlowDelete struct {
 }
 
 // Where appends a list predicates to the CiApprovalFlowDelete builder.
-func (cafd *CiApprovalFlowDelete) Where(ps ...predicate.CiApprovalFlow) *CiApprovalFlowDelete {
-	cafd.mutation.Where(ps...)
-	return cafd
+func (_d *CiApprovalFlowDelete) Where(ps ...predicate.CiApprovalFlow) *CiApprovalFlowDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (cafd *CiApprovalFlowDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, cafd.sqlExec, cafd.mutation, cafd.hooks)
+func (_d *CiApprovalFlowDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cafd *CiApprovalFlowDelete) ExecX(ctx context.Context) int {
-	n, err := cafd.Exec(ctx)
+func (_d *CiApprovalFlowDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (cafd *CiApprovalFlowDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CiApprovalFlowDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(ciapprovalflow.Table, sqlgraph.NewFieldSpec(ciapprovalflow.FieldID, field.TypeUint64))
-	if ps := cafd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, cafd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	cafd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CiApprovalFlowDeleteOne is the builder for deleting a single CiApprovalFlow entity.
 type CiApprovalFlowDeleteOne struct {
-	cafd *CiApprovalFlowDelete
+	_d *CiApprovalFlowDelete
 }
 
 // Where appends a list predicates to the CiApprovalFlowDelete builder.
-func (cafdo *CiApprovalFlowDeleteOne) Where(ps ...predicate.CiApprovalFlow) *CiApprovalFlowDeleteOne {
-	cafdo.cafd.mutation.Where(ps...)
-	return cafdo
+func (_d *CiApprovalFlowDeleteOne) Where(ps ...predicate.CiApprovalFlow) *CiApprovalFlowDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (cafdo *CiApprovalFlowDeleteOne) Exec(ctx context.Context) error {
-	n, err := cafdo.cafd.Exec(ctx)
+func (_d *CiApprovalFlowDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (cafdo *CiApprovalFlowDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cafdo *CiApprovalFlowDeleteOne) ExecX(ctx context.Context) {
-	if err := cafdo.Exec(ctx); err != nil {
+func (_d *CiApprovalFlowDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

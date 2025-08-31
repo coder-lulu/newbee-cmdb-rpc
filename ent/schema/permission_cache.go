@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"gitee.com/link234/newbee-backend-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
 )
 
 // PermissionCache 权限预计算结果缓存表 - 提升查询性能的核心表
@@ -20,6 +20,7 @@ type PermissionCache struct {
 func (PermissionCache) Mixin() []ent.Mixin {
 	return []ent.Mixin{
 		mixins.IDMixin{},
+		mixins.TenantMixin{},
 	}
 }
 

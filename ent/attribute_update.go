@@ -12,21 +12,21 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
-	"gitee.com/link234/newbee-backend-common/utils/validator"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-common/utils/validator"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -38,843 +38,843 @@ type AttributeUpdate struct {
 }
 
 // Where appends a list predicates to the AttributeUpdate builder.
-func (au *AttributeUpdate) Where(ps ...predicate.Attribute) *AttributeUpdate {
-	au.mutation.Where(ps...)
-	return au
+func (_u *AttributeUpdate) Where(ps ...predicate.Attribute) *AttributeUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (au *AttributeUpdate) SetUpdatedAt(t time.Time) *AttributeUpdate {
-	au.mutation.SetUpdatedAt(t)
-	return au
+func (_u *AttributeUpdate) SetUpdatedAt(v time.Time) *AttributeUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (au *AttributeUpdate) SetDeletedAt(t time.Time) *AttributeUpdate {
-	au.mutation.SetDeletedAt(t)
-	return au
+func (_u *AttributeUpdate) SetDeletedAt(v time.Time) *AttributeUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableDeletedAt(t *time.Time) *AttributeUpdate {
-	if t != nil {
-		au.SetDeletedAt(*t)
+func (_u *AttributeUpdate) SetNillableDeletedAt(v *time.Time) *AttributeUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (au *AttributeUpdate) ClearDeletedAt() *AttributeUpdate {
-	au.mutation.ClearDeletedAt()
-	return au
+func (_u *AttributeUpdate) ClearDeletedAt() *AttributeUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (au *AttributeUpdate) SetDepartmentID(u uint64) *AttributeUpdate {
-	au.mutation.ResetDepartmentID()
-	au.mutation.SetDepartmentID(u)
-	return au
+func (_u *AttributeUpdate) SetDepartmentID(v uint64) *AttributeUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableDepartmentID(u *uint64) *AttributeUpdate {
-	if u != nil {
-		au.SetDepartmentID(*u)
+func (_u *AttributeUpdate) SetNillableDepartmentID(v *uint64) *AttributeUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return au
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (au *AttributeUpdate) AddDepartmentID(u int64) *AttributeUpdate {
-	au.mutation.AddDepartmentID(u)
-	return au
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *AttributeUpdate) AddDepartmentID(v int64) *AttributeUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (au *AttributeUpdate) ClearDepartmentID() *AttributeUpdate {
-	au.mutation.ClearDepartmentID()
-	return au
+func (_u *AttributeUpdate) ClearDepartmentID() *AttributeUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetName sets the "name" field.
-func (au *AttributeUpdate) SetName(s string) *AttributeUpdate {
-	au.mutation.SetName(s)
-	return au
+func (_u *AttributeUpdate) SetName(v string) *AttributeUpdate {
+	_u.mutation.SetName(v)
+	return _u
 }
 
 // SetNillableName sets the "name" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableName(s *string) *AttributeUpdate {
-	if s != nil {
-		au.SetName(*s)
+func (_u *AttributeUpdate) SetNillableName(v *string) *AttributeUpdate {
+	if v != nil {
+		_u.SetName(*v)
 	}
-	return au
+	return _u
 }
 
 // SetAlias sets the "alias" field.
-func (au *AttributeUpdate) SetAlias(s string) *AttributeUpdate {
-	au.mutation.SetAlias(s)
-	return au
+func (_u *AttributeUpdate) SetAlias(v string) *AttributeUpdate {
+	_u.mutation.SetAlias(v)
+	return _u
 }
 
 // SetNillableAlias sets the "alias" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableAlias(s *string) *AttributeUpdate {
-	if s != nil {
-		au.SetAlias(*s)
+func (_u *AttributeUpdate) SetNillableAlias(v *string) *AttributeUpdate {
+	if v != nil {
+		_u.SetAlias(*v)
 	}
-	return au
+	return _u
 }
 
 // SetValueType sets the "value_type" field.
-func (au *AttributeUpdate) SetValueType(at attribute.ValueType) *AttributeUpdate {
-	au.mutation.SetValueType(at)
-	return au
+func (_u *AttributeUpdate) SetValueType(v attribute.ValueType) *AttributeUpdate {
+	_u.mutation.SetValueType(v)
+	return _u
 }
 
 // SetNillableValueType sets the "value_type" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableValueType(at *attribute.ValueType) *AttributeUpdate {
-	if at != nil {
-		au.SetValueType(*at)
+func (_u *AttributeUpdate) SetNillableValueType(v *attribute.ValueType) *AttributeUpdate {
+	if v != nil {
+		_u.SetValueType(*v)
 	}
-	return au
+	return _u
 }
 
 // SetIsChoice sets the "is_choice" field.
-func (au *AttributeUpdate) SetIsChoice(b bool) *AttributeUpdate {
-	au.mutation.SetIsChoice(b)
-	return au
+func (_u *AttributeUpdate) SetIsChoice(v bool) *AttributeUpdate {
+	_u.mutation.SetIsChoice(v)
+	return _u
 }
 
 // SetNillableIsChoice sets the "is_choice" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableIsChoice(b *bool) *AttributeUpdate {
-	if b != nil {
-		au.SetIsChoice(*b)
+func (_u *AttributeUpdate) SetNillableIsChoice(v *bool) *AttributeUpdate {
+	if v != nil {
+		_u.SetIsChoice(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearIsChoice clears the value of the "is_choice" field.
-func (au *AttributeUpdate) ClearIsChoice() *AttributeUpdate {
-	au.mutation.ClearIsChoice()
-	return au
+func (_u *AttributeUpdate) ClearIsChoice() *AttributeUpdate {
+	_u.mutation.ClearIsChoice()
+	return _u
 }
 
 // SetIsList sets the "is_list" field.
-func (au *AttributeUpdate) SetIsList(b bool) *AttributeUpdate {
-	au.mutation.SetIsList(b)
-	return au
+func (_u *AttributeUpdate) SetIsList(v bool) *AttributeUpdate {
+	_u.mutation.SetIsList(v)
+	return _u
 }
 
 // SetNillableIsList sets the "is_list" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableIsList(b *bool) *AttributeUpdate {
-	if b != nil {
-		au.SetIsList(*b)
+func (_u *AttributeUpdate) SetNillableIsList(v *bool) *AttributeUpdate {
+	if v != nil {
+		_u.SetIsList(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearIsList clears the value of the "is_list" field.
-func (au *AttributeUpdate) ClearIsList() *AttributeUpdate {
-	au.mutation.ClearIsList()
-	return au
+func (_u *AttributeUpdate) ClearIsList() *AttributeUpdate {
+	_u.mutation.ClearIsList()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (au *AttributeUpdate) SetCreatedBy(u uuid.UUID) *AttributeUpdate {
-	au.mutation.SetCreatedBy(u)
-	return au
+func (_u *AttributeUpdate) SetCreatedBy(v uuid.UUID) *AttributeUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableCreatedBy(u *uuid.UUID) *AttributeUpdate {
-	if u != nil {
-		au.SetCreatedBy(*u)
+func (_u *AttributeUpdate) SetNillableCreatedBy(v *uuid.UUID) *AttributeUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (au *AttributeUpdate) ClearCreatedBy() *AttributeUpdate {
-	au.mutation.ClearCreatedBy()
-	return au
+func (_u *AttributeUpdate) ClearCreatedBy() *AttributeUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetIsComputed sets the "is_computed" field.
-func (au *AttributeUpdate) SetIsComputed(b bool) *AttributeUpdate {
-	au.mutation.SetIsComputed(b)
-	return au
+func (_u *AttributeUpdate) SetIsComputed(v bool) *AttributeUpdate {
+	_u.mutation.SetIsComputed(v)
+	return _u
 }
 
 // SetNillableIsComputed sets the "is_computed" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableIsComputed(b *bool) *AttributeUpdate {
-	if b != nil {
-		au.SetIsComputed(*b)
+func (_u *AttributeUpdate) SetNillableIsComputed(v *bool) *AttributeUpdate {
+	if v != nil {
+		_u.SetIsComputed(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearIsComputed clears the value of the "is_computed" field.
-func (au *AttributeUpdate) ClearIsComputed() *AttributeUpdate {
-	au.mutation.ClearIsComputed()
-	return au
+func (_u *AttributeUpdate) ClearIsComputed() *AttributeUpdate {
+	_u.mutation.ClearIsComputed()
+	return _u
 }
 
 // SetChoiceWebHook sets the "choice_web_hook" field.
-func (au *AttributeUpdate) SetChoiceWebHook(scwh schema.AttributeChoiceWebHookS) *AttributeUpdate {
-	au.mutation.SetChoiceWebHook(scwh)
-	return au
+func (_u *AttributeUpdate) SetChoiceWebHook(v schema.AttributeChoiceWebHookS) *AttributeUpdate {
+	_u.mutation.SetChoiceWebHook(v)
+	return _u
 }
 
 // SetNillableChoiceWebHook sets the "choice_web_hook" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableChoiceWebHook(scwh *schema.AttributeChoiceWebHookS) *AttributeUpdate {
-	if scwh != nil {
-		au.SetChoiceWebHook(*scwh)
+func (_u *AttributeUpdate) SetNillableChoiceWebHook(v *schema.AttributeChoiceWebHookS) *AttributeUpdate {
+	if v != nil {
+		_u.SetChoiceWebHook(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearChoiceWebHook clears the value of the "choice_web_hook" field.
-func (au *AttributeUpdate) ClearChoiceWebHook() *AttributeUpdate {
-	au.mutation.ClearChoiceWebHook()
-	return au
+func (_u *AttributeUpdate) ClearChoiceWebHook() *AttributeUpdate {
+	_u.mutation.ClearChoiceWebHook()
+	return _u
 }
 
 // SetOption sets the "option" field.
-func (au *AttributeUpdate) SetOption(so schema.AttributeOptionS) *AttributeUpdate {
-	au.mutation.SetOption(so)
-	return au
+func (_u *AttributeUpdate) SetOption(v schema.AttributeOptionS) *AttributeUpdate {
+	_u.mutation.SetOption(v)
+	return _u
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableOption(so *schema.AttributeOptionS) *AttributeUpdate {
-	if so != nil {
-		au.SetOption(*so)
+func (_u *AttributeUpdate) SetNillableOption(v *schema.AttributeOptionS) *AttributeUpdate {
+	if v != nil {
+		_u.SetOption(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearOption clears the value of the "option" field.
-func (au *AttributeUpdate) ClearOption() *AttributeUpdate {
-	au.mutation.ClearOption()
-	return au
+func (_u *AttributeUpdate) ClearOption() *AttributeUpdate {
+	_u.mutation.ClearOption()
+	return _u
 }
 
 // SetIsPassword sets the "is_password" field.
-func (au *AttributeUpdate) SetIsPassword(b bool) *AttributeUpdate {
-	au.mutation.SetIsPassword(b)
-	return au
+func (_u *AttributeUpdate) SetIsPassword(v bool) *AttributeUpdate {
+	_u.mutation.SetIsPassword(v)
+	return _u
 }
 
 // SetNillableIsPassword sets the "is_password" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableIsPassword(b *bool) *AttributeUpdate {
-	if b != nil {
-		au.SetIsPassword(*b)
+func (_u *AttributeUpdate) SetNillableIsPassword(v *bool) *AttributeUpdate {
+	if v != nil {
+		_u.SetIsPassword(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearIsPassword clears the value of the "is_password" field.
-func (au *AttributeUpdate) ClearIsPassword() *AttributeUpdate {
-	au.mutation.ClearIsPassword()
-	return au
+func (_u *AttributeUpdate) ClearIsPassword() *AttributeUpdate {
+	_u.mutation.ClearIsPassword()
+	return _u
 }
 
 // SetComputeScript sets the "compute_script" field.
-func (au *AttributeUpdate) SetComputeScript(s string) *AttributeUpdate {
-	au.mutation.SetComputeScript(s)
-	return au
+func (_u *AttributeUpdate) SetComputeScript(v string) *AttributeUpdate {
+	_u.mutation.SetComputeScript(v)
+	return _u
 }
 
 // SetNillableComputeScript sets the "compute_script" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableComputeScript(s *string) *AttributeUpdate {
-	if s != nil {
-		au.SetComputeScript(*s)
+func (_u *AttributeUpdate) SetNillableComputeScript(v *string) *AttributeUpdate {
+	if v != nil {
+		_u.SetComputeScript(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearComputeScript clears the value of the "compute_script" field.
-func (au *AttributeUpdate) ClearComputeScript() *AttributeUpdate {
-	au.mutation.ClearComputeScript()
-	return au
+func (_u *AttributeUpdate) ClearComputeScript() *AttributeUpdate {
+	_u.mutation.ClearComputeScript()
+	return _u
 }
 
 // SetComputeExpr sets the "compute_expr" field.
-func (au *AttributeUpdate) SetComputeExpr(s string) *AttributeUpdate {
-	au.mutation.SetComputeExpr(s)
-	return au
+func (_u *AttributeUpdate) SetComputeExpr(v string) *AttributeUpdate {
+	_u.mutation.SetComputeExpr(v)
+	return _u
 }
 
 // SetNillableComputeExpr sets the "compute_expr" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableComputeExpr(s *string) *AttributeUpdate {
-	if s != nil {
-		au.SetComputeExpr(*s)
+func (_u *AttributeUpdate) SetNillableComputeExpr(v *string) *AttributeUpdate {
+	if v != nil {
+		_u.SetComputeExpr(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearComputeExpr clears the value of the "compute_expr" field.
-func (au *AttributeUpdate) ClearComputeExpr() *AttributeUpdate {
-	au.mutation.ClearComputeExpr()
-	return au
+func (_u *AttributeUpdate) ClearComputeExpr() *AttributeUpdate {
+	_u.mutation.ClearComputeExpr()
+	return _u
 }
 
 // SetIsSortable sets the "is_sortable" field.
-func (au *AttributeUpdate) SetIsSortable(b bool) *AttributeUpdate {
-	au.mutation.SetIsSortable(b)
-	return au
+func (_u *AttributeUpdate) SetIsSortable(v bool) *AttributeUpdate {
+	_u.mutation.SetIsSortable(v)
+	return _u
 }
 
 // SetNillableIsSortable sets the "is_sortable" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableIsSortable(b *bool) *AttributeUpdate {
-	if b != nil {
-		au.SetIsSortable(*b)
+func (_u *AttributeUpdate) SetNillableIsSortable(v *bool) *AttributeUpdate {
+	if v != nil {
+		_u.SetIsSortable(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearIsSortable clears the value of the "is_sortable" field.
-func (au *AttributeUpdate) ClearIsSortable() *AttributeUpdate {
-	au.mutation.ClearIsSortable()
-	return au
+func (_u *AttributeUpdate) ClearIsSortable() *AttributeUpdate {
+	_u.mutation.ClearIsSortable()
+	return _u
 }
 
 // SetDefault sets the "default" field.
-func (au *AttributeUpdate) SetDefault(sdv schema.AttributeDefaultValueS) *AttributeUpdate {
-	au.mutation.SetDefault(sdv)
-	return au
+func (_u *AttributeUpdate) SetDefault(v schema.AttributeDefaultValueS) *AttributeUpdate {
+	_u.mutation.SetDefault(v)
+	return _u
 }
 
 // SetNillableDefault sets the "default" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableDefault(sdv *schema.AttributeDefaultValueS) *AttributeUpdate {
-	if sdv != nil {
-		au.SetDefault(*sdv)
+func (_u *AttributeUpdate) SetNillableDefault(v *schema.AttributeDefaultValueS) *AttributeUpdate {
+	if v != nil {
+		_u.SetDefault(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearDefault clears the value of the "default" field.
-func (au *AttributeUpdate) ClearDefault() *AttributeUpdate {
-	au.mutation.ClearDefault()
-	return au
+func (_u *AttributeUpdate) ClearDefault() *AttributeUpdate {
+	_u.mutation.ClearDefault()
+	return _u
 }
 
 // SetIsDynamic sets the "is_dynamic" field.
-func (au *AttributeUpdate) SetIsDynamic(b bool) *AttributeUpdate {
-	au.mutation.SetIsDynamic(b)
-	return au
+func (_u *AttributeUpdate) SetIsDynamic(v bool) *AttributeUpdate {
+	_u.mutation.SetIsDynamic(v)
+	return _u
 }
 
 // SetNillableIsDynamic sets the "is_dynamic" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableIsDynamic(b *bool) *AttributeUpdate {
-	if b != nil {
-		au.SetIsDynamic(*b)
+func (_u *AttributeUpdate) SetNillableIsDynamic(v *bool) *AttributeUpdate {
+	if v != nil {
+		_u.SetIsDynamic(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearIsDynamic clears the value of the "is_dynamic" field.
-func (au *AttributeUpdate) ClearIsDynamic() *AttributeUpdate {
-	au.mutation.ClearIsDynamic()
-	return au
+func (_u *AttributeUpdate) ClearIsDynamic() *AttributeUpdate {
+	_u.mutation.ClearIsDynamic()
+	return _u
 }
 
 // SetIsReference sets the "is_reference" field.
-func (au *AttributeUpdate) SetIsReference(b bool) *AttributeUpdate {
-	au.mutation.SetIsReference(b)
-	return au
+func (_u *AttributeUpdate) SetIsReference(v bool) *AttributeUpdate {
+	_u.mutation.SetIsReference(v)
+	return _u
 }
 
 // SetNillableIsReference sets the "is_reference" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableIsReference(b *bool) *AttributeUpdate {
-	if b != nil {
-		au.SetIsReference(*b)
+func (_u *AttributeUpdate) SetNillableIsReference(v *bool) *AttributeUpdate {
+	if v != nil {
+		_u.SetIsReference(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearIsReference clears the value of the "is_reference" field.
-func (au *AttributeUpdate) ClearIsReference() *AttributeUpdate {
-	au.mutation.ClearIsReference()
-	return au
+func (_u *AttributeUpdate) ClearIsReference() *AttributeUpdate {
+	_u.mutation.ClearIsReference()
+	return _u
 }
 
 // SetReferenceTypeID sets the "reference_type_id" field.
-func (au *AttributeUpdate) SetReferenceTypeID(u uint64) *AttributeUpdate {
-	au.mutation.ResetReferenceTypeID()
-	au.mutation.SetReferenceTypeID(u)
-	return au
+func (_u *AttributeUpdate) SetReferenceTypeID(v uint64) *AttributeUpdate {
+	_u.mutation.ResetReferenceTypeID()
+	_u.mutation.SetReferenceTypeID(v)
+	return _u
 }
 
 // SetNillableReferenceTypeID sets the "reference_type_id" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableReferenceTypeID(u *uint64) *AttributeUpdate {
-	if u != nil {
-		au.SetReferenceTypeID(*u)
+func (_u *AttributeUpdate) SetNillableReferenceTypeID(v *uint64) *AttributeUpdate {
+	if v != nil {
+		_u.SetReferenceTypeID(*v)
 	}
-	return au
+	return _u
 }
 
-// AddReferenceTypeID adds u to the "reference_type_id" field.
-func (au *AttributeUpdate) AddReferenceTypeID(u int64) *AttributeUpdate {
-	au.mutation.AddReferenceTypeID(u)
-	return au
+// AddReferenceTypeID adds value to the "reference_type_id" field.
+func (_u *AttributeUpdate) AddReferenceTypeID(v int64) *AttributeUpdate {
+	_u.mutation.AddReferenceTypeID(v)
+	return _u
 }
 
 // ClearReferenceTypeID clears the value of the "reference_type_id" field.
-func (au *AttributeUpdate) ClearReferenceTypeID() *AttributeUpdate {
-	au.mutation.ClearReferenceTypeID()
-	return au
+func (_u *AttributeUpdate) ClearReferenceTypeID() *AttributeUpdate {
+	_u.mutation.ClearReferenceTypeID()
+	return _u
 }
 
 // SetChoiceOther sets the "choice_other" field.
-func (au *AttributeUpdate) SetChoiceOther(sco schema.AttributeChoiceOtherS) *AttributeUpdate {
-	au.mutation.SetChoiceOther(sco)
-	return au
+func (_u *AttributeUpdate) SetChoiceOther(v schema.AttributeChoiceOtherS) *AttributeUpdate {
+	_u.mutation.SetChoiceOther(v)
+	return _u
 }
 
 // SetNillableChoiceOther sets the "choice_other" field if the given value is not nil.
-func (au *AttributeUpdate) SetNillableChoiceOther(sco *schema.AttributeChoiceOtherS) *AttributeUpdate {
-	if sco != nil {
-		au.SetChoiceOther(*sco)
+func (_u *AttributeUpdate) SetNillableChoiceOther(v *schema.AttributeChoiceOtherS) *AttributeUpdate {
+	if v != nil {
+		_u.SetChoiceOther(*v)
 	}
-	return au
+	return _u
 }
 
 // ClearChoiceOther clears the value of the "choice_other" field.
-func (au *AttributeUpdate) ClearChoiceOther() *AttributeUpdate {
-	au.mutation.ClearChoiceOther()
-	return au
+func (_u *AttributeUpdate) ClearChoiceOther() *AttributeUpdate {
+	_u.mutation.ClearChoiceOther()
+	return _u
 }
 
 // SetValidatorRules sets the "validator_rules" field.
-func (au *AttributeUpdate) SetValidatorRules(vr []validator.ValidationRule) *AttributeUpdate {
-	au.mutation.SetValidatorRules(vr)
-	return au
+func (_u *AttributeUpdate) SetValidatorRules(v []validator.ValidationRule) *AttributeUpdate {
+	_u.mutation.SetValidatorRules(v)
+	return _u
 }
 
-// AppendValidatorRules appends vr to the "validator_rules" field.
-func (au *AttributeUpdate) AppendValidatorRules(vr []validator.ValidationRule) *AttributeUpdate {
-	au.mutation.AppendValidatorRules(vr)
-	return au
+// AppendValidatorRules appends value to the "validator_rules" field.
+func (_u *AttributeUpdate) AppendValidatorRules(v []validator.ValidationRule) *AttributeUpdate {
+	_u.mutation.AppendValidatorRules(v)
+	return _u
 }
 
 // ClearValidatorRules clears the value of the "validator_rules" field.
-func (au *AttributeUpdate) ClearValidatorRules() *AttributeUpdate {
-	au.mutation.ClearValidatorRules()
-	return au
+func (_u *AttributeUpdate) ClearValidatorRules() *AttributeUpdate {
+	_u.mutation.ClearValidatorRules()
+	return _u
 }
 
 // AddValueTextIDs adds the "value_texts" edge to the ValueText entity by IDs.
-func (au *AttributeUpdate) AddValueTextIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddValueTextIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddValueTextIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddValueTextIDs(ids...)
+	return _u
 }
 
 // AddValueTexts adds the "value_texts" edges to the ValueText entity.
-func (au *AttributeUpdate) AddValueTexts(v ...*ValueText) *AttributeUpdate {
+func (_u *AttributeUpdate) AddValueTexts(v ...*ValueText) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.AddValueTextIDs(ids...)
+	return _u.AddValueTextIDs(ids...)
 }
 
 // AddValueIndexTextIDs adds the "value_index_texts" edge to the ValueIndexText entity by IDs.
-func (au *AttributeUpdate) AddValueIndexTextIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddValueIndexTextIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddValueIndexTextIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddValueIndexTextIDs(ids...)
+	return _u
 }
 
 // AddValueIndexTexts adds the "value_index_texts" edges to the ValueIndexText entity.
-func (au *AttributeUpdate) AddValueIndexTexts(v ...*ValueIndexText) *AttributeUpdate {
+func (_u *AttributeUpdate) AddValueIndexTexts(v ...*ValueIndexText) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.AddValueIndexTextIDs(ids...)
+	return _u.AddValueIndexTextIDs(ids...)
 }
 
 // AddValueJSONIDs adds the "value_jsons" edge to the ValueJSON entity by IDs.
-func (au *AttributeUpdate) AddValueJSONIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddValueJSONIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddValueJSONIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddValueJSONIDs(ids...)
+	return _u
 }
 
 // AddValueJsons adds the "value_jsons" edges to the ValueJSON entity.
-func (au *AttributeUpdate) AddValueJsons(v ...*ValueJSON) *AttributeUpdate {
+func (_u *AttributeUpdate) AddValueJsons(v ...*ValueJSON) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.AddValueJSONIDs(ids...)
+	return _u.AddValueJSONIDs(ids...)
 }
 
 // AddValueIntegerIDs adds the "value_integers" edge to the ValueInteger entity by IDs.
-func (au *AttributeUpdate) AddValueIntegerIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddValueIntegerIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddValueIntegerIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddValueIntegerIDs(ids...)
+	return _u
 }
 
 // AddValueIntegers adds the "value_integers" edges to the ValueInteger entity.
-func (au *AttributeUpdate) AddValueIntegers(v ...*ValueInteger) *AttributeUpdate {
+func (_u *AttributeUpdate) AddValueIntegers(v ...*ValueInteger) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.AddValueIntegerIDs(ids...)
+	return _u.AddValueIntegerIDs(ids...)
 }
 
 // AddValueFloatIDs adds the "value_floats" edge to the ValueFloat entity by IDs.
-func (au *AttributeUpdate) AddValueFloatIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddValueFloatIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddValueFloatIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddValueFloatIDs(ids...)
+	return _u
 }
 
 // AddValueFloats adds the "value_floats" edges to the ValueFloat entity.
-func (au *AttributeUpdate) AddValueFloats(v ...*ValueFloat) *AttributeUpdate {
+func (_u *AttributeUpdate) AddValueFloats(v ...*ValueFloat) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.AddValueFloatIDs(ids...)
+	return _u.AddValueFloatIDs(ids...)
 }
 
 // AddValueDatetimeIDs adds the "value_datetimes" edge to the ValueDatetime entity by IDs.
-func (au *AttributeUpdate) AddValueDatetimeIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddValueDatetimeIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddValueDatetimeIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddValueDatetimeIDs(ids...)
+	return _u
 }
 
 // AddValueDatetimes adds the "value_datetimes" edges to the ValueDatetime entity.
-func (au *AttributeUpdate) AddValueDatetimes(v ...*ValueDatetime) *AttributeUpdate {
+func (_u *AttributeUpdate) AddValueDatetimes(v ...*ValueDatetime) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.AddValueDatetimeIDs(ids...)
+	return _u.AddValueDatetimeIDs(ids...)
 }
 
 // AddChoiceTextIDs adds the "choice_texts" edge to the ChoiceText entity by IDs.
-func (au *AttributeUpdate) AddChoiceTextIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddChoiceTextIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddChoiceTextIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddChoiceTextIDs(ids...)
+	return _u
 }
 
 // AddChoiceTexts adds the "choice_texts" edges to the ChoiceText entity.
-func (au *AttributeUpdate) AddChoiceTexts(c ...*ChoiceText) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) AddChoiceTexts(v ...*ChoiceText) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.AddChoiceTextIDs(ids...)
+	return _u.AddChoiceTextIDs(ids...)
 }
 
 // AddChoiceIntegerIDs adds the "choice_integers" edge to the ChoiceInteger entity by IDs.
-func (au *AttributeUpdate) AddChoiceIntegerIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddChoiceIntegerIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddChoiceIntegerIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddChoiceIntegerIDs(ids...)
+	return _u
 }
 
 // AddChoiceIntegers adds the "choice_integers" edges to the ChoiceInteger entity.
-func (au *AttributeUpdate) AddChoiceIntegers(c ...*ChoiceInteger) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) AddChoiceIntegers(v ...*ChoiceInteger) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.AddChoiceIntegerIDs(ids...)
+	return _u.AddChoiceIntegerIDs(ids...)
 }
 
 // AddChoiceFloatIDs adds the "choice_floats" edge to the ChoiceFloat entity by IDs.
-func (au *AttributeUpdate) AddChoiceFloatIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddChoiceFloatIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddChoiceFloatIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddChoiceFloatIDs(ids...)
+	return _u
 }
 
 // AddChoiceFloats adds the "choice_floats" edges to the ChoiceFloat entity.
-func (au *AttributeUpdate) AddChoiceFloats(c ...*ChoiceFloat) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) AddChoiceFloats(v ...*ChoiceFloat) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.AddChoiceFloatIDs(ids...)
+	return _u.AddChoiceFloatIDs(ids...)
 }
 
 // AddTypeAttributeIDs adds the "type_attributes" edge to the CiTypeAttribute entity by IDs.
-func (au *AttributeUpdate) AddTypeAttributeIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddTypeAttributeIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddTypeAttributeIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddTypeAttributeIDs(ids...)
+	return _u
 }
 
 // AddTypeAttributes adds the "type_attributes" edges to the CiTypeAttribute entity.
-func (au *AttributeUpdate) AddTypeAttributes(c ...*CiTypeAttribute) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) AddTypeAttributes(v ...*CiTypeAttribute) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.AddTypeAttributeIDs(ids...)
+	return _u.AddTypeAttributeIDs(ids...)
 }
 
 // AddGroupItemIDs adds the "group_items" edge to the CiTypeAttributeGroupItem entity by IDs.
-func (au *AttributeUpdate) AddGroupItemIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.AddGroupItemIDs(ids...)
-	return au
+func (_u *AttributeUpdate) AddGroupItemIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddGroupItemIDs(ids...)
+	return _u
 }
 
 // AddGroupItems adds the "group_items" edges to the CiTypeAttributeGroupItem entity.
-func (au *AttributeUpdate) AddGroupItems(c ...*CiTypeAttributeGroupItem) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) AddGroupItems(v ...*CiTypeAttributeGroupItem) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.AddGroupItemIDs(ids...)
+	return _u.AddGroupItemIDs(ids...)
 }
 
 // Mutation returns the AttributeMutation object of the builder.
-func (au *AttributeUpdate) Mutation() *AttributeMutation {
-	return au.mutation
+func (_u *AttributeUpdate) Mutation() *AttributeMutation {
+	return _u.mutation
 }
 
 // ClearValueTexts clears all "value_texts" edges to the ValueText entity.
-func (au *AttributeUpdate) ClearValueTexts() *AttributeUpdate {
-	au.mutation.ClearValueTexts()
-	return au
+func (_u *AttributeUpdate) ClearValueTexts() *AttributeUpdate {
+	_u.mutation.ClearValueTexts()
+	return _u
 }
 
 // RemoveValueTextIDs removes the "value_texts" edge to ValueText entities by IDs.
-func (au *AttributeUpdate) RemoveValueTextIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveValueTextIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveValueTextIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveValueTextIDs(ids...)
+	return _u
 }
 
 // RemoveValueTexts removes "value_texts" edges to ValueText entities.
-func (au *AttributeUpdate) RemoveValueTexts(v ...*ValueText) *AttributeUpdate {
+func (_u *AttributeUpdate) RemoveValueTexts(v ...*ValueText) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.RemoveValueTextIDs(ids...)
+	return _u.RemoveValueTextIDs(ids...)
 }
 
 // ClearValueIndexTexts clears all "value_index_texts" edges to the ValueIndexText entity.
-func (au *AttributeUpdate) ClearValueIndexTexts() *AttributeUpdate {
-	au.mutation.ClearValueIndexTexts()
-	return au
+func (_u *AttributeUpdate) ClearValueIndexTexts() *AttributeUpdate {
+	_u.mutation.ClearValueIndexTexts()
+	return _u
 }
 
 // RemoveValueIndexTextIDs removes the "value_index_texts" edge to ValueIndexText entities by IDs.
-func (au *AttributeUpdate) RemoveValueIndexTextIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveValueIndexTextIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveValueIndexTextIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveValueIndexTextIDs(ids...)
+	return _u
 }
 
 // RemoveValueIndexTexts removes "value_index_texts" edges to ValueIndexText entities.
-func (au *AttributeUpdate) RemoveValueIndexTexts(v ...*ValueIndexText) *AttributeUpdate {
+func (_u *AttributeUpdate) RemoveValueIndexTexts(v ...*ValueIndexText) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.RemoveValueIndexTextIDs(ids...)
+	return _u.RemoveValueIndexTextIDs(ids...)
 }
 
 // ClearValueJsons clears all "value_jsons" edges to the ValueJSON entity.
-func (au *AttributeUpdate) ClearValueJsons() *AttributeUpdate {
-	au.mutation.ClearValueJsons()
-	return au
+func (_u *AttributeUpdate) ClearValueJsons() *AttributeUpdate {
+	_u.mutation.ClearValueJsons()
+	return _u
 }
 
 // RemoveValueJSONIDs removes the "value_jsons" edge to ValueJSON entities by IDs.
-func (au *AttributeUpdate) RemoveValueJSONIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveValueJSONIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveValueJSONIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveValueJSONIDs(ids...)
+	return _u
 }
 
 // RemoveValueJsons removes "value_jsons" edges to ValueJSON entities.
-func (au *AttributeUpdate) RemoveValueJsons(v ...*ValueJSON) *AttributeUpdate {
+func (_u *AttributeUpdate) RemoveValueJsons(v ...*ValueJSON) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.RemoveValueJSONIDs(ids...)
+	return _u.RemoveValueJSONIDs(ids...)
 }
 
 // ClearValueIntegers clears all "value_integers" edges to the ValueInteger entity.
-func (au *AttributeUpdate) ClearValueIntegers() *AttributeUpdate {
-	au.mutation.ClearValueIntegers()
-	return au
+func (_u *AttributeUpdate) ClearValueIntegers() *AttributeUpdate {
+	_u.mutation.ClearValueIntegers()
+	return _u
 }
 
 // RemoveValueIntegerIDs removes the "value_integers" edge to ValueInteger entities by IDs.
-func (au *AttributeUpdate) RemoveValueIntegerIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveValueIntegerIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveValueIntegerIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveValueIntegerIDs(ids...)
+	return _u
 }
 
 // RemoveValueIntegers removes "value_integers" edges to ValueInteger entities.
-func (au *AttributeUpdate) RemoveValueIntegers(v ...*ValueInteger) *AttributeUpdate {
+func (_u *AttributeUpdate) RemoveValueIntegers(v ...*ValueInteger) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.RemoveValueIntegerIDs(ids...)
+	return _u.RemoveValueIntegerIDs(ids...)
 }
 
 // ClearValueFloats clears all "value_floats" edges to the ValueFloat entity.
-func (au *AttributeUpdate) ClearValueFloats() *AttributeUpdate {
-	au.mutation.ClearValueFloats()
-	return au
+func (_u *AttributeUpdate) ClearValueFloats() *AttributeUpdate {
+	_u.mutation.ClearValueFloats()
+	return _u
 }
 
 // RemoveValueFloatIDs removes the "value_floats" edge to ValueFloat entities by IDs.
-func (au *AttributeUpdate) RemoveValueFloatIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveValueFloatIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveValueFloatIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveValueFloatIDs(ids...)
+	return _u
 }
 
 // RemoveValueFloats removes "value_floats" edges to ValueFloat entities.
-func (au *AttributeUpdate) RemoveValueFloats(v ...*ValueFloat) *AttributeUpdate {
+func (_u *AttributeUpdate) RemoveValueFloats(v ...*ValueFloat) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.RemoveValueFloatIDs(ids...)
+	return _u.RemoveValueFloatIDs(ids...)
 }
 
 // ClearValueDatetimes clears all "value_datetimes" edges to the ValueDatetime entity.
-func (au *AttributeUpdate) ClearValueDatetimes() *AttributeUpdate {
-	au.mutation.ClearValueDatetimes()
-	return au
+func (_u *AttributeUpdate) ClearValueDatetimes() *AttributeUpdate {
+	_u.mutation.ClearValueDatetimes()
+	return _u
 }
 
 // RemoveValueDatetimeIDs removes the "value_datetimes" edge to ValueDatetime entities by IDs.
-func (au *AttributeUpdate) RemoveValueDatetimeIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveValueDatetimeIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveValueDatetimeIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveValueDatetimeIDs(ids...)
+	return _u
 }
 
 // RemoveValueDatetimes removes "value_datetimes" edges to ValueDatetime entities.
-func (au *AttributeUpdate) RemoveValueDatetimes(v ...*ValueDatetime) *AttributeUpdate {
+func (_u *AttributeUpdate) RemoveValueDatetimes(v ...*ValueDatetime) *AttributeUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return au.RemoveValueDatetimeIDs(ids...)
+	return _u.RemoveValueDatetimeIDs(ids...)
 }
 
 // ClearChoiceTexts clears all "choice_texts" edges to the ChoiceText entity.
-func (au *AttributeUpdate) ClearChoiceTexts() *AttributeUpdate {
-	au.mutation.ClearChoiceTexts()
-	return au
+func (_u *AttributeUpdate) ClearChoiceTexts() *AttributeUpdate {
+	_u.mutation.ClearChoiceTexts()
+	return _u
 }
 
 // RemoveChoiceTextIDs removes the "choice_texts" edge to ChoiceText entities by IDs.
-func (au *AttributeUpdate) RemoveChoiceTextIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveChoiceTextIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveChoiceTextIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveChoiceTextIDs(ids...)
+	return _u
 }
 
 // RemoveChoiceTexts removes "choice_texts" edges to ChoiceText entities.
-func (au *AttributeUpdate) RemoveChoiceTexts(c ...*ChoiceText) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) RemoveChoiceTexts(v ...*ChoiceText) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.RemoveChoiceTextIDs(ids...)
+	return _u.RemoveChoiceTextIDs(ids...)
 }
 
 // ClearChoiceIntegers clears all "choice_integers" edges to the ChoiceInteger entity.
-func (au *AttributeUpdate) ClearChoiceIntegers() *AttributeUpdate {
-	au.mutation.ClearChoiceIntegers()
-	return au
+func (_u *AttributeUpdate) ClearChoiceIntegers() *AttributeUpdate {
+	_u.mutation.ClearChoiceIntegers()
+	return _u
 }
 
 // RemoveChoiceIntegerIDs removes the "choice_integers" edge to ChoiceInteger entities by IDs.
-func (au *AttributeUpdate) RemoveChoiceIntegerIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveChoiceIntegerIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveChoiceIntegerIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveChoiceIntegerIDs(ids...)
+	return _u
 }
 
 // RemoveChoiceIntegers removes "choice_integers" edges to ChoiceInteger entities.
-func (au *AttributeUpdate) RemoveChoiceIntegers(c ...*ChoiceInteger) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) RemoveChoiceIntegers(v ...*ChoiceInteger) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.RemoveChoiceIntegerIDs(ids...)
+	return _u.RemoveChoiceIntegerIDs(ids...)
 }
 
 // ClearChoiceFloats clears all "choice_floats" edges to the ChoiceFloat entity.
-func (au *AttributeUpdate) ClearChoiceFloats() *AttributeUpdate {
-	au.mutation.ClearChoiceFloats()
-	return au
+func (_u *AttributeUpdate) ClearChoiceFloats() *AttributeUpdate {
+	_u.mutation.ClearChoiceFloats()
+	return _u
 }
 
 // RemoveChoiceFloatIDs removes the "choice_floats" edge to ChoiceFloat entities by IDs.
-func (au *AttributeUpdate) RemoveChoiceFloatIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveChoiceFloatIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveChoiceFloatIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveChoiceFloatIDs(ids...)
+	return _u
 }
 
 // RemoveChoiceFloats removes "choice_floats" edges to ChoiceFloat entities.
-func (au *AttributeUpdate) RemoveChoiceFloats(c ...*ChoiceFloat) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) RemoveChoiceFloats(v ...*ChoiceFloat) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.RemoveChoiceFloatIDs(ids...)
+	return _u.RemoveChoiceFloatIDs(ids...)
 }
 
 // ClearTypeAttributes clears all "type_attributes" edges to the CiTypeAttribute entity.
-func (au *AttributeUpdate) ClearTypeAttributes() *AttributeUpdate {
-	au.mutation.ClearTypeAttributes()
-	return au
+func (_u *AttributeUpdate) ClearTypeAttributes() *AttributeUpdate {
+	_u.mutation.ClearTypeAttributes()
+	return _u
 }
 
 // RemoveTypeAttributeIDs removes the "type_attributes" edge to CiTypeAttribute entities by IDs.
-func (au *AttributeUpdate) RemoveTypeAttributeIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveTypeAttributeIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveTypeAttributeIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveTypeAttributeIDs(ids...)
+	return _u
 }
 
 // RemoveTypeAttributes removes "type_attributes" edges to CiTypeAttribute entities.
-func (au *AttributeUpdate) RemoveTypeAttributes(c ...*CiTypeAttribute) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) RemoveTypeAttributes(v ...*CiTypeAttribute) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.RemoveTypeAttributeIDs(ids...)
+	return _u.RemoveTypeAttributeIDs(ids...)
 }
 
 // ClearGroupItems clears all "group_items" edges to the CiTypeAttributeGroupItem entity.
-func (au *AttributeUpdate) ClearGroupItems() *AttributeUpdate {
-	au.mutation.ClearGroupItems()
-	return au
+func (_u *AttributeUpdate) ClearGroupItems() *AttributeUpdate {
+	_u.mutation.ClearGroupItems()
+	return _u
 }
 
 // RemoveGroupItemIDs removes the "group_items" edge to CiTypeAttributeGroupItem entities by IDs.
-func (au *AttributeUpdate) RemoveGroupItemIDs(ids ...uint64) *AttributeUpdate {
-	au.mutation.RemoveGroupItemIDs(ids...)
-	return au
+func (_u *AttributeUpdate) RemoveGroupItemIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveGroupItemIDs(ids...)
+	return _u
 }
 
 // RemoveGroupItems removes "group_items" edges to CiTypeAttributeGroupItem entities.
-func (au *AttributeUpdate) RemoveGroupItems(c ...*CiTypeAttributeGroupItem) *AttributeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdate) RemoveGroupItems(v ...*CiTypeAttributeGroupItem) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return au.RemoveGroupItemIDs(ids...)
+	return _u.RemoveGroupItemIDs(ids...)
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (au *AttributeUpdate) Save(ctx context.Context) (int, error) {
-	if err := au.defaults(); err != nil {
+func (_u *AttributeUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, au.sqlSave, au.mutation, au.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (au *AttributeUpdate) SaveX(ctx context.Context) int {
-	affected, err := au.Save(ctx)
+func (_u *AttributeUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -882,43 +882,43 @@ func (au *AttributeUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (au *AttributeUpdate) Exec(ctx context.Context) error {
-	_, err := au.Save(ctx)
+func (_u *AttributeUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (au *AttributeUpdate) ExecX(ctx context.Context) {
-	if err := au.Exec(ctx); err != nil {
+func (_u *AttributeUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (au *AttributeUpdate) defaults() error {
-	if _, ok := au.mutation.UpdatedAt(); !ok {
+func (_u *AttributeUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if attribute.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized attribute.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := attribute.UpdateDefaultUpdatedAt()
-		au.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (au *AttributeUpdate) check() error {
-	if v, ok := au.mutation.Name(); ok {
+func (_u *AttributeUpdate) check() error {
+	if v, ok := _u.mutation.Name(); ok {
 		if err := attribute.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "Attribute.name": %w`, err)}
 		}
 	}
-	if v, ok := au.mutation.Alias(); ok {
+	if v, ok := _u.mutation.Alias(); ok {
 		if err := attribute.AliasValidator(v); err != nil {
 			return &ValidationError{Name: "alias", err: fmt.Errorf(`ent: validator failed for field "Attribute.alias": %w`, err)}
 		}
 	}
-	if v, ok := au.mutation.ValueType(); ok {
+	if v, ok := _u.mutation.ValueType(); ok {
 		if err := attribute.ValueTypeValidator(v); err != nil {
 			return &ValidationError{Name: "value_type", err: fmt.Errorf(`ent: validator failed for field "Attribute.value_type": %w`, err)}
 		}
@@ -926,150 +926,150 @@ func (au *AttributeUpdate) check() error {
 	return nil
 }
 
-func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := au.check(); err != nil {
-		return n, err
+func (_u *AttributeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(attribute.Table, attribute.Columns, sqlgraph.NewFieldSpec(attribute.FieldID, field.TypeUint64))
-	if ps := au.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := au.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(attribute.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := au.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(attribute.FieldDeletedAt, field.TypeTime, value)
 	}
-	if au.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(attribute.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := au.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(attribute.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := au.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(attribute.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if au.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(attribute.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := au.mutation.Name(); ok {
+	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(attribute.FieldName, field.TypeString, value)
 	}
-	if value, ok := au.mutation.Alias(); ok {
+	if value, ok := _u.mutation.Alias(); ok {
 		_spec.SetField(attribute.FieldAlias, field.TypeString, value)
 	}
-	if value, ok := au.mutation.ValueType(); ok {
+	if value, ok := _u.mutation.ValueType(); ok {
 		_spec.SetField(attribute.FieldValueType, field.TypeEnum, value)
 	}
-	if value, ok := au.mutation.IsChoice(); ok {
+	if value, ok := _u.mutation.IsChoice(); ok {
 		_spec.SetField(attribute.FieldIsChoice, field.TypeBool, value)
 	}
-	if au.mutation.IsChoiceCleared() {
+	if _u.mutation.IsChoiceCleared() {
 		_spec.ClearField(attribute.FieldIsChoice, field.TypeBool)
 	}
-	if value, ok := au.mutation.IsList(); ok {
+	if value, ok := _u.mutation.IsList(); ok {
 		_spec.SetField(attribute.FieldIsList, field.TypeBool, value)
 	}
-	if au.mutation.IsListCleared() {
+	if _u.mutation.IsListCleared() {
 		_spec.ClearField(attribute.FieldIsList, field.TypeBool)
 	}
-	if value, ok := au.mutation.CreatedBy(); ok {
+	if value, ok := _u.mutation.CreatedBy(); ok {
 		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
 	}
-	if au.mutation.CreatedByCleared() {
+	if _u.mutation.CreatedByCleared() {
 		_spec.ClearField(attribute.FieldCreatedBy, field.TypeUUID)
 	}
-	if value, ok := au.mutation.IsComputed(); ok {
+	if value, ok := _u.mutation.IsComputed(); ok {
 		_spec.SetField(attribute.FieldIsComputed, field.TypeBool, value)
 	}
-	if au.mutation.IsComputedCleared() {
+	if _u.mutation.IsComputedCleared() {
 		_spec.ClearField(attribute.FieldIsComputed, field.TypeBool)
 	}
-	if value, ok := au.mutation.ChoiceWebHook(); ok {
+	if value, ok := _u.mutation.ChoiceWebHook(); ok {
 		_spec.SetField(attribute.FieldChoiceWebHook, field.TypeJSON, value)
 	}
-	if au.mutation.ChoiceWebHookCleared() {
+	if _u.mutation.ChoiceWebHookCleared() {
 		_spec.ClearField(attribute.FieldChoiceWebHook, field.TypeJSON)
 	}
-	if value, ok := au.mutation.Option(); ok {
+	if value, ok := _u.mutation.Option(); ok {
 		_spec.SetField(attribute.FieldOption, field.TypeJSON, value)
 	}
-	if au.mutation.OptionCleared() {
+	if _u.mutation.OptionCleared() {
 		_spec.ClearField(attribute.FieldOption, field.TypeJSON)
 	}
-	if value, ok := au.mutation.IsPassword(); ok {
+	if value, ok := _u.mutation.IsPassword(); ok {
 		_spec.SetField(attribute.FieldIsPassword, field.TypeBool, value)
 	}
-	if au.mutation.IsPasswordCleared() {
+	if _u.mutation.IsPasswordCleared() {
 		_spec.ClearField(attribute.FieldIsPassword, field.TypeBool)
 	}
-	if value, ok := au.mutation.ComputeScript(); ok {
+	if value, ok := _u.mutation.ComputeScript(); ok {
 		_spec.SetField(attribute.FieldComputeScript, field.TypeString, value)
 	}
-	if au.mutation.ComputeScriptCleared() {
+	if _u.mutation.ComputeScriptCleared() {
 		_spec.ClearField(attribute.FieldComputeScript, field.TypeString)
 	}
-	if value, ok := au.mutation.ComputeExpr(); ok {
+	if value, ok := _u.mutation.ComputeExpr(); ok {
 		_spec.SetField(attribute.FieldComputeExpr, field.TypeString, value)
 	}
-	if au.mutation.ComputeExprCleared() {
+	if _u.mutation.ComputeExprCleared() {
 		_spec.ClearField(attribute.FieldComputeExpr, field.TypeString)
 	}
-	if value, ok := au.mutation.IsSortable(); ok {
+	if value, ok := _u.mutation.IsSortable(); ok {
 		_spec.SetField(attribute.FieldIsSortable, field.TypeBool, value)
 	}
-	if au.mutation.IsSortableCleared() {
+	if _u.mutation.IsSortableCleared() {
 		_spec.ClearField(attribute.FieldIsSortable, field.TypeBool)
 	}
-	if value, ok := au.mutation.Default(); ok {
+	if value, ok := _u.mutation.Default(); ok {
 		_spec.SetField(attribute.FieldDefault, field.TypeJSON, value)
 	}
-	if au.mutation.DefaultCleared() {
+	if _u.mutation.DefaultCleared() {
 		_spec.ClearField(attribute.FieldDefault, field.TypeJSON)
 	}
-	if value, ok := au.mutation.IsDynamic(); ok {
+	if value, ok := _u.mutation.IsDynamic(); ok {
 		_spec.SetField(attribute.FieldIsDynamic, field.TypeBool, value)
 	}
-	if au.mutation.IsDynamicCleared() {
+	if _u.mutation.IsDynamicCleared() {
 		_spec.ClearField(attribute.FieldIsDynamic, field.TypeBool)
 	}
-	if value, ok := au.mutation.IsReference(); ok {
+	if value, ok := _u.mutation.IsReference(); ok {
 		_spec.SetField(attribute.FieldIsReference, field.TypeBool, value)
 	}
-	if au.mutation.IsReferenceCleared() {
+	if _u.mutation.IsReferenceCleared() {
 		_spec.ClearField(attribute.FieldIsReference, field.TypeBool)
 	}
-	if value, ok := au.mutation.ReferenceTypeID(); ok {
+	if value, ok := _u.mutation.ReferenceTypeID(); ok {
 		_spec.SetField(attribute.FieldReferenceTypeID, field.TypeUint64, value)
 	}
-	if value, ok := au.mutation.AddedReferenceTypeID(); ok {
+	if value, ok := _u.mutation.AddedReferenceTypeID(); ok {
 		_spec.AddField(attribute.FieldReferenceTypeID, field.TypeUint64, value)
 	}
-	if au.mutation.ReferenceTypeIDCleared() {
+	if _u.mutation.ReferenceTypeIDCleared() {
 		_spec.ClearField(attribute.FieldReferenceTypeID, field.TypeUint64)
 	}
-	if value, ok := au.mutation.ChoiceOther(); ok {
+	if value, ok := _u.mutation.ChoiceOther(); ok {
 		_spec.SetField(attribute.FieldChoiceOther, field.TypeJSON, value)
 	}
-	if au.mutation.ChoiceOtherCleared() {
+	if _u.mutation.ChoiceOtherCleared() {
 		_spec.ClearField(attribute.FieldChoiceOther, field.TypeJSON)
 	}
-	if value, ok := au.mutation.ValidatorRules(); ok {
+	if value, ok := _u.mutation.ValidatorRules(); ok {
 		_spec.SetField(attribute.FieldValidatorRules, field.TypeJSON, value)
 	}
-	if value, ok := au.mutation.AppendedValidatorRules(); ok {
+	if value, ok := _u.mutation.AppendedValidatorRules(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, attribute.FieldValidatorRules, value)
 		})
 	}
-	if au.mutation.ValidatorRulesCleared() {
+	if _u.mutation.ValidatorRulesCleared() {
 		_spec.ClearField(attribute.FieldValidatorRules, field.TypeJSON)
 	}
-	if au.mutation.ValueTextsCleared() {
+	if _u.mutation.ValueTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1082,23 +1082,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedValueTextsIDs(); len(nodes) > 0 && !au.mutation.ValueTextsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   attribute.ValueTextsTable,
-			Columns: []string{attribute.ValueTextsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := au.mutation.ValueTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueTextsIDs(); len(nodes) > 0 && !_u.mutation.ValueTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1112,9 +1096,25 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueTextsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.ValueTextsTable,
+			Columns: []string{attribute.ValueTextsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.ValueIndexTextsCleared() {
+	if _u.mutation.ValueIndexTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1127,7 +1127,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedValueIndexTextsIDs(); len(nodes) > 0 && !au.mutation.ValueIndexTextsCleared() {
+	if nodes := _u.mutation.RemovedValueIndexTextsIDs(); len(nodes) > 0 && !_u.mutation.ValueIndexTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1143,7 +1143,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1159,7 +1159,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.ValueJsonsCleared() {
+	if _u.mutation.ValueJsonsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1172,23 +1172,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedValueJsonsIDs(); len(nodes) > 0 && !au.mutation.ValueJsonsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   attribute.ValueJsonsTable,
-			Columns: []string{attribute.ValueJsonsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := au.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueJsonsIDs(); len(nodes) > 0 && !_u.mutation.ValueJsonsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1202,9 +1186,25 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.ValueJsonsTable,
+			Columns: []string{attribute.ValueJsonsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.ValueIntegersCleared() {
+	if _u.mutation.ValueIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1217,7 +1217,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedValueIntegersIDs(); len(nodes) > 0 && !au.mutation.ValueIntegersCleared() {
+	if nodes := _u.mutation.RemovedValueIntegersIDs(); len(nodes) > 0 && !_u.mutation.ValueIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1233,7 +1233,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.ValueIntegersIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1249,7 +1249,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.ValueFloatsCleared() {
+	if _u.mutation.ValueFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1262,23 +1262,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedValueFloatsIDs(); len(nodes) > 0 && !au.mutation.ValueFloatsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   attribute.ValueFloatsTable,
-			Columns: []string{attribute.ValueFloatsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := au.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueFloatsIDs(); len(nodes) > 0 && !_u.mutation.ValueFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1292,9 +1276,25 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.ValueFloatsTable,
+			Columns: []string{attribute.ValueFloatsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.ValueDatetimesCleared() {
+	if _u.mutation.ValueDatetimesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1307,7 +1307,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedValueDatetimesIDs(); len(nodes) > 0 && !au.mutation.ValueDatetimesCleared() {
+	if nodes := _u.mutation.RemovedValueDatetimesIDs(); len(nodes) > 0 && !_u.mutation.ValueDatetimesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1323,7 +1323,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1339,7 +1339,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.ChoiceTextsCleared() {
+	if _u.mutation.ChoiceTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1352,23 +1352,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedChoiceTextsIDs(); len(nodes) > 0 && !au.mutation.ChoiceTextsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   attribute.ChoiceTextsTable,
-			Columns: []string{attribute.ChoiceTextsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(choicetext.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := au.mutation.ChoiceTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedChoiceTextsIDs(); len(nodes) > 0 && !_u.mutation.ChoiceTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1382,9 +1366,25 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ChoiceTextsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.ChoiceTextsTable,
+			Columns: []string{attribute.ChoiceTextsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(choicetext.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.ChoiceIntegersCleared() {
+	if _u.mutation.ChoiceIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1397,7 +1397,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedChoiceIntegersIDs(); len(nodes) > 0 && !au.mutation.ChoiceIntegersCleared() {
+	if nodes := _u.mutation.RemovedChoiceIntegersIDs(); len(nodes) > 0 && !_u.mutation.ChoiceIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1413,7 +1413,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.ChoiceIntegersIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ChoiceIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1429,7 +1429,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.ChoiceFloatsCleared() {
+	if _u.mutation.ChoiceFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1442,7 +1442,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedChoiceFloatsIDs(); len(nodes) > 0 && !au.mutation.ChoiceFloatsCleared() {
+	if nodes := _u.mutation.RemovedChoiceFloatsIDs(); len(nodes) > 0 && !_u.mutation.ChoiceFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1458,7 +1458,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.ChoiceFloatsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ChoiceFloatsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1474,7 +1474,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.TypeAttributesCleared() {
+	if _u.mutation.TypeAttributesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1487,7 +1487,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedTypeAttributesIDs(); len(nodes) > 0 && !au.mutation.TypeAttributesCleared() {
+	if nodes := _u.mutation.RemovedTypeAttributesIDs(); len(nodes) > 0 && !_u.mutation.TypeAttributesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1503,7 +1503,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.TypeAttributesIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TypeAttributesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1519,7 +1519,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if au.mutation.GroupItemsCleared() {
+	if _u.mutation.GroupItemsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1532,7 +1532,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.RemovedGroupItemsIDs(); len(nodes) > 0 && !au.mutation.GroupItemsCleared() {
+	if nodes := _u.mutation.RemovedGroupItemsIDs(); len(nodes) > 0 && !_u.mutation.GroupItemsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1548,7 +1548,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := au.mutation.GroupItemsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.GroupItemsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1564,7 +1564,7 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, au.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{attribute.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1572,8 +1572,8 @@ func (au *AttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	au.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // AttributeUpdateOne is the builder for updating a single Attribute entity.
@@ -1585,850 +1585,850 @@ type AttributeUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (auo *AttributeUpdateOne) SetUpdatedAt(t time.Time) *AttributeUpdateOne {
-	auo.mutation.SetUpdatedAt(t)
-	return auo
+func (_u *AttributeUpdateOne) SetUpdatedAt(v time.Time) *AttributeUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (auo *AttributeUpdateOne) SetDeletedAt(t time.Time) *AttributeUpdateOne {
-	auo.mutation.SetDeletedAt(t)
-	return auo
+func (_u *AttributeUpdateOne) SetDeletedAt(v time.Time) *AttributeUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableDeletedAt(t *time.Time) *AttributeUpdateOne {
-	if t != nil {
-		auo.SetDeletedAt(*t)
+func (_u *AttributeUpdateOne) SetNillableDeletedAt(v *time.Time) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (auo *AttributeUpdateOne) ClearDeletedAt() *AttributeUpdateOne {
-	auo.mutation.ClearDeletedAt()
-	return auo
+func (_u *AttributeUpdateOne) ClearDeletedAt() *AttributeUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (auo *AttributeUpdateOne) SetDepartmentID(u uint64) *AttributeUpdateOne {
-	auo.mutation.ResetDepartmentID()
-	auo.mutation.SetDepartmentID(u)
-	return auo
+func (_u *AttributeUpdateOne) SetDepartmentID(v uint64) *AttributeUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableDepartmentID(u *uint64) *AttributeUpdateOne {
-	if u != nil {
-		auo.SetDepartmentID(*u)
+func (_u *AttributeUpdateOne) SetNillableDepartmentID(v *uint64) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return auo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (auo *AttributeUpdateOne) AddDepartmentID(u int64) *AttributeUpdateOne {
-	auo.mutation.AddDepartmentID(u)
-	return auo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *AttributeUpdateOne) AddDepartmentID(v int64) *AttributeUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (auo *AttributeUpdateOne) ClearDepartmentID() *AttributeUpdateOne {
-	auo.mutation.ClearDepartmentID()
-	return auo
+func (_u *AttributeUpdateOne) ClearDepartmentID() *AttributeUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetName sets the "name" field.
-func (auo *AttributeUpdateOne) SetName(s string) *AttributeUpdateOne {
-	auo.mutation.SetName(s)
-	return auo
+func (_u *AttributeUpdateOne) SetName(v string) *AttributeUpdateOne {
+	_u.mutation.SetName(v)
+	return _u
 }
 
 // SetNillableName sets the "name" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableName(s *string) *AttributeUpdateOne {
-	if s != nil {
-		auo.SetName(*s)
+func (_u *AttributeUpdateOne) SetNillableName(v *string) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetName(*v)
 	}
-	return auo
+	return _u
 }
 
 // SetAlias sets the "alias" field.
-func (auo *AttributeUpdateOne) SetAlias(s string) *AttributeUpdateOne {
-	auo.mutation.SetAlias(s)
-	return auo
+func (_u *AttributeUpdateOne) SetAlias(v string) *AttributeUpdateOne {
+	_u.mutation.SetAlias(v)
+	return _u
 }
 
 // SetNillableAlias sets the "alias" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableAlias(s *string) *AttributeUpdateOne {
-	if s != nil {
-		auo.SetAlias(*s)
+func (_u *AttributeUpdateOne) SetNillableAlias(v *string) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetAlias(*v)
 	}
-	return auo
+	return _u
 }
 
 // SetValueType sets the "value_type" field.
-func (auo *AttributeUpdateOne) SetValueType(at attribute.ValueType) *AttributeUpdateOne {
-	auo.mutation.SetValueType(at)
-	return auo
+func (_u *AttributeUpdateOne) SetValueType(v attribute.ValueType) *AttributeUpdateOne {
+	_u.mutation.SetValueType(v)
+	return _u
 }
 
 // SetNillableValueType sets the "value_type" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableValueType(at *attribute.ValueType) *AttributeUpdateOne {
-	if at != nil {
-		auo.SetValueType(*at)
+func (_u *AttributeUpdateOne) SetNillableValueType(v *attribute.ValueType) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetValueType(*v)
 	}
-	return auo
+	return _u
 }
 
 // SetIsChoice sets the "is_choice" field.
-func (auo *AttributeUpdateOne) SetIsChoice(b bool) *AttributeUpdateOne {
-	auo.mutation.SetIsChoice(b)
-	return auo
+func (_u *AttributeUpdateOne) SetIsChoice(v bool) *AttributeUpdateOne {
+	_u.mutation.SetIsChoice(v)
+	return _u
 }
 
 // SetNillableIsChoice sets the "is_choice" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableIsChoice(b *bool) *AttributeUpdateOne {
-	if b != nil {
-		auo.SetIsChoice(*b)
+func (_u *AttributeUpdateOne) SetNillableIsChoice(v *bool) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetIsChoice(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearIsChoice clears the value of the "is_choice" field.
-func (auo *AttributeUpdateOne) ClearIsChoice() *AttributeUpdateOne {
-	auo.mutation.ClearIsChoice()
-	return auo
+func (_u *AttributeUpdateOne) ClearIsChoice() *AttributeUpdateOne {
+	_u.mutation.ClearIsChoice()
+	return _u
 }
 
 // SetIsList sets the "is_list" field.
-func (auo *AttributeUpdateOne) SetIsList(b bool) *AttributeUpdateOne {
-	auo.mutation.SetIsList(b)
-	return auo
+func (_u *AttributeUpdateOne) SetIsList(v bool) *AttributeUpdateOne {
+	_u.mutation.SetIsList(v)
+	return _u
 }
 
 // SetNillableIsList sets the "is_list" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableIsList(b *bool) *AttributeUpdateOne {
-	if b != nil {
-		auo.SetIsList(*b)
+func (_u *AttributeUpdateOne) SetNillableIsList(v *bool) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetIsList(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearIsList clears the value of the "is_list" field.
-func (auo *AttributeUpdateOne) ClearIsList() *AttributeUpdateOne {
-	auo.mutation.ClearIsList()
-	return auo
+func (_u *AttributeUpdateOne) ClearIsList() *AttributeUpdateOne {
+	_u.mutation.ClearIsList()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (auo *AttributeUpdateOne) SetCreatedBy(u uuid.UUID) *AttributeUpdateOne {
-	auo.mutation.SetCreatedBy(u)
-	return auo
+func (_u *AttributeUpdateOne) SetCreatedBy(v uuid.UUID) *AttributeUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableCreatedBy(u *uuid.UUID) *AttributeUpdateOne {
-	if u != nil {
-		auo.SetCreatedBy(*u)
+func (_u *AttributeUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (auo *AttributeUpdateOne) ClearCreatedBy() *AttributeUpdateOne {
-	auo.mutation.ClearCreatedBy()
-	return auo
+func (_u *AttributeUpdateOne) ClearCreatedBy() *AttributeUpdateOne {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetIsComputed sets the "is_computed" field.
-func (auo *AttributeUpdateOne) SetIsComputed(b bool) *AttributeUpdateOne {
-	auo.mutation.SetIsComputed(b)
-	return auo
+func (_u *AttributeUpdateOne) SetIsComputed(v bool) *AttributeUpdateOne {
+	_u.mutation.SetIsComputed(v)
+	return _u
 }
 
 // SetNillableIsComputed sets the "is_computed" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableIsComputed(b *bool) *AttributeUpdateOne {
-	if b != nil {
-		auo.SetIsComputed(*b)
+func (_u *AttributeUpdateOne) SetNillableIsComputed(v *bool) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetIsComputed(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearIsComputed clears the value of the "is_computed" field.
-func (auo *AttributeUpdateOne) ClearIsComputed() *AttributeUpdateOne {
-	auo.mutation.ClearIsComputed()
-	return auo
+func (_u *AttributeUpdateOne) ClearIsComputed() *AttributeUpdateOne {
+	_u.mutation.ClearIsComputed()
+	return _u
 }
 
 // SetChoiceWebHook sets the "choice_web_hook" field.
-func (auo *AttributeUpdateOne) SetChoiceWebHook(scwh schema.AttributeChoiceWebHookS) *AttributeUpdateOne {
-	auo.mutation.SetChoiceWebHook(scwh)
-	return auo
+func (_u *AttributeUpdateOne) SetChoiceWebHook(v schema.AttributeChoiceWebHookS) *AttributeUpdateOne {
+	_u.mutation.SetChoiceWebHook(v)
+	return _u
 }
 
 // SetNillableChoiceWebHook sets the "choice_web_hook" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableChoiceWebHook(scwh *schema.AttributeChoiceWebHookS) *AttributeUpdateOne {
-	if scwh != nil {
-		auo.SetChoiceWebHook(*scwh)
+func (_u *AttributeUpdateOne) SetNillableChoiceWebHook(v *schema.AttributeChoiceWebHookS) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetChoiceWebHook(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearChoiceWebHook clears the value of the "choice_web_hook" field.
-func (auo *AttributeUpdateOne) ClearChoiceWebHook() *AttributeUpdateOne {
-	auo.mutation.ClearChoiceWebHook()
-	return auo
+func (_u *AttributeUpdateOne) ClearChoiceWebHook() *AttributeUpdateOne {
+	_u.mutation.ClearChoiceWebHook()
+	return _u
 }
 
 // SetOption sets the "option" field.
-func (auo *AttributeUpdateOne) SetOption(so schema.AttributeOptionS) *AttributeUpdateOne {
-	auo.mutation.SetOption(so)
-	return auo
+func (_u *AttributeUpdateOne) SetOption(v schema.AttributeOptionS) *AttributeUpdateOne {
+	_u.mutation.SetOption(v)
+	return _u
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableOption(so *schema.AttributeOptionS) *AttributeUpdateOne {
-	if so != nil {
-		auo.SetOption(*so)
+func (_u *AttributeUpdateOne) SetNillableOption(v *schema.AttributeOptionS) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetOption(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearOption clears the value of the "option" field.
-func (auo *AttributeUpdateOne) ClearOption() *AttributeUpdateOne {
-	auo.mutation.ClearOption()
-	return auo
+func (_u *AttributeUpdateOne) ClearOption() *AttributeUpdateOne {
+	_u.mutation.ClearOption()
+	return _u
 }
 
 // SetIsPassword sets the "is_password" field.
-func (auo *AttributeUpdateOne) SetIsPassword(b bool) *AttributeUpdateOne {
-	auo.mutation.SetIsPassword(b)
-	return auo
+func (_u *AttributeUpdateOne) SetIsPassword(v bool) *AttributeUpdateOne {
+	_u.mutation.SetIsPassword(v)
+	return _u
 }
 
 // SetNillableIsPassword sets the "is_password" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableIsPassword(b *bool) *AttributeUpdateOne {
-	if b != nil {
-		auo.SetIsPassword(*b)
+func (_u *AttributeUpdateOne) SetNillableIsPassword(v *bool) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetIsPassword(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearIsPassword clears the value of the "is_password" field.
-func (auo *AttributeUpdateOne) ClearIsPassword() *AttributeUpdateOne {
-	auo.mutation.ClearIsPassword()
-	return auo
+func (_u *AttributeUpdateOne) ClearIsPassword() *AttributeUpdateOne {
+	_u.mutation.ClearIsPassword()
+	return _u
 }
 
 // SetComputeScript sets the "compute_script" field.
-func (auo *AttributeUpdateOne) SetComputeScript(s string) *AttributeUpdateOne {
-	auo.mutation.SetComputeScript(s)
-	return auo
+func (_u *AttributeUpdateOne) SetComputeScript(v string) *AttributeUpdateOne {
+	_u.mutation.SetComputeScript(v)
+	return _u
 }
 
 // SetNillableComputeScript sets the "compute_script" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableComputeScript(s *string) *AttributeUpdateOne {
-	if s != nil {
-		auo.SetComputeScript(*s)
+func (_u *AttributeUpdateOne) SetNillableComputeScript(v *string) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetComputeScript(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearComputeScript clears the value of the "compute_script" field.
-func (auo *AttributeUpdateOne) ClearComputeScript() *AttributeUpdateOne {
-	auo.mutation.ClearComputeScript()
-	return auo
+func (_u *AttributeUpdateOne) ClearComputeScript() *AttributeUpdateOne {
+	_u.mutation.ClearComputeScript()
+	return _u
 }
 
 // SetComputeExpr sets the "compute_expr" field.
-func (auo *AttributeUpdateOne) SetComputeExpr(s string) *AttributeUpdateOne {
-	auo.mutation.SetComputeExpr(s)
-	return auo
+func (_u *AttributeUpdateOne) SetComputeExpr(v string) *AttributeUpdateOne {
+	_u.mutation.SetComputeExpr(v)
+	return _u
 }
 
 // SetNillableComputeExpr sets the "compute_expr" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableComputeExpr(s *string) *AttributeUpdateOne {
-	if s != nil {
-		auo.SetComputeExpr(*s)
+func (_u *AttributeUpdateOne) SetNillableComputeExpr(v *string) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetComputeExpr(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearComputeExpr clears the value of the "compute_expr" field.
-func (auo *AttributeUpdateOne) ClearComputeExpr() *AttributeUpdateOne {
-	auo.mutation.ClearComputeExpr()
-	return auo
+func (_u *AttributeUpdateOne) ClearComputeExpr() *AttributeUpdateOne {
+	_u.mutation.ClearComputeExpr()
+	return _u
 }
 
 // SetIsSortable sets the "is_sortable" field.
-func (auo *AttributeUpdateOne) SetIsSortable(b bool) *AttributeUpdateOne {
-	auo.mutation.SetIsSortable(b)
-	return auo
+func (_u *AttributeUpdateOne) SetIsSortable(v bool) *AttributeUpdateOne {
+	_u.mutation.SetIsSortable(v)
+	return _u
 }
 
 // SetNillableIsSortable sets the "is_sortable" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableIsSortable(b *bool) *AttributeUpdateOne {
-	if b != nil {
-		auo.SetIsSortable(*b)
+func (_u *AttributeUpdateOne) SetNillableIsSortable(v *bool) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetIsSortable(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearIsSortable clears the value of the "is_sortable" field.
-func (auo *AttributeUpdateOne) ClearIsSortable() *AttributeUpdateOne {
-	auo.mutation.ClearIsSortable()
-	return auo
+func (_u *AttributeUpdateOne) ClearIsSortable() *AttributeUpdateOne {
+	_u.mutation.ClearIsSortable()
+	return _u
 }
 
 // SetDefault sets the "default" field.
-func (auo *AttributeUpdateOne) SetDefault(sdv schema.AttributeDefaultValueS) *AttributeUpdateOne {
-	auo.mutation.SetDefault(sdv)
-	return auo
+func (_u *AttributeUpdateOne) SetDefault(v schema.AttributeDefaultValueS) *AttributeUpdateOne {
+	_u.mutation.SetDefault(v)
+	return _u
 }
 
 // SetNillableDefault sets the "default" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableDefault(sdv *schema.AttributeDefaultValueS) *AttributeUpdateOne {
-	if sdv != nil {
-		auo.SetDefault(*sdv)
+func (_u *AttributeUpdateOne) SetNillableDefault(v *schema.AttributeDefaultValueS) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetDefault(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearDefault clears the value of the "default" field.
-func (auo *AttributeUpdateOne) ClearDefault() *AttributeUpdateOne {
-	auo.mutation.ClearDefault()
-	return auo
+func (_u *AttributeUpdateOne) ClearDefault() *AttributeUpdateOne {
+	_u.mutation.ClearDefault()
+	return _u
 }
 
 // SetIsDynamic sets the "is_dynamic" field.
-func (auo *AttributeUpdateOne) SetIsDynamic(b bool) *AttributeUpdateOne {
-	auo.mutation.SetIsDynamic(b)
-	return auo
+func (_u *AttributeUpdateOne) SetIsDynamic(v bool) *AttributeUpdateOne {
+	_u.mutation.SetIsDynamic(v)
+	return _u
 }
 
 // SetNillableIsDynamic sets the "is_dynamic" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableIsDynamic(b *bool) *AttributeUpdateOne {
-	if b != nil {
-		auo.SetIsDynamic(*b)
+func (_u *AttributeUpdateOne) SetNillableIsDynamic(v *bool) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetIsDynamic(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearIsDynamic clears the value of the "is_dynamic" field.
-func (auo *AttributeUpdateOne) ClearIsDynamic() *AttributeUpdateOne {
-	auo.mutation.ClearIsDynamic()
-	return auo
+func (_u *AttributeUpdateOne) ClearIsDynamic() *AttributeUpdateOne {
+	_u.mutation.ClearIsDynamic()
+	return _u
 }
 
 // SetIsReference sets the "is_reference" field.
-func (auo *AttributeUpdateOne) SetIsReference(b bool) *AttributeUpdateOne {
-	auo.mutation.SetIsReference(b)
-	return auo
+func (_u *AttributeUpdateOne) SetIsReference(v bool) *AttributeUpdateOne {
+	_u.mutation.SetIsReference(v)
+	return _u
 }
 
 // SetNillableIsReference sets the "is_reference" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableIsReference(b *bool) *AttributeUpdateOne {
-	if b != nil {
-		auo.SetIsReference(*b)
+func (_u *AttributeUpdateOne) SetNillableIsReference(v *bool) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetIsReference(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearIsReference clears the value of the "is_reference" field.
-func (auo *AttributeUpdateOne) ClearIsReference() *AttributeUpdateOne {
-	auo.mutation.ClearIsReference()
-	return auo
+func (_u *AttributeUpdateOne) ClearIsReference() *AttributeUpdateOne {
+	_u.mutation.ClearIsReference()
+	return _u
 }
 
 // SetReferenceTypeID sets the "reference_type_id" field.
-func (auo *AttributeUpdateOne) SetReferenceTypeID(u uint64) *AttributeUpdateOne {
-	auo.mutation.ResetReferenceTypeID()
-	auo.mutation.SetReferenceTypeID(u)
-	return auo
+func (_u *AttributeUpdateOne) SetReferenceTypeID(v uint64) *AttributeUpdateOne {
+	_u.mutation.ResetReferenceTypeID()
+	_u.mutation.SetReferenceTypeID(v)
+	return _u
 }
 
 // SetNillableReferenceTypeID sets the "reference_type_id" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableReferenceTypeID(u *uint64) *AttributeUpdateOne {
-	if u != nil {
-		auo.SetReferenceTypeID(*u)
+func (_u *AttributeUpdateOne) SetNillableReferenceTypeID(v *uint64) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetReferenceTypeID(*v)
 	}
-	return auo
+	return _u
 }
 
-// AddReferenceTypeID adds u to the "reference_type_id" field.
-func (auo *AttributeUpdateOne) AddReferenceTypeID(u int64) *AttributeUpdateOne {
-	auo.mutation.AddReferenceTypeID(u)
-	return auo
+// AddReferenceTypeID adds value to the "reference_type_id" field.
+func (_u *AttributeUpdateOne) AddReferenceTypeID(v int64) *AttributeUpdateOne {
+	_u.mutation.AddReferenceTypeID(v)
+	return _u
 }
 
 // ClearReferenceTypeID clears the value of the "reference_type_id" field.
-func (auo *AttributeUpdateOne) ClearReferenceTypeID() *AttributeUpdateOne {
-	auo.mutation.ClearReferenceTypeID()
-	return auo
+func (_u *AttributeUpdateOne) ClearReferenceTypeID() *AttributeUpdateOne {
+	_u.mutation.ClearReferenceTypeID()
+	return _u
 }
 
 // SetChoiceOther sets the "choice_other" field.
-func (auo *AttributeUpdateOne) SetChoiceOther(sco schema.AttributeChoiceOtherS) *AttributeUpdateOne {
-	auo.mutation.SetChoiceOther(sco)
-	return auo
+func (_u *AttributeUpdateOne) SetChoiceOther(v schema.AttributeChoiceOtherS) *AttributeUpdateOne {
+	_u.mutation.SetChoiceOther(v)
+	return _u
 }
 
 // SetNillableChoiceOther sets the "choice_other" field if the given value is not nil.
-func (auo *AttributeUpdateOne) SetNillableChoiceOther(sco *schema.AttributeChoiceOtherS) *AttributeUpdateOne {
-	if sco != nil {
-		auo.SetChoiceOther(*sco)
+func (_u *AttributeUpdateOne) SetNillableChoiceOther(v *schema.AttributeChoiceOtherS) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetChoiceOther(*v)
 	}
-	return auo
+	return _u
 }
 
 // ClearChoiceOther clears the value of the "choice_other" field.
-func (auo *AttributeUpdateOne) ClearChoiceOther() *AttributeUpdateOne {
-	auo.mutation.ClearChoiceOther()
-	return auo
+func (_u *AttributeUpdateOne) ClearChoiceOther() *AttributeUpdateOne {
+	_u.mutation.ClearChoiceOther()
+	return _u
 }
 
 // SetValidatorRules sets the "validator_rules" field.
-func (auo *AttributeUpdateOne) SetValidatorRules(vr []validator.ValidationRule) *AttributeUpdateOne {
-	auo.mutation.SetValidatorRules(vr)
-	return auo
+func (_u *AttributeUpdateOne) SetValidatorRules(v []validator.ValidationRule) *AttributeUpdateOne {
+	_u.mutation.SetValidatorRules(v)
+	return _u
 }
 
-// AppendValidatorRules appends vr to the "validator_rules" field.
-func (auo *AttributeUpdateOne) AppendValidatorRules(vr []validator.ValidationRule) *AttributeUpdateOne {
-	auo.mutation.AppendValidatorRules(vr)
-	return auo
+// AppendValidatorRules appends value to the "validator_rules" field.
+func (_u *AttributeUpdateOne) AppendValidatorRules(v []validator.ValidationRule) *AttributeUpdateOne {
+	_u.mutation.AppendValidatorRules(v)
+	return _u
 }
 
 // ClearValidatorRules clears the value of the "validator_rules" field.
-func (auo *AttributeUpdateOne) ClearValidatorRules() *AttributeUpdateOne {
-	auo.mutation.ClearValidatorRules()
-	return auo
+func (_u *AttributeUpdateOne) ClearValidatorRules() *AttributeUpdateOne {
+	_u.mutation.ClearValidatorRules()
+	return _u
 }
 
 // AddValueTextIDs adds the "value_texts" edge to the ValueText entity by IDs.
-func (auo *AttributeUpdateOne) AddValueTextIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddValueTextIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddValueTextIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddValueTextIDs(ids...)
+	return _u
 }
 
 // AddValueTexts adds the "value_texts" edges to the ValueText entity.
-func (auo *AttributeUpdateOne) AddValueTexts(v ...*ValueText) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) AddValueTexts(v ...*ValueText) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.AddValueTextIDs(ids...)
+	return _u.AddValueTextIDs(ids...)
 }
 
 // AddValueIndexTextIDs adds the "value_index_texts" edge to the ValueIndexText entity by IDs.
-func (auo *AttributeUpdateOne) AddValueIndexTextIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddValueIndexTextIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddValueIndexTextIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddValueIndexTextIDs(ids...)
+	return _u
 }
 
 // AddValueIndexTexts adds the "value_index_texts" edges to the ValueIndexText entity.
-func (auo *AttributeUpdateOne) AddValueIndexTexts(v ...*ValueIndexText) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) AddValueIndexTexts(v ...*ValueIndexText) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.AddValueIndexTextIDs(ids...)
+	return _u.AddValueIndexTextIDs(ids...)
 }
 
 // AddValueJSONIDs adds the "value_jsons" edge to the ValueJSON entity by IDs.
-func (auo *AttributeUpdateOne) AddValueJSONIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddValueJSONIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddValueJSONIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddValueJSONIDs(ids...)
+	return _u
 }
 
 // AddValueJsons adds the "value_jsons" edges to the ValueJSON entity.
-func (auo *AttributeUpdateOne) AddValueJsons(v ...*ValueJSON) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) AddValueJsons(v ...*ValueJSON) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.AddValueJSONIDs(ids...)
+	return _u.AddValueJSONIDs(ids...)
 }
 
 // AddValueIntegerIDs adds the "value_integers" edge to the ValueInteger entity by IDs.
-func (auo *AttributeUpdateOne) AddValueIntegerIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddValueIntegerIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddValueIntegerIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddValueIntegerIDs(ids...)
+	return _u
 }
 
 // AddValueIntegers adds the "value_integers" edges to the ValueInteger entity.
-func (auo *AttributeUpdateOne) AddValueIntegers(v ...*ValueInteger) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) AddValueIntegers(v ...*ValueInteger) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.AddValueIntegerIDs(ids...)
+	return _u.AddValueIntegerIDs(ids...)
 }
 
 // AddValueFloatIDs adds the "value_floats" edge to the ValueFloat entity by IDs.
-func (auo *AttributeUpdateOne) AddValueFloatIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddValueFloatIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddValueFloatIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddValueFloatIDs(ids...)
+	return _u
 }
 
 // AddValueFloats adds the "value_floats" edges to the ValueFloat entity.
-func (auo *AttributeUpdateOne) AddValueFloats(v ...*ValueFloat) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) AddValueFloats(v ...*ValueFloat) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.AddValueFloatIDs(ids...)
+	return _u.AddValueFloatIDs(ids...)
 }
 
 // AddValueDatetimeIDs adds the "value_datetimes" edge to the ValueDatetime entity by IDs.
-func (auo *AttributeUpdateOne) AddValueDatetimeIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddValueDatetimeIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddValueDatetimeIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddValueDatetimeIDs(ids...)
+	return _u
 }
 
 // AddValueDatetimes adds the "value_datetimes" edges to the ValueDatetime entity.
-func (auo *AttributeUpdateOne) AddValueDatetimes(v ...*ValueDatetime) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) AddValueDatetimes(v ...*ValueDatetime) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.AddValueDatetimeIDs(ids...)
+	return _u.AddValueDatetimeIDs(ids...)
 }
 
 // AddChoiceTextIDs adds the "choice_texts" edge to the ChoiceText entity by IDs.
-func (auo *AttributeUpdateOne) AddChoiceTextIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddChoiceTextIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddChoiceTextIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddChoiceTextIDs(ids...)
+	return _u
 }
 
 // AddChoiceTexts adds the "choice_texts" edges to the ChoiceText entity.
-func (auo *AttributeUpdateOne) AddChoiceTexts(c ...*ChoiceText) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) AddChoiceTexts(v ...*ChoiceText) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.AddChoiceTextIDs(ids...)
+	return _u.AddChoiceTextIDs(ids...)
 }
 
 // AddChoiceIntegerIDs adds the "choice_integers" edge to the ChoiceInteger entity by IDs.
-func (auo *AttributeUpdateOne) AddChoiceIntegerIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddChoiceIntegerIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddChoiceIntegerIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddChoiceIntegerIDs(ids...)
+	return _u
 }
 
 // AddChoiceIntegers adds the "choice_integers" edges to the ChoiceInteger entity.
-func (auo *AttributeUpdateOne) AddChoiceIntegers(c ...*ChoiceInteger) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) AddChoiceIntegers(v ...*ChoiceInteger) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.AddChoiceIntegerIDs(ids...)
+	return _u.AddChoiceIntegerIDs(ids...)
 }
 
 // AddChoiceFloatIDs adds the "choice_floats" edge to the ChoiceFloat entity by IDs.
-func (auo *AttributeUpdateOne) AddChoiceFloatIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddChoiceFloatIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddChoiceFloatIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddChoiceFloatIDs(ids...)
+	return _u
 }
 
 // AddChoiceFloats adds the "choice_floats" edges to the ChoiceFloat entity.
-func (auo *AttributeUpdateOne) AddChoiceFloats(c ...*ChoiceFloat) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) AddChoiceFloats(v ...*ChoiceFloat) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.AddChoiceFloatIDs(ids...)
+	return _u.AddChoiceFloatIDs(ids...)
 }
 
 // AddTypeAttributeIDs adds the "type_attributes" edge to the CiTypeAttribute entity by IDs.
-func (auo *AttributeUpdateOne) AddTypeAttributeIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddTypeAttributeIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddTypeAttributeIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddTypeAttributeIDs(ids...)
+	return _u
 }
 
 // AddTypeAttributes adds the "type_attributes" edges to the CiTypeAttribute entity.
-func (auo *AttributeUpdateOne) AddTypeAttributes(c ...*CiTypeAttribute) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) AddTypeAttributes(v ...*CiTypeAttribute) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.AddTypeAttributeIDs(ids...)
+	return _u.AddTypeAttributeIDs(ids...)
 }
 
 // AddGroupItemIDs adds the "group_items" edge to the CiTypeAttributeGroupItem entity by IDs.
-func (auo *AttributeUpdateOne) AddGroupItemIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.AddGroupItemIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) AddGroupItemIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddGroupItemIDs(ids...)
+	return _u
 }
 
 // AddGroupItems adds the "group_items" edges to the CiTypeAttributeGroupItem entity.
-func (auo *AttributeUpdateOne) AddGroupItems(c ...*CiTypeAttributeGroupItem) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) AddGroupItems(v ...*CiTypeAttributeGroupItem) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.AddGroupItemIDs(ids...)
+	return _u.AddGroupItemIDs(ids...)
 }
 
 // Mutation returns the AttributeMutation object of the builder.
-func (auo *AttributeUpdateOne) Mutation() *AttributeMutation {
-	return auo.mutation
+func (_u *AttributeUpdateOne) Mutation() *AttributeMutation {
+	return _u.mutation
 }
 
 // ClearValueTexts clears all "value_texts" edges to the ValueText entity.
-func (auo *AttributeUpdateOne) ClearValueTexts() *AttributeUpdateOne {
-	auo.mutation.ClearValueTexts()
-	return auo
+func (_u *AttributeUpdateOne) ClearValueTexts() *AttributeUpdateOne {
+	_u.mutation.ClearValueTexts()
+	return _u
 }
 
 // RemoveValueTextIDs removes the "value_texts" edge to ValueText entities by IDs.
-func (auo *AttributeUpdateOne) RemoveValueTextIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveValueTextIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveValueTextIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveValueTextIDs(ids...)
+	return _u
 }
 
 // RemoveValueTexts removes "value_texts" edges to ValueText entities.
-func (auo *AttributeUpdateOne) RemoveValueTexts(v ...*ValueText) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) RemoveValueTexts(v ...*ValueText) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.RemoveValueTextIDs(ids...)
+	return _u.RemoveValueTextIDs(ids...)
 }
 
 // ClearValueIndexTexts clears all "value_index_texts" edges to the ValueIndexText entity.
-func (auo *AttributeUpdateOne) ClearValueIndexTexts() *AttributeUpdateOne {
-	auo.mutation.ClearValueIndexTexts()
-	return auo
+func (_u *AttributeUpdateOne) ClearValueIndexTexts() *AttributeUpdateOne {
+	_u.mutation.ClearValueIndexTexts()
+	return _u
 }
 
 // RemoveValueIndexTextIDs removes the "value_index_texts" edge to ValueIndexText entities by IDs.
-func (auo *AttributeUpdateOne) RemoveValueIndexTextIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveValueIndexTextIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveValueIndexTextIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveValueIndexTextIDs(ids...)
+	return _u
 }
 
 // RemoveValueIndexTexts removes "value_index_texts" edges to ValueIndexText entities.
-func (auo *AttributeUpdateOne) RemoveValueIndexTexts(v ...*ValueIndexText) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) RemoveValueIndexTexts(v ...*ValueIndexText) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.RemoveValueIndexTextIDs(ids...)
+	return _u.RemoveValueIndexTextIDs(ids...)
 }
 
 // ClearValueJsons clears all "value_jsons" edges to the ValueJSON entity.
-func (auo *AttributeUpdateOne) ClearValueJsons() *AttributeUpdateOne {
-	auo.mutation.ClearValueJsons()
-	return auo
+func (_u *AttributeUpdateOne) ClearValueJsons() *AttributeUpdateOne {
+	_u.mutation.ClearValueJsons()
+	return _u
 }
 
 // RemoveValueJSONIDs removes the "value_jsons" edge to ValueJSON entities by IDs.
-func (auo *AttributeUpdateOne) RemoveValueJSONIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveValueJSONIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveValueJSONIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveValueJSONIDs(ids...)
+	return _u
 }
 
 // RemoveValueJsons removes "value_jsons" edges to ValueJSON entities.
-func (auo *AttributeUpdateOne) RemoveValueJsons(v ...*ValueJSON) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) RemoveValueJsons(v ...*ValueJSON) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.RemoveValueJSONIDs(ids...)
+	return _u.RemoveValueJSONIDs(ids...)
 }
 
 // ClearValueIntegers clears all "value_integers" edges to the ValueInteger entity.
-func (auo *AttributeUpdateOne) ClearValueIntegers() *AttributeUpdateOne {
-	auo.mutation.ClearValueIntegers()
-	return auo
+func (_u *AttributeUpdateOne) ClearValueIntegers() *AttributeUpdateOne {
+	_u.mutation.ClearValueIntegers()
+	return _u
 }
 
 // RemoveValueIntegerIDs removes the "value_integers" edge to ValueInteger entities by IDs.
-func (auo *AttributeUpdateOne) RemoveValueIntegerIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveValueIntegerIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveValueIntegerIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveValueIntegerIDs(ids...)
+	return _u
 }
 
 // RemoveValueIntegers removes "value_integers" edges to ValueInteger entities.
-func (auo *AttributeUpdateOne) RemoveValueIntegers(v ...*ValueInteger) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) RemoveValueIntegers(v ...*ValueInteger) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.RemoveValueIntegerIDs(ids...)
+	return _u.RemoveValueIntegerIDs(ids...)
 }
 
 // ClearValueFloats clears all "value_floats" edges to the ValueFloat entity.
-func (auo *AttributeUpdateOne) ClearValueFloats() *AttributeUpdateOne {
-	auo.mutation.ClearValueFloats()
-	return auo
+func (_u *AttributeUpdateOne) ClearValueFloats() *AttributeUpdateOne {
+	_u.mutation.ClearValueFloats()
+	return _u
 }
 
 // RemoveValueFloatIDs removes the "value_floats" edge to ValueFloat entities by IDs.
-func (auo *AttributeUpdateOne) RemoveValueFloatIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveValueFloatIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveValueFloatIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveValueFloatIDs(ids...)
+	return _u
 }
 
 // RemoveValueFloats removes "value_floats" edges to ValueFloat entities.
-func (auo *AttributeUpdateOne) RemoveValueFloats(v ...*ValueFloat) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) RemoveValueFloats(v ...*ValueFloat) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.RemoveValueFloatIDs(ids...)
+	return _u.RemoveValueFloatIDs(ids...)
 }
 
 // ClearValueDatetimes clears all "value_datetimes" edges to the ValueDatetime entity.
-func (auo *AttributeUpdateOne) ClearValueDatetimes() *AttributeUpdateOne {
-	auo.mutation.ClearValueDatetimes()
-	return auo
+func (_u *AttributeUpdateOne) ClearValueDatetimes() *AttributeUpdateOne {
+	_u.mutation.ClearValueDatetimes()
+	return _u
 }
 
 // RemoveValueDatetimeIDs removes the "value_datetimes" edge to ValueDatetime entities by IDs.
-func (auo *AttributeUpdateOne) RemoveValueDatetimeIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveValueDatetimeIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveValueDatetimeIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveValueDatetimeIDs(ids...)
+	return _u
 }
 
 // RemoveValueDatetimes removes "value_datetimes" edges to ValueDatetime entities.
-func (auo *AttributeUpdateOne) RemoveValueDatetimes(v ...*ValueDatetime) *AttributeUpdateOne {
+func (_u *AttributeUpdateOne) RemoveValueDatetimes(v ...*ValueDatetime) *AttributeUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return auo.RemoveValueDatetimeIDs(ids...)
+	return _u.RemoveValueDatetimeIDs(ids...)
 }
 
 // ClearChoiceTexts clears all "choice_texts" edges to the ChoiceText entity.
-func (auo *AttributeUpdateOne) ClearChoiceTexts() *AttributeUpdateOne {
-	auo.mutation.ClearChoiceTexts()
-	return auo
+func (_u *AttributeUpdateOne) ClearChoiceTexts() *AttributeUpdateOne {
+	_u.mutation.ClearChoiceTexts()
+	return _u
 }
 
 // RemoveChoiceTextIDs removes the "choice_texts" edge to ChoiceText entities by IDs.
-func (auo *AttributeUpdateOne) RemoveChoiceTextIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveChoiceTextIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveChoiceTextIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveChoiceTextIDs(ids...)
+	return _u
 }
 
 // RemoveChoiceTexts removes "choice_texts" edges to ChoiceText entities.
-func (auo *AttributeUpdateOne) RemoveChoiceTexts(c ...*ChoiceText) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) RemoveChoiceTexts(v ...*ChoiceText) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.RemoveChoiceTextIDs(ids...)
+	return _u.RemoveChoiceTextIDs(ids...)
 }
 
 // ClearChoiceIntegers clears all "choice_integers" edges to the ChoiceInteger entity.
-func (auo *AttributeUpdateOne) ClearChoiceIntegers() *AttributeUpdateOne {
-	auo.mutation.ClearChoiceIntegers()
-	return auo
+func (_u *AttributeUpdateOne) ClearChoiceIntegers() *AttributeUpdateOne {
+	_u.mutation.ClearChoiceIntegers()
+	return _u
 }
 
 // RemoveChoiceIntegerIDs removes the "choice_integers" edge to ChoiceInteger entities by IDs.
-func (auo *AttributeUpdateOne) RemoveChoiceIntegerIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveChoiceIntegerIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveChoiceIntegerIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveChoiceIntegerIDs(ids...)
+	return _u
 }
 
 // RemoveChoiceIntegers removes "choice_integers" edges to ChoiceInteger entities.
-func (auo *AttributeUpdateOne) RemoveChoiceIntegers(c ...*ChoiceInteger) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) RemoveChoiceIntegers(v ...*ChoiceInteger) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.RemoveChoiceIntegerIDs(ids...)
+	return _u.RemoveChoiceIntegerIDs(ids...)
 }
 
 // ClearChoiceFloats clears all "choice_floats" edges to the ChoiceFloat entity.
-func (auo *AttributeUpdateOne) ClearChoiceFloats() *AttributeUpdateOne {
-	auo.mutation.ClearChoiceFloats()
-	return auo
+func (_u *AttributeUpdateOne) ClearChoiceFloats() *AttributeUpdateOne {
+	_u.mutation.ClearChoiceFloats()
+	return _u
 }
 
 // RemoveChoiceFloatIDs removes the "choice_floats" edge to ChoiceFloat entities by IDs.
-func (auo *AttributeUpdateOne) RemoveChoiceFloatIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveChoiceFloatIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveChoiceFloatIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveChoiceFloatIDs(ids...)
+	return _u
 }
 
 // RemoveChoiceFloats removes "choice_floats" edges to ChoiceFloat entities.
-func (auo *AttributeUpdateOne) RemoveChoiceFloats(c ...*ChoiceFloat) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) RemoveChoiceFloats(v ...*ChoiceFloat) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.RemoveChoiceFloatIDs(ids...)
+	return _u.RemoveChoiceFloatIDs(ids...)
 }
 
 // ClearTypeAttributes clears all "type_attributes" edges to the CiTypeAttribute entity.
-func (auo *AttributeUpdateOne) ClearTypeAttributes() *AttributeUpdateOne {
-	auo.mutation.ClearTypeAttributes()
-	return auo
+func (_u *AttributeUpdateOne) ClearTypeAttributes() *AttributeUpdateOne {
+	_u.mutation.ClearTypeAttributes()
+	return _u
 }
 
 // RemoveTypeAttributeIDs removes the "type_attributes" edge to CiTypeAttribute entities by IDs.
-func (auo *AttributeUpdateOne) RemoveTypeAttributeIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveTypeAttributeIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveTypeAttributeIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveTypeAttributeIDs(ids...)
+	return _u
 }
 
 // RemoveTypeAttributes removes "type_attributes" edges to CiTypeAttribute entities.
-func (auo *AttributeUpdateOne) RemoveTypeAttributes(c ...*CiTypeAttribute) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) RemoveTypeAttributes(v ...*CiTypeAttribute) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.RemoveTypeAttributeIDs(ids...)
+	return _u.RemoveTypeAttributeIDs(ids...)
 }
 
 // ClearGroupItems clears all "group_items" edges to the CiTypeAttributeGroupItem entity.
-func (auo *AttributeUpdateOne) ClearGroupItems() *AttributeUpdateOne {
-	auo.mutation.ClearGroupItems()
-	return auo
+func (_u *AttributeUpdateOne) ClearGroupItems() *AttributeUpdateOne {
+	_u.mutation.ClearGroupItems()
+	return _u
 }
 
 // RemoveGroupItemIDs removes the "group_items" edge to CiTypeAttributeGroupItem entities by IDs.
-func (auo *AttributeUpdateOne) RemoveGroupItemIDs(ids ...uint64) *AttributeUpdateOne {
-	auo.mutation.RemoveGroupItemIDs(ids...)
-	return auo
+func (_u *AttributeUpdateOne) RemoveGroupItemIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveGroupItemIDs(ids...)
+	return _u
 }
 
 // RemoveGroupItems removes "group_items" edges to CiTypeAttributeGroupItem entities.
-func (auo *AttributeUpdateOne) RemoveGroupItems(c ...*CiTypeAttributeGroupItem) *AttributeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *AttributeUpdateOne) RemoveGroupItems(v ...*CiTypeAttributeGroupItem) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return auo.RemoveGroupItemIDs(ids...)
+	return _u.RemoveGroupItemIDs(ids...)
 }
 
 // Where appends a list predicates to the AttributeUpdate builder.
-func (auo *AttributeUpdateOne) Where(ps ...predicate.Attribute) *AttributeUpdateOne {
-	auo.mutation.Where(ps...)
-	return auo
+func (_u *AttributeUpdateOne) Where(ps ...predicate.Attribute) *AttributeUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (auo *AttributeUpdateOne) Select(field string, fields ...string) *AttributeUpdateOne {
-	auo.fields = append([]string{field}, fields...)
-	return auo
+func (_u *AttributeUpdateOne) Select(field string, fields ...string) *AttributeUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated Attribute entity.
-func (auo *AttributeUpdateOne) Save(ctx context.Context) (*Attribute, error) {
-	if err := auo.defaults(); err != nil {
+func (_u *AttributeUpdateOne) Save(ctx context.Context) (*Attribute, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, auo.sqlSave, auo.mutation, auo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (auo *AttributeUpdateOne) SaveX(ctx context.Context) *Attribute {
-	node, err := auo.Save(ctx)
+func (_u *AttributeUpdateOne) SaveX(ctx context.Context) *Attribute {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -2436,43 +2436,43 @@ func (auo *AttributeUpdateOne) SaveX(ctx context.Context) *Attribute {
 }
 
 // Exec executes the query on the entity.
-func (auo *AttributeUpdateOne) Exec(ctx context.Context) error {
-	_, err := auo.Save(ctx)
+func (_u *AttributeUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (auo *AttributeUpdateOne) ExecX(ctx context.Context) {
-	if err := auo.Exec(ctx); err != nil {
+func (_u *AttributeUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (auo *AttributeUpdateOne) defaults() error {
-	if _, ok := auo.mutation.UpdatedAt(); !ok {
+func (_u *AttributeUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if attribute.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized attribute.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := attribute.UpdateDefaultUpdatedAt()
-		auo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (auo *AttributeUpdateOne) check() error {
-	if v, ok := auo.mutation.Name(); ok {
+func (_u *AttributeUpdateOne) check() error {
+	if v, ok := _u.mutation.Name(); ok {
 		if err := attribute.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "Attribute.name": %w`, err)}
 		}
 	}
-	if v, ok := auo.mutation.Alias(); ok {
+	if v, ok := _u.mutation.Alias(); ok {
 		if err := attribute.AliasValidator(v); err != nil {
 			return &ValidationError{Name: "alias", err: fmt.Errorf(`ent: validator failed for field "Attribute.alias": %w`, err)}
 		}
 	}
-	if v, ok := auo.mutation.ValueType(); ok {
+	if v, ok := _u.mutation.ValueType(); ok {
 		if err := attribute.ValueTypeValidator(v); err != nil {
 			return &ValidationError{Name: "value_type", err: fmt.Errorf(`ent: validator failed for field "Attribute.value_type": %w`, err)}
 		}
@@ -2480,17 +2480,17 @@ func (auo *AttributeUpdateOne) check() error {
 	return nil
 }
 
-func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, err error) {
-	if err := auo.check(); err != nil {
+func (_u *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(attribute.Table, attribute.Columns, sqlgraph.NewFieldSpec(attribute.FieldID, field.TypeUint64))
-	id, ok := auo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Attribute.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := auo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, attribute.FieldID)
 		for _, f := range fields {
@@ -2502,145 +2502,145 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 			}
 		}
 	}
-	if ps := auo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := auo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(attribute.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := auo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(attribute.FieldDeletedAt, field.TypeTime, value)
 	}
-	if auo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(attribute.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := auo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(attribute.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := auo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(attribute.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if auo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(attribute.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := auo.mutation.Name(); ok {
+	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(attribute.FieldName, field.TypeString, value)
 	}
-	if value, ok := auo.mutation.Alias(); ok {
+	if value, ok := _u.mutation.Alias(); ok {
 		_spec.SetField(attribute.FieldAlias, field.TypeString, value)
 	}
-	if value, ok := auo.mutation.ValueType(); ok {
+	if value, ok := _u.mutation.ValueType(); ok {
 		_spec.SetField(attribute.FieldValueType, field.TypeEnum, value)
 	}
-	if value, ok := auo.mutation.IsChoice(); ok {
+	if value, ok := _u.mutation.IsChoice(); ok {
 		_spec.SetField(attribute.FieldIsChoice, field.TypeBool, value)
 	}
-	if auo.mutation.IsChoiceCleared() {
+	if _u.mutation.IsChoiceCleared() {
 		_spec.ClearField(attribute.FieldIsChoice, field.TypeBool)
 	}
-	if value, ok := auo.mutation.IsList(); ok {
+	if value, ok := _u.mutation.IsList(); ok {
 		_spec.SetField(attribute.FieldIsList, field.TypeBool, value)
 	}
-	if auo.mutation.IsListCleared() {
+	if _u.mutation.IsListCleared() {
 		_spec.ClearField(attribute.FieldIsList, field.TypeBool)
 	}
-	if value, ok := auo.mutation.CreatedBy(); ok {
+	if value, ok := _u.mutation.CreatedBy(); ok {
 		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
 	}
-	if auo.mutation.CreatedByCleared() {
+	if _u.mutation.CreatedByCleared() {
 		_spec.ClearField(attribute.FieldCreatedBy, field.TypeUUID)
 	}
-	if value, ok := auo.mutation.IsComputed(); ok {
+	if value, ok := _u.mutation.IsComputed(); ok {
 		_spec.SetField(attribute.FieldIsComputed, field.TypeBool, value)
 	}
-	if auo.mutation.IsComputedCleared() {
+	if _u.mutation.IsComputedCleared() {
 		_spec.ClearField(attribute.FieldIsComputed, field.TypeBool)
 	}
-	if value, ok := auo.mutation.ChoiceWebHook(); ok {
+	if value, ok := _u.mutation.ChoiceWebHook(); ok {
 		_spec.SetField(attribute.FieldChoiceWebHook, field.TypeJSON, value)
 	}
-	if auo.mutation.ChoiceWebHookCleared() {
+	if _u.mutation.ChoiceWebHookCleared() {
 		_spec.ClearField(attribute.FieldChoiceWebHook, field.TypeJSON)
 	}
-	if value, ok := auo.mutation.Option(); ok {
+	if value, ok := _u.mutation.Option(); ok {
 		_spec.SetField(attribute.FieldOption, field.TypeJSON, value)
 	}
-	if auo.mutation.OptionCleared() {
+	if _u.mutation.OptionCleared() {
 		_spec.ClearField(attribute.FieldOption, field.TypeJSON)
 	}
-	if value, ok := auo.mutation.IsPassword(); ok {
+	if value, ok := _u.mutation.IsPassword(); ok {
 		_spec.SetField(attribute.FieldIsPassword, field.TypeBool, value)
 	}
-	if auo.mutation.IsPasswordCleared() {
+	if _u.mutation.IsPasswordCleared() {
 		_spec.ClearField(attribute.FieldIsPassword, field.TypeBool)
 	}
-	if value, ok := auo.mutation.ComputeScript(); ok {
+	if value, ok := _u.mutation.ComputeScript(); ok {
 		_spec.SetField(attribute.FieldComputeScript, field.TypeString, value)
 	}
-	if auo.mutation.ComputeScriptCleared() {
+	if _u.mutation.ComputeScriptCleared() {
 		_spec.ClearField(attribute.FieldComputeScript, field.TypeString)
 	}
-	if value, ok := auo.mutation.ComputeExpr(); ok {
+	if value, ok := _u.mutation.ComputeExpr(); ok {
 		_spec.SetField(attribute.FieldComputeExpr, field.TypeString, value)
 	}
-	if auo.mutation.ComputeExprCleared() {
+	if _u.mutation.ComputeExprCleared() {
 		_spec.ClearField(attribute.FieldComputeExpr, field.TypeString)
 	}
-	if value, ok := auo.mutation.IsSortable(); ok {
+	if value, ok := _u.mutation.IsSortable(); ok {
 		_spec.SetField(attribute.FieldIsSortable, field.TypeBool, value)
 	}
-	if auo.mutation.IsSortableCleared() {
+	if _u.mutation.IsSortableCleared() {
 		_spec.ClearField(attribute.FieldIsSortable, field.TypeBool)
 	}
-	if value, ok := auo.mutation.Default(); ok {
+	if value, ok := _u.mutation.Default(); ok {
 		_spec.SetField(attribute.FieldDefault, field.TypeJSON, value)
 	}
-	if auo.mutation.DefaultCleared() {
+	if _u.mutation.DefaultCleared() {
 		_spec.ClearField(attribute.FieldDefault, field.TypeJSON)
 	}
-	if value, ok := auo.mutation.IsDynamic(); ok {
+	if value, ok := _u.mutation.IsDynamic(); ok {
 		_spec.SetField(attribute.FieldIsDynamic, field.TypeBool, value)
 	}
-	if auo.mutation.IsDynamicCleared() {
+	if _u.mutation.IsDynamicCleared() {
 		_spec.ClearField(attribute.FieldIsDynamic, field.TypeBool)
 	}
-	if value, ok := auo.mutation.IsReference(); ok {
+	if value, ok := _u.mutation.IsReference(); ok {
 		_spec.SetField(attribute.FieldIsReference, field.TypeBool, value)
 	}
-	if auo.mutation.IsReferenceCleared() {
+	if _u.mutation.IsReferenceCleared() {
 		_spec.ClearField(attribute.FieldIsReference, field.TypeBool)
 	}
-	if value, ok := auo.mutation.ReferenceTypeID(); ok {
+	if value, ok := _u.mutation.ReferenceTypeID(); ok {
 		_spec.SetField(attribute.FieldReferenceTypeID, field.TypeUint64, value)
 	}
-	if value, ok := auo.mutation.AddedReferenceTypeID(); ok {
+	if value, ok := _u.mutation.AddedReferenceTypeID(); ok {
 		_spec.AddField(attribute.FieldReferenceTypeID, field.TypeUint64, value)
 	}
-	if auo.mutation.ReferenceTypeIDCleared() {
+	if _u.mutation.ReferenceTypeIDCleared() {
 		_spec.ClearField(attribute.FieldReferenceTypeID, field.TypeUint64)
 	}
-	if value, ok := auo.mutation.ChoiceOther(); ok {
+	if value, ok := _u.mutation.ChoiceOther(); ok {
 		_spec.SetField(attribute.FieldChoiceOther, field.TypeJSON, value)
 	}
-	if auo.mutation.ChoiceOtherCleared() {
+	if _u.mutation.ChoiceOtherCleared() {
 		_spec.ClearField(attribute.FieldChoiceOther, field.TypeJSON)
 	}
-	if value, ok := auo.mutation.ValidatorRules(); ok {
+	if value, ok := _u.mutation.ValidatorRules(); ok {
 		_spec.SetField(attribute.FieldValidatorRules, field.TypeJSON, value)
 	}
-	if value, ok := auo.mutation.AppendedValidatorRules(); ok {
+	if value, ok := _u.mutation.AppendedValidatorRules(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, attribute.FieldValidatorRules, value)
 		})
 	}
-	if auo.mutation.ValidatorRulesCleared() {
+	if _u.mutation.ValidatorRulesCleared() {
 		_spec.ClearField(attribute.FieldValidatorRules, field.TypeJSON)
 	}
-	if auo.mutation.ValueTextsCleared() {
+	if _u.mutation.ValueTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2653,23 +2653,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedValueTextsIDs(); len(nodes) > 0 && !auo.mutation.ValueTextsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   attribute.ValueTextsTable,
-			Columns: []string{attribute.ValueTextsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := auo.mutation.ValueTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueTextsIDs(); len(nodes) > 0 && !_u.mutation.ValueTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2683,9 +2667,25 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueTextsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.ValueTextsTable,
+			Columns: []string{attribute.ValueTextsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.ValueIndexTextsCleared() {
+	if _u.mutation.ValueIndexTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2698,7 +2698,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedValueIndexTextsIDs(); len(nodes) > 0 && !auo.mutation.ValueIndexTextsCleared() {
+	if nodes := _u.mutation.RemovedValueIndexTextsIDs(); len(nodes) > 0 && !_u.mutation.ValueIndexTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2714,7 +2714,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2730,7 +2730,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.ValueJsonsCleared() {
+	if _u.mutation.ValueJsonsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2743,23 +2743,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedValueJsonsIDs(); len(nodes) > 0 && !auo.mutation.ValueJsonsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   attribute.ValueJsonsTable,
-			Columns: []string{attribute.ValueJsonsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := auo.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueJsonsIDs(); len(nodes) > 0 && !_u.mutation.ValueJsonsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2773,9 +2757,25 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.ValueJsonsTable,
+			Columns: []string{attribute.ValueJsonsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.ValueIntegersCleared() {
+	if _u.mutation.ValueIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2788,7 +2788,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedValueIntegersIDs(); len(nodes) > 0 && !auo.mutation.ValueIntegersCleared() {
+	if nodes := _u.mutation.RemovedValueIntegersIDs(); len(nodes) > 0 && !_u.mutation.ValueIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2804,7 +2804,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.ValueIntegersIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2820,7 +2820,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.ValueFloatsCleared() {
+	if _u.mutation.ValueFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2833,23 +2833,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedValueFloatsIDs(); len(nodes) > 0 && !auo.mutation.ValueFloatsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   attribute.ValueFloatsTable,
-			Columns: []string{attribute.ValueFloatsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := auo.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueFloatsIDs(); len(nodes) > 0 && !_u.mutation.ValueFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2863,9 +2847,25 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.ValueFloatsTable,
+			Columns: []string{attribute.ValueFloatsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.ValueDatetimesCleared() {
+	if _u.mutation.ValueDatetimesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2878,7 +2878,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedValueDatetimesIDs(); len(nodes) > 0 && !auo.mutation.ValueDatetimesCleared() {
+	if nodes := _u.mutation.RemovedValueDatetimesIDs(); len(nodes) > 0 && !_u.mutation.ValueDatetimesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2894,7 +2894,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2910,7 +2910,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.ChoiceTextsCleared() {
+	if _u.mutation.ChoiceTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2923,23 +2923,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedChoiceTextsIDs(); len(nodes) > 0 && !auo.mutation.ChoiceTextsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   attribute.ChoiceTextsTable,
-			Columns: []string{attribute.ChoiceTextsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(choicetext.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := auo.mutation.ChoiceTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedChoiceTextsIDs(); len(nodes) > 0 && !_u.mutation.ChoiceTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2953,9 +2937,25 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ChoiceTextsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.ChoiceTextsTable,
+			Columns: []string{attribute.ChoiceTextsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(choicetext.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.ChoiceIntegersCleared() {
+	if _u.mutation.ChoiceIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2968,7 +2968,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedChoiceIntegersIDs(); len(nodes) > 0 && !auo.mutation.ChoiceIntegersCleared() {
+	if nodes := _u.mutation.RemovedChoiceIntegersIDs(); len(nodes) > 0 && !_u.mutation.ChoiceIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2984,7 +2984,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.ChoiceIntegersIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ChoiceIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3000,7 +3000,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.ChoiceFloatsCleared() {
+	if _u.mutation.ChoiceFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3013,7 +3013,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedChoiceFloatsIDs(); len(nodes) > 0 && !auo.mutation.ChoiceFloatsCleared() {
+	if nodes := _u.mutation.RemovedChoiceFloatsIDs(); len(nodes) > 0 && !_u.mutation.ChoiceFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3029,7 +3029,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.ChoiceFloatsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ChoiceFloatsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3045,7 +3045,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.TypeAttributesCleared() {
+	if _u.mutation.TypeAttributesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3058,7 +3058,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedTypeAttributesIDs(); len(nodes) > 0 && !auo.mutation.TypeAttributesCleared() {
+	if nodes := _u.mutation.RemovedTypeAttributesIDs(); len(nodes) > 0 && !_u.mutation.TypeAttributesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3074,7 +3074,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.TypeAttributesIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TypeAttributesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3090,7 +3090,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if auo.mutation.GroupItemsCleared() {
+	if _u.mutation.GroupItemsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3103,7 +3103,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.RemovedGroupItemsIDs(); len(nodes) > 0 && !auo.mutation.GroupItemsCleared() {
+	if nodes := _u.mutation.RemovedGroupItemsIDs(); len(nodes) > 0 && !_u.mutation.GroupItemsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3119,7 +3119,7 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := auo.mutation.GroupItemsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.GroupItemsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3135,10 +3135,10 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &Attribute{config: auo.config}
+	_node = &Attribute{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, auo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{attribute.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -3146,6 +3146,6 @@ func (auo *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, e
 		}
 		return nil, err
 	}
-	auo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

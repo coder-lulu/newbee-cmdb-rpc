@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // CiTypeRelation is the model entity for the CiTypeRelation schema.
@@ -26,6 +26,8 @@ type CiTypeRelation struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Delete Time | 删除日期
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
+	// Tenant ID | 租户 ID
+	TenantID uint64 `json:"tenant_id,omitempty"`
 	// 外键，关联cmdb_ci_types.id，父类型
 	ParentID uint64 `json:"parent_id,omitempty"`
 	// 外键，关联cmdb_ci_types.id，子类型
@@ -101,7 +103,7 @@ func (*CiTypeRelation) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case cityperelation.FieldParentAttrIds, cityperelation.FieldChildAttrIds:
 			values[i] = new([]byte)
-		case cityperelation.FieldID, cityperelation.FieldParentID, cityperelation.FieldChildID, cityperelation.FieldRelationTypeID, cityperelation.FieldParentAttrID, cityperelation.FieldChildAttrID:
+		case cityperelation.FieldID, cityperelation.FieldTenantID, cityperelation.FieldParentID, cityperelation.FieldChildID, cityperelation.FieldRelationTypeID, cityperelation.FieldParentAttrID, cityperelation.FieldChildAttrID:
 			values[i] = new(sql.NullInt64)
 		case cityperelation.FieldConstraint:
 			values[i] = new(sql.NullString)
@@ -116,7 +118,7 @@ func (*CiTypeRelation) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiTypeRelation fields.
-func (ctr *CiTypeRelation) assignValues(columns []string, values []any) error {
+func (_m *CiTypeRelation) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -127,66 +129,72 @@ func (ctr *CiTypeRelation) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			ctr.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case cityperelation.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				ctr.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case cityperelation.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				ctr.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case cityperelation.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				ctr.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
+			}
+		case cityperelation.FieldTenantID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
+			} else if value.Valid {
+				_m.TenantID = uint64(value.Int64)
 			}
 		case cityperelation.FieldParentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field parent_id", values[i])
 			} else if value.Valid {
-				ctr.ParentID = uint64(value.Int64)
+				_m.ParentID = uint64(value.Int64)
 			}
 		case cityperelation.FieldChildID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field child_id", values[i])
 			} else if value.Valid {
-				ctr.ChildID = uint64(value.Int64)
+				_m.ChildID = uint64(value.Int64)
 			}
 		case cityperelation.FieldRelationTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field relation_type_id", values[i])
 			} else if value.Valid {
-				ctr.RelationTypeID = uint64(value.Int64)
+				_m.RelationTypeID = uint64(value.Int64)
 			}
 		case cityperelation.FieldConstraint:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field constraint", values[i])
 			} else if value.Valid {
-				ctr.Constraint = value.String
+				_m.Constraint = value.String
 			}
 		case cityperelation.FieldParentAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field parent_attr_id", values[i])
 			} else if value.Valid {
-				ctr.ParentAttrID = uint64(value.Int64)
+				_m.ParentAttrID = uint64(value.Int64)
 			}
 		case cityperelation.FieldChildAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field child_attr_id", values[i])
 			} else if value.Valid {
-				ctr.ChildAttrID = uint64(value.Int64)
+				_m.ChildAttrID = uint64(value.Int64)
 			}
 		case cityperelation.FieldParentAttrIds:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field parent_attr_ids", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &ctr.ParentAttrIds); err != nil {
+				if err := json.Unmarshal(*value, &_m.ParentAttrIds); err != nil {
 					return fmt.Errorf("unmarshal field parent_attr_ids: %w", err)
 				}
 			}
@@ -194,12 +202,12 @@ func (ctr *CiTypeRelation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field child_attr_ids", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &ctr.ChildAttrIds); err != nil {
+				if err := json.Unmarshal(*value, &_m.ChildAttrIds); err != nil {
 					return fmt.Errorf("unmarshal field child_attr_ids: %w", err)
 				}
 			}
 		default:
-			ctr.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -207,80 +215,83 @@ func (ctr *CiTypeRelation) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiTypeRelation.
 // This includes values selected through modifiers, order, etc.
-func (ctr *CiTypeRelation) Value(name string) (ent.Value, error) {
-	return ctr.selectValues.Get(name)
+func (_m *CiTypeRelation) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryParent queries the "parent" edge of the CiTypeRelation entity.
-func (ctr *CiTypeRelation) QueryParent() *CiTypeQuery {
-	return NewCiTypeRelationClient(ctr.config).QueryParent(ctr)
+func (_m *CiTypeRelation) QueryParent() *CiTypeQuery {
+	return NewCiTypeRelationClient(_m.config).QueryParent(_m)
 }
 
 // QueryChild queries the "child" edge of the CiTypeRelation entity.
-func (ctr *CiTypeRelation) QueryChild() *CiTypeQuery {
-	return NewCiTypeRelationClient(ctr.config).QueryChild(ctr)
+func (_m *CiTypeRelation) QueryChild() *CiTypeQuery {
+	return NewCiTypeRelationClient(_m.config).QueryChild(_m)
 }
 
 // QueryRelationType queries the "relation_type" edge of the CiTypeRelation entity.
-func (ctr *CiTypeRelation) QueryRelationType() *RelationTypeQuery {
-	return NewCiTypeRelationClient(ctr.config).QueryRelationType(ctr)
+func (_m *CiTypeRelation) QueryRelationType() *RelationTypeQuery {
+	return NewCiTypeRelationClient(_m.config).QueryRelationType(_m)
 }
 
 // Update returns a builder for updating this CiTypeRelation.
 // Note that you need to call CiTypeRelation.Unwrap() before calling this method if this CiTypeRelation
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (ctr *CiTypeRelation) Update() *CiTypeRelationUpdateOne {
-	return NewCiTypeRelationClient(ctr.config).UpdateOne(ctr)
+func (_m *CiTypeRelation) Update() *CiTypeRelationUpdateOne {
+	return NewCiTypeRelationClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiTypeRelation entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (ctr *CiTypeRelation) Unwrap() *CiTypeRelation {
-	_tx, ok := ctr.config.driver.(*txDriver)
+func (_m *CiTypeRelation) Unwrap() *CiTypeRelation {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiTypeRelation is not a transactional entity")
 	}
-	ctr.config.driver = _tx.drv
-	return ctr
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (ctr *CiTypeRelation) String() string {
+func (_m *CiTypeRelation) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiTypeRelation(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", ctr.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(ctr.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(ctr.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(ctr.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("tenant_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("parent_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctr.ParentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ParentID))
 	builder.WriteString(", ")
 	builder.WriteString("child_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctr.ChildID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChildID))
 	builder.WriteString(", ")
 	builder.WriteString("relation_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctr.RelationTypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.RelationTypeID))
 	builder.WriteString(", ")
 	builder.WriteString("constraint=")
-	builder.WriteString(ctr.Constraint)
+	builder.WriteString(_m.Constraint)
 	builder.WriteString(", ")
 	builder.WriteString("parent_attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctr.ParentAttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ParentAttrID))
 	builder.WriteString(", ")
 	builder.WriteString("child_attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctr.ChildAttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChildAttrID))
 	builder.WriteString(", ")
 	builder.WriteString("parent_attr_ids=")
-	builder.WriteString(fmt.Sprintf("%v", ctr.ParentAttrIds))
+	builder.WriteString(fmt.Sprintf("%v", _m.ParentAttrIds))
 	builder.WriteString(", ")
 	builder.WriteString("child_attr_ids=")
-	builder.WriteString(fmt.Sprintf("%v", ctr.ChildAttrIds))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChildAttrIds))
 	builder.WriteByte(')')
 	return builder.String()
 }

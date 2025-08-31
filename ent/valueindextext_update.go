@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
 )
 
 // ValueIndexTextUpdate is the builder for updating ValueIndexText entities.
@@ -25,137 +25,137 @@ type ValueIndexTextUpdate struct {
 }
 
 // Where appends a list predicates to the ValueIndexTextUpdate builder.
-func (vitu *ValueIndexTextUpdate) Where(ps ...predicate.ValueIndexText) *ValueIndexTextUpdate {
-	vitu.mutation.Where(ps...)
-	return vitu
+func (_u *ValueIndexTextUpdate) Where(ps ...predicate.ValueIndexText) *ValueIndexTextUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vitu *ValueIndexTextUpdate) SetUpdatedAt(t time.Time) *ValueIndexTextUpdate {
-	vitu.mutation.SetUpdatedAt(t)
-	return vitu
+func (_u *ValueIndexTextUpdate) SetUpdatedAt(v time.Time) *ValueIndexTextUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vitu *ValueIndexTextUpdate) SetDeletedAt(t time.Time) *ValueIndexTextUpdate {
-	vitu.mutation.SetDeletedAt(t)
-	return vitu
+func (_u *ValueIndexTextUpdate) SetDeletedAt(v time.Time) *ValueIndexTextUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vitu *ValueIndexTextUpdate) SetNillableDeletedAt(t *time.Time) *ValueIndexTextUpdate {
-	if t != nil {
-		vitu.SetDeletedAt(*t)
+func (_u *ValueIndexTextUpdate) SetNillableDeletedAt(v *time.Time) *ValueIndexTextUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vitu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vitu *ValueIndexTextUpdate) ClearDeletedAt() *ValueIndexTextUpdate {
-	vitu.mutation.ClearDeletedAt()
-	return vitu
+func (_u *ValueIndexTextUpdate) ClearDeletedAt() *ValueIndexTextUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vitu *ValueIndexTextUpdate) SetCiID(u uint64) *ValueIndexTextUpdate {
-	vitu.mutation.SetCiID(u)
-	return vitu
+func (_u *ValueIndexTextUpdate) SetCiID(v uint64) *ValueIndexTextUpdate {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vitu *ValueIndexTextUpdate) SetNillableCiID(u *uint64) *ValueIndexTextUpdate {
-	if u != nil {
-		vitu.SetCiID(*u)
+func (_u *ValueIndexTextUpdate) SetNillableCiID(v *uint64) *ValueIndexTextUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vitu
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vitu *ValueIndexTextUpdate) SetAttrID(u uint64) *ValueIndexTextUpdate {
-	vitu.mutation.SetAttrID(u)
-	return vitu
+func (_u *ValueIndexTextUpdate) SetAttrID(v uint64) *ValueIndexTextUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vitu *ValueIndexTextUpdate) SetNillableAttrID(u *uint64) *ValueIndexTextUpdate {
-	if u != nil {
-		vitu.SetAttrID(*u)
+func (_u *ValueIndexTextUpdate) SetNillableAttrID(v *uint64) *ValueIndexTextUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vitu
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vitu *ValueIndexTextUpdate) SetValue(s string) *ValueIndexTextUpdate {
-	vitu.mutation.SetValue(s)
-	return vitu
+func (_u *ValueIndexTextUpdate) SetValue(v string) *ValueIndexTextUpdate {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (vitu *ValueIndexTextUpdate) SetNillableValue(s *string) *ValueIndexTextUpdate {
-	if s != nil {
-		vitu.SetValue(*s)
+func (_u *ValueIndexTextUpdate) SetNillableValue(v *string) *ValueIndexTextUpdate {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return vitu
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vitu *ValueIndexTextUpdate) SetIsCover(b bool) *ValueIndexTextUpdate {
-	vitu.mutation.SetIsCover(b)
-	return vitu
+func (_u *ValueIndexTextUpdate) SetIsCover(v bool) *ValueIndexTextUpdate {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vitu *ValueIndexTextUpdate) SetNillableIsCover(b *bool) *ValueIndexTextUpdate {
-	if b != nil {
-		vitu.SetIsCover(*b)
+func (_u *ValueIndexTextUpdate) SetNillableIsCover(v *bool) *ValueIndexTextUpdate {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vitu
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vitu *ValueIndexTextUpdate) SetCi(c *Cis) *ValueIndexTextUpdate {
-	return vitu.SetCiID(c.ID)
+func (_u *ValueIndexTextUpdate) SetCi(v *Cis) *ValueIndexTextUpdate {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vitu *ValueIndexTextUpdate) SetAttributeID(id uint64) *ValueIndexTextUpdate {
-	vitu.mutation.SetAttributeID(id)
-	return vitu
+func (_u *ValueIndexTextUpdate) SetAttributeID(id uint64) *ValueIndexTextUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vitu *ValueIndexTextUpdate) SetAttribute(a *Attribute) *ValueIndexTextUpdate {
-	return vitu.SetAttributeID(a.ID)
+func (_u *ValueIndexTextUpdate) SetAttribute(v *Attribute) *ValueIndexTextUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueIndexTextMutation object of the builder.
-func (vitu *ValueIndexTextUpdate) Mutation() *ValueIndexTextMutation {
-	return vitu.mutation
+func (_u *ValueIndexTextUpdate) Mutation() *ValueIndexTextMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vitu *ValueIndexTextUpdate) ClearCi() *ValueIndexTextUpdate {
-	vitu.mutation.ClearCi()
-	return vitu
+func (_u *ValueIndexTextUpdate) ClearCi() *ValueIndexTextUpdate {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vitu *ValueIndexTextUpdate) ClearAttribute() *ValueIndexTextUpdate {
-	vitu.mutation.ClearAttribute()
-	return vitu
+func (_u *ValueIndexTextUpdate) ClearAttribute() *ValueIndexTextUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (vitu *ValueIndexTextUpdate) Save(ctx context.Context) (int, error) {
-	if err := vitu.defaults(); err != nil {
+func (_u *ValueIndexTextUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, vitu.sqlSave, vitu.mutation, vitu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vitu *ValueIndexTextUpdate) SaveX(ctx context.Context) int {
-	affected, err := vitu.Save(ctx)
+func (_u *ValueIndexTextUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -163,74 +163,74 @@ func (vitu *ValueIndexTextUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (vitu *ValueIndexTextUpdate) Exec(ctx context.Context) error {
-	_, err := vitu.Save(ctx)
+func (_u *ValueIndexTextUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vitu *ValueIndexTextUpdate) ExecX(ctx context.Context) {
-	if err := vitu.Exec(ctx); err != nil {
+func (_u *ValueIndexTextUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vitu *ValueIndexTextUpdate) defaults() error {
-	if _, ok := vitu.mutation.UpdatedAt(); !ok {
+func (_u *ValueIndexTextUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valueindextext.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valueindextext.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valueindextext.UpdateDefaultUpdatedAt()
-		vitu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vitu *ValueIndexTextUpdate) check() error {
-	if v, ok := vitu.mutation.Value(); ok {
+func (_u *ValueIndexTextUpdate) check() error {
+	if v, ok := _u.mutation.Value(); ok {
 		if err := valueindextext.ValueValidator(v); err != nil {
 			return &ValidationError{Name: "value", err: fmt.Errorf(`ent: validator failed for field "ValueIndexText.value": %w`, err)}
 		}
 	}
-	if vitu.mutation.CiCleared() && len(vitu.mutation.CiIDs()) > 0 {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueIndexText.ci"`)
 	}
-	if vitu.mutation.AttributeCleared() && len(vitu.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueIndexText.attribute"`)
 	}
 	return nil
 }
 
-func (vitu *ValueIndexTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := vitu.check(); err != nil {
-		return n, err
+func (_u *ValueIndexTextUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valueindextext.Table, valueindextext.Columns, sqlgraph.NewFieldSpec(valueindextext.FieldID, field.TypeUint64))
-	if ps := vitu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vitu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valueindextext.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vitu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valueindextext.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vitu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valueindextext.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vitu.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valueindextext.FieldValue, field.TypeString, value)
 	}
-	if value, ok := vitu.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valueindextext.FieldIsCover, field.TypeBool, value)
 	}
-	if vitu.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -243,7 +243,7 @@ func (vitu *ValueIndexTextUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vitu.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -259,7 +259,7 @@ func (vitu *ValueIndexTextUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vitu.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -272,7 +272,7 @@ func (vitu *ValueIndexTextUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vitu.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -288,7 +288,7 @@ func (vitu *ValueIndexTextUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, vitu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valueindextext.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -296,8 +296,8 @@ func (vitu *ValueIndexTextUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		return 0, err
 	}
-	vitu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ValueIndexTextUpdateOne is the builder for updating a single ValueIndexText entity.
@@ -309,144 +309,144 @@ type ValueIndexTextUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vituo *ValueIndexTextUpdateOne) SetUpdatedAt(t time.Time) *ValueIndexTextUpdateOne {
-	vituo.mutation.SetUpdatedAt(t)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) SetUpdatedAt(v time.Time) *ValueIndexTextUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vituo *ValueIndexTextUpdateOne) SetDeletedAt(t time.Time) *ValueIndexTextUpdateOne {
-	vituo.mutation.SetDeletedAt(t)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) SetDeletedAt(v time.Time) *ValueIndexTextUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vituo *ValueIndexTextUpdateOne) SetNillableDeletedAt(t *time.Time) *ValueIndexTextUpdateOne {
-	if t != nil {
-		vituo.SetDeletedAt(*t)
+func (_u *ValueIndexTextUpdateOne) SetNillableDeletedAt(v *time.Time) *ValueIndexTextUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vituo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vituo *ValueIndexTextUpdateOne) ClearDeletedAt() *ValueIndexTextUpdateOne {
-	vituo.mutation.ClearDeletedAt()
-	return vituo
+func (_u *ValueIndexTextUpdateOne) ClearDeletedAt() *ValueIndexTextUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vituo *ValueIndexTextUpdateOne) SetCiID(u uint64) *ValueIndexTextUpdateOne {
-	vituo.mutation.SetCiID(u)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) SetCiID(v uint64) *ValueIndexTextUpdateOne {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vituo *ValueIndexTextUpdateOne) SetNillableCiID(u *uint64) *ValueIndexTextUpdateOne {
-	if u != nil {
-		vituo.SetCiID(*u)
+func (_u *ValueIndexTextUpdateOne) SetNillableCiID(v *uint64) *ValueIndexTextUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vituo
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vituo *ValueIndexTextUpdateOne) SetAttrID(u uint64) *ValueIndexTextUpdateOne {
-	vituo.mutation.SetAttrID(u)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) SetAttrID(v uint64) *ValueIndexTextUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vituo *ValueIndexTextUpdateOne) SetNillableAttrID(u *uint64) *ValueIndexTextUpdateOne {
-	if u != nil {
-		vituo.SetAttrID(*u)
+func (_u *ValueIndexTextUpdateOne) SetNillableAttrID(v *uint64) *ValueIndexTextUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vituo
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vituo *ValueIndexTextUpdateOne) SetValue(s string) *ValueIndexTextUpdateOne {
-	vituo.mutation.SetValue(s)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) SetValue(v string) *ValueIndexTextUpdateOne {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (vituo *ValueIndexTextUpdateOne) SetNillableValue(s *string) *ValueIndexTextUpdateOne {
-	if s != nil {
-		vituo.SetValue(*s)
+func (_u *ValueIndexTextUpdateOne) SetNillableValue(v *string) *ValueIndexTextUpdateOne {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return vituo
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vituo *ValueIndexTextUpdateOne) SetIsCover(b bool) *ValueIndexTextUpdateOne {
-	vituo.mutation.SetIsCover(b)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) SetIsCover(v bool) *ValueIndexTextUpdateOne {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vituo *ValueIndexTextUpdateOne) SetNillableIsCover(b *bool) *ValueIndexTextUpdateOne {
-	if b != nil {
-		vituo.SetIsCover(*b)
+func (_u *ValueIndexTextUpdateOne) SetNillableIsCover(v *bool) *ValueIndexTextUpdateOne {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vituo
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vituo *ValueIndexTextUpdateOne) SetCi(c *Cis) *ValueIndexTextUpdateOne {
-	return vituo.SetCiID(c.ID)
+func (_u *ValueIndexTextUpdateOne) SetCi(v *Cis) *ValueIndexTextUpdateOne {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vituo *ValueIndexTextUpdateOne) SetAttributeID(id uint64) *ValueIndexTextUpdateOne {
-	vituo.mutation.SetAttributeID(id)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) SetAttributeID(id uint64) *ValueIndexTextUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vituo *ValueIndexTextUpdateOne) SetAttribute(a *Attribute) *ValueIndexTextUpdateOne {
-	return vituo.SetAttributeID(a.ID)
+func (_u *ValueIndexTextUpdateOne) SetAttribute(v *Attribute) *ValueIndexTextUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueIndexTextMutation object of the builder.
-func (vituo *ValueIndexTextUpdateOne) Mutation() *ValueIndexTextMutation {
-	return vituo.mutation
+func (_u *ValueIndexTextUpdateOne) Mutation() *ValueIndexTextMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vituo *ValueIndexTextUpdateOne) ClearCi() *ValueIndexTextUpdateOne {
-	vituo.mutation.ClearCi()
-	return vituo
+func (_u *ValueIndexTextUpdateOne) ClearCi() *ValueIndexTextUpdateOne {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vituo *ValueIndexTextUpdateOne) ClearAttribute() *ValueIndexTextUpdateOne {
-	vituo.mutation.ClearAttribute()
-	return vituo
+func (_u *ValueIndexTextUpdateOne) ClearAttribute() *ValueIndexTextUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the ValueIndexTextUpdate builder.
-func (vituo *ValueIndexTextUpdateOne) Where(ps ...predicate.ValueIndexText) *ValueIndexTextUpdateOne {
-	vituo.mutation.Where(ps...)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) Where(ps ...predicate.ValueIndexText) *ValueIndexTextUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (vituo *ValueIndexTextUpdateOne) Select(field string, fields ...string) *ValueIndexTextUpdateOne {
-	vituo.fields = append([]string{field}, fields...)
-	return vituo
+func (_u *ValueIndexTextUpdateOne) Select(field string, fields ...string) *ValueIndexTextUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ValueIndexText entity.
-func (vituo *ValueIndexTextUpdateOne) Save(ctx context.Context) (*ValueIndexText, error) {
-	if err := vituo.defaults(); err != nil {
+func (_u *ValueIndexTextUpdateOne) Save(ctx context.Context) (*ValueIndexText, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vituo.sqlSave, vituo.mutation, vituo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vituo *ValueIndexTextUpdateOne) SaveX(ctx context.Context) *ValueIndexText {
-	node, err := vituo.Save(ctx)
+func (_u *ValueIndexTextUpdateOne) SaveX(ctx context.Context) *ValueIndexText {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -454,57 +454,57 @@ func (vituo *ValueIndexTextUpdateOne) SaveX(ctx context.Context) *ValueIndexText
 }
 
 // Exec executes the query on the entity.
-func (vituo *ValueIndexTextUpdateOne) Exec(ctx context.Context) error {
-	_, err := vituo.Save(ctx)
+func (_u *ValueIndexTextUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vituo *ValueIndexTextUpdateOne) ExecX(ctx context.Context) {
-	if err := vituo.Exec(ctx); err != nil {
+func (_u *ValueIndexTextUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vituo *ValueIndexTextUpdateOne) defaults() error {
-	if _, ok := vituo.mutation.UpdatedAt(); !ok {
+func (_u *ValueIndexTextUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valueindextext.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valueindextext.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valueindextext.UpdateDefaultUpdatedAt()
-		vituo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vituo *ValueIndexTextUpdateOne) check() error {
-	if v, ok := vituo.mutation.Value(); ok {
+func (_u *ValueIndexTextUpdateOne) check() error {
+	if v, ok := _u.mutation.Value(); ok {
 		if err := valueindextext.ValueValidator(v); err != nil {
 			return &ValidationError{Name: "value", err: fmt.Errorf(`ent: validator failed for field "ValueIndexText.value": %w`, err)}
 		}
 	}
-	if vituo.mutation.CiCleared() && len(vituo.mutation.CiIDs()) > 0 {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueIndexText.ci"`)
 	}
-	if vituo.mutation.AttributeCleared() && len(vituo.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueIndexText.attribute"`)
 	}
 	return nil
 }
 
-func (vituo *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueIndexText, err error) {
-	if err := vituo.check(); err != nil {
+func (_u *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueIndexText, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valueindextext.Table, valueindextext.Columns, sqlgraph.NewFieldSpec(valueindextext.FieldID, field.TypeUint64))
-	id, ok := vituo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ValueIndexText.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := vituo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valueindextext.FieldID)
 		for _, f := range fields {
@@ -516,29 +516,29 @@ func (vituo *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *Value
 			}
 		}
 	}
-	if ps := vituo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vituo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valueindextext.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vituo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valueindextext.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vituo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valueindextext.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vituo.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valueindextext.FieldValue, field.TypeString, value)
 	}
-	if value, ok := vituo.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valueindextext.FieldIsCover, field.TypeBool, value)
 	}
-	if vituo.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -551,7 +551,7 @@ func (vituo *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *Value
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vituo.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -567,7 +567,7 @@ func (vituo *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *Value
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vituo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -580,7 +580,7 @@ func (vituo *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *Value
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vituo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -596,10 +596,10 @@ func (vituo *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *Value
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ValueIndexText{config: vituo.config}
+	_node = &ValueIndexText{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, vituo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valueindextext.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -607,6 +607,6 @@ func (vituo *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *Value
 		}
 		return nil, err
 	}
-	vituo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

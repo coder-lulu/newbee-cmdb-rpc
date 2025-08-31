@@ -12,10 +12,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // RelationTypeQuery is the builder for querying RelationType entities.
@@ -33,44 +33,44 @@ type RelationTypeQuery struct {
 }
 
 // Where adds a new predicate for the RelationTypeQuery builder.
-func (rtq *RelationTypeQuery) Where(ps ...predicate.RelationType) *RelationTypeQuery {
-	rtq.predicates = append(rtq.predicates, ps...)
-	return rtq
+func (_q *RelationTypeQuery) Where(ps ...predicate.RelationType) *RelationTypeQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (rtq *RelationTypeQuery) Limit(limit int) *RelationTypeQuery {
-	rtq.ctx.Limit = &limit
-	return rtq
+func (_q *RelationTypeQuery) Limit(limit int) *RelationTypeQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (rtq *RelationTypeQuery) Offset(offset int) *RelationTypeQuery {
-	rtq.ctx.Offset = &offset
-	return rtq
+func (_q *RelationTypeQuery) Offset(offset int) *RelationTypeQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (rtq *RelationTypeQuery) Unique(unique bool) *RelationTypeQuery {
-	rtq.ctx.Unique = &unique
-	return rtq
+func (_q *RelationTypeQuery) Unique(unique bool) *RelationTypeQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (rtq *RelationTypeQuery) Order(o ...relationtype.OrderOption) *RelationTypeQuery {
-	rtq.order = append(rtq.order, o...)
-	return rtq
+func (_q *RelationTypeQuery) Order(o ...relationtype.OrderOption) *RelationTypeQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryCiRelations chains the current query on the "ci_relations" edge.
-func (rtq *RelationTypeQuery) QueryCiRelations() *CiRelationQuery {
-	query := (&CiRelationClient{config: rtq.config}).Query()
+func (_q *RelationTypeQuery) QueryCiRelations() *CiRelationQuery {
+	query := (&CiRelationClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := rtq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := rtq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -79,20 +79,20 @@ func (rtq *RelationTypeQuery) QueryCiRelations() *CiRelationQuery {
 			sqlgraph.To(cirelation.Table, cirelation.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, relationtype.CiRelationsTable, relationtype.CiRelationsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(rtq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryCiTypeRelations chains the current query on the "ci_type_relations" edge.
-func (rtq *RelationTypeQuery) QueryCiTypeRelations() *CiTypeRelationQuery {
-	query := (&CiTypeRelationClient{config: rtq.config}).Query()
+func (_q *RelationTypeQuery) QueryCiTypeRelations() *CiTypeRelationQuery {
+	query := (&CiTypeRelationClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := rtq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := rtq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -101,7 +101,7 @@ func (rtq *RelationTypeQuery) QueryCiTypeRelations() *CiTypeRelationQuery {
 			sqlgraph.To(cityperelation.Table, cityperelation.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, relationtype.CiTypeRelationsTable, relationtype.CiTypeRelationsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(rtq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -109,8 +109,8 @@ func (rtq *RelationTypeQuery) QueryCiTypeRelations() *CiTypeRelationQuery {
 
 // First returns the first RelationType entity from the query.
 // Returns a *NotFoundError when no RelationType was found.
-func (rtq *RelationTypeQuery) First(ctx context.Context) (*RelationType, error) {
-	nodes, err := rtq.Limit(1).All(setContextOp(ctx, rtq.ctx, ent.OpQueryFirst))
+func (_q *RelationTypeQuery) First(ctx context.Context) (*RelationType, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -121,8 +121,8 @@ func (rtq *RelationTypeQuery) First(ctx context.Context) (*RelationType, error) 
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (rtq *RelationTypeQuery) FirstX(ctx context.Context) *RelationType {
-	node, err := rtq.First(ctx)
+func (_q *RelationTypeQuery) FirstX(ctx context.Context) *RelationType {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -131,9 +131,9 @@ func (rtq *RelationTypeQuery) FirstX(ctx context.Context) *RelationType {
 
 // FirstID returns the first RelationType ID from the query.
 // Returns a *NotFoundError when no RelationType ID was found.
-func (rtq *RelationTypeQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *RelationTypeQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = rtq.Limit(1).IDs(setContextOp(ctx, rtq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -144,8 +144,8 @@ func (rtq *RelationTypeQuery) FirstID(ctx context.Context) (id uint64, err error
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (rtq *RelationTypeQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := rtq.FirstID(ctx)
+func (_q *RelationTypeQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -155,8 +155,8 @@ func (rtq *RelationTypeQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single RelationType entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one RelationType entity is found.
 // Returns a *NotFoundError when no RelationType entities are found.
-func (rtq *RelationTypeQuery) Only(ctx context.Context) (*RelationType, error) {
-	nodes, err := rtq.Limit(2).All(setContextOp(ctx, rtq.ctx, ent.OpQueryOnly))
+func (_q *RelationTypeQuery) Only(ctx context.Context) (*RelationType, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -171,8 +171,8 @@ func (rtq *RelationTypeQuery) Only(ctx context.Context) (*RelationType, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (rtq *RelationTypeQuery) OnlyX(ctx context.Context) *RelationType {
-	node, err := rtq.Only(ctx)
+func (_q *RelationTypeQuery) OnlyX(ctx context.Context) *RelationType {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -182,9 +182,9 @@ func (rtq *RelationTypeQuery) OnlyX(ctx context.Context) *RelationType {
 // OnlyID is like Only, but returns the only RelationType ID in the query.
 // Returns a *NotSingularError when more than one RelationType ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (rtq *RelationTypeQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *RelationTypeQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = rtq.Limit(2).IDs(setContextOp(ctx, rtq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -199,8 +199,8 @@ func (rtq *RelationTypeQuery) OnlyID(ctx context.Context) (id uint64, err error)
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (rtq *RelationTypeQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := rtq.OnlyID(ctx)
+func (_q *RelationTypeQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -208,18 +208,18 @@ func (rtq *RelationTypeQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of RelationTypes.
-func (rtq *RelationTypeQuery) All(ctx context.Context) ([]*RelationType, error) {
-	ctx = setContextOp(ctx, rtq.ctx, ent.OpQueryAll)
-	if err := rtq.prepareQuery(ctx); err != nil {
+func (_q *RelationTypeQuery) All(ctx context.Context) ([]*RelationType, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*RelationType, *RelationTypeQuery]()
-	return withInterceptors[[]*RelationType](ctx, rtq, qr, rtq.inters)
+	return withInterceptors[[]*RelationType](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (rtq *RelationTypeQuery) AllX(ctx context.Context) []*RelationType {
-	nodes, err := rtq.All(ctx)
+func (_q *RelationTypeQuery) AllX(ctx context.Context) []*RelationType {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -227,20 +227,20 @@ func (rtq *RelationTypeQuery) AllX(ctx context.Context) []*RelationType {
 }
 
 // IDs executes the query and returns a list of RelationType IDs.
-func (rtq *RelationTypeQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if rtq.ctx.Unique == nil && rtq.path != nil {
-		rtq.Unique(true)
+func (_q *RelationTypeQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, rtq.ctx, ent.OpQueryIDs)
-	if err = rtq.Select(relationtype.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(relationtype.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (rtq *RelationTypeQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := rtq.IDs(ctx)
+func (_q *RelationTypeQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -248,17 +248,17 @@ func (rtq *RelationTypeQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (rtq *RelationTypeQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, rtq.ctx, ent.OpQueryCount)
-	if err := rtq.prepareQuery(ctx); err != nil {
+func (_q *RelationTypeQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, rtq, querierCount[*RelationTypeQuery](), rtq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*RelationTypeQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (rtq *RelationTypeQuery) CountX(ctx context.Context) int {
-	count, err := rtq.Count(ctx)
+func (_q *RelationTypeQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -266,9 +266,9 @@ func (rtq *RelationTypeQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (rtq *RelationTypeQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, rtq.ctx, ent.OpQueryExist)
-	switch _, err := rtq.FirstID(ctx); {
+func (_q *RelationTypeQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -279,8 +279,8 @@ func (rtq *RelationTypeQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (rtq *RelationTypeQuery) ExistX(ctx context.Context) bool {
-	exist, err := rtq.Exist(ctx)
+func (_q *RelationTypeQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -289,44 +289,44 @@ func (rtq *RelationTypeQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the RelationTypeQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (rtq *RelationTypeQuery) Clone() *RelationTypeQuery {
-	if rtq == nil {
+func (_q *RelationTypeQuery) Clone() *RelationTypeQuery {
+	if _q == nil {
 		return nil
 	}
 	return &RelationTypeQuery{
-		config:              rtq.config,
-		ctx:                 rtq.ctx.Clone(),
-		order:               append([]relationtype.OrderOption{}, rtq.order...),
-		inters:              append([]Interceptor{}, rtq.inters...),
-		predicates:          append([]predicate.RelationType{}, rtq.predicates...),
-		withCiRelations:     rtq.withCiRelations.Clone(),
-		withCiTypeRelations: rtq.withCiTypeRelations.Clone(),
+		config:              _q.config,
+		ctx:                 _q.ctx.Clone(),
+		order:               append([]relationtype.OrderOption{}, _q.order...),
+		inters:              append([]Interceptor{}, _q.inters...),
+		predicates:          append([]predicate.RelationType{}, _q.predicates...),
+		withCiRelations:     _q.withCiRelations.Clone(),
+		withCiTypeRelations: _q.withCiTypeRelations.Clone(),
 		// clone intermediate query.
-		sql:  rtq.sql.Clone(),
-		path: rtq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithCiRelations tells the query-builder to eager-load the nodes that are connected to
 // the "ci_relations" edge. The optional arguments are used to configure the query builder of the edge.
-func (rtq *RelationTypeQuery) WithCiRelations(opts ...func(*CiRelationQuery)) *RelationTypeQuery {
-	query := (&CiRelationClient{config: rtq.config}).Query()
+func (_q *RelationTypeQuery) WithCiRelations(opts ...func(*CiRelationQuery)) *RelationTypeQuery {
+	query := (&CiRelationClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	rtq.withCiRelations = query
-	return rtq
+	_q.withCiRelations = query
+	return _q
 }
 
 // WithCiTypeRelations tells the query-builder to eager-load the nodes that are connected to
 // the "ci_type_relations" edge. The optional arguments are used to configure the query builder of the edge.
-func (rtq *RelationTypeQuery) WithCiTypeRelations(opts ...func(*CiTypeRelationQuery)) *RelationTypeQuery {
-	query := (&CiTypeRelationClient{config: rtq.config}).Query()
+func (_q *RelationTypeQuery) WithCiTypeRelations(opts ...func(*CiTypeRelationQuery)) *RelationTypeQuery {
+	query := (&CiTypeRelationClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	rtq.withCiTypeRelations = query
-	return rtq
+	_q.withCiTypeRelations = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -343,10 +343,10 @@ func (rtq *RelationTypeQuery) WithCiTypeRelations(opts ...func(*CiTypeRelationQu
 //		GroupBy(relationtype.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (rtq *RelationTypeQuery) GroupBy(field string, fields ...string) *RelationTypeGroupBy {
-	rtq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &RelationTypeGroupBy{build: rtq}
-	grbuild.flds = &rtq.ctx.Fields
+func (_q *RelationTypeQuery) GroupBy(field string, fields ...string) *RelationTypeGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &RelationTypeGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = relationtype.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -364,59 +364,59 @@ func (rtq *RelationTypeQuery) GroupBy(field string, fields ...string) *RelationT
 //	client.RelationType.Query().
 //		Select(relationtype.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (rtq *RelationTypeQuery) Select(fields ...string) *RelationTypeSelect {
-	rtq.ctx.Fields = append(rtq.ctx.Fields, fields...)
-	sbuild := &RelationTypeSelect{RelationTypeQuery: rtq}
+func (_q *RelationTypeQuery) Select(fields ...string) *RelationTypeSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &RelationTypeSelect{RelationTypeQuery: _q}
 	sbuild.label = relationtype.Label
-	sbuild.flds, sbuild.scan = &rtq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a RelationTypeSelect configured with the given aggregations.
-func (rtq *RelationTypeQuery) Aggregate(fns ...AggregateFunc) *RelationTypeSelect {
-	return rtq.Select().Aggregate(fns...)
+func (_q *RelationTypeQuery) Aggregate(fns ...AggregateFunc) *RelationTypeSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (rtq *RelationTypeQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range rtq.inters {
+func (_q *RelationTypeQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, rtq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range rtq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !relationtype.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if rtq.path != nil {
-		prev, err := rtq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		rtq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (rtq *RelationTypeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*RelationType, error) {
+func (_q *RelationTypeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*RelationType, error) {
 	var (
 		nodes       = []*RelationType{}
-		_spec       = rtq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [2]bool{
-			rtq.withCiRelations != nil,
-			rtq.withCiTypeRelations != nil,
+			_q.withCiRelations != nil,
+			_q.withCiTypeRelations != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*RelationType).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &RelationType{config: rtq.config}
+		node := &RelationType{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -424,21 +424,21 @@ func (rtq *RelationTypeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, rtq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := rtq.withCiRelations; query != nil {
-		if err := rtq.loadCiRelations(ctx, query, nodes,
+	if query := _q.withCiRelations; query != nil {
+		if err := _q.loadCiRelations(ctx, query, nodes,
 			func(n *RelationType) { n.Edges.CiRelations = []*CiRelation{} },
 			func(n *RelationType, e *CiRelation) { n.Edges.CiRelations = append(n.Edges.CiRelations, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := rtq.withCiTypeRelations; query != nil {
-		if err := rtq.loadCiTypeRelations(ctx, query, nodes,
+	if query := _q.withCiTypeRelations; query != nil {
+		if err := _q.loadCiTypeRelations(ctx, query, nodes,
 			func(n *RelationType) { n.Edges.CiTypeRelations = []*CiTypeRelation{} },
 			func(n *RelationType, e *CiTypeRelation) { n.Edges.CiTypeRelations = append(n.Edges.CiTypeRelations, e) }); err != nil {
 			return nil, err
@@ -447,7 +447,7 @@ func (rtq *RelationTypeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([
 	return nodes, nil
 }
 
-func (rtq *RelationTypeQuery) loadCiRelations(ctx context.Context, query *CiRelationQuery, nodes []*RelationType, init func(*RelationType), assign func(*RelationType, *CiRelation)) error {
+func (_q *RelationTypeQuery) loadCiRelations(ctx context.Context, query *CiRelationQuery, nodes []*RelationType, init func(*RelationType), assign func(*RelationType, *CiRelation)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*RelationType)
 	for i := range nodes {
@@ -477,7 +477,7 @@ func (rtq *RelationTypeQuery) loadCiRelations(ctx context.Context, query *CiRela
 	}
 	return nil
 }
-func (rtq *RelationTypeQuery) loadCiTypeRelations(ctx context.Context, query *CiTypeRelationQuery, nodes []*RelationType, init func(*RelationType), assign func(*RelationType, *CiTypeRelation)) error {
+func (_q *RelationTypeQuery) loadCiTypeRelations(ctx context.Context, query *CiTypeRelationQuery, nodes []*RelationType, init func(*RelationType), assign func(*RelationType, *CiTypeRelation)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*RelationType)
 	for i := range nodes {
@@ -508,24 +508,24 @@ func (rtq *RelationTypeQuery) loadCiTypeRelations(ctx context.Context, query *Ci
 	return nil
 }
 
-func (rtq *RelationTypeQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := rtq.querySpec()
-	_spec.Node.Columns = rtq.ctx.Fields
-	if len(rtq.ctx.Fields) > 0 {
-		_spec.Unique = rtq.ctx.Unique != nil && *rtq.ctx.Unique
+func (_q *RelationTypeQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, rtq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (rtq *RelationTypeQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *RelationTypeQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(relationtype.Table, relationtype.Columns, sqlgraph.NewFieldSpec(relationtype.FieldID, field.TypeUint64))
-	_spec.From = rtq.sql
-	if unique := rtq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if rtq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := rtq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, relationtype.FieldID)
 		for i := range fields {
@@ -534,20 +534,20 @@ func (rtq *RelationTypeQuery) querySpec() *sqlgraph.QuerySpec {
 			}
 		}
 	}
-	if ps := rtq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := rtq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := rtq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := rtq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -557,33 +557,33 @@ func (rtq *RelationTypeQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (rtq *RelationTypeQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(rtq.driver.Dialect())
+func (_q *RelationTypeQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(relationtype.Table)
-	columns := rtq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = relationtype.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if rtq.sql != nil {
-		selector = rtq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if rtq.ctx.Unique != nil && *rtq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range rtq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range rtq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := rtq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := rtq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -596,41 +596,41 @@ type RelationTypeGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (rtgb *RelationTypeGroupBy) Aggregate(fns ...AggregateFunc) *RelationTypeGroupBy {
-	rtgb.fns = append(rtgb.fns, fns...)
-	return rtgb
+func (_g *RelationTypeGroupBy) Aggregate(fns ...AggregateFunc) *RelationTypeGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (rtgb *RelationTypeGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, rtgb.build.ctx, ent.OpQueryGroupBy)
-	if err := rtgb.build.prepareQuery(ctx); err != nil {
+func (_g *RelationTypeGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*RelationTypeQuery, *RelationTypeGroupBy](ctx, rtgb.build, rtgb, rtgb.build.inters, v)
+	return scanWithInterceptors[*RelationTypeQuery, *RelationTypeGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (rtgb *RelationTypeGroupBy) sqlScan(ctx context.Context, root *RelationTypeQuery, v any) error {
+func (_g *RelationTypeGroupBy) sqlScan(ctx context.Context, root *RelationTypeQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(rtgb.fns))
-	for _, fn := range rtgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*rtgb.flds)+len(rtgb.fns))
-		for _, f := range *rtgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*rtgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := rtgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -644,27 +644,27 @@ type RelationTypeSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (rts *RelationTypeSelect) Aggregate(fns ...AggregateFunc) *RelationTypeSelect {
-	rts.fns = append(rts.fns, fns...)
-	return rts
+func (_s *RelationTypeSelect) Aggregate(fns ...AggregateFunc) *RelationTypeSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (rts *RelationTypeSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, rts.ctx, ent.OpQuerySelect)
-	if err := rts.prepareQuery(ctx); err != nil {
+func (_s *RelationTypeSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*RelationTypeQuery, *RelationTypeSelect](ctx, rts.RelationTypeQuery, rts, rts.inters, v)
+	return scanWithInterceptors[*RelationTypeQuery, *RelationTypeSelect](ctx, _s.RelationTypeQuery, _s, _s.inters, v)
 }
 
-func (rts *RelationTypeSelect) sqlScan(ctx context.Context, root *RelationTypeQuery, v any) error {
+func (_s *RelationTypeSelect) sqlScan(ctx context.Context, root *RelationTypeQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(rts.fns))
-	for _, fn := range rts.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*rts.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -672,7 +672,7 @@ func (rts *RelationTypeSelect) sqlScan(ctx context.Context, root *RelationTypeQu
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := rts.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

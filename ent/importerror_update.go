@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ImportErrorUpdate is the builder for updating ImportError entities.
@@ -25,411 +25,411 @@ type ImportErrorUpdate struct {
 }
 
 // Where appends a list predicates to the ImportErrorUpdate builder.
-func (ieu *ImportErrorUpdate) Where(ps ...predicate.ImportError) *ImportErrorUpdate {
-	ieu.mutation.Where(ps...)
-	return ieu
+func (_u *ImportErrorUpdate) Where(ps ...predicate.ImportError) *ImportErrorUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ieu *ImportErrorUpdate) SetUpdatedAt(t time.Time) *ImportErrorUpdate {
-	ieu.mutation.SetUpdatedAt(t)
-	return ieu
+func (_u *ImportErrorUpdate) SetUpdatedAt(v time.Time) *ImportErrorUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ieu *ImportErrorUpdate) SetDeletedAt(t time.Time) *ImportErrorUpdate {
-	ieu.mutation.SetDeletedAt(t)
-	return ieu
+func (_u *ImportErrorUpdate) SetDeletedAt(v time.Time) *ImportErrorUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableDeletedAt(t *time.Time) *ImportErrorUpdate {
-	if t != nil {
-		ieu.SetDeletedAt(*t)
+func (_u *ImportErrorUpdate) SetNillableDeletedAt(v *time.Time) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ieu *ImportErrorUpdate) ClearDeletedAt() *ImportErrorUpdate {
-	ieu.mutation.ClearDeletedAt()
-	return ieu
+func (_u *ImportErrorUpdate) ClearDeletedAt() *ImportErrorUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ieu *ImportErrorUpdate) SetDepartmentID(u uint64) *ImportErrorUpdate {
-	ieu.mutation.ResetDepartmentID()
-	ieu.mutation.SetDepartmentID(u)
-	return ieu
+func (_u *ImportErrorUpdate) SetDepartmentID(v uint64) *ImportErrorUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableDepartmentID(u *uint64) *ImportErrorUpdate {
-	if u != nil {
-		ieu.SetDepartmentID(*u)
+func (_u *ImportErrorUpdate) SetNillableDepartmentID(v *uint64) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ieu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ieu *ImportErrorUpdate) AddDepartmentID(u int64) *ImportErrorUpdate {
-	ieu.mutation.AddDepartmentID(u)
-	return ieu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ImportErrorUpdate) AddDepartmentID(v int64) *ImportErrorUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ieu *ImportErrorUpdate) ClearDepartmentID() *ImportErrorUpdate {
-	ieu.mutation.ClearDepartmentID()
-	return ieu
+func (_u *ImportErrorUpdate) ClearDepartmentID() *ImportErrorUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetTaskID sets the "task_id" field.
-func (ieu *ImportErrorUpdate) SetTaskID(u uint64) *ImportErrorUpdate {
-	ieu.mutation.SetTaskID(u)
-	return ieu
+func (_u *ImportErrorUpdate) SetTaskID(v uint64) *ImportErrorUpdate {
+	_u.mutation.SetTaskID(v)
+	return _u
 }
 
 // SetNillableTaskID sets the "task_id" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableTaskID(u *uint64) *ImportErrorUpdate {
-	if u != nil {
-		ieu.SetTaskID(*u)
+func (_u *ImportErrorUpdate) SetNillableTaskID(v *uint64) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetTaskID(*v)
 	}
-	return ieu
+	return _u
 }
 
 // SetRecordID sets the "record_id" field.
-func (ieu *ImportErrorUpdate) SetRecordID(u uint64) *ImportErrorUpdate {
-	ieu.mutation.SetRecordID(u)
-	return ieu
+func (_u *ImportErrorUpdate) SetRecordID(v uint64) *ImportErrorUpdate {
+	_u.mutation.SetRecordID(v)
+	return _u
 }
 
 // SetNillableRecordID sets the "record_id" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableRecordID(u *uint64) *ImportErrorUpdate {
-	if u != nil {
-		ieu.SetRecordID(*u)
+func (_u *ImportErrorUpdate) SetNillableRecordID(v *uint64) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetRecordID(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearRecordID clears the value of the "record_id" field.
-func (ieu *ImportErrorUpdate) ClearRecordID() *ImportErrorUpdate {
-	ieu.mutation.ClearRecordID()
-	return ieu
+func (_u *ImportErrorUpdate) ClearRecordID() *ImportErrorUpdate {
+	_u.mutation.ClearRecordID()
+	return _u
 }
 
 // SetBatchID sets the "batch_id" field.
-func (ieu *ImportErrorUpdate) SetBatchID(s string) *ImportErrorUpdate {
-	ieu.mutation.SetBatchID(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetBatchID(v string) *ImportErrorUpdate {
+	_u.mutation.SetBatchID(v)
+	return _u
 }
 
 // SetNillableBatchID sets the "batch_id" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableBatchID(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetBatchID(*s)
+func (_u *ImportErrorUpdate) SetNillableBatchID(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetBatchID(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearBatchID clears the value of the "batch_id" field.
-func (ieu *ImportErrorUpdate) ClearBatchID() *ImportErrorUpdate {
-	ieu.mutation.ClearBatchID()
-	return ieu
+func (_u *ImportErrorUpdate) ClearBatchID() *ImportErrorUpdate {
+	_u.mutation.ClearBatchID()
+	return _u
 }
 
 // SetErrorCode sets the "error_code" field.
-func (ieu *ImportErrorUpdate) SetErrorCode(s string) *ImportErrorUpdate {
-	ieu.mutation.SetErrorCode(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetErrorCode(v string) *ImportErrorUpdate {
+	_u.mutation.SetErrorCode(v)
+	return _u
 }
 
 // SetNillableErrorCode sets the "error_code" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableErrorCode(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetErrorCode(*s)
+func (_u *ImportErrorUpdate) SetNillableErrorCode(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetErrorCode(*v)
 	}
-	return ieu
+	return _u
 }
 
 // SetErrorTitle sets the "error_title" field.
-func (ieu *ImportErrorUpdate) SetErrorTitle(s string) *ImportErrorUpdate {
-	ieu.mutation.SetErrorTitle(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetErrorTitle(v string) *ImportErrorUpdate {
+	_u.mutation.SetErrorTitle(v)
+	return _u
 }
 
 // SetNillableErrorTitle sets the "error_title" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableErrorTitle(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetErrorTitle(*s)
+func (_u *ImportErrorUpdate) SetNillableErrorTitle(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetErrorTitle(*v)
 	}
-	return ieu
+	return _u
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (ieu *ImportErrorUpdate) SetErrorMessage(s string) *ImportErrorUpdate {
-	ieu.mutation.SetErrorMessage(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetErrorMessage(v string) *ImportErrorUpdate {
+	_u.mutation.SetErrorMessage(v)
+	return _u
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableErrorMessage(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetErrorMessage(*s)
+func (_u *ImportErrorUpdate) SetNillableErrorMessage(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetErrorMessage(*v)
 	}
-	return ieu
+	return _u
 }
 
 // SetErrorDetails sets the "error_details" field.
-func (ieu *ImportErrorUpdate) SetErrorDetails(s string) *ImportErrorUpdate {
-	ieu.mutation.SetErrorDetails(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetErrorDetails(v string) *ImportErrorUpdate {
+	_u.mutation.SetErrorDetails(v)
+	return _u
 }
 
 // SetNillableErrorDetails sets the "error_details" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableErrorDetails(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetErrorDetails(*s)
+func (_u *ImportErrorUpdate) SetNillableErrorDetails(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetErrorDetails(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearErrorDetails clears the value of the "error_details" field.
-func (ieu *ImportErrorUpdate) ClearErrorDetails() *ImportErrorUpdate {
-	ieu.mutation.ClearErrorDetails()
-	return ieu
+func (_u *ImportErrorUpdate) ClearErrorDetails() *ImportErrorUpdate {
+	_u.mutation.ClearErrorDetails()
+	return _u
 }
 
 // SetErrorType sets the "error_type" field.
-func (ieu *ImportErrorUpdate) SetErrorType(it importerror.ErrorType) *ImportErrorUpdate {
-	ieu.mutation.SetErrorType(it)
-	return ieu
+func (_u *ImportErrorUpdate) SetErrorType(v importerror.ErrorType) *ImportErrorUpdate {
+	_u.mutation.SetErrorType(v)
+	return _u
 }
 
 // SetNillableErrorType sets the "error_type" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableErrorType(it *importerror.ErrorType) *ImportErrorUpdate {
-	if it != nil {
-		ieu.SetErrorType(*it)
+func (_u *ImportErrorUpdate) SetNillableErrorType(v *importerror.ErrorType) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetErrorType(*v)
 	}
-	return ieu
+	return _u
 }
 
 // SetSeverity sets the "severity" field.
-func (ieu *ImportErrorUpdate) SetSeverity(i importerror.Severity) *ImportErrorUpdate {
-	ieu.mutation.SetSeverity(i)
-	return ieu
+func (_u *ImportErrorUpdate) SetSeverity(v importerror.Severity) *ImportErrorUpdate {
+	_u.mutation.SetSeverity(v)
+	return _u
 }
 
 // SetNillableSeverity sets the "severity" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableSeverity(i *importerror.Severity) *ImportErrorUpdate {
-	if i != nil {
-		ieu.SetSeverity(*i)
+func (_u *ImportErrorUpdate) SetNillableSeverity(v *importerror.Severity) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetSeverity(*v)
 	}
-	return ieu
+	return _u
 }
 
 // SetRowNumber sets the "row_number" field.
-func (ieu *ImportErrorUpdate) SetRowNumber(i int) *ImportErrorUpdate {
-	ieu.mutation.ResetRowNumber()
-	ieu.mutation.SetRowNumber(i)
-	return ieu
+func (_u *ImportErrorUpdate) SetRowNumber(v int) *ImportErrorUpdate {
+	_u.mutation.ResetRowNumber()
+	_u.mutation.SetRowNumber(v)
+	return _u
 }
 
 // SetNillableRowNumber sets the "row_number" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableRowNumber(i *int) *ImportErrorUpdate {
-	if i != nil {
-		ieu.SetRowNumber(*i)
+func (_u *ImportErrorUpdate) SetNillableRowNumber(v *int) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetRowNumber(*v)
 	}
-	return ieu
+	return _u
 }
 
-// AddRowNumber adds i to the "row_number" field.
-func (ieu *ImportErrorUpdate) AddRowNumber(i int) *ImportErrorUpdate {
-	ieu.mutation.AddRowNumber(i)
-	return ieu
+// AddRowNumber adds value to the "row_number" field.
+func (_u *ImportErrorUpdate) AddRowNumber(v int) *ImportErrorUpdate {
+	_u.mutation.AddRowNumber(v)
+	return _u
 }
 
 // ClearRowNumber clears the value of the "row_number" field.
-func (ieu *ImportErrorUpdate) ClearRowNumber() *ImportErrorUpdate {
-	ieu.mutation.ClearRowNumber()
-	return ieu
+func (_u *ImportErrorUpdate) ClearRowNumber() *ImportErrorUpdate {
+	_u.mutation.ClearRowNumber()
+	return _u
 }
 
 // SetFieldName sets the "field_name" field.
-func (ieu *ImportErrorUpdate) SetFieldName(s string) *ImportErrorUpdate {
-	ieu.mutation.SetFieldName(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetFieldName(v string) *ImportErrorUpdate {
+	_u.mutation.SetFieldName(v)
+	return _u
 }
 
 // SetNillableFieldName sets the "field_name" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableFieldName(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetFieldName(*s)
+func (_u *ImportErrorUpdate) SetNillableFieldName(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetFieldName(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearFieldName clears the value of the "field_name" field.
-func (ieu *ImportErrorUpdate) ClearFieldName() *ImportErrorUpdate {
-	ieu.mutation.ClearFieldName()
-	return ieu
+func (_u *ImportErrorUpdate) ClearFieldName() *ImportErrorUpdate {
+	_u.mutation.ClearFieldName()
+	return _u
 }
 
 // SetSheetName sets the "sheet_name" field.
-func (ieu *ImportErrorUpdate) SetSheetName(s string) *ImportErrorUpdate {
-	ieu.mutation.SetSheetName(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetSheetName(v string) *ImportErrorUpdate {
+	_u.mutation.SetSheetName(v)
+	return _u
 }
 
 // SetNillableSheetName sets the "sheet_name" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableSheetName(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetSheetName(*s)
+func (_u *ImportErrorUpdate) SetNillableSheetName(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetSheetName(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearSheetName clears the value of the "sheet_name" field.
-func (ieu *ImportErrorUpdate) ClearSheetName() *ImportErrorUpdate {
-	ieu.mutation.ClearSheetName()
-	return ieu
+func (_u *ImportErrorUpdate) ClearSheetName() *ImportErrorUpdate {
+	_u.mutation.ClearSheetName()
+	return _u
 }
 
 // SetInputData sets the "input_data" field.
-func (ieu *ImportErrorUpdate) SetInputData(m map[string]interface{}) *ImportErrorUpdate {
-	ieu.mutation.SetInputData(m)
-	return ieu
+func (_u *ImportErrorUpdate) SetInputData(v map[string]interface{}) *ImportErrorUpdate {
+	_u.mutation.SetInputData(v)
+	return _u
 }
 
 // ClearInputData clears the value of the "input_data" field.
-func (ieu *ImportErrorUpdate) ClearInputData() *ImportErrorUpdate {
-	ieu.mutation.ClearInputData()
-	return ieu
+func (_u *ImportErrorUpdate) ClearInputData() *ImportErrorUpdate {
+	_u.mutation.ClearInputData()
+	return _u
 }
 
 // SetErrorContext sets the "error_context" field.
-func (ieu *ImportErrorUpdate) SetErrorContext(m map[string]interface{}) *ImportErrorUpdate {
-	ieu.mutation.SetErrorContext(m)
-	return ieu
+func (_u *ImportErrorUpdate) SetErrorContext(v map[string]interface{}) *ImportErrorUpdate {
+	_u.mutation.SetErrorContext(v)
+	return _u
 }
 
 // ClearErrorContext clears the value of the "error_context" field.
-func (ieu *ImportErrorUpdate) ClearErrorContext() *ImportErrorUpdate {
-	ieu.mutation.ClearErrorContext()
-	return ieu
+func (_u *ImportErrorUpdate) ClearErrorContext() *ImportErrorUpdate {
+	_u.mutation.ClearErrorContext()
+	return _u
 }
 
 // SetSuggestion sets the "suggestion" field.
-func (ieu *ImportErrorUpdate) SetSuggestion(s string) *ImportErrorUpdate {
-	ieu.mutation.SetSuggestion(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetSuggestion(v string) *ImportErrorUpdate {
+	_u.mutation.SetSuggestion(v)
+	return _u
 }
 
 // SetNillableSuggestion sets the "suggestion" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableSuggestion(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetSuggestion(*s)
+func (_u *ImportErrorUpdate) SetNillableSuggestion(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetSuggestion(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearSuggestion clears the value of the "suggestion" field.
-func (ieu *ImportErrorUpdate) ClearSuggestion() *ImportErrorUpdate {
-	ieu.mutation.ClearSuggestion()
-	return ieu
+func (_u *ImportErrorUpdate) ClearSuggestion() *ImportErrorUpdate {
+	_u.mutation.ClearSuggestion()
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (ieu *ImportErrorUpdate) SetStatus(i importerror.Status) *ImportErrorUpdate {
-	ieu.mutation.SetStatus(i)
-	return ieu
+func (_u *ImportErrorUpdate) SetStatus(v importerror.Status) *ImportErrorUpdate {
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableStatus(i *importerror.Status) *ImportErrorUpdate {
-	if i != nil {
-		ieu.SetStatus(*i)
+func (_u *ImportErrorUpdate) SetNillableStatus(v *importerror.Status) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return ieu
+	return _u
 }
 
 // SetResolvedBy sets the "resolved_by" field.
-func (ieu *ImportErrorUpdate) SetResolvedBy(s string) *ImportErrorUpdate {
-	ieu.mutation.SetResolvedBy(s)
-	return ieu
+func (_u *ImportErrorUpdate) SetResolvedBy(v string) *ImportErrorUpdate {
+	_u.mutation.SetResolvedBy(v)
+	return _u
 }
 
 // SetNillableResolvedBy sets the "resolved_by" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableResolvedBy(s *string) *ImportErrorUpdate {
-	if s != nil {
-		ieu.SetResolvedBy(*s)
+func (_u *ImportErrorUpdate) SetNillableResolvedBy(v *string) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetResolvedBy(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearResolvedBy clears the value of the "resolved_by" field.
-func (ieu *ImportErrorUpdate) ClearResolvedBy() *ImportErrorUpdate {
-	ieu.mutation.ClearResolvedBy()
-	return ieu
+func (_u *ImportErrorUpdate) ClearResolvedBy() *ImportErrorUpdate {
+	_u.mutation.ClearResolvedBy()
+	return _u
 }
 
 // SetResolvedAt sets the "resolved_at" field.
-func (ieu *ImportErrorUpdate) SetResolvedAt(t time.Time) *ImportErrorUpdate {
-	ieu.mutation.SetResolvedAt(t)
-	return ieu
+func (_u *ImportErrorUpdate) SetResolvedAt(v time.Time) *ImportErrorUpdate {
+	_u.mutation.SetResolvedAt(v)
+	return _u
 }
 
 // SetNillableResolvedAt sets the "resolved_at" field if the given value is not nil.
-func (ieu *ImportErrorUpdate) SetNillableResolvedAt(t *time.Time) *ImportErrorUpdate {
-	if t != nil {
-		ieu.SetResolvedAt(*t)
+func (_u *ImportErrorUpdate) SetNillableResolvedAt(v *time.Time) *ImportErrorUpdate {
+	if v != nil {
+		_u.SetResolvedAt(*v)
 	}
-	return ieu
+	return _u
 }
 
 // ClearResolvedAt clears the value of the "resolved_at" field.
-func (ieu *ImportErrorUpdate) ClearResolvedAt() *ImportErrorUpdate {
-	ieu.mutation.ClearResolvedAt()
-	return ieu
+func (_u *ImportErrorUpdate) ClearResolvedAt() *ImportErrorUpdate {
+	_u.mutation.ClearResolvedAt()
+	return _u
 }
 
 // SetTask sets the "task" edge to the ImportTask entity.
-func (ieu *ImportErrorUpdate) SetTask(i *ImportTask) *ImportErrorUpdate {
-	return ieu.SetTaskID(i.ID)
+func (_u *ImportErrorUpdate) SetTask(v *ImportTask) *ImportErrorUpdate {
+	return _u.SetTaskID(v.ID)
 }
 
 // SetRecord sets the "record" edge to the ImportRecord entity.
-func (ieu *ImportErrorUpdate) SetRecord(i *ImportRecord) *ImportErrorUpdate {
-	return ieu.SetRecordID(i.ID)
+func (_u *ImportErrorUpdate) SetRecord(v *ImportRecord) *ImportErrorUpdate {
+	return _u.SetRecordID(v.ID)
 }
 
 // Mutation returns the ImportErrorMutation object of the builder.
-func (ieu *ImportErrorUpdate) Mutation() *ImportErrorMutation {
-	return ieu.mutation
+func (_u *ImportErrorUpdate) Mutation() *ImportErrorMutation {
+	return _u.mutation
 }
 
 // ClearTask clears the "task" edge to the ImportTask entity.
-func (ieu *ImportErrorUpdate) ClearTask() *ImportErrorUpdate {
-	ieu.mutation.ClearTask()
-	return ieu
+func (_u *ImportErrorUpdate) ClearTask() *ImportErrorUpdate {
+	_u.mutation.ClearTask()
+	return _u
 }
 
 // ClearRecord clears the "record" edge to the ImportRecord entity.
-func (ieu *ImportErrorUpdate) ClearRecord() *ImportErrorUpdate {
-	ieu.mutation.ClearRecord()
-	return ieu
+func (_u *ImportErrorUpdate) ClearRecord() *ImportErrorUpdate {
+	_u.mutation.ClearRecord()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (ieu *ImportErrorUpdate) Save(ctx context.Context) (int, error) {
-	if err := ieu.defaults(); err != nil {
+func (_u *ImportErrorUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, ieu.sqlSave, ieu.mutation, ieu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ieu *ImportErrorUpdate) SaveX(ctx context.Context) int {
-	affected, err := ieu.Save(ctx)
+func (_u *ImportErrorUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -437,195 +437,195 @@ func (ieu *ImportErrorUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (ieu *ImportErrorUpdate) Exec(ctx context.Context) error {
-	_, err := ieu.Save(ctx)
+func (_u *ImportErrorUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ieu *ImportErrorUpdate) ExecX(ctx context.Context) {
-	if err := ieu.Exec(ctx); err != nil {
+func (_u *ImportErrorUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ieu *ImportErrorUpdate) defaults() error {
-	if _, ok := ieu.mutation.UpdatedAt(); !ok {
+func (_u *ImportErrorUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if importerror.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importerror.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importerror.UpdateDefaultUpdatedAt()
-		ieu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ieu *ImportErrorUpdate) check() error {
-	if v, ok := ieu.mutation.BatchID(); ok {
+func (_u *ImportErrorUpdate) check() error {
+	if v, ok := _u.mutation.BatchID(); ok {
 		if err := importerror.BatchIDValidator(v); err != nil {
 			return &ValidationError{Name: "batch_id", err: fmt.Errorf(`ent: validator failed for field "ImportError.batch_id": %w`, err)}
 		}
 	}
-	if v, ok := ieu.mutation.ErrorCode(); ok {
+	if v, ok := _u.mutation.ErrorCode(); ok {
 		if err := importerror.ErrorCodeValidator(v); err != nil {
 			return &ValidationError{Name: "error_code", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_code": %w`, err)}
 		}
 	}
-	if v, ok := ieu.mutation.ErrorTitle(); ok {
+	if v, ok := _u.mutation.ErrorTitle(); ok {
 		if err := importerror.ErrorTitleValidator(v); err != nil {
 			return &ValidationError{Name: "error_title", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_title": %w`, err)}
 		}
 	}
-	if v, ok := ieu.mutation.ErrorType(); ok {
+	if v, ok := _u.mutation.ErrorType(); ok {
 		if err := importerror.ErrorTypeValidator(v); err != nil {
 			return &ValidationError{Name: "error_type", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_type": %w`, err)}
 		}
 	}
-	if v, ok := ieu.mutation.Severity(); ok {
+	if v, ok := _u.mutation.Severity(); ok {
 		if err := importerror.SeverityValidator(v); err != nil {
 			return &ValidationError{Name: "severity", err: fmt.Errorf(`ent: validator failed for field "ImportError.severity": %w`, err)}
 		}
 	}
-	if v, ok := ieu.mutation.FieldName(); ok {
+	if v, ok := _u.mutation.FieldName(); ok {
 		if err := importerror.FieldNameValidator(v); err != nil {
 			return &ValidationError{Name: "field_name", err: fmt.Errorf(`ent: validator failed for field "ImportError.field_name": %w`, err)}
 		}
 	}
-	if v, ok := ieu.mutation.SheetName(); ok {
+	if v, ok := _u.mutation.SheetName(); ok {
 		if err := importerror.SheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportError.sheet_name": %w`, err)}
 		}
 	}
-	if v, ok := ieu.mutation.Status(); ok {
+	if v, ok := _u.mutation.Status(); ok {
 		if err := importerror.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "ImportError.status": %w`, err)}
 		}
 	}
-	if v, ok := ieu.mutation.ResolvedBy(); ok {
+	if v, ok := _u.mutation.ResolvedBy(); ok {
 		if err := importerror.ResolvedByValidator(v); err != nil {
 			return &ValidationError{Name: "resolved_by", err: fmt.Errorf(`ent: validator failed for field "ImportError.resolved_by": %w`, err)}
 		}
 	}
-	if ieu.mutation.TaskCleared() && len(ieu.mutation.TaskIDs()) > 0 {
+	if _u.mutation.TaskCleared() && len(_u.mutation.TaskIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ImportError.task"`)
 	}
 	return nil
 }
 
-func (ieu *ImportErrorUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := ieu.check(); err != nil {
-		return n, err
+func (_u *ImportErrorUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(importerror.Table, importerror.Columns, sqlgraph.NewFieldSpec(importerror.FieldID, field.TypeUint64))
-	if ps := ieu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ieu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(importerror.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ieu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(importerror.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ieu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(importerror.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ieu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(importerror.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ieu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(importerror.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ieu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importerror.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ieu.mutation.BatchID(); ok {
+	if value, ok := _u.mutation.BatchID(); ok {
 		_spec.SetField(importerror.FieldBatchID, field.TypeString, value)
 	}
-	if ieu.mutation.BatchIDCleared() {
+	if _u.mutation.BatchIDCleared() {
 		_spec.ClearField(importerror.FieldBatchID, field.TypeString)
 	}
-	if value, ok := ieu.mutation.ErrorCode(); ok {
+	if value, ok := _u.mutation.ErrorCode(); ok {
 		_spec.SetField(importerror.FieldErrorCode, field.TypeString, value)
 	}
-	if value, ok := ieu.mutation.ErrorTitle(); ok {
+	if value, ok := _u.mutation.ErrorTitle(); ok {
 		_spec.SetField(importerror.FieldErrorTitle, field.TypeString, value)
 	}
-	if value, ok := ieu.mutation.ErrorMessage(); ok {
+	if value, ok := _u.mutation.ErrorMessage(); ok {
 		_spec.SetField(importerror.FieldErrorMessage, field.TypeString, value)
 	}
-	if value, ok := ieu.mutation.ErrorDetails(); ok {
+	if value, ok := _u.mutation.ErrorDetails(); ok {
 		_spec.SetField(importerror.FieldErrorDetails, field.TypeString, value)
 	}
-	if ieu.mutation.ErrorDetailsCleared() {
+	if _u.mutation.ErrorDetailsCleared() {
 		_spec.ClearField(importerror.FieldErrorDetails, field.TypeString)
 	}
-	if value, ok := ieu.mutation.ErrorType(); ok {
+	if value, ok := _u.mutation.ErrorType(); ok {
 		_spec.SetField(importerror.FieldErrorType, field.TypeEnum, value)
 	}
-	if value, ok := ieu.mutation.Severity(); ok {
+	if value, ok := _u.mutation.Severity(); ok {
 		_spec.SetField(importerror.FieldSeverity, field.TypeEnum, value)
 	}
-	if value, ok := ieu.mutation.RowNumber(); ok {
+	if value, ok := _u.mutation.RowNumber(); ok {
 		_spec.SetField(importerror.FieldRowNumber, field.TypeInt, value)
 	}
-	if value, ok := ieu.mutation.AddedRowNumber(); ok {
+	if value, ok := _u.mutation.AddedRowNumber(); ok {
 		_spec.AddField(importerror.FieldRowNumber, field.TypeInt, value)
 	}
-	if ieu.mutation.RowNumberCleared() {
+	if _u.mutation.RowNumberCleared() {
 		_spec.ClearField(importerror.FieldRowNumber, field.TypeInt)
 	}
-	if value, ok := ieu.mutation.FieldName(); ok {
+	if value, ok := _u.mutation.FieldName(); ok {
 		_spec.SetField(importerror.FieldFieldName, field.TypeString, value)
 	}
-	if ieu.mutation.FieldNameCleared() {
+	if _u.mutation.FieldNameCleared() {
 		_spec.ClearField(importerror.FieldFieldName, field.TypeString)
 	}
-	if value, ok := ieu.mutation.SheetName(); ok {
+	if value, ok := _u.mutation.SheetName(); ok {
 		_spec.SetField(importerror.FieldSheetName, field.TypeString, value)
 	}
-	if ieu.mutation.SheetNameCleared() {
+	if _u.mutation.SheetNameCleared() {
 		_spec.ClearField(importerror.FieldSheetName, field.TypeString)
 	}
-	if value, ok := ieu.mutation.InputData(); ok {
+	if value, ok := _u.mutation.InputData(); ok {
 		_spec.SetField(importerror.FieldInputData, field.TypeJSON, value)
 	}
-	if ieu.mutation.InputDataCleared() {
+	if _u.mutation.InputDataCleared() {
 		_spec.ClearField(importerror.FieldInputData, field.TypeJSON)
 	}
-	if value, ok := ieu.mutation.ErrorContext(); ok {
+	if value, ok := _u.mutation.ErrorContext(); ok {
 		_spec.SetField(importerror.FieldErrorContext, field.TypeJSON, value)
 	}
-	if ieu.mutation.ErrorContextCleared() {
+	if _u.mutation.ErrorContextCleared() {
 		_spec.ClearField(importerror.FieldErrorContext, field.TypeJSON)
 	}
-	if value, ok := ieu.mutation.Suggestion(); ok {
+	if value, ok := _u.mutation.Suggestion(); ok {
 		_spec.SetField(importerror.FieldSuggestion, field.TypeString, value)
 	}
-	if ieu.mutation.SuggestionCleared() {
+	if _u.mutation.SuggestionCleared() {
 		_spec.ClearField(importerror.FieldSuggestion, field.TypeString)
 	}
-	if value, ok := ieu.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(importerror.FieldStatus, field.TypeEnum, value)
 	}
-	if value, ok := ieu.mutation.ResolvedBy(); ok {
+	if value, ok := _u.mutation.ResolvedBy(); ok {
 		_spec.SetField(importerror.FieldResolvedBy, field.TypeString, value)
 	}
-	if ieu.mutation.ResolvedByCleared() {
+	if _u.mutation.ResolvedByCleared() {
 		_spec.ClearField(importerror.FieldResolvedBy, field.TypeString)
 	}
-	if value, ok := ieu.mutation.ResolvedAt(); ok {
+	if value, ok := _u.mutation.ResolvedAt(); ok {
 		_spec.SetField(importerror.FieldResolvedAt, field.TypeTime, value)
 	}
-	if ieu.mutation.ResolvedAtCleared() {
+	if _u.mutation.ResolvedAtCleared() {
 		_spec.ClearField(importerror.FieldResolvedAt, field.TypeTime)
 	}
-	if ieu.mutation.TaskCleared() {
+	if _u.mutation.TaskCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -638,7 +638,7 @@ func (ieu *ImportErrorUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ieu.mutation.TaskIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TaskIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -654,7 +654,7 @@ func (ieu *ImportErrorUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ieu.mutation.RecordCleared() {
+	if _u.mutation.RecordCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -667,7 +667,7 @@ func (ieu *ImportErrorUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ieu.mutation.RecordIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RecordIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -683,7 +683,7 @@ func (ieu *ImportErrorUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, ieu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{importerror.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -691,8 +691,8 @@ func (ieu *ImportErrorUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	ieu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ImportErrorUpdateOne is the builder for updating a single ImportError entity.
@@ -704,418 +704,418 @@ type ImportErrorUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ieuo *ImportErrorUpdateOne) SetUpdatedAt(t time.Time) *ImportErrorUpdateOne {
-	ieuo.mutation.SetUpdatedAt(t)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetUpdatedAt(v time.Time) *ImportErrorUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ieuo *ImportErrorUpdateOne) SetDeletedAt(t time.Time) *ImportErrorUpdateOne {
-	ieuo.mutation.SetDeletedAt(t)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetDeletedAt(v time.Time) *ImportErrorUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableDeletedAt(t *time.Time) *ImportErrorUpdateOne {
-	if t != nil {
-		ieuo.SetDeletedAt(*t)
+func (_u *ImportErrorUpdateOne) SetNillableDeletedAt(v *time.Time) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ieuo *ImportErrorUpdateOne) ClearDeletedAt() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearDeletedAt()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearDeletedAt() *ImportErrorUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ieuo *ImportErrorUpdateOne) SetDepartmentID(u uint64) *ImportErrorUpdateOne {
-	ieuo.mutation.ResetDepartmentID()
-	ieuo.mutation.SetDepartmentID(u)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetDepartmentID(v uint64) *ImportErrorUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableDepartmentID(u *uint64) *ImportErrorUpdateOne {
-	if u != nil {
-		ieuo.SetDepartmentID(*u)
+func (_u *ImportErrorUpdateOne) SetNillableDepartmentID(v *uint64) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ieuo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ieuo *ImportErrorUpdateOne) AddDepartmentID(u int64) *ImportErrorUpdateOne {
-	ieuo.mutation.AddDepartmentID(u)
-	return ieuo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ImportErrorUpdateOne) AddDepartmentID(v int64) *ImportErrorUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ieuo *ImportErrorUpdateOne) ClearDepartmentID() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearDepartmentID()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearDepartmentID() *ImportErrorUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetTaskID sets the "task_id" field.
-func (ieuo *ImportErrorUpdateOne) SetTaskID(u uint64) *ImportErrorUpdateOne {
-	ieuo.mutation.SetTaskID(u)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetTaskID(v uint64) *ImportErrorUpdateOne {
+	_u.mutation.SetTaskID(v)
+	return _u
 }
 
 // SetNillableTaskID sets the "task_id" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableTaskID(u *uint64) *ImportErrorUpdateOne {
-	if u != nil {
-		ieuo.SetTaskID(*u)
+func (_u *ImportErrorUpdateOne) SetNillableTaskID(v *uint64) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetTaskID(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // SetRecordID sets the "record_id" field.
-func (ieuo *ImportErrorUpdateOne) SetRecordID(u uint64) *ImportErrorUpdateOne {
-	ieuo.mutation.SetRecordID(u)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetRecordID(v uint64) *ImportErrorUpdateOne {
+	_u.mutation.SetRecordID(v)
+	return _u
 }
 
 // SetNillableRecordID sets the "record_id" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableRecordID(u *uint64) *ImportErrorUpdateOne {
-	if u != nil {
-		ieuo.SetRecordID(*u)
+func (_u *ImportErrorUpdateOne) SetNillableRecordID(v *uint64) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetRecordID(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearRecordID clears the value of the "record_id" field.
-func (ieuo *ImportErrorUpdateOne) ClearRecordID() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearRecordID()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearRecordID() *ImportErrorUpdateOne {
+	_u.mutation.ClearRecordID()
+	return _u
 }
 
 // SetBatchID sets the "batch_id" field.
-func (ieuo *ImportErrorUpdateOne) SetBatchID(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetBatchID(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetBatchID(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetBatchID(v)
+	return _u
 }
 
 // SetNillableBatchID sets the "batch_id" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableBatchID(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetBatchID(*s)
+func (_u *ImportErrorUpdateOne) SetNillableBatchID(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetBatchID(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearBatchID clears the value of the "batch_id" field.
-func (ieuo *ImportErrorUpdateOne) ClearBatchID() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearBatchID()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearBatchID() *ImportErrorUpdateOne {
+	_u.mutation.ClearBatchID()
+	return _u
 }
 
 // SetErrorCode sets the "error_code" field.
-func (ieuo *ImportErrorUpdateOne) SetErrorCode(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetErrorCode(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetErrorCode(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetErrorCode(v)
+	return _u
 }
 
 // SetNillableErrorCode sets the "error_code" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableErrorCode(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetErrorCode(*s)
+func (_u *ImportErrorUpdateOne) SetNillableErrorCode(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetErrorCode(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // SetErrorTitle sets the "error_title" field.
-func (ieuo *ImportErrorUpdateOne) SetErrorTitle(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetErrorTitle(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetErrorTitle(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetErrorTitle(v)
+	return _u
 }
 
 // SetNillableErrorTitle sets the "error_title" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableErrorTitle(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetErrorTitle(*s)
+func (_u *ImportErrorUpdateOne) SetNillableErrorTitle(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetErrorTitle(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (ieuo *ImportErrorUpdateOne) SetErrorMessage(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetErrorMessage(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetErrorMessage(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetErrorMessage(v)
+	return _u
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableErrorMessage(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetErrorMessage(*s)
+func (_u *ImportErrorUpdateOne) SetNillableErrorMessage(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetErrorMessage(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // SetErrorDetails sets the "error_details" field.
-func (ieuo *ImportErrorUpdateOne) SetErrorDetails(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetErrorDetails(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetErrorDetails(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetErrorDetails(v)
+	return _u
 }
 
 // SetNillableErrorDetails sets the "error_details" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableErrorDetails(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetErrorDetails(*s)
+func (_u *ImportErrorUpdateOne) SetNillableErrorDetails(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetErrorDetails(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearErrorDetails clears the value of the "error_details" field.
-func (ieuo *ImportErrorUpdateOne) ClearErrorDetails() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearErrorDetails()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearErrorDetails() *ImportErrorUpdateOne {
+	_u.mutation.ClearErrorDetails()
+	return _u
 }
 
 // SetErrorType sets the "error_type" field.
-func (ieuo *ImportErrorUpdateOne) SetErrorType(it importerror.ErrorType) *ImportErrorUpdateOne {
-	ieuo.mutation.SetErrorType(it)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetErrorType(v importerror.ErrorType) *ImportErrorUpdateOne {
+	_u.mutation.SetErrorType(v)
+	return _u
 }
 
 // SetNillableErrorType sets the "error_type" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableErrorType(it *importerror.ErrorType) *ImportErrorUpdateOne {
-	if it != nil {
-		ieuo.SetErrorType(*it)
+func (_u *ImportErrorUpdateOne) SetNillableErrorType(v *importerror.ErrorType) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetErrorType(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // SetSeverity sets the "severity" field.
-func (ieuo *ImportErrorUpdateOne) SetSeverity(i importerror.Severity) *ImportErrorUpdateOne {
-	ieuo.mutation.SetSeverity(i)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetSeverity(v importerror.Severity) *ImportErrorUpdateOne {
+	_u.mutation.SetSeverity(v)
+	return _u
 }
 
 // SetNillableSeverity sets the "severity" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableSeverity(i *importerror.Severity) *ImportErrorUpdateOne {
-	if i != nil {
-		ieuo.SetSeverity(*i)
+func (_u *ImportErrorUpdateOne) SetNillableSeverity(v *importerror.Severity) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetSeverity(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // SetRowNumber sets the "row_number" field.
-func (ieuo *ImportErrorUpdateOne) SetRowNumber(i int) *ImportErrorUpdateOne {
-	ieuo.mutation.ResetRowNumber()
-	ieuo.mutation.SetRowNumber(i)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetRowNumber(v int) *ImportErrorUpdateOne {
+	_u.mutation.ResetRowNumber()
+	_u.mutation.SetRowNumber(v)
+	return _u
 }
 
 // SetNillableRowNumber sets the "row_number" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableRowNumber(i *int) *ImportErrorUpdateOne {
-	if i != nil {
-		ieuo.SetRowNumber(*i)
+func (_u *ImportErrorUpdateOne) SetNillableRowNumber(v *int) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetRowNumber(*v)
 	}
-	return ieuo
+	return _u
 }
 
-// AddRowNumber adds i to the "row_number" field.
-func (ieuo *ImportErrorUpdateOne) AddRowNumber(i int) *ImportErrorUpdateOne {
-	ieuo.mutation.AddRowNumber(i)
-	return ieuo
+// AddRowNumber adds value to the "row_number" field.
+func (_u *ImportErrorUpdateOne) AddRowNumber(v int) *ImportErrorUpdateOne {
+	_u.mutation.AddRowNumber(v)
+	return _u
 }
 
 // ClearRowNumber clears the value of the "row_number" field.
-func (ieuo *ImportErrorUpdateOne) ClearRowNumber() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearRowNumber()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearRowNumber() *ImportErrorUpdateOne {
+	_u.mutation.ClearRowNumber()
+	return _u
 }
 
 // SetFieldName sets the "field_name" field.
-func (ieuo *ImportErrorUpdateOne) SetFieldName(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetFieldName(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetFieldName(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetFieldName(v)
+	return _u
 }
 
 // SetNillableFieldName sets the "field_name" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableFieldName(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetFieldName(*s)
+func (_u *ImportErrorUpdateOne) SetNillableFieldName(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetFieldName(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearFieldName clears the value of the "field_name" field.
-func (ieuo *ImportErrorUpdateOne) ClearFieldName() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearFieldName()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearFieldName() *ImportErrorUpdateOne {
+	_u.mutation.ClearFieldName()
+	return _u
 }
 
 // SetSheetName sets the "sheet_name" field.
-func (ieuo *ImportErrorUpdateOne) SetSheetName(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetSheetName(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetSheetName(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetSheetName(v)
+	return _u
 }
 
 // SetNillableSheetName sets the "sheet_name" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableSheetName(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetSheetName(*s)
+func (_u *ImportErrorUpdateOne) SetNillableSheetName(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetSheetName(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearSheetName clears the value of the "sheet_name" field.
-func (ieuo *ImportErrorUpdateOne) ClearSheetName() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearSheetName()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearSheetName() *ImportErrorUpdateOne {
+	_u.mutation.ClearSheetName()
+	return _u
 }
 
 // SetInputData sets the "input_data" field.
-func (ieuo *ImportErrorUpdateOne) SetInputData(m map[string]interface{}) *ImportErrorUpdateOne {
-	ieuo.mutation.SetInputData(m)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetInputData(v map[string]interface{}) *ImportErrorUpdateOne {
+	_u.mutation.SetInputData(v)
+	return _u
 }
 
 // ClearInputData clears the value of the "input_data" field.
-func (ieuo *ImportErrorUpdateOne) ClearInputData() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearInputData()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearInputData() *ImportErrorUpdateOne {
+	_u.mutation.ClearInputData()
+	return _u
 }
 
 // SetErrorContext sets the "error_context" field.
-func (ieuo *ImportErrorUpdateOne) SetErrorContext(m map[string]interface{}) *ImportErrorUpdateOne {
-	ieuo.mutation.SetErrorContext(m)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetErrorContext(v map[string]interface{}) *ImportErrorUpdateOne {
+	_u.mutation.SetErrorContext(v)
+	return _u
 }
 
 // ClearErrorContext clears the value of the "error_context" field.
-func (ieuo *ImportErrorUpdateOne) ClearErrorContext() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearErrorContext()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearErrorContext() *ImportErrorUpdateOne {
+	_u.mutation.ClearErrorContext()
+	return _u
 }
 
 // SetSuggestion sets the "suggestion" field.
-func (ieuo *ImportErrorUpdateOne) SetSuggestion(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetSuggestion(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetSuggestion(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetSuggestion(v)
+	return _u
 }
 
 // SetNillableSuggestion sets the "suggestion" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableSuggestion(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetSuggestion(*s)
+func (_u *ImportErrorUpdateOne) SetNillableSuggestion(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetSuggestion(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearSuggestion clears the value of the "suggestion" field.
-func (ieuo *ImportErrorUpdateOne) ClearSuggestion() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearSuggestion()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearSuggestion() *ImportErrorUpdateOne {
+	_u.mutation.ClearSuggestion()
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (ieuo *ImportErrorUpdateOne) SetStatus(i importerror.Status) *ImportErrorUpdateOne {
-	ieuo.mutation.SetStatus(i)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetStatus(v importerror.Status) *ImportErrorUpdateOne {
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableStatus(i *importerror.Status) *ImportErrorUpdateOne {
-	if i != nil {
-		ieuo.SetStatus(*i)
+func (_u *ImportErrorUpdateOne) SetNillableStatus(v *importerror.Status) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // SetResolvedBy sets the "resolved_by" field.
-func (ieuo *ImportErrorUpdateOne) SetResolvedBy(s string) *ImportErrorUpdateOne {
-	ieuo.mutation.SetResolvedBy(s)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetResolvedBy(v string) *ImportErrorUpdateOne {
+	_u.mutation.SetResolvedBy(v)
+	return _u
 }
 
 // SetNillableResolvedBy sets the "resolved_by" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableResolvedBy(s *string) *ImportErrorUpdateOne {
-	if s != nil {
-		ieuo.SetResolvedBy(*s)
+func (_u *ImportErrorUpdateOne) SetNillableResolvedBy(v *string) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetResolvedBy(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearResolvedBy clears the value of the "resolved_by" field.
-func (ieuo *ImportErrorUpdateOne) ClearResolvedBy() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearResolvedBy()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearResolvedBy() *ImportErrorUpdateOne {
+	_u.mutation.ClearResolvedBy()
+	return _u
 }
 
 // SetResolvedAt sets the "resolved_at" field.
-func (ieuo *ImportErrorUpdateOne) SetResolvedAt(t time.Time) *ImportErrorUpdateOne {
-	ieuo.mutation.SetResolvedAt(t)
-	return ieuo
+func (_u *ImportErrorUpdateOne) SetResolvedAt(v time.Time) *ImportErrorUpdateOne {
+	_u.mutation.SetResolvedAt(v)
+	return _u
 }
 
 // SetNillableResolvedAt sets the "resolved_at" field if the given value is not nil.
-func (ieuo *ImportErrorUpdateOne) SetNillableResolvedAt(t *time.Time) *ImportErrorUpdateOne {
-	if t != nil {
-		ieuo.SetResolvedAt(*t)
+func (_u *ImportErrorUpdateOne) SetNillableResolvedAt(v *time.Time) *ImportErrorUpdateOne {
+	if v != nil {
+		_u.SetResolvedAt(*v)
 	}
-	return ieuo
+	return _u
 }
 
 // ClearResolvedAt clears the value of the "resolved_at" field.
-func (ieuo *ImportErrorUpdateOne) ClearResolvedAt() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearResolvedAt()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearResolvedAt() *ImportErrorUpdateOne {
+	_u.mutation.ClearResolvedAt()
+	return _u
 }
 
 // SetTask sets the "task" edge to the ImportTask entity.
-func (ieuo *ImportErrorUpdateOne) SetTask(i *ImportTask) *ImportErrorUpdateOne {
-	return ieuo.SetTaskID(i.ID)
+func (_u *ImportErrorUpdateOne) SetTask(v *ImportTask) *ImportErrorUpdateOne {
+	return _u.SetTaskID(v.ID)
 }
 
 // SetRecord sets the "record" edge to the ImportRecord entity.
-func (ieuo *ImportErrorUpdateOne) SetRecord(i *ImportRecord) *ImportErrorUpdateOne {
-	return ieuo.SetRecordID(i.ID)
+func (_u *ImportErrorUpdateOne) SetRecord(v *ImportRecord) *ImportErrorUpdateOne {
+	return _u.SetRecordID(v.ID)
 }
 
 // Mutation returns the ImportErrorMutation object of the builder.
-func (ieuo *ImportErrorUpdateOne) Mutation() *ImportErrorMutation {
-	return ieuo.mutation
+func (_u *ImportErrorUpdateOne) Mutation() *ImportErrorMutation {
+	return _u.mutation
 }
 
 // ClearTask clears the "task" edge to the ImportTask entity.
-func (ieuo *ImportErrorUpdateOne) ClearTask() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearTask()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearTask() *ImportErrorUpdateOne {
+	_u.mutation.ClearTask()
+	return _u
 }
 
 // ClearRecord clears the "record" edge to the ImportRecord entity.
-func (ieuo *ImportErrorUpdateOne) ClearRecord() *ImportErrorUpdateOne {
-	ieuo.mutation.ClearRecord()
-	return ieuo
+func (_u *ImportErrorUpdateOne) ClearRecord() *ImportErrorUpdateOne {
+	_u.mutation.ClearRecord()
+	return _u
 }
 
 // Where appends a list predicates to the ImportErrorUpdate builder.
-func (ieuo *ImportErrorUpdateOne) Where(ps ...predicate.ImportError) *ImportErrorUpdateOne {
-	ieuo.mutation.Where(ps...)
-	return ieuo
+func (_u *ImportErrorUpdateOne) Where(ps ...predicate.ImportError) *ImportErrorUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (ieuo *ImportErrorUpdateOne) Select(field string, fields ...string) *ImportErrorUpdateOne {
-	ieuo.fields = append([]string{field}, fields...)
-	return ieuo
+func (_u *ImportErrorUpdateOne) Select(field string, fields ...string) *ImportErrorUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ImportError entity.
-func (ieuo *ImportErrorUpdateOne) Save(ctx context.Context) (*ImportError, error) {
-	if err := ieuo.defaults(); err != nil {
+func (_u *ImportErrorUpdateOne) Save(ctx context.Context) (*ImportError, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ieuo.sqlSave, ieuo.mutation, ieuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ieuo *ImportErrorUpdateOne) SaveX(ctx context.Context) *ImportError {
-	node, err := ieuo.Save(ctx)
+func (_u *ImportErrorUpdateOne) SaveX(ctx context.Context) *ImportError {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1123,94 +1123,94 @@ func (ieuo *ImportErrorUpdateOne) SaveX(ctx context.Context) *ImportError {
 }
 
 // Exec executes the query on the entity.
-func (ieuo *ImportErrorUpdateOne) Exec(ctx context.Context) error {
-	_, err := ieuo.Save(ctx)
+func (_u *ImportErrorUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ieuo *ImportErrorUpdateOne) ExecX(ctx context.Context) {
-	if err := ieuo.Exec(ctx); err != nil {
+func (_u *ImportErrorUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ieuo *ImportErrorUpdateOne) defaults() error {
-	if _, ok := ieuo.mutation.UpdatedAt(); !ok {
+func (_u *ImportErrorUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if importerror.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importerror.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importerror.UpdateDefaultUpdatedAt()
-		ieuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ieuo *ImportErrorUpdateOne) check() error {
-	if v, ok := ieuo.mutation.BatchID(); ok {
+func (_u *ImportErrorUpdateOne) check() error {
+	if v, ok := _u.mutation.BatchID(); ok {
 		if err := importerror.BatchIDValidator(v); err != nil {
 			return &ValidationError{Name: "batch_id", err: fmt.Errorf(`ent: validator failed for field "ImportError.batch_id": %w`, err)}
 		}
 	}
-	if v, ok := ieuo.mutation.ErrorCode(); ok {
+	if v, ok := _u.mutation.ErrorCode(); ok {
 		if err := importerror.ErrorCodeValidator(v); err != nil {
 			return &ValidationError{Name: "error_code", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_code": %w`, err)}
 		}
 	}
-	if v, ok := ieuo.mutation.ErrorTitle(); ok {
+	if v, ok := _u.mutation.ErrorTitle(); ok {
 		if err := importerror.ErrorTitleValidator(v); err != nil {
 			return &ValidationError{Name: "error_title", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_title": %w`, err)}
 		}
 	}
-	if v, ok := ieuo.mutation.ErrorType(); ok {
+	if v, ok := _u.mutation.ErrorType(); ok {
 		if err := importerror.ErrorTypeValidator(v); err != nil {
 			return &ValidationError{Name: "error_type", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_type": %w`, err)}
 		}
 	}
-	if v, ok := ieuo.mutation.Severity(); ok {
+	if v, ok := _u.mutation.Severity(); ok {
 		if err := importerror.SeverityValidator(v); err != nil {
 			return &ValidationError{Name: "severity", err: fmt.Errorf(`ent: validator failed for field "ImportError.severity": %w`, err)}
 		}
 	}
-	if v, ok := ieuo.mutation.FieldName(); ok {
+	if v, ok := _u.mutation.FieldName(); ok {
 		if err := importerror.FieldNameValidator(v); err != nil {
 			return &ValidationError{Name: "field_name", err: fmt.Errorf(`ent: validator failed for field "ImportError.field_name": %w`, err)}
 		}
 	}
-	if v, ok := ieuo.mutation.SheetName(); ok {
+	if v, ok := _u.mutation.SheetName(); ok {
 		if err := importerror.SheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportError.sheet_name": %w`, err)}
 		}
 	}
-	if v, ok := ieuo.mutation.Status(); ok {
+	if v, ok := _u.mutation.Status(); ok {
 		if err := importerror.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "ImportError.status": %w`, err)}
 		}
 	}
-	if v, ok := ieuo.mutation.ResolvedBy(); ok {
+	if v, ok := _u.mutation.ResolvedBy(); ok {
 		if err := importerror.ResolvedByValidator(v); err != nil {
 			return &ValidationError{Name: "resolved_by", err: fmt.Errorf(`ent: validator failed for field "ImportError.resolved_by": %w`, err)}
 		}
 	}
-	if ieuo.mutation.TaskCleared() && len(ieuo.mutation.TaskIDs()) > 0 {
+	if _u.mutation.TaskCleared() && len(_u.mutation.TaskIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ImportError.task"`)
 	}
 	return nil
 }
 
-func (ieuo *ImportErrorUpdateOne) sqlSave(ctx context.Context) (_node *ImportError, err error) {
-	if err := ieuo.check(); err != nil {
+func (_u *ImportErrorUpdateOne) sqlSave(ctx context.Context) (_node *ImportError, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(importerror.Table, importerror.Columns, sqlgraph.NewFieldSpec(importerror.FieldID, field.TypeUint64))
-	id, ok := ieuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ImportError.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := ieuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, importerror.FieldID)
 		for _, f := range fields {
@@ -1222,113 +1222,113 @@ func (ieuo *ImportErrorUpdateOne) sqlSave(ctx context.Context) (_node *ImportErr
 			}
 		}
 	}
-	if ps := ieuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ieuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(importerror.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ieuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(importerror.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ieuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(importerror.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ieuo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(importerror.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ieuo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(importerror.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ieuo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importerror.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ieuo.mutation.BatchID(); ok {
+	if value, ok := _u.mutation.BatchID(); ok {
 		_spec.SetField(importerror.FieldBatchID, field.TypeString, value)
 	}
-	if ieuo.mutation.BatchIDCleared() {
+	if _u.mutation.BatchIDCleared() {
 		_spec.ClearField(importerror.FieldBatchID, field.TypeString)
 	}
-	if value, ok := ieuo.mutation.ErrorCode(); ok {
+	if value, ok := _u.mutation.ErrorCode(); ok {
 		_spec.SetField(importerror.FieldErrorCode, field.TypeString, value)
 	}
-	if value, ok := ieuo.mutation.ErrorTitle(); ok {
+	if value, ok := _u.mutation.ErrorTitle(); ok {
 		_spec.SetField(importerror.FieldErrorTitle, field.TypeString, value)
 	}
-	if value, ok := ieuo.mutation.ErrorMessage(); ok {
+	if value, ok := _u.mutation.ErrorMessage(); ok {
 		_spec.SetField(importerror.FieldErrorMessage, field.TypeString, value)
 	}
-	if value, ok := ieuo.mutation.ErrorDetails(); ok {
+	if value, ok := _u.mutation.ErrorDetails(); ok {
 		_spec.SetField(importerror.FieldErrorDetails, field.TypeString, value)
 	}
-	if ieuo.mutation.ErrorDetailsCleared() {
+	if _u.mutation.ErrorDetailsCleared() {
 		_spec.ClearField(importerror.FieldErrorDetails, field.TypeString)
 	}
-	if value, ok := ieuo.mutation.ErrorType(); ok {
+	if value, ok := _u.mutation.ErrorType(); ok {
 		_spec.SetField(importerror.FieldErrorType, field.TypeEnum, value)
 	}
-	if value, ok := ieuo.mutation.Severity(); ok {
+	if value, ok := _u.mutation.Severity(); ok {
 		_spec.SetField(importerror.FieldSeverity, field.TypeEnum, value)
 	}
-	if value, ok := ieuo.mutation.RowNumber(); ok {
+	if value, ok := _u.mutation.RowNumber(); ok {
 		_spec.SetField(importerror.FieldRowNumber, field.TypeInt, value)
 	}
-	if value, ok := ieuo.mutation.AddedRowNumber(); ok {
+	if value, ok := _u.mutation.AddedRowNumber(); ok {
 		_spec.AddField(importerror.FieldRowNumber, field.TypeInt, value)
 	}
-	if ieuo.mutation.RowNumberCleared() {
+	if _u.mutation.RowNumberCleared() {
 		_spec.ClearField(importerror.FieldRowNumber, field.TypeInt)
 	}
-	if value, ok := ieuo.mutation.FieldName(); ok {
+	if value, ok := _u.mutation.FieldName(); ok {
 		_spec.SetField(importerror.FieldFieldName, field.TypeString, value)
 	}
-	if ieuo.mutation.FieldNameCleared() {
+	if _u.mutation.FieldNameCleared() {
 		_spec.ClearField(importerror.FieldFieldName, field.TypeString)
 	}
-	if value, ok := ieuo.mutation.SheetName(); ok {
+	if value, ok := _u.mutation.SheetName(); ok {
 		_spec.SetField(importerror.FieldSheetName, field.TypeString, value)
 	}
-	if ieuo.mutation.SheetNameCleared() {
+	if _u.mutation.SheetNameCleared() {
 		_spec.ClearField(importerror.FieldSheetName, field.TypeString)
 	}
-	if value, ok := ieuo.mutation.InputData(); ok {
+	if value, ok := _u.mutation.InputData(); ok {
 		_spec.SetField(importerror.FieldInputData, field.TypeJSON, value)
 	}
-	if ieuo.mutation.InputDataCleared() {
+	if _u.mutation.InputDataCleared() {
 		_spec.ClearField(importerror.FieldInputData, field.TypeJSON)
 	}
-	if value, ok := ieuo.mutation.ErrorContext(); ok {
+	if value, ok := _u.mutation.ErrorContext(); ok {
 		_spec.SetField(importerror.FieldErrorContext, field.TypeJSON, value)
 	}
-	if ieuo.mutation.ErrorContextCleared() {
+	if _u.mutation.ErrorContextCleared() {
 		_spec.ClearField(importerror.FieldErrorContext, field.TypeJSON)
 	}
-	if value, ok := ieuo.mutation.Suggestion(); ok {
+	if value, ok := _u.mutation.Suggestion(); ok {
 		_spec.SetField(importerror.FieldSuggestion, field.TypeString, value)
 	}
-	if ieuo.mutation.SuggestionCleared() {
+	if _u.mutation.SuggestionCleared() {
 		_spec.ClearField(importerror.FieldSuggestion, field.TypeString)
 	}
-	if value, ok := ieuo.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(importerror.FieldStatus, field.TypeEnum, value)
 	}
-	if value, ok := ieuo.mutation.ResolvedBy(); ok {
+	if value, ok := _u.mutation.ResolvedBy(); ok {
 		_spec.SetField(importerror.FieldResolvedBy, field.TypeString, value)
 	}
-	if ieuo.mutation.ResolvedByCleared() {
+	if _u.mutation.ResolvedByCleared() {
 		_spec.ClearField(importerror.FieldResolvedBy, field.TypeString)
 	}
-	if value, ok := ieuo.mutation.ResolvedAt(); ok {
+	if value, ok := _u.mutation.ResolvedAt(); ok {
 		_spec.SetField(importerror.FieldResolvedAt, field.TypeTime, value)
 	}
-	if ieuo.mutation.ResolvedAtCleared() {
+	if _u.mutation.ResolvedAtCleared() {
 		_spec.ClearField(importerror.FieldResolvedAt, field.TypeTime)
 	}
-	if ieuo.mutation.TaskCleared() {
+	if _u.mutation.TaskCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1341,7 +1341,7 @@ func (ieuo *ImportErrorUpdateOne) sqlSave(ctx context.Context) (_node *ImportErr
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ieuo.mutation.TaskIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TaskIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1357,7 +1357,7 @@ func (ieuo *ImportErrorUpdateOne) sqlSave(ctx context.Context) (_node *ImportErr
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ieuo.mutation.RecordCleared() {
+	if _u.mutation.RecordCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1370,7 +1370,7 @@ func (ieuo *ImportErrorUpdateOne) sqlSave(ctx context.Context) (_node *ImportErr
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ieuo.mutation.RecordIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RecordIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1386,10 +1386,10 @@ func (ieuo *ImportErrorUpdateOne) sqlSave(ctx context.Context) (_node *ImportErr
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ImportError{config: ieuo.config}
+	_node = &ImportError{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, ieuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{importerror.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1397,6 +1397,6 @@ func (ieuo *ImportErrorUpdateOne) sqlSave(ctx context.Context) (_node *ImportErr
 		}
 		return nil, err
 	}
-	ieuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

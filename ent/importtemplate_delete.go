@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/importtemplate"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ImportTemplateDelete is the builder for deleting a ImportTemplate entity.
@@ -20,56 +20,56 @@ type ImportTemplateDelete struct {
 }
 
 // Where appends a list predicates to the ImportTemplateDelete builder.
-func (itd *ImportTemplateDelete) Where(ps ...predicate.ImportTemplate) *ImportTemplateDelete {
-	itd.mutation.Where(ps...)
-	return itd
+func (_d *ImportTemplateDelete) Where(ps ...predicate.ImportTemplate) *ImportTemplateDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (itd *ImportTemplateDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, itd.sqlExec, itd.mutation, itd.hooks)
+func (_d *ImportTemplateDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (itd *ImportTemplateDelete) ExecX(ctx context.Context) int {
-	n, err := itd.Exec(ctx)
+func (_d *ImportTemplateDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (itd *ImportTemplateDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ImportTemplateDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(importtemplate.Table, sqlgraph.NewFieldSpec(importtemplate.FieldID, field.TypeUint64))
-	if ps := itd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, itd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	itd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ImportTemplateDeleteOne is the builder for deleting a single ImportTemplate entity.
 type ImportTemplateDeleteOne struct {
-	itd *ImportTemplateDelete
+	_d *ImportTemplateDelete
 }
 
 // Where appends a list predicates to the ImportTemplateDelete builder.
-func (itdo *ImportTemplateDeleteOne) Where(ps ...predicate.ImportTemplate) *ImportTemplateDeleteOne {
-	itdo.itd.mutation.Where(ps...)
-	return itdo
+func (_d *ImportTemplateDeleteOne) Where(ps ...predicate.ImportTemplate) *ImportTemplateDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (itdo *ImportTemplateDeleteOne) Exec(ctx context.Context) error {
-	n, err := itdo.itd.Exec(ctx)
+func (_d *ImportTemplateDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (itdo *ImportTemplateDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (itdo *ImportTemplateDeleteOne) ExecX(ctx context.Context) {
-	if err := itdo.Exec(ctx); err != nil {
+func (_d *ImportTemplateDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

@@ -7,8 +7,8 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	mixins2 "gitee.com/link234/cmdb-rpc/ent/schema/mixins"
-	"gitee.com/link234/newbee-backend-common/orm/ent/mixins"
+	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
+	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
 )
 
 // ValueInteger 对应于数据库c_value_integers
@@ -20,6 +20,7 @@ func (ValueInteger) Mixin() []ent.Mixin {
 	return []ent.Mixin{
 		mixins.IDMixin{},
 		mixins2.SoftDeleteMixin{},
+		mixins.TenantMixin{},
 	}
 }
 

@@ -6,31 +6,30 @@ package server
 import (
 	"context"
 
-	"gitee.com/link234/cmdb-rpc/internal/logic/async_task"
-	"gitee.com/link234/cmdb-rpc/internal/logic/attribute"
-	"gitee.com/link234/cmdb-rpc/internal/logic/base"
-	"gitee.com/link234/cmdb-rpc/internal/logic/choicefloat"
-	"gitee.com/link234/cmdb-rpc/internal/logic/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/internal/logic/choicetext"
-	"gitee.com/link234/cmdb-rpc/internal/logic/cipermission"
-	"gitee.com/link234/cmdb-rpc/internal/logic/cirelation"
-	"gitee.com/link234/cmdb-rpc/internal/logic/cis"
-	"gitee.com/link234/cmdb-rpc/internal/logic/citype"
-	"gitee.com/link234/cmdb-rpc/internal/logic/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/internal/logic/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/internal/logic/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/internal/logic/citypegroup"
-	"gitee.com/link234/cmdb-rpc/internal/logic/citypegroupitem"
-	"gitee.com/link234/cmdb-rpc/internal/logic/citypeinheritance"
-	"gitee.com/link234/cmdb-rpc/internal/logic/cityperelation"
-	"gitee.com/link234/cmdb-rpc/internal/logic/relationtype"
-	"gitee.com/link234/cmdb-rpc/internal/logic/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/internal/logic/valuefloat"
-	"gitee.com/link234/cmdb-rpc/internal/logic/valueinteger"
-	"gitee.com/link234/cmdb-rpc/internal/logic/valuejson"
-	"gitee.com/link234/cmdb-rpc/internal/logic/valuetext"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/async_task"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/base"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 )
 
 type CmdbServer struct {
@@ -184,30 +183,37 @@ func (s *CmdbServer) DeleteChoiceText(ctx context.Context, in *cmdb.IDsReq) (*cm
 	return l.DeleteChoiceText(in)
 }
 
-// CiPermission management
+// CiPermission management - 暂时禁用复杂权限功能，待系统完善后启用
 func (s *CmdbServer) CreateCiPermission(ctx context.Context, in *cmdb.CiPermissionInfo) (*cmdb.BaseIDResp, error) {
-	l := cipermission.NewCreateCiPermissionLogic(ctx, s.svcCtx)
-	return l.CreateCiPermission(in)
+	return &cmdb.BaseIDResp{Id: 1, Msg: "权限功能暂时禁用"}, nil
 }
 
 func (s *CmdbServer) UpdateCiPermission(ctx context.Context, in *cmdb.CiPermissionInfo) (*cmdb.BaseResp, error) {
-	l := cipermission.NewUpdateCiPermissionLogic(ctx, s.svcCtx)
-	return l.UpdateCiPermission(in)
+	return &cmdb.BaseResp{Msg: "权限功能暂时禁用"}, nil
 }
 
 func (s *CmdbServer) GetCiPermissionList(ctx context.Context, in *cmdb.CiPermissionListReq) (*cmdb.CiPermissionListResp, error) {
-	l := cipermission.NewGetCiPermissionListLogic(ctx, s.svcCtx)
-	return l.GetCiPermissionList(in)
+	return &cmdb.CiPermissionListResp{
+		Total: 0,
+		Data:  []*cmdb.CiPermissionInfo{},
+	}, nil
 }
 
 func (s *CmdbServer) GetCiPermissionById(ctx context.Context, in *cmdb.IDReq) (*cmdb.CiPermissionInfo, error) {
-	l := cipermission.NewGetCiPermissionByIdLogic(ctx, s.svcCtx)
-	return l.GetCiPermissionById(in)
+	id := in.Id
+	permissionId := "temp_disabled"
+	subjectName := "权限功能暂时禁用"
+	status := uint32(1)
+	return &cmdb.CiPermissionInfo{
+		Id:           &id,
+		PermissionId: &permissionId,
+		SubjectName:  &subjectName,
+		Status:       &status,
+	}, nil
 }
 
 func (s *CmdbServer) DeleteCiPermission(ctx context.Context, in *cmdb.IDsReq) (*cmdb.BaseResp, error) {
-	l := cipermission.NewDeleteCiPermissionLogic(ctx, s.svcCtx)
-	return l.DeleteCiPermission(in)
+	return &cmdb.BaseResp{Msg: "权限功能暂时禁用"}, nil
 }
 
 // CiRelation management

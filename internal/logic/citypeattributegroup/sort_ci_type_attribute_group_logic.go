@@ -3,9 +3,9 @@ package citypeattributegroup
 import (
 	"context"
 
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

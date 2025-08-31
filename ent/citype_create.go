@@ -10,18 +10,18 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtemplate"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -33,395 +33,395 @@ type CiTypeCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ctc *CiTypeCreate) SetCreatedAt(t time.Time) *CiTypeCreate {
-	ctc.mutation.SetCreatedAt(t)
-	return ctc
+func (_c *CiTypeCreate) SetCreatedAt(v time.Time) *CiTypeCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableCreatedAt(t *time.Time) *CiTypeCreate {
-	if t != nil {
-		ctc.SetCreatedAt(*t)
+func (_c *CiTypeCreate) SetNillableCreatedAt(v *time.Time) *CiTypeCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctc *CiTypeCreate) SetUpdatedAt(t time.Time) *CiTypeCreate {
-	ctc.mutation.SetUpdatedAt(t)
-	return ctc
+func (_c *CiTypeCreate) SetUpdatedAt(v time.Time) *CiTypeCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableUpdatedAt(t *time.Time) *CiTypeCreate {
-	if t != nil {
-		ctc.SetUpdatedAt(*t)
+func (_c *CiTypeCreate) SetNillableUpdatedAt(v *time.Time) *CiTypeCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetStatus sets the "status" field.
-func (ctc *CiTypeCreate) SetStatus(u uint8) *CiTypeCreate {
-	ctc.mutation.SetStatus(u)
-	return ctc
+func (_c *CiTypeCreate) SetStatus(v uint8) *CiTypeCreate {
+	_c.mutation.SetStatus(v)
+	return _c
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableStatus(u *uint8) *CiTypeCreate {
-	if u != nil {
-		ctc.SetStatus(*u)
+func (_c *CiTypeCreate) SetNillableStatus(v *uint8) *CiTypeCreate {
+	if v != nil {
+		_c.SetStatus(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetSort sets the "sort" field.
-func (ctc *CiTypeCreate) SetSort(u uint32) *CiTypeCreate {
-	ctc.mutation.SetSort(u)
-	return ctc
+func (_c *CiTypeCreate) SetSort(v uint32) *CiTypeCreate {
+	_c.mutation.SetSort(v)
+	return _c
 }
 
 // SetNillableSort sets the "sort" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableSort(u *uint32) *CiTypeCreate {
-	if u != nil {
-		ctc.SetSort(*u)
+func (_c *CiTypeCreate) SetNillableSort(v *uint32) *CiTypeCreate {
+	if v != nil {
+		_c.SetSort(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctc *CiTypeCreate) SetDeletedAt(t time.Time) *CiTypeCreate {
-	ctc.mutation.SetDeletedAt(t)
-	return ctc
+func (_c *CiTypeCreate) SetDeletedAt(v time.Time) *CiTypeCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableDeletedAt(t *time.Time) *CiTypeCreate {
-	if t != nil {
-		ctc.SetDeletedAt(*t)
+func (_c *CiTypeCreate) SetNillableDeletedAt(v *time.Time) *CiTypeCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (ctc *CiTypeCreate) SetTenantID(u uint64) *CiTypeCreate {
-	ctc.mutation.SetTenantID(u)
-	return ctc
+func (_c *CiTypeCreate) SetTenantID(v uint64) *CiTypeCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableTenantID(u *uint64) *CiTypeCreate {
-	if u != nil {
-		ctc.SetTenantID(*u)
+func (_c *CiTypeCreate) SetNillableTenantID(v *uint64) *CiTypeCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctc *CiTypeCreate) SetDepartmentID(u uint64) *CiTypeCreate {
-	ctc.mutation.SetDepartmentID(u)
-	return ctc
+func (_c *CiTypeCreate) SetDepartmentID(v uint64) *CiTypeCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableDepartmentID(u *uint64) *CiTypeCreate {
-	if u != nil {
-		ctc.SetDepartmentID(*u)
+func (_c *CiTypeCreate) SetNillableDepartmentID(v *uint64) *CiTypeCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetName sets the "name" field.
-func (ctc *CiTypeCreate) SetName(s string) *CiTypeCreate {
-	ctc.mutation.SetName(s)
-	return ctc
+func (_c *CiTypeCreate) SetName(v string) *CiTypeCreate {
+	_c.mutation.SetName(v)
+	return _c
 }
 
 // SetAlias sets the "alias" field.
-func (ctc *CiTypeCreate) SetAlias(s string) *CiTypeCreate {
-	ctc.mutation.SetAlias(s)
-	return ctc
+func (_c *CiTypeCreate) SetAlias(v string) *CiTypeCreate {
+	_c.mutation.SetAlias(v)
+	return _c
 }
 
 // SetUniqueID sets the "unique_id" field.
-func (ctc *CiTypeCreate) SetUniqueID(u uint64) *CiTypeCreate {
-	ctc.mutation.SetUniqueID(u)
-	return ctc
+func (_c *CiTypeCreate) SetUniqueID(v uint64) *CiTypeCreate {
+	_c.mutation.SetUniqueID(v)
+	return _c
 }
 
 // SetIsInherited sets the "is_inherited" field.
-func (ctc *CiTypeCreate) SetIsInherited(b bool) *CiTypeCreate {
-	ctc.mutation.SetIsInherited(b)
-	return ctc
+func (_c *CiTypeCreate) SetIsInherited(v bool) *CiTypeCreate {
+	_c.mutation.SetIsInherited(v)
+	return _c
 }
 
 // SetNillableIsInherited sets the "is_inherited" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableIsInherited(b *bool) *CiTypeCreate {
-	if b != nil {
-		ctc.SetIsInherited(*b)
+func (_c *CiTypeCreate) SetNillableIsInherited(v *bool) *CiTypeCreate {
+	if v != nil {
+		_c.SetIsInherited(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (ctc *CiTypeCreate) SetCreatedBy(u uuid.UUID) *CiTypeCreate {
-	ctc.mutation.SetCreatedBy(u)
-	return ctc
+func (_c *CiTypeCreate) SetCreatedBy(v uuid.UUID) *CiTypeCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableCreatedBy(u *uuid.UUID) *CiTypeCreate {
-	if u != nil {
-		ctc.SetCreatedBy(*u)
+func (_c *CiTypeCreate) SetNillableCreatedBy(v *uuid.UUID) *CiTypeCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetIcon sets the "icon" field.
-func (ctc *CiTypeCreate) SetIcon(s string) *CiTypeCreate {
-	ctc.mutation.SetIcon(s)
-	return ctc
+func (_c *CiTypeCreate) SetIcon(v string) *CiTypeCreate {
+	_c.mutation.SetIcon(v)
+	return _c
 }
 
 // SetNillableIcon sets the "icon" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableIcon(s *string) *CiTypeCreate {
-	if s != nil {
-		ctc.SetIcon(*s)
+func (_c *CiTypeCreate) SetNillableIcon(v *string) *CiTypeCreate {
+	if v != nil {
+		_c.SetIcon(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetDefaultOrderAttrID sets the "default_order_attr_id" field.
-func (ctc *CiTypeCreate) SetDefaultOrderAttrID(u uint64) *CiTypeCreate {
-	ctc.mutation.SetDefaultOrderAttrID(u)
-	return ctc
+func (_c *CiTypeCreate) SetDefaultOrderAttrID(v uint64) *CiTypeCreate {
+	_c.mutation.SetDefaultOrderAttrID(v)
+	return _c
 }
 
 // SetNillableDefaultOrderAttrID sets the "default_order_attr_id" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableDefaultOrderAttrID(u *uint64) *CiTypeCreate {
-	if u != nil {
-		ctc.SetDefaultOrderAttrID(*u)
+func (_c *CiTypeCreate) SetNillableDefaultOrderAttrID(v *uint64) *CiTypeCreate {
+	if v != nil {
+		_c.SetDefaultOrderAttrID(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetShowID sets the "show_id" field.
-func (ctc *CiTypeCreate) SetShowID(u uint64) *CiTypeCreate {
-	ctc.mutation.SetShowID(u)
-	return ctc
+func (_c *CiTypeCreate) SetShowID(v uint64) *CiTypeCreate {
+	_c.mutation.SetShowID(v)
+	return _c
 }
 
 // SetNillableShowID sets the "show_id" field if the given value is not nil.
-func (ctc *CiTypeCreate) SetNillableShowID(u *uint64) *CiTypeCreate {
-	if u != nil {
-		ctc.SetShowID(*u)
+func (_c *CiTypeCreate) SetNillableShowID(v *uint64) *CiTypeCreate {
+	if v != nil {
+		_c.SetShowID(*v)
 	}
-	return ctc
+	return _c
 }
 
 // SetUniqueConst sets the "unique_const" field.
-func (ctc *CiTypeCreate) SetUniqueConst(stuc []schema.CiTypeUniqueConstS) *CiTypeCreate {
-	ctc.mutation.SetUniqueConst(stuc)
-	return ctc
+func (_c *CiTypeCreate) SetUniqueConst(v []schema.CiTypeUniqueConstS) *CiTypeCreate {
+	_c.mutation.SetUniqueConst(v)
+	return _c
 }
 
 // SetID sets the "id" field.
-func (ctc *CiTypeCreate) SetID(u uint64) *CiTypeCreate {
-	ctc.mutation.SetID(u)
-	return ctc
+func (_c *CiTypeCreate) SetID(v uint64) *CiTypeCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetAttributesID sets the "attributes" edge to the Attribute entity by ID.
-func (ctc *CiTypeCreate) SetAttributesID(id uint64) *CiTypeCreate {
-	ctc.mutation.SetAttributesID(id)
-	return ctc
+func (_c *CiTypeCreate) SetAttributesID(id uint64) *CiTypeCreate {
+	_c.mutation.SetAttributesID(id)
+	return _c
 }
 
 // SetAttributes sets the "attributes" edge to the Attribute entity.
-func (ctc *CiTypeCreate) SetAttributes(a *Attribute) *CiTypeCreate {
-	return ctc.SetAttributesID(a.ID)
+func (_c *CiTypeCreate) SetAttributes(v *Attribute) *CiTypeCreate {
+	return _c.SetAttributesID(v.ID)
 }
 
 // AddCiIDs adds the "cis" edge to the Cis entity by IDs.
-func (ctc *CiTypeCreate) AddCiIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddCiIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddCiIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddCiIDs(ids...)
+	return _c
 }
 
 // AddCis adds the "cis" edges to the Cis entity.
-func (ctc *CiTypeCreate) AddCis(c ...*Cis) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddCis(v ...*Cis) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddCiIDs(ids...)
+	return _c.AddCiIDs(ids...)
 }
 
 // AddTypeAttributeIDs adds the "type_attributes" edge to the CiTypeAttribute entity by IDs.
-func (ctc *CiTypeCreate) AddTypeAttributeIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddTypeAttributeIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddTypeAttributeIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddTypeAttributeIDs(ids...)
+	return _c
 }
 
 // AddTypeAttributes adds the "type_attributes" edges to the CiTypeAttribute entity.
-func (ctc *CiTypeCreate) AddTypeAttributes(c ...*CiTypeAttribute) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddTypeAttributes(v ...*CiTypeAttribute) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddTypeAttributeIDs(ids...)
+	return _c.AddTypeAttributeIDs(ids...)
 }
 
 // AddAttributeGroupIDs adds the "attribute_groups" edge to the CiTypeAttributeGroup entity by IDs.
-func (ctc *CiTypeCreate) AddAttributeGroupIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddAttributeGroupIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddAttributeGroupIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddAttributeGroupIDs(ids...)
+	return _c
 }
 
 // AddAttributeGroups adds the "attribute_groups" edges to the CiTypeAttributeGroup entity.
-func (ctc *CiTypeCreate) AddAttributeGroups(c ...*CiTypeAttributeGroup) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddAttributeGroups(v ...*CiTypeAttributeGroup) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddAttributeGroupIDs(ids...)
+	return _c.AddAttributeGroupIDs(ids...)
 }
 
 // AddGroupItemIDs adds the "group_items" edge to the CiTypeGroupItem entity by IDs.
-func (ctc *CiTypeCreate) AddGroupItemIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddGroupItemIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddGroupItemIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddGroupItemIDs(ids...)
+	return _c
 }
 
 // AddGroupItems adds the "group_items" edges to the CiTypeGroupItem entity.
-func (ctc *CiTypeCreate) AddGroupItems(c ...*CiTypeGroupItem) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddGroupItems(v ...*CiTypeGroupItem) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddGroupItemIDs(ids...)
+	return _c.AddGroupItemIDs(ids...)
 }
 
 // AddChildIDs adds the "children" edge to the CiTypeInheritance entity by IDs.
-func (ctc *CiTypeCreate) AddChildIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddChildIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddChildIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddChildIDs(ids...)
+	return _c
 }
 
 // AddChildren adds the "children" edges to the CiTypeInheritance entity.
-func (ctc *CiTypeCreate) AddChildren(c ...*CiTypeInheritance) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddChildren(v ...*CiTypeInheritance) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddChildIDs(ids...)
+	return _c.AddChildIDs(ids...)
 }
 
 // AddParentIDs adds the "parents" edge to the CiTypeInheritance entity by IDs.
-func (ctc *CiTypeCreate) AddParentIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddParentIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddParentIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddParentIDs(ids...)
+	return _c
 }
 
 // AddParents adds the "parents" edges to the CiTypeInheritance entity.
-func (ctc *CiTypeCreate) AddParents(c ...*CiTypeInheritance) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddParents(v ...*CiTypeInheritance) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddParentIDs(ids...)
+	return _c.AddParentIDs(ids...)
 }
 
 // AddChildRelationIDs adds the "child_relations" edge to the CiTypeRelation entity by IDs.
-func (ctc *CiTypeCreate) AddChildRelationIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddChildRelationIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddChildRelationIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddChildRelationIDs(ids...)
+	return _c
 }
 
 // AddChildRelations adds the "child_relations" edges to the CiTypeRelation entity.
-func (ctc *CiTypeCreate) AddChildRelations(c ...*CiTypeRelation) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddChildRelations(v ...*CiTypeRelation) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddChildRelationIDs(ids...)
+	return _c.AddChildRelationIDs(ids...)
 }
 
 // AddParentRelationIDs adds the "parent_relations" edge to the CiTypeRelation entity by IDs.
-func (ctc *CiTypeCreate) AddParentRelationIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddParentRelationIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddParentRelationIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddParentRelationIDs(ids...)
+	return _c
 }
 
 // AddParentRelations adds the "parent_relations" edges to the CiTypeRelation entity.
-func (ctc *CiTypeCreate) AddParentRelations(c ...*CiTypeRelation) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddParentRelations(v ...*CiTypeRelation) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddParentRelationIDs(ids...)
+	return _c.AddParentRelationIDs(ids...)
 }
 
 // AddImportTemplateIDs adds the "import_templates" edge to the ImportTemplate entity by IDs.
-func (ctc *CiTypeCreate) AddImportTemplateIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddImportTemplateIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddImportTemplateIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddImportTemplateIDs(ids...)
+	return _c
 }
 
 // AddImportTemplates adds the "import_templates" edges to the ImportTemplate entity.
-func (ctc *CiTypeCreate) AddImportTemplates(i ...*ImportTemplate) *CiTypeCreate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_c *CiTypeCreate) AddImportTemplates(v ...*ImportTemplate) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddImportTemplateIDs(ids...)
+	return _c.AddImportTemplateIDs(ids...)
 }
 
 // AddImportRecordIDs adds the "import_records" edge to the ImportRecord entity by IDs.
-func (ctc *CiTypeCreate) AddImportRecordIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddImportRecordIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddImportRecordIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddImportRecordIDs(ids...)
+	return _c
 }
 
 // AddImportRecords adds the "import_records" edges to the ImportRecord entity.
-func (ctc *CiTypeCreate) AddImportRecords(i ...*ImportRecord) *CiTypeCreate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_c *CiTypeCreate) AddImportRecords(v ...*ImportRecord) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddImportRecordIDs(ids...)
+	return _c.AddImportRecordIDs(ids...)
 }
 
 // AddCiRecordIDs adds the "ci_records" edge to the CiRecords entity by IDs.
-func (ctc *CiTypeCreate) AddCiRecordIDs(ids ...uint64) *CiTypeCreate {
-	ctc.mutation.AddCiRecordIDs(ids...)
-	return ctc
+func (_c *CiTypeCreate) AddCiRecordIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddCiRecordIDs(ids...)
+	return _c
 }
 
 // AddCiRecords adds the "ci_records" edges to the CiRecords entity.
-func (ctc *CiTypeCreate) AddCiRecords(c ...*CiRecords) *CiTypeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CiTypeCreate) AddCiRecords(v ...*CiRecords) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ctc.AddCiRecordIDs(ids...)
+	return _c.AddCiRecordIDs(ids...)
 }
 
 // Mutation returns the CiTypeMutation object of the builder.
-func (ctc *CiTypeCreate) Mutation() *CiTypeMutation {
-	return ctc.mutation
+func (_c *CiTypeCreate) Mutation() *CiTypeMutation {
+	return _c.mutation
 }
 
 // Save creates the CiType in the database.
-func (ctc *CiTypeCreate) Save(ctx context.Context) (*CiType, error) {
-	if err := ctc.defaults(); err != nil {
+func (_c *CiTypeCreate) Save(ctx context.Context) (*CiType, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctc.sqlSave, ctc.mutation, ctc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (ctc *CiTypeCreate) SaveX(ctx context.Context) *CiType {
-	v, err := ctc.Save(ctx)
+func (_c *CiTypeCreate) SaveX(ctx context.Context) *CiType {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -429,98 +429,98 @@ func (ctc *CiTypeCreate) SaveX(ctx context.Context) *CiType {
 }
 
 // Exec executes the query.
-func (ctc *CiTypeCreate) Exec(ctx context.Context) error {
-	_, err := ctc.Save(ctx)
+func (_c *CiTypeCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctc *CiTypeCreate) ExecX(ctx context.Context) {
-	if err := ctc.Exec(ctx); err != nil {
+func (_c *CiTypeCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctc *CiTypeCreate) defaults() error {
-	if _, ok := ctc.mutation.CreatedAt(); !ok {
+func (_c *CiTypeCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if citype.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citype.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := citype.DefaultCreatedAt()
-		ctc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := ctc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if citype.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citype.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citype.DefaultUpdatedAt()
-		ctc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := ctc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		v := citype.DefaultStatus
-		ctc.mutation.SetStatus(v)
+		_c.mutation.SetStatus(v)
 	}
-	if _, ok := ctc.mutation.Sort(); !ok {
+	if _, ok := _c.mutation.Sort(); !ok {
 		v := citype.DefaultSort
-		ctc.mutation.SetSort(v)
+		_c.mutation.SetSort(v)
 	}
-	if _, ok := ctc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := citype.DefaultTenantID
-		ctc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := ctc.mutation.IsInherited(); !ok {
+	if _, ok := _c.mutation.IsInherited(); !ok {
 		v := citype.DefaultIsInherited
-		ctc.mutation.SetIsInherited(v)
+		_c.mutation.SetIsInherited(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctc *CiTypeCreate) check() error {
-	if _, ok := ctc.mutation.CreatedAt(); !ok {
+func (_c *CiTypeCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiType.created_at"`)}
 	}
-	if _, ok := ctc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiType.updated_at"`)}
 	}
-	if _, ok := ctc.mutation.Sort(); !ok {
+	if _, ok := _c.mutation.Sort(); !ok {
 		return &ValidationError{Name: "sort", err: errors.New(`ent: missing required field "CiType.sort"`)}
 	}
-	if _, ok := ctc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiType.tenant_id"`)}
 	}
-	if _, ok := ctc.mutation.Name(); !ok {
+	if _, ok := _c.mutation.Name(); !ok {
 		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "CiType.name"`)}
 	}
-	if v, ok := ctc.mutation.Name(); ok {
+	if v, ok := _c.mutation.Name(); ok {
 		if err := citype.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "CiType.name": %w`, err)}
 		}
 	}
-	if _, ok := ctc.mutation.Alias(); !ok {
+	if _, ok := _c.mutation.Alias(); !ok {
 		return &ValidationError{Name: "alias", err: errors.New(`ent: missing required field "CiType.alias"`)}
 	}
-	if v, ok := ctc.mutation.Alias(); ok {
+	if v, ok := _c.mutation.Alias(); ok {
 		if err := citype.AliasValidator(v); err != nil {
 			return &ValidationError{Name: "alias", err: fmt.Errorf(`ent: validator failed for field "CiType.alias": %w`, err)}
 		}
 	}
-	if _, ok := ctc.mutation.UniqueID(); !ok {
+	if _, ok := _c.mutation.UniqueID(); !ok {
 		return &ValidationError{Name: "unique_id", err: errors.New(`ent: missing required field "CiType.unique_id"`)}
 	}
-	if len(ctc.mutation.AttributesIDs()) == 0 {
+	if len(_c.mutation.AttributesIDs()) == 0 {
 		return &ValidationError{Name: "attributes", err: errors.New(`ent: missing required edge "CiType.attributes"`)}
 	}
 	return nil
 }
 
-func (ctc *CiTypeCreate) sqlSave(ctx context.Context) (*CiType, error) {
-	if err := ctc.check(); err != nil {
+func (_c *CiTypeCreate) sqlSave(ctx context.Context) (*CiType, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := ctc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, ctc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -530,81 +530,81 @@ func (ctc *CiTypeCreate) sqlSave(ctx context.Context) (*CiType, error) {
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	ctc.mutation.id = &_node.ID
-	ctc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
+func (_c *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiType{config: ctc.config}
+		_node = &CiType{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(citype.Table, sqlgraph.NewFieldSpec(citype.FieldID, field.TypeUint64))
 	)
-	if id, ok := ctc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := ctc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(citype.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := ctc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(citype.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := ctc.mutation.Status(); ok {
+	if value, ok := _c.mutation.Status(); ok {
 		_spec.SetField(citype.FieldStatus, field.TypeUint8, value)
 		_node.Status = value
 	}
-	if value, ok := ctc.mutation.Sort(); ok {
+	if value, ok := _c.mutation.Sort(); ok {
 		_spec.SetField(citype.FieldSort, field.TypeUint32, value)
 		_node.Sort = value
 	}
-	if value, ok := ctc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(citype.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := ctc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(citype.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := ctc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(citype.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := ctc.mutation.Name(); ok {
+	if value, ok := _c.mutation.Name(); ok {
 		_spec.SetField(citype.FieldName, field.TypeString, value)
 		_node.Name = value
 	}
-	if value, ok := ctc.mutation.Alias(); ok {
+	if value, ok := _c.mutation.Alias(); ok {
 		_spec.SetField(citype.FieldAlias, field.TypeString, value)
 		_node.Alias = value
 	}
-	if value, ok := ctc.mutation.IsInherited(); ok {
+	if value, ok := _c.mutation.IsInherited(); ok {
 		_spec.SetField(citype.FieldIsInherited, field.TypeBool, value)
 		_node.IsInherited = &value
 	}
-	if value, ok := ctc.mutation.CreatedBy(); ok {
+	if value, ok := _c.mutation.CreatedBy(); ok {
 		_spec.SetField(citype.FieldCreatedBy, field.TypeUUID, value)
 		_node.CreatedBy = &value
 	}
-	if value, ok := ctc.mutation.Icon(); ok {
+	if value, ok := _c.mutation.Icon(); ok {
 		_spec.SetField(citype.FieldIcon, field.TypeString, value)
 		_node.Icon = &value
 	}
-	if value, ok := ctc.mutation.DefaultOrderAttrID(); ok {
+	if value, ok := _c.mutation.DefaultOrderAttrID(); ok {
 		_spec.SetField(citype.FieldDefaultOrderAttrID, field.TypeUint64, value)
 		_node.DefaultOrderAttrID = &value
 	}
-	if value, ok := ctc.mutation.ShowID(); ok {
+	if value, ok := _c.mutation.ShowID(); ok {
 		_spec.SetField(citype.FieldShowID, field.TypeUint64, value)
 		_node.ShowID = &value
 	}
-	if value, ok := ctc.mutation.UniqueConst(); ok {
+	if value, ok := _c.mutation.UniqueConst(); ok {
 		_spec.SetField(citype.FieldUniqueConst, field.TypeJSON, value)
 		_node.UniqueConst = value
 	}
-	if nodes := ctc.mutation.AttributesIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
@@ -621,7 +621,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		_node.UniqueID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.CisIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CisIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -637,7 +637,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.TypeAttributesIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.TypeAttributesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -653,7 +653,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.AttributeGroupsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeGroupsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -669,7 +669,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.GroupItemsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.GroupItemsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -685,7 +685,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.ChildrenIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ChildrenIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -701,7 +701,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.ParentsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ParentsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -717,7 +717,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.ChildRelationsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ChildRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -733,7 +733,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.ParentRelationsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ParentRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -749,7 +749,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.ImportTemplatesIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ImportTemplatesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -765,7 +765,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.ImportRecordsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ImportRecordsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -781,7 +781,7 @@ func (ctc *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctc.mutation.CiRecordsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiRecordsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -808,16 +808,16 @@ type CiTypeCreateBulk struct {
 }
 
 // Save creates the CiType entities in the database.
-func (ctcb *CiTypeCreateBulk) Save(ctx context.Context) ([]*CiType, error) {
-	if ctcb.err != nil {
-		return nil, ctcb.err
+func (_c *CiTypeCreateBulk) Save(ctx context.Context) ([]*CiType, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(ctcb.builders))
-	nodes := make([]*CiType, len(ctcb.builders))
-	mutators := make([]Mutator, len(ctcb.builders))
-	for i := range ctcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiType, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := ctcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiTypeMutation)
@@ -831,11 +831,11 @@ func (ctcb *CiTypeCreateBulk) Save(ctx context.Context) ([]*CiType, error) {
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, ctcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, ctcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -859,7 +859,7 @@ func (ctcb *CiTypeCreateBulk) Save(ctx context.Context) ([]*CiType, error) {
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, ctcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -867,8 +867,8 @@ func (ctcb *CiTypeCreateBulk) Save(ctx context.Context) ([]*CiType, error) {
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctcb *CiTypeCreateBulk) SaveX(ctx context.Context) []*CiType {
-	v, err := ctcb.Save(ctx)
+func (_c *CiTypeCreateBulk) SaveX(ctx context.Context) []*CiType {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -876,14 +876,14 @@ func (ctcb *CiTypeCreateBulk) SaveX(ctx context.Context) []*CiType {
 }
 
 // Exec executes the query.
-func (ctcb *CiTypeCreateBulk) Exec(ctx context.Context) error {
-	_, err := ctcb.Save(ctx)
+func (_c *CiTypeCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctcb *CiTypeCreateBulk) ExecX(ctx context.Context) {
-	if err := ctcb.Exec(ctx); err != nil {
+func (_c *CiTypeCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
 )
 
 // ValueDatetimeCreate is the builder for creating a ValueDatetime entity.
@@ -23,117 +23,131 @@ type ValueDatetimeCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (vdc *ValueDatetimeCreate) SetCreatedAt(t time.Time) *ValueDatetimeCreate {
-	vdc.mutation.SetCreatedAt(t)
-	return vdc
+func (_c *ValueDatetimeCreate) SetCreatedAt(v time.Time) *ValueDatetimeCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (vdc *ValueDatetimeCreate) SetNillableCreatedAt(t *time.Time) *ValueDatetimeCreate {
-	if t != nil {
-		vdc.SetCreatedAt(*t)
+func (_c *ValueDatetimeCreate) SetNillableCreatedAt(v *time.Time) *ValueDatetimeCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return vdc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vdc *ValueDatetimeCreate) SetUpdatedAt(t time.Time) *ValueDatetimeCreate {
-	vdc.mutation.SetUpdatedAt(t)
-	return vdc
+func (_c *ValueDatetimeCreate) SetUpdatedAt(v time.Time) *ValueDatetimeCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (vdc *ValueDatetimeCreate) SetNillableUpdatedAt(t *time.Time) *ValueDatetimeCreate {
-	if t != nil {
-		vdc.SetUpdatedAt(*t)
+func (_c *ValueDatetimeCreate) SetNillableUpdatedAt(v *time.Time) *ValueDatetimeCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return vdc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vdc *ValueDatetimeCreate) SetDeletedAt(t time.Time) *ValueDatetimeCreate {
-	vdc.mutation.SetDeletedAt(t)
-	return vdc
+func (_c *ValueDatetimeCreate) SetDeletedAt(v time.Time) *ValueDatetimeCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vdc *ValueDatetimeCreate) SetNillableDeletedAt(t *time.Time) *ValueDatetimeCreate {
-	if t != nil {
-		vdc.SetDeletedAt(*t)
+func (_c *ValueDatetimeCreate) SetNillableDeletedAt(v *time.Time) *ValueDatetimeCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return vdc
+	return _c
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (_c *ValueDatetimeCreate) SetTenantID(v uint64) *ValueDatetimeCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
+}
+
+// SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
+func (_c *ValueDatetimeCreate) SetNillableTenantID(v *uint64) *ValueDatetimeCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
+	}
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (vdc *ValueDatetimeCreate) SetCiID(u uint64) *ValueDatetimeCreate {
-	vdc.mutation.SetCiID(u)
-	return vdc
+func (_c *ValueDatetimeCreate) SetCiID(v uint64) *ValueDatetimeCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vdc *ValueDatetimeCreate) SetAttrID(u uint64) *ValueDatetimeCreate {
-	vdc.mutation.SetAttrID(u)
-	return vdc
+func (_c *ValueDatetimeCreate) SetAttrID(v uint64) *ValueDatetimeCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetValue sets the "value" field.
-func (vdc *ValueDatetimeCreate) SetValue(t time.Time) *ValueDatetimeCreate {
-	vdc.mutation.SetValue(t)
-	return vdc
+func (_c *ValueDatetimeCreate) SetValue(v time.Time) *ValueDatetimeCreate {
+	_c.mutation.SetValue(v)
+	return _c
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vdc *ValueDatetimeCreate) SetIsCover(b bool) *ValueDatetimeCreate {
-	vdc.mutation.SetIsCover(b)
-	return vdc
+func (_c *ValueDatetimeCreate) SetIsCover(v bool) *ValueDatetimeCreate {
+	_c.mutation.SetIsCover(v)
+	return _c
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vdc *ValueDatetimeCreate) SetNillableIsCover(b *bool) *ValueDatetimeCreate {
-	if b != nil {
-		vdc.SetIsCover(*b)
+func (_c *ValueDatetimeCreate) SetNillableIsCover(v *bool) *ValueDatetimeCreate {
+	if v != nil {
+		_c.SetIsCover(*v)
 	}
-	return vdc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (vdc *ValueDatetimeCreate) SetID(u uint64) *ValueDatetimeCreate {
-	vdc.mutation.SetID(u)
-	return vdc
+func (_c *ValueDatetimeCreate) SetID(v uint64) *ValueDatetimeCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vdc *ValueDatetimeCreate) SetCi(c *Cis) *ValueDatetimeCreate {
-	return vdc.SetCiID(c.ID)
+func (_c *ValueDatetimeCreate) SetCi(v *Cis) *ValueDatetimeCreate {
+	return _c.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vdc *ValueDatetimeCreate) SetAttributeID(id uint64) *ValueDatetimeCreate {
-	vdc.mutation.SetAttributeID(id)
-	return vdc
+func (_c *ValueDatetimeCreate) SetAttributeID(id uint64) *ValueDatetimeCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vdc *ValueDatetimeCreate) SetAttribute(a *Attribute) *ValueDatetimeCreate {
-	return vdc.SetAttributeID(a.ID)
+func (_c *ValueDatetimeCreate) SetAttribute(v *Attribute) *ValueDatetimeCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueDatetimeMutation object of the builder.
-func (vdc *ValueDatetimeCreate) Mutation() *ValueDatetimeMutation {
-	return vdc.mutation
+func (_c *ValueDatetimeCreate) Mutation() *ValueDatetimeMutation {
+	return _c.mutation
 }
 
 // Save creates the ValueDatetime in the database.
-func (vdc *ValueDatetimeCreate) Save(ctx context.Context) (*ValueDatetime, error) {
-	if err := vdc.defaults(); err != nil {
+func (_c *ValueDatetimeCreate) Save(ctx context.Context) (*ValueDatetime, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vdc.sqlSave, vdc.mutation, vdc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (vdc *ValueDatetimeCreate) SaveX(ctx context.Context) *ValueDatetime {
-	v, err := vdc.Save(ctx)
+func (_c *ValueDatetimeCreate) SaveX(ctx context.Context) *ValueDatetime {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -141,76 +155,83 @@ func (vdc *ValueDatetimeCreate) SaveX(ctx context.Context) *ValueDatetime {
 }
 
 // Exec executes the query.
-func (vdc *ValueDatetimeCreate) Exec(ctx context.Context) error {
-	_, err := vdc.Save(ctx)
+func (_c *ValueDatetimeCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vdc *ValueDatetimeCreate) ExecX(ctx context.Context) {
-	if err := vdc.Exec(ctx); err != nil {
+func (_c *ValueDatetimeCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vdc *ValueDatetimeCreate) defaults() error {
-	if _, ok := vdc.mutation.CreatedAt(); !ok {
+func (_c *ValueDatetimeCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if valuedatetime.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuedatetime.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuedatetime.DefaultCreatedAt()
-		vdc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := vdc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if valuedatetime.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuedatetime.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuedatetime.DefaultUpdatedAt()
-		vdc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := vdc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		v := valuedatetime.DefaultTenantID
+		_c.mutation.SetTenantID(v)
+	}
+	if _, ok := _c.mutation.IsCover(); !ok {
 		v := valuedatetime.DefaultIsCover
-		vdc.mutation.SetIsCover(v)
+		_c.mutation.SetIsCover(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vdc *ValueDatetimeCreate) check() error {
-	if _, ok := vdc.mutation.CreatedAt(); !ok {
+func (_c *ValueDatetimeCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ValueDatetime.created_at"`)}
 	}
-	if _, ok := vdc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ValueDatetime.updated_at"`)}
 	}
-	if _, ok := vdc.mutation.CiID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ValueDatetime.tenant_id"`)}
+	}
+	if _, ok := _c.mutation.CiID(); !ok {
 		return &ValidationError{Name: "ci_id", err: errors.New(`ent: missing required field "ValueDatetime.ci_id"`)}
 	}
-	if _, ok := vdc.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "ValueDatetime.attr_id"`)}
 	}
-	if _, ok := vdc.mutation.Value(); !ok {
+	if _, ok := _c.mutation.Value(); !ok {
 		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "ValueDatetime.value"`)}
 	}
-	if _, ok := vdc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.IsCover(); !ok {
 		return &ValidationError{Name: "is_cover", err: errors.New(`ent: missing required field "ValueDatetime.is_cover"`)}
 	}
-	if len(vdc.mutation.CiIDs()) == 0 {
+	if len(_c.mutation.CiIDs()) == 0 {
 		return &ValidationError{Name: "ci", err: errors.New(`ent: missing required edge "ValueDatetime.ci"`)}
 	}
-	if len(vdc.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "ValueDatetime.attribute"`)}
 	}
 	return nil
 }
 
-func (vdc *ValueDatetimeCreate) sqlSave(ctx context.Context) (*ValueDatetime, error) {
-	if err := vdc.check(); err != nil {
+func (_c *ValueDatetimeCreate) sqlSave(ctx context.Context) (*ValueDatetime, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := vdc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, vdc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -220,41 +241,45 @@ func (vdc *ValueDatetimeCreate) sqlSave(ctx context.Context) (*ValueDatetime, er
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	vdc.mutation.id = &_node.ID
-	vdc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (vdc *ValueDatetimeCreate) createSpec() (*ValueDatetime, *sqlgraph.CreateSpec) {
+func (_c *ValueDatetimeCreate) createSpec() (*ValueDatetime, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ValueDatetime{config: vdc.config}
+		_node = &ValueDatetime{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(valuedatetime.Table, sqlgraph.NewFieldSpec(valuedatetime.FieldID, field.TypeUint64))
 	)
-	if id, ok := vdc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := vdc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(valuedatetime.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := vdc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuedatetime.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := vdc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(valuedatetime.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := vdc.mutation.Value(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
+		_spec.SetField(valuedatetime.FieldTenantID, field.TypeUint64, value)
+		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(valuedatetime.FieldValue, field.TypeTime, value)
 		_node.Value = value
 	}
-	if value, ok := vdc.mutation.IsCover(); ok {
+	if value, ok := _c.mutation.IsCover(); ok {
 		_spec.SetField(valuedatetime.FieldIsCover, field.TypeBool, value)
 		_node.IsCover = value
 	}
-	if nodes := vdc.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -271,7 +296,7 @@ func (vdc *ValueDatetimeCreate) createSpec() (*ValueDatetime, *sqlgraph.CreateSp
 		_node.CiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := vdc.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -299,16 +324,16 @@ type ValueDatetimeCreateBulk struct {
 }
 
 // Save creates the ValueDatetime entities in the database.
-func (vdcb *ValueDatetimeCreateBulk) Save(ctx context.Context) ([]*ValueDatetime, error) {
-	if vdcb.err != nil {
-		return nil, vdcb.err
+func (_c *ValueDatetimeCreateBulk) Save(ctx context.Context) ([]*ValueDatetime, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(vdcb.builders))
-	nodes := make([]*ValueDatetime, len(vdcb.builders))
-	mutators := make([]Mutator, len(vdcb.builders))
-	for i := range vdcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ValueDatetime, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := vdcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ValueDatetimeMutation)
@@ -322,11 +347,11 @@ func (vdcb *ValueDatetimeCreateBulk) Save(ctx context.Context) ([]*ValueDatetime
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, vdcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, vdcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -350,7 +375,7 @@ func (vdcb *ValueDatetimeCreateBulk) Save(ctx context.Context) ([]*ValueDatetime
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, vdcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -358,8 +383,8 @@ func (vdcb *ValueDatetimeCreateBulk) Save(ctx context.Context) ([]*ValueDatetime
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vdcb *ValueDatetimeCreateBulk) SaveX(ctx context.Context) []*ValueDatetime {
-	v, err := vdcb.Save(ctx)
+func (_c *ValueDatetimeCreateBulk) SaveX(ctx context.Context) []*ValueDatetime {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -367,14 +392,14 @@ func (vdcb *ValueDatetimeCreateBulk) SaveX(ctx context.Context) []*ValueDatetime
 }
 
 // Exec executes the query.
-func (vdcb *ValueDatetimeCreateBulk) Exec(ctx context.Context) error {
-	_, err := vdcb.Save(ctx)
+func (_c *ValueDatetimeCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vdcb *ValueDatetimeCreateBulk) ExecX(ctx context.Context) {
-	if err := vdcb.Exec(ctx); err != nil {
+func (_c *ValueDatetimeCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

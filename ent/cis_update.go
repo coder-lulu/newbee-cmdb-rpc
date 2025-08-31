@@ -12,19 +12,19 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -36,596 +36,596 @@ type CisUpdate struct {
 }
 
 // Where appends a list predicates to the CisUpdate builder.
-func (cu *CisUpdate) Where(ps ...predicate.Cis) *CisUpdate {
-	cu.mutation.Where(ps...)
-	return cu
+func (_u *CisUpdate) Where(ps ...predicate.Cis) *CisUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cu *CisUpdate) SetUpdatedAt(t time.Time) *CisUpdate {
-	cu.mutation.SetUpdatedAt(t)
-	return cu
+func (_u *CisUpdate) SetUpdatedAt(v time.Time) *CisUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (cu *CisUpdate) SetDeletedAt(t time.Time) *CisUpdate {
-	cu.mutation.SetDeletedAt(t)
-	return cu
+func (_u *CisUpdate) SetDeletedAt(v time.Time) *CisUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (cu *CisUpdate) SetNillableDeletedAt(t *time.Time) *CisUpdate {
-	if t != nil {
-		cu.SetDeletedAt(*t)
+func (_u *CisUpdate) SetNillableDeletedAt(v *time.Time) *CisUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return cu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (cu *CisUpdate) ClearDeletedAt() *CisUpdate {
-	cu.mutation.ClearDeletedAt()
-	return cu
+func (_u *CisUpdate) ClearDeletedAt() *CisUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cu *CisUpdate) SetDepartmentID(u uint64) *CisUpdate {
-	cu.mutation.ResetDepartmentID()
-	cu.mutation.SetDepartmentID(u)
-	return cu
+func (_u *CisUpdate) SetDepartmentID(v uint64) *CisUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cu *CisUpdate) SetNillableDepartmentID(u *uint64) *CisUpdate {
-	if u != nil {
-		cu.SetDepartmentID(*u)
+func (_u *CisUpdate) SetNillableDepartmentID(v *uint64) *CisUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cu *CisUpdate) AddDepartmentID(u int64) *CisUpdate {
-	cu.mutation.AddDepartmentID(u)
-	return cu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CisUpdate) AddDepartmentID(v int64) *CisUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cu *CisUpdate) ClearDepartmentID() *CisUpdate {
-	cu.mutation.ClearDepartmentID()
-	return cu
+func (_u *CisUpdate) ClearDepartmentID() *CisUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetTypeID sets the "type_id" field.
-func (cu *CisUpdate) SetTypeID(u uint64) *CisUpdate {
-	cu.mutation.SetTypeID(u)
-	return cu
+func (_u *CisUpdate) SetTypeID(v uint64) *CisUpdate {
+	_u.mutation.SetTypeID(v)
+	return _u
 }
 
 // SetNillableTypeID sets the "type_id" field if the given value is not nil.
-func (cu *CisUpdate) SetNillableTypeID(u *uint64) *CisUpdate {
-	if u != nil {
-		cu.SetTypeID(*u)
+func (_u *CisUpdate) SetNillableTypeID(v *uint64) *CisUpdate {
+	if v != nil {
+		_u.SetTypeID(*v)
 	}
-	return cu
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (cu *CisUpdate) SetStatus(u uint32) *CisUpdate {
-	cu.mutation.ResetStatus()
-	cu.mutation.SetStatus(u)
-	return cu
+func (_u *CisUpdate) SetStatus(v uint32) *CisUpdate {
+	_u.mutation.ResetStatus()
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cu *CisUpdate) SetNillableStatus(u *uint32) *CisUpdate {
-	if u != nil {
-		cu.SetStatus(*u)
+func (_u *CisUpdate) SetNillableStatus(v *uint32) *CisUpdate {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return cu
+	return _u
 }
 
-// AddStatus adds u to the "status" field.
-func (cu *CisUpdate) AddStatus(u int32) *CisUpdate {
-	cu.mutation.AddStatus(u)
-	return cu
+// AddStatus adds value to the "status" field.
+func (_u *CisUpdate) AddStatus(v int32) *CisUpdate {
+	_u.mutation.AddStatus(v)
+	return _u
 }
 
 // ClearStatus clears the value of the "status" field.
-func (cu *CisUpdate) ClearStatus() *CisUpdate {
-	cu.mutation.ClearStatus()
-	return cu
+func (_u *CisUpdate) ClearStatus() *CisUpdate {
+	_u.mutation.ClearStatus()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (cu *CisUpdate) SetCreatedBy(u uuid.UUID) *CisUpdate {
-	cu.mutation.SetCreatedBy(u)
-	return cu
+func (_u *CisUpdate) SetCreatedBy(v uuid.UUID) *CisUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (cu *CisUpdate) SetNillableCreatedBy(u *uuid.UUID) *CisUpdate {
-	if u != nil {
-		cu.SetCreatedBy(*u)
+func (_u *CisUpdate) SetNillableCreatedBy(v *uuid.UUID) *CisUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return cu
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (cu *CisUpdate) ClearCreatedBy() *CisUpdate {
-	cu.mutation.ClearCreatedBy()
-	return cu
+func (_u *CisUpdate) ClearCreatedBy() *CisUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetTags sets the "tags" field.
-func (cu *CisUpdate) SetTags(st []schema.CiTag) *CisUpdate {
-	cu.mutation.SetTags(st)
-	return cu
+func (_u *CisUpdate) SetTags(v []schema.CiTag) *CisUpdate {
+	_u.mutation.SetTags(v)
+	return _u
 }
 
-// AppendTags appends st to the "tags" field.
-func (cu *CisUpdate) AppendTags(st []schema.CiTag) *CisUpdate {
-	cu.mutation.AppendTags(st)
-	return cu
+// AppendTags appends value to the "tags" field.
+func (_u *CisUpdate) AppendTags(v []schema.CiTag) *CisUpdate {
+	_u.mutation.AppendTags(v)
+	return _u
 }
 
 // ClearTags clears the value of the "tags" field.
-func (cu *CisUpdate) ClearTags() *CisUpdate {
-	cu.mutation.ClearTags()
-	return cu
+func (_u *CisUpdate) ClearTags() *CisUpdate {
+	_u.mutation.ClearTags()
+	return _u
 }
 
 // SetMetadata sets the "metadata" field.
-func (cu *CisUpdate) SetMetadata(m map[string]interface{}) *CisUpdate {
-	cu.mutation.SetMetadata(m)
-	return cu
+func (_u *CisUpdate) SetMetadata(v map[string]interface{}) *CisUpdate {
+	_u.mutation.SetMetadata(v)
+	return _u
 }
 
 // ClearMetadata clears the value of the "metadata" field.
-func (cu *CisUpdate) ClearMetadata() *CisUpdate {
-	cu.mutation.ClearMetadata()
-	return cu
+func (_u *CisUpdate) ClearMetadata() *CisUpdate {
+	_u.mutation.ClearMetadata()
+	return _u
 }
 
 // SetCustomFields sets the "custom_fields" field.
-func (cu *CisUpdate) SetCustomFields(m map[string]interface{}) *CisUpdate {
-	cu.mutation.SetCustomFields(m)
-	return cu
+func (_u *CisUpdate) SetCustomFields(v map[string]interface{}) *CisUpdate {
+	_u.mutation.SetCustomFields(v)
+	return _u
 }
 
 // ClearCustomFields clears the value of the "custom_fields" field.
-func (cu *CisUpdate) ClearCustomFields() *CisUpdate {
-	cu.mutation.ClearCustomFields()
-	return cu
+func (_u *CisUpdate) ClearCustomFields() *CisUpdate {
+	_u.mutation.ClearCustomFields()
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type" edge to the CiType entity by ID.
-func (cu *CisUpdate) SetCiTypeID(id uint64) *CisUpdate {
-	cu.mutation.SetCiTypeID(id)
-	return cu
+func (_u *CisUpdate) SetCiTypeID(id uint64) *CisUpdate {
+	_u.mutation.SetCiTypeID(id)
+	return _u
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (cu *CisUpdate) SetCiType(c *CiType) *CisUpdate {
-	return cu.SetCiTypeID(c.ID)
+func (_u *CisUpdate) SetCiType(v *CiType) *CisUpdate {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // AddValueTextIDs adds the "value_texts" edge to the ValueText entity by IDs.
-func (cu *CisUpdate) AddValueTextIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddValueTextIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddValueTextIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddValueTextIDs(ids...)
+	return _u
 }
 
 // AddValueTexts adds the "value_texts" edges to the ValueText entity.
-func (cu *CisUpdate) AddValueTexts(v ...*ValueText) *CisUpdate {
+func (_u *CisUpdate) AddValueTexts(v ...*ValueText) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.AddValueTextIDs(ids...)
+	return _u.AddValueTextIDs(ids...)
 }
 
 // AddValueIndexTextIDs adds the "value_index_texts" edge to the ValueIndexText entity by IDs.
-func (cu *CisUpdate) AddValueIndexTextIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddValueIndexTextIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddValueIndexTextIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddValueIndexTextIDs(ids...)
+	return _u
 }
 
 // AddValueIndexTexts adds the "value_index_texts" edges to the ValueIndexText entity.
-func (cu *CisUpdate) AddValueIndexTexts(v ...*ValueIndexText) *CisUpdate {
+func (_u *CisUpdate) AddValueIndexTexts(v ...*ValueIndexText) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.AddValueIndexTextIDs(ids...)
+	return _u.AddValueIndexTextIDs(ids...)
 }
 
 // AddValueJSONIDs adds the "value_jsons" edge to the ValueJSON entity by IDs.
-func (cu *CisUpdate) AddValueJSONIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddValueJSONIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddValueJSONIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddValueJSONIDs(ids...)
+	return _u
 }
 
 // AddValueJsons adds the "value_jsons" edges to the ValueJSON entity.
-func (cu *CisUpdate) AddValueJsons(v ...*ValueJSON) *CisUpdate {
+func (_u *CisUpdate) AddValueJsons(v ...*ValueJSON) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.AddValueJSONIDs(ids...)
+	return _u.AddValueJSONIDs(ids...)
 }
 
 // AddValueIntegerIDs adds the "value_integers" edge to the ValueInteger entity by IDs.
-func (cu *CisUpdate) AddValueIntegerIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddValueIntegerIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddValueIntegerIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddValueIntegerIDs(ids...)
+	return _u
 }
 
 // AddValueIntegers adds the "value_integers" edges to the ValueInteger entity.
-func (cu *CisUpdate) AddValueIntegers(v ...*ValueInteger) *CisUpdate {
+func (_u *CisUpdate) AddValueIntegers(v ...*ValueInteger) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.AddValueIntegerIDs(ids...)
+	return _u.AddValueIntegerIDs(ids...)
 }
 
 // AddValueFloatIDs adds the "value_floats" edge to the ValueFloat entity by IDs.
-func (cu *CisUpdate) AddValueFloatIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddValueFloatIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddValueFloatIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddValueFloatIDs(ids...)
+	return _u
 }
 
 // AddValueFloats adds the "value_floats" edges to the ValueFloat entity.
-func (cu *CisUpdate) AddValueFloats(v ...*ValueFloat) *CisUpdate {
+func (_u *CisUpdate) AddValueFloats(v ...*ValueFloat) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.AddValueFloatIDs(ids...)
+	return _u.AddValueFloatIDs(ids...)
 }
 
 // AddValueDatetimeIDs adds the "value_datetimes" edge to the ValueDatetime entity by IDs.
-func (cu *CisUpdate) AddValueDatetimeIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddValueDatetimeIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddValueDatetimeIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddValueDatetimeIDs(ids...)
+	return _u
 }
 
 // AddValueDatetimes adds the "value_datetimes" edges to the ValueDatetime entity.
-func (cu *CisUpdate) AddValueDatetimes(v ...*ValueDatetime) *CisUpdate {
+func (_u *CisUpdate) AddValueDatetimes(v ...*ValueDatetime) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.AddValueDatetimeIDs(ids...)
+	return _u.AddValueDatetimeIDs(ids...)
 }
 
 // AddFirstRelationIDs adds the "first_relations" edge to the CiRelation entity by IDs.
-func (cu *CisUpdate) AddFirstRelationIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddFirstRelationIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddFirstRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddFirstRelationIDs(ids...)
+	return _u
 }
 
 // AddFirstRelations adds the "first_relations" edges to the CiRelation entity.
-func (cu *CisUpdate) AddFirstRelations(c ...*CiRelation) *CisUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdate) AddFirstRelations(v ...*CiRelation) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.AddFirstRelationIDs(ids...)
+	return _u.AddFirstRelationIDs(ids...)
 }
 
 // AddSecondRelationIDs adds the "second_relations" edge to the CiRelation entity by IDs.
-func (cu *CisUpdate) AddSecondRelationIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddSecondRelationIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddSecondRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddSecondRelationIDs(ids...)
+	return _u
 }
 
 // AddSecondRelations adds the "second_relations" edges to the CiRelation entity.
-func (cu *CisUpdate) AddSecondRelations(c ...*CiRelation) *CisUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdate) AddSecondRelations(v ...*CiRelation) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.AddSecondRelationIDs(ids...)
+	return _u.AddSecondRelationIDs(ids...)
 }
 
 // AddMoreRelationIDs adds the "more_relations" edge to the CiRelation entity by IDs.
-func (cu *CisUpdate) AddMoreRelationIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddMoreRelationIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddMoreRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddMoreRelationIDs(ids...)
+	return _u
 }
 
 // AddMoreRelations adds the "more_relations" edges to the CiRelation entity.
-func (cu *CisUpdate) AddMoreRelations(c ...*CiRelation) *CisUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdate) AddMoreRelations(v ...*CiRelation) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.AddMoreRelationIDs(ids...)
+	return _u.AddMoreRelationIDs(ids...)
 }
 
 // AddImportRecordIDs adds the "import_records" edge to the ImportRecord entity by IDs.
-func (cu *CisUpdate) AddImportRecordIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddImportRecordIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddImportRecordIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddImportRecordIDs(ids...)
+	return _u
 }
 
 // AddImportRecords adds the "import_records" edges to the ImportRecord entity.
-func (cu *CisUpdate) AddImportRecords(i ...*ImportRecord) *CisUpdate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *CisUpdate) AddImportRecords(v ...*ImportRecord) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.AddImportRecordIDs(ids...)
+	return _u.AddImportRecordIDs(ids...)
 }
 
 // AddRecordIDs adds the "records" edge to the CiRecords entity by IDs.
-func (cu *CisUpdate) AddRecordIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.AddRecordIDs(ids...)
-	return cu
+func (_u *CisUpdate) AddRecordIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddRecordIDs(ids...)
+	return _u
 }
 
 // AddRecords adds the "records" edges to the CiRecords entity.
-func (cu *CisUpdate) AddRecords(c ...*CiRecords) *CisUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdate) AddRecords(v ...*CiRecords) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.AddRecordIDs(ids...)
+	return _u.AddRecordIDs(ids...)
 }
 
 // Mutation returns the CisMutation object of the builder.
-func (cu *CisUpdate) Mutation() *CisMutation {
-	return cu.mutation
+func (_u *CisUpdate) Mutation() *CisMutation {
+	return _u.mutation
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (cu *CisUpdate) ClearCiType() *CisUpdate {
-	cu.mutation.ClearCiType()
-	return cu
+func (_u *CisUpdate) ClearCiType() *CisUpdate {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // ClearValueTexts clears all "value_texts" edges to the ValueText entity.
-func (cu *CisUpdate) ClearValueTexts() *CisUpdate {
-	cu.mutation.ClearValueTexts()
-	return cu
+func (_u *CisUpdate) ClearValueTexts() *CisUpdate {
+	_u.mutation.ClearValueTexts()
+	return _u
 }
 
 // RemoveValueTextIDs removes the "value_texts" edge to ValueText entities by IDs.
-func (cu *CisUpdate) RemoveValueTextIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveValueTextIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveValueTextIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveValueTextIDs(ids...)
+	return _u
 }
 
 // RemoveValueTexts removes "value_texts" edges to ValueText entities.
-func (cu *CisUpdate) RemoveValueTexts(v ...*ValueText) *CisUpdate {
+func (_u *CisUpdate) RemoveValueTexts(v ...*ValueText) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.RemoveValueTextIDs(ids...)
+	return _u.RemoveValueTextIDs(ids...)
 }
 
 // ClearValueIndexTexts clears all "value_index_texts" edges to the ValueIndexText entity.
-func (cu *CisUpdate) ClearValueIndexTexts() *CisUpdate {
-	cu.mutation.ClearValueIndexTexts()
-	return cu
+func (_u *CisUpdate) ClearValueIndexTexts() *CisUpdate {
+	_u.mutation.ClearValueIndexTexts()
+	return _u
 }
 
 // RemoveValueIndexTextIDs removes the "value_index_texts" edge to ValueIndexText entities by IDs.
-func (cu *CisUpdate) RemoveValueIndexTextIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveValueIndexTextIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveValueIndexTextIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveValueIndexTextIDs(ids...)
+	return _u
 }
 
 // RemoveValueIndexTexts removes "value_index_texts" edges to ValueIndexText entities.
-func (cu *CisUpdate) RemoveValueIndexTexts(v ...*ValueIndexText) *CisUpdate {
+func (_u *CisUpdate) RemoveValueIndexTexts(v ...*ValueIndexText) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.RemoveValueIndexTextIDs(ids...)
+	return _u.RemoveValueIndexTextIDs(ids...)
 }
 
 // ClearValueJsons clears all "value_jsons" edges to the ValueJSON entity.
-func (cu *CisUpdate) ClearValueJsons() *CisUpdate {
-	cu.mutation.ClearValueJsons()
-	return cu
+func (_u *CisUpdate) ClearValueJsons() *CisUpdate {
+	_u.mutation.ClearValueJsons()
+	return _u
 }
 
 // RemoveValueJSONIDs removes the "value_jsons" edge to ValueJSON entities by IDs.
-func (cu *CisUpdate) RemoveValueJSONIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveValueJSONIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveValueJSONIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveValueJSONIDs(ids...)
+	return _u
 }
 
 // RemoveValueJsons removes "value_jsons" edges to ValueJSON entities.
-func (cu *CisUpdate) RemoveValueJsons(v ...*ValueJSON) *CisUpdate {
+func (_u *CisUpdate) RemoveValueJsons(v ...*ValueJSON) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.RemoveValueJSONIDs(ids...)
+	return _u.RemoveValueJSONIDs(ids...)
 }
 
 // ClearValueIntegers clears all "value_integers" edges to the ValueInteger entity.
-func (cu *CisUpdate) ClearValueIntegers() *CisUpdate {
-	cu.mutation.ClearValueIntegers()
-	return cu
+func (_u *CisUpdate) ClearValueIntegers() *CisUpdate {
+	_u.mutation.ClearValueIntegers()
+	return _u
 }
 
 // RemoveValueIntegerIDs removes the "value_integers" edge to ValueInteger entities by IDs.
-func (cu *CisUpdate) RemoveValueIntegerIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveValueIntegerIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveValueIntegerIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveValueIntegerIDs(ids...)
+	return _u
 }
 
 // RemoveValueIntegers removes "value_integers" edges to ValueInteger entities.
-func (cu *CisUpdate) RemoveValueIntegers(v ...*ValueInteger) *CisUpdate {
+func (_u *CisUpdate) RemoveValueIntegers(v ...*ValueInteger) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.RemoveValueIntegerIDs(ids...)
+	return _u.RemoveValueIntegerIDs(ids...)
 }
 
 // ClearValueFloats clears all "value_floats" edges to the ValueFloat entity.
-func (cu *CisUpdate) ClearValueFloats() *CisUpdate {
-	cu.mutation.ClearValueFloats()
-	return cu
+func (_u *CisUpdate) ClearValueFloats() *CisUpdate {
+	_u.mutation.ClearValueFloats()
+	return _u
 }
 
 // RemoveValueFloatIDs removes the "value_floats" edge to ValueFloat entities by IDs.
-func (cu *CisUpdate) RemoveValueFloatIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveValueFloatIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveValueFloatIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveValueFloatIDs(ids...)
+	return _u
 }
 
 // RemoveValueFloats removes "value_floats" edges to ValueFloat entities.
-func (cu *CisUpdate) RemoveValueFloats(v ...*ValueFloat) *CisUpdate {
+func (_u *CisUpdate) RemoveValueFloats(v ...*ValueFloat) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.RemoveValueFloatIDs(ids...)
+	return _u.RemoveValueFloatIDs(ids...)
 }
 
 // ClearValueDatetimes clears all "value_datetimes" edges to the ValueDatetime entity.
-func (cu *CisUpdate) ClearValueDatetimes() *CisUpdate {
-	cu.mutation.ClearValueDatetimes()
-	return cu
+func (_u *CisUpdate) ClearValueDatetimes() *CisUpdate {
+	_u.mutation.ClearValueDatetimes()
+	return _u
 }
 
 // RemoveValueDatetimeIDs removes the "value_datetimes" edge to ValueDatetime entities by IDs.
-func (cu *CisUpdate) RemoveValueDatetimeIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveValueDatetimeIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveValueDatetimeIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveValueDatetimeIDs(ids...)
+	return _u
 }
 
 // RemoveValueDatetimes removes "value_datetimes" edges to ValueDatetime entities.
-func (cu *CisUpdate) RemoveValueDatetimes(v ...*ValueDatetime) *CisUpdate {
+func (_u *CisUpdate) RemoveValueDatetimes(v ...*ValueDatetime) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cu.RemoveValueDatetimeIDs(ids...)
+	return _u.RemoveValueDatetimeIDs(ids...)
 }
 
 // ClearFirstRelations clears all "first_relations" edges to the CiRelation entity.
-func (cu *CisUpdate) ClearFirstRelations() *CisUpdate {
-	cu.mutation.ClearFirstRelations()
-	return cu
+func (_u *CisUpdate) ClearFirstRelations() *CisUpdate {
+	_u.mutation.ClearFirstRelations()
+	return _u
 }
 
 // RemoveFirstRelationIDs removes the "first_relations" edge to CiRelation entities by IDs.
-func (cu *CisUpdate) RemoveFirstRelationIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveFirstRelationIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveFirstRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveFirstRelationIDs(ids...)
+	return _u
 }
 
 // RemoveFirstRelations removes "first_relations" edges to CiRelation entities.
-func (cu *CisUpdate) RemoveFirstRelations(c ...*CiRelation) *CisUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdate) RemoveFirstRelations(v ...*CiRelation) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.RemoveFirstRelationIDs(ids...)
+	return _u.RemoveFirstRelationIDs(ids...)
 }
 
 // ClearSecondRelations clears all "second_relations" edges to the CiRelation entity.
-func (cu *CisUpdate) ClearSecondRelations() *CisUpdate {
-	cu.mutation.ClearSecondRelations()
-	return cu
+func (_u *CisUpdate) ClearSecondRelations() *CisUpdate {
+	_u.mutation.ClearSecondRelations()
+	return _u
 }
 
 // RemoveSecondRelationIDs removes the "second_relations" edge to CiRelation entities by IDs.
-func (cu *CisUpdate) RemoveSecondRelationIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveSecondRelationIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveSecondRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveSecondRelationIDs(ids...)
+	return _u
 }
 
 // RemoveSecondRelations removes "second_relations" edges to CiRelation entities.
-func (cu *CisUpdate) RemoveSecondRelations(c ...*CiRelation) *CisUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdate) RemoveSecondRelations(v ...*CiRelation) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.RemoveSecondRelationIDs(ids...)
+	return _u.RemoveSecondRelationIDs(ids...)
 }
 
 // ClearMoreRelations clears all "more_relations" edges to the CiRelation entity.
-func (cu *CisUpdate) ClearMoreRelations() *CisUpdate {
-	cu.mutation.ClearMoreRelations()
-	return cu
+func (_u *CisUpdate) ClearMoreRelations() *CisUpdate {
+	_u.mutation.ClearMoreRelations()
+	return _u
 }
 
 // RemoveMoreRelationIDs removes the "more_relations" edge to CiRelation entities by IDs.
-func (cu *CisUpdate) RemoveMoreRelationIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveMoreRelationIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveMoreRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveMoreRelationIDs(ids...)
+	return _u
 }
 
 // RemoveMoreRelations removes "more_relations" edges to CiRelation entities.
-func (cu *CisUpdate) RemoveMoreRelations(c ...*CiRelation) *CisUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdate) RemoveMoreRelations(v ...*CiRelation) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.RemoveMoreRelationIDs(ids...)
+	return _u.RemoveMoreRelationIDs(ids...)
 }
 
 // ClearImportRecords clears all "import_records" edges to the ImportRecord entity.
-func (cu *CisUpdate) ClearImportRecords() *CisUpdate {
-	cu.mutation.ClearImportRecords()
-	return cu
+func (_u *CisUpdate) ClearImportRecords() *CisUpdate {
+	_u.mutation.ClearImportRecords()
+	return _u
 }
 
 // RemoveImportRecordIDs removes the "import_records" edge to ImportRecord entities by IDs.
-func (cu *CisUpdate) RemoveImportRecordIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveImportRecordIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveImportRecordIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveImportRecordIDs(ids...)
+	return _u
 }
 
 // RemoveImportRecords removes "import_records" edges to ImportRecord entities.
-func (cu *CisUpdate) RemoveImportRecords(i ...*ImportRecord) *CisUpdate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *CisUpdate) RemoveImportRecords(v ...*ImportRecord) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.RemoveImportRecordIDs(ids...)
+	return _u.RemoveImportRecordIDs(ids...)
 }
 
 // ClearRecords clears all "records" edges to the CiRecords entity.
-func (cu *CisUpdate) ClearRecords() *CisUpdate {
-	cu.mutation.ClearRecords()
-	return cu
+func (_u *CisUpdate) ClearRecords() *CisUpdate {
+	_u.mutation.ClearRecords()
+	return _u
 }
 
 // RemoveRecordIDs removes the "records" edge to CiRecords entities by IDs.
-func (cu *CisUpdate) RemoveRecordIDs(ids ...uint64) *CisUpdate {
-	cu.mutation.RemoveRecordIDs(ids...)
-	return cu
+func (_u *CisUpdate) RemoveRecordIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveRecordIDs(ids...)
+	return _u
 }
 
 // RemoveRecords removes "records" edges to CiRecords entities.
-func (cu *CisUpdate) RemoveRecords(c ...*CiRecords) *CisUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdate) RemoveRecords(v ...*CiRecords) *CisUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cu.RemoveRecordIDs(ids...)
+	return _u.RemoveRecordIDs(ids...)
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (cu *CisUpdate) Save(ctx context.Context) (int, error) {
-	if err := cu.defaults(); err != nil {
+func (_u *CisUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, cu.sqlSave, cu.mutation, cu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cu *CisUpdate) SaveX(ctx context.Context) int {
-	affected, err := cu.Save(ctx)
+func (_u *CisUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -633,107 +633,107 @@ func (cu *CisUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (cu *CisUpdate) Exec(ctx context.Context) error {
-	_, err := cu.Save(ctx)
+func (_u *CisUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cu *CisUpdate) ExecX(ctx context.Context) {
-	if err := cu.Exec(ctx); err != nil {
+func (_u *CisUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cu *CisUpdate) defaults() error {
-	if _, ok := cu.mutation.UpdatedAt(); !ok {
+func (_u *CisUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if cis.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cis.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cis.UpdateDefaultUpdatedAt()
-		cu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cu *CisUpdate) check() error {
-	if cu.mutation.CiTypeCleared() && len(cu.mutation.CiTypeIDs()) > 0 {
+func (_u *CisUpdate) check() error {
+	if _u.mutation.CiTypeCleared() && len(_u.mutation.CiTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "Cis.ci_type"`)
 	}
 	return nil
 }
 
-func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := cu.check(); err != nil {
-		return n, err
+func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cis.Table, cis.Columns, sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64))
-	if ps := cu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cis.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(cis.FieldDeletedAt, field.TypeTime, value)
 	}
-	if cu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(cis.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := cu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cis.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cis.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cis.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cu.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(cis.FieldStatus, field.TypeUint32, value)
 	}
-	if value, ok := cu.mutation.AddedStatus(); ok {
+	if value, ok := _u.mutation.AddedStatus(); ok {
 		_spec.AddField(cis.FieldStatus, field.TypeUint32, value)
 	}
-	if cu.mutation.StatusCleared() {
+	if _u.mutation.StatusCleared() {
 		_spec.ClearField(cis.FieldStatus, field.TypeUint32)
 	}
-	if value, ok := cu.mutation.CreatedBy(); ok {
+	if value, ok := _u.mutation.CreatedBy(); ok {
 		_spec.SetField(cis.FieldCreatedBy, field.TypeUUID, value)
 	}
-	if cu.mutation.CreatedByCleared() {
+	if _u.mutation.CreatedByCleared() {
 		_spec.ClearField(cis.FieldCreatedBy, field.TypeUUID)
 	}
-	if value, ok := cu.mutation.Tags(); ok {
+	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(cis.FieldTags, field.TypeJSON, value)
 	}
-	if value, ok := cu.mutation.AppendedTags(); ok {
+	if value, ok := _u.mutation.AppendedTags(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cis.FieldTags, value)
 		})
 	}
-	if cu.mutation.TagsCleared() {
+	if _u.mutation.TagsCleared() {
 		_spec.ClearField(cis.FieldTags, field.TypeJSON)
 	}
-	if value, ok := cu.mutation.Metadata(); ok {
+	if value, ok := _u.mutation.Metadata(); ok {
 		_spec.SetField(cis.FieldMetadata, field.TypeJSON, value)
 	}
-	if cu.mutation.MetadataCleared() {
+	if _u.mutation.MetadataCleared() {
 		_spec.ClearField(cis.FieldMetadata, field.TypeJSON)
 	}
-	if value, ok := cu.mutation.CustomFields(); ok {
+	if value, ok := _u.mutation.CustomFields(); ok {
 		_spec.SetField(cis.FieldCustomFields, field.TypeJSON, value)
 	}
-	if cu.mutation.CustomFieldsCleared() {
+	if _u.mutation.CustomFieldsCleared() {
 		_spec.ClearField(cis.FieldCustomFields, field.TypeJSON)
 	}
-	if cu.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -746,7 +746,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -762,7 +762,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.ValueTextsCleared() {
+	if _u.mutation.ValueTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -775,23 +775,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedValueTextsIDs(); len(nodes) > 0 && !cu.mutation.ValueTextsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   cis.ValueTextsTable,
-			Columns: []string{cis.ValueTextsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := cu.mutation.ValueTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueTextsIDs(); len(nodes) > 0 && !_u.mutation.ValueTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -805,9 +789,25 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueTextsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cis.ValueTextsTable,
+			Columns: []string{cis.ValueTextsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.ValueIndexTextsCleared() {
+	if _u.mutation.ValueIndexTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -820,7 +820,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedValueIndexTextsIDs(); len(nodes) > 0 && !cu.mutation.ValueIndexTextsCleared() {
+	if nodes := _u.mutation.RemovedValueIndexTextsIDs(); len(nodes) > 0 && !_u.mutation.ValueIndexTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -836,7 +836,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -852,7 +852,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.ValueJsonsCleared() {
+	if _u.mutation.ValueJsonsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -865,23 +865,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedValueJsonsIDs(); len(nodes) > 0 && !cu.mutation.ValueJsonsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   cis.ValueJsonsTable,
-			Columns: []string{cis.ValueJsonsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := cu.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueJsonsIDs(); len(nodes) > 0 && !_u.mutation.ValueJsonsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -895,9 +879,25 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cis.ValueJsonsTable,
+			Columns: []string{cis.ValueJsonsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.ValueIntegersCleared() {
+	if _u.mutation.ValueIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -910,7 +910,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedValueIntegersIDs(); len(nodes) > 0 && !cu.mutation.ValueIntegersCleared() {
+	if nodes := _u.mutation.RemovedValueIntegersIDs(); len(nodes) > 0 && !_u.mutation.ValueIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -926,7 +926,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.ValueIntegersIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -942,7 +942,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.ValueFloatsCleared() {
+	if _u.mutation.ValueFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -955,23 +955,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedValueFloatsIDs(); len(nodes) > 0 && !cu.mutation.ValueFloatsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   cis.ValueFloatsTable,
-			Columns: []string{cis.ValueFloatsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := cu.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueFloatsIDs(); len(nodes) > 0 && !_u.mutation.ValueFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -985,9 +969,25 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cis.ValueFloatsTable,
+			Columns: []string{cis.ValueFloatsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.ValueDatetimesCleared() {
+	if _u.mutation.ValueDatetimesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1000,7 +1000,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedValueDatetimesIDs(); len(nodes) > 0 && !cu.mutation.ValueDatetimesCleared() {
+	if nodes := _u.mutation.RemovedValueDatetimesIDs(); len(nodes) > 0 && !_u.mutation.ValueDatetimesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1016,7 +1016,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1032,7 +1032,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.FirstRelationsCleared() {
+	if _u.mutation.FirstRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1045,23 +1045,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedFirstRelationsIDs(); len(nodes) > 0 && !cu.mutation.FirstRelationsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := cu.mutation.FirstRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedFirstRelationsIDs(); len(nodes) > 0 && !_u.mutation.FirstRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1075,9 +1059,25 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.FirstRelationsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cis.FirstRelationsTable,
+			Columns: []string{cis.FirstRelationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.SecondRelationsCleared() {
+	if _u.mutation.SecondRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1090,7 +1090,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedSecondRelationsIDs(); len(nodes) > 0 && !cu.mutation.SecondRelationsCleared() {
+	if nodes := _u.mutation.RemovedSecondRelationsIDs(); len(nodes) > 0 && !_u.mutation.SecondRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1106,7 +1106,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.SecondRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.SecondRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1122,7 +1122,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.MoreRelationsCleared() {
+	if _u.mutation.MoreRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1135,7 +1135,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedMoreRelationsIDs(); len(nodes) > 0 && !cu.mutation.MoreRelationsCleared() {
+	if nodes := _u.mutation.RemovedMoreRelationsIDs(); len(nodes) > 0 && !_u.mutation.MoreRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1151,7 +1151,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.MoreRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.MoreRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1167,7 +1167,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.ImportRecordsCleared() {
+	if _u.mutation.ImportRecordsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1180,7 +1180,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedImportRecordsIDs(); len(nodes) > 0 && !cu.mutation.ImportRecordsCleared() {
+	if nodes := _u.mutation.RemovedImportRecordsIDs(); len(nodes) > 0 && !_u.mutation.ImportRecordsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1196,7 +1196,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.ImportRecordsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ImportRecordsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1212,7 +1212,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cu.mutation.RecordsCleared() {
+	if _u.mutation.RecordsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1225,7 +1225,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RemovedRecordsIDs(); len(nodes) > 0 && !cu.mutation.RecordsCleared() {
+	if nodes := _u.mutation.RemovedRecordsIDs(); len(nodes) > 0 && !_u.mutation.RecordsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1241,7 +1241,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cu.mutation.RecordsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RecordsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1257,7 +1257,7 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, cu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cis.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1265,8 +1265,8 @@ func (cu *CisUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	cu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CisUpdateOne is the builder for updating a single Cis entity.
@@ -1278,603 +1278,603 @@ type CisUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cuo *CisUpdateOne) SetUpdatedAt(t time.Time) *CisUpdateOne {
-	cuo.mutation.SetUpdatedAt(t)
-	return cuo
+func (_u *CisUpdateOne) SetUpdatedAt(v time.Time) *CisUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (cuo *CisUpdateOne) SetDeletedAt(t time.Time) *CisUpdateOne {
-	cuo.mutation.SetDeletedAt(t)
-	return cuo
+func (_u *CisUpdateOne) SetDeletedAt(v time.Time) *CisUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (cuo *CisUpdateOne) SetNillableDeletedAt(t *time.Time) *CisUpdateOne {
-	if t != nil {
-		cuo.SetDeletedAt(*t)
+func (_u *CisUpdateOne) SetNillableDeletedAt(v *time.Time) *CisUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return cuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (cuo *CisUpdateOne) ClearDeletedAt() *CisUpdateOne {
-	cuo.mutation.ClearDeletedAt()
-	return cuo
+func (_u *CisUpdateOne) ClearDeletedAt() *CisUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cuo *CisUpdateOne) SetDepartmentID(u uint64) *CisUpdateOne {
-	cuo.mutation.ResetDepartmentID()
-	cuo.mutation.SetDepartmentID(u)
-	return cuo
+func (_u *CisUpdateOne) SetDepartmentID(v uint64) *CisUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cuo *CisUpdateOne) SetNillableDepartmentID(u *uint64) *CisUpdateOne {
-	if u != nil {
-		cuo.SetDepartmentID(*u)
+func (_u *CisUpdateOne) SetNillableDepartmentID(v *uint64) *CisUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cuo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cuo *CisUpdateOne) AddDepartmentID(u int64) *CisUpdateOne {
-	cuo.mutation.AddDepartmentID(u)
-	return cuo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CisUpdateOne) AddDepartmentID(v int64) *CisUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cuo *CisUpdateOne) ClearDepartmentID() *CisUpdateOne {
-	cuo.mutation.ClearDepartmentID()
-	return cuo
+func (_u *CisUpdateOne) ClearDepartmentID() *CisUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetTypeID sets the "type_id" field.
-func (cuo *CisUpdateOne) SetTypeID(u uint64) *CisUpdateOne {
-	cuo.mutation.SetTypeID(u)
-	return cuo
+func (_u *CisUpdateOne) SetTypeID(v uint64) *CisUpdateOne {
+	_u.mutation.SetTypeID(v)
+	return _u
 }
 
 // SetNillableTypeID sets the "type_id" field if the given value is not nil.
-func (cuo *CisUpdateOne) SetNillableTypeID(u *uint64) *CisUpdateOne {
-	if u != nil {
-		cuo.SetTypeID(*u)
+func (_u *CisUpdateOne) SetNillableTypeID(v *uint64) *CisUpdateOne {
+	if v != nil {
+		_u.SetTypeID(*v)
 	}
-	return cuo
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (cuo *CisUpdateOne) SetStatus(u uint32) *CisUpdateOne {
-	cuo.mutation.ResetStatus()
-	cuo.mutation.SetStatus(u)
-	return cuo
+func (_u *CisUpdateOne) SetStatus(v uint32) *CisUpdateOne {
+	_u.mutation.ResetStatus()
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cuo *CisUpdateOne) SetNillableStatus(u *uint32) *CisUpdateOne {
-	if u != nil {
-		cuo.SetStatus(*u)
+func (_u *CisUpdateOne) SetNillableStatus(v *uint32) *CisUpdateOne {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return cuo
+	return _u
 }
 
-// AddStatus adds u to the "status" field.
-func (cuo *CisUpdateOne) AddStatus(u int32) *CisUpdateOne {
-	cuo.mutation.AddStatus(u)
-	return cuo
+// AddStatus adds value to the "status" field.
+func (_u *CisUpdateOne) AddStatus(v int32) *CisUpdateOne {
+	_u.mutation.AddStatus(v)
+	return _u
 }
 
 // ClearStatus clears the value of the "status" field.
-func (cuo *CisUpdateOne) ClearStatus() *CisUpdateOne {
-	cuo.mutation.ClearStatus()
-	return cuo
+func (_u *CisUpdateOne) ClearStatus() *CisUpdateOne {
+	_u.mutation.ClearStatus()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (cuo *CisUpdateOne) SetCreatedBy(u uuid.UUID) *CisUpdateOne {
-	cuo.mutation.SetCreatedBy(u)
-	return cuo
+func (_u *CisUpdateOne) SetCreatedBy(v uuid.UUID) *CisUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (cuo *CisUpdateOne) SetNillableCreatedBy(u *uuid.UUID) *CisUpdateOne {
-	if u != nil {
-		cuo.SetCreatedBy(*u)
+func (_u *CisUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CisUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return cuo
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (cuo *CisUpdateOne) ClearCreatedBy() *CisUpdateOne {
-	cuo.mutation.ClearCreatedBy()
-	return cuo
+func (_u *CisUpdateOne) ClearCreatedBy() *CisUpdateOne {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetTags sets the "tags" field.
-func (cuo *CisUpdateOne) SetTags(st []schema.CiTag) *CisUpdateOne {
-	cuo.mutation.SetTags(st)
-	return cuo
+func (_u *CisUpdateOne) SetTags(v []schema.CiTag) *CisUpdateOne {
+	_u.mutation.SetTags(v)
+	return _u
 }
 
-// AppendTags appends st to the "tags" field.
-func (cuo *CisUpdateOne) AppendTags(st []schema.CiTag) *CisUpdateOne {
-	cuo.mutation.AppendTags(st)
-	return cuo
+// AppendTags appends value to the "tags" field.
+func (_u *CisUpdateOne) AppendTags(v []schema.CiTag) *CisUpdateOne {
+	_u.mutation.AppendTags(v)
+	return _u
 }
 
 // ClearTags clears the value of the "tags" field.
-func (cuo *CisUpdateOne) ClearTags() *CisUpdateOne {
-	cuo.mutation.ClearTags()
-	return cuo
+func (_u *CisUpdateOne) ClearTags() *CisUpdateOne {
+	_u.mutation.ClearTags()
+	return _u
 }
 
 // SetMetadata sets the "metadata" field.
-func (cuo *CisUpdateOne) SetMetadata(m map[string]interface{}) *CisUpdateOne {
-	cuo.mutation.SetMetadata(m)
-	return cuo
+func (_u *CisUpdateOne) SetMetadata(v map[string]interface{}) *CisUpdateOne {
+	_u.mutation.SetMetadata(v)
+	return _u
 }
 
 // ClearMetadata clears the value of the "metadata" field.
-func (cuo *CisUpdateOne) ClearMetadata() *CisUpdateOne {
-	cuo.mutation.ClearMetadata()
-	return cuo
+func (_u *CisUpdateOne) ClearMetadata() *CisUpdateOne {
+	_u.mutation.ClearMetadata()
+	return _u
 }
 
 // SetCustomFields sets the "custom_fields" field.
-func (cuo *CisUpdateOne) SetCustomFields(m map[string]interface{}) *CisUpdateOne {
-	cuo.mutation.SetCustomFields(m)
-	return cuo
+func (_u *CisUpdateOne) SetCustomFields(v map[string]interface{}) *CisUpdateOne {
+	_u.mutation.SetCustomFields(v)
+	return _u
 }
 
 // ClearCustomFields clears the value of the "custom_fields" field.
-func (cuo *CisUpdateOne) ClearCustomFields() *CisUpdateOne {
-	cuo.mutation.ClearCustomFields()
-	return cuo
+func (_u *CisUpdateOne) ClearCustomFields() *CisUpdateOne {
+	_u.mutation.ClearCustomFields()
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type" edge to the CiType entity by ID.
-func (cuo *CisUpdateOne) SetCiTypeID(id uint64) *CisUpdateOne {
-	cuo.mutation.SetCiTypeID(id)
-	return cuo
+func (_u *CisUpdateOne) SetCiTypeID(id uint64) *CisUpdateOne {
+	_u.mutation.SetCiTypeID(id)
+	return _u
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (cuo *CisUpdateOne) SetCiType(c *CiType) *CisUpdateOne {
-	return cuo.SetCiTypeID(c.ID)
+func (_u *CisUpdateOne) SetCiType(v *CiType) *CisUpdateOne {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // AddValueTextIDs adds the "value_texts" edge to the ValueText entity by IDs.
-func (cuo *CisUpdateOne) AddValueTextIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddValueTextIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddValueTextIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddValueTextIDs(ids...)
+	return _u
 }
 
 // AddValueTexts adds the "value_texts" edges to the ValueText entity.
-func (cuo *CisUpdateOne) AddValueTexts(v ...*ValueText) *CisUpdateOne {
+func (_u *CisUpdateOne) AddValueTexts(v ...*ValueText) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.AddValueTextIDs(ids...)
+	return _u.AddValueTextIDs(ids...)
 }
 
 // AddValueIndexTextIDs adds the "value_index_texts" edge to the ValueIndexText entity by IDs.
-func (cuo *CisUpdateOne) AddValueIndexTextIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddValueIndexTextIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddValueIndexTextIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddValueIndexTextIDs(ids...)
+	return _u
 }
 
 // AddValueIndexTexts adds the "value_index_texts" edges to the ValueIndexText entity.
-func (cuo *CisUpdateOne) AddValueIndexTexts(v ...*ValueIndexText) *CisUpdateOne {
+func (_u *CisUpdateOne) AddValueIndexTexts(v ...*ValueIndexText) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.AddValueIndexTextIDs(ids...)
+	return _u.AddValueIndexTextIDs(ids...)
 }
 
 // AddValueJSONIDs adds the "value_jsons" edge to the ValueJSON entity by IDs.
-func (cuo *CisUpdateOne) AddValueJSONIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddValueJSONIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddValueJSONIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddValueJSONIDs(ids...)
+	return _u
 }
 
 // AddValueJsons adds the "value_jsons" edges to the ValueJSON entity.
-func (cuo *CisUpdateOne) AddValueJsons(v ...*ValueJSON) *CisUpdateOne {
+func (_u *CisUpdateOne) AddValueJsons(v ...*ValueJSON) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.AddValueJSONIDs(ids...)
+	return _u.AddValueJSONIDs(ids...)
 }
 
 // AddValueIntegerIDs adds the "value_integers" edge to the ValueInteger entity by IDs.
-func (cuo *CisUpdateOne) AddValueIntegerIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddValueIntegerIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddValueIntegerIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddValueIntegerIDs(ids...)
+	return _u
 }
 
 // AddValueIntegers adds the "value_integers" edges to the ValueInteger entity.
-func (cuo *CisUpdateOne) AddValueIntegers(v ...*ValueInteger) *CisUpdateOne {
+func (_u *CisUpdateOne) AddValueIntegers(v ...*ValueInteger) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.AddValueIntegerIDs(ids...)
+	return _u.AddValueIntegerIDs(ids...)
 }
 
 // AddValueFloatIDs adds the "value_floats" edge to the ValueFloat entity by IDs.
-func (cuo *CisUpdateOne) AddValueFloatIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddValueFloatIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddValueFloatIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddValueFloatIDs(ids...)
+	return _u
 }
 
 // AddValueFloats adds the "value_floats" edges to the ValueFloat entity.
-func (cuo *CisUpdateOne) AddValueFloats(v ...*ValueFloat) *CisUpdateOne {
+func (_u *CisUpdateOne) AddValueFloats(v ...*ValueFloat) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.AddValueFloatIDs(ids...)
+	return _u.AddValueFloatIDs(ids...)
 }
 
 // AddValueDatetimeIDs adds the "value_datetimes" edge to the ValueDatetime entity by IDs.
-func (cuo *CisUpdateOne) AddValueDatetimeIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddValueDatetimeIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddValueDatetimeIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddValueDatetimeIDs(ids...)
+	return _u
 }
 
 // AddValueDatetimes adds the "value_datetimes" edges to the ValueDatetime entity.
-func (cuo *CisUpdateOne) AddValueDatetimes(v ...*ValueDatetime) *CisUpdateOne {
+func (_u *CisUpdateOne) AddValueDatetimes(v ...*ValueDatetime) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.AddValueDatetimeIDs(ids...)
+	return _u.AddValueDatetimeIDs(ids...)
 }
 
 // AddFirstRelationIDs adds the "first_relations" edge to the CiRelation entity by IDs.
-func (cuo *CisUpdateOne) AddFirstRelationIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddFirstRelationIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddFirstRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddFirstRelationIDs(ids...)
+	return _u
 }
 
 // AddFirstRelations adds the "first_relations" edges to the CiRelation entity.
-func (cuo *CisUpdateOne) AddFirstRelations(c ...*CiRelation) *CisUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdateOne) AddFirstRelations(v ...*CiRelation) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.AddFirstRelationIDs(ids...)
+	return _u.AddFirstRelationIDs(ids...)
 }
 
 // AddSecondRelationIDs adds the "second_relations" edge to the CiRelation entity by IDs.
-func (cuo *CisUpdateOne) AddSecondRelationIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddSecondRelationIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddSecondRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddSecondRelationIDs(ids...)
+	return _u
 }
 
 // AddSecondRelations adds the "second_relations" edges to the CiRelation entity.
-func (cuo *CisUpdateOne) AddSecondRelations(c ...*CiRelation) *CisUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdateOne) AddSecondRelations(v ...*CiRelation) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.AddSecondRelationIDs(ids...)
+	return _u.AddSecondRelationIDs(ids...)
 }
 
 // AddMoreRelationIDs adds the "more_relations" edge to the CiRelation entity by IDs.
-func (cuo *CisUpdateOne) AddMoreRelationIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddMoreRelationIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddMoreRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddMoreRelationIDs(ids...)
+	return _u
 }
 
 // AddMoreRelations adds the "more_relations" edges to the CiRelation entity.
-func (cuo *CisUpdateOne) AddMoreRelations(c ...*CiRelation) *CisUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdateOne) AddMoreRelations(v ...*CiRelation) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.AddMoreRelationIDs(ids...)
+	return _u.AddMoreRelationIDs(ids...)
 }
 
 // AddImportRecordIDs adds the "import_records" edge to the ImportRecord entity by IDs.
-func (cuo *CisUpdateOne) AddImportRecordIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddImportRecordIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddImportRecordIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddImportRecordIDs(ids...)
+	return _u
 }
 
 // AddImportRecords adds the "import_records" edges to the ImportRecord entity.
-func (cuo *CisUpdateOne) AddImportRecords(i ...*ImportRecord) *CisUpdateOne {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *CisUpdateOne) AddImportRecords(v ...*ImportRecord) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.AddImportRecordIDs(ids...)
+	return _u.AddImportRecordIDs(ids...)
 }
 
 // AddRecordIDs adds the "records" edge to the CiRecords entity by IDs.
-func (cuo *CisUpdateOne) AddRecordIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.AddRecordIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) AddRecordIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddRecordIDs(ids...)
+	return _u
 }
 
 // AddRecords adds the "records" edges to the CiRecords entity.
-func (cuo *CisUpdateOne) AddRecords(c ...*CiRecords) *CisUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdateOne) AddRecords(v ...*CiRecords) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.AddRecordIDs(ids...)
+	return _u.AddRecordIDs(ids...)
 }
 
 // Mutation returns the CisMutation object of the builder.
-func (cuo *CisUpdateOne) Mutation() *CisMutation {
-	return cuo.mutation
+func (_u *CisUpdateOne) Mutation() *CisMutation {
+	return _u.mutation
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (cuo *CisUpdateOne) ClearCiType() *CisUpdateOne {
-	cuo.mutation.ClearCiType()
-	return cuo
+func (_u *CisUpdateOne) ClearCiType() *CisUpdateOne {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // ClearValueTexts clears all "value_texts" edges to the ValueText entity.
-func (cuo *CisUpdateOne) ClearValueTexts() *CisUpdateOne {
-	cuo.mutation.ClearValueTexts()
-	return cuo
+func (_u *CisUpdateOne) ClearValueTexts() *CisUpdateOne {
+	_u.mutation.ClearValueTexts()
+	return _u
 }
 
 // RemoveValueTextIDs removes the "value_texts" edge to ValueText entities by IDs.
-func (cuo *CisUpdateOne) RemoveValueTextIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveValueTextIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveValueTextIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveValueTextIDs(ids...)
+	return _u
 }
 
 // RemoveValueTexts removes "value_texts" edges to ValueText entities.
-func (cuo *CisUpdateOne) RemoveValueTexts(v ...*ValueText) *CisUpdateOne {
+func (_u *CisUpdateOne) RemoveValueTexts(v ...*ValueText) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.RemoveValueTextIDs(ids...)
+	return _u.RemoveValueTextIDs(ids...)
 }
 
 // ClearValueIndexTexts clears all "value_index_texts" edges to the ValueIndexText entity.
-func (cuo *CisUpdateOne) ClearValueIndexTexts() *CisUpdateOne {
-	cuo.mutation.ClearValueIndexTexts()
-	return cuo
+func (_u *CisUpdateOne) ClearValueIndexTexts() *CisUpdateOne {
+	_u.mutation.ClearValueIndexTexts()
+	return _u
 }
 
 // RemoveValueIndexTextIDs removes the "value_index_texts" edge to ValueIndexText entities by IDs.
-func (cuo *CisUpdateOne) RemoveValueIndexTextIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveValueIndexTextIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveValueIndexTextIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveValueIndexTextIDs(ids...)
+	return _u
 }
 
 // RemoveValueIndexTexts removes "value_index_texts" edges to ValueIndexText entities.
-func (cuo *CisUpdateOne) RemoveValueIndexTexts(v ...*ValueIndexText) *CisUpdateOne {
+func (_u *CisUpdateOne) RemoveValueIndexTexts(v ...*ValueIndexText) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.RemoveValueIndexTextIDs(ids...)
+	return _u.RemoveValueIndexTextIDs(ids...)
 }
 
 // ClearValueJsons clears all "value_jsons" edges to the ValueJSON entity.
-func (cuo *CisUpdateOne) ClearValueJsons() *CisUpdateOne {
-	cuo.mutation.ClearValueJsons()
-	return cuo
+func (_u *CisUpdateOne) ClearValueJsons() *CisUpdateOne {
+	_u.mutation.ClearValueJsons()
+	return _u
 }
 
 // RemoveValueJSONIDs removes the "value_jsons" edge to ValueJSON entities by IDs.
-func (cuo *CisUpdateOne) RemoveValueJSONIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveValueJSONIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveValueJSONIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveValueJSONIDs(ids...)
+	return _u
 }
 
 // RemoveValueJsons removes "value_jsons" edges to ValueJSON entities.
-func (cuo *CisUpdateOne) RemoveValueJsons(v ...*ValueJSON) *CisUpdateOne {
+func (_u *CisUpdateOne) RemoveValueJsons(v ...*ValueJSON) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.RemoveValueJSONIDs(ids...)
+	return _u.RemoveValueJSONIDs(ids...)
 }
 
 // ClearValueIntegers clears all "value_integers" edges to the ValueInteger entity.
-func (cuo *CisUpdateOne) ClearValueIntegers() *CisUpdateOne {
-	cuo.mutation.ClearValueIntegers()
-	return cuo
+func (_u *CisUpdateOne) ClearValueIntegers() *CisUpdateOne {
+	_u.mutation.ClearValueIntegers()
+	return _u
 }
 
 // RemoveValueIntegerIDs removes the "value_integers" edge to ValueInteger entities by IDs.
-func (cuo *CisUpdateOne) RemoveValueIntegerIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveValueIntegerIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveValueIntegerIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveValueIntegerIDs(ids...)
+	return _u
 }
 
 // RemoveValueIntegers removes "value_integers" edges to ValueInteger entities.
-func (cuo *CisUpdateOne) RemoveValueIntegers(v ...*ValueInteger) *CisUpdateOne {
+func (_u *CisUpdateOne) RemoveValueIntegers(v ...*ValueInteger) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.RemoveValueIntegerIDs(ids...)
+	return _u.RemoveValueIntegerIDs(ids...)
 }
 
 // ClearValueFloats clears all "value_floats" edges to the ValueFloat entity.
-func (cuo *CisUpdateOne) ClearValueFloats() *CisUpdateOne {
-	cuo.mutation.ClearValueFloats()
-	return cuo
+func (_u *CisUpdateOne) ClearValueFloats() *CisUpdateOne {
+	_u.mutation.ClearValueFloats()
+	return _u
 }
 
 // RemoveValueFloatIDs removes the "value_floats" edge to ValueFloat entities by IDs.
-func (cuo *CisUpdateOne) RemoveValueFloatIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveValueFloatIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveValueFloatIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveValueFloatIDs(ids...)
+	return _u
 }
 
 // RemoveValueFloats removes "value_floats" edges to ValueFloat entities.
-func (cuo *CisUpdateOne) RemoveValueFloats(v ...*ValueFloat) *CisUpdateOne {
+func (_u *CisUpdateOne) RemoveValueFloats(v ...*ValueFloat) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.RemoveValueFloatIDs(ids...)
+	return _u.RemoveValueFloatIDs(ids...)
 }
 
 // ClearValueDatetimes clears all "value_datetimes" edges to the ValueDatetime entity.
-func (cuo *CisUpdateOne) ClearValueDatetimes() *CisUpdateOne {
-	cuo.mutation.ClearValueDatetimes()
-	return cuo
+func (_u *CisUpdateOne) ClearValueDatetimes() *CisUpdateOne {
+	_u.mutation.ClearValueDatetimes()
+	return _u
 }
 
 // RemoveValueDatetimeIDs removes the "value_datetimes" edge to ValueDatetime entities by IDs.
-func (cuo *CisUpdateOne) RemoveValueDatetimeIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveValueDatetimeIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveValueDatetimeIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveValueDatetimeIDs(ids...)
+	return _u
 }
 
 // RemoveValueDatetimes removes "value_datetimes" edges to ValueDatetime entities.
-func (cuo *CisUpdateOne) RemoveValueDatetimes(v ...*ValueDatetime) *CisUpdateOne {
+func (_u *CisUpdateOne) RemoveValueDatetimes(v ...*ValueDatetime) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cuo.RemoveValueDatetimeIDs(ids...)
+	return _u.RemoveValueDatetimeIDs(ids...)
 }
 
 // ClearFirstRelations clears all "first_relations" edges to the CiRelation entity.
-func (cuo *CisUpdateOne) ClearFirstRelations() *CisUpdateOne {
-	cuo.mutation.ClearFirstRelations()
-	return cuo
+func (_u *CisUpdateOne) ClearFirstRelations() *CisUpdateOne {
+	_u.mutation.ClearFirstRelations()
+	return _u
 }
 
 // RemoveFirstRelationIDs removes the "first_relations" edge to CiRelation entities by IDs.
-func (cuo *CisUpdateOne) RemoveFirstRelationIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveFirstRelationIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveFirstRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveFirstRelationIDs(ids...)
+	return _u
 }
 
 // RemoveFirstRelations removes "first_relations" edges to CiRelation entities.
-func (cuo *CisUpdateOne) RemoveFirstRelations(c ...*CiRelation) *CisUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdateOne) RemoveFirstRelations(v ...*CiRelation) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.RemoveFirstRelationIDs(ids...)
+	return _u.RemoveFirstRelationIDs(ids...)
 }
 
 // ClearSecondRelations clears all "second_relations" edges to the CiRelation entity.
-func (cuo *CisUpdateOne) ClearSecondRelations() *CisUpdateOne {
-	cuo.mutation.ClearSecondRelations()
-	return cuo
+func (_u *CisUpdateOne) ClearSecondRelations() *CisUpdateOne {
+	_u.mutation.ClearSecondRelations()
+	return _u
 }
 
 // RemoveSecondRelationIDs removes the "second_relations" edge to CiRelation entities by IDs.
-func (cuo *CisUpdateOne) RemoveSecondRelationIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveSecondRelationIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveSecondRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveSecondRelationIDs(ids...)
+	return _u
 }
 
 // RemoveSecondRelations removes "second_relations" edges to CiRelation entities.
-func (cuo *CisUpdateOne) RemoveSecondRelations(c ...*CiRelation) *CisUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdateOne) RemoveSecondRelations(v ...*CiRelation) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.RemoveSecondRelationIDs(ids...)
+	return _u.RemoveSecondRelationIDs(ids...)
 }
 
 // ClearMoreRelations clears all "more_relations" edges to the CiRelation entity.
-func (cuo *CisUpdateOne) ClearMoreRelations() *CisUpdateOne {
-	cuo.mutation.ClearMoreRelations()
-	return cuo
+func (_u *CisUpdateOne) ClearMoreRelations() *CisUpdateOne {
+	_u.mutation.ClearMoreRelations()
+	return _u
 }
 
 // RemoveMoreRelationIDs removes the "more_relations" edge to CiRelation entities by IDs.
-func (cuo *CisUpdateOne) RemoveMoreRelationIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveMoreRelationIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveMoreRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveMoreRelationIDs(ids...)
+	return _u
 }
 
 // RemoveMoreRelations removes "more_relations" edges to CiRelation entities.
-func (cuo *CisUpdateOne) RemoveMoreRelations(c ...*CiRelation) *CisUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdateOne) RemoveMoreRelations(v ...*CiRelation) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.RemoveMoreRelationIDs(ids...)
+	return _u.RemoveMoreRelationIDs(ids...)
 }
 
 // ClearImportRecords clears all "import_records" edges to the ImportRecord entity.
-func (cuo *CisUpdateOne) ClearImportRecords() *CisUpdateOne {
-	cuo.mutation.ClearImportRecords()
-	return cuo
+func (_u *CisUpdateOne) ClearImportRecords() *CisUpdateOne {
+	_u.mutation.ClearImportRecords()
+	return _u
 }
 
 // RemoveImportRecordIDs removes the "import_records" edge to ImportRecord entities by IDs.
-func (cuo *CisUpdateOne) RemoveImportRecordIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveImportRecordIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveImportRecordIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveImportRecordIDs(ids...)
+	return _u
 }
 
 // RemoveImportRecords removes "import_records" edges to ImportRecord entities.
-func (cuo *CisUpdateOne) RemoveImportRecords(i ...*ImportRecord) *CisUpdateOne {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *CisUpdateOne) RemoveImportRecords(v ...*ImportRecord) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.RemoveImportRecordIDs(ids...)
+	return _u.RemoveImportRecordIDs(ids...)
 }
 
 // ClearRecords clears all "records" edges to the CiRecords entity.
-func (cuo *CisUpdateOne) ClearRecords() *CisUpdateOne {
-	cuo.mutation.ClearRecords()
-	return cuo
+func (_u *CisUpdateOne) ClearRecords() *CisUpdateOne {
+	_u.mutation.ClearRecords()
+	return _u
 }
 
 // RemoveRecordIDs removes the "records" edge to CiRecords entities by IDs.
-func (cuo *CisUpdateOne) RemoveRecordIDs(ids ...uint64) *CisUpdateOne {
-	cuo.mutation.RemoveRecordIDs(ids...)
-	return cuo
+func (_u *CisUpdateOne) RemoveRecordIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveRecordIDs(ids...)
+	return _u
 }
 
 // RemoveRecords removes "records" edges to CiRecords entities.
-func (cuo *CisUpdateOne) RemoveRecords(c ...*CiRecords) *CisUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *CisUpdateOne) RemoveRecords(v ...*CiRecords) *CisUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cuo.RemoveRecordIDs(ids...)
+	return _u.RemoveRecordIDs(ids...)
 }
 
 // Where appends a list predicates to the CisUpdate builder.
-func (cuo *CisUpdateOne) Where(ps ...predicate.Cis) *CisUpdateOne {
-	cuo.mutation.Where(ps...)
-	return cuo
+func (_u *CisUpdateOne) Where(ps ...predicate.Cis) *CisUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (cuo *CisUpdateOne) Select(field string, fields ...string) *CisUpdateOne {
-	cuo.fields = append([]string{field}, fields...)
-	return cuo
+func (_u *CisUpdateOne) Select(field string, fields ...string) *CisUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated Cis entity.
-func (cuo *CisUpdateOne) Save(ctx context.Context) (*Cis, error) {
-	if err := cuo.defaults(); err != nil {
+func (_u *CisUpdateOne) Save(ctx context.Context) (*Cis, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, cuo.sqlSave, cuo.mutation, cuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cuo *CisUpdateOne) SaveX(ctx context.Context) *Cis {
-	node, err := cuo.Save(ctx)
+func (_u *CisUpdateOne) SaveX(ctx context.Context) *Cis {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1882,49 +1882,49 @@ func (cuo *CisUpdateOne) SaveX(ctx context.Context) *Cis {
 }
 
 // Exec executes the query on the entity.
-func (cuo *CisUpdateOne) Exec(ctx context.Context) error {
-	_, err := cuo.Save(ctx)
+func (_u *CisUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cuo *CisUpdateOne) ExecX(ctx context.Context) {
-	if err := cuo.Exec(ctx); err != nil {
+func (_u *CisUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cuo *CisUpdateOne) defaults() error {
-	if _, ok := cuo.mutation.UpdatedAt(); !ok {
+func (_u *CisUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if cis.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cis.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cis.UpdateDefaultUpdatedAt()
-		cuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cuo *CisUpdateOne) check() error {
-	if cuo.mutation.CiTypeCleared() && len(cuo.mutation.CiTypeIDs()) > 0 {
+func (_u *CisUpdateOne) check() error {
+	if _u.mutation.CiTypeCleared() && len(_u.mutation.CiTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "Cis.ci_type"`)
 	}
 	return nil
 }
 
-func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
-	if err := cuo.check(); err != nil {
+func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cis.Table, cis.Columns, sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64))
-	id, ok := cuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Cis.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := cuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cis.FieldID)
 		for _, f := range fields {
@@ -1936,70 +1936,70 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 			}
 		}
 	}
-	if ps := cuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cis.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(cis.FieldDeletedAt, field.TypeTime, value)
 	}
-	if cuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(cis.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := cuo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cis.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cuo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cis.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cuo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cis.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cuo.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(cis.FieldStatus, field.TypeUint32, value)
 	}
-	if value, ok := cuo.mutation.AddedStatus(); ok {
+	if value, ok := _u.mutation.AddedStatus(); ok {
 		_spec.AddField(cis.FieldStatus, field.TypeUint32, value)
 	}
-	if cuo.mutation.StatusCleared() {
+	if _u.mutation.StatusCleared() {
 		_spec.ClearField(cis.FieldStatus, field.TypeUint32)
 	}
-	if value, ok := cuo.mutation.CreatedBy(); ok {
+	if value, ok := _u.mutation.CreatedBy(); ok {
 		_spec.SetField(cis.FieldCreatedBy, field.TypeUUID, value)
 	}
-	if cuo.mutation.CreatedByCleared() {
+	if _u.mutation.CreatedByCleared() {
 		_spec.ClearField(cis.FieldCreatedBy, field.TypeUUID)
 	}
-	if value, ok := cuo.mutation.Tags(); ok {
+	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(cis.FieldTags, field.TypeJSON, value)
 	}
-	if value, ok := cuo.mutation.AppendedTags(); ok {
+	if value, ok := _u.mutation.AppendedTags(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cis.FieldTags, value)
 		})
 	}
-	if cuo.mutation.TagsCleared() {
+	if _u.mutation.TagsCleared() {
 		_spec.ClearField(cis.FieldTags, field.TypeJSON)
 	}
-	if value, ok := cuo.mutation.Metadata(); ok {
+	if value, ok := _u.mutation.Metadata(); ok {
 		_spec.SetField(cis.FieldMetadata, field.TypeJSON, value)
 	}
-	if cuo.mutation.MetadataCleared() {
+	if _u.mutation.MetadataCleared() {
 		_spec.ClearField(cis.FieldMetadata, field.TypeJSON)
 	}
-	if value, ok := cuo.mutation.CustomFields(); ok {
+	if value, ok := _u.mutation.CustomFields(); ok {
 		_spec.SetField(cis.FieldCustomFields, field.TypeJSON, value)
 	}
-	if cuo.mutation.CustomFieldsCleared() {
+	if _u.mutation.CustomFieldsCleared() {
 		_spec.ClearField(cis.FieldCustomFields, field.TypeJSON)
 	}
-	if cuo.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -2012,7 +2012,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -2028,7 +2028,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.ValueTextsCleared() {
+	if _u.mutation.ValueTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2041,23 +2041,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedValueTextsIDs(); len(nodes) > 0 && !cuo.mutation.ValueTextsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   cis.ValueTextsTable,
-			Columns: []string{cis.ValueTextsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := cuo.mutation.ValueTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueTextsIDs(); len(nodes) > 0 && !_u.mutation.ValueTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2071,9 +2055,25 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueTextsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cis.ValueTextsTable,
+			Columns: []string{cis.ValueTextsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.ValueIndexTextsCleared() {
+	if _u.mutation.ValueIndexTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2086,7 +2086,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedValueIndexTextsIDs(); len(nodes) > 0 && !cuo.mutation.ValueIndexTextsCleared() {
+	if nodes := _u.mutation.RemovedValueIndexTextsIDs(); len(nodes) > 0 && !_u.mutation.ValueIndexTextsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2102,7 +2102,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2118,7 +2118,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.ValueJsonsCleared() {
+	if _u.mutation.ValueJsonsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2131,23 +2131,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedValueJsonsIDs(); len(nodes) > 0 && !cuo.mutation.ValueJsonsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   cis.ValueJsonsTable,
-			Columns: []string{cis.ValueJsonsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := cuo.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueJsonsIDs(); len(nodes) > 0 && !_u.mutation.ValueJsonsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2161,9 +2145,25 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cis.ValueJsonsTable,
+			Columns: []string{cis.ValueJsonsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.ValueIntegersCleared() {
+	if _u.mutation.ValueIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2176,7 +2176,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedValueIntegersIDs(); len(nodes) > 0 && !cuo.mutation.ValueIntegersCleared() {
+	if nodes := _u.mutation.RemovedValueIntegersIDs(); len(nodes) > 0 && !_u.mutation.ValueIntegersCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2192,7 +2192,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.ValueIntegersIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2208,7 +2208,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.ValueFloatsCleared() {
+	if _u.mutation.ValueFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2221,23 +2221,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedValueFloatsIDs(); len(nodes) > 0 && !cuo.mutation.ValueFloatsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   cis.ValueFloatsTable,
-			Columns: []string{cis.ValueFloatsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := cuo.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedValueFloatsIDs(); len(nodes) > 0 && !_u.mutation.ValueFloatsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2251,9 +2235,25 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cis.ValueFloatsTable,
+			Columns: []string{cis.ValueFloatsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.ValueDatetimesCleared() {
+	if _u.mutation.ValueDatetimesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2266,7 +2266,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedValueDatetimesIDs(); len(nodes) > 0 && !cuo.mutation.ValueDatetimesCleared() {
+	if nodes := _u.mutation.RemovedValueDatetimesIDs(); len(nodes) > 0 && !_u.mutation.ValueDatetimesCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2282,7 +2282,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2298,7 +2298,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.FirstRelationsCleared() {
+	if _u.mutation.FirstRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2311,23 +2311,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedFirstRelationsIDs(); len(nodes) > 0 && !cuo.mutation.FirstRelationsCleared() {
-		edge := &sqlgraph.EdgeSpec{
-			Rel:     sqlgraph.O2M,
-			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
-			Bidi:    false,
-			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
-			},
-		}
-		for _, k := range nodes {
-			edge.Target.Nodes = append(edge.Target.Nodes, k)
-		}
-		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
-	}
-	if nodes := cuo.mutation.FirstRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RemovedFirstRelationsIDs(); len(nodes) > 0 && !_u.mutation.FirstRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2341,9 +2325,25 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		for _, k := range nodes {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.FirstRelationsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cis.FirstRelationsTable,
+			Columns: []string{cis.FirstRelationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.SecondRelationsCleared() {
+	if _u.mutation.SecondRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2356,7 +2356,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedSecondRelationsIDs(); len(nodes) > 0 && !cuo.mutation.SecondRelationsCleared() {
+	if nodes := _u.mutation.RemovedSecondRelationsIDs(); len(nodes) > 0 && !_u.mutation.SecondRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2372,7 +2372,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.SecondRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.SecondRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2388,7 +2388,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.MoreRelationsCleared() {
+	if _u.mutation.MoreRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2401,7 +2401,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedMoreRelationsIDs(); len(nodes) > 0 && !cuo.mutation.MoreRelationsCleared() {
+	if nodes := _u.mutation.RemovedMoreRelationsIDs(); len(nodes) > 0 && !_u.mutation.MoreRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2417,7 +2417,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.MoreRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.MoreRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2433,7 +2433,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.ImportRecordsCleared() {
+	if _u.mutation.ImportRecordsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2446,7 +2446,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedImportRecordsIDs(); len(nodes) > 0 && !cuo.mutation.ImportRecordsCleared() {
+	if nodes := _u.mutation.RemovedImportRecordsIDs(); len(nodes) > 0 && !_u.mutation.ImportRecordsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2462,7 +2462,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.ImportRecordsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ImportRecordsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2478,7 +2478,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cuo.mutation.RecordsCleared() {
+	if _u.mutation.RecordsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2491,7 +2491,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RemovedRecordsIDs(); len(nodes) > 0 && !cuo.mutation.RecordsCleared() {
+	if nodes := _u.mutation.RemovedRecordsIDs(); len(nodes) > 0 && !_u.mutation.RecordsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2507,7 +2507,7 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cuo.mutation.RecordsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RecordsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -2523,10 +2523,10 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &Cis{config: cuo.config}
+	_node = &Cis{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, cuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cis.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -2534,6 +2534,6 @@ func (cuo *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		return nil, err
 	}
-	cuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

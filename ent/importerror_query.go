@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ImportErrorQuery is the builder for querying ImportError entities.
@@ -32,44 +32,44 @@ type ImportErrorQuery struct {
 }
 
 // Where adds a new predicate for the ImportErrorQuery builder.
-func (ieq *ImportErrorQuery) Where(ps ...predicate.ImportError) *ImportErrorQuery {
-	ieq.predicates = append(ieq.predicates, ps...)
-	return ieq
+func (_q *ImportErrorQuery) Where(ps ...predicate.ImportError) *ImportErrorQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (ieq *ImportErrorQuery) Limit(limit int) *ImportErrorQuery {
-	ieq.ctx.Limit = &limit
-	return ieq
+func (_q *ImportErrorQuery) Limit(limit int) *ImportErrorQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (ieq *ImportErrorQuery) Offset(offset int) *ImportErrorQuery {
-	ieq.ctx.Offset = &offset
-	return ieq
+func (_q *ImportErrorQuery) Offset(offset int) *ImportErrorQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (ieq *ImportErrorQuery) Unique(unique bool) *ImportErrorQuery {
-	ieq.ctx.Unique = &unique
-	return ieq
+func (_q *ImportErrorQuery) Unique(unique bool) *ImportErrorQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (ieq *ImportErrorQuery) Order(o ...importerror.OrderOption) *ImportErrorQuery {
-	ieq.order = append(ieq.order, o...)
-	return ieq
+func (_q *ImportErrorQuery) Order(o ...importerror.OrderOption) *ImportErrorQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryTask chains the current query on the "task" edge.
-func (ieq *ImportErrorQuery) QueryTask() *ImportTaskQuery {
-	query := (&ImportTaskClient{config: ieq.config}).Query()
+func (_q *ImportErrorQuery) QueryTask() *ImportTaskQuery {
+	query := (&ImportTaskClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ieq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ieq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -78,20 +78,20 @@ func (ieq *ImportErrorQuery) QueryTask() *ImportTaskQuery {
 			sqlgraph.To(importtask.Table, importtask.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, importerror.TaskTable, importerror.TaskColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ieq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryRecord chains the current query on the "record" edge.
-func (ieq *ImportErrorQuery) QueryRecord() *ImportRecordQuery {
-	query := (&ImportRecordClient{config: ieq.config}).Query()
+func (_q *ImportErrorQuery) QueryRecord() *ImportRecordQuery {
+	query := (&ImportRecordClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ieq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ieq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -100,7 +100,7 @@ func (ieq *ImportErrorQuery) QueryRecord() *ImportRecordQuery {
 			sqlgraph.To(importrecord.Table, importrecord.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, importerror.RecordTable, importerror.RecordColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ieq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -108,8 +108,8 @@ func (ieq *ImportErrorQuery) QueryRecord() *ImportRecordQuery {
 
 // First returns the first ImportError entity from the query.
 // Returns a *NotFoundError when no ImportError was found.
-func (ieq *ImportErrorQuery) First(ctx context.Context) (*ImportError, error) {
-	nodes, err := ieq.Limit(1).All(setContextOp(ctx, ieq.ctx, ent.OpQueryFirst))
+func (_q *ImportErrorQuery) First(ctx context.Context) (*ImportError, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -120,8 +120,8 @@ func (ieq *ImportErrorQuery) First(ctx context.Context) (*ImportError, error) {
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (ieq *ImportErrorQuery) FirstX(ctx context.Context) *ImportError {
-	node, err := ieq.First(ctx)
+func (_q *ImportErrorQuery) FirstX(ctx context.Context) *ImportError {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -130,9 +130,9 @@ func (ieq *ImportErrorQuery) FirstX(ctx context.Context) *ImportError {
 
 // FirstID returns the first ImportError ID from the query.
 // Returns a *NotFoundError when no ImportError ID was found.
-func (ieq *ImportErrorQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *ImportErrorQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ieq.Limit(1).IDs(setContextOp(ctx, ieq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -143,8 +143,8 @@ func (ieq *ImportErrorQuery) FirstID(ctx context.Context) (id uint64, err error)
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (ieq *ImportErrorQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := ieq.FirstID(ctx)
+func (_q *ImportErrorQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -154,8 +154,8 @@ func (ieq *ImportErrorQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single ImportError entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one ImportError entity is found.
 // Returns a *NotFoundError when no ImportError entities are found.
-func (ieq *ImportErrorQuery) Only(ctx context.Context) (*ImportError, error) {
-	nodes, err := ieq.Limit(2).All(setContextOp(ctx, ieq.ctx, ent.OpQueryOnly))
+func (_q *ImportErrorQuery) Only(ctx context.Context) (*ImportError, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -170,8 +170,8 @@ func (ieq *ImportErrorQuery) Only(ctx context.Context) (*ImportError, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (ieq *ImportErrorQuery) OnlyX(ctx context.Context) *ImportError {
-	node, err := ieq.Only(ctx)
+func (_q *ImportErrorQuery) OnlyX(ctx context.Context) *ImportError {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -181,9 +181,9 @@ func (ieq *ImportErrorQuery) OnlyX(ctx context.Context) *ImportError {
 // OnlyID is like Only, but returns the only ImportError ID in the query.
 // Returns a *NotSingularError when more than one ImportError ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (ieq *ImportErrorQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *ImportErrorQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ieq.Limit(2).IDs(setContextOp(ctx, ieq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -198,8 +198,8 @@ func (ieq *ImportErrorQuery) OnlyID(ctx context.Context) (id uint64, err error) 
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (ieq *ImportErrorQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := ieq.OnlyID(ctx)
+func (_q *ImportErrorQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -207,18 +207,18 @@ func (ieq *ImportErrorQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of ImportErrors.
-func (ieq *ImportErrorQuery) All(ctx context.Context) ([]*ImportError, error) {
-	ctx = setContextOp(ctx, ieq.ctx, ent.OpQueryAll)
-	if err := ieq.prepareQuery(ctx); err != nil {
+func (_q *ImportErrorQuery) All(ctx context.Context) ([]*ImportError, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*ImportError, *ImportErrorQuery]()
-	return withInterceptors[[]*ImportError](ctx, ieq, qr, ieq.inters)
+	return withInterceptors[[]*ImportError](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (ieq *ImportErrorQuery) AllX(ctx context.Context) []*ImportError {
-	nodes, err := ieq.All(ctx)
+func (_q *ImportErrorQuery) AllX(ctx context.Context) []*ImportError {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -226,20 +226,20 @@ func (ieq *ImportErrorQuery) AllX(ctx context.Context) []*ImportError {
 }
 
 // IDs executes the query and returns a list of ImportError IDs.
-func (ieq *ImportErrorQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if ieq.ctx.Unique == nil && ieq.path != nil {
-		ieq.Unique(true)
+func (_q *ImportErrorQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, ieq.ctx, ent.OpQueryIDs)
-	if err = ieq.Select(importerror.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(importerror.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (ieq *ImportErrorQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := ieq.IDs(ctx)
+func (_q *ImportErrorQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -247,17 +247,17 @@ func (ieq *ImportErrorQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (ieq *ImportErrorQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, ieq.ctx, ent.OpQueryCount)
-	if err := ieq.prepareQuery(ctx); err != nil {
+func (_q *ImportErrorQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, ieq, querierCount[*ImportErrorQuery](), ieq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*ImportErrorQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (ieq *ImportErrorQuery) CountX(ctx context.Context) int {
-	count, err := ieq.Count(ctx)
+func (_q *ImportErrorQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -265,9 +265,9 @@ func (ieq *ImportErrorQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (ieq *ImportErrorQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, ieq.ctx, ent.OpQueryExist)
-	switch _, err := ieq.FirstID(ctx); {
+func (_q *ImportErrorQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -278,8 +278,8 @@ func (ieq *ImportErrorQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (ieq *ImportErrorQuery) ExistX(ctx context.Context) bool {
-	exist, err := ieq.Exist(ctx)
+func (_q *ImportErrorQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -288,44 +288,44 @@ func (ieq *ImportErrorQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the ImportErrorQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (ieq *ImportErrorQuery) Clone() *ImportErrorQuery {
-	if ieq == nil {
+func (_q *ImportErrorQuery) Clone() *ImportErrorQuery {
+	if _q == nil {
 		return nil
 	}
 	return &ImportErrorQuery{
-		config:     ieq.config,
-		ctx:        ieq.ctx.Clone(),
-		order:      append([]importerror.OrderOption{}, ieq.order...),
-		inters:     append([]Interceptor{}, ieq.inters...),
-		predicates: append([]predicate.ImportError{}, ieq.predicates...),
-		withTask:   ieq.withTask.Clone(),
-		withRecord: ieq.withRecord.Clone(),
+		config:     _q.config,
+		ctx:        _q.ctx.Clone(),
+		order:      append([]importerror.OrderOption{}, _q.order...),
+		inters:     append([]Interceptor{}, _q.inters...),
+		predicates: append([]predicate.ImportError{}, _q.predicates...),
+		withTask:   _q.withTask.Clone(),
+		withRecord: _q.withRecord.Clone(),
 		// clone intermediate query.
-		sql:  ieq.sql.Clone(),
-		path: ieq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithTask tells the query-builder to eager-load the nodes that are connected to
 // the "task" edge. The optional arguments are used to configure the query builder of the edge.
-func (ieq *ImportErrorQuery) WithTask(opts ...func(*ImportTaskQuery)) *ImportErrorQuery {
-	query := (&ImportTaskClient{config: ieq.config}).Query()
+func (_q *ImportErrorQuery) WithTask(opts ...func(*ImportTaskQuery)) *ImportErrorQuery {
+	query := (&ImportTaskClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ieq.withTask = query
-	return ieq
+	_q.withTask = query
+	return _q
 }
 
 // WithRecord tells the query-builder to eager-load the nodes that are connected to
 // the "record" edge. The optional arguments are used to configure the query builder of the edge.
-func (ieq *ImportErrorQuery) WithRecord(opts ...func(*ImportRecordQuery)) *ImportErrorQuery {
-	query := (&ImportRecordClient{config: ieq.config}).Query()
+func (_q *ImportErrorQuery) WithRecord(opts ...func(*ImportRecordQuery)) *ImportErrorQuery {
+	query := (&ImportRecordClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ieq.withRecord = query
-	return ieq
+	_q.withRecord = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -342,10 +342,10 @@ func (ieq *ImportErrorQuery) WithRecord(opts ...func(*ImportRecordQuery)) *Impor
 //		GroupBy(importerror.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (ieq *ImportErrorQuery) GroupBy(field string, fields ...string) *ImportErrorGroupBy {
-	ieq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &ImportErrorGroupBy{build: ieq}
-	grbuild.flds = &ieq.ctx.Fields
+func (_q *ImportErrorQuery) GroupBy(field string, fields ...string) *ImportErrorGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &ImportErrorGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = importerror.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -363,59 +363,59 @@ func (ieq *ImportErrorQuery) GroupBy(field string, fields ...string) *ImportErro
 //	client.ImportError.Query().
 //		Select(importerror.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (ieq *ImportErrorQuery) Select(fields ...string) *ImportErrorSelect {
-	ieq.ctx.Fields = append(ieq.ctx.Fields, fields...)
-	sbuild := &ImportErrorSelect{ImportErrorQuery: ieq}
+func (_q *ImportErrorQuery) Select(fields ...string) *ImportErrorSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &ImportErrorSelect{ImportErrorQuery: _q}
 	sbuild.label = importerror.Label
-	sbuild.flds, sbuild.scan = &ieq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a ImportErrorSelect configured with the given aggregations.
-func (ieq *ImportErrorQuery) Aggregate(fns ...AggregateFunc) *ImportErrorSelect {
-	return ieq.Select().Aggregate(fns...)
+func (_q *ImportErrorQuery) Aggregate(fns ...AggregateFunc) *ImportErrorSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (ieq *ImportErrorQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range ieq.inters {
+func (_q *ImportErrorQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, ieq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range ieq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !importerror.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if ieq.path != nil {
-		prev, err := ieq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		ieq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (ieq *ImportErrorQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ImportError, error) {
+func (_q *ImportErrorQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ImportError, error) {
 	var (
 		nodes       = []*ImportError{}
-		_spec       = ieq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [2]bool{
-			ieq.withTask != nil,
-			ieq.withRecord != nil,
+			_q.withTask != nil,
+			_q.withRecord != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*ImportError).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &ImportError{config: ieq.config}
+		node := &ImportError{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -423,20 +423,20 @@ func (ieq *ImportErrorQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, ieq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := ieq.withTask; query != nil {
-		if err := ieq.loadTask(ctx, query, nodes, nil,
+	if query := _q.withTask; query != nil {
+		if err := _q.loadTask(ctx, query, nodes, nil,
 			func(n *ImportError, e *ImportTask) { n.Edges.Task = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := ieq.withRecord; query != nil {
-		if err := ieq.loadRecord(ctx, query, nodes, nil,
+	if query := _q.withRecord; query != nil {
+		if err := _q.loadRecord(ctx, query, nodes, nil,
 			func(n *ImportError, e *ImportRecord) { n.Edges.Record = e }); err != nil {
 			return nil, err
 		}
@@ -444,7 +444,7 @@ func (ieq *ImportErrorQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]
 	return nodes, nil
 }
 
-func (ieq *ImportErrorQuery) loadTask(ctx context.Context, query *ImportTaskQuery, nodes []*ImportError, init func(*ImportError), assign func(*ImportError, *ImportTask)) error {
+func (_q *ImportErrorQuery) loadTask(ctx context.Context, query *ImportTaskQuery, nodes []*ImportError, init func(*ImportError), assign func(*ImportError, *ImportTask)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ImportError)
 	for i := range nodes {
@@ -473,7 +473,7 @@ func (ieq *ImportErrorQuery) loadTask(ctx context.Context, query *ImportTaskQuer
 	}
 	return nil
 }
-func (ieq *ImportErrorQuery) loadRecord(ctx context.Context, query *ImportRecordQuery, nodes []*ImportError, init func(*ImportError), assign func(*ImportError, *ImportRecord)) error {
+func (_q *ImportErrorQuery) loadRecord(ctx context.Context, query *ImportRecordQuery, nodes []*ImportError, init func(*ImportError), assign func(*ImportError, *ImportRecord)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ImportError)
 	for i := range nodes {
@@ -503,24 +503,24 @@ func (ieq *ImportErrorQuery) loadRecord(ctx context.Context, query *ImportRecord
 	return nil
 }
 
-func (ieq *ImportErrorQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := ieq.querySpec()
-	_spec.Node.Columns = ieq.ctx.Fields
-	if len(ieq.ctx.Fields) > 0 {
-		_spec.Unique = ieq.ctx.Unique != nil && *ieq.ctx.Unique
+func (_q *ImportErrorQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, ieq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (ieq *ImportErrorQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *ImportErrorQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(importerror.Table, importerror.Columns, sqlgraph.NewFieldSpec(importerror.FieldID, field.TypeUint64))
-	_spec.From = ieq.sql
-	if unique := ieq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if ieq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := ieq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, importerror.FieldID)
 		for i := range fields {
@@ -528,27 +528,27 @@ func (ieq *ImportErrorQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if ieq.withTask != nil {
+		if _q.withTask != nil {
 			_spec.Node.AddColumnOnce(importerror.FieldTaskID)
 		}
-		if ieq.withRecord != nil {
+		if _q.withRecord != nil {
 			_spec.Node.AddColumnOnce(importerror.FieldRecordID)
 		}
 	}
-	if ps := ieq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := ieq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := ieq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := ieq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -558,33 +558,33 @@ func (ieq *ImportErrorQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (ieq *ImportErrorQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(ieq.driver.Dialect())
+func (_q *ImportErrorQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(importerror.Table)
-	columns := ieq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = importerror.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if ieq.sql != nil {
-		selector = ieq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if ieq.ctx.Unique != nil && *ieq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range ieq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range ieq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := ieq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := ieq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -597,41 +597,41 @@ type ImportErrorGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (iegb *ImportErrorGroupBy) Aggregate(fns ...AggregateFunc) *ImportErrorGroupBy {
-	iegb.fns = append(iegb.fns, fns...)
-	return iegb
+func (_g *ImportErrorGroupBy) Aggregate(fns ...AggregateFunc) *ImportErrorGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (iegb *ImportErrorGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, iegb.build.ctx, ent.OpQueryGroupBy)
-	if err := iegb.build.prepareQuery(ctx); err != nil {
+func (_g *ImportErrorGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ImportErrorQuery, *ImportErrorGroupBy](ctx, iegb.build, iegb, iegb.build.inters, v)
+	return scanWithInterceptors[*ImportErrorQuery, *ImportErrorGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (iegb *ImportErrorGroupBy) sqlScan(ctx context.Context, root *ImportErrorQuery, v any) error {
+func (_g *ImportErrorGroupBy) sqlScan(ctx context.Context, root *ImportErrorQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(iegb.fns))
-	for _, fn := range iegb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*iegb.flds)+len(iegb.fns))
-		for _, f := range *iegb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*iegb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := iegb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -645,27 +645,27 @@ type ImportErrorSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (ies *ImportErrorSelect) Aggregate(fns ...AggregateFunc) *ImportErrorSelect {
-	ies.fns = append(ies.fns, fns...)
-	return ies
+func (_s *ImportErrorSelect) Aggregate(fns ...AggregateFunc) *ImportErrorSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (ies *ImportErrorSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, ies.ctx, ent.OpQuerySelect)
-	if err := ies.prepareQuery(ctx); err != nil {
+func (_s *ImportErrorSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ImportErrorQuery, *ImportErrorSelect](ctx, ies.ImportErrorQuery, ies, ies.inters, v)
+	return scanWithInterceptors[*ImportErrorQuery, *ImportErrorSelect](ctx, _s.ImportErrorQuery, _s, _s.inters, v)
 }
 
-func (ies *ImportErrorSelect) sqlScan(ctx context.Context, root *ImportErrorQuery, v any) error {
+func (_s *ImportErrorSelect) sqlScan(ctx context.Context, root *ImportErrorQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(ies.fns))
-	for _, fn := range ies.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*ies.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -673,7 +673,7 @@ func (ies *ImportErrorSelect) sqlScan(ctx context.Context, root *ImportErrorQuer
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := ies.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

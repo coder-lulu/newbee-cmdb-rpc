@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
 )
 
 // ImportError is the model entity for the ImportError schema.
@@ -127,7 +127,7 @@ func (*ImportError) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ImportError fields.
-func (ie *ImportError) assignValues(columns []string, values []any) error {
+func (_m *ImportError) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -138,114 +138,114 @@ func (ie *ImportError) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			ie.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case importerror.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				ie.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case importerror.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				ie.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case importerror.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				ie.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case importerror.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				ie.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case importerror.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				ie.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case importerror.FieldTaskID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field task_id", values[i])
 			} else if value.Valid {
-				ie.TaskID = uint64(value.Int64)
+				_m.TaskID = uint64(value.Int64)
 			}
 		case importerror.FieldRecordID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field record_id", values[i])
 			} else if value.Valid {
-				ie.RecordID = uint64(value.Int64)
+				_m.RecordID = uint64(value.Int64)
 			}
 		case importerror.FieldBatchID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field batch_id", values[i])
 			} else if value.Valid {
-				ie.BatchID = value.String
+				_m.BatchID = value.String
 			}
 		case importerror.FieldErrorCode:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_code", values[i])
 			} else if value.Valid {
-				ie.ErrorCode = value.String
+				_m.ErrorCode = value.String
 			}
 		case importerror.FieldErrorTitle:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_title", values[i])
 			} else if value.Valid {
-				ie.ErrorTitle = value.String
+				_m.ErrorTitle = value.String
 			}
 		case importerror.FieldErrorMessage:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_message", values[i])
 			} else if value.Valid {
-				ie.ErrorMessage = value.String
+				_m.ErrorMessage = value.String
 			}
 		case importerror.FieldErrorDetails:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_details", values[i])
 			} else if value.Valid {
-				ie.ErrorDetails = value.String
+				_m.ErrorDetails = value.String
 			}
 		case importerror.FieldErrorType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_type", values[i])
 			} else if value.Valid {
-				ie.ErrorType = importerror.ErrorType(value.String)
+				_m.ErrorType = importerror.ErrorType(value.String)
 			}
 		case importerror.FieldSeverity:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field severity", values[i])
 			} else if value.Valid {
-				ie.Severity = importerror.Severity(value.String)
+				_m.Severity = importerror.Severity(value.String)
 			}
 		case importerror.FieldRowNumber:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field row_number", values[i])
 			} else if value.Valid {
-				ie.RowNumber = int(value.Int64)
+				_m.RowNumber = int(value.Int64)
 			}
 		case importerror.FieldFieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field field_name", values[i])
 			} else if value.Valid {
-				ie.FieldName = value.String
+				_m.FieldName = value.String
 			}
 		case importerror.FieldSheetName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field sheet_name", values[i])
 			} else if value.Valid {
-				ie.SheetName = value.String
+				_m.SheetName = value.String
 			}
 		case importerror.FieldInputData:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field input_data", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &ie.InputData); err != nil {
+				if err := json.Unmarshal(*value, &_m.InputData); err != nil {
 					return fmt.Errorf("unmarshal field input_data: %w", err)
 				}
 			}
@@ -253,7 +253,7 @@ func (ie *ImportError) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field error_context", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &ie.ErrorContext); err != nil {
+				if err := json.Unmarshal(*value, &_m.ErrorContext); err != nil {
 					return fmt.Errorf("unmarshal field error_context: %w", err)
 				}
 			}
@@ -261,28 +261,28 @@ func (ie *ImportError) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field suggestion", values[i])
 			} else if value.Valid {
-				ie.Suggestion = value.String
+				_m.Suggestion = value.String
 			}
 		case importerror.FieldStatus:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
-				ie.Status = importerror.Status(value.String)
+				_m.Status = importerror.Status(value.String)
 			}
 		case importerror.FieldResolvedBy:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field resolved_by", values[i])
 			} else if value.Valid {
-				ie.ResolvedBy = value.String
+				_m.ResolvedBy = value.String
 			}
 		case importerror.FieldResolvedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field resolved_at", values[i])
 			} else if value.Valid {
-				ie.ResolvedAt = value.Time
+				_m.ResolvedAt = value.Time
 			}
 		default:
-			ie.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -290,111 +290,111 @@ func (ie *ImportError) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the ImportError.
 // This includes values selected through modifiers, order, etc.
-func (ie *ImportError) Value(name string) (ent.Value, error) {
-	return ie.selectValues.Get(name)
+func (_m *ImportError) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryTask queries the "task" edge of the ImportError entity.
-func (ie *ImportError) QueryTask() *ImportTaskQuery {
-	return NewImportErrorClient(ie.config).QueryTask(ie)
+func (_m *ImportError) QueryTask() *ImportTaskQuery {
+	return NewImportErrorClient(_m.config).QueryTask(_m)
 }
 
 // QueryRecord queries the "record" edge of the ImportError entity.
-func (ie *ImportError) QueryRecord() *ImportRecordQuery {
-	return NewImportErrorClient(ie.config).QueryRecord(ie)
+func (_m *ImportError) QueryRecord() *ImportRecordQuery {
+	return NewImportErrorClient(_m.config).QueryRecord(_m)
 }
 
 // Update returns a builder for updating this ImportError.
 // Note that you need to call ImportError.Unwrap() before calling this method if this ImportError
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (ie *ImportError) Update() *ImportErrorUpdateOne {
-	return NewImportErrorClient(ie.config).UpdateOne(ie)
+func (_m *ImportError) Update() *ImportErrorUpdateOne {
+	return NewImportErrorClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ImportError entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (ie *ImportError) Unwrap() *ImportError {
-	_tx, ok := ie.config.driver.(*txDriver)
+func (_m *ImportError) Unwrap() *ImportError {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ImportError is not a transactional entity")
 	}
-	ie.config.driver = _tx.drv
-	return ie
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (ie *ImportError) String() string {
+func (_m *ImportError) String() string {
 	var builder strings.Builder
 	builder.WriteString("ImportError(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", ie.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(ie.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(ie.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(ie.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", ie.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", ie.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("task_id=")
-	builder.WriteString(fmt.Sprintf("%v", ie.TaskID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TaskID))
 	builder.WriteString(", ")
 	builder.WriteString("record_id=")
-	builder.WriteString(fmt.Sprintf("%v", ie.RecordID))
+	builder.WriteString(fmt.Sprintf("%v", _m.RecordID))
 	builder.WriteString(", ")
 	builder.WriteString("batch_id=")
-	builder.WriteString(ie.BatchID)
+	builder.WriteString(_m.BatchID)
 	builder.WriteString(", ")
 	builder.WriteString("error_code=")
-	builder.WriteString(ie.ErrorCode)
+	builder.WriteString(_m.ErrorCode)
 	builder.WriteString(", ")
 	builder.WriteString("error_title=")
-	builder.WriteString(ie.ErrorTitle)
+	builder.WriteString(_m.ErrorTitle)
 	builder.WriteString(", ")
 	builder.WriteString("error_message=")
-	builder.WriteString(ie.ErrorMessage)
+	builder.WriteString(_m.ErrorMessage)
 	builder.WriteString(", ")
 	builder.WriteString("error_details=")
-	builder.WriteString(ie.ErrorDetails)
+	builder.WriteString(_m.ErrorDetails)
 	builder.WriteString(", ")
 	builder.WriteString("error_type=")
-	builder.WriteString(fmt.Sprintf("%v", ie.ErrorType))
+	builder.WriteString(fmt.Sprintf("%v", _m.ErrorType))
 	builder.WriteString(", ")
 	builder.WriteString("severity=")
-	builder.WriteString(fmt.Sprintf("%v", ie.Severity))
+	builder.WriteString(fmt.Sprintf("%v", _m.Severity))
 	builder.WriteString(", ")
 	builder.WriteString("row_number=")
-	builder.WriteString(fmt.Sprintf("%v", ie.RowNumber))
+	builder.WriteString(fmt.Sprintf("%v", _m.RowNumber))
 	builder.WriteString(", ")
 	builder.WriteString("field_name=")
-	builder.WriteString(ie.FieldName)
+	builder.WriteString(_m.FieldName)
 	builder.WriteString(", ")
 	builder.WriteString("sheet_name=")
-	builder.WriteString(ie.SheetName)
+	builder.WriteString(_m.SheetName)
 	builder.WriteString(", ")
 	builder.WriteString("input_data=")
-	builder.WriteString(fmt.Sprintf("%v", ie.InputData))
+	builder.WriteString(fmt.Sprintf("%v", _m.InputData))
 	builder.WriteString(", ")
 	builder.WriteString("error_context=")
-	builder.WriteString(fmt.Sprintf("%v", ie.ErrorContext))
+	builder.WriteString(fmt.Sprintf("%v", _m.ErrorContext))
 	builder.WriteString(", ")
 	builder.WriteString("suggestion=")
-	builder.WriteString(ie.Suggestion)
+	builder.WriteString(_m.Suggestion)
 	builder.WriteString(", ")
 	builder.WriteString("status=")
-	builder.WriteString(fmt.Sprintf("%v", ie.Status))
+	builder.WriteString(fmt.Sprintf("%v", _m.Status))
 	builder.WriteString(", ")
 	builder.WriteString("resolved_by=")
-	builder.WriteString(ie.ResolvedBy)
+	builder.WriteString(_m.ResolvedBy)
 	builder.WriteString(", ")
 	builder.WriteString("resolved_at=")
-	builder.WriteString(ie.ResolvedAt.Format(time.ANSIC))
+	builder.WriteString(_m.ResolvedAt.Format(time.ANSIC))
 	builder.WriteByte(')')
 	return builder.String()
 }

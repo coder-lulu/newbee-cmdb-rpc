@@ -7,7 +7,7 @@ import (
 
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ID filters vertices based on their ID field.
@@ -68,6 +68,11 @@ func UpdatedAt(v time.Time) predicate.RelationType {
 // DeletedAt applies equality check predicate on the "deleted_at" field. It's identical to DeletedAtEQ.
 func DeletedAt(v time.Time) predicate.RelationType {
 	return predicate.RelationType(sql.FieldEQ(FieldDeletedAt, v))
+}
+
+// TenantID applies equality check predicate on the "tenant_id" field. It's identical to TenantIDEQ.
+func TenantID(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldTenantID, v))
 }
 
 // Name applies equality check predicate on the "name" field. It's identical to NameEQ.
@@ -208,6 +213,46 @@ func DeletedAtIsNil() predicate.RelationType {
 // DeletedAtNotNil applies the NotNil predicate on the "deleted_at" field.
 func DeletedAtNotNil() predicate.RelationType {
 	return predicate.RelationType(sql.FieldNotNull(FieldDeletedAt))
+}
+
+// TenantIDEQ applies the EQ predicate on the "tenant_id" field.
+func TenantIDEQ(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldTenantID, v))
+}
+
+// TenantIDNEQ applies the NEQ predicate on the "tenant_id" field.
+func TenantIDNEQ(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldTenantID, v))
+}
+
+// TenantIDIn applies the In predicate on the "tenant_id" field.
+func TenantIDIn(vs ...uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldTenantID, vs...))
+}
+
+// TenantIDNotIn applies the NotIn predicate on the "tenant_id" field.
+func TenantIDNotIn(vs ...uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldTenantID, vs...))
+}
+
+// TenantIDGT applies the GT predicate on the "tenant_id" field.
+func TenantIDGT(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldTenantID, v))
+}
+
+// TenantIDGTE applies the GTE predicate on the "tenant_id" field.
+func TenantIDGTE(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldTenantID, v))
+}
+
+// TenantIDLT applies the LT predicate on the "tenant_id" field.
+func TenantIDLT(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldTenantID, v))
+}
+
+// TenantIDLTE applies the LTE predicate on the "tenant_id" field.
+func TenantIDLTE(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldTenantID, v))
 }
 
 // NameEQ applies the EQ predicate on the "name" field.

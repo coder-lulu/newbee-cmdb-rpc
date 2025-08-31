@@ -1,15 +1,14 @@
 package schema
 
 import (
+	"entgo.io/ent"
 	"entgo.io/ent/dialect/entsql"
 	"entgo.io/ent/schema"
-
-	"entgo.io/ent"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
-	mixins2 "gitee.com/link234/cmdb-rpc/ent/schema/mixins"
-	"gitee.com/link234/newbee-backend-common/orm/ent/mixins"
-	"gitee.com/link234/newbee-backend-common/utils/validator"
+	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
+	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/utils/validator"
 	"github.com/gofrs/uuid/v5"
 )
 

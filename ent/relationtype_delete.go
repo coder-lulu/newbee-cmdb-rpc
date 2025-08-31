@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // RelationTypeDelete is the builder for deleting a RelationType entity.
@@ -20,56 +20,56 @@ type RelationTypeDelete struct {
 }
 
 // Where appends a list predicates to the RelationTypeDelete builder.
-func (rtd *RelationTypeDelete) Where(ps ...predicate.RelationType) *RelationTypeDelete {
-	rtd.mutation.Where(ps...)
-	return rtd
+func (_d *RelationTypeDelete) Where(ps ...predicate.RelationType) *RelationTypeDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (rtd *RelationTypeDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, rtd.sqlExec, rtd.mutation, rtd.hooks)
+func (_d *RelationTypeDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (rtd *RelationTypeDelete) ExecX(ctx context.Context) int {
-	n, err := rtd.Exec(ctx)
+func (_d *RelationTypeDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (rtd *RelationTypeDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *RelationTypeDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(relationtype.Table, sqlgraph.NewFieldSpec(relationtype.FieldID, field.TypeUint64))
-	if ps := rtd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, rtd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	rtd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // RelationTypeDeleteOne is the builder for deleting a single RelationType entity.
 type RelationTypeDeleteOne struct {
-	rtd *RelationTypeDelete
+	_d *RelationTypeDelete
 }
 
 // Where appends a list predicates to the RelationTypeDelete builder.
-func (rtdo *RelationTypeDeleteOne) Where(ps ...predicate.RelationType) *RelationTypeDeleteOne {
-	rtdo.rtd.mutation.Where(ps...)
-	return rtdo
+func (_d *RelationTypeDeleteOne) Where(ps ...predicate.RelationType) *RelationTypeDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (rtdo *RelationTypeDeleteOne) Exec(ctx context.Context) error {
-	n, err := rtdo.rtd.Exec(ctx)
+func (_d *RelationTypeDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (rtdo *RelationTypeDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (rtdo *RelationTypeDeleteOne) ExecX(ctx context.Context) {
-	if err := rtdo.Exec(ctx); err != nil {
+func (_d *RelationTypeDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

@@ -12,18 +12,18 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 )
 
 // CisQuery is the builder for querying Cis entities.
@@ -51,44 +51,44 @@ type CisQuery struct {
 }
 
 // Where adds a new predicate for the CisQuery builder.
-func (cq *CisQuery) Where(ps ...predicate.Cis) *CisQuery {
-	cq.predicates = append(cq.predicates, ps...)
-	return cq
+func (_q *CisQuery) Where(ps ...predicate.Cis) *CisQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (cq *CisQuery) Limit(limit int) *CisQuery {
-	cq.ctx.Limit = &limit
-	return cq
+func (_q *CisQuery) Limit(limit int) *CisQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (cq *CisQuery) Offset(offset int) *CisQuery {
-	cq.ctx.Offset = &offset
-	return cq
+func (_q *CisQuery) Offset(offset int) *CisQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (cq *CisQuery) Unique(unique bool) *CisQuery {
-	cq.ctx.Unique = &unique
-	return cq
+func (_q *CisQuery) Unique(unique bool) *CisQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (cq *CisQuery) Order(o ...cis.OrderOption) *CisQuery {
-	cq.order = append(cq.order, o...)
-	return cq
+func (_q *CisQuery) Order(o ...cis.OrderOption) *CisQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryCiType chains the current query on the "ci_type" edge.
-func (cq *CisQuery) QueryCiType() *CiTypeQuery {
-	query := (&CiTypeClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryCiType() *CiTypeQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -97,20 +97,20 @@ func (cq *CisQuery) QueryCiType() *CiTypeQuery {
 			sqlgraph.To(citype.Table, citype.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, cis.CiTypeTable, cis.CiTypeColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueTexts chains the current query on the "value_texts" edge.
-func (cq *CisQuery) QueryValueTexts() *ValueTextQuery {
-	query := (&ValueTextClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryValueTexts() *ValueTextQuery {
+	query := (&ValueTextClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -119,20 +119,20 @@ func (cq *CisQuery) QueryValueTexts() *ValueTextQuery {
 			sqlgraph.To(valuetext.Table, valuetext.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.ValueTextsTable, cis.ValueTextsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueIndexTexts chains the current query on the "value_index_texts" edge.
-func (cq *CisQuery) QueryValueIndexTexts() *ValueIndexTextQuery {
-	query := (&ValueIndexTextClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryValueIndexTexts() *ValueIndexTextQuery {
+	query := (&ValueIndexTextClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -141,20 +141,20 @@ func (cq *CisQuery) QueryValueIndexTexts() *ValueIndexTextQuery {
 			sqlgraph.To(valueindextext.Table, valueindextext.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.ValueIndexTextsTable, cis.ValueIndexTextsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueJsons chains the current query on the "value_jsons" edge.
-func (cq *CisQuery) QueryValueJsons() *ValueJSONQuery {
-	query := (&ValueJSONClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryValueJsons() *ValueJSONQuery {
+	query := (&ValueJSONClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -163,20 +163,20 @@ func (cq *CisQuery) QueryValueJsons() *ValueJSONQuery {
 			sqlgraph.To(valuejson.Table, valuejson.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.ValueJsonsTable, cis.ValueJsonsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueIntegers chains the current query on the "value_integers" edge.
-func (cq *CisQuery) QueryValueIntegers() *ValueIntegerQuery {
-	query := (&ValueIntegerClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryValueIntegers() *ValueIntegerQuery {
+	query := (&ValueIntegerClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -185,20 +185,20 @@ func (cq *CisQuery) QueryValueIntegers() *ValueIntegerQuery {
 			sqlgraph.To(valueinteger.Table, valueinteger.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.ValueIntegersTable, cis.ValueIntegersColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueFloats chains the current query on the "value_floats" edge.
-func (cq *CisQuery) QueryValueFloats() *ValueFloatQuery {
-	query := (&ValueFloatClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryValueFloats() *ValueFloatQuery {
+	query := (&ValueFloatClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -207,20 +207,20 @@ func (cq *CisQuery) QueryValueFloats() *ValueFloatQuery {
 			sqlgraph.To(valuefloat.Table, valuefloat.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.ValueFloatsTable, cis.ValueFloatsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueDatetimes chains the current query on the "value_datetimes" edge.
-func (cq *CisQuery) QueryValueDatetimes() *ValueDatetimeQuery {
-	query := (&ValueDatetimeClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryValueDatetimes() *ValueDatetimeQuery {
+	query := (&ValueDatetimeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -229,20 +229,20 @@ func (cq *CisQuery) QueryValueDatetimes() *ValueDatetimeQuery {
 			sqlgraph.To(valuedatetime.Table, valuedatetime.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.ValueDatetimesTable, cis.ValueDatetimesColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryFirstRelations chains the current query on the "first_relations" edge.
-func (cq *CisQuery) QueryFirstRelations() *CiRelationQuery {
-	query := (&CiRelationClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryFirstRelations() *CiRelationQuery {
+	query := (&CiRelationClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -251,20 +251,20 @@ func (cq *CisQuery) QueryFirstRelations() *CiRelationQuery {
 			sqlgraph.To(cirelation.Table, cirelation.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.FirstRelationsTable, cis.FirstRelationsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QuerySecondRelations chains the current query on the "second_relations" edge.
-func (cq *CisQuery) QuerySecondRelations() *CiRelationQuery {
-	query := (&CiRelationClient{config: cq.config}).Query()
+func (_q *CisQuery) QuerySecondRelations() *CiRelationQuery {
+	query := (&CiRelationClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -273,20 +273,20 @@ func (cq *CisQuery) QuerySecondRelations() *CiRelationQuery {
 			sqlgraph.To(cirelation.Table, cirelation.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.SecondRelationsTable, cis.SecondRelationsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryMoreRelations chains the current query on the "more_relations" edge.
-func (cq *CisQuery) QueryMoreRelations() *CiRelationQuery {
-	query := (&CiRelationClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryMoreRelations() *CiRelationQuery {
+	query := (&CiRelationClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -295,20 +295,20 @@ func (cq *CisQuery) QueryMoreRelations() *CiRelationQuery {
 			sqlgraph.To(cirelation.Table, cirelation.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.MoreRelationsTable, cis.MoreRelationsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryImportRecords chains the current query on the "import_records" edge.
-func (cq *CisQuery) QueryImportRecords() *ImportRecordQuery {
-	query := (&ImportRecordClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryImportRecords() *ImportRecordQuery {
+	query := (&ImportRecordClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -317,20 +317,20 @@ func (cq *CisQuery) QueryImportRecords() *ImportRecordQuery {
 			sqlgraph.To(importrecord.Table, importrecord.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.ImportRecordsTable, cis.ImportRecordsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryRecords chains the current query on the "records" edge.
-func (cq *CisQuery) QueryRecords() *CiRecordsQuery {
-	query := (&CiRecordsClient{config: cq.config}).Query()
+func (_q *CisQuery) QueryRecords() *CiRecordsQuery {
+	query := (&CiRecordsClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -339,7 +339,7 @@ func (cq *CisQuery) QueryRecords() *CiRecordsQuery {
 			sqlgraph.To(cirecords.Table, cirecords.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, cis.RecordsTable, cis.RecordsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -347,8 +347,8 @@ func (cq *CisQuery) QueryRecords() *CiRecordsQuery {
 
 // First returns the first Cis entity from the query.
 // Returns a *NotFoundError when no Cis was found.
-func (cq *CisQuery) First(ctx context.Context) (*Cis, error) {
-	nodes, err := cq.Limit(1).All(setContextOp(ctx, cq.ctx, ent.OpQueryFirst))
+func (_q *CisQuery) First(ctx context.Context) (*Cis, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -359,8 +359,8 @@ func (cq *CisQuery) First(ctx context.Context) (*Cis, error) {
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (cq *CisQuery) FirstX(ctx context.Context) *Cis {
-	node, err := cq.First(ctx)
+func (_q *CisQuery) FirstX(ctx context.Context) *Cis {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -369,9 +369,9 @@ func (cq *CisQuery) FirstX(ctx context.Context) *Cis {
 
 // FirstID returns the first Cis ID from the query.
 // Returns a *NotFoundError when no Cis ID was found.
-func (cq *CisQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *CisQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = cq.Limit(1).IDs(setContextOp(ctx, cq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -382,8 +382,8 @@ func (cq *CisQuery) FirstID(ctx context.Context) (id uint64, err error) {
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (cq *CisQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := cq.FirstID(ctx)
+func (_q *CisQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -393,8 +393,8 @@ func (cq *CisQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single Cis entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one Cis entity is found.
 // Returns a *NotFoundError when no Cis entities are found.
-func (cq *CisQuery) Only(ctx context.Context) (*Cis, error) {
-	nodes, err := cq.Limit(2).All(setContextOp(ctx, cq.ctx, ent.OpQueryOnly))
+func (_q *CisQuery) Only(ctx context.Context) (*Cis, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -409,8 +409,8 @@ func (cq *CisQuery) Only(ctx context.Context) (*Cis, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (cq *CisQuery) OnlyX(ctx context.Context) *Cis {
-	node, err := cq.Only(ctx)
+func (_q *CisQuery) OnlyX(ctx context.Context) *Cis {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -420,9 +420,9 @@ func (cq *CisQuery) OnlyX(ctx context.Context) *Cis {
 // OnlyID is like Only, but returns the only Cis ID in the query.
 // Returns a *NotSingularError when more than one Cis ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (cq *CisQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *CisQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = cq.Limit(2).IDs(setContextOp(ctx, cq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -437,8 +437,8 @@ func (cq *CisQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (cq *CisQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := cq.OnlyID(ctx)
+func (_q *CisQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -446,18 +446,18 @@ func (cq *CisQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of CisSlice.
-func (cq *CisQuery) All(ctx context.Context) ([]*Cis, error) {
-	ctx = setContextOp(ctx, cq.ctx, ent.OpQueryAll)
-	if err := cq.prepareQuery(ctx); err != nil {
+func (_q *CisQuery) All(ctx context.Context) ([]*Cis, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*Cis, *CisQuery]()
-	return withInterceptors[[]*Cis](ctx, cq, qr, cq.inters)
+	return withInterceptors[[]*Cis](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (cq *CisQuery) AllX(ctx context.Context) []*Cis {
-	nodes, err := cq.All(ctx)
+func (_q *CisQuery) AllX(ctx context.Context) []*Cis {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -465,20 +465,20 @@ func (cq *CisQuery) AllX(ctx context.Context) []*Cis {
 }
 
 // IDs executes the query and returns a list of Cis IDs.
-func (cq *CisQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if cq.ctx.Unique == nil && cq.path != nil {
-		cq.Unique(true)
+func (_q *CisQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, cq.ctx, ent.OpQueryIDs)
-	if err = cq.Select(cis.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(cis.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (cq *CisQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := cq.IDs(ctx)
+func (_q *CisQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -486,17 +486,17 @@ func (cq *CisQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (cq *CisQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, cq.ctx, ent.OpQueryCount)
-	if err := cq.prepareQuery(ctx); err != nil {
+func (_q *CisQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, cq, querierCount[*CisQuery](), cq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*CisQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (cq *CisQuery) CountX(ctx context.Context) int {
-	count, err := cq.Count(ctx)
+func (_q *CisQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -504,9 +504,9 @@ func (cq *CisQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (cq *CisQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, cq.ctx, ent.OpQueryExist)
-	switch _, err := cq.FirstID(ctx); {
+func (_q *CisQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -517,8 +517,8 @@ func (cq *CisQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (cq *CisQuery) ExistX(ctx context.Context) bool {
-	exist, err := cq.Exist(ctx)
+func (_q *CisQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -527,164 +527,164 @@ func (cq *CisQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the CisQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (cq *CisQuery) Clone() *CisQuery {
-	if cq == nil {
+func (_q *CisQuery) Clone() *CisQuery {
+	if _q == nil {
 		return nil
 	}
 	return &CisQuery{
-		config:              cq.config,
-		ctx:                 cq.ctx.Clone(),
-		order:               append([]cis.OrderOption{}, cq.order...),
-		inters:              append([]Interceptor{}, cq.inters...),
-		predicates:          append([]predicate.Cis{}, cq.predicates...),
-		withCiType:          cq.withCiType.Clone(),
-		withValueTexts:      cq.withValueTexts.Clone(),
-		withValueIndexTexts: cq.withValueIndexTexts.Clone(),
-		withValueJsons:      cq.withValueJsons.Clone(),
-		withValueIntegers:   cq.withValueIntegers.Clone(),
-		withValueFloats:     cq.withValueFloats.Clone(),
-		withValueDatetimes:  cq.withValueDatetimes.Clone(),
-		withFirstRelations:  cq.withFirstRelations.Clone(),
-		withSecondRelations: cq.withSecondRelations.Clone(),
-		withMoreRelations:   cq.withMoreRelations.Clone(),
-		withImportRecords:   cq.withImportRecords.Clone(),
-		withRecords:         cq.withRecords.Clone(),
+		config:              _q.config,
+		ctx:                 _q.ctx.Clone(),
+		order:               append([]cis.OrderOption{}, _q.order...),
+		inters:              append([]Interceptor{}, _q.inters...),
+		predicates:          append([]predicate.Cis{}, _q.predicates...),
+		withCiType:          _q.withCiType.Clone(),
+		withValueTexts:      _q.withValueTexts.Clone(),
+		withValueIndexTexts: _q.withValueIndexTexts.Clone(),
+		withValueJsons:      _q.withValueJsons.Clone(),
+		withValueIntegers:   _q.withValueIntegers.Clone(),
+		withValueFloats:     _q.withValueFloats.Clone(),
+		withValueDatetimes:  _q.withValueDatetimes.Clone(),
+		withFirstRelations:  _q.withFirstRelations.Clone(),
+		withSecondRelations: _q.withSecondRelations.Clone(),
+		withMoreRelations:   _q.withMoreRelations.Clone(),
+		withImportRecords:   _q.withImportRecords.Clone(),
+		withRecords:         _q.withRecords.Clone(),
 		// clone intermediate query.
-		sql:  cq.sql.Clone(),
-		path: cq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithCiType tells the query-builder to eager-load the nodes that are connected to
 // the "ci_type" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithCiType(opts ...func(*CiTypeQuery)) *CisQuery {
-	query := (&CiTypeClient{config: cq.config}).Query()
+func (_q *CisQuery) WithCiType(opts ...func(*CiTypeQuery)) *CisQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withCiType = query
-	return cq
+	_q.withCiType = query
+	return _q
 }
 
 // WithValueTexts tells the query-builder to eager-load the nodes that are connected to
 // the "value_texts" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithValueTexts(opts ...func(*ValueTextQuery)) *CisQuery {
-	query := (&ValueTextClient{config: cq.config}).Query()
+func (_q *CisQuery) WithValueTexts(opts ...func(*ValueTextQuery)) *CisQuery {
+	query := (&ValueTextClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withValueTexts = query
-	return cq
+	_q.withValueTexts = query
+	return _q
 }
 
 // WithValueIndexTexts tells the query-builder to eager-load the nodes that are connected to
 // the "value_index_texts" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithValueIndexTexts(opts ...func(*ValueIndexTextQuery)) *CisQuery {
-	query := (&ValueIndexTextClient{config: cq.config}).Query()
+func (_q *CisQuery) WithValueIndexTexts(opts ...func(*ValueIndexTextQuery)) *CisQuery {
+	query := (&ValueIndexTextClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withValueIndexTexts = query
-	return cq
+	_q.withValueIndexTexts = query
+	return _q
 }
 
 // WithValueJsons tells the query-builder to eager-load the nodes that are connected to
 // the "value_jsons" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithValueJsons(opts ...func(*ValueJSONQuery)) *CisQuery {
-	query := (&ValueJSONClient{config: cq.config}).Query()
+func (_q *CisQuery) WithValueJsons(opts ...func(*ValueJSONQuery)) *CisQuery {
+	query := (&ValueJSONClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withValueJsons = query
-	return cq
+	_q.withValueJsons = query
+	return _q
 }
 
 // WithValueIntegers tells the query-builder to eager-load the nodes that are connected to
 // the "value_integers" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithValueIntegers(opts ...func(*ValueIntegerQuery)) *CisQuery {
-	query := (&ValueIntegerClient{config: cq.config}).Query()
+func (_q *CisQuery) WithValueIntegers(opts ...func(*ValueIntegerQuery)) *CisQuery {
+	query := (&ValueIntegerClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withValueIntegers = query
-	return cq
+	_q.withValueIntegers = query
+	return _q
 }
 
 // WithValueFloats tells the query-builder to eager-load the nodes that are connected to
 // the "value_floats" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithValueFloats(opts ...func(*ValueFloatQuery)) *CisQuery {
-	query := (&ValueFloatClient{config: cq.config}).Query()
+func (_q *CisQuery) WithValueFloats(opts ...func(*ValueFloatQuery)) *CisQuery {
+	query := (&ValueFloatClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withValueFloats = query
-	return cq
+	_q.withValueFloats = query
+	return _q
 }
 
 // WithValueDatetimes tells the query-builder to eager-load the nodes that are connected to
 // the "value_datetimes" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithValueDatetimes(opts ...func(*ValueDatetimeQuery)) *CisQuery {
-	query := (&ValueDatetimeClient{config: cq.config}).Query()
+func (_q *CisQuery) WithValueDatetimes(opts ...func(*ValueDatetimeQuery)) *CisQuery {
+	query := (&ValueDatetimeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withValueDatetimes = query
-	return cq
+	_q.withValueDatetimes = query
+	return _q
 }
 
 // WithFirstRelations tells the query-builder to eager-load the nodes that are connected to
 // the "first_relations" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithFirstRelations(opts ...func(*CiRelationQuery)) *CisQuery {
-	query := (&CiRelationClient{config: cq.config}).Query()
+func (_q *CisQuery) WithFirstRelations(opts ...func(*CiRelationQuery)) *CisQuery {
+	query := (&CiRelationClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withFirstRelations = query
-	return cq
+	_q.withFirstRelations = query
+	return _q
 }
 
 // WithSecondRelations tells the query-builder to eager-load the nodes that are connected to
 // the "second_relations" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithSecondRelations(opts ...func(*CiRelationQuery)) *CisQuery {
-	query := (&CiRelationClient{config: cq.config}).Query()
+func (_q *CisQuery) WithSecondRelations(opts ...func(*CiRelationQuery)) *CisQuery {
+	query := (&CiRelationClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withSecondRelations = query
-	return cq
+	_q.withSecondRelations = query
+	return _q
 }
 
 // WithMoreRelations tells the query-builder to eager-load the nodes that are connected to
 // the "more_relations" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithMoreRelations(opts ...func(*CiRelationQuery)) *CisQuery {
-	query := (&CiRelationClient{config: cq.config}).Query()
+func (_q *CisQuery) WithMoreRelations(opts ...func(*CiRelationQuery)) *CisQuery {
+	query := (&CiRelationClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withMoreRelations = query
-	return cq
+	_q.withMoreRelations = query
+	return _q
 }
 
 // WithImportRecords tells the query-builder to eager-load the nodes that are connected to
 // the "import_records" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithImportRecords(opts ...func(*ImportRecordQuery)) *CisQuery {
-	query := (&ImportRecordClient{config: cq.config}).Query()
+func (_q *CisQuery) WithImportRecords(opts ...func(*ImportRecordQuery)) *CisQuery {
+	query := (&ImportRecordClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withImportRecords = query
-	return cq
+	_q.withImportRecords = query
+	return _q
 }
 
 // WithRecords tells the query-builder to eager-load the nodes that are connected to
 // the "records" edge. The optional arguments are used to configure the query builder of the edge.
-func (cq *CisQuery) WithRecords(opts ...func(*CiRecordsQuery)) *CisQuery {
-	query := (&CiRecordsClient{config: cq.config}).Query()
+func (_q *CisQuery) WithRecords(opts ...func(*CiRecordsQuery)) *CisQuery {
+	query := (&CiRecordsClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cq.withRecords = query
-	return cq
+	_q.withRecords = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -701,10 +701,10 @@ func (cq *CisQuery) WithRecords(opts ...func(*CiRecordsQuery)) *CisQuery {
 //		GroupBy(cis.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (cq *CisQuery) GroupBy(field string, fields ...string) *CisGroupBy {
-	cq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &CisGroupBy{build: cq}
-	grbuild.flds = &cq.ctx.Fields
+func (_q *CisQuery) GroupBy(field string, fields ...string) *CisGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &CisGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = cis.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -722,69 +722,69 @@ func (cq *CisQuery) GroupBy(field string, fields ...string) *CisGroupBy {
 //	client.Cis.Query().
 //		Select(cis.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (cq *CisQuery) Select(fields ...string) *CisSelect {
-	cq.ctx.Fields = append(cq.ctx.Fields, fields...)
-	sbuild := &CisSelect{CisQuery: cq}
+func (_q *CisQuery) Select(fields ...string) *CisSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &CisSelect{CisQuery: _q}
 	sbuild.label = cis.Label
-	sbuild.flds, sbuild.scan = &cq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a CisSelect configured with the given aggregations.
-func (cq *CisQuery) Aggregate(fns ...AggregateFunc) *CisSelect {
-	return cq.Select().Aggregate(fns...)
+func (_q *CisQuery) Aggregate(fns ...AggregateFunc) *CisSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (cq *CisQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range cq.inters {
+func (_q *CisQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, cq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range cq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !cis.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if cq.path != nil {
-		prev, err := cq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		cq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (cq *CisQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*Cis, error) {
+func (_q *CisQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*Cis, error) {
 	var (
 		nodes       = []*Cis{}
-		_spec       = cq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [12]bool{
-			cq.withCiType != nil,
-			cq.withValueTexts != nil,
-			cq.withValueIndexTexts != nil,
-			cq.withValueJsons != nil,
-			cq.withValueIntegers != nil,
-			cq.withValueFloats != nil,
-			cq.withValueDatetimes != nil,
-			cq.withFirstRelations != nil,
-			cq.withSecondRelations != nil,
-			cq.withMoreRelations != nil,
-			cq.withImportRecords != nil,
-			cq.withRecords != nil,
+			_q.withCiType != nil,
+			_q.withValueTexts != nil,
+			_q.withValueIndexTexts != nil,
+			_q.withValueJsons != nil,
+			_q.withValueIntegers != nil,
+			_q.withValueFloats != nil,
+			_q.withValueDatetimes != nil,
+			_q.withFirstRelations != nil,
+			_q.withSecondRelations != nil,
+			_q.withMoreRelations != nil,
+			_q.withImportRecords != nil,
+			_q.withRecords != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*Cis).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &Cis{config: cq.config}
+		node := &Cis{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -792,90 +792,90 @@ func (cq *CisQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*Cis, err
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, cq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := cq.withCiType; query != nil {
-		if err := cq.loadCiType(ctx, query, nodes, nil,
+	if query := _q.withCiType; query != nil {
+		if err := _q.loadCiType(ctx, query, nodes, nil,
 			func(n *Cis, e *CiType) { n.Edges.CiType = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withValueTexts; query != nil {
-		if err := cq.loadValueTexts(ctx, query, nodes,
+	if query := _q.withValueTexts; query != nil {
+		if err := _q.loadValueTexts(ctx, query, nodes,
 			func(n *Cis) { n.Edges.ValueTexts = []*ValueText{} },
 			func(n *Cis, e *ValueText) { n.Edges.ValueTexts = append(n.Edges.ValueTexts, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withValueIndexTexts; query != nil {
-		if err := cq.loadValueIndexTexts(ctx, query, nodes,
+	if query := _q.withValueIndexTexts; query != nil {
+		if err := _q.loadValueIndexTexts(ctx, query, nodes,
 			func(n *Cis) { n.Edges.ValueIndexTexts = []*ValueIndexText{} },
 			func(n *Cis, e *ValueIndexText) { n.Edges.ValueIndexTexts = append(n.Edges.ValueIndexTexts, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withValueJsons; query != nil {
-		if err := cq.loadValueJsons(ctx, query, nodes,
+	if query := _q.withValueJsons; query != nil {
+		if err := _q.loadValueJsons(ctx, query, nodes,
 			func(n *Cis) { n.Edges.ValueJsons = []*ValueJSON{} },
 			func(n *Cis, e *ValueJSON) { n.Edges.ValueJsons = append(n.Edges.ValueJsons, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withValueIntegers; query != nil {
-		if err := cq.loadValueIntegers(ctx, query, nodes,
+	if query := _q.withValueIntegers; query != nil {
+		if err := _q.loadValueIntegers(ctx, query, nodes,
 			func(n *Cis) { n.Edges.ValueIntegers = []*ValueInteger{} },
 			func(n *Cis, e *ValueInteger) { n.Edges.ValueIntegers = append(n.Edges.ValueIntegers, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withValueFloats; query != nil {
-		if err := cq.loadValueFloats(ctx, query, nodes,
+	if query := _q.withValueFloats; query != nil {
+		if err := _q.loadValueFloats(ctx, query, nodes,
 			func(n *Cis) { n.Edges.ValueFloats = []*ValueFloat{} },
 			func(n *Cis, e *ValueFloat) { n.Edges.ValueFloats = append(n.Edges.ValueFloats, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withValueDatetimes; query != nil {
-		if err := cq.loadValueDatetimes(ctx, query, nodes,
+	if query := _q.withValueDatetimes; query != nil {
+		if err := _q.loadValueDatetimes(ctx, query, nodes,
 			func(n *Cis) { n.Edges.ValueDatetimes = []*ValueDatetime{} },
 			func(n *Cis, e *ValueDatetime) { n.Edges.ValueDatetimes = append(n.Edges.ValueDatetimes, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withFirstRelations; query != nil {
-		if err := cq.loadFirstRelations(ctx, query, nodes,
+	if query := _q.withFirstRelations; query != nil {
+		if err := _q.loadFirstRelations(ctx, query, nodes,
 			func(n *Cis) { n.Edges.FirstRelations = []*CiRelation{} },
 			func(n *Cis, e *CiRelation) { n.Edges.FirstRelations = append(n.Edges.FirstRelations, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withSecondRelations; query != nil {
-		if err := cq.loadSecondRelations(ctx, query, nodes,
+	if query := _q.withSecondRelations; query != nil {
+		if err := _q.loadSecondRelations(ctx, query, nodes,
 			func(n *Cis) { n.Edges.SecondRelations = []*CiRelation{} },
 			func(n *Cis, e *CiRelation) { n.Edges.SecondRelations = append(n.Edges.SecondRelations, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withMoreRelations; query != nil {
-		if err := cq.loadMoreRelations(ctx, query, nodes,
+	if query := _q.withMoreRelations; query != nil {
+		if err := _q.loadMoreRelations(ctx, query, nodes,
 			func(n *Cis) { n.Edges.MoreRelations = []*CiRelation{} },
 			func(n *Cis, e *CiRelation) { n.Edges.MoreRelations = append(n.Edges.MoreRelations, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withImportRecords; query != nil {
-		if err := cq.loadImportRecords(ctx, query, nodes,
+	if query := _q.withImportRecords; query != nil {
+		if err := _q.loadImportRecords(ctx, query, nodes,
 			func(n *Cis) { n.Edges.ImportRecords = []*ImportRecord{} },
 			func(n *Cis, e *ImportRecord) { n.Edges.ImportRecords = append(n.Edges.ImportRecords, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := cq.withRecords; query != nil {
-		if err := cq.loadRecords(ctx, query, nodes,
+	if query := _q.withRecords; query != nil {
+		if err := _q.loadRecords(ctx, query, nodes,
 			func(n *Cis) { n.Edges.Records = []*CiRecords{} },
 			func(n *Cis, e *CiRecords) { n.Edges.Records = append(n.Edges.Records, e) }); err != nil {
 			return nil, err
@@ -884,7 +884,7 @@ func (cq *CisQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*Cis, err
 	return nodes, nil
 }
 
-func (cq *CisQuery) loadCiType(ctx context.Context, query *CiTypeQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiType)) error {
+func (_q *CisQuery) loadCiType(ctx context.Context, query *CiTypeQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiType)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*Cis)
 	for i := range nodes {
@@ -913,7 +913,7 @@ func (cq *CisQuery) loadCiType(ctx context.Context, query *CiTypeQuery, nodes []
 	}
 	return nil
 }
-func (cq *CisQuery) loadValueTexts(ctx context.Context, query *ValueTextQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueText)) error {
+func (_q *CisQuery) loadValueTexts(ctx context.Context, query *ValueTextQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueText)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -943,7 +943,7 @@ func (cq *CisQuery) loadValueTexts(ctx context.Context, query *ValueTextQuery, n
 	}
 	return nil
 }
-func (cq *CisQuery) loadValueIndexTexts(ctx context.Context, query *ValueIndexTextQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueIndexText)) error {
+func (_q *CisQuery) loadValueIndexTexts(ctx context.Context, query *ValueIndexTextQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueIndexText)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -973,7 +973,7 @@ func (cq *CisQuery) loadValueIndexTexts(ctx context.Context, query *ValueIndexTe
 	}
 	return nil
 }
-func (cq *CisQuery) loadValueJsons(ctx context.Context, query *ValueJSONQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueJSON)) error {
+func (_q *CisQuery) loadValueJsons(ctx context.Context, query *ValueJSONQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueJSON)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1003,7 +1003,7 @@ func (cq *CisQuery) loadValueJsons(ctx context.Context, query *ValueJSONQuery, n
 	}
 	return nil
 }
-func (cq *CisQuery) loadValueIntegers(ctx context.Context, query *ValueIntegerQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueInteger)) error {
+func (_q *CisQuery) loadValueIntegers(ctx context.Context, query *ValueIntegerQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueInteger)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1033,7 +1033,7 @@ func (cq *CisQuery) loadValueIntegers(ctx context.Context, query *ValueIntegerQu
 	}
 	return nil
 }
-func (cq *CisQuery) loadValueFloats(ctx context.Context, query *ValueFloatQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueFloat)) error {
+func (_q *CisQuery) loadValueFloats(ctx context.Context, query *ValueFloatQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueFloat)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1063,7 +1063,7 @@ func (cq *CisQuery) loadValueFloats(ctx context.Context, query *ValueFloatQuery,
 	}
 	return nil
 }
-func (cq *CisQuery) loadValueDatetimes(ctx context.Context, query *ValueDatetimeQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueDatetime)) error {
+func (_q *CisQuery) loadValueDatetimes(ctx context.Context, query *ValueDatetimeQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ValueDatetime)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1093,7 +1093,7 @@ func (cq *CisQuery) loadValueDatetimes(ctx context.Context, query *ValueDatetime
 	}
 	return nil
 }
-func (cq *CisQuery) loadFirstRelations(ctx context.Context, query *CiRelationQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiRelation)) error {
+func (_q *CisQuery) loadFirstRelations(ctx context.Context, query *CiRelationQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiRelation)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1123,7 +1123,7 @@ func (cq *CisQuery) loadFirstRelations(ctx context.Context, query *CiRelationQue
 	}
 	return nil
 }
-func (cq *CisQuery) loadSecondRelations(ctx context.Context, query *CiRelationQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiRelation)) error {
+func (_q *CisQuery) loadSecondRelations(ctx context.Context, query *CiRelationQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiRelation)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1153,7 +1153,7 @@ func (cq *CisQuery) loadSecondRelations(ctx context.Context, query *CiRelationQu
 	}
 	return nil
 }
-func (cq *CisQuery) loadMoreRelations(ctx context.Context, query *CiRelationQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiRelation)) error {
+func (_q *CisQuery) loadMoreRelations(ctx context.Context, query *CiRelationQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiRelation)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1183,7 +1183,7 @@ func (cq *CisQuery) loadMoreRelations(ctx context.Context, query *CiRelationQuer
 	}
 	return nil
 }
-func (cq *CisQuery) loadImportRecords(ctx context.Context, query *ImportRecordQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ImportRecord)) error {
+func (_q *CisQuery) loadImportRecords(ctx context.Context, query *ImportRecordQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *ImportRecord)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1213,7 +1213,7 @@ func (cq *CisQuery) loadImportRecords(ctx context.Context, query *ImportRecordQu
 	}
 	return nil
 }
-func (cq *CisQuery) loadRecords(ctx context.Context, query *CiRecordsQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiRecords)) error {
+func (_q *CisQuery) loadRecords(ctx context.Context, query *CiRecordsQuery, nodes []*Cis, init func(*Cis), assign func(*Cis, *CiRecords)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Cis)
 	for i := range nodes {
@@ -1244,24 +1244,24 @@ func (cq *CisQuery) loadRecords(ctx context.Context, query *CiRecordsQuery, node
 	return nil
 }
 
-func (cq *CisQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := cq.querySpec()
-	_spec.Node.Columns = cq.ctx.Fields
-	if len(cq.ctx.Fields) > 0 {
-		_spec.Unique = cq.ctx.Unique != nil && *cq.ctx.Unique
+func (_q *CisQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, cq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (cq *CisQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *CisQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(cis.Table, cis.Columns, sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64))
-	_spec.From = cq.sql
-	if unique := cq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if cq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := cq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cis.FieldID)
 		for i := range fields {
@@ -1269,24 +1269,24 @@ func (cq *CisQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if cq.withCiType != nil {
+		if _q.withCiType != nil {
 			_spec.Node.AddColumnOnce(cis.FieldTypeID)
 		}
 	}
-	if ps := cq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := cq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := cq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := cq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -1296,33 +1296,33 @@ func (cq *CisQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (cq *CisQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(cq.driver.Dialect())
+func (_q *CisQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(cis.Table)
-	columns := cq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = cis.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if cq.sql != nil {
-		selector = cq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if cq.ctx.Unique != nil && *cq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range cq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range cq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := cq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := cq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -1335,41 +1335,41 @@ type CisGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (cgb *CisGroupBy) Aggregate(fns ...AggregateFunc) *CisGroupBy {
-	cgb.fns = append(cgb.fns, fns...)
-	return cgb
+func (_g *CisGroupBy) Aggregate(fns ...AggregateFunc) *CisGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cgb *CisGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cgb.build.ctx, ent.OpQueryGroupBy)
-	if err := cgb.build.prepareQuery(ctx); err != nil {
+func (_g *CisGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CisQuery, *CisGroupBy](ctx, cgb.build, cgb, cgb.build.inters, v)
+	return scanWithInterceptors[*CisQuery, *CisGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (cgb *CisGroupBy) sqlScan(ctx context.Context, root *CisQuery, v any) error {
+func (_g *CisGroupBy) sqlScan(ctx context.Context, root *CisQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(cgb.fns))
-	for _, fn := range cgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*cgb.flds)+len(cgb.fns))
-		for _, f := range *cgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*cgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -1383,27 +1383,27 @@ type CisSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (cs *CisSelect) Aggregate(fns ...AggregateFunc) *CisSelect {
-	cs.fns = append(cs.fns, fns...)
-	return cs
+func (_s *CisSelect) Aggregate(fns ...AggregateFunc) *CisSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cs *CisSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cs.ctx, ent.OpQuerySelect)
-	if err := cs.prepareQuery(ctx); err != nil {
+func (_s *CisSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CisQuery, *CisSelect](ctx, cs.CisQuery, cs, cs.inters, v)
+	return scanWithInterceptors[*CisQuery, *CisSelect](ctx, _s.CisQuery, _s, _s.inters, v)
 }
 
-func (cs *CisSelect) sqlScan(ctx context.Context, root *CisQuery, v any) error {
+func (_s *CisSelect) sqlScan(ctx context.Context, root *CisQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(cs.fns))
-	for _, fn := range cs.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*cs.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -1411,7 +1411,7 @@ func (cs *CisSelect) sqlScan(ctx context.Context, root *CisQuery, v any) error {
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cs.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

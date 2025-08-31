@@ -9,9 +9,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
 )
 
 // CiTypeAttributeGroupItem is the model entity for the CiTypeAttributeGroupItem schema.
@@ -92,7 +92,7 @@ func (*CiTypeAttributeGroupItem) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiTypeAttributeGroupItem fields.
-func (ctagi *CiTypeAttributeGroupItem) assignValues(columns []string, values []any) error {
+func (_m *CiTypeAttributeGroupItem) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -103,57 +103,57 @@ func (ctagi *CiTypeAttributeGroupItem) assignValues(columns []string, values []a
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			ctagi.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case citypeattributegroupitem.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				ctagi.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case citypeattributegroupitem.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				ctagi.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case citypeattributegroupitem.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				ctagi.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case citypeattributegroupitem.FieldSort:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field sort", values[i])
 			} else if value.Valid {
-				ctagi.Sort = uint32(value.Int64)
+				_m.Sort = uint32(value.Int64)
 			}
 		case citypeattributegroupitem.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				ctagi.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case citypeattributegroupitem.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				ctagi.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case citypeattributegroupitem.FieldGroupID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field group_id", values[i])
 			} else if value.Valid {
-				ctagi.GroupID = uint64(value.Int64)
+				_m.GroupID = uint64(value.Int64)
 			}
 		case citypeattributegroupitem.FieldAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field attr_id", values[i])
 			} else if value.Valid {
-				ctagi.AttrID = uint64(value.Int64)
+				_m.AttrID = uint64(value.Int64)
 			}
 		default:
-			ctagi.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -161,66 +161,66 @@ func (ctagi *CiTypeAttributeGroupItem) assignValues(columns []string, values []a
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiTypeAttributeGroupItem.
 // This includes values selected through modifiers, order, etc.
-func (ctagi *CiTypeAttributeGroupItem) Value(name string) (ent.Value, error) {
-	return ctagi.selectValues.Get(name)
+func (_m *CiTypeAttributeGroupItem) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryGroup queries the "group" edge of the CiTypeAttributeGroupItem entity.
-func (ctagi *CiTypeAttributeGroupItem) QueryGroup() *CiTypeAttributeGroupQuery {
-	return NewCiTypeAttributeGroupItemClient(ctagi.config).QueryGroup(ctagi)
+func (_m *CiTypeAttributeGroupItem) QueryGroup() *CiTypeAttributeGroupQuery {
+	return NewCiTypeAttributeGroupItemClient(_m.config).QueryGroup(_m)
 }
 
 // QueryAttribute queries the "attribute" edge of the CiTypeAttributeGroupItem entity.
-func (ctagi *CiTypeAttributeGroupItem) QueryAttribute() *AttributeQuery {
-	return NewCiTypeAttributeGroupItemClient(ctagi.config).QueryAttribute(ctagi)
+func (_m *CiTypeAttributeGroupItem) QueryAttribute() *AttributeQuery {
+	return NewCiTypeAttributeGroupItemClient(_m.config).QueryAttribute(_m)
 }
 
 // Update returns a builder for updating this CiTypeAttributeGroupItem.
 // Note that you need to call CiTypeAttributeGroupItem.Unwrap() before calling this method if this CiTypeAttributeGroupItem
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (ctagi *CiTypeAttributeGroupItem) Update() *CiTypeAttributeGroupItemUpdateOne {
-	return NewCiTypeAttributeGroupItemClient(ctagi.config).UpdateOne(ctagi)
+func (_m *CiTypeAttributeGroupItem) Update() *CiTypeAttributeGroupItemUpdateOne {
+	return NewCiTypeAttributeGroupItemClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiTypeAttributeGroupItem entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (ctagi *CiTypeAttributeGroupItem) Unwrap() *CiTypeAttributeGroupItem {
-	_tx, ok := ctagi.config.driver.(*txDriver)
+func (_m *CiTypeAttributeGroupItem) Unwrap() *CiTypeAttributeGroupItem {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiTypeAttributeGroupItem is not a transactional entity")
 	}
-	ctagi.config.driver = _tx.drv
-	return ctagi
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (ctagi *CiTypeAttributeGroupItem) String() string {
+func (_m *CiTypeAttributeGroupItem) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiTypeAttributeGroupItem(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", ctagi.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(ctagi.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(ctagi.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(ctagi.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("sort=")
-	builder.WriteString(fmt.Sprintf("%v", ctagi.Sort))
+	builder.WriteString(fmt.Sprintf("%v", _m.Sort))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctagi.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctagi.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("group_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctagi.GroupID))
+	builder.WriteString(fmt.Sprintf("%v", _m.GroupID))
 	builder.WriteString(", ")
 	builder.WriteString("attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctagi.AttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.AttrID))
 	builder.WriteByte(')')
 	return builder.String()
 }

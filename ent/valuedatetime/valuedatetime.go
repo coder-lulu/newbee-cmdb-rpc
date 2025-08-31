@@ -21,6 +21,8 @@ const (
 	FieldUpdatedAt = "updated_at"
 	// FieldDeletedAt holds the string denoting the deleted_at field in the database.
 	FieldDeletedAt = "deleted_at"
+	// FieldTenantID holds the string denoting the tenant_id field in the database.
+	FieldTenantID = "tenant_id"
 	// FieldCiID holds the string denoting the ci_id field in the database.
 	FieldCiID = "ci_id"
 	// FieldAttrID holds the string denoting the attr_id field in the database.
@@ -57,6 +59,7 @@ var Columns = []string{
 	FieldCreatedAt,
 	FieldUpdatedAt,
 	FieldDeletedAt,
+	FieldTenantID,
 	FieldCiID,
 	FieldAttrID,
 	FieldValue,
@@ -77,7 +80,7 @@ func ValidColumn(column string) bool {
 // package on the initialization of the application. Therefore,
 // it should be imported in the main as follows:
 //
-//	import _ "gitee.com/link234/cmdb-rpc/ent/runtime"
+//	import _ "github.com/coder-lulu/newbee-cmdb-rpc/ent/runtime"
 var (
 	Hooks        [1]ent.Hook
 	Interceptors [1]ent.Interceptor
@@ -87,6 +90,8 @@ var (
 	DefaultUpdatedAt func() time.Time
 	// UpdateDefaultUpdatedAt holds the default value on update for the "updated_at" field.
 	UpdateDefaultUpdatedAt func() time.Time
+	// DefaultTenantID holds the default value on creation for the "tenant_id" field.
+	DefaultTenantID uint64
 	// DefaultIsCover holds the default value on creation for the "is_cover" field.
 	DefaultIsCover bool
 )
@@ -112,6 +117,11 @@ func ByUpdatedAt(opts ...sql.OrderTermOption) OrderOption {
 // ByDeletedAt orders the results by the deleted_at field.
 func ByDeletedAt(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDeletedAt, opts...).ToFunc()
+}
+
+// ByTenantID orders the results by the tenant_id field.
+func ByTenantID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldTenantID, opts...).ToFunc()
 }
 
 // ByCiID orders the results by the ci_id field.

@@ -10,18 +10,18 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -33,325 +33,325 @@ type CisCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (cc *CisCreate) SetCreatedAt(t time.Time) *CisCreate {
-	cc.mutation.SetCreatedAt(t)
-	return cc
+func (_c *CisCreate) SetCreatedAt(v time.Time) *CisCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (cc *CisCreate) SetNillableCreatedAt(t *time.Time) *CisCreate {
-	if t != nil {
-		cc.SetCreatedAt(*t)
+func (_c *CisCreate) SetNillableCreatedAt(v *time.Time) *CisCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return cc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cc *CisCreate) SetUpdatedAt(t time.Time) *CisCreate {
-	cc.mutation.SetUpdatedAt(t)
-	return cc
+func (_c *CisCreate) SetUpdatedAt(v time.Time) *CisCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (cc *CisCreate) SetNillableUpdatedAt(t *time.Time) *CisCreate {
-	if t != nil {
-		cc.SetUpdatedAt(*t)
+func (_c *CisCreate) SetNillableUpdatedAt(v *time.Time) *CisCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return cc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (cc *CisCreate) SetDeletedAt(t time.Time) *CisCreate {
-	cc.mutation.SetDeletedAt(t)
-	return cc
+func (_c *CisCreate) SetDeletedAt(v time.Time) *CisCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (cc *CisCreate) SetNillableDeletedAt(t *time.Time) *CisCreate {
-	if t != nil {
-		cc.SetDeletedAt(*t)
+func (_c *CisCreate) SetNillableDeletedAt(v *time.Time) *CisCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return cc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (cc *CisCreate) SetTenantID(u uint64) *CisCreate {
-	cc.mutation.SetTenantID(u)
-	return cc
+func (_c *CisCreate) SetTenantID(v uint64) *CisCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (cc *CisCreate) SetNillableTenantID(u *uint64) *CisCreate {
-	if u != nil {
-		cc.SetTenantID(*u)
+func (_c *CisCreate) SetNillableTenantID(v *uint64) *CisCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return cc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cc *CisCreate) SetDepartmentID(u uint64) *CisCreate {
-	cc.mutation.SetDepartmentID(u)
-	return cc
+func (_c *CisCreate) SetDepartmentID(v uint64) *CisCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cc *CisCreate) SetNillableDepartmentID(u *uint64) *CisCreate {
-	if u != nil {
-		cc.SetDepartmentID(*u)
+func (_c *CisCreate) SetNillableDepartmentID(v *uint64) *CisCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return cc
+	return _c
 }
 
 // SetTypeID sets the "type_id" field.
-func (cc *CisCreate) SetTypeID(u uint64) *CisCreate {
-	cc.mutation.SetTypeID(u)
-	return cc
+func (_c *CisCreate) SetTypeID(v uint64) *CisCreate {
+	_c.mutation.SetTypeID(v)
+	return _c
 }
 
 // SetStatus sets the "status" field.
-func (cc *CisCreate) SetStatus(u uint32) *CisCreate {
-	cc.mutation.SetStatus(u)
-	return cc
+func (_c *CisCreate) SetStatus(v uint32) *CisCreate {
+	_c.mutation.SetStatus(v)
+	return _c
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cc *CisCreate) SetNillableStatus(u *uint32) *CisCreate {
-	if u != nil {
-		cc.SetStatus(*u)
+func (_c *CisCreate) SetNillableStatus(v *uint32) *CisCreate {
+	if v != nil {
+		_c.SetStatus(*v)
 	}
-	return cc
+	return _c
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (cc *CisCreate) SetCreatedBy(u uuid.UUID) *CisCreate {
-	cc.mutation.SetCreatedBy(u)
-	return cc
+func (_c *CisCreate) SetCreatedBy(v uuid.UUID) *CisCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (cc *CisCreate) SetNillableCreatedBy(u *uuid.UUID) *CisCreate {
-	if u != nil {
-		cc.SetCreatedBy(*u)
+func (_c *CisCreate) SetNillableCreatedBy(v *uuid.UUID) *CisCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
 	}
-	return cc
+	return _c
 }
 
 // SetTags sets the "tags" field.
-func (cc *CisCreate) SetTags(st []schema.CiTag) *CisCreate {
-	cc.mutation.SetTags(st)
-	return cc
+func (_c *CisCreate) SetTags(v []schema.CiTag) *CisCreate {
+	_c.mutation.SetTags(v)
+	return _c
 }
 
 // SetMetadata sets the "metadata" field.
-func (cc *CisCreate) SetMetadata(m map[string]interface{}) *CisCreate {
-	cc.mutation.SetMetadata(m)
-	return cc
+func (_c *CisCreate) SetMetadata(v map[string]interface{}) *CisCreate {
+	_c.mutation.SetMetadata(v)
+	return _c
 }
 
 // SetCustomFields sets the "custom_fields" field.
-func (cc *CisCreate) SetCustomFields(m map[string]interface{}) *CisCreate {
-	cc.mutation.SetCustomFields(m)
-	return cc
+func (_c *CisCreate) SetCustomFields(v map[string]interface{}) *CisCreate {
+	_c.mutation.SetCustomFields(v)
+	return _c
 }
 
 // SetID sets the "id" field.
-func (cc *CisCreate) SetID(u uint64) *CisCreate {
-	cc.mutation.SetID(u)
-	return cc
+func (_c *CisCreate) SetID(v uint64) *CisCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCiTypeID sets the "ci_type" edge to the CiType entity by ID.
-func (cc *CisCreate) SetCiTypeID(id uint64) *CisCreate {
-	cc.mutation.SetCiTypeID(id)
-	return cc
+func (_c *CisCreate) SetCiTypeID(id uint64) *CisCreate {
+	_c.mutation.SetCiTypeID(id)
+	return _c
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (cc *CisCreate) SetCiType(c *CiType) *CisCreate {
-	return cc.SetCiTypeID(c.ID)
+func (_c *CisCreate) SetCiType(v *CiType) *CisCreate {
+	return _c.SetCiTypeID(v.ID)
 }
 
 // AddValueTextIDs adds the "value_texts" edge to the ValueText entity by IDs.
-func (cc *CisCreate) AddValueTextIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddValueTextIDs(ids...)
-	return cc
+func (_c *CisCreate) AddValueTextIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddValueTextIDs(ids...)
+	return _c
 }
 
 // AddValueTexts adds the "value_texts" edges to the ValueText entity.
-func (cc *CisCreate) AddValueTexts(v ...*ValueText) *CisCreate {
+func (_c *CisCreate) AddValueTexts(v ...*ValueText) *CisCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cc.AddValueTextIDs(ids...)
+	return _c.AddValueTextIDs(ids...)
 }
 
 // AddValueIndexTextIDs adds the "value_index_texts" edge to the ValueIndexText entity by IDs.
-func (cc *CisCreate) AddValueIndexTextIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddValueIndexTextIDs(ids...)
-	return cc
+func (_c *CisCreate) AddValueIndexTextIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddValueIndexTextIDs(ids...)
+	return _c
 }
 
 // AddValueIndexTexts adds the "value_index_texts" edges to the ValueIndexText entity.
-func (cc *CisCreate) AddValueIndexTexts(v ...*ValueIndexText) *CisCreate {
+func (_c *CisCreate) AddValueIndexTexts(v ...*ValueIndexText) *CisCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cc.AddValueIndexTextIDs(ids...)
+	return _c.AddValueIndexTextIDs(ids...)
 }
 
 // AddValueJSONIDs adds the "value_jsons" edge to the ValueJSON entity by IDs.
-func (cc *CisCreate) AddValueJSONIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddValueJSONIDs(ids...)
-	return cc
+func (_c *CisCreate) AddValueJSONIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddValueJSONIDs(ids...)
+	return _c
 }
 
 // AddValueJsons adds the "value_jsons" edges to the ValueJSON entity.
-func (cc *CisCreate) AddValueJsons(v ...*ValueJSON) *CisCreate {
+func (_c *CisCreate) AddValueJsons(v ...*ValueJSON) *CisCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cc.AddValueJSONIDs(ids...)
+	return _c.AddValueJSONIDs(ids...)
 }
 
 // AddValueIntegerIDs adds the "value_integers" edge to the ValueInteger entity by IDs.
-func (cc *CisCreate) AddValueIntegerIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddValueIntegerIDs(ids...)
-	return cc
+func (_c *CisCreate) AddValueIntegerIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddValueIntegerIDs(ids...)
+	return _c
 }
 
 // AddValueIntegers adds the "value_integers" edges to the ValueInteger entity.
-func (cc *CisCreate) AddValueIntegers(v ...*ValueInteger) *CisCreate {
+func (_c *CisCreate) AddValueIntegers(v ...*ValueInteger) *CisCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cc.AddValueIntegerIDs(ids...)
+	return _c.AddValueIntegerIDs(ids...)
 }
 
 // AddValueFloatIDs adds the "value_floats" edge to the ValueFloat entity by IDs.
-func (cc *CisCreate) AddValueFloatIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddValueFloatIDs(ids...)
-	return cc
+func (_c *CisCreate) AddValueFloatIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddValueFloatIDs(ids...)
+	return _c
 }
 
 // AddValueFloats adds the "value_floats" edges to the ValueFloat entity.
-func (cc *CisCreate) AddValueFloats(v ...*ValueFloat) *CisCreate {
+func (_c *CisCreate) AddValueFloats(v ...*ValueFloat) *CisCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cc.AddValueFloatIDs(ids...)
+	return _c.AddValueFloatIDs(ids...)
 }
 
 // AddValueDatetimeIDs adds the "value_datetimes" edge to the ValueDatetime entity by IDs.
-func (cc *CisCreate) AddValueDatetimeIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddValueDatetimeIDs(ids...)
-	return cc
+func (_c *CisCreate) AddValueDatetimeIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddValueDatetimeIDs(ids...)
+	return _c
 }
 
 // AddValueDatetimes adds the "value_datetimes" edges to the ValueDatetime entity.
-func (cc *CisCreate) AddValueDatetimes(v ...*ValueDatetime) *CisCreate {
+func (_c *CisCreate) AddValueDatetimes(v ...*ValueDatetime) *CisCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return cc.AddValueDatetimeIDs(ids...)
+	return _c.AddValueDatetimeIDs(ids...)
 }
 
 // AddFirstRelationIDs adds the "first_relations" edge to the CiRelation entity by IDs.
-func (cc *CisCreate) AddFirstRelationIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddFirstRelationIDs(ids...)
-	return cc
+func (_c *CisCreate) AddFirstRelationIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddFirstRelationIDs(ids...)
+	return _c
 }
 
 // AddFirstRelations adds the "first_relations" edges to the CiRelation entity.
-func (cc *CisCreate) AddFirstRelations(c ...*CiRelation) *CisCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CisCreate) AddFirstRelations(v ...*CiRelation) *CisCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cc.AddFirstRelationIDs(ids...)
+	return _c.AddFirstRelationIDs(ids...)
 }
 
 // AddSecondRelationIDs adds the "second_relations" edge to the CiRelation entity by IDs.
-func (cc *CisCreate) AddSecondRelationIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddSecondRelationIDs(ids...)
-	return cc
+func (_c *CisCreate) AddSecondRelationIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddSecondRelationIDs(ids...)
+	return _c
 }
 
 // AddSecondRelations adds the "second_relations" edges to the CiRelation entity.
-func (cc *CisCreate) AddSecondRelations(c ...*CiRelation) *CisCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CisCreate) AddSecondRelations(v ...*CiRelation) *CisCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cc.AddSecondRelationIDs(ids...)
+	return _c.AddSecondRelationIDs(ids...)
 }
 
 // AddMoreRelationIDs adds the "more_relations" edge to the CiRelation entity by IDs.
-func (cc *CisCreate) AddMoreRelationIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddMoreRelationIDs(ids...)
-	return cc
+func (_c *CisCreate) AddMoreRelationIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddMoreRelationIDs(ids...)
+	return _c
 }
 
 // AddMoreRelations adds the "more_relations" edges to the CiRelation entity.
-func (cc *CisCreate) AddMoreRelations(c ...*CiRelation) *CisCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CisCreate) AddMoreRelations(v ...*CiRelation) *CisCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cc.AddMoreRelationIDs(ids...)
+	return _c.AddMoreRelationIDs(ids...)
 }
 
 // AddImportRecordIDs adds the "import_records" edge to the ImportRecord entity by IDs.
-func (cc *CisCreate) AddImportRecordIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddImportRecordIDs(ids...)
-	return cc
+func (_c *CisCreate) AddImportRecordIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddImportRecordIDs(ids...)
+	return _c
 }
 
 // AddImportRecords adds the "import_records" edges to the ImportRecord entity.
-func (cc *CisCreate) AddImportRecords(i ...*ImportRecord) *CisCreate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_c *CisCreate) AddImportRecords(v ...*ImportRecord) *CisCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cc.AddImportRecordIDs(ids...)
+	return _c.AddImportRecordIDs(ids...)
 }
 
 // AddRecordIDs adds the "records" edge to the CiRecords entity by IDs.
-func (cc *CisCreate) AddRecordIDs(ids ...uint64) *CisCreate {
-	cc.mutation.AddRecordIDs(ids...)
-	return cc
+func (_c *CisCreate) AddRecordIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddRecordIDs(ids...)
+	return _c
 }
 
 // AddRecords adds the "records" edges to the CiRecords entity.
-func (cc *CisCreate) AddRecords(c ...*CiRecords) *CisCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *CisCreate) AddRecords(v ...*CiRecords) *CisCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return cc.AddRecordIDs(ids...)
+	return _c.AddRecordIDs(ids...)
 }
 
 // Mutation returns the CisMutation object of the builder.
-func (cc *CisCreate) Mutation() *CisMutation {
-	return cc.mutation
+func (_c *CisCreate) Mutation() *CisMutation {
+	return _c.mutation
 }
 
 // Save creates the Cis in the database.
-func (cc *CisCreate) Save(ctx context.Context) (*Cis, error) {
-	if err := cc.defaults(); err != nil {
+func (_c *CisCreate) Save(ctx context.Context) (*Cis, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, cc.sqlSave, cc.mutation, cc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (cc *CisCreate) SaveX(ctx context.Context) *Cis {
-	v, err := cc.Save(ctx)
+func (_c *CisCreate) SaveX(ctx context.Context) *Cis {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -359,71 +359,71 @@ func (cc *CisCreate) SaveX(ctx context.Context) *Cis {
 }
 
 // Exec executes the query.
-func (cc *CisCreate) Exec(ctx context.Context) error {
-	_, err := cc.Save(ctx)
+func (_c *CisCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cc *CisCreate) ExecX(ctx context.Context) {
-	if err := cc.Exec(ctx); err != nil {
+func (_c *CisCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cc *CisCreate) defaults() error {
-	if _, ok := cc.mutation.CreatedAt(); !ok {
+func (_c *CisCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if cis.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cis.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := cis.DefaultCreatedAt()
-		cc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := cc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if cis.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cis.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cis.DefaultUpdatedAt()
-		cc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := cc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := cis.DefaultTenantID
-		cc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := cc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		v := cis.DefaultStatus
-		cc.mutation.SetStatus(v)
+		_c.mutation.SetStatus(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cc *CisCreate) check() error {
-	if _, ok := cc.mutation.CreatedAt(); !ok {
+func (_c *CisCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Cis.created_at"`)}
 	}
-	if _, ok := cc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "Cis.updated_at"`)}
 	}
-	if _, ok := cc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "Cis.tenant_id"`)}
 	}
-	if _, ok := cc.mutation.TypeID(); !ok {
+	if _, ok := _c.mutation.TypeID(); !ok {
 		return &ValidationError{Name: "type_id", err: errors.New(`ent: missing required field "Cis.type_id"`)}
 	}
-	if len(cc.mutation.CiTypeIDs()) == 0 {
+	if len(_c.mutation.CiTypeIDs()) == 0 {
 		return &ValidationError{Name: "ci_type", err: errors.New(`ent: missing required edge "Cis.ci_type"`)}
 	}
 	return nil
 }
 
-func (cc *CisCreate) sqlSave(ctx context.Context) (*Cis, error) {
-	if err := cc.check(); err != nil {
+func (_c *CisCreate) sqlSave(ctx context.Context) (*Cis, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := cc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, cc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -433,61 +433,61 @@ func (cc *CisCreate) sqlSave(ctx context.Context) (*Cis, error) {
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	cc.mutation.id = &_node.ID
-	cc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
+func (_c *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 	var (
-		_node = &Cis{config: cc.config}
+		_node = &Cis{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(cis.Table, sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64))
 	)
-	if id, ok := cc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := cc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(cis.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := cc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(cis.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := cc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(cis.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := cc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(cis.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := cc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(cis.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := cc.mutation.Status(); ok {
+	if value, ok := _c.mutation.Status(); ok {
 		_spec.SetField(cis.FieldStatus, field.TypeUint32, value)
 		_node.Status = value
 	}
-	if value, ok := cc.mutation.CreatedBy(); ok {
+	if value, ok := _c.mutation.CreatedBy(); ok {
 		_spec.SetField(cis.FieldCreatedBy, field.TypeUUID, value)
 		_node.CreatedBy = &value
 	}
-	if value, ok := cc.mutation.Tags(); ok {
+	if value, ok := _c.mutation.Tags(); ok {
 		_spec.SetField(cis.FieldTags, field.TypeJSON, value)
 		_node.Tags = value
 	}
-	if value, ok := cc.mutation.Metadata(); ok {
+	if value, ok := _c.mutation.Metadata(); ok {
 		_spec.SetField(cis.FieldMetadata, field.TypeJSON, value)
 		_node.Metadata = value
 	}
-	if value, ok := cc.mutation.CustomFields(); ok {
+	if value, ok := _c.mutation.CustomFields(); ok {
 		_spec.SetField(cis.FieldCustomFields, field.TypeJSON, value)
 		_node.CustomFields = value
 	}
-	if nodes := cc.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -504,7 +504,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		_node.TypeID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.ValueTextsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -520,7 +520,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -536,7 +536,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueJsonsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -552,7 +552,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.ValueIntegersIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -568,7 +568,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueFloatsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -584,7 +584,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -600,7 +600,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.FirstRelationsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.FirstRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -616,7 +616,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.SecondRelationsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.SecondRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -632,7 +632,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.MoreRelationsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.MoreRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -648,7 +648,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.ImportRecordsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ImportRecordsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -664,7 +664,7 @@ func (cc *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := cc.mutation.RecordsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.RecordsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -691,16 +691,16 @@ type CisCreateBulk struct {
 }
 
 // Save creates the Cis entities in the database.
-func (ccb *CisCreateBulk) Save(ctx context.Context) ([]*Cis, error) {
-	if ccb.err != nil {
-		return nil, ccb.err
+func (_c *CisCreateBulk) Save(ctx context.Context) ([]*Cis, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(ccb.builders))
-	nodes := make([]*Cis, len(ccb.builders))
-	mutators := make([]Mutator, len(ccb.builders))
-	for i := range ccb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*Cis, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := ccb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CisMutation)
@@ -714,11 +714,11 @@ func (ccb *CisCreateBulk) Save(ctx context.Context) ([]*Cis, error) {
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, ccb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, ccb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -742,7 +742,7 @@ func (ccb *CisCreateBulk) Save(ctx context.Context) ([]*Cis, error) {
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, ccb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -750,8 +750,8 @@ func (ccb *CisCreateBulk) Save(ctx context.Context) ([]*Cis, error) {
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ccb *CisCreateBulk) SaveX(ctx context.Context) []*Cis {
-	v, err := ccb.Save(ctx)
+func (_c *CisCreateBulk) SaveX(ctx context.Context) []*Cis {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -759,14 +759,14 @@ func (ccb *CisCreateBulk) SaveX(ctx context.Context) []*Cis {
 }
 
 // Exec executes the query.
-func (ccb *CisCreateBulk) Exec(ctx context.Context) error {
-	_, err := ccb.Save(ctx)
+func (_c *CisCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ccb *CisCreateBulk) ExecX(ctx context.Context) {
-	if err := ccb.Exec(ctx); err != nil {
+func (_c *CisCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

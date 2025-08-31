@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // CiRelationCreate is the builder for creating a CiRelation entity.
@@ -23,191 +23,191 @@ type CiRelationCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (crc *CiRelationCreate) SetCreatedAt(t time.Time) *CiRelationCreate {
-	crc.mutation.SetCreatedAt(t)
-	return crc
+func (_c *CiRelationCreate) SetCreatedAt(v time.Time) *CiRelationCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableCreatedAt(t *time.Time) *CiRelationCreate {
-	if t != nil {
-		crc.SetCreatedAt(*t)
+func (_c *CiRelationCreate) SetNillableCreatedAt(v *time.Time) *CiRelationCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (crc *CiRelationCreate) SetUpdatedAt(t time.Time) *CiRelationCreate {
-	crc.mutation.SetUpdatedAt(t)
-	return crc
+func (_c *CiRelationCreate) SetUpdatedAt(v time.Time) *CiRelationCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableUpdatedAt(t *time.Time) *CiRelationCreate {
-	if t != nil {
-		crc.SetUpdatedAt(*t)
+func (_c *CiRelationCreate) SetNillableUpdatedAt(v *time.Time) *CiRelationCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (crc *CiRelationCreate) SetDeletedAt(t time.Time) *CiRelationCreate {
-	crc.mutation.SetDeletedAt(t)
-	return crc
+func (_c *CiRelationCreate) SetDeletedAt(v time.Time) *CiRelationCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableDeletedAt(t *time.Time) *CiRelationCreate {
-	if t != nil {
-		crc.SetDeletedAt(*t)
+func (_c *CiRelationCreate) SetNillableDeletedAt(v *time.Time) *CiRelationCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (crc *CiRelationCreate) SetTenantID(u uint64) *CiRelationCreate {
-	crc.mutation.SetTenantID(u)
-	return crc
+func (_c *CiRelationCreate) SetTenantID(v uint64) *CiRelationCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableTenantID(u *uint64) *CiRelationCreate {
-	if u != nil {
-		crc.SetTenantID(*u)
+func (_c *CiRelationCreate) SetNillableTenantID(v *uint64) *CiRelationCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (crc *CiRelationCreate) SetDepartmentID(u uint64) *CiRelationCreate {
-	crc.mutation.SetDepartmentID(u)
-	return crc
+func (_c *CiRelationCreate) SetDepartmentID(v uint64) *CiRelationCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableDepartmentID(u *uint64) *CiRelationCreate {
-	if u != nil {
-		crc.SetDepartmentID(*u)
+func (_c *CiRelationCreate) SetNillableDepartmentID(v *uint64) *CiRelationCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetFirstCiID sets the "first_ci_id" field.
-func (crc *CiRelationCreate) SetFirstCiID(u uint64) *CiRelationCreate {
-	crc.mutation.SetFirstCiID(u)
-	return crc
+func (_c *CiRelationCreate) SetFirstCiID(v uint64) *CiRelationCreate {
+	_c.mutation.SetFirstCiID(v)
+	return _c
 }
 
 // SetSecondCiID sets the "second_ci_id" field.
-func (crc *CiRelationCreate) SetSecondCiID(u uint64) *CiRelationCreate {
-	crc.mutation.SetSecondCiID(u)
-	return crc
+func (_c *CiRelationCreate) SetSecondCiID(v uint64) *CiRelationCreate {
+	_c.mutation.SetSecondCiID(v)
+	return _c
 }
 
 // SetRelationTypeID sets the "relation_type_id" field.
-func (crc *CiRelationCreate) SetRelationTypeID(u uint64) *CiRelationCreate {
-	crc.mutation.SetRelationTypeID(u)
-	return crc
+func (_c *CiRelationCreate) SetRelationTypeID(v uint64) *CiRelationCreate {
+	_c.mutation.SetRelationTypeID(v)
+	return _c
 }
 
 // SetMore sets the "more" field.
-func (crc *CiRelationCreate) SetMore(u uint64) *CiRelationCreate {
-	crc.mutation.SetMore(u)
-	return crc
+func (_c *CiRelationCreate) SetMore(v uint64) *CiRelationCreate {
+	_c.mutation.SetMore(v)
+	return _c
 }
 
 // SetNillableMore sets the "more" field if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableMore(u *uint64) *CiRelationCreate {
-	if u != nil {
-		crc.SetMore(*u)
+func (_c *CiRelationCreate) SetNillableMore(v *uint64) *CiRelationCreate {
+	if v != nil {
+		_c.SetMore(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetSource sets the "source" field.
-func (crc *CiRelationCreate) SetSource(s string) *CiRelationCreate {
-	crc.mutation.SetSource(s)
-	return crc
+func (_c *CiRelationCreate) SetSource(v string) *CiRelationCreate {
+	_c.mutation.SetSource(v)
+	return _c
 }
 
 // SetNillableSource sets the "source" field if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableSource(s *string) *CiRelationCreate {
-	if s != nil {
-		crc.SetSource(*s)
+func (_c *CiRelationCreate) SetNillableSource(v *string) *CiRelationCreate {
+	if v != nil {
+		_c.SetSource(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetAncestorIds sets the "ancestor_ids" field.
-func (crc *CiRelationCreate) SetAncestorIds(s string) *CiRelationCreate {
-	crc.mutation.SetAncestorIds(s)
-	return crc
+func (_c *CiRelationCreate) SetAncestorIds(v string) *CiRelationCreate {
+	_c.mutation.SetAncestorIds(v)
+	return _c
 }
 
 // SetNillableAncestorIds sets the "ancestor_ids" field if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableAncestorIds(s *string) *CiRelationCreate {
-	if s != nil {
-		crc.SetAncestorIds(*s)
+func (_c *CiRelationCreate) SetNillableAncestorIds(v *string) *CiRelationCreate {
+	if v != nil {
+		_c.SetAncestorIds(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (crc *CiRelationCreate) SetID(u uint64) *CiRelationCreate {
-	crc.mutation.SetID(u)
-	return crc
+func (_c *CiRelationCreate) SetID(v uint64) *CiRelationCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetFirstCi sets the "first_ci" edge to the Cis entity.
-func (crc *CiRelationCreate) SetFirstCi(c *Cis) *CiRelationCreate {
-	return crc.SetFirstCiID(c.ID)
+func (_c *CiRelationCreate) SetFirstCi(v *Cis) *CiRelationCreate {
+	return _c.SetFirstCiID(v.ID)
 }
 
 // SetSecondCi sets the "second_ci" edge to the Cis entity.
-func (crc *CiRelationCreate) SetSecondCi(c *Cis) *CiRelationCreate {
-	return crc.SetSecondCiID(c.ID)
+func (_c *CiRelationCreate) SetSecondCi(v *Cis) *CiRelationCreate {
+	return _c.SetSecondCiID(v.ID)
 }
 
 // SetRelationType sets the "relation_type" edge to the RelationType entity.
-func (crc *CiRelationCreate) SetRelationType(r *RelationType) *CiRelationCreate {
-	return crc.SetRelationTypeID(r.ID)
+func (_c *CiRelationCreate) SetRelationType(v *RelationType) *CiRelationCreate {
+	return _c.SetRelationTypeID(v.ID)
 }
 
 // SetMoreCiID sets the "more_ci" edge to the Cis entity by ID.
-func (crc *CiRelationCreate) SetMoreCiID(id uint64) *CiRelationCreate {
-	crc.mutation.SetMoreCiID(id)
-	return crc
+func (_c *CiRelationCreate) SetMoreCiID(id uint64) *CiRelationCreate {
+	_c.mutation.SetMoreCiID(id)
+	return _c
 }
 
 // SetNillableMoreCiID sets the "more_ci" edge to the Cis entity by ID if the given value is not nil.
-func (crc *CiRelationCreate) SetNillableMoreCiID(id *uint64) *CiRelationCreate {
+func (_c *CiRelationCreate) SetNillableMoreCiID(id *uint64) *CiRelationCreate {
 	if id != nil {
-		crc = crc.SetMoreCiID(*id)
+		_c = _c.SetMoreCiID(*id)
 	}
-	return crc
+	return _c
 }
 
 // SetMoreCi sets the "more_ci" edge to the Cis entity.
-func (crc *CiRelationCreate) SetMoreCi(c *Cis) *CiRelationCreate {
-	return crc.SetMoreCiID(c.ID)
+func (_c *CiRelationCreate) SetMoreCi(v *Cis) *CiRelationCreate {
+	return _c.SetMoreCiID(v.ID)
 }
 
 // Mutation returns the CiRelationMutation object of the builder.
-func (crc *CiRelationCreate) Mutation() *CiRelationMutation {
-	return crc.mutation
+func (_c *CiRelationCreate) Mutation() *CiRelationMutation {
+	return _c.mutation
 }
 
 // Save creates the CiRelation in the database.
-func (crc *CiRelationCreate) Save(ctx context.Context) (*CiRelation, error) {
-	if err := crc.defaults(); err != nil {
+func (_c *CiRelationCreate) Save(ctx context.Context) (*CiRelation, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, crc.sqlSave, crc.mutation, crc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (crc *CiRelationCreate) SaveX(ctx context.Context) *CiRelation {
-	v, err := crc.Save(ctx)
+func (_c *CiRelationCreate) SaveX(ctx context.Context) *CiRelation {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -215,84 +215,84 @@ func (crc *CiRelationCreate) SaveX(ctx context.Context) *CiRelation {
 }
 
 // Exec executes the query.
-func (crc *CiRelationCreate) Exec(ctx context.Context) error {
-	_, err := crc.Save(ctx)
+func (_c *CiRelationCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (crc *CiRelationCreate) ExecX(ctx context.Context) {
-	if err := crc.Exec(ctx); err != nil {
+func (_c *CiRelationCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (crc *CiRelationCreate) defaults() error {
-	if _, ok := crc.mutation.CreatedAt(); !ok {
+func (_c *CiRelationCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if cirelation.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cirelation.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := cirelation.DefaultCreatedAt()
-		crc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := crc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if cirelation.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cirelation.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cirelation.DefaultUpdatedAt()
-		crc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := crc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := cirelation.DefaultTenantID
-		crc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (crc *CiRelationCreate) check() error {
-	if _, ok := crc.mutation.CreatedAt(); !ok {
+func (_c *CiRelationCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiRelation.created_at"`)}
 	}
-	if _, ok := crc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiRelation.updated_at"`)}
 	}
-	if _, ok := crc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiRelation.tenant_id"`)}
 	}
-	if _, ok := crc.mutation.FirstCiID(); !ok {
+	if _, ok := _c.mutation.FirstCiID(); !ok {
 		return &ValidationError{Name: "first_ci_id", err: errors.New(`ent: missing required field "CiRelation.first_ci_id"`)}
 	}
-	if _, ok := crc.mutation.SecondCiID(); !ok {
+	if _, ok := _c.mutation.SecondCiID(); !ok {
 		return &ValidationError{Name: "second_ci_id", err: errors.New(`ent: missing required field "CiRelation.second_ci_id"`)}
 	}
-	if _, ok := crc.mutation.RelationTypeID(); !ok {
+	if _, ok := _c.mutation.RelationTypeID(); !ok {
 		return &ValidationError{Name: "relation_type_id", err: errors.New(`ent: missing required field "CiRelation.relation_type_id"`)}
 	}
-	if v, ok := crc.mutation.AncestorIds(); ok {
+	if v, ok := _c.mutation.AncestorIds(); ok {
 		if err := cirelation.AncestorIdsValidator(v); err != nil {
 			return &ValidationError{Name: "ancestor_ids", err: fmt.Errorf(`ent: validator failed for field "CiRelation.ancestor_ids": %w`, err)}
 		}
 	}
-	if len(crc.mutation.FirstCiIDs()) == 0 {
+	if len(_c.mutation.FirstCiIDs()) == 0 {
 		return &ValidationError{Name: "first_ci", err: errors.New(`ent: missing required edge "CiRelation.first_ci"`)}
 	}
-	if len(crc.mutation.SecondCiIDs()) == 0 {
+	if len(_c.mutation.SecondCiIDs()) == 0 {
 		return &ValidationError{Name: "second_ci", err: errors.New(`ent: missing required edge "CiRelation.second_ci"`)}
 	}
-	if len(crc.mutation.RelationTypeIDs()) == 0 {
+	if len(_c.mutation.RelationTypeIDs()) == 0 {
 		return &ValidationError{Name: "relation_type", err: errors.New(`ent: missing required edge "CiRelation.relation_type"`)}
 	}
 	return nil
 }
 
-func (crc *CiRelationCreate) sqlSave(ctx context.Context) (*CiRelation, error) {
-	if err := crc.check(); err != nil {
+func (_c *CiRelationCreate) sqlSave(ctx context.Context) (*CiRelation, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := crc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, crc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -302,49 +302,49 @@ func (crc *CiRelationCreate) sqlSave(ctx context.Context) (*CiRelation, error) {
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	crc.mutation.id = &_node.ID
-	crc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (crc *CiRelationCreate) createSpec() (*CiRelation, *sqlgraph.CreateSpec) {
+func (_c *CiRelationCreate) createSpec() (*CiRelation, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiRelation{config: crc.config}
+		_node = &CiRelation{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(cirelation.Table, sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64))
 	)
-	if id, ok := crc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := crc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(cirelation.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := crc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(cirelation.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := crc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(cirelation.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := crc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(cirelation.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := crc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(cirelation.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := crc.mutation.Source(); ok {
+	if value, ok := _c.mutation.Source(); ok {
 		_spec.SetField(cirelation.FieldSource, field.TypeString, value)
 		_node.Source = value
 	}
-	if value, ok := crc.mutation.AncestorIds(); ok {
+	if value, ok := _c.mutation.AncestorIds(); ok {
 		_spec.SetField(cirelation.FieldAncestorIds, field.TypeString, value)
 		_node.AncestorIds = value
 	}
-	if nodes := crc.mutation.FirstCiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.FirstCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -361,7 +361,7 @@ func (crc *CiRelationCreate) createSpec() (*CiRelation, *sqlgraph.CreateSpec) {
 		_node.FirstCiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := crc.mutation.SecondCiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.SecondCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -378,7 +378,7 @@ func (crc *CiRelationCreate) createSpec() (*CiRelation, *sqlgraph.CreateSpec) {
 		_node.SecondCiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := crc.mutation.RelationTypeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.RelationTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -395,7 +395,7 @@ func (crc *CiRelationCreate) createSpec() (*CiRelation, *sqlgraph.CreateSpec) {
 		_node.RelationTypeID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := crc.mutation.MoreCiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.MoreCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -423,16 +423,16 @@ type CiRelationCreateBulk struct {
 }
 
 // Save creates the CiRelation entities in the database.
-func (crcb *CiRelationCreateBulk) Save(ctx context.Context) ([]*CiRelation, error) {
-	if crcb.err != nil {
-		return nil, crcb.err
+func (_c *CiRelationCreateBulk) Save(ctx context.Context) ([]*CiRelation, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(crcb.builders))
-	nodes := make([]*CiRelation, len(crcb.builders))
-	mutators := make([]Mutator, len(crcb.builders))
-	for i := range crcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiRelation, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := crcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiRelationMutation)
@@ -446,11 +446,11 @@ func (crcb *CiRelationCreateBulk) Save(ctx context.Context) ([]*CiRelation, erro
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, crcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, crcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -474,7 +474,7 @@ func (crcb *CiRelationCreateBulk) Save(ctx context.Context) ([]*CiRelation, erro
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, crcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -482,8 +482,8 @@ func (crcb *CiRelationCreateBulk) Save(ctx context.Context) ([]*CiRelation, erro
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (crcb *CiRelationCreateBulk) SaveX(ctx context.Context) []*CiRelation {
-	v, err := crcb.Save(ctx)
+func (_c *CiRelationCreateBulk) SaveX(ctx context.Context) []*CiRelation {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -491,14 +491,14 @@ func (crcb *CiRelationCreateBulk) SaveX(ctx context.Context) []*CiRelation {
 }
 
 // Exec executes the query.
-func (crcb *CiRelationCreateBulk) Exec(ctx context.Context) error {
-	_, err := crcb.Save(ctx)
+func (_c *CiRelationCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (crcb *CiRelationCreateBulk) ExecX(ctx context.Context) {
-	if err := crcb.Exec(ctx); err != nil {
+func (_c *CiRelationCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

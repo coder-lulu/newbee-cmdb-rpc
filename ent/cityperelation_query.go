@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // CiTypeRelationQuery is the builder for querying CiTypeRelation entities.
@@ -33,44 +33,44 @@ type CiTypeRelationQuery struct {
 }
 
 // Where adds a new predicate for the CiTypeRelationQuery builder.
-func (ctrq *CiTypeRelationQuery) Where(ps ...predicate.CiTypeRelation) *CiTypeRelationQuery {
-	ctrq.predicates = append(ctrq.predicates, ps...)
-	return ctrq
+func (_q *CiTypeRelationQuery) Where(ps ...predicate.CiTypeRelation) *CiTypeRelationQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (ctrq *CiTypeRelationQuery) Limit(limit int) *CiTypeRelationQuery {
-	ctrq.ctx.Limit = &limit
-	return ctrq
+func (_q *CiTypeRelationQuery) Limit(limit int) *CiTypeRelationQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (ctrq *CiTypeRelationQuery) Offset(offset int) *CiTypeRelationQuery {
-	ctrq.ctx.Offset = &offset
-	return ctrq
+func (_q *CiTypeRelationQuery) Offset(offset int) *CiTypeRelationQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (ctrq *CiTypeRelationQuery) Unique(unique bool) *CiTypeRelationQuery {
-	ctrq.ctx.Unique = &unique
-	return ctrq
+func (_q *CiTypeRelationQuery) Unique(unique bool) *CiTypeRelationQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (ctrq *CiTypeRelationQuery) Order(o ...cityperelation.OrderOption) *CiTypeRelationQuery {
-	ctrq.order = append(ctrq.order, o...)
-	return ctrq
+func (_q *CiTypeRelationQuery) Order(o ...cityperelation.OrderOption) *CiTypeRelationQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryParent chains the current query on the "parent" edge.
-func (ctrq *CiTypeRelationQuery) QueryParent() *CiTypeQuery {
-	query := (&CiTypeClient{config: ctrq.config}).Query()
+func (_q *CiTypeRelationQuery) QueryParent() *CiTypeQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ctrq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ctrq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -79,20 +79,20 @@ func (ctrq *CiTypeRelationQuery) QueryParent() *CiTypeQuery {
 			sqlgraph.To(citype.Table, citype.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, cityperelation.ParentTable, cityperelation.ParentColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ctrq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryChild chains the current query on the "child" edge.
-func (ctrq *CiTypeRelationQuery) QueryChild() *CiTypeQuery {
-	query := (&CiTypeClient{config: ctrq.config}).Query()
+func (_q *CiTypeRelationQuery) QueryChild() *CiTypeQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ctrq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ctrq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -101,20 +101,20 @@ func (ctrq *CiTypeRelationQuery) QueryChild() *CiTypeQuery {
 			sqlgraph.To(citype.Table, citype.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, cityperelation.ChildTable, cityperelation.ChildColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ctrq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryRelationType chains the current query on the "relation_type" edge.
-func (ctrq *CiTypeRelationQuery) QueryRelationType() *RelationTypeQuery {
-	query := (&RelationTypeClient{config: ctrq.config}).Query()
+func (_q *CiTypeRelationQuery) QueryRelationType() *RelationTypeQuery {
+	query := (&RelationTypeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ctrq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ctrq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -123,7 +123,7 @@ func (ctrq *CiTypeRelationQuery) QueryRelationType() *RelationTypeQuery {
 			sqlgraph.To(relationtype.Table, relationtype.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, cityperelation.RelationTypeTable, cityperelation.RelationTypeColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ctrq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -131,8 +131,8 @@ func (ctrq *CiTypeRelationQuery) QueryRelationType() *RelationTypeQuery {
 
 // First returns the first CiTypeRelation entity from the query.
 // Returns a *NotFoundError when no CiTypeRelation was found.
-func (ctrq *CiTypeRelationQuery) First(ctx context.Context) (*CiTypeRelation, error) {
-	nodes, err := ctrq.Limit(1).All(setContextOp(ctx, ctrq.ctx, ent.OpQueryFirst))
+func (_q *CiTypeRelationQuery) First(ctx context.Context) (*CiTypeRelation, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -143,8 +143,8 @@ func (ctrq *CiTypeRelationQuery) First(ctx context.Context) (*CiTypeRelation, er
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (ctrq *CiTypeRelationQuery) FirstX(ctx context.Context) *CiTypeRelation {
-	node, err := ctrq.First(ctx)
+func (_q *CiTypeRelationQuery) FirstX(ctx context.Context) *CiTypeRelation {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -153,9 +153,9 @@ func (ctrq *CiTypeRelationQuery) FirstX(ctx context.Context) *CiTypeRelation {
 
 // FirstID returns the first CiTypeRelation ID from the query.
 // Returns a *NotFoundError when no CiTypeRelation ID was found.
-func (ctrq *CiTypeRelationQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *CiTypeRelationQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ctrq.Limit(1).IDs(setContextOp(ctx, ctrq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -166,8 +166,8 @@ func (ctrq *CiTypeRelationQuery) FirstID(ctx context.Context) (id uint64, err er
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (ctrq *CiTypeRelationQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := ctrq.FirstID(ctx)
+func (_q *CiTypeRelationQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -177,8 +177,8 @@ func (ctrq *CiTypeRelationQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single CiTypeRelation entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one CiTypeRelation entity is found.
 // Returns a *NotFoundError when no CiTypeRelation entities are found.
-func (ctrq *CiTypeRelationQuery) Only(ctx context.Context) (*CiTypeRelation, error) {
-	nodes, err := ctrq.Limit(2).All(setContextOp(ctx, ctrq.ctx, ent.OpQueryOnly))
+func (_q *CiTypeRelationQuery) Only(ctx context.Context) (*CiTypeRelation, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -193,8 +193,8 @@ func (ctrq *CiTypeRelationQuery) Only(ctx context.Context) (*CiTypeRelation, err
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (ctrq *CiTypeRelationQuery) OnlyX(ctx context.Context) *CiTypeRelation {
-	node, err := ctrq.Only(ctx)
+func (_q *CiTypeRelationQuery) OnlyX(ctx context.Context) *CiTypeRelation {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -204,9 +204,9 @@ func (ctrq *CiTypeRelationQuery) OnlyX(ctx context.Context) *CiTypeRelation {
 // OnlyID is like Only, but returns the only CiTypeRelation ID in the query.
 // Returns a *NotSingularError when more than one CiTypeRelation ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (ctrq *CiTypeRelationQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *CiTypeRelationQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ctrq.Limit(2).IDs(setContextOp(ctx, ctrq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -221,8 +221,8 @@ func (ctrq *CiTypeRelationQuery) OnlyID(ctx context.Context) (id uint64, err err
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (ctrq *CiTypeRelationQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := ctrq.OnlyID(ctx)
+func (_q *CiTypeRelationQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -230,18 +230,18 @@ func (ctrq *CiTypeRelationQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of CiTypeRelations.
-func (ctrq *CiTypeRelationQuery) All(ctx context.Context) ([]*CiTypeRelation, error) {
-	ctx = setContextOp(ctx, ctrq.ctx, ent.OpQueryAll)
-	if err := ctrq.prepareQuery(ctx); err != nil {
+func (_q *CiTypeRelationQuery) All(ctx context.Context) ([]*CiTypeRelation, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*CiTypeRelation, *CiTypeRelationQuery]()
-	return withInterceptors[[]*CiTypeRelation](ctx, ctrq, qr, ctrq.inters)
+	return withInterceptors[[]*CiTypeRelation](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (ctrq *CiTypeRelationQuery) AllX(ctx context.Context) []*CiTypeRelation {
-	nodes, err := ctrq.All(ctx)
+func (_q *CiTypeRelationQuery) AllX(ctx context.Context) []*CiTypeRelation {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -249,20 +249,20 @@ func (ctrq *CiTypeRelationQuery) AllX(ctx context.Context) []*CiTypeRelation {
 }
 
 // IDs executes the query and returns a list of CiTypeRelation IDs.
-func (ctrq *CiTypeRelationQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if ctrq.ctx.Unique == nil && ctrq.path != nil {
-		ctrq.Unique(true)
+func (_q *CiTypeRelationQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, ctrq.ctx, ent.OpQueryIDs)
-	if err = ctrq.Select(cityperelation.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(cityperelation.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (ctrq *CiTypeRelationQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := ctrq.IDs(ctx)
+func (_q *CiTypeRelationQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -270,17 +270,17 @@ func (ctrq *CiTypeRelationQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (ctrq *CiTypeRelationQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, ctrq.ctx, ent.OpQueryCount)
-	if err := ctrq.prepareQuery(ctx); err != nil {
+func (_q *CiTypeRelationQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, ctrq, querierCount[*CiTypeRelationQuery](), ctrq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*CiTypeRelationQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (ctrq *CiTypeRelationQuery) CountX(ctx context.Context) int {
-	count, err := ctrq.Count(ctx)
+func (_q *CiTypeRelationQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -288,9 +288,9 @@ func (ctrq *CiTypeRelationQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (ctrq *CiTypeRelationQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, ctrq.ctx, ent.OpQueryExist)
-	switch _, err := ctrq.FirstID(ctx); {
+func (_q *CiTypeRelationQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -301,8 +301,8 @@ func (ctrq *CiTypeRelationQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (ctrq *CiTypeRelationQuery) ExistX(ctx context.Context) bool {
-	exist, err := ctrq.Exist(ctx)
+func (_q *CiTypeRelationQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -311,56 +311,56 @@ func (ctrq *CiTypeRelationQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the CiTypeRelationQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (ctrq *CiTypeRelationQuery) Clone() *CiTypeRelationQuery {
-	if ctrq == nil {
+func (_q *CiTypeRelationQuery) Clone() *CiTypeRelationQuery {
+	if _q == nil {
 		return nil
 	}
 	return &CiTypeRelationQuery{
-		config:           ctrq.config,
-		ctx:              ctrq.ctx.Clone(),
-		order:            append([]cityperelation.OrderOption{}, ctrq.order...),
-		inters:           append([]Interceptor{}, ctrq.inters...),
-		predicates:       append([]predicate.CiTypeRelation{}, ctrq.predicates...),
-		withParent:       ctrq.withParent.Clone(),
-		withChild:        ctrq.withChild.Clone(),
-		withRelationType: ctrq.withRelationType.Clone(),
+		config:           _q.config,
+		ctx:              _q.ctx.Clone(),
+		order:            append([]cityperelation.OrderOption{}, _q.order...),
+		inters:           append([]Interceptor{}, _q.inters...),
+		predicates:       append([]predicate.CiTypeRelation{}, _q.predicates...),
+		withParent:       _q.withParent.Clone(),
+		withChild:        _q.withChild.Clone(),
+		withRelationType: _q.withRelationType.Clone(),
 		// clone intermediate query.
-		sql:  ctrq.sql.Clone(),
-		path: ctrq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithParent tells the query-builder to eager-load the nodes that are connected to
 // the "parent" edge. The optional arguments are used to configure the query builder of the edge.
-func (ctrq *CiTypeRelationQuery) WithParent(opts ...func(*CiTypeQuery)) *CiTypeRelationQuery {
-	query := (&CiTypeClient{config: ctrq.config}).Query()
+func (_q *CiTypeRelationQuery) WithParent(opts ...func(*CiTypeQuery)) *CiTypeRelationQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ctrq.withParent = query
-	return ctrq
+	_q.withParent = query
+	return _q
 }
 
 // WithChild tells the query-builder to eager-load the nodes that are connected to
 // the "child" edge. The optional arguments are used to configure the query builder of the edge.
-func (ctrq *CiTypeRelationQuery) WithChild(opts ...func(*CiTypeQuery)) *CiTypeRelationQuery {
-	query := (&CiTypeClient{config: ctrq.config}).Query()
+func (_q *CiTypeRelationQuery) WithChild(opts ...func(*CiTypeQuery)) *CiTypeRelationQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ctrq.withChild = query
-	return ctrq
+	_q.withChild = query
+	return _q
 }
 
 // WithRelationType tells the query-builder to eager-load the nodes that are connected to
 // the "relation_type" edge. The optional arguments are used to configure the query builder of the edge.
-func (ctrq *CiTypeRelationQuery) WithRelationType(opts ...func(*RelationTypeQuery)) *CiTypeRelationQuery {
-	query := (&RelationTypeClient{config: ctrq.config}).Query()
+func (_q *CiTypeRelationQuery) WithRelationType(opts ...func(*RelationTypeQuery)) *CiTypeRelationQuery {
+	query := (&RelationTypeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ctrq.withRelationType = query
-	return ctrq
+	_q.withRelationType = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -377,10 +377,10 @@ func (ctrq *CiTypeRelationQuery) WithRelationType(opts ...func(*RelationTypeQuer
 //		GroupBy(cityperelation.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (ctrq *CiTypeRelationQuery) GroupBy(field string, fields ...string) *CiTypeRelationGroupBy {
-	ctrq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &CiTypeRelationGroupBy{build: ctrq}
-	grbuild.flds = &ctrq.ctx.Fields
+func (_q *CiTypeRelationQuery) GroupBy(field string, fields ...string) *CiTypeRelationGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &CiTypeRelationGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = cityperelation.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -398,60 +398,60 @@ func (ctrq *CiTypeRelationQuery) GroupBy(field string, fields ...string) *CiType
 //	client.CiTypeRelation.Query().
 //		Select(cityperelation.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (ctrq *CiTypeRelationQuery) Select(fields ...string) *CiTypeRelationSelect {
-	ctrq.ctx.Fields = append(ctrq.ctx.Fields, fields...)
-	sbuild := &CiTypeRelationSelect{CiTypeRelationQuery: ctrq}
+func (_q *CiTypeRelationQuery) Select(fields ...string) *CiTypeRelationSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &CiTypeRelationSelect{CiTypeRelationQuery: _q}
 	sbuild.label = cityperelation.Label
-	sbuild.flds, sbuild.scan = &ctrq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a CiTypeRelationSelect configured with the given aggregations.
-func (ctrq *CiTypeRelationQuery) Aggregate(fns ...AggregateFunc) *CiTypeRelationSelect {
-	return ctrq.Select().Aggregate(fns...)
+func (_q *CiTypeRelationQuery) Aggregate(fns ...AggregateFunc) *CiTypeRelationSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (ctrq *CiTypeRelationQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range ctrq.inters {
+func (_q *CiTypeRelationQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, ctrq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range ctrq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !cityperelation.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if ctrq.path != nil {
-		prev, err := ctrq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		ctrq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (ctrq *CiTypeRelationQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTypeRelation, error) {
+func (_q *CiTypeRelationQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTypeRelation, error) {
 	var (
 		nodes       = []*CiTypeRelation{}
-		_spec       = ctrq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [3]bool{
-			ctrq.withParent != nil,
-			ctrq.withChild != nil,
-			ctrq.withRelationType != nil,
+			_q.withParent != nil,
+			_q.withChild != nil,
+			_q.withRelationType != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*CiTypeRelation).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &CiTypeRelation{config: ctrq.config}
+		node := &CiTypeRelation{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -459,26 +459,26 @@ func (ctrq *CiTypeRelationQuery) sqlAll(ctx context.Context, hooks ...queryHook)
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, ctrq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := ctrq.withParent; query != nil {
-		if err := ctrq.loadParent(ctx, query, nodes, nil,
+	if query := _q.withParent; query != nil {
+		if err := _q.loadParent(ctx, query, nodes, nil,
 			func(n *CiTypeRelation, e *CiType) { n.Edges.Parent = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := ctrq.withChild; query != nil {
-		if err := ctrq.loadChild(ctx, query, nodes, nil,
+	if query := _q.withChild; query != nil {
+		if err := _q.loadChild(ctx, query, nodes, nil,
 			func(n *CiTypeRelation, e *CiType) { n.Edges.Child = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := ctrq.withRelationType; query != nil {
-		if err := ctrq.loadRelationType(ctx, query, nodes, nil,
+	if query := _q.withRelationType; query != nil {
+		if err := _q.loadRelationType(ctx, query, nodes, nil,
 			func(n *CiTypeRelation, e *RelationType) { n.Edges.RelationType = e }); err != nil {
 			return nil, err
 		}
@@ -486,7 +486,7 @@ func (ctrq *CiTypeRelationQuery) sqlAll(ctx context.Context, hooks ...queryHook)
 	return nodes, nil
 }
 
-func (ctrq *CiTypeRelationQuery) loadParent(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeRelation, init func(*CiTypeRelation), assign func(*CiTypeRelation, *CiType)) error {
+func (_q *CiTypeRelationQuery) loadParent(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeRelation, init func(*CiTypeRelation), assign func(*CiTypeRelation, *CiType)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*CiTypeRelation)
 	for i := range nodes {
@@ -515,7 +515,7 @@ func (ctrq *CiTypeRelationQuery) loadParent(ctx context.Context, query *CiTypeQu
 	}
 	return nil
 }
-func (ctrq *CiTypeRelationQuery) loadChild(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeRelation, init func(*CiTypeRelation), assign func(*CiTypeRelation, *CiType)) error {
+func (_q *CiTypeRelationQuery) loadChild(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeRelation, init func(*CiTypeRelation), assign func(*CiTypeRelation, *CiType)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*CiTypeRelation)
 	for i := range nodes {
@@ -544,7 +544,7 @@ func (ctrq *CiTypeRelationQuery) loadChild(ctx context.Context, query *CiTypeQue
 	}
 	return nil
 }
-func (ctrq *CiTypeRelationQuery) loadRelationType(ctx context.Context, query *RelationTypeQuery, nodes []*CiTypeRelation, init func(*CiTypeRelation), assign func(*CiTypeRelation, *RelationType)) error {
+func (_q *CiTypeRelationQuery) loadRelationType(ctx context.Context, query *RelationTypeQuery, nodes []*CiTypeRelation, init func(*CiTypeRelation), assign func(*CiTypeRelation, *RelationType)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*CiTypeRelation)
 	for i := range nodes {
@@ -574,24 +574,24 @@ func (ctrq *CiTypeRelationQuery) loadRelationType(ctx context.Context, query *Re
 	return nil
 }
 
-func (ctrq *CiTypeRelationQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := ctrq.querySpec()
-	_spec.Node.Columns = ctrq.ctx.Fields
-	if len(ctrq.ctx.Fields) > 0 {
-		_spec.Unique = ctrq.ctx.Unique != nil && *ctrq.ctx.Unique
+func (_q *CiTypeRelationQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, ctrq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (ctrq *CiTypeRelationQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *CiTypeRelationQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(cityperelation.Table, cityperelation.Columns, sqlgraph.NewFieldSpec(cityperelation.FieldID, field.TypeUint64))
-	_spec.From = ctrq.sql
-	if unique := ctrq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if ctrq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := ctrq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cityperelation.FieldID)
 		for i := range fields {
@@ -599,30 +599,30 @@ func (ctrq *CiTypeRelationQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if ctrq.withParent != nil {
+		if _q.withParent != nil {
 			_spec.Node.AddColumnOnce(cityperelation.FieldParentID)
 		}
-		if ctrq.withChild != nil {
+		if _q.withChild != nil {
 			_spec.Node.AddColumnOnce(cityperelation.FieldChildID)
 		}
-		if ctrq.withRelationType != nil {
+		if _q.withRelationType != nil {
 			_spec.Node.AddColumnOnce(cityperelation.FieldRelationTypeID)
 		}
 	}
-	if ps := ctrq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := ctrq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := ctrq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := ctrq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -632,33 +632,33 @@ func (ctrq *CiTypeRelationQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (ctrq *CiTypeRelationQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(ctrq.driver.Dialect())
+func (_q *CiTypeRelationQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(cityperelation.Table)
-	columns := ctrq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = cityperelation.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if ctrq.sql != nil {
-		selector = ctrq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if ctrq.ctx.Unique != nil && *ctrq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range ctrq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range ctrq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := ctrq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := ctrq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -671,41 +671,41 @@ type CiTypeRelationGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (ctrgb *CiTypeRelationGroupBy) Aggregate(fns ...AggregateFunc) *CiTypeRelationGroupBy {
-	ctrgb.fns = append(ctrgb.fns, fns...)
-	return ctrgb
+func (_g *CiTypeRelationGroupBy) Aggregate(fns ...AggregateFunc) *CiTypeRelationGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (ctrgb *CiTypeRelationGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, ctrgb.build.ctx, ent.OpQueryGroupBy)
-	if err := ctrgb.build.prepareQuery(ctx); err != nil {
+func (_g *CiTypeRelationGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiTypeRelationQuery, *CiTypeRelationGroupBy](ctx, ctrgb.build, ctrgb, ctrgb.build.inters, v)
+	return scanWithInterceptors[*CiTypeRelationQuery, *CiTypeRelationGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (ctrgb *CiTypeRelationGroupBy) sqlScan(ctx context.Context, root *CiTypeRelationQuery, v any) error {
+func (_g *CiTypeRelationGroupBy) sqlScan(ctx context.Context, root *CiTypeRelationQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(ctrgb.fns))
-	for _, fn := range ctrgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*ctrgb.flds)+len(ctrgb.fns))
-		for _, f := range *ctrgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*ctrgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := ctrgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -719,27 +719,27 @@ type CiTypeRelationSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (ctrs *CiTypeRelationSelect) Aggregate(fns ...AggregateFunc) *CiTypeRelationSelect {
-	ctrs.fns = append(ctrs.fns, fns...)
-	return ctrs
+func (_s *CiTypeRelationSelect) Aggregate(fns ...AggregateFunc) *CiTypeRelationSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (ctrs *CiTypeRelationSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, ctrs.ctx, ent.OpQuerySelect)
-	if err := ctrs.prepareQuery(ctx); err != nil {
+func (_s *CiTypeRelationSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiTypeRelationQuery, *CiTypeRelationSelect](ctx, ctrs.CiTypeRelationQuery, ctrs, ctrs.inters, v)
+	return scanWithInterceptors[*CiTypeRelationQuery, *CiTypeRelationSelect](ctx, _s.CiTypeRelationQuery, _s, _s.inters, v)
 }
 
-func (ctrs *CiTypeRelationSelect) sqlScan(ctx context.Context, root *CiTypeRelationQuery, v any) error {
+func (_s *CiTypeRelationSelect) sqlScan(ctx context.Context, root *CiTypeRelationQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(ctrs.fns))
-	for _, fn := range ctrs.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*ctrs.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -747,7 +747,7 @@ func (ctrs *CiTypeRelationSelect) sqlScan(ctx context.Context, root *CiTypeRelat
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := ctrs.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

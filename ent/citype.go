@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -226,7 +226,7 @@ func (*CiType) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiType fields.
-func (ct *CiType) assignValues(columns []string, values []any) error {
+func (_m *CiType) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -237,112 +237,112 @@ func (ct *CiType) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			ct.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case citype.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				ct.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case citype.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				ct.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case citype.FieldStatus:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
-				ct.Status = uint8(value.Int64)
+				_m.Status = uint8(value.Int64)
 			}
 		case citype.FieldSort:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field sort", values[i])
 			} else if value.Valid {
-				ct.Sort = uint32(value.Int64)
+				_m.Sort = uint32(value.Int64)
 			}
 		case citype.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				ct.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case citype.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				ct.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case citype.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				ct.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case citype.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
 			} else if value.Valid {
-				ct.Name = value.String
+				_m.Name = value.String
 			}
 		case citype.FieldAlias:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field alias", values[i])
 			} else if value.Valid {
-				ct.Alias = value.String
+				_m.Alias = value.String
 			}
 		case citype.FieldUniqueID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field unique_id", values[i])
 			} else if value.Valid {
-				ct.UniqueID = uint64(value.Int64)
+				_m.UniqueID = uint64(value.Int64)
 			}
 		case citype.FieldIsInherited:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_inherited", values[i])
 			} else if value.Valid {
-				ct.IsInherited = new(bool)
-				*ct.IsInherited = value.Bool
+				_m.IsInherited = new(bool)
+				*_m.IsInherited = value.Bool
 			}
 		case citype.FieldCreatedBy:
 			if value, ok := values[i].(*sql.NullScanner); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by", values[i])
 			} else if value.Valid {
-				ct.CreatedBy = new(uuid.UUID)
-				*ct.CreatedBy = *value.S.(*uuid.UUID)
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case citype.FieldIcon:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field icon", values[i])
 			} else if value.Valid {
-				ct.Icon = new(string)
-				*ct.Icon = value.String
+				_m.Icon = new(string)
+				*_m.Icon = value.String
 			}
 		case citype.FieldDefaultOrderAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field default_order_attr_id", values[i])
 			} else if value.Valid {
-				ct.DefaultOrderAttrID = new(uint64)
-				*ct.DefaultOrderAttrID = uint64(value.Int64)
+				_m.DefaultOrderAttrID = new(uint64)
+				*_m.DefaultOrderAttrID = uint64(value.Int64)
 			}
 		case citype.FieldShowID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field show_id", values[i])
 			} else if value.Valid {
-				ct.ShowID = new(uint64)
-				*ct.ShowID = uint64(value.Int64)
+				_m.ShowID = new(uint64)
+				*_m.ShowID = uint64(value.Int64)
 			}
 		case citype.FieldUniqueConst:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field unique_const", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &ct.UniqueConst); err != nil {
+				if err := json.Unmarshal(*value, &_m.UniqueConst); err != nil {
 					return fmt.Errorf("unmarshal field unique_const: %w", err)
 				}
 			}
 		default:
-			ct.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -350,150 +350,150 @@ func (ct *CiType) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiType.
 // This includes values selected through modifiers, order, etc.
-func (ct *CiType) Value(name string) (ent.Value, error) {
-	return ct.selectValues.Get(name)
+func (_m *CiType) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryAttributes queries the "attributes" edge of the CiType entity.
-func (ct *CiType) QueryAttributes() *AttributeQuery {
-	return NewCiTypeClient(ct.config).QueryAttributes(ct)
+func (_m *CiType) QueryAttributes() *AttributeQuery {
+	return NewCiTypeClient(_m.config).QueryAttributes(_m)
 }
 
 // QueryCis queries the "cis" edge of the CiType entity.
-func (ct *CiType) QueryCis() *CisQuery {
-	return NewCiTypeClient(ct.config).QueryCis(ct)
+func (_m *CiType) QueryCis() *CisQuery {
+	return NewCiTypeClient(_m.config).QueryCis(_m)
 }
 
 // QueryTypeAttributes queries the "type_attributes" edge of the CiType entity.
-func (ct *CiType) QueryTypeAttributes() *CiTypeAttributeQuery {
-	return NewCiTypeClient(ct.config).QueryTypeAttributes(ct)
+func (_m *CiType) QueryTypeAttributes() *CiTypeAttributeQuery {
+	return NewCiTypeClient(_m.config).QueryTypeAttributes(_m)
 }
 
 // QueryAttributeGroups queries the "attribute_groups" edge of the CiType entity.
-func (ct *CiType) QueryAttributeGroups() *CiTypeAttributeGroupQuery {
-	return NewCiTypeClient(ct.config).QueryAttributeGroups(ct)
+func (_m *CiType) QueryAttributeGroups() *CiTypeAttributeGroupQuery {
+	return NewCiTypeClient(_m.config).QueryAttributeGroups(_m)
 }
 
 // QueryGroupItems queries the "group_items" edge of the CiType entity.
-func (ct *CiType) QueryGroupItems() *CiTypeGroupItemQuery {
-	return NewCiTypeClient(ct.config).QueryGroupItems(ct)
+func (_m *CiType) QueryGroupItems() *CiTypeGroupItemQuery {
+	return NewCiTypeClient(_m.config).QueryGroupItems(_m)
 }
 
 // QueryChildren queries the "children" edge of the CiType entity.
-func (ct *CiType) QueryChildren() *CiTypeInheritanceQuery {
-	return NewCiTypeClient(ct.config).QueryChildren(ct)
+func (_m *CiType) QueryChildren() *CiTypeInheritanceQuery {
+	return NewCiTypeClient(_m.config).QueryChildren(_m)
 }
 
 // QueryParents queries the "parents" edge of the CiType entity.
-func (ct *CiType) QueryParents() *CiTypeInheritanceQuery {
-	return NewCiTypeClient(ct.config).QueryParents(ct)
+func (_m *CiType) QueryParents() *CiTypeInheritanceQuery {
+	return NewCiTypeClient(_m.config).QueryParents(_m)
 }
 
 // QueryChildRelations queries the "child_relations" edge of the CiType entity.
-func (ct *CiType) QueryChildRelations() *CiTypeRelationQuery {
-	return NewCiTypeClient(ct.config).QueryChildRelations(ct)
+func (_m *CiType) QueryChildRelations() *CiTypeRelationQuery {
+	return NewCiTypeClient(_m.config).QueryChildRelations(_m)
 }
 
 // QueryParentRelations queries the "parent_relations" edge of the CiType entity.
-func (ct *CiType) QueryParentRelations() *CiTypeRelationQuery {
-	return NewCiTypeClient(ct.config).QueryParentRelations(ct)
+func (_m *CiType) QueryParentRelations() *CiTypeRelationQuery {
+	return NewCiTypeClient(_m.config).QueryParentRelations(_m)
 }
 
 // QueryImportTemplates queries the "import_templates" edge of the CiType entity.
-func (ct *CiType) QueryImportTemplates() *ImportTemplateQuery {
-	return NewCiTypeClient(ct.config).QueryImportTemplates(ct)
+func (_m *CiType) QueryImportTemplates() *ImportTemplateQuery {
+	return NewCiTypeClient(_m.config).QueryImportTemplates(_m)
 }
 
 // QueryImportRecords queries the "import_records" edge of the CiType entity.
-func (ct *CiType) QueryImportRecords() *ImportRecordQuery {
-	return NewCiTypeClient(ct.config).QueryImportRecords(ct)
+func (_m *CiType) QueryImportRecords() *ImportRecordQuery {
+	return NewCiTypeClient(_m.config).QueryImportRecords(_m)
 }
 
 // QueryCiRecords queries the "ci_records" edge of the CiType entity.
-func (ct *CiType) QueryCiRecords() *CiRecordsQuery {
-	return NewCiTypeClient(ct.config).QueryCiRecords(ct)
+func (_m *CiType) QueryCiRecords() *CiRecordsQuery {
+	return NewCiTypeClient(_m.config).QueryCiRecords(_m)
 }
 
 // Update returns a builder for updating this CiType.
 // Note that you need to call CiType.Unwrap() before calling this method if this CiType
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (ct *CiType) Update() *CiTypeUpdateOne {
-	return NewCiTypeClient(ct.config).UpdateOne(ct)
+func (_m *CiType) Update() *CiTypeUpdateOne {
+	return NewCiTypeClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiType entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (ct *CiType) Unwrap() *CiType {
-	_tx, ok := ct.config.driver.(*txDriver)
+func (_m *CiType) Unwrap() *CiType {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiType is not a transactional entity")
 	}
-	ct.config.driver = _tx.drv
-	return ct
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (ct *CiType) String() string {
+func (_m *CiType) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiType(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", ct.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(ct.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(ct.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("status=")
-	builder.WriteString(fmt.Sprintf("%v", ct.Status))
+	builder.WriteString(fmt.Sprintf("%v", _m.Status))
 	builder.WriteString(", ")
 	builder.WriteString("sort=")
-	builder.WriteString(fmt.Sprintf("%v", ct.Sort))
+	builder.WriteString(fmt.Sprintf("%v", _m.Sort))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(ct.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", ct.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", ct.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("name=")
-	builder.WriteString(ct.Name)
+	builder.WriteString(_m.Name)
 	builder.WriteString(", ")
 	builder.WriteString("alias=")
-	builder.WriteString(ct.Alias)
+	builder.WriteString(_m.Alias)
 	builder.WriteString(", ")
 	builder.WriteString("unique_id=")
-	builder.WriteString(fmt.Sprintf("%v", ct.UniqueID))
+	builder.WriteString(fmt.Sprintf("%v", _m.UniqueID))
 	builder.WriteString(", ")
-	if v := ct.IsInherited; v != nil {
+	if v := _m.IsInherited; v != nil {
 		builder.WriteString("is_inherited=")
 		builder.WriteString(fmt.Sprintf("%v", *v))
 	}
 	builder.WriteString(", ")
-	if v := ct.CreatedBy; v != nil {
+	if v := _m.CreatedBy; v != nil {
 		builder.WriteString("created_by=")
 		builder.WriteString(fmt.Sprintf("%v", *v))
 	}
 	builder.WriteString(", ")
-	if v := ct.Icon; v != nil {
+	if v := _m.Icon; v != nil {
 		builder.WriteString("icon=")
 		builder.WriteString(*v)
 	}
 	builder.WriteString(", ")
-	if v := ct.DefaultOrderAttrID; v != nil {
+	if v := _m.DefaultOrderAttrID; v != nil {
 		builder.WriteString("default_order_attr_id=")
 		builder.WriteString(fmt.Sprintf("%v", *v))
 	}
 	builder.WriteString(", ")
-	if v := ct.ShowID; v != nil {
+	if v := _m.ShowID; v != nil {
 		builder.WriteString("show_id=")
 		builder.WriteString(fmt.Sprintf("%v", *v))
 	}
 	builder.WriteString(", ")
 	builder.WriteString("unique_const=")
-	builder.WriteString(fmt.Sprintf("%v", ct.UniqueConst))
+	builder.WriteString(fmt.Sprintf("%v", _m.UniqueConst))
 	builder.WriteByte(')')
 	return builder.String()
 }

@@ -10,7 +10,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/cioperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -140,7 +140,7 @@ func (*CiOperation) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiOperation fields.
-func (co *CiOperation) assignValues(columns []string, values []any) error {
+func (_m *CiOperation) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -151,108 +151,108 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			co.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case cioperation.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				co.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case cioperation.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				co.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case cioperation.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				co.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case cioperation.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				co.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case cioperation.FieldOperationID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_id", values[i])
 			} else if value.Valid {
-				co.OperationID = value.String
+				_m.OperationID = value.String
 			}
 		case cioperation.FieldOperationType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_type", values[i])
 			} else if value.Valid {
-				co.OperationType = cioperation.OperationType(value.String)
+				_m.OperationType = cioperation.OperationType(value.String)
 			}
 		case cioperation.FieldOperationStatus:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_status", values[i])
 			} else if value.Valid {
-				co.OperationStatus = cioperation.OperationStatus(value.String)
+				_m.OperationStatus = cioperation.OperationStatus(value.String)
 			}
 		case cioperation.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				co.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case cioperation.FieldCiTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_type_id", values[i])
 			} else if value.Valid {
-				co.CiTypeID = uint64(value.Int64)
+				_m.CiTypeID = uint64(value.Int64)
 			}
 		case cioperation.FieldOperatorID:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field operator_id", values[i])
 			} else if value != nil {
-				co.OperatorID = *value
+				_m.OperatorID = *value
 			}
 		case cioperation.FieldOperatorName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operator_name", values[i])
 			} else if value.Valid {
-				co.OperatorName = value.String
+				_m.OperatorName = value.String
 			}
 		case cioperation.FieldOperatorRole:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operator_role", values[i])
 			} else if value.Valid {
-				co.OperatorRole = value.String
+				_m.OperatorRole = value.String
 			}
 		case cioperation.FieldOperatorDepartment:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operator_department", values[i])
 			} else if value.Valid {
-				co.OperatorDepartment = value.String
+				_m.OperatorDepartment = value.String
 			}
 		case cioperation.FieldOperationSource:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_source", values[i])
 			} else if value.Valid {
-				co.OperationSource = cioperation.OperationSource(value.String)
+				_m.OperationSource = cioperation.OperationSource(value.String)
 			}
 		case cioperation.FieldSourceDetail:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field source_detail", values[i])
 			} else if value.Valid {
-				co.SourceDetail = value.String
+				_m.SourceDetail = value.String
 			}
 		case cioperation.FieldOperationReason:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_reason", values[i])
 			} else if value.Valid {
-				co.OperationReason = value.String
+				_m.OperationReason = value.String
 			}
 		case cioperation.FieldOperationContext:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_context", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.OperationContext); err != nil {
+				if err := json.Unmarshal(*value, &_m.OperationContext); err != nil {
 					return fmt.Errorf("unmarshal field operation_context: %w", err)
 				}
 			}
@@ -260,7 +260,7 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field data_before", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.DataBefore); err != nil {
+				if err := json.Unmarshal(*value, &_m.DataBefore); err != nil {
 					return fmt.Errorf("unmarshal field data_before: %w", err)
 				}
 			}
@@ -268,7 +268,7 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field data_after", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.DataAfter); err != nil {
+				if err := json.Unmarshal(*value, &_m.DataAfter); err != nil {
 					return fmt.Errorf("unmarshal field data_after: %w", err)
 				}
 			}
@@ -276,7 +276,7 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field affected_attributes", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.AffectedAttributes); err != nil {
+				if err := json.Unmarshal(*value, &_m.AffectedAttributes); err != nil {
 					return fmt.Errorf("unmarshal field affected_attributes: %w", err)
 				}
 			}
@@ -284,7 +284,7 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field batch_ci_ids", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.BatchCiIds); err != nil {
+				if err := json.Unmarshal(*value, &_m.BatchCiIds); err != nil {
 					return fmt.Errorf("unmarshal field batch_ci_ids: %w", err)
 				}
 			}
@@ -292,79 +292,79 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field batch_total", values[i])
 			} else if value.Valid {
-				co.BatchTotal = int(value.Int64)
+				_m.BatchTotal = int(value.Int64)
 			}
 		case cioperation.FieldBatchSuccess:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field batch_success", values[i])
 			} else if value.Valid {
-				co.BatchSuccess = int(value.Int64)
+				_m.BatchSuccess = int(value.Int64)
 			}
 		case cioperation.FieldBatchFailed:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field batch_failed", values[i])
 			} else if value.Valid {
-				co.BatchFailed = int(value.Int64)
+				_m.BatchFailed = int(value.Int64)
 			}
 		case cioperation.FieldRequireApproval:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field require_approval", values[i])
 			} else if value.Valid {
-				co.RequireApproval = value.Bool
+				_m.RequireApproval = value.Bool
 			}
 		case cioperation.FieldApprovalFlowID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approval_flow_id", values[i])
 			} else if value.Valid {
-				co.ApprovalFlowID = value.String
+				_m.ApprovalFlowID = value.String
 			}
 		case cioperation.FieldApproverID:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field approver_id", values[i])
 			} else if value != nil {
-				co.ApproverID = *value
+				_m.ApproverID = *value
 			}
 		case cioperation.FieldApproverName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approver_name", values[i])
 			} else if value.Valid {
-				co.ApproverName = value.String
+				_m.ApproverName = value.String
 			}
 		case cioperation.FieldApprovedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field approved_at", values[i])
 			} else if value.Valid {
-				co.ApprovedAt = value.Time
+				_m.ApprovedAt = value.Time
 			}
 		case cioperation.FieldApprovalComment:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approval_comment", values[i])
 			} else if value.Valid {
-				co.ApprovalComment = value.String
+				_m.ApprovalComment = value.String
 			}
 		case cioperation.FieldStartedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field started_at", values[i])
 			} else if value.Valid {
-				co.StartedAt = value.Time
+				_m.StartedAt = value.Time
 			}
 		case cioperation.FieldCompletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field completed_at", values[i])
 			} else if value.Valid {
-				co.CompletedAt = value.Time
+				_m.CompletedAt = value.Time
 			}
 		case cioperation.FieldExecutionDuration:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field execution_duration", values[i])
 			} else if value.Valid {
-				co.ExecutionDuration = int(value.Int64)
+				_m.ExecutionDuration = int(value.Int64)
 			}
 		case cioperation.FieldExecutionResult:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field execution_result", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.ExecutionResult); err != nil {
+				if err := json.Unmarshal(*value, &_m.ExecutionResult); err != nil {
 					return fmt.Errorf("unmarshal field execution_result: %w", err)
 				}
 			}
@@ -372,13 +372,13 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_message", values[i])
 			} else if value.Valid {
-				co.ErrorMessage = value.String
+				_m.ErrorMessage = value.String
 			}
 		case cioperation.FieldErrorDetails:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field error_details", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.ErrorDetails); err != nil {
+				if err := json.Unmarshal(*value, &_m.ErrorDetails); err != nil {
 					return fmt.Errorf("unmarshal field error_details: %w", err)
 				}
 			}
@@ -386,19 +386,19 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field lifecycle_stage", values[i])
 			} else if value.Valid {
-				co.LifecycleStage = cioperation.LifecycleStage(value.String)
+				_m.LifecycleStage = cioperation.LifecycleStage(value.String)
 			}
 		case cioperation.FieldExpiresAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field expires_at", values[i])
 			} else if value.Valid {
-				co.ExpiresAt = value.Time
+				_m.ExpiresAt = value.Time
 			}
 		case cioperation.FieldRequiredPermissions:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field required_permissions", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.RequiredPermissions); err != nil {
+				if err := json.Unmarshal(*value, &_m.RequiredPermissions); err != nil {
 					return fmt.Errorf("unmarshal field required_permissions: %w", err)
 				}
 			}
@@ -406,7 +406,7 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field permission_check_result", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.PermissionCheckResult); err != nil {
+				if err := json.Unmarshal(*value, &_m.PermissionCheckResult); err != nil {
 					return fmt.Errorf("unmarshal field permission_check_result: %w", err)
 				}
 			}
@@ -414,19 +414,19 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_sensitive", values[i])
 			} else if value.Valid {
-				co.IsSensitive = value.Bool
+				_m.IsSensitive = value.Bool
 			}
 		case cioperation.FieldParentOperationID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field parent_operation_id", values[i])
 			} else if value.Valid {
-				co.ParentOperationID = value.String
+				_m.ParentOperationID = value.String
 			}
 		case cioperation.FieldChildOperationIds:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field child_operation_ids", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.ChildOperationIds); err != nil {
+				if err := json.Unmarshal(*value, &_m.ChildOperationIds); err != nil {
 					return fmt.Errorf("unmarshal field child_operation_ids: %w", err)
 				}
 			}
@@ -434,13 +434,13 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field transaction_id", values[i])
 			} else if value.Valid {
-				co.TransactionID = value.String
+				_m.TransactionID = value.String
 			}
 		case cioperation.FieldMetadata:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field metadata", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.Metadata); err != nil {
+				if err := json.Unmarshal(*value, &_m.Metadata); err != nil {
 					return fmt.Errorf("unmarshal field metadata: %w", err)
 				}
 			}
@@ -448,12 +448,12 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field tags", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &co.Tags); err != nil {
+				if err := json.Unmarshal(*value, &_m.Tags); err != nil {
 					return fmt.Errorf("unmarshal field tags: %w", err)
 				}
 			}
 		default:
-			co.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -461,170 +461,170 @@ func (co *CiOperation) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiOperation.
 // This includes values selected through modifiers, order, etc.
-func (co *CiOperation) Value(name string) (ent.Value, error) {
-	return co.selectValues.Get(name)
+func (_m *CiOperation) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // Update returns a builder for updating this CiOperation.
 // Note that you need to call CiOperation.Unwrap() before calling this method if this CiOperation
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (co *CiOperation) Update() *CiOperationUpdateOne {
-	return NewCiOperationClient(co.config).UpdateOne(co)
+func (_m *CiOperation) Update() *CiOperationUpdateOne {
+	return NewCiOperationClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiOperation entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (co *CiOperation) Unwrap() *CiOperation {
-	_tx, ok := co.config.driver.(*txDriver)
+func (_m *CiOperation) Unwrap() *CiOperation {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiOperation is not a transactional entity")
 	}
-	co.config.driver = _tx.drv
-	return co
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (co *CiOperation) String() string {
+func (_m *CiOperation) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiOperation(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", co.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(co.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(co.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", co.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", co.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("operation_id=")
-	builder.WriteString(co.OperationID)
+	builder.WriteString(_m.OperationID)
 	builder.WriteString(", ")
 	builder.WriteString("operation_type=")
-	builder.WriteString(fmt.Sprintf("%v", co.OperationType))
+	builder.WriteString(fmt.Sprintf("%v", _m.OperationType))
 	builder.WriteString(", ")
 	builder.WriteString("operation_status=")
-	builder.WriteString(fmt.Sprintf("%v", co.OperationStatus))
+	builder.WriteString(fmt.Sprintf("%v", _m.OperationStatus))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", co.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", co.CiTypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiTypeID))
 	builder.WriteString(", ")
 	builder.WriteString("operator_id=")
-	builder.WriteString(fmt.Sprintf("%v", co.OperatorID))
+	builder.WriteString(fmt.Sprintf("%v", _m.OperatorID))
 	builder.WriteString(", ")
 	builder.WriteString("operator_name=")
-	builder.WriteString(co.OperatorName)
+	builder.WriteString(_m.OperatorName)
 	builder.WriteString(", ")
 	builder.WriteString("operator_role=")
-	builder.WriteString(co.OperatorRole)
+	builder.WriteString(_m.OperatorRole)
 	builder.WriteString(", ")
 	builder.WriteString("operator_department=")
-	builder.WriteString(co.OperatorDepartment)
+	builder.WriteString(_m.OperatorDepartment)
 	builder.WriteString(", ")
 	builder.WriteString("operation_source=")
-	builder.WriteString(fmt.Sprintf("%v", co.OperationSource))
+	builder.WriteString(fmt.Sprintf("%v", _m.OperationSource))
 	builder.WriteString(", ")
 	builder.WriteString("source_detail=")
-	builder.WriteString(co.SourceDetail)
+	builder.WriteString(_m.SourceDetail)
 	builder.WriteString(", ")
 	builder.WriteString("operation_reason=")
-	builder.WriteString(co.OperationReason)
+	builder.WriteString(_m.OperationReason)
 	builder.WriteString(", ")
 	builder.WriteString("operation_context=")
-	builder.WriteString(fmt.Sprintf("%v", co.OperationContext))
+	builder.WriteString(fmt.Sprintf("%v", _m.OperationContext))
 	builder.WriteString(", ")
 	builder.WriteString("data_before=")
-	builder.WriteString(fmt.Sprintf("%v", co.DataBefore))
+	builder.WriteString(fmt.Sprintf("%v", _m.DataBefore))
 	builder.WriteString(", ")
 	builder.WriteString("data_after=")
-	builder.WriteString(fmt.Sprintf("%v", co.DataAfter))
+	builder.WriteString(fmt.Sprintf("%v", _m.DataAfter))
 	builder.WriteString(", ")
 	builder.WriteString("affected_attributes=")
-	builder.WriteString(fmt.Sprintf("%v", co.AffectedAttributes))
+	builder.WriteString(fmt.Sprintf("%v", _m.AffectedAttributes))
 	builder.WriteString(", ")
 	builder.WriteString("batch_ci_ids=")
-	builder.WriteString(fmt.Sprintf("%v", co.BatchCiIds))
+	builder.WriteString(fmt.Sprintf("%v", _m.BatchCiIds))
 	builder.WriteString(", ")
 	builder.WriteString("batch_total=")
-	builder.WriteString(fmt.Sprintf("%v", co.BatchTotal))
+	builder.WriteString(fmt.Sprintf("%v", _m.BatchTotal))
 	builder.WriteString(", ")
 	builder.WriteString("batch_success=")
-	builder.WriteString(fmt.Sprintf("%v", co.BatchSuccess))
+	builder.WriteString(fmt.Sprintf("%v", _m.BatchSuccess))
 	builder.WriteString(", ")
 	builder.WriteString("batch_failed=")
-	builder.WriteString(fmt.Sprintf("%v", co.BatchFailed))
+	builder.WriteString(fmt.Sprintf("%v", _m.BatchFailed))
 	builder.WriteString(", ")
 	builder.WriteString("require_approval=")
-	builder.WriteString(fmt.Sprintf("%v", co.RequireApproval))
+	builder.WriteString(fmt.Sprintf("%v", _m.RequireApproval))
 	builder.WriteString(", ")
 	builder.WriteString("approval_flow_id=")
-	builder.WriteString(co.ApprovalFlowID)
+	builder.WriteString(_m.ApprovalFlowID)
 	builder.WriteString(", ")
 	builder.WriteString("approver_id=")
-	builder.WriteString(fmt.Sprintf("%v", co.ApproverID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApproverID))
 	builder.WriteString(", ")
 	builder.WriteString("approver_name=")
-	builder.WriteString(co.ApproverName)
+	builder.WriteString(_m.ApproverName)
 	builder.WriteString(", ")
 	builder.WriteString("approved_at=")
-	builder.WriteString(co.ApprovedAt.Format(time.ANSIC))
+	builder.WriteString(_m.ApprovedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("approval_comment=")
-	builder.WriteString(co.ApprovalComment)
+	builder.WriteString(_m.ApprovalComment)
 	builder.WriteString(", ")
 	builder.WriteString("started_at=")
-	builder.WriteString(co.StartedAt.Format(time.ANSIC))
+	builder.WriteString(_m.StartedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("completed_at=")
-	builder.WriteString(co.CompletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CompletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("execution_duration=")
-	builder.WriteString(fmt.Sprintf("%v", co.ExecutionDuration))
+	builder.WriteString(fmt.Sprintf("%v", _m.ExecutionDuration))
 	builder.WriteString(", ")
 	builder.WriteString("execution_result=")
-	builder.WriteString(fmt.Sprintf("%v", co.ExecutionResult))
+	builder.WriteString(fmt.Sprintf("%v", _m.ExecutionResult))
 	builder.WriteString(", ")
 	builder.WriteString("error_message=")
-	builder.WriteString(co.ErrorMessage)
+	builder.WriteString(_m.ErrorMessage)
 	builder.WriteString(", ")
 	builder.WriteString("error_details=")
-	builder.WriteString(fmt.Sprintf("%v", co.ErrorDetails))
+	builder.WriteString(fmt.Sprintf("%v", _m.ErrorDetails))
 	builder.WriteString(", ")
 	builder.WriteString("lifecycle_stage=")
-	builder.WriteString(fmt.Sprintf("%v", co.LifecycleStage))
+	builder.WriteString(fmt.Sprintf("%v", _m.LifecycleStage))
 	builder.WriteString(", ")
 	builder.WriteString("expires_at=")
-	builder.WriteString(co.ExpiresAt.Format(time.ANSIC))
+	builder.WriteString(_m.ExpiresAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("required_permissions=")
-	builder.WriteString(fmt.Sprintf("%v", co.RequiredPermissions))
+	builder.WriteString(fmt.Sprintf("%v", _m.RequiredPermissions))
 	builder.WriteString(", ")
 	builder.WriteString("permission_check_result=")
-	builder.WriteString(fmt.Sprintf("%v", co.PermissionCheckResult))
+	builder.WriteString(fmt.Sprintf("%v", _m.PermissionCheckResult))
 	builder.WriteString(", ")
 	builder.WriteString("is_sensitive=")
-	builder.WriteString(fmt.Sprintf("%v", co.IsSensitive))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsSensitive))
 	builder.WriteString(", ")
 	builder.WriteString("parent_operation_id=")
-	builder.WriteString(co.ParentOperationID)
+	builder.WriteString(_m.ParentOperationID)
 	builder.WriteString(", ")
 	builder.WriteString("child_operation_ids=")
-	builder.WriteString(fmt.Sprintf("%v", co.ChildOperationIds))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChildOperationIds))
 	builder.WriteString(", ")
 	builder.WriteString("transaction_id=")
-	builder.WriteString(co.TransactionID)
+	builder.WriteString(_m.TransactionID)
 	builder.WriteString(", ")
 	builder.WriteString("metadata=")
-	builder.WriteString(fmt.Sprintf("%v", co.Metadata))
+	builder.WriteString(fmt.Sprintf("%v", _m.Metadata))
 	builder.WriteString(", ")
 	builder.WriteString("tags=")
-	builder.WriteString(fmt.Sprintf("%v", co.Tags))
+	builder.WriteString(fmt.Sprintf("%v", _m.Tags))
 	builder.WriteByte(')')
 	return builder.String()
 }

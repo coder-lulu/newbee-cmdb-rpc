@@ -12,19 +12,19 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 )
 
 // AttributeQuery is the builder for querying Attribute entities.
@@ -51,44 +51,44 @@ type AttributeQuery struct {
 }
 
 // Where adds a new predicate for the AttributeQuery builder.
-func (aq *AttributeQuery) Where(ps ...predicate.Attribute) *AttributeQuery {
-	aq.predicates = append(aq.predicates, ps...)
-	return aq
+func (_q *AttributeQuery) Where(ps ...predicate.Attribute) *AttributeQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (aq *AttributeQuery) Limit(limit int) *AttributeQuery {
-	aq.ctx.Limit = &limit
-	return aq
+func (_q *AttributeQuery) Limit(limit int) *AttributeQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (aq *AttributeQuery) Offset(offset int) *AttributeQuery {
-	aq.ctx.Offset = &offset
-	return aq
+func (_q *AttributeQuery) Offset(offset int) *AttributeQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (aq *AttributeQuery) Unique(unique bool) *AttributeQuery {
-	aq.ctx.Unique = &unique
-	return aq
+func (_q *AttributeQuery) Unique(unique bool) *AttributeQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (aq *AttributeQuery) Order(o ...attribute.OrderOption) *AttributeQuery {
-	aq.order = append(aq.order, o...)
-	return aq
+func (_q *AttributeQuery) Order(o ...attribute.OrderOption) *AttributeQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryValueTexts chains the current query on the "value_texts" edge.
-func (aq *AttributeQuery) QueryValueTexts() *ValueTextQuery {
-	query := (&ValueTextClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryValueTexts() *ValueTextQuery {
+	query := (&ValueTextClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -97,20 +97,20 @@ func (aq *AttributeQuery) QueryValueTexts() *ValueTextQuery {
 			sqlgraph.To(valuetext.Table, valuetext.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ValueTextsTable, attribute.ValueTextsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueIndexTexts chains the current query on the "value_index_texts" edge.
-func (aq *AttributeQuery) QueryValueIndexTexts() *ValueIndexTextQuery {
-	query := (&ValueIndexTextClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryValueIndexTexts() *ValueIndexTextQuery {
+	query := (&ValueIndexTextClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -119,20 +119,20 @@ func (aq *AttributeQuery) QueryValueIndexTexts() *ValueIndexTextQuery {
 			sqlgraph.To(valueindextext.Table, valueindextext.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ValueIndexTextsTable, attribute.ValueIndexTextsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueJsons chains the current query on the "value_jsons" edge.
-func (aq *AttributeQuery) QueryValueJsons() *ValueJSONQuery {
-	query := (&ValueJSONClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryValueJsons() *ValueJSONQuery {
+	query := (&ValueJSONClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -141,20 +141,20 @@ func (aq *AttributeQuery) QueryValueJsons() *ValueJSONQuery {
 			sqlgraph.To(valuejson.Table, valuejson.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ValueJsonsTable, attribute.ValueJsonsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueIntegers chains the current query on the "value_integers" edge.
-func (aq *AttributeQuery) QueryValueIntegers() *ValueIntegerQuery {
-	query := (&ValueIntegerClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryValueIntegers() *ValueIntegerQuery {
+	query := (&ValueIntegerClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -163,20 +163,20 @@ func (aq *AttributeQuery) QueryValueIntegers() *ValueIntegerQuery {
 			sqlgraph.To(valueinteger.Table, valueinteger.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ValueIntegersTable, attribute.ValueIntegersColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueFloats chains the current query on the "value_floats" edge.
-func (aq *AttributeQuery) QueryValueFloats() *ValueFloatQuery {
-	query := (&ValueFloatClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryValueFloats() *ValueFloatQuery {
+	query := (&ValueFloatClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -185,20 +185,20 @@ func (aq *AttributeQuery) QueryValueFloats() *ValueFloatQuery {
 			sqlgraph.To(valuefloat.Table, valuefloat.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ValueFloatsTable, attribute.ValueFloatsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryValueDatetimes chains the current query on the "value_datetimes" edge.
-func (aq *AttributeQuery) QueryValueDatetimes() *ValueDatetimeQuery {
-	query := (&ValueDatetimeClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryValueDatetimes() *ValueDatetimeQuery {
+	query := (&ValueDatetimeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -207,20 +207,20 @@ func (aq *AttributeQuery) QueryValueDatetimes() *ValueDatetimeQuery {
 			sqlgraph.To(valuedatetime.Table, valuedatetime.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ValueDatetimesTable, attribute.ValueDatetimesColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryChoiceTexts chains the current query on the "choice_texts" edge.
-func (aq *AttributeQuery) QueryChoiceTexts() *ChoiceTextQuery {
-	query := (&ChoiceTextClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryChoiceTexts() *ChoiceTextQuery {
+	query := (&ChoiceTextClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -229,20 +229,20 @@ func (aq *AttributeQuery) QueryChoiceTexts() *ChoiceTextQuery {
 			sqlgraph.To(choicetext.Table, choicetext.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ChoiceTextsTable, attribute.ChoiceTextsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryChoiceIntegers chains the current query on the "choice_integers" edge.
-func (aq *AttributeQuery) QueryChoiceIntegers() *ChoiceIntegerQuery {
-	query := (&ChoiceIntegerClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryChoiceIntegers() *ChoiceIntegerQuery {
+	query := (&ChoiceIntegerClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -251,20 +251,20 @@ func (aq *AttributeQuery) QueryChoiceIntegers() *ChoiceIntegerQuery {
 			sqlgraph.To(choiceinteger.Table, choiceinteger.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ChoiceIntegersTable, attribute.ChoiceIntegersColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryChoiceFloats chains the current query on the "choice_floats" edge.
-func (aq *AttributeQuery) QueryChoiceFloats() *ChoiceFloatQuery {
-	query := (&ChoiceFloatClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryChoiceFloats() *ChoiceFloatQuery {
+	query := (&ChoiceFloatClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -273,20 +273,20 @@ func (aq *AttributeQuery) QueryChoiceFloats() *ChoiceFloatQuery {
 			sqlgraph.To(choicefloat.Table, choicefloat.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.ChoiceFloatsTable, attribute.ChoiceFloatsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryTypeAttributes chains the current query on the "type_attributes" edge.
-func (aq *AttributeQuery) QueryTypeAttributes() *CiTypeAttributeQuery {
-	query := (&CiTypeAttributeClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryTypeAttributes() *CiTypeAttributeQuery {
+	query := (&CiTypeAttributeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -295,20 +295,20 @@ func (aq *AttributeQuery) QueryTypeAttributes() *CiTypeAttributeQuery {
 			sqlgraph.To(citypeattribute.Table, citypeattribute.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.TypeAttributesTable, attribute.TypeAttributesColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryGroupItems chains the current query on the "group_items" edge.
-func (aq *AttributeQuery) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
-	query := (&CiTypeAttributeGroupItemClient{config: aq.config}).Query()
+func (_q *AttributeQuery) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
+	query := (&CiTypeAttributeGroupItemClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := aq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := aq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -317,7 +317,7 @@ func (aq *AttributeQuery) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
 			sqlgraph.To(citypeattributegroupitem.Table, citypeattributegroupitem.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, attribute.GroupItemsTable, attribute.GroupItemsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(aq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -325,8 +325,8 @@ func (aq *AttributeQuery) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
 
 // First returns the first Attribute entity from the query.
 // Returns a *NotFoundError when no Attribute was found.
-func (aq *AttributeQuery) First(ctx context.Context) (*Attribute, error) {
-	nodes, err := aq.Limit(1).All(setContextOp(ctx, aq.ctx, ent.OpQueryFirst))
+func (_q *AttributeQuery) First(ctx context.Context) (*Attribute, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -337,8 +337,8 @@ func (aq *AttributeQuery) First(ctx context.Context) (*Attribute, error) {
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (aq *AttributeQuery) FirstX(ctx context.Context) *Attribute {
-	node, err := aq.First(ctx)
+func (_q *AttributeQuery) FirstX(ctx context.Context) *Attribute {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -347,9 +347,9 @@ func (aq *AttributeQuery) FirstX(ctx context.Context) *Attribute {
 
 // FirstID returns the first Attribute ID from the query.
 // Returns a *NotFoundError when no Attribute ID was found.
-func (aq *AttributeQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *AttributeQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = aq.Limit(1).IDs(setContextOp(ctx, aq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -360,8 +360,8 @@ func (aq *AttributeQuery) FirstID(ctx context.Context) (id uint64, err error) {
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (aq *AttributeQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := aq.FirstID(ctx)
+func (_q *AttributeQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -371,8 +371,8 @@ func (aq *AttributeQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single Attribute entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one Attribute entity is found.
 // Returns a *NotFoundError when no Attribute entities are found.
-func (aq *AttributeQuery) Only(ctx context.Context) (*Attribute, error) {
-	nodes, err := aq.Limit(2).All(setContextOp(ctx, aq.ctx, ent.OpQueryOnly))
+func (_q *AttributeQuery) Only(ctx context.Context) (*Attribute, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -387,8 +387,8 @@ func (aq *AttributeQuery) Only(ctx context.Context) (*Attribute, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (aq *AttributeQuery) OnlyX(ctx context.Context) *Attribute {
-	node, err := aq.Only(ctx)
+func (_q *AttributeQuery) OnlyX(ctx context.Context) *Attribute {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -398,9 +398,9 @@ func (aq *AttributeQuery) OnlyX(ctx context.Context) *Attribute {
 // OnlyID is like Only, but returns the only Attribute ID in the query.
 // Returns a *NotSingularError when more than one Attribute ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (aq *AttributeQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *AttributeQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = aq.Limit(2).IDs(setContextOp(ctx, aq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -415,8 +415,8 @@ func (aq *AttributeQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (aq *AttributeQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := aq.OnlyID(ctx)
+func (_q *AttributeQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -424,18 +424,18 @@ func (aq *AttributeQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of Attributes.
-func (aq *AttributeQuery) All(ctx context.Context) ([]*Attribute, error) {
-	ctx = setContextOp(ctx, aq.ctx, ent.OpQueryAll)
-	if err := aq.prepareQuery(ctx); err != nil {
+func (_q *AttributeQuery) All(ctx context.Context) ([]*Attribute, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*Attribute, *AttributeQuery]()
-	return withInterceptors[[]*Attribute](ctx, aq, qr, aq.inters)
+	return withInterceptors[[]*Attribute](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (aq *AttributeQuery) AllX(ctx context.Context) []*Attribute {
-	nodes, err := aq.All(ctx)
+func (_q *AttributeQuery) AllX(ctx context.Context) []*Attribute {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -443,20 +443,20 @@ func (aq *AttributeQuery) AllX(ctx context.Context) []*Attribute {
 }
 
 // IDs executes the query and returns a list of Attribute IDs.
-func (aq *AttributeQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if aq.ctx.Unique == nil && aq.path != nil {
-		aq.Unique(true)
+func (_q *AttributeQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, aq.ctx, ent.OpQueryIDs)
-	if err = aq.Select(attribute.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(attribute.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (aq *AttributeQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := aq.IDs(ctx)
+func (_q *AttributeQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -464,17 +464,17 @@ func (aq *AttributeQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (aq *AttributeQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, aq.ctx, ent.OpQueryCount)
-	if err := aq.prepareQuery(ctx); err != nil {
+func (_q *AttributeQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, aq, querierCount[*AttributeQuery](), aq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*AttributeQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (aq *AttributeQuery) CountX(ctx context.Context) int {
-	count, err := aq.Count(ctx)
+func (_q *AttributeQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -482,9 +482,9 @@ func (aq *AttributeQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (aq *AttributeQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, aq.ctx, ent.OpQueryExist)
-	switch _, err := aq.FirstID(ctx); {
+func (_q *AttributeQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -495,8 +495,8 @@ func (aq *AttributeQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (aq *AttributeQuery) ExistX(ctx context.Context) bool {
-	exist, err := aq.Exist(ctx)
+func (_q *AttributeQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -505,152 +505,152 @@ func (aq *AttributeQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the AttributeQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (aq *AttributeQuery) Clone() *AttributeQuery {
-	if aq == nil {
+func (_q *AttributeQuery) Clone() *AttributeQuery {
+	if _q == nil {
 		return nil
 	}
 	return &AttributeQuery{
-		config:              aq.config,
-		ctx:                 aq.ctx.Clone(),
-		order:               append([]attribute.OrderOption{}, aq.order...),
-		inters:              append([]Interceptor{}, aq.inters...),
-		predicates:          append([]predicate.Attribute{}, aq.predicates...),
-		withValueTexts:      aq.withValueTexts.Clone(),
-		withValueIndexTexts: aq.withValueIndexTexts.Clone(),
-		withValueJsons:      aq.withValueJsons.Clone(),
-		withValueIntegers:   aq.withValueIntegers.Clone(),
-		withValueFloats:     aq.withValueFloats.Clone(),
-		withValueDatetimes:  aq.withValueDatetimes.Clone(),
-		withChoiceTexts:     aq.withChoiceTexts.Clone(),
-		withChoiceIntegers:  aq.withChoiceIntegers.Clone(),
-		withChoiceFloats:    aq.withChoiceFloats.Clone(),
-		withTypeAttributes:  aq.withTypeAttributes.Clone(),
-		withGroupItems:      aq.withGroupItems.Clone(),
+		config:              _q.config,
+		ctx:                 _q.ctx.Clone(),
+		order:               append([]attribute.OrderOption{}, _q.order...),
+		inters:              append([]Interceptor{}, _q.inters...),
+		predicates:          append([]predicate.Attribute{}, _q.predicates...),
+		withValueTexts:      _q.withValueTexts.Clone(),
+		withValueIndexTexts: _q.withValueIndexTexts.Clone(),
+		withValueJsons:      _q.withValueJsons.Clone(),
+		withValueIntegers:   _q.withValueIntegers.Clone(),
+		withValueFloats:     _q.withValueFloats.Clone(),
+		withValueDatetimes:  _q.withValueDatetimes.Clone(),
+		withChoiceTexts:     _q.withChoiceTexts.Clone(),
+		withChoiceIntegers:  _q.withChoiceIntegers.Clone(),
+		withChoiceFloats:    _q.withChoiceFloats.Clone(),
+		withTypeAttributes:  _q.withTypeAttributes.Clone(),
+		withGroupItems:      _q.withGroupItems.Clone(),
 		// clone intermediate query.
-		sql:  aq.sql.Clone(),
-		path: aq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithValueTexts tells the query-builder to eager-load the nodes that are connected to
 // the "value_texts" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithValueTexts(opts ...func(*ValueTextQuery)) *AttributeQuery {
-	query := (&ValueTextClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithValueTexts(opts ...func(*ValueTextQuery)) *AttributeQuery {
+	query := (&ValueTextClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withValueTexts = query
-	return aq
+	_q.withValueTexts = query
+	return _q
 }
 
 // WithValueIndexTexts tells the query-builder to eager-load the nodes that are connected to
 // the "value_index_texts" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithValueIndexTexts(opts ...func(*ValueIndexTextQuery)) *AttributeQuery {
-	query := (&ValueIndexTextClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithValueIndexTexts(opts ...func(*ValueIndexTextQuery)) *AttributeQuery {
+	query := (&ValueIndexTextClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withValueIndexTexts = query
-	return aq
+	_q.withValueIndexTexts = query
+	return _q
 }
 
 // WithValueJsons tells the query-builder to eager-load the nodes that are connected to
 // the "value_jsons" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithValueJsons(opts ...func(*ValueJSONQuery)) *AttributeQuery {
-	query := (&ValueJSONClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithValueJsons(opts ...func(*ValueJSONQuery)) *AttributeQuery {
+	query := (&ValueJSONClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withValueJsons = query
-	return aq
+	_q.withValueJsons = query
+	return _q
 }
 
 // WithValueIntegers tells the query-builder to eager-load the nodes that are connected to
 // the "value_integers" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithValueIntegers(opts ...func(*ValueIntegerQuery)) *AttributeQuery {
-	query := (&ValueIntegerClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithValueIntegers(opts ...func(*ValueIntegerQuery)) *AttributeQuery {
+	query := (&ValueIntegerClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withValueIntegers = query
-	return aq
+	_q.withValueIntegers = query
+	return _q
 }
 
 // WithValueFloats tells the query-builder to eager-load the nodes that are connected to
 // the "value_floats" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithValueFloats(opts ...func(*ValueFloatQuery)) *AttributeQuery {
-	query := (&ValueFloatClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithValueFloats(opts ...func(*ValueFloatQuery)) *AttributeQuery {
+	query := (&ValueFloatClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withValueFloats = query
-	return aq
+	_q.withValueFloats = query
+	return _q
 }
 
 // WithValueDatetimes tells the query-builder to eager-load the nodes that are connected to
 // the "value_datetimes" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithValueDatetimes(opts ...func(*ValueDatetimeQuery)) *AttributeQuery {
-	query := (&ValueDatetimeClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithValueDatetimes(opts ...func(*ValueDatetimeQuery)) *AttributeQuery {
+	query := (&ValueDatetimeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withValueDatetimes = query
-	return aq
+	_q.withValueDatetimes = query
+	return _q
 }
 
 // WithChoiceTexts tells the query-builder to eager-load the nodes that are connected to
 // the "choice_texts" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithChoiceTexts(opts ...func(*ChoiceTextQuery)) *AttributeQuery {
-	query := (&ChoiceTextClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithChoiceTexts(opts ...func(*ChoiceTextQuery)) *AttributeQuery {
+	query := (&ChoiceTextClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withChoiceTexts = query
-	return aq
+	_q.withChoiceTexts = query
+	return _q
 }
 
 // WithChoiceIntegers tells the query-builder to eager-load the nodes that are connected to
 // the "choice_integers" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithChoiceIntegers(opts ...func(*ChoiceIntegerQuery)) *AttributeQuery {
-	query := (&ChoiceIntegerClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithChoiceIntegers(opts ...func(*ChoiceIntegerQuery)) *AttributeQuery {
+	query := (&ChoiceIntegerClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withChoiceIntegers = query
-	return aq
+	_q.withChoiceIntegers = query
+	return _q
 }
 
 // WithChoiceFloats tells the query-builder to eager-load the nodes that are connected to
 // the "choice_floats" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithChoiceFloats(opts ...func(*ChoiceFloatQuery)) *AttributeQuery {
-	query := (&ChoiceFloatClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithChoiceFloats(opts ...func(*ChoiceFloatQuery)) *AttributeQuery {
+	query := (&ChoiceFloatClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withChoiceFloats = query
-	return aq
+	_q.withChoiceFloats = query
+	return _q
 }
 
 // WithTypeAttributes tells the query-builder to eager-load the nodes that are connected to
 // the "type_attributes" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithTypeAttributes(opts ...func(*CiTypeAttributeQuery)) *AttributeQuery {
-	query := (&CiTypeAttributeClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithTypeAttributes(opts ...func(*CiTypeAttributeQuery)) *AttributeQuery {
+	query := (&CiTypeAttributeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withTypeAttributes = query
-	return aq
+	_q.withTypeAttributes = query
+	return _q
 }
 
 // WithGroupItems tells the query-builder to eager-load the nodes that are connected to
 // the "group_items" edge. The optional arguments are used to configure the query builder of the edge.
-func (aq *AttributeQuery) WithGroupItems(opts ...func(*CiTypeAttributeGroupItemQuery)) *AttributeQuery {
-	query := (&CiTypeAttributeGroupItemClient{config: aq.config}).Query()
+func (_q *AttributeQuery) WithGroupItems(opts ...func(*CiTypeAttributeGroupItemQuery)) *AttributeQuery {
+	query := (&CiTypeAttributeGroupItemClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	aq.withGroupItems = query
-	return aq
+	_q.withGroupItems = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -667,10 +667,10 @@ func (aq *AttributeQuery) WithGroupItems(opts ...func(*CiTypeAttributeGroupItemQ
 //		GroupBy(attribute.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (aq *AttributeQuery) GroupBy(field string, fields ...string) *AttributeGroupBy {
-	aq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &AttributeGroupBy{build: aq}
-	grbuild.flds = &aq.ctx.Fields
+func (_q *AttributeQuery) GroupBy(field string, fields ...string) *AttributeGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &AttributeGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = attribute.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -688,68 +688,68 @@ func (aq *AttributeQuery) GroupBy(field string, fields ...string) *AttributeGrou
 //	client.Attribute.Query().
 //		Select(attribute.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (aq *AttributeQuery) Select(fields ...string) *AttributeSelect {
-	aq.ctx.Fields = append(aq.ctx.Fields, fields...)
-	sbuild := &AttributeSelect{AttributeQuery: aq}
+func (_q *AttributeQuery) Select(fields ...string) *AttributeSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &AttributeSelect{AttributeQuery: _q}
 	sbuild.label = attribute.Label
-	sbuild.flds, sbuild.scan = &aq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a AttributeSelect configured with the given aggregations.
-func (aq *AttributeQuery) Aggregate(fns ...AggregateFunc) *AttributeSelect {
-	return aq.Select().Aggregate(fns...)
+func (_q *AttributeQuery) Aggregate(fns ...AggregateFunc) *AttributeSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (aq *AttributeQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range aq.inters {
+func (_q *AttributeQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, aq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range aq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !attribute.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if aq.path != nil {
-		prev, err := aq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		aq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (aq *AttributeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*Attribute, error) {
+func (_q *AttributeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*Attribute, error) {
 	var (
 		nodes       = []*Attribute{}
-		_spec       = aq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [11]bool{
-			aq.withValueTexts != nil,
-			aq.withValueIndexTexts != nil,
-			aq.withValueJsons != nil,
-			aq.withValueIntegers != nil,
-			aq.withValueFloats != nil,
-			aq.withValueDatetimes != nil,
-			aq.withChoiceTexts != nil,
-			aq.withChoiceIntegers != nil,
-			aq.withChoiceFloats != nil,
-			aq.withTypeAttributes != nil,
-			aq.withGroupItems != nil,
+			_q.withValueTexts != nil,
+			_q.withValueIndexTexts != nil,
+			_q.withValueJsons != nil,
+			_q.withValueIntegers != nil,
+			_q.withValueFloats != nil,
+			_q.withValueDatetimes != nil,
+			_q.withChoiceTexts != nil,
+			_q.withChoiceIntegers != nil,
+			_q.withChoiceFloats != nil,
+			_q.withTypeAttributes != nil,
+			_q.withGroupItems != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*Attribute).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &Attribute{config: aq.config}
+		node := &Attribute{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -757,84 +757,84 @@ func (aq *AttributeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*At
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, aq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := aq.withValueTexts; query != nil {
-		if err := aq.loadValueTexts(ctx, query, nodes,
+	if query := _q.withValueTexts; query != nil {
+		if err := _q.loadValueTexts(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ValueTexts = []*ValueText{} },
 			func(n *Attribute, e *ValueText) { n.Edges.ValueTexts = append(n.Edges.ValueTexts, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withValueIndexTexts; query != nil {
-		if err := aq.loadValueIndexTexts(ctx, query, nodes,
+	if query := _q.withValueIndexTexts; query != nil {
+		if err := _q.loadValueIndexTexts(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ValueIndexTexts = []*ValueIndexText{} },
 			func(n *Attribute, e *ValueIndexText) { n.Edges.ValueIndexTexts = append(n.Edges.ValueIndexTexts, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withValueJsons; query != nil {
-		if err := aq.loadValueJsons(ctx, query, nodes,
+	if query := _q.withValueJsons; query != nil {
+		if err := _q.loadValueJsons(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ValueJsons = []*ValueJSON{} },
 			func(n *Attribute, e *ValueJSON) { n.Edges.ValueJsons = append(n.Edges.ValueJsons, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withValueIntegers; query != nil {
-		if err := aq.loadValueIntegers(ctx, query, nodes,
+	if query := _q.withValueIntegers; query != nil {
+		if err := _q.loadValueIntegers(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ValueIntegers = []*ValueInteger{} },
 			func(n *Attribute, e *ValueInteger) { n.Edges.ValueIntegers = append(n.Edges.ValueIntegers, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withValueFloats; query != nil {
-		if err := aq.loadValueFloats(ctx, query, nodes,
+	if query := _q.withValueFloats; query != nil {
+		if err := _q.loadValueFloats(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ValueFloats = []*ValueFloat{} },
 			func(n *Attribute, e *ValueFloat) { n.Edges.ValueFloats = append(n.Edges.ValueFloats, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withValueDatetimes; query != nil {
-		if err := aq.loadValueDatetimes(ctx, query, nodes,
+	if query := _q.withValueDatetimes; query != nil {
+		if err := _q.loadValueDatetimes(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ValueDatetimes = []*ValueDatetime{} },
 			func(n *Attribute, e *ValueDatetime) { n.Edges.ValueDatetimes = append(n.Edges.ValueDatetimes, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withChoiceTexts; query != nil {
-		if err := aq.loadChoiceTexts(ctx, query, nodes,
+	if query := _q.withChoiceTexts; query != nil {
+		if err := _q.loadChoiceTexts(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ChoiceTexts = []*ChoiceText{} },
 			func(n *Attribute, e *ChoiceText) { n.Edges.ChoiceTexts = append(n.Edges.ChoiceTexts, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withChoiceIntegers; query != nil {
-		if err := aq.loadChoiceIntegers(ctx, query, nodes,
+	if query := _q.withChoiceIntegers; query != nil {
+		if err := _q.loadChoiceIntegers(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ChoiceIntegers = []*ChoiceInteger{} },
 			func(n *Attribute, e *ChoiceInteger) { n.Edges.ChoiceIntegers = append(n.Edges.ChoiceIntegers, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withChoiceFloats; query != nil {
-		if err := aq.loadChoiceFloats(ctx, query, nodes,
+	if query := _q.withChoiceFloats; query != nil {
+		if err := _q.loadChoiceFloats(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.ChoiceFloats = []*ChoiceFloat{} },
 			func(n *Attribute, e *ChoiceFloat) { n.Edges.ChoiceFloats = append(n.Edges.ChoiceFloats, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withTypeAttributes; query != nil {
-		if err := aq.loadTypeAttributes(ctx, query, nodes,
+	if query := _q.withTypeAttributes; query != nil {
+		if err := _q.loadTypeAttributes(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.TypeAttributes = []*CiTypeAttribute{} },
 			func(n *Attribute, e *CiTypeAttribute) { n.Edges.TypeAttributes = append(n.Edges.TypeAttributes, e) }); err != nil {
 			return nil, err
 		}
 	}
-	if query := aq.withGroupItems; query != nil {
-		if err := aq.loadGroupItems(ctx, query, nodes,
+	if query := _q.withGroupItems; query != nil {
+		if err := _q.loadGroupItems(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.GroupItems = []*CiTypeAttributeGroupItem{} },
 			func(n *Attribute, e *CiTypeAttributeGroupItem) { n.Edges.GroupItems = append(n.Edges.GroupItems, e) }); err != nil {
 			return nil, err
@@ -843,7 +843,7 @@ func (aq *AttributeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*At
 	return nodes, nil
 }
 
-func (aq *AttributeQuery) loadValueTexts(ctx context.Context, query *ValueTextQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueText)) error {
+func (_q *AttributeQuery) loadValueTexts(ctx context.Context, query *ValueTextQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueText)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -873,7 +873,7 @@ func (aq *AttributeQuery) loadValueTexts(ctx context.Context, query *ValueTextQu
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadValueIndexTexts(ctx context.Context, query *ValueIndexTextQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueIndexText)) error {
+func (_q *AttributeQuery) loadValueIndexTexts(ctx context.Context, query *ValueIndexTextQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueIndexText)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -903,7 +903,7 @@ func (aq *AttributeQuery) loadValueIndexTexts(ctx context.Context, query *ValueI
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadValueJsons(ctx context.Context, query *ValueJSONQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueJSON)) error {
+func (_q *AttributeQuery) loadValueJsons(ctx context.Context, query *ValueJSONQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueJSON)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -933,7 +933,7 @@ func (aq *AttributeQuery) loadValueJsons(ctx context.Context, query *ValueJSONQu
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadValueIntegers(ctx context.Context, query *ValueIntegerQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueInteger)) error {
+func (_q *AttributeQuery) loadValueIntegers(ctx context.Context, query *ValueIntegerQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueInteger)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -963,7 +963,7 @@ func (aq *AttributeQuery) loadValueIntegers(ctx context.Context, query *ValueInt
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadValueFloats(ctx context.Context, query *ValueFloatQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueFloat)) error {
+func (_q *AttributeQuery) loadValueFloats(ctx context.Context, query *ValueFloatQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueFloat)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -993,7 +993,7 @@ func (aq *AttributeQuery) loadValueFloats(ctx context.Context, query *ValueFloat
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadValueDatetimes(ctx context.Context, query *ValueDatetimeQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueDatetime)) error {
+func (_q *AttributeQuery) loadValueDatetimes(ctx context.Context, query *ValueDatetimeQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ValueDatetime)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -1023,7 +1023,7 @@ func (aq *AttributeQuery) loadValueDatetimes(ctx context.Context, query *ValueDa
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadChoiceTexts(ctx context.Context, query *ChoiceTextQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ChoiceText)) error {
+func (_q *AttributeQuery) loadChoiceTexts(ctx context.Context, query *ChoiceTextQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ChoiceText)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -1053,7 +1053,7 @@ func (aq *AttributeQuery) loadChoiceTexts(ctx context.Context, query *ChoiceText
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadChoiceIntegers(ctx context.Context, query *ChoiceIntegerQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ChoiceInteger)) error {
+func (_q *AttributeQuery) loadChoiceIntegers(ctx context.Context, query *ChoiceIntegerQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ChoiceInteger)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -1083,7 +1083,7 @@ func (aq *AttributeQuery) loadChoiceIntegers(ctx context.Context, query *ChoiceI
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadChoiceFloats(ctx context.Context, query *ChoiceFloatQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ChoiceFloat)) error {
+func (_q *AttributeQuery) loadChoiceFloats(ctx context.Context, query *ChoiceFloatQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *ChoiceFloat)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -1113,7 +1113,7 @@ func (aq *AttributeQuery) loadChoiceFloats(ctx context.Context, query *ChoiceFlo
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadTypeAttributes(ctx context.Context, query *CiTypeAttributeQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *CiTypeAttribute)) error {
+func (_q *AttributeQuery) loadTypeAttributes(ctx context.Context, query *CiTypeAttributeQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *CiTypeAttribute)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -1143,7 +1143,7 @@ func (aq *AttributeQuery) loadTypeAttributes(ctx context.Context, query *CiTypeA
 	}
 	return nil
 }
-func (aq *AttributeQuery) loadGroupItems(ctx context.Context, query *CiTypeAttributeGroupItemQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *CiTypeAttributeGroupItem)) error {
+func (_q *AttributeQuery) loadGroupItems(ctx context.Context, query *CiTypeAttributeGroupItemQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *CiTypeAttributeGroupItem)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*Attribute)
 	for i := range nodes {
@@ -1174,24 +1174,24 @@ func (aq *AttributeQuery) loadGroupItems(ctx context.Context, query *CiTypeAttri
 	return nil
 }
 
-func (aq *AttributeQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := aq.querySpec()
-	_spec.Node.Columns = aq.ctx.Fields
-	if len(aq.ctx.Fields) > 0 {
-		_spec.Unique = aq.ctx.Unique != nil && *aq.ctx.Unique
+func (_q *AttributeQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, aq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (aq *AttributeQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *AttributeQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(attribute.Table, attribute.Columns, sqlgraph.NewFieldSpec(attribute.FieldID, field.TypeUint64))
-	_spec.From = aq.sql
-	if unique := aq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if aq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := aq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, attribute.FieldID)
 		for i := range fields {
@@ -1200,20 +1200,20 @@ func (aq *AttributeQuery) querySpec() *sqlgraph.QuerySpec {
 			}
 		}
 	}
-	if ps := aq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := aq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := aq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := aq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -1223,33 +1223,33 @@ func (aq *AttributeQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (aq *AttributeQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(aq.driver.Dialect())
+func (_q *AttributeQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(attribute.Table)
-	columns := aq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = attribute.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if aq.sql != nil {
-		selector = aq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if aq.ctx.Unique != nil && *aq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range aq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range aq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := aq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := aq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -1262,41 +1262,41 @@ type AttributeGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (agb *AttributeGroupBy) Aggregate(fns ...AggregateFunc) *AttributeGroupBy {
-	agb.fns = append(agb.fns, fns...)
-	return agb
+func (_g *AttributeGroupBy) Aggregate(fns ...AggregateFunc) *AttributeGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (agb *AttributeGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, agb.build.ctx, ent.OpQueryGroupBy)
-	if err := agb.build.prepareQuery(ctx); err != nil {
+func (_g *AttributeGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*AttributeQuery, *AttributeGroupBy](ctx, agb.build, agb, agb.build.inters, v)
+	return scanWithInterceptors[*AttributeQuery, *AttributeGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (agb *AttributeGroupBy) sqlScan(ctx context.Context, root *AttributeQuery, v any) error {
+func (_g *AttributeGroupBy) sqlScan(ctx context.Context, root *AttributeQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(agb.fns))
-	for _, fn := range agb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*agb.flds)+len(agb.fns))
-		for _, f := range *agb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*agb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := agb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -1310,27 +1310,27 @@ type AttributeSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (as *AttributeSelect) Aggregate(fns ...AggregateFunc) *AttributeSelect {
-	as.fns = append(as.fns, fns...)
-	return as
+func (_s *AttributeSelect) Aggregate(fns ...AggregateFunc) *AttributeSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (as *AttributeSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, as.ctx, ent.OpQuerySelect)
-	if err := as.prepareQuery(ctx); err != nil {
+func (_s *AttributeSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*AttributeQuery, *AttributeSelect](ctx, as.AttributeQuery, as, as.inters, v)
+	return scanWithInterceptors[*AttributeQuery, *AttributeSelect](ctx, _s.AttributeQuery, _s, _s.inters, v)
 }
 
-func (as *AttributeSelect) sqlScan(ctx context.Context, root *AttributeQuery, v any) error {
+func (_s *AttributeSelect) sqlScan(ctx context.Context, root *AttributeQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(as.fns))
-	for _, fn := range as.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*as.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -1338,7 +1338,7 @@ func (as *AttributeSelect) sqlScan(ctx context.Context, root *AttributeQuery, v 
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := as.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

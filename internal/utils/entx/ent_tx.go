@@ -6,7 +6,7 @@ import (
 
     "github.com/zeromicro/go-zero/core/logx"
 
-	"gitee.com/link234/cmdb-rpc/ent"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent"
 )
 
 

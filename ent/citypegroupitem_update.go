@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiTypeGroupItemUpdate is the builder for updating CiTypeGroupItem entities.
@@ -25,157 +25,157 @@ type CiTypeGroupItemUpdate struct {
 }
 
 // Where appends a list predicates to the CiTypeGroupItemUpdate builder.
-func (ctgiu *CiTypeGroupItemUpdate) Where(ps ...predicate.CiTypeGroupItem) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.Where(ps...)
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) Where(ps ...predicate.CiTypeGroupItem) *CiTypeGroupItemUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctgiu *CiTypeGroupItemUpdate) SetUpdatedAt(t time.Time) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.SetUpdatedAt(t)
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) SetUpdatedAt(v time.Time) *CiTypeGroupItemUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctgiu *CiTypeGroupItemUpdate) SetDeletedAt(t time.Time) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.SetDeletedAt(t)
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) SetDeletedAt(v time.Time) *CiTypeGroupItemUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctgiu *CiTypeGroupItemUpdate) SetNillableDeletedAt(t *time.Time) *CiTypeGroupItemUpdate {
-	if t != nil {
-		ctgiu.SetDeletedAt(*t)
+func (_u *CiTypeGroupItemUpdate) SetNillableDeletedAt(v *time.Time) *CiTypeGroupItemUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctgiu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctgiu *CiTypeGroupItemUpdate) ClearDeletedAt() *CiTypeGroupItemUpdate {
-	ctgiu.mutation.ClearDeletedAt()
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) ClearDeletedAt() *CiTypeGroupItemUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetSort sets the "sort" field.
-func (ctgiu *CiTypeGroupItemUpdate) SetSort(u uint32) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.ResetSort()
-	ctgiu.mutation.SetSort(u)
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) SetSort(v uint32) *CiTypeGroupItemUpdate {
+	_u.mutation.ResetSort()
+	_u.mutation.SetSort(v)
+	return _u
 }
 
 // SetNillableSort sets the "sort" field if the given value is not nil.
-func (ctgiu *CiTypeGroupItemUpdate) SetNillableSort(u *uint32) *CiTypeGroupItemUpdate {
-	if u != nil {
-		ctgiu.SetSort(*u)
+func (_u *CiTypeGroupItemUpdate) SetNillableSort(v *uint32) *CiTypeGroupItemUpdate {
+	if v != nil {
+		_u.SetSort(*v)
 	}
-	return ctgiu
+	return _u
 }
 
-// AddSort adds u to the "sort" field.
-func (ctgiu *CiTypeGroupItemUpdate) AddSort(u int32) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.AddSort(u)
-	return ctgiu
+// AddSort adds value to the "sort" field.
+func (_u *CiTypeGroupItemUpdate) AddSort(v int32) *CiTypeGroupItemUpdate {
+	_u.mutation.AddSort(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctgiu *CiTypeGroupItemUpdate) SetDepartmentID(u uint64) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.ResetDepartmentID()
-	ctgiu.mutation.SetDepartmentID(u)
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) SetDepartmentID(v uint64) *CiTypeGroupItemUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctgiu *CiTypeGroupItemUpdate) SetNillableDepartmentID(u *uint64) *CiTypeGroupItemUpdate {
-	if u != nil {
-		ctgiu.SetDepartmentID(*u)
+func (_u *CiTypeGroupItemUpdate) SetNillableDepartmentID(v *uint64) *CiTypeGroupItemUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ctgiu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ctgiu *CiTypeGroupItemUpdate) AddDepartmentID(u int64) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.AddDepartmentID(u)
-	return ctgiu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiTypeGroupItemUpdate) AddDepartmentID(v int64) *CiTypeGroupItemUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ctgiu *CiTypeGroupItemUpdate) ClearDepartmentID() *CiTypeGroupItemUpdate {
-	ctgiu.mutation.ClearDepartmentID()
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) ClearDepartmentID() *CiTypeGroupItemUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetGroupID sets the "group_id" field.
-func (ctgiu *CiTypeGroupItemUpdate) SetGroupID(u uint64) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.SetGroupID(u)
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) SetGroupID(v uint64) *CiTypeGroupItemUpdate {
+	_u.mutation.SetGroupID(v)
+	return _u
 }
 
 // SetNillableGroupID sets the "group_id" field if the given value is not nil.
-func (ctgiu *CiTypeGroupItemUpdate) SetNillableGroupID(u *uint64) *CiTypeGroupItemUpdate {
-	if u != nil {
-		ctgiu.SetGroupID(*u)
+func (_u *CiTypeGroupItemUpdate) SetNillableGroupID(v *uint64) *CiTypeGroupItemUpdate {
+	if v != nil {
+		_u.SetGroupID(*v)
 	}
-	return ctgiu
+	return _u
 }
 
 // SetTypeID sets the "type_id" field.
-func (ctgiu *CiTypeGroupItemUpdate) SetTypeID(u uint64) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.SetTypeID(u)
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) SetTypeID(v uint64) *CiTypeGroupItemUpdate {
+	_u.mutation.SetTypeID(v)
+	return _u
 }
 
 // SetNillableTypeID sets the "type_id" field if the given value is not nil.
-func (ctgiu *CiTypeGroupItemUpdate) SetNillableTypeID(u *uint64) *CiTypeGroupItemUpdate {
-	if u != nil {
-		ctgiu.SetTypeID(*u)
+func (_u *CiTypeGroupItemUpdate) SetNillableTypeID(v *uint64) *CiTypeGroupItemUpdate {
+	if v != nil {
+		_u.SetTypeID(*v)
 	}
-	return ctgiu
+	return _u
 }
 
 // SetGroup sets the "group" edge to the CiTypeGroup entity.
-func (ctgiu *CiTypeGroupItemUpdate) SetGroup(c *CiTypeGroup) *CiTypeGroupItemUpdate {
-	return ctgiu.SetGroupID(c.ID)
+func (_u *CiTypeGroupItemUpdate) SetGroup(v *CiTypeGroup) *CiTypeGroupItemUpdate {
+	return _u.SetGroupID(v.ID)
 }
 
 // SetCiTypeID sets the "ci_type" edge to the CiType entity by ID.
-func (ctgiu *CiTypeGroupItemUpdate) SetCiTypeID(id uint64) *CiTypeGroupItemUpdate {
-	ctgiu.mutation.SetCiTypeID(id)
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) SetCiTypeID(id uint64) *CiTypeGroupItemUpdate {
+	_u.mutation.SetCiTypeID(id)
+	return _u
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (ctgiu *CiTypeGroupItemUpdate) SetCiType(c *CiType) *CiTypeGroupItemUpdate {
-	return ctgiu.SetCiTypeID(c.ID)
+func (_u *CiTypeGroupItemUpdate) SetCiType(v *CiType) *CiTypeGroupItemUpdate {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // Mutation returns the CiTypeGroupItemMutation object of the builder.
-func (ctgiu *CiTypeGroupItemUpdate) Mutation() *CiTypeGroupItemMutation {
-	return ctgiu.mutation
+func (_u *CiTypeGroupItemUpdate) Mutation() *CiTypeGroupItemMutation {
+	return _u.mutation
 }
 
 // ClearGroup clears the "group" edge to the CiTypeGroup entity.
-func (ctgiu *CiTypeGroupItemUpdate) ClearGroup() *CiTypeGroupItemUpdate {
-	ctgiu.mutation.ClearGroup()
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) ClearGroup() *CiTypeGroupItemUpdate {
+	_u.mutation.ClearGroup()
+	return _u
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (ctgiu *CiTypeGroupItemUpdate) ClearCiType() *CiTypeGroupItemUpdate {
-	ctgiu.mutation.ClearCiType()
-	return ctgiu
+func (_u *CiTypeGroupItemUpdate) ClearCiType() *CiTypeGroupItemUpdate {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (ctgiu *CiTypeGroupItemUpdate) Save(ctx context.Context) (int, error) {
-	if err := ctgiu.defaults(); err != nil {
+func (_u *CiTypeGroupItemUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, ctgiu.sqlSave, ctgiu.mutation, ctgiu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctgiu *CiTypeGroupItemUpdate) SaveX(ctx context.Context) int {
-	affected, err := ctgiu.Save(ctx)
+func (_u *CiTypeGroupItemUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -183,78 +183,78 @@ func (ctgiu *CiTypeGroupItemUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (ctgiu *CiTypeGroupItemUpdate) Exec(ctx context.Context) error {
-	_, err := ctgiu.Save(ctx)
+func (_u *CiTypeGroupItemUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctgiu *CiTypeGroupItemUpdate) ExecX(ctx context.Context) {
-	if err := ctgiu.Exec(ctx); err != nil {
+func (_u *CiTypeGroupItemUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctgiu *CiTypeGroupItemUpdate) defaults() error {
-	if _, ok := ctgiu.mutation.UpdatedAt(); !ok {
+func (_u *CiTypeGroupItemUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if citypegroupitem.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypegroupitem.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypegroupitem.UpdateDefaultUpdatedAt()
-		ctgiu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctgiu *CiTypeGroupItemUpdate) check() error {
-	if ctgiu.mutation.GroupCleared() && len(ctgiu.mutation.GroupIDs()) > 0 {
+func (_u *CiTypeGroupItemUpdate) check() error {
+	if _u.mutation.GroupCleared() && len(_u.mutation.GroupIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeGroupItem.group"`)
 	}
-	if ctgiu.mutation.CiTypeCleared() && len(ctgiu.mutation.CiTypeIDs()) > 0 {
+	if _u.mutation.CiTypeCleared() && len(_u.mutation.CiTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeGroupItem.ci_type"`)
 	}
 	return nil
 }
 
-func (ctgiu *CiTypeGroupItemUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := ctgiu.check(); err != nil {
-		return n, err
+func (_u *CiTypeGroupItemUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(citypegroupitem.Table, citypegroupitem.Columns, sqlgraph.NewFieldSpec(citypegroupitem.FieldID, field.TypeUint64))
-	if ps := ctgiu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctgiu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(citypegroupitem.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctgiu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(citypegroupitem.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctgiu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(citypegroupitem.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctgiu.mutation.Sort(); ok {
+	if value, ok := _u.mutation.Sort(); ok {
 		_spec.SetField(citypegroupitem.FieldSort, field.TypeUint32, value)
 	}
-	if value, ok := ctgiu.mutation.AddedSort(); ok {
+	if value, ok := _u.mutation.AddedSort(); ok {
 		_spec.AddField(citypegroupitem.FieldSort, field.TypeUint32, value)
 	}
-	if value, ok := ctgiu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(citypegroupitem.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ctgiu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(citypegroupitem.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ctgiu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(citypegroupitem.FieldDepartmentID, field.TypeUint64)
 	}
-	if ctgiu.mutation.GroupCleared() {
+	if _u.mutation.GroupCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -267,7 +267,7 @@ func (ctgiu *CiTypeGroupItemUpdate) sqlSave(ctx context.Context) (n int, err err
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctgiu.mutation.GroupIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.GroupIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -283,7 +283,7 @@ func (ctgiu *CiTypeGroupItemUpdate) sqlSave(ctx context.Context) (n int, err err
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctgiu.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -296,7 +296,7 @@ func (ctgiu *CiTypeGroupItemUpdate) sqlSave(ctx context.Context) (n int, err err
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctgiu.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -312,7 +312,7 @@ func (ctgiu *CiTypeGroupItemUpdate) sqlSave(ctx context.Context) (n int, err err
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, ctgiu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{citypegroupitem.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -320,8 +320,8 @@ func (ctgiu *CiTypeGroupItemUpdate) sqlSave(ctx context.Context) (n int, err err
 		}
 		return 0, err
 	}
-	ctgiu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiTypeGroupItemUpdateOne is the builder for updating a single CiTypeGroupItem entity.
@@ -333,164 +333,164 @@ type CiTypeGroupItemUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetUpdatedAt(t time.Time) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.SetUpdatedAt(t)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) SetUpdatedAt(v time.Time) *CiTypeGroupItemUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetDeletedAt(t time.Time) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.SetDeletedAt(t)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) SetDeletedAt(v time.Time) *CiTypeGroupItemUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetNillableDeletedAt(t *time.Time) *CiTypeGroupItemUpdateOne {
-	if t != nil {
-		ctgiuo.SetDeletedAt(*t)
+func (_u *CiTypeGroupItemUpdateOne) SetNillableDeletedAt(v *time.Time) *CiTypeGroupItemUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctgiuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) ClearDeletedAt() *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.ClearDeletedAt()
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) ClearDeletedAt() *CiTypeGroupItemUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetSort sets the "sort" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetSort(u uint32) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.ResetSort()
-	ctgiuo.mutation.SetSort(u)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) SetSort(v uint32) *CiTypeGroupItemUpdateOne {
+	_u.mutation.ResetSort()
+	_u.mutation.SetSort(v)
+	return _u
 }
 
 // SetNillableSort sets the "sort" field if the given value is not nil.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetNillableSort(u *uint32) *CiTypeGroupItemUpdateOne {
-	if u != nil {
-		ctgiuo.SetSort(*u)
+func (_u *CiTypeGroupItemUpdateOne) SetNillableSort(v *uint32) *CiTypeGroupItemUpdateOne {
+	if v != nil {
+		_u.SetSort(*v)
 	}
-	return ctgiuo
+	return _u
 }
 
-// AddSort adds u to the "sort" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) AddSort(u int32) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.AddSort(u)
-	return ctgiuo
+// AddSort adds value to the "sort" field.
+func (_u *CiTypeGroupItemUpdateOne) AddSort(v int32) *CiTypeGroupItemUpdateOne {
+	_u.mutation.AddSort(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetDepartmentID(u uint64) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.ResetDepartmentID()
-	ctgiuo.mutation.SetDepartmentID(u)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) SetDepartmentID(v uint64) *CiTypeGroupItemUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetNillableDepartmentID(u *uint64) *CiTypeGroupItemUpdateOne {
-	if u != nil {
-		ctgiuo.SetDepartmentID(*u)
+func (_u *CiTypeGroupItemUpdateOne) SetNillableDepartmentID(v *uint64) *CiTypeGroupItemUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ctgiuo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) AddDepartmentID(u int64) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.AddDepartmentID(u)
-	return ctgiuo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiTypeGroupItemUpdateOne) AddDepartmentID(v int64) *CiTypeGroupItemUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) ClearDepartmentID() *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.ClearDepartmentID()
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) ClearDepartmentID() *CiTypeGroupItemUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetGroupID sets the "group_id" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetGroupID(u uint64) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.SetGroupID(u)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) SetGroupID(v uint64) *CiTypeGroupItemUpdateOne {
+	_u.mutation.SetGroupID(v)
+	return _u
 }
 
 // SetNillableGroupID sets the "group_id" field if the given value is not nil.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetNillableGroupID(u *uint64) *CiTypeGroupItemUpdateOne {
-	if u != nil {
-		ctgiuo.SetGroupID(*u)
+func (_u *CiTypeGroupItemUpdateOne) SetNillableGroupID(v *uint64) *CiTypeGroupItemUpdateOne {
+	if v != nil {
+		_u.SetGroupID(*v)
 	}
-	return ctgiuo
+	return _u
 }
 
 // SetTypeID sets the "type_id" field.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetTypeID(u uint64) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.SetTypeID(u)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) SetTypeID(v uint64) *CiTypeGroupItemUpdateOne {
+	_u.mutation.SetTypeID(v)
+	return _u
 }
 
 // SetNillableTypeID sets the "type_id" field if the given value is not nil.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetNillableTypeID(u *uint64) *CiTypeGroupItemUpdateOne {
-	if u != nil {
-		ctgiuo.SetTypeID(*u)
+func (_u *CiTypeGroupItemUpdateOne) SetNillableTypeID(v *uint64) *CiTypeGroupItemUpdateOne {
+	if v != nil {
+		_u.SetTypeID(*v)
 	}
-	return ctgiuo
+	return _u
 }
 
 // SetGroup sets the "group" edge to the CiTypeGroup entity.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetGroup(c *CiTypeGroup) *CiTypeGroupItemUpdateOne {
-	return ctgiuo.SetGroupID(c.ID)
+func (_u *CiTypeGroupItemUpdateOne) SetGroup(v *CiTypeGroup) *CiTypeGroupItemUpdateOne {
+	return _u.SetGroupID(v.ID)
 }
 
 // SetCiTypeID sets the "ci_type" edge to the CiType entity by ID.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetCiTypeID(id uint64) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.SetCiTypeID(id)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) SetCiTypeID(id uint64) *CiTypeGroupItemUpdateOne {
+	_u.mutation.SetCiTypeID(id)
+	return _u
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SetCiType(c *CiType) *CiTypeGroupItemUpdateOne {
-	return ctgiuo.SetCiTypeID(c.ID)
+func (_u *CiTypeGroupItemUpdateOne) SetCiType(v *CiType) *CiTypeGroupItemUpdateOne {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // Mutation returns the CiTypeGroupItemMutation object of the builder.
-func (ctgiuo *CiTypeGroupItemUpdateOne) Mutation() *CiTypeGroupItemMutation {
-	return ctgiuo.mutation
+func (_u *CiTypeGroupItemUpdateOne) Mutation() *CiTypeGroupItemMutation {
+	return _u.mutation
 }
 
 // ClearGroup clears the "group" edge to the CiTypeGroup entity.
-func (ctgiuo *CiTypeGroupItemUpdateOne) ClearGroup() *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.ClearGroup()
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) ClearGroup() *CiTypeGroupItemUpdateOne {
+	_u.mutation.ClearGroup()
+	return _u
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (ctgiuo *CiTypeGroupItemUpdateOne) ClearCiType() *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.ClearCiType()
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) ClearCiType() *CiTypeGroupItemUpdateOne {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // Where appends a list predicates to the CiTypeGroupItemUpdate builder.
-func (ctgiuo *CiTypeGroupItemUpdateOne) Where(ps ...predicate.CiTypeGroupItem) *CiTypeGroupItemUpdateOne {
-	ctgiuo.mutation.Where(ps...)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) Where(ps ...predicate.CiTypeGroupItem) *CiTypeGroupItemUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (ctgiuo *CiTypeGroupItemUpdateOne) Select(field string, fields ...string) *CiTypeGroupItemUpdateOne {
-	ctgiuo.fields = append([]string{field}, fields...)
-	return ctgiuo
+func (_u *CiTypeGroupItemUpdateOne) Select(field string, fields ...string) *CiTypeGroupItemUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiTypeGroupItem entity.
-func (ctgiuo *CiTypeGroupItemUpdateOne) Save(ctx context.Context) (*CiTypeGroupItem, error) {
-	if err := ctgiuo.defaults(); err != nil {
+func (_u *CiTypeGroupItemUpdateOne) Save(ctx context.Context) (*CiTypeGroupItem, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctgiuo.sqlSave, ctgiuo.mutation, ctgiuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctgiuo *CiTypeGroupItemUpdateOne) SaveX(ctx context.Context) *CiTypeGroupItem {
-	node, err := ctgiuo.Save(ctx)
+func (_u *CiTypeGroupItemUpdateOne) SaveX(ctx context.Context) *CiTypeGroupItem {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -498,52 +498,52 @@ func (ctgiuo *CiTypeGroupItemUpdateOne) SaveX(ctx context.Context) *CiTypeGroupI
 }
 
 // Exec executes the query on the entity.
-func (ctgiuo *CiTypeGroupItemUpdateOne) Exec(ctx context.Context) error {
-	_, err := ctgiuo.Save(ctx)
+func (_u *CiTypeGroupItemUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctgiuo *CiTypeGroupItemUpdateOne) ExecX(ctx context.Context) {
-	if err := ctgiuo.Exec(ctx); err != nil {
+func (_u *CiTypeGroupItemUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctgiuo *CiTypeGroupItemUpdateOne) defaults() error {
-	if _, ok := ctgiuo.mutation.UpdatedAt(); !ok {
+func (_u *CiTypeGroupItemUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if citypegroupitem.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypegroupitem.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypegroupitem.UpdateDefaultUpdatedAt()
-		ctgiuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctgiuo *CiTypeGroupItemUpdateOne) check() error {
-	if ctgiuo.mutation.GroupCleared() && len(ctgiuo.mutation.GroupIDs()) > 0 {
+func (_u *CiTypeGroupItemUpdateOne) check() error {
+	if _u.mutation.GroupCleared() && len(_u.mutation.GroupIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeGroupItem.group"`)
 	}
-	if ctgiuo.mutation.CiTypeCleared() && len(ctgiuo.mutation.CiTypeIDs()) > 0 {
+	if _u.mutation.CiTypeCleared() && len(_u.mutation.CiTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeGroupItem.ci_type"`)
 	}
 	return nil
 }
 
-func (ctgiuo *CiTypeGroupItemUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeGroupItem, err error) {
-	if err := ctgiuo.check(); err != nil {
+func (_u *CiTypeGroupItemUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeGroupItem, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(citypegroupitem.Table, citypegroupitem.Columns, sqlgraph.NewFieldSpec(citypegroupitem.FieldID, field.TypeUint64))
-	id, ok := ctgiuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiTypeGroupItem.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := ctgiuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, citypegroupitem.FieldID)
 		for _, f := range fields {
@@ -555,38 +555,38 @@ func (ctgiuo *CiTypeGroupItemUpdateOne) sqlSave(ctx context.Context) (_node *CiT
 			}
 		}
 	}
-	if ps := ctgiuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctgiuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(citypegroupitem.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctgiuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(citypegroupitem.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctgiuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(citypegroupitem.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctgiuo.mutation.Sort(); ok {
+	if value, ok := _u.mutation.Sort(); ok {
 		_spec.SetField(citypegroupitem.FieldSort, field.TypeUint32, value)
 	}
-	if value, ok := ctgiuo.mutation.AddedSort(); ok {
+	if value, ok := _u.mutation.AddedSort(); ok {
 		_spec.AddField(citypegroupitem.FieldSort, field.TypeUint32, value)
 	}
-	if value, ok := ctgiuo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(citypegroupitem.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ctgiuo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(citypegroupitem.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ctgiuo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(citypegroupitem.FieldDepartmentID, field.TypeUint64)
 	}
-	if ctgiuo.mutation.GroupCleared() {
+	if _u.mutation.GroupCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -599,7 +599,7 @@ func (ctgiuo *CiTypeGroupItemUpdateOne) sqlSave(ctx context.Context) (_node *CiT
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctgiuo.mutation.GroupIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.GroupIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -615,7 +615,7 @@ func (ctgiuo *CiTypeGroupItemUpdateOne) sqlSave(ctx context.Context) (_node *CiT
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctgiuo.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -628,7 +628,7 @@ func (ctgiuo *CiTypeGroupItemUpdateOne) sqlSave(ctx context.Context) (_node *CiT
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctgiuo.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -644,10 +644,10 @@ func (ctgiuo *CiTypeGroupItemUpdateOne) sqlSave(ctx context.Context) (_node *CiT
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &CiTypeGroupItem{config: ctgiuo.config}
+	_node = &CiTypeGroupItem{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, ctgiuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{citypegroupitem.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -655,6 +655,6 @@ func (ctgiuo *CiTypeGroupItemUpdateOne) sqlSave(ctx context.Context) (_node *CiT
 		}
 		return nil, err
 	}
-	ctgiuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

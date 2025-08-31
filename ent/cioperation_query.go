@@ -11,8 +11,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cioperation"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiOperationQuery is the builder for querying CiOperation entities.
@@ -28,40 +28,40 @@ type CiOperationQuery struct {
 }
 
 // Where adds a new predicate for the CiOperationQuery builder.
-func (coq *CiOperationQuery) Where(ps ...predicate.CiOperation) *CiOperationQuery {
-	coq.predicates = append(coq.predicates, ps...)
-	return coq
+func (_q *CiOperationQuery) Where(ps ...predicate.CiOperation) *CiOperationQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (coq *CiOperationQuery) Limit(limit int) *CiOperationQuery {
-	coq.ctx.Limit = &limit
-	return coq
+func (_q *CiOperationQuery) Limit(limit int) *CiOperationQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (coq *CiOperationQuery) Offset(offset int) *CiOperationQuery {
-	coq.ctx.Offset = &offset
-	return coq
+func (_q *CiOperationQuery) Offset(offset int) *CiOperationQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (coq *CiOperationQuery) Unique(unique bool) *CiOperationQuery {
-	coq.ctx.Unique = &unique
-	return coq
+func (_q *CiOperationQuery) Unique(unique bool) *CiOperationQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (coq *CiOperationQuery) Order(o ...cioperation.OrderOption) *CiOperationQuery {
-	coq.order = append(coq.order, o...)
-	return coq
+func (_q *CiOperationQuery) Order(o ...cioperation.OrderOption) *CiOperationQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // First returns the first CiOperation entity from the query.
 // Returns a *NotFoundError when no CiOperation was found.
-func (coq *CiOperationQuery) First(ctx context.Context) (*CiOperation, error) {
-	nodes, err := coq.Limit(1).All(setContextOp(ctx, coq.ctx, ent.OpQueryFirst))
+func (_q *CiOperationQuery) First(ctx context.Context) (*CiOperation, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -72,8 +72,8 @@ func (coq *CiOperationQuery) First(ctx context.Context) (*CiOperation, error) {
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (coq *CiOperationQuery) FirstX(ctx context.Context) *CiOperation {
-	node, err := coq.First(ctx)
+func (_q *CiOperationQuery) FirstX(ctx context.Context) *CiOperation {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -82,9 +82,9 @@ func (coq *CiOperationQuery) FirstX(ctx context.Context) *CiOperation {
 
 // FirstID returns the first CiOperation ID from the query.
 // Returns a *NotFoundError when no CiOperation ID was found.
-func (coq *CiOperationQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *CiOperationQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = coq.Limit(1).IDs(setContextOp(ctx, coq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -95,8 +95,8 @@ func (coq *CiOperationQuery) FirstID(ctx context.Context) (id uint64, err error)
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (coq *CiOperationQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := coq.FirstID(ctx)
+func (_q *CiOperationQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -106,8 +106,8 @@ func (coq *CiOperationQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single CiOperation entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one CiOperation entity is found.
 // Returns a *NotFoundError when no CiOperation entities are found.
-func (coq *CiOperationQuery) Only(ctx context.Context) (*CiOperation, error) {
-	nodes, err := coq.Limit(2).All(setContextOp(ctx, coq.ctx, ent.OpQueryOnly))
+func (_q *CiOperationQuery) Only(ctx context.Context) (*CiOperation, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -122,8 +122,8 @@ func (coq *CiOperationQuery) Only(ctx context.Context) (*CiOperation, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (coq *CiOperationQuery) OnlyX(ctx context.Context) *CiOperation {
-	node, err := coq.Only(ctx)
+func (_q *CiOperationQuery) OnlyX(ctx context.Context) *CiOperation {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -133,9 +133,9 @@ func (coq *CiOperationQuery) OnlyX(ctx context.Context) *CiOperation {
 // OnlyID is like Only, but returns the only CiOperation ID in the query.
 // Returns a *NotSingularError when more than one CiOperation ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (coq *CiOperationQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *CiOperationQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = coq.Limit(2).IDs(setContextOp(ctx, coq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -150,8 +150,8 @@ func (coq *CiOperationQuery) OnlyID(ctx context.Context) (id uint64, err error) 
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (coq *CiOperationQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := coq.OnlyID(ctx)
+func (_q *CiOperationQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -159,18 +159,18 @@ func (coq *CiOperationQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of CiOperations.
-func (coq *CiOperationQuery) All(ctx context.Context) ([]*CiOperation, error) {
-	ctx = setContextOp(ctx, coq.ctx, ent.OpQueryAll)
-	if err := coq.prepareQuery(ctx); err != nil {
+func (_q *CiOperationQuery) All(ctx context.Context) ([]*CiOperation, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*CiOperation, *CiOperationQuery]()
-	return withInterceptors[[]*CiOperation](ctx, coq, qr, coq.inters)
+	return withInterceptors[[]*CiOperation](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (coq *CiOperationQuery) AllX(ctx context.Context) []*CiOperation {
-	nodes, err := coq.All(ctx)
+func (_q *CiOperationQuery) AllX(ctx context.Context) []*CiOperation {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -178,20 +178,20 @@ func (coq *CiOperationQuery) AllX(ctx context.Context) []*CiOperation {
 }
 
 // IDs executes the query and returns a list of CiOperation IDs.
-func (coq *CiOperationQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if coq.ctx.Unique == nil && coq.path != nil {
-		coq.Unique(true)
+func (_q *CiOperationQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, coq.ctx, ent.OpQueryIDs)
-	if err = coq.Select(cioperation.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(cioperation.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (coq *CiOperationQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := coq.IDs(ctx)
+func (_q *CiOperationQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -199,17 +199,17 @@ func (coq *CiOperationQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (coq *CiOperationQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, coq.ctx, ent.OpQueryCount)
-	if err := coq.prepareQuery(ctx); err != nil {
+func (_q *CiOperationQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, coq, querierCount[*CiOperationQuery](), coq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*CiOperationQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (coq *CiOperationQuery) CountX(ctx context.Context) int {
-	count, err := coq.Count(ctx)
+func (_q *CiOperationQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -217,9 +217,9 @@ func (coq *CiOperationQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (coq *CiOperationQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, coq.ctx, ent.OpQueryExist)
-	switch _, err := coq.FirstID(ctx); {
+func (_q *CiOperationQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -230,8 +230,8 @@ func (coq *CiOperationQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (coq *CiOperationQuery) ExistX(ctx context.Context) bool {
-	exist, err := coq.Exist(ctx)
+func (_q *CiOperationQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -240,19 +240,19 @@ func (coq *CiOperationQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the CiOperationQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (coq *CiOperationQuery) Clone() *CiOperationQuery {
-	if coq == nil {
+func (_q *CiOperationQuery) Clone() *CiOperationQuery {
+	if _q == nil {
 		return nil
 	}
 	return &CiOperationQuery{
-		config:     coq.config,
-		ctx:        coq.ctx.Clone(),
-		order:      append([]cioperation.OrderOption{}, coq.order...),
-		inters:     append([]Interceptor{}, coq.inters...),
-		predicates: append([]predicate.CiOperation{}, coq.predicates...),
+		config:     _q.config,
+		ctx:        _q.ctx.Clone(),
+		order:      append([]cioperation.OrderOption{}, _q.order...),
+		inters:     append([]Interceptor{}, _q.inters...),
+		predicates: append([]predicate.CiOperation{}, _q.predicates...),
 		// clone intermediate query.
-		sql:  coq.sql.Clone(),
-		path: coq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
@@ -270,10 +270,10 @@ func (coq *CiOperationQuery) Clone() *CiOperationQuery {
 //		GroupBy(cioperation.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (coq *CiOperationQuery) GroupBy(field string, fields ...string) *CiOperationGroupBy {
-	coq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &CiOperationGroupBy{build: coq}
-	grbuild.flds = &coq.ctx.Fields
+func (_q *CiOperationQuery) GroupBy(field string, fields ...string) *CiOperationGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &CiOperationGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = cioperation.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -291,62 +291,62 @@ func (coq *CiOperationQuery) GroupBy(field string, fields ...string) *CiOperatio
 //	client.CiOperation.Query().
 //		Select(cioperation.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (coq *CiOperationQuery) Select(fields ...string) *CiOperationSelect {
-	coq.ctx.Fields = append(coq.ctx.Fields, fields...)
-	sbuild := &CiOperationSelect{CiOperationQuery: coq}
+func (_q *CiOperationQuery) Select(fields ...string) *CiOperationSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &CiOperationSelect{CiOperationQuery: _q}
 	sbuild.label = cioperation.Label
-	sbuild.flds, sbuild.scan = &coq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a CiOperationSelect configured with the given aggregations.
-func (coq *CiOperationQuery) Aggregate(fns ...AggregateFunc) *CiOperationSelect {
-	return coq.Select().Aggregate(fns...)
+func (_q *CiOperationQuery) Aggregate(fns ...AggregateFunc) *CiOperationSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (coq *CiOperationQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range coq.inters {
+func (_q *CiOperationQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, coq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range coq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !cioperation.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if coq.path != nil {
-		prev, err := coq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		coq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (coq *CiOperationQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiOperation, error) {
+func (_q *CiOperationQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiOperation, error) {
 	var (
 		nodes = []*CiOperation{}
-		_spec = coq.querySpec()
+		_spec = _q.querySpec()
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*CiOperation).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &CiOperation{config: coq.config}
+		node := &CiOperation{config: _q.config}
 		nodes = append(nodes, node)
 		return node.assignValues(columns, values)
 	}
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, coq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
@@ -355,24 +355,24 @@ func (coq *CiOperationQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]
 	return nodes, nil
 }
 
-func (coq *CiOperationQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := coq.querySpec()
-	_spec.Node.Columns = coq.ctx.Fields
-	if len(coq.ctx.Fields) > 0 {
-		_spec.Unique = coq.ctx.Unique != nil && *coq.ctx.Unique
+func (_q *CiOperationQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, coq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (coq *CiOperationQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *CiOperationQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(cioperation.Table, cioperation.Columns, sqlgraph.NewFieldSpec(cioperation.FieldID, field.TypeUint64))
-	_spec.From = coq.sql
-	if unique := coq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if coq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := coq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cioperation.FieldID)
 		for i := range fields {
@@ -381,20 +381,20 @@ func (coq *CiOperationQuery) querySpec() *sqlgraph.QuerySpec {
 			}
 		}
 	}
-	if ps := coq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := coq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := coq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := coq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -404,33 +404,33 @@ func (coq *CiOperationQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (coq *CiOperationQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(coq.driver.Dialect())
+func (_q *CiOperationQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(cioperation.Table)
-	columns := coq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = cioperation.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if coq.sql != nil {
-		selector = coq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if coq.ctx.Unique != nil && *coq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range coq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range coq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := coq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := coq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -443,41 +443,41 @@ type CiOperationGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (cogb *CiOperationGroupBy) Aggregate(fns ...AggregateFunc) *CiOperationGroupBy {
-	cogb.fns = append(cogb.fns, fns...)
-	return cogb
+func (_g *CiOperationGroupBy) Aggregate(fns ...AggregateFunc) *CiOperationGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cogb *CiOperationGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cogb.build.ctx, ent.OpQueryGroupBy)
-	if err := cogb.build.prepareQuery(ctx); err != nil {
+func (_g *CiOperationGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiOperationQuery, *CiOperationGroupBy](ctx, cogb.build, cogb, cogb.build.inters, v)
+	return scanWithInterceptors[*CiOperationQuery, *CiOperationGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (cogb *CiOperationGroupBy) sqlScan(ctx context.Context, root *CiOperationQuery, v any) error {
+func (_g *CiOperationGroupBy) sqlScan(ctx context.Context, root *CiOperationQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(cogb.fns))
-	for _, fn := range cogb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*cogb.flds)+len(cogb.fns))
-		for _, f := range *cogb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*cogb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cogb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -491,27 +491,27 @@ type CiOperationSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (cos *CiOperationSelect) Aggregate(fns ...AggregateFunc) *CiOperationSelect {
-	cos.fns = append(cos.fns, fns...)
-	return cos
+func (_s *CiOperationSelect) Aggregate(fns ...AggregateFunc) *CiOperationSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cos *CiOperationSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cos.ctx, ent.OpQuerySelect)
-	if err := cos.prepareQuery(ctx); err != nil {
+func (_s *CiOperationSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiOperationQuery, *CiOperationSelect](ctx, cos.CiOperationQuery, cos, cos.inters, v)
+	return scanWithInterceptors[*CiOperationQuery, *CiOperationSelect](ctx, _s.CiOperationQuery, _s, _s.inters, v)
 }
 
-func (cos *CiOperationSelect) sqlScan(ctx context.Context, root *CiOperationQuery, v any) error {
+func (_s *CiOperationSelect) sqlScan(ctx context.Context, root *CiOperationQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(cos.fns))
-	for _, fn := range cos.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*cos.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -519,7 +519,7 @@ func (cos *CiOperationSelect) sqlScan(ctx context.Context, root *CiOperationQuer
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cos.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

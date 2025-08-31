@@ -10,20 +10,20 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
-	"gitee.com/link234/newbee-backend-common/utils/validator"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-common/utils/validator"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -35,504 +35,504 @@ type AttributeCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ac *AttributeCreate) SetCreatedAt(t time.Time) *AttributeCreate {
-	ac.mutation.SetCreatedAt(t)
-	return ac
+func (_c *AttributeCreate) SetCreatedAt(v time.Time) *AttributeCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableCreatedAt(t *time.Time) *AttributeCreate {
-	if t != nil {
-		ac.SetCreatedAt(*t)
+func (_c *AttributeCreate) SetNillableCreatedAt(v *time.Time) *AttributeCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ac *AttributeCreate) SetUpdatedAt(t time.Time) *AttributeCreate {
-	ac.mutation.SetUpdatedAt(t)
-	return ac
+func (_c *AttributeCreate) SetUpdatedAt(v time.Time) *AttributeCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableUpdatedAt(t *time.Time) *AttributeCreate {
-	if t != nil {
-		ac.SetUpdatedAt(*t)
+func (_c *AttributeCreate) SetNillableUpdatedAt(v *time.Time) *AttributeCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ac *AttributeCreate) SetDeletedAt(t time.Time) *AttributeCreate {
-	ac.mutation.SetDeletedAt(t)
-	return ac
+func (_c *AttributeCreate) SetDeletedAt(v time.Time) *AttributeCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableDeletedAt(t *time.Time) *AttributeCreate {
-	if t != nil {
-		ac.SetDeletedAt(*t)
+func (_c *AttributeCreate) SetNillableDeletedAt(v *time.Time) *AttributeCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (ac *AttributeCreate) SetTenantID(u uint64) *AttributeCreate {
-	ac.mutation.SetTenantID(u)
-	return ac
+func (_c *AttributeCreate) SetTenantID(v uint64) *AttributeCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableTenantID(u *uint64) *AttributeCreate {
-	if u != nil {
-		ac.SetTenantID(*u)
+func (_c *AttributeCreate) SetNillableTenantID(v *uint64) *AttributeCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ac *AttributeCreate) SetDepartmentID(u uint64) *AttributeCreate {
-	ac.mutation.SetDepartmentID(u)
-	return ac
+func (_c *AttributeCreate) SetDepartmentID(v uint64) *AttributeCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableDepartmentID(u *uint64) *AttributeCreate {
-	if u != nil {
-		ac.SetDepartmentID(*u)
+func (_c *AttributeCreate) SetNillableDepartmentID(v *uint64) *AttributeCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetName sets the "name" field.
-func (ac *AttributeCreate) SetName(s string) *AttributeCreate {
-	ac.mutation.SetName(s)
-	return ac
+func (_c *AttributeCreate) SetName(v string) *AttributeCreate {
+	_c.mutation.SetName(v)
+	return _c
 }
 
 // SetAlias sets the "alias" field.
-func (ac *AttributeCreate) SetAlias(s string) *AttributeCreate {
-	ac.mutation.SetAlias(s)
-	return ac
+func (_c *AttributeCreate) SetAlias(v string) *AttributeCreate {
+	_c.mutation.SetAlias(v)
+	return _c
 }
 
 // SetValueType sets the "value_type" field.
-func (ac *AttributeCreate) SetValueType(at attribute.ValueType) *AttributeCreate {
-	ac.mutation.SetValueType(at)
-	return ac
+func (_c *AttributeCreate) SetValueType(v attribute.ValueType) *AttributeCreate {
+	_c.mutation.SetValueType(v)
+	return _c
 }
 
 // SetNillableValueType sets the "value_type" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableValueType(at *attribute.ValueType) *AttributeCreate {
-	if at != nil {
-		ac.SetValueType(*at)
+func (_c *AttributeCreate) SetNillableValueType(v *attribute.ValueType) *AttributeCreate {
+	if v != nil {
+		_c.SetValueType(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetIsChoice sets the "is_choice" field.
-func (ac *AttributeCreate) SetIsChoice(b bool) *AttributeCreate {
-	ac.mutation.SetIsChoice(b)
-	return ac
+func (_c *AttributeCreate) SetIsChoice(v bool) *AttributeCreate {
+	_c.mutation.SetIsChoice(v)
+	return _c
 }
 
 // SetNillableIsChoice sets the "is_choice" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableIsChoice(b *bool) *AttributeCreate {
-	if b != nil {
-		ac.SetIsChoice(*b)
+func (_c *AttributeCreate) SetNillableIsChoice(v *bool) *AttributeCreate {
+	if v != nil {
+		_c.SetIsChoice(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetIsList sets the "is_list" field.
-func (ac *AttributeCreate) SetIsList(b bool) *AttributeCreate {
-	ac.mutation.SetIsList(b)
-	return ac
+func (_c *AttributeCreate) SetIsList(v bool) *AttributeCreate {
+	_c.mutation.SetIsList(v)
+	return _c
 }
 
 // SetNillableIsList sets the "is_list" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableIsList(b *bool) *AttributeCreate {
-	if b != nil {
-		ac.SetIsList(*b)
+func (_c *AttributeCreate) SetNillableIsList(v *bool) *AttributeCreate {
+	if v != nil {
+		_c.SetIsList(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (ac *AttributeCreate) SetCreatedBy(u uuid.UUID) *AttributeCreate {
-	ac.mutation.SetCreatedBy(u)
-	return ac
+func (_c *AttributeCreate) SetCreatedBy(v uuid.UUID) *AttributeCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableCreatedBy(u *uuid.UUID) *AttributeCreate {
-	if u != nil {
-		ac.SetCreatedBy(*u)
+func (_c *AttributeCreate) SetNillableCreatedBy(v *uuid.UUID) *AttributeCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetIsComputed sets the "is_computed" field.
-func (ac *AttributeCreate) SetIsComputed(b bool) *AttributeCreate {
-	ac.mutation.SetIsComputed(b)
-	return ac
+func (_c *AttributeCreate) SetIsComputed(v bool) *AttributeCreate {
+	_c.mutation.SetIsComputed(v)
+	return _c
 }
 
 // SetNillableIsComputed sets the "is_computed" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableIsComputed(b *bool) *AttributeCreate {
-	if b != nil {
-		ac.SetIsComputed(*b)
+func (_c *AttributeCreate) SetNillableIsComputed(v *bool) *AttributeCreate {
+	if v != nil {
+		_c.SetIsComputed(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetChoiceWebHook sets the "choice_web_hook" field.
-func (ac *AttributeCreate) SetChoiceWebHook(scwh schema.AttributeChoiceWebHookS) *AttributeCreate {
-	ac.mutation.SetChoiceWebHook(scwh)
-	return ac
+func (_c *AttributeCreate) SetChoiceWebHook(v schema.AttributeChoiceWebHookS) *AttributeCreate {
+	_c.mutation.SetChoiceWebHook(v)
+	return _c
 }
 
 // SetNillableChoiceWebHook sets the "choice_web_hook" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableChoiceWebHook(scwh *schema.AttributeChoiceWebHookS) *AttributeCreate {
-	if scwh != nil {
-		ac.SetChoiceWebHook(*scwh)
+func (_c *AttributeCreate) SetNillableChoiceWebHook(v *schema.AttributeChoiceWebHookS) *AttributeCreate {
+	if v != nil {
+		_c.SetChoiceWebHook(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetOption sets the "option" field.
-func (ac *AttributeCreate) SetOption(so schema.AttributeOptionS) *AttributeCreate {
-	ac.mutation.SetOption(so)
-	return ac
+func (_c *AttributeCreate) SetOption(v schema.AttributeOptionS) *AttributeCreate {
+	_c.mutation.SetOption(v)
+	return _c
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableOption(so *schema.AttributeOptionS) *AttributeCreate {
-	if so != nil {
-		ac.SetOption(*so)
+func (_c *AttributeCreate) SetNillableOption(v *schema.AttributeOptionS) *AttributeCreate {
+	if v != nil {
+		_c.SetOption(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetIsPassword sets the "is_password" field.
-func (ac *AttributeCreate) SetIsPassword(b bool) *AttributeCreate {
-	ac.mutation.SetIsPassword(b)
-	return ac
+func (_c *AttributeCreate) SetIsPassword(v bool) *AttributeCreate {
+	_c.mutation.SetIsPassword(v)
+	return _c
 }
 
 // SetNillableIsPassword sets the "is_password" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableIsPassword(b *bool) *AttributeCreate {
-	if b != nil {
-		ac.SetIsPassword(*b)
+func (_c *AttributeCreate) SetNillableIsPassword(v *bool) *AttributeCreate {
+	if v != nil {
+		_c.SetIsPassword(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetComputeScript sets the "compute_script" field.
-func (ac *AttributeCreate) SetComputeScript(s string) *AttributeCreate {
-	ac.mutation.SetComputeScript(s)
-	return ac
+func (_c *AttributeCreate) SetComputeScript(v string) *AttributeCreate {
+	_c.mutation.SetComputeScript(v)
+	return _c
 }
 
 // SetNillableComputeScript sets the "compute_script" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableComputeScript(s *string) *AttributeCreate {
-	if s != nil {
-		ac.SetComputeScript(*s)
+func (_c *AttributeCreate) SetNillableComputeScript(v *string) *AttributeCreate {
+	if v != nil {
+		_c.SetComputeScript(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetComputeExpr sets the "compute_expr" field.
-func (ac *AttributeCreate) SetComputeExpr(s string) *AttributeCreate {
-	ac.mutation.SetComputeExpr(s)
-	return ac
+func (_c *AttributeCreate) SetComputeExpr(v string) *AttributeCreate {
+	_c.mutation.SetComputeExpr(v)
+	return _c
 }
 
 // SetNillableComputeExpr sets the "compute_expr" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableComputeExpr(s *string) *AttributeCreate {
-	if s != nil {
-		ac.SetComputeExpr(*s)
+func (_c *AttributeCreate) SetNillableComputeExpr(v *string) *AttributeCreate {
+	if v != nil {
+		_c.SetComputeExpr(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetIsSortable sets the "is_sortable" field.
-func (ac *AttributeCreate) SetIsSortable(b bool) *AttributeCreate {
-	ac.mutation.SetIsSortable(b)
-	return ac
+func (_c *AttributeCreate) SetIsSortable(v bool) *AttributeCreate {
+	_c.mutation.SetIsSortable(v)
+	return _c
 }
 
 // SetNillableIsSortable sets the "is_sortable" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableIsSortable(b *bool) *AttributeCreate {
-	if b != nil {
-		ac.SetIsSortable(*b)
+func (_c *AttributeCreate) SetNillableIsSortable(v *bool) *AttributeCreate {
+	if v != nil {
+		_c.SetIsSortable(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetDefault sets the "default" field.
-func (ac *AttributeCreate) SetDefault(sdv schema.AttributeDefaultValueS) *AttributeCreate {
-	ac.mutation.SetDefault(sdv)
-	return ac
+func (_c *AttributeCreate) SetDefault(v schema.AttributeDefaultValueS) *AttributeCreate {
+	_c.mutation.SetDefault(v)
+	return _c
 }
 
 // SetNillableDefault sets the "default" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableDefault(sdv *schema.AttributeDefaultValueS) *AttributeCreate {
-	if sdv != nil {
-		ac.SetDefault(*sdv)
+func (_c *AttributeCreate) SetNillableDefault(v *schema.AttributeDefaultValueS) *AttributeCreate {
+	if v != nil {
+		_c.SetDefault(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetIsDynamic sets the "is_dynamic" field.
-func (ac *AttributeCreate) SetIsDynamic(b bool) *AttributeCreate {
-	ac.mutation.SetIsDynamic(b)
-	return ac
+func (_c *AttributeCreate) SetIsDynamic(v bool) *AttributeCreate {
+	_c.mutation.SetIsDynamic(v)
+	return _c
 }
 
 // SetNillableIsDynamic sets the "is_dynamic" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableIsDynamic(b *bool) *AttributeCreate {
-	if b != nil {
-		ac.SetIsDynamic(*b)
+func (_c *AttributeCreate) SetNillableIsDynamic(v *bool) *AttributeCreate {
+	if v != nil {
+		_c.SetIsDynamic(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetIsReference sets the "is_reference" field.
-func (ac *AttributeCreate) SetIsReference(b bool) *AttributeCreate {
-	ac.mutation.SetIsReference(b)
-	return ac
+func (_c *AttributeCreate) SetIsReference(v bool) *AttributeCreate {
+	_c.mutation.SetIsReference(v)
+	return _c
 }
 
 // SetNillableIsReference sets the "is_reference" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableIsReference(b *bool) *AttributeCreate {
-	if b != nil {
-		ac.SetIsReference(*b)
+func (_c *AttributeCreate) SetNillableIsReference(v *bool) *AttributeCreate {
+	if v != nil {
+		_c.SetIsReference(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetReferenceTypeID sets the "reference_type_id" field.
-func (ac *AttributeCreate) SetReferenceTypeID(u uint64) *AttributeCreate {
-	ac.mutation.SetReferenceTypeID(u)
-	return ac
+func (_c *AttributeCreate) SetReferenceTypeID(v uint64) *AttributeCreate {
+	_c.mutation.SetReferenceTypeID(v)
+	return _c
 }
 
 // SetNillableReferenceTypeID sets the "reference_type_id" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableReferenceTypeID(u *uint64) *AttributeCreate {
-	if u != nil {
-		ac.SetReferenceTypeID(*u)
+func (_c *AttributeCreate) SetNillableReferenceTypeID(v *uint64) *AttributeCreate {
+	if v != nil {
+		_c.SetReferenceTypeID(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetChoiceOther sets the "choice_other" field.
-func (ac *AttributeCreate) SetChoiceOther(sco schema.AttributeChoiceOtherS) *AttributeCreate {
-	ac.mutation.SetChoiceOther(sco)
-	return ac
+func (_c *AttributeCreate) SetChoiceOther(v schema.AttributeChoiceOtherS) *AttributeCreate {
+	_c.mutation.SetChoiceOther(v)
+	return _c
 }
 
 // SetNillableChoiceOther sets the "choice_other" field if the given value is not nil.
-func (ac *AttributeCreate) SetNillableChoiceOther(sco *schema.AttributeChoiceOtherS) *AttributeCreate {
-	if sco != nil {
-		ac.SetChoiceOther(*sco)
+func (_c *AttributeCreate) SetNillableChoiceOther(v *schema.AttributeChoiceOtherS) *AttributeCreate {
+	if v != nil {
+		_c.SetChoiceOther(*v)
 	}
-	return ac
+	return _c
 }
 
 // SetValidatorRules sets the "validator_rules" field.
-func (ac *AttributeCreate) SetValidatorRules(vr []validator.ValidationRule) *AttributeCreate {
-	ac.mutation.SetValidatorRules(vr)
-	return ac
+func (_c *AttributeCreate) SetValidatorRules(v []validator.ValidationRule) *AttributeCreate {
+	_c.mutation.SetValidatorRules(v)
+	return _c
 }
 
 // SetID sets the "id" field.
-func (ac *AttributeCreate) SetID(u uint64) *AttributeCreate {
-	ac.mutation.SetID(u)
-	return ac
+func (_c *AttributeCreate) SetID(v uint64) *AttributeCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // AddValueTextIDs adds the "value_texts" edge to the ValueText entity by IDs.
-func (ac *AttributeCreate) AddValueTextIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddValueTextIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddValueTextIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddValueTextIDs(ids...)
+	return _c
 }
 
 // AddValueTexts adds the "value_texts" edges to the ValueText entity.
-func (ac *AttributeCreate) AddValueTexts(v ...*ValueText) *AttributeCreate {
+func (_c *AttributeCreate) AddValueTexts(v ...*ValueText) *AttributeCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return ac.AddValueTextIDs(ids...)
+	return _c.AddValueTextIDs(ids...)
 }
 
 // AddValueIndexTextIDs adds the "value_index_texts" edge to the ValueIndexText entity by IDs.
-func (ac *AttributeCreate) AddValueIndexTextIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddValueIndexTextIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddValueIndexTextIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddValueIndexTextIDs(ids...)
+	return _c
 }
 
 // AddValueIndexTexts adds the "value_index_texts" edges to the ValueIndexText entity.
-func (ac *AttributeCreate) AddValueIndexTexts(v ...*ValueIndexText) *AttributeCreate {
+func (_c *AttributeCreate) AddValueIndexTexts(v ...*ValueIndexText) *AttributeCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return ac.AddValueIndexTextIDs(ids...)
+	return _c.AddValueIndexTextIDs(ids...)
 }
 
 // AddValueJSONIDs adds the "value_jsons" edge to the ValueJSON entity by IDs.
-func (ac *AttributeCreate) AddValueJSONIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddValueJSONIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddValueJSONIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddValueJSONIDs(ids...)
+	return _c
 }
 
 // AddValueJsons adds the "value_jsons" edges to the ValueJSON entity.
-func (ac *AttributeCreate) AddValueJsons(v ...*ValueJSON) *AttributeCreate {
+func (_c *AttributeCreate) AddValueJsons(v ...*ValueJSON) *AttributeCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return ac.AddValueJSONIDs(ids...)
+	return _c.AddValueJSONIDs(ids...)
 }
 
 // AddValueIntegerIDs adds the "value_integers" edge to the ValueInteger entity by IDs.
-func (ac *AttributeCreate) AddValueIntegerIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddValueIntegerIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddValueIntegerIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddValueIntegerIDs(ids...)
+	return _c
 }
 
 // AddValueIntegers adds the "value_integers" edges to the ValueInteger entity.
-func (ac *AttributeCreate) AddValueIntegers(v ...*ValueInteger) *AttributeCreate {
+func (_c *AttributeCreate) AddValueIntegers(v ...*ValueInteger) *AttributeCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return ac.AddValueIntegerIDs(ids...)
+	return _c.AddValueIntegerIDs(ids...)
 }
 
 // AddValueFloatIDs adds the "value_floats" edge to the ValueFloat entity by IDs.
-func (ac *AttributeCreate) AddValueFloatIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddValueFloatIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddValueFloatIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddValueFloatIDs(ids...)
+	return _c
 }
 
 // AddValueFloats adds the "value_floats" edges to the ValueFloat entity.
-func (ac *AttributeCreate) AddValueFloats(v ...*ValueFloat) *AttributeCreate {
+func (_c *AttributeCreate) AddValueFloats(v ...*ValueFloat) *AttributeCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return ac.AddValueFloatIDs(ids...)
+	return _c.AddValueFloatIDs(ids...)
 }
 
 // AddValueDatetimeIDs adds the "value_datetimes" edge to the ValueDatetime entity by IDs.
-func (ac *AttributeCreate) AddValueDatetimeIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddValueDatetimeIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddValueDatetimeIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddValueDatetimeIDs(ids...)
+	return _c
 }
 
 // AddValueDatetimes adds the "value_datetimes" edges to the ValueDatetime entity.
-func (ac *AttributeCreate) AddValueDatetimes(v ...*ValueDatetime) *AttributeCreate {
+func (_c *AttributeCreate) AddValueDatetimes(v ...*ValueDatetime) *AttributeCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return ac.AddValueDatetimeIDs(ids...)
+	return _c.AddValueDatetimeIDs(ids...)
 }
 
 // AddChoiceTextIDs adds the "choice_texts" edge to the ChoiceText entity by IDs.
-func (ac *AttributeCreate) AddChoiceTextIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddChoiceTextIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddChoiceTextIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddChoiceTextIDs(ids...)
+	return _c
 }
 
 // AddChoiceTexts adds the "choice_texts" edges to the ChoiceText entity.
-func (ac *AttributeCreate) AddChoiceTexts(c ...*ChoiceText) *AttributeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *AttributeCreate) AddChoiceTexts(v ...*ChoiceText) *AttributeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ac.AddChoiceTextIDs(ids...)
+	return _c.AddChoiceTextIDs(ids...)
 }
 
 // AddChoiceIntegerIDs adds the "choice_integers" edge to the ChoiceInteger entity by IDs.
-func (ac *AttributeCreate) AddChoiceIntegerIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddChoiceIntegerIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddChoiceIntegerIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddChoiceIntegerIDs(ids...)
+	return _c
 }
 
 // AddChoiceIntegers adds the "choice_integers" edges to the ChoiceInteger entity.
-func (ac *AttributeCreate) AddChoiceIntegers(c ...*ChoiceInteger) *AttributeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *AttributeCreate) AddChoiceIntegers(v ...*ChoiceInteger) *AttributeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ac.AddChoiceIntegerIDs(ids...)
+	return _c.AddChoiceIntegerIDs(ids...)
 }
 
 // AddChoiceFloatIDs adds the "choice_floats" edge to the ChoiceFloat entity by IDs.
-func (ac *AttributeCreate) AddChoiceFloatIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddChoiceFloatIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddChoiceFloatIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddChoiceFloatIDs(ids...)
+	return _c
 }
 
 // AddChoiceFloats adds the "choice_floats" edges to the ChoiceFloat entity.
-func (ac *AttributeCreate) AddChoiceFloats(c ...*ChoiceFloat) *AttributeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *AttributeCreate) AddChoiceFloats(v ...*ChoiceFloat) *AttributeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ac.AddChoiceFloatIDs(ids...)
+	return _c.AddChoiceFloatIDs(ids...)
 }
 
 // AddTypeAttributeIDs adds the "type_attributes" edge to the CiTypeAttribute entity by IDs.
-func (ac *AttributeCreate) AddTypeAttributeIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddTypeAttributeIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddTypeAttributeIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddTypeAttributeIDs(ids...)
+	return _c
 }
 
 // AddTypeAttributes adds the "type_attributes" edges to the CiTypeAttribute entity.
-func (ac *AttributeCreate) AddTypeAttributes(c ...*CiTypeAttribute) *AttributeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *AttributeCreate) AddTypeAttributes(v ...*CiTypeAttribute) *AttributeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ac.AddTypeAttributeIDs(ids...)
+	return _c.AddTypeAttributeIDs(ids...)
 }
 
 // AddGroupItemIDs adds the "group_items" edge to the CiTypeAttributeGroupItem entity by IDs.
-func (ac *AttributeCreate) AddGroupItemIDs(ids ...uint64) *AttributeCreate {
-	ac.mutation.AddGroupItemIDs(ids...)
-	return ac
+func (_c *AttributeCreate) AddGroupItemIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddGroupItemIDs(ids...)
+	return _c
 }
 
 // AddGroupItems adds the "group_items" edges to the CiTypeAttributeGroupItem entity.
-func (ac *AttributeCreate) AddGroupItems(c ...*CiTypeAttributeGroupItem) *AttributeCreate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_c *AttributeCreate) AddGroupItems(v ...*CiTypeAttributeGroupItem) *AttributeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ac.AddGroupItemIDs(ids...)
+	return _c.AddGroupItemIDs(ids...)
 }
 
 // Mutation returns the AttributeMutation object of the builder.
-func (ac *AttributeCreate) Mutation() *AttributeMutation {
-	return ac.mutation
+func (_c *AttributeCreate) Mutation() *AttributeMutation {
+	return _c.mutation
 }
 
 // Save creates the Attribute in the database.
-func (ac *AttributeCreate) Save(ctx context.Context) (*Attribute, error) {
-	if err := ac.defaults(); err != nil {
+func (_c *AttributeCreate) Save(ctx context.Context) (*Attribute, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ac.sqlSave, ac.mutation, ac.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (ac *AttributeCreate) SaveX(ctx context.Context) *Attribute {
-	v, err := ac.Save(ctx)
+func (_c *AttributeCreate) SaveX(ctx context.Context) *Attribute {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -540,104 +540,104 @@ func (ac *AttributeCreate) SaveX(ctx context.Context) *Attribute {
 }
 
 // Exec executes the query.
-func (ac *AttributeCreate) Exec(ctx context.Context) error {
-	_, err := ac.Save(ctx)
+func (_c *AttributeCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ac *AttributeCreate) ExecX(ctx context.Context) {
-	if err := ac.Exec(ctx); err != nil {
+func (_c *AttributeCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ac *AttributeCreate) defaults() error {
-	if _, ok := ac.mutation.CreatedAt(); !ok {
+func (_c *AttributeCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if attribute.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized attribute.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := attribute.DefaultCreatedAt()
-		ac.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := ac.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if attribute.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized attribute.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := attribute.DefaultUpdatedAt()
-		ac.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := ac.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := attribute.DefaultTenantID
-		ac.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := ac.mutation.ValueType(); !ok {
+	if _, ok := _c.mutation.ValueType(); !ok {
 		v := attribute.DefaultValueType
-		ac.mutation.SetValueType(v)
+		_c.mutation.SetValueType(v)
 	}
-	if _, ok := ac.mutation.IsChoice(); !ok {
+	if _, ok := _c.mutation.IsChoice(); !ok {
 		v := attribute.DefaultIsChoice
-		ac.mutation.SetIsChoice(v)
+		_c.mutation.SetIsChoice(v)
 	}
-	if _, ok := ac.mutation.IsList(); !ok {
+	if _, ok := _c.mutation.IsList(); !ok {
 		v := attribute.DefaultIsList
-		ac.mutation.SetIsList(v)
+		_c.mutation.SetIsList(v)
 	}
-	if _, ok := ac.mutation.IsComputed(); !ok {
+	if _, ok := _c.mutation.IsComputed(); !ok {
 		v := attribute.DefaultIsComputed
-		ac.mutation.SetIsComputed(v)
+		_c.mutation.SetIsComputed(v)
 	}
-	if _, ok := ac.mutation.IsPassword(); !ok {
+	if _, ok := _c.mutation.IsPassword(); !ok {
 		v := attribute.DefaultIsPassword
-		ac.mutation.SetIsPassword(v)
+		_c.mutation.SetIsPassword(v)
 	}
-	if _, ok := ac.mutation.IsSortable(); !ok {
+	if _, ok := _c.mutation.IsSortable(); !ok {
 		v := attribute.DefaultIsSortable
-		ac.mutation.SetIsSortable(v)
+		_c.mutation.SetIsSortable(v)
 	}
-	if _, ok := ac.mutation.IsDynamic(); !ok {
+	if _, ok := _c.mutation.IsDynamic(); !ok {
 		v := attribute.DefaultIsDynamic
-		ac.mutation.SetIsDynamic(v)
+		_c.mutation.SetIsDynamic(v)
 	}
-	if _, ok := ac.mutation.IsReference(); !ok {
+	if _, ok := _c.mutation.IsReference(); !ok {
 		v := attribute.DefaultIsReference
-		ac.mutation.SetIsReference(v)
+		_c.mutation.SetIsReference(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ac *AttributeCreate) check() error {
-	if _, ok := ac.mutation.CreatedAt(); !ok {
+func (_c *AttributeCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Attribute.created_at"`)}
 	}
-	if _, ok := ac.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "Attribute.updated_at"`)}
 	}
-	if _, ok := ac.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "Attribute.tenant_id"`)}
 	}
-	if _, ok := ac.mutation.Name(); !ok {
+	if _, ok := _c.mutation.Name(); !ok {
 		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Attribute.name"`)}
 	}
-	if v, ok := ac.mutation.Name(); ok {
+	if v, ok := _c.mutation.Name(); ok {
 		if err := attribute.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "Attribute.name": %w`, err)}
 		}
 	}
-	if _, ok := ac.mutation.Alias(); !ok {
+	if _, ok := _c.mutation.Alias(); !ok {
 		return &ValidationError{Name: "alias", err: errors.New(`ent: missing required field "Attribute.alias"`)}
 	}
-	if v, ok := ac.mutation.Alias(); ok {
+	if v, ok := _c.mutation.Alias(); ok {
 		if err := attribute.AliasValidator(v); err != nil {
 			return &ValidationError{Name: "alias", err: fmt.Errorf(`ent: validator failed for field "Attribute.alias": %w`, err)}
 		}
 	}
-	if _, ok := ac.mutation.ValueType(); !ok {
+	if _, ok := _c.mutation.ValueType(); !ok {
 		return &ValidationError{Name: "value_type", err: errors.New(`ent: missing required field "Attribute.value_type"`)}
 	}
-	if v, ok := ac.mutation.ValueType(); ok {
+	if v, ok := _c.mutation.ValueType(); ok {
 		if err := attribute.ValueTypeValidator(v); err != nil {
 			return &ValidationError{Name: "value_type", err: fmt.Errorf(`ent: validator failed for field "Attribute.value_type": %w`, err)}
 		}
@@ -645,12 +645,12 @@ func (ac *AttributeCreate) check() error {
 	return nil
 }
 
-func (ac *AttributeCreate) sqlSave(ctx context.Context) (*Attribute, error) {
-	if err := ac.check(); err != nil {
+func (_c *AttributeCreate) sqlSave(ctx context.Context) (*Attribute, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := ac.createSpec()
-	if err := sqlgraph.CreateNode(ctx, ac.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -660,117 +660,117 @@ func (ac *AttributeCreate) sqlSave(ctx context.Context) (*Attribute, error) {
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	ac.mutation.id = &_node.ID
-	ac.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
+func (_c *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 	var (
-		_node = &Attribute{config: ac.config}
+		_node = &Attribute{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(attribute.Table, sqlgraph.NewFieldSpec(attribute.FieldID, field.TypeUint64))
 	)
-	if id, ok := ac.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := ac.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(attribute.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := ac.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(attribute.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := ac.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(attribute.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := ac.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(attribute.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := ac.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(attribute.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := ac.mutation.Name(); ok {
+	if value, ok := _c.mutation.Name(); ok {
 		_spec.SetField(attribute.FieldName, field.TypeString, value)
 		_node.Name = value
 	}
-	if value, ok := ac.mutation.Alias(); ok {
+	if value, ok := _c.mutation.Alias(); ok {
 		_spec.SetField(attribute.FieldAlias, field.TypeString, value)
 		_node.Alias = value
 	}
-	if value, ok := ac.mutation.ValueType(); ok {
+	if value, ok := _c.mutation.ValueType(); ok {
 		_spec.SetField(attribute.FieldValueType, field.TypeEnum, value)
 		_node.ValueType = value
 	}
-	if value, ok := ac.mutation.IsChoice(); ok {
+	if value, ok := _c.mutation.IsChoice(); ok {
 		_spec.SetField(attribute.FieldIsChoice, field.TypeBool, value)
 		_node.IsChoice = value
 	}
-	if value, ok := ac.mutation.IsList(); ok {
+	if value, ok := _c.mutation.IsList(); ok {
 		_spec.SetField(attribute.FieldIsList, field.TypeBool, value)
 		_node.IsList = value
 	}
-	if value, ok := ac.mutation.CreatedBy(); ok {
+	if value, ok := _c.mutation.CreatedBy(); ok {
 		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
 		_node.CreatedBy = &value
 	}
-	if value, ok := ac.mutation.IsComputed(); ok {
+	if value, ok := _c.mutation.IsComputed(); ok {
 		_spec.SetField(attribute.FieldIsComputed, field.TypeBool, value)
 		_node.IsComputed = value
 	}
-	if value, ok := ac.mutation.ChoiceWebHook(); ok {
+	if value, ok := _c.mutation.ChoiceWebHook(); ok {
 		_spec.SetField(attribute.FieldChoiceWebHook, field.TypeJSON, value)
 		_node.ChoiceWebHook = value
 	}
-	if value, ok := ac.mutation.Option(); ok {
+	if value, ok := _c.mutation.Option(); ok {
 		_spec.SetField(attribute.FieldOption, field.TypeJSON, value)
 		_node.Option = value
 	}
-	if value, ok := ac.mutation.IsPassword(); ok {
+	if value, ok := _c.mutation.IsPassword(); ok {
 		_spec.SetField(attribute.FieldIsPassword, field.TypeBool, value)
 		_node.IsPassword = value
 	}
-	if value, ok := ac.mutation.ComputeScript(); ok {
+	if value, ok := _c.mutation.ComputeScript(); ok {
 		_spec.SetField(attribute.FieldComputeScript, field.TypeString, value)
 		_node.ComputeScript = value
 	}
-	if value, ok := ac.mutation.ComputeExpr(); ok {
+	if value, ok := _c.mutation.ComputeExpr(); ok {
 		_spec.SetField(attribute.FieldComputeExpr, field.TypeString, value)
 		_node.ComputeExpr = value
 	}
-	if value, ok := ac.mutation.IsSortable(); ok {
+	if value, ok := _c.mutation.IsSortable(); ok {
 		_spec.SetField(attribute.FieldIsSortable, field.TypeBool, value)
 		_node.IsSortable = value
 	}
-	if value, ok := ac.mutation.Default(); ok {
+	if value, ok := _c.mutation.Default(); ok {
 		_spec.SetField(attribute.FieldDefault, field.TypeJSON, value)
 		_node.Default = value
 	}
-	if value, ok := ac.mutation.IsDynamic(); ok {
+	if value, ok := _c.mutation.IsDynamic(); ok {
 		_spec.SetField(attribute.FieldIsDynamic, field.TypeBool, value)
 		_node.IsDynamic = value
 	}
-	if value, ok := ac.mutation.IsReference(); ok {
+	if value, ok := _c.mutation.IsReference(); ok {
 		_spec.SetField(attribute.FieldIsReference, field.TypeBool, value)
 		_node.IsReference = value
 	}
-	if value, ok := ac.mutation.ReferenceTypeID(); ok {
+	if value, ok := _c.mutation.ReferenceTypeID(); ok {
 		_spec.SetField(attribute.FieldReferenceTypeID, field.TypeUint64, value)
 		_node.ReferenceTypeID = value
 	}
-	if value, ok := ac.mutation.ChoiceOther(); ok {
+	if value, ok := _c.mutation.ChoiceOther(); ok {
 		_spec.SetField(attribute.FieldChoiceOther, field.TypeJSON, value)
 		_node.ChoiceOther = value
 	}
-	if value, ok := ac.mutation.ValidatorRules(); ok {
+	if value, ok := _c.mutation.ValidatorRules(); ok {
 		_spec.SetField(attribute.FieldValidatorRules, field.TypeJSON, value)
 		_node.ValidatorRules = value
 	}
-	if nodes := ac.mutation.ValueTextsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -786,7 +786,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueIndexTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -802,7 +802,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.ValueJsonsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueJsonsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -818,7 +818,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.ValueIntegersIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -834,7 +834,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.ValueFloatsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueFloatsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -850,7 +850,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ValueDatetimesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -866,7 +866,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.ChoiceTextsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ChoiceTextsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -882,7 +882,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.ChoiceIntegersIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ChoiceIntegersIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -898,7 +898,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.ChoiceFloatsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ChoiceFloatsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -914,7 +914,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.TypeAttributesIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.TypeAttributesIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -930,7 +930,7 @@ func (ac *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ac.mutation.GroupItemsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.GroupItemsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -957,16 +957,16 @@ type AttributeCreateBulk struct {
 }
 
 // Save creates the Attribute entities in the database.
-func (acb *AttributeCreateBulk) Save(ctx context.Context) ([]*Attribute, error) {
-	if acb.err != nil {
-		return nil, acb.err
+func (_c *AttributeCreateBulk) Save(ctx context.Context) ([]*Attribute, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(acb.builders))
-	nodes := make([]*Attribute, len(acb.builders))
-	mutators := make([]Mutator, len(acb.builders))
-	for i := range acb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*Attribute, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := acb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*AttributeMutation)
@@ -980,11 +980,11 @@ func (acb *AttributeCreateBulk) Save(ctx context.Context) ([]*Attribute, error) 
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, acb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, acb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -1008,7 +1008,7 @@ func (acb *AttributeCreateBulk) Save(ctx context.Context) ([]*Attribute, error) 
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, acb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -1016,8 +1016,8 @@ func (acb *AttributeCreateBulk) Save(ctx context.Context) ([]*Attribute, error) 
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (acb *AttributeCreateBulk) SaveX(ctx context.Context) []*Attribute {
-	v, err := acb.Save(ctx)
+func (_c *AttributeCreateBulk) SaveX(ctx context.Context) []*Attribute {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1025,14 +1025,14 @@ func (acb *AttributeCreateBulk) SaveX(ctx context.Context) []*Attribute {
 }
 
 // Exec executes the query.
-func (acb *AttributeCreateBulk) Exec(ctx context.Context) error {
-	_, err := acb.Save(ctx)
+func (_c *AttributeCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (acb *AttributeCreateBulk) ExecX(ctx context.Context) {
-	if err := acb.Exec(ctx); err != nil {
+func (_c *AttributeCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

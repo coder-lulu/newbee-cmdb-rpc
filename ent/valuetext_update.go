@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 )
 
 // ValueTextUpdate is the builder for updating ValueText entities.
@@ -25,137 +25,137 @@ type ValueTextUpdate struct {
 }
 
 // Where appends a list predicates to the ValueTextUpdate builder.
-func (vtu *ValueTextUpdate) Where(ps ...predicate.ValueText) *ValueTextUpdate {
-	vtu.mutation.Where(ps...)
-	return vtu
+func (_u *ValueTextUpdate) Where(ps ...predicate.ValueText) *ValueTextUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vtu *ValueTextUpdate) SetUpdatedAt(t time.Time) *ValueTextUpdate {
-	vtu.mutation.SetUpdatedAt(t)
-	return vtu
+func (_u *ValueTextUpdate) SetUpdatedAt(v time.Time) *ValueTextUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vtu *ValueTextUpdate) SetDeletedAt(t time.Time) *ValueTextUpdate {
-	vtu.mutation.SetDeletedAt(t)
-	return vtu
+func (_u *ValueTextUpdate) SetDeletedAt(v time.Time) *ValueTextUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vtu *ValueTextUpdate) SetNillableDeletedAt(t *time.Time) *ValueTextUpdate {
-	if t != nil {
-		vtu.SetDeletedAt(*t)
+func (_u *ValueTextUpdate) SetNillableDeletedAt(v *time.Time) *ValueTextUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vtu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vtu *ValueTextUpdate) ClearDeletedAt() *ValueTextUpdate {
-	vtu.mutation.ClearDeletedAt()
-	return vtu
+func (_u *ValueTextUpdate) ClearDeletedAt() *ValueTextUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vtu *ValueTextUpdate) SetCiID(u uint64) *ValueTextUpdate {
-	vtu.mutation.SetCiID(u)
-	return vtu
+func (_u *ValueTextUpdate) SetCiID(v uint64) *ValueTextUpdate {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vtu *ValueTextUpdate) SetNillableCiID(u *uint64) *ValueTextUpdate {
-	if u != nil {
-		vtu.SetCiID(*u)
+func (_u *ValueTextUpdate) SetNillableCiID(v *uint64) *ValueTextUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vtu
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vtu *ValueTextUpdate) SetAttrID(u uint64) *ValueTextUpdate {
-	vtu.mutation.SetAttrID(u)
-	return vtu
+func (_u *ValueTextUpdate) SetAttrID(v uint64) *ValueTextUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vtu *ValueTextUpdate) SetNillableAttrID(u *uint64) *ValueTextUpdate {
-	if u != nil {
-		vtu.SetAttrID(*u)
+func (_u *ValueTextUpdate) SetNillableAttrID(v *uint64) *ValueTextUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vtu
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vtu *ValueTextUpdate) SetValue(s string) *ValueTextUpdate {
-	vtu.mutation.SetValue(s)
-	return vtu
+func (_u *ValueTextUpdate) SetValue(v string) *ValueTextUpdate {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (vtu *ValueTextUpdate) SetNillableValue(s *string) *ValueTextUpdate {
-	if s != nil {
-		vtu.SetValue(*s)
+func (_u *ValueTextUpdate) SetNillableValue(v *string) *ValueTextUpdate {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return vtu
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vtu *ValueTextUpdate) SetIsCover(b bool) *ValueTextUpdate {
-	vtu.mutation.SetIsCover(b)
-	return vtu
+func (_u *ValueTextUpdate) SetIsCover(v bool) *ValueTextUpdate {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vtu *ValueTextUpdate) SetNillableIsCover(b *bool) *ValueTextUpdate {
-	if b != nil {
-		vtu.SetIsCover(*b)
+func (_u *ValueTextUpdate) SetNillableIsCover(v *bool) *ValueTextUpdate {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vtu
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vtu *ValueTextUpdate) SetCi(c *Cis) *ValueTextUpdate {
-	return vtu.SetCiID(c.ID)
+func (_u *ValueTextUpdate) SetCi(v *Cis) *ValueTextUpdate {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vtu *ValueTextUpdate) SetAttributeID(id uint64) *ValueTextUpdate {
-	vtu.mutation.SetAttributeID(id)
-	return vtu
+func (_u *ValueTextUpdate) SetAttributeID(id uint64) *ValueTextUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vtu *ValueTextUpdate) SetAttribute(a *Attribute) *ValueTextUpdate {
-	return vtu.SetAttributeID(a.ID)
+func (_u *ValueTextUpdate) SetAttribute(v *Attribute) *ValueTextUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueTextMutation object of the builder.
-func (vtu *ValueTextUpdate) Mutation() *ValueTextMutation {
-	return vtu.mutation
+func (_u *ValueTextUpdate) Mutation() *ValueTextMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vtu *ValueTextUpdate) ClearCi() *ValueTextUpdate {
-	vtu.mutation.ClearCi()
-	return vtu
+func (_u *ValueTextUpdate) ClearCi() *ValueTextUpdate {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vtu *ValueTextUpdate) ClearAttribute() *ValueTextUpdate {
-	vtu.mutation.ClearAttribute()
-	return vtu
+func (_u *ValueTextUpdate) ClearAttribute() *ValueTextUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (vtu *ValueTextUpdate) Save(ctx context.Context) (int, error) {
-	if err := vtu.defaults(); err != nil {
+func (_u *ValueTextUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, vtu.sqlSave, vtu.mutation, vtu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vtu *ValueTextUpdate) SaveX(ctx context.Context) int {
-	affected, err := vtu.Save(ctx)
+func (_u *ValueTextUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -163,69 +163,69 @@ func (vtu *ValueTextUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (vtu *ValueTextUpdate) Exec(ctx context.Context) error {
-	_, err := vtu.Save(ctx)
+func (_u *ValueTextUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vtu *ValueTextUpdate) ExecX(ctx context.Context) {
-	if err := vtu.Exec(ctx); err != nil {
+func (_u *ValueTextUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vtu *ValueTextUpdate) defaults() error {
-	if _, ok := vtu.mutation.UpdatedAt(); !ok {
+func (_u *ValueTextUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valuetext.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuetext.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuetext.UpdateDefaultUpdatedAt()
-		vtu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vtu *ValueTextUpdate) check() error {
-	if vtu.mutation.CiCleared() && len(vtu.mutation.CiIDs()) > 0 {
+func (_u *ValueTextUpdate) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueText.ci"`)
 	}
-	if vtu.mutation.AttributeCleared() && len(vtu.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueText.attribute"`)
 	}
 	return nil
 }
 
-func (vtu *ValueTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := vtu.check(); err != nil {
-		return n, err
+func (_u *ValueTextUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valuetext.Table, valuetext.Columns, sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64))
-	if ps := vtu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vtu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuetext.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vtu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valuetext.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vtu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuetext.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vtu.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuetext.FieldValue, field.TypeString, value)
 	}
-	if value, ok := vtu.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valuetext.FieldIsCover, field.TypeBool, value)
 	}
-	if vtu.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -238,7 +238,7 @@ func (vtu *ValueTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vtu.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -254,7 +254,7 @@ func (vtu *ValueTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vtu.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -267,7 +267,7 @@ func (vtu *ValueTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vtu.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -283,7 +283,7 @@ func (vtu *ValueTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, vtu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valuetext.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -291,8 +291,8 @@ func (vtu *ValueTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	vtu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ValueTextUpdateOne is the builder for updating a single ValueText entity.
@@ -304,144 +304,144 @@ type ValueTextUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vtuo *ValueTextUpdateOne) SetUpdatedAt(t time.Time) *ValueTextUpdateOne {
-	vtuo.mutation.SetUpdatedAt(t)
-	return vtuo
+func (_u *ValueTextUpdateOne) SetUpdatedAt(v time.Time) *ValueTextUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vtuo *ValueTextUpdateOne) SetDeletedAt(t time.Time) *ValueTextUpdateOne {
-	vtuo.mutation.SetDeletedAt(t)
-	return vtuo
+func (_u *ValueTextUpdateOne) SetDeletedAt(v time.Time) *ValueTextUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vtuo *ValueTextUpdateOne) SetNillableDeletedAt(t *time.Time) *ValueTextUpdateOne {
-	if t != nil {
-		vtuo.SetDeletedAt(*t)
+func (_u *ValueTextUpdateOne) SetNillableDeletedAt(v *time.Time) *ValueTextUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vtuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vtuo *ValueTextUpdateOne) ClearDeletedAt() *ValueTextUpdateOne {
-	vtuo.mutation.ClearDeletedAt()
-	return vtuo
+func (_u *ValueTextUpdateOne) ClearDeletedAt() *ValueTextUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vtuo *ValueTextUpdateOne) SetCiID(u uint64) *ValueTextUpdateOne {
-	vtuo.mutation.SetCiID(u)
-	return vtuo
+func (_u *ValueTextUpdateOne) SetCiID(v uint64) *ValueTextUpdateOne {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vtuo *ValueTextUpdateOne) SetNillableCiID(u *uint64) *ValueTextUpdateOne {
-	if u != nil {
-		vtuo.SetCiID(*u)
+func (_u *ValueTextUpdateOne) SetNillableCiID(v *uint64) *ValueTextUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vtuo
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vtuo *ValueTextUpdateOne) SetAttrID(u uint64) *ValueTextUpdateOne {
-	vtuo.mutation.SetAttrID(u)
-	return vtuo
+func (_u *ValueTextUpdateOne) SetAttrID(v uint64) *ValueTextUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vtuo *ValueTextUpdateOne) SetNillableAttrID(u *uint64) *ValueTextUpdateOne {
-	if u != nil {
-		vtuo.SetAttrID(*u)
+func (_u *ValueTextUpdateOne) SetNillableAttrID(v *uint64) *ValueTextUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vtuo
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vtuo *ValueTextUpdateOne) SetValue(s string) *ValueTextUpdateOne {
-	vtuo.mutation.SetValue(s)
-	return vtuo
+func (_u *ValueTextUpdateOne) SetValue(v string) *ValueTextUpdateOne {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (vtuo *ValueTextUpdateOne) SetNillableValue(s *string) *ValueTextUpdateOne {
-	if s != nil {
-		vtuo.SetValue(*s)
+func (_u *ValueTextUpdateOne) SetNillableValue(v *string) *ValueTextUpdateOne {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return vtuo
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vtuo *ValueTextUpdateOne) SetIsCover(b bool) *ValueTextUpdateOne {
-	vtuo.mutation.SetIsCover(b)
-	return vtuo
+func (_u *ValueTextUpdateOne) SetIsCover(v bool) *ValueTextUpdateOne {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vtuo *ValueTextUpdateOne) SetNillableIsCover(b *bool) *ValueTextUpdateOne {
-	if b != nil {
-		vtuo.SetIsCover(*b)
+func (_u *ValueTextUpdateOne) SetNillableIsCover(v *bool) *ValueTextUpdateOne {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vtuo
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vtuo *ValueTextUpdateOne) SetCi(c *Cis) *ValueTextUpdateOne {
-	return vtuo.SetCiID(c.ID)
+func (_u *ValueTextUpdateOne) SetCi(v *Cis) *ValueTextUpdateOne {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vtuo *ValueTextUpdateOne) SetAttributeID(id uint64) *ValueTextUpdateOne {
-	vtuo.mutation.SetAttributeID(id)
-	return vtuo
+func (_u *ValueTextUpdateOne) SetAttributeID(id uint64) *ValueTextUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vtuo *ValueTextUpdateOne) SetAttribute(a *Attribute) *ValueTextUpdateOne {
-	return vtuo.SetAttributeID(a.ID)
+func (_u *ValueTextUpdateOne) SetAttribute(v *Attribute) *ValueTextUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueTextMutation object of the builder.
-func (vtuo *ValueTextUpdateOne) Mutation() *ValueTextMutation {
-	return vtuo.mutation
+func (_u *ValueTextUpdateOne) Mutation() *ValueTextMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vtuo *ValueTextUpdateOne) ClearCi() *ValueTextUpdateOne {
-	vtuo.mutation.ClearCi()
-	return vtuo
+func (_u *ValueTextUpdateOne) ClearCi() *ValueTextUpdateOne {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vtuo *ValueTextUpdateOne) ClearAttribute() *ValueTextUpdateOne {
-	vtuo.mutation.ClearAttribute()
-	return vtuo
+func (_u *ValueTextUpdateOne) ClearAttribute() *ValueTextUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the ValueTextUpdate builder.
-func (vtuo *ValueTextUpdateOne) Where(ps ...predicate.ValueText) *ValueTextUpdateOne {
-	vtuo.mutation.Where(ps...)
-	return vtuo
+func (_u *ValueTextUpdateOne) Where(ps ...predicate.ValueText) *ValueTextUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (vtuo *ValueTextUpdateOne) Select(field string, fields ...string) *ValueTextUpdateOne {
-	vtuo.fields = append([]string{field}, fields...)
-	return vtuo
+func (_u *ValueTextUpdateOne) Select(field string, fields ...string) *ValueTextUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ValueText entity.
-func (vtuo *ValueTextUpdateOne) Save(ctx context.Context) (*ValueText, error) {
-	if err := vtuo.defaults(); err != nil {
+func (_u *ValueTextUpdateOne) Save(ctx context.Context) (*ValueText, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vtuo.sqlSave, vtuo.mutation, vtuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vtuo *ValueTextUpdateOne) SaveX(ctx context.Context) *ValueText {
-	node, err := vtuo.Save(ctx)
+func (_u *ValueTextUpdateOne) SaveX(ctx context.Context) *ValueText {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -449,52 +449,52 @@ func (vtuo *ValueTextUpdateOne) SaveX(ctx context.Context) *ValueText {
 }
 
 // Exec executes the query on the entity.
-func (vtuo *ValueTextUpdateOne) Exec(ctx context.Context) error {
-	_, err := vtuo.Save(ctx)
+func (_u *ValueTextUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vtuo *ValueTextUpdateOne) ExecX(ctx context.Context) {
-	if err := vtuo.Exec(ctx); err != nil {
+func (_u *ValueTextUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vtuo *ValueTextUpdateOne) defaults() error {
-	if _, ok := vtuo.mutation.UpdatedAt(); !ok {
+func (_u *ValueTextUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valuetext.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuetext.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuetext.UpdateDefaultUpdatedAt()
-		vtuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vtuo *ValueTextUpdateOne) check() error {
-	if vtuo.mutation.CiCleared() && len(vtuo.mutation.CiIDs()) > 0 {
+func (_u *ValueTextUpdateOne) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueText.ci"`)
 	}
-	if vtuo.mutation.AttributeCleared() && len(vtuo.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueText.attribute"`)
 	}
 	return nil
 }
 
-func (vtuo *ValueTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueText, err error) {
-	if err := vtuo.check(); err != nil {
+func (_u *ValueTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueText, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valuetext.Table, valuetext.Columns, sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64))
-	id, ok := vtuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ValueText.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := vtuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valuetext.FieldID)
 		for _, f := range fields {
@@ -506,29 +506,29 @@ func (vtuo *ValueTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueText, 
 			}
 		}
 	}
-	if ps := vtuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vtuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuetext.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vtuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valuetext.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vtuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuetext.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vtuo.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuetext.FieldValue, field.TypeString, value)
 	}
-	if value, ok := vtuo.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valuetext.FieldIsCover, field.TypeBool, value)
 	}
-	if vtuo.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -541,7 +541,7 @@ func (vtuo *ValueTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueText, 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vtuo.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -557,7 +557,7 @@ func (vtuo *ValueTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueText, 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vtuo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -570,7 +570,7 @@ func (vtuo *ValueTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueText, 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vtuo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -586,10 +586,10 @@ func (vtuo *ValueTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueText, 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ValueText{config: vtuo.config}
+	_node = &ValueText{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, vtuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valuetext.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -597,6 +597,6 @@ func (vtuo *ValueTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueText, 
 		}
 		return nil, err
 	}
-	vtuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

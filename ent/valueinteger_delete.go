@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
 )
 
 // ValueIntegerDelete is the builder for deleting a ValueInteger entity.
@@ -20,56 +20,56 @@ type ValueIntegerDelete struct {
 }
 
 // Where appends a list predicates to the ValueIntegerDelete builder.
-func (vid *ValueIntegerDelete) Where(ps ...predicate.ValueInteger) *ValueIntegerDelete {
-	vid.mutation.Where(ps...)
-	return vid
+func (_d *ValueIntegerDelete) Where(ps ...predicate.ValueInteger) *ValueIntegerDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (vid *ValueIntegerDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, vid.sqlExec, vid.mutation, vid.hooks)
+func (_d *ValueIntegerDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vid *ValueIntegerDelete) ExecX(ctx context.Context) int {
-	n, err := vid.Exec(ctx)
+func (_d *ValueIntegerDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (vid *ValueIntegerDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ValueIntegerDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(valueinteger.Table, sqlgraph.NewFieldSpec(valueinteger.FieldID, field.TypeUint64))
-	if ps := vid.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, vid.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	vid.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ValueIntegerDeleteOne is the builder for deleting a single ValueInteger entity.
 type ValueIntegerDeleteOne struct {
-	vid *ValueIntegerDelete
+	_d *ValueIntegerDelete
 }
 
 // Where appends a list predicates to the ValueIntegerDelete builder.
-func (vido *ValueIntegerDeleteOne) Where(ps ...predicate.ValueInteger) *ValueIntegerDeleteOne {
-	vido.vid.mutation.Where(ps...)
-	return vido
+func (_d *ValueIntegerDeleteOne) Where(ps ...predicate.ValueInteger) *ValueIntegerDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (vido *ValueIntegerDeleteOne) Exec(ctx context.Context) error {
-	n, err := vido.vid.Exec(ctx)
+func (_d *ValueIntegerDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (vido *ValueIntegerDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vido *ValueIntegerDeleteOne) ExecX(ctx context.Context) {
-	if err := vido.Exec(ctx); err != nil {
+func (_d *ValueIntegerDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

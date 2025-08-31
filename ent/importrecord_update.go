@@ -11,12 +11,12 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ImportRecordUpdate is the builder for updating ImportRecord entities.
@@ -27,484 +27,484 @@ type ImportRecordUpdate struct {
 }
 
 // Where appends a list predicates to the ImportRecordUpdate builder.
-func (iru *ImportRecordUpdate) Where(ps ...predicate.ImportRecord) *ImportRecordUpdate {
-	iru.mutation.Where(ps...)
-	return iru
+func (_u *ImportRecordUpdate) Where(ps ...predicate.ImportRecord) *ImportRecordUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (iru *ImportRecordUpdate) SetUpdatedAt(t time.Time) *ImportRecordUpdate {
-	iru.mutation.SetUpdatedAt(t)
-	return iru
+func (_u *ImportRecordUpdate) SetUpdatedAt(v time.Time) *ImportRecordUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (iru *ImportRecordUpdate) SetDeletedAt(t time.Time) *ImportRecordUpdate {
-	iru.mutation.SetDeletedAt(t)
-	return iru
+func (_u *ImportRecordUpdate) SetDeletedAt(v time.Time) *ImportRecordUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableDeletedAt(t *time.Time) *ImportRecordUpdate {
-	if t != nil {
-		iru.SetDeletedAt(*t)
+func (_u *ImportRecordUpdate) SetNillableDeletedAt(v *time.Time) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (iru *ImportRecordUpdate) ClearDeletedAt() *ImportRecordUpdate {
-	iru.mutation.ClearDeletedAt()
-	return iru
+func (_u *ImportRecordUpdate) ClearDeletedAt() *ImportRecordUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (iru *ImportRecordUpdate) SetDepartmentID(u uint64) *ImportRecordUpdate {
-	iru.mutation.ResetDepartmentID()
-	iru.mutation.SetDepartmentID(u)
-	return iru
+func (_u *ImportRecordUpdate) SetDepartmentID(v uint64) *ImportRecordUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableDepartmentID(u *uint64) *ImportRecordUpdate {
-	if u != nil {
-		iru.SetDepartmentID(*u)
+func (_u *ImportRecordUpdate) SetNillableDepartmentID(v *uint64) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return iru
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (iru *ImportRecordUpdate) AddDepartmentID(u int64) *ImportRecordUpdate {
-	iru.mutation.AddDepartmentID(u)
-	return iru
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ImportRecordUpdate) AddDepartmentID(v int64) *ImportRecordUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (iru *ImportRecordUpdate) ClearDepartmentID() *ImportRecordUpdate {
-	iru.mutation.ClearDepartmentID()
-	return iru
+func (_u *ImportRecordUpdate) ClearDepartmentID() *ImportRecordUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetTaskID sets the "task_id" field.
-func (iru *ImportRecordUpdate) SetTaskID(u uint64) *ImportRecordUpdate {
-	iru.mutation.SetTaskID(u)
-	return iru
+func (_u *ImportRecordUpdate) SetTaskID(v uint64) *ImportRecordUpdate {
+	_u.mutation.SetTaskID(v)
+	return _u
 }
 
 // SetNillableTaskID sets the "task_id" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableTaskID(u *uint64) *ImportRecordUpdate {
-	if u != nil {
-		iru.SetTaskID(*u)
+func (_u *ImportRecordUpdate) SetNillableTaskID(v *uint64) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetTaskID(*v)
 	}
-	return iru
+	return _u
 }
 
 // SetBatchID sets the "batch_id" field.
-func (iru *ImportRecordUpdate) SetBatchID(s string) *ImportRecordUpdate {
-	iru.mutation.SetBatchID(s)
-	return iru
+func (_u *ImportRecordUpdate) SetBatchID(v string) *ImportRecordUpdate {
+	_u.mutation.SetBatchID(v)
+	return _u
 }
 
 // SetNillableBatchID sets the "batch_id" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableBatchID(s *string) *ImportRecordUpdate {
-	if s != nil {
-		iru.SetBatchID(*s)
+func (_u *ImportRecordUpdate) SetNillableBatchID(v *string) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetBatchID(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearBatchID clears the value of the "batch_id" field.
-func (iru *ImportRecordUpdate) ClearBatchID() *ImportRecordUpdate {
-	iru.mutation.ClearBatchID()
-	return iru
+func (_u *ImportRecordUpdate) ClearBatchID() *ImportRecordUpdate {
+	_u.mutation.ClearBatchID()
+	return _u
 }
 
 // SetRowNumber sets the "row_number" field.
-func (iru *ImportRecordUpdate) SetRowNumber(i int) *ImportRecordUpdate {
-	iru.mutation.ResetRowNumber()
-	iru.mutation.SetRowNumber(i)
-	return iru
+func (_u *ImportRecordUpdate) SetRowNumber(v int) *ImportRecordUpdate {
+	_u.mutation.ResetRowNumber()
+	_u.mutation.SetRowNumber(v)
+	return _u
 }
 
 // SetNillableRowNumber sets the "row_number" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableRowNumber(i *int) *ImportRecordUpdate {
-	if i != nil {
-		iru.SetRowNumber(*i)
+func (_u *ImportRecordUpdate) SetNillableRowNumber(v *int) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetRowNumber(*v)
 	}
-	return iru
+	return _u
 }
 
-// AddRowNumber adds i to the "row_number" field.
-func (iru *ImportRecordUpdate) AddRowNumber(i int) *ImportRecordUpdate {
-	iru.mutation.AddRowNumber(i)
-	return iru
+// AddRowNumber adds value to the "row_number" field.
+func (_u *ImportRecordUpdate) AddRowNumber(v int) *ImportRecordUpdate {
+	_u.mutation.AddRowNumber(v)
+	return _u
 }
 
 // SetSheetName sets the "sheet_name" field.
-func (iru *ImportRecordUpdate) SetSheetName(s string) *ImportRecordUpdate {
-	iru.mutation.SetSheetName(s)
-	return iru
+func (_u *ImportRecordUpdate) SetSheetName(v string) *ImportRecordUpdate {
+	_u.mutation.SetSheetName(v)
+	return _u
 }
 
 // SetNillableSheetName sets the "sheet_name" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableSheetName(s *string) *ImportRecordUpdate {
-	if s != nil {
-		iru.SetSheetName(*s)
+func (_u *ImportRecordUpdate) SetNillableSheetName(v *string) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetSheetName(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearSheetName clears the value of the "sheet_name" field.
-func (iru *ImportRecordUpdate) ClearSheetName() *ImportRecordUpdate {
-	iru.mutation.ClearSheetName()
-	return iru
+func (_u *ImportRecordUpdate) ClearSheetName() *ImportRecordUpdate {
+	_u.mutation.ClearSheetName()
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (iru *ImportRecordUpdate) SetStatus(i importrecord.Status) *ImportRecordUpdate {
-	iru.mutation.SetStatus(i)
-	return iru
+func (_u *ImportRecordUpdate) SetStatus(v importrecord.Status) *ImportRecordUpdate {
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableStatus(i *importrecord.Status) *ImportRecordUpdate {
-	if i != nil {
-		iru.SetStatus(*i)
+func (_u *ImportRecordUpdate) SetNillableStatus(v *importrecord.Status) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return iru
+	return _u
 }
 
 // SetImportAction sets the "import_action" field.
-func (iru *ImportRecordUpdate) SetImportAction(ia importrecord.ImportAction) *ImportRecordUpdate {
-	iru.mutation.SetImportAction(ia)
-	return iru
+func (_u *ImportRecordUpdate) SetImportAction(v importrecord.ImportAction) *ImportRecordUpdate {
+	_u.mutation.SetImportAction(v)
+	return _u
 }
 
 // SetNillableImportAction sets the "import_action" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableImportAction(ia *importrecord.ImportAction) *ImportRecordUpdate {
-	if ia != nil {
-		iru.SetImportAction(*ia)
+func (_u *ImportRecordUpdate) SetNillableImportAction(v *importrecord.ImportAction) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetImportAction(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearImportAction clears the value of the "import_action" field.
-func (iru *ImportRecordUpdate) ClearImportAction() *ImportRecordUpdate {
-	iru.mutation.ClearImportAction()
-	return iru
+func (_u *ImportRecordUpdate) ClearImportAction() *ImportRecordUpdate {
+	_u.mutation.ClearImportAction()
+	return _u
 }
 
 // SetRawData sets the "raw_data" field.
-func (iru *ImportRecordUpdate) SetRawData(m map[string]interface{}) *ImportRecordUpdate {
-	iru.mutation.SetRawData(m)
-	return iru
+func (_u *ImportRecordUpdate) SetRawData(v map[string]interface{}) *ImportRecordUpdate {
+	_u.mutation.SetRawData(v)
+	return _u
 }
 
 // ClearRawData clears the value of the "raw_data" field.
-func (iru *ImportRecordUpdate) ClearRawData() *ImportRecordUpdate {
-	iru.mutation.ClearRawData()
-	return iru
+func (_u *ImportRecordUpdate) ClearRawData() *ImportRecordUpdate {
+	_u.mutation.ClearRawData()
+	return _u
 }
 
 // SetFinalData sets the "final_data" field.
-func (iru *ImportRecordUpdate) SetFinalData(m map[string]interface{}) *ImportRecordUpdate {
-	iru.mutation.SetFinalData(m)
-	return iru
+func (_u *ImportRecordUpdate) SetFinalData(v map[string]interface{}) *ImportRecordUpdate {
+	_u.mutation.SetFinalData(v)
+	return _u
 }
 
 // ClearFinalData clears the value of the "final_data" field.
-func (iru *ImportRecordUpdate) ClearFinalData() *ImportRecordUpdate {
-	iru.mutation.ClearFinalData()
-	return iru
+func (_u *ImportRecordUpdate) ClearFinalData() *ImportRecordUpdate {
+	_u.mutation.ClearFinalData()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (iru *ImportRecordUpdate) SetCiID(u uint64) *ImportRecordUpdate {
-	iru.mutation.SetCiID(u)
-	return iru
+func (_u *ImportRecordUpdate) SetCiID(v uint64) *ImportRecordUpdate {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableCiID(u *uint64) *ImportRecordUpdate {
-	if u != nil {
-		iru.SetCiID(*u)
+func (_u *ImportRecordUpdate) SetNillableCiID(v *uint64) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearCiID clears the value of the "ci_id" field.
-func (iru *ImportRecordUpdate) ClearCiID() *ImportRecordUpdate {
-	iru.mutation.ClearCiID()
-	return iru
+func (_u *ImportRecordUpdate) ClearCiID() *ImportRecordUpdate {
+	_u.mutation.ClearCiID()
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (iru *ImportRecordUpdate) SetCiTypeID(u uint64) *ImportRecordUpdate {
-	iru.mutation.SetCiTypeID(u)
-	return iru
+func (_u *ImportRecordUpdate) SetCiTypeID(v uint64) *ImportRecordUpdate {
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableCiTypeID(u *uint64) *ImportRecordUpdate {
-	if u != nil {
-		iru.SetCiTypeID(*u)
+func (_u *ImportRecordUpdate) SetNillableCiTypeID(v *uint64) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearCiTypeID clears the value of the "ci_type_id" field.
-func (iru *ImportRecordUpdate) ClearCiTypeID() *ImportRecordUpdate {
-	iru.mutation.ClearCiTypeID()
-	return iru
+func (_u *ImportRecordUpdate) ClearCiTypeID() *ImportRecordUpdate {
+	_u.mutation.ClearCiTypeID()
+	return _u
 }
 
 // SetCiUniqueKey sets the "ci_unique_key" field.
-func (iru *ImportRecordUpdate) SetCiUniqueKey(s string) *ImportRecordUpdate {
-	iru.mutation.SetCiUniqueKey(s)
-	return iru
+func (_u *ImportRecordUpdate) SetCiUniqueKey(v string) *ImportRecordUpdate {
+	_u.mutation.SetCiUniqueKey(v)
+	return _u
 }
 
 // SetNillableCiUniqueKey sets the "ci_unique_key" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableCiUniqueKey(s *string) *ImportRecordUpdate {
-	if s != nil {
-		iru.SetCiUniqueKey(*s)
+func (_u *ImportRecordUpdate) SetNillableCiUniqueKey(v *string) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetCiUniqueKey(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearCiUniqueKey clears the value of the "ci_unique_key" field.
-func (iru *ImportRecordUpdate) ClearCiUniqueKey() *ImportRecordUpdate {
-	iru.mutation.ClearCiUniqueKey()
-	return iru
+func (_u *ImportRecordUpdate) ClearCiUniqueKey() *ImportRecordUpdate {
+	_u.mutation.ClearCiUniqueKey()
+	return _u
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (iru *ImportRecordUpdate) SetErrorMessage(s string) *ImportRecordUpdate {
-	iru.mutation.SetErrorMessage(s)
-	return iru
+func (_u *ImportRecordUpdate) SetErrorMessage(v string) *ImportRecordUpdate {
+	_u.mutation.SetErrorMessage(v)
+	return _u
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableErrorMessage(s *string) *ImportRecordUpdate {
-	if s != nil {
-		iru.SetErrorMessage(*s)
+func (_u *ImportRecordUpdate) SetNillableErrorMessage(v *string) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetErrorMessage(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearErrorMessage clears the value of the "error_message" field.
-func (iru *ImportRecordUpdate) ClearErrorMessage() *ImportRecordUpdate {
-	iru.mutation.ClearErrorMessage()
-	return iru
+func (_u *ImportRecordUpdate) ClearErrorMessage() *ImportRecordUpdate {
+	_u.mutation.ClearErrorMessage()
+	return _u
 }
 
 // SetErrorCode sets the "error_code" field.
-func (iru *ImportRecordUpdate) SetErrorCode(s string) *ImportRecordUpdate {
-	iru.mutation.SetErrorCode(s)
-	return iru
+func (_u *ImportRecordUpdate) SetErrorCode(v string) *ImportRecordUpdate {
+	_u.mutation.SetErrorCode(v)
+	return _u
 }
 
 // SetNillableErrorCode sets the "error_code" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableErrorCode(s *string) *ImportRecordUpdate {
-	if s != nil {
-		iru.SetErrorCode(*s)
+func (_u *ImportRecordUpdate) SetNillableErrorCode(v *string) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetErrorCode(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearErrorCode clears the value of the "error_code" field.
-func (iru *ImportRecordUpdate) ClearErrorCode() *ImportRecordUpdate {
-	iru.mutation.ClearErrorCode()
-	return iru
+func (_u *ImportRecordUpdate) ClearErrorCode() *ImportRecordUpdate {
+	_u.mutation.ClearErrorCode()
+	return _u
 }
 
 // SetErrorType sets the "error_type" field.
-func (iru *ImportRecordUpdate) SetErrorType(it importrecord.ErrorType) *ImportRecordUpdate {
-	iru.mutation.SetErrorType(it)
-	return iru
+func (_u *ImportRecordUpdate) SetErrorType(v importrecord.ErrorType) *ImportRecordUpdate {
+	_u.mutation.SetErrorType(v)
+	return _u
 }
 
 // SetNillableErrorType sets the "error_type" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableErrorType(it *importrecord.ErrorType) *ImportRecordUpdate {
-	if it != nil {
-		iru.SetErrorType(*it)
+func (_u *ImportRecordUpdate) SetNillableErrorType(v *importrecord.ErrorType) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetErrorType(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearErrorType clears the value of the "error_type" field.
-func (iru *ImportRecordUpdate) ClearErrorType() *ImportRecordUpdate {
-	iru.mutation.ClearErrorType()
-	return iru
+func (_u *ImportRecordUpdate) ClearErrorType() *ImportRecordUpdate {
+	_u.mutation.ClearErrorType()
+	return _u
 }
 
 // SetStartTime sets the "start_time" field.
-func (iru *ImportRecordUpdate) SetStartTime(t time.Time) *ImportRecordUpdate {
-	iru.mutation.SetStartTime(t)
-	return iru
+func (_u *ImportRecordUpdate) SetStartTime(v time.Time) *ImportRecordUpdate {
+	_u.mutation.SetStartTime(v)
+	return _u
 }
 
 // SetNillableStartTime sets the "start_time" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableStartTime(t *time.Time) *ImportRecordUpdate {
-	if t != nil {
-		iru.SetStartTime(*t)
+func (_u *ImportRecordUpdate) SetNillableStartTime(v *time.Time) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetStartTime(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearStartTime clears the value of the "start_time" field.
-func (iru *ImportRecordUpdate) ClearStartTime() *ImportRecordUpdate {
-	iru.mutation.ClearStartTime()
-	return iru
+func (_u *ImportRecordUpdate) ClearStartTime() *ImportRecordUpdate {
+	_u.mutation.ClearStartTime()
+	return _u
 }
 
 // SetEndTime sets the "end_time" field.
-func (iru *ImportRecordUpdate) SetEndTime(t time.Time) *ImportRecordUpdate {
-	iru.mutation.SetEndTime(t)
-	return iru
+func (_u *ImportRecordUpdate) SetEndTime(v time.Time) *ImportRecordUpdate {
+	_u.mutation.SetEndTime(v)
+	return _u
 }
 
 // SetNillableEndTime sets the "end_time" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableEndTime(t *time.Time) *ImportRecordUpdate {
-	if t != nil {
-		iru.SetEndTime(*t)
+func (_u *ImportRecordUpdate) SetNillableEndTime(v *time.Time) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetEndTime(*v)
 	}
-	return iru
+	return _u
 }
 
 // ClearEndTime clears the value of the "end_time" field.
-func (iru *ImportRecordUpdate) ClearEndTime() *ImportRecordUpdate {
-	iru.mutation.ClearEndTime()
-	return iru
+func (_u *ImportRecordUpdate) ClearEndTime() *ImportRecordUpdate {
+	_u.mutation.ClearEndTime()
+	return _u
 }
 
 // SetRetryCount sets the "retry_count" field.
-func (iru *ImportRecordUpdate) SetRetryCount(i int) *ImportRecordUpdate {
-	iru.mutation.ResetRetryCount()
-	iru.mutation.SetRetryCount(i)
-	return iru
+func (_u *ImportRecordUpdate) SetRetryCount(v int) *ImportRecordUpdate {
+	_u.mutation.ResetRetryCount()
+	_u.mutation.SetRetryCount(v)
+	return _u
 }
 
 // SetNillableRetryCount sets the "retry_count" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableRetryCount(i *int) *ImportRecordUpdate {
-	if i != nil {
-		iru.SetRetryCount(*i)
+func (_u *ImportRecordUpdate) SetNillableRetryCount(v *int) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetRetryCount(*v)
 	}
-	return iru
+	return _u
 }
 
-// AddRetryCount adds i to the "retry_count" field.
-func (iru *ImportRecordUpdate) AddRetryCount(i int) *ImportRecordUpdate {
-	iru.mutation.AddRetryCount(i)
-	return iru
+// AddRetryCount adds value to the "retry_count" field.
+func (_u *ImportRecordUpdate) AddRetryCount(v int) *ImportRecordUpdate {
+	_u.mutation.AddRetryCount(v)
+	return _u
 }
 
 // SetMaxRetries sets the "max_retries" field.
-func (iru *ImportRecordUpdate) SetMaxRetries(i int) *ImportRecordUpdate {
-	iru.mutation.ResetMaxRetries()
-	iru.mutation.SetMaxRetries(i)
-	return iru
+func (_u *ImportRecordUpdate) SetMaxRetries(v int) *ImportRecordUpdate {
+	_u.mutation.ResetMaxRetries()
+	_u.mutation.SetMaxRetries(v)
+	return _u
 }
 
 // SetNillableMaxRetries sets the "max_retries" field if the given value is not nil.
-func (iru *ImportRecordUpdate) SetNillableMaxRetries(i *int) *ImportRecordUpdate {
-	if i != nil {
-		iru.SetMaxRetries(*i)
+func (_u *ImportRecordUpdate) SetNillableMaxRetries(v *int) *ImportRecordUpdate {
+	if v != nil {
+		_u.SetMaxRetries(*v)
 	}
-	return iru
+	return _u
 }
 
-// AddMaxRetries adds i to the "max_retries" field.
-func (iru *ImportRecordUpdate) AddMaxRetries(i int) *ImportRecordUpdate {
-	iru.mutation.AddMaxRetries(i)
-	return iru
+// AddMaxRetries adds value to the "max_retries" field.
+func (_u *ImportRecordUpdate) AddMaxRetries(v int) *ImportRecordUpdate {
+	_u.mutation.AddMaxRetries(v)
+	return _u
 }
 
 // SetTask sets the "task" edge to the ImportTask entity.
-func (iru *ImportRecordUpdate) SetTask(i *ImportTask) *ImportRecordUpdate {
-	return iru.SetTaskID(i.ID)
+func (_u *ImportRecordUpdate) SetTask(v *ImportTask) *ImportRecordUpdate {
+	return _u.SetTaskID(v.ID)
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (iru *ImportRecordUpdate) SetCi(c *Cis) *ImportRecordUpdate {
-	return iru.SetCiID(c.ID)
+func (_u *ImportRecordUpdate) SetCi(v *Cis) *ImportRecordUpdate {
+	return _u.SetCiID(v.ID)
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (iru *ImportRecordUpdate) SetCiType(c *CiType) *ImportRecordUpdate {
-	return iru.SetCiTypeID(c.ID)
+func (_u *ImportRecordUpdate) SetCiType(v *CiType) *ImportRecordUpdate {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // AddErrorIDs adds the "errors" edge to the ImportError entity by IDs.
-func (iru *ImportRecordUpdate) AddErrorIDs(ids ...uint64) *ImportRecordUpdate {
-	iru.mutation.AddErrorIDs(ids...)
-	return iru
+func (_u *ImportRecordUpdate) AddErrorIDs(ids ...uint64) *ImportRecordUpdate {
+	_u.mutation.AddErrorIDs(ids...)
+	return _u
 }
 
 // AddErrors adds the "errors" edges to the ImportError entity.
-func (iru *ImportRecordUpdate) AddErrors(i ...*ImportError) *ImportRecordUpdate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *ImportRecordUpdate) AddErrors(v ...*ImportError) *ImportRecordUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return iru.AddErrorIDs(ids...)
+	return _u.AddErrorIDs(ids...)
 }
 
 // Mutation returns the ImportRecordMutation object of the builder.
-func (iru *ImportRecordUpdate) Mutation() *ImportRecordMutation {
-	return iru.mutation
+func (_u *ImportRecordUpdate) Mutation() *ImportRecordMutation {
+	return _u.mutation
 }
 
 // ClearTask clears the "task" edge to the ImportTask entity.
-func (iru *ImportRecordUpdate) ClearTask() *ImportRecordUpdate {
-	iru.mutation.ClearTask()
-	return iru
+func (_u *ImportRecordUpdate) ClearTask() *ImportRecordUpdate {
+	_u.mutation.ClearTask()
+	return _u
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (iru *ImportRecordUpdate) ClearCi() *ImportRecordUpdate {
-	iru.mutation.ClearCi()
-	return iru
+func (_u *ImportRecordUpdate) ClearCi() *ImportRecordUpdate {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (iru *ImportRecordUpdate) ClearCiType() *ImportRecordUpdate {
-	iru.mutation.ClearCiType()
-	return iru
+func (_u *ImportRecordUpdate) ClearCiType() *ImportRecordUpdate {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // ClearErrors clears all "errors" edges to the ImportError entity.
-func (iru *ImportRecordUpdate) ClearErrors() *ImportRecordUpdate {
-	iru.mutation.ClearErrors()
-	return iru
+func (_u *ImportRecordUpdate) ClearErrors() *ImportRecordUpdate {
+	_u.mutation.ClearErrors()
+	return _u
 }
 
 // RemoveErrorIDs removes the "errors" edge to ImportError entities by IDs.
-func (iru *ImportRecordUpdate) RemoveErrorIDs(ids ...uint64) *ImportRecordUpdate {
-	iru.mutation.RemoveErrorIDs(ids...)
-	return iru
+func (_u *ImportRecordUpdate) RemoveErrorIDs(ids ...uint64) *ImportRecordUpdate {
+	_u.mutation.RemoveErrorIDs(ids...)
+	return _u
 }
 
 // RemoveErrors removes "errors" edges to ImportError entities.
-func (iru *ImportRecordUpdate) RemoveErrors(i ...*ImportError) *ImportRecordUpdate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *ImportRecordUpdate) RemoveErrors(v ...*ImportError) *ImportRecordUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return iru.RemoveErrorIDs(ids...)
+	return _u.RemoveErrorIDs(ids...)
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (iru *ImportRecordUpdate) Save(ctx context.Context) (int, error) {
-	if err := iru.defaults(); err != nil {
+func (_u *ImportRecordUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, iru.sqlSave, iru.mutation, iru.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (iru *ImportRecordUpdate) SaveX(ctx context.Context) int {
-	affected, err := iru.Save(ctx)
+func (_u *ImportRecordUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -512,191 +512,191 @@ func (iru *ImportRecordUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (iru *ImportRecordUpdate) Exec(ctx context.Context) error {
-	_, err := iru.Save(ctx)
+func (_u *ImportRecordUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (iru *ImportRecordUpdate) ExecX(ctx context.Context) {
-	if err := iru.Exec(ctx); err != nil {
+func (_u *ImportRecordUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (iru *ImportRecordUpdate) defaults() error {
-	if _, ok := iru.mutation.UpdatedAt(); !ok {
+func (_u *ImportRecordUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if importrecord.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importrecord.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importrecord.UpdateDefaultUpdatedAt()
-		iru.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (iru *ImportRecordUpdate) check() error {
-	if v, ok := iru.mutation.BatchID(); ok {
+func (_u *ImportRecordUpdate) check() error {
+	if v, ok := _u.mutation.BatchID(); ok {
 		if err := importrecord.BatchIDValidator(v); err != nil {
 			return &ValidationError{Name: "batch_id", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.batch_id": %w`, err)}
 		}
 	}
-	if v, ok := iru.mutation.SheetName(); ok {
+	if v, ok := _u.mutation.SheetName(); ok {
 		if err := importrecord.SheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.sheet_name": %w`, err)}
 		}
 	}
-	if v, ok := iru.mutation.Status(); ok {
+	if v, ok := _u.mutation.Status(); ok {
 		if err := importrecord.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.status": %w`, err)}
 		}
 	}
-	if v, ok := iru.mutation.ImportAction(); ok {
+	if v, ok := _u.mutation.ImportAction(); ok {
 		if err := importrecord.ImportActionValidator(v); err != nil {
 			return &ValidationError{Name: "import_action", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.import_action": %w`, err)}
 		}
 	}
-	if v, ok := iru.mutation.CiUniqueKey(); ok {
+	if v, ok := _u.mutation.CiUniqueKey(); ok {
 		if err := importrecord.CiUniqueKeyValidator(v); err != nil {
 			return &ValidationError{Name: "ci_unique_key", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.ci_unique_key": %w`, err)}
 		}
 	}
-	if v, ok := iru.mutation.ErrorCode(); ok {
+	if v, ok := _u.mutation.ErrorCode(); ok {
 		if err := importrecord.ErrorCodeValidator(v); err != nil {
 			return &ValidationError{Name: "error_code", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.error_code": %w`, err)}
 		}
 	}
-	if v, ok := iru.mutation.ErrorType(); ok {
+	if v, ok := _u.mutation.ErrorType(); ok {
 		if err := importrecord.ErrorTypeValidator(v); err != nil {
 			return &ValidationError{Name: "error_type", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.error_type": %w`, err)}
 		}
 	}
-	if iru.mutation.TaskCleared() && len(iru.mutation.TaskIDs()) > 0 {
+	if _u.mutation.TaskCleared() && len(_u.mutation.TaskIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ImportRecord.task"`)
 	}
 	return nil
 }
 
-func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := iru.check(); err != nil {
-		return n, err
+func (_u *ImportRecordUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(importrecord.Table, importrecord.Columns, sqlgraph.NewFieldSpec(importrecord.FieldID, field.TypeUint64))
-	if ps := iru.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := iru.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(importrecord.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := iru.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(importrecord.FieldDeletedAt, field.TypeTime, value)
 	}
-	if iru.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(importrecord.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := iru.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(importrecord.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := iru.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(importrecord.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if iru.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importrecord.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := iru.mutation.BatchID(); ok {
+	if value, ok := _u.mutation.BatchID(); ok {
 		_spec.SetField(importrecord.FieldBatchID, field.TypeString, value)
 	}
-	if iru.mutation.BatchIDCleared() {
+	if _u.mutation.BatchIDCleared() {
 		_spec.ClearField(importrecord.FieldBatchID, field.TypeString)
 	}
-	if value, ok := iru.mutation.RowNumber(); ok {
+	if value, ok := _u.mutation.RowNumber(); ok {
 		_spec.SetField(importrecord.FieldRowNumber, field.TypeInt, value)
 	}
-	if value, ok := iru.mutation.AddedRowNumber(); ok {
+	if value, ok := _u.mutation.AddedRowNumber(); ok {
 		_spec.AddField(importrecord.FieldRowNumber, field.TypeInt, value)
 	}
-	if value, ok := iru.mutation.SheetName(); ok {
+	if value, ok := _u.mutation.SheetName(); ok {
 		_spec.SetField(importrecord.FieldSheetName, field.TypeString, value)
 	}
-	if iru.mutation.SheetNameCleared() {
+	if _u.mutation.SheetNameCleared() {
 		_spec.ClearField(importrecord.FieldSheetName, field.TypeString)
 	}
-	if value, ok := iru.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(importrecord.FieldStatus, field.TypeEnum, value)
 	}
-	if value, ok := iru.mutation.ImportAction(); ok {
+	if value, ok := _u.mutation.ImportAction(); ok {
 		_spec.SetField(importrecord.FieldImportAction, field.TypeEnum, value)
 	}
-	if iru.mutation.ImportActionCleared() {
+	if _u.mutation.ImportActionCleared() {
 		_spec.ClearField(importrecord.FieldImportAction, field.TypeEnum)
 	}
-	if value, ok := iru.mutation.RawData(); ok {
+	if value, ok := _u.mutation.RawData(); ok {
 		_spec.SetField(importrecord.FieldRawData, field.TypeJSON, value)
 	}
-	if iru.mutation.RawDataCleared() {
+	if _u.mutation.RawDataCleared() {
 		_spec.ClearField(importrecord.FieldRawData, field.TypeJSON)
 	}
-	if value, ok := iru.mutation.FinalData(); ok {
+	if value, ok := _u.mutation.FinalData(); ok {
 		_spec.SetField(importrecord.FieldFinalData, field.TypeJSON, value)
 	}
-	if iru.mutation.FinalDataCleared() {
+	if _u.mutation.FinalDataCleared() {
 		_spec.ClearField(importrecord.FieldFinalData, field.TypeJSON)
 	}
-	if value, ok := iru.mutation.CiUniqueKey(); ok {
+	if value, ok := _u.mutation.CiUniqueKey(); ok {
 		_spec.SetField(importrecord.FieldCiUniqueKey, field.TypeString, value)
 	}
-	if iru.mutation.CiUniqueKeyCleared() {
+	if _u.mutation.CiUniqueKeyCleared() {
 		_spec.ClearField(importrecord.FieldCiUniqueKey, field.TypeString)
 	}
-	if value, ok := iru.mutation.ErrorMessage(); ok {
+	if value, ok := _u.mutation.ErrorMessage(); ok {
 		_spec.SetField(importrecord.FieldErrorMessage, field.TypeString, value)
 	}
-	if iru.mutation.ErrorMessageCleared() {
+	if _u.mutation.ErrorMessageCleared() {
 		_spec.ClearField(importrecord.FieldErrorMessage, field.TypeString)
 	}
-	if value, ok := iru.mutation.ErrorCode(); ok {
+	if value, ok := _u.mutation.ErrorCode(); ok {
 		_spec.SetField(importrecord.FieldErrorCode, field.TypeString, value)
 	}
-	if iru.mutation.ErrorCodeCleared() {
+	if _u.mutation.ErrorCodeCleared() {
 		_spec.ClearField(importrecord.FieldErrorCode, field.TypeString)
 	}
-	if value, ok := iru.mutation.ErrorType(); ok {
+	if value, ok := _u.mutation.ErrorType(); ok {
 		_spec.SetField(importrecord.FieldErrorType, field.TypeEnum, value)
 	}
-	if iru.mutation.ErrorTypeCleared() {
+	if _u.mutation.ErrorTypeCleared() {
 		_spec.ClearField(importrecord.FieldErrorType, field.TypeEnum)
 	}
-	if value, ok := iru.mutation.StartTime(); ok {
+	if value, ok := _u.mutation.StartTime(); ok {
 		_spec.SetField(importrecord.FieldStartTime, field.TypeTime, value)
 	}
-	if iru.mutation.StartTimeCleared() {
+	if _u.mutation.StartTimeCleared() {
 		_spec.ClearField(importrecord.FieldStartTime, field.TypeTime)
 	}
-	if value, ok := iru.mutation.EndTime(); ok {
+	if value, ok := _u.mutation.EndTime(); ok {
 		_spec.SetField(importrecord.FieldEndTime, field.TypeTime, value)
 	}
-	if iru.mutation.EndTimeCleared() {
+	if _u.mutation.EndTimeCleared() {
 		_spec.ClearField(importrecord.FieldEndTime, field.TypeTime)
 	}
-	if value, ok := iru.mutation.RetryCount(); ok {
+	if value, ok := _u.mutation.RetryCount(); ok {
 		_spec.SetField(importrecord.FieldRetryCount, field.TypeInt, value)
 	}
-	if value, ok := iru.mutation.AddedRetryCount(); ok {
+	if value, ok := _u.mutation.AddedRetryCount(); ok {
 		_spec.AddField(importrecord.FieldRetryCount, field.TypeInt, value)
 	}
-	if value, ok := iru.mutation.MaxRetries(); ok {
+	if value, ok := _u.mutation.MaxRetries(); ok {
 		_spec.SetField(importrecord.FieldMaxRetries, field.TypeInt, value)
 	}
-	if value, ok := iru.mutation.AddedMaxRetries(); ok {
+	if value, ok := _u.mutation.AddedMaxRetries(); ok {
 		_spec.AddField(importrecord.FieldMaxRetries, field.TypeInt, value)
 	}
-	if iru.mutation.TaskCleared() {
+	if _u.mutation.TaskCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -709,7 +709,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iru.mutation.TaskIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TaskIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -725,7 +725,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if iru.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -738,7 +738,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iru.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -754,7 +754,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if iru.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -767,7 +767,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iru.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -783,7 +783,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if iru.mutation.ErrorsCleared() {
+	if _u.mutation.ErrorsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -796,7 +796,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iru.mutation.RemovedErrorsIDs(); len(nodes) > 0 && !iru.mutation.ErrorsCleared() {
+	if nodes := _u.mutation.RemovedErrorsIDs(); len(nodes) > 0 && !_u.mutation.ErrorsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -812,7 +812,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iru.mutation.ErrorsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ErrorsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -828,7 +828,7 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, iru.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{importrecord.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -836,8 +836,8 @@ func (iru *ImportRecordUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	iru.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ImportRecordUpdateOne is the builder for updating a single ImportRecord entity.
@@ -849,491 +849,491 @@ type ImportRecordUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (iruo *ImportRecordUpdateOne) SetUpdatedAt(t time.Time) *ImportRecordUpdateOne {
-	iruo.mutation.SetUpdatedAt(t)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetUpdatedAt(v time.Time) *ImportRecordUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (iruo *ImportRecordUpdateOne) SetDeletedAt(t time.Time) *ImportRecordUpdateOne {
-	iruo.mutation.SetDeletedAt(t)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetDeletedAt(v time.Time) *ImportRecordUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableDeletedAt(t *time.Time) *ImportRecordUpdateOne {
-	if t != nil {
-		iruo.SetDeletedAt(*t)
+func (_u *ImportRecordUpdateOne) SetNillableDeletedAt(v *time.Time) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (iruo *ImportRecordUpdateOne) ClearDeletedAt() *ImportRecordUpdateOne {
-	iruo.mutation.ClearDeletedAt()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearDeletedAt() *ImportRecordUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (iruo *ImportRecordUpdateOne) SetDepartmentID(u uint64) *ImportRecordUpdateOne {
-	iruo.mutation.ResetDepartmentID()
-	iruo.mutation.SetDepartmentID(u)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetDepartmentID(v uint64) *ImportRecordUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableDepartmentID(u *uint64) *ImportRecordUpdateOne {
-	if u != nil {
-		iruo.SetDepartmentID(*u)
+func (_u *ImportRecordUpdateOne) SetNillableDepartmentID(v *uint64) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return iruo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (iruo *ImportRecordUpdateOne) AddDepartmentID(u int64) *ImportRecordUpdateOne {
-	iruo.mutation.AddDepartmentID(u)
-	return iruo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ImportRecordUpdateOne) AddDepartmentID(v int64) *ImportRecordUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (iruo *ImportRecordUpdateOne) ClearDepartmentID() *ImportRecordUpdateOne {
-	iruo.mutation.ClearDepartmentID()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearDepartmentID() *ImportRecordUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetTaskID sets the "task_id" field.
-func (iruo *ImportRecordUpdateOne) SetTaskID(u uint64) *ImportRecordUpdateOne {
-	iruo.mutation.SetTaskID(u)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetTaskID(v uint64) *ImportRecordUpdateOne {
+	_u.mutation.SetTaskID(v)
+	return _u
 }
 
 // SetNillableTaskID sets the "task_id" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableTaskID(u *uint64) *ImportRecordUpdateOne {
-	if u != nil {
-		iruo.SetTaskID(*u)
+func (_u *ImportRecordUpdateOne) SetNillableTaskID(v *uint64) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetTaskID(*v)
 	}
-	return iruo
+	return _u
 }
 
 // SetBatchID sets the "batch_id" field.
-func (iruo *ImportRecordUpdateOne) SetBatchID(s string) *ImportRecordUpdateOne {
-	iruo.mutation.SetBatchID(s)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetBatchID(v string) *ImportRecordUpdateOne {
+	_u.mutation.SetBatchID(v)
+	return _u
 }
 
 // SetNillableBatchID sets the "batch_id" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableBatchID(s *string) *ImportRecordUpdateOne {
-	if s != nil {
-		iruo.SetBatchID(*s)
+func (_u *ImportRecordUpdateOne) SetNillableBatchID(v *string) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetBatchID(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearBatchID clears the value of the "batch_id" field.
-func (iruo *ImportRecordUpdateOne) ClearBatchID() *ImportRecordUpdateOne {
-	iruo.mutation.ClearBatchID()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearBatchID() *ImportRecordUpdateOne {
+	_u.mutation.ClearBatchID()
+	return _u
 }
 
 // SetRowNumber sets the "row_number" field.
-func (iruo *ImportRecordUpdateOne) SetRowNumber(i int) *ImportRecordUpdateOne {
-	iruo.mutation.ResetRowNumber()
-	iruo.mutation.SetRowNumber(i)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetRowNumber(v int) *ImportRecordUpdateOne {
+	_u.mutation.ResetRowNumber()
+	_u.mutation.SetRowNumber(v)
+	return _u
 }
 
 // SetNillableRowNumber sets the "row_number" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableRowNumber(i *int) *ImportRecordUpdateOne {
-	if i != nil {
-		iruo.SetRowNumber(*i)
+func (_u *ImportRecordUpdateOne) SetNillableRowNumber(v *int) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetRowNumber(*v)
 	}
-	return iruo
+	return _u
 }
 
-// AddRowNumber adds i to the "row_number" field.
-func (iruo *ImportRecordUpdateOne) AddRowNumber(i int) *ImportRecordUpdateOne {
-	iruo.mutation.AddRowNumber(i)
-	return iruo
+// AddRowNumber adds value to the "row_number" field.
+func (_u *ImportRecordUpdateOne) AddRowNumber(v int) *ImportRecordUpdateOne {
+	_u.mutation.AddRowNumber(v)
+	return _u
 }
 
 // SetSheetName sets the "sheet_name" field.
-func (iruo *ImportRecordUpdateOne) SetSheetName(s string) *ImportRecordUpdateOne {
-	iruo.mutation.SetSheetName(s)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetSheetName(v string) *ImportRecordUpdateOne {
+	_u.mutation.SetSheetName(v)
+	return _u
 }
 
 // SetNillableSheetName sets the "sheet_name" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableSheetName(s *string) *ImportRecordUpdateOne {
-	if s != nil {
-		iruo.SetSheetName(*s)
+func (_u *ImportRecordUpdateOne) SetNillableSheetName(v *string) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetSheetName(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearSheetName clears the value of the "sheet_name" field.
-func (iruo *ImportRecordUpdateOne) ClearSheetName() *ImportRecordUpdateOne {
-	iruo.mutation.ClearSheetName()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearSheetName() *ImportRecordUpdateOne {
+	_u.mutation.ClearSheetName()
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (iruo *ImportRecordUpdateOne) SetStatus(i importrecord.Status) *ImportRecordUpdateOne {
-	iruo.mutation.SetStatus(i)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetStatus(v importrecord.Status) *ImportRecordUpdateOne {
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableStatus(i *importrecord.Status) *ImportRecordUpdateOne {
-	if i != nil {
-		iruo.SetStatus(*i)
+func (_u *ImportRecordUpdateOne) SetNillableStatus(v *importrecord.Status) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return iruo
+	return _u
 }
 
 // SetImportAction sets the "import_action" field.
-func (iruo *ImportRecordUpdateOne) SetImportAction(ia importrecord.ImportAction) *ImportRecordUpdateOne {
-	iruo.mutation.SetImportAction(ia)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetImportAction(v importrecord.ImportAction) *ImportRecordUpdateOne {
+	_u.mutation.SetImportAction(v)
+	return _u
 }
 
 // SetNillableImportAction sets the "import_action" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableImportAction(ia *importrecord.ImportAction) *ImportRecordUpdateOne {
-	if ia != nil {
-		iruo.SetImportAction(*ia)
+func (_u *ImportRecordUpdateOne) SetNillableImportAction(v *importrecord.ImportAction) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetImportAction(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearImportAction clears the value of the "import_action" field.
-func (iruo *ImportRecordUpdateOne) ClearImportAction() *ImportRecordUpdateOne {
-	iruo.mutation.ClearImportAction()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearImportAction() *ImportRecordUpdateOne {
+	_u.mutation.ClearImportAction()
+	return _u
 }
 
 // SetRawData sets the "raw_data" field.
-func (iruo *ImportRecordUpdateOne) SetRawData(m map[string]interface{}) *ImportRecordUpdateOne {
-	iruo.mutation.SetRawData(m)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetRawData(v map[string]interface{}) *ImportRecordUpdateOne {
+	_u.mutation.SetRawData(v)
+	return _u
 }
 
 // ClearRawData clears the value of the "raw_data" field.
-func (iruo *ImportRecordUpdateOne) ClearRawData() *ImportRecordUpdateOne {
-	iruo.mutation.ClearRawData()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearRawData() *ImportRecordUpdateOne {
+	_u.mutation.ClearRawData()
+	return _u
 }
 
 // SetFinalData sets the "final_data" field.
-func (iruo *ImportRecordUpdateOne) SetFinalData(m map[string]interface{}) *ImportRecordUpdateOne {
-	iruo.mutation.SetFinalData(m)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetFinalData(v map[string]interface{}) *ImportRecordUpdateOne {
+	_u.mutation.SetFinalData(v)
+	return _u
 }
 
 // ClearFinalData clears the value of the "final_data" field.
-func (iruo *ImportRecordUpdateOne) ClearFinalData() *ImportRecordUpdateOne {
-	iruo.mutation.ClearFinalData()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearFinalData() *ImportRecordUpdateOne {
+	_u.mutation.ClearFinalData()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (iruo *ImportRecordUpdateOne) SetCiID(u uint64) *ImportRecordUpdateOne {
-	iruo.mutation.SetCiID(u)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetCiID(v uint64) *ImportRecordUpdateOne {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableCiID(u *uint64) *ImportRecordUpdateOne {
-	if u != nil {
-		iruo.SetCiID(*u)
+func (_u *ImportRecordUpdateOne) SetNillableCiID(v *uint64) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearCiID clears the value of the "ci_id" field.
-func (iruo *ImportRecordUpdateOne) ClearCiID() *ImportRecordUpdateOne {
-	iruo.mutation.ClearCiID()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearCiID() *ImportRecordUpdateOne {
+	_u.mutation.ClearCiID()
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (iruo *ImportRecordUpdateOne) SetCiTypeID(u uint64) *ImportRecordUpdateOne {
-	iruo.mutation.SetCiTypeID(u)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetCiTypeID(v uint64) *ImportRecordUpdateOne {
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableCiTypeID(u *uint64) *ImportRecordUpdateOne {
-	if u != nil {
-		iruo.SetCiTypeID(*u)
+func (_u *ImportRecordUpdateOne) SetNillableCiTypeID(v *uint64) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearCiTypeID clears the value of the "ci_type_id" field.
-func (iruo *ImportRecordUpdateOne) ClearCiTypeID() *ImportRecordUpdateOne {
-	iruo.mutation.ClearCiTypeID()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearCiTypeID() *ImportRecordUpdateOne {
+	_u.mutation.ClearCiTypeID()
+	return _u
 }
 
 // SetCiUniqueKey sets the "ci_unique_key" field.
-func (iruo *ImportRecordUpdateOne) SetCiUniqueKey(s string) *ImportRecordUpdateOne {
-	iruo.mutation.SetCiUniqueKey(s)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetCiUniqueKey(v string) *ImportRecordUpdateOne {
+	_u.mutation.SetCiUniqueKey(v)
+	return _u
 }
 
 // SetNillableCiUniqueKey sets the "ci_unique_key" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableCiUniqueKey(s *string) *ImportRecordUpdateOne {
-	if s != nil {
-		iruo.SetCiUniqueKey(*s)
+func (_u *ImportRecordUpdateOne) SetNillableCiUniqueKey(v *string) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetCiUniqueKey(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearCiUniqueKey clears the value of the "ci_unique_key" field.
-func (iruo *ImportRecordUpdateOne) ClearCiUniqueKey() *ImportRecordUpdateOne {
-	iruo.mutation.ClearCiUniqueKey()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearCiUniqueKey() *ImportRecordUpdateOne {
+	_u.mutation.ClearCiUniqueKey()
+	return _u
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (iruo *ImportRecordUpdateOne) SetErrorMessage(s string) *ImportRecordUpdateOne {
-	iruo.mutation.SetErrorMessage(s)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetErrorMessage(v string) *ImportRecordUpdateOne {
+	_u.mutation.SetErrorMessage(v)
+	return _u
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableErrorMessage(s *string) *ImportRecordUpdateOne {
-	if s != nil {
-		iruo.SetErrorMessage(*s)
+func (_u *ImportRecordUpdateOne) SetNillableErrorMessage(v *string) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetErrorMessage(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearErrorMessage clears the value of the "error_message" field.
-func (iruo *ImportRecordUpdateOne) ClearErrorMessage() *ImportRecordUpdateOne {
-	iruo.mutation.ClearErrorMessage()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearErrorMessage() *ImportRecordUpdateOne {
+	_u.mutation.ClearErrorMessage()
+	return _u
 }
 
 // SetErrorCode sets the "error_code" field.
-func (iruo *ImportRecordUpdateOne) SetErrorCode(s string) *ImportRecordUpdateOne {
-	iruo.mutation.SetErrorCode(s)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetErrorCode(v string) *ImportRecordUpdateOne {
+	_u.mutation.SetErrorCode(v)
+	return _u
 }
 
 // SetNillableErrorCode sets the "error_code" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableErrorCode(s *string) *ImportRecordUpdateOne {
-	if s != nil {
-		iruo.SetErrorCode(*s)
+func (_u *ImportRecordUpdateOne) SetNillableErrorCode(v *string) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetErrorCode(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearErrorCode clears the value of the "error_code" field.
-func (iruo *ImportRecordUpdateOne) ClearErrorCode() *ImportRecordUpdateOne {
-	iruo.mutation.ClearErrorCode()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearErrorCode() *ImportRecordUpdateOne {
+	_u.mutation.ClearErrorCode()
+	return _u
 }
 
 // SetErrorType sets the "error_type" field.
-func (iruo *ImportRecordUpdateOne) SetErrorType(it importrecord.ErrorType) *ImportRecordUpdateOne {
-	iruo.mutation.SetErrorType(it)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetErrorType(v importrecord.ErrorType) *ImportRecordUpdateOne {
+	_u.mutation.SetErrorType(v)
+	return _u
 }
 
 // SetNillableErrorType sets the "error_type" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableErrorType(it *importrecord.ErrorType) *ImportRecordUpdateOne {
-	if it != nil {
-		iruo.SetErrorType(*it)
+func (_u *ImportRecordUpdateOne) SetNillableErrorType(v *importrecord.ErrorType) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetErrorType(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearErrorType clears the value of the "error_type" field.
-func (iruo *ImportRecordUpdateOne) ClearErrorType() *ImportRecordUpdateOne {
-	iruo.mutation.ClearErrorType()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearErrorType() *ImportRecordUpdateOne {
+	_u.mutation.ClearErrorType()
+	return _u
 }
 
 // SetStartTime sets the "start_time" field.
-func (iruo *ImportRecordUpdateOne) SetStartTime(t time.Time) *ImportRecordUpdateOne {
-	iruo.mutation.SetStartTime(t)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetStartTime(v time.Time) *ImportRecordUpdateOne {
+	_u.mutation.SetStartTime(v)
+	return _u
 }
 
 // SetNillableStartTime sets the "start_time" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableStartTime(t *time.Time) *ImportRecordUpdateOne {
-	if t != nil {
-		iruo.SetStartTime(*t)
+func (_u *ImportRecordUpdateOne) SetNillableStartTime(v *time.Time) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetStartTime(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearStartTime clears the value of the "start_time" field.
-func (iruo *ImportRecordUpdateOne) ClearStartTime() *ImportRecordUpdateOne {
-	iruo.mutation.ClearStartTime()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearStartTime() *ImportRecordUpdateOne {
+	_u.mutation.ClearStartTime()
+	return _u
 }
 
 // SetEndTime sets the "end_time" field.
-func (iruo *ImportRecordUpdateOne) SetEndTime(t time.Time) *ImportRecordUpdateOne {
-	iruo.mutation.SetEndTime(t)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetEndTime(v time.Time) *ImportRecordUpdateOne {
+	_u.mutation.SetEndTime(v)
+	return _u
 }
 
 // SetNillableEndTime sets the "end_time" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableEndTime(t *time.Time) *ImportRecordUpdateOne {
-	if t != nil {
-		iruo.SetEndTime(*t)
+func (_u *ImportRecordUpdateOne) SetNillableEndTime(v *time.Time) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetEndTime(*v)
 	}
-	return iruo
+	return _u
 }
 
 // ClearEndTime clears the value of the "end_time" field.
-func (iruo *ImportRecordUpdateOne) ClearEndTime() *ImportRecordUpdateOne {
-	iruo.mutation.ClearEndTime()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearEndTime() *ImportRecordUpdateOne {
+	_u.mutation.ClearEndTime()
+	return _u
 }
 
 // SetRetryCount sets the "retry_count" field.
-func (iruo *ImportRecordUpdateOne) SetRetryCount(i int) *ImportRecordUpdateOne {
-	iruo.mutation.ResetRetryCount()
-	iruo.mutation.SetRetryCount(i)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetRetryCount(v int) *ImportRecordUpdateOne {
+	_u.mutation.ResetRetryCount()
+	_u.mutation.SetRetryCount(v)
+	return _u
 }
 
 // SetNillableRetryCount sets the "retry_count" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableRetryCount(i *int) *ImportRecordUpdateOne {
-	if i != nil {
-		iruo.SetRetryCount(*i)
+func (_u *ImportRecordUpdateOne) SetNillableRetryCount(v *int) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetRetryCount(*v)
 	}
-	return iruo
+	return _u
 }
 
-// AddRetryCount adds i to the "retry_count" field.
-func (iruo *ImportRecordUpdateOne) AddRetryCount(i int) *ImportRecordUpdateOne {
-	iruo.mutation.AddRetryCount(i)
-	return iruo
+// AddRetryCount adds value to the "retry_count" field.
+func (_u *ImportRecordUpdateOne) AddRetryCount(v int) *ImportRecordUpdateOne {
+	_u.mutation.AddRetryCount(v)
+	return _u
 }
 
 // SetMaxRetries sets the "max_retries" field.
-func (iruo *ImportRecordUpdateOne) SetMaxRetries(i int) *ImportRecordUpdateOne {
-	iruo.mutation.ResetMaxRetries()
-	iruo.mutation.SetMaxRetries(i)
-	return iruo
+func (_u *ImportRecordUpdateOne) SetMaxRetries(v int) *ImportRecordUpdateOne {
+	_u.mutation.ResetMaxRetries()
+	_u.mutation.SetMaxRetries(v)
+	return _u
 }
 
 // SetNillableMaxRetries sets the "max_retries" field if the given value is not nil.
-func (iruo *ImportRecordUpdateOne) SetNillableMaxRetries(i *int) *ImportRecordUpdateOne {
-	if i != nil {
-		iruo.SetMaxRetries(*i)
+func (_u *ImportRecordUpdateOne) SetNillableMaxRetries(v *int) *ImportRecordUpdateOne {
+	if v != nil {
+		_u.SetMaxRetries(*v)
 	}
-	return iruo
+	return _u
 }
 
-// AddMaxRetries adds i to the "max_retries" field.
-func (iruo *ImportRecordUpdateOne) AddMaxRetries(i int) *ImportRecordUpdateOne {
-	iruo.mutation.AddMaxRetries(i)
-	return iruo
+// AddMaxRetries adds value to the "max_retries" field.
+func (_u *ImportRecordUpdateOne) AddMaxRetries(v int) *ImportRecordUpdateOne {
+	_u.mutation.AddMaxRetries(v)
+	return _u
 }
 
 // SetTask sets the "task" edge to the ImportTask entity.
-func (iruo *ImportRecordUpdateOne) SetTask(i *ImportTask) *ImportRecordUpdateOne {
-	return iruo.SetTaskID(i.ID)
+func (_u *ImportRecordUpdateOne) SetTask(v *ImportTask) *ImportRecordUpdateOne {
+	return _u.SetTaskID(v.ID)
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (iruo *ImportRecordUpdateOne) SetCi(c *Cis) *ImportRecordUpdateOne {
-	return iruo.SetCiID(c.ID)
+func (_u *ImportRecordUpdateOne) SetCi(v *Cis) *ImportRecordUpdateOne {
+	return _u.SetCiID(v.ID)
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (iruo *ImportRecordUpdateOne) SetCiType(c *CiType) *ImportRecordUpdateOne {
-	return iruo.SetCiTypeID(c.ID)
+func (_u *ImportRecordUpdateOne) SetCiType(v *CiType) *ImportRecordUpdateOne {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // AddErrorIDs adds the "errors" edge to the ImportError entity by IDs.
-func (iruo *ImportRecordUpdateOne) AddErrorIDs(ids ...uint64) *ImportRecordUpdateOne {
-	iruo.mutation.AddErrorIDs(ids...)
-	return iruo
+func (_u *ImportRecordUpdateOne) AddErrorIDs(ids ...uint64) *ImportRecordUpdateOne {
+	_u.mutation.AddErrorIDs(ids...)
+	return _u
 }
 
 // AddErrors adds the "errors" edges to the ImportError entity.
-func (iruo *ImportRecordUpdateOne) AddErrors(i ...*ImportError) *ImportRecordUpdateOne {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *ImportRecordUpdateOne) AddErrors(v ...*ImportError) *ImportRecordUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return iruo.AddErrorIDs(ids...)
+	return _u.AddErrorIDs(ids...)
 }
 
 // Mutation returns the ImportRecordMutation object of the builder.
-func (iruo *ImportRecordUpdateOne) Mutation() *ImportRecordMutation {
-	return iruo.mutation
+func (_u *ImportRecordUpdateOne) Mutation() *ImportRecordMutation {
+	return _u.mutation
 }
 
 // ClearTask clears the "task" edge to the ImportTask entity.
-func (iruo *ImportRecordUpdateOne) ClearTask() *ImportRecordUpdateOne {
-	iruo.mutation.ClearTask()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearTask() *ImportRecordUpdateOne {
+	_u.mutation.ClearTask()
+	return _u
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (iruo *ImportRecordUpdateOne) ClearCi() *ImportRecordUpdateOne {
-	iruo.mutation.ClearCi()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearCi() *ImportRecordUpdateOne {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (iruo *ImportRecordUpdateOne) ClearCiType() *ImportRecordUpdateOne {
-	iruo.mutation.ClearCiType()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearCiType() *ImportRecordUpdateOne {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // ClearErrors clears all "errors" edges to the ImportError entity.
-func (iruo *ImportRecordUpdateOne) ClearErrors() *ImportRecordUpdateOne {
-	iruo.mutation.ClearErrors()
-	return iruo
+func (_u *ImportRecordUpdateOne) ClearErrors() *ImportRecordUpdateOne {
+	_u.mutation.ClearErrors()
+	return _u
 }
 
 // RemoveErrorIDs removes the "errors" edge to ImportError entities by IDs.
-func (iruo *ImportRecordUpdateOne) RemoveErrorIDs(ids ...uint64) *ImportRecordUpdateOne {
-	iruo.mutation.RemoveErrorIDs(ids...)
-	return iruo
+func (_u *ImportRecordUpdateOne) RemoveErrorIDs(ids ...uint64) *ImportRecordUpdateOne {
+	_u.mutation.RemoveErrorIDs(ids...)
+	return _u
 }
 
 // RemoveErrors removes "errors" edges to ImportError entities.
-func (iruo *ImportRecordUpdateOne) RemoveErrors(i ...*ImportError) *ImportRecordUpdateOne {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *ImportRecordUpdateOne) RemoveErrors(v ...*ImportError) *ImportRecordUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return iruo.RemoveErrorIDs(ids...)
+	return _u.RemoveErrorIDs(ids...)
 }
 
 // Where appends a list predicates to the ImportRecordUpdate builder.
-func (iruo *ImportRecordUpdateOne) Where(ps ...predicate.ImportRecord) *ImportRecordUpdateOne {
-	iruo.mutation.Where(ps...)
-	return iruo
+func (_u *ImportRecordUpdateOne) Where(ps ...predicate.ImportRecord) *ImportRecordUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (iruo *ImportRecordUpdateOne) Select(field string, fields ...string) *ImportRecordUpdateOne {
-	iruo.fields = append([]string{field}, fields...)
-	return iruo
+func (_u *ImportRecordUpdateOne) Select(field string, fields ...string) *ImportRecordUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ImportRecord entity.
-func (iruo *ImportRecordUpdateOne) Save(ctx context.Context) (*ImportRecord, error) {
-	if err := iruo.defaults(); err != nil {
+func (_u *ImportRecordUpdateOne) Save(ctx context.Context) (*ImportRecord, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, iruo.sqlSave, iruo.mutation, iruo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (iruo *ImportRecordUpdateOne) SaveX(ctx context.Context) *ImportRecord {
-	node, err := iruo.Save(ctx)
+func (_u *ImportRecordUpdateOne) SaveX(ctx context.Context) *ImportRecord {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1341,84 +1341,84 @@ func (iruo *ImportRecordUpdateOne) SaveX(ctx context.Context) *ImportRecord {
 }
 
 // Exec executes the query on the entity.
-func (iruo *ImportRecordUpdateOne) Exec(ctx context.Context) error {
-	_, err := iruo.Save(ctx)
+func (_u *ImportRecordUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (iruo *ImportRecordUpdateOne) ExecX(ctx context.Context) {
-	if err := iruo.Exec(ctx); err != nil {
+func (_u *ImportRecordUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (iruo *ImportRecordUpdateOne) defaults() error {
-	if _, ok := iruo.mutation.UpdatedAt(); !ok {
+func (_u *ImportRecordUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if importrecord.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importrecord.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importrecord.UpdateDefaultUpdatedAt()
-		iruo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (iruo *ImportRecordUpdateOne) check() error {
-	if v, ok := iruo.mutation.BatchID(); ok {
+func (_u *ImportRecordUpdateOne) check() error {
+	if v, ok := _u.mutation.BatchID(); ok {
 		if err := importrecord.BatchIDValidator(v); err != nil {
 			return &ValidationError{Name: "batch_id", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.batch_id": %w`, err)}
 		}
 	}
-	if v, ok := iruo.mutation.SheetName(); ok {
+	if v, ok := _u.mutation.SheetName(); ok {
 		if err := importrecord.SheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.sheet_name": %w`, err)}
 		}
 	}
-	if v, ok := iruo.mutation.Status(); ok {
+	if v, ok := _u.mutation.Status(); ok {
 		if err := importrecord.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.status": %w`, err)}
 		}
 	}
-	if v, ok := iruo.mutation.ImportAction(); ok {
+	if v, ok := _u.mutation.ImportAction(); ok {
 		if err := importrecord.ImportActionValidator(v); err != nil {
 			return &ValidationError{Name: "import_action", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.import_action": %w`, err)}
 		}
 	}
-	if v, ok := iruo.mutation.CiUniqueKey(); ok {
+	if v, ok := _u.mutation.CiUniqueKey(); ok {
 		if err := importrecord.CiUniqueKeyValidator(v); err != nil {
 			return &ValidationError{Name: "ci_unique_key", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.ci_unique_key": %w`, err)}
 		}
 	}
-	if v, ok := iruo.mutation.ErrorCode(); ok {
+	if v, ok := _u.mutation.ErrorCode(); ok {
 		if err := importrecord.ErrorCodeValidator(v); err != nil {
 			return &ValidationError{Name: "error_code", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.error_code": %w`, err)}
 		}
 	}
-	if v, ok := iruo.mutation.ErrorType(); ok {
+	if v, ok := _u.mutation.ErrorType(); ok {
 		if err := importrecord.ErrorTypeValidator(v); err != nil {
 			return &ValidationError{Name: "error_type", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.error_type": %w`, err)}
 		}
 	}
-	if iruo.mutation.TaskCleared() && len(iruo.mutation.TaskIDs()) > 0 {
+	if _u.mutation.TaskCleared() && len(_u.mutation.TaskIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ImportRecord.task"`)
 	}
 	return nil
 }
 
-func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRecord, err error) {
-	if err := iruo.check(); err != nil {
+func (_u *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRecord, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(importrecord.Table, importrecord.Columns, sqlgraph.NewFieldSpec(importrecord.FieldID, field.TypeUint64))
-	id, ok := iruo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ImportRecord.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := iruo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, importrecord.FieldID)
 		for _, f := range fields {
@@ -1430,119 +1430,119 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 			}
 		}
 	}
-	if ps := iruo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := iruo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(importrecord.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := iruo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(importrecord.FieldDeletedAt, field.TypeTime, value)
 	}
-	if iruo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(importrecord.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := iruo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(importrecord.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := iruo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(importrecord.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if iruo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importrecord.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := iruo.mutation.BatchID(); ok {
+	if value, ok := _u.mutation.BatchID(); ok {
 		_spec.SetField(importrecord.FieldBatchID, field.TypeString, value)
 	}
-	if iruo.mutation.BatchIDCleared() {
+	if _u.mutation.BatchIDCleared() {
 		_spec.ClearField(importrecord.FieldBatchID, field.TypeString)
 	}
-	if value, ok := iruo.mutation.RowNumber(); ok {
+	if value, ok := _u.mutation.RowNumber(); ok {
 		_spec.SetField(importrecord.FieldRowNumber, field.TypeInt, value)
 	}
-	if value, ok := iruo.mutation.AddedRowNumber(); ok {
+	if value, ok := _u.mutation.AddedRowNumber(); ok {
 		_spec.AddField(importrecord.FieldRowNumber, field.TypeInt, value)
 	}
-	if value, ok := iruo.mutation.SheetName(); ok {
+	if value, ok := _u.mutation.SheetName(); ok {
 		_spec.SetField(importrecord.FieldSheetName, field.TypeString, value)
 	}
-	if iruo.mutation.SheetNameCleared() {
+	if _u.mutation.SheetNameCleared() {
 		_spec.ClearField(importrecord.FieldSheetName, field.TypeString)
 	}
-	if value, ok := iruo.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(importrecord.FieldStatus, field.TypeEnum, value)
 	}
-	if value, ok := iruo.mutation.ImportAction(); ok {
+	if value, ok := _u.mutation.ImportAction(); ok {
 		_spec.SetField(importrecord.FieldImportAction, field.TypeEnum, value)
 	}
-	if iruo.mutation.ImportActionCleared() {
+	if _u.mutation.ImportActionCleared() {
 		_spec.ClearField(importrecord.FieldImportAction, field.TypeEnum)
 	}
-	if value, ok := iruo.mutation.RawData(); ok {
+	if value, ok := _u.mutation.RawData(); ok {
 		_spec.SetField(importrecord.FieldRawData, field.TypeJSON, value)
 	}
-	if iruo.mutation.RawDataCleared() {
+	if _u.mutation.RawDataCleared() {
 		_spec.ClearField(importrecord.FieldRawData, field.TypeJSON)
 	}
-	if value, ok := iruo.mutation.FinalData(); ok {
+	if value, ok := _u.mutation.FinalData(); ok {
 		_spec.SetField(importrecord.FieldFinalData, field.TypeJSON, value)
 	}
-	if iruo.mutation.FinalDataCleared() {
+	if _u.mutation.FinalDataCleared() {
 		_spec.ClearField(importrecord.FieldFinalData, field.TypeJSON)
 	}
-	if value, ok := iruo.mutation.CiUniqueKey(); ok {
+	if value, ok := _u.mutation.CiUniqueKey(); ok {
 		_spec.SetField(importrecord.FieldCiUniqueKey, field.TypeString, value)
 	}
-	if iruo.mutation.CiUniqueKeyCleared() {
+	if _u.mutation.CiUniqueKeyCleared() {
 		_spec.ClearField(importrecord.FieldCiUniqueKey, field.TypeString)
 	}
-	if value, ok := iruo.mutation.ErrorMessage(); ok {
+	if value, ok := _u.mutation.ErrorMessage(); ok {
 		_spec.SetField(importrecord.FieldErrorMessage, field.TypeString, value)
 	}
-	if iruo.mutation.ErrorMessageCleared() {
+	if _u.mutation.ErrorMessageCleared() {
 		_spec.ClearField(importrecord.FieldErrorMessage, field.TypeString)
 	}
-	if value, ok := iruo.mutation.ErrorCode(); ok {
+	if value, ok := _u.mutation.ErrorCode(); ok {
 		_spec.SetField(importrecord.FieldErrorCode, field.TypeString, value)
 	}
-	if iruo.mutation.ErrorCodeCleared() {
+	if _u.mutation.ErrorCodeCleared() {
 		_spec.ClearField(importrecord.FieldErrorCode, field.TypeString)
 	}
-	if value, ok := iruo.mutation.ErrorType(); ok {
+	if value, ok := _u.mutation.ErrorType(); ok {
 		_spec.SetField(importrecord.FieldErrorType, field.TypeEnum, value)
 	}
-	if iruo.mutation.ErrorTypeCleared() {
+	if _u.mutation.ErrorTypeCleared() {
 		_spec.ClearField(importrecord.FieldErrorType, field.TypeEnum)
 	}
-	if value, ok := iruo.mutation.StartTime(); ok {
+	if value, ok := _u.mutation.StartTime(); ok {
 		_spec.SetField(importrecord.FieldStartTime, field.TypeTime, value)
 	}
-	if iruo.mutation.StartTimeCleared() {
+	if _u.mutation.StartTimeCleared() {
 		_spec.ClearField(importrecord.FieldStartTime, field.TypeTime)
 	}
-	if value, ok := iruo.mutation.EndTime(); ok {
+	if value, ok := _u.mutation.EndTime(); ok {
 		_spec.SetField(importrecord.FieldEndTime, field.TypeTime, value)
 	}
-	if iruo.mutation.EndTimeCleared() {
+	if _u.mutation.EndTimeCleared() {
 		_spec.ClearField(importrecord.FieldEndTime, field.TypeTime)
 	}
-	if value, ok := iruo.mutation.RetryCount(); ok {
+	if value, ok := _u.mutation.RetryCount(); ok {
 		_spec.SetField(importrecord.FieldRetryCount, field.TypeInt, value)
 	}
-	if value, ok := iruo.mutation.AddedRetryCount(); ok {
+	if value, ok := _u.mutation.AddedRetryCount(); ok {
 		_spec.AddField(importrecord.FieldRetryCount, field.TypeInt, value)
 	}
-	if value, ok := iruo.mutation.MaxRetries(); ok {
+	if value, ok := _u.mutation.MaxRetries(); ok {
 		_spec.SetField(importrecord.FieldMaxRetries, field.TypeInt, value)
 	}
-	if value, ok := iruo.mutation.AddedMaxRetries(); ok {
+	if value, ok := _u.mutation.AddedMaxRetries(); ok {
 		_spec.AddField(importrecord.FieldMaxRetries, field.TypeInt, value)
 	}
-	if iruo.mutation.TaskCleared() {
+	if _u.mutation.TaskCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1555,7 +1555,7 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iruo.mutation.TaskIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TaskIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1571,7 +1571,7 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if iruo.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1584,7 +1584,7 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iruo.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1600,7 +1600,7 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if iruo.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1613,7 +1613,7 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iruo.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1629,7 +1629,7 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if iruo.mutation.ErrorsCleared() {
+	if _u.mutation.ErrorsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1642,7 +1642,7 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iruo.mutation.RemovedErrorsIDs(); len(nodes) > 0 && !iruo.mutation.ErrorsCleared() {
+	if nodes := _u.mutation.RemovedErrorsIDs(); len(nodes) > 0 && !_u.mutation.ErrorsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1658,7 +1658,7 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := iruo.mutation.ErrorsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ErrorsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1674,10 +1674,10 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ImportRecord{config: iruo.config}
+	_node = &ImportRecord{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, iruo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{importrecord.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1685,6 +1685,6 @@ func (iruo *ImportRecordUpdateOne) sqlSave(ctx context.Context) (_node *ImportRe
 		}
 		return nil, err
 	}
-	iruo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

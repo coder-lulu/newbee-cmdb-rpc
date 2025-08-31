@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiPermissionDelete is the builder for deleting a CiPermission entity.
@@ -20,56 +20,56 @@ type CiPermissionDelete struct {
 }
 
 // Where appends a list predicates to the CiPermissionDelete builder.
-func (cpd *CiPermissionDelete) Where(ps ...predicate.CiPermission) *CiPermissionDelete {
-	cpd.mutation.Where(ps...)
-	return cpd
+func (_d *CiPermissionDelete) Where(ps ...predicate.CiPermission) *CiPermissionDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (cpd *CiPermissionDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, cpd.sqlExec, cpd.mutation, cpd.hooks)
+func (_d *CiPermissionDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cpd *CiPermissionDelete) ExecX(ctx context.Context) int {
-	n, err := cpd.Exec(ctx)
+func (_d *CiPermissionDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (cpd *CiPermissionDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CiPermissionDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(cipermission.Table, sqlgraph.NewFieldSpec(cipermission.FieldID, field.TypeUint64))
-	if ps := cpd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, cpd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	cpd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CiPermissionDeleteOne is the builder for deleting a single CiPermission entity.
 type CiPermissionDeleteOne struct {
-	cpd *CiPermissionDelete
+	_d *CiPermissionDelete
 }
 
 // Where appends a list predicates to the CiPermissionDelete builder.
-func (cpdo *CiPermissionDeleteOne) Where(ps ...predicate.CiPermission) *CiPermissionDeleteOne {
-	cpdo.cpd.mutation.Where(ps...)
-	return cpdo
+func (_d *CiPermissionDeleteOne) Where(ps ...predicate.CiPermission) *CiPermissionDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (cpdo *CiPermissionDeleteOne) Exec(ctx context.Context) error {
-	n, err := cpdo.cpd.Exec(ctx)
+func (_d *CiPermissionDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (cpdo *CiPermissionDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cpdo *CiPermissionDeleteOne) ExecX(ctx context.Context) {
-	if err := cpdo.Exec(ctx); err != nil {
+func (_d *CiPermissionDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

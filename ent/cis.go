@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -212,7 +212,7 @@ func (*Cis) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the Cis fields.
-func (c *Cis) assignValues(columns []string, values []any) error {
+func (_m *Cis) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -223,61 +223,61 @@ func (c *Cis) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			c.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case cis.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				c.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case cis.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				c.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case cis.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				c.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case cis.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				c.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case cis.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				c.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case cis.FieldTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field type_id", values[i])
 			} else if value.Valid {
-				c.TypeID = uint64(value.Int64)
+				_m.TypeID = uint64(value.Int64)
 			}
 		case cis.FieldStatus:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
-				c.Status = uint32(value.Int64)
+				_m.Status = uint32(value.Int64)
 			}
 		case cis.FieldCreatedBy:
 			if value, ok := values[i].(*sql.NullScanner); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by", values[i])
 			} else if value.Valid {
-				c.CreatedBy = new(uuid.UUID)
-				*c.CreatedBy = *value.S.(*uuid.UUID)
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case cis.FieldTags:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field tags", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &c.Tags); err != nil {
+				if err := json.Unmarshal(*value, &_m.Tags); err != nil {
 					return fmt.Errorf("unmarshal field tags: %w", err)
 				}
 			}
@@ -285,7 +285,7 @@ func (c *Cis) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field metadata", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &c.Metadata); err != nil {
+				if err := json.Unmarshal(*value, &_m.Metadata); err != nil {
 					return fmt.Errorf("unmarshal field metadata: %w", err)
 				}
 			}
@@ -293,12 +293,12 @@ func (c *Cis) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field custom_fields", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &c.CustomFields); err != nil {
+				if err := json.Unmarshal(*value, &_m.CustomFields); err != nil {
 					return fmt.Errorf("unmarshal field custom_fields: %w", err)
 				}
 			}
 		default:
-			c.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -306,127 +306,127 @@ func (c *Cis) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the Cis.
 // This includes values selected through modifiers, order, etc.
-func (c *Cis) Value(name string) (ent.Value, error) {
-	return c.selectValues.Get(name)
+func (_m *Cis) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCiType queries the "ci_type" edge of the Cis entity.
-func (c *Cis) QueryCiType() *CiTypeQuery {
-	return NewCisClient(c.config).QueryCiType(c)
+func (_m *Cis) QueryCiType() *CiTypeQuery {
+	return NewCisClient(_m.config).QueryCiType(_m)
 }
 
 // QueryValueTexts queries the "value_texts" edge of the Cis entity.
-func (c *Cis) QueryValueTexts() *ValueTextQuery {
-	return NewCisClient(c.config).QueryValueTexts(c)
+func (_m *Cis) QueryValueTexts() *ValueTextQuery {
+	return NewCisClient(_m.config).QueryValueTexts(_m)
 }
 
 // QueryValueIndexTexts queries the "value_index_texts" edge of the Cis entity.
-func (c *Cis) QueryValueIndexTexts() *ValueIndexTextQuery {
-	return NewCisClient(c.config).QueryValueIndexTexts(c)
+func (_m *Cis) QueryValueIndexTexts() *ValueIndexTextQuery {
+	return NewCisClient(_m.config).QueryValueIndexTexts(_m)
 }
 
 // QueryValueJsons queries the "value_jsons" edge of the Cis entity.
-func (c *Cis) QueryValueJsons() *ValueJSONQuery {
-	return NewCisClient(c.config).QueryValueJsons(c)
+func (_m *Cis) QueryValueJsons() *ValueJSONQuery {
+	return NewCisClient(_m.config).QueryValueJsons(_m)
 }
 
 // QueryValueIntegers queries the "value_integers" edge of the Cis entity.
-func (c *Cis) QueryValueIntegers() *ValueIntegerQuery {
-	return NewCisClient(c.config).QueryValueIntegers(c)
+func (_m *Cis) QueryValueIntegers() *ValueIntegerQuery {
+	return NewCisClient(_m.config).QueryValueIntegers(_m)
 }
 
 // QueryValueFloats queries the "value_floats" edge of the Cis entity.
-func (c *Cis) QueryValueFloats() *ValueFloatQuery {
-	return NewCisClient(c.config).QueryValueFloats(c)
+func (_m *Cis) QueryValueFloats() *ValueFloatQuery {
+	return NewCisClient(_m.config).QueryValueFloats(_m)
 }
 
 // QueryValueDatetimes queries the "value_datetimes" edge of the Cis entity.
-func (c *Cis) QueryValueDatetimes() *ValueDatetimeQuery {
-	return NewCisClient(c.config).QueryValueDatetimes(c)
+func (_m *Cis) QueryValueDatetimes() *ValueDatetimeQuery {
+	return NewCisClient(_m.config).QueryValueDatetimes(_m)
 }
 
 // QueryFirstRelations queries the "first_relations" edge of the Cis entity.
-func (c *Cis) QueryFirstRelations() *CiRelationQuery {
-	return NewCisClient(c.config).QueryFirstRelations(c)
+func (_m *Cis) QueryFirstRelations() *CiRelationQuery {
+	return NewCisClient(_m.config).QueryFirstRelations(_m)
 }
 
 // QuerySecondRelations queries the "second_relations" edge of the Cis entity.
-func (c *Cis) QuerySecondRelations() *CiRelationQuery {
-	return NewCisClient(c.config).QuerySecondRelations(c)
+func (_m *Cis) QuerySecondRelations() *CiRelationQuery {
+	return NewCisClient(_m.config).QuerySecondRelations(_m)
 }
 
 // QueryMoreRelations queries the "more_relations" edge of the Cis entity.
-func (c *Cis) QueryMoreRelations() *CiRelationQuery {
-	return NewCisClient(c.config).QueryMoreRelations(c)
+func (_m *Cis) QueryMoreRelations() *CiRelationQuery {
+	return NewCisClient(_m.config).QueryMoreRelations(_m)
 }
 
 // QueryImportRecords queries the "import_records" edge of the Cis entity.
-func (c *Cis) QueryImportRecords() *ImportRecordQuery {
-	return NewCisClient(c.config).QueryImportRecords(c)
+func (_m *Cis) QueryImportRecords() *ImportRecordQuery {
+	return NewCisClient(_m.config).QueryImportRecords(_m)
 }
 
 // QueryRecords queries the "records" edge of the Cis entity.
-func (c *Cis) QueryRecords() *CiRecordsQuery {
-	return NewCisClient(c.config).QueryRecords(c)
+func (_m *Cis) QueryRecords() *CiRecordsQuery {
+	return NewCisClient(_m.config).QueryRecords(_m)
 }
 
 // Update returns a builder for updating this Cis.
 // Note that you need to call Cis.Unwrap() before calling this method if this Cis
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (c *Cis) Update() *CisUpdateOne {
-	return NewCisClient(c.config).UpdateOne(c)
+func (_m *Cis) Update() *CisUpdateOne {
+	return NewCisClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the Cis entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (c *Cis) Unwrap() *Cis {
-	_tx, ok := c.config.driver.(*txDriver)
+func (_m *Cis) Unwrap() *Cis {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: Cis is not a transactional entity")
 	}
-	c.config.driver = _tx.drv
-	return c
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (c *Cis) String() string {
+func (_m *Cis) String() string {
 	var builder strings.Builder
 	builder.WriteString("Cis(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", c.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(c.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(c.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(c.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", c.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", c.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("type_id=")
-	builder.WriteString(fmt.Sprintf("%v", c.TypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TypeID))
 	builder.WriteString(", ")
 	builder.WriteString("status=")
-	builder.WriteString(fmt.Sprintf("%v", c.Status))
+	builder.WriteString(fmt.Sprintf("%v", _m.Status))
 	builder.WriteString(", ")
-	if v := c.CreatedBy; v != nil {
+	if v := _m.CreatedBy; v != nil {
 		builder.WriteString("created_by=")
 		builder.WriteString(fmt.Sprintf("%v", *v))
 	}
 	builder.WriteString(", ")
 	builder.WriteString("tags=")
-	builder.WriteString(fmt.Sprintf("%v", c.Tags))
+	builder.WriteString(fmt.Sprintf("%v", _m.Tags))
 	builder.WriteString(", ")
 	builder.WriteString("metadata=")
-	builder.WriteString(fmt.Sprintf("%v", c.Metadata))
+	builder.WriteString(fmt.Sprintf("%v", _m.Metadata))
 	builder.WriteString(", ")
 	builder.WriteString("custom_fields=")
-	builder.WriteString(fmt.Sprintf("%v", c.CustomFields))
+	builder.WriteString(fmt.Sprintf("%v", _m.CustomFields))
 	builder.WriteByte(')')
 	return builder.String()
 }

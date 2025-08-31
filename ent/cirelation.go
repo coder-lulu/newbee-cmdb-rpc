@@ -9,9 +9,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // CiRelation is the model entity for the CiRelation schema.
@@ -126,7 +126,7 @@ func (*CiRelation) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiRelation fields.
-func (cr *CiRelation) assignValues(columns []string, values []any) error {
+func (_m *CiRelation) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -137,75 +137,75 @@ func (cr *CiRelation) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			cr.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case cirelation.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				cr.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case cirelation.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				cr.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case cirelation.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				cr.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case cirelation.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				cr.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case cirelation.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				cr.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case cirelation.FieldFirstCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field first_ci_id", values[i])
 			} else if value.Valid {
-				cr.FirstCiID = uint64(value.Int64)
+				_m.FirstCiID = uint64(value.Int64)
 			}
 		case cirelation.FieldSecondCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field second_ci_id", values[i])
 			} else if value.Valid {
-				cr.SecondCiID = uint64(value.Int64)
+				_m.SecondCiID = uint64(value.Int64)
 			}
 		case cirelation.FieldRelationTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field relation_type_id", values[i])
 			} else if value.Valid {
-				cr.RelationTypeID = uint64(value.Int64)
+				_m.RelationTypeID = uint64(value.Int64)
 			}
 		case cirelation.FieldMore:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field more", values[i])
 			} else if value.Valid {
-				cr.More = uint64(value.Int64)
+				_m.More = uint64(value.Int64)
 			}
 		case cirelation.FieldSource:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field source", values[i])
 			} else if value.Valid {
-				cr.Source = value.String
+				_m.Source = value.String
 			}
 		case cirelation.FieldAncestorIds:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field ancestor_ids", values[i])
 			} else if value.Valid {
-				cr.AncestorIds = value.String
+				_m.AncestorIds = value.String
 			}
 		default:
-			cr.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -213,85 +213,85 @@ func (cr *CiRelation) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiRelation.
 // This includes values selected through modifiers, order, etc.
-func (cr *CiRelation) Value(name string) (ent.Value, error) {
-	return cr.selectValues.Get(name)
+func (_m *CiRelation) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryFirstCi queries the "first_ci" edge of the CiRelation entity.
-func (cr *CiRelation) QueryFirstCi() *CisQuery {
-	return NewCiRelationClient(cr.config).QueryFirstCi(cr)
+func (_m *CiRelation) QueryFirstCi() *CisQuery {
+	return NewCiRelationClient(_m.config).QueryFirstCi(_m)
 }
 
 // QuerySecondCi queries the "second_ci" edge of the CiRelation entity.
-func (cr *CiRelation) QuerySecondCi() *CisQuery {
-	return NewCiRelationClient(cr.config).QuerySecondCi(cr)
+func (_m *CiRelation) QuerySecondCi() *CisQuery {
+	return NewCiRelationClient(_m.config).QuerySecondCi(_m)
 }
 
 // QueryRelationType queries the "relation_type" edge of the CiRelation entity.
-func (cr *CiRelation) QueryRelationType() *RelationTypeQuery {
-	return NewCiRelationClient(cr.config).QueryRelationType(cr)
+func (_m *CiRelation) QueryRelationType() *RelationTypeQuery {
+	return NewCiRelationClient(_m.config).QueryRelationType(_m)
 }
 
 // QueryMoreCi queries the "more_ci" edge of the CiRelation entity.
-func (cr *CiRelation) QueryMoreCi() *CisQuery {
-	return NewCiRelationClient(cr.config).QueryMoreCi(cr)
+func (_m *CiRelation) QueryMoreCi() *CisQuery {
+	return NewCiRelationClient(_m.config).QueryMoreCi(_m)
 }
 
 // Update returns a builder for updating this CiRelation.
 // Note that you need to call CiRelation.Unwrap() before calling this method if this CiRelation
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (cr *CiRelation) Update() *CiRelationUpdateOne {
-	return NewCiRelationClient(cr.config).UpdateOne(cr)
+func (_m *CiRelation) Update() *CiRelationUpdateOne {
+	return NewCiRelationClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiRelation entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (cr *CiRelation) Unwrap() *CiRelation {
-	_tx, ok := cr.config.driver.(*txDriver)
+func (_m *CiRelation) Unwrap() *CiRelation {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiRelation is not a transactional entity")
 	}
-	cr.config.driver = _tx.drv
-	return cr
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (cr *CiRelation) String() string {
+func (_m *CiRelation) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiRelation(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", cr.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(cr.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(cr.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(cr.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("first_ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.FirstCiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.FirstCiID))
 	builder.WriteString(", ")
 	builder.WriteString("second_ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.SecondCiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.SecondCiID))
 	builder.WriteString(", ")
 	builder.WriteString("relation_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.RelationTypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.RelationTypeID))
 	builder.WriteString(", ")
 	builder.WriteString("more=")
-	builder.WriteString(fmt.Sprintf("%v", cr.More))
+	builder.WriteString(fmt.Sprintf("%v", _m.More))
 	builder.WriteString(", ")
 	builder.WriteString("source=")
-	builder.WriteString(cr.Source)
+	builder.WriteString(_m.Source)
 	builder.WriteString(", ")
 	builder.WriteString("ancestor_ids=")
-	builder.WriteString(cr.AncestorIds)
+	builder.WriteString(_m.AncestorIds)
 	builder.WriteByte(')')
 	return builder.String()
 }

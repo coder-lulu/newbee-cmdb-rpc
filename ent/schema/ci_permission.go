@@ -7,7 +7,7 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"gitee.com/link234/newbee-backend-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
 )
 
 // CiPermission holds the schema definition for the CiPermission entity.
@@ -156,16 +156,13 @@ func (CiPermission) Fields() []ent.Field {
 func (CiPermission) Edges() []ent.Edge {
 	return []ent.Edge{
 		// 权限操作关联（替代JSON字段）
-		edge.To("operations", PermissionOperation.Type).
-			StorageKey(edge.Column("permission_id")),
+		edge.To("operations", PermissionOperation.Type),
 
 		// 数据过滤规则关联（替代JSON字段）
-		edge.To("data_filters", PermissionDataFilter.Type).
-			StorageKey(edge.Column("permission_id")),
+		edge.To("data_filters", PermissionDataFilter.Type),
 
 		// 字段掩码关联
-		edge.To("field_masks", PermissionFieldMask.Type).
-			StorageKey(edge.Column("permission_id")),
+		edge.To("field_masks", PermissionFieldMask.Type),
 	}
 }
 

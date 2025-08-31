@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
 )
 
 // ValueFloatUpdate is the builder for updating ValueFloat entities.
@@ -25,144 +25,144 @@ type ValueFloatUpdate struct {
 }
 
 // Where appends a list predicates to the ValueFloatUpdate builder.
-func (vfu *ValueFloatUpdate) Where(ps ...predicate.ValueFloat) *ValueFloatUpdate {
-	vfu.mutation.Where(ps...)
-	return vfu
+func (_u *ValueFloatUpdate) Where(ps ...predicate.ValueFloat) *ValueFloatUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vfu *ValueFloatUpdate) SetUpdatedAt(t time.Time) *ValueFloatUpdate {
-	vfu.mutation.SetUpdatedAt(t)
-	return vfu
+func (_u *ValueFloatUpdate) SetUpdatedAt(v time.Time) *ValueFloatUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vfu *ValueFloatUpdate) SetDeletedAt(t time.Time) *ValueFloatUpdate {
-	vfu.mutation.SetDeletedAt(t)
-	return vfu
+func (_u *ValueFloatUpdate) SetDeletedAt(v time.Time) *ValueFloatUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vfu *ValueFloatUpdate) SetNillableDeletedAt(t *time.Time) *ValueFloatUpdate {
-	if t != nil {
-		vfu.SetDeletedAt(*t)
+func (_u *ValueFloatUpdate) SetNillableDeletedAt(v *time.Time) *ValueFloatUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vfu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vfu *ValueFloatUpdate) ClearDeletedAt() *ValueFloatUpdate {
-	vfu.mutation.ClearDeletedAt()
-	return vfu
+func (_u *ValueFloatUpdate) ClearDeletedAt() *ValueFloatUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vfu *ValueFloatUpdate) SetCiID(u uint64) *ValueFloatUpdate {
-	vfu.mutation.SetCiID(u)
-	return vfu
+func (_u *ValueFloatUpdate) SetCiID(v uint64) *ValueFloatUpdate {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vfu *ValueFloatUpdate) SetNillableCiID(u *uint64) *ValueFloatUpdate {
-	if u != nil {
-		vfu.SetCiID(*u)
+func (_u *ValueFloatUpdate) SetNillableCiID(v *uint64) *ValueFloatUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vfu
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vfu *ValueFloatUpdate) SetAttrID(u uint64) *ValueFloatUpdate {
-	vfu.mutation.SetAttrID(u)
-	return vfu
+func (_u *ValueFloatUpdate) SetAttrID(v uint64) *ValueFloatUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vfu *ValueFloatUpdate) SetNillableAttrID(u *uint64) *ValueFloatUpdate {
-	if u != nil {
-		vfu.SetAttrID(*u)
+func (_u *ValueFloatUpdate) SetNillableAttrID(v *uint64) *ValueFloatUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vfu
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vfu *ValueFloatUpdate) SetValue(f float64) *ValueFloatUpdate {
-	vfu.mutation.ResetValue()
-	vfu.mutation.SetValue(f)
-	return vfu
+func (_u *ValueFloatUpdate) SetValue(v float64) *ValueFloatUpdate {
+	_u.mutation.ResetValue()
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (vfu *ValueFloatUpdate) SetNillableValue(f *float64) *ValueFloatUpdate {
-	if f != nil {
-		vfu.SetValue(*f)
+func (_u *ValueFloatUpdate) SetNillableValue(v *float64) *ValueFloatUpdate {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return vfu
+	return _u
 }
 
-// AddValue adds f to the "value" field.
-func (vfu *ValueFloatUpdate) AddValue(f float64) *ValueFloatUpdate {
-	vfu.mutation.AddValue(f)
-	return vfu
+// AddValue adds value to the "value" field.
+func (_u *ValueFloatUpdate) AddValue(v float64) *ValueFloatUpdate {
+	_u.mutation.AddValue(v)
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vfu *ValueFloatUpdate) SetIsCover(b bool) *ValueFloatUpdate {
-	vfu.mutation.SetIsCover(b)
-	return vfu
+func (_u *ValueFloatUpdate) SetIsCover(v bool) *ValueFloatUpdate {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vfu *ValueFloatUpdate) SetNillableIsCover(b *bool) *ValueFloatUpdate {
-	if b != nil {
-		vfu.SetIsCover(*b)
+func (_u *ValueFloatUpdate) SetNillableIsCover(v *bool) *ValueFloatUpdate {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vfu
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vfu *ValueFloatUpdate) SetCi(c *Cis) *ValueFloatUpdate {
-	return vfu.SetCiID(c.ID)
+func (_u *ValueFloatUpdate) SetCi(v *Cis) *ValueFloatUpdate {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vfu *ValueFloatUpdate) SetAttributeID(id uint64) *ValueFloatUpdate {
-	vfu.mutation.SetAttributeID(id)
-	return vfu
+func (_u *ValueFloatUpdate) SetAttributeID(id uint64) *ValueFloatUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vfu *ValueFloatUpdate) SetAttribute(a *Attribute) *ValueFloatUpdate {
-	return vfu.SetAttributeID(a.ID)
+func (_u *ValueFloatUpdate) SetAttribute(v *Attribute) *ValueFloatUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueFloatMutation object of the builder.
-func (vfu *ValueFloatUpdate) Mutation() *ValueFloatMutation {
-	return vfu.mutation
+func (_u *ValueFloatUpdate) Mutation() *ValueFloatMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vfu *ValueFloatUpdate) ClearCi() *ValueFloatUpdate {
-	vfu.mutation.ClearCi()
-	return vfu
+func (_u *ValueFloatUpdate) ClearCi() *ValueFloatUpdate {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vfu *ValueFloatUpdate) ClearAttribute() *ValueFloatUpdate {
-	vfu.mutation.ClearAttribute()
-	return vfu
+func (_u *ValueFloatUpdate) ClearAttribute() *ValueFloatUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (vfu *ValueFloatUpdate) Save(ctx context.Context) (int, error) {
-	if err := vfu.defaults(); err != nil {
+func (_u *ValueFloatUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, vfu.sqlSave, vfu.mutation, vfu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vfu *ValueFloatUpdate) SaveX(ctx context.Context) int {
-	affected, err := vfu.Save(ctx)
+func (_u *ValueFloatUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -170,72 +170,72 @@ func (vfu *ValueFloatUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (vfu *ValueFloatUpdate) Exec(ctx context.Context) error {
-	_, err := vfu.Save(ctx)
+func (_u *ValueFloatUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vfu *ValueFloatUpdate) ExecX(ctx context.Context) {
-	if err := vfu.Exec(ctx); err != nil {
+func (_u *ValueFloatUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vfu *ValueFloatUpdate) defaults() error {
-	if _, ok := vfu.mutation.UpdatedAt(); !ok {
+func (_u *ValueFloatUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valuefloat.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuefloat.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuefloat.UpdateDefaultUpdatedAt()
-		vfu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vfu *ValueFloatUpdate) check() error {
-	if vfu.mutation.CiCleared() && len(vfu.mutation.CiIDs()) > 0 {
+func (_u *ValueFloatUpdate) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueFloat.ci"`)
 	}
-	if vfu.mutation.AttributeCleared() && len(vfu.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueFloat.attribute"`)
 	}
 	return nil
 }
 
-func (vfu *ValueFloatUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := vfu.check(); err != nil {
-		return n, err
+func (_u *ValueFloatUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valuefloat.Table, valuefloat.Columns, sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64))
-	if ps := vfu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vfu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuefloat.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vfu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valuefloat.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vfu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuefloat.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vfu.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuefloat.FieldValue, field.TypeFloat64, value)
 	}
-	if value, ok := vfu.mutation.AddedValue(); ok {
+	if value, ok := _u.mutation.AddedValue(); ok {
 		_spec.AddField(valuefloat.FieldValue, field.TypeFloat64, value)
 	}
-	if value, ok := vfu.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valuefloat.FieldIsCover, field.TypeBool, value)
 	}
-	if vfu.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -248,7 +248,7 @@ func (vfu *ValueFloatUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vfu.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -264,7 +264,7 @@ func (vfu *ValueFloatUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vfu.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -277,7 +277,7 @@ func (vfu *ValueFloatUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vfu.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -293,7 +293,7 @@ func (vfu *ValueFloatUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, vfu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valuefloat.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -301,8 +301,8 @@ func (vfu *ValueFloatUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	vfu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ValueFloatUpdateOne is the builder for updating a single ValueFloat entity.
@@ -314,151 +314,151 @@ type ValueFloatUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vfuo *ValueFloatUpdateOne) SetUpdatedAt(t time.Time) *ValueFloatUpdateOne {
-	vfuo.mutation.SetUpdatedAt(t)
-	return vfuo
+func (_u *ValueFloatUpdateOne) SetUpdatedAt(v time.Time) *ValueFloatUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vfuo *ValueFloatUpdateOne) SetDeletedAt(t time.Time) *ValueFloatUpdateOne {
-	vfuo.mutation.SetDeletedAt(t)
-	return vfuo
+func (_u *ValueFloatUpdateOne) SetDeletedAt(v time.Time) *ValueFloatUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vfuo *ValueFloatUpdateOne) SetNillableDeletedAt(t *time.Time) *ValueFloatUpdateOne {
-	if t != nil {
-		vfuo.SetDeletedAt(*t)
+func (_u *ValueFloatUpdateOne) SetNillableDeletedAt(v *time.Time) *ValueFloatUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vfuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vfuo *ValueFloatUpdateOne) ClearDeletedAt() *ValueFloatUpdateOne {
-	vfuo.mutation.ClearDeletedAt()
-	return vfuo
+func (_u *ValueFloatUpdateOne) ClearDeletedAt() *ValueFloatUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vfuo *ValueFloatUpdateOne) SetCiID(u uint64) *ValueFloatUpdateOne {
-	vfuo.mutation.SetCiID(u)
-	return vfuo
+func (_u *ValueFloatUpdateOne) SetCiID(v uint64) *ValueFloatUpdateOne {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vfuo *ValueFloatUpdateOne) SetNillableCiID(u *uint64) *ValueFloatUpdateOne {
-	if u != nil {
-		vfuo.SetCiID(*u)
+func (_u *ValueFloatUpdateOne) SetNillableCiID(v *uint64) *ValueFloatUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vfuo
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vfuo *ValueFloatUpdateOne) SetAttrID(u uint64) *ValueFloatUpdateOne {
-	vfuo.mutation.SetAttrID(u)
-	return vfuo
+func (_u *ValueFloatUpdateOne) SetAttrID(v uint64) *ValueFloatUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vfuo *ValueFloatUpdateOne) SetNillableAttrID(u *uint64) *ValueFloatUpdateOne {
-	if u != nil {
-		vfuo.SetAttrID(*u)
+func (_u *ValueFloatUpdateOne) SetNillableAttrID(v *uint64) *ValueFloatUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vfuo
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vfuo *ValueFloatUpdateOne) SetValue(f float64) *ValueFloatUpdateOne {
-	vfuo.mutation.ResetValue()
-	vfuo.mutation.SetValue(f)
-	return vfuo
+func (_u *ValueFloatUpdateOne) SetValue(v float64) *ValueFloatUpdateOne {
+	_u.mutation.ResetValue()
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (vfuo *ValueFloatUpdateOne) SetNillableValue(f *float64) *ValueFloatUpdateOne {
-	if f != nil {
-		vfuo.SetValue(*f)
+func (_u *ValueFloatUpdateOne) SetNillableValue(v *float64) *ValueFloatUpdateOne {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return vfuo
+	return _u
 }
 
-// AddValue adds f to the "value" field.
-func (vfuo *ValueFloatUpdateOne) AddValue(f float64) *ValueFloatUpdateOne {
-	vfuo.mutation.AddValue(f)
-	return vfuo
+// AddValue adds value to the "value" field.
+func (_u *ValueFloatUpdateOne) AddValue(v float64) *ValueFloatUpdateOne {
+	_u.mutation.AddValue(v)
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vfuo *ValueFloatUpdateOne) SetIsCover(b bool) *ValueFloatUpdateOne {
-	vfuo.mutation.SetIsCover(b)
-	return vfuo
+func (_u *ValueFloatUpdateOne) SetIsCover(v bool) *ValueFloatUpdateOne {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vfuo *ValueFloatUpdateOne) SetNillableIsCover(b *bool) *ValueFloatUpdateOne {
-	if b != nil {
-		vfuo.SetIsCover(*b)
+func (_u *ValueFloatUpdateOne) SetNillableIsCover(v *bool) *ValueFloatUpdateOne {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vfuo
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vfuo *ValueFloatUpdateOne) SetCi(c *Cis) *ValueFloatUpdateOne {
-	return vfuo.SetCiID(c.ID)
+func (_u *ValueFloatUpdateOne) SetCi(v *Cis) *ValueFloatUpdateOne {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vfuo *ValueFloatUpdateOne) SetAttributeID(id uint64) *ValueFloatUpdateOne {
-	vfuo.mutation.SetAttributeID(id)
-	return vfuo
+func (_u *ValueFloatUpdateOne) SetAttributeID(id uint64) *ValueFloatUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vfuo *ValueFloatUpdateOne) SetAttribute(a *Attribute) *ValueFloatUpdateOne {
-	return vfuo.SetAttributeID(a.ID)
+func (_u *ValueFloatUpdateOne) SetAttribute(v *Attribute) *ValueFloatUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueFloatMutation object of the builder.
-func (vfuo *ValueFloatUpdateOne) Mutation() *ValueFloatMutation {
-	return vfuo.mutation
+func (_u *ValueFloatUpdateOne) Mutation() *ValueFloatMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vfuo *ValueFloatUpdateOne) ClearCi() *ValueFloatUpdateOne {
-	vfuo.mutation.ClearCi()
-	return vfuo
+func (_u *ValueFloatUpdateOne) ClearCi() *ValueFloatUpdateOne {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vfuo *ValueFloatUpdateOne) ClearAttribute() *ValueFloatUpdateOne {
-	vfuo.mutation.ClearAttribute()
-	return vfuo
+func (_u *ValueFloatUpdateOne) ClearAttribute() *ValueFloatUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the ValueFloatUpdate builder.
-func (vfuo *ValueFloatUpdateOne) Where(ps ...predicate.ValueFloat) *ValueFloatUpdateOne {
-	vfuo.mutation.Where(ps...)
-	return vfuo
+func (_u *ValueFloatUpdateOne) Where(ps ...predicate.ValueFloat) *ValueFloatUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (vfuo *ValueFloatUpdateOne) Select(field string, fields ...string) *ValueFloatUpdateOne {
-	vfuo.fields = append([]string{field}, fields...)
-	return vfuo
+func (_u *ValueFloatUpdateOne) Select(field string, fields ...string) *ValueFloatUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ValueFloat entity.
-func (vfuo *ValueFloatUpdateOne) Save(ctx context.Context) (*ValueFloat, error) {
-	if err := vfuo.defaults(); err != nil {
+func (_u *ValueFloatUpdateOne) Save(ctx context.Context) (*ValueFloat, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vfuo.sqlSave, vfuo.mutation, vfuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vfuo *ValueFloatUpdateOne) SaveX(ctx context.Context) *ValueFloat {
-	node, err := vfuo.Save(ctx)
+func (_u *ValueFloatUpdateOne) SaveX(ctx context.Context) *ValueFloat {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -466,52 +466,52 @@ func (vfuo *ValueFloatUpdateOne) SaveX(ctx context.Context) *ValueFloat {
 }
 
 // Exec executes the query on the entity.
-func (vfuo *ValueFloatUpdateOne) Exec(ctx context.Context) error {
-	_, err := vfuo.Save(ctx)
+func (_u *ValueFloatUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vfuo *ValueFloatUpdateOne) ExecX(ctx context.Context) {
-	if err := vfuo.Exec(ctx); err != nil {
+func (_u *ValueFloatUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vfuo *ValueFloatUpdateOne) defaults() error {
-	if _, ok := vfuo.mutation.UpdatedAt(); !ok {
+func (_u *ValueFloatUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valuefloat.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuefloat.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuefloat.UpdateDefaultUpdatedAt()
-		vfuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vfuo *ValueFloatUpdateOne) check() error {
-	if vfuo.mutation.CiCleared() && len(vfuo.mutation.CiIDs()) > 0 {
+func (_u *ValueFloatUpdateOne) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueFloat.ci"`)
 	}
-	if vfuo.mutation.AttributeCleared() && len(vfuo.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueFloat.attribute"`)
 	}
 	return nil
 }
 
-func (vfuo *ValueFloatUpdateOne) sqlSave(ctx context.Context) (_node *ValueFloat, err error) {
-	if err := vfuo.check(); err != nil {
+func (_u *ValueFloatUpdateOne) sqlSave(ctx context.Context) (_node *ValueFloat, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valuefloat.Table, valuefloat.Columns, sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64))
-	id, ok := vfuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ValueFloat.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := vfuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valuefloat.FieldID)
 		for _, f := range fields {
@@ -523,32 +523,32 @@ func (vfuo *ValueFloatUpdateOne) sqlSave(ctx context.Context) (_node *ValueFloat
 			}
 		}
 	}
-	if ps := vfuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vfuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuefloat.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vfuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valuefloat.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vfuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuefloat.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vfuo.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuefloat.FieldValue, field.TypeFloat64, value)
 	}
-	if value, ok := vfuo.mutation.AddedValue(); ok {
+	if value, ok := _u.mutation.AddedValue(); ok {
 		_spec.AddField(valuefloat.FieldValue, field.TypeFloat64, value)
 	}
-	if value, ok := vfuo.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valuefloat.FieldIsCover, field.TypeBool, value)
 	}
-	if vfuo.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -561,7 +561,7 @@ func (vfuo *ValueFloatUpdateOne) sqlSave(ctx context.Context) (_node *ValueFloat
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vfuo.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -577,7 +577,7 @@ func (vfuo *ValueFloatUpdateOne) sqlSave(ctx context.Context) (_node *ValueFloat
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vfuo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -590,7 +590,7 @@ func (vfuo *ValueFloatUpdateOne) sqlSave(ctx context.Context) (_node *ValueFloat
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vfuo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -606,10 +606,10 @@ func (vfuo *ValueFloatUpdateOne) sqlSave(ctx context.Context) (_node *ValueFloat
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ValueFloat{config: vfuo.config}
+	_node = &ValueFloat{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, vfuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valuefloat.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -617,6 +617,6 @@ func (vfuo *ValueFloatUpdateOne) sqlSave(ctx context.Context) (_node *ValueFloat
 		}
 		return nil, err
 	}
-	vfuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

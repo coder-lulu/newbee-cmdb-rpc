@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"entgo.io/ent/dialect/sql"
+	"entgo.io/ent/dialect/sql/sqlgraph"
 )
 
 const (
@@ -26,94 +27,85 @@ const (
 	FieldPermissionID = "permission_id"
 	// FieldScopeType holds the string denoting the scope_type field in the database.
 	FieldScopeType = "scope_type"
-	// FieldCiTypeID holds the string denoting the ci_type_id field in the database.
-	FieldCiTypeID = "ci_type_id"
-	// FieldCiID holds the string denoting the ci_id field in the database.
-	FieldCiID = "ci_id"
-	// FieldAttributeID holds the string denoting the attribute_id field in the database.
-	FieldAttributeID = "attribute_id"
-	// FieldFieldName holds the string denoting the field_name field in the database.
-	FieldFieldName = "field_name"
+	// FieldScopeTargetType holds the string denoting the scope_target_type field in the database.
+	FieldScopeTargetType = "scope_target_type"
+	// FieldScopeTargetID holds the string denoting the scope_target_id field in the database.
+	FieldScopeTargetID = "scope_target_id"
+	// FieldScopeFieldName holds the string denoting the scope_field_name field in the database.
+	FieldScopeFieldName = "scope_field_name"
 	// FieldSubjectType holds the string denoting the subject_type field in the database.
 	FieldSubjectType = "subject_type"
 	// FieldSubjectID holds the string denoting the subject_id field in the database.
 	FieldSubjectID = "subject_id"
 	// FieldSubjectName holds the string denoting the subject_name field in the database.
 	FieldSubjectName = "subject_name"
-	// FieldSubjectCode holds the string denoting the subject_code field in the database.
-	FieldSubjectCode = "subject_code"
 	// FieldPermissionType holds the string denoting the permission_type field in the database.
 	FieldPermissionType = "permission_type"
-	// FieldOperations holds the string denoting the operations field in the database.
-	FieldOperations = "operations"
-	// FieldConditions holds the string denoting the conditions field in the database.
-	FieldConditions = "conditions"
-	// FieldPriority holds the string denoting the priority field in the database.
-	FieldPriority = "priority"
 	// FieldPermissionLevel holds the string denoting the permission_level field in the database.
 	FieldPermissionLevel = "permission_level"
+	// FieldOperationsMask holds the string denoting the operations_mask field in the database.
+	FieldOperationsMask = "operations_mask"
 	// FieldEffectiveFrom holds the string denoting the effective_from field in the database.
 	FieldEffectiveFrom = "effective_from"
 	// FieldEffectiveTo holds the string denoting the effective_to field in the database.
 	FieldEffectiveTo = "effective_to"
 	// FieldIsTemporary holds the string denoting the is_temporary field in the database.
 	FieldIsTemporary = "is_temporary"
-	// FieldDataFilters holds the string denoting the data_filters field in the database.
-	FieldDataFilters = "data_filters"
-	// FieldFieldMasks holds the string denoting the field_masks field in the database.
-	FieldFieldMasks = "field_masks"
-	// FieldAllowedValues holds the string denoting the allowed_values field in the database.
-	FieldAllowedValues = "allowed_values"
+	// FieldPriority holds the string denoting the priority field in the database.
+	FieldPriority = "priority"
+	// FieldStatus holds the string denoting the status field in the database.
+	FieldStatus = "status"
+	// FieldParentPermissionID holds the string denoting the parent_permission_id field in the database.
+	FieldParentPermissionID = "parent_permission_id"
+	// FieldInheritable holds the string denoting the inheritable field in the database.
+	FieldInheritable = "inheritable"
 	// FieldRequireApproval holds the string denoting the require_approval field in the database.
 	FieldRequireApproval = "require_approval"
-	// FieldGrantedBy holds the string denoting the granted_by field in the database.
-	FieldGrantedBy = "granted_by"
-	// FieldGrantedByName holds the string denoting the granted_by_name field in the database.
-	FieldGrantedByName = "granted_by_name"
-	// FieldGrantedAt holds the string denoting the granted_at field in the database.
-	FieldGrantedAt = "granted_at"
-	// FieldGrantReason holds the string denoting the grant_reason field in the database.
-	FieldGrantReason = "grant_reason"
+	// FieldRequireMfa holds the string denoting the require_mfa field in the database.
+	FieldRequireMfa = "require_mfa"
+	// FieldRiskLevel holds the string denoting the risk_level field in the database.
+	FieldRiskLevel = "risk_level"
 	// FieldUsageCount holds the string denoting the usage_count field in the database.
 	FieldUsageCount = "usage_count"
 	// FieldLastUsedAt holds the string denoting the last_used_at field in the database.
 	FieldLastUsedAt = "last_used_at"
-	// FieldUsageStatistics holds the string denoting the usage_statistics field in the database.
-	FieldUsageStatistics = "usage_statistics"
-	// FieldStatus holds the string denoting the status field in the database.
-	FieldStatus = "status"
-	// FieldStatusReason holds the string denoting the status_reason field in the database.
-	FieldStatusReason = "status_reason"
-	// FieldInheritable holds the string denoting the inheritable field in the database.
-	FieldInheritable = "inheritable"
-	// FieldParentPermissionID holds the string denoting the parent_permission_id field in the database.
-	FieldParentPermissionID = "parent_permission_id"
-	// FieldInheritedFrom holds the string denoting the inherited_from field in the database.
-	FieldInheritedFrom = "inherited_from"
-	// FieldRiskLevel holds the string denoting the risk_level field in the database.
-	FieldRiskLevel = "risk_level"
-	// FieldRequireMfa holds the string denoting the require_mfa field in the database.
-	FieldRequireMfa = "require_mfa"
-	// FieldSecurityConstraints holds the string denoting the security_constraints field in the database.
-	FieldSecurityConstraints = "security_constraints"
-	// FieldMetadata holds the string denoting the metadata field in the database.
-	FieldMetadata = "metadata"
-	// FieldTags holds the string denoting the tags field in the database.
-	FieldTags = "tags"
-	// FieldDescription holds the string denoting the description field in the database.
-	FieldDescription = "description"
-	// FieldComments holds the string denoting the comments field in the database.
-	FieldComments = "comments"
 	// FieldCreatedBy holds the string denoting the created_by field in the database.
 	FieldCreatedBy = "created_by"
 	// FieldUpdatedBy holds the string denoting the updated_by field in the database.
 	FieldUpdatedBy = "updated_by"
-	// FieldLastReviewedAt holds the string denoting the last_reviewed_at field in the database.
-	FieldLastReviewedAt = "last_reviewed_at"
-	// FieldLastReviewedBy holds the string denoting the last_reviewed_by field in the database.
-	FieldLastReviewedBy = "last_reviewed_by"
+	// FieldDescription holds the string denoting the description field in the database.
+	FieldDescription = "description"
+	// FieldComments holds the string denoting the comments field in the database.
+	FieldComments = "comments"
+	// EdgeOperations holds the string denoting the operations edge name in mutations.
+	EdgeOperations = "operations"
+	// EdgeDataFilters holds the string denoting the data_filters edge name in mutations.
+	EdgeDataFilters = "data_filters"
+	// EdgeFieldMasks holds the string denoting the field_masks edge name in mutations.
+	EdgeFieldMasks = "field_masks"
 	// Table holds the table name of the cipermission in the database.
 	Table = "cmdb_ci_permissions"
+	// OperationsTable is the table that holds the operations relation/edge.
+	OperationsTable = "cmdb_permission_operations"
+	// OperationsInverseTable is the table name for the PermissionOperation entity.
+	// It exists in this package in order to avoid circular dependency with the "permissionoperation" package.
+	OperationsInverseTable = "cmdb_permission_operations"
+	// OperationsColumn is the table column denoting the operations relation/edge.
+	OperationsColumn = "permission_id"
+	// DataFiltersTable is the table that holds the data_filters relation/edge.
+	DataFiltersTable = "cmdb_permission_data_filters"
+	// DataFiltersInverseTable is the table name for the PermissionDataFilter entity.
+	// It exists in this package in order to avoid circular dependency with the "permissiondatafilter" package.
+	DataFiltersInverseTable = "cmdb_permission_data_filters"
+	// DataFiltersColumn is the table column denoting the data_filters relation/edge.
+	DataFiltersColumn = "permission_id"
+	// FieldMasksTable is the table that holds the field_masks relation/edge.
+	FieldMasksTable = "cmdb_permission_field_masks"
+	// FieldMasksInverseTable is the table name for the PermissionFieldMask entity.
+	// It exists in this package in order to avoid circular dependency with the "permissionfieldmask" package.
+	FieldMasksInverseTable = "cmdb_permission_field_masks"
+	// FieldMasksColumn is the table column denoting the field_masks relation/edge.
+	FieldMasksColumn = "permission_id"
 )
 
 // Columns holds all SQL columns for cipermission fields.
@@ -125,49 +117,31 @@ var Columns = []string{
 	FieldDepartmentID,
 	FieldPermissionID,
 	FieldScopeType,
-	FieldCiTypeID,
-	FieldCiID,
-	FieldAttributeID,
-	FieldFieldName,
+	FieldScopeTargetType,
+	FieldScopeTargetID,
+	FieldScopeFieldName,
 	FieldSubjectType,
 	FieldSubjectID,
 	FieldSubjectName,
-	FieldSubjectCode,
 	FieldPermissionType,
-	FieldOperations,
-	FieldConditions,
-	FieldPriority,
 	FieldPermissionLevel,
+	FieldOperationsMask,
 	FieldEffectiveFrom,
 	FieldEffectiveTo,
 	FieldIsTemporary,
-	FieldDataFilters,
-	FieldFieldMasks,
-	FieldAllowedValues,
+	FieldPriority,
+	FieldStatus,
+	FieldParentPermissionID,
+	FieldInheritable,
 	FieldRequireApproval,
-	FieldGrantedBy,
-	FieldGrantedByName,
-	FieldGrantedAt,
-	FieldGrantReason,
+	FieldRequireMfa,
+	FieldRiskLevel,
 	FieldUsageCount,
 	FieldLastUsedAt,
-	FieldUsageStatistics,
-	FieldStatus,
-	FieldStatusReason,
-	FieldInheritable,
-	FieldParentPermissionID,
-	FieldInheritedFrom,
-	FieldRiskLevel,
-	FieldRequireMfa,
-	FieldSecurityConstraints,
-	FieldMetadata,
-	FieldTags,
-	FieldDescription,
-	FieldComments,
 	FieldCreatedBy,
 	FieldUpdatedBy,
-	FieldLastReviewedAt,
-	FieldLastReviewedBy,
+	FieldDescription,
+	FieldComments,
 }
 
 // ValidColumn reports if the column name is valid (part of the table columns).
@@ -189,18 +163,20 @@ var (
 	UpdateDefaultUpdatedAt func() time.Time
 	// DefaultTenantID holds the default value on creation for the "tenant_id" field.
 	DefaultTenantID uint64
-	// DefaultPriority holds the default value on creation for the "priority" field.
-	DefaultPriority int
+	// DefaultOperationsMask holds the default value on creation for the "operations_mask" field.
+	DefaultOperationsMask uint64
 	// DefaultIsTemporary holds the default value on creation for the "is_temporary" field.
 	DefaultIsTemporary bool
-	// DefaultRequireApproval holds the default value on creation for the "require_approval" field.
-	DefaultRequireApproval bool
-	// DefaultUsageCount holds the default value on creation for the "usage_count" field.
-	DefaultUsageCount int
+	// DefaultPriority holds the default value on creation for the "priority" field.
+	DefaultPriority int
 	// DefaultInheritable holds the default value on creation for the "inheritable" field.
 	DefaultInheritable bool
+	// DefaultRequireApproval holds the default value on creation for the "require_approval" field.
+	DefaultRequireApproval bool
 	// DefaultRequireMfa holds the default value on creation for the "require_mfa" field.
 	DefaultRequireMfa bool
+	// DefaultUsageCount holds the default value on creation for the "usage_count" field.
+	DefaultUsageCount int
 )
 
 // ScopeType defines the type for the "scope_type" enum field.
@@ -405,24 +381,19 @@ func ByScopeType(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldScopeType, opts...).ToFunc()
 }
 
-// ByCiTypeID orders the results by the ci_type_id field.
-func ByCiTypeID(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCiTypeID, opts...).ToFunc()
+// ByScopeTargetType orders the results by the scope_target_type field.
+func ByScopeTargetType(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldScopeTargetType, opts...).ToFunc()
 }
 
-// ByCiID orders the results by the ci_id field.
-func ByCiID(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCiID, opts...).ToFunc()
+// ByScopeTargetID orders the results by the scope_target_id field.
+func ByScopeTargetID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldScopeTargetID, opts...).ToFunc()
 }
 
-// ByAttributeID orders the results by the attribute_id field.
-func ByAttributeID(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldAttributeID, opts...).ToFunc()
-}
-
-// ByFieldName orders the results by the field_name field.
-func ByFieldName(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldFieldName, opts...).ToFunc()
+// ByScopeFieldName orders the results by the scope_field_name field.
+func ByScopeFieldName(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldScopeFieldName, opts...).ToFunc()
 }
 
 // BySubjectType orders the results by the subject_type field.
@@ -440,24 +411,19 @@ func BySubjectName(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldSubjectName, opts...).ToFunc()
 }
 
-// BySubjectCode orders the results by the subject_code field.
-func BySubjectCode(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldSubjectCode, opts...).ToFunc()
-}
-
 // ByPermissionType orders the results by the permission_type field.
 func ByPermissionType(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldPermissionType, opts...).ToFunc()
 }
 
-// ByPriority orders the results by the priority field.
-func ByPriority(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldPriority, opts...).ToFunc()
-}
-
 // ByPermissionLevel orders the results by the permission_level field.
 func ByPermissionLevel(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldPermissionLevel, opts...).ToFunc()
+}
+
+// ByOperationsMask orders the results by the operations_mask field.
+func ByOperationsMask(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldOperationsMask, opts...).ToFunc()
 }
 
 // ByEffectiveFrom orders the results by the effective_from field.
@@ -475,29 +441,39 @@ func ByIsTemporary(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldIsTemporary, opts...).ToFunc()
 }
 
+// ByPriority orders the results by the priority field.
+func ByPriority(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldPriority, opts...).ToFunc()
+}
+
+// ByStatus orders the results by the status field.
+func ByStatus(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldStatus, opts...).ToFunc()
+}
+
+// ByParentPermissionID orders the results by the parent_permission_id field.
+func ByParentPermissionID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldParentPermissionID, opts...).ToFunc()
+}
+
+// ByInheritable orders the results by the inheritable field.
+func ByInheritable(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldInheritable, opts...).ToFunc()
+}
+
 // ByRequireApproval orders the results by the require_approval field.
 func ByRequireApproval(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldRequireApproval, opts...).ToFunc()
 }
 
-// ByGrantedBy orders the results by the granted_by field.
-func ByGrantedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldGrantedBy, opts...).ToFunc()
+// ByRequireMfa orders the results by the require_mfa field.
+func ByRequireMfa(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldRequireMfa, opts...).ToFunc()
 }
 
-// ByGrantedByName orders the results by the granted_by_name field.
-func ByGrantedByName(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldGrantedByName, opts...).ToFunc()
-}
-
-// ByGrantedAt orders the results by the granted_at field.
-func ByGrantedAt(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldGrantedAt, opts...).ToFunc()
-}
-
-// ByGrantReason orders the results by the grant_reason field.
-func ByGrantReason(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldGrantReason, opts...).ToFunc()
+// ByRiskLevel orders the results by the risk_level field.
+func ByRiskLevel(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldRiskLevel, opts...).ToFunc()
 }
 
 // ByUsageCount orders the results by the usage_count field.
@@ -510,34 +486,14 @@ func ByLastUsedAt(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldLastUsedAt, opts...).ToFunc()
 }
 
-// ByStatus orders the results by the status field.
-func ByStatus(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldStatus, opts...).ToFunc()
+// ByCreatedBy orders the results by the created_by field.
+func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
-// ByStatusReason orders the results by the status_reason field.
-func ByStatusReason(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldStatusReason, opts...).ToFunc()
-}
-
-// ByInheritable orders the results by the inheritable field.
-func ByInheritable(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldInheritable, opts...).ToFunc()
-}
-
-// ByParentPermissionID orders the results by the parent_permission_id field.
-func ByParentPermissionID(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldParentPermissionID, opts...).ToFunc()
-}
-
-// ByRiskLevel orders the results by the risk_level field.
-func ByRiskLevel(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldRiskLevel, opts...).ToFunc()
-}
-
-// ByRequireMfa orders the results by the require_mfa field.
-func ByRequireMfa(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldRequireMfa, opts...).ToFunc()
+// ByUpdatedBy orders the results by the updated_by field.
+func ByUpdatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldUpdatedBy, opts...).ToFunc()
 }
 
 // ByDescription orders the results by the description field.
@@ -550,22 +506,65 @@ func ByComments(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldComments, opts...).ToFunc()
 }
 
-// ByCreatedBy orders the results by the created_by field.
-func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
+// ByOperationsCount orders the results by operations count.
+func ByOperationsCount(opts ...sql.OrderTermOption) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborsCount(s, newOperationsStep(), opts...)
+	}
 }
 
-// ByUpdatedBy orders the results by the updated_by field.
-func ByUpdatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldUpdatedBy, opts...).ToFunc()
+// ByOperations orders the results by operations terms.
+func ByOperations(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborTerms(s, newOperationsStep(), append([]sql.OrderTerm{term}, terms...)...)
+	}
 }
 
-// ByLastReviewedAt orders the results by the last_reviewed_at field.
-func ByLastReviewedAt(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldLastReviewedAt, opts...).ToFunc()
+// ByDataFiltersCount orders the results by data_filters count.
+func ByDataFiltersCount(opts ...sql.OrderTermOption) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborsCount(s, newDataFiltersStep(), opts...)
+	}
 }
 
-// ByLastReviewedBy orders the results by the last_reviewed_by field.
-func ByLastReviewedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldLastReviewedBy, opts...).ToFunc()
+// ByDataFilters orders the results by data_filters terms.
+func ByDataFilters(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborTerms(s, newDataFiltersStep(), append([]sql.OrderTerm{term}, terms...)...)
+	}
+}
+
+// ByFieldMasksCount orders the results by field_masks count.
+func ByFieldMasksCount(opts ...sql.OrderTermOption) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborsCount(s, newFieldMasksStep(), opts...)
+	}
+}
+
+// ByFieldMasks orders the results by field_masks terms.
+func ByFieldMasks(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborTerms(s, newFieldMasksStep(), append([]sql.OrderTerm{term}, terms...)...)
+	}
+}
+func newOperationsStep() *sqlgraph.Step {
+	return sqlgraph.NewStep(
+		sqlgraph.From(Table, FieldID),
+		sqlgraph.To(OperationsInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.O2M, false, OperationsTable, OperationsColumn),
+	)
+}
+func newDataFiltersStep() *sqlgraph.Step {
+	return sqlgraph.NewStep(
+		sqlgraph.From(Table, FieldID),
+		sqlgraph.To(DataFiltersInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.O2M, false, DataFiltersTable, DataFiltersColumn),
+	)
+}
+func newFieldMasksStep() *sqlgraph.Step {
+	return sqlgraph.NewStep(
+		sqlgraph.From(Table, FieldID),
+		sqlgraph.To(FieldMasksInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.O2M, false, FieldMasksTable, FieldMasksColumn),
+	)
 }

@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
 )
 
 // ValueIndexTextDelete is the builder for deleting a ValueIndexText entity.
@@ -20,56 +20,56 @@ type ValueIndexTextDelete struct {
 }
 
 // Where appends a list predicates to the ValueIndexTextDelete builder.
-func (vitd *ValueIndexTextDelete) Where(ps ...predicate.ValueIndexText) *ValueIndexTextDelete {
-	vitd.mutation.Where(ps...)
-	return vitd
+func (_d *ValueIndexTextDelete) Where(ps ...predicate.ValueIndexText) *ValueIndexTextDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (vitd *ValueIndexTextDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, vitd.sqlExec, vitd.mutation, vitd.hooks)
+func (_d *ValueIndexTextDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vitd *ValueIndexTextDelete) ExecX(ctx context.Context) int {
-	n, err := vitd.Exec(ctx)
+func (_d *ValueIndexTextDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (vitd *ValueIndexTextDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ValueIndexTextDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(valueindextext.Table, sqlgraph.NewFieldSpec(valueindextext.FieldID, field.TypeUint64))
-	if ps := vitd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, vitd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	vitd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ValueIndexTextDeleteOne is the builder for deleting a single ValueIndexText entity.
 type ValueIndexTextDeleteOne struct {
-	vitd *ValueIndexTextDelete
+	_d *ValueIndexTextDelete
 }
 
 // Where appends a list predicates to the ValueIndexTextDelete builder.
-func (vitdo *ValueIndexTextDeleteOne) Where(ps ...predicate.ValueIndexText) *ValueIndexTextDeleteOne {
-	vitdo.vitd.mutation.Where(ps...)
-	return vitdo
+func (_d *ValueIndexTextDeleteOne) Where(ps ...predicate.ValueIndexText) *ValueIndexTextDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (vitdo *ValueIndexTextDeleteOne) Exec(ctx context.Context) error {
-	n, err := vitdo.vitd.Exec(ctx)
+func (_d *ValueIndexTextDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (vitdo *ValueIndexTextDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vitdo *ValueIndexTextDeleteOne) ExecX(ctx context.Context) {
-	if err := vitdo.Exec(ctx); err != nil {
+func (_d *ValueIndexTextDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

@@ -6,8 +6,8 @@ import (
 
 	"github.com/zeromicro/go-zero/core/logx"
 
-	"gitee.com/link234/cmdb-rpc/internal/adapters/input"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/adapters/input"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 )
 
 // PipelineResult 管道处理结果

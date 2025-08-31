@@ -5,37 +5,42 @@ package runtime
 import (
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/ciapprovalflow"
-	"gitee.com/link234/cmdb-rpc/ent/cilifecyclestate"
-	"gitee.com/link234/cmdb-rpc/ent/cioperation"
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
-	"gitee.com/link234/cmdb-rpc/ent/importtemplate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissioncache"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiondatafilter"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionfieldmask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionoperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiontemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 )
 
 // The init function reads all schema descriptors with runtime code
@@ -406,30 +411,34 @@ func init() {
 	cipermissionDescTenantID := cipermissionMixinFields1[0].Descriptor()
 	// cipermission.DefaultTenantID holds the default value on creation for the tenant_id field.
 	cipermission.DefaultTenantID = cipermissionDescTenantID.Default.(uint64)
-	// cipermissionDescPriority is the schema descriptor for priority field.
-	cipermissionDescPriority := cipermissionFields[13].Descriptor()
-	// cipermission.DefaultPriority holds the default value on creation for the priority field.
-	cipermission.DefaultPriority = cipermissionDescPriority.Default.(int)
+	// cipermissionDescOperationsMask is the schema descriptor for operations_mask field.
+	cipermissionDescOperationsMask := cipermissionFields[10].Descriptor()
+	// cipermission.DefaultOperationsMask holds the default value on creation for the operations_mask field.
+	cipermission.DefaultOperationsMask = cipermissionDescOperationsMask.Default.(uint64)
 	// cipermissionDescIsTemporary is the schema descriptor for is_temporary field.
-	cipermissionDescIsTemporary := cipermissionFields[17].Descriptor()
+	cipermissionDescIsTemporary := cipermissionFields[13].Descriptor()
 	// cipermission.DefaultIsTemporary holds the default value on creation for the is_temporary field.
 	cipermission.DefaultIsTemporary = cipermissionDescIsTemporary.Default.(bool)
-	// cipermissionDescRequireApproval is the schema descriptor for require_approval field.
-	cipermissionDescRequireApproval := cipermissionFields[21].Descriptor()
-	// cipermission.DefaultRequireApproval holds the default value on creation for the require_approval field.
-	cipermission.DefaultRequireApproval = cipermissionDescRequireApproval.Default.(bool)
-	// cipermissionDescUsageCount is the schema descriptor for usage_count field.
-	cipermissionDescUsageCount := cipermissionFields[26].Descriptor()
-	// cipermission.DefaultUsageCount holds the default value on creation for the usage_count field.
-	cipermission.DefaultUsageCount = cipermissionDescUsageCount.Default.(int)
+	// cipermissionDescPriority is the schema descriptor for priority field.
+	cipermissionDescPriority := cipermissionFields[14].Descriptor()
+	// cipermission.DefaultPriority holds the default value on creation for the priority field.
+	cipermission.DefaultPriority = cipermissionDescPriority.Default.(int)
 	// cipermissionDescInheritable is the schema descriptor for inheritable field.
-	cipermissionDescInheritable := cipermissionFields[31].Descriptor()
+	cipermissionDescInheritable := cipermissionFields[17].Descriptor()
 	// cipermission.DefaultInheritable holds the default value on creation for the inheritable field.
 	cipermission.DefaultInheritable = cipermissionDescInheritable.Default.(bool)
+	// cipermissionDescRequireApproval is the schema descriptor for require_approval field.
+	cipermissionDescRequireApproval := cipermissionFields[18].Descriptor()
+	// cipermission.DefaultRequireApproval holds the default value on creation for the require_approval field.
+	cipermission.DefaultRequireApproval = cipermissionDescRequireApproval.Default.(bool)
 	// cipermissionDescRequireMfa is the schema descriptor for require_mfa field.
-	cipermissionDescRequireMfa := cipermissionFields[35].Descriptor()
+	cipermissionDescRequireMfa := cipermissionFields[19].Descriptor()
 	// cipermission.DefaultRequireMfa holds the default value on creation for the require_mfa field.
 	cipermission.DefaultRequireMfa = cipermissionDescRequireMfa.Default.(bool)
+	// cipermissionDescUsageCount is the schema descriptor for usage_count field.
+	cipermissionDescUsageCount := cipermissionFields[21].Descriptor()
+	// cipermission.DefaultUsageCount holds the default value on creation for the usage_count field.
+	cipermission.DefaultUsageCount = cipermissionDescUsageCount.Default.(int)
 	cirecordsMixin := schema.CiRecords{}.Mixin()
 	cirecordsMixinFields0 := cirecordsMixin[0].Fields()
 	_ = cirecordsMixinFields0
@@ -868,6 +877,8 @@ func init() {
 	cityperelation.Interceptors[0] = cityperelationMixinInters1[0]
 	cityperelationMixinFields0 := cityperelationMixin[0].Fields()
 	_ = cityperelationMixinFields0
+	cityperelationMixinFields2 := cityperelationMixin[2].Fields()
+	_ = cityperelationMixinFields2
 	cityperelationFields := schema.CiTypeRelation{}.Fields()
 	_ = cityperelationFields
 	// cityperelationDescCreatedAt is the schema descriptor for created_at field.
@@ -880,6 +891,10 @@ func init() {
 	cityperelation.DefaultUpdatedAt = cityperelationDescUpdatedAt.Default.(func() time.Time)
 	// cityperelation.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
 	cityperelation.UpdateDefaultUpdatedAt = cityperelationDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// cityperelationDescTenantID is the schema descriptor for tenant_id field.
+	cityperelationDescTenantID := cityperelationMixinFields2[0].Descriptor()
+	// cityperelation.DefaultTenantID holds the default value on creation for the tenant_id field.
+	cityperelation.DefaultTenantID = cityperelationDescTenantID.Default.(uint64)
 	cisMixin := schema.Cis{}.Mixin()
 	cisMixinHooks1 := cisMixin[1].Hooks()
 	cis.Hooks[0] = cisMixinHooks1[0]
@@ -1289,6 +1304,155 @@ func init() {
 	importtemplateDescApprovedByName := importtemplateFields[46].Descriptor()
 	// importtemplate.ApprovedByNameValidator is a validator for the "approved_by_name" field. It is called by the builders before save.
 	importtemplate.ApprovedByNameValidator = importtemplateDescApprovedByName.Validators[0].(func(string) error)
+	permissioncacheMixin := schema.PermissionCache{}.Mixin()
+	permissioncacheMixinFields0 := permissioncacheMixin[0].Fields()
+	_ = permissioncacheMixinFields0
+	permissioncacheMixinFields1 := permissioncacheMixin[1].Fields()
+	_ = permissioncacheMixinFields1
+	permissioncacheFields := schema.PermissionCache{}.Fields()
+	_ = permissioncacheFields
+	// permissioncacheDescCreatedAt is the schema descriptor for created_at field.
+	permissioncacheDescCreatedAt := permissioncacheMixinFields0[1].Descriptor()
+	// permissioncache.DefaultCreatedAt holds the default value on creation for the created_at field.
+	permissioncache.DefaultCreatedAt = permissioncacheDescCreatedAt.Default.(func() time.Time)
+	// permissioncacheDescUpdatedAt is the schema descriptor for updated_at field.
+	permissioncacheDescUpdatedAt := permissioncacheMixinFields0[2].Descriptor()
+	// permissioncache.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	permissioncache.DefaultUpdatedAt = permissioncacheDescUpdatedAt.Default.(func() time.Time)
+	// permissioncache.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	permissioncache.UpdateDefaultUpdatedAt = permissioncacheDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// permissioncacheDescTenantID is the schema descriptor for tenant_id field.
+	permissioncacheDescTenantID := permissioncacheMixinFields1[0].Descriptor()
+	// permissioncache.DefaultTenantID holds the default value on creation for the tenant_id field.
+	permissioncache.DefaultTenantID = permissioncacheDescTenantID.Default.(uint64)
+	// permissioncacheDescAllowedOperations is the schema descriptor for allowed_operations field.
+	permissioncacheDescAllowedOperations := permissioncacheFields[4].Descriptor()
+	// permissioncache.DefaultAllowedOperations holds the default value on creation for the allowed_operations field.
+	permissioncache.DefaultAllowedOperations = permissioncacheDescAllowedOperations.Default.(uint64)
+	// permissioncacheDescHasDataFilters is the schema descriptor for has_data_filters field.
+	permissioncacheDescHasDataFilters := permissioncacheFields[6].Descriptor()
+	// permissioncache.DefaultHasDataFilters holds the default value on creation for the has_data_filters field.
+	permissioncache.DefaultHasDataFilters = permissioncacheDescHasDataFilters.Default.(bool)
+	// permissioncacheDescHasFieldMasks is the schema descriptor for has_field_masks field.
+	permissioncacheDescHasFieldMasks := permissioncacheFields[7].Descriptor()
+	// permissioncache.DefaultHasFieldMasks holds the default value on creation for the has_field_masks field.
+	permissioncache.DefaultHasFieldMasks = permissioncacheDescHasFieldMasks.Default.(bool)
+	// permissioncacheDescLastAccessedAt is the schema descriptor for last_accessed_at field.
+	permissioncacheDescLastAccessedAt := permissioncacheFields[10].Descriptor()
+	// permissioncache.DefaultLastAccessedAt holds the default value on creation for the last_accessed_at field.
+	permissioncache.DefaultLastAccessedAt = permissioncacheDescLastAccessedAt.Default.(func() time.Time)
+	// permissioncacheDescAccessCount is the schema descriptor for access_count field.
+	permissioncacheDescAccessCount := permissioncacheFields[11].Descriptor()
+	// permissioncache.DefaultAccessCount holds the default value on creation for the access_count field.
+	permissioncache.DefaultAccessCount = permissioncacheDescAccessCount.Default.(int)
+	permissiondatafilterMixin := schema.PermissionDataFilter{}.Mixin()
+	permissiondatafilterMixinFields0 := permissiondatafilterMixin[0].Fields()
+	_ = permissiondatafilterMixinFields0
+	permissiondatafilterMixinFields1 := permissiondatafilterMixin[1].Fields()
+	_ = permissiondatafilterMixinFields1
+	permissiondatafilterFields := schema.PermissionDataFilter{}.Fields()
+	_ = permissiondatafilterFields
+	// permissiondatafilterDescCreatedAt is the schema descriptor for created_at field.
+	permissiondatafilterDescCreatedAt := permissiondatafilterMixinFields0[1].Descriptor()
+	// permissiondatafilter.DefaultCreatedAt holds the default value on creation for the created_at field.
+	permissiondatafilter.DefaultCreatedAt = permissiondatafilterDescCreatedAt.Default.(func() time.Time)
+	// permissiondatafilterDescUpdatedAt is the schema descriptor for updated_at field.
+	permissiondatafilterDescUpdatedAt := permissiondatafilterMixinFields0[2].Descriptor()
+	// permissiondatafilter.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	permissiondatafilter.DefaultUpdatedAt = permissiondatafilterDescUpdatedAt.Default.(func() time.Time)
+	// permissiondatafilter.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	permissiondatafilter.UpdateDefaultUpdatedAt = permissiondatafilterDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// permissiondatafilterDescTenantID is the schema descriptor for tenant_id field.
+	permissiondatafilterDescTenantID := permissiondatafilterMixinFields1[0].Descriptor()
+	// permissiondatafilter.DefaultTenantID holds the default value on creation for the tenant_id field.
+	permissiondatafilter.DefaultTenantID = permissiondatafilterDescTenantID.Default.(uint64)
+	// permissiondatafilterDescFilterGroup is the schema descriptor for filter_group field.
+	permissiondatafilterDescFilterGroup := permissiondatafilterFields[1].Descriptor()
+	// permissiondatafilter.DefaultFilterGroup holds the default value on creation for the filter_group field.
+	permissiondatafilter.DefaultFilterGroup = permissiondatafilterDescFilterGroup.Default.(int)
+	permissionfieldmaskMixin := schema.PermissionFieldMask{}.Mixin()
+	permissionfieldmaskMixinFields0 := permissionfieldmaskMixin[0].Fields()
+	_ = permissionfieldmaskMixinFields0
+	permissionfieldmaskMixinFields1 := permissionfieldmaskMixin[1].Fields()
+	_ = permissionfieldmaskMixinFields1
+	permissionfieldmaskFields := schema.PermissionFieldMask{}.Fields()
+	_ = permissionfieldmaskFields
+	// permissionfieldmaskDescCreatedAt is the schema descriptor for created_at field.
+	permissionfieldmaskDescCreatedAt := permissionfieldmaskMixinFields0[1].Descriptor()
+	// permissionfieldmask.DefaultCreatedAt holds the default value on creation for the created_at field.
+	permissionfieldmask.DefaultCreatedAt = permissionfieldmaskDescCreatedAt.Default.(func() time.Time)
+	// permissionfieldmaskDescUpdatedAt is the schema descriptor for updated_at field.
+	permissionfieldmaskDescUpdatedAt := permissionfieldmaskMixinFields0[2].Descriptor()
+	// permissionfieldmask.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	permissionfieldmask.DefaultUpdatedAt = permissionfieldmaskDescUpdatedAt.Default.(func() time.Time)
+	// permissionfieldmask.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	permissionfieldmask.UpdateDefaultUpdatedAt = permissionfieldmaskDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// permissionfieldmaskDescTenantID is the schema descriptor for tenant_id field.
+	permissionfieldmaskDescTenantID := permissionfieldmaskMixinFields1[0].Descriptor()
+	// permissionfieldmask.DefaultTenantID holds the default value on creation for the tenant_id field.
+	permissionfieldmask.DefaultTenantID = permissionfieldmaskDescTenantID.Default.(uint64)
+	permissionoperationMixin := schema.PermissionOperation{}.Mixin()
+	permissionoperationMixinFields0 := permissionoperationMixin[0].Fields()
+	_ = permissionoperationMixinFields0
+	permissionoperationMixinFields1 := permissionoperationMixin[1].Fields()
+	_ = permissionoperationMixinFields1
+	permissionoperationFields := schema.PermissionOperation{}.Fields()
+	_ = permissionoperationFields
+	// permissionoperationDescCreatedAt is the schema descriptor for created_at field.
+	permissionoperationDescCreatedAt := permissionoperationMixinFields0[1].Descriptor()
+	// permissionoperation.DefaultCreatedAt holds the default value on creation for the created_at field.
+	permissionoperation.DefaultCreatedAt = permissionoperationDescCreatedAt.Default.(func() time.Time)
+	// permissionoperationDescUpdatedAt is the schema descriptor for updated_at field.
+	permissionoperationDescUpdatedAt := permissionoperationMixinFields0[2].Descriptor()
+	// permissionoperation.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	permissionoperation.DefaultUpdatedAt = permissionoperationDescUpdatedAt.Default.(func() time.Time)
+	// permissionoperation.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	permissionoperation.UpdateDefaultUpdatedAt = permissionoperationDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// permissionoperationDescTenantID is the schema descriptor for tenant_id field.
+	permissionoperationDescTenantID := permissionoperationMixinFields1[0].Descriptor()
+	// permissionoperation.DefaultTenantID holds the default value on creation for the tenant_id field.
+	permissionoperation.DefaultTenantID = permissionoperationDescTenantID.Default.(uint64)
+	// permissionoperationDescIsAllowed is the schema descriptor for is_allowed field.
+	permissionoperationDescIsAllowed := permissionoperationFields[3].Descriptor()
+	// permissionoperation.DefaultIsAllowed holds the default value on creation for the is_allowed field.
+	permissionoperation.DefaultIsAllowed = permissionoperationDescIsAllowed.Default.(bool)
+	permissiontemplateMixin := schema.PermissionTemplate{}.Mixin()
+	permissiontemplateMixinFields0 := permissiontemplateMixin[0].Fields()
+	_ = permissiontemplateMixinFields0
+	permissiontemplateMixinFields1 := permissiontemplateMixin[1].Fields()
+	_ = permissiontemplateMixinFields1
+	permissiontemplateFields := schema.PermissionTemplate{}.Fields()
+	_ = permissiontemplateFields
+	// permissiontemplateDescCreatedAt is the schema descriptor for created_at field.
+	permissiontemplateDescCreatedAt := permissiontemplateMixinFields0[1].Descriptor()
+	// permissiontemplate.DefaultCreatedAt holds the default value on creation for the created_at field.
+	permissiontemplate.DefaultCreatedAt = permissiontemplateDescCreatedAt.Default.(func() time.Time)
+	// permissiontemplateDescUpdatedAt is the schema descriptor for updated_at field.
+	permissiontemplateDescUpdatedAt := permissiontemplateMixinFields0[2].Descriptor()
+	// permissiontemplate.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	permissiontemplate.DefaultUpdatedAt = permissiontemplateDescUpdatedAt.Default.(func() time.Time)
+	// permissiontemplate.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	permissiontemplate.UpdateDefaultUpdatedAt = permissiontemplateDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// permissiontemplateDescTenantID is the schema descriptor for tenant_id field.
+	permissiontemplateDescTenantID := permissiontemplateMixinFields1[0].Descriptor()
+	// permissiontemplate.DefaultTenantID holds the default value on creation for the tenant_id field.
+	permissiontemplate.DefaultTenantID = permissiontemplateDescTenantID.Default.(uint64)
+	// permissiontemplateDescOperationsMask is the schema descriptor for operations_mask field.
+	permissiontemplateDescOperationsMask := permissiontemplateFields[6].Descriptor()
+	// permissiontemplate.DefaultOperationsMask holds the default value on creation for the operations_mask field.
+	permissiontemplate.DefaultOperationsMask = permissiontemplateDescOperationsMask.Default.(uint64)
+	// permissiontemplateDescIsSystemTemplate is the schema descriptor for is_system_template field.
+	permissiontemplateDescIsSystemTemplate := permissiontemplateFields[8].Descriptor()
+	// permissiontemplate.DefaultIsSystemTemplate holds the default value on creation for the is_system_template field.
+	permissiontemplate.DefaultIsSystemTemplate = permissiontemplateDescIsSystemTemplate.Default.(bool)
+	// permissiontemplateDescIsActive is the schema descriptor for is_active field.
+	permissiontemplateDescIsActive := permissiontemplateFields[9].Descriptor()
+	// permissiontemplate.DefaultIsActive holds the default value on creation for the is_active field.
+	permissiontemplate.DefaultIsActive = permissiontemplateDescIsActive.Default.(bool)
+	// permissiontemplateDescSortOrder is the schema descriptor for sort_order field.
+	permissiontemplateDescSortOrder := permissiontemplateFields[10].Descriptor()
+	// permissiontemplate.DefaultSortOrder holds the default value on creation for the sort_order field.
+	permissiontemplate.DefaultSortOrder = permissiontemplateDescSortOrder.Default.(int)
 	relationtypeMixin := schema.RelationType{}.Mixin()
 	relationtypeMixinHooks1 := relationtypeMixin[1].Hooks()
 	relationtype.Hooks[0] = relationtypeMixinHooks1[0]
@@ -1296,6 +1460,8 @@ func init() {
 	relationtype.Interceptors[0] = relationtypeMixinInters1[0]
 	relationtypeMixinFields0 := relationtypeMixin[0].Fields()
 	_ = relationtypeMixinFields0
+	relationtypeMixinFields2 := relationtypeMixin[2].Fields()
+	_ = relationtypeMixinFields2
 	relationtypeFields := schema.RelationType{}.Fields()
 	_ = relationtypeFields
 	// relationtypeDescCreatedAt is the schema descriptor for created_at field.
@@ -1308,6 +1474,10 @@ func init() {
 	relationtype.DefaultUpdatedAt = relationtypeDescUpdatedAt.Default.(func() time.Time)
 	// relationtype.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
 	relationtype.UpdateDefaultUpdatedAt = relationtypeDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// relationtypeDescTenantID is the schema descriptor for tenant_id field.
+	relationtypeDescTenantID := relationtypeMixinFields2[0].Descriptor()
+	// relationtype.DefaultTenantID holds the default value on creation for the tenant_id field.
+	relationtype.DefaultTenantID = relationtypeDescTenantID.Default.(uint64)
 	// relationtypeDescName is the schema descriptor for name field.
 	relationtypeDescName := relationtypeFields[0].Descriptor()
 	// relationtype.NameValidator is a validator for the "name" field. It is called by the builders before save.
@@ -1351,6 +1521,8 @@ func init() {
 	valuedatetime.Interceptors[0] = valuedatetimeMixinInters1[0]
 	valuedatetimeMixinFields0 := valuedatetimeMixin[0].Fields()
 	_ = valuedatetimeMixinFields0
+	valuedatetimeMixinFields2 := valuedatetimeMixin[2].Fields()
+	_ = valuedatetimeMixinFields2
 	valuedatetimeFields := schema.ValueDatetime{}.Fields()
 	_ = valuedatetimeFields
 	// valuedatetimeDescCreatedAt is the schema descriptor for created_at field.
@@ -1363,6 +1535,10 @@ func init() {
 	valuedatetime.DefaultUpdatedAt = valuedatetimeDescUpdatedAt.Default.(func() time.Time)
 	// valuedatetime.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
 	valuedatetime.UpdateDefaultUpdatedAt = valuedatetimeDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// valuedatetimeDescTenantID is the schema descriptor for tenant_id field.
+	valuedatetimeDescTenantID := valuedatetimeMixinFields2[0].Descriptor()
+	// valuedatetime.DefaultTenantID holds the default value on creation for the tenant_id field.
+	valuedatetime.DefaultTenantID = valuedatetimeDescTenantID.Default.(uint64)
 	// valuedatetimeDescIsCover is the schema descriptor for is_cover field.
 	valuedatetimeDescIsCover := valuedatetimeFields[3].Descriptor()
 	// valuedatetime.DefaultIsCover holds the default value on creation for the is_cover field.
@@ -1374,6 +1550,8 @@ func init() {
 	valuefloat.Interceptors[0] = valuefloatMixinInters1[0]
 	valuefloatMixinFields0 := valuefloatMixin[0].Fields()
 	_ = valuefloatMixinFields0
+	valuefloatMixinFields2 := valuefloatMixin[2].Fields()
+	_ = valuefloatMixinFields2
 	valuefloatFields := schema.ValueFloat{}.Fields()
 	_ = valuefloatFields
 	// valuefloatDescCreatedAt is the schema descriptor for created_at field.
@@ -1386,6 +1564,10 @@ func init() {
 	valuefloat.DefaultUpdatedAt = valuefloatDescUpdatedAt.Default.(func() time.Time)
 	// valuefloat.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
 	valuefloat.UpdateDefaultUpdatedAt = valuefloatDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// valuefloatDescTenantID is the schema descriptor for tenant_id field.
+	valuefloatDescTenantID := valuefloatMixinFields2[0].Descriptor()
+	// valuefloat.DefaultTenantID holds the default value on creation for the tenant_id field.
+	valuefloat.DefaultTenantID = valuefloatDescTenantID.Default.(uint64)
 	// valuefloatDescIsCover is the schema descriptor for is_cover field.
 	valuefloatDescIsCover := valuefloatFields[3].Descriptor()
 	// valuefloat.DefaultIsCover holds the default value on creation for the is_cover field.
@@ -1397,6 +1579,8 @@ func init() {
 	valueindextext.Interceptors[0] = valueindextextMixinInters1[0]
 	valueindextextMixinFields0 := valueindextextMixin[0].Fields()
 	_ = valueindextextMixinFields0
+	valueindextextMixinFields2 := valueindextextMixin[2].Fields()
+	_ = valueindextextMixinFields2
 	valueindextextFields := schema.ValueIndexText{}.Fields()
 	_ = valueindextextFields
 	// valueindextextDescCreatedAt is the schema descriptor for created_at field.
@@ -1409,6 +1593,10 @@ func init() {
 	valueindextext.DefaultUpdatedAt = valueindextextDescUpdatedAt.Default.(func() time.Time)
 	// valueindextext.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
 	valueindextext.UpdateDefaultUpdatedAt = valueindextextDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// valueindextextDescTenantID is the schema descriptor for tenant_id field.
+	valueindextextDescTenantID := valueindextextMixinFields2[0].Descriptor()
+	// valueindextext.DefaultTenantID holds the default value on creation for the tenant_id field.
+	valueindextext.DefaultTenantID = valueindextextDescTenantID.Default.(uint64)
 	// valueindextextDescValue is the schema descriptor for value field.
 	valueindextextDescValue := valueindextextFields[2].Descriptor()
 	// valueindextext.ValueValidator is a validator for the "value" field. It is called by the builders before save.
@@ -1424,6 +1612,8 @@ func init() {
 	valueinteger.Interceptors[0] = valueintegerMixinInters1[0]
 	valueintegerMixinFields0 := valueintegerMixin[0].Fields()
 	_ = valueintegerMixinFields0
+	valueintegerMixinFields2 := valueintegerMixin[2].Fields()
+	_ = valueintegerMixinFields2
 	valueintegerFields := schema.ValueInteger{}.Fields()
 	_ = valueintegerFields
 	// valueintegerDescCreatedAt is the schema descriptor for created_at field.
@@ -1436,6 +1626,10 @@ func init() {
 	valueinteger.DefaultUpdatedAt = valueintegerDescUpdatedAt.Default.(func() time.Time)
 	// valueinteger.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
 	valueinteger.UpdateDefaultUpdatedAt = valueintegerDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// valueintegerDescTenantID is the schema descriptor for tenant_id field.
+	valueintegerDescTenantID := valueintegerMixinFields2[0].Descriptor()
+	// valueinteger.DefaultTenantID holds the default value on creation for the tenant_id field.
+	valueinteger.DefaultTenantID = valueintegerDescTenantID.Default.(uint64)
 	// valueintegerDescIsCover is the schema descriptor for is_cover field.
 	valueintegerDescIsCover := valueintegerFields[3].Descriptor()
 	// valueinteger.DefaultIsCover holds the default value on creation for the is_cover field.
@@ -1447,6 +1641,8 @@ func init() {
 	valuejson.Interceptors[0] = valuejsonMixinInters1[0]
 	valuejsonMixinFields0 := valuejsonMixin[0].Fields()
 	_ = valuejsonMixinFields0
+	valuejsonMixinFields2 := valuejsonMixin[2].Fields()
+	_ = valuejsonMixinFields2
 	valuejsonFields := schema.ValueJSON{}.Fields()
 	_ = valuejsonFields
 	// valuejsonDescCreatedAt is the schema descriptor for created_at field.
@@ -1459,6 +1655,10 @@ func init() {
 	valuejson.DefaultUpdatedAt = valuejsonDescUpdatedAt.Default.(func() time.Time)
 	// valuejson.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
 	valuejson.UpdateDefaultUpdatedAt = valuejsonDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// valuejsonDescTenantID is the schema descriptor for tenant_id field.
+	valuejsonDescTenantID := valuejsonMixinFields2[0].Descriptor()
+	// valuejson.DefaultTenantID holds the default value on creation for the tenant_id field.
+	valuejson.DefaultTenantID = valuejsonDescTenantID.Default.(uint64)
 	// valuejsonDescIsCover is the schema descriptor for is_cover field.
 	valuejsonDescIsCover := valuejsonFields[3].Descriptor()
 	// valuejson.DefaultIsCover holds the default value on creation for the is_cover field.
@@ -1470,6 +1670,8 @@ func init() {
 	valuetext.Interceptors[0] = valuetextMixinInters1[0]
 	valuetextMixinFields0 := valuetextMixin[0].Fields()
 	_ = valuetextMixinFields0
+	valuetextMixinFields2 := valuetextMixin[2].Fields()
+	_ = valuetextMixinFields2
 	valuetextFields := schema.ValueText{}.Fields()
 	_ = valuetextFields
 	// valuetextDescCreatedAt is the schema descriptor for created_at field.
@@ -1482,6 +1684,10 @@ func init() {
 	valuetext.DefaultUpdatedAt = valuetextDescUpdatedAt.Default.(func() time.Time)
 	// valuetext.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
 	valuetext.UpdateDefaultUpdatedAt = valuetextDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// valuetextDescTenantID is the schema descriptor for tenant_id field.
+	valuetextDescTenantID := valuetextMixinFields2[0].Descriptor()
+	// valuetext.DefaultTenantID holds the default value on creation for the tenant_id field.
+	valuetext.DefaultTenantID = valuetextDescTenantID.Default.(uint64)
 	// valuetextDescIsCover is the schema descriptor for is_cover field.
 	valuetextDescIsCover := valuetextFields[3].Descriptor()
 	// valuetext.DefaultIsCover holds the default value on creation for the is_cover field.
@@ -1489,6 +1695,6 @@ func init() {
 }
 
 const (
-	Version = "v0.14.4"                                         // Version of ent codegen.
-	Sum     = "h1:/DhDraSLXIkBhyiVoJeSshr4ZYi7femzhj6/TckzZuI=" // Sum of ent codegen.
+	Version = "v0.14.5"                                         // Version of ent codegen.
+	Sum     = "h1:Rj2WOYJtCkWyFo6a+5wB3EfBRP0rnx1fMk6gGA0UUe4=" // Sum of ent codegen.
 )

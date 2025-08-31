@@ -1,7 +1,7 @@
 package core
 
 import (
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 )
 
 // NewDataValidator 创建数据校验器

@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 )
 
 // ChoiceFloat is the model entity for the ChoiceFloat schema.
@@ -84,7 +84,7 @@ func (*ChoiceFloat) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ChoiceFloat fields.
-func (cf *ChoiceFloat) assignValues(columns []string, values []any) error {
+func (_m *ChoiceFloat) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -95,59 +95,59 @@ func (cf *ChoiceFloat) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			cf.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case choicefloat.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				cf.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case choicefloat.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				cf.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case choicefloat.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				cf.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case choicefloat.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				cf.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case choicefloat.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				cf.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case choicefloat.FieldAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field attr_id", values[i])
 			} else if value.Valid {
-				cf.AttrID = uint64(value.Int64)
+				_m.AttrID = uint64(value.Int64)
 			}
 		case choicefloat.FieldValue:
 			if value, ok := values[i].(*sql.NullFloat64); !ok {
 				return fmt.Errorf("unexpected type %T for field value", values[i])
 			} else if value.Valid {
-				cf.Value = value.Float64
+				_m.Value = value.Float64
 			}
 		case choicefloat.FieldOption:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field option", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cf.Option); err != nil {
+				if err := json.Unmarshal(*value, &_m.Option); err != nil {
 					return fmt.Errorf("unmarshal field option: %w", err)
 				}
 			}
 		default:
-			cf.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -155,61 +155,61 @@ func (cf *ChoiceFloat) assignValues(columns []string, values []any) error {
 
 // GetValue returns the ent.Value that was dynamically selected and assigned to the ChoiceFloat.
 // This includes values selected through modifiers, order, etc.
-func (cf *ChoiceFloat) GetValue(name string) (ent.Value, error) {
-	return cf.selectValues.Get(name)
+func (_m *ChoiceFloat) GetValue(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryAttribute queries the "attribute" edge of the ChoiceFloat entity.
-func (cf *ChoiceFloat) QueryAttribute() *AttributeQuery {
-	return NewChoiceFloatClient(cf.config).QueryAttribute(cf)
+func (_m *ChoiceFloat) QueryAttribute() *AttributeQuery {
+	return NewChoiceFloatClient(_m.config).QueryAttribute(_m)
 }
 
 // Update returns a builder for updating this ChoiceFloat.
 // Note that you need to call ChoiceFloat.Unwrap() before calling this method if this ChoiceFloat
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (cf *ChoiceFloat) Update() *ChoiceFloatUpdateOne {
-	return NewChoiceFloatClient(cf.config).UpdateOne(cf)
+func (_m *ChoiceFloat) Update() *ChoiceFloatUpdateOne {
+	return NewChoiceFloatClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ChoiceFloat entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (cf *ChoiceFloat) Unwrap() *ChoiceFloat {
-	_tx, ok := cf.config.driver.(*txDriver)
+func (_m *ChoiceFloat) Unwrap() *ChoiceFloat {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ChoiceFloat is not a transactional entity")
 	}
-	cf.config.driver = _tx.drv
-	return cf
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (cf *ChoiceFloat) String() string {
+func (_m *ChoiceFloat) String() string {
 	var builder strings.Builder
 	builder.WriteString("ChoiceFloat(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", cf.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(cf.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(cf.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(cf.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", cf.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", cf.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", cf.AttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.AttrID))
 	builder.WriteString(", ")
 	builder.WriteString("value=")
-	builder.WriteString(fmt.Sprintf("%v", cf.Value))
+	builder.WriteString(fmt.Sprintf("%v", _m.Value))
 	builder.WriteString(", ")
 	builder.WriteString("option=")
-	builder.WriteString(fmt.Sprintf("%v", cf.Option))
+	builder.WriteString(fmt.Sprintf("%v", _m.Option))
 	builder.WriteByte(')')
 	return builder.String()
 }

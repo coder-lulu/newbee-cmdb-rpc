@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cilifecyclestate"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiLifecycleStateDelete is the builder for deleting a CiLifecycleState entity.
@@ -20,56 +20,56 @@ type CiLifecycleStateDelete struct {
 }
 
 // Where appends a list predicates to the CiLifecycleStateDelete builder.
-func (clsd *CiLifecycleStateDelete) Where(ps ...predicate.CiLifecycleState) *CiLifecycleStateDelete {
-	clsd.mutation.Where(ps...)
-	return clsd
+func (_d *CiLifecycleStateDelete) Where(ps ...predicate.CiLifecycleState) *CiLifecycleStateDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (clsd *CiLifecycleStateDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, clsd.sqlExec, clsd.mutation, clsd.hooks)
+func (_d *CiLifecycleStateDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (clsd *CiLifecycleStateDelete) ExecX(ctx context.Context) int {
-	n, err := clsd.Exec(ctx)
+func (_d *CiLifecycleStateDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (clsd *CiLifecycleStateDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CiLifecycleStateDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(cilifecyclestate.Table, sqlgraph.NewFieldSpec(cilifecyclestate.FieldID, field.TypeUint64))
-	if ps := clsd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, clsd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	clsd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CiLifecycleStateDeleteOne is the builder for deleting a single CiLifecycleState entity.
 type CiLifecycleStateDeleteOne struct {
-	clsd *CiLifecycleStateDelete
+	_d *CiLifecycleStateDelete
 }
 
 // Where appends a list predicates to the CiLifecycleStateDelete builder.
-func (clsdo *CiLifecycleStateDeleteOne) Where(ps ...predicate.CiLifecycleState) *CiLifecycleStateDeleteOne {
-	clsdo.clsd.mutation.Where(ps...)
-	return clsdo
+func (_d *CiLifecycleStateDeleteOne) Where(ps ...predicate.CiLifecycleState) *CiLifecycleStateDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (clsdo *CiLifecycleStateDeleteOne) Exec(ctx context.Context) error {
-	n, err := clsdo.clsd.Exec(ctx)
+func (_d *CiLifecycleStateDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (clsdo *CiLifecycleStateDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (clsdo *CiLifecycleStateDeleteOne) ExecX(ctx context.Context) {
-	if err := clsdo.Exec(ctx); err != nil {
+func (_d *CiLifecycleStateDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

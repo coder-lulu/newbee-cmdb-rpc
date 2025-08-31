@@ -75,6 +75,21 @@ type ImportTask func(*sql.Selector)
 // ImportTemplate is the predicate function for importtemplate builders.
 type ImportTemplate func(*sql.Selector)
 
+// PermissionCache is the predicate function for permissioncache builders.
+type PermissionCache func(*sql.Selector)
+
+// PermissionDataFilter is the predicate function for permissiondatafilter builders.
+type PermissionDataFilter func(*sql.Selector)
+
+// PermissionFieldMask is the predicate function for permissionfieldmask builders.
+type PermissionFieldMask func(*sql.Selector)
+
+// PermissionOperation is the predicate function for permissionoperation builders.
+type PermissionOperation func(*sql.Selector)
+
+// PermissionTemplate is the predicate function for permissiontemplate builders.
+type PermissionTemplate func(*sql.Selector)
+
 // RelationType is the predicate function for relationtype builders.
 type RelationType func(*sql.Selector)
 

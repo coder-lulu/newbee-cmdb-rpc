@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
-	"gitee.com/link234/newbee-backend-common/utils/pointy"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-common/utils/pointy"
 
 	"github.com/gofrs/uuid/v5"
 	"github.com/zeromicro/go-zero/core/logx"
@@ -82,16 +82,19 @@ func (l *CreateCiPermissionLogic) CreateCiPermission(in *cmdb.CiPermissionInfo) 
 		createBuilder.SetScopeType(cipermission.ScopeType(*in.ScopeType))
 	}
 	if in.CiTypeId != nil {
-		createBuilder.SetNillableCiTypeID(in.CiTypeId)
+		createBuilder.SetScopeTargetType("ci_type_id")
+		createBuilder.SetNillableScopeTargetID(in.CiTypeId)
 	}
 	if in.CiId != nil {
-		createBuilder.SetNillableCiID(in.CiId)
+		createBuilder.SetScopeTargetType("ci_id")
+		createBuilder.SetNillableScopeTargetID(in.CiId)
 	}
 	if in.AttributeId != nil {
-		createBuilder.SetNillableAttributeID(in.AttributeId)
+		createBuilder.SetScopeTargetType("attribute_id")
+		createBuilder.SetNillableScopeTargetID(in.AttributeId)
 	}
 	if in.FieldName != nil {
-		createBuilder.SetNillableFieldName(in.FieldName)
+		createBuilder.SetNillableScopeFieldName(in.FieldName)
 	}
 
 	// 权限主体设置
@@ -99,15 +102,10 @@ func (l *CreateCiPermissionLogic) CreateCiPermission(in *cmdb.CiPermissionInfo) 
 		createBuilder.SetSubjectType(cipermission.SubjectType(*in.SubjectType))
 	}
 	if in.SubjectId != nil {
-		if subjectUUID, err := uuid.FromString(*in.SubjectId); err == nil {
-			createBuilder.SetNillableSubjectID(&subjectUUID)
-		}
+		createBuilder.SetNillableSubjectID(in.SubjectId)
 	}
 	if in.SubjectName != nil {
 		createBuilder.SetSubjectName(*in.SubjectName)
-	}
-	if in.SubjectCode != nil {
-		createBuilder.SetNillableSubjectCode(in.SubjectCode)
 	}
 
 	// 权限类型和操作
@@ -115,22 +113,23 @@ func (l *CreateCiPermissionLogic) CreateCiPermission(in *cmdb.CiPermissionInfo) 
 		createBuilder.SetPermissionType(cipermission.PermissionType(*in.PermissionType))
 	}
 	if in.Operations != nil {
-		// 将结构体转换为字符串数组
-		operationStrings := make([]string, 0)
+		// 将操作转换为位掩码
+		var operationsMask uint64 = 0
 		for _, op := range in.Operations.Operations {
-			operationStrings = append(operationStrings, op.Operation)
+			switch op.Operation {
+			case "read":
+				operationsMask |= 1
+			case "write":
+				operationsMask |= 2
+			case "delete":
+				operationsMask |= 4
+			case "approve":
+				operationsMask |= 8
+			case "export":
+				operationsMask |= 16
+			}
 		}
-		createBuilder.SetOperations(operationStrings)
-	}
-	if in.Conditions != nil {
-		// 将结构体转换为map[string]interface{}
-		conditionsMap := map[string]interface{}{
-			"field":    in.Conditions.Field,
-			"operator": in.Conditions.Operator,
-			"value":    in.Conditions.Value,
-			"logic":    in.Conditions.Logic,
-		}
-		createBuilder.SetConditions(conditionsMap)
+		createBuilder.SetOperationsMask(operationsMask)
 	}
 
 	// 权限级别和优先级
@@ -152,44 +151,12 @@ func (l *CreateCiPermissionLogic) CreateCiPermission(in *cmdb.CiPermissionInfo) 
 		createBuilder.SetIsTemporary(*in.IsTemporary)
 	}
 
-	// 数据过滤和访问控制
-	if in.DataFilters != nil {
-		// 将结构体转换为map[string]interface{}
-		dataFiltersMap := map[string]interface{}{
-			"rules": in.DataFilters.Rules,
-			"logic": in.DataFilters.Logic,
-		}
-		createBuilder.SetDataFilters(dataFiltersMap)
-	}
-	if in.FieldMasks != nil {
-		createBuilder.SetFieldMasks(in.FieldMasks.Fields)
-	}
-	if in.AllowedValues != nil {
-		// 将结构体转换为map[string]interface{}
-		allowedValuesMap := map[string]interface{}{}
-		for k, v := range in.AllowedValues.FieldValues {
-			allowedValuesMap[k] = v
-		}
-		createBuilder.SetAllowedValues(allowedValuesMap)
-	}
+	// 注意：数据过滤和字段掩码现在通过边关系处理，不直接设置字段
+	// 这部分逻辑将在关联表中处理
 
-	// 审批和授权信息
+	// 审批信息
 	if in.RequireApproval != nil {
 		createBuilder.SetRequireApproval(*in.RequireApproval)
-	}
-	if in.GrantedBy != nil {
-		if grantedByUUID, err := uuid.FromString(*in.GrantedBy); err == nil {
-			createBuilder.SetNillableGrantedBy(&grantedByUUID)
-		}
-	}
-	if in.GrantedByName != nil {
-		createBuilder.SetNillableGrantedByName(in.GrantedByName)
-	}
-	if in.GrantedAt != nil {
-		createBuilder.SetNillableGrantedAt(pointy.GetPointer(time.Unix(*in.GrantedAt, 0)))
-	}
-	if in.GrantReason != nil {
-		createBuilder.SetNillableGrantReason(in.GrantReason)
 	}
 
 	// 使用情况统计
@@ -199,34 +166,34 @@ func (l *CreateCiPermissionLogic) CreateCiPermission(in *cmdb.CiPermissionInfo) 
 	if in.LastUsedAt != nil {
 		createBuilder.SetNillableLastUsedAt(pointy.GetPointer(time.Unix(*in.LastUsedAt, 0)))
 	}
-	if in.UsageStatistics != nil {
-		// 将结构体转换为map[string]interface{}
-		usageStatsMap := map[string]interface{}{
-			"daily_usage":    in.UsageStatistics.DailyUsage,
-			"weekly_usage":   in.UsageStatistics.WeeklyUsage,
-			"monthly_usage":  in.UsageStatistics.MonthlyUsage,
-			"top_operations": in.UsageStatistics.TopOperations,
-		}
-		createBuilder.SetUsageStatistics(usageStatsMap)
-	}
 
 	// 权限状态
 	if in.Status != nil {
-		createBuilder.SetStatus(cipermission.Status(fmt.Sprintf("%d", *in.Status)))
-	}
-	if in.StatusReason != nil {
-		createBuilder.SetNillableStatusReason(in.StatusReason)
+		// 将数字状态转换为字符串枚举
+		var statusStr string
+		switch *in.Status {
+		case 1:
+			statusStr = "active"
+		case 0:
+			statusStr = "inactive"
+		case 2:
+			statusStr = "suspended"
+		case 3:
+			statusStr = "revoked"
+		case 4:
+			statusStr = "expired"
+		default:
+			statusStr = "active"
+		}
+		createBuilder.SetStatus(cipermission.Status(statusStr))
 	}
 
-	// 权限继承和传播
+	// 权限继承
 	if in.Inheritable != nil {
 		createBuilder.SetInheritable(*in.Inheritable)
 	}
 	if in.ParentPermissionId != nil {
 		createBuilder.SetNillableParentPermissionID(in.ParentPermissionId)
-	}
-	if in.InheritedFrom != nil {
-		createBuilder.SetInheritedFrom(in.InheritedFrom.PermissionIds)
 	}
 
 	// 风险等级和安全控制
@@ -236,38 +203,8 @@ func (l *CreateCiPermissionLogic) CreateCiPermission(in *cmdb.CiPermissionInfo) 
 	if in.RequireMfa != nil {
 		createBuilder.SetRequireMfa(*in.RequireMfa)
 	}
-	if in.SecurityConstraints != nil {
-		// 将结构体转换为map[string]interface{}
-		securityConstraintsMap := map[string]interface{}{
-			"require_vpn":           in.SecurityConstraints.RequireVpn,
-			"allowed_ips":           in.SecurityConstraints.AllowedIps,
-			"blocked_ips":           in.SecurityConstraints.BlockedIps,
-			"time_restrictions":     in.SecurityConstraints.TimeRestrictions,
-			"location_restrictions": in.SecurityConstraints.LocationRestrictions,
-		}
-		createBuilder.SetSecurityConstraints(securityConstraintsMap)
-	}
 
 	// 扩展信息
-	if in.Metadata != nil {
-		// 将结构体转换为map[string]interface{}
-		metadataMap := map[string]interface{}{
-			"business_owner":  in.Metadata.BusinessOwner,
-			"technical_owner": in.Metadata.TechnicalOwner,
-			"data_class":      in.Metadata.DataClass,
-			"compliance_reqs": in.Metadata.ComplianceReqs,
-			"custom_fields":   in.Metadata.CustomFields,
-		}
-		createBuilder.SetMetadata(metadataMap)
-	}
-	if in.Tags != nil {
-		// 将标签数组转换为字符串数组
-		tagStrings := make([]string, len(in.Tags))
-		for i, tag := range in.Tags {
-			tagStrings[i] = fmt.Sprintf("%s:%s", tag.Key, tag.Value)
-		}
-		createBuilder.SetTags(tagStrings)
-	}
 	if in.Description != nil {
 		createBuilder.SetNillableDescription(in.Description)
 	}
@@ -277,22 +214,10 @@ func (l *CreateCiPermissionLogic) CreateCiPermission(in *cmdb.CiPermissionInfo) 
 
 	// 审计字段
 	if in.CreatedBy != nil {
-		if createdByUUID, err := uuid.FromString(*in.CreatedBy); err == nil {
-			createBuilder.SetNillableCreatedBy(&createdByUUID)
-		}
+		createBuilder.SetNillableCreatedBy(in.CreatedBy)
 	}
 	if in.UpdatedBy != nil {
-		if updatedByUUID, err := uuid.FromString(*in.UpdatedBy); err == nil {
-			createBuilder.SetNillableUpdatedBy(&updatedByUUID)
-		}
-	}
-	if in.LastReviewedAt != nil {
-		createBuilder.SetNillableLastReviewedAt(pointy.GetPointer(time.Unix(*in.LastReviewedAt, 0)))
-	}
-	if in.LastReviewedBy != nil {
-		if lastReviewedByUUID, err := uuid.FromString(*in.LastReviewedBy); err == nil {
-			createBuilder.SetNillableLastReviewedBy(&lastReviewedByUUID)
-		}
+		createBuilder.SetNillableUpdatedBy(in.UpdatedBy)
 	}
 
 	// 5. 执行创建操作

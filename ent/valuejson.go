@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
 )
 
 // ValueJSON is the model entity for the ValueJSON schema.
@@ -26,6 +26,8 @@ type ValueJSON struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Delete Time | 删除日期
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
+	// Tenant ID | 租户 ID
+	TenantID uint64 `json:"tenant_id,omitempty"`
 	// 外键，关联cmdb_cis.id
 	CiID uint64 `json:"ci_id,omitempty"`
 	// 外键，关联cmdb_attributes.id
@@ -82,7 +84,7 @@ func (*ValueJSON) scanValues(columns []string) ([]any, error) {
 			values[i] = new([]byte)
 		case valuejson.FieldIsCover:
 			values[i] = new(sql.NullBool)
-		case valuejson.FieldID, valuejson.FieldCiID, valuejson.FieldAttrID:
+		case valuejson.FieldID, valuejson.FieldTenantID, valuejson.FieldCiID, valuejson.FieldAttrID:
 			values[i] = new(sql.NullInt64)
 		case valuejson.FieldCreatedAt, valuejson.FieldUpdatedAt, valuejson.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -95,7 +97,7 @@ func (*ValueJSON) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ValueJSON fields.
-func (vj *ValueJSON) assignValues(columns []string, values []any) error {
+func (_m *ValueJSON) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -106,42 +108,48 @@ func (vj *ValueJSON) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			vj.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case valuejson.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				vj.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case valuejson.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				vj.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case valuejson.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				vj.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
+			}
+		case valuejson.FieldTenantID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
+			} else if value.Valid {
+				_m.TenantID = uint64(value.Int64)
 			}
 		case valuejson.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				vj.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case valuejson.FieldAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field attr_id", values[i])
 			} else if value.Valid {
-				vj.AttrID = uint64(value.Int64)
+				_m.AttrID = uint64(value.Int64)
 			}
 		case valuejson.FieldValue:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field value", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &vj.Value); err != nil {
+				if err := json.Unmarshal(*value, &_m.Value); err != nil {
 					return fmt.Errorf("unmarshal field value: %w", err)
 				}
 			}
@@ -149,10 +157,10 @@ func (vj *ValueJSON) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_cover", values[i])
 			} else if value.Valid {
-				vj.IsCover = value.Bool
+				_m.IsCover = value.Bool
 			}
 		default:
-			vj.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -160,63 +168,66 @@ func (vj *ValueJSON) assignValues(columns []string, values []any) error {
 
 // GetValue returns the ent.Value that was dynamically selected and assigned to the ValueJSON.
 // This includes values selected through modifiers, order, etc.
-func (vj *ValueJSON) GetValue(name string) (ent.Value, error) {
-	return vj.selectValues.Get(name)
+func (_m *ValueJSON) GetValue(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCi queries the "ci" edge of the ValueJSON entity.
-func (vj *ValueJSON) QueryCi() *CisQuery {
-	return NewValueJSONClient(vj.config).QueryCi(vj)
+func (_m *ValueJSON) QueryCi() *CisQuery {
+	return NewValueJSONClient(_m.config).QueryCi(_m)
 }
 
 // QueryAttribute queries the "attribute" edge of the ValueJSON entity.
-func (vj *ValueJSON) QueryAttribute() *AttributeQuery {
-	return NewValueJSONClient(vj.config).QueryAttribute(vj)
+func (_m *ValueJSON) QueryAttribute() *AttributeQuery {
+	return NewValueJSONClient(_m.config).QueryAttribute(_m)
 }
 
 // Update returns a builder for updating this ValueJSON.
 // Note that you need to call ValueJSON.Unwrap() before calling this method if this ValueJSON
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (vj *ValueJSON) Update() *ValueJSONUpdateOne {
-	return NewValueJSONClient(vj.config).UpdateOne(vj)
+func (_m *ValueJSON) Update() *ValueJSONUpdateOne {
+	return NewValueJSONClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ValueJSON entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (vj *ValueJSON) Unwrap() *ValueJSON {
-	_tx, ok := vj.config.driver.(*txDriver)
+func (_m *ValueJSON) Unwrap() *ValueJSON {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ValueJSON is not a transactional entity")
 	}
-	vj.config.driver = _tx.drv
-	return vj
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (vj *ValueJSON) String() string {
+func (_m *ValueJSON) String() string {
 	var builder strings.Builder
 	builder.WriteString("ValueJSON(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", vj.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(vj.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(vj.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(vj.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("tenant_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", vj.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", vj.AttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.AttrID))
 	builder.WriteString(", ")
 	builder.WriteString("value=")
-	builder.WriteString(fmt.Sprintf("%v", vj.Value))
+	builder.WriteString(fmt.Sprintf("%v", _m.Value))
 	builder.WriteString(", ")
 	builder.WriteString("is_cover=")
-	builder.WriteString(fmt.Sprintf("%v", vj.IsCover))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsCover))
 	builder.WriteByte(')')
 	return builder.String()
 }

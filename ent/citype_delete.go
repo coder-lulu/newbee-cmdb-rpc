@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiTypeDelete is the builder for deleting a CiType entity.
@@ -20,56 +20,56 @@ type CiTypeDelete struct {
 }
 
 // Where appends a list predicates to the CiTypeDelete builder.
-func (ctd *CiTypeDelete) Where(ps ...predicate.CiType) *CiTypeDelete {
-	ctd.mutation.Where(ps...)
-	return ctd
+func (_d *CiTypeDelete) Where(ps ...predicate.CiType) *CiTypeDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (ctd *CiTypeDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, ctd.sqlExec, ctd.mutation, ctd.hooks)
+func (_d *CiTypeDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctd *CiTypeDelete) ExecX(ctx context.Context) int {
-	n, err := ctd.Exec(ctx)
+func (_d *CiTypeDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (ctd *CiTypeDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CiTypeDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(citype.Table, sqlgraph.NewFieldSpec(citype.FieldID, field.TypeUint64))
-	if ps := ctd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, ctd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	ctd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CiTypeDeleteOne is the builder for deleting a single CiType entity.
 type CiTypeDeleteOne struct {
-	ctd *CiTypeDelete
+	_d *CiTypeDelete
 }
 
 // Where appends a list predicates to the CiTypeDelete builder.
-func (ctdo *CiTypeDeleteOne) Where(ps ...predicate.CiType) *CiTypeDeleteOne {
-	ctdo.ctd.mutation.Where(ps...)
-	return ctdo
+func (_d *CiTypeDeleteOne) Where(ps ...predicate.CiType) *CiTypeDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (ctdo *CiTypeDeleteOne) Exec(ctx context.Context) error {
-	n, err := ctdo.ctd.Exec(ctx)
+func (_d *CiTypeDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (ctdo *CiTypeDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctdo *CiTypeDeleteOne) ExecX(ctx context.Context) {
-	if err := ctdo.Exec(ctx); err != nil {
+func (_d *CiTypeDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

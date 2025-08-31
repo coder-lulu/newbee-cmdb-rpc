@@ -1,14 +1,12 @@
 package schema
 
 import (
-	"time"
-
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/entsql"
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"gitee.com/link234/newbee-backend-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
 )
 
 // PermissionTemplate 权限模板表 - 简化配置复杂度
@@ -20,6 +18,7 @@ type PermissionTemplate struct {
 func (PermissionTemplate) Mixin() []ent.Mixin {
 	return []ent.Mixin{
 		mixins.IDMixin{},
+		mixins.TenantMixin{},
 	}
 }
 
@@ -77,15 +76,6 @@ func (PermissionTemplate) Fields() []ent.Field {
 		field.String("created_by").
 			Optional().
 			Comment("创建人"),
-
-		field.Time("created_at").
-			Default(time.Now).
-			Comment("创建时间"),
-
-		field.Time("updated_at").
-			Default(time.Now).
-			UpdateDefault(time.Now).
-			Comment("更新时间"),
 	}
 }
 

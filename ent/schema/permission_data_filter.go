@@ -7,7 +7,7 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"gitee.com/link234/newbee-backend-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
 )
 
 // PermissionDataFilter 权限数据过滤规则表 - 将JSON过滤规则拆分为独立表
@@ -19,13 +19,14 @@ type PermissionDataFilter struct {
 func (PermissionDataFilter) Mixin() []ent.Mixin {
 	return []ent.Mixin{
 		mixins.IDMixin{},
+		mixins.TenantMixin{},
 	}
 }
 
 // Fields of the PermissionDataFilter.
 func (PermissionDataFilter) Fields() []ent.Field {
 	return []ent.Field{
-		field.String("permission_id").
+		field.Uint64("permission_id").
 			Comment("权限ID"),
 
 		field.Int("filter_group").
@@ -36,7 +37,7 @@ func (PermissionDataFilter) Fields() []ent.Field {
 			Comment("过滤字段"),
 
 		field.Enum("operator_type").
-			Values("eq", "ne", "gt", "lt", "gte", "lte", "in", "not_in", "like", "not_like").
+			Values("eq", "ne", "gt", "lt", "gte", "lte", "contains", "not_contains", "like", "not_like").
 			Comment("操作符类型"),
 
 		field.Text("filter_value").

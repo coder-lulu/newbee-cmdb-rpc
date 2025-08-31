@@ -3,15 +3,15 @@ package citype
 import (
 	"context"
 
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/internal/utils/dberrorhandler"
-	uuid_helper "gitee.com/link234/cmdb-rpc/internal/utils/uuid"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
-	"gitee.com/link234/newbee-backend-common/utils/pointy"
-	"gitee.com/link234/newbee-backend-common/utils/uuidx"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
+	uuid_helper "github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/uuid"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-common/utils/pointy"
+	"github.com/coder-lulu/newbee-common/utils/uuidx"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiTypeInheritanceDelete is the builder for deleting a CiTypeInheritance entity.
@@ -20,56 +20,56 @@ type CiTypeInheritanceDelete struct {
 }
 
 // Where appends a list predicates to the CiTypeInheritanceDelete builder.
-func (ctid *CiTypeInheritanceDelete) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceDelete {
-	ctid.mutation.Where(ps...)
-	return ctid
+func (_d *CiTypeInheritanceDelete) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (ctid *CiTypeInheritanceDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, ctid.sqlExec, ctid.mutation, ctid.hooks)
+func (_d *CiTypeInheritanceDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctid *CiTypeInheritanceDelete) ExecX(ctx context.Context) int {
-	n, err := ctid.Exec(ctx)
+func (_d *CiTypeInheritanceDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (ctid *CiTypeInheritanceDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CiTypeInheritanceDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(citypeinheritance.Table, sqlgraph.NewFieldSpec(citypeinheritance.FieldID, field.TypeUint64))
-	if ps := ctid.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, ctid.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	ctid.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CiTypeInheritanceDeleteOne is the builder for deleting a single CiTypeInheritance entity.
 type CiTypeInheritanceDeleteOne struct {
-	ctid *CiTypeInheritanceDelete
+	_d *CiTypeInheritanceDelete
 }
 
 // Where appends a list predicates to the CiTypeInheritanceDelete builder.
-func (ctido *CiTypeInheritanceDeleteOne) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceDeleteOne {
-	ctido.ctid.mutation.Where(ps...)
-	return ctido
+func (_d *CiTypeInheritanceDeleteOne) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (ctido *CiTypeInheritanceDeleteOne) Exec(ctx context.Context) error {
-	n, err := ctido.ctid.Exec(ctx)
+func (_d *CiTypeInheritanceDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (ctido *CiTypeInheritanceDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctido *CiTypeInheritanceDeleteOne) ExecX(ctx context.Context) {
-	if err := ctido.Exec(ctx); err != nil {
+func (_d *CiTypeInheritanceDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

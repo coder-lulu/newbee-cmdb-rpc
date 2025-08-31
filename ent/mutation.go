@@ -12,39 +12,44 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/ciapprovalflow"
-	"gitee.com/link234/cmdb-rpc/ent/cilifecyclestate"
-	"gitee.com/link234/cmdb-rpc/ent/cioperation"
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
-	"gitee.com/link234/cmdb-rpc/ent/importtemplate"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
-	"gitee.com/link234/newbee-backend-common/utils/validator"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissioncache"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiondatafilter"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionfieldmask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionoperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiontemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-common/utils/validator"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -80,6 +85,11 @@ const (
 	TypeImportRecord             = "ImportRecord"
 	TypeImportTask               = "ImportTask"
 	TypeImportTemplate           = "ImportTemplate"
+	TypePermissionCache          = "PermissionCache"
+	TypePermissionDataFilter     = "PermissionDataFilter"
+	TypePermissionFieldMask      = "PermissionFieldMask"
+	TypePermissionOperation      = "PermissionOperation"
+	TypePermissionTemplate       = "PermissionTemplate"
 	TypeRelationType             = "RelationType"
 	TypeValueDatetime            = "ValueDatetime"
 	TypeValueFloat               = "ValueFloat"
@@ -18461,59 +18471,45 @@ type CiPermissionMutation struct {
 	adddepartment_id     *int64
 	permission_id        *string
 	scope_type           *cipermission.ScopeType
-	ci_type_id           *uint64
-	addci_type_id        *int64
-	ci_id                *uint64
-	addci_id             *int64
-	attribute_id         *uint64
-	addattribute_id      *int64
-	field_name           *string
+	scope_target_type    *string
+	scope_target_id      *uint64
+	addscope_target_id   *int64
+	scope_field_name     *string
 	subject_type         *cipermission.SubjectType
-	subject_id           *uuid.UUID
+	subject_id           *string
 	subject_name         *string
-	subject_code         *string
 	permission_type      *cipermission.PermissionType
-	operations           *[]string
-	appendoperations     []string
-	conditions           *map[string]interface{}
-	priority             *int
-	addpriority          *int
 	permission_level     *cipermission.PermissionLevel
+	operations_mask      *uint64
+	addoperations_mask   *int64
 	effective_from       *time.Time
 	effective_to         *time.Time
 	is_temporary         *bool
-	data_filters         *map[string]interface{}
-	field_masks          *[]string
-	appendfield_masks    []string
-	allowed_values       *map[string]interface{}
+	priority             *int
+	addpriority          *int
+	status               *cipermission.Status
+	parent_permission_id *string
+	inheritable          *bool
 	require_approval     *bool
-	granted_by           *uuid.UUID
-	granted_by_name      *string
-	granted_at           *time.Time
-	grant_reason         *string
+	require_mfa          *bool
+	risk_level           *cipermission.RiskLevel
 	usage_count          *int
 	addusage_count       *int
 	last_used_at         *time.Time
-	usage_statistics     *map[string]interface{}
-	status               *cipermission.Status
-	status_reason        *string
-	inheritable          *bool
-	parent_permission_id *string
-	inherited_from       *[]string
-	appendinherited_from []string
-	risk_level           *cipermission.RiskLevel
-	require_mfa          *bool
-	security_constraints *map[string]interface{}
-	metadata             *map[string]interface{}
-	tags                 *[]string
-	appendtags           []string
+	created_by           *string
+	updated_by           *string
 	description          *string
 	comments             *string
-	created_by           *uuid.UUID
-	updated_by           *uuid.UUID
-	last_reviewed_at     *time.Time
-	last_reviewed_by     *uuid.UUID
 	clearedFields        map[string]struct{}
+	operations           map[uint64]struct{}
+	removedoperations    map[uint64]struct{}
+	clearedoperations    bool
+	data_filters         map[uint64]struct{}
+	removeddata_filters  map[uint64]struct{}
+	cleareddata_filters  bool
+	field_masks          map[uint64]struct{}
+	removedfield_masks   map[uint64]struct{}
+	clearedfield_masks   bool
 	done                 bool
 	oldValue             func(context.Context) (*CiPermission, error)
 	predicates           []predicate.CiPermission
@@ -18893,263 +18889,172 @@ func (m *CiPermissionMutation) ResetScopeType() {
 	m.scope_type = nil
 }
 
-// SetCiTypeID sets the "ci_type_id" field.
-func (m *CiPermissionMutation) SetCiTypeID(u uint64) {
-	m.ci_type_id = &u
-	m.addci_type_id = nil
+// SetScopeTargetType sets the "scope_target_type" field.
+func (m *CiPermissionMutation) SetScopeTargetType(s string) {
+	m.scope_target_type = &s
 }
 
-// CiTypeID returns the value of the "ci_type_id" field in the mutation.
-func (m *CiPermissionMutation) CiTypeID() (r uint64, exists bool) {
-	v := m.ci_type_id
+// ScopeTargetType returns the value of the "scope_target_type" field in the mutation.
+func (m *CiPermissionMutation) ScopeTargetType() (r string, exists bool) {
+	v := m.scope_target_type
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldCiTypeID returns the old "ci_type_id" field's value of the CiPermission entity.
+// OldScopeTargetType returns the old "scope_target_type" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldCiTypeID(ctx context.Context) (v uint64, err error) {
+func (m *CiPermissionMutation) OldScopeTargetType(ctx context.Context) (v string, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldCiTypeID is only allowed on UpdateOne operations")
+		return v, errors.New("OldScopeTargetType is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldCiTypeID requires an ID field in the mutation")
+		return v, errors.New("OldScopeTargetType requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldCiTypeID: %w", err)
+		return v, fmt.Errorf("querying old value for OldScopeTargetType: %w", err)
 	}
-	return oldValue.CiTypeID, nil
+	return oldValue.ScopeTargetType, nil
 }
 
-// AddCiTypeID adds u to the "ci_type_id" field.
-func (m *CiPermissionMutation) AddCiTypeID(u int64) {
-	if m.addci_type_id != nil {
-		*m.addci_type_id += u
+// ClearScopeTargetType clears the value of the "scope_target_type" field.
+func (m *CiPermissionMutation) ClearScopeTargetType() {
+	m.scope_target_type = nil
+	m.clearedFields[cipermission.FieldScopeTargetType] = struct{}{}
+}
+
+// ScopeTargetTypeCleared returns if the "scope_target_type" field was cleared in this mutation.
+func (m *CiPermissionMutation) ScopeTargetTypeCleared() bool {
+	_, ok := m.clearedFields[cipermission.FieldScopeTargetType]
+	return ok
+}
+
+// ResetScopeTargetType resets all changes to the "scope_target_type" field.
+func (m *CiPermissionMutation) ResetScopeTargetType() {
+	m.scope_target_type = nil
+	delete(m.clearedFields, cipermission.FieldScopeTargetType)
+}
+
+// SetScopeTargetID sets the "scope_target_id" field.
+func (m *CiPermissionMutation) SetScopeTargetID(u uint64) {
+	m.scope_target_id = &u
+	m.addscope_target_id = nil
+}
+
+// ScopeTargetID returns the value of the "scope_target_id" field in the mutation.
+func (m *CiPermissionMutation) ScopeTargetID() (r uint64, exists bool) {
+	v := m.scope_target_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldScopeTargetID returns the old "scope_target_id" field's value of the CiPermission entity.
+// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CiPermissionMutation) OldScopeTargetID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldScopeTargetID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldScopeTargetID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldScopeTargetID: %w", err)
+	}
+	return oldValue.ScopeTargetID, nil
+}
+
+// AddScopeTargetID adds u to the "scope_target_id" field.
+func (m *CiPermissionMutation) AddScopeTargetID(u int64) {
+	if m.addscope_target_id != nil {
+		*m.addscope_target_id += u
 	} else {
-		m.addci_type_id = &u
+		m.addscope_target_id = &u
 	}
 }
 
-// AddedCiTypeID returns the value that was added to the "ci_type_id" field in this mutation.
-func (m *CiPermissionMutation) AddedCiTypeID() (r int64, exists bool) {
-	v := m.addci_type_id
+// AddedScopeTargetID returns the value that was added to the "scope_target_id" field in this mutation.
+func (m *CiPermissionMutation) AddedScopeTargetID() (r int64, exists bool) {
+	v := m.addscope_target_id
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// ClearCiTypeID clears the value of the "ci_type_id" field.
-func (m *CiPermissionMutation) ClearCiTypeID() {
-	m.ci_type_id = nil
-	m.addci_type_id = nil
-	m.clearedFields[cipermission.FieldCiTypeID] = struct{}{}
+// ClearScopeTargetID clears the value of the "scope_target_id" field.
+func (m *CiPermissionMutation) ClearScopeTargetID() {
+	m.scope_target_id = nil
+	m.addscope_target_id = nil
+	m.clearedFields[cipermission.FieldScopeTargetID] = struct{}{}
 }
 
-// CiTypeIDCleared returns if the "ci_type_id" field was cleared in this mutation.
-func (m *CiPermissionMutation) CiTypeIDCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldCiTypeID]
+// ScopeTargetIDCleared returns if the "scope_target_id" field was cleared in this mutation.
+func (m *CiPermissionMutation) ScopeTargetIDCleared() bool {
+	_, ok := m.clearedFields[cipermission.FieldScopeTargetID]
 	return ok
 }
 
-// ResetCiTypeID resets all changes to the "ci_type_id" field.
-func (m *CiPermissionMutation) ResetCiTypeID() {
-	m.ci_type_id = nil
-	m.addci_type_id = nil
-	delete(m.clearedFields, cipermission.FieldCiTypeID)
+// ResetScopeTargetID resets all changes to the "scope_target_id" field.
+func (m *CiPermissionMutation) ResetScopeTargetID() {
+	m.scope_target_id = nil
+	m.addscope_target_id = nil
+	delete(m.clearedFields, cipermission.FieldScopeTargetID)
 }
 
-// SetCiID sets the "ci_id" field.
-func (m *CiPermissionMutation) SetCiID(u uint64) {
-	m.ci_id = &u
-	m.addci_id = nil
+// SetScopeFieldName sets the "scope_field_name" field.
+func (m *CiPermissionMutation) SetScopeFieldName(s string) {
+	m.scope_field_name = &s
 }
 
-// CiID returns the value of the "ci_id" field in the mutation.
-func (m *CiPermissionMutation) CiID() (r uint64, exists bool) {
-	v := m.ci_id
+// ScopeFieldName returns the value of the "scope_field_name" field in the mutation.
+func (m *CiPermissionMutation) ScopeFieldName() (r string, exists bool) {
+	v := m.scope_field_name
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldCiID returns the old "ci_id" field's value of the CiPermission entity.
+// OldScopeFieldName returns the old "scope_field_name" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldCiID(ctx context.Context) (v uint64, err error) {
+func (m *CiPermissionMutation) OldScopeFieldName(ctx context.Context) (v string, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldCiID is only allowed on UpdateOne operations")
+		return v, errors.New("OldScopeFieldName is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldCiID requires an ID field in the mutation")
+		return v, errors.New("OldScopeFieldName requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldCiID: %w", err)
+		return v, fmt.Errorf("querying old value for OldScopeFieldName: %w", err)
 	}
-	return oldValue.CiID, nil
+	return oldValue.ScopeFieldName, nil
 }
 
-// AddCiID adds u to the "ci_id" field.
-func (m *CiPermissionMutation) AddCiID(u int64) {
-	if m.addci_id != nil {
-		*m.addci_id += u
-	} else {
-		m.addci_id = &u
-	}
+// ClearScopeFieldName clears the value of the "scope_field_name" field.
+func (m *CiPermissionMutation) ClearScopeFieldName() {
+	m.scope_field_name = nil
+	m.clearedFields[cipermission.FieldScopeFieldName] = struct{}{}
 }
 
-// AddedCiID returns the value that was added to the "ci_id" field in this mutation.
-func (m *CiPermissionMutation) AddedCiID() (r int64, exists bool) {
-	v := m.addci_id
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// ClearCiID clears the value of the "ci_id" field.
-func (m *CiPermissionMutation) ClearCiID() {
-	m.ci_id = nil
-	m.addci_id = nil
-	m.clearedFields[cipermission.FieldCiID] = struct{}{}
-}
-
-// CiIDCleared returns if the "ci_id" field was cleared in this mutation.
-func (m *CiPermissionMutation) CiIDCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldCiID]
+// ScopeFieldNameCleared returns if the "scope_field_name" field was cleared in this mutation.
+func (m *CiPermissionMutation) ScopeFieldNameCleared() bool {
+	_, ok := m.clearedFields[cipermission.FieldScopeFieldName]
 	return ok
 }
 
-// ResetCiID resets all changes to the "ci_id" field.
-func (m *CiPermissionMutation) ResetCiID() {
-	m.ci_id = nil
-	m.addci_id = nil
-	delete(m.clearedFields, cipermission.FieldCiID)
-}
-
-// SetAttributeID sets the "attribute_id" field.
-func (m *CiPermissionMutation) SetAttributeID(u uint64) {
-	m.attribute_id = &u
-	m.addattribute_id = nil
-}
-
-// AttributeID returns the value of the "attribute_id" field in the mutation.
-func (m *CiPermissionMutation) AttributeID() (r uint64, exists bool) {
-	v := m.attribute_id
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldAttributeID returns the old "attribute_id" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldAttributeID(ctx context.Context) (v uint64, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldAttributeID is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldAttributeID requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldAttributeID: %w", err)
-	}
-	return oldValue.AttributeID, nil
-}
-
-// AddAttributeID adds u to the "attribute_id" field.
-func (m *CiPermissionMutation) AddAttributeID(u int64) {
-	if m.addattribute_id != nil {
-		*m.addattribute_id += u
-	} else {
-		m.addattribute_id = &u
-	}
-}
-
-// AddedAttributeID returns the value that was added to the "attribute_id" field in this mutation.
-func (m *CiPermissionMutation) AddedAttributeID() (r int64, exists bool) {
-	v := m.addattribute_id
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// ClearAttributeID clears the value of the "attribute_id" field.
-func (m *CiPermissionMutation) ClearAttributeID() {
-	m.attribute_id = nil
-	m.addattribute_id = nil
-	m.clearedFields[cipermission.FieldAttributeID] = struct{}{}
-}
-
-// AttributeIDCleared returns if the "attribute_id" field was cleared in this mutation.
-func (m *CiPermissionMutation) AttributeIDCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldAttributeID]
-	return ok
-}
-
-// ResetAttributeID resets all changes to the "attribute_id" field.
-func (m *CiPermissionMutation) ResetAttributeID() {
-	m.attribute_id = nil
-	m.addattribute_id = nil
-	delete(m.clearedFields, cipermission.FieldAttributeID)
-}
-
-// SetFieldName sets the "field_name" field.
-func (m *CiPermissionMutation) SetFieldName(s string) {
-	m.field_name = &s
-}
-
-// FieldName returns the value of the "field_name" field in the mutation.
-func (m *CiPermissionMutation) FieldName() (r string, exists bool) {
-	v := m.field_name
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldFieldName returns the old "field_name" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldFieldName(ctx context.Context) (v string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldFieldName is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldFieldName requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldFieldName: %w", err)
-	}
-	return oldValue.FieldName, nil
-}
-
-// ClearFieldName clears the value of the "field_name" field.
-func (m *CiPermissionMutation) ClearFieldName() {
-	m.field_name = nil
-	m.clearedFields[cipermission.FieldFieldName] = struct{}{}
-}
-
-// FieldNameCleared returns if the "field_name" field was cleared in this mutation.
-func (m *CiPermissionMutation) FieldNameCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldFieldName]
-	return ok
-}
-
-// ResetFieldName resets all changes to the "field_name" field.
-func (m *CiPermissionMutation) ResetFieldName() {
-	m.field_name = nil
-	delete(m.clearedFields, cipermission.FieldFieldName)
+// ResetScopeFieldName resets all changes to the "scope_field_name" field.
+func (m *CiPermissionMutation) ResetScopeFieldName() {
+	m.scope_field_name = nil
+	delete(m.clearedFields, cipermission.FieldScopeFieldName)
 }
 
 // SetSubjectType sets the "subject_type" field.
@@ -19189,12 +19094,12 @@ func (m *CiPermissionMutation) ResetSubjectType() {
 }
 
 // SetSubjectID sets the "subject_id" field.
-func (m *CiPermissionMutation) SetSubjectID(u uuid.UUID) {
-	m.subject_id = &u
+func (m *CiPermissionMutation) SetSubjectID(s string) {
+	m.subject_id = &s
 }
 
 // SubjectID returns the value of the "subject_id" field in the mutation.
-func (m *CiPermissionMutation) SubjectID() (r uuid.UUID, exists bool) {
+func (m *CiPermissionMutation) SubjectID() (r string, exists bool) {
 	v := m.subject_id
 	if v == nil {
 		return
@@ -19205,7 +19110,7 @@ func (m *CiPermissionMutation) SubjectID() (r uuid.UUID, exists bool) {
 // OldSubjectID returns the old "subject_id" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldSubjectID(ctx context.Context) (v uuid.UUID, err error) {
+func (m *CiPermissionMutation) OldSubjectID(ctx context.Context) (v string, err error) {
 	if !m.op.Is(OpUpdateOne) {
 		return v, errors.New("OldSubjectID is only allowed on UpdateOne operations")
 	}
@@ -19273,55 +19178,6 @@ func (m *CiPermissionMutation) ResetSubjectName() {
 	m.subject_name = nil
 }
 
-// SetSubjectCode sets the "subject_code" field.
-func (m *CiPermissionMutation) SetSubjectCode(s string) {
-	m.subject_code = &s
-}
-
-// SubjectCode returns the value of the "subject_code" field in the mutation.
-func (m *CiPermissionMutation) SubjectCode() (r string, exists bool) {
-	v := m.subject_code
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldSubjectCode returns the old "subject_code" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldSubjectCode(ctx context.Context) (v string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldSubjectCode is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldSubjectCode requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldSubjectCode: %w", err)
-	}
-	return oldValue.SubjectCode, nil
-}
-
-// ClearSubjectCode clears the value of the "subject_code" field.
-func (m *CiPermissionMutation) ClearSubjectCode() {
-	m.subject_code = nil
-	m.clearedFields[cipermission.FieldSubjectCode] = struct{}{}
-}
-
-// SubjectCodeCleared returns if the "subject_code" field was cleared in this mutation.
-func (m *CiPermissionMutation) SubjectCodeCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldSubjectCode]
-	return ok
-}
-
-// ResetSubjectCode resets all changes to the "subject_code" field.
-func (m *CiPermissionMutation) ResetSubjectCode() {
-	m.subject_code = nil
-	delete(m.clearedFields, cipermission.FieldSubjectCode)
-}
-
 // SetPermissionType sets the "permission_type" field.
 func (m *CiPermissionMutation) SetPermissionType(ct cipermission.PermissionType) {
 	m.permission_type = &ct
@@ -19358,162 +19214,6 @@ func (m *CiPermissionMutation) ResetPermissionType() {
 	m.permission_type = nil
 }
 
-// SetOperations sets the "operations" field.
-func (m *CiPermissionMutation) SetOperations(s []string) {
-	m.operations = &s
-	m.appendoperations = nil
-}
-
-// Operations returns the value of the "operations" field in the mutation.
-func (m *CiPermissionMutation) Operations() (r []string, exists bool) {
-	v := m.operations
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldOperations returns the old "operations" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldOperations(ctx context.Context) (v []string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldOperations is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldOperations requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldOperations: %w", err)
-	}
-	return oldValue.Operations, nil
-}
-
-// AppendOperations adds s to the "operations" field.
-func (m *CiPermissionMutation) AppendOperations(s []string) {
-	m.appendoperations = append(m.appendoperations, s...)
-}
-
-// AppendedOperations returns the list of values that were appended to the "operations" field in this mutation.
-func (m *CiPermissionMutation) AppendedOperations() ([]string, bool) {
-	if len(m.appendoperations) == 0 {
-		return nil, false
-	}
-	return m.appendoperations, true
-}
-
-// ResetOperations resets all changes to the "operations" field.
-func (m *CiPermissionMutation) ResetOperations() {
-	m.operations = nil
-	m.appendoperations = nil
-}
-
-// SetConditions sets the "conditions" field.
-func (m *CiPermissionMutation) SetConditions(value map[string]interface{}) {
-	m.conditions = &value
-}
-
-// Conditions returns the value of the "conditions" field in the mutation.
-func (m *CiPermissionMutation) Conditions() (r map[string]interface{}, exists bool) {
-	v := m.conditions
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldConditions returns the old "conditions" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldConditions(ctx context.Context) (v map[string]interface{}, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldConditions is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldConditions requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldConditions: %w", err)
-	}
-	return oldValue.Conditions, nil
-}
-
-// ClearConditions clears the value of the "conditions" field.
-func (m *CiPermissionMutation) ClearConditions() {
-	m.conditions = nil
-	m.clearedFields[cipermission.FieldConditions] = struct{}{}
-}
-
-// ConditionsCleared returns if the "conditions" field was cleared in this mutation.
-func (m *CiPermissionMutation) ConditionsCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldConditions]
-	return ok
-}
-
-// ResetConditions resets all changes to the "conditions" field.
-func (m *CiPermissionMutation) ResetConditions() {
-	m.conditions = nil
-	delete(m.clearedFields, cipermission.FieldConditions)
-}
-
-// SetPriority sets the "priority" field.
-func (m *CiPermissionMutation) SetPriority(i int) {
-	m.priority = &i
-	m.addpriority = nil
-}
-
-// Priority returns the value of the "priority" field in the mutation.
-func (m *CiPermissionMutation) Priority() (r int, exists bool) {
-	v := m.priority
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldPriority returns the old "priority" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldPriority(ctx context.Context) (v int, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldPriority is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldPriority requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldPriority: %w", err)
-	}
-	return oldValue.Priority, nil
-}
-
-// AddPriority adds i to the "priority" field.
-func (m *CiPermissionMutation) AddPriority(i int) {
-	if m.addpriority != nil {
-		*m.addpriority += i
-	} else {
-		m.addpriority = &i
-	}
-}
-
-// AddedPriority returns the value that was added to the "priority" field in this mutation.
-func (m *CiPermissionMutation) AddedPriority() (r int, exists bool) {
-	v := m.addpriority
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// ResetPriority resets all changes to the "priority" field.
-func (m *CiPermissionMutation) ResetPriority() {
-	m.priority = nil
-	m.addpriority = nil
-}
-
 // SetPermissionLevel sets the "permission_level" field.
 func (m *CiPermissionMutation) SetPermissionLevel(cl cipermission.PermissionLevel) {
 	m.permission_level = &cl
@@ -19548,6 +19248,62 @@ func (m *CiPermissionMutation) OldPermissionLevel(ctx context.Context) (v ciperm
 // ResetPermissionLevel resets all changes to the "permission_level" field.
 func (m *CiPermissionMutation) ResetPermissionLevel() {
 	m.permission_level = nil
+}
+
+// SetOperationsMask sets the "operations_mask" field.
+func (m *CiPermissionMutation) SetOperationsMask(u uint64) {
+	m.operations_mask = &u
+	m.addoperations_mask = nil
+}
+
+// OperationsMask returns the value of the "operations_mask" field in the mutation.
+func (m *CiPermissionMutation) OperationsMask() (r uint64, exists bool) {
+	v := m.operations_mask
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldOperationsMask returns the old "operations_mask" field's value of the CiPermission entity.
+// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CiPermissionMutation) OldOperationsMask(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldOperationsMask is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldOperationsMask requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldOperationsMask: %w", err)
+	}
+	return oldValue.OperationsMask, nil
+}
+
+// AddOperationsMask adds u to the "operations_mask" field.
+func (m *CiPermissionMutation) AddOperationsMask(u int64) {
+	if m.addoperations_mask != nil {
+		*m.addoperations_mask += u
+	} else {
+		m.addoperations_mask = &u
+	}
+}
+
+// AddedOperationsMask returns the value that was added to the "operations_mask" field in this mutation.
+func (m *CiPermissionMutation) AddedOperationsMask() (r int64, exists bool) {
+	v := m.addoperations_mask
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetOperationsMask resets all changes to the "operations_mask" field.
+func (m *CiPermissionMutation) ResetOperationsMask() {
+	m.operations_mask = nil
+	m.addoperations_mask = nil
 }
 
 // SetEffectiveFrom sets the "effective_from" field.
@@ -19684,167 +19440,181 @@ func (m *CiPermissionMutation) ResetIsTemporary() {
 	m.is_temporary = nil
 }
 
-// SetDataFilters sets the "data_filters" field.
-func (m *CiPermissionMutation) SetDataFilters(value map[string]interface{}) {
-	m.data_filters = &value
+// SetPriority sets the "priority" field.
+func (m *CiPermissionMutation) SetPriority(i int) {
+	m.priority = &i
+	m.addpriority = nil
 }
 
-// DataFilters returns the value of the "data_filters" field in the mutation.
-func (m *CiPermissionMutation) DataFilters() (r map[string]interface{}, exists bool) {
-	v := m.data_filters
+// Priority returns the value of the "priority" field in the mutation.
+func (m *CiPermissionMutation) Priority() (r int, exists bool) {
+	v := m.priority
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldDataFilters returns the old "data_filters" field's value of the CiPermission entity.
+// OldPriority returns the old "priority" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldDataFilters(ctx context.Context) (v map[string]interface{}, err error) {
+func (m *CiPermissionMutation) OldPriority(ctx context.Context) (v int, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldDataFilters is only allowed on UpdateOne operations")
+		return v, errors.New("OldPriority is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldDataFilters requires an ID field in the mutation")
+		return v, errors.New("OldPriority requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldDataFilters: %w", err)
+		return v, fmt.Errorf("querying old value for OldPriority: %w", err)
 	}
-	return oldValue.DataFilters, nil
+	return oldValue.Priority, nil
 }
 
-// ClearDataFilters clears the value of the "data_filters" field.
-func (m *CiPermissionMutation) ClearDataFilters() {
-	m.data_filters = nil
-	m.clearedFields[cipermission.FieldDataFilters] = struct{}{}
+// AddPriority adds i to the "priority" field.
+func (m *CiPermissionMutation) AddPriority(i int) {
+	if m.addpriority != nil {
+		*m.addpriority += i
+	} else {
+		m.addpriority = &i
+	}
 }
 
-// DataFiltersCleared returns if the "data_filters" field was cleared in this mutation.
-func (m *CiPermissionMutation) DataFiltersCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldDataFilters]
-	return ok
-}
-
-// ResetDataFilters resets all changes to the "data_filters" field.
-func (m *CiPermissionMutation) ResetDataFilters() {
-	m.data_filters = nil
-	delete(m.clearedFields, cipermission.FieldDataFilters)
-}
-
-// SetFieldMasks sets the "field_masks" field.
-func (m *CiPermissionMutation) SetFieldMasks(s []string) {
-	m.field_masks = &s
-	m.appendfield_masks = nil
-}
-
-// FieldMasks returns the value of the "field_masks" field in the mutation.
-func (m *CiPermissionMutation) FieldMasks() (r []string, exists bool) {
-	v := m.field_masks
+// AddedPriority returns the value that was added to the "priority" field in this mutation.
+func (m *CiPermissionMutation) AddedPriority() (r int, exists bool) {
+	v := m.addpriority
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldFieldMasks returns the old "field_masks" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldFieldMasks(ctx context.Context) (v []string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldFieldMasks is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldFieldMasks requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldFieldMasks: %w", err)
-	}
-	return oldValue.FieldMasks, nil
+// ResetPriority resets all changes to the "priority" field.
+func (m *CiPermissionMutation) ResetPriority() {
+	m.priority = nil
+	m.addpriority = nil
 }
 
-// AppendFieldMasks adds s to the "field_masks" field.
-func (m *CiPermissionMutation) AppendFieldMasks(s []string) {
-	m.appendfield_masks = append(m.appendfield_masks, s...)
+// SetStatus sets the "status" field.
+func (m *CiPermissionMutation) SetStatus(c cipermission.Status) {
+	m.status = &c
 }
 
-// AppendedFieldMasks returns the list of values that were appended to the "field_masks" field in this mutation.
-func (m *CiPermissionMutation) AppendedFieldMasks() ([]string, bool) {
-	if len(m.appendfield_masks) == 0 {
-		return nil, false
-	}
-	return m.appendfield_masks, true
-}
-
-// ClearFieldMasks clears the value of the "field_masks" field.
-func (m *CiPermissionMutation) ClearFieldMasks() {
-	m.field_masks = nil
-	m.appendfield_masks = nil
-	m.clearedFields[cipermission.FieldFieldMasks] = struct{}{}
-}
-
-// FieldMasksCleared returns if the "field_masks" field was cleared in this mutation.
-func (m *CiPermissionMutation) FieldMasksCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldFieldMasks]
-	return ok
-}
-
-// ResetFieldMasks resets all changes to the "field_masks" field.
-func (m *CiPermissionMutation) ResetFieldMasks() {
-	m.field_masks = nil
-	m.appendfield_masks = nil
-	delete(m.clearedFields, cipermission.FieldFieldMasks)
-}
-
-// SetAllowedValues sets the "allowed_values" field.
-func (m *CiPermissionMutation) SetAllowedValues(value map[string]interface{}) {
-	m.allowed_values = &value
-}
-
-// AllowedValues returns the value of the "allowed_values" field in the mutation.
-func (m *CiPermissionMutation) AllowedValues() (r map[string]interface{}, exists bool) {
-	v := m.allowed_values
+// Status returns the value of the "status" field in the mutation.
+func (m *CiPermissionMutation) Status() (r cipermission.Status, exists bool) {
+	v := m.status
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldAllowedValues returns the old "allowed_values" field's value of the CiPermission entity.
+// OldStatus returns the old "status" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldAllowedValues(ctx context.Context) (v map[string]interface{}, err error) {
+func (m *CiPermissionMutation) OldStatus(ctx context.Context) (v cipermission.Status, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldAllowedValues is only allowed on UpdateOne operations")
+		return v, errors.New("OldStatus is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldAllowedValues requires an ID field in the mutation")
+		return v, errors.New("OldStatus requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldAllowedValues: %w", err)
+		return v, fmt.Errorf("querying old value for OldStatus: %w", err)
 	}
-	return oldValue.AllowedValues, nil
+	return oldValue.Status, nil
 }
 
-// ClearAllowedValues clears the value of the "allowed_values" field.
-func (m *CiPermissionMutation) ClearAllowedValues() {
-	m.allowed_values = nil
-	m.clearedFields[cipermission.FieldAllowedValues] = struct{}{}
+// ResetStatus resets all changes to the "status" field.
+func (m *CiPermissionMutation) ResetStatus() {
+	m.status = nil
 }
 
-// AllowedValuesCleared returns if the "allowed_values" field was cleared in this mutation.
-func (m *CiPermissionMutation) AllowedValuesCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldAllowedValues]
+// SetParentPermissionID sets the "parent_permission_id" field.
+func (m *CiPermissionMutation) SetParentPermissionID(s string) {
+	m.parent_permission_id = &s
+}
+
+// ParentPermissionID returns the value of the "parent_permission_id" field in the mutation.
+func (m *CiPermissionMutation) ParentPermissionID() (r string, exists bool) {
+	v := m.parent_permission_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldParentPermissionID returns the old "parent_permission_id" field's value of the CiPermission entity.
+// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CiPermissionMutation) OldParentPermissionID(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldParentPermissionID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldParentPermissionID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldParentPermissionID: %w", err)
+	}
+	return oldValue.ParentPermissionID, nil
+}
+
+// ClearParentPermissionID clears the value of the "parent_permission_id" field.
+func (m *CiPermissionMutation) ClearParentPermissionID() {
+	m.parent_permission_id = nil
+	m.clearedFields[cipermission.FieldParentPermissionID] = struct{}{}
+}
+
+// ParentPermissionIDCleared returns if the "parent_permission_id" field was cleared in this mutation.
+func (m *CiPermissionMutation) ParentPermissionIDCleared() bool {
+	_, ok := m.clearedFields[cipermission.FieldParentPermissionID]
 	return ok
 }
 
-// ResetAllowedValues resets all changes to the "allowed_values" field.
-func (m *CiPermissionMutation) ResetAllowedValues() {
-	m.allowed_values = nil
-	delete(m.clearedFields, cipermission.FieldAllowedValues)
+// ResetParentPermissionID resets all changes to the "parent_permission_id" field.
+func (m *CiPermissionMutation) ResetParentPermissionID() {
+	m.parent_permission_id = nil
+	delete(m.clearedFields, cipermission.FieldParentPermissionID)
+}
+
+// SetInheritable sets the "inheritable" field.
+func (m *CiPermissionMutation) SetInheritable(b bool) {
+	m.inheritable = &b
+}
+
+// Inheritable returns the value of the "inheritable" field in the mutation.
+func (m *CiPermissionMutation) Inheritable() (r bool, exists bool) {
+	v := m.inheritable
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldInheritable returns the old "inheritable" field's value of the CiPermission entity.
+// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CiPermissionMutation) OldInheritable(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldInheritable is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldInheritable requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldInheritable: %w", err)
+	}
+	return oldValue.Inheritable, nil
+}
+
+// ResetInheritable resets all changes to the "inheritable" field.
+func (m *CiPermissionMutation) ResetInheritable() {
+	m.inheritable = nil
 }
 
 // SetRequireApproval sets the "require_approval" field.
@@ -19883,200 +19653,76 @@ func (m *CiPermissionMutation) ResetRequireApproval() {
 	m.require_approval = nil
 }
 
-// SetGrantedBy sets the "granted_by" field.
-func (m *CiPermissionMutation) SetGrantedBy(u uuid.UUID) {
-	m.granted_by = &u
+// SetRequireMfa sets the "require_mfa" field.
+func (m *CiPermissionMutation) SetRequireMfa(b bool) {
+	m.require_mfa = &b
 }
 
-// GrantedBy returns the value of the "granted_by" field in the mutation.
-func (m *CiPermissionMutation) GrantedBy() (r uuid.UUID, exists bool) {
-	v := m.granted_by
+// RequireMfa returns the value of the "require_mfa" field in the mutation.
+func (m *CiPermissionMutation) RequireMfa() (r bool, exists bool) {
+	v := m.require_mfa
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldGrantedBy returns the old "granted_by" field's value of the CiPermission entity.
+// OldRequireMfa returns the old "require_mfa" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldGrantedBy(ctx context.Context) (v uuid.UUID, err error) {
+func (m *CiPermissionMutation) OldRequireMfa(ctx context.Context) (v bool, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldGrantedBy is only allowed on UpdateOne operations")
+		return v, errors.New("OldRequireMfa is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldGrantedBy requires an ID field in the mutation")
+		return v, errors.New("OldRequireMfa requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldGrantedBy: %w", err)
+		return v, fmt.Errorf("querying old value for OldRequireMfa: %w", err)
 	}
-	return oldValue.GrantedBy, nil
+	return oldValue.RequireMfa, nil
 }
 
-// ClearGrantedBy clears the value of the "granted_by" field.
-func (m *CiPermissionMutation) ClearGrantedBy() {
-	m.granted_by = nil
-	m.clearedFields[cipermission.FieldGrantedBy] = struct{}{}
+// ResetRequireMfa resets all changes to the "require_mfa" field.
+func (m *CiPermissionMutation) ResetRequireMfa() {
+	m.require_mfa = nil
 }
 
-// GrantedByCleared returns if the "granted_by" field was cleared in this mutation.
-func (m *CiPermissionMutation) GrantedByCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldGrantedBy]
-	return ok
+// SetRiskLevel sets the "risk_level" field.
+func (m *CiPermissionMutation) SetRiskLevel(cl cipermission.RiskLevel) {
+	m.risk_level = &cl
 }
 
-// ResetGrantedBy resets all changes to the "granted_by" field.
-func (m *CiPermissionMutation) ResetGrantedBy() {
-	m.granted_by = nil
-	delete(m.clearedFields, cipermission.FieldGrantedBy)
-}
-
-// SetGrantedByName sets the "granted_by_name" field.
-func (m *CiPermissionMutation) SetGrantedByName(s string) {
-	m.granted_by_name = &s
-}
-
-// GrantedByName returns the value of the "granted_by_name" field in the mutation.
-func (m *CiPermissionMutation) GrantedByName() (r string, exists bool) {
-	v := m.granted_by_name
+// RiskLevel returns the value of the "risk_level" field in the mutation.
+func (m *CiPermissionMutation) RiskLevel() (r cipermission.RiskLevel, exists bool) {
+	v := m.risk_level
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldGrantedByName returns the old "granted_by_name" field's value of the CiPermission entity.
+// OldRiskLevel returns the old "risk_level" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldGrantedByName(ctx context.Context) (v string, err error) {
+func (m *CiPermissionMutation) OldRiskLevel(ctx context.Context) (v cipermission.RiskLevel, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldGrantedByName is only allowed on UpdateOne operations")
+		return v, errors.New("OldRiskLevel is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldGrantedByName requires an ID field in the mutation")
+		return v, errors.New("OldRiskLevel requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldGrantedByName: %w", err)
+		return v, fmt.Errorf("querying old value for OldRiskLevel: %w", err)
 	}
-	return oldValue.GrantedByName, nil
+	return oldValue.RiskLevel, nil
 }
 
-// ClearGrantedByName clears the value of the "granted_by_name" field.
-func (m *CiPermissionMutation) ClearGrantedByName() {
-	m.granted_by_name = nil
-	m.clearedFields[cipermission.FieldGrantedByName] = struct{}{}
-}
-
-// GrantedByNameCleared returns if the "granted_by_name" field was cleared in this mutation.
-func (m *CiPermissionMutation) GrantedByNameCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldGrantedByName]
-	return ok
-}
-
-// ResetGrantedByName resets all changes to the "granted_by_name" field.
-func (m *CiPermissionMutation) ResetGrantedByName() {
-	m.granted_by_name = nil
-	delete(m.clearedFields, cipermission.FieldGrantedByName)
-}
-
-// SetGrantedAt sets the "granted_at" field.
-func (m *CiPermissionMutation) SetGrantedAt(t time.Time) {
-	m.granted_at = &t
-}
-
-// GrantedAt returns the value of the "granted_at" field in the mutation.
-func (m *CiPermissionMutation) GrantedAt() (r time.Time, exists bool) {
-	v := m.granted_at
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldGrantedAt returns the old "granted_at" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldGrantedAt(ctx context.Context) (v time.Time, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldGrantedAt is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldGrantedAt requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldGrantedAt: %w", err)
-	}
-	return oldValue.GrantedAt, nil
-}
-
-// ClearGrantedAt clears the value of the "granted_at" field.
-func (m *CiPermissionMutation) ClearGrantedAt() {
-	m.granted_at = nil
-	m.clearedFields[cipermission.FieldGrantedAt] = struct{}{}
-}
-
-// GrantedAtCleared returns if the "granted_at" field was cleared in this mutation.
-func (m *CiPermissionMutation) GrantedAtCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldGrantedAt]
-	return ok
-}
-
-// ResetGrantedAt resets all changes to the "granted_at" field.
-func (m *CiPermissionMutation) ResetGrantedAt() {
-	m.granted_at = nil
-	delete(m.clearedFields, cipermission.FieldGrantedAt)
-}
-
-// SetGrantReason sets the "grant_reason" field.
-func (m *CiPermissionMutation) SetGrantReason(s string) {
-	m.grant_reason = &s
-}
-
-// GrantReason returns the value of the "grant_reason" field in the mutation.
-func (m *CiPermissionMutation) GrantReason() (r string, exists bool) {
-	v := m.grant_reason
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldGrantReason returns the old "grant_reason" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldGrantReason(ctx context.Context) (v string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldGrantReason is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldGrantReason requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldGrantReason: %w", err)
-	}
-	return oldValue.GrantReason, nil
-}
-
-// ClearGrantReason clears the value of the "grant_reason" field.
-func (m *CiPermissionMutation) ClearGrantReason() {
-	m.grant_reason = nil
-	m.clearedFields[cipermission.FieldGrantReason] = struct{}{}
-}
-
-// GrantReasonCleared returns if the "grant_reason" field was cleared in this mutation.
-func (m *CiPermissionMutation) GrantReasonCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldGrantReason]
-	return ok
-}
-
-// ResetGrantReason resets all changes to the "grant_reason" field.
-func (m *CiPermissionMutation) ResetGrantReason() {
-	m.grant_reason = nil
-	delete(m.clearedFields, cipermission.FieldGrantReason)
+// ResetRiskLevel resets all changes to the "risk_level" field.
+func (m *CiPermissionMutation) ResetRiskLevel() {
+	m.risk_level = nil
 }
 
 // SetUsageCount sets the "usage_count" field.
@@ -20184,523 +19830,102 @@ func (m *CiPermissionMutation) ResetLastUsedAt() {
 	delete(m.clearedFields, cipermission.FieldLastUsedAt)
 }
 
-// SetUsageStatistics sets the "usage_statistics" field.
-func (m *CiPermissionMutation) SetUsageStatistics(value map[string]interface{}) {
-	m.usage_statistics = &value
+// SetCreatedBy sets the "created_by" field.
+func (m *CiPermissionMutation) SetCreatedBy(s string) {
+	m.created_by = &s
 }
 
-// UsageStatistics returns the value of the "usage_statistics" field in the mutation.
-func (m *CiPermissionMutation) UsageStatistics() (r map[string]interface{}, exists bool) {
-	v := m.usage_statistics
+// CreatedBy returns the value of the "created_by" field in the mutation.
+func (m *CiPermissionMutation) CreatedBy() (r string, exists bool) {
+	v := m.created_by
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldUsageStatistics returns the old "usage_statistics" field's value of the CiPermission entity.
+// OldCreatedBy returns the old "created_by" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldUsageStatistics(ctx context.Context) (v map[string]interface{}, err error) {
+func (m *CiPermissionMutation) OldCreatedBy(ctx context.Context) (v string, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldUsageStatistics is only allowed on UpdateOne operations")
+		return v, errors.New("OldCreatedBy is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldUsageStatistics requires an ID field in the mutation")
+		return v, errors.New("OldCreatedBy requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldUsageStatistics: %w", err)
+		return v, fmt.Errorf("querying old value for OldCreatedBy: %w", err)
 	}
-	return oldValue.UsageStatistics, nil
+	return oldValue.CreatedBy, nil
 }
 
-// ClearUsageStatistics clears the value of the "usage_statistics" field.
-func (m *CiPermissionMutation) ClearUsageStatistics() {
-	m.usage_statistics = nil
-	m.clearedFields[cipermission.FieldUsageStatistics] = struct{}{}
+// ClearCreatedBy clears the value of the "created_by" field.
+func (m *CiPermissionMutation) ClearCreatedBy() {
+	m.created_by = nil
+	m.clearedFields[cipermission.FieldCreatedBy] = struct{}{}
 }
 
-// UsageStatisticsCleared returns if the "usage_statistics" field was cleared in this mutation.
-func (m *CiPermissionMutation) UsageStatisticsCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldUsageStatistics]
+// CreatedByCleared returns if the "created_by" field was cleared in this mutation.
+func (m *CiPermissionMutation) CreatedByCleared() bool {
+	_, ok := m.clearedFields[cipermission.FieldCreatedBy]
 	return ok
 }
 
-// ResetUsageStatistics resets all changes to the "usage_statistics" field.
-func (m *CiPermissionMutation) ResetUsageStatistics() {
-	m.usage_statistics = nil
-	delete(m.clearedFields, cipermission.FieldUsageStatistics)
+// ResetCreatedBy resets all changes to the "created_by" field.
+func (m *CiPermissionMutation) ResetCreatedBy() {
+	m.created_by = nil
+	delete(m.clearedFields, cipermission.FieldCreatedBy)
 }
 
-// SetStatus sets the "status" field.
-func (m *CiPermissionMutation) SetStatus(c cipermission.Status) {
-	m.status = &c
+// SetUpdatedBy sets the "updated_by" field.
+func (m *CiPermissionMutation) SetUpdatedBy(s string) {
+	m.updated_by = &s
 }
 
-// Status returns the value of the "status" field in the mutation.
-func (m *CiPermissionMutation) Status() (r cipermission.Status, exists bool) {
-	v := m.status
+// UpdatedBy returns the value of the "updated_by" field in the mutation.
+func (m *CiPermissionMutation) UpdatedBy() (r string, exists bool) {
+	v := m.updated_by
 	if v == nil {
 		return
 	}
 	return *v, true
 }
 
-// OldStatus returns the old "status" field's value of the CiPermission entity.
+// OldUpdatedBy returns the old "updated_by" field's value of the CiPermission entity.
 // If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldStatus(ctx context.Context) (v cipermission.Status, err error) {
+func (m *CiPermissionMutation) OldUpdatedBy(ctx context.Context) (v string, err error) {
 	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldStatus is only allowed on UpdateOne operations")
+		return v, errors.New("OldUpdatedBy is only allowed on UpdateOne operations")
 	}
 	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldStatus requires an ID field in the mutation")
+		return v, errors.New("OldUpdatedBy requires an ID field in the mutation")
 	}
 	oldValue, err := m.oldValue(ctx)
 	if err != nil {
-		return v, fmt.Errorf("querying old value for OldStatus: %w", err)
+		return v, fmt.Errorf("querying old value for OldUpdatedBy: %w", err)
 	}
-	return oldValue.Status, nil
+	return oldValue.UpdatedBy, nil
 }
 
-// ResetStatus resets all changes to the "status" field.
-func (m *CiPermissionMutation) ResetStatus() {
-	m.status = nil
+// ClearUpdatedBy clears the value of the "updated_by" field.
+func (m *CiPermissionMutation) ClearUpdatedBy() {
+	m.updated_by = nil
+	m.clearedFields[cipermission.FieldUpdatedBy] = struct{}{}
 }
 
-// SetStatusReason sets the "status_reason" field.
-func (m *CiPermissionMutation) SetStatusReason(s string) {
-	m.status_reason = &s
-}
-
-// StatusReason returns the value of the "status_reason" field in the mutation.
-func (m *CiPermissionMutation) StatusReason() (r string, exists bool) {
-	v := m.status_reason
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldStatusReason returns the old "status_reason" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldStatusReason(ctx context.Context) (v string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldStatusReason is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldStatusReason requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldStatusReason: %w", err)
-	}
-	return oldValue.StatusReason, nil
-}
-
-// ClearStatusReason clears the value of the "status_reason" field.
-func (m *CiPermissionMutation) ClearStatusReason() {
-	m.status_reason = nil
-	m.clearedFields[cipermission.FieldStatusReason] = struct{}{}
-}
-
-// StatusReasonCleared returns if the "status_reason" field was cleared in this mutation.
-func (m *CiPermissionMutation) StatusReasonCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldStatusReason]
+// UpdatedByCleared returns if the "updated_by" field was cleared in this mutation.
+func (m *CiPermissionMutation) UpdatedByCleared() bool {
+	_, ok := m.clearedFields[cipermission.FieldUpdatedBy]
 	return ok
 }
 
-// ResetStatusReason resets all changes to the "status_reason" field.
-func (m *CiPermissionMutation) ResetStatusReason() {
-	m.status_reason = nil
-	delete(m.clearedFields, cipermission.FieldStatusReason)
-}
-
-// SetInheritable sets the "inheritable" field.
-func (m *CiPermissionMutation) SetInheritable(b bool) {
-	m.inheritable = &b
-}
-
-// Inheritable returns the value of the "inheritable" field in the mutation.
-func (m *CiPermissionMutation) Inheritable() (r bool, exists bool) {
-	v := m.inheritable
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldInheritable returns the old "inheritable" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldInheritable(ctx context.Context) (v bool, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldInheritable is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldInheritable requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldInheritable: %w", err)
-	}
-	return oldValue.Inheritable, nil
-}
-
-// ResetInheritable resets all changes to the "inheritable" field.
-func (m *CiPermissionMutation) ResetInheritable() {
-	m.inheritable = nil
-}
-
-// SetParentPermissionID sets the "parent_permission_id" field.
-func (m *CiPermissionMutation) SetParentPermissionID(s string) {
-	m.parent_permission_id = &s
-}
-
-// ParentPermissionID returns the value of the "parent_permission_id" field in the mutation.
-func (m *CiPermissionMutation) ParentPermissionID() (r string, exists bool) {
-	v := m.parent_permission_id
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldParentPermissionID returns the old "parent_permission_id" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldParentPermissionID(ctx context.Context) (v string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldParentPermissionID is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldParentPermissionID requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldParentPermissionID: %w", err)
-	}
-	return oldValue.ParentPermissionID, nil
-}
-
-// ClearParentPermissionID clears the value of the "parent_permission_id" field.
-func (m *CiPermissionMutation) ClearParentPermissionID() {
-	m.parent_permission_id = nil
-	m.clearedFields[cipermission.FieldParentPermissionID] = struct{}{}
-}
-
-// ParentPermissionIDCleared returns if the "parent_permission_id" field was cleared in this mutation.
-func (m *CiPermissionMutation) ParentPermissionIDCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldParentPermissionID]
-	return ok
-}
-
-// ResetParentPermissionID resets all changes to the "parent_permission_id" field.
-func (m *CiPermissionMutation) ResetParentPermissionID() {
-	m.parent_permission_id = nil
-	delete(m.clearedFields, cipermission.FieldParentPermissionID)
-}
-
-// SetInheritedFrom sets the "inherited_from" field.
-func (m *CiPermissionMutation) SetInheritedFrom(s []string) {
-	m.inherited_from = &s
-	m.appendinherited_from = nil
-}
-
-// InheritedFrom returns the value of the "inherited_from" field in the mutation.
-func (m *CiPermissionMutation) InheritedFrom() (r []string, exists bool) {
-	v := m.inherited_from
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldInheritedFrom returns the old "inherited_from" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldInheritedFrom(ctx context.Context) (v []string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldInheritedFrom is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldInheritedFrom requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldInheritedFrom: %w", err)
-	}
-	return oldValue.InheritedFrom, nil
-}
-
-// AppendInheritedFrom adds s to the "inherited_from" field.
-func (m *CiPermissionMutation) AppendInheritedFrom(s []string) {
-	m.appendinherited_from = append(m.appendinherited_from, s...)
-}
-
-// AppendedInheritedFrom returns the list of values that were appended to the "inherited_from" field in this mutation.
-func (m *CiPermissionMutation) AppendedInheritedFrom() ([]string, bool) {
-	if len(m.appendinherited_from) == 0 {
-		return nil, false
-	}
-	return m.appendinherited_from, true
-}
-
-// ClearInheritedFrom clears the value of the "inherited_from" field.
-func (m *CiPermissionMutation) ClearInheritedFrom() {
-	m.inherited_from = nil
-	m.appendinherited_from = nil
-	m.clearedFields[cipermission.FieldInheritedFrom] = struct{}{}
-}
-
-// InheritedFromCleared returns if the "inherited_from" field was cleared in this mutation.
-func (m *CiPermissionMutation) InheritedFromCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldInheritedFrom]
-	return ok
-}
-
-// ResetInheritedFrom resets all changes to the "inherited_from" field.
-func (m *CiPermissionMutation) ResetInheritedFrom() {
-	m.inherited_from = nil
-	m.appendinherited_from = nil
-	delete(m.clearedFields, cipermission.FieldInheritedFrom)
-}
-
-// SetRiskLevel sets the "risk_level" field.
-func (m *CiPermissionMutation) SetRiskLevel(cl cipermission.RiskLevel) {
-	m.risk_level = &cl
-}
-
-// RiskLevel returns the value of the "risk_level" field in the mutation.
-func (m *CiPermissionMutation) RiskLevel() (r cipermission.RiskLevel, exists bool) {
-	v := m.risk_level
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldRiskLevel returns the old "risk_level" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldRiskLevel(ctx context.Context) (v cipermission.RiskLevel, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldRiskLevel is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldRiskLevel requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldRiskLevel: %w", err)
-	}
-	return oldValue.RiskLevel, nil
-}
-
-// ResetRiskLevel resets all changes to the "risk_level" field.
-func (m *CiPermissionMutation) ResetRiskLevel() {
-	m.risk_level = nil
-}
-
-// SetRequireMfa sets the "require_mfa" field.
-func (m *CiPermissionMutation) SetRequireMfa(b bool) {
-	m.require_mfa = &b
-}
-
-// RequireMfa returns the value of the "require_mfa" field in the mutation.
-func (m *CiPermissionMutation) RequireMfa() (r bool, exists bool) {
-	v := m.require_mfa
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldRequireMfa returns the old "require_mfa" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldRequireMfa(ctx context.Context) (v bool, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldRequireMfa is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldRequireMfa requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldRequireMfa: %w", err)
-	}
-	return oldValue.RequireMfa, nil
-}
-
-// ResetRequireMfa resets all changes to the "require_mfa" field.
-func (m *CiPermissionMutation) ResetRequireMfa() {
-	m.require_mfa = nil
-}
-
-// SetSecurityConstraints sets the "security_constraints" field.
-func (m *CiPermissionMutation) SetSecurityConstraints(value map[string]interface{}) {
-	m.security_constraints = &value
-}
-
-// SecurityConstraints returns the value of the "security_constraints" field in the mutation.
-func (m *CiPermissionMutation) SecurityConstraints() (r map[string]interface{}, exists bool) {
-	v := m.security_constraints
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldSecurityConstraints returns the old "security_constraints" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldSecurityConstraints(ctx context.Context) (v map[string]interface{}, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldSecurityConstraints is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldSecurityConstraints requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldSecurityConstraints: %w", err)
-	}
-	return oldValue.SecurityConstraints, nil
-}
-
-// ClearSecurityConstraints clears the value of the "security_constraints" field.
-func (m *CiPermissionMutation) ClearSecurityConstraints() {
-	m.security_constraints = nil
-	m.clearedFields[cipermission.FieldSecurityConstraints] = struct{}{}
-}
-
-// SecurityConstraintsCleared returns if the "security_constraints" field was cleared in this mutation.
-func (m *CiPermissionMutation) SecurityConstraintsCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldSecurityConstraints]
-	return ok
-}
-
-// ResetSecurityConstraints resets all changes to the "security_constraints" field.
-func (m *CiPermissionMutation) ResetSecurityConstraints() {
-	m.security_constraints = nil
-	delete(m.clearedFields, cipermission.FieldSecurityConstraints)
-}
-
-// SetMetadata sets the "metadata" field.
-func (m *CiPermissionMutation) SetMetadata(value map[string]interface{}) {
-	m.metadata = &value
-}
-
-// Metadata returns the value of the "metadata" field in the mutation.
-func (m *CiPermissionMutation) Metadata() (r map[string]interface{}, exists bool) {
-	v := m.metadata
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldMetadata returns the old "metadata" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldMetadata(ctx context.Context) (v map[string]interface{}, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldMetadata is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldMetadata requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldMetadata: %w", err)
-	}
-	return oldValue.Metadata, nil
-}
-
-// ClearMetadata clears the value of the "metadata" field.
-func (m *CiPermissionMutation) ClearMetadata() {
-	m.metadata = nil
-	m.clearedFields[cipermission.FieldMetadata] = struct{}{}
-}
-
-// MetadataCleared returns if the "metadata" field was cleared in this mutation.
-func (m *CiPermissionMutation) MetadataCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldMetadata]
-	return ok
-}
-
-// ResetMetadata resets all changes to the "metadata" field.
-func (m *CiPermissionMutation) ResetMetadata() {
-	m.metadata = nil
-	delete(m.clearedFields, cipermission.FieldMetadata)
-}
-
-// SetTags sets the "tags" field.
-func (m *CiPermissionMutation) SetTags(s []string) {
-	m.tags = &s
-	m.appendtags = nil
-}
-
-// Tags returns the value of the "tags" field in the mutation.
-func (m *CiPermissionMutation) Tags() (r []string, exists bool) {
-	v := m.tags
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldTags returns the old "tags" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldTags(ctx context.Context) (v []string, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldTags is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldTags requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldTags: %w", err)
-	}
-	return oldValue.Tags, nil
-}
-
-// AppendTags adds s to the "tags" field.
-func (m *CiPermissionMutation) AppendTags(s []string) {
-	m.appendtags = append(m.appendtags, s...)
-}
-
-// AppendedTags returns the list of values that were appended to the "tags" field in this mutation.
-func (m *CiPermissionMutation) AppendedTags() ([]string, bool) {
-	if len(m.appendtags) == 0 {
-		return nil, false
-	}
-	return m.appendtags, true
-}
-
-// ClearTags clears the value of the "tags" field.
-func (m *CiPermissionMutation) ClearTags() {
-	m.tags = nil
-	m.appendtags = nil
-	m.clearedFields[cipermission.FieldTags] = struct{}{}
-}
-
-// TagsCleared returns if the "tags" field was cleared in this mutation.
-func (m *CiPermissionMutation) TagsCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldTags]
-	return ok
-}
-
-// ResetTags resets all changes to the "tags" field.
-func (m *CiPermissionMutation) ResetTags() {
-	m.tags = nil
-	m.appendtags = nil
-	delete(m.clearedFields, cipermission.FieldTags)
+// ResetUpdatedBy resets all changes to the "updated_by" field.
+func (m *CiPermissionMutation) ResetUpdatedBy() {
+	m.updated_by = nil
+	delete(m.clearedFields, cipermission.FieldUpdatedBy)
 }
 
 // SetDescription sets the "description" field.
@@ -20801,200 +20026,166 @@ func (m *CiPermissionMutation) ResetComments() {
 	delete(m.clearedFields, cipermission.FieldComments)
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (m *CiPermissionMutation) SetCreatedBy(u uuid.UUID) {
-	m.created_by = &u
-}
-
-// CreatedBy returns the value of the "created_by" field in the mutation.
-func (m *CiPermissionMutation) CreatedBy() (r uuid.UUID, exists bool) {
-	v := m.created_by
-	if v == nil {
-		return
+// AddOperationIDs adds the "operations" edge to the PermissionOperation entity by ids.
+func (m *CiPermissionMutation) AddOperationIDs(ids ...uint64) {
+	if m.operations == nil {
+		m.operations = make(map[uint64]struct{})
 	}
-	return *v, true
-}
-
-// OldCreatedBy returns the old "created_by" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldCreatedBy(ctx context.Context) (v uuid.UUID, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldCreatedBy is only allowed on UpdateOne operations")
+	for i := range ids {
+		m.operations[ids[i]] = struct{}{}
 	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldCreatedBy requires an ID field in the mutation")
+}
+
+// ClearOperations clears the "operations" edge to the PermissionOperation entity.
+func (m *CiPermissionMutation) ClearOperations() {
+	m.clearedoperations = true
+}
+
+// OperationsCleared reports if the "operations" edge to the PermissionOperation entity was cleared.
+func (m *CiPermissionMutation) OperationsCleared() bool {
+	return m.clearedoperations
+}
+
+// RemoveOperationIDs removes the "operations" edge to the PermissionOperation entity by IDs.
+func (m *CiPermissionMutation) RemoveOperationIDs(ids ...uint64) {
+	if m.removedoperations == nil {
+		m.removedoperations = make(map[uint64]struct{})
 	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldCreatedBy: %w", err)
+	for i := range ids {
+		delete(m.operations, ids[i])
+		m.removedoperations[ids[i]] = struct{}{}
 	}
-	return oldValue.CreatedBy, nil
 }
 
-// ClearCreatedBy clears the value of the "created_by" field.
-func (m *CiPermissionMutation) ClearCreatedBy() {
-	m.created_by = nil
-	m.clearedFields[cipermission.FieldCreatedBy] = struct{}{}
-}
-
-// CreatedByCleared returns if the "created_by" field was cleared in this mutation.
-func (m *CiPermissionMutation) CreatedByCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldCreatedBy]
-	return ok
-}
-
-// ResetCreatedBy resets all changes to the "created_by" field.
-func (m *CiPermissionMutation) ResetCreatedBy() {
-	m.created_by = nil
-	delete(m.clearedFields, cipermission.FieldCreatedBy)
-}
-
-// SetUpdatedBy sets the "updated_by" field.
-func (m *CiPermissionMutation) SetUpdatedBy(u uuid.UUID) {
-	m.updated_by = &u
-}
-
-// UpdatedBy returns the value of the "updated_by" field in the mutation.
-func (m *CiPermissionMutation) UpdatedBy() (r uuid.UUID, exists bool) {
-	v := m.updated_by
-	if v == nil {
-		return
+// RemovedOperations returns the removed IDs of the "operations" edge to the PermissionOperation entity.
+func (m *CiPermissionMutation) RemovedOperationsIDs() (ids []uint64) {
+	for id := range m.removedoperations {
+		ids = append(ids, id)
 	}
-	return *v, true
+	return
 }
 
-// OldUpdatedBy returns the old "updated_by" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldUpdatedBy(ctx context.Context) (v uuid.UUID, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldUpdatedBy is only allowed on UpdateOne operations")
+// OperationsIDs returns the "operations" edge IDs in the mutation.
+func (m *CiPermissionMutation) OperationsIDs() (ids []uint64) {
+	for id := range m.operations {
+		ids = append(ids, id)
 	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldUpdatedBy requires an ID field in the mutation")
+	return
+}
+
+// ResetOperations resets all changes to the "operations" edge.
+func (m *CiPermissionMutation) ResetOperations() {
+	m.operations = nil
+	m.clearedoperations = false
+	m.removedoperations = nil
+}
+
+// AddDataFilterIDs adds the "data_filters" edge to the PermissionDataFilter entity by ids.
+func (m *CiPermissionMutation) AddDataFilterIDs(ids ...uint64) {
+	if m.data_filters == nil {
+		m.data_filters = make(map[uint64]struct{})
 	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldUpdatedBy: %w", err)
+	for i := range ids {
+		m.data_filters[ids[i]] = struct{}{}
 	}
-	return oldValue.UpdatedBy, nil
 }
 
-// ClearUpdatedBy clears the value of the "updated_by" field.
-func (m *CiPermissionMutation) ClearUpdatedBy() {
-	m.updated_by = nil
-	m.clearedFields[cipermission.FieldUpdatedBy] = struct{}{}
+// ClearDataFilters clears the "data_filters" edge to the PermissionDataFilter entity.
+func (m *CiPermissionMutation) ClearDataFilters() {
+	m.cleareddata_filters = true
 }
 
-// UpdatedByCleared returns if the "updated_by" field was cleared in this mutation.
-func (m *CiPermissionMutation) UpdatedByCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldUpdatedBy]
-	return ok
+// DataFiltersCleared reports if the "data_filters" edge to the PermissionDataFilter entity was cleared.
+func (m *CiPermissionMutation) DataFiltersCleared() bool {
+	return m.cleareddata_filters
 }
 
-// ResetUpdatedBy resets all changes to the "updated_by" field.
-func (m *CiPermissionMutation) ResetUpdatedBy() {
-	m.updated_by = nil
-	delete(m.clearedFields, cipermission.FieldUpdatedBy)
-}
-
-// SetLastReviewedAt sets the "last_reviewed_at" field.
-func (m *CiPermissionMutation) SetLastReviewedAt(t time.Time) {
-	m.last_reviewed_at = &t
-}
-
-// LastReviewedAt returns the value of the "last_reviewed_at" field in the mutation.
-func (m *CiPermissionMutation) LastReviewedAt() (r time.Time, exists bool) {
-	v := m.last_reviewed_at
-	if v == nil {
-		return
+// RemoveDataFilterIDs removes the "data_filters" edge to the PermissionDataFilter entity by IDs.
+func (m *CiPermissionMutation) RemoveDataFilterIDs(ids ...uint64) {
+	if m.removeddata_filters == nil {
+		m.removeddata_filters = make(map[uint64]struct{})
 	}
-	return *v, true
-}
-
-// OldLastReviewedAt returns the old "last_reviewed_at" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldLastReviewedAt(ctx context.Context) (v time.Time, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldLastReviewedAt is only allowed on UpdateOne operations")
+	for i := range ids {
+		delete(m.data_filters, ids[i])
+		m.removeddata_filters[ids[i]] = struct{}{}
 	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldLastReviewedAt requires an ID field in the mutation")
+}
+
+// RemovedDataFilters returns the removed IDs of the "data_filters" edge to the PermissionDataFilter entity.
+func (m *CiPermissionMutation) RemovedDataFiltersIDs() (ids []uint64) {
+	for id := range m.removeddata_filters {
+		ids = append(ids, id)
 	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldLastReviewedAt: %w", err)
+	return
+}
+
+// DataFiltersIDs returns the "data_filters" edge IDs in the mutation.
+func (m *CiPermissionMutation) DataFiltersIDs() (ids []uint64) {
+	for id := range m.data_filters {
+		ids = append(ids, id)
 	}
-	return oldValue.LastReviewedAt, nil
+	return
 }
 
-// ClearLastReviewedAt clears the value of the "last_reviewed_at" field.
-func (m *CiPermissionMutation) ClearLastReviewedAt() {
-	m.last_reviewed_at = nil
-	m.clearedFields[cipermission.FieldLastReviewedAt] = struct{}{}
+// ResetDataFilters resets all changes to the "data_filters" edge.
+func (m *CiPermissionMutation) ResetDataFilters() {
+	m.data_filters = nil
+	m.cleareddata_filters = false
+	m.removeddata_filters = nil
 }
 
-// LastReviewedAtCleared returns if the "last_reviewed_at" field was cleared in this mutation.
-func (m *CiPermissionMutation) LastReviewedAtCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldLastReviewedAt]
-	return ok
-}
-
-// ResetLastReviewedAt resets all changes to the "last_reviewed_at" field.
-func (m *CiPermissionMutation) ResetLastReviewedAt() {
-	m.last_reviewed_at = nil
-	delete(m.clearedFields, cipermission.FieldLastReviewedAt)
-}
-
-// SetLastReviewedBy sets the "last_reviewed_by" field.
-func (m *CiPermissionMutation) SetLastReviewedBy(u uuid.UUID) {
-	m.last_reviewed_by = &u
-}
-
-// LastReviewedBy returns the value of the "last_reviewed_by" field in the mutation.
-func (m *CiPermissionMutation) LastReviewedBy() (r uuid.UUID, exists bool) {
-	v := m.last_reviewed_by
-	if v == nil {
-		return
+// AddFieldMaskIDs adds the "field_masks" edge to the PermissionFieldMask entity by ids.
+func (m *CiPermissionMutation) AddFieldMaskIDs(ids ...uint64) {
+	if m.field_masks == nil {
+		m.field_masks = make(map[uint64]struct{})
 	}
-	return *v, true
-}
-
-// OldLastReviewedBy returns the old "last_reviewed_by" field's value of the CiPermission entity.
-// If the CiPermission object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *CiPermissionMutation) OldLastReviewedBy(ctx context.Context) (v uuid.UUID, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldLastReviewedBy is only allowed on UpdateOne operations")
+	for i := range ids {
+		m.field_masks[ids[i]] = struct{}{}
 	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldLastReviewedBy requires an ID field in the mutation")
+}
+
+// ClearFieldMasks clears the "field_masks" edge to the PermissionFieldMask entity.
+func (m *CiPermissionMutation) ClearFieldMasks() {
+	m.clearedfield_masks = true
+}
+
+// FieldMasksCleared reports if the "field_masks" edge to the PermissionFieldMask entity was cleared.
+func (m *CiPermissionMutation) FieldMasksCleared() bool {
+	return m.clearedfield_masks
+}
+
+// RemoveFieldMaskIDs removes the "field_masks" edge to the PermissionFieldMask entity by IDs.
+func (m *CiPermissionMutation) RemoveFieldMaskIDs(ids ...uint64) {
+	if m.removedfield_masks == nil {
+		m.removedfield_masks = make(map[uint64]struct{})
 	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldLastReviewedBy: %w", err)
+	for i := range ids {
+		delete(m.field_masks, ids[i])
+		m.removedfield_masks[ids[i]] = struct{}{}
 	}
-	return oldValue.LastReviewedBy, nil
 }
 
-// ClearLastReviewedBy clears the value of the "last_reviewed_by" field.
-func (m *CiPermissionMutation) ClearLastReviewedBy() {
-	m.last_reviewed_by = nil
-	m.clearedFields[cipermission.FieldLastReviewedBy] = struct{}{}
+// RemovedFieldMasks returns the removed IDs of the "field_masks" edge to the PermissionFieldMask entity.
+func (m *CiPermissionMutation) RemovedFieldMasksIDs() (ids []uint64) {
+	for id := range m.removedfield_masks {
+		ids = append(ids, id)
+	}
+	return
 }
 
-// LastReviewedByCleared returns if the "last_reviewed_by" field was cleared in this mutation.
-func (m *CiPermissionMutation) LastReviewedByCleared() bool {
-	_, ok := m.clearedFields[cipermission.FieldLastReviewedBy]
-	return ok
+// FieldMasksIDs returns the "field_masks" edge IDs in the mutation.
+func (m *CiPermissionMutation) FieldMasksIDs() (ids []uint64) {
+	for id := range m.field_masks {
+		ids = append(ids, id)
+	}
+	return
 }
 
-// ResetLastReviewedBy resets all changes to the "last_reviewed_by" field.
-func (m *CiPermissionMutation) ResetLastReviewedBy() {
-	m.last_reviewed_by = nil
-	delete(m.clearedFields, cipermission.FieldLastReviewedBy)
+// ResetFieldMasks resets all changes to the "field_masks" edge.
+func (m *CiPermissionMutation) ResetFieldMasks() {
+	m.field_masks = nil
+	m.clearedfield_masks = false
+	m.removedfield_masks = nil
 }
 
 // Where appends a list predicates to the CiPermissionMutation builder.
@@ -21031,7 +20222,7 @@ func (m *CiPermissionMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *CiPermissionMutation) Fields() []string {
-	fields := make([]string, 0, 49)
+	fields := make([]string, 0, 31)
 	if m.created_at != nil {
 		fields = append(fields, cipermission.FieldCreatedAt)
 	}
@@ -21050,17 +20241,14 @@ func (m *CiPermissionMutation) Fields() []string {
 	if m.scope_type != nil {
 		fields = append(fields, cipermission.FieldScopeType)
 	}
-	if m.ci_type_id != nil {
-		fields = append(fields, cipermission.FieldCiTypeID)
+	if m.scope_target_type != nil {
+		fields = append(fields, cipermission.FieldScopeTargetType)
 	}
-	if m.ci_id != nil {
-		fields = append(fields, cipermission.FieldCiID)
+	if m.scope_target_id != nil {
+		fields = append(fields, cipermission.FieldScopeTargetID)
 	}
-	if m.attribute_id != nil {
-		fields = append(fields, cipermission.FieldAttributeID)
-	}
-	if m.field_name != nil {
-		fields = append(fields, cipermission.FieldFieldName)
+	if m.scope_field_name != nil {
+		fields = append(fields, cipermission.FieldScopeFieldName)
 	}
 	if m.subject_type != nil {
 		fields = append(fields, cipermission.FieldSubjectType)
@@ -21071,23 +20259,14 @@ func (m *CiPermissionMutation) Fields() []string {
 	if m.subject_name != nil {
 		fields = append(fields, cipermission.FieldSubjectName)
 	}
-	if m.subject_code != nil {
-		fields = append(fields, cipermission.FieldSubjectCode)
-	}
 	if m.permission_type != nil {
 		fields = append(fields, cipermission.FieldPermissionType)
 	}
-	if m.operations != nil {
-		fields = append(fields, cipermission.FieldOperations)
-	}
-	if m.conditions != nil {
-		fields = append(fields, cipermission.FieldConditions)
-	}
-	if m.priority != nil {
-		fields = append(fields, cipermission.FieldPriority)
-	}
 	if m.permission_level != nil {
 		fields = append(fields, cipermission.FieldPermissionLevel)
+	}
+	if m.operations_mask != nil {
+		fields = append(fields, cipermission.FieldOperationsMask)
 	}
 	if m.effective_from != nil {
 		fields = append(fields, cipermission.FieldEffectiveFrom)
@@ -21098,29 +20277,26 @@ func (m *CiPermissionMutation) Fields() []string {
 	if m.is_temporary != nil {
 		fields = append(fields, cipermission.FieldIsTemporary)
 	}
-	if m.data_filters != nil {
-		fields = append(fields, cipermission.FieldDataFilters)
+	if m.priority != nil {
+		fields = append(fields, cipermission.FieldPriority)
 	}
-	if m.field_masks != nil {
-		fields = append(fields, cipermission.FieldFieldMasks)
+	if m.status != nil {
+		fields = append(fields, cipermission.FieldStatus)
 	}
-	if m.allowed_values != nil {
-		fields = append(fields, cipermission.FieldAllowedValues)
+	if m.parent_permission_id != nil {
+		fields = append(fields, cipermission.FieldParentPermissionID)
+	}
+	if m.inheritable != nil {
+		fields = append(fields, cipermission.FieldInheritable)
 	}
 	if m.require_approval != nil {
 		fields = append(fields, cipermission.FieldRequireApproval)
 	}
-	if m.granted_by != nil {
-		fields = append(fields, cipermission.FieldGrantedBy)
+	if m.require_mfa != nil {
+		fields = append(fields, cipermission.FieldRequireMfa)
 	}
-	if m.granted_by_name != nil {
-		fields = append(fields, cipermission.FieldGrantedByName)
-	}
-	if m.granted_at != nil {
-		fields = append(fields, cipermission.FieldGrantedAt)
-	}
-	if m.grant_reason != nil {
-		fields = append(fields, cipermission.FieldGrantReason)
+	if m.risk_level != nil {
+		fields = append(fields, cipermission.FieldRiskLevel)
 	}
 	if m.usage_count != nil {
 		fields = append(fields, cipermission.FieldUsageCount)
@@ -21128,56 +20304,17 @@ func (m *CiPermissionMutation) Fields() []string {
 	if m.last_used_at != nil {
 		fields = append(fields, cipermission.FieldLastUsedAt)
 	}
-	if m.usage_statistics != nil {
-		fields = append(fields, cipermission.FieldUsageStatistics)
-	}
-	if m.status != nil {
-		fields = append(fields, cipermission.FieldStatus)
-	}
-	if m.status_reason != nil {
-		fields = append(fields, cipermission.FieldStatusReason)
-	}
-	if m.inheritable != nil {
-		fields = append(fields, cipermission.FieldInheritable)
-	}
-	if m.parent_permission_id != nil {
-		fields = append(fields, cipermission.FieldParentPermissionID)
-	}
-	if m.inherited_from != nil {
-		fields = append(fields, cipermission.FieldInheritedFrom)
-	}
-	if m.risk_level != nil {
-		fields = append(fields, cipermission.FieldRiskLevel)
-	}
-	if m.require_mfa != nil {
-		fields = append(fields, cipermission.FieldRequireMfa)
-	}
-	if m.security_constraints != nil {
-		fields = append(fields, cipermission.FieldSecurityConstraints)
-	}
-	if m.metadata != nil {
-		fields = append(fields, cipermission.FieldMetadata)
-	}
-	if m.tags != nil {
-		fields = append(fields, cipermission.FieldTags)
-	}
-	if m.description != nil {
-		fields = append(fields, cipermission.FieldDescription)
-	}
-	if m.comments != nil {
-		fields = append(fields, cipermission.FieldComments)
-	}
 	if m.created_by != nil {
 		fields = append(fields, cipermission.FieldCreatedBy)
 	}
 	if m.updated_by != nil {
 		fields = append(fields, cipermission.FieldUpdatedBy)
 	}
-	if m.last_reviewed_at != nil {
-		fields = append(fields, cipermission.FieldLastReviewedAt)
+	if m.description != nil {
+		fields = append(fields, cipermission.FieldDescription)
 	}
-	if m.last_reviewed_by != nil {
-		fields = append(fields, cipermission.FieldLastReviewedBy)
+	if m.comments != nil {
+		fields = append(fields, cipermission.FieldComments)
 	}
 	return fields
 }
@@ -21199,92 +20336,56 @@ func (m *CiPermissionMutation) Field(name string) (ent.Value, bool) {
 		return m.PermissionID()
 	case cipermission.FieldScopeType:
 		return m.ScopeType()
-	case cipermission.FieldCiTypeID:
-		return m.CiTypeID()
-	case cipermission.FieldCiID:
-		return m.CiID()
-	case cipermission.FieldAttributeID:
-		return m.AttributeID()
-	case cipermission.FieldFieldName:
-		return m.FieldName()
+	case cipermission.FieldScopeTargetType:
+		return m.ScopeTargetType()
+	case cipermission.FieldScopeTargetID:
+		return m.ScopeTargetID()
+	case cipermission.FieldScopeFieldName:
+		return m.ScopeFieldName()
 	case cipermission.FieldSubjectType:
 		return m.SubjectType()
 	case cipermission.FieldSubjectID:
 		return m.SubjectID()
 	case cipermission.FieldSubjectName:
 		return m.SubjectName()
-	case cipermission.FieldSubjectCode:
-		return m.SubjectCode()
 	case cipermission.FieldPermissionType:
 		return m.PermissionType()
-	case cipermission.FieldOperations:
-		return m.Operations()
-	case cipermission.FieldConditions:
-		return m.Conditions()
-	case cipermission.FieldPriority:
-		return m.Priority()
 	case cipermission.FieldPermissionLevel:
 		return m.PermissionLevel()
+	case cipermission.FieldOperationsMask:
+		return m.OperationsMask()
 	case cipermission.FieldEffectiveFrom:
 		return m.EffectiveFrom()
 	case cipermission.FieldEffectiveTo:
 		return m.EffectiveTo()
 	case cipermission.FieldIsTemporary:
 		return m.IsTemporary()
-	case cipermission.FieldDataFilters:
-		return m.DataFilters()
-	case cipermission.FieldFieldMasks:
-		return m.FieldMasks()
-	case cipermission.FieldAllowedValues:
-		return m.AllowedValues()
+	case cipermission.FieldPriority:
+		return m.Priority()
+	case cipermission.FieldStatus:
+		return m.Status()
+	case cipermission.FieldParentPermissionID:
+		return m.ParentPermissionID()
+	case cipermission.FieldInheritable:
+		return m.Inheritable()
 	case cipermission.FieldRequireApproval:
 		return m.RequireApproval()
-	case cipermission.FieldGrantedBy:
-		return m.GrantedBy()
-	case cipermission.FieldGrantedByName:
-		return m.GrantedByName()
-	case cipermission.FieldGrantedAt:
-		return m.GrantedAt()
-	case cipermission.FieldGrantReason:
-		return m.GrantReason()
+	case cipermission.FieldRequireMfa:
+		return m.RequireMfa()
+	case cipermission.FieldRiskLevel:
+		return m.RiskLevel()
 	case cipermission.FieldUsageCount:
 		return m.UsageCount()
 	case cipermission.FieldLastUsedAt:
 		return m.LastUsedAt()
-	case cipermission.FieldUsageStatistics:
-		return m.UsageStatistics()
-	case cipermission.FieldStatus:
-		return m.Status()
-	case cipermission.FieldStatusReason:
-		return m.StatusReason()
-	case cipermission.FieldInheritable:
-		return m.Inheritable()
-	case cipermission.FieldParentPermissionID:
-		return m.ParentPermissionID()
-	case cipermission.FieldInheritedFrom:
-		return m.InheritedFrom()
-	case cipermission.FieldRiskLevel:
-		return m.RiskLevel()
-	case cipermission.FieldRequireMfa:
-		return m.RequireMfa()
-	case cipermission.FieldSecurityConstraints:
-		return m.SecurityConstraints()
-	case cipermission.FieldMetadata:
-		return m.Metadata()
-	case cipermission.FieldTags:
-		return m.Tags()
-	case cipermission.FieldDescription:
-		return m.Description()
-	case cipermission.FieldComments:
-		return m.Comments()
 	case cipermission.FieldCreatedBy:
 		return m.CreatedBy()
 	case cipermission.FieldUpdatedBy:
 		return m.UpdatedBy()
-	case cipermission.FieldLastReviewedAt:
-		return m.LastReviewedAt()
-	case cipermission.FieldLastReviewedBy:
-		return m.LastReviewedBy()
+	case cipermission.FieldDescription:
+		return m.Description()
+	case cipermission.FieldComments:
+		return m.Comments()
 	}
 	return nil, false
 }
@@ -21306,92 +20407,56 @@ func (m *CiPermissionMutation) OldField(ctx context.Context, name string) (ent.V
 		return m.OldPermissionID(ctx)
 	case cipermission.FieldScopeType:
 		return m.OldScopeType(ctx)
-	case cipermission.FieldCiTypeID:
-		return m.OldCiTypeID(ctx)
-	case cipermission.FieldCiID:
-		return m.OldCiID(ctx)
-	case cipermission.FieldAttributeID:
-		return m.OldAttributeID(ctx)
-	case cipermission.FieldFieldName:
-		return m.OldFieldName(ctx)
+	case cipermission.FieldScopeTargetType:
+		return m.OldScopeTargetType(ctx)
+	case cipermission.FieldScopeTargetID:
+		return m.OldScopeTargetID(ctx)
+	case cipermission.FieldScopeFieldName:
+		return m.OldScopeFieldName(ctx)
 	case cipermission.FieldSubjectType:
 		return m.OldSubjectType(ctx)
 	case cipermission.FieldSubjectID:
 		return m.OldSubjectID(ctx)
 	case cipermission.FieldSubjectName:
 		return m.OldSubjectName(ctx)
-	case cipermission.FieldSubjectCode:
-		return m.OldSubjectCode(ctx)
 	case cipermission.FieldPermissionType:
 		return m.OldPermissionType(ctx)
-	case cipermission.FieldOperations:
-		return m.OldOperations(ctx)
-	case cipermission.FieldConditions:
-		return m.OldConditions(ctx)
-	case cipermission.FieldPriority:
-		return m.OldPriority(ctx)
 	case cipermission.FieldPermissionLevel:
 		return m.OldPermissionLevel(ctx)
+	case cipermission.FieldOperationsMask:
+		return m.OldOperationsMask(ctx)
 	case cipermission.FieldEffectiveFrom:
 		return m.OldEffectiveFrom(ctx)
 	case cipermission.FieldEffectiveTo:
 		return m.OldEffectiveTo(ctx)
 	case cipermission.FieldIsTemporary:
 		return m.OldIsTemporary(ctx)
-	case cipermission.FieldDataFilters:
-		return m.OldDataFilters(ctx)
-	case cipermission.FieldFieldMasks:
-		return m.OldFieldMasks(ctx)
-	case cipermission.FieldAllowedValues:
-		return m.OldAllowedValues(ctx)
+	case cipermission.FieldPriority:
+		return m.OldPriority(ctx)
+	case cipermission.FieldStatus:
+		return m.OldStatus(ctx)
+	case cipermission.FieldParentPermissionID:
+		return m.OldParentPermissionID(ctx)
+	case cipermission.FieldInheritable:
+		return m.OldInheritable(ctx)
 	case cipermission.FieldRequireApproval:
 		return m.OldRequireApproval(ctx)
-	case cipermission.FieldGrantedBy:
-		return m.OldGrantedBy(ctx)
-	case cipermission.FieldGrantedByName:
-		return m.OldGrantedByName(ctx)
-	case cipermission.FieldGrantedAt:
-		return m.OldGrantedAt(ctx)
-	case cipermission.FieldGrantReason:
-		return m.OldGrantReason(ctx)
+	case cipermission.FieldRequireMfa:
+		return m.OldRequireMfa(ctx)
+	case cipermission.FieldRiskLevel:
+		return m.OldRiskLevel(ctx)
 	case cipermission.FieldUsageCount:
 		return m.OldUsageCount(ctx)
 	case cipermission.FieldLastUsedAt:
 		return m.OldLastUsedAt(ctx)
-	case cipermission.FieldUsageStatistics:
-		return m.OldUsageStatistics(ctx)
-	case cipermission.FieldStatus:
-		return m.OldStatus(ctx)
-	case cipermission.FieldStatusReason:
-		return m.OldStatusReason(ctx)
-	case cipermission.FieldInheritable:
-		return m.OldInheritable(ctx)
-	case cipermission.FieldParentPermissionID:
-		return m.OldParentPermissionID(ctx)
-	case cipermission.FieldInheritedFrom:
-		return m.OldInheritedFrom(ctx)
-	case cipermission.FieldRiskLevel:
-		return m.OldRiskLevel(ctx)
-	case cipermission.FieldRequireMfa:
-		return m.OldRequireMfa(ctx)
-	case cipermission.FieldSecurityConstraints:
-		return m.OldSecurityConstraints(ctx)
-	case cipermission.FieldMetadata:
-		return m.OldMetadata(ctx)
-	case cipermission.FieldTags:
-		return m.OldTags(ctx)
-	case cipermission.FieldDescription:
-		return m.OldDescription(ctx)
-	case cipermission.FieldComments:
-		return m.OldComments(ctx)
 	case cipermission.FieldCreatedBy:
 		return m.OldCreatedBy(ctx)
 	case cipermission.FieldUpdatedBy:
 		return m.OldUpdatedBy(ctx)
-	case cipermission.FieldLastReviewedAt:
-		return m.OldLastReviewedAt(ctx)
-	case cipermission.FieldLastReviewedBy:
-		return m.OldLastReviewedBy(ctx)
+	case cipermission.FieldDescription:
+		return m.OldDescription(ctx)
+	case cipermission.FieldComments:
+		return m.OldComments(ctx)
 	}
 	return nil, fmt.Errorf("unknown CiPermission field %s", name)
 }
@@ -21443,33 +20508,26 @@ func (m *CiPermissionMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetScopeType(v)
 		return nil
-	case cipermission.FieldCiTypeID:
-		v, ok := value.(uint64)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetCiTypeID(v)
-		return nil
-	case cipermission.FieldCiID:
-		v, ok := value.(uint64)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetCiID(v)
-		return nil
-	case cipermission.FieldAttributeID:
-		v, ok := value.(uint64)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetAttributeID(v)
-		return nil
-	case cipermission.FieldFieldName:
+	case cipermission.FieldScopeTargetType:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetFieldName(v)
+		m.SetScopeTargetType(v)
+		return nil
+	case cipermission.FieldScopeTargetID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetScopeTargetID(v)
+		return nil
+	case cipermission.FieldScopeFieldName:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetScopeFieldName(v)
 		return nil
 	case cipermission.FieldSubjectType:
 		v, ok := value.(cipermission.SubjectType)
@@ -21479,7 +20537,7 @@ func (m *CiPermissionMutation) SetField(name string, value ent.Value) error {
 		m.SetSubjectType(v)
 		return nil
 	case cipermission.FieldSubjectID:
-		v, ok := value.(uuid.UUID)
+		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
@@ -21492,13 +20550,6 @@ func (m *CiPermissionMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetSubjectName(v)
 		return nil
-	case cipermission.FieldSubjectCode:
-		v, ok := value.(string)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetSubjectCode(v)
-		return nil
 	case cipermission.FieldPermissionType:
 		v, ok := value.(cipermission.PermissionType)
 		if !ok {
@@ -21506,33 +20557,19 @@ func (m *CiPermissionMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetPermissionType(v)
 		return nil
-	case cipermission.FieldOperations:
-		v, ok := value.([]string)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetOperations(v)
-		return nil
-	case cipermission.FieldConditions:
-		v, ok := value.(map[string]interface{})
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetConditions(v)
-		return nil
-	case cipermission.FieldPriority:
-		v, ok := value.(int)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetPriority(v)
-		return nil
 	case cipermission.FieldPermissionLevel:
 		v, ok := value.(cipermission.PermissionLevel)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetPermissionLevel(v)
+		return nil
+	case cipermission.FieldOperationsMask:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetOperationsMask(v)
 		return nil
 	case cipermission.FieldEffectiveFrom:
 		v, ok := value.(time.Time)
@@ -21555,26 +20592,33 @@ func (m *CiPermissionMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetIsTemporary(v)
 		return nil
-	case cipermission.FieldDataFilters:
-		v, ok := value.(map[string]interface{})
+	case cipermission.FieldPriority:
+		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetDataFilters(v)
+		m.SetPriority(v)
 		return nil
-	case cipermission.FieldFieldMasks:
-		v, ok := value.([]string)
+	case cipermission.FieldStatus:
+		v, ok := value.(cipermission.Status)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetFieldMasks(v)
+		m.SetStatus(v)
 		return nil
-	case cipermission.FieldAllowedValues:
-		v, ok := value.(map[string]interface{})
+	case cipermission.FieldParentPermissionID:
+		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetAllowedValues(v)
+		m.SetParentPermissionID(v)
+		return nil
+	case cipermission.FieldInheritable:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetInheritable(v)
 		return nil
 	case cipermission.FieldRequireApproval:
 		v, ok := value.(bool)
@@ -21583,33 +20627,19 @@ func (m *CiPermissionMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetRequireApproval(v)
 		return nil
-	case cipermission.FieldGrantedBy:
-		v, ok := value.(uuid.UUID)
+	case cipermission.FieldRequireMfa:
+		v, ok := value.(bool)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetGrantedBy(v)
+		m.SetRequireMfa(v)
 		return nil
-	case cipermission.FieldGrantedByName:
-		v, ok := value.(string)
+	case cipermission.FieldRiskLevel:
+		v, ok := value.(cipermission.RiskLevel)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetGrantedByName(v)
-		return nil
-	case cipermission.FieldGrantedAt:
-		v, ok := value.(time.Time)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetGrantedAt(v)
-		return nil
-	case cipermission.FieldGrantReason:
-		v, ok := value.(string)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetGrantReason(v)
+		m.SetRiskLevel(v)
 		return nil
 	case cipermission.FieldUsageCount:
 		v, ok := value.(int)
@@ -21625,82 +20655,19 @@ func (m *CiPermissionMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetLastUsedAt(v)
 		return nil
-	case cipermission.FieldUsageStatistics:
-		v, ok := value.(map[string]interface{})
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetUsageStatistics(v)
-		return nil
-	case cipermission.FieldStatus:
-		v, ok := value.(cipermission.Status)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetStatus(v)
-		return nil
-	case cipermission.FieldStatusReason:
+	case cipermission.FieldCreatedBy:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetStatusReason(v)
+		m.SetCreatedBy(v)
 		return nil
-	case cipermission.FieldInheritable:
-		v, ok := value.(bool)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetInheritable(v)
-		return nil
-	case cipermission.FieldParentPermissionID:
+	case cipermission.FieldUpdatedBy:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.SetParentPermissionID(v)
-		return nil
-	case cipermission.FieldInheritedFrom:
-		v, ok := value.([]string)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetInheritedFrom(v)
-		return nil
-	case cipermission.FieldRiskLevel:
-		v, ok := value.(cipermission.RiskLevel)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetRiskLevel(v)
-		return nil
-	case cipermission.FieldRequireMfa:
-		v, ok := value.(bool)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetRequireMfa(v)
-		return nil
-	case cipermission.FieldSecurityConstraints:
-		v, ok := value.(map[string]interface{})
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetSecurityConstraints(v)
-		return nil
-	case cipermission.FieldMetadata:
-		v, ok := value.(map[string]interface{})
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetMetadata(v)
-		return nil
-	case cipermission.FieldTags:
-		v, ok := value.([]string)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetTags(v)
+		m.SetUpdatedBy(v)
 		return nil
 	case cipermission.FieldDescription:
 		v, ok := value.(string)
@@ -21716,34 +20683,6 @@ func (m *CiPermissionMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetComments(v)
 		return nil
-	case cipermission.FieldCreatedBy:
-		v, ok := value.(uuid.UUID)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetCreatedBy(v)
-		return nil
-	case cipermission.FieldUpdatedBy:
-		v, ok := value.(uuid.UUID)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetUpdatedBy(v)
-		return nil
-	case cipermission.FieldLastReviewedAt:
-		v, ok := value.(time.Time)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetLastReviewedAt(v)
-		return nil
-	case cipermission.FieldLastReviewedBy:
-		v, ok := value.(uuid.UUID)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetLastReviewedBy(v)
-		return nil
 	}
 	return fmt.Errorf("unknown CiPermission field %s", name)
 }
@@ -21758,14 +20697,11 @@ func (m *CiPermissionMutation) AddedFields() []string {
 	if m.adddepartment_id != nil {
 		fields = append(fields, cipermission.FieldDepartmentID)
 	}
-	if m.addci_type_id != nil {
-		fields = append(fields, cipermission.FieldCiTypeID)
+	if m.addscope_target_id != nil {
+		fields = append(fields, cipermission.FieldScopeTargetID)
 	}
-	if m.addci_id != nil {
-		fields = append(fields, cipermission.FieldCiID)
-	}
-	if m.addattribute_id != nil {
-		fields = append(fields, cipermission.FieldAttributeID)
+	if m.addoperations_mask != nil {
+		fields = append(fields, cipermission.FieldOperationsMask)
 	}
 	if m.addpriority != nil {
 		fields = append(fields, cipermission.FieldPriority)
@@ -21785,12 +20721,10 @@ func (m *CiPermissionMutation) AddedField(name string) (ent.Value, bool) {
 		return m.AddedTenantID()
 	case cipermission.FieldDepartmentID:
 		return m.AddedDepartmentID()
-	case cipermission.FieldCiTypeID:
-		return m.AddedCiTypeID()
-	case cipermission.FieldCiID:
-		return m.AddedCiID()
-	case cipermission.FieldAttributeID:
-		return m.AddedAttributeID()
+	case cipermission.FieldScopeTargetID:
+		return m.AddedScopeTargetID()
+	case cipermission.FieldOperationsMask:
+		return m.AddedOperationsMask()
 	case cipermission.FieldPriority:
 		return m.AddedPriority()
 	case cipermission.FieldUsageCount:
@@ -21818,26 +20752,19 @@ func (m *CiPermissionMutation) AddField(name string, value ent.Value) error {
 		}
 		m.AddDepartmentID(v)
 		return nil
-	case cipermission.FieldCiTypeID:
+	case cipermission.FieldScopeTargetID:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.AddCiTypeID(v)
+		m.AddScopeTargetID(v)
 		return nil
-	case cipermission.FieldCiID:
+	case cipermission.FieldOperationsMask:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
-		m.AddCiID(v)
-		return nil
-	case cipermission.FieldAttributeID:
-		v, ok := value.(int64)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.AddAttributeID(v)
+		m.AddOperationsMask(v)
 		return nil
 	case cipermission.FieldPriority:
 		v, ok := value.(int)
@@ -21864,26 +20791,17 @@ func (m *CiPermissionMutation) ClearedFields() []string {
 	if m.FieldCleared(cipermission.FieldDepartmentID) {
 		fields = append(fields, cipermission.FieldDepartmentID)
 	}
-	if m.FieldCleared(cipermission.FieldCiTypeID) {
-		fields = append(fields, cipermission.FieldCiTypeID)
+	if m.FieldCleared(cipermission.FieldScopeTargetType) {
+		fields = append(fields, cipermission.FieldScopeTargetType)
 	}
-	if m.FieldCleared(cipermission.FieldCiID) {
-		fields = append(fields, cipermission.FieldCiID)
+	if m.FieldCleared(cipermission.FieldScopeTargetID) {
+		fields = append(fields, cipermission.FieldScopeTargetID)
 	}
-	if m.FieldCleared(cipermission.FieldAttributeID) {
-		fields = append(fields, cipermission.FieldAttributeID)
-	}
-	if m.FieldCleared(cipermission.FieldFieldName) {
-		fields = append(fields, cipermission.FieldFieldName)
+	if m.FieldCleared(cipermission.FieldScopeFieldName) {
+		fields = append(fields, cipermission.FieldScopeFieldName)
 	}
 	if m.FieldCleared(cipermission.FieldSubjectID) {
 		fields = append(fields, cipermission.FieldSubjectID)
-	}
-	if m.FieldCleared(cipermission.FieldSubjectCode) {
-		fields = append(fields, cipermission.FieldSubjectCode)
-	}
-	if m.FieldCleared(cipermission.FieldConditions) {
-		fields = append(fields, cipermission.FieldConditions)
 	}
 	if m.FieldCleared(cipermission.FieldEffectiveFrom) {
 		fields = append(fields, cipermission.FieldEffectiveFrom)
@@ -21891,56 +20809,11 @@ func (m *CiPermissionMutation) ClearedFields() []string {
 	if m.FieldCleared(cipermission.FieldEffectiveTo) {
 		fields = append(fields, cipermission.FieldEffectiveTo)
 	}
-	if m.FieldCleared(cipermission.FieldDataFilters) {
-		fields = append(fields, cipermission.FieldDataFilters)
-	}
-	if m.FieldCleared(cipermission.FieldFieldMasks) {
-		fields = append(fields, cipermission.FieldFieldMasks)
-	}
-	if m.FieldCleared(cipermission.FieldAllowedValues) {
-		fields = append(fields, cipermission.FieldAllowedValues)
-	}
-	if m.FieldCleared(cipermission.FieldGrantedBy) {
-		fields = append(fields, cipermission.FieldGrantedBy)
-	}
-	if m.FieldCleared(cipermission.FieldGrantedByName) {
-		fields = append(fields, cipermission.FieldGrantedByName)
-	}
-	if m.FieldCleared(cipermission.FieldGrantedAt) {
-		fields = append(fields, cipermission.FieldGrantedAt)
-	}
-	if m.FieldCleared(cipermission.FieldGrantReason) {
-		fields = append(fields, cipermission.FieldGrantReason)
-	}
-	if m.FieldCleared(cipermission.FieldLastUsedAt) {
-		fields = append(fields, cipermission.FieldLastUsedAt)
-	}
-	if m.FieldCleared(cipermission.FieldUsageStatistics) {
-		fields = append(fields, cipermission.FieldUsageStatistics)
-	}
-	if m.FieldCleared(cipermission.FieldStatusReason) {
-		fields = append(fields, cipermission.FieldStatusReason)
-	}
 	if m.FieldCleared(cipermission.FieldParentPermissionID) {
 		fields = append(fields, cipermission.FieldParentPermissionID)
 	}
-	if m.FieldCleared(cipermission.FieldInheritedFrom) {
-		fields = append(fields, cipermission.FieldInheritedFrom)
-	}
-	if m.FieldCleared(cipermission.FieldSecurityConstraints) {
-		fields = append(fields, cipermission.FieldSecurityConstraints)
-	}
-	if m.FieldCleared(cipermission.FieldMetadata) {
-		fields = append(fields, cipermission.FieldMetadata)
-	}
-	if m.FieldCleared(cipermission.FieldTags) {
-		fields = append(fields, cipermission.FieldTags)
-	}
-	if m.FieldCleared(cipermission.FieldDescription) {
-		fields = append(fields, cipermission.FieldDescription)
-	}
-	if m.FieldCleared(cipermission.FieldComments) {
-		fields = append(fields, cipermission.FieldComments)
+	if m.FieldCleared(cipermission.FieldLastUsedAt) {
+		fields = append(fields, cipermission.FieldLastUsedAt)
 	}
 	if m.FieldCleared(cipermission.FieldCreatedBy) {
 		fields = append(fields, cipermission.FieldCreatedBy)
@@ -21948,11 +20821,11 @@ func (m *CiPermissionMutation) ClearedFields() []string {
 	if m.FieldCleared(cipermission.FieldUpdatedBy) {
 		fields = append(fields, cipermission.FieldUpdatedBy)
 	}
-	if m.FieldCleared(cipermission.FieldLastReviewedAt) {
-		fields = append(fields, cipermission.FieldLastReviewedAt)
+	if m.FieldCleared(cipermission.FieldDescription) {
+		fields = append(fields, cipermission.FieldDescription)
 	}
-	if m.FieldCleared(cipermission.FieldLastReviewedBy) {
-		fields = append(fields, cipermission.FieldLastReviewedBy)
+	if m.FieldCleared(cipermission.FieldComments) {
+		fields = append(fields, cipermission.FieldComments)
 	}
 	return fields
 }
@@ -21971,26 +20844,17 @@ func (m *CiPermissionMutation) ClearField(name string) error {
 	case cipermission.FieldDepartmentID:
 		m.ClearDepartmentID()
 		return nil
-	case cipermission.FieldCiTypeID:
-		m.ClearCiTypeID()
+	case cipermission.FieldScopeTargetType:
+		m.ClearScopeTargetType()
 		return nil
-	case cipermission.FieldCiID:
-		m.ClearCiID()
+	case cipermission.FieldScopeTargetID:
+		m.ClearScopeTargetID()
 		return nil
-	case cipermission.FieldAttributeID:
-		m.ClearAttributeID()
-		return nil
-	case cipermission.FieldFieldName:
-		m.ClearFieldName()
+	case cipermission.FieldScopeFieldName:
+		m.ClearScopeFieldName()
 		return nil
 	case cipermission.FieldSubjectID:
 		m.ClearSubjectID()
-		return nil
-	case cipermission.FieldSubjectCode:
-		m.ClearSubjectCode()
-		return nil
-	case cipermission.FieldConditions:
-		m.ClearConditions()
 		return nil
 	case cipermission.FieldEffectiveFrom:
 		m.ClearEffectiveFrom()
@@ -21998,56 +20862,11 @@ func (m *CiPermissionMutation) ClearField(name string) error {
 	case cipermission.FieldEffectiveTo:
 		m.ClearEffectiveTo()
 		return nil
-	case cipermission.FieldDataFilters:
-		m.ClearDataFilters()
-		return nil
-	case cipermission.FieldFieldMasks:
-		m.ClearFieldMasks()
-		return nil
-	case cipermission.FieldAllowedValues:
-		m.ClearAllowedValues()
-		return nil
-	case cipermission.FieldGrantedBy:
-		m.ClearGrantedBy()
-		return nil
-	case cipermission.FieldGrantedByName:
-		m.ClearGrantedByName()
-		return nil
-	case cipermission.FieldGrantedAt:
-		m.ClearGrantedAt()
-		return nil
-	case cipermission.FieldGrantReason:
-		m.ClearGrantReason()
-		return nil
-	case cipermission.FieldLastUsedAt:
-		m.ClearLastUsedAt()
-		return nil
-	case cipermission.FieldUsageStatistics:
-		m.ClearUsageStatistics()
-		return nil
-	case cipermission.FieldStatusReason:
-		m.ClearStatusReason()
-		return nil
 	case cipermission.FieldParentPermissionID:
 		m.ClearParentPermissionID()
 		return nil
-	case cipermission.FieldInheritedFrom:
-		m.ClearInheritedFrom()
-		return nil
-	case cipermission.FieldSecurityConstraints:
-		m.ClearSecurityConstraints()
-		return nil
-	case cipermission.FieldMetadata:
-		m.ClearMetadata()
-		return nil
-	case cipermission.FieldTags:
-		m.ClearTags()
-		return nil
-	case cipermission.FieldDescription:
-		m.ClearDescription()
-		return nil
-	case cipermission.FieldComments:
-		m.ClearComments()
+	case cipermission.FieldLastUsedAt:
+		m.ClearLastUsedAt()
 		return nil
 	case cipermission.FieldCreatedBy:
 		m.ClearCreatedBy()
@@ -22055,11 +20874,11 @@ func (m *CiPermissionMutation) ClearField(name string) error {
 	case cipermission.FieldUpdatedBy:
 		m.ClearUpdatedBy()
 		return nil
-	case cipermission.FieldLastReviewedAt:
-		m.ClearLastReviewedAt()
+	case cipermission.FieldDescription:
+		m.ClearDescription()
 		return nil
-	case cipermission.FieldLastReviewedBy:
-		m.ClearLastReviewedBy()
+	case cipermission.FieldComments:
+		m.ClearComments()
 		return nil
 	}
 	return fmt.Errorf("unknown CiPermission nullable field %s", name)
@@ -22087,17 +20906,14 @@ func (m *CiPermissionMutation) ResetField(name string) error {
 	case cipermission.FieldScopeType:
 		m.ResetScopeType()
 		return nil
-	case cipermission.FieldCiTypeID:
-		m.ResetCiTypeID()
+	case cipermission.FieldScopeTargetType:
+		m.ResetScopeTargetType()
 		return nil
-	case cipermission.FieldCiID:
-		m.ResetCiID()
+	case cipermission.FieldScopeTargetID:
+		m.ResetScopeTargetID()
 		return nil
-	case cipermission.FieldAttributeID:
-		m.ResetAttributeID()
-		return nil
-	case cipermission.FieldFieldName:
-		m.ResetFieldName()
+	case cipermission.FieldScopeFieldName:
+		m.ResetScopeFieldName()
 		return nil
 	case cipermission.FieldSubjectType:
 		m.ResetSubjectType()
@@ -22108,23 +20924,14 @@ func (m *CiPermissionMutation) ResetField(name string) error {
 	case cipermission.FieldSubjectName:
 		m.ResetSubjectName()
 		return nil
-	case cipermission.FieldSubjectCode:
-		m.ResetSubjectCode()
-		return nil
 	case cipermission.FieldPermissionType:
 		m.ResetPermissionType()
 		return nil
-	case cipermission.FieldOperations:
-		m.ResetOperations()
-		return nil
-	case cipermission.FieldConditions:
-		m.ResetConditions()
-		return nil
-	case cipermission.FieldPriority:
-		m.ResetPriority()
-		return nil
 	case cipermission.FieldPermissionLevel:
 		m.ResetPermissionLevel()
+		return nil
+	case cipermission.FieldOperationsMask:
+		m.ResetOperationsMask()
 		return nil
 	case cipermission.FieldEffectiveFrom:
 		m.ResetEffectiveFrom()
@@ -22135,29 +20942,26 @@ func (m *CiPermissionMutation) ResetField(name string) error {
 	case cipermission.FieldIsTemporary:
 		m.ResetIsTemporary()
 		return nil
-	case cipermission.FieldDataFilters:
-		m.ResetDataFilters()
+	case cipermission.FieldPriority:
+		m.ResetPriority()
 		return nil
-	case cipermission.FieldFieldMasks:
-		m.ResetFieldMasks()
+	case cipermission.FieldStatus:
+		m.ResetStatus()
 		return nil
-	case cipermission.FieldAllowedValues:
-		m.ResetAllowedValues()
+	case cipermission.FieldParentPermissionID:
+		m.ResetParentPermissionID()
+		return nil
+	case cipermission.FieldInheritable:
+		m.ResetInheritable()
 		return nil
 	case cipermission.FieldRequireApproval:
 		m.ResetRequireApproval()
 		return nil
-	case cipermission.FieldGrantedBy:
-		m.ResetGrantedBy()
+	case cipermission.FieldRequireMfa:
+		m.ResetRequireMfa()
 		return nil
-	case cipermission.FieldGrantedByName:
-		m.ResetGrantedByName()
-		return nil
-	case cipermission.FieldGrantedAt:
-		m.ResetGrantedAt()
-		return nil
-	case cipermission.FieldGrantReason:
-		m.ResetGrantReason()
+	case cipermission.FieldRiskLevel:
+		m.ResetRiskLevel()
 		return nil
 	case cipermission.FieldUsageCount:
 		m.ResetUsageCount()
@@ -22165,38 +20969,11 @@ func (m *CiPermissionMutation) ResetField(name string) error {
 	case cipermission.FieldLastUsedAt:
 		m.ResetLastUsedAt()
 		return nil
-	case cipermission.FieldUsageStatistics:
-		m.ResetUsageStatistics()
+	case cipermission.FieldCreatedBy:
+		m.ResetCreatedBy()
 		return nil
-	case cipermission.FieldStatus:
-		m.ResetStatus()
-		return nil
-	case cipermission.FieldStatusReason:
-		m.ResetStatusReason()
-		return nil
-	case cipermission.FieldInheritable:
-		m.ResetInheritable()
-		return nil
-	case cipermission.FieldParentPermissionID:
-		m.ResetParentPermissionID()
-		return nil
-	case cipermission.FieldInheritedFrom:
-		m.ResetInheritedFrom()
-		return nil
-	case cipermission.FieldRiskLevel:
-		m.ResetRiskLevel()
-		return nil
-	case cipermission.FieldRequireMfa:
-		m.ResetRequireMfa()
-		return nil
-	case cipermission.FieldSecurityConstraints:
-		m.ResetSecurityConstraints()
-		return nil
-	case cipermission.FieldMetadata:
-		m.ResetMetadata()
-		return nil
-	case cipermission.FieldTags:
-		m.ResetTags()
+	case cipermission.FieldUpdatedBy:
+		m.ResetUpdatedBy()
 		return nil
 	case cipermission.FieldDescription:
 		m.ResetDescription()
@@ -22204,67 +20981,143 @@ func (m *CiPermissionMutation) ResetField(name string) error {
 	case cipermission.FieldComments:
 		m.ResetComments()
 		return nil
-	case cipermission.FieldCreatedBy:
-		m.ResetCreatedBy()
-		return nil
-	case cipermission.FieldUpdatedBy:
-		m.ResetUpdatedBy()
-		return nil
-	case cipermission.FieldLastReviewedAt:
-		m.ResetLastReviewedAt()
-		return nil
-	case cipermission.FieldLastReviewedBy:
-		m.ResetLastReviewedBy()
-		return nil
 	}
 	return fmt.Errorf("unknown CiPermission field %s", name)
 }
 
 // AddedEdges returns all edge names that were set/added in this mutation.
 func (m *CiPermissionMutation) AddedEdges() []string {
-	edges := make([]string, 0, 0)
+	edges := make([]string, 0, 3)
+	if m.operations != nil {
+		edges = append(edges, cipermission.EdgeOperations)
+	}
+	if m.data_filters != nil {
+		edges = append(edges, cipermission.EdgeDataFilters)
+	}
+	if m.field_masks != nil {
+		edges = append(edges, cipermission.EdgeFieldMasks)
+	}
 	return edges
 }
 
 // AddedIDs returns all IDs (to other nodes) that were added for the given edge
 // name in this mutation.
 func (m *CiPermissionMutation) AddedIDs(name string) []ent.Value {
+	switch name {
+	case cipermission.EdgeOperations:
+		ids := make([]ent.Value, 0, len(m.operations))
+		for id := range m.operations {
+			ids = append(ids, id)
+		}
+		return ids
+	case cipermission.EdgeDataFilters:
+		ids := make([]ent.Value, 0, len(m.data_filters))
+		for id := range m.data_filters {
+			ids = append(ids, id)
+		}
+		return ids
+	case cipermission.EdgeFieldMasks:
+		ids := make([]ent.Value, 0, len(m.field_masks))
+		for id := range m.field_masks {
+			ids = append(ids, id)
+		}
+		return ids
+	}
 	return nil
 }
 
 // RemovedEdges returns all edge names that were removed in this mutation.
 func (m *CiPermissionMutation) RemovedEdges() []string {
-	edges := make([]string, 0, 0)
+	edges := make([]string, 0, 3)
+	if m.removedoperations != nil {
+		edges = append(edges, cipermission.EdgeOperations)
+	}
+	if m.removeddata_filters != nil {
+		edges = append(edges, cipermission.EdgeDataFilters)
+	}
+	if m.removedfield_masks != nil {
+		edges = append(edges, cipermission.EdgeFieldMasks)
+	}
 	return edges
 }
 
 // RemovedIDs returns all IDs (to other nodes) that were removed for the edge with
 // the given name in this mutation.
 func (m *CiPermissionMutation) RemovedIDs(name string) []ent.Value {
+	switch name {
+	case cipermission.EdgeOperations:
+		ids := make([]ent.Value, 0, len(m.removedoperations))
+		for id := range m.removedoperations {
+			ids = append(ids, id)
+		}
+		return ids
+	case cipermission.EdgeDataFilters:
+		ids := make([]ent.Value, 0, len(m.removeddata_filters))
+		for id := range m.removeddata_filters {
+			ids = append(ids, id)
+		}
+		return ids
+	case cipermission.EdgeFieldMasks:
+		ids := make([]ent.Value, 0, len(m.removedfield_masks))
+		for id := range m.removedfield_masks {
+			ids = append(ids, id)
+		}
+		return ids
+	}
 	return nil
 }
 
 // ClearedEdges returns all edge names that were cleared in this mutation.
 func (m *CiPermissionMutation) ClearedEdges() []string {
-	edges := make([]string, 0, 0)
+	edges := make([]string, 0, 3)
+	if m.clearedoperations {
+		edges = append(edges, cipermission.EdgeOperations)
+	}
+	if m.cleareddata_filters {
+		edges = append(edges, cipermission.EdgeDataFilters)
+	}
+	if m.clearedfield_masks {
+		edges = append(edges, cipermission.EdgeFieldMasks)
+	}
 	return edges
 }
 
 // EdgeCleared returns a boolean which indicates if the edge with the given name
 // was cleared in this mutation.
 func (m *CiPermissionMutation) EdgeCleared(name string) bool {
+	switch name {
+	case cipermission.EdgeOperations:
+		return m.clearedoperations
+	case cipermission.EdgeDataFilters:
+		return m.cleareddata_filters
+	case cipermission.EdgeFieldMasks:
+		return m.clearedfield_masks
+	}
 	return false
 }
 
 // ClearEdge clears the value of the edge with the given name. It returns an error
 // if that edge is not defined in the schema.
 func (m *CiPermissionMutation) ClearEdge(name string) error {
+	switch name {
+	}
 	return fmt.Errorf("unknown CiPermission unique edge %s", name)
 }
 
 // ResetEdge resets all changes to the edge with the given name in this mutation.
 // It returns an error if the edge is not defined in the schema.
 func (m *CiPermissionMutation) ResetEdge(name string) error {
+	switch name {
+	case cipermission.EdgeOperations:
+		m.ResetOperations()
+		return nil
+	case cipermission.EdgeDataFilters:
+		m.ResetDataFilters()
+		return nil
+	case cipermission.EdgeFieldMasks:
+		m.ResetFieldMasks()
+		return nil
+	}
 	return fmt.Errorf("unknown CiPermission edge %s", name)
 }
 
@@ -35127,6 +33980,8 @@ type CiTypeRelationMutation struct {
 	created_at            *time.Time
 	updated_at            *time.Time
 	deleted_at            *time.Time
+	tenant_id             *uint64
+	addtenant_id          *int64
 	constraint            *string
 	parent_attr_id        *uint64
 	addparent_attr_id     *int64
@@ -35371,6 +34226,62 @@ func (m *CiTypeRelationMutation) DeletedAtCleared() bool {
 func (m *CiTypeRelationMutation) ResetDeletedAt() {
 	m.deleted_at = nil
 	delete(m.clearedFields, cityperelation.FieldDeletedAt)
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *CiTypeRelationMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *CiTypeRelationMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the CiTypeRelation entity.
+// If the CiTypeRelation object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CiTypeRelationMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *CiTypeRelationMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *CiTypeRelationMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *CiTypeRelationMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
 }
 
 // SetParentID sets the "parent_id" field.
@@ -35915,7 +34826,7 @@ func (m *CiTypeRelationMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *CiTypeRelationMutation) Fields() []string {
-	fields := make([]string, 0, 11)
+	fields := make([]string, 0, 12)
 	if m.created_at != nil {
 		fields = append(fields, cityperelation.FieldCreatedAt)
 	}
@@ -35924,6 +34835,9 @@ func (m *CiTypeRelationMutation) Fields() []string {
 	}
 	if m.deleted_at != nil {
 		fields = append(fields, cityperelation.FieldDeletedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, cityperelation.FieldTenantID)
 	}
 	if m.parent != nil {
 		fields = append(fields, cityperelation.FieldParentID)
@@ -35963,6 +34877,8 @@ func (m *CiTypeRelationMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case cityperelation.FieldDeletedAt:
 		return m.DeletedAt()
+	case cityperelation.FieldTenantID:
+		return m.TenantID()
 	case cityperelation.FieldParentID:
 		return m.ParentID()
 	case cityperelation.FieldChildID:
@@ -35994,6 +34910,8 @@ func (m *CiTypeRelationMutation) OldField(ctx context.Context, name string) (ent
 		return m.OldUpdatedAt(ctx)
 	case cityperelation.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
+	case cityperelation.FieldTenantID:
+		return m.OldTenantID(ctx)
 	case cityperelation.FieldParentID:
 		return m.OldParentID(ctx)
 	case cityperelation.FieldChildID:
@@ -36039,6 +34957,13 @@ func (m *CiTypeRelationMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDeletedAt(v)
+		return nil
+	case cityperelation.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
 		return nil
 	case cityperelation.FieldParentID:
 		v, ok := value.(uint64)
@@ -36104,6 +35029,9 @@ func (m *CiTypeRelationMutation) SetField(name string, value ent.Value) error {
 // this mutation.
 func (m *CiTypeRelationMutation) AddedFields() []string {
 	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, cityperelation.FieldTenantID)
+	}
 	if m.addparent_attr_id != nil {
 		fields = append(fields, cityperelation.FieldParentAttrID)
 	}
@@ -36118,6 +35046,8 @@ func (m *CiTypeRelationMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *CiTypeRelationMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
+	case cityperelation.FieldTenantID:
+		return m.AddedTenantID()
 	case cityperelation.FieldParentAttrID:
 		return m.AddedParentAttrID()
 	case cityperelation.FieldChildAttrID:
@@ -36131,6 +35061,13 @@ func (m *CiTypeRelationMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *CiTypeRelationMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case cityperelation.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
 	case cityperelation.FieldParentAttrID:
 		v, ok := value.(int64)
 		if !ok {
@@ -36219,6 +35156,9 @@ func (m *CiTypeRelationMutation) ResetField(name string) error {
 		return nil
 	case cityperelation.FieldDeletedAt:
 		m.ResetDeletedAt()
+		return nil
+	case cityperelation.FieldTenantID:
+		m.ResetTenantID()
 		return nil
 	case cityperelation.FieldParentID:
 		m.ResetParentID()
@@ -49941,6 +48881,4929 @@ func (m *ImportTemplateMutation) ResetEdge(name string) error {
 	return fmt.Errorf("unknown ImportTemplate edge %s", name)
 }
 
+// PermissionCacheMutation represents an operation that mutates the PermissionCache nodes in the graph.
+type PermissionCacheMutation struct {
+	config
+	op                    Op
+	typ                   string
+	id                    *uint64
+	created_at            *time.Time
+	updated_at            *time.Time
+	tenant_id             *uint64
+	addtenant_id          *int64
+	cache_key             *string
+	user_id               *string
+	resource_type         *string
+	resource_id           *string
+	allowed_operations    *uint64
+	addallowed_operations *int64
+	permission_level      *permissioncache.PermissionLevel
+	has_data_filters      *bool
+	has_field_masks       *bool
+	cache_version         *string
+	expires_at            *time.Time
+	last_accessed_at      *time.Time
+	access_count          *int
+	addaccess_count       *int
+	clearedFields         map[string]struct{}
+	done                  bool
+	oldValue              func(context.Context) (*PermissionCache, error)
+	predicates            []predicate.PermissionCache
+}
+
+var _ ent.Mutation = (*PermissionCacheMutation)(nil)
+
+// permissioncacheOption allows management of the mutation configuration using functional options.
+type permissioncacheOption func(*PermissionCacheMutation)
+
+// newPermissionCacheMutation creates new mutation for the PermissionCache entity.
+func newPermissionCacheMutation(c config, op Op, opts ...permissioncacheOption) *PermissionCacheMutation {
+	m := &PermissionCacheMutation{
+		config:        c,
+		op:            op,
+		typ:           TypePermissionCache,
+		clearedFields: make(map[string]struct{}),
+	}
+	for _, opt := range opts {
+		opt(m)
+	}
+	return m
+}
+
+// withPermissionCacheID sets the ID field of the mutation.
+func withPermissionCacheID(id uint64) permissioncacheOption {
+	return func(m *PermissionCacheMutation) {
+		var (
+			err   error
+			once  sync.Once
+			value *PermissionCache
+		)
+		m.oldValue = func(ctx context.Context) (*PermissionCache, error) {
+			once.Do(func() {
+				if m.done {
+					err = errors.New("querying old values post mutation is not allowed")
+				} else {
+					value, err = m.Client().PermissionCache.Get(ctx, id)
+				}
+			})
+			return value, err
+		}
+		m.id = &id
+	}
+}
+
+// withPermissionCache sets the old PermissionCache of the mutation.
+func withPermissionCache(node *PermissionCache) permissioncacheOption {
+	return func(m *PermissionCacheMutation) {
+		m.oldValue = func(context.Context) (*PermissionCache, error) {
+			return node, nil
+		}
+		m.id = &node.ID
+	}
+}
+
+// Client returns a new `ent.Client` from the mutation. If the mutation was
+// executed in a transaction (ent.Tx), a transactional client is returned.
+func (m PermissionCacheMutation) Client() *Client {
+	client := &Client{config: m.config}
+	client.init()
+	return client
+}
+
+// Tx returns an `ent.Tx` for mutations that were executed in transactions;
+// it returns an error otherwise.
+func (m PermissionCacheMutation) Tx() (*Tx, error) {
+	if _, ok := m.driver.(*txDriver); !ok {
+		return nil, errors.New("ent: mutation is not running in a transaction")
+	}
+	tx := &Tx{config: m.config}
+	tx.init()
+	return tx, nil
+}
+
+// SetID sets the value of the id field. Note that this
+// operation is only accepted on creation of PermissionCache entities.
+func (m *PermissionCacheMutation) SetID(id uint64) {
+	m.id = &id
+}
+
+// ID returns the ID value in the mutation. Note that the ID is only available
+// if it was provided to the builder or after it was returned from the database.
+func (m *PermissionCacheMutation) ID() (id uint64, exists bool) {
+	if m.id == nil {
+		return
+	}
+	return *m.id, true
+}
+
+// IDs queries the database and returns the entity ids that match the mutation's predicate.
+// That means, if the mutation is applied within a transaction with an isolation level such
+// as sql.LevelSerializable, the returned ids match the ids of the rows that will be updated
+// or updated by the mutation.
+func (m *PermissionCacheMutation) IDs(ctx context.Context) ([]uint64, error) {
+	switch {
+	case m.op.Is(OpUpdateOne | OpDeleteOne):
+		id, exists := m.ID()
+		if exists {
+			return []uint64{id}, nil
+		}
+		fallthrough
+	case m.op.Is(OpUpdate | OpDelete):
+		return m.Client().PermissionCache.Query().Where(m.predicates...).IDs(ctx)
+	default:
+		return nil, fmt.Errorf("IDs is not allowed on %s operations", m.op)
+	}
+}
+
+// SetCreatedAt sets the "created_at" field.
+func (m *PermissionCacheMutation) SetCreatedAt(t time.Time) {
+	m.created_at = &t
+}
+
+// CreatedAt returns the value of the "created_at" field in the mutation.
+func (m *PermissionCacheMutation) CreatedAt() (r time.Time, exists bool) {
+	v := m.created_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCreatedAt returns the old "created_at" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldCreatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCreatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCreatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCreatedAt: %w", err)
+	}
+	return oldValue.CreatedAt, nil
+}
+
+// ResetCreatedAt resets all changes to the "created_at" field.
+func (m *PermissionCacheMutation) ResetCreatedAt() {
+	m.created_at = nil
+}
+
+// SetUpdatedAt sets the "updated_at" field.
+func (m *PermissionCacheMutation) SetUpdatedAt(t time.Time) {
+	m.updated_at = &t
+}
+
+// UpdatedAt returns the value of the "updated_at" field in the mutation.
+func (m *PermissionCacheMutation) UpdatedAt() (r time.Time, exists bool) {
+	v := m.updated_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldUpdatedAt returns the old "updated_at" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldUpdatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldUpdatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldUpdatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldUpdatedAt: %w", err)
+	}
+	return oldValue.UpdatedAt, nil
+}
+
+// ResetUpdatedAt resets all changes to the "updated_at" field.
+func (m *PermissionCacheMutation) ResetUpdatedAt() {
+	m.updated_at = nil
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *PermissionCacheMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *PermissionCacheMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *PermissionCacheMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *PermissionCacheMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *PermissionCacheMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
+}
+
+// SetCacheKey sets the "cache_key" field.
+func (m *PermissionCacheMutation) SetCacheKey(s string) {
+	m.cache_key = &s
+}
+
+// CacheKey returns the value of the "cache_key" field in the mutation.
+func (m *PermissionCacheMutation) CacheKey() (r string, exists bool) {
+	v := m.cache_key
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCacheKey returns the old "cache_key" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldCacheKey(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCacheKey is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCacheKey requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCacheKey: %w", err)
+	}
+	return oldValue.CacheKey, nil
+}
+
+// ResetCacheKey resets all changes to the "cache_key" field.
+func (m *PermissionCacheMutation) ResetCacheKey() {
+	m.cache_key = nil
+}
+
+// SetUserID sets the "user_id" field.
+func (m *PermissionCacheMutation) SetUserID(s string) {
+	m.user_id = &s
+}
+
+// UserID returns the value of the "user_id" field in the mutation.
+func (m *PermissionCacheMutation) UserID() (r string, exists bool) {
+	v := m.user_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldUserID returns the old "user_id" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldUserID(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldUserID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldUserID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldUserID: %w", err)
+	}
+	return oldValue.UserID, nil
+}
+
+// ResetUserID resets all changes to the "user_id" field.
+func (m *PermissionCacheMutation) ResetUserID() {
+	m.user_id = nil
+}
+
+// SetResourceType sets the "resource_type" field.
+func (m *PermissionCacheMutation) SetResourceType(s string) {
+	m.resource_type = &s
+}
+
+// ResourceType returns the value of the "resource_type" field in the mutation.
+func (m *PermissionCacheMutation) ResourceType() (r string, exists bool) {
+	v := m.resource_type
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldResourceType returns the old "resource_type" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldResourceType(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldResourceType is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldResourceType requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldResourceType: %w", err)
+	}
+	return oldValue.ResourceType, nil
+}
+
+// ResetResourceType resets all changes to the "resource_type" field.
+func (m *PermissionCacheMutation) ResetResourceType() {
+	m.resource_type = nil
+}
+
+// SetResourceID sets the "resource_id" field.
+func (m *PermissionCacheMutation) SetResourceID(s string) {
+	m.resource_id = &s
+}
+
+// ResourceID returns the value of the "resource_id" field in the mutation.
+func (m *PermissionCacheMutation) ResourceID() (r string, exists bool) {
+	v := m.resource_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldResourceID returns the old "resource_id" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldResourceID(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldResourceID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldResourceID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldResourceID: %w", err)
+	}
+	return oldValue.ResourceID, nil
+}
+
+// ResetResourceID resets all changes to the "resource_id" field.
+func (m *PermissionCacheMutation) ResetResourceID() {
+	m.resource_id = nil
+}
+
+// SetAllowedOperations sets the "allowed_operations" field.
+func (m *PermissionCacheMutation) SetAllowedOperations(u uint64) {
+	m.allowed_operations = &u
+	m.addallowed_operations = nil
+}
+
+// AllowedOperations returns the value of the "allowed_operations" field in the mutation.
+func (m *PermissionCacheMutation) AllowedOperations() (r uint64, exists bool) {
+	v := m.allowed_operations
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldAllowedOperations returns the old "allowed_operations" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldAllowedOperations(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldAllowedOperations is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldAllowedOperations requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldAllowedOperations: %w", err)
+	}
+	return oldValue.AllowedOperations, nil
+}
+
+// AddAllowedOperations adds u to the "allowed_operations" field.
+func (m *PermissionCacheMutation) AddAllowedOperations(u int64) {
+	if m.addallowed_operations != nil {
+		*m.addallowed_operations += u
+	} else {
+		m.addallowed_operations = &u
+	}
+}
+
+// AddedAllowedOperations returns the value that was added to the "allowed_operations" field in this mutation.
+func (m *PermissionCacheMutation) AddedAllowedOperations() (r int64, exists bool) {
+	v := m.addallowed_operations
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetAllowedOperations resets all changes to the "allowed_operations" field.
+func (m *PermissionCacheMutation) ResetAllowedOperations() {
+	m.allowed_operations = nil
+	m.addallowed_operations = nil
+}
+
+// SetPermissionLevel sets the "permission_level" field.
+func (m *PermissionCacheMutation) SetPermissionLevel(pl permissioncache.PermissionLevel) {
+	m.permission_level = &pl
+}
+
+// PermissionLevel returns the value of the "permission_level" field in the mutation.
+func (m *PermissionCacheMutation) PermissionLevel() (r permissioncache.PermissionLevel, exists bool) {
+	v := m.permission_level
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldPermissionLevel returns the old "permission_level" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldPermissionLevel(ctx context.Context) (v permissioncache.PermissionLevel, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldPermissionLevel is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldPermissionLevel requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldPermissionLevel: %w", err)
+	}
+	return oldValue.PermissionLevel, nil
+}
+
+// ResetPermissionLevel resets all changes to the "permission_level" field.
+func (m *PermissionCacheMutation) ResetPermissionLevel() {
+	m.permission_level = nil
+}
+
+// SetHasDataFilters sets the "has_data_filters" field.
+func (m *PermissionCacheMutation) SetHasDataFilters(b bool) {
+	m.has_data_filters = &b
+}
+
+// HasDataFilters returns the value of the "has_data_filters" field in the mutation.
+func (m *PermissionCacheMutation) HasDataFilters() (r bool, exists bool) {
+	v := m.has_data_filters
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldHasDataFilters returns the old "has_data_filters" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldHasDataFilters(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldHasDataFilters is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldHasDataFilters requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldHasDataFilters: %w", err)
+	}
+	return oldValue.HasDataFilters, nil
+}
+
+// ResetHasDataFilters resets all changes to the "has_data_filters" field.
+func (m *PermissionCacheMutation) ResetHasDataFilters() {
+	m.has_data_filters = nil
+}
+
+// SetHasFieldMasks sets the "has_field_masks" field.
+func (m *PermissionCacheMutation) SetHasFieldMasks(b bool) {
+	m.has_field_masks = &b
+}
+
+// HasFieldMasks returns the value of the "has_field_masks" field in the mutation.
+func (m *PermissionCacheMutation) HasFieldMasks() (r bool, exists bool) {
+	v := m.has_field_masks
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldHasFieldMasks returns the old "has_field_masks" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldHasFieldMasks(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldHasFieldMasks is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldHasFieldMasks requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldHasFieldMasks: %w", err)
+	}
+	return oldValue.HasFieldMasks, nil
+}
+
+// ResetHasFieldMasks resets all changes to the "has_field_masks" field.
+func (m *PermissionCacheMutation) ResetHasFieldMasks() {
+	m.has_field_masks = nil
+}
+
+// SetCacheVersion sets the "cache_version" field.
+func (m *PermissionCacheMutation) SetCacheVersion(s string) {
+	m.cache_version = &s
+}
+
+// CacheVersion returns the value of the "cache_version" field in the mutation.
+func (m *PermissionCacheMutation) CacheVersion() (r string, exists bool) {
+	v := m.cache_version
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCacheVersion returns the old "cache_version" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldCacheVersion(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCacheVersion is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCacheVersion requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCacheVersion: %w", err)
+	}
+	return oldValue.CacheVersion, nil
+}
+
+// ResetCacheVersion resets all changes to the "cache_version" field.
+func (m *PermissionCacheMutation) ResetCacheVersion() {
+	m.cache_version = nil
+}
+
+// SetExpiresAt sets the "expires_at" field.
+func (m *PermissionCacheMutation) SetExpiresAt(t time.Time) {
+	m.expires_at = &t
+}
+
+// ExpiresAt returns the value of the "expires_at" field in the mutation.
+func (m *PermissionCacheMutation) ExpiresAt() (r time.Time, exists bool) {
+	v := m.expires_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldExpiresAt returns the old "expires_at" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldExpiresAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldExpiresAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldExpiresAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldExpiresAt: %w", err)
+	}
+	return oldValue.ExpiresAt, nil
+}
+
+// ResetExpiresAt resets all changes to the "expires_at" field.
+func (m *PermissionCacheMutation) ResetExpiresAt() {
+	m.expires_at = nil
+}
+
+// SetLastAccessedAt sets the "last_accessed_at" field.
+func (m *PermissionCacheMutation) SetLastAccessedAt(t time.Time) {
+	m.last_accessed_at = &t
+}
+
+// LastAccessedAt returns the value of the "last_accessed_at" field in the mutation.
+func (m *PermissionCacheMutation) LastAccessedAt() (r time.Time, exists bool) {
+	v := m.last_accessed_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldLastAccessedAt returns the old "last_accessed_at" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldLastAccessedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldLastAccessedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldLastAccessedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldLastAccessedAt: %w", err)
+	}
+	return oldValue.LastAccessedAt, nil
+}
+
+// ResetLastAccessedAt resets all changes to the "last_accessed_at" field.
+func (m *PermissionCacheMutation) ResetLastAccessedAt() {
+	m.last_accessed_at = nil
+}
+
+// SetAccessCount sets the "access_count" field.
+func (m *PermissionCacheMutation) SetAccessCount(i int) {
+	m.access_count = &i
+	m.addaccess_count = nil
+}
+
+// AccessCount returns the value of the "access_count" field in the mutation.
+func (m *PermissionCacheMutation) AccessCount() (r int, exists bool) {
+	v := m.access_count
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldAccessCount returns the old "access_count" field's value of the PermissionCache entity.
+// If the PermissionCache object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionCacheMutation) OldAccessCount(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldAccessCount is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldAccessCount requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldAccessCount: %w", err)
+	}
+	return oldValue.AccessCount, nil
+}
+
+// AddAccessCount adds i to the "access_count" field.
+func (m *PermissionCacheMutation) AddAccessCount(i int) {
+	if m.addaccess_count != nil {
+		*m.addaccess_count += i
+	} else {
+		m.addaccess_count = &i
+	}
+}
+
+// AddedAccessCount returns the value that was added to the "access_count" field in this mutation.
+func (m *PermissionCacheMutation) AddedAccessCount() (r int, exists bool) {
+	v := m.addaccess_count
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetAccessCount resets all changes to the "access_count" field.
+func (m *PermissionCacheMutation) ResetAccessCount() {
+	m.access_count = nil
+	m.addaccess_count = nil
+}
+
+// Where appends a list predicates to the PermissionCacheMutation builder.
+func (m *PermissionCacheMutation) Where(ps ...predicate.PermissionCache) {
+	m.predicates = append(m.predicates, ps...)
+}
+
+// WhereP appends storage-level predicates to the PermissionCacheMutation builder. Using this method,
+// users can use type-assertion to append predicates that do not depend on any generated package.
+func (m *PermissionCacheMutation) WhereP(ps ...func(*sql.Selector)) {
+	p := make([]predicate.PermissionCache, len(ps))
+	for i := range ps {
+		p[i] = ps[i]
+	}
+	m.Where(p...)
+}
+
+// Op returns the operation name.
+func (m *PermissionCacheMutation) Op() Op {
+	return m.op
+}
+
+// SetOp allows setting the mutation operation.
+func (m *PermissionCacheMutation) SetOp(op Op) {
+	m.op = op
+}
+
+// Type returns the node type of this mutation (PermissionCache).
+func (m *PermissionCacheMutation) Type() string {
+	return m.typ
+}
+
+// Fields returns all fields that were changed during this mutation. Note that in
+// order to get all numeric fields that were incremented/decremented, call
+// AddedFields().
+func (m *PermissionCacheMutation) Fields() []string {
+	fields := make([]string, 0, 15)
+	if m.created_at != nil {
+		fields = append(fields, permissioncache.FieldCreatedAt)
+	}
+	if m.updated_at != nil {
+		fields = append(fields, permissioncache.FieldUpdatedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, permissioncache.FieldTenantID)
+	}
+	if m.cache_key != nil {
+		fields = append(fields, permissioncache.FieldCacheKey)
+	}
+	if m.user_id != nil {
+		fields = append(fields, permissioncache.FieldUserID)
+	}
+	if m.resource_type != nil {
+		fields = append(fields, permissioncache.FieldResourceType)
+	}
+	if m.resource_id != nil {
+		fields = append(fields, permissioncache.FieldResourceID)
+	}
+	if m.allowed_operations != nil {
+		fields = append(fields, permissioncache.FieldAllowedOperations)
+	}
+	if m.permission_level != nil {
+		fields = append(fields, permissioncache.FieldPermissionLevel)
+	}
+	if m.has_data_filters != nil {
+		fields = append(fields, permissioncache.FieldHasDataFilters)
+	}
+	if m.has_field_masks != nil {
+		fields = append(fields, permissioncache.FieldHasFieldMasks)
+	}
+	if m.cache_version != nil {
+		fields = append(fields, permissioncache.FieldCacheVersion)
+	}
+	if m.expires_at != nil {
+		fields = append(fields, permissioncache.FieldExpiresAt)
+	}
+	if m.last_accessed_at != nil {
+		fields = append(fields, permissioncache.FieldLastAccessedAt)
+	}
+	if m.access_count != nil {
+		fields = append(fields, permissioncache.FieldAccessCount)
+	}
+	return fields
+}
+
+// Field returns the value of a field with the given name. The second boolean
+// return value indicates that this field was not set, or was not defined in the
+// schema.
+func (m *PermissionCacheMutation) Field(name string) (ent.Value, bool) {
+	switch name {
+	case permissioncache.FieldCreatedAt:
+		return m.CreatedAt()
+	case permissioncache.FieldUpdatedAt:
+		return m.UpdatedAt()
+	case permissioncache.FieldTenantID:
+		return m.TenantID()
+	case permissioncache.FieldCacheKey:
+		return m.CacheKey()
+	case permissioncache.FieldUserID:
+		return m.UserID()
+	case permissioncache.FieldResourceType:
+		return m.ResourceType()
+	case permissioncache.FieldResourceID:
+		return m.ResourceID()
+	case permissioncache.FieldAllowedOperations:
+		return m.AllowedOperations()
+	case permissioncache.FieldPermissionLevel:
+		return m.PermissionLevel()
+	case permissioncache.FieldHasDataFilters:
+		return m.HasDataFilters()
+	case permissioncache.FieldHasFieldMasks:
+		return m.HasFieldMasks()
+	case permissioncache.FieldCacheVersion:
+		return m.CacheVersion()
+	case permissioncache.FieldExpiresAt:
+		return m.ExpiresAt()
+	case permissioncache.FieldLastAccessedAt:
+		return m.LastAccessedAt()
+	case permissioncache.FieldAccessCount:
+		return m.AccessCount()
+	}
+	return nil, false
+}
+
+// OldField returns the old value of the field from the database. An error is
+// returned if the mutation operation is not UpdateOne, or the query to the
+// database failed.
+func (m *PermissionCacheMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
+	switch name {
+	case permissioncache.FieldCreatedAt:
+		return m.OldCreatedAt(ctx)
+	case permissioncache.FieldUpdatedAt:
+		return m.OldUpdatedAt(ctx)
+	case permissioncache.FieldTenantID:
+		return m.OldTenantID(ctx)
+	case permissioncache.FieldCacheKey:
+		return m.OldCacheKey(ctx)
+	case permissioncache.FieldUserID:
+		return m.OldUserID(ctx)
+	case permissioncache.FieldResourceType:
+		return m.OldResourceType(ctx)
+	case permissioncache.FieldResourceID:
+		return m.OldResourceID(ctx)
+	case permissioncache.FieldAllowedOperations:
+		return m.OldAllowedOperations(ctx)
+	case permissioncache.FieldPermissionLevel:
+		return m.OldPermissionLevel(ctx)
+	case permissioncache.FieldHasDataFilters:
+		return m.OldHasDataFilters(ctx)
+	case permissioncache.FieldHasFieldMasks:
+		return m.OldHasFieldMasks(ctx)
+	case permissioncache.FieldCacheVersion:
+		return m.OldCacheVersion(ctx)
+	case permissioncache.FieldExpiresAt:
+		return m.OldExpiresAt(ctx)
+	case permissioncache.FieldLastAccessedAt:
+		return m.OldLastAccessedAt(ctx)
+	case permissioncache.FieldAccessCount:
+		return m.OldAccessCount(ctx)
+	}
+	return nil, fmt.Errorf("unknown PermissionCache field %s", name)
+}
+
+// SetField sets the value of a field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionCacheMutation) SetField(name string, value ent.Value) error {
+	switch name {
+	case permissioncache.FieldCreatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCreatedAt(v)
+		return nil
+	case permissioncache.FieldUpdatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetUpdatedAt(v)
+		return nil
+	case permissioncache.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
+	case permissioncache.FieldCacheKey:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCacheKey(v)
+		return nil
+	case permissioncache.FieldUserID:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetUserID(v)
+		return nil
+	case permissioncache.FieldResourceType:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetResourceType(v)
+		return nil
+	case permissioncache.FieldResourceID:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetResourceID(v)
+		return nil
+	case permissioncache.FieldAllowedOperations:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetAllowedOperations(v)
+		return nil
+	case permissioncache.FieldPermissionLevel:
+		v, ok := value.(permissioncache.PermissionLevel)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetPermissionLevel(v)
+		return nil
+	case permissioncache.FieldHasDataFilters:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetHasDataFilters(v)
+		return nil
+	case permissioncache.FieldHasFieldMasks:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetHasFieldMasks(v)
+		return nil
+	case permissioncache.FieldCacheVersion:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCacheVersion(v)
+		return nil
+	case permissioncache.FieldExpiresAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetExpiresAt(v)
+		return nil
+	case permissioncache.FieldLastAccessedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetLastAccessedAt(v)
+		return nil
+	case permissioncache.FieldAccessCount:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetAccessCount(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionCache field %s", name)
+}
+
+// AddedFields returns all numeric fields that were incremented/decremented during
+// this mutation.
+func (m *PermissionCacheMutation) AddedFields() []string {
+	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, permissioncache.FieldTenantID)
+	}
+	if m.addallowed_operations != nil {
+		fields = append(fields, permissioncache.FieldAllowedOperations)
+	}
+	if m.addaccess_count != nil {
+		fields = append(fields, permissioncache.FieldAccessCount)
+	}
+	return fields
+}
+
+// AddedField returns the numeric value that was incremented/decremented on a field
+// with the given name. The second boolean return value indicates that this field
+// was not set, or was not defined in the schema.
+func (m *PermissionCacheMutation) AddedField(name string) (ent.Value, bool) {
+	switch name {
+	case permissioncache.FieldTenantID:
+		return m.AddedTenantID()
+	case permissioncache.FieldAllowedOperations:
+		return m.AddedAllowedOperations()
+	case permissioncache.FieldAccessCount:
+		return m.AddedAccessCount()
+	}
+	return nil, false
+}
+
+// AddField adds the value to the field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionCacheMutation) AddField(name string, value ent.Value) error {
+	switch name {
+	case permissioncache.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
+	case permissioncache.FieldAllowedOperations:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddAllowedOperations(v)
+		return nil
+	case permissioncache.FieldAccessCount:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddAccessCount(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionCache numeric field %s", name)
+}
+
+// ClearedFields returns all nullable fields that were cleared during this
+// mutation.
+func (m *PermissionCacheMutation) ClearedFields() []string {
+	return nil
+}
+
+// FieldCleared returns a boolean indicating if a field with the given name was
+// cleared in this mutation.
+func (m *PermissionCacheMutation) FieldCleared(name string) bool {
+	_, ok := m.clearedFields[name]
+	return ok
+}
+
+// ClearField clears the value of the field with the given name. It returns an
+// error if the field is not defined in the schema.
+func (m *PermissionCacheMutation) ClearField(name string) error {
+	return fmt.Errorf("unknown PermissionCache nullable field %s", name)
+}
+
+// ResetField resets all changes in the mutation for the field with the given name.
+// It returns an error if the field is not defined in the schema.
+func (m *PermissionCacheMutation) ResetField(name string) error {
+	switch name {
+	case permissioncache.FieldCreatedAt:
+		m.ResetCreatedAt()
+		return nil
+	case permissioncache.FieldUpdatedAt:
+		m.ResetUpdatedAt()
+		return nil
+	case permissioncache.FieldTenantID:
+		m.ResetTenantID()
+		return nil
+	case permissioncache.FieldCacheKey:
+		m.ResetCacheKey()
+		return nil
+	case permissioncache.FieldUserID:
+		m.ResetUserID()
+		return nil
+	case permissioncache.FieldResourceType:
+		m.ResetResourceType()
+		return nil
+	case permissioncache.FieldResourceID:
+		m.ResetResourceID()
+		return nil
+	case permissioncache.FieldAllowedOperations:
+		m.ResetAllowedOperations()
+		return nil
+	case permissioncache.FieldPermissionLevel:
+		m.ResetPermissionLevel()
+		return nil
+	case permissioncache.FieldHasDataFilters:
+		m.ResetHasDataFilters()
+		return nil
+	case permissioncache.FieldHasFieldMasks:
+		m.ResetHasFieldMasks()
+		return nil
+	case permissioncache.FieldCacheVersion:
+		m.ResetCacheVersion()
+		return nil
+	case permissioncache.FieldExpiresAt:
+		m.ResetExpiresAt()
+		return nil
+	case permissioncache.FieldLastAccessedAt:
+		m.ResetLastAccessedAt()
+		return nil
+	case permissioncache.FieldAccessCount:
+		m.ResetAccessCount()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionCache field %s", name)
+}
+
+// AddedEdges returns all edge names that were set/added in this mutation.
+func (m *PermissionCacheMutation) AddedEdges() []string {
+	edges := make([]string, 0, 0)
+	return edges
+}
+
+// AddedIDs returns all IDs (to other nodes) that were added for the given edge
+// name in this mutation.
+func (m *PermissionCacheMutation) AddedIDs(name string) []ent.Value {
+	return nil
+}
+
+// RemovedEdges returns all edge names that were removed in this mutation.
+func (m *PermissionCacheMutation) RemovedEdges() []string {
+	edges := make([]string, 0, 0)
+	return edges
+}
+
+// RemovedIDs returns all IDs (to other nodes) that were removed for the edge with
+// the given name in this mutation.
+func (m *PermissionCacheMutation) RemovedIDs(name string) []ent.Value {
+	return nil
+}
+
+// ClearedEdges returns all edge names that were cleared in this mutation.
+func (m *PermissionCacheMutation) ClearedEdges() []string {
+	edges := make([]string, 0, 0)
+	return edges
+}
+
+// EdgeCleared returns a boolean which indicates if the edge with the given name
+// was cleared in this mutation.
+func (m *PermissionCacheMutation) EdgeCleared(name string) bool {
+	return false
+}
+
+// ClearEdge clears the value of the edge with the given name. It returns an error
+// if that edge is not defined in the schema.
+func (m *PermissionCacheMutation) ClearEdge(name string) error {
+	return fmt.Errorf("unknown PermissionCache unique edge %s", name)
+}
+
+// ResetEdge resets all changes to the edge with the given name in this mutation.
+// It returns an error if the edge is not defined in the schema.
+func (m *PermissionCacheMutation) ResetEdge(name string) error {
+	return fmt.Errorf("unknown PermissionCache edge %s", name)
+}
+
+// PermissionDataFilterMutation represents an operation that mutates the PermissionDataFilter nodes in the graph.
+type PermissionDataFilterMutation struct {
+	config
+	op                Op
+	typ               string
+	id                *uint64
+	created_at        *time.Time
+	updated_at        *time.Time
+	tenant_id         *uint64
+	addtenant_id      *int64
+	filter_group      *int
+	addfilter_group   *int
+	field_name        *string
+	operator_type     *permissiondatafilter.OperatorType
+	filter_value      *string
+	value_type        *permissiondatafilter.ValueType
+	clearedFields     map[string]struct{}
+	permission        *uint64
+	clearedpermission bool
+	done              bool
+	oldValue          func(context.Context) (*PermissionDataFilter, error)
+	predicates        []predicate.PermissionDataFilter
+}
+
+var _ ent.Mutation = (*PermissionDataFilterMutation)(nil)
+
+// permissiondatafilterOption allows management of the mutation configuration using functional options.
+type permissiondatafilterOption func(*PermissionDataFilterMutation)
+
+// newPermissionDataFilterMutation creates new mutation for the PermissionDataFilter entity.
+func newPermissionDataFilterMutation(c config, op Op, opts ...permissiondatafilterOption) *PermissionDataFilterMutation {
+	m := &PermissionDataFilterMutation{
+		config:        c,
+		op:            op,
+		typ:           TypePermissionDataFilter,
+		clearedFields: make(map[string]struct{}),
+	}
+	for _, opt := range opts {
+		opt(m)
+	}
+	return m
+}
+
+// withPermissionDataFilterID sets the ID field of the mutation.
+func withPermissionDataFilterID(id uint64) permissiondatafilterOption {
+	return func(m *PermissionDataFilterMutation) {
+		var (
+			err   error
+			once  sync.Once
+			value *PermissionDataFilter
+		)
+		m.oldValue = func(ctx context.Context) (*PermissionDataFilter, error) {
+			once.Do(func() {
+				if m.done {
+					err = errors.New("querying old values post mutation is not allowed")
+				} else {
+					value, err = m.Client().PermissionDataFilter.Get(ctx, id)
+				}
+			})
+			return value, err
+		}
+		m.id = &id
+	}
+}
+
+// withPermissionDataFilter sets the old PermissionDataFilter of the mutation.
+func withPermissionDataFilter(node *PermissionDataFilter) permissiondatafilterOption {
+	return func(m *PermissionDataFilterMutation) {
+		m.oldValue = func(context.Context) (*PermissionDataFilter, error) {
+			return node, nil
+		}
+		m.id = &node.ID
+	}
+}
+
+// Client returns a new `ent.Client` from the mutation. If the mutation was
+// executed in a transaction (ent.Tx), a transactional client is returned.
+func (m PermissionDataFilterMutation) Client() *Client {
+	client := &Client{config: m.config}
+	client.init()
+	return client
+}
+
+// Tx returns an `ent.Tx` for mutations that were executed in transactions;
+// it returns an error otherwise.
+func (m PermissionDataFilterMutation) Tx() (*Tx, error) {
+	if _, ok := m.driver.(*txDriver); !ok {
+		return nil, errors.New("ent: mutation is not running in a transaction")
+	}
+	tx := &Tx{config: m.config}
+	tx.init()
+	return tx, nil
+}
+
+// SetID sets the value of the id field. Note that this
+// operation is only accepted on creation of PermissionDataFilter entities.
+func (m *PermissionDataFilterMutation) SetID(id uint64) {
+	m.id = &id
+}
+
+// ID returns the ID value in the mutation. Note that the ID is only available
+// if it was provided to the builder or after it was returned from the database.
+func (m *PermissionDataFilterMutation) ID() (id uint64, exists bool) {
+	if m.id == nil {
+		return
+	}
+	return *m.id, true
+}
+
+// IDs queries the database and returns the entity ids that match the mutation's predicate.
+// That means, if the mutation is applied within a transaction with an isolation level such
+// as sql.LevelSerializable, the returned ids match the ids of the rows that will be updated
+// or updated by the mutation.
+func (m *PermissionDataFilterMutation) IDs(ctx context.Context) ([]uint64, error) {
+	switch {
+	case m.op.Is(OpUpdateOne | OpDeleteOne):
+		id, exists := m.ID()
+		if exists {
+			return []uint64{id}, nil
+		}
+		fallthrough
+	case m.op.Is(OpUpdate | OpDelete):
+		return m.Client().PermissionDataFilter.Query().Where(m.predicates...).IDs(ctx)
+	default:
+		return nil, fmt.Errorf("IDs is not allowed on %s operations", m.op)
+	}
+}
+
+// SetCreatedAt sets the "created_at" field.
+func (m *PermissionDataFilterMutation) SetCreatedAt(t time.Time) {
+	m.created_at = &t
+}
+
+// CreatedAt returns the value of the "created_at" field in the mutation.
+func (m *PermissionDataFilterMutation) CreatedAt() (r time.Time, exists bool) {
+	v := m.created_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCreatedAt returns the old "created_at" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldCreatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCreatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCreatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCreatedAt: %w", err)
+	}
+	return oldValue.CreatedAt, nil
+}
+
+// ResetCreatedAt resets all changes to the "created_at" field.
+func (m *PermissionDataFilterMutation) ResetCreatedAt() {
+	m.created_at = nil
+}
+
+// SetUpdatedAt sets the "updated_at" field.
+func (m *PermissionDataFilterMutation) SetUpdatedAt(t time.Time) {
+	m.updated_at = &t
+}
+
+// UpdatedAt returns the value of the "updated_at" field in the mutation.
+func (m *PermissionDataFilterMutation) UpdatedAt() (r time.Time, exists bool) {
+	v := m.updated_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldUpdatedAt returns the old "updated_at" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldUpdatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldUpdatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldUpdatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldUpdatedAt: %w", err)
+	}
+	return oldValue.UpdatedAt, nil
+}
+
+// ResetUpdatedAt resets all changes to the "updated_at" field.
+func (m *PermissionDataFilterMutation) ResetUpdatedAt() {
+	m.updated_at = nil
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *PermissionDataFilterMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *PermissionDataFilterMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *PermissionDataFilterMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *PermissionDataFilterMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *PermissionDataFilterMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
+}
+
+// SetPermissionID sets the "permission_id" field.
+func (m *PermissionDataFilterMutation) SetPermissionID(u uint64) {
+	m.permission = &u
+}
+
+// PermissionID returns the value of the "permission_id" field in the mutation.
+func (m *PermissionDataFilterMutation) PermissionID() (r uint64, exists bool) {
+	v := m.permission
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldPermissionID returns the old "permission_id" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldPermissionID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldPermissionID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldPermissionID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldPermissionID: %w", err)
+	}
+	return oldValue.PermissionID, nil
+}
+
+// ResetPermissionID resets all changes to the "permission_id" field.
+func (m *PermissionDataFilterMutation) ResetPermissionID() {
+	m.permission = nil
+}
+
+// SetFilterGroup sets the "filter_group" field.
+func (m *PermissionDataFilterMutation) SetFilterGroup(i int) {
+	m.filter_group = &i
+	m.addfilter_group = nil
+}
+
+// FilterGroup returns the value of the "filter_group" field in the mutation.
+func (m *PermissionDataFilterMutation) FilterGroup() (r int, exists bool) {
+	v := m.filter_group
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldFilterGroup returns the old "filter_group" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldFilterGroup(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldFilterGroup is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldFilterGroup requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldFilterGroup: %w", err)
+	}
+	return oldValue.FilterGroup, nil
+}
+
+// AddFilterGroup adds i to the "filter_group" field.
+func (m *PermissionDataFilterMutation) AddFilterGroup(i int) {
+	if m.addfilter_group != nil {
+		*m.addfilter_group += i
+	} else {
+		m.addfilter_group = &i
+	}
+}
+
+// AddedFilterGroup returns the value that was added to the "filter_group" field in this mutation.
+func (m *PermissionDataFilterMutation) AddedFilterGroup() (r int, exists bool) {
+	v := m.addfilter_group
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetFilterGroup resets all changes to the "filter_group" field.
+func (m *PermissionDataFilterMutation) ResetFilterGroup() {
+	m.filter_group = nil
+	m.addfilter_group = nil
+}
+
+// SetFieldName sets the "field_name" field.
+func (m *PermissionDataFilterMutation) SetFieldName(s string) {
+	m.field_name = &s
+}
+
+// FieldName returns the value of the "field_name" field in the mutation.
+func (m *PermissionDataFilterMutation) FieldName() (r string, exists bool) {
+	v := m.field_name
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldFieldName returns the old "field_name" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldFieldName(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldFieldName is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldFieldName requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldFieldName: %w", err)
+	}
+	return oldValue.FieldName, nil
+}
+
+// ResetFieldName resets all changes to the "field_name" field.
+func (m *PermissionDataFilterMutation) ResetFieldName() {
+	m.field_name = nil
+}
+
+// SetOperatorType sets the "operator_type" field.
+func (m *PermissionDataFilterMutation) SetOperatorType(pt permissiondatafilter.OperatorType) {
+	m.operator_type = &pt
+}
+
+// OperatorType returns the value of the "operator_type" field in the mutation.
+func (m *PermissionDataFilterMutation) OperatorType() (r permissiondatafilter.OperatorType, exists bool) {
+	v := m.operator_type
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldOperatorType returns the old "operator_type" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldOperatorType(ctx context.Context) (v permissiondatafilter.OperatorType, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldOperatorType is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldOperatorType requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldOperatorType: %w", err)
+	}
+	return oldValue.OperatorType, nil
+}
+
+// ResetOperatorType resets all changes to the "operator_type" field.
+func (m *PermissionDataFilterMutation) ResetOperatorType() {
+	m.operator_type = nil
+}
+
+// SetFilterValue sets the "filter_value" field.
+func (m *PermissionDataFilterMutation) SetFilterValue(s string) {
+	m.filter_value = &s
+}
+
+// FilterValue returns the value of the "filter_value" field in the mutation.
+func (m *PermissionDataFilterMutation) FilterValue() (r string, exists bool) {
+	v := m.filter_value
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldFilterValue returns the old "filter_value" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldFilterValue(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldFilterValue is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldFilterValue requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldFilterValue: %w", err)
+	}
+	return oldValue.FilterValue, nil
+}
+
+// ClearFilterValue clears the value of the "filter_value" field.
+func (m *PermissionDataFilterMutation) ClearFilterValue() {
+	m.filter_value = nil
+	m.clearedFields[permissiondatafilter.FieldFilterValue] = struct{}{}
+}
+
+// FilterValueCleared returns if the "filter_value" field was cleared in this mutation.
+func (m *PermissionDataFilterMutation) FilterValueCleared() bool {
+	_, ok := m.clearedFields[permissiondatafilter.FieldFilterValue]
+	return ok
+}
+
+// ResetFilterValue resets all changes to the "filter_value" field.
+func (m *PermissionDataFilterMutation) ResetFilterValue() {
+	m.filter_value = nil
+	delete(m.clearedFields, permissiondatafilter.FieldFilterValue)
+}
+
+// SetValueType sets the "value_type" field.
+func (m *PermissionDataFilterMutation) SetValueType(pt permissiondatafilter.ValueType) {
+	m.value_type = &pt
+}
+
+// ValueType returns the value of the "value_type" field in the mutation.
+func (m *PermissionDataFilterMutation) ValueType() (r permissiondatafilter.ValueType, exists bool) {
+	v := m.value_type
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldValueType returns the old "value_type" field's value of the PermissionDataFilter entity.
+// If the PermissionDataFilter object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionDataFilterMutation) OldValueType(ctx context.Context) (v permissiondatafilter.ValueType, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldValueType is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldValueType requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldValueType: %w", err)
+	}
+	return oldValue.ValueType, nil
+}
+
+// ResetValueType resets all changes to the "value_type" field.
+func (m *PermissionDataFilterMutation) ResetValueType() {
+	m.value_type = nil
+}
+
+// ClearPermission clears the "permission" edge to the CiPermission entity.
+func (m *PermissionDataFilterMutation) ClearPermission() {
+	m.clearedpermission = true
+	m.clearedFields[permissiondatafilter.FieldPermissionID] = struct{}{}
+}
+
+// PermissionCleared reports if the "permission" edge to the CiPermission entity was cleared.
+func (m *PermissionDataFilterMutation) PermissionCleared() bool {
+	return m.clearedpermission
+}
+
+// PermissionIDs returns the "permission" edge IDs in the mutation.
+// Note that IDs always returns len(IDs) <= 1 for unique edges, and you should use
+// PermissionID instead. It exists only for internal usage by the builders.
+func (m *PermissionDataFilterMutation) PermissionIDs() (ids []uint64) {
+	if id := m.permission; id != nil {
+		ids = append(ids, *id)
+	}
+	return
+}
+
+// ResetPermission resets all changes to the "permission" edge.
+func (m *PermissionDataFilterMutation) ResetPermission() {
+	m.permission = nil
+	m.clearedpermission = false
+}
+
+// Where appends a list predicates to the PermissionDataFilterMutation builder.
+func (m *PermissionDataFilterMutation) Where(ps ...predicate.PermissionDataFilter) {
+	m.predicates = append(m.predicates, ps...)
+}
+
+// WhereP appends storage-level predicates to the PermissionDataFilterMutation builder. Using this method,
+// users can use type-assertion to append predicates that do not depend on any generated package.
+func (m *PermissionDataFilterMutation) WhereP(ps ...func(*sql.Selector)) {
+	p := make([]predicate.PermissionDataFilter, len(ps))
+	for i := range ps {
+		p[i] = ps[i]
+	}
+	m.Where(p...)
+}
+
+// Op returns the operation name.
+func (m *PermissionDataFilterMutation) Op() Op {
+	return m.op
+}
+
+// SetOp allows setting the mutation operation.
+func (m *PermissionDataFilterMutation) SetOp(op Op) {
+	m.op = op
+}
+
+// Type returns the node type of this mutation (PermissionDataFilter).
+func (m *PermissionDataFilterMutation) Type() string {
+	return m.typ
+}
+
+// Fields returns all fields that were changed during this mutation. Note that in
+// order to get all numeric fields that were incremented/decremented, call
+// AddedFields().
+func (m *PermissionDataFilterMutation) Fields() []string {
+	fields := make([]string, 0, 9)
+	if m.created_at != nil {
+		fields = append(fields, permissiondatafilter.FieldCreatedAt)
+	}
+	if m.updated_at != nil {
+		fields = append(fields, permissiondatafilter.FieldUpdatedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, permissiondatafilter.FieldTenantID)
+	}
+	if m.permission != nil {
+		fields = append(fields, permissiondatafilter.FieldPermissionID)
+	}
+	if m.filter_group != nil {
+		fields = append(fields, permissiondatafilter.FieldFilterGroup)
+	}
+	if m.field_name != nil {
+		fields = append(fields, permissiondatafilter.FieldFieldName)
+	}
+	if m.operator_type != nil {
+		fields = append(fields, permissiondatafilter.FieldOperatorType)
+	}
+	if m.filter_value != nil {
+		fields = append(fields, permissiondatafilter.FieldFilterValue)
+	}
+	if m.value_type != nil {
+		fields = append(fields, permissiondatafilter.FieldValueType)
+	}
+	return fields
+}
+
+// Field returns the value of a field with the given name. The second boolean
+// return value indicates that this field was not set, or was not defined in the
+// schema.
+func (m *PermissionDataFilterMutation) Field(name string) (ent.Value, bool) {
+	switch name {
+	case permissiondatafilter.FieldCreatedAt:
+		return m.CreatedAt()
+	case permissiondatafilter.FieldUpdatedAt:
+		return m.UpdatedAt()
+	case permissiondatafilter.FieldTenantID:
+		return m.TenantID()
+	case permissiondatafilter.FieldPermissionID:
+		return m.PermissionID()
+	case permissiondatafilter.FieldFilterGroup:
+		return m.FilterGroup()
+	case permissiondatafilter.FieldFieldName:
+		return m.FieldName()
+	case permissiondatafilter.FieldOperatorType:
+		return m.OperatorType()
+	case permissiondatafilter.FieldFilterValue:
+		return m.FilterValue()
+	case permissiondatafilter.FieldValueType:
+		return m.ValueType()
+	}
+	return nil, false
+}
+
+// OldField returns the old value of the field from the database. An error is
+// returned if the mutation operation is not UpdateOne, or the query to the
+// database failed.
+func (m *PermissionDataFilterMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
+	switch name {
+	case permissiondatafilter.FieldCreatedAt:
+		return m.OldCreatedAt(ctx)
+	case permissiondatafilter.FieldUpdatedAt:
+		return m.OldUpdatedAt(ctx)
+	case permissiondatafilter.FieldTenantID:
+		return m.OldTenantID(ctx)
+	case permissiondatafilter.FieldPermissionID:
+		return m.OldPermissionID(ctx)
+	case permissiondatafilter.FieldFilterGroup:
+		return m.OldFilterGroup(ctx)
+	case permissiondatafilter.FieldFieldName:
+		return m.OldFieldName(ctx)
+	case permissiondatafilter.FieldOperatorType:
+		return m.OldOperatorType(ctx)
+	case permissiondatafilter.FieldFilterValue:
+		return m.OldFilterValue(ctx)
+	case permissiondatafilter.FieldValueType:
+		return m.OldValueType(ctx)
+	}
+	return nil, fmt.Errorf("unknown PermissionDataFilter field %s", name)
+}
+
+// SetField sets the value of a field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionDataFilterMutation) SetField(name string, value ent.Value) error {
+	switch name {
+	case permissiondatafilter.FieldCreatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCreatedAt(v)
+		return nil
+	case permissiondatafilter.FieldUpdatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetUpdatedAt(v)
+		return nil
+	case permissiondatafilter.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
+	case permissiondatafilter.FieldPermissionID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetPermissionID(v)
+		return nil
+	case permissiondatafilter.FieldFilterGroup:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetFilterGroup(v)
+		return nil
+	case permissiondatafilter.FieldFieldName:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetFieldName(v)
+		return nil
+	case permissiondatafilter.FieldOperatorType:
+		v, ok := value.(permissiondatafilter.OperatorType)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetOperatorType(v)
+		return nil
+	case permissiondatafilter.FieldFilterValue:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetFilterValue(v)
+		return nil
+	case permissiondatafilter.FieldValueType:
+		v, ok := value.(permissiondatafilter.ValueType)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetValueType(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionDataFilter field %s", name)
+}
+
+// AddedFields returns all numeric fields that were incremented/decremented during
+// this mutation.
+func (m *PermissionDataFilterMutation) AddedFields() []string {
+	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, permissiondatafilter.FieldTenantID)
+	}
+	if m.addfilter_group != nil {
+		fields = append(fields, permissiondatafilter.FieldFilterGroup)
+	}
+	return fields
+}
+
+// AddedField returns the numeric value that was incremented/decremented on a field
+// with the given name. The second boolean return value indicates that this field
+// was not set, or was not defined in the schema.
+func (m *PermissionDataFilterMutation) AddedField(name string) (ent.Value, bool) {
+	switch name {
+	case permissiondatafilter.FieldTenantID:
+		return m.AddedTenantID()
+	case permissiondatafilter.FieldFilterGroup:
+		return m.AddedFilterGroup()
+	}
+	return nil, false
+}
+
+// AddField adds the value to the field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionDataFilterMutation) AddField(name string, value ent.Value) error {
+	switch name {
+	case permissiondatafilter.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
+	case permissiondatafilter.FieldFilterGroup:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddFilterGroup(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionDataFilter numeric field %s", name)
+}
+
+// ClearedFields returns all nullable fields that were cleared during this
+// mutation.
+func (m *PermissionDataFilterMutation) ClearedFields() []string {
+	var fields []string
+	if m.FieldCleared(permissiondatafilter.FieldFilterValue) {
+		fields = append(fields, permissiondatafilter.FieldFilterValue)
+	}
+	return fields
+}
+
+// FieldCleared returns a boolean indicating if a field with the given name was
+// cleared in this mutation.
+func (m *PermissionDataFilterMutation) FieldCleared(name string) bool {
+	_, ok := m.clearedFields[name]
+	return ok
+}
+
+// ClearField clears the value of the field with the given name. It returns an
+// error if the field is not defined in the schema.
+func (m *PermissionDataFilterMutation) ClearField(name string) error {
+	switch name {
+	case permissiondatafilter.FieldFilterValue:
+		m.ClearFilterValue()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionDataFilter nullable field %s", name)
+}
+
+// ResetField resets all changes in the mutation for the field with the given name.
+// It returns an error if the field is not defined in the schema.
+func (m *PermissionDataFilterMutation) ResetField(name string) error {
+	switch name {
+	case permissiondatafilter.FieldCreatedAt:
+		m.ResetCreatedAt()
+		return nil
+	case permissiondatafilter.FieldUpdatedAt:
+		m.ResetUpdatedAt()
+		return nil
+	case permissiondatafilter.FieldTenantID:
+		m.ResetTenantID()
+		return nil
+	case permissiondatafilter.FieldPermissionID:
+		m.ResetPermissionID()
+		return nil
+	case permissiondatafilter.FieldFilterGroup:
+		m.ResetFilterGroup()
+		return nil
+	case permissiondatafilter.FieldFieldName:
+		m.ResetFieldName()
+		return nil
+	case permissiondatafilter.FieldOperatorType:
+		m.ResetOperatorType()
+		return nil
+	case permissiondatafilter.FieldFilterValue:
+		m.ResetFilterValue()
+		return nil
+	case permissiondatafilter.FieldValueType:
+		m.ResetValueType()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionDataFilter field %s", name)
+}
+
+// AddedEdges returns all edge names that were set/added in this mutation.
+func (m *PermissionDataFilterMutation) AddedEdges() []string {
+	edges := make([]string, 0, 1)
+	if m.permission != nil {
+		edges = append(edges, permissiondatafilter.EdgePermission)
+	}
+	return edges
+}
+
+// AddedIDs returns all IDs (to other nodes) that were added for the given edge
+// name in this mutation.
+func (m *PermissionDataFilterMutation) AddedIDs(name string) []ent.Value {
+	switch name {
+	case permissiondatafilter.EdgePermission:
+		if id := m.permission; id != nil {
+			return []ent.Value{*id}
+		}
+	}
+	return nil
+}
+
+// RemovedEdges returns all edge names that were removed in this mutation.
+func (m *PermissionDataFilterMutation) RemovedEdges() []string {
+	edges := make([]string, 0, 1)
+	return edges
+}
+
+// RemovedIDs returns all IDs (to other nodes) that were removed for the edge with
+// the given name in this mutation.
+func (m *PermissionDataFilterMutation) RemovedIDs(name string) []ent.Value {
+	return nil
+}
+
+// ClearedEdges returns all edge names that were cleared in this mutation.
+func (m *PermissionDataFilterMutation) ClearedEdges() []string {
+	edges := make([]string, 0, 1)
+	if m.clearedpermission {
+		edges = append(edges, permissiondatafilter.EdgePermission)
+	}
+	return edges
+}
+
+// EdgeCleared returns a boolean which indicates if the edge with the given name
+// was cleared in this mutation.
+func (m *PermissionDataFilterMutation) EdgeCleared(name string) bool {
+	switch name {
+	case permissiondatafilter.EdgePermission:
+		return m.clearedpermission
+	}
+	return false
+}
+
+// ClearEdge clears the value of the edge with the given name. It returns an error
+// if that edge is not defined in the schema.
+func (m *PermissionDataFilterMutation) ClearEdge(name string) error {
+	switch name {
+	case permissiondatafilter.EdgePermission:
+		m.ClearPermission()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionDataFilter unique edge %s", name)
+}
+
+// ResetEdge resets all changes to the edge with the given name in this mutation.
+// It returns an error if the edge is not defined in the schema.
+func (m *PermissionDataFilterMutation) ResetEdge(name string) error {
+	switch name {
+	case permissiondatafilter.EdgePermission:
+		m.ResetPermission()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionDataFilter edge %s", name)
+}
+
+// PermissionFieldMaskMutation represents an operation that mutates the PermissionFieldMask nodes in the graph.
+type PermissionFieldMaskMutation struct {
+	config
+	op                Op
+	typ               string
+	id                *uint64
+	created_at        *time.Time
+	updated_at        *time.Time
+	tenant_id         *uint64
+	addtenant_id      *int64
+	field_name        *string
+	mask_type         *permissionfieldmask.MaskType
+	mask_rule         *string
+	clearedFields     map[string]struct{}
+	permission        *uint64
+	clearedpermission bool
+	done              bool
+	oldValue          func(context.Context) (*PermissionFieldMask, error)
+	predicates        []predicate.PermissionFieldMask
+}
+
+var _ ent.Mutation = (*PermissionFieldMaskMutation)(nil)
+
+// permissionfieldmaskOption allows management of the mutation configuration using functional options.
+type permissionfieldmaskOption func(*PermissionFieldMaskMutation)
+
+// newPermissionFieldMaskMutation creates new mutation for the PermissionFieldMask entity.
+func newPermissionFieldMaskMutation(c config, op Op, opts ...permissionfieldmaskOption) *PermissionFieldMaskMutation {
+	m := &PermissionFieldMaskMutation{
+		config:        c,
+		op:            op,
+		typ:           TypePermissionFieldMask,
+		clearedFields: make(map[string]struct{}),
+	}
+	for _, opt := range opts {
+		opt(m)
+	}
+	return m
+}
+
+// withPermissionFieldMaskID sets the ID field of the mutation.
+func withPermissionFieldMaskID(id uint64) permissionfieldmaskOption {
+	return func(m *PermissionFieldMaskMutation) {
+		var (
+			err   error
+			once  sync.Once
+			value *PermissionFieldMask
+		)
+		m.oldValue = func(ctx context.Context) (*PermissionFieldMask, error) {
+			once.Do(func() {
+				if m.done {
+					err = errors.New("querying old values post mutation is not allowed")
+				} else {
+					value, err = m.Client().PermissionFieldMask.Get(ctx, id)
+				}
+			})
+			return value, err
+		}
+		m.id = &id
+	}
+}
+
+// withPermissionFieldMask sets the old PermissionFieldMask of the mutation.
+func withPermissionFieldMask(node *PermissionFieldMask) permissionfieldmaskOption {
+	return func(m *PermissionFieldMaskMutation) {
+		m.oldValue = func(context.Context) (*PermissionFieldMask, error) {
+			return node, nil
+		}
+		m.id = &node.ID
+	}
+}
+
+// Client returns a new `ent.Client` from the mutation. If the mutation was
+// executed in a transaction (ent.Tx), a transactional client is returned.
+func (m PermissionFieldMaskMutation) Client() *Client {
+	client := &Client{config: m.config}
+	client.init()
+	return client
+}
+
+// Tx returns an `ent.Tx` for mutations that were executed in transactions;
+// it returns an error otherwise.
+func (m PermissionFieldMaskMutation) Tx() (*Tx, error) {
+	if _, ok := m.driver.(*txDriver); !ok {
+		return nil, errors.New("ent: mutation is not running in a transaction")
+	}
+	tx := &Tx{config: m.config}
+	tx.init()
+	return tx, nil
+}
+
+// SetID sets the value of the id field. Note that this
+// operation is only accepted on creation of PermissionFieldMask entities.
+func (m *PermissionFieldMaskMutation) SetID(id uint64) {
+	m.id = &id
+}
+
+// ID returns the ID value in the mutation. Note that the ID is only available
+// if it was provided to the builder or after it was returned from the database.
+func (m *PermissionFieldMaskMutation) ID() (id uint64, exists bool) {
+	if m.id == nil {
+		return
+	}
+	return *m.id, true
+}
+
+// IDs queries the database and returns the entity ids that match the mutation's predicate.
+// That means, if the mutation is applied within a transaction with an isolation level such
+// as sql.LevelSerializable, the returned ids match the ids of the rows that will be updated
+// or updated by the mutation.
+func (m *PermissionFieldMaskMutation) IDs(ctx context.Context) ([]uint64, error) {
+	switch {
+	case m.op.Is(OpUpdateOne | OpDeleteOne):
+		id, exists := m.ID()
+		if exists {
+			return []uint64{id}, nil
+		}
+		fallthrough
+	case m.op.Is(OpUpdate | OpDelete):
+		return m.Client().PermissionFieldMask.Query().Where(m.predicates...).IDs(ctx)
+	default:
+		return nil, fmt.Errorf("IDs is not allowed on %s operations", m.op)
+	}
+}
+
+// SetCreatedAt sets the "created_at" field.
+func (m *PermissionFieldMaskMutation) SetCreatedAt(t time.Time) {
+	m.created_at = &t
+}
+
+// CreatedAt returns the value of the "created_at" field in the mutation.
+func (m *PermissionFieldMaskMutation) CreatedAt() (r time.Time, exists bool) {
+	v := m.created_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCreatedAt returns the old "created_at" field's value of the PermissionFieldMask entity.
+// If the PermissionFieldMask object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionFieldMaskMutation) OldCreatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCreatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCreatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCreatedAt: %w", err)
+	}
+	return oldValue.CreatedAt, nil
+}
+
+// ResetCreatedAt resets all changes to the "created_at" field.
+func (m *PermissionFieldMaskMutation) ResetCreatedAt() {
+	m.created_at = nil
+}
+
+// SetUpdatedAt sets the "updated_at" field.
+func (m *PermissionFieldMaskMutation) SetUpdatedAt(t time.Time) {
+	m.updated_at = &t
+}
+
+// UpdatedAt returns the value of the "updated_at" field in the mutation.
+func (m *PermissionFieldMaskMutation) UpdatedAt() (r time.Time, exists bool) {
+	v := m.updated_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldUpdatedAt returns the old "updated_at" field's value of the PermissionFieldMask entity.
+// If the PermissionFieldMask object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionFieldMaskMutation) OldUpdatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldUpdatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldUpdatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldUpdatedAt: %w", err)
+	}
+	return oldValue.UpdatedAt, nil
+}
+
+// ResetUpdatedAt resets all changes to the "updated_at" field.
+func (m *PermissionFieldMaskMutation) ResetUpdatedAt() {
+	m.updated_at = nil
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *PermissionFieldMaskMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *PermissionFieldMaskMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the PermissionFieldMask entity.
+// If the PermissionFieldMask object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionFieldMaskMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *PermissionFieldMaskMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *PermissionFieldMaskMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *PermissionFieldMaskMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
+}
+
+// SetPermissionID sets the "permission_id" field.
+func (m *PermissionFieldMaskMutation) SetPermissionID(u uint64) {
+	m.permission = &u
+}
+
+// PermissionID returns the value of the "permission_id" field in the mutation.
+func (m *PermissionFieldMaskMutation) PermissionID() (r uint64, exists bool) {
+	v := m.permission
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldPermissionID returns the old "permission_id" field's value of the PermissionFieldMask entity.
+// If the PermissionFieldMask object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionFieldMaskMutation) OldPermissionID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldPermissionID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldPermissionID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldPermissionID: %w", err)
+	}
+	return oldValue.PermissionID, nil
+}
+
+// ResetPermissionID resets all changes to the "permission_id" field.
+func (m *PermissionFieldMaskMutation) ResetPermissionID() {
+	m.permission = nil
+}
+
+// SetFieldName sets the "field_name" field.
+func (m *PermissionFieldMaskMutation) SetFieldName(s string) {
+	m.field_name = &s
+}
+
+// FieldName returns the value of the "field_name" field in the mutation.
+func (m *PermissionFieldMaskMutation) FieldName() (r string, exists bool) {
+	v := m.field_name
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldFieldName returns the old "field_name" field's value of the PermissionFieldMask entity.
+// If the PermissionFieldMask object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionFieldMaskMutation) OldFieldName(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldFieldName is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldFieldName requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldFieldName: %w", err)
+	}
+	return oldValue.FieldName, nil
+}
+
+// ResetFieldName resets all changes to the "field_name" field.
+func (m *PermissionFieldMaskMutation) ResetFieldName() {
+	m.field_name = nil
+}
+
+// SetMaskType sets the "mask_type" field.
+func (m *PermissionFieldMaskMutation) SetMaskType(pt permissionfieldmask.MaskType) {
+	m.mask_type = &pt
+}
+
+// MaskType returns the value of the "mask_type" field in the mutation.
+func (m *PermissionFieldMaskMutation) MaskType() (r permissionfieldmask.MaskType, exists bool) {
+	v := m.mask_type
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldMaskType returns the old "mask_type" field's value of the PermissionFieldMask entity.
+// If the PermissionFieldMask object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionFieldMaskMutation) OldMaskType(ctx context.Context) (v permissionfieldmask.MaskType, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldMaskType is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldMaskType requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldMaskType: %w", err)
+	}
+	return oldValue.MaskType, nil
+}
+
+// ResetMaskType resets all changes to the "mask_type" field.
+func (m *PermissionFieldMaskMutation) ResetMaskType() {
+	m.mask_type = nil
+}
+
+// SetMaskRule sets the "mask_rule" field.
+func (m *PermissionFieldMaskMutation) SetMaskRule(s string) {
+	m.mask_rule = &s
+}
+
+// MaskRule returns the value of the "mask_rule" field in the mutation.
+func (m *PermissionFieldMaskMutation) MaskRule() (r string, exists bool) {
+	v := m.mask_rule
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldMaskRule returns the old "mask_rule" field's value of the PermissionFieldMask entity.
+// If the PermissionFieldMask object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionFieldMaskMutation) OldMaskRule(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldMaskRule is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldMaskRule requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldMaskRule: %w", err)
+	}
+	return oldValue.MaskRule, nil
+}
+
+// ClearMaskRule clears the value of the "mask_rule" field.
+func (m *PermissionFieldMaskMutation) ClearMaskRule() {
+	m.mask_rule = nil
+	m.clearedFields[permissionfieldmask.FieldMaskRule] = struct{}{}
+}
+
+// MaskRuleCleared returns if the "mask_rule" field was cleared in this mutation.
+func (m *PermissionFieldMaskMutation) MaskRuleCleared() bool {
+	_, ok := m.clearedFields[permissionfieldmask.FieldMaskRule]
+	return ok
+}
+
+// ResetMaskRule resets all changes to the "mask_rule" field.
+func (m *PermissionFieldMaskMutation) ResetMaskRule() {
+	m.mask_rule = nil
+	delete(m.clearedFields, permissionfieldmask.FieldMaskRule)
+}
+
+// ClearPermission clears the "permission" edge to the CiPermission entity.
+func (m *PermissionFieldMaskMutation) ClearPermission() {
+	m.clearedpermission = true
+	m.clearedFields[permissionfieldmask.FieldPermissionID] = struct{}{}
+}
+
+// PermissionCleared reports if the "permission" edge to the CiPermission entity was cleared.
+func (m *PermissionFieldMaskMutation) PermissionCleared() bool {
+	return m.clearedpermission
+}
+
+// PermissionIDs returns the "permission" edge IDs in the mutation.
+// Note that IDs always returns len(IDs) <= 1 for unique edges, and you should use
+// PermissionID instead. It exists only for internal usage by the builders.
+func (m *PermissionFieldMaskMutation) PermissionIDs() (ids []uint64) {
+	if id := m.permission; id != nil {
+		ids = append(ids, *id)
+	}
+	return
+}
+
+// ResetPermission resets all changes to the "permission" edge.
+func (m *PermissionFieldMaskMutation) ResetPermission() {
+	m.permission = nil
+	m.clearedpermission = false
+}
+
+// Where appends a list predicates to the PermissionFieldMaskMutation builder.
+func (m *PermissionFieldMaskMutation) Where(ps ...predicate.PermissionFieldMask) {
+	m.predicates = append(m.predicates, ps...)
+}
+
+// WhereP appends storage-level predicates to the PermissionFieldMaskMutation builder. Using this method,
+// users can use type-assertion to append predicates that do not depend on any generated package.
+func (m *PermissionFieldMaskMutation) WhereP(ps ...func(*sql.Selector)) {
+	p := make([]predicate.PermissionFieldMask, len(ps))
+	for i := range ps {
+		p[i] = ps[i]
+	}
+	m.Where(p...)
+}
+
+// Op returns the operation name.
+func (m *PermissionFieldMaskMutation) Op() Op {
+	return m.op
+}
+
+// SetOp allows setting the mutation operation.
+func (m *PermissionFieldMaskMutation) SetOp(op Op) {
+	m.op = op
+}
+
+// Type returns the node type of this mutation (PermissionFieldMask).
+func (m *PermissionFieldMaskMutation) Type() string {
+	return m.typ
+}
+
+// Fields returns all fields that were changed during this mutation. Note that in
+// order to get all numeric fields that were incremented/decremented, call
+// AddedFields().
+func (m *PermissionFieldMaskMutation) Fields() []string {
+	fields := make([]string, 0, 7)
+	if m.created_at != nil {
+		fields = append(fields, permissionfieldmask.FieldCreatedAt)
+	}
+	if m.updated_at != nil {
+		fields = append(fields, permissionfieldmask.FieldUpdatedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, permissionfieldmask.FieldTenantID)
+	}
+	if m.permission != nil {
+		fields = append(fields, permissionfieldmask.FieldPermissionID)
+	}
+	if m.field_name != nil {
+		fields = append(fields, permissionfieldmask.FieldFieldName)
+	}
+	if m.mask_type != nil {
+		fields = append(fields, permissionfieldmask.FieldMaskType)
+	}
+	if m.mask_rule != nil {
+		fields = append(fields, permissionfieldmask.FieldMaskRule)
+	}
+	return fields
+}
+
+// Field returns the value of a field with the given name. The second boolean
+// return value indicates that this field was not set, or was not defined in the
+// schema.
+func (m *PermissionFieldMaskMutation) Field(name string) (ent.Value, bool) {
+	switch name {
+	case permissionfieldmask.FieldCreatedAt:
+		return m.CreatedAt()
+	case permissionfieldmask.FieldUpdatedAt:
+		return m.UpdatedAt()
+	case permissionfieldmask.FieldTenantID:
+		return m.TenantID()
+	case permissionfieldmask.FieldPermissionID:
+		return m.PermissionID()
+	case permissionfieldmask.FieldFieldName:
+		return m.FieldName()
+	case permissionfieldmask.FieldMaskType:
+		return m.MaskType()
+	case permissionfieldmask.FieldMaskRule:
+		return m.MaskRule()
+	}
+	return nil, false
+}
+
+// OldField returns the old value of the field from the database. An error is
+// returned if the mutation operation is not UpdateOne, or the query to the
+// database failed.
+func (m *PermissionFieldMaskMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
+	switch name {
+	case permissionfieldmask.FieldCreatedAt:
+		return m.OldCreatedAt(ctx)
+	case permissionfieldmask.FieldUpdatedAt:
+		return m.OldUpdatedAt(ctx)
+	case permissionfieldmask.FieldTenantID:
+		return m.OldTenantID(ctx)
+	case permissionfieldmask.FieldPermissionID:
+		return m.OldPermissionID(ctx)
+	case permissionfieldmask.FieldFieldName:
+		return m.OldFieldName(ctx)
+	case permissionfieldmask.FieldMaskType:
+		return m.OldMaskType(ctx)
+	case permissionfieldmask.FieldMaskRule:
+		return m.OldMaskRule(ctx)
+	}
+	return nil, fmt.Errorf("unknown PermissionFieldMask field %s", name)
+}
+
+// SetField sets the value of a field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionFieldMaskMutation) SetField(name string, value ent.Value) error {
+	switch name {
+	case permissionfieldmask.FieldCreatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCreatedAt(v)
+		return nil
+	case permissionfieldmask.FieldUpdatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetUpdatedAt(v)
+		return nil
+	case permissionfieldmask.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
+	case permissionfieldmask.FieldPermissionID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetPermissionID(v)
+		return nil
+	case permissionfieldmask.FieldFieldName:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetFieldName(v)
+		return nil
+	case permissionfieldmask.FieldMaskType:
+		v, ok := value.(permissionfieldmask.MaskType)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetMaskType(v)
+		return nil
+	case permissionfieldmask.FieldMaskRule:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetMaskRule(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionFieldMask field %s", name)
+}
+
+// AddedFields returns all numeric fields that were incremented/decremented during
+// this mutation.
+func (m *PermissionFieldMaskMutation) AddedFields() []string {
+	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, permissionfieldmask.FieldTenantID)
+	}
+	return fields
+}
+
+// AddedField returns the numeric value that was incremented/decremented on a field
+// with the given name. The second boolean return value indicates that this field
+// was not set, or was not defined in the schema.
+func (m *PermissionFieldMaskMutation) AddedField(name string) (ent.Value, bool) {
+	switch name {
+	case permissionfieldmask.FieldTenantID:
+		return m.AddedTenantID()
+	}
+	return nil, false
+}
+
+// AddField adds the value to the field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionFieldMaskMutation) AddField(name string, value ent.Value) error {
+	switch name {
+	case permissionfieldmask.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionFieldMask numeric field %s", name)
+}
+
+// ClearedFields returns all nullable fields that were cleared during this
+// mutation.
+func (m *PermissionFieldMaskMutation) ClearedFields() []string {
+	var fields []string
+	if m.FieldCleared(permissionfieldmask.FieldMaskRule) {
+		fields = append(fields, permissionfieldmask.FieldMaskRule)
+	}
+	return fields
+}
+
+// FieldCleared returns a boolean indicating if a field with the given name was
+// cleared in this mutation.
+func (m *PermissionFieldMaskMutation) FieldCleared(name string) bool {
+	_, ok := m.clearedFields[name]
+	return ok
+}
+
+// ClearField clears the value of the field with the given name. It returns an
+// error if the field is not defined in the schema.
+func (m *PermissionFieldMaskMutation) ClearField(name string) error {
+	switch name {
+	case permissionfieldmask.FieldMaskRule:
+		m.ClearMaskRule()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionFieldMask nullable field %s", name)
+}
+
+// ResetField resets all changes in the mutation for the field with the given name.
+// It returns an error if the field is not defined in the schema.
+func (m *PermissionFieldMaskMutation) ResetField(name string) error {
+	switch name {
+	case permissionfieldmask.FieldCreatedAt:
+		m.ResetCreatedAt()
+		return nil
+	case permissionfieldmask.FieldUpdatedAt:
+		m.ResetUpdatedAt()
+		return nil
+	case permissionfieldmask.FieldTenantID:
+		m.ResetTenantID()
+		return nil
+	case permissionfieldmask.FieldPermissionID:
+		m.ResetPermissionID()
+		return nil
+	case permissionfieldmask.FieldFieldName:
+		m.ResetFieldName()
+		return nil
+	case permissionfieldmask.FieldMaskType:
+		m.ResetMaskType()
+		return nil
+	case permissionfieldmask.FieldMaskRule:
+		m.ResetMaskRule()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionFieldMask field %s", name)
+}
+
+// AddedEdges returns all edge names that were set/added in this mutation.
+func (m *PermissionFieldMaskMutation) AddedEdges() []string {
+	edges := make([]string, 0, 1)
+	if m.permission != nil {
+		edges = append(edges, permissionfieldmask.EdgePermission)
+	}
+	return edges
+}
+
+// AddedIDs returns all IDs (to other nodes) that were added for the given edge
+// name in this mutation.
+func (m *PermissionFieldMaskMutation) AddedIDs(name string) []ent.Value {
+	switch name {
+	case permissionfieldmask.EdgePermission:
+		if id := m.permission; id != nil {
+			return []ent.Value{*id}
+		}
+	}
+	return nil
+}
+
+// RemovedEdges returns all edge names that were removed in this mutation.
+func (m *PermissionFieldMaskMutation) RemovedEdges() []string {
+	edges := make([]string, 0, 1)
+	return edges
+}
+
+// RemovedIDs returns all IDs (to other nodes) that were removed for the edge with
+// the given name in this mutation.
+func (m *PermissionFieldMaskMutation) RemovedIDs(name string) []ent.Value {
+	return nil
+}
+
+// ClearedEdges returns all edge names that were cleared in this mutation.
+func (m *PermissionFieldMaskMutation) ClearedEdges() []string {
+	edges := make([]string, 0, 1)
+	if m.clearedpermission {
+		edges = append(edges, permissionfieldmask.EdgePermission)
+	}
+	return edges
+}
+
+// EdgeCleared returns a boolean which indicates if the edge with the given name
+// was cleared in this mutation.
+func (m *PermissionFieldMaskMutation) EdgeCleared(name string) bool {
+	switch name {
+	case permissionfieldmask.EdgePermission:
+		return m.clearedpermission
+	}
+	return false
+}
+
+// ClearEdge clears the value of the edge with the given name. It returns an error
+// if that edge is not defined in the schema.
+func (m *PermissionFieldMaskMutation) ClearEdge(name string) error {
+	switch name {
+	case permissionfieldmask.EdgePermission:
+		m.ClearPermission()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionFieldMask unique edge %s", name)
+}
+
+// ResetEdge resets all changes to the edge with the given name in this mutation.
+// It returns an error if the edge is not defined in the schema.
+func (m *PermissionFieldMaskMutation) ResetEdge(name string) error {
+	switch name {
+	case permissionfieldmask.EdgePermission:
+		m.ResetPermission()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionFieldMask edge %s", name)
+}
+
+// PermissionOperationMutation represents an operation that mutates the PermissionOperation nodes in the graph.
+type PermissionOperationMutation struct {
+	config
+	op                Op
+	typ               string
+	id                *uint64
+	created_at        *time.Time
+	updated_at        *time.Time
+	tenant_id         *uint64
+	addtenant_id      *int64
+	operation_code    *string
+	operation_name    *string
+	is_allowed        *bool
+	clearedFields     map[string]struct{}
+	permission        *uint64
+	clearedpermission bool
+	done              bool
+	oldValue          func(context.Context) (*PermissionOperation, error)
+	predicates        []predicate.PermissionOperation
+}
+
+var _ ent.Mutation = (*PermissionOperationMutation)(nil)
+
+// permissionoperationOption allows management of the mutation configuration using functional options.
+type permissionoperationOption func(*PermissionOperationMutation)
+
+// newPermissionOperationMutation creates new mutation for the PermissionOperation entity.
+func newPermissionOperationMutation(c config, op Op, opts ...permissionoperationOption) *PermissionOperationMutation {
+	m := &PermissionOperationMutation{
+		config:        c,
+		op:            op,
+		typ:           TypePermissionOperation,
+		clearedFields: make(map[string]struct{}),
+	}
+	for _, opt := range opts {
+		opt(m)
+	}
+	return m
+}
+
+// withPermissionOperationID sets the ID field of the mutation.
+func withPermissionOperationID(id uint64) permissionoperationOption {
+	return func(m *PermissionOperationMutation) {
+		var (
+			err   error
+			once  sync.Once
+			value *PermissionOperation
+		)
+		m.oldValue = func(ctx context.Context) (*PermissionOperation, error) {
+			once.Do(func() {
+				if m.done {
+					err = errors.New("querying old values post mutation is not allowed")
+				} else {
+					value, err = m.Client().PermissionOperation.Get(ctx, id)
+				}
+			})
+			return value, err
+		}
+		m.id = &id
+	}
+}
+
+// withPermissionOperation sets the old PermissionOperation of the mutation.
+func withPermissionOperation(node *PermissionOperation) permissionoperationOption {
+	return func(m *PermissionOperationMutation) {
+		m.oldValue = func(context.Context) (*PermissionOperation, error) {
+			return node, nil
+		}
+		m.id = &node.ID
+	}
+}
+
+// Client returns a new `ent.Client` from the mutation. If the mutation was
+// executed in a transaction (ent.Tx), a transactional client is returned.
+func (m PermissionOperationMutation) Client() *Client {
+	client := &Client{config: m.config}
+	client.init()
+	return client
+}
+
+// Tx returns an `ent.Tx` for mutations that were executed in transactions;
+// it returns an error otherwise.
+func (m PermissionOperationMutation) Tx() (*Tx, error) {
+	if _, ok := m.driver.(*txDriver); !ok {
+		return nil, errors.New("ent: mutation is not running in a transaction")
+	}
+	tx := &Tx{config: m.config}
+	tx.init()
+	return tx, nil
+}
+
+// SetID sets the value of the id field. Note that this
+// operation is only accepted on creation of PermissionOperation entities.
+func (m *PermissionOperationMutation) SetID(id uint64) {
+	m.id = &id
+}
+
+// ID returns the ID value in the mutation. Note that the ID is only available
+// if it was provided to the builder or after it was returned from the database.
+func (m *PermissionOperationMutation) ID() (id uint64, exists bool) {
+	if m.id == nil {
+		return
+	}
+	return *m.id, true
+}
+
+// IDs queries the database and returns the entity ids that match the mutation's predicate.
+// That means, if the mutation is applied within a transaction with an isolation level such
+// as sql.LevelSerializable, the returned ids match the ids of the rows that will be updated
+// or updated by the mutation.
+func (m *PermissionOperationMutation) IDs(ctx context.Context) ([]uint64, error) {
+	switch {
+	case m.op.Is(OpUpdateOne | OpDeleteOne):
+		id, exists := m.ID()
+		if exists {
+			return []uint64{id}, nil
+		}
+		fallthrough
+	case m.op.Is(OpUpdate | OpDelete):
+		return m.Client().PermissionOperation.Query().Where(m.predicates...).IDs(ctx)
+	default:
+		return nil, fmt.Errorf("IDs is not allowed on %s operations", m.op)
+	}
+}
+
+// SetCreatedAt sets the "created_at" field.
+func (m *PermissionOperationMutation) SetCreatedAt(t time.Time) {
+	m.created_at = &t
+}
+
+// CreatedAt returns the value of the "created_at" field in the mutation.
+func (m *PermissionOperationMutation) CreatedAt() (r time.Time, exists bool) {
+	v := m.created_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCreatedAt returns the old "created_at" field's value of the PermissionOperation entity.
+// If the PermissionOperation object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionOperationMutation) OldCreatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCreatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCreatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCreatedAt: %w", err)
+	}
+	return oldValue.CreatedAt, nil
+}
+
+// ResetCreatedAt resets all changes to the "created_at" field.
+func (m *PermissionOperationMutation) ResetCreatedAt() {
+	m.created_at = nil
+}
+
+// SetUpdatedAt sets the "updated_at" field.
+func (m *PermissionOperationMutation) SetUpdatedAt(t time.Time) {
+	m.updated_at = &t
+}
+
+// UpdatedAt returns the value of the "updated_at" field in the mutation.
+func (m *PermissionOperationMutation) UpdatedAt() (r time.Time, exists bool) {
+	v := m.updated_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldUpdatedAt returns the old "updated_at" field's value of the PermissionOperation entity.
+// If the PermissionOperation object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionOperationMutation) OldUpdatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldUpdatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldUpdatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldUpdatedAt: %w", err)
+	}
+	return oldValue.UpdatedAt, nil
+}
+
+// ResetUpdatedAt resets all changes to the "updated_at" field.
+func (m *PermissionOperationMutation) ResetUpdatedAt() {
+	m.updated_at = nil
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *PermissionOperationMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *PermissionOperationMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the PermissionOperation entity.
+// If the PermissionOperation object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionOperationMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *PermissionOperationMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *PermissionOperationMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *PermissionOperationMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
+}
+
+// SetPermissionID sets the "permission_id" field.
+func (m *PermissionOperationMutation) SetPermissionID(u uint64) {
+	m.permission = &u
+}
+
+// PermissionID returns the value of the "permission_id" field in the mutation.
+func (m *PermissionOperationMutation) PermissionID() (r uint64, exists bool) {
+	v := m.permission
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldPermissionID returns the old "permission_id" field's value of the PermissionOperation entity.
+// If the PermissionOperation object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionOperationMutation) OldPermissionID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldPermissionID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldPermissionID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldPermissionID: %w", err)
+	}
+	return oldValue.PermissionID, nil
+}
+
+// ResetPermissionID resets all changes to the "permission_id" field.
+func (m *PermissionOperationMutation) ResetPermissionID() {
+	m.permission = nil
+}
+
+// SetOperationCode sets the "operation_code" field.
+func (m *PermissionOperationMutation) SetOperationCode(s string) {
+	m.operation_code = &s
+}
+
+// OperationCode returns the value of the "operation_code" field in the mutation.
+func (m *PermissionOperationMutation) OperationCode() (r string, exists bool) {
+	v := m.operation_code
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldOperationCode returns the old "operation_code" field's value of the PermissionOperation entity.
+// If the PermissionOperation object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionOperationMutation) OldOperationCode(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldOperationCode is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldOperationCode requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldOperationCode: %w", err)
+	}
+	return oldValue.OperationCode, nil
+}
+
+// ResetOperationCode resets all changes to the "operation_code" field.
+func (m *PermissionOperationMutation) ResetOperationCode() {
+	m.operation_code = nil
+}
+
+// SetOperationName sets the "operation_name" field.
+func (m *PermissionOperationMutation) SetOperationName(s string) {
+	m.operation_name = &s
+}
+
+// OperationName returns the value of the "operation_name" field in the mutation.
+func (m *PermissionOperationMutation) OperationName() (r string, exists bool) {
+	v := m.operation_name
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldOperationName returns the old "operation_name" field's value of the PermissionOperation entity.
+// If the PermissionOperation object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionOperationMutation) OldOperationName(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldOperationName is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldOperationName requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldOperationName: %w", err)
+	}
+	return oldValue.OperationName, nil
+}
+
+// ClearOperationName clears the value of the "operation_name" field.
+func (m *PermissionOperationMutation) ClearOperationName() {
+	m.operation_name = nil
+	m.clearedFields[permissionoperation.FieldOperationName] = struct{}{}
+}
+
+// OperationNameCleared returns if the "operation_name" field was cleared in this mutation.
+func (m *PermissionOperationMutation) OperationNameCleared() bool {
+	_, ok := m.clearedFields[permissionoperation.FieldOperationName]
+	return ok
+}
+
+// ResetOperationName resets all changes to the "operation_name" field.
+func (m *PermissionOperationMutation) ResetOperationName() {
+	m.operation_name = nil
+	delete(m.clearedFields, permissionoperation.FieldOperationName)
+}
+
+// SetIsAllowed sets the "is_allowed" field.
+func (m *PermissionOperationMutation) SetIsAllowed(b bool) {
+	m.is_allowed = &b
+}
+
+// IsAllowed returns the value of the "is_allowed" field in the mutation.
+func (m *PermissionOperationMutation) IsAllowed() (r bool, exists bool) {
+	v := m.is_allowed
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldIsAllowed returns the old "is_allowed" field's value of the PermissionOperation entity.
+// If the PermissionOperation object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionOperationMutation) OldIsAllowed(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldIsAllowed is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldIsAllowed requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldIsAllowed: %w", err)
+	}
+	return oldValue.IsAllowed, nil
+}
+
+// ResetIsAllowed resets all changes to the "is_allowed" field.
+func (m *PermissionOperationMutation) ResetIsAllowed() {
+	m.is_allowed = nil
+}
+
+// ClearPermission clears the "permission" edge to the CiPermission entity.
+func (m *PermissionOperationMutation) ClearPermission() {
+	m.clearedpermission = true
+	m.clearedFields[permissionoperation.FieldPermissionID] = struct{}{}
+}
+
+// PermissionCleared reports if the "permission" edge to the CiPermission entity was cleared.
+func (m *PermissionOperationMutation) PermissionCleared() bool {
+	return m.clearedpermission
+}
+
+// PermissionIDs returns the "permission" edge IDs in the mutation.
+// Note that IDs always returns len(IDs) <= 1 for unique edges, and you should use
+// PermissionID instead. It exists only for internal usage by the builders.
+func (m *PermissionOperationMutation) PermissionIDs() (ids []uint64) {
+	if id := m.permission; id != nil {
+		ids = append(ids, *id)
+	}
+	return
+}
+
+// ResetPermission resets all changes to the "permission" edge.
+func (m *PermissionOperationMutation) ResetPermission() {
+	m.permission = nil
+	m.clearedpermission = false
+}
+
+// Where appends a list predicates to the PermissionOperationMutation builder.
+func (m *PermissionOperationMutation) Where(ps ...predicate.PermissionOperation) {
+	m.predicates = append(m.predicates, ps...)
+}
+
+// WhereP appends storage-level predicates to the PermissionOperationMutation builder. Using this method,
+// users can use type-assertion to append predicates that do not depend on any generated package.
+func (m *PermissionOperationMutation) WhereP(ps ...func(*sql.Selector)) {
+	p := make([]predicate.PermissionOperation, len(ps))
+	for i := range ps {
+		p[i] = ps[i]
+	}
+	m.Where(p...)
+}
+
+// Op returns the operation name.
+func (m *PermissionOperationMutation) Op() Op {
+	return m.op
+}
+
+// SetOp allows setting the mutation operation.
+func (m *PermissionOperationMutation) SetOp(op Op) {
+	m.op = op
+}
+
+// Type returns the node type of this mutation (PermissionOperation).
+func (m *PermissionOperationMutation) Type() string {
+	return m.typ
+}
+
+// Fields returns all fields that were changed during this mutation. Note that in
+// order to get all numeric fields that were incremented/decremented, call
+// AddedFields().
+func (m *PermissionOperationMutation) Fields() []string {
+	fields := make([]string, 0, 7)
+	if m.created_at != nil {
+		fields = append(fields, permissionoperation.FieldCreatedAt)
+	}
+	if m.updated_at != nil {
+		fields = append(fields, permissionoperation.FieldUpdatedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, permissionoperation.FieldTenantID)
+	}
+	if m.permission != nil {
+		fields = append(fields, permissionoperation.FieldPermissionID)
+	}
+	if m.operation_code != nil {
+		fields = append(fields, permissionoperation.FieldOperationCode)
+	}
+	if m.operation_name != nil {
+		fields = append(fields, permissionoperation.FieldOperationName)
+	}
+	if m.is_allowed != nil {
+		fields = append(fields, permissionoperation.FieldIsAllowed)
+	}
+	return fields
+}
+
+// Field returns the value of a field with the given name. The second boolean
+// return value indicates that this field was not set, or was not defined in the
+// schema.
+func (m *PermissionOperationMutation) Field(name string) (ent.Value, bool) {
+	switch name {
+	case permissionoperation.FieldCreatedAt:
+		return m.CreatedAt()
+	case permissionoperation.FieldUpdatedAt:
+		return m.UpdatedAt()
+	case permissionoperation.FieldTenantID:
+		return m.TenantID()
+	case permissionoperation.FieldPermissionID:
+		return m.PermissionID()
+	case permissionoperation.FieldOperationCode:
+		return m.OperationCode()
+	case permissionoperation.FieldOperationName:
+		return m.OperationName()
+	case permissionoperation.FieldIsAllowed:
+		return m.IsAllowed()
+	}
+	return nil, false
+}
+
+// OldField returns the old value of the field from the database. An error is
+// returned if the mutation operation is not UpdateOne, or the query to the
+// database failed.
+func (m *PermissionOperationMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
+	switch name {
+	case permissionoperation.FieldCreatedAt:
+		return m.OldCreatedAt(ctx)
+	case permissionoperation.FieldUpdatedAt:
+		return m.OldUpdatedAt(ctx)
+	case permissionoperation.FieldTenantID:
+		return m.OldTenantID(ctx)
+	case permissionoperation.FieldPermissionID:
+		return m.OldPermissionID(ctx)
+	case permissionoperation.FieldOperationCode:
+		return m.OldOperationCode(ctx)
+	case permissionoperation.FieldOperationName:
+		return m.OldOperationName(ctx)
+	case permissionoperation.FieldIsAllowed:
+		return m.OldIsAllowed(ctx)
+	}
+	return nil, fmt.Errorf("unknown PermissionOperation field %s", name)
+}
+
+// SetField sets the value of a field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionOperationMutation) SetField(name string, value ent.Value) error {
+	switch name {
+	case permissionoperation.FieldCreatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCreatedAt(v)
+		return nil
+	case permissionoperation.FieldUpdatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetUpdatedAt(v)
+		return nil
+	case permissionoperation.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
+	case permissionoperation.FieldPermissionID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetPermissionID(v)
+		return nil
+	case permissionoperation.FieldOperationCode:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetOperationCode(v)
+		return nil
+	case permissionoperation.FieldOperationName:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetOperationName(v)
+		return nil
+	case permissionoperation.FieldIsAllowed:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetIsAllowed(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionOperation field %s", name)
+}
+
+// AddedFields returns all numeric fields that were incremented/decremented during
+// this mutation.
+func (m *PermissionOperationMutation) AddedFields() []string {
+	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, permissionoperation.FieldTenantID)
+	}
+	return fields
+}
+
+// AddedField returns the numeric value that was incremented/decremented on a field
+// with the given name. The second boolean return value indicates that this field
+// was not set, or was not defined in the schema.
+func (m *PermissionOperationMutation) AddedField(name string) (ent.Value, bool) {
+	switch name {
+	case permissionoperation.FieldTenantID:
+		return m.AddedTenantID()
+	}
+	return nil, false
+}
+
+// AddField adds the value to the field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionOperationMutation) AddField(name string, value ent.Value) error {
+	switch name {
+	case permissionoperation.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionOperation numeric field %s", name)
+}
+
+// ClearedFields returns all nullable fields that were cleared during this
+// mutation.
+func (m *PermissionOperationMutation) ClearedFields() []string {
+	var fields []string
+	if m.FieldCleared(permissionoperation.FieldOperationName) {
+		fields = append(fields, permissionoperation.FieldOperationName)
+	}
+	return fields
+}
+
+// FieldCleared returns a boolean indicating if a field with the given name was
+// cleared in this mutation.
+func (m *PermissionOperationMutation) FieldCleared(name string) bool {
+	_, ok := m.clearedFields[name]
+	return ok
+}
+
+// ClearField clears the value of the field with the given name. It returns an
+// error if the field is not defined in the schema.
+func (m *PermissionOperationMutation) ClearField(name string) error {
+	switch name {
+	case permissionoperation.FieldOperationName:
+		m.ClearOperationName()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionOperation nullable field %s", name)
+}
+
+// ResetField resets all changes in the mutation for the field with the given name.
+// It returns an error if the field is not defined in the schema.
+func (m *PermissionOperationMutation) ResetField(name string) error {
+	switch name {
+	case permissionoperation.FieldCreatedAt:
+		m.ResetCreatedAt()
+		return nil
+	case permissionoperation.FieldUpdatedAt:
+		m.ResetUpdatedAt()
+		return nil
+	case permissionoperation.FieldTenantID:
+		m.ResetTenantID()
+		return nil
+	case permissionoperation.FieldPermissionID:
+		m.ResetPermissionID()
+		return nil
+	case permissionoperation.FieldOperationCode:
+		m.ResetOperationCode()
+		return nil
+	case permissionoperation.FieldOperationName:
+		m.ResetOperationName()
+		return nil
+	case permissionoperation.FieldIsAllowed:
+		m.ResetIsAllowed()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionOperation field %s", name)
+}
+
+// AddedEdges returns all edge names that were set/added in this mutation.
+func (m *PermissionOperationMutation) AddedEdges() []string {
+	edges := make([]string, 0, 1)
+	if m.permission != nil {
+		edges = append(edges, permissionoperation.EdgePermission)
+	}
+	return edges
+}
+
+// AddedIDs returns all IDs (to other nodes) that were added for the given edge
+// name in this mutation.
+func (m *PermissionOperationMutation) AddedIDs(name string) []ent.Value {
+	switch name {
+	case permissionoperation.EdgePermission:
+		if id := m.permission; id != nil {
+			return []ent.Value{*id}
+		}
+	}
+	return nil
+}
+
+// RemovedEdges returns all edge names that were removed in this mutation.
+func (m *PermissionOperationMutation) RemovedEdges() []string {
+	edges := make([]string, 0, 1)
+	return edges
+}
+
+// RemovedIDs returns all IDs (to other nodes) that were removed for the edge with
+// the given name in this mutation.
+func (m *PermissionOperationMutation) RemovedIDs(name string) []ent.Value {
+	return nil
+}
+
+// ClearedEdges returns all edge names that were cleared in this mutation.
+func (m *PermissionOperationMutation) ClearedEdges() []string {
+	edges := make([]string, 0, 1)
+	if m.clearedpermission {
+		edges = append(edges, permissionoperation.EdgePermission)
+	}
+	return edges
+}
+
+// EdgeCleared returns a boolean which indicates if the edge with the given name
+// was cleared in this mutation.
+func (m *PermissionOperationMutation) EdgeCleared(name string) bool {
+	switch name {
+	case permissionoperation.EdgePermission:
+		return m.clearedpermission
+	}
+	return false
+}
+
+// ClearEdge clears the value of the edge with the given name. It returns an error
+// if that edge is not defined in the schema.
+func (m *PermissionOperationMutation) ClearEdge(name string) error {
+	switch name {
+	case permissionoperation.EdgePermission:
+		m.ClearPermission()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionOperation unique edge %s", name)
+}
+
+// ResetEdge resets all changes to the edge with the given name in this mutation.
+// It returns an error if the edge is not defined in the schema.
+func (m *PermissionOperationMutation) ResetEdge(name string) error {
+	switch name {
+	case permissionoperation.EdgePermission:
+		m.ResetPermission()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionOperation edge %s", name)
+}
+
+// PermissionTemplateMutation represents an operation that mutates the PermissionTemplate nodes in the graph.
+type PermissionTemplateMutation struct {
+	config
+	op                   Op
+	typ                  string
+	id                   *uint64
+	created_at           *time.Time
+	updated_at           *time.Time
+	tenant_id            *uint64
+	addtenant_id         *int64
+	template_id          *string
+	template_name        *string
+	template_description *string
+	category             *string
+	scope_type           *permissiontemplate.ScopeType
+	permission_level     *permissiontemplate.PermissionLevel
+	operations_mask      *uint64
+	addoperations_mask   *int64
+	risk_level           *permissiontemplate.RiskLevel
+	is_system_template   *bool
+	is_active            *bool
+	sort_order           *int
+	addsort_order        *int
+	created_by           *string
+	clearedFields        map[string]struct{}
+	done                 bool
+	oldValue             func(context.Context) (*PermissionTemplate, error)
+	predicates           []predicate.PermissionTemplate
+}
+
+var _ ent.Mutation = (*PermissionTemplateMutation)(nil)
+
+// permissiontemplateOption allows management of the mutation configuration using functional options.
+type permissiontemplateOption func(*PermissionTemplateMutation)
+
+// newPermissionTemplateMutation creates new mutation for the PermissionTemplate entity.
+func newPermissionTemplateMutation(c config, op Op, opts ...permissiontemplateOption) *PermissionTemplateMutation {
+	m := &PermissionTemplateMutation{
+		config:        c,
+		op:            op,
+		typ:           TypePermissionTemplate,
+		clearedFields: make(map[string]struct{}),
+	}
+	for _, opt := range opts {
+		opt(m)
+	}
+	return m
+}
+
+// withPermissionTemplateID sets the ID field of the mutation.
+func withPermissionTemplateID(id uint64) permissiontemplateOption {
+	return func(m *PermissionTemplateMutation) {
+		var (
+			err   error
+			once  sync.Once
+			value *PermissionTemplate
+		)
+		m.oldValue = func(ctx context.Context) (*PermissionTemplate, error) {
+			once.Do(func() {
+				if m.done {
+					err = errors.New("querying old values post mutation is not allowed")
+				} else {
+					value, err = m.Client().PermissionTemplate.Get(ctx, id)
+				}
+			})
+			return value, err
+		}
+		m.id = &id
+	}
+}
+
+// withPermissionTemplate sets the old PermissionTemplate of the mutation.
+func withPermissionTemplate(node *PermissionTemplate) permissiontemplateOption {
+	return func(m *PermissionTemplateMutation) {
+		m.oldValue = func(context.Context) (*PermissionTemplate, error) {
+			return node, nil
+		}
+		m.id = &node.ID
+	}
+}
+
+// Client returns a new `ent.Client` from the mutation. If the mutation was
+// executed in a transaction (ent.Tx), a transactional client is returned.
+func (m PermissionTemplateMutation) Client() *Client {
+	client := &Client{config: m.config}
+	client.init()
+	return client
+}
+
+// Tx returns an `ent.Tx` for mutations that were executed in transactions;
+// it returns an error otherwise.
+func (m PermissionTemplateMutation) Tx() (*Tx, error) {
+	if _, ok := m.driver.(*txDriver); !ok {
+		return nil, errors.New("ent: mutation is not running in a transaction")
+	}
+	tx := &Tx{config: m.config}
+	tx.init()
+	return tx, nil
+}
+
+// SetID sets the value of the id field. Note that this
+// operation is only accepted on creation of PermissionTemplate entities.
+func (m *PermissionTemplateMutation) SetID(id uint64) {
+	m.id = &id
+}
+
+// ID returns the ID value in the mutation. Note that the ID is only available
+// if it was provided to the builder or after it was returned from the database.
+func (m *PermissionTemplateMutation) ID() (id uint64, exists bool) {
+	if m.id == nil {
+		return
+	}
+	return *m.id, true
+}
+
+// IDs queries the database and returns the entity ids that match the mutation's predicate.
+// That means, if the mutation is applied within a transaction with an isolation level such
+// as sql.LevelSerializable, the returned ids match the ids of the rows that will be updated
+// or updated by the mutation.
+func (m *PermissionTemplateMutation) IDs(ctx context.Context) ([]uint64, error) {
+	switch {
+	case m.op.Is(OpUpdateOne | OpDeleteOne):
+		id, exists := m.ID()
+		if exists {
+			return []uint64{id}, nil
+		}
+		fallthrough
+	case m.op.Is(OpUpdate | OpDelete):
+		return m.Client().PermissionTemplate.Query().Where(m.predicates...).IDs(ctx)
+	default:
+		return nil, fmt.Errorf("IDs is not allowed on %s operations", m.op)
+	}
+}
+
+// SetCreatedAt sets the "created_at" field.
+func (m *PermissionTemplateMutation) SetCreatedAt(t time.Time) {
+	m.created_at = &t
+}
+
+// CreatedAt returns the value of the "created_at" field in the mutation.
+func (m *PermissionTemplateMutation) CreatedAt() (r time.Time, exists bool) {
+	v := m.created_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCreatedAt returns the old "created_at" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldCreatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCreatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCreatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCreatedAt: %w", err)
+	}
+	return oldValue.CreatedAt, nil
+}
+
+// ResetCreatedAt resets all changes to the "created_at" field.
+func (m *PermissionTemplateMutation) ResetCreatedAt() {
+	m.created_at = nil
+}
+
+// SetUpdatedAt sets the "updated_at" field.
+func (m *PermissionTemplateMutation) SetUpdatedAt(t time.Time) {
+	m.updated_at = &t
+}
+
+// UpdatedAt returns the value of the "updated_at" field in the mutation.
+func (m *PermissionTemplateMutation) UpdatedAt() (r time.Time, exists bool) {
+	v := m.updated_at
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldUpdatedAt returns the old "updated_at" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldUpdatedAt(ctx context.Context) (v time.Time, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldUpdatedAt is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldUpdatedAt requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldUpdatedAt: %w", err)
+	}
+	return oldValue.UpdatedAt, nil
+}
+
+// ResetUpdatedAt resets all changes to the "updated_at" field.
+func (m *PermissionTemplateMutation) ResetUpdatedAt() {
+	m.updated_at = nil
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *PermissionTemplateMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *PermissionTemplateMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *PermissionTemplateMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *PermissionTemplateMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *PermissionTemplateMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
+}
+
+// SetTemplateID sets the "template_id" field.
+func (m *PermissionTemplateMutation) SetTemplateID(s string) {
+	m.template_id = &s
+}
+
+// TemplateID returns the value of the "template_id" field in the mutation.
+func (m *PermissionTemplateMutation) TemplateID() (r string, exists bool) {
+	v := m.template_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTemplateID returns the old "template_id" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldTemplateID(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTemplateID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTemplateID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTemplateID: %w", err)
+	}
+	return oldValue.TemplateID, nil
+}
+
+// ResetTemplateID resets all changes to the "template_id" field.
+func (m *PermissionTemplateMutation) ResetTemplateID() {
+	m.template_id = nil
+}
+
+// SetTemplateName sets the "template_name" field.
+func (m *PermissionTemplateMutation) SetTemplateName(s string) {
+	m.template_name = &s
+}
+
+// TemplateName returns the value of the "template_name" field in the mutation.
+func (m *PermissionTemplateMutation) TemplateName() (r string, exists bool) {
+	v := m.template_name
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTemplateName returns the old "template_name" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldTemplateName(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTemplateName is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTemplateName requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTemplateName: %w", err)
+	}
+	return oldValue.TemplateName, nil
+}
+
+// ResetTemplateName resets all changes to the "template_name" field.
+func (m *PermissionTemplateMutation) ResetTemplateName() {
+	m.template_name = nil
+}
+
+// SetTemplateDescription sets the "template_description" field.
+func (m *PermissionTemplateMutation) SetTemplateDescription(s string) {
+	m.template_description = &s
+}
+
+// TemplateDescription returns the value of the "template_description" field in the mutation.
+func (m *PermissionTemplateMutation) TemplateDescription() (r string, exists bool) {
+	v := m.template_description
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTemplateDescription returns the old "template_description" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldTemplateDescription(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTemplateDescription is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTemplateDescription requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTemplateDescription: %w", err)
+	}
+	return oldValue.TemplateDescription, nil
+}
+
+// ClearTemplateDescription clears the value of the "template_description" field.
+func (m *PermissionTemplateMutation) ClearTemplateDescription() {
+	m.template_description = nil
+	m.clearedFields[permissiontemplate.FieldTemplateDescription] = struct{}{}
+}
+
+// TemplateDescriptionCleared returns if the "template_description" field was cleared in this mutation.
+func (m *PermissionTemplateMutation) TemplateDescriptionCleared() bool {
+	_, ok := m.clearedFields[permissiontemplate.FieldTemplateDescription]
+	return ok
+}
+
+// ResetTemplateDescription resets all changes to the "template_description" field.
+func (m *PermissionTemplateMutation) ResetTemplateDescription() {
+	m.template_description = nil
+	delete(m.clearedFields, permissiontemplate.FieldTemplateDescription)
+}
+
+// SetCategory sets the "category" field.
+func (m *PermissionTemplateMutation) SetCategory(s string) {
+	m.category = &s
+}
+
+// Category returns the value of the "category" field in the mutation.
+func (m *PermissionTemplateMutation) Category() (r string, exists bool) {
+	v := m.category
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCategory returns the old "category" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldCategory(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCategory is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCategory requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCategory: %w", err)
+	}
+	return oldValue.Category, nil
+}
+
+// ClearCategory clears the value of the "category" field.
+func (m *PermissionTemplateMutation) ClearCategory() {
+	m.category = nil
+	m.clearedFields[permissiontemplate.FieldCategory] = struct{}{}
+}
+
+// CategoryCleared returns if the "category" field was cleared in this mutation.
+func (m *PermissionTemplateMutation) CategoryCleared() bool {
+	_, ok := m.clearedFields[permissiontemplate.FieldCategory]
+	return ok
+}
+
+// ResetCategory resets all changes to the "category" field.
+func (m *PermissionTemplateMutation) ResetCategory() {
+	m.category = nil
+	delete(m.clearedFields, permissiontemplate.FieldCategory)
+}
+
+// SetScopeType sets the "scope_type" field.
+func (m *PermissionTemplateMutation) SetScopeType(pt permissiontemplate.ScopeType) {
+	m.scope_type = &pt
+}
+
+// ScopeType returns the value of the "scope_type" field in the mutation.
+func (m *PermissionTemplateMutation) ScopeType() (r permissiontemplate.ScopeType, exists bool) {
+	v := m.scope_type
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldScopeType returns the old "scope_type" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldScopeType(ctx context.Context) (v permissiontemplate.ScopeType, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldScopeType is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldScopeType requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldScopeType: %w", err)
+	}
+	return oldValue.ScopeType, nil
+}
+
+// ClearScopeType clears the value of the "scope_type" field.
+func (m *PermissionTemplateMutation) ClearScopeType() {
+	m.scope_type = nil
+	m.clearedFields[permissiontemplate.FieldScopeType] = struct{}{}
+}
+
+// ScopeTypeCleared returns if the "scope_type" field was cleared in this mutation.
+func (m *PermissionTemplateMutation) ScopeTypeCleared() bool {
+	_, ok := m.clearedFields[permissiontemplate.FieldScopeType]
+	return ok
+}
+
+// ResetScopeType resets all changes to the "scope_type" field.
+func (m *PermissionTemplateMutation) ResetScopeType() {
+	m.scope_type = nil
+	delete(m.clearedFields, permissiontemplate.FieldScopeType)
+}
+
+// SetPermissionLevel sets the "permission_level" field.
+func (m *PermissionTemplateMutation) SetPermissionLevel(pl permissiontemplate.PermissionLevel) {
+	m.permission_level = &pl
+}
+
+// PermissionLevel returns the value of the "permission_level" field in the mutation.
+func (m *PermissionTemplateMutation) PermissionLevel() (r permissiontemplate.PermissionLevel, exists bool) {
+	v := m.permission_level
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldPermissionLevel returns the old "permission_level" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldPermissionLevel(ctx context.Context) (v permissiontemplate.PermissionLevel, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldPermissionLevel is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldPermissionLevel requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldPermissionLevel: %w", err)
+	}
+	return oldValue.PermissionLevel, nil
+}
+
+// ClearPermissionLevel clears the value of the "permission_level" field.
+func (m *PermissionTemplateMutation) ClearPermissionLevel() {
+	m.permission_level = nil
+	m.clearedFields[permissiontemplate.FieldPermissionLevel] = struct{}{}
+}
+
+// PermissionLevelCleared returns if the "permission_level" field was cleared in this mutation.
+func (m *PermissionTemplateMutation) PermissionLevelCleared() bool {
+	_, ok := m.clearedFields[permissiontemplate.FieldPermissionLevel]
+	return ok
+}
+
+// ResetPermissionLevel resets all changes to the "permission_level" field.
+func (m *PermissionTemplateMutation) ResetPermissionLevel() {
+	m.permission_level = nil
+	delete(m.clearedFields, permissiontemplate.FieldPermissionLevel)
+}
+
+// SetOperationsMask sets the "operations_mask" field.
+func (m *PermissionTemplateMutation) SetOperationsMask(u uint64) {
+	m.operations_mask = &u
+	m.addoperations_mask = nil
+}
+
+// OperationsMask returns the value of the "operations_mask" field in the mutation.
+func (m *PermissionTemplateMutation) OperationsMask() (r uint64, exists bool) {
+	v := m.operations_mask
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldOperationsMask returns the old "operations_mask" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldOperationsMask(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldOperationsMask is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldOperationsMask requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldOperationsMask: %w", err)
+	}
+	return oldValue.OperationsMask, nil
+}
+
+// AddOperationsMask adds u to the "operations_mask" field.
+func (m *PermissionTemplateMutation) AddOperationsMask(u int64) {
+	if m.addoperations_mask != nil {
+		*m.addoperations_mask += u
+	} else {
+		m.addoperations_mask = &u
+	}
+}
+
+// AddedOperationsMask returns the value that was added to the "operations_mask" field in this mutation.
+func (m *PermissionTemplateMutation) AddedOperationsMask() (r int64, exists bool) {
+	v := m.addoperations_mask
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetOperationsMask resets all changes to the "operations_mask" field.
+func (m *PermissionTemplateMutation) ResetOperationsMask() {
+	m.operations_mask = nil
+	m.addoperations_mask = nil
+}
+
+// SetRiskLevel sets the "risk_level" field.
+func (m *PermissionTemplateMutation) SetRiskLevel(pl permissiontemplate.RiskLevel) {
+	m.risk_level = &pl
+}
+
+// RiskLevel returns the value of the "risk_level" field in the mutation.
+func (m *PermissionTemplateMutation) RiskLevel() (r permissiontemplate.RiskLevel, exists bool) {
+	v := m.risk_level
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldRiskLevel returns the old "risk_level" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldRiskLevel(ctx context.Context) (v permissiontemplate.RiskLevel, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldRiskLevel is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldRiskLevel requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldRiskLevel: %w", err)
+	}
+	return oldValue.RiskLevel, nil
+}
+
+// ResetRiskLevel resets all changes to the "risk_level" field.
+func (m *PermissionTemplateMutation) ResetRiskLevel() {
+	m.risk_level = nil
+}
+
+// SetIsSystemTemplate sets the "is_system_template" field.
+func (m *PermissionTemplateMutation) SetIsSystemTemplate(b bool) {
+	m.is_system_template = &b
+}
+
+// IsSystemTemplate returns the value of the "is_system_template" field in the mutation.
+func (m *PermissionTemplateMutation) IsSystemTemplate() (r bool, exists bool) {
+	v := m.is_system_template
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldIsSystemTemplate returns the old "is_system_template" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldIsSystemTemplate(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldIsSystemTemplate is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldIsSystemTemplate requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldIsSystemTemplate: %w", err)
+	}
+	return oldValue.IsSystemTemplate, nil
+}
+
+// ResetIsSystemTemplate resets all changes to the "is_system_template" field.
+func (m *PermissionTemplateMutation) ResetIsSystemTemplate() {
+	m.is_system_template = nil
+}
+
+// SetIsActive sets the "is_active" field.
+func (m *PermissionTemplateMutation) SetIsActive(b bool) {
+	m.is_active = &b
+}
+
+// IsActive returns the value of the "is_active" field in the mutation.
+func (m *PermissionTemplateMutation) IsActive() (r bool, exists bool) {
+	v := m.is_active
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldIsActive returns the old "is_active" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldIsActive(ctx context.Context) (v bool, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldIsActive is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldIsActive requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldIsActive: %w", err)
+	}
+	return oldValue.IsActive, nil
+}
+
+// ResetIsActive resets all changes to the "is_active" field.
+func (m *PermissionTemplateMutation) ResetIsActive() {
+	m.is_active = nil
+}
+
+// SetSortOrder sets the "sort_order" field.
+func (m *PermissionTemplateMutation) SetSortOrder(i int) {
+	m.sort_order = &i
+	m.addsort_order = nil
+}
+
+// SortOrder returns the value of the "sort_order" field in the mutation.
+func (m *PermissionTemplateMutation) SortOrder() (r int, exists bool) {
+	v := m.sort_order
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldSortOrder returns the old "sort_order" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldSortOrder(ctx context.Context) (v int, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldSortOrder is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldSortOrder requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldSortOrder: %w", err)
+	}
+	return oldValue.SortOrder, nil
+}
+
+// AddSortOrder adds i to the "sort_order" field.
+func (m *PermissionTemplateMutation) AddSortOrder(i int) {
+	if m.addsort_order != nil {
+		*m.addsort_order += i
+	} else {
+		m.addsort_order = &i
+	}
+}
+
+// AddedSortOrder returns the value that was added to the "sort_order" field in this mutation.
+func (m *PermissionTemplateMutation) AddedSortOrder() (r int, exists bool) {
+	v := m.addsort_order
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetSortOrder resets all changes to the "sort_order" field.
+func (m *PermissionTemplateMutation) ResetSortOrder() {
+	m.sort_order = nil
+	m.addsort_order = nil
+}
+
+// SetCreatedBy sets the "created_by" field.
+func (m *PermissionTemplateMutation) SetCreatedBy(s string) {
+	m.created_by = &s
+}
+
+// CreatedBy returns the value of the "created_by" field in the mutation.
+func (m *PermissionTemplateMutation) CreatedBy() (r string, exists bool) {
+	v := m.created_by
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldCreatedBy returns the old "created_by" field's value of the PermissionTemplate entity.
+// If the PermissionTemplate object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *PermissionTemplateMutation) OldCreatedBy(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldCreatedBy is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldCreatedBy requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldCreatedBy: %w", err)
+	}
+	return oldValue.CreatedBy, nil
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (m *PermissionTemplateMutation) ClearCreatedBy() {
+	m.created_by = nil
+	m.clearedFields[permissiontemplate.FieldCreatedBy] = struct{}{}
+}
+
+// CreatedByCleared returns if the "created_by" field was cleared in this mutation.
+func (m *PermissionTemplateMutation) CreatedByCleared() bool {
+	_, ok := m.clearedFields[permissiontemplate.FieldCreatedBy]
+	return ok
+}
+
+// ResetCreatedBy resets all changes to the "created_by" field.
+func (m *PermissionTemplateMutation) ResetCreatedBy() {
+	m.created_by = nil
+	delete(m.clearedFields, permissiontemplate.FieldCreatedBy)
+}
+
+// Where appends a list predicates to the PermissionTemplateMutation builder.
+func (m *PermissionTemplateMutation) Where(ps ...predicate.PermissionTemplate) {
+	m.predicates = append(m.predicates, ps...)
+}
+
+// WhereP appends storage-level predicates to the PermissionTemplateMutation builder. Using this method,
+// users can use type-assertion to append predicates that do not depend on any generated package.
+func (m *PermissionTemplateMutation) WhereP(ps ...func(*sql.Selector)) {
+	p := make([]predicate.PermissionTemplate, len(ps))
+	for i := range ps {
+		p[i] = ps[i]
+	}
+	m.Where(p...)
+}
+
+// Op returns the operation name.
+func (m *PermissionTemplateMutation) Op() Op {
+	return m.op
+}
+
+// SetOp allows setting the mutation operation.
+func (m *PermissionTemplateMutation) SetOp(op Op) {
+	m.op = op
+}
+
+// Type returns the node type of this mutation (PermissionTemplate).
+func (m *PermissionTemplateMutation) Type() string {
+	return m.typ
+}
+
+// Fields returns all fields that were changed during this mutation. Note that in
+// order to get all numeric fields that were incremented/decremented, call
+// AddedFields().
+func (m *PermissionTemplateMutation) Fields() []string {
+	fields := make([]string, 0, 15)
+	if m.created_at != nil {
+		fields = append(fields, permissiontemplate.FieldCreatedAt)
+	}
+	if m.updated_at != nil {
+		fields = append(fields, permissiontemplate.FieldUpdatedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, permissiontemplate.FieldTenantID)
+	}
+	if m.template_id != nil {
+		fields = append(fields, permissiontemplate.FieldTemplateID)
+	}
+	if m.template_name != nil {
+		fields = append(fields, permissiontemplate.FieldTemplateName)
+	}
+	if m.template_description != nil {
+		fields = append(fields, permissiontemplate.FieldTemplateDescription)
+	}
+	if m.category != nil {
+		fields = append(fields, permissiontemplate.FieldCategory)
+	}
+	if m.scope_type != nil {
+		fields = append(fields, permissiontemplate.FieldScopeType)
+	}
+	if m.permission_level != nil {
+		fields = append(fields, permissiontemplate.FieldPermissionLevel)
+	}
+	if m.operations_mask != nil {
+		fields = append(fields, permissiontemplate.FieldOperationsMask)
+	}
+	if m.risk_level != nil {
+		fields = append(fields, permissiontemplate.FieldRiskLevel)
+	}
+	if m.is_system_template != nil {
+		fields = append(fields, permissiontemplate.FieldIsSystemTemplate)
+	}
+	if m.is_active != nil {
+		fields = append(fields, permissiontemplate.FieldIsActive)
+	}
+	if m.sort_order != nil {
+		fields = append(fields, permissiontemplate.FieldSortOrder)
+	}
+	if m.created_by != nil {
+		fields = append(fields, permissiontemplate.FieldCreatedBy)
+	}
+	return fields
+}
+
+// Field returns the value of a field with the given name. The second boolean
+// return value indicates that this field was not set, or was not defined in the
+// schema.
+func (m *PermissionTemplateMutation) Field(name string) (ent.Value, bool) {
+	switch name {
+	case permissiontemplate.FieldCreatedAt:
+		return m.CreatedAt()
+	case permissiontemplate.FieldUpdatedAt:
+		return m.UpdatedAt()
+	case permissiontemplate.FieldTenantID:
+		return m.TenantID()
+	case permissiontemplate.FieldTemplateID:
+		return m.TemplateID()
+	case permissiontemplate.FieldTemplateName:
+		return m.TemplateName()
+	case permissiontemplate.FieldTemplateDescription:
+		return m.TemplateDescription()
+	case permissiontemplate.FieldCategory:
+		return m.Category()
+	case permissiontemplate.FieldScopeType:
+		return m.ScopeType()
+	case permissiontemplate.FieldPermissionLevel:
+		return m.PermissionLevel()
+	case permissiontemplate.FieldOperationsMask:
+		return m.OperationsMask()
+	case permissiontemplate.FieldRiskLevel:
+		return m.RiskLevel()
+	case permissiontemplate.FieldIsSystemTemplate:
+		return m.IsSystemTemplate()
+	case permissiontemplate.FieldIsActive:
+		return m.IsActive()
+	case permissiontemplate.FieldSortOrder:
+		return m.SortOrder()
+	case permissiontemplate.FieldCreatedBy:
+		return m.CreatedBy()
+	}
+	return nil, false
+}
+
+// OldField returns the old value of the field from the database. An error is
+// returned if the mutation operation is not UpdateOne, or the query to the
+// database failed.
+func (m *PermissionTemplateMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
+	switch name {
+	case permissiontemplate.FieldCreatedAt:
+		return m.OldCreatedAt(ctx)
+	case permissiontemplate.FieldUpdatedAt:
+		return m.OldUpdatedAt(ctx)
+	case permissiontemplate.FieldTenantID:
+		return m.OldTenantID(ctx)
+	case permissiontemplate.FieldTemplateID:
+		return m.OldTemplateID(ctx)
+	case permissiontemplate.FieldTemplateName:
+		return m.OldTemplateName(ctx)
+	case permissiontemplate.FieldTemplateDescription:
+		return m.OldTemplateDescription(ctx)
+	case permissiontemplate.FieldCategory:
+		return m.OldCategory(ctx)
+	case permissiontemplate.FieldScopeType:
+		return m.OldScopeType(ctx)
+	case permissiontemplate.FieldPermissionLevel:
+		return m.OldPermissionLevel(ctx)
+	case permissiontemplate.FieldOperationsMask:
+		return m.OldOperationsMask(ctx)
+	case permissiontemplate.FieldRiskLevel:
+		return m.OldRiskLevel(ctx)
+	case permissiontemplate.FieldIsSystemTemplate:
+		return m.OldIsSystemTemplate(ctx)
+	case permissiontemplate.FieldIsActive:
+		return m.OldIsActive(ctx)
+	case permissiontemplate.FieldSortOrder:
+		return m.OldSortOrder(ctx)
+	case permissiontemplate.FieldCreatedBy:
+		return m.OldCreatedBy(ctx)
+	}
+	return nil, fmt.Errorf("unknown PermissionTemplate field %s", name)
+}
+
+// SetField sets the value of a field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionTemplateMutation) SetField(name string, value ent.Value) error {
+	switch name {
+	case permissiontemplate.FieldCreatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCreatedAt(v)
+		return nil
+	case permissiontemplate.FieldUpdatedAt:
+		v, ok := value.(time.Time)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetUpdatedAt(v)
+		return nil
+	case permissiontemplate.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
+	case permissiontemplate.FieldTemplateID:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTemplateID(v)
+		return nil
+	case permissiontemplate.FieldTemplateName:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTemplateName(v)
+		return nil
+	case permissiontemplate.FieldTemplateDescription:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTemplateDescription(v)
+		return nil
+	case permissiontemplate.FieldCategory:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCategory(v)
+		return nil
+	case permissiontemplate.FieldScopeType:
+		v, ok := value.(permissiontemplate.ScopeType)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetScopeType(v)
+		return nil
+	case permissiontemplate.FieldPermissionLevel:
+		v, ok := value.(permissiontemplate.PermissionLevel)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetPermissionLevel(v)
+		return nil
+	case permissiontemplate.FieldOperationsMask:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetOperationsMask(v)
+		return nil
+	case permissiontemplate.FieldRiskLevel:
+		v, ok := value.(permissiontemplate.RiskLevel)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetRiskLevel(v)
+		return nil
+	case permissiontemplate.FieldIsSystemTemplate:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetIsSystemTemplate(v)
+		return nil
+	case permissiontemplate.FieldIsActive:
+		v, ok := value.(bool)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetIsActive(v)
+		return nil
+	case permissiontemplate.FieldSortOrder:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetSortOrder(v)
+		return nil
+	case permissiontemplate.FieldCreatedBy:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetCreatedBy(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionTemplate field %s", name)
+}
+
+// AddedFields returns all numeric fields that were incremented/decremented during
+// this mutation.
+func (m *PermissionTemplateMutation) AddedFields() []string {
+	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, permissiontemplate.FieldTenantID)
+	}
+	if m.addoperations_mask != nil {
+		fields = append(fields, permissiontemplate.FieldOperationsMask)
+	}
+	if m.addsort_order != nil {
+		fields = append(fields, permissiontemplate.FieldSortOrder)
+	}
+	return fields
+}
+
+// AddedField returns the numeric value that was incremented/decremented on a field
+// with the given name. The second boolean return value indicates that this field
+// was not set, or was not defined in the schema.
+func (m *PermissionTemplateMutation) AddedField(name string) (ent.Value, bool) {
+	switch name {
+	case permissiontemplate.FieldTenantID:
+		return m.AddedTenantID()
+	case permissiontemplate.FieldOperationsMask:
+		return m.AddedOperationsMask()
+	case permissiontemplate.FieldSortOrder:
+		return m.AddedSortOrder()
+	}
+	return nil, false
+}
+
+// AddField adds the value to the field with the given name. It returns an error if
+// the field is not defined in the schema, or if the type mismatched the field
+// type.
+func (m *PermissionTemplateMutation) AddField(name string, value ent.Value) error {
+	switch name {
+	case permissiontemplate.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
+	case permissiontemplate.FieldOperationsMask:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddOperationsMask(v)
+		return nil
+	case permissiontemplate.FieldSortOrder:
+		v, ok := value.(int)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddSortOrder(v)
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionTemplate numeric field %s", name)
+}
+
+// ClearedFields returns all nullable fields that were cleared during this
+// mutation.
+func (m *PermissionTemplateMutation) ClearedFields() []string {
+	var fields []string
+	if m.FieldCleared(permissiontemplate.FieldTemplateDescription) {
+		fields = append(fields, permissiontemplate.FieldTemplateDescription)
+	}
+	if m.FieldCleared(permissiontemplate.FieldCategory) {
+		fields = append(fields, permissiontemplate.FieldCategory)
+	}
+	if m.FieldCleared(permissiontemplate.FieldScopeType) {
+		fields = append(fields, permissiontemplate.FieldScopeType)
+	}
+	if m.FieldCleared(permissiontemplate.FieldPermissionLevel) {
+		fields = append(fields, permissiontemplate.FieldPermissionLevel)
+	}
+	if m.FieldCleared(permissiontemplate.FieldCreatedBy) {
+		fields = append(fields, permissiontemplate.FieldCreatedBy)
+	}
+	return fields
+}
+
+// FieldCleared returns a boolean indicating if a field with the given name was
+// cleared in this mutation.
+func (m *PermissionTemplateMutation) FieldCleared(name string) bool {
+	_, ok := m.clearedFields[name]
+	return ok
+}
+
+// ClearField clears the value of the field with the given name. It returns an
+// error if the field is not defined in the schema.
+func (m *PermissionTemplateMutation) ClearField(name string) error {
+	switch name {
+	case permissiontemplate.FieldTemplateDescription:
+		m.ClearTemplateDescription()
+		return nil
+	case permissiontemplate.FieldCategory:
+		m.ClearCategory()
+		return nil
+	case permissiontemplate.FieldScopeType:
+		m.ClearScopeType()
+		return nil
+	case permissiontemplate.FieldPermissionLevel:
+		m.ClearPermissionLevel()
+		return nil
+	case permissiontemplate.FieldCreatedBy:
+		m.ClearCreatedBy()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionTemplate nullable field %s", name)
+}
+
+// ResetField resets all changes in the mutation for the field with the given name.
+// It returns an error if the field is not defined in the schema.
+func (m *PermissionTemplateMutation) ResetField(name string) error {
+	switch name {
+	case permissiontemplate.FieldCreatedAt:
+		m.ResetCreatedAt()
+		return nil
+	case permissiontemplate.FieldUpdatedAt:
+		m.ResetUpdatedAt()
+		return nil
+	case permissiontemplate.FieldTenantID:
+		m.ResetTenantID()
+		return nil
+	case permissiontemplate.FieldTemplateID:
+		m.ResetTemplateID()
+		return nil
+	case permissiontemplate.FieldTemplateName:
+		m.ResetTemplateName()
+		return nil
+	case permissiontemplate.FieldTemplateDescription:
+		m.ResetTemplateDescription()
+		return nil
+	case permissiontemplate.FieldCategory:
+		m.ResetCategory()
+		return nil
+	case permissiontemplate.FieldScopeType:
+		m.ResetScopeType()
+		return nil
+	case permissiontemplate.FieldPermissionLevel:
+		m.ResetPermissionLevel()
+		return nil
+	case permissiontemplate.FieldOperationsMask:
+		m.ResetOperationsMask()
+		return nil
+	case permissiontemplate.FieldRiskLevel:
+		m.ResetRiskLevel()
+		return nil
+	case permissiontemplate.FieldIsSystemTemplate:
+		m.ResetIsSystemTemplate()
+		return nil
+	case permissiontemplate.FieldIsActive:
+		m.ResetIsActive()
+		return nil
+	case permissiontemplate.FieldSortOrder:
+		m.ResetSortOrder()
+		return nil
+	case permissiontemplate.FieldCreatedBy:
+		m.ResetCreatedBy()
+		return nil
+	}
+	return fmt.Errorf("unknown PermissionTemplate field %s", name)
+}
+
+// AddedEdges returns all edge names that were set/added in this mutation.
+func (m *PermissionTemplateMutation) AddedEdges() []string {
+	edges := make([]string, 0, 0)
+	return edges
+}
+
+// AddedIDs returns all IDs (to other nodes) that were added for the given edge
+// name in this mutation.
+func (m *PermissionTemplateMutation) AddedIDs(name string) []ent.Value {
+	return nil
+}
+
+// RemovedEdges returns all edge names that were removed in this mutation.
+func (m *PermissionTemplateMutation) RemovedEdges() []string {
+	edges := make([]string, 0, 0)
+	return edges
+}
+
+// RemovedIDs returns all IDs (to other nodes) that were removed for the edge with
+// the given name in this mutation.
+func (m *PermissionTemplateMutation) RemovedIDs(name string) []ent.Value {
+	return nil
+}
+
+// ClearedEdges returns all edge names that were cleared in this mutation.
+func (m *PermissionTemplateMutation) ClearedEdges() []string {
+	edges := make([]string, 0, 0)
+	return edges
+}
+
+// EdgeCleared returns a boolean which indicates if the edge with the given name
+// was cleared in this mutation.
+func (m *PermissionTemplateMutation) EdgeCleared(name string) bool {
+	return false
+}
+
+// ClearEdge clears the value of the edge with the given name. It returns an error
+// if that edge is not defined in the schema.
+func (m *PermissionTemplateMutation) ClearEdge(name string) error {
+	return fmt.Errorf("unknown PermissionTemplate unique edge %s", name)
+}
+
+// ResetEdge resets all changes to the edge with the given name in this mutation.
+// It returns an error if the edge is not defined in the schema.
+func (m *PermissionTemplateMutation) ResetEdge(name string) error {
+	return fmt.Errorf("unknown PermissionTemplate edge %s", name)
+}
+
 // RelationTypeMutation represents an operation that mutates the RelationType nodes in the graph.
 type RelationTypeMutation struct {
 	config
@@ -49950,6 +53813,8 @@ type RelationTypeMutation struct {
 	created_at               *time.Time
 	updated_at               *time.Time
 	deleted_at               *time.Time
+	tenant_id                *uint64
+	addtenant_id             *int64
 	name                     *string
 	code                     *string
 	category                 *relationtype.Category
@@ -50189,6 +54054,62 @@ func (m *RelationTypeMutation) DeletedAtCleared() bool {
 func (m *RelationTypeMutation) ResetDeletedAt() {
 	m.deleted_at = nil
 	delete(m.clearedFields, relationtype.FieldDeletedAt)
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *RelationTypeMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *RelationTypeMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the RelationType entity.
+// If the RelationType object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *RelationTypeMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *RelationTypeMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *RelationTypeMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *RelationTypeMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
 }
 
 // SetName sets the "name" field.
@@ -50477,7 +54398,7 @@ func (m *RelationTypeMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *RelationTypeMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.created_at != nil {
 		fields = append(fields, relationtype.FieldCreatedAt)
 	}
@@ -50486,6 +54407,9 @@ func (m *RelationTypeMutation) Fields() []string {
 	}
 	if m.deleted_at != nil {
 		fields = append(fields, relationtype.FieldDeletedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, relationtype.FieldTenantID)
 	}
 	if m.name != nil {
 		fields = append(fields, relationtype.FieldName)
@@ -50513,6 +54437,8 @@ func (m *RelationTypeMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case relationtype.FieldDeletedAt:
 		return m.DeletedAt()
+	case relationtype.FieldTenantID:
+		return m.TenantID()
 	case relationtype.FieldName:
 		return m.Name()
 	case relationtype.FieldCode:
@@ -50536,6 +54462,8 @@ func (m *RelationTypeMutation) OldField(ctx context.Context, name string) (ent.V
 		return m.OldUpdatedAt(ctx)
 	case relationtype.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
+	case relationtype.FieldTenantID:
+		return m.OldTenantID(ctx)
 	case relationtype.FieldName:
 		return m.OldName(ctx)
 	case relationtype.FieldCode:
@@ -50574,6 +54502,13 @@ func (m *RelationTypeMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetDeletedAt(v)
 		return nil
+	case relationtype.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
 	case relationtype.FieldName:
 		v, ok := value.(string)
 		if !ok {
@@ -50609,13 +54544,21 @@ func (m *RelationTypeMutation) SetField(name string, value ent.Value) error {
 // AddedFields returns all numeric fields that were incremented/decremented during
 // this mutation.
 func (m *RelationTypeMutation) AddedFields() []string {
-	return nil
+	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, relationtype.FieldTenantID)
+	}
+	return fields
 }
 
 // AddedField returns the numeric value that was incremented/decremented on a field
 // with the given name. The second boolean return value indicates that this field
 // was not set, or was not defined in the schema.
 func (m *RelationTypeMutation) AddedField(name string) (ent.Value, bool) {
+	switch name {
+	case relationtype.FieldTenantID:
+		return m.AddedTenantID()
+	}
 	return nil, false
 }
 
@@ -50624,6 +54567,13 @@ func (m *RelationTypeMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *RelationTypeMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case relationtype.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
 	}
 	return fmt.Errorf("unknown RelationType numeric field %s", name)
 }
@@ -50668,6 +54618,9 @@ func (m *RelationTypeMutation) ResetField(name string) error {
 		return nil
 	case relationtype.FieldDeletedAt:
 		m.ResetDeletedAt()
+		return nil
+	case relationtype.FieldTenantID:
+		m.ResetTenantID()
 		return nil
 	case relationtype.FieldName:
 		m.ResetName()
@@ -50804,6 +54757,8 @@ type ValueDatetimeMutation struct {
 	created_at       *time.Time
 	updated_at       *time.Time
 	deleted_at       *time.Time
+	tenant_id        *uint64
+	addtenant_id     *int64
 	value            *time.Time
 	is_cover         *bool
 	clearedFields    map[string]struct{}
@@ -51039,6 +54994,62 @@ func (m *ValueDatetimeMutation) DeletedAtCleared() bool {
 func (m *ValueDatetimeMutation) ResetDeletedAt() {
 	m.deleted_at = nil
 	delete(m.clearedFields, valuedatetime.FieldDeletedAt)
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *ValueDatetimeMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *ValueDatetimeMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the ValueDatetime entity.
+// If the ValueDatetime object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ValueDatetimeMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *ValueDatetimeMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *ValueDatetimeMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *ValueDatetimeMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
 }
 
 // SetCiID sets the "ci_id" field.
@@ -51286,7 +55297,7 @@ func (m *ValueDatetimeMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *ValueDatetimeMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.created_at != nil {
 		fields = append(fields, valuedatetime.FieldCreatedAt)
 	}
@@ -51295,6 +55306,9 @@ func (m *ValueDatetimeMutation) Fields() []string {
 	}
 	if m.deleted_at != nil {
 		fields = append(fields, valuedatetime.FieldDeletedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, valuedatetime.FieldTenantID)
 	}
 	if m.ci != nil {
 		fields = append(fields, valuedatetime.FieldCiID)
@@ -51322,6 +55336,8 @@ func (m *ValueDatetimeMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case valuedatetime.FieldDeletedAt:
 		return m.DeletedAt()
+	case valuedatetime.FieldTenantID:
+		return m.TenantID()
 	case valuedatetime.FieldCiID:
 		return m.CiID()
 	case valuedatetime.FieldAttrID:
@@ -51345,6 +55361,8 @@ func (m *ValueDatetimeMutation) OldField(ctx context.Context, name string) (ent.
 		return m.OldUpdatedAt(ctx)
 	case valuedatetime.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
+	case valuedatetime.FieldTenantID:
+		return m.OldTenantID(ctx)
 	case valuedatetime.FieldCiID:
 		return m.OldCiID(ctx)
 	case valuedatetime.FieldAttrID:
@@ -51383,6 +55401,13 @@ func (m *ValueDatetimeMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetDeletedAt(v)
 		return nil
+	case valuedatetime.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
 	case valuedatetime.FieldCiID:
 		v, ok := value.(uint64)
 		if !ok {
@@ -51419,6 +55444,9 @@ func (m *ValueDatetimeMutation) SetField(name string, value ent.Value) error {
 // this mutation.
 func (m *ValueDatetimeMutation) AddedFields() []string {
 	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, valuedatetime.FieldTenantID)
+	}
 	return fields
 }
 
@@ -51427,6 +55455,8 @@ func (m *ValueDatetimeMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *ValueDatetimeMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
+	case valuedatetime.FieldTenantID:
+		return m.AddedTenantID()
 	}
 	return nil, false
 }
@@ -51436,6 +55466,13 @@ func (m *ValueDatetimeMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *ValueDatetimeMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case valuedatetime.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
 	}
 	return fmt.Errorf("unknown ValueDatetime numeric field %s", name)
 }
@@ -51480,6 +55517,9 @@ func (m *ValueDatetimeMutation) ResetField(name string) error {
 		return nil
 	case valuedatetime.FieldDeletedAt:
 		m.ResetDeletedAt()
+		return nil
+	case valuedatetime.FieldTenantID:
+		m.ResetTenantID()
 		return nil
 	case valuedatetime.FieldCiID:
 		m.ResetCiID()
@@ -51598,6 +55638,8 @@ type ValueFloatMutation struct {
 	created_at       *time.Time
 	updated_at       *time.Time
 	deleted_at       *time.Time
+	tenant_id        *uint64
+	addtenant_id     *int64
 	value            *float64
 	addvalue         *float64
 	is_cover         *bool
@@ -51834,6 +55876,62 @@ func (m *ValueFloatMutation) DeletedAtCleared() bool {
 func (m *ValueFloatMutation) ResetDeletedAt() {
 	m.deleted_at = nil
 	delete(m.clearedFields, valuefloat.FieldDeletedAt)
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *ValueFloatMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *ValueFloatMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the ValueFloat entity.
+// If the ValueFloat object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ValueFloatMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *ValueFloatMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *ValueFloatMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *ValueFloatMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
 }
 
 // SetCiID sets the "ci_id" field.
@@ -52101,7 +56199,7 @@ func (m *ValueFloatMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *ValueFloatMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.created_at != nil {
 		fields = append(fields, valuefloat.FieldCreatedAt)
 	}
@@ -52110,6 +56208,9 @@ func (m *ValueFloatMutation) Fields() []string {
 	}
 	if m.deleted_at != nil {
 		fields = append(fields, valuefloat.FieldDeletedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, valuefloat.FieldTenantID)
 	}
 	if m.ci != nil {
 		fields = append(fields, valuefloat.FieldCiID)
@@ -52137,6 +56238,8 @@ func (m *ValueFloatMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case valuefloat.FieldDeletedAt:
 		return m.DeletedAt()
+	case valuefloat.FieldTenantID:
+		return m.TenantID()
 	case valuefloat.FieldCiID:
 		return m.CiID()
 	case valuefloat.FieldAttrID:
@@ -52160,6 +56263,8 @@ func (m *ValueFloatMutation) OldField(ctx context.Context, name string) (ent.Val
 		return m.OldUpdatedAt(ctx)
 	case valuefloat.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
+	case valuefloat.FieldTenantID:
+		return m.OldTenantID(ctx)
 	case valuefloat.FieldCiID:
 		return m.OldCiID(ctx)
 	case valuefloat.FieldAttrID:
@@ -52198,6 +56303,13 @@ func (m *ValueFloatMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetDeletedAt(v)
 		return nil
+	case valuefloat.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
 	case valuefloat.FieldCiID:
 		v, ok := value.(uint64)
 		if !ok {
@@ -52234,6 +56346,9 @@ func (m *ValueFloatMutation) SetField(name string, value ent.Value) error {
 // this mutation.
 func (m *ValueFloatMutation) AddedFields() []string {
 	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, valuefloat.FieldTenantID)
+	}
 	if m.addvalue != nil {
 		fields = append(fields, valuefloat.FieldValue)
 	}
@@ -52245,6 +56360,8 @@ func (m *ValueFloatMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *ValueFloatMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
+	case valuefloat.FieldTenantID:
+		return m.AddedTenantID()
 	case valuefloat.FieldValue:
 		return m.AddedValue()
 	}
@@ -52256,6 +56373,13 @@ func (m *ValueFloatMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *ValueFloatMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case valuefloat.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
 	case valuefloat.FieldValue:
 		v, ok := value.(float64)
 		if !ok {
@@ -52307,6 +56431,9 @@ func (m *ValueFloatMutation) ResetField(name string) error {
 		return nil
 	case valuefloat.FieldDeletedAt:
 		m.ResetDeletedAt()
+		return nil
+	case valuefloat.FieldTenantID:
+		m.ResetTenantID()
 		return nil
 	case valuefloat.FieldCiID:
 		m.ResetCiID()
@@ -52425,6 +56552,8 @@ type ValueIndexTextMutation struct {
 	created_at       *time.Time
 	updated_at       *time.Time
 	deleted_at       *time.Time
+	tenant_id        *uint64
+	addtenant_id     *int64
 	value            *string
 	is_cover         *bool
 	clearedFields    map[string]struct{}
@@ -52660,6 +56789,62 @@ func (m *ValueIndexTextMutation) DeletedAtCleared() bool {
 func (m *ValueIndexTextMutation) ResetDeletedAt() {
 	m.deleted_at = nil
 	delete(m.clearedFields, valueindextext.FieldDeletedAt)
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *ValueIndexTextMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *ValueIndexTextMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the ValueIndexText entity.
+// If the ValueIndexText object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ValueIndexTextMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *ValueIndexTextMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *ValueIndexTextMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *ValueIndexTextMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
 }
 
 // SetCiID sets the "ci_id" field.
@@ -52907,7 +57092,7 @@ func (m *ValueIndexTextMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *ValueIndexTextMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.created_at != nil {
 		fields = append(fields, valueindextext.FieldCreatedAt)
 	}
@@ -52916,6 +57101,9 @@ func (m *ValueIndexTextMutation) Fields() []string {
 	}
 	if m.deleted_at != nil {
 		fields = append(fields, valueindextext.FieldDeletedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, valueindextext.FieldTenantID)
 	}
 	if m.ci != nil {
 		fields = append(fields, valueindextext.FieldCiID)
@@ -52943,6 +57131,8 @@ func (m *ValueIndexTextMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case valueindextext.FieldDeletedAt:
 		return m.DeletedAt()
+	case valueindextext.FieldTenantID:
+		return m.TenantID()
 	case valueindextext.FieldCiID:
 		return m.CiID()
 	case valueindextext.FieldAttrID:
@@ -52966,6 +57156,8 @@ func (m *ValueIndexTextMutation) OldField(ctx context.Context, name string) (ent
 		return m.OldUpdatedAt(ctx)
 	case valueindextext.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
+	case valueindextext.FieldTenantID:
+		return m.OldTenantID(ctx)
 	case valueindextext.FieldCiID:
 		return m.OldCiID(ctx)
 	case valueindextext.FieldAttrID:
@@ -53004,6 +57196,13 @@ func (m *ValueIndexTextMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetDeletedAt(v)
 		return nil
+	case valueindextext.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
 	case valueindextext.FieldCiID:
 		v, ok := value.(uint64)
 		if !ok {
@@ -53040,6 +57239,9 @@ func (m *ValueIndexTextMutation) SetField(name string, value ent.Value) error {
 // this mutation.
 func (m *ValueIndexTextMutation) AddedFields() []string {
 	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, valueindextext.FieldTenantID)
+	}
 	return fields
 }
 
@@ -53048,6 +57250,8 @@ func (m *ValueIndexTextMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *ValueIndexTextMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
+	case valueindextext.FieldTenantID:
+		return m.AddedTenantID()
 	}
 	return nil, false
 }
@@ -53057,6 +57261,13 @@ func (m *ValueIndexTextMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *ValueIndexTextMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case valueindextext.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
 	}
 	return fmt.Errorf("unknown ValueIndexText numeric field %s", name)
 }
@@ -53101,6 +57312,9 @@ func (m *ValueIndexTextMutation) ResetField(name string) error {
 		return nil
 	case valueindextext.FieldDeletedAt:
 		m.ResetDeletedAt()
+		return nil
+	case valueindextext.FieldTenantID:
+		m.ResetTenantID()
 		return nil
 	case valueindextext.FieldCiID:
 		m.ResetCiID()
@@ -53219,6 +57433,8 @@ type ValueIntegerMutation struct {
 	created_at       *time.Time
 	updated_at       *time.Time
 	deleted_at       *time.Time
+	tenant_id        *uint64
+	addtenant_id     *int64
 	value            *int
 	addvalue         *int
 	is_cover         *bool
@@ -53455,6 +57671,62 @@ func (m *ValueIntegerMutation) DeletedAtCleared() bool {
 func (m *ValueIntegerMutation) ResetDeletedAt() {
 	m.deleted_at = nil
 	delete(m.clearedFields, valueinteger.FieldDeletedAt)
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *ValueIntegerMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *ValueIntegerMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the ValueInteger entity.
+// If the ValueInteger object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ValueIntegerMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *ValueIntegerMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *ValueIntegerMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *ValueIntegerMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
 }
 
 // SetCiID sets the "ci_id" field.
@@ -53722,7 +57994,7 @@ func (m *ValueIntegerMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *ValueIntegerMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.created_at != nil {
 		fields = append(fields, valueinteger.FieldCreatedAt)
 	}
@@ -53731,6 +58003,9 @@ func (m *ValueIntegerMutation) Fields() []string {
 	}
 	if m.deleted_at != nil {
 		fields = append(fields, valueinteger.FieldDeletedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, valueinteger.FieldTenantID)
 	}
 	if m.ci != nil {
 		fields = append(fields, valueinteger.FieldCiID)
@@ -53758,6 +58033,8 @@ func (m *ValueIntegerMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case valueinteger.FieldDeletedAt:
 		return m.DeletedAt()
+	case valueinteger.FieldTenantID:
+		return m.TenantID()
 	case valueinteger.FieldCiID:
 		return m.CiID()
 	case valueinteger.FieldAttrID:
@@ -53781,6 +58058,8 @@ func (m *ValueIntegerMutation) OldField(ctx context.Context, name string) (ent.V
 		return m.OldUpdatedAt(ctx)
 	case valueinteger.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
+	case valueinteger.FieldTenantID:
+		return m.OldTenantID(ctx)
 	case valueinteger.FieldCiID:
 		return m.OldCiID(ctx)
 	case valueinteger.FieldAttrID:
@@ -53819,6 +58098,13 @@ func (m *ValueIntegerMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetDeletedAt(v)
 		return nil
+	case valueinteger.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
 	case valueinteger.FieldCiID:
 		v, ok := value.(uint64)
 		if !ok {
@@ -53855,6 +58141,9 @@ func (m *ValueIntegerMutation) SetField(name string, value ent.Value) error {
 // this mutation.
 func (m *ValueIntegerMutation) AddedFields() []string {
 	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, valueinteger.FieldTenantID)
+	}
 	if m.addvalue != nil {
 		fields = append(fields, valueinteger.FieldValue)
 	}
@@ -53866,6 +58155,8 @@ func (m *ValueIntegerMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *ValueIntegerMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
+	case valueinteger.FieldTenantID:
+		return m.AddedTenantID()
 	case valueinteger.FieldValue:
 		return m.AddedValue()
 	}
@@ -53877,6 +58168,13 @@ func (m *ValueIntegerMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *ValueIntegerMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case valueinteger.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
 	case valueinteger.FieldValue:
 		v, ok := value.(int)
 		if !ok {
@@ -53928,6 +58226,9 @@ func (m *ValueIntegerMutation) ResetField(name string) error {
 		return nil
 	case valueinteger.FieldDeletedAt:
 		m.ResetDeletedAt()
+		return nil
+	case valueinteger.FieldTenantID:
+		m.ResetTenantID()
 		return nil
 	case valueinteger.FieldCiID:
 		m.ResetCiID()
@@ -54046,6 +58347,8 @@ type ValueJSONMutation struct {
 	created_at       *time.Time
 	updated_at       *time.Time
 	deleted_at       *time.Time
+	tenant_id        *uint64
+	addtenant_id     *int64
 	value            *json.RawMessage
 	appendvalue      json.RawMessage
 	is_cover         *bool
@@ -54282,6 +58585,62 @@ func (m *ValueJSONMutation) DeletedAtCleared() bool {
 func (m *ValueJSONMutation) ResetDeletedAt() {
 	m.deleted_at = nil
 	delete(m.clearedFields, valuejson.FieldDeletedAt)
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *ValueJSONMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *ValueJSONMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the ValueJSON entity.
+// If the ValueJSON object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ValueJSONMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *ValueJSONMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *ValueJSONMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *ValueJSONMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
 }
 
 // SetCiID sets the "ci_id" field.
@@ -54544,7 +58903,7 @@ func (m *ValueJSONMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *ValueJSONMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.created_at != nil {
 		fields = append(fields, valuejson.FieldCreatedAt)
 	}
@@ -54553,6 +58912,9 @@ func (m *ValueJSONMutation) Fields() []string {
 	}
 	if m.deleted_at != nil {
 		fields = append(fields, valuejson.FieldDeletedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, valuejson.FieldTenantID)
 	}
 	if m.ci != nil {
 		fields = append(fields, valuejson.FieldCiID)
@@ -54580,6 +58942,8 @@ func (m *ValueJSONMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case valuejson.FieldDeletedAt:
 		return m.DeletedAt()
+	case valuejson.FieldTenantID:
+		return m.TenantID()
 	case valuejson.FieldCiID:
 		return m.CiID()
 	case valuejson.FieldAttrID:
@@ -54603,6 +58967,8 @@ func (m *ValueJSONMutation) OldField(ctx context.Context, name string) (ent.Valu
 		return m.OldUpdatedAt(ctx)
 	case valuejson.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
+	case valuejson.FieldTenantID:
+		return m.OldTenantID(ctx)
 	case valuejson.FieldCiID:
 		return m.OldCiID(ctx)
 	case valuejson.FieldAttrID:
@@ -54641,6 +59007,13 @@ func (m *ValueJSONMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetDeletedAt(v)
 		return nil
+	case valuejson.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
 	case valuejson.FieldCiID:
 		v, ok := value.(uint64)
 		if !ok {
@@ -54677,6 +59050,9 @@ func (m *ValueJSONMutation) SetField(name string, value ent.Value) error {
 // this mutation.
 func (m *ValueJSONMutation) AddedFields() []string {
 	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, valuejson.FieldTenantID)
+	}
 	return fields
 }
 
@@ -54685,6 +59061,8 @@ func (m *ValueJSONMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *ValueJSONMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
+	case valuejson.FieldTenantID:
+		return m.AddedTenantID()
 	}
 	return nil, false
 }
@@ -54694,6 +59072,13 @@ func (m *ValueJSONMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *ValueJSONMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case valuejson.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
 	}
 	return fmt.Errorf("unknown ValueJSON numeric field %s", name)
 }
@@ -54738,6 +59123,9 @@ func (m *ValueJSONMutation) ResetField(name string) error {
 		return nil
 	case valuejson.FieldDeletedAt:
 		m.ResetDeletedAt()
+		return nil
+	case valuejson.FieldTenantID:
+		m.ResetTenantID()
 		return nil
 	case valuejson.FieldCiID:
 		m.ResetCiID()
@@ -54856,6 +59244,8 @@ type ValueTextMutation struct {
 	created_at       *time.Time
 	updated_at       *time.Time
 	deleted_at       *time.Time
+	tenant_id        *uint64
+	addtenant_id     *int64
 	value            *string
 	is_cover         *bool
 	clearedFields    map[string]struct{}
@@ -55091,6 +59481,62 @@ func (m *ValueTextMutation) DeletedAtCleared() bool {
 func (m *ValueTextMutation) ResetDeletedAt() {
 	m.deleted_at = nil
 	delete(m.clearedFields, valuetext.FieldDeletedAt)
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (m *ValueTextMutation) SetTenantID(u uint64) {
+	m.tenant_id = &u
+	m.addtenant_id = nil
+}
+
+// TenantID returns the value of the "tenant_id" field in the mutation.
+func (m *ValueTextMutation) TenantID() (r uint64, exists bool) {
+	v := m.tenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldTenantID returns the old "tenant_id" field's value of the ValueText entity.
+// If the ValueText object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *ValueTextMutation) OldTenantID(ctx context.Context) (v uint64, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, errors.New("OldTenantID is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, errors.New("OldTenantID requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldTenantID: %w", err)
+	}
+	return oldValue.TenantID, nil
+}
+
+// AddTenantID adds u to the "tenant_id" field.
+func (m *ValueTextMutation) AddTenantID(u int64) {
+	if m.addtenant_id != nil {
+		*m.addtenant_id += u
+	} else {
+		m.addtenant_id = &u
+	}
+}
+
+// AddedTenantID returns the value that was added to the "tenant_id" field in this mutation.
+func (m *ValueTextMutation) AddedTenantID() (r int64, exists bool) {
+	v := m.addtenant_id
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// ResetTenantID resets all changes to the "tenant_id" field.
+func (m *ValueTextMutation) ResetTenantID() {
+	m.tenant_id = nil
+	m.addtenant_id = nil
 }
 
 // SetCiID sets the "ci_id" field.
@@ -55338,7 +59784,7 @@ func (m *ValueTextMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *ValueTextMutation) Fields() []string {
-	fields := make([]string, 0, 7)
+	fields := make([]string, 0, 8)
 	if m.created_at != nil {
 		fields = append(fields, valuetext.FieldCreatedAt)
 	}
@@ -55347,6 +59793,9 @@ func (m *ValueTextMutation) Fields() []string {
 	}
 	if m.deleted_at != nil {
 		fields = append(fields, valuetext.FieldDeletedAt)
+	}
+	if m.tenant_id != nil {
+		fields = append(fields, valuetext.FieldTenantID)
 	}
 	if m.ci != nil {
 		fields = append(fields, valuetext.FieldCiID)
@@ -55374,6 +59823,8 @@ func (m *ValueTextMutation) Field(name string) (ent.Value, bool) {
 		return m.UpdatedAt()
 	case valuetext.FieldDeletedAt:
 		return m.DeletedAt()
+	case valuetext.FieldTenantID:
+		return m.TenantID()
 	case valuetext.FieldCiID:
 		return m.CiID()
 	case valuetext.FieldAttrID:
@@ -55397,6 +59848,8 @@ func (m *ValueTextMutation) OldField(ctx context.Context, name string) (ent.Valu
 		return m.OldUpdatedAt(ctx)
 	case valuetext.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
+	case valuetext.FieldTenantID:
+		return m.OldTenantID(ctx)
 	case valuetext.FieldCiID:
 		return m.OldCiID(ctx)
 	case valuetext.FieldAttrID:
@@ -55435,6 +59888,13 @@ func (m *ValueTextMutation) SetField(name string, value ent.Value) error {
 		}
 		m.SetDeletedAt(v)
 		return nil
+	case valuetext.FieldTenantID:
+		v, ok := value.(uint64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetTenantID(v)
+		return nil
 	case valuetext.FieldCiID:
 		v, ok := value.(uint64)
 		if !ok {
@@ -55471,6 +59931,9 @@ func (m *ValueTextMutation) SetField(name string, value ent.Value) error {
 // this mutation.
 func (m *ValueTextMutation) AddedFields() []string {
 	var fields []string
+	if m.addtenant_id != nil {
+		fields = append(fields, valuetext.FieldTenantID)
+	}
 	return fields
 }
 
@@ -55479,6 +59942,8 @@ func (m *ValueTextMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *ValueTextMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
+	case valuetext.FieldTenantID:
+		return m.AddedTenantID()
 	}
 	return nil, false
 }
@@ -55488,6 +59953,13 @@ func (m *ValueTextMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *ValueTextMutation) AddField(name string, value ent.Value) error {
 	switch name {
+	case valuetext.FieldTenantID:
+		v, ok := value.(int64)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.AddTenantID(v)
+		return nil
 	}
 	return fmt.Errorf("unknown ValueText numeric field %s", name)
 }
@@ -55532,6 +60004,9 @@ func (m *ValueTextMutation) ResetField(name string) error {
 		return nil
 	case valuetext.FieldDeletedAt:
 		m.ResetDeletedAt()
+		return nil
+	case valuetext.FieldTenantID:
+		m.ResetTenantID()
 		return nil
 	case valuetext.FieldCiID:
 		m.ResetCiID()

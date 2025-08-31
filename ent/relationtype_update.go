@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // RelationTypeUpdate is the builder for updating RelationType entities.
@@ -25,181 +25,181 @@ type RelationTypeUpdate struct {
 }
 
 // Where appends a list predicates to the RelationTypeUpdate builder.
-func (rtu *RelationTypeUpdate) Where(ps ...predicate.RelationType) *RelationTypeUpdate {
-	rtu.mutation.Where(ps...)
-	return rtu
+func (_u *RelationTypeUpdate) Where(ps ...predicate.RelationType) *RelationTypeUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (rtu *RelationTypeUpdate) SetUpdatedAt(t time.Time) *RelationTypeUpdate {
-	rtu.mutation.SetUpdatedAt(t)
-	return rtu
+func (_u *RelationTypeUpdate) SetUpdatedAt(v time.Time) *RelationTypeUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (rtu *RelationTypeUpdate) SetDeletedAt(t time.Time) *RelationTypeUpdate {
-	rtu.mutation.SetDeletedAt(t)
-	return rtu
+func (_u *RelationTypeUpdate) SetDeletedAt(v time.Time) *RelationTypeUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (rtu *RelationTypeUpdate) SetNillableDeletedAt(t *time.Time) *RelationTypeUpdate {
-	if t != nil {
-		rtu.SetDeletedAt(*t)
+func (_u *RelationTypeUpdate) SetNillableDeletedAt(v *time.Time) *RelationTypeUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return rtu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (rtu *RelationTypeUpdate) ClearDeletedAt() *RelationTypeUpdate {
-	rtu.mutation.ClearDeletedAt()
-	return rtu
+func (_u *RelationTypeUpdate) ClearDeletedAt() *RelationTypeUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetName sets the "name" field.
-func (rtu *RelationTypeUpdate) SetName(s string) *RelationTypeUpdate {
-	rtu.mutation.SetName(s)
-	return rtu
+func (_u *RelationTypeUpdate) SetName(v string) *RelationTypeUpdate {
+	_u.mutation.SetName(v)
+	return _u
 }
 
 // SetNillableName sets the "name" field if the given value is not nil.
-func (rtu *RelationTypeUpdate) SetNillableName(s *string) *RelationTypeUpdate {
-	if s != nil {
-		rtu.SetName(*s)
+func (_u *RelationTypeUpdate) SetNillableName(v *string) *RelationTypeUpdate {
+	if v != nil {
+		_u.SetName(*v)
 	}
-	return rtu
+	return _u
 }
 
 // SetCode sets the "code" field.
-func (rtu *RelationTypeUpdate) SetCode(s string) *RelationTypeUpdate {
-	rtu.mutation.SetCode(s)
-	return rtu
+func (_u *RelationTypeUpdate) SetCode(v string) *RelationTypeUpdate {
+	_u.mutation.SetCode(v)
+	return _u
 }
 
 // SetNillableCode sets the "code" field if the given value is not nil.
-func (rtu *RelationTypeUpdate) SetNillableCode(s *string) *RelationTypeUpdate {
-	if s != nil {
-		rtu.SetCode(*s)
+func (_u *RelationTypeUpdate) SetNillableCode(v *string) *RelationTypeUpdate {
+	if v != nil {
+		_u.SetCode(*v)
 	}
-	return rtu
+	return _u
 }
 
 // SetCategory sets the "category" field.
-func (rtu *RelationTypeUpdate) SetCategory(r relationtype.Category) *RelationTypeUpdate {
-	rtu.mutation.SetCategory(r)
-	return rtu
+func (_u *RelationTypeUpdate) SetCategory(v relationtype.Category) *RelationTypeUpdate {
+	_u.mutation.SetCategory(v)
+	return _u
 }
 
 // SetNillableCategory sets the "category" field if the given value is not nil.
-func (rtu *RelationTypeUpdate) SetNillableCategory(r *relationtype.Category) *RelationTypeUpdate {
-	if r != nil {
-		rtu.SetCategory(*r)
+func (_u *RelationTypeUpdate) SetNillableCategory(v *relationtype.Category) *RelationTypeUpdate {
+	if v != nil {
+		_u.SetCategory(*v)
 	}
-	return rtu
+	return _u
 }
 
 // SetDirection sets the "direction" field.
-func (rtu *RelationTypeUpdate) SetDirection(r relationtype.Direction) *RelationTypeUpdate {
-	rtu.mutation.SetDirection(r)
-	return rtu
+func (_u *RelationTypeUpdate) SetDirection(v relationtype.Direction) *RelationTypeUpdate {
+	_u.mutation.SetDirection(v)
+	return _u
 }
 
 // SetNillableDirection sets the "direction" field if the given value is not nil.
-func (rtu *RelationTypeUpdate) SetNillableDirection(r *relationtype.Direction) *RelationTypeUpdate {
-	if r != nil {
-		rtu.SetDirection(*r)
+func (_u *RelationTypeUpdate) SetNillableDirection(v *relationtype.Direction) *RelationTypeUpdate {
+	if v != nil {
+		_u.SetDirection(*v)
 	}
-	return rtu
+	return _u
 }
 
 // AddCiRelationIDs adds the "ci_relations" edge to the CiRelation entity by IDs.
-func (rtu *RelationTypeUpdate) AddCiRelationIDs(ids ...uint64) *RelationTypeUpdate {
-	rtu.mutation.AddCiRelationIDs(ids...)
-	return rtu
+func (_u *RelationTypeUpdate) AddCiRelationIDs(ids ...uint64) *RelationTypeUpdate {
+	_u.mutation.AddCiRelationIDs(ids...)
+	return _u
 }
 
 // AddCiRelations adds the "ci_relations" edges to the CiRelation entity.
-func (rtu *RelationTypeUpdate) AddCiRelations(c ...*CiRelation) *RelationTypeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *RelationTypeUpdate) AddCiRelations(v ...*CiRelation) *RelationTypeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return rtu.AddCiRelationIDs(ids...)
+	return _u.AddCiRelationIDs(ids...)
 }
 
 // AddCiTypeRelationIDs adds the "ci_type_relations" edge to the CiTypeRelation entity by IDs.
-func (rtu *RelationTypeUpdate) AddCiTypeRelationIDs(ids ...uint64) *RelationTypeUpdate {
-	rtu.mutation.AddCiTypeRelationIDs(ids...)
-	return rtu
+func (_u *RelationTypeUpdate) AddCiTypeRelationIDs(ids ...uint64) *RelationTypeUpdate {
+	_u.mutation.AddCiTypeRelationIDs(ids...)
+	return _u
 }
 
 // AddCiTypeRelations adds the "ci_type_relations" edges to the CiTypeRelation entity.
-func (rtu *RelationTypeUpdate) AddCiTypeRelations(c ...*CiTypeRelation) *RelationTypeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *RelationTypeUpdate) AddCiTypeRelations(v ...*CiTypeRelation) *RelationTypeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return rtu.AddCiTypeRelationIDs(ids...)
+	return _u.AddCiTypeRelationIDs(ids...)
 }
 
 // Mutation returns the RelationTypeMutation object of the builder.
-func (rtu *RelationTypeUpdate) Mutation() *RelationTypeMutation {
-	return rtu.mutation
+func (_u *RelationTypeUpdate) Mutation() *RelationTypeMutation {
+	return _u.mutation
 }
 
 // ClearCiRelations clears all "ci_relations" edges to the CiRelation entity.
-func (rtu *RelationTypeUpdate) ClearCiRelations() *RelationTypeUpdate {
-	rtu.mutation.ClearCiRelations()
-	return rtu
+func (_u *RelationTypeUpdate) ClearCiRelations() *RelationTypeUpdate {
+	_u.mutation.ClearCiRelations()
+	return _u
 }
 
 // RemoveCiRelationIDs removes the "ci_relations" edge to CiRelation entities by IDs.
-func (rtu *RelationTypeUpdate) RemoveCiRelationIDs(ids ...uint64) *RelationTypeUpdate {
-	rtu.mutation.RemoveCiRelationIDs(ids...)
-	return rtu
+func (_u *RelationTypeUpdate) RemoveCiRelationIDs(ids ...uint64) *RelationTypeUpdate {
+	_u.mutation.RemoveCiRelationIDs(ids...)
+	return _u
 }
 
 // RemoveCiRelations removes "ci_relations" edges to CiRelation entities.
-func (rtu *RelationTypeUpdate) RemoveCiRelations(c ...*CiRelation) *RelationTypeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *RelationTypeUpdate) RemoveCiRelations(v ...*CiRelation) *RelationTypeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return rtu.RemoveCiRelationIDs(ids...)
+	return _u.RemoveCiRelationIDs(ids...)
 }
 
 // ClearCiTypeRelations clears all "ci_type_relations" edges to the CiTypeRelation entity.
-func (rtu *RelationTypeUpdate) ClearCiTypeRelations() *RelationTypeUpdate {
-	rtu.mutation.ClearCiTypeRelations()
-	return rtu
+func (_u *RelationTypeUpdate) ClearCiTypeRelations() *RelationTypeUpdate {
+	_u.mutation.ClearCiTypeRelations()
+	return _u
 }
 
 // RemoveCiTypeRelationIDs removes the "ci_type_relations" edge to CiTypeRelation entities by IDs.
-func (rtu *RelationTypeUpdate) RemoveCiTypeRelationIDs(ids ...uint64) *RelationTypeUpdate {
-	rtu.mutation.RemoveCiTypeRelationIDs(ids...)
-	return rtu
+func (_u *RelationTypeUpdate) RemoveCiTypeRelationIDs(ids ...uint64) *RelationTypeUpdate {
+	_u.mutation.RemoveCiTypeRelationIDs(ids...)
+	return _u
 }
 
 // RemoveCiTypeRelations removes "ci_type_relations" edges to CiTypeRelation entities.
-func (rtu *RelationTypeUpdate) RemoveCiTypeRelations(c ...*CiTypeRelation) *RelationTypeUpdate {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *RelationTypeUpdate) RemoveCiTypeRelations(v ...*CiTypeRelation) *RelationTypeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return rtu.RemoveCiTypeRelationIDs(ids...)
+	return _u.RemoveCiTypeRelationIDs(ids...)
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (rtu *RelationTypeUpdate) Save(ctx context.Context) (int, error) {
-	if err := rtu.defaults(); err != nil {
+func (_u *RelationTypeUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, rtu.sqlSave, rtu.mutation, rtu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (rtu *RelationTypeUpdate) SaveX(ctx context.Context) int {
-	affected, err := rtu.Save(ctx)
+func (_u *RelationTypeUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -207,48 +207,48 @@ func (rtu *RelationTypeUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (rtu *RelationTypeUpdate) Exec(ctx context.Context) error {
-	_, err := rtu.Save(ctx)
+func (_u *RelationTypeUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (rtu *RelationTypeUpdate) ExecX(ctx context.Context) {
-	if err := rtu.Exec(ctx); err != nil {
+func (_u *RelationTypeUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (rtu *RelationTypeUpdate) defaults() error {
-	if _, ok := rtu.mutation.UpdatedAt(); !ok {
+func (_u *RelationTypeUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if relationtype.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized relationtype.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := relationtype.UpdateDefaultUpdatedAt()
-		rtu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (rtu *RelationTypeUpdate) check() error {
-	if v, ok := rtu.mutation.Name(); ok {
+func (_u *RelationTypeUpdate) check() error {
+	if v, ok := _u.mutation.Name(); ok {
 		if err := relationtype.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "RelationType.name": %w`, err)}
 		}
 	}
-	if v, ok := rtu.mutation.Code(); ok {
+	if v, ok := _u.mutation.Code(); ok {
 		if err := relationtype.CodeValidator(v); err != nil {
 			return &ValidationError{Name: "code", err: fmt.Errorf(`ent: validator failed for field "RelationType.code": %w`, err)}
 		}
 	}
-	if v, ok := rtu.mutation.Category(); ok {
+	if v, ok := _u.mutation.Category(); ok {
 		if err := relationtype.CategoryValidator(v); err != nil {
 			return &ValidationError{Name: "category", err: fmt.Errorf(`ent: validator failed for field "RelationType.category": %w`, err)}
 		}
 	}
-	if v, ok := rtu.mutation.Direction(); ok {
+	if v, ok := _u.mutation.Direction(); ok {
 		if err := relationtype.DirectionValidator(v); err != nil {
 			return &ValidationError{Name: "direction", err: fmt.Errorf(`ent: validator failed for field "RelationType.direction": %w`, err)}
 		}
@@ -256,40 +256,40 @@ func (rtu *RelationTypeUpdate) check() error {
 	return nil
 }
 
-func (rtu *RelationTypeUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := rtu.check(); err != nil {
-		return n, err
+func (_u *RelationTypeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(relationtype.Table, relationtype.Columns, sqlgraph.NewFieldSpec(relationtype.FieldID, field.TypeUint64))
-	if ps := rtu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := rtu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(relationtype.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := rtu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(relationtype.FieldDeletedAt, field.TypeTime, value)
 	}
-	if rtu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(relationtype.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := rtu.mutation.Name(); ok {
+	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(relationtype.FieldName, field.TypeString, value)
 	}
-	if value, ok := rtu.mutation.Code(); ok {
+	if value, ok := _u.mutation.Code(); ok {
 		_spec.SetField(relationtype.FieldCode, field.TypeString, value)
 	}
-	if value, ok := rtu.mutation.Category(); ok {
+	if value, ok := _u.mutation.Category(); ok {
 		_spec.SetField(relationtype.FieldCategory, field.TypeEnum, value)
 	}
-	if value, ok := rtu.mutation.Direction(); ok {
+	if value, ok := _u.mutation.Direction(); ok {
 		_spec.SetField(relationtype.FieldDirection, field.TypeEnum, value)
 	}
-	if rtu.mutation.CiRelationsCleared() {
+	if _u.mutation.CiRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -302,7 +302,7 @@ func (rtu *RelationTypeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := rtu.mutation.RemovedCiRelationsIDs(); len(nodes) > 0 && !rtu.mutation.CiRelationsCleared() {
+	if nodes := _u.mutation.RemovedCiRelationsIDs(); len(nodes) > 0 && !_u.mutation.CiRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -318,7 +318,7 @@ func (rtu *RelationTypeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := rtu.mutation.CiRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -334,7 +334,7 @@ func (rtu *RelationTypeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if rtu.mutation.CiTypeRelationsCleared() {
+	if _u.mutation.CiTypeRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -347,7 +347,7 @@ func (rtu *RelationTypeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := rtu.mutation.RemovedCiTypeRelationsIDs(); len(nodes) > 0 && !rtu.mutation.CiTypeRelationsCleared() {
+	if nodes := _u.mutation.RemovedCiTypeRelationsIDs(); len(nodes) > 0 && !_u.mutation.CiTypeRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -363,7 +363,7 @@ func (rtu *RelationTypeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := rtu.mutation.CiTypeRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -379,7 +379,7 @@ func (rtu *RelationTypeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, rtu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{relationtype.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -387,8 +387,8 @@ func (rtu *RelationTypeUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	rtu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // RelationTypeUpdateOne is the builder for updating a single RelationType entity.
@@ -400,188 +400,188 @@ type RelationTypeUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (rtuo *RelationTypeUpdateOne) SetUpdatedAt(t time.Time) *RelationTypeUpdateOne {
-	rtuo.mutation.SetUpdatedAt(t)
-	return rtuo
+func (_u *RelationTypeUpdateOne) SetUpdatedAt(v time.Time) *RelationTypeUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (rtuo *RelationTypeUpdateOne) SetDeletedAt(t time.Time) *RelationTypeUpdateOne {
-	rtuo.mutation.SetDeletedAt(t)
-	return rtuo
+func (_u *RelationTypeUpdateOne) SetDeletedAt(v time.Time) *RelationTypeUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (rtuo *RelationTypeUpdateOne) SetNillableDeletedAt(t *time.Time) *RelationTypeUpdateOne {
-	if t != nil {
-		rtuo.SetDeletedAt(*t)
+func (_u *RelationTypeUpdateOne) SetNillableDeletedAt(v *time.Time) *RelationTypeUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return rtuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (rtuo *RelationTypeUpdateOne) ClearDeletedAt() *RelationTypeUpdateOne {
-	rtuo.mutation.ClearDeletedAt()
-	return rtuo
+func (_u *RelationTypeUpdateOne) ClearDeletedAt() *RelationTypeUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetName sets the "name" field.
-func (rtuo *RelationTypeUpdateOne) SetName(s string) *RelationTypeUpdateOne {
-	rtuo.mutation.SetName(s)
-	return rtuo
+func (_u *RelationTypeUpdateOne) SetName(v string) *RelationTypeUpdateOne {
+	_u.mutation.SetName(v)
+	return _u
 }
 
 // SetNillableName sets the "name" field if the given value is not nil.
-func (rtuo *RelationTypeUpdateOne) SetNillableName(s *string) *RelationTypeUpdateOne {
-	if s != nil {
-		rtuo.SetName(*s)
+func (_u *RelationTypeUpdateOne) SetNillableName(v *string) *RelationTypeUpdateOne {
+	if v != nil {
+		_u.SetName(*v)
 	}
-	return rtuo
+	return _u
 }
 
 // SetCode sets the "code" field.
-func (rtuo *RelationTypeUpdateOne) SetCode(s string) *RelationTypeUpdateOne {
-	rtuo.mutation.SetCode(s)
-	return rtuo
+func (_u *RelationTypeUpdateOne) SetCode(v string) *RelationTypeUpdateOne {
+	_u.mutation.SetCode(v)
+	return _u
 }
 
 // SetNillableCode sets the "code" field if the given value is not nil.
-func (rtuo *RelationTypeUpdateOne) SetNillableCode(s *string) *RelationTypeUpdateOne {
-	if s != nil {
-		rtuo.SetCode(*s)
+func (_u *RelationTypeUpdateOne) SetNillableCode(v *string) *RelationTypeUpdateOne {
+	if v != nil {
+		_u.SetCode(*v)
 	}
-	return rtuo
+	return _u
 }
 
 // SetCategory sets the "category" field.
-func (rtuo *RelationTypeUpdateOne) SetCategory(r relationtype.Category) *RelationTypeUpdateOne {
-	rtuo.mutation.SetCategory(r)
-	return rtuo
+func (_u *RelationTypeUpdateOne) SetCategory(v relationtype.Category) *RelationTypeUpdateOne {
+	_u.mutation.SetCategory(v)
+	return _u
 }
 
 // SetNillableCategory sets the "category" field if the given value is not nil.
-func (rtuo *RelationTypeUpdateOne) SetNillableCategory(r *relationtype.Category) *RelationTypeUpdateOne {
-	if r != nil {
-		rtuo.SetCategory(*r)
+func (_u *RelationTypeUpdateOne) SetNillableCategory(v *relationtype.Category) *RelationTypeUpdateOne {
+	if v != nil {
+		_u.SetCategory(*v)
 	}
-	return rtuo
+	return _u
 }
 
 // SetDirection sets the "direction" field.
-func (rtuo *RelationTypeUpdateOne) SetDirection(r relationtype.Direction) *RelationTypeUpdateOne {
-	rtuo.mutation.SetDirection(r)
-	return rtuo
+func (_u *RelationTypeUpdateOne) SetDirection(v relationtype.Direction) *RelationTypeUpdateOne {
+	_u.mutation.SetDirection(v)
+	return _u
 }
 
 // SetNillableDirection sets the "direction" field if the given value is not nil.
-func (rtuo *RelationTypeUpdateOne) SetNillableDirection(r *relationtype.Direction) *RelationTypeUpdateOne {
-	if r != nil {
-		rtuo.SetDirection(*r)
+func (_u *RelationTypeUpdateOne) SetNillableDirection(v *relationtype.Direction) *RelationTypeUpdateOne {
+	if v != nil {
+		_u.SetDirection(*v)
 	}
-	return rtuo
+	return _u
 }
 
 // AddCiRelationIDs adds the "ci_relations" edge to the CiRelation entity by IDs.
-func (rtuo *RelationTypeUpdateOne) AddCiRelationIDs(ids ...uint64) *RelationTypeUpdateOne {
-	rtuo.mutation.AddCiRelationIDs(ids...)
-	return rtuo
+func (_u *RelationTypeUpdateOne) AddCiRelationIDs(ids ...uint64) *RelationTypeUpdateOne {
+	_u.mutation.AddCiRelationIDs(ids...)
+	return _u
 }
 
 // AddCiRelations adds the "ci_relations" edges to the CiRelation entity.
-func (rtuo *RelationTypeUpdateOne) AddCiRelations(c ...*CiRelation) *RelationTypeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *RelationTypeUpdateOne) AddCiRelations(v ...*CiRelation) *RelationTypeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return rtuo.AddCiRelationIDs(ids...)
+	return _u.AddCiRelationIDs(ids...)
 }
 
 // AddCiTypeRelationIDs adds the "ci_type_relations" edge to the CiTypeRelation entity by IDs.
-func (rtuo *RelationTypeUpdateOne) AddCiTypeRelationIDs(ids ...uint64) *RelationTypeUpdateOne {
-	rtuo.mutation.AddCiTypeRelationIDs(ids...)
-	return rtuo
+func (_u *RelationTypeUpdateOne) AddCiTypeRelationIDs(ids ...uint64) *RelationTypeUpdateOne {
+	_u.mutation.AddCiTypeRelationIDs(ids...)
+	return _u
 }
 
 // AddCiTypeRelations adds the "ci_type_relations" edges to the CiTypeRelation entity.
-func (rtuo *RelationTypeUpdateOne) AddCiTypeRelations(c ...*CiTypeRelation) *RelationTypeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *RelationTypeUpdateOne) AddCiTypeRelations(v ...*CiTypeRelation) *RelationTypeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return rtuo.AddCiTypeRelationIDs(ids...)
+	return _u.AddCiTypeRelationIDs(ids...)
 }
 
 // Mutation returns the RelationTypeMutation object of the builder.
-func (rtuo *RelationTypeUpdateOne) Mutation() *RelationTypeMutation {
-	return rtuo.mutation
+func (_u *RelationTypeUpdateOne) Mutation() *RelationTypeMutation {
+	return _u.mutation
 }
 
 // ClearCiRelations clears all "ci_relations" edges to the CiRelation entity.
-func (rtuo *RelationTypeUpdateOne) ClearCiRelations() *RelationTypeUpdateOne {
-	rtuo.mutation.ClearCiRelations()
-	return rtuo
+func (_u *RelationTypeUpdateOne) ClearCiRelations() *RelationTypeUpdateOne {
+	_u.mutation.ClearCiRelations()
+	return _u
 }
 
 // RemoveCiRelationIDs removes the "ci_relations" edge to CiRelation entities by IDs.
-func (rtuo *RelationTypeUpdateOne) RemoveCiRelationIDs(ids ...uint64) *RelationTypeUpdateOne {
-	rtuo.mutation.RemoveCiRelationIDs(ids...)
-	return rtuo
+func (_u *RelationTypeUpdateOne) RemoveCiRelationIDs(ids ...uint64) *RelationTypeUpdateOne {
+	_u.mutation.RemoveCiRelationIDs(ids...)
+	return _u
 }
 
 // RemoveCiRelations removes "ci_relations" edges to CiRelation entities.
-func (rtuo *RelationTypeUpdateOne) RemoveCiRelations(c ...*CiRelation) *RelationTypeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *RelationTypeUpdateOne) RemoveCiRelations(v ...*CiRelation) *RelationTypeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return rtuo.RemoveCiRelationIDs(ids...)
+	return _u.RemoveCiRelationIDs(ids...)
 }
 
 // ClearCiTypeRelations clears all "ci_type_relations" edges to the CiTypeRelation entity.
-func (rtuo *RelationTypeUpdateOne) ClearCiTypeRelations() *RelationTypeUpdateOne {
-	rtuo.mutation.ClearCiTypeRelations()
-	return rtuo
+func (_u *RelationTypeUpdateOne) ClearCiTypeRelations() *RelationTypeUpdateOne {
+	_u.mutation.ClearCiTypeRelations()
+	return _u
 }
 
 // RemoveCiTypeRelationIDs removes the "ci_type_relations" edge to CiTypeRelation entities by IDs.
-func (rtuo *RelationTypeUpdateOne) RemoveCiTypeRelationIDs(ids ...uint64) *RelationTypeUpdateOne {
-	rtuo.mutation.RemoveCiTypeRelationIDs(ids...)
-	return rtuo
+func (_u *RelationTypeUpdateOne) RemoveCiTypeRelationIDs(ids ...uint64) *RelationTypeUpdateOne {
+	_u.mutation.RemoveCiTypeRelationIDs(ids...)
+	return _u
 }
 
 // RemoveCiTypeRelations removes "ci_type_relations" edges to CiTypeRelation entities.
-func (rtuo *RelationTypeUpdateOne) RemoveCiTypeRelations(c ...*CiTypeRelation) *RelationTypeUpdateOne {
-	ids := make([]uint64, len(c))
-	for i := range c {
-		ids[i] = c[i].ID
+func (_u *RelationTypeUpdateOne) RemoveCiTypeRelations(v ...*CiTypeRelation) *RelationTypeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return rtuo.RemoveCiTypeRelationIDs(ids...)
+	return _u.RemoveCiTypeRelationIDs(ids...)
 }
 
 // Where appends a list predicates to the RelationTypeUpdate builder.
-func (rtuo *RelationTypeUpdateOne) Where(ps ...predicate.RelationType) *RelationTypeUpdateOne {
-	rtuo.mutation.Where(ps...)
-	return rtuo
+func (_u *RelationTypeUpdateOne) Where(ps ...predicate.RelationType) *RelationTypeUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (rtuo *RelationTypeUpdateOne) Select(field string, fields ...string) *RelationTypeUpdateOne {
-	rtuo.fields = append([]string{field}, fields...)
-	return rtuo
+func (_u *RelationTypeUpdateOne) Select(field string, fields ...string) *RelationTypeUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated RelationType entity.
-func (rtuo *RelationTypeUpdateOne) Save(ctx context.Context) (*RelationType, error) {
-	if err := rtuo.defaults(); err != nil {
+func (_u *RelationTypeUpdateOne) Save(ctx context.Context) (*RelationType, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, rtuo.sqlSave, rtuo.mutation, rtuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (rtuo *RelationTypeUpdateOne) SaveX(ctx context.Context) *RelationType {
-	node, err := rtuo.Save(ctx)
+func (_u *RelationTypeUpdateOne) SaveX(ctx context.Context) *RelationType {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -589,48 +589,48 @@ func (rtuo *RelationTypeUpdateOne) SaveX(ctx context.Context) *RelationType {
 }
 
 // Exec executes the query on the entity.
-func (rtuo *RelationTypeUpdateOne) Exec(ctx context.Context) error {
-	_, err := rtuo.Save(ctx)
+func (_u *RelationTypeUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (rtuo *RelationTypeUpdateOne) ExecX(ctx context.Context) {
-	if err := rtuo.Exec(ctx); err != nil {
+func (_u *RelationTypeUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (rtuo *RelationTypeUpdateOne) defaults() error {
-	if _, ok := rtuo.mutation.UpdatedAt(); !ok {
+func (_u *RelationTypeUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if relationtype.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized relationtype.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := relationtype.UpdateDefaultUpdatedAt()
-		rtuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (rtuo *RelationTypeUpdateOne) check() error {
-	if v, ok := rtuo.mutation.Name(); ok {
+func (_u *RelationTypeUpdateOne) check() error {
+	if v, ok := _u.mutation.Name(); ok {
 		if err := relationtype.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "RelationType.name": %w`, err)}
 		}
 	}
-	if v, ok := rtuo.mutation.Code(); ok {
+	if v, ok := _u.mutation.Code(); ok {
 		if err := relationtype.CodeValidator(v); err != nil {
 			return &ValidationError{Name: "code", err: fmt.Errorf(`ent: validator failed for field "RelationType.code": %w`, err)}
 		}
 	}
-	if v, ok := rtuo.mutation.Category(); ok {
+	if v, ok := _u.mutation.Category(); ok {
 		if err := relationtype.CategoryValidator(v); err != nil {
 			return &ValidationError{Name: "category", err: fmt.Errorf(`ent: validator failed for field "RelationType.category": %w`, err)}
 		}
 	}
-	if v, ok := rtuo.mutation.Direction(); ok {
+	if v, ok := _u.mutation.Direction(); ok {
 		if err := relationtype.DirectionValidator(v); err != nil {
 			return &ValidationError{Name: "direction", err: fmt.Errorf(`ent: validator failed for field "RelationType.direction": %w`, err)}
 		}
@@ -638,17 +638,17 @@ func (rtuo *RelationTypeUpdateOne) check() error {
 	return nil
 }
 
-func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *RelationType, err error) {
-	if err := rtuo.check(); err != nil {
+func (_u *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *RelationType, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(relationtype.Table, relationtype.Columns, sqlgraph.NewFieldSpec(relationtype.FieldID, field.TypeUint64))
-	id, ok := rtuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "RelationType.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := rtuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, relationtype.FieldID)
 		for _, f := range fields {
@@ -660,35 +660,35 @@ func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *Relation
 			}
 		}
 	}
-	if ps := rtuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := rtuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(relationtype.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := rtuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(relationtype.FieldDeletedAt, field.TypeTime, value)
 	}
-	if rtuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(relationtype.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := rtuo.mutation.Name(); ok {
+	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(relationtype.FieldName, field.TypeString, value)
 	}
-	if value, ok := rtuo.mutation.Code(); ok {
+	if value, ok := _u.mutation.Code(); ok {
 		_spec.SetField(relationtype.FieldCode, field.TypeString, value)
 	}
-	if value, ok := rtuo.mutation.Category(); ok {
+	if value, ok := _u.mutation.Category(); ok {
 		_spec.SetField(relationtype.FieldCategory, field.TypeEnum, value)
 	}
-	if value, ok := rtuo.mutation.Direction(); ok {
+	if value, ok := _u.mutation.Direction(); ok {
 		_spec.SetField(relationtype.FieldDirection, field.TypeEnum, value)
 	}
-	if rtuo.mutation.CiRelationsCleared() {
+	if _u.mutation.CiRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -701,7 +701,7 @@ func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *Relation
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := rtuo.mutation.RemovedCiRelationsIDs(); len(nodes) > 0 && !rtuo.mutation.CiRelationsCleared() {
+	if nodes := _u.mutation.RemovedCiRelationsIDs(); len(nodes) > 0 && !_u.mutation.CiRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -717,7 +717,7 @@ func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *Relation
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := rtuo.mutation.CiRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -733,7 +733,7 @@ func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *Relation
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if rtuo.mutation.CiTypeRelationsCleared() {
+	if _u.mutation.CiTypeRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -746,7 +746,7 @@ func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *Relation
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := rtuo.mutation.RemovedCiTypeRelationsIDs(); len(nodes) > 0 && !rtuo.mutation.CiTypeRelationsCleared() {
+	if nodes := _u.mutation.RemovedCiTypeRelationsIDs(); len(nodes) > 0 && !_u.mutation.CiTypeRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -762,7 +762,7 @@ func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *Relation
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := rtuo.mutation.CiTypeRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -778,10 +778,10 @@ func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *Relation
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &RelationType{config: rtuo.config}
+	_node = &RelationType{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, rtuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{relationtype.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -789,6 +789,6 @@ func (rtuo *RelationTypeUpdateOne) sqlSave(ctx context.Context) (_node *Relation
 		}
 		return nil, err
 	}
-	rtuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

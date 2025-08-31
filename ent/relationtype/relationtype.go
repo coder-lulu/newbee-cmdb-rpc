@@ -22,6 +22,8 @@ const (
 	FieldUpdatedAt = "updated_at"
 	// FieldDeletedAt holds the string denoting the deleted_at field in the database.
 	FieldDeletedAt = "deleted_at"
+	// FieldTenantID holds the string denoting the tenant_id field in the database.
+	FieldTenantID = "tenant_id"
 	// FieldName holds the string denoting the name field in the database.
 	FieldName = "name"
 	// FieldCode holds the string denoting the code field in the database.
@@ -58,6 +60,7 @@ var Columns = []string{
 	FieldCreatedAt,
 	FieldUpdatedAt,
 	FieldDeletedAt,
+	FieldTenantID,
 	FieldName,
 	FieldCode,
 	FieldCategory,
@@ -78,7 +81,7 @@ func ValidColumn(column string) bool {
 // package on the initialization of the application. Therefore,
 // it should be imported in the main as follows:
 //
-//	import _ "gitee.com/link234/cmdb-rpc/ent/runtime"
+//	import _ "github.com/coder-lulu/newbee-cmdb-rpc/ent/runtime"
 var (
 	Hooks        [1]ent.Hook
 	Interceptors [1]ent.Interceptor
@@ -88,6 +91,8 @@ var (
 	DefaultUpdatedAt func() time.Time
 	// UpdateDefaultUpdatedAt holds the default value on update for the "updated_at" field.
 	UpdateDefaultUpdatedAt func() time.Time
+	// DefaultTenantID holds the default value on creation for the "tenant_id" field.
+	DefaultTenantID uint64
 	// NameValidator is a validator for the "name" field. It is called by the builders before save.
 	NameValidator func(string) error
 	// CodeValidator is a validator for the "code" field. It is called by the builders before save.
@@ -168,6 +173,11 @@ func ByUpdatedAt(opts ...sql.OrderTermOption) OrderOption {
 // ByDeletedAt orders the results by the deleted_at field.
 func ByDeletedAt(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDeletedAt, opts...).ToFunc()
+}
+
+// ByTenantID orders the results by the tenant_id field.
+func ByTenantID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldTenantID, opts...).ToFunc()
 }
 
 // ByName orders the results by the name field.

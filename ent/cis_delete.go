@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CisDelete is the builder for deleting a Cis entity.
@@ -20,56 +20,56 @@ type CisDelete struct {
 }
 
 // Where appends a list predicates to the CisDelete builder.
-func (cd *CisDelete) Where(ps ...predicate.Cis) *CisDelete {
-	cd.mutation.Where(ps...)
-	return cd
+func (_d *CisDelete) Where(ps ...predicate.Cis) *CisDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (cd *CisDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, cd.sqlExec, cd.mutation, cd.hooks)
+func (_d *CisDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cd *CisDelete) ExecX(ctx context.Context) int {
-	n, err := cd.Exec(ctx)
+func (_d *CisDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (cd *CisDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CisDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(cis.Table, sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64))
-	if ps := cd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, cd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	cd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CisDeleteOne is the builder for deleting a single Cis entity.
 type CisDeleteOne struct {
-	cd *CisDelete
+	_d *CisDelete
 }
 
 // Where appends a list predicates to the CisDelete builder.
-func (cdo *CisDeleteOne) Where(ps ...predicate.Cis) *CisDeleteOne {
-	cdo.cd.mutation.Where(ps...)
-	return cdo
+func (_d *CisDeleteOne) Where(ps ...predicate.Cis) *CisDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (cdo *CisDeleteOne) Exec(ctx context.Context) error {
-	n, err := cdo.cd.Exec(ctx)
+func (_d *CisDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (cdo *CisDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cdo *CisDeleteOne) ExecX(ctx context.Context) {
-	if err := cdo.Exec(ctx); err != nil {
+func (_d *CisDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

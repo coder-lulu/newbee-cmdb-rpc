@@ -12,11 +12,11 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
-	"gitee.com/link234/cmdb-rpc/ent/importtemplate"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -28,1019 +28,1019 @@ type ImportTemplateUpdate struct {
 }
 
 // Where appends a list predicates to the ImportTemplateUpdate builder.
-func (itu *ImportTemplateUpdate) Where(ps ...predicate.ImportTemplate) *ImportTemplateUpdate {
-	itu.mutation.Where(ps...)
-	return itu
+func (_u *ImportTemplateUpdate) Where(ps ...predicate.ImportTemplate) *ImportTemplateUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (itu *ImportTemplateUpdate) SetUpdatedAt(t time.Time) *ImportTemplateUpdate {
-	itu.mutation.SetUpdatedAt(t)
-	return itu
+func (_u *ImportTemplateUpdate) SetUpdatedAt(v time.Time) *ImportTemplateUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (itu *ImportTemplateUpdate) SetStatus(u uint8) *ImportTemplateUpdate {
-	itu.mutation.ResetStatus()
-	itu.mutation.SetStatus(u)
-	return itu
+func (_u *ImportTemplateUpdate) SetStatus(v uint8) *ImportTemplateUpdate {
+	_u.mutation.ResetStatus()
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableStatus(u *uint8) *ImportTemplateUpdate {
-	if u != nil {
-		itu.SetStatus(*u)
+func (_u *ImportTemplateUpdate) SetNillableStatus(v *uint8) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddStatus adds u to the "status" field.
-func (itu *ImportTemplateUpdate) AddStatus(u int8) *ImportTemplateUpdate {
-	itu.mutation.AddStatus(u)
-	return itu
+// AddStatus adds value to the "status" field.
+func (_u *ImportTemplateUpdate) AddStatus(v int8) *ImportTemplateUpdate {
+	_u.mutation.AddStatus(v)
+	return _u
 }
 
 // ClearStatus clears the value of the "status" field.
-func (itu *ImportTemplateUpdate) ClearStatus() *ImportTemplateUpdate {
-	itu.mutation.ClearStatus()
-	return itu
+func (_u *ImportTemplateUpdate) ClearStatus() *ImportTemplateUpdate {
+	_u.mutation.ClearStatus()
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (itu *ImportTemplateUpdate) SetDeletedAt(t time.Time) *ImportTemplateUpdate {
-	itu.mutation.SetDeletedAt(t)
-	return itu
+func (_u *ImportTemplateUpdate) SetDeletedAt(v time.Time) *ImportTemplateUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableDeletedAt(t *time.Time) *ImportTemplateUpdate {
-	if t != nil {
-		itu.SetDeletedAt(*t)
+func (_u *ImportTemplateUpdate) SetNillableDeletedAt(v *time.Time) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (itu *ImportTemplateUpdate) ClearDeletedAt() *ImportTemplateUpdate {
-	itu.mutation.ClearDeletedAt()
-	return itu
+func (_u *ImportTemplateUpdate) ClearDeletedAt() *ImportTemplateUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (itu *ImportTemplateUpdate) SetDepartmentID(u uint64) *ImportTemplateUpdate {
-	itu.mutation.ResetDepartmentID()
-	itu.mutation.SetDepartmentID(u)
-	return itu
+func (_u *ImportTemplateUpdate) SetDepartmentID(v uint64) *ImportTemplateUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableDepartmentID(u *uint64) *ImportTemplateUpdate {
-	if u != nil {
-		itu.SetDepartmentID(*u)
+func (_u *ImportTemplateUpdate) SetNillableDepartmentID(v *uint64) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (itu *ImportTemplateUpdate) AddDepartmentID(u int64) *ImportTemplateUpdate {
-	itu.mutation.AddDepartmentID(u)
-	return itu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ImportTemplateUpdate) AddDepartmentID(v int64) *ImportTemplateUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (itu *ImportTemplateUpdate) ClearDepartmentID() *ImportTemplateUpdate {
-	itu.mutation.ClearDepartmentID()
-	return itu
+func (_u *ImportTemplateUpdate) ClearDepartmentID() *ImportTemplateUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetName sets the "name" field.
-func (itu *ImportTemplateUpdate) SetName(s string) *ImportTemplateUpdate {
-	itu.mutation.SetName(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetName(v string) *ImportTemplateUpdate {
+	_u.mutation.SetName(v)
+	return _u
 }
 
 // SetNillableName sets the "name" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableName(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetName(*s)
+func (_u *ImportTemplateUpdate) SetNillableName(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetName(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetCode sets the "code" field.
-func (itu *ImportTemplateUpdate) SetCode(s string) *ImportTemplateUpdate {
-	itu.mutation.SetCode(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetCode(v string) *ImportTemplateUpdate {
+	_u.mutation.SetCode(v)
+	return _u
 }
 
 // SetNillableCode sets the "code" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableCode(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetCode(*s)
+func (_u *ImportTemplateUpdate) SetNillableCode(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetCode(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetDescription sets the "description" field.
-func (itu *ImportTemplateUpdate) SetDescription(s string) *ImportTemplateUpdate {
-	itu.mutation.SetDescription(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetDescription(v string) *ImportTemplateUpdate {
+	_u.mutation.SetDescription(v)
+	return _u
 }
 
 // SetNillableDescription sets the "description" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableDescription(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetDescription(*s)
+func (_u *ImportTemplateUpdate) SetNillableDescription(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetDescription(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearDescription clears the value of the "description" field.
-func (itu *ImportTemplateUpdate) ClearDescription() *ImportTemplateUpdate {
-	itu.mutation.ClearDescription()
-	return itu
+func (_u *ImportTemplateUpdate) ClearDescription() *ImportTemplateUpdate {
+	_u.mutation.ClearDescription()
+	return _u
 }
 
 // SetVersion sets the "version" field.
-func (itu *ImportTemplateUpdate) SetVersion(s string) *ImportTemplateUpdate {
-	itu.mutation.SetVersion(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetVersion(v string) *ImportTemplateUpdate {
+	_u.mutation.SetVersion(v)
+	return _u
 }
 
 // SetNillableVersion sets the "version" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableVersion(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetVersion(*s)
+func (_u *ImportTemplateUpdate) SetNillableVersion(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetVersion(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetType sets the "type" field.
-func (itu *ImportTemplateUpdate) SetType(i importtemplate.Type) *ImportTemplateUpdate {
-	itu.mutation.SetType(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetType(v importtemplate.Type) *ImportTemplateUpdate {
+	_u.mutation.SetType(v)
+	return _u
 }
 
 // SetNillableType sets the "type" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableType(i *importtemplate.Type) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetType(*i)
+func (_u *ImportTemplateUpdate) SetNillableType(v *importtemplate.Type) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetType(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetImportMode sets the "import_mode" field.
-func (itu *ImportTemplateUpdate) SetImportMode(im importtemplate.ImportMode) *ImportTemplateUpdate {
-	itu.mutation.SetImportMode(im)
-	return itu
+func (_u *ImportTemplateUpdate) SetImportMode(v importtemplate.ImportMode) *ImportTemplateUpdate {
+	_u.mutation.SetImportMode(v)
+	return _u
 }
 
 // SetNillableImportMode sets the "import_mode" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableImportMode(im *importtemplate.ImportMode) *ImportTemplateUpdate {
-	if im != nil {
-		itu.SetImportMode(*im)
+func (_u *ImportTemplateUpdate) SetNillableImportMode(v *importtemplate.ImportMode) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetImportMode(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (itu *ImportTemplateUpdate) SetCiTypeID(u uint64) *ImportTemplateUpdate {
-	itu.mutation.SetCiTypeID(u)
-	return itu
+func (_u *ImportTemplateUpdate) SetCiTypeID(v uint64) *ImportTemplateUpdate {
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableCiTypeID(u *uint64) *ImportTemplateUpdate {
-	if u != nil {
-		itu.SetCiTypeID(*u)
+func (_u *ImportTemplateUpdate) SetNillableCiTypeID(v *uint64) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearCiTypeID clears the value of the "ci_type_id" field.
-func (itu *ImportTemplateUpdate) ClearCiTypeID() *ImportTemplateUpdate {
-	itu.mutation.ClearCiTypeID()
-	return itu
+func (_u *ImportTemplateUpdate) ClearCiTypeID() *ImportTemplateUpdate {
+	_u.mutation.ClearCiTypeID()
+	return _u
 }
 
 // SetCiTypeName sets the "ci_type_name" field.
-func (itu *ImportTemplateUpdate) SetCiTypeName(s string) *ImportTemplateUpdate {
-	itu.mutation.SetCiTypeName(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetCiTypeName(v string) *ImportTemplateUpdate {
+	_u.mutation.SetCiTypeName(v)
+	return _u
 }
 
 // SetNillableCiTypeName sets the "ci_type_name" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableCiTypeName(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetCiTypeName(*s)
+func (_u *ImportTemplateUpdate) SetNillableCiTypeName(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetCiTypeName(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearCiTypeName clears the value of the "ci_type_name" field.
-func (itu *ImportTemplateUpdate) ClearCiTypeName() *ImportTemplateUpdate {
-	itu.mutation.ClearCiTypeName()
-	return itu
+func (_u *ImportTemplateUpdate) ClearCiTypeName() *ImportTemplateUpdate {
+	_u.mutation.ClearCiTypeName()
+	return _u
 }
 
 // SetAutoCreateCiType sets the "auto_create_ci_type" field.
-func (itu *ImportTemplateUpdate) SetAutoCreateCiType(b bool) *ImportTemplateUpdate {
-	itu.mutation.SetAutoCreateCiType(b)
-	return itu
+func (_u *ImportTemplateUpdate) SetAutoCreateCiType(v bool) *ImportTemplateUpdate {
+	_u.mutation.SetAutoCreateCiType(v)
+	return _u
 }
 
 // SetNillableAutoCreateCiType sets the "auto_create_ci_type" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableAutoCreateCiType(b *bool) *ImportTemplateUpdate {
-	if b != nil {
-		itu.SetAutoCreateCiType(*b)
+func (_u *ImportTemplateUpdate) SetNillableAutoCreateCiType(v *bool) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetAutoCreateCiType(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetFieldMappings sets the "field_mappings" field.
-func (itu *ImportTemplateUpdate) SetFieldMappings(smc []schema.FieldMappingConfig) *ImportTemplateUpdate {
-	itu.mutation.SetFieldMappings(smc)
-	return itu
+func (_u *ImportTemplateUpdate) SetFieldMappings(v []schema.FieldMappingConfig) *ImportTemplateUpdate {
+	_u.mutation.SetFieldMappings(v)
+	return _u
 }
 
-// AppendFieldMappings appends smc to the "field_mappings" field.
-func (itu *ImportTemplateUpdate) AppendFieldMappings(smc []schema.FieldMappingConfig) *ImportTemplateUpdate {
-	itu.mutation.AppendFieldMappings(smc)
-	return itu
+// AppendFieldMappings appends value to the "field_mappings" field.
+func (_u *ImportTemplateUpdate) AppendFieldMappings(v []schema.FieldMappingConfig) *ImportTemplateUpdate {
+	_u.mutation.AppendFieldMappings(v)
+	return _u
 }
 
 // ClearFieldMappings clears the value of the "field_mappings" field.
-func (itu *ImportTemplateUpdate) ClearFieldMappings() *ImportTemplateUpdate {
-	itu.mutation.ClearFieldMappings()
-	return itu
+func (_u *ImportTemplateUpdate) ClearFieldMappings() *ImportTemplateUpdate {
+	_u.mutation.ClearFieldMappings()
+	return _u
 }
 
 // SetHeaderMappings sets the "header_mappings" field.
-func (itu *ImportTemplateUpdate) SetHeaderMappings(m map[string]string) *ImportTemplateUpdate {
-	itu.mutation.SetHeaderMappings(m)
-	return itu
+func (_u *ImportTemplateUpdate) SetHeaderMappings(v map[string]string) *ImportTemplateUpdate {
+	_u.mutation.SetHeaderMappings(v)
+	return _u
 }
 
 // ClearHeaderMappings clears the value of the "header_mappings" field.
-func (itu *ImportTemplateUpdate) ClearHeaderMappings() *ImportTemplateUpdate {
-	itu.mutation.ClearHeaderMappings()
-	return itu
+func (_u *ImportTemplateUpdate) ClearHeaderMappings() *ImportTemplateUpdate {
+	_u.mutation.ClearHeaderMappings()
+	return _u
 }
 
 // SetDefaultValues sets the "default_values" field.
-func (itu *ImportTemplateUpdate) SetDefaultValues(m map[string]interface{}) *ImportTemplateUpdate {
-	itu.mutation.SetDefaultValues(m)
-	return itu
+func (_u *ImportTemplateUpdate) SetDefaultValues(v map[string]interface{}) *ImportTemplateUpdate {
+	_u.mutation.SetDefaultValues(v)
+	return _u
 }
 
 // ClearDefaultValues clears the value of the "default_values" field.
-func (itu *ImportTemplateUpdate) ClearDefaultValues() *ImportTemplateUpdate {
-	itu.mutation.ClearDefaultValues()
-	return itu
+func (_u *ImportTemplateUpdate) ClearDefaultValues() *ImportTemplateUpdate {
+	_u.mutation.ClearDefaultValues()
+	return _u
 }
 
 // SetComputedFields sets the "computed_fields" field.
-func (itu *ImportTemplateUpdate) SetComputedFields(sfc []schema.ComputedFieldConfig) *ImportTemplateUpdate {
-	itu.mutation.SetComputedFields(sfc)
-	return itu
+func (_u *ImportTemplateUpdate) SetComputedFields(v []schema.ComputedFieldConfig) *ImportTemplateUpdate {
+	_u.mutation.SetComputedFields(v)
+	return _u
 }
 
-// AppendComputedFields appends sfc to the "computed_fields" field.
-func (itu *ImportTemplateUpdate) AppendComputedFields(sfc []schema.ComputedFieldConfig) *ImportTemplateUpdate {
-	itu.mutation.AppendComputedFields(sfc)
-	return itu
+// AppendComputedFields appends value to the "computed_fields" field.
+func (_u *ImportTemplateUpdate) AppendComputedFields(v []schema.ComputedFieldConfig) *ImportTemplateUpdate {
+	_u.mutation.AppendComputedFields(v)
+	return _u
 }
 
 // ClearComputedFields clears the value of the "computed_fields" field.
-func (itu *ImportTemplateUpdate) ClearComputedFields() *ImportTemplateUpdate {
-	itu.mutation.ClearComputedFields()
-	return itu
+func (_u *ImportTemplateUpdate) ClearComputedFields() *ImportTemplateUpdate {
+	_u.mutation.ClearComputedFields()
+	return _u
 }
 
 // SetDataTransformations sets the "data_transformations" field.
-func (itu *ImportTemplateUpdate) SetDataTransformations(stc []schema.DataTransformationConfig) *ImportTemplateUpdate {
-	itu.mutation.SetDataTransformations(stc)
-	return itu
+func (_u *ImportTemplateUpdate) SetDataTransformations(v []schema.DataTransformationConfig) *ImportTemplateUpdate {
+	_u.mutation.SetDataTransformations(v)
+	return _u
 }
 
-// AppendDataTransformations appends stc to the "data_transformations" field.
-func (itu *ImportTemplateUpdate) AppendDataTransformations(stc []schema.DataTransformationConfig) *ImportTemplateUpdate {
-	itu.mutation.AppendDataTransformations(stc)
-	return itu
+// AppendDataTransformations appends value to the "data_transformations" field.
+func (_u *ImportTemplateUpdate) AppendDataTransformations(v []schema.DataTransformationConfig) *ImportTemplateUpdate {
+	_u.mutation.AppendDataTransformations(v)
+	return _u
 }
 
 // ClearDataTransformations clears the value of the "data_transformations" field.
-func (itu *ImportTemplateUpdate) ClearDataTransformations() *ImportTemplateUpdate {
-	itu.mutation.ClearDataTransformations()
-	return itu
+func (_u *ImportTemplateUpdate) ClearDataTransformations() *ImportTemplateUpdate {
+	_u.mutation.ClearDataTransformations()
+	return _u
 }
 
 // SetDataFilters sets the "data_filters" field.
-func (itu *ImportTemplateUpdate) SetDataFilters(sfc []schema.DataFilterConfig) *ImportTemplateUpdate {
-	itu.mutation.SetDataFilters(sfc)
-	return itu
+func (_u *ImportTemplateUpdate) SetDataFilters(v []schema.DataFilterConfig) *ImportTemplateUpdate {
+	_u.mutation.SetDataFilters(v)
+	return _u
 }
 
-// AppendDataFilters appends sfc to the "data_filters" field.
-func (itu *ImportTemplateUpdate) AppendDataFilters(sfc []schema.DataFilterConfig) *ImportTemplateUpdate {
-	itu.mutation.AppendDataFilters(sfc)
-	return itu
+// AppendDataFilters appends value to the "data_filters" field.
+func (_u *ImportTemplateUpdate) AppendDataFilters(v []schema.DataFilterConfig) *ImportTemplateUpdate {
+	_u.mutation.AppendDataFilters(v)
+	return _u
 }
 
 // ClearDataFilters clears the value of the "data_filters" field.
-func (itu *ImportTemplateUpdate) ClearDataFilters() *ImportTemplateUpdate {
-	itu.mutation.ClearDataFilters()
-	return itu
+func (_u *ImportTemplateUpdate) ClearDataFilters() *ImportTemplateUpdate {
+	_u.mutation.ClearDataFilters()
+	return _u
 }
 
 // SetDataCleaners sets the "data_cleaners" field.
-func (itu *ImportTemplateUpdate) SetDataCleaners(scc []schema.DataCleanerConfig) *ImportTemplateUpdate {
-	itu.mutation.SetDataCleaners(scc)
-	return itu
+func (_u *ImportTemplateUpdate) SetDataCleaners(v []schema.DataCleanerConfig) *ImportTemplateUpdate {
+	_u.mutation.SetDataCleaners(v)
+	return _u
 }
 
-// AppendDataCleaners appends scc to the "data_cleaners" field.
-func (itu *ImportTemplateUpdate) AppendDataCleaners(scc []schema.DataCleanerConfig) *ImportTemplateUpdate {
-	itu.mutation.AppendDataCleaners(scc)
-	return itu
+// AppendDataCleaners appends value to the "data_cleaners" field.
+func (_u *ImportTemplateUpdate) AppendDataCleaners(v []schema.DataCleanerConfig) *ImportTemplateUpdate {
+	_u.mutation.AppendDataCleaners(v)
+	return _u
 }
 
 // ClearDataCleaners clears the value of the "data_cleaners" field.
-func (itu *ImportTemplateUpdate) ClearDataCleaners() *ImportTemplateUpdate {
-	itu.mutation.ClearDataCleaners()
-	return itu
+func (_u *ImportTemplateUpdate) ClearDataCleaners() *ImportTemplateUpdate {
+	_u.mutation.ClearDataCleaners()
+	return _u
 }
 
 // SetExcelSheetName sets the "excel_sheet_name" field.
-func (itu *ImportTemplateUpdate) SetExcelSheetName(s string) *ImportTemplateUpdate {
-	itu.mutation.SetExcelSheetName(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetExcelSheetName(v string) *ImportTemplateUpdate {
+	_u.mutation.SetExcelSheetName(v)
+	return _u
 }
 
 // SetNillableExcelSheetName sets the "excel_sheet_name" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableExcelSheetName(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetExcelSheetName(*s)
+func (_u *ImportTemplateUpdate) SetNillableExcelSheetName(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetExcelSheetName(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearExcelSheetName clears the value of the "excel_sheet_name" field.
-func (itu *ImportTemplateUpdate) ClearExcelSheetName() *ImportTemplateUpdate {
-	itu.mutation.ClearExcelSheetName()
-	return itu
+func (_u *ImportTemplateUpdate) ClearExcelSheetName() *ImportTemplateUpdate {
+	_u.mutation.ClearExcelSheetName()
+	return _u
 }
 
 // SetExcelHeaderRow sets the "excel_header_row" field.
-func (itu *ImportTemplateUpdate) SetExcelHeaderRow(i int) *ImportTemplateUpdate {
-	itu.mutation.ResetExcelHeaderRow()
-	itu.mutation.SetExcelHeaderRow(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetExcelHeaderRow(v int) *ImportTemplateUpdate {
+	_u.mutation.ResetExcelHeaderRow()
+	_u.mutation.SetExcelHeaderRow(v)
+	return _u
 }
 
 // SetNillableExcelHeaderRow sets the "excel_header_row" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableExcelHeaderRow(i *int) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetExcelHeaderRow(*i)
+func (_u *ImportTemplateUpdate) SetNillableExcelHeaderRow(v *int) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetExcelHeaderRow(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddExcelHeaderRow adds i to the "excel_header_row" field.
-func (itu *ImportTemplateUpdate) AddExcelHeaderRow(i int) *ImportTemplateUpdate {
-	itu.mutation.AddExcelHeaderRow(i)
-	return itu
+// AddExcelHeaderRow adds value to the "excel_header_row" field.
+func (_u *ImportTemplateUpdate) AddExcelHeaderRow(v int) *ImportTemplateUpdate {
+	_u.mutation.AddExcelHeaderRow(v)
+	return _u
 }
 
 // ClearExcelHeaderRow clears the value of the "excel_header_row" field.
-func (itu *ImportTemplateUpdate) ClearExcelHeaderRow() *ImportTemplateUpdate {
-	itu.mutation.ClearExcelHeaderRow()
-	return itu
+func (_u *ImportTemplateUpdate) ClearExcelHeaderRow() *ImportTemplateUpdate {
+	_u.mutation.ClearExcelHeaderRow()
+	return _u
 }
 
 // SetExcelDataStartRow sets the "excel_data_start_row" field.
-func (itu *ImportTemplateUpdate) SetExcelDataStartRow(i int) *ImportTemplateUpdate {
-	itu.mutation.ResetExcelDataStartRow()
-	itu.mutation.SetExcelDataStartRow(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetExcelDataStartRow(v int) *ImportTemplateUpdate {
+	_u.mutation.ResetExcelDataStartRow()
+	_u.mutation.SetExcelDataStartRow(v)
+	return _u
 }
 
 // SetNillableExcelDataStartRow sets the "excel_data_start_row" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableExcelDataStartRow(i *int) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetExcelDataStartRow(*i)
+func (_u *ImportTemplateUpdate) SetNillableExcelDataStartRow(v *int) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetExcelDataStartRow(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddExcelDataStartRow adds i to the "excel_data_start_row" field.
-func (itu *ImportTemplateUpdate) AddExcelDataStartRow(i int) *ImportTemplateUpdate {
-	itu.mutation.AddExcelDataStartRow(i)
-	return itu
+// AddExcelDataStartRow adds value to the "excel_data_start_row" field.
+func (_u *ImportTemplateUpdate) AddExcelDataStartRow(v int) *ImportTemplateUpdate {
+	_u.mutation.AddExcelDataStartRow(v)
+	return _u
 }
 
 // ClearExcelDataStartRow clears the value of the "excel_data_start_row" field.
-func (itu *ImportTemplateUpdate) ClearExcelDataStartRow() *ImportTemplateUpdate {
-	itu.mutation.ClearExcelDataStartRow()
-	return itu
+func (_u *ImportTemplateUpdate) ClearExcelDataStartRow() *ImportTemplateUpdate {
+	_u.mutation.ClearExcelDataStartRow()
+	return _u
 }
 
 // SetExcelColumnMappings sets the "excel_column_mappings" field.
-func (itu *ImportTemplateUpdate) SetExcelColumnMappings(m map[string]string) *ImportTemplateUpdate {
-	itu.mutation.SetExcelColumnMappings(m)
-	return itu
+func (_u *ImportTemplateUpdate) SetExcelColumnMappings(v map[string]string) *ImportTemplateUpdate {
+	_u.mutation.SetExcelColumnMappings(v)
+	return _u
 }
 
 // ClearExcelColumnMappings clears the value of the "excel_column_mappings" field.
-func (itu *ImportTemplateUpdate) ClearExcelColumnMappings() *ImportTemplateUpdate {
-	itu.mutation.ClearExcelColumnMappings()
-	return itu
+func (_u *ImportTemplateUpdate) ClearExcelColumnMappings() *ImportTemplateUpdate {
+	_u.mutation.ClearExcelColumnMappings()
+	return _u
 }
 
 // SetAPIEndpoint sets the "api_endpoint" field.
-func (itu *ImportTemplateUpdate) SetAPIEndpoint(s string) *ImportTemplateUpdate {
-	itu.mutation.SetAPIEndpoint(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetAPIEndpoint(v string) *ImportTemplateUpdate {
+	_u.mutation.SetAPIEndpoint(v)
+	return _u
 }
 
 // SetNillableAPIEndpoint sets the "api_endpoint" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableAPIEndpoint(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetAPIEndpoint(*s)
+func (_u *ImportTemplateUpdate) SetNillableAPIEndpoint(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetAPIEndpoint(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearAPIEndpoint clears the value of the "api_endpoint" field.
-func (itu *ImportTemplateUpdate) ClearAPIEndpoint() *ImportTemplateUpdate {
-	itu.mutation.ClearAPIEndpoint()
-	return itu
+func (_u *ImportTemplateUpdate) ClearAPIEndpoint() *ImportTemplateUpdate {
+	_u.mutation.ClearAPIEndpoint()
+	return _u
 }
 
 // SetAPIMethod sets the "api_method" field.
-func (itu *ImportTemplateUpdate) SetAPIMethod(im importtemplate.APIMethod) *ImportTemplateUpdate {
-	itu.mutation.SetAPIMethod(im)
-	return itu
+func (_u *ImportTemplateUpdate) SetAPIMethod(v importtemplate.APIMethod) *ImportTemplateUpdate {
+	_u.mutation.SetAPIMethod(v)
+	return _u
 }
 
 // SetNillableAPIMethod sets the "api_method" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableAPIMethod(im *importtemplate.APIMethod) *ImportTemplateUpdate {
-	if im != nil {
-		itu.SetAPIMethod(*im)
+func (_u *ImportTemplateUpdate) SetNillableAPIMethod(v *importtemplate.APIMethod) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetAPIMethod(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearAPIMethod clears the value of the "api_method" field.
-func (itu *ImportTemplateUpdate) ClearAPIMethod() *ImportTemplateUpdate {
-	itu.mutation.ClearAPIMethod()
-	return itu
+func (_u *ImportTemplateUpdate) ClearAPIMethod() *ImportTemplateUpdate {
+	_u.mutation.ClearAPIMethod()
+	return _u
 }
 
 // SetAPIHeaders sets the "api_headers" field.
-func (itu *ImportTemplateUpdate) SetAPIHeaders(m map[string]string) *ImportTemplateUpdate {
-	itu.mutation.SetAPIHeaders(m)
-	return itu
+func (_u *ImportTemplateUpdate) SetAPIHeaders(v map[string]string) *ImportTemplateUpdate {
+	_u.mutation.SetAPIHeaders(v)
+	return _u
 }
 
 // ClearAPIHeaders clears the value of the "api_headers" field.
-func (itu *ImportTemplateUpdate) ClearAPIHeaders() *ImportTemplateUpdate {
-	itu.mutation.ClearAPIHeaders()
-	return itu
+func (_u *ImportTemplateUpdate) ClearAPIHeaders() *ImportTemplateUpdate {
+	_u.mutation.ClearAPIHeaders()
+	return _u
 }
 
 // SetAPIParams sets the "api_params" field.
-func (itu *ImportTemplateUpdate) SetAPIParams(m map[string]interface{}) *ImportTemplateUpdate {
-	itu.mutation.SetAPIParams(m)
-	return itu
+func (_u *ImportTemplateUpdate) SetAPIParams(v map[string]interface{}) *ImportTemplateUpdate {
+	_u.mutation.SetAPIParams(v)
+	return _u
 }
 
 // ClearAPIParams clears the value of the "api_params" field.
-func (itu *ImportTemplateUpdate) ClearAPIParams() *ImportTemplateUpdate {
-	itu.mutation.ClearAPIParams()
-	return itu
+func (_u *ImportTemplateUpdate) ClearAPIParams() *ImportTemplateUpdate {
+	_u.mutation.ClearAPIParams()
+	return _u
 }
 
 // SetAPIResponsePath sets the "api_response_path" field.
-func (itu *ImportTemplateUpdate) SetAPIResponsePath(s string) *ImportTemplateUpdate {
-	itu.mutation.SetAPIResponsePath(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetAPIResponsePath(v string) *ImportTemplateUpdate {
+	_u.mutation.SetAPIResponsePath(v)
+	return _u
 }
 
 // SetNillableAPIResponsePath sets the "api_response_path" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableAPIResponsePath(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetAPIResponsePath(*s)
+func (_u *ImportTemplateUpdate) SetNillableAPIResponsePath(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetAPIResponsePath(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearAPIResponsePath clears the value of the "api_response_path" field.
-func (itu *ImportTemplateUpdate) ClearAPIResponsePath() *ImportTemplateUpdate {
-	itu.mutation.ClearAPIResponsePath()
-	return itu
+func (_u *ImportTemplateUpdate) ClearAPIResponsePath() *ImportTemplateUpdate {
+	_u.mutation.ClearAPIResponsePath()
+	return _u
 }
 
 // SetMaxErrors sets the "max_errors" field.
-func (itu *ImportTemplateUpdate) SetMaxErrors(i int) *ImportTemplateUpdate {
-	itu.mutation.ResetMaxErrors()
-	itu.mutation.SetMaxErrors(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetMaxErrors(v int) *ImportTemplateUpdate {
+	_u.mutation.ResetMaxErrors()
+	_u.mutation.SetMaxErrors(v)
+	return _u
 }
 
 // SetNillableMaxErrors sets the "max_errors" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableMaxErrors(i *int) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetMaxErrors(*i)
+func (_u *ImportTemplateUpdate) SetNillableMaxErrors(v *int) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetMaxErrors(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddMaxErrors adds i to the "max_errors" field.
-func (itu *ImportTemplateUpdate) AddMaxErrors(i int) *ImportTemplateUpdate {
-	itu.mutation.AddMaxErrors(i)
-	return itu
+// AddMaxErrors adds value to the "max_errors" field.
+func (_u *ImportTemplateUpdate) AddMaxErrors(v int) *ImportTemplateUpdate {
+	_u.mutation.AddMaxErrors(v)
+	return _u
 }
 
 // ClearMaxErrors clears the value of the "max_errors" field.
-func (itu *ImportTemplateUpdate) ClearMaxErrors() *ImportTemplateUpdate {
-	itu.mutation.ClearMaxErrors()
-	return itu
+func (_u *ImportTemplateUpdate) ClearMaxErrors() *ImportTemplateUpdate {
+	_u.mutation.ClearMaxErrors()
+	return _u
 }
 
 // SetStopOnFirstError sets the "stop_on_first_error" field.
-func (itu *ImportTemplateUpdate) SetStopOnFirstError(b bool) *ImportTemplateUpdate {
-	itu.mutation.SetStopOnFirstError(b)
-	return itu
+func (_u *ImportTemplateUpdate) SetStopOnFirstError(v bool) *ImportTemplateUpdate {
+	_u.mutation.SetStopOnFirstError(v)
+	return _u
 }
 
 // SetNillableStopOnFirstError sets the "stop_on_first_error" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableStopOnFirstError(b *bool) *ImportTemplateUpdate {
-	if b != nil {
-		itu.SetStopOnFirstError(*b)
+func (_u *ImportTemplateUpdate) SetNillableStopOnFirstError(v *bool) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetStopOnFirstError(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetSkipInvalidRows sets the "skip_invalid_rows" field.
-func (itu *ImportTemplateUpdate) SetSkipInvalidRows(b bool) *ImportTemplateUpdate {
-	itu.mutation.SetSkipInvalidRows(b)
-	return itu
+func (_u *ImportTemplateUpdate) SetSkipInvalidRows(v bool) *ImportTemplateUpdate {
+	_u.mutation.SetSkipInvalidRows(v)
+	return _u
 }
 
 // SetNillableSkipInvalidRows sets the "skip_invalid_rows" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableSkipInvalidRows(b *bool) *ImportTemplateUpdate {
-	if b != nil {
-		itu.SetSkipInvalidRows(*b)
+func (_u *ImportTemplateUpdate) SetNillableSkipInvalidRows(v *bool) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetSkipInvalidRows(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetErrorHandlingMode sets the "error_handling_mode" field.
-func (itu *ImportTemplateUpdate) SetErrorHandlingMode(ihm importtemplate.ErrorHandlingMode) *ImportTemplateUpdate {
-	itu.mutation.SetErrorHandlingMode(ihm)
-	return itu
+func (_u *ImportTemplateUpdate) SetErrorHandlingMode(v importtemplate.ErrorHandlingMode) *ImportTemplateUpdate {
+	_u.mutation.SetErrorHandlingMode(v)
+	return _u
 }
 
 // SetNillableErrorHandlingMode sets the "error_handling_mode" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableErrorHandlingMode(ihm *importtemplate.ErrorHandlingMode) *ImportTemplateUpdate {
-	if ihm != nil {
-		itu.SetErrorHandlingMode(*ihm)
+func (_u *ImportTemplateUpdate) SetNillableErrorHandlingMode(v *importtemplate.ErrorHandlingMode) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetErrorHandlingMode(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetBatchSize sets the "batch_size" field.
-func (itu *ImportTemplateUpdate) SetBatchSize(i int) *ImportTemplateUpdate {
-	itu.mutation.ResetBatchSize()
-	itu.mutation.SetBatchSize(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetBatchSize(v int) *ImportTemplateUpdate {
+	_u.mutation.ResetBatchSize()
+	_u.mutation.SetBatchSize(v)
+	return _u
 }
 
 // SetNillableBatchSize sets the "batch_size" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableBatchSize(i *int) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetBatchSize(*i)
+func (_u *ImportTemplateUpdate) SetNillableBatchSize(v *int) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetBatchSize(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddBatchSize adds i to the "batch_size" field.
-func (itu *ImportTemplateUpdate) AddBatchSize(i int) *ImportTemplateUpdate {
-	itu.mutation.AddBatchSize(i)
-	return itu
+// AddBatchSize adds value to the "batch_size" field.
+func (_u *ImportTemplateUpdate) AddBatchSize(v int) *ImportTemplateUpdate {
+	_u.mutation.AddBatchSize(v)
+	return _u
 }
 
 // ClearBatchSize clears the value of the "batch_size" field.
-func (itu *ImportTemplateUpdate) ClearBatchSize() *ImportTemplateUpdate {
-	itu.mutation.ClearBatchSize()
-	return itu
+func (_u *ImportTemplateUpdate) ClearBatchSize() *ImportTemplateUpdate {
+	_u.mutation.ClearBatchSize()
+	return _u
 }
 
 // SetMaxParallelJobs sets the "max_parallel_jobs" field.
-func (itu *ImportTemplateUpdate) SetMaxParallelJobs(i int) *ImportTemplateUpdate {
-	itu.mutation.ResetMaxParallelJobs()
-	itu.mutation.SetMaxParallelJobs(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetMaxParallelJobs(v int) *ImportTemplateUpdate {
+	_u.mutation.ResetMaxParallelJobs()
+	_u.mutation.SetMaxParallelJobs(v)
+	return _u
 }
 
 // SetNillableMaxParallelJobs sets the "max_parallel_jobs" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableMaxParallelJobs(i *int) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetMaxParallelJobs(*i)
+func (_u *ImportTemplateUpdate) SetNillableMaxParallelJobs(v *int) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetMaxParallelJobs(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddMaxParallelJobs adds i to the "max_parallel_jobs" field.
-func (itu *ImportTemplateUpdate) AddMaxParallelJobs(i int) *ImportTemplateUpdate {
-	itu.mutation.AddMaxParallelJobs(i)
-	return itu
+// AddMaxParallelJobs adds value to the "max_parallel_jobs" field.
+func (_u *ImportTemplateUpdate) AddMaxParallelJobs(v int) *ImportTemplateUpdate {
+	_u.mutation.AddMaxParallelJobs(v)
+	return _u
 }
 
 // ClearMaxParallelJobs clears the value of the "max_parallel_jobs" field.
-func (itu *ImportTemplateUpdate) ClearMaxParallelJobs() *ImportTemplateUpdate {
-	itu.mutation.ClearMaxParallelJobs()
-	return itu
+func (_u *ImportTemplateUpdate) ClearMaxParallelJobs() *ImportTemplateUpdate {
+	_u.mutation.ClearMaxParallelJobs()
+	return _u
 }
 
 // SetEnableTransaction sets the "enable_transaction" field.
-func (itu *ImportTemplateUpdate) SetEnableTransaction(b bool) *ImportTemplateUpdate {
-	itu.mutation.SetEnableTransaction(b)
-	return itu
+func (_u *ImportTemplateUpdate) SetEnableTransaction(v bool) *ImportTemplateUpdate {
+	_u.mutation.SetEnableTransaction(v)
+	return _u
 }
 
 // SetNillableEnableTransaction sets the "enable_transaction" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableEnableTransaction(b *bool) *ImportTemplateUpdate {
-	if b != nil {
-		itu.SetEnableTransaction(*b)
+func (_u *ImportTemplateUpdate) SetNillableEnableTransaction(v *bool) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetEnableTransaction(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetTags sets the "tags" field.
-func (itu *ImportTemplateUpdate) SetTags(s []string) *ImportTemplateUpdate {
-	itu.mutation.SetTags(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetTags(v []string) *ImportTemplateUpdate {
+	_u.mutation.SetTags(v)
+	return _u
 }
 
-// AppendTags appends s to the "tags" field.
-func (itu *ImportTemplateUpdate) AppendTags(s []string) *ImportTemplateUpdate {
-	itu.mutation.AppendTags(s)
-	return itu
+// AppendTags appends value to the "tags" field.
+func (_u *ImportTemplateUpdate) AppendTags(v []string) *ImportTemplateUpdate {
+	_u.mutation.AppendTags(v)
+	return _u
 }
 
 // ClearTags clears the value of the "tags" field.
-func (itu *ImportTemplateUpdate) ClearTags() *ImportTemplateUpdate {
-	itu.mutation.ClearTags()
-	return itu
+func (_u *ImportTemplateUpdate) ClearTags() *ImportTemplateUpdate {
+	_u.mutation.ClearTags()
+	return _u
 }
 
 // SetMetadata sets the "metadata" field.
-func (itu *ImportTemplateUpdate) SetMetadata(m map[string]interface{}) *ImportTemplateUpdate {
-	itu.mutation.SetMetadata(m)
-	return itu
+func (_u *ImportTemplateUpdate) SetMetadata(v map[string]interface{}) *ImportTemplateUpdate {
+	_u.mutation.SetMetadata(v)
+	return _u
 }
 
 // ClearMetadata clears the value of the "metadata" field.
-func (itu *ImportTemplateUpdate) ClearMetadata() *ImportTemplateUpdate {
-	itu.mutation.ClearMetadata()
-	return itu
+func (_u *ImportTemplateUpdate) ClearMetadata() *ImportTemplateUpdate {
+	_u.mutation.ClearMetadata()
+	return _u
 }
 
 // SetIcon sets the "icon" field.
-func (itu *ImportTemplateUpdate) SetIcon(s string) *ImportTemplateUpdate {
-	itu.mutation.SetIcon(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetIcon(v string) *ImportTemplateUpdate {
+	_u.mutation.SetIcon(v)
+	return _u
 }
 
 // SetNillableIcon sets the "icon" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableIcon(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetIcon(*s)
+func (_u *ImportTemplateUpdate) SetNillableIcon(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetIcon(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearIcon clears the value of the "icon" field.
-func (itu *ImportTemplateUpdate) ClearIcon() *ImportTemplateUpdate {
-	itu.mutation.ClearIcon()
-	return itu
+func (_u *ImportTemplateUpdate) ClearIcon() *ImportTemplateUpdate {
+	_u.mutation.ClearIcon()
+	return _u
 }
 
 // SetCategory sets the "category" field.
-func (itu *ImportTemplateUpdate) SetCategory(s string) *ImportTemplateUpdate {
-	itu.mutation.SetCategory(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetCategory(v string) *ImportTemplateUpdate {
+	_u.mutation.SetCategory(v)
+	return _u
 }
 
 // SetNillableCategory sets the "category" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableCategory(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetCategory(*s)
+func (_u *ImportTemplateUpdate) SetNillableCategory(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetCategory(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearCategory clears the value of the "category" field.
-func (itu *ImportTemplateUpdate) ClearCategory() *ImportTemplateUpdate {
-	itu.mutation.ClearCategory()
-	return itu
+func (_u *ImportTemplateUpdate) ClearCategory() *ImportTemplateUpdate {
+	_u.mutation.ClearCategory()
+	return _u
 }
 
 // SetUsageCount sets the "usage_count" field.
-func (itu *ImportTemplateUpdate) SetUsageCount(i int) *ImportTemplateUpdate {
-	itu.mutation.ResetUsageCount()
-	itu.mutation.SetUsageCount(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetUsageCount(v int) *ImportTemplateUpdate {
+	_u.mutation.ResetUsageCount()
+	_u.mutation.SetUsageCount(v)
+	return _u
 }
 
 // SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableUsageCount(i *int) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetUsageCount(*i)
+func (_u *ImportTemplateUpdate) SetNillableUsageCount(v *int) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetUsageCount(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddUsageCount adds i to the "usage_count" field.
-func (itu *ImportTemplateUpdate) AddUsageCount(i int) *ImportTemplateUpdate {
-	itu.mutation.AddUsageCount(i)
-	return itu
+// AddUsageCount adds value to the "usage_count" field.
+func (_u *ImportTemplateUpdate) AddUsageCount(v int) *ImportTemplateUpdate {
+	_u.mutation.AddUsageCount(v)
+	return _u
 }
 
 // SetSuccessCount sets the "success_count" field.
-func (itu *ImportTemplateUpdate) SetSuccessCount(i int) *ImportTemplateUpdate {
-	itu.mutation.ResetSuccessCount()
-	itu.mutation.SetSuccessCount(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetSuccessCount(v int) *ImportTemplateUpdate {
+	_u.mutation.ResetSuccessCount()
+	_u.mutation.SetSuccessCount(v)
+	return _u
 }
 
 // SetNillableSuccessCount sets the "success_count" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableSuccessCount(i *int) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetSuccessCount(*i)
+func (_u *ImportTemplateUpdate) SetNillableSuccessCount(v *int) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetSuccessCount(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddSuccessCount adds i to the "success_count" field.
-func (itu *ImportTemplateUpdate) AddSuccessCount(i int) *ImportTemplateUpdate {
-	itu.mutation.AddSuccessCount(i)
-	return itu
+// AddSuccessCount adds value to the "success_count" field.
+func (_u *ImportTemplateUpdate) AddSuccessCount(v int) *ImportTemplateUpdate {
+	_u.mutation.AddSuccessCount(v)
+	return _u
 }
 
 // SetErrorCount sets the "error_count" field.
-func (itu *ImportTemplateUpdate) SetErrorCount(i int) *ImportTemplateUpdate {
-	itu.mutation.ResetErrorCount()
-	itu.mutation.SetErrorCount(i)
-	return itu
+func (_u *ImportTemplateUpdate) SetErrorCount(v int) *ImportTemplateUpdate {
+	_u.mutation.ResetErrorCount()
+	_u.mutation.SetErrorCount(v)
+	return _u
 }
 
 // SetNillableErrorCount sets the "error_count" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableErrorCount(i *int) *ImportTemplateUpdate {
-	if i != nil {
-		itu.SetErrorCount(*i)
+func (_u *ImportTemplateUpdate) SetNillableErrorCount(v *int) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetErrorCount(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddErrorCount adds i to the "error_count" field.
-func (itu *ImportTemplateUpdate) AddErrorCount(i int) *ImportTemplateUpdate {
-	itu.mutation.AddErrorCount(i)
-	return itu
+// AddErrorCount adds value to the "error_count" field.
+func (_u *ImportTemplateUpdate) AddErrorCount(v int) *ImportTemplateUpdate {
+	_u.mutation.AddErrorCount(v)
+	return _u
 }
 
 // SetSuccessRate sets the "success_rate" field.
-func (itu *ImportTemplateUpdate) SetSuccessRate(f float64) *ImportTemplateUpdate {
-	itu.mutation.ResetSuccessRate()
-	itu.mutation.SetSuccessRate(f)
-	return itu
+func (_u *ImportTemplateUpdate) SetSuccessRate(v float64) *ImportTemplateUpdate {
+	_u.mutation.ResetSuccessRate()
+	_u.mutation.SetSuccessRate(v)
+	return _u
 }
 
 // SetNillableSuccessRate sets the "success_rate" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableSuccessRate(f *float64) *ImportTemplateUpdate {
-	if f != nil {
-		itu.SetSuccessRate(*f)
+func (_u *ImportTemplateUpdate) SetNillableSuccessRate(v *float64) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetSuccessRate(*v)
 	}
-	return itu
+	return _u
 }
 
-// AddSuccessRate adds f to the "success_rate" field.
-func (itu *ImportTemplateUpdate) AddSuccessRate(f float64) *ImportTemplateUpdate {
-	itu.mutation.AddSuccessRate(f)
-	return itu
+// AddSuccessRate adds value to the "success_rate" field.
+func (_u *ImportTemplateUpdate) AddSuccessRate(v float64) *ImportTemplateUpdate {
+	_u.mutation.AddSuccessRate(v)
+	return _u
 }
 
 // SetIsPublic sets the "is_public" field.
-func (itu *ImportTemplateUpdate) SetIsPublic(b bool) *ImportTemplateUpdate {
-	itu.mutation.SetIsPublic(b)
-	return itu
+func (_u *ImportTemplateUpdate) SetIsPublic(v bool) *ImportTemplateUpdate {
+	_u.mutation.SetIsPublic(v)
+	return _u
 }
 
 // SetNillableIsPublic sets the "is_public" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableIsPublic(b *bool) *ImportTemplateUpdate {
-	if b != nil {
-		itu.SetIsPublic(*b)
+func (_u *ImportTemplateUpdate) SetNillableIsPublic(v *bool) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetIsPublic(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetIsSystem sets the "is_system" field.
-func (itu *ImportTemplateUpdate) SetIsSystem(b bool) *ImportTemplateUpdate {
-	itu.mutation.SetIsSystem(b)
-	return itu
+func (_u *ImportTemplateUpdate) SetIsSystem(v bool) *ImportTemplateUpdate {
+	_u.mutation.SetIsSystem(v)
+	return _u
 }
 
 // SetNillableIsSystem sets the "is_system" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableIsSystem(b *bool) *ImportTemplateUpdate {
-	if b != nil {
-		itu.SetIsSystem(*b)
+func (_u *ImportTemplateUpdate) SetNillableIsSystem(v *bool) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetIsSystem(*v)
 	}
-	return itu
+	return _u
 }
 
 // SetSharedWith sets the "shared_with" field.
-func (itu *ImportTemplateUpdate) SetSharedWith(s []string) *ImportTemplateUpdate {
-	itu.mutation.SetSharedWith(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetSharedWith(v []string) *ImportTemplateUpdate {
+	_u.mutation.SetSharedWith(v)
+	return _u
 }
 
-// AppendSharedWith appends s to the "shared_with" field.
-func (itu *ImportTemplateUpdate) AppendSharedWith(s []string) *ImportTemplateUpdate {
-	itu.mutation.AppendSharedWith(s)
-	return itu
+// AppendSharedWith appends value to the "shared_with" field.
+func (_u *ImportTemplateUpdate) AppendSharedWith(v []string) *ImportTemplateUpdate {
+	_u.mutation.AppendSharedWith(v)
+	return _u
 }
 
 // ClearSharedWith clears the value of the "shared_with" field.
-func (itu *ImportTemplateUpdate) ClearSharedWith() *ImportTemplateUpdate {
-	itu.mutation.ClearSharedWith()
-	return itu
+func (_u *ImportTemplateUpdate) ClearSharedWith() *ImportTemplateUpdate {
+	_u.mutation.ClearSharedWith()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (itu *ImportTemplateUpdate) SetCreatedBy(u uuid.UUID) *ImportTemplateUpdate {
-	itu.mutation.SetCreatedBy(u)
-	return itu
+func (_u *ImportTemplateUpdate) SetCreatedBy(v uuid.UUID) *ImportTemplateUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableCreatedBy(u *uuid.UUID) *ImportTemplateUpdate {
-	if u != nil {
-		itu.SetCreatedBy(*u)
+func (_u *ImportTemplateUpdate) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (itu *ImportTemplateUpdate) ClearCreatedBy() *ImportTemplateUpdate {
-	itu.mutation.ClearCreatedBy()
-	return itu
+func (_u *ImportTemplateUpdate) ClearCreatedBy() *ImportTemplateUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetCreatedByName sets the "created_by_name" field.
-func (itu *ImportTemplateUpdate) SetCreatedByName(s string) *ImportTemplateUpdate {
-	itu.mutation.SetCreatedByName(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetCreatedByName(v string) *ImportTemplateUpdate {
+	_u.mutation.SetCreatedByName(v)
+	return _u
 }
 
 // SetNillableCreatedByName sets the "created_by_name" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableCreatedByName(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetCreatedByName(*s)
+func (_u *ImportTemplateUpdate) SetNillableCreatedByName(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetCreatedByName(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearCreatedByName clears the value of the "created_by_name" field.
-func (itu *ImportTemplateUpdate) ClearCreatedByName() *ImportTemplateUpdate {
-	itu.mutation.ClearCreatedByName()
-	return itu
+func (_u *ImportTemplateUpdate) ClearCreatedByName() *ImportTemplateUpdate {
+	_u.mutation.ClearCreatedByName()
+	return _u
 }
 
 // SetApprovedBy sets the "approved_by" field.
-func (itu *ImportTemplateUpdate) SetApprovedBy(u uuid.UUID) *ImportTemplateUpdate {
-	itu.mutation.SetApprovedBy(u)
-	return itu
+func (_u *ImportTemplateUpdate) SetApprovedBy(v uuid.UUID) *ImportTemplateUpdate {
+	_u.mutation.SetApprovedBy(v)
+	return _u
 }
 
 // SetNillableApprovedBy sets the "approved_by" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableApprovedBy(u *uuid.UUID) *ImportTemplateUpdate {
-	if u != nil {
-		itu.SetApprovedBy(*u)
+func (_u *ImportTemplateUpdate) SetNillableApprovedBy(v *uuid.UUID) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetApprovedBy(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearApprovedBy clears the value of the "approved_by" field.
-func (itu *ImportTemplateUpdate) ClearApprovedBy() *ImportTemplateUpdate {
-	itu.mutation.ClearApprovedBy()
-	return itu
+func (_u *ImportTemplateUpdate) ClearApprovedBy() *ImportTemplateUpdate {
+	_u.mutation.ClearApprovedBy()
+	return _u
 }
 
 // SetApprovedByName sets the "approved_by_name" field.
-func (itu *ImportTemplateUpdate) SetApprovedByName(s string) *ImportTemplateUpdate {
-	itu.mutation.SetApprovedByName(s)
-	return itu
+func (_u *ImportTemplateUpdate) SetApprovedByName(v string) *ImportTemplateUpdate {
+	_u.mutation.SetApprovedByName(v)
+	return _u
 }
 
 // SetNillableApprovedByName sets the "approved_by_name" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableApprovedByName(s *string) *ImportTemplateUpdate {
-	if s != nil {
-		itu.SetApprovedByName(*s)
+func (_u *ImportTemplateUpdate) SetNillableApprovedByName(v *string) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetApprovedByName(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearApprovedByName clears the value of the "approved_by_name" field.
-func (itu *ImportTemplateUpdate) ClearApprovedByName() *ImportTemplateUpdate {
-	itu.mutation.ClearApprovedByName()
-	return itu
+func (_u *ImportTemplateUpdate) ClearApprovedByName() *ImportTemplateUpdate {
+	_u.mutation.ClearApprovedByName()
+	return _u
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (itu *ImportTemplateUpdate) SetApprovedAt(t time.Time) *ImportTemplateUpdate {
-	itu.mutation.SetApprovedAt(t)
-	return itu
+func (_u *ImportTemplateUpdate) SetApprovedAt(v time.Time) *ImportTemplateUpdate {
+	_u.mutation.SetApprovedAt(v)
+	return _u
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (itu *ImportTemplateUpdate) SetNillableApprovedAt(t *time.Time) *ImportTemplateUpdate {
-	if t != nil {
-		itu.SetApprovedAt(*t)
+func (_u *ImportTemplateUpdate) SetNillableApprovedAt(v *time.Time) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetApprovedAt(*v)
 	}
-	return itu
+	return _u
 }
 
 // ClearApprovedAt clears the value of the "approved_at" field.
-func (itu *ImportTemplateUpdate) ClearApprovedAt() *ImportTemplateUpdate {
-	itu.mutation.ClearApprovedAt()
-	return itu
+func (_u *ImportTemplateUpdate) ClearApprovedAt() *ImportTemplateUpdate {
+	_u.mutation.ClearApprovedAt()
+	return _u
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (itu *ImportTemplateUpdate) SetCiType(c *CiType) *ImportTemplateUpdate {
-	return itu.SetCiTypeID(c.ID)
+func (_u *ImportTemplateUpdate) SetCiType(v *CiType) *ImportTemplateUpdate {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // AddTaskIDs adds the "tasks" edge to the ImportTask entity by IDs.
-func (itu *ImportTemplateUpdate) AddTaskIDs(ids ...uint64) *ImportTemplateUpdate {
-	itu.mutation.AddTaskIDs(ids...)
-	return itu
+func (_u *ImportTemplateUpdate) AddTaskIDs(ids ...uint64) *ImportTemplateUpdate {
+	_u.mutation.AddTaskIDs(ids...)
+	return _u
 }
 
 // AddTasks adds the "tasks" edges to the ImportTask entity.
-func (itu *ImportTemplateUpdate) AddTasks(i ...*ImportTask) *ImportTemplateUpdate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *ImportTemplateUpdate) AddTasks(v ...*ImportTask) *ImportTemplateUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return itu.AddTaskIDs(ids...)
+	return _u.AddTaskIDs(ids...)
 }
 
 // Mutation returns the ImportTemplateMutation object of the builder.
-func (itu *ImportTemplateUpdate) Mutation() *ImportTemplateMutation {
-	return itu.mutation
+func (_u *ImportTemplateUpdate) Mutation() *ImportTemplateMutation {
+	return _u.mutation
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (itu *ImportTemplateUpdate) ClearCiType() *ImportTemplateUpdate {
-	itu.mutation.ClearCiType()
-	return itu
+func (_u *ImportTemplateUpdate) ClearCiType() *ImportTemplateUpdate {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // ClearTasks clears all "tasks" edges to the ImportTask entity.
-func (itu *ImportTemplateUpdate) ClearTasks() *ImportTemplateUpdate {
-	itu.mutation.ClearTasks()
-	return itu
+func (_u *ImportTemplateUpdate) ClearTasks() *ImportTemplateUpdate {
+	_u.mutation.ClearTasks()
+	return _u
 }
 
 // RemoveTaskIDs removes the "tasks" edge to ImportTask entities by IDs.
-func (itu *ImportTemplateUpdate) RemoveTaskIDs(ids ...uint64) *ImportTemplateUpdate {
-	itu.mutation.RemoveTaskIDs(ids...)
-	return itu
+func (_u *ImportTemplateUpdate) RemoveTaskIDs(ids ...uint64) *ImportTemplateUpdate {
+	_u.mutation.RemoveTaskIDs(ids...)
+	return _u
 }
 
 // RemoveTasks removes "tasks" edges to ImportTask entities.
-func (itu *ImportTemplateUpdate) RemoveTasks(i ...*ImportTask) *ImportTemplateUpdate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *ImportTemplateUpdate) RemoveTasks(v ...*ImportTask) *ImportTemplateUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return itu.RemoveTaskIDs(ids...)
+	return _u.RemoveTaskIDs(ids...)
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (itu *ImportTemplateUpdate) Save(ctx context.Context) (int, error) {
-	if err := itu.defaults(); err != nil {
+func (_u *ImportTemplateUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, itu.sqlSave, itu.mutation, itu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (itu *ImportTemplateUpdate) SaveX(ctx context.Context) int {
-	affected, err := itu.Save(ctx)
+func (_u *ImportTemplateUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1048,108 +1048,108 @@ func (itu *ImportTemplateUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (itu *ImportTemplateUpdate) Exec(ctx context.Context) error {
-	_, err := itu.Save(ctx)
+func (_u *ImportTemplateUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (itu *ImportTemplateUpdate) ExecX(ctx context.Context) {
-	if err := itu.Exec(ctx); err != nil {
+func (_u *ImportTemplateUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (itu *ImportTemplateUpdate) defaults() error {
-	if _, ok := itu.mutation.UpdatedAt(); !ok {
+func (_u *ImportTemplateUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if importtemplate.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importtemplate.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importtemplate.UpdateDefaultUpdatedAt()
-		itu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (itu *ImportTemplateUpdate) check() error {
-	if v, ok := itu.mutation.Name(); ok {
+func (_u *ImportTemplateUpdate) check() error {
+	if v, ok := _u.mutation.Name(); ok {
 		if err := importtemplate.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.name": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.Code(); ok {
+	if v, ok := _u.mutation.Code(); ok {
 		if err := importtemplate.CodeValidator(v); err != nil {
 			return &ValidationError{Name: "code", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.code": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.Description(); ok {
+	if v, ok := _u.mutation.Description(); ok {
 		if err := importtemplate.DescriptionValidator(v); err != nil {
 			return &ValidationError{Name: "description", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.description": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.Version(); ok {
+	if v, ok := _u.mutation.Version(); ok {
 		if err := importtemplate.VersionValidator(v); err != nil {
 			return &ValidationError{Name: "version", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.version": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.GetType(); ok {
+	if v, ok := _u.mutation.GetType(); ok {
 		if err := importtemplate.TypeValidator(v); err != nil {
 			return &ValidationError{Name: "type", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.type": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.ImportMode(); ok {
+	if v, ok := _u.mutation.ImportMode(); ok {
 		if err := importtemplate.ImportModeValidator(v); err != nil {
 			return &ValidationError{Name: "import_mode", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.import_mode": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.CiTypeName(); ok {
+	if v, ok := _u.mutation.CiTypeName(); ok {
 		if err := importtemplate.CiTypeNameValidator(v); err != nil {
 			return &ValidationError{Name: "ci_type_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.ci_type_name": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.ExcelSheetName(); ok {
+	if v, ok := _u.mutation.ExcelSheetName(); ok {
 		if err := importtemplate.ExcelSheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "excel_sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.excel_sheet_name": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.APIEndpoint(); ok {
+	if v, ok := _u.mutation.APIEndpoint(); ok {
 		if err := importtemplate.APIEndpointValidator(v); err != nil {
 			return &ValidationError{Name: "api_endpoint", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_endpoint": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.APIMethod(); ok {
+	if v, ok := _u.mutation.APIMethod(); ok {
 		if err := importtemplate.APIMethodValidator(v); err != nil {
 			return &ValidationError{Name: "api_method", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_method": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.APIResponsePath(); ok {
+	if v, ok := _u.mutation.APIResponsePath(); ok {
 		if err := importtemplate.APIResponsePathValidator(v); err != nil {
 			return &ValidationError{Name: "api_response_path", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_response_path": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.ErrorHandlingMode(); ok {
+	if v, ok := _u.mutation.ErrorHandlingMode(); ok {
 		if err := importtemplate.ErrorHandlingModeValidator(v); err != nil {
 			return &ValidationError{Name: "error_handling_mode", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.error_handling_mode": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.Icon(); ok {
+	if v, ok := _u.mutation.Icon(); ok {
 		if err := importtemplate.IconValidator(v); err != nil {
 			return &ValidationError{Name: "icon", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.icon": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.Category(); ok {
+	if v, ok := _u.mutation.Category(); ok {
 		if err := importtemplate.CategoryValidator(v); err != nil {
 			return &ValidationError{Name: "category", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.category": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.CreatedByName(); ok {
+	if v, ok := _u.mutation.CreatedByName(); ok {
 		if err := importtemplate.CreatedByNameValidator(v); err != nil {
 			return &ValidationError{Name: "created_by_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.created_by_name": %w`, err)}
 		}
 	}
-	if v, ok := itu.mutation.ApprovedByName(); ok {
+	if v, ok := _u.mutation.ApprovedByName(); ok {
 		if err := importtemplate.ApprovedByNameValidator(v); err != nil {
 			return &ValidationError{Name: "approved_by_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.approved_by_name": %w`, err)}
 		}
@@ -1157,342 +1157,342 @@ func (itu *ImportTemplateUpdate) check() error {
 	return nil
 }
 
-func (itu *ImportTemplateUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := itu.check(); err != nil {
-		return n, err
+func (_u *ImportTemplateUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(importtemplate.Table, importtemplate.Columns, sqlgraph.NewFieldSpec(importtemplate.FieldID, field.TypeUint64))
-	if ps := itu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := itu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(importtemplate.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := itu.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(importtemplate.FieldStatus, field.TypeUint8, value)
 	}
-	if value, ok := itu.mutation.AddedStatus(); ok {
+	if value, ok := _u.mutation.AddedStatus(); ok {
 		_spec.AddField(importtemplate.FieldStatus, field.TypeUint8, value)
 	}
-	if itu.mutation.StatusCleared() {
+	if _u.mutation.StatusCleared() {
 		_spec.ClearField(importtemplate.FieldStatus, field.TypeUint8)
 	}
-	if value, ok := itu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(importtemplate.FieldDeletedAt, field.TypeTime, value)
 	}
-	if itu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(importtemplate.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := itu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(importtemplate.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := itu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(importtemplate.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if itu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importtemplate.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := itu.mutation.Name(); ok {
+	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(importtemplate.FieldName, field.TypeString, value)
 	}
-	if value, ok := itu.mutation.Code(); ok {
+	if value, ok := _u.mutation.Code(); ok {
 		_spec.SetField(importtemplate.FieldCode, field.TypeString, value)
 	}
-	if value, ok := itu.mutation.Description(); ok {
+	if value, ok := _u.mutation.Description(); ok {
 		_spec.SetField(importtemplate.FieldDescription, field.TypeString, value)
 	}
-	if itu.mutation.DescriptionCleared() {
+	if _u.mutation.DescriptionCleared() {
 		_spec.ClearField(importtemplate.FieldDescription, field.TypeString)
 	}
-	if value, ok := itu.mutation.Version(); ok {
+	if value, ok := _u.mutation.Version(); ok {
 		_spec.SetField(importtemplate.FieldVersion, field.TypeString, value)
 	}
-	if value, ok := itu.mutation.GetType(); ok {
+	if value, ok := _u.mutation.GetType(); ok {
 		_spec.SetField(importtemplate.FieldType, field.TypeEnum, value)
 	}
-	if value, ok := itu.mutation.ImportMode(); ok {
+	if value, ok := _u.mutation.ImportMode(); ok {
 		_spec.SetField(importtemplate.FieldImportMode, field.TypeEnum, value)
 	}
-	if value, ok := itu.mutation.CiTypeName(); ok {
+	if value, ok := _u.mutation.CiTypeName(); ok {
 		_spec.SetField(importtemplate.FieldCiTypeName, field.TypeString, value)
 	}
-	if itu.mutation.CiTypeNameCleared() {
+	if _u.mutation.CiTypeNameCleared() {
 		_spec.ClearField(importtemplate.FieldCiTypeName, field.TypeString)
 	}
-	if value, ok := itu.mutation.AutoCreateCiType(); ok {
+	if value, ok := _u.mutation.AutoCreateCiType(); ok {
 		_spec.SetField(importtemplate.FieldAutoCreateCiType, field.TypeBool, value)
 	}
-	if value, ok := itu.mutation.FieldMappings(); ok {
+	if value, ok := _u.mutation.FieldMappings(); ok {
 		_spec.SetField(importtemplate.FieldFieldMappings, field.TypeJSON, value)
 	}
-	if value, ok := itu.mutation.AppendedFieldMappings(); ok {
+	if value, ok := _u.mutation.AppendedFieldMappings(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldFieldMappings, value)
 		})
 	}
-	if itu.mutation.FieldMappingsCleared() {
+	if _u.mutation.FieldMappingsCleared() {
 		_spec.ClearField(importtemplate.FieldFieldMappings, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.HeaderMappings(); ok {
+	if value, ok := _u.mutation.HeaderMappings(); ok {
 		_spec.SetField(importtemplate.FieldHeaderMappings, field.TypeJSON, value)
 	}
-	if itu.mutation.HeaderMappingsCleared() {
+	if _u.mutation.HeaderMappingsCleared() {
 		_spec.ClearField(importtemplate.FieldHeaderMappings, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.DefaultValues(); ok {
+	if value, ok := _u.mutation.DefaultValues(); ok {
 		_spec.SetField(importtemplate.FieldDefaultValues, field.TypeJSON, value)
 	}
-	if itu.mutation.DefaultValuesCleared() {
+	if _u.mutation.DefaultValuesCleared() {
 		_spec.ClearField(importtemplate.FieldDefaultValues, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.ComputedFields(); ok {
+	if value, ok := _u.mutation.ComputedFields(); ok {
 		_spec.SetField(importtemplate.FieldComputedFields, field.TypeJSON, value)
 	}
-	if value, ok := itu.mutation.AppendedComputedFields(); ok {
+	if value, ok := _u.mutation.AppendedComputedFields(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldComputedFields, value)
 		})
 	}
-	if itu.mutation.ComputedFieldsCleared() {
+	if _u.mutation.ComputedFieldsCleared() {
 		_spec.ClearField(importtemplate.FieldComputedFields, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.DataTransformations(); ok {
+	if value, ok := _u.mutation.DataTransformations(); ok {
 		_spec.SetField(importtemplate.FieldDataTransformations, field.TypeJSON, value)
 	}
-	if value, ok := itu.mutation.AppendedDataTransformations(); ok {
+	if value, ok := _u.mutation.AppendedDataTransformations(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldDataTransformations, value)
 		})
 	}
-	if itu.mutation.DataTransformationsCleared() {
+	if _u.mutation.DataTransformationsCleared() {
 		_spec.ClearField(importtemplate.FieldDataTransformations, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.DataFilters(); ok {
+	if value, ok := _u.mutation.DataFilters(); ok {
 		_spec.SetField(importtemplate.FieldDataFilters, field.TypeJSON, value)
 	}
-	if value, ok := itu.mutation.AppendedDataFilters(); ok {
+	if value, ok := _u.mutation.AppendedDataFilters(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldDataFilters, value)
 		})
 	}
-	if itu.mutation.DataFiltersCleared() {
+	if _u.mutation.DataFiltersCleared() {
 		_spec.ClearField(importtemplate.FieldDataFilters, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.DataCleaners(); ok {
+	if value, ok := _u.mutation.DataCleaners(); ok {
 		_spec.SetField(importtemplate.FieldDataCleaners, field.TypeJSON, value)
 	}
-	if value, ok := itu.mutation.AppendedDataCleaners(); ok {
+	if value, ok := _u.mutation.AppendedDataCleaners(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldDataCleaners, value)
 		})
 	}
-	if itu.mutation.DataCleanersCleared() {
+	if _u.mutation.DataCleanersCleared() {
 		_spec.ClearField(importtemplate.FieldDataCleaners, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.ExcelSheetName(); ok {
+	if value, ok := _u.mutation.ExcelSheetName(); ok {
 		_spec.SetField(importtemplate.FieldExcelSheetName, field.TypeString, value)
 	}
-	if itu.mutation.ExcelSheetNameCleared() {
+	if _u.mutation.ExcelSheetNameCleared() {
 		_spec.ClearField(importtemplate.FieldExcelSheetName, field.TypeString)
 	}
-	if value, ok := itu.mutation.ExcelHeaderRow(); ok {
+	if value, ok := _u.mutation.ExcelHeaderRow(); ok {
 		_spec.SetField(importtemplate.FieldExcelHeaderRow, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.AddedExcelHeaderRow(); ok {
+	if value, ok := _u.mutation.AddedExcelHeaderRow(); ok {
 		_spec.AddField(importtemplate.FieldExcelHeaderRow, field.TypeInt, value)
 	}
-	if itu.mutation.ExcelHeaderRowCleared() {
+	if _u.mutation.ExcelHeaderRowCleared() {
 		_spec.ClearField(importtemplate.FieldExcelHeaderRow, field.TypeInt)
 	}
-	if value, ok := itu.mutation.ExcelDataStartRow(); ok {
+	if value, ok := _u.mutation.ExcelDataStartRow(); ok {
 		_spec.SetField(importtemplate.FieldExcelDataStartRow, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.AddedExcelDataStartRow(); ok {
+	if value, ok := _u.mutation.AddedExcelDataStartRow(); ok {
 		_spec.AddField(importtemplate.FieldExcelDataStartRow, field.TypeInt, value)
 	}
-	if itu.mutation.ExcelDataStartRowCleared() {
+	if _u.mutation.ExcelDataStartRowCleared() {
 		_spec.ClearField(importtemplate.FieldExcelDataStartRow, field.TypeInt)
 	}
-	if value, ok := itu.mutation.ExcelColumnMappings(); ok {
+	if value, ok := _u.mutation.ExcelColumnMappings(); ok {
 		_spec.SetField(importtemplate.FieldExcelColumnMappings, field.TypeJSON, value)
 	}
-	if itu.mutation.ExcelColumnMappingsCleared() {
+	if _u.mutation.ExcelColumnMappingsCleared() {
 		_spec.ClearField(importtemplate.FieldExcelColumnMappings, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.APIEndpoint(); ok {
+	if value, ok := _u.mutation.APIEndpoint(); ok {
 		_spec.SetField(importtemplate.FieldAPIEndpoint, field.TypeString, value)
 	}
-	if itu.mutation.APIEndpointCleared() {
+	if _u.mutation.APIEndpointCleared() {
 		_spec.ClearField(importtemplate.FieldAPIEndpoint, field.TypeString)
 	}
-	if value, ok := itu.mutation.APIMethod(); ok {
+	if value, ok := _u.mutation.APIMethod(); ok {
 		_spec.SetField(importtemplate.FieldAPIMethod, field.TypeEnum, value)
 	}
-	if itu.mutation.APIMethodCleared() {
+	if _u.mutation.APIMethodCleared() {
 		_spec.ClearField(importtemplate.FieldAPIMethod, field.TypeEnum)
 	}
-	if value, ok := itu.mutation.APIHeaders(); ok {
+	if value, ok := _u.mutation.APIHeaders(); ok {
 		_spec.SetField(importtemplate.FieldAPIHeaders, field.TypeJSON, value)
 	}
-	if itu.mutation.APIHeadersCleared() {
+	if _u.mutation.APIHeadersCleared() {
 		_spec.ClearField(importtemplate.FieldAPIHeaders, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.APIParams(); ok {
+	if value, ok := _u.mutation.APIParams(); ok {
 		_spec.SetField(importtemplate.FieldAPIParams, field.TypeJSON, value)
 	}
-	if itu.mutation.APIParamsCleared() {
+	if _u.mutation.APIParamsCleared() {
 		_spec.ClearField(importtemplate.FieldAPIParams, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.APIResponsePath(); ok {
+	if value, ok := _u.mutation.APIResponsePath(); ok {
 		_spec.SetField(importtemplate.FieldAPIResponsePath, field.TypeString, value)
 	}
-	if itu.mutation.APIResponsePathCleared() {
+	if _u.mutation.APIResponsePathCleared() {
 		_spec.ClearField(importtemplate.FieldAPIResponsePath, field.TypeString)
 	}
-	if value, ok := itu.mutation.MaxErrors(); ok {
+	if value, ok := _u.mutation.MaxErrors(); ok {
 		_spec.SetField(importtemplate.FieldMaxErrors, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.AddedMaxErrors(); ok {
+	if value, ok := _u.mutation.AddedMaxErrors(); ok {
 		_spec.AddField(importtemplate.FieldMaxErrors, field.TypeInt, value)
 	}
-	if itu.mutation.MaxErrorsCleared() {
+	if _u.mutation.MaxErrorsCleared() {
 		_spec.ClearField(importtemplate.FieldMaxErrors, field.TypeInt)
 	}
-	if value, ok := itu.mutation.StopOnFirstError(); ok {
+	if value, ok := _u.mutation.StopOnFirstError(); ok {
 		_spec.SetField(importtemplate.FieldStopOnFirstError, field.TypeBool, value)
 	}
-	if value, ok := itu.mutation.SkipInvalidRows(); ok {
+	if value, ok := _u.mutation.SkipInvalidRows(); ok {
 		_spec.SetField(importtemplate.FieldSkipInvalidRows, field.TypeBool, value)
 	}
-	if value, ok := itu.mutation.ErrorHandlingMode(); ok {
+	if value, ok := _u.mutation.ErrorHandlingMode(); ok {
 		_spec.SetField(importtemplate.FieldErrorHandlingMode, field.TypeEnum, value)
 	}
-	if value, ok := itu.mutation.BatchSize(); ok {
+	if value, ok := _u.mutation.BatchSize(); ok {
 		_spec.SetField(importtemplate.FieldBatchSize, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.AddedBatchSize(); ok {
+	if value, ok := _u.mutation.AddedBatchSize(); ok {
 		_spec.AddField(importtemplate.FieldBatchSize, field.TypeInt, value)
 	}
-	if itu.mutation.BatchSizeCleared() {
+	if _u.mutation.BatchSizeCleared() {
 		_spec.ClearField(importtemplate.FieldBatchSize, field.TypeInt)
 	}
-	if value, ok := itu.mutation.MaxParallelJobs(); ok {
+	if value, ok := _u.mutation.MaxParallelJobs(); ok {
 		_spec.SetField(importtemplate.FieldMaxParallelJobs, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.AddedMaxParallelJobs(); ok {
+	if value, ok := _u.mutation.AddedMaxParallelJobs(); ok {
 		_spec.AddField(importtemplate.FieldMaxParallelJobs, field.TypeInt, value)
 	}
-	if itu.mutation.MaxParallelJobsCleared() {
+	if _u.mutation.MaxParallelJobsCleared() {
 		_spec.ClearField(importtemplate.FieldMaxParallelJobs, field.TypeInt)
 	}
-	if value, ok := itu.mutation.EnableTransaction(); ok {
+	if value, ok := _u.mutation.EnableTransaction(); ok {
 		_spec.SetField(importtemplate.FieldEnableTransaction, field.TypeBool, value)
 	}
-	if value, ok := itu.mutation.Tags(); ok {
+	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(importtemplate.FieldTags, field.TypeJSON, value)
 	}
-	if value, ok := itu.mutation.AppendedTags(); ok {
+	if value, ok := _u.mutation.AppendedTags(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldTags, value)
 		})
 	}
-	if itu.mutation.TagsCleared() {
+	if _u.mutation.TagsCleared() {
 		_spec.ClearField(importtemplate.FieldTags, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.Metadata(); ok {
+	if value, ok := _u.mutation.Metadata(); ok {
 		_spec.SetField(importtemplate.FieldMetadata, field.TypeJSON, value)
 	}
-	if itu.mutation.MetadataCleared() {
+	if _u.mutation.MetadataCleared() {
 		_spec.ClearField(importtemplate.FieldMetadata, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.Icon(); ok {
+	if value, ok := _u.mutation.Icon(); ok {
 		_spec.SetField(importtemplate.FieldIcon, field.TypeString, value)
 	}
-	if itu.mutation.IconCleared() {
+	if _u.mutation.IconCleared() {
 		_spec.ClearField(importtemplate.FieldIcon, field.TypeString)
 	}
-	if value, ok := itu.mutation.Category(); ok {
+	if value, ok := _u.mutation.Category(); ok {
 		_spec.SetField(importtemplate.FieldCategory, field.TypeString, value)
 	}
-	if itu.mutation.CategoryCleared() {
+	if _u.mutation.CategoryCleared() {
 		_spec.ClearField(importtemplate.FieldCategory, field.TypeString)
 	}
-	if value, ok := itu.mutation.UsageCount(); ok {
+	if value, ok := _u.mutation.UsageCount(); ok {
 		_spec.SetField(importtemplate.FieldUsageCount, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.AddedUsageCount(); ok {
+	if value, ok := _u.mutation.AddedUsageCount(); ok {
 		_spec.AddField(importtemplate.FieldUsageCount, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.SuccessCount(); ok {
+	if value, ok := _u.mutation.SuccessCount(); ok {
 		_spec.SetField(importtemplate.FieldSuccessCount, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.AddedSuccessCount(); ok {
+	if value, ok := _u.mutation.AddedSuccessCount(); ok {
 		_spec.AddField(importtemplate.FieldSuccessCount, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.ErrorCount(); ok {
+	if value, ok := _u.mutation.ErrorCount(); ok {
 		_spec.SetField(importtemplate.FieldErrorCount, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.AddedErrorCount(); ok {
+	if value, ok := _u.mutation.AddedErrorCount(); ok {
 		_spec.AddField(importtemplate.FieldErrorCount, field.TypeInt, value)
 	}
-	if value, ok := itu.mutation.SuccessRate(); ok {
+	if value, ok := _u.mutation.SuccessRate(); ok {
 		_spec.SetField(importtemplate.FieldSuccessRate, field.TypeFloat64, value)
 	}
-	if value, ok := itu.mutation.AddedSuccessRate(); ok {
+	if value, ok := _u.mutation.AddedSuccessRate(); ok {
 		_spec.AddField(importtemplate.FieldSuccessRate, field.TypeFloat64, value)
 	}
-	if value, ok := itu.mutation.IsPublic(); ok {
+	if value, ok := _u.mutation.IsPublic(); ok {
 		_spec.SetField(importtemplate.FieldIsPublic, field.TypeBool, value)
 	}
-	if value, ok := itu.mutation.IsSystem(); ok {
+	if value, ok := _u.mutation.IsSystem(); ok {
 		_spec.SetField(importtemplate.FieldIsSystem, field.TypeBool, value)
 	}
-	if value, ok := itu.mutation.SharedWith(); ok {
+	if value, ok := _u.mutation.SharedWith(); ok {
 		_spec.SetField(importtemplate.FieldSharedWith, field.TypeJSON, value)
 	}
-	if value, ok := itu.mutation.AppendedSharedWith(); ok {
+	if value, ok := _u.mutation.AppendedSharedWith(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldSharedWith, value)
 		})
 	}
-	if itu.mutation.SharedWithCleared() {
+	if _u.mutation.SharedWithCleared() {
 		_spec.ClearField(importtemplate.FieldSharedWith, field.TypeJSON)
 	}
-	if value, ok := itu.mutation.CreatedBy(); ok {
+	if value, ok := _u.mutation.CreatedBy(); ok {
 		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
 	}
-	if itu.mutation.CreatedByCleared() {
+	if _u.mutation.CreatedByCleared() {
 		_spec.ClearField(importtemplate.FieldCreatedBy, field.TypeUUID)
 	}
-	if value, ok := itu.mutation.CreatedByName(); ok {
+	if value, ok := _u.mutation.CreatedByName(); ok {
 		_spec.SetField(importtemplate.FieldCreatedByName, field.TypeString, value)
 	}
-	if itu.mutation.CreatedByNameCleared() {
+	if _u.mutation.CreatedByNameCleared() {
 		_spec.ClearField(importtemplate.FieldCreatedByName, field.TypeString)
 	}
-	if value, ok := itu.mutation.ApprovedBy(); ok {
+	if value, ok := _u.mutation.ApprovedBy(); ok {
 		_spec.SetField(importtemplate.FieldApprovedBy, field.TypeUUID, value)
 	}
-	if itu.mutation.ApprovedByCleared() {
+	if _u.mutation.ApprovedByCleared() {
 		_spec.ClearField(importtemplate.FieldApprovedBy, field.TypeUUID)
 	}
-	if value, ok := itu.mutation.ApprovedByName(); ok {
+	if value, ok := _u.mutation.ApprovedByName(); ok {
 		_spec.SetField(importtemplate.FieldApprovedByName, field.TypeString, value)
 	}
-	if itu.mutation.ApprovedByNameCleared() {
+	if _u.mutation.ApprovedByNameCleared() {
 		_spec.ClearField(importtemplate.FieldApprovedByName, field.TypeString)
 	}
-	if value, ok := itu.mutation.ApprovedAt(); ok {
+	if value, ok := _u.mutation.ApprovedAt(); ok {
 		_spec.SetField(importtemplate.FieldApprovedAt, field.TypeTime, value)
 	}
-	if itu.mutation.ApprovedAtCleared() {
+	if _u.mutation.ApprovedAtCleared() {
 		_spec.ClearField(importtemplate.FieldApprovedAt, field.TypeTime)
 	}
-	if itu.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1505,7 +1505,7 @@ func (itu *ImportTemplateUpdate) sqlSave(ctx context.Context) (n int, err error)
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := itu.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1521,7 +1521,7 @@ func (itu *ImportTemplateUpdate) sqlSave(ctx context.Context) (n int, err error)
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if itu.mutation.TasksCleared() {
+	if _u.mutation.TasksCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1534,7 +1534,7 @@ func (itu *ImportTemplateUpdate) sqlSave(ctx context.Context) (n int, err error)
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := itu.mutation.RemovedTasksIDs(); len(nodes) > 0 && !itu.mutation.TasksCleared() {
+	if nodes := _u.mutation.RemovedTasksIDs(); len(nodes) > 0 && !_u.mutation.TasksCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1550,7 +1550,7 @@ func (itu *ImportTemplateUpdate) sqlSave(ctx context.Context) (n int, err error)
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := itu.mutation.TasksIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TasksIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1566,7 +1566,7 @@ func (itu *ImportTemplateUpdate) sqlSave(ctx context.Context) (n int, err error)
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, itu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{importtemplate.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1574,8 +1574,8 @@ func (itu *ImportTemplateUpdate) sqlSave(ctx context.Context) (n int, err error)
 		}
 		return 0, err
 	}
-	itu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ImportTemplateUpdateOne is the builder for updating a single ImportTemplate entity.
@@ -1587,1026 +1587,1026 @@ type ImportTemplateUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ituo *ImportTemplateUpdateOne) SetUpdatedAt(t time.Time) *ImportTemplateUpdateOne {
-	ituo.mutation.SetUpdatedAt(t)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetUpdatedAt(v time.Time) *ImportTemplateUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (ituo *ImportTemplateUpdateOne) SetStatus(u uint8) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetStatus()
-	ituo.mutation.SetStatus(u)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetStatus(v uint8) *ImportTemplateUpdateOne {
+	_u.mutation.ResetStatus()
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableStatus(u *uint8) *ImportTemplateUpdateOne {
-	if u != nil {
-		ituo.SetStatus(*u)
+func (_u *ImportTemplateUpdateOne) SetNillableStatus(v *uint8) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddStatus adds u to the "status" field.
-func (ituo *ImportTemplateUpdateOne) AddStatus(u int8) *ImportTemplateUpdateOne {
-	ituo.mutation.AddStatus(u)
-	return ituo
+// AddStatus adds value to the "status" field.
+func (_u *ImportTemplateUpdateOne) AddStatus(v int8) *ImportTemplateUpdateOne {
+	_u.mutation.AddStatus(v)
+	return _u
 }
 
 // ClearStatus clears the value of the "status" field.
-func (ituo *ImportTemplateUpdateOne) ClearStatus() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearStatus()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearStatus() *ImportTemplateUpdateOne {
+	_u.mutation.ClearStatus()
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ituo *ImportTemplateUpdateOne) SetDeletedAt(t time.Time) *ImportTemplateUpdateOne {
-	ituo.mutation.SetDeletedAt(t)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetDeletedAt(v time.Time) *ImportTemplateUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableDeletedAt(t *time.Time) *ImportTemplateUpdateOne {
-	if t != nil {
-		ituo.SetDeletedAt(*t)
+func (_u *ImportTemplateUpdateOne) SetNillableDeletedAt(v *time.Time) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ituo *ImportTemplateUpdateOne) ClearDeletedAt() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearDeletedAt()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearDeletedAt() *ImportTemplateUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ituo *ImportTemplateUpdateOne) SetDepartmentID(u uint64) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetDepartmentID()
-	ituo.mutation.SetDepartmentID(u)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetDepartmentID(v uint64) *ImportTemplateUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableDepartmentID(u *uint64) *ImportTemplateUpdateOne {
-	if u != nil {
-		ituo.SetDepartmentID(*u)
+func (_u *ImportTemplateUpdateOne) SetNillableDepartmentID(v *uint64) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ituo *ImportTemplateUpdateOne) AddDepartmentID(u int64) *ImportTemplateUpdateOne {
-	ituo.mutation.AddDepartmentID(u)
-	return ituo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ImportTemplateUpdateOne) AddDepartmentID(v int64) *ImportTemplateUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ituo *ImportTemplateUpdateOne) ClearDepartmentID() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearDepartmentID()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearDepartmentID() *ImportTemplateUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetName sets the "name" field.
-func (ituo *ImportTemplateUpdateOne) SetName(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetName(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetName(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetName(v)
+	return _u
 }
 
 // SetNillableName sets the "name" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableName(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetName(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableName(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetName(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetCode sets the "code" field.
-func (ituo *ImportTemplateUpdateOne) SetCode(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetCode(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetCode(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetCode(v)
+	return _u
 }
 
 // SetNillableCode sets the "code" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableCode(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetCode(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableCode(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetCode(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetDescription sets the "description" field.
-func (ituo *ImportTemplateUpdateOne) SetDescription(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetDescription(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetDescription(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetDescription(v)
+	return _u
 }
 
 // SetNillableDescription sets the "description" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableDescription(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetDescription(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableDescription(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetDescription(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearDescription clears the value of the "description" field.
-func (ituo *ImportTemplateUpdateOne) ClearDescription() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearDescription()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearDescription() *ImportTemplateUpdateOne {
+	_u.mutation.ClearDescription()
+	return _u
 }
 
 // SetVersion sets the "version" field.
-func (ituo *ImportTemplateUpdateOne) SetVersion(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetVersion(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetVersion(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetVersion(v)
+	return _u
 }
 
 // SetNillableVersion sets the "version" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableVersion(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetVersion(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableVersion(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetVersion(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetType sets the "type" field.
-func (ituo *ImportTemplateUpdateOne) SetType(i importtemplate.Type) *ImportTemplateUpdateOne {
-	ituo.mutation.SetType(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetType(v importtemplate.Type) *ImportTemplateUpdateOne {
+	_u.mutation.SetType(v)
+	return _u
 }
 
 // SetNillableType sets the "type" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableType(i *importtemplate.Type) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetType(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableType(v *importtemplate.Type) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetType(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetImportMode sets the "import_mode" field.
-func (ituo *ImportTemplateUpdateOne) SetImportMode(im importtemplate.ImportMode) *ImportTemplateUpdateOne {
-	ituo.mutation.SetImportMode(im)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetImportMode(v importtemplate.ImportMode) *ImportTemplateUpdateOne {
+	_u.mutation.SetImportMode(v)
+	return _u
 }
 
 // SetNillableImportMode sets the "import_mode" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableImportMode(im *importtemplate.ImportMode) *ImportTemplateUpdateOne {
-	if im != nil {
-		ituo.SetImportMode(*im)
+func (_u *ImportTemplateUpdateOne) SetNillableImportMode(v *importtemplate.ImportMode) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetImportMode(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (ituo *ImportTemplateUpdateOne) SetCiTypeID(u uint64) *ImportTemplateUpdateOne {
-	ituo.mutation.SetCiTypeID(u)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetCiTypeID(v uint64) *ImportTemplateUpdateOne {
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableCiTypeID(u *uint64) *ImportTemplateUpdateOne {
-	if u != nil {
-		ituo.SetCiTypeID(*u)
+func (_u *ImportTemplateUpdateOne) SetNillableCiTypeID(v *uint64) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearCiTypeID clears the value of the "ci_type_id" field.
-func (ituo *ImportTemplateUpdateOne) ClearCiTypeID() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearCiTypeID()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearCiTypeID() *ImportTemplateUpdateOne {
+	_u.mutation.ClearCiTypeID()
+	return _u
 }
 
 // SetCiTypeName sets the "ci_type_name" field.
-func (ituo *ImportTemplateUpdateOne) SetCiTypeName(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetCiTypeName(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetCiTypeName(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetCiTypeName(v)
+	return _u
 }
 
 // SetNillableCiTypeName sets the "ci_type_name" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableCiTypeName(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetCiTypeName(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableCiTypeName(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetCiTypeName(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearCiTypeName clears the value of the "ci_type_name" field.
-func (ituo *ImportTemplateUpdateOne) ClearCiTypeName() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearCiTypeName()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearCiTypeName() *ImportTemplateUpdateOne {
+	_u.mutation.ClearCiTypeName()
+	return _u
 }
 
 // SetAutoCreateCiType sets the "auto_create_ci_type" field.
-func (ituo *ImportTemplateUpdateOne) SetAutoCreateCiType(b bool) *ImportTemplateUpdateOne {
-	ituo.mutation.SetAutoCreateCiType(b)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetAutoCreateCiType(v bool) *ImportTemplateUpdateOne {
+	_u.mutation.SetAutoCreateCiType(v)
+	return _u
 }
 
 // SetNillableAutoCreateCiType sets the "auto_create_ci_type" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableAutoCreateCiType(b *bool) *ImportTemplateUpdateOne {
-	if b != nil {
-		ituo.SetAutoCreateCiType(*b)
+func (_u *ImportTemplateUpdateOne) SetNillableAutoCreateCiType(v *bool) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetAutoCreateCiType(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetFieldMappings sets the "field_mappings" field.
-func (ituo *ImportTemplateUpdateOne) SetFieldMappings(smc []schema.FieldMappingConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.SetFieldMappings(smc)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetFieldMappings(v []schema.FieldMappingConfig) *ImportTemplateUpdateOne {
+	_u.mutation.SetFieldMappings(v)
+	return _u
 }
 
-// AppendFieldMappings appends smc to the "field_mappings" field.
-func (ituo *ImportTemplateUpdateOne) AppendFieldMappings(smc []schema.FieldMappingConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.AppendFieldMappings(smc)
-	return ituo
+// AppendFieldMappings appends value to the "field_mappings" field.
+func (_u *ImportTemplateUpdateOne) AppendFieldMappings(v []schema.FieldMappingConfig) *ImportTemplateUpdateOne {
+	_u.mutation.AppendFieldMappings(v)
+	return _u
 }
 
 // ClearFieldMappings clears the value of the "field_mappings" field.
-func (ituo *ImportTemplateUpdateOne) ClearFieldMappings() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearFieldMappings()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearFieldMappings() *ImportTemplateUpdateOne {
+	_u.mutation.ClearFieldMappings()
+	return _u
 }
 
 // SetHeaderMappings sets the "header_mappings" field.
-func (ituo *ImportTemplateUpdateOne) SetHeaderMappings(m map[string]string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetHeaderMappings(m)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetHeaderMappings(v map[string]string) *ImportTemplateUpdateOne {
+	_u.mutation.SetHeaderMappings(v)
+	return _u
 }
 
 // ClearHeaderMappings clears the value of the "header_mappings" field.
-func (ituo *ImportTemplateUpdateOne) ClearHeaderMappings() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearHeaderMappings()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearHeaderMappings() *ImportTemplateUpdateOne {
+	_u.mutation.ClearHeaderMappings()
+	return _u
 }
 
 // SetDefaultValues sets the "default_values" field.
-func (ituo *ImportTemplateUpdateOne) SetDefaultValues(m map[string]interface{}) *ImportTemplateUpdateOne {
-	ituo.mutation.SetDefaultValues(m)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetDefaultValues(v map[string]interface{}) *ImportTemplateUpdateOne {
+	_u.mutation.SetDefaultValues(v)
+	return _u
 }
 
 // ClearDefaultValues clears the value of the "default_values" field.
-func (ituo *ImportTemplateUpdateOne) ClearDefaultValues() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearDefaultValues()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearDefaultValues() *ImportTemplateUpdateOne {
+	_u.mutation.ClearDefaultValues()
+	return _u
 }
 
 // SetComputedFields sets the "computed_fields" field.
-func (ituo *ImportTemplateUpdateOne) SetComputedFields(sfc []schema.ComputedFieldConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.SetComputedFields(sfc)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetComputedFields(v []schema.ComputedFieldConfig) *ImportTemplateUpdateOne {
+	_u.mutation.SetComputedFields(v)
+	return _u
 }
 
-// AppendComputedFields appends sfc to the "computed_fields" field.
-func (ituo *ImportTemplateUpdateOne) AppendComputedFields(sfc []schema.ComputedFieldConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.AppendComputedFields(sfc)
-	return ituo
+// AppendComputedFields appends value to the "computed_fields" field.
+func (_u *ImportTemplateUpdateOne) AppendComputedFields(v []schema.ComputedFieldConfig) *ImportTemplateUpdateOne {
+	_u.mutation.AppendComputedFields(v)
+	return _u
 }
 
 // ClearComputedFields clears the value of the "computed_fields" field.
-func (ituo *ImportTemplateUpdateOne) ClearComputedFields() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearComputedFields()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearComputedFields() *ImportTemplateUpdateOne {
+	_u.mutation.ClearComputedFields()
+	return _u
 }
 
 // SetDataTransformations sets the "data_transformations" field.
-func (ituo *ImportTemplateUpdateOne) SetDataTransformations(stc []schema.DataTransformationConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.SetDataTransformations(stc)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetDataTransformations(v []schema.DataTransformationConfig) *ImportTemplateUpdateOne {
+	_u.mutation.SetDataTransformations(v)
+	return _u
 }
 
-// AppendDataTransformations appends stc to the "data_transformations" field.
-func (ituo *ImportTemplateUpdateOne) AppendDataTransformations(stc []schema.DataTransformationConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.AppendDataTransformations(stc)
-	return ituo
+// AppendDataTransformations appends value to the "data_transformations" field.
+func (_u *ImportTemplateUpdateOne) AppendDataTransformations(v []schema.DataTransformationConfig) *ImportTemplateUpdateOne {
+	_u.mutation.AppendDataTransformations(v)
+	return _u
 }
 
 // ClearDataTransformations clears the value of the "data_transformations" field.
-func (ituo *ImportTemplateUpdateOne) ClearDataTransformations() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearDataTransformations()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearDataTransformations() *ImportTemplateUpdateOne {
+	_u.mutation.ClearDataTransformations()
+	return _u
 }
 
 // SetDataFilters sets the "data_filters" field.
-func (ituo *ImportTemplateUpdateOne) SetDataFilters(sfc []schema.DataFilterConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.SetDataFilters(sfc)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetDataFilters(v []schema.DataFilterConfig) *ImportTemplateUpdateOne {
+	_u.mutation.SetDataFilters(v)
+	return _u
 }
 
-// AppendDataFilters appends sfc to the "data_filters" field.
-func (ituo *ImportTemplateUpdateOne) AppendDataFilters(sfc []schema.DataFilterConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.AppendDataFilters(sfc)
-	return ituo
+// AppendDataFilters appends value to the "data_filters" field.
+func (_u *ImportTemplateUpdateOne) AppendDataFilters(v []schema.DataFilterConfig) *ImportTemplateUpdateOne {
+	_u.mutation.AppendDataFilters(v)
+	return _u
 }
 
 // ClearDataFilters clears the value of the "data_filters" field.
-func (ituo *ImportTemplateUpdateOne) ClearDataFilters() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearDataFilters()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearDataFilters() *ImportTemplateUpdateOne {
+	_u.mutation.ClearDataFilters()
+	return _u
 }
 
 // SetDataCleaners sets the "data_cleaners" field.
-func (ituo *ImportTemplateUpdateOne) SetDataCleaners(scc []schema.DataCleanerConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.SetDataCleaners(scc)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetDataCleaners(v []schema.DataCleanerConfig) *ImportTemplateUpdateOne {
+	_u.mutation.SetDataCleaners(v)
+	return _u
 }
 
-// AppendDataCleaners appends scc to the "data_cleaners" field.
-func (ituo *ImportTemplateUpdateOne) AppendDataCleaners(scc []schema.DataCleanerConfig) *ImportTemplateUpdateOne {
-	ituo.mutation.AppendDataCleaners(scc)
-	return ituo
+// AppendDataCleaners appends value to the "data_cleaners" field.
+func (_u *ImportTemplateUpdateOne) AppendDataCleaners(v []schema.DataCleanerConfig) *ImportTemplateUpdateOne {
+	_u.mutation.AppendDataCleaners(v)
+	return _u
 }
 
 // ClearDataCleaners clears the value of the "data_cleaners" field.
-func (ituo *ImportTemplateUpdateOne) ClearDataCleaners() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearDataCleaners()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearDataCleaners() *ImportTemplateUpdateOne {
+	_u.mutation.ClearDataCleaners()
+	return _u
 }
 
 // SetExcelSheetName sets the "excel_sheet_name" field.
-func (ituo *ImportTemplateUpdateOne) SetExcelSheetName(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetExcelSheetName(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetExcelSheetName(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetExcelSheetName(v)
+	return _u
 }
 
 // SetNillableExcelSheetName sets the "excel_sheet_name" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableExcelSheetName(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetExcelSheetName(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableExcelSheetName(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetExcelSheetName(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearExcelSheetName clears the value of the "excel_sheet_name" field.
-func (ituo *ImportTemplateUpdateOne) ClearExcelSheetName() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearExcelSheetName()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearExcelSheetName() *ImportTemplateUpdateOne {
+	_u.mutation.ClearExcelSheetName()
+	return _u
 }
 
 // SetExcelHeaderRow sets the "excel_header_row" field.
-func (ituo *ImportTemplateUpdateOne) SetExcelHeaderRow(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetExcelHeaderRow()
-	ituo.mutation.SetExcelHeaderRow(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetExcelHeaderRow(v int) *ImportTemplateUpdateOne {
+	_u.mutation.ResetExcelHeaderRow()
+	_u.mutation.SetExcelHeaderRow(v)
+	return _u
 }
 
 // SetNillableExcelHeaderRow sets the "excel_header_row" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableExcelHeaderRow(i *int) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetExcelHeaderRow(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableExcelHeaderRow(v *int) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetExcelHeaderRow(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddExcelHeaderRow adds i to the "excel_header_row" field.
-func (ituo *ImportTemplateUpdateOne) AddExcelHeaderRow(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.AddExcelHeaderRow(i)
-	return ituo
+// AddExcelHeaderRow adds value to the "excel_header_row" field.
+func (_u *ImportTemplateUpdateOne) AddExcelHeaderRow(v int) *ImportTemplateUpdateOne {
+	_u.mutation.AddExcelHeaderRow(v)
+	return _u
 }
 
 // ClearExcelHeaderRow clears the value of the "excel_header_row" field.
-func (ituo *ImportTemplateUpdateOne) ClearExcelHeaderRow() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearExcelHeaderRow()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearExcelHeaderRow() *ImportTemplateUpdateOne {
+	_u.mutation.ClearExcelHeaderRow()
+	return _u
 }
 
 // SetExcelDataStartRow sets the "excel_data_start_row" field.
-func (ituo *ImportTemplateUpdateOne) SetExcelDataStartRow(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetExcelDataStartRow()
-	ituo.mutation.SetExcelDataStartRow(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetExcelDataStartRow(v int) *ImportTemplateUpdateOne {
+	_u.mutation.ResetExcelDataStartRow()
+	_u.mutation.SetExcelDataStartRow(v)
+	return _u
 }
 
 // SetNillableExcelDataStartRow sets the "excel_data_start_row" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableExcelDataStartRow(i *int) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetExcelDataStartRow(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableExcelDataStartRow(v *int) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetExcelDataStartRow(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddExcelDataStartRow adds i to the "excel_data_start_row" field.
-func (ituo *ImportTemplateUpdateOne) AddExcelDataStartRow(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.AddExcelDataStartRow(i)
-	return ituo
+// AddExcelDataStartRow adds value to the "excel_data_start_row" field.
+func (_u *ImportTemplateUpdateOne) AddExcelDataStartRow(v int) *ImportTemplateUpdateOne {
+	_u.mutation.AddExcelDataStartRow(v)
+	return _u
 }
 
 // ClearExcelDataStartRow clears the value of the "excel_data_start_row" field.
-func (ituo *ImportTemplateUpdateOne) ClearExcelDataStartRow() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearExcelDataStartRow()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearExcelDataStartRow() *ImportTemplateUpdateOne {
+	_u.mutation.ClearExcelDataStartRow()
+	return _u
 }
 
 // SetExcelColumnMappings sets the "excel_column_mappings" field.
-func (ituo *ImportTemplateUpdateOne) SetExcelColumnMappings(m map[string]string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetExcelColumnMappings(m)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetExcelColumnMappings(v map[string]string) *ImportTemplateUpdateOne {
+	_u.mutation.SetExcelColumnMappings(v)
+	return _u
 }
 
 // ClearExcelColumnMappings clears the value of the "excel_column_mappings" field.
-func (ituo *ImportTemplateUpdateOne) ClearExcelColumnMappings() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearExcelColumnMappings()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearExcelColumnMappings() *ImportTemplateUpdateOne {
+	_u.mutation.ClearExcelColumnMappings()
+	return _u
 }
 
 // SetAPIEndpoint sets the "api_endpoint" field.
-func (ituo *ImportTemplateUpdateOne) SetAPIEndpoint(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetAPIEndpoint(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetAPIEndpoint(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetAPIEndpoint(v)
+	return _u
 }
 
 // SetNillableAPIEndpoint sets the "api_endpoint" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableAPIEndpoint(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetAPIEndpoint(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableAPIEndpoint(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetAPIEndpoint(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearAPIEndpoint clears the value of the "api_endpoint" field.
-func (ituo *ImportTemplateUpdateOne) ClearAPIEndpoint() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearAPIEndpoint()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearAPIEndpoint() *ImportTemplateUpdateOne {
+	_u.mutation.ClearAPIEndpoint()
+	return _u
 }
 
 // SetAPIMethod sets the "api_method" field.
-func (ituo *ImportTemplateUpdateOne) SetAPIMethod(im importtemplate.APIMethod) *ImportTemplateUpdateOne {
-	ituo.mutation.SetAPIMethod(im)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetAPIMethod(v importtemplate.APIMethod) *ImportTemplateUpdateOne {
+	_u.mutation.SetAPIMethod(v)
+	return _u
 }
 
 // SetNillableAPIMethod sets the "api_method" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableAPIMethod(im *importtemplate.APIMethod) *ImportTemplateUpdateOne {
-	if im != nil {
-		ituo.SetAPIMethod(*im)
+func (_u *ImportTemplateUpdateOne) SetNillableAPIMethod(v *importtemplate.APIMethod) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetAPIMethod(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearAPIMethod clears the value of the "api_method" field.
-func (ituo *ImportTemplateUpdateOne) ClearAPIMethod() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearAPIMethod()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearAPIMethod() *ImportTemplateUpdateOne {
+	_u.mutation.ClearAPIMethod()
+	return _u
 }
 
 // SetAPIHeaders sets the "api_headers" field.
-func (ituo *ImportTemplateUpdateOne) SetAPIHeaders(m map[string]string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetAPIHeaders(m)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetAPIHeaders(v map[string]string) *ImportTemplateUpdateOne {
+	_u.mutation.SetAPIHeaders(v)
+	return _u
 }
 
 // ClearAPIHeaders clears the value of the "api_headers" field.
-func (ituo *ImportTemplateUpdateOne) ClearAPIHeaders() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearAPIHeaders()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearAPIHeaders() *ImportTemplateUpdateOne {
+	_u.mutation.ClearAPIHeaders()
+	return _u
 }
 
 // SetAPIParams sets the "api_params" field.
-func (ituo *ImportTemplateUpdateOne) SetAPIParams(m map[string]interface{}) *ImportTemplateUpdateOne {
-	ituo.mutation.SetAPIParams(m)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetAPIParams(v map[string]interface{}) *ImportTemplateUpdateOne {
+	_u.mutation.SetAPIParams(v)
+	return _u
 }
 
 // ClearAPIParams clears the value of the "api_params" field.
-func (ituo *ImportTemplateUpdateOne) ClearAPIParams() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearAPIParams()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearAPIParams() *ImportTemplateUpdateOne {
+	_u.mutation.ClearAPIParams()
+	return _u
 }
 
 // SetAPIResponsePath sets the "api_response_path" field.
-func (ituo *ImportTemplateUpdateOne) SetAPIResponsePath(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetAPIResponsePath(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetAPIResponsePath(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetAPIResponsePath(v)
+	return _u
 }
 
 // SetNillableAPIResponsePath sets the "api_response_path" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableAPIResponsePath(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetAPIResponsePath(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableAPIResponsePath(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetAPIResponsePath(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearAPIResponsePath clears the value of the "api_response_path" field.
-func (ituo *ImportTemplateUpdateOne) ClearAPIResponsePath() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearAPIResponsePath()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearAPIResponsePath() *ImportTemplateUpdateOne {
+	_u.mutation.ClearAPIResponsePath()
+	return _u
 }
 
 // SetMaxErrors sets the "max_errors" field.
-func (ituo *ImportTemplateUpdateOne) SetMaxErrors(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetMaxErrors()
-	ituo.mutation.SetMaxErrors(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetMaxErrors(v int) *ImportTemplateUpdateOne {
+	_u.mutation.ResetMaxErrors()
+	_u.mutation.SetMaxErrors(v)
+	return _u
 }
 
 // SetNillableMaxErrors sets the "max_errors" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableMaxErrors(i *int) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetMaxErrors(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableMaxErrors(v *int) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetMaxErrors(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddMaxErrors adds i to the "max_errors" field.
-func (ituo *ImportTemplateUpdateOne) AddMaxErrors(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.AddMaxErrors(i)
-	return ituo
+// AddMaxErrors adds value to the "max_errors" field.
+func (_u *ImportTemplateUpdateOne) AddMaxErrors(v int) *ImportTemplateUpdateOne {
+	_u.mutation.AddMaxErrors(v)
+	return _u
 }
 
 // ClearMaxErrors clears the value of the "max_errors" field.
-func (ituo *ImportTemplateUpdateOne) ClearMaxErrors() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearMaxErrors()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearMaxErrors() *ImportTemplateUpdateOne {
+	_u.mutation.ClearMaxErrors()
+	return _u
 }
 
 // SetStopOnFirstError sets the "stop_on_first_error" field.
-func (ituo *ImportTemplateUpdateOne) SetStopOnFirstError(b bool) *ImportTemplateUpdateOne {
-	ituo.mutation.SetStopOnFirstError(b)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetStopOnFirstError(v bool) *ImportTemplateUpdateOne {
+	_u.mutation.SetStopOnFirstError(v)
+	return _u
 }
 
 // SetNillableStopOnFirstError sets the "stop_on_first_error" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableStopOnFirstError(b *bool) *ImportTemplateUpdateOne {
-	if b != nil {
-		ituo.SetStopOnFirstError(*b)
+func (_u *ImportTemplateUpdateOne) SetNillableStopOnFirstError(v *bool) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetStopOnFirstError(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetSkipInvalidRows sets the "skip_invalid_rows" field.
-func (ituo *ImportTemplateUpdateOne) SetSkipInvalidRows(b bool) *ImportTemplateUpdateOne {
-	ituo.mutation.SetSkipInvalidRows(b)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetSkipInvalidRows(v bool) *ImportTemplateUpdateOne {
+	_u.mutation.SetSkipInvalidRows(v)
+	return _u
 }
 
 // SetNillableSkipInvalidRows sets the "skip_invalid_rows" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableSkipInvalidRows(b *bool) *ImportTemplateUpdateOne {
-	if b != nil {
-		ituo.SetSkipInvalidRows(*b)
+func (_u *ImportTemplateUpdateOne) SetNillableSkipInvalidRows(v *bool) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetSkipInvalidRows(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetErrorHandlingMode sets the "error_handling_mode" field.
-func (ituo *ImportTemplateUpdateOne) SetErrorHandlingMode(ihm importtemplate.ErrorHandlingMode) *ImportTemplateUpdateOne {
-	ituo.mutation.SetErrorHandlingMode(ihm)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetErrorHandlingMode(v importtemplate.ErrorHandlingMode) *ImportTemplateUpdateOne {
+	_u.mutation.SetErrorHandlingMode(v)
+	return _u
 }
 
 // SetNillableErrorHandlingMode sets the "error_handling_mode" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableErrorHandlingMode(ihm *importtemplate.ErrorHandlingMode) *ImportTemplateUpdateOne {
-	if ihm != nil {
-		ituo.SetErrorHandlingMode(*ihm)
+func (_u *ImportTemplateUpdateOne) SetNillableErrorHandlingMode(v *importtemplate.ErrorHandlingMode) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetErrorHandlingMode(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetBatchSize sets the "batch_size" field.
-func (ituo *ImportTemplateUpdateOne) SetBatchSize(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetBatchSize()
-	ituo.mutation.SetBatchSize(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetBatchSize(v int) *ImportTemplateUpdateOne {
+	_u.mutation.ResetBatchSize()
+	_u.mutation.SetBatchSize(v)
+	return _u
 }
 
 // SetNillableBatchSize sets the "batch_size" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableBatchSize(i *int) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetBatchSize(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableBatchSize(v *int) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetBatchSize(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddBatchSize adds i to the "batch_size" field.
-func (ituo *ImportTemplateUpdateOne) AddBatchSize(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.AddBatchSize(i)
-	return ituo
+// AddBatchSize adds value to the "batch_size" field.
+func (_u *ImportTemplateUpdateOne) AddBatchSize(v int) *ImportTemplateUpdateOne {
+	_u.mutation.AddBatchSize(v)
+	return _u
 }
 
 // ClearBatchSize clears the value of the "batch_size" field.
-func (ituo *ImportTemplateUpdateOne) ClearBatchSize() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearBatchSize()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearBatchSize() *ImportTemplateUpdateOne {
+	_u.mutation.ClearBatchSize()
+	return _u
 }
 
 // SetMaxParallelJobs sets the "max_parallel_jobs" field.
-func (ituo *ImportTemplateUpdateOne) SetMaxParallelJobs(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetMaxParallelJobs()
-	ituo.mutation.SetMaxParallelJobs(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetMaxParallelJobs(v int) *ImportTemplateUpdateOne {
+	_u.mutation.ResetMaxParallelJobs()
+	_u.mutation.SetMaxParallelJobs(v)
+	return _u
 }
 
 // SetNillableMaxParallelJobs sets the "max_parallel_jobs" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableMaxParallelJobs(i *int) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetMaxParallelJobs(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableMaxParallelJobs(v *int) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetMaxParallelJobs(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddMaxParallelJobs adds i to the "max_parallel_jobs" field.
-func (ituo *ImportTemplateUpdateOne) AddMaxParallelJobs(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.AddMaxParallelJobs(i)
-	return ituo
+// AddMaxParallelJobs adds value to the "max_parallel_jobs" field.
+func (_u *ImportTemplateUpdateOne) AddMaxParallelJobs(v int) *ImportTemplateUpdateOne {
+	_u.mutation.AddMaxParallelJobs(v)
+	return _u
 }
 
 // ClearMaxParallelJobs clears the value of the "max_parallel_jobs" field.
-func (ituo *ImportTemplateUpdateOne) ClearMaxParallelJobs() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearMaxParallelJobs()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearMaxParallelJobs() *ImportTemplateUpdateOne {
+	_u.mutation.ClearMaxParallelJobs()
+	return _u
 }
 
 // SetEnableTransaction sets the "enable_transaction" field.
-func (ituo *ImportTemplateUpdateOne) SetEnableTransaction(b bool) *ImportTemplateUpdateOne {
-	ituo.mutation.SetEnableTransaction(b)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetEnableTransaction(v bool) *ImportTemplateUpdateOne {
+	_u.mutation.SetEnableTransaction(v)
+	return _u
 }
 
 // SetNillableEnableTransaction sets the "enable_transaction" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableEnableTransaction(b *bool) *ImportTemplateUpdateOne {
-	if b != nil {
-		ituo.SetEnableTransaction(*b)
+func (_u *ImportTemplateUpdateOne) SetNillableEnableTransaction(v *bool) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetEnableTransaction(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetTags sets the "tags" field.
-func (ituo *ImportTemplateUpdateOne) SetTags(s []string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetTags(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetTags(v []string) *ImportTemplateUpdateOne {
+	_u.mutation.SetTags(v)
+	return _u
 }
 
-// AppendTags appends s to the "tags" field.
-func (ituo *ImportTemplateUpdateOne) AppendTags(s []string) *ImportTemplateUpdateOne {
-	ituo.mutation.AppendTags(s)
-	return ituo
+// AppendTags appends value to the "tags" field.
+func (_u *ImportTemplateUpdateOne) AppendTags(v []string) *ImportTemplateUpdateOne {
+	_u.mutation.AppendTags(v)
+	return _u
 }
 
 // ClearTags clears the value of the "tags" field.
-func (ituo *ImportTemplateUpdateOne) ClearTags() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearTags()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearTags() *ImportTemplateUpdateOne {
+	_u.mutation.ClearTags()
+	return _u
 }
 
 // SetMetadata sets the "metadata" field.
-func (ituo *ImportTemplateUpdateOne) SetMetadata(m map[string]interface{}) *ImportTemplateUpdateOne {
-	ituo.mutation.SetMetadata(m)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetMetadata(v map[string]interface{}) *ImportTemplateUpdateOne {
+	_u.mutation.SetMetadata(v)
+	return _u
 }
 
 // ClearMetadata clears the value of the "metadata" field.
-func (ituo *ImportTemplateUpdateOne) ClearMetadata() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearMetadata()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearMetadata() *ImportTemplateUpdateOne {
+	_u.mutation.ClearMetadata()
+	return _u
 }
 
 // SetIcon sets the "icon" field.
-func (ituo *ImportTemplateUpdateOne) SetIcon(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetIcon(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetIcon(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetIcon(v)
+	return _u
 }
 
 // SetNillableIcon sets the "icon" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableIcon(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetIcon(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableIcon(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetIcon(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearIcon clears the value of the "icon" field.
-func (ituo *ImportTemplateUpdateOne) ClearIcon() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearIcon()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearIcon() *ImportTemplateUpdateOne {
+	_u.mutation.ClearIcon()
+	return _u
 }
 
 // SetCategory sets the "category" field.
-func (ituo *ImportTemplateUpdateOne) SetCategory(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetCategory(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetCategory(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetCategory(v)
+	return _u
 }
 
 // SetNillableCategory sets the "category" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableCategory(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetCategory(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableCategory(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetCategory(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearCategory clears the value of the "category" field.
-func (ituo *ImportTemplateUpdateOne) ClearCategory() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearCategory()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearCategory() *ImportTemplateUpdateOne {
+	_u.mutation.ClearCategory()
+	return _u
 }
 
 // SetUsageCount sets the "usage_count" field.
-func (ituo *ImportTemplateUpdateOne) SetUsageCount(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetUsageCount()
-	ituo.mutation.SetUsageCount(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetUsageCount(v int) *ImportTemplateUpdateOne {
+	_u.mutation.ResetUsageCount()
+	_u.mutation.SetUsageCount(v)
+	return _u
 }
 
 // SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableUsageCount(i *int) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetUsageCount(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableUsageCount(v *int) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetUsageCount(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddUsageCount adds i to the "usage_count" field.
-func (ituo *ImportTemplateUpdateOne) AddUsageCount(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.AddUsageCount(i)
-	return ituo
+// AddUsageCount adds value to the "usage_count" field.
+func (_u *ImportTemplateUpdateOne) AddUsageCount(v int) *ImportTemplateUpdateOne {
+	_u.mutation.AddUsageCount(v)
+	return _u
 }
 
 // SetSuccessCount sets the "success_count" field.
-func (ituo *ImportTemplateUpdateOne) SetSuccessCount(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetSuccessCount()
-	ituo.mutation.SetSuccessCount(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetSuccessCount(v int) *ImportTemplateUpdateOne {
+	_u.mutation.ResetSuccessCount()
+	_u.mutation.SetSuccessCount(v)
+	return _u
 }
 
 // SetNillableSuccessCount sets the "success_count" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableSuccessCount(i *int) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetSuccessCount(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableSuccessCount(v *int) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetSuccessCount(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddSuccessCount adds i to the "success_count" field.
-func (ituo *ImportTemplateUpdateOne) AddSuccessCount(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.AddSuccessCount(i)
-	return ituo
+// AddSuccessCount adds value to the "success_count" field.
+func (_u *ImportTemplateUpdateOne) AddSuccessCount(v int) *ImportTemplateUpdateOne {
+	_u.mutation.AddSuccessCount(v)
+	return _u
 }
 
 // SetErrorCount sets the "error_count" field.
-func (ituo *ImportTemplateUpdateOne) SetErrorCount(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetErrorCount()
-	ituo.mutation.SetErrorCount(i)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetErrorCount(v int) *ImportTemplateUpdateOne {
+	_u.mutation.ResetErrorCount()
+	_u.mutation.SetErrorCount(v)
+	return _u
 }
 
 // SetNillableErrorCount sets the "error_count" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableErrorCount(i *int) *ImportTemplateUpdateOne {
-	if i != nil {
-		ituo.SetErrorCount(*i)
+func (_u *ImportTemplateUpdateOne) SetNillableErrorCount(v *int) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetErrorCount(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddErrorCount adds i to the "error_count" field.
-func (ituo *ImportTemplateUpdateOne) AddErrorCount(i int) *ImportTemplateUpdateOne {
-	ituo.mutation.AddErrorCount(i)
-	return ituo
+// AddErrorCount adds value to the "error_count" field.
+func (_u *ImportTemplateUpdateOne) AddErrorCount(v int) *ImportTemplateUpdateOne {
+	_u.mutation.AddErrorCount(v)
+	return _u
 }
 
 // SetSuccessRate sets the "success_rate" field.
-func (ituo *ImportTemplateUpdateOne) SetSuccessRate(f float64) *ImportTemplateUpdateOne {
-	ituo.mutation.ResetSuccessRate()
-	ituo.mutation.SetSuccessRate(f)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetSuccessRate(v float64) *ImportTemplateUpdateOne {
+	_u.mutation.ResetSuccessRate()
+	_u.mutation.SetSuccessRate(v)
+	return _u
 }
 
 // SetNillableSuccessRate sets the "success_rate" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableSuccessRate(f *float64) *ImportTemplateUpdateOne {
-	if f != nil {
-		ituo.SetSuccessRate(*f)
+func (_u *ImportTemplateUpdateOne) SetNillableSuccessRate(v *float64) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetSuccessRate(*v)
 	}
-	return ituo
+	return _u
 }
 
-// AddSuccessRate adds f to the "success_rate" field.
-func (ituo *ImportTemplateUpdateOne) AddSuccessRate(f float64) *ImportTemplateUpdateOne {
-	ituo.mutation.AddSuccessRate(f)
-	return ituo
+// AddSuccessRate adds value to the "success_rate" field.
+func (_u *ImportTemplateUpdateOne) AddSuccessRate(v float64) *ImportTemplateUpdateOne {
+	_u.mutation.AddSuccessRate(v)
+	return _u
 }
 
 // SetIsPublic sets the "is_public" field.
-func (ituo *ImportTemplateUpdateOne) SetIsPublic(b bool) *ImportTemplateUpdateOne {
-	ituo.mutation.SetIsPublic(b)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetIsPublic(v bool) *ImportTemplateUpdateOne {
+	_u.mutation.SetIsPublic(v)
+	return _u
 }
 
 // SetNillableIsPublic sets the "is_public" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableIsPublic(b *bool) *ImportTemplateUpdateOne {
-	if b != nil {
-		ituo.SetIsPublic(*b)
+func (_u *ImportTemplateUpdateOne) SetNillableIsPublic(v *bool) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetIsPublic(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetIsSystem sets the "is_system" field.
-func (ituo *ImportTemplateUpdateOne) SetIsSystem(b bool) *ImportTemplateUpdateOne {
-	ituo.mutation.SetIsSystem(b)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetIsSystem(v bool) *ImportTemplateUpdateOne {
+	_u.mutation.SetIsSystem(v)
+	return _u
 }
 
 // SetNillableIsSystem sets the "is_system" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableIsSystem(b *bool) *ImportTemplateUpdateOne {
-	if b != nil {
-		ituo.SetIsSystem(*b)
+func (_u *ImportTemplateUpdateOne) SetNillableIsSystem(v *bool) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetIsSystem(*v)
 	}
-	return ituo
+	return _u
 }
 
 // SetSharedWith sets the "shared_with" field.
-func (ituo *ImportTemplateUpdateOne) SetSharedWith(s []string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetSharedWith(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetSharedWith(v []string) *ImportTemplateUpdateOne {
+	_u.mutation.SetSharedWith(v)
+	return _u
 }
 
-// AppendSharedWith appends s to the "shared_with" field.
-func (ituo *ImportTemplateUpdateOne) AppendSharedWith(s []string) *ImportTemplateUpdateOne {
-	ituo.mutation.AppendSharedWith(s)
-	return ituo
+// AppendSharedWith appends value to the "shared_with" field.
+func (_u *ImportTemplateUpdateOne) AppendSharedWith(v []string) *ImportTemplateUpdateOne {
+	_u.mutation.AppendSharedWith(v)
+	return _u
 }
 
 // ClearSharedWith clears the value of the "shared_with" field.
-func (ituo *ImportTemplateUpdateOne) ClearSharedWith() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearSharedWith()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearSharedWith() *ImportTemplateUpdateOne {
+	_u.mutation.ClearSharedWith()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (ituo *ImportTemplateUpdateOne) SetCreatedBy(u uuid.UUID) *ImportTemplateUpdateOne {
-	ituo.mutation.SetCreatedBy(u)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetCreatedBy(v uuid.UUID) *ImportTemplateUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableCreatedBy(u *uuid.UUID) *ImportTemplateUpdateOne {
-	if u != nil {
-		ituo.SetCreatedBy(*u)
+func (_u *ImportTemplateUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (ituo *ImportTemplateUpdateOne) ClearCreatedBy() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearCreatedBy()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearCreatedBy() *ImportTemplateUpdateOne {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetCreatedByName sets the "created_by_name" field.
-func (ituo *ImportTemplateUpdateOne) SetCreatedByName(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetCreatedByName(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetCreatedByName(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetCreatedByName(v)
+	return _u
 }
 
 // SetNillableCreatedByName sets the "created_by_name" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableCreatedByName(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetCreatedByName(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableCreatedByName(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetCreatedByName(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearCreatedByName clears the value of the "created_by_name" field.
-func (ituo *ImportTemplateUpdateOne) ClearCreatedByName() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearCreatedByName()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearCreatedByName() *ImportTemplateUpdateOne {
+	_u.mutation.ClearCreatedByName()
+	return _u
 }
 
 // SetApprovedBy sets the "approved_by" field.
-func (ituo *ImportTemplateUpdateOne) SetApprovedBy(u uuid.UUID) *ImportTemplateUpdateOne {
-	ituo.mutation.SetApprovedBy(u)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetApprovedBy(v uuid.UUID) *ImportTemplateUpdateOne {
+	_u.mutation.SetApprovedBy(v)
+	return _u
 }
 
 // SetNillableApprovedBy sets the "approved_by" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableApprovedBy(u *uuid.UUID) *ImportTemplateUpdateOne {
-	if u != nil {
-		ituo.SetApprovedBy(*u)
+func (_u *ImportTemplateUpdateOne) SetNillableApprovedBy(v *uuid.UUID) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetApprovedBy(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearApprovedBy clears the value of the "approved_by" field.
-func (ituo *ImportTemplateUpdateOne) ClearApprovedBy() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearApprovedBy()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearApprovedBy() *ImportTemplateUpdateOne {
+	_u.mutation.ClearApprovedBy()
+	return _u
 }
 
 // SetApprovedByName sets the "approved_by_name" field.
-func (ituo *ImportTemplateUpdateOne) SetApprovedByName(s string) *ImportTemplateUpdateOne {
-	ituo.mutation.SetApprovedByName(s)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetApprovedByName(v string) *ImportTemplateUpdateOne {
+	_u.mutation.SetApprovedByName(v)
+	return _u
 }
 
 // SetNillableApprovedByName sets the "approved_by_name" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableApprovedByName(s *string) *ImportTemplateUpdateOne {
-	if s != nil {
-		ituo.SetApprovedByName(*s)
+func (_u *ImportTemplateUpdateOne) SetNillableApprovedByName(v *string) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetApprovedByName(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearApprovedByName clears the value of the "approved_by_name" field.
-func (ituo *ImportTemplateUpdateOne) ClearApprovedByName() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearApprovedByName()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearApprovedByName() *ImportTemplateUpdateOne {
+	_u.mutation.ClearApprovedByName()
+	return _u
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (ituo *ImportTemplateUpdateOne) SetApprovedAt(t time.Time) *ImportTemplateUpdateOne {
-	ituo.mutation.SetApprovedAt(t)
-	return ituo
+func (_u *ImportTemplateUpdateOne) SetApprovedAt(v time.Time) *ImportTemplateUpdateOne {
+	_u.mutation.SetApprovedAt(v)
+	return _u
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (ituo *ImportTemplateUpdateOne) SetNillableApprovedAt(t *time.Time) *ImportTemplateUpdateOne {
-	if t != nil {
-		ituo.SetApprovedAt(*t)
+func (_u *ImportTemplateUpdateOne) SetNillableApprovedAt(v *time.Time) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetApprovedAt(*v)
 	}
-	return ituo
+	return _u
 }
 
 // ClearApprovedAt clears the value of the "approved_at" field.
-func (ituo *ImportTemplateUpdateOne) ClearApprovedAt() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearApprovedAt()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearApprovedAt() *ImportTemplateUpdateOne {
+	_u.mutation.ClearApprovedAt()
+	return _u
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (ituo *ImportTemplateUpdateOne) SetCiType(c *CiType) *ImportTemplateUpdateOne {
-	return ituo.SetCiTypeID(c.ID)
+func (_u *ImportTemplateUpdateOne) SetCiType(v *CiType) *ImportTemplateUpdateOne {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // AddTaskIDs adds the "tasks" edge to the ImportTask entity by IDs.
-func (ituo *ImportTemplateUpdateOne) AddTaskIDs(ids ...uint64) *ImportTemplateUpdateOne {
-	ituo.mutation.AddTaskIDs(ids...)
-	return ituo
+func (_u *ImportTemplateUpdateOne) AddTaskIDs(ids ...uint64) *ImportTemplateUpdateOne {
+	_u.mutation.AddTaskIDs(ids...)
+	return _u
 }
 
 // AddTasks adds the "tasks" edges to the ImportTask entity.
-func (ituo *ImportTemplateUpdateOne) AddTasks(i ...*ImportTask) *ImportTemplateUpdateOne {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *ImportTemplateUpdateOne) AddTasks(v ...*ImportTask) *ImportTemplateUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ituo.AddTaskIDs(ids...)
+	return _u.AddTaskIDs(ids...)
 }
 
 // Mutation returns the ImportTemplateMutation object of the builder.
-func (ituo *ImportTemplateUpdateOne) Mutation() *ImportTemplateMutation {
-	return ituo.mutation
+func (_u *ImportTemplateUpdateOne) Mutation() *ImportTemplateMutation {
+	return _u.mutation
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (ituo *ImportTemplateUpdateOne) ClearCiType() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearCiType()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearCiType() *ImportTemplateUpdateOne {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // ClearTasks clears all "tasks" edges to the ImportTask entity.
-func (ituo *ImportTemplateUpdateOne) ClearTasks() *ImportTemplateUpdateOne {
-	ituo.mutation.ClearTasks()
-	return ituo
+func (_u *ImportTemplateUpdateOne) ClearTasks() *ImportTemplateUpdateOne {
+	_u.mutation.ClearTasks()
+	return _u
 }
 
 // RemoveTaskIDs removes the "tasks" edge to ImportTask entities by IDs.
-func (ituo *ImportTemplateUpdateOne) RemoveTaskIDs(ids ...uint64) *ImportTemplateUpdateOne {
-	ituo.mutation.RemoveTaskIDs(ids...)
-	return ituo
+func (_u *ImportTemplateUpdateOne) RemoveTaskIDs(ids ...uint64) *ImportTemplateUpdateOne {
+	_u.mutation.RemoveTaskIDs(ids...)
+	return _u
 }
 
 // RemoveTasks removes "tasks" edges to ImportTask entities.
-func (ituo *ImportTemplateUpdateOne) RemoveTasks(i ...*ImportTask) *ImportTemplateUpdateOne {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_u *ImportTemplateUpdateOne) RemoveTasks(v ...*ImportTask) *ImportTemplateUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return ituo.RemoveTaskIDs(ids...)
+	return _u.RemoveTaskIDs(ids...)
 }
 
 // Where appends a list predicates to the ImportTemplateUpdate builder.
-func (ituo *ImportTemplateUpdateOne) Where(ps ...predicate.ImportTemplate) *ImportTemplateUpdateOne {
-	ituo.mutation.Where(ps...)
-	return ituo
+func (_u *ImportTemplateUpdateOne) Where(ps ...predicate.ImportTemplate) *ImportTemplateUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (ituo *ImportTemplateUpdateOne) Select(field string, fields ...string) *ImportTemplateUpdateOne {
-	ituo.fields = append([]string{field}, fields...)
-	return ituo
+func (_u *ImportTemplateUpdateOne) Select(field string, fields ...string) *ImportTemplateUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ImportTemplate entity.
-func (ituo *ImportTemplateUpdateOne) Save(ctx context.Context) (*ImportTemplate, error) {
-	if err := ituo.defaults(); err != nil {
+func (_u *ImportTemplateUpdateOne) Save(ctx context.Context) (*ImportTemplate, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ituo.sqlSave, ituo.mutation, ituo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ituo *ImportTemplateUpdateOne) SaveX(ctx context.Context) *ImportTemplate {
-	node, err := ituo.Save(ctx)
+func (_u *ImportTemplateUpdateOne) SaveX(ctx context.Context) *ImportTemplate {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -2614,108 +2614,108 @@ func (ituo *ImportTemplateUpdateOne) SaveX(ctx context.Context) *ImportTemplate 
 }
 
 // Exec executes the query on the entity.
-func (ituo *ImportTemplateUpdateOne) Exec(ctx context.Context) error {
-	_, err := ituo.Save(ctx)
+func (_u *ImportTemplateUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ituo *ImportTemplateUpdateOne) ExecX(ctx context.Context) {
-	if err := ituo.Exec(ctx); err != nil {
+func (_u *ImportTemplateUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ituo *ImportTemplateUpdateOne) defaults() error {
-	if _, ok := ituo.mutation.UpdatedAt(); !ok {
+func (_u *ImportTemplateUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if importtemplate.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importtemplate.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importtemplate.UpdateDefaultUpdatedAt()
-		ituo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ituo *ImportTemplateUpdateOne) check() error {
-	if v, ok := ituo.mutation.Name(); ok {
+func (_u *ImportTemplateUpdateOne) check() error {
+	if v, ok := _u.mutation.Name(); ok {
 		if err := importtemplate.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.name": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.Code(); ok {
+	if v, ok := _u.mutation.Code(); ok {
 		if err := importtemplate.CodeValidator(v); err != nil {
 			return &ValidationError{Name: "code", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.code": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.Description(); ok {
+	if v, ok := _u.mutation.Description(); ok {
 		if err := importtemplate.DescriptionValidator(v); err != nil {
 			return &ValidationError{Name: "description", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.description": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.Version(); ok {
+	if v, ok := _u.mutation.Version(); ok {
 		if err := importtemplate.VersionValidator(v); err != nil {
 			return &ValidationError{Name: "version", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.version": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.GetType(); ok {
+	if v, ok := _u.mutation.GetType(); ok {
 		if err := importtemplate.TypeValidator(v); err != nil {
 			return &ValidationError{Name: "type", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.type": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.ImportMode(); ok {
+	if v, ok := _u.mutation.ImportMode(); ok {
 		if err := importtemplate.ImportModeValidator(v); err != nil {
 			return &ValidationError{Name: "import_mode", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.import_mode": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.CiTypeName(); ok {
+	if v, ok := _u.mutation.CiTypeName(); ok {
 		if err := importtemplate.CiTypeNameValidator(v); err != nil {
 			return &ValidationError{Name: "ci_type_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.ci_type_name": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.ExcelSheetName(); ok {
+	if v, ok := _u.mutation.ExcelSheetName(); ok {
 		if err := importtemplate.ExcelSheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "excel_sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.excel_sheet_name": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.APIEndpoint(); ok {
+	if v, ok := _u.mutation.APIEndpoint(); ok {
 		if err := importtemplate.APIEndpointValidator(v); err != nil {
 			return &ValidationError{Name: "api_endpoint", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_endpoint": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.APIMethod(); ok {
+	if v, ok := _u.mutation.APIMethod(); ok {
 		if err := importtemplate.APIMethodValidator(v); err != nil {
 			return &ValidationError{Name: "api_method", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_method": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.APIResponsePath(); ok {
+	if v, ok := _u.mutation.APIResponsePath(); ok {
 		if err := importtemplate.APIResponsePathValidator(v); err != nil {
 			return &ValidationError{Name: "api_response_path", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_response_path": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.ErrorHandlingMode(); ok {
+	if v, ok := _u.mutation.ErrorHandlingMode(); ok {
 		if err := importtemplate.ErrorHandlingModeValidator(v); err != nil {
 			return &ValidationError{Name: "error_handling_mode", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.error_handling_mode": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.Icon(); ok {
+	if v, ok := _u.mutation.Icon(); ok {
 		if err := importtemplate.IconValidator(v); err != nil {
 			return &ValidationError{Name: "icon", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.icon": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.Category(); ok {
+	if v, ok := _u.mutation.Category(); ok {
 		if err := importtemplate.CategoryValidator(v); err != nil {
 			return &ValidationError{Name: "category", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.category": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.CreatedByName(); ok {
+	if v, ok := _u.mutation.CreatedByName(); ok {
 		if err := importtemplate.CreatedByNameValidator(v); err != nil {
 			return &ValidationError{Name: "created_by_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.created_by_name": %w`, err)}
 		}
 	}
-	if v, ok := ituo.mutation.ApprovedByName(); ok {
+	if v, ok := _u.mutation.ApprovedByName(); ok {
 		if err := importtemplate.ApprovedByNameValidator(v); err != nil {
 			return &ValidationError{Name: "approved_by_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.approved_by_name": %w`, err)}
 		}
@@ -2723,17 +2723,17 @@ func (ituo *ImportTemplateUpdateOne) check() error {
 	return nil
 }
 
-func (ituo *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *ImportTemplate, err error) {
-	if err := ituo.check(); err != nil {
+func (_u *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *ImportTemplate, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(importtemplate.Table, importtemplate.Columns, sqlgraph.NewFieldSpec(importtemplate.FieldID, field.TypeUint64))
-	id, ok := ituo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ImportTemplate.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := ituo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, importtemplate.FieldID)
 		for _, f := range fields {
@@ -2745,337 +2745,337 @@ func (ituo *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *Import
 			}
 		}
 	}
-	if ps := ituo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ituo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(importtemplate.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ituo.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(importtemplate.FieldStatus, field.TypeUint8, value)
 	}
-	if value, ok := ituo.mutation.AddedStatus(); ok {
+	if value, ok := _u.mutation.AddedStatus(); ok {
 		_spec.AddField(importtemplate.FieldStatus, field.TypeUint8, value)
 	}
-	if ituo.mutation.StatusCleared() {
+	if _u.mutation.StatusCleared() {
 		_spec.ClearField(importtemplate.FieldStatus, field.TypeUint8)
 	}
-	if value, ok := ituo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(importtemplate.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ituo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(importtemplate.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ituo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(importtemplate.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ituo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(importtemplate.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ituo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importtemplate.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ituo.mutation.Name(); ok {
+	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(importtemplate.FieldName, field.TypeString, value)
 	}
-	if value, ok := ituo.mutation.Code(); ok {
+	if value, ok := _u.mutation.Code(); ok {
 		_spec.SetField(importtemplate.FieldCode, field.TypeString, value)
 	}
-	if value, ok := ituo.mutation.Description(); ok {
+	if value, ok := _u.mutation.Description(); ok {
 		_spec.SetField(importtemplate.FieldDescription, field.TypeString, value)
 	}
-	if ituo.mutation.DescriptionCleared() {
+	if _u.mutation.DescriptionCleared() {
 		_spec.ClearField(importtemplate.FieldDescription, field.TypeString)
 	}
-	if value, ok := ituo.mutation.Version(); ok {
+	if value, ok := _u.mutation.Version(); ok {
 		_spec.SetField(importtemplate.FieldVersion, field.TypeString, value)
 	}
-	if value, ok := ituo.mutation.GetType(); ok {
+	if value, ok := _u.mutation.GetType(); ok {
 		_spec.SetField(importtemplate.FieldType, field.TypeEnum, value)
 	}
-	if value, ok := ituo.mutation.ImportMode(); ok {
+	if value, ok := _u.mutation.ImportMode(); ok {
 		_spec.SetField(importtemplate.FieldImportMode, field.TypeEnum, value)
 	}
-	if value, ok := ituo.mutation.CiTypeName(); ok {
+	if value, ok := _u.mutation.CiTypeName(); ok {
 		_spec.SetField(importtemplate.FieldCiTypeName, field.TypeString, value)
 	}
-	if ituo.mutation.CiTypeNameCleared() {
+	if _u.mutation.CiTypeNameCleared() {
 		_spec.ClearField(importtemplate.FieldCiTypeName, field.TypeString)
 	}
-	if value, ok := ituo.mutation.AutoCreateCiType(); ok {
+	if value, ok := _u.mutation.AutoCreateCiType(); ok {
 		_spec.SetField(importtemplate.FieldAutoCreateCiType, field.TypeBool, value)
 	}
-	if value, ok := ituo.mutation.FieldMappings(); ok {
+	if value, ok := _u.mutation.FieldMappings(); ok {
 		_spec.SetField(importtemplate.FieldFieldMappings, field.TypeJSON, value)
 	}
-	if value, ok := ituo.mutation.AppendedFieldMappings(); ok {
+	if value, ok := _u.mutation.AppendedFieldMappings(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldFieldMappings, value)
 		})
 	}
-	if ituo.mutation.FieldMappingsCleared() {
+	if _u.mutation.FieldMappingsCleared() {
 		_spec.ClearField(importtemplate.FieldFieldMappings, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.HeaderMappings(); ok {
+	if value, ok := _u.mutation.HeaderMappings(); ok {
 		_spec.SetField(importtemplate.FieldHeaderMappings, field.TypeJSON, value)
 	}
-	if ituo.mutation.HeaderMappingsCleared() {
+	if _u.mutation.HeaderMappingsCleared() {
 		_spec.ClearField(importtemplate.FieldHeaderMappings, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.DefaultValues(); ok {
+	if value, ok := _u.mutation.DefaultValues(); ok {
 		_spec.SetField(importtemplate.FieldDefaultValues, field.TypeJSON, value)
 	}
-	if ituo.mutation.DefaultValuesCleared() {
+	if _u.mutation.DefaultValuesCleared() {
 		_spec.ClearField(importtemplate.FieldDefaultValues, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.ComputedFields(); ok {
+	if value, ok := _u.mutation.ComputedFields(); ok {
 		_spec.SetField(importtemplate.FieldComputedFields, field.TypeJSON, value)
 	}
-	if value, ok := ituo.mutation.AppendedComputedFields(); ok {
+	if value, ok := _u.mutation.AppendedComputedFields(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldComputedFields, value)
 		})
 	}
-	if ituo.mutation.ComputedFieldsCleared() {
+	if _u.mutation.ComputedFieldsCleared() {
 		_spec.ClearField(importtemplate.FieldComputedFields, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.DataTransformations(); ok {
+	if value, ok := _u.mutation.DataTransformations(); ok {
 		_spec.SetField(importtemplate.FieldDataTransformations, field.TypeJSON, value)
 	}
-	if value, ok := ituo.mutation.AppendedDataTransformations(); ok {
+	if value, ok := _u.mutation.AppendedDataTransformations(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldDataTransformations, value)
 		})
 	}
-	if ituo.mutation.DataTransformationsCleared() {
+	if _u.mutation.DataTransformationsCleared() {
 		_spec.ClearField(importtemplate.FieldDataTransformations, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.DataFilters(); ok {
+	if value, ok := _u.mutation.DataFilters(); ok {
 		_spec.SetField(importtemplate.FieldDataFilters, field.TypeJSON, value)
 	}
-	if value, ok := ituo.mutation.AppendedDataFilters(); ok {
+	if value, ok := _u.mutation.AppendedDataFilters(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldDataFilters, value)
 		})
 	}
-	if ituo.mutation.DataFiltersCleared() {
+	if _u.mutation.DataFiltersCleared() {
 		_spec.ClearField(importtemplate.FieldDataFilters, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.DataCleaners(); ok {
+	if value, ok := _u.mutation.DataCleaners(); ok {
 		_spec.SetField(importtemplate.FieldDataCleaners, field.TypeJSON, value)
 	}
-	if value, ok := ituo.mutation.AppendedDataCleaners(); ok {
+	if value, ok := _u.mutation.AppendedDataCleaners(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldDataCleaners, value)
 		})
 	}
-	if ituo.mutation.DataCleanersCleared() {
+	if _u.mutation.DataCleanersCleared() {
 		_spec.ClearField(importtemplate.FieldDataCleaners, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.ExcelSheetName(); ok {
+	if value, ok := _u.mutation.ExcelSheetName(); ok {
 		_spec.SetField(importtemplate.FieldExcelSheetName, field.TypeString, value)
 	}
-	if ituo.mutation.ExcelSheetNameCleared() {
+	if _u.mutation.ExcelSheetNameCleared() {
 		_spec.ClearField(importtemplate.FieldExcelSheetName, field.TypeString)
 	}
-	if value, ok := ituo.mutation.ExcelHeaderRow(); ok {
+	if value, ok := _u.mutation.ExcelHeaderRow(); ok {
 		_spec.SetField(importtemplate.FieldExcelHeaderRow, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.AddedExcelHeaderRow(); ok {
+	if value, ok := _u.mutation.AddedExcelHeaderRow(); ok {
 		_spec.AddField(importtemplate.FieldExcelHeaderRow, field.TypeInt, value)
 	}
-	if ituo.mutation.ExcelHeaderRowCleared() {
+	if _u.mutation.ExcelHeaderRowCleared() {
 		_spec.ClearField(importtemplate.FieldExcelHeaderRow, field.TypeInt)
 	}
-	if value, ok := ituo.mutation.ExcelDataStartRow(); ok {
+	if value, ok := _u.mutation.ExcelDataStartRow(); ok {
 		_spec.SetField(importtemplate.FieldExcelDataStartRow, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.AddedExcelDataStartRow(); ok {
+	if value, ok := _u.mutation.AddedExcelDataStartRow(); ok {
 		_spec.AddField(importtemplate.FieldExcelDataStartRow, field.TypeInt, value)
 	}
-	if ituo.mutation.ExcelDataStartRowCleared() {
+	if _u.mutation.ExcelDataStartRowCleared() {
 		_spec.ClearField(importtemplate.FieldExcelDataStartRow, field.TypeInt)
 	}
-	if value, ok := ituo.mutation.ExcelColumnMappings(); ok {
+	if value, ok := _u.mutation.ExcelColumnMappings(); ok {
 		_spec.SetField(importtemplate.FieldExcelColumnMappings, field.TypeJSON, value)
 	}
-	if ituo.mutation.ExcelColumnMappingsCleared() {
+	if _u.mutation.ExcelColumnMappingsCleared() {
 		_spec.ClearField(importtemplate.FieldExcelColumnMappings, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.APIEndpoint(); ok {
+	if value, ok := _u.mutation.APIEndpoint(); ok {
 		_spec.SetField(importtemplate.FieldAPIEndpoint, field.TypeString, value)
 	}
-	if ituo.mutation.APIEndpointCleared() {
+	if _u.mutation.APIEndpointCleared() {
 		_spec.ClearField(importtemplate.FieldAPIEndpoint, field.TypeString)
 	}
-	if value, ok := ituo.mutation.APIMethod(); ok {
+	if value, ok := _u.mutation.APIMethod(); ok {
 		_spec.SetField(importtemplate.FieldAPIMethod, field.TypeEnum, value)
 	}
-	if ituo.mutation.APIMethodCleared() {
+	if _u.mutation.APIMethodCleared() {
 		_spec.ClearField(importtemplate.FieldAPIMethod, field.TypeEnum)
 	}
-	if value, ok := ituo.mutation.APIHeaders(); ok {
+	if value, ok := _u.mutation.APIHeaders(); ok {
 		_spec.SetField(importtemplate.FieldAPIHeaders, field.TypeJSON, value)
 	}
-	if ituo.mutation.APIHeadersCleared() {
+	if _u.mutation.APIHeadersCleared() {
 		_spec.ClearField(importtemplate.FieldAPIHeaders, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.APIParams(); ok {
+	if value, ok := _u.mutation.APIParams(); ok {
 		_spec.SetField(importtemplate.FieldAPIParams, field.TypeJSON, value)
 	}
-	if ituo.mutation.APIParamsCleared() {
+	if _u.mutation.APIParamsCleared() {
 		_spec.ClearField(importtemplate.FieldAPIParams, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.APIResponsePath(); ok {
+	if value, ok := _u.mutation.APIResponsePath(); ok {
 		_spec.SetField(importtemplate.FieldAPIResponsePath, field.TypeString, value)
 	}
-	if ituo.mutation.APIResponsePathCleared() {
+	if _u.mutation.APIResponsePathCleared() {
 		_spec.ClearField(importtemplate.FieldAPIResponsePath, field.TypeString)
 	}
-	if value, ok := ituo.mutation.MaxErrors(); ok {
+	if value, ok := _u.mutation.MaxErrors(); ok {
 		_spec.SetField(importtemplate.FieldMaxErrors, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.AddedMaxErrors(); ok {
+	if value, ok := _u.mutation.AddedMaxErrors(); ok {
 		_spec.AddField(importtemplate.FieldMaxErrors, field.TypeInt, value)
 	}
-	if ituo.mutation.MaxErrorsCleared() {
+	if _u.mutation.MaxErrorsCleared() {
 		_spec.ClearField(importtemplate.FieldMaxErrors, field.TypeInt)
 	}
-	if value, ok := ituo.mutation.StopOnFirstError(); ok {
+	if value, ok := _u.mutation.StopOnFirstError(); ok {
 		_spec.SetField(importtemplate.FieldStopOnFirstError, field.TypeBool, value)
 	}
-	if value, ok := ituo.mutation.SkipInvalidRows(); ok {
+	if value, ok := _u.mutation.SkipInvalidRows(); ok {
 		_spec.SetField(importtemplate.FieldSkipInvalidRows, field.TypeBool, value)
 	}
-	if value, ok := ituo.mutation.ErrorHandlingMode(); ok {
+	if value, ok := _u.mutation.ErrorHandlingMode(); ok {
 		_spec.SetField(importtemplate.FieldErrorHandlingMode, field.TypeEnum, value)
 	}
-	if value, ok := ituo.mutation.BatchSize(); ok {
+	if value, ok := _u.mutation.BatchSize(); ok {
 		_spec.SetField(importtemplate.FieldBatchSize, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.AddedBatchSize(); ok {
+	if value, ok := _u.mutation.AddedBatchSize(); ok {
 		_spec.AddField(importtemplate.FieldBatchSize, field.TypeInt, value)
 	}
-	if ituo.mutation.BatchSizeCleared() {
+	if _u.mutation.BatchSizeCleared() {
 		_spec.ClearField(importtemplate.FieldBatchSize, field.TypeInt)
 	}
-	if value, ok := ituo.mutation.MaxParallelJobs(); ok {
+	if value, ok := _u.mutation.MaxParallelJobs(); ok {
 		_spec.SetField(importtemplate.FieldMaxParallelJobs, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.AddedMaxParallelJobs(); ok {
+	if value, ok := _u.mutation.AddedMaxParallelJobs(); ok {
 		_spec.AddField(importtemplate.FieldMaxParallelJobs, field.TypeInt, value)
 	}
-	if ituo.mutation.MaxParallelJobsCleared() {
+	if _u.mutation.MaxParallelJobsCleared() {
 		_spec.ClearField(importtemplate.FieldMaxParallelJobs, field.TypeInt)
 	}
-	if value, ok := ituo.mutation.EnableTransaction(); ok {
+	if value, ok := _u.mutation.EnableTransaction(); ok {
 		_spec.SetField(importtemplate.FieldEnableTransaction, field.TypeBool, value)
 	}
-	if value, ok := ituo.mutation.Tags(); ok {
+	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(importtemplate.FieldTags, field.TypeJSON, value)
 	}
-	if value, ok := ituo.mutation.AppendedTags(); ok {
+	if value, ok := _u.mutation.AppendedTags(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldTags, value)
 		})
 	}
-	if ituo.mutation.TagsCleared() {
+	if _u.mutation.TagsCleared() {
 		_spec.ClearField(importtemplate.FieldTags, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.Metadata(); ok {
+	if value, ok := _u.mutation.Metadata(); ok {
 		_spec.SetField(importtemplate.FieldMetadata, field.TypeJSON, value)
 	}
-	if ituo.mutation.MetadataCleared() {
+	if _u.mutation.MetadataCleared() {
 		_spec.ClearField(importtemplate.FieldMetadata, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.Icon(); ok {
+	if value, ok := _u.mutation.Icon(); ok {
 		_spec.SetField(importtemplate.FieldIcon, field.TypeString, value)
 	}
-	if ituo.mutation.IconCleared() {
+	if _u.mutation.IconCleared() {
 		_spec.ClearField(importtemplate.FieldIcon, field.TypeString)
 	}
-	if value, ok := ituo.mutation.Category(); ok {
+	if value, ok := _u.mutation.Category(); ok {
 		_spec.SetField(importtemplate.FieldCategory, field.TypeString, value)
 	}
-	if ituo.mutation.CategoryCleared() {
+	if _u.mutation.CategoryCleared() {
 		_spec.ClearField(importtemplate.FieldCategory, field.TypeString)
 	}
-	if value, ok := ituo.mutation.UsageCount(); ok {
+	if value, ok := _u.mutation.UsageCount(); ok {
 		_spec.SetField(importtemplate.FieldUsageCount, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.AddedUsageCount(); ok {
+	if value, ok := _u.mutation.AddedUsageCount(); ok {
 		_spec.AddField(importtemplate.FieldUsageCount, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.SuccessCount(); ok {
+	if value, ok := _u.mutation.SuccessCount(); ok {
 		_spec.SetField(importtemplate.FieldSuccessCount, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.AddedSuccessCount(); ok {
+	if value, ok := _u.mutation.AddedSuccessCount(); ok {
 		_spec.AddField(importtemplate.FieldSuccessCount, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.ErrorCount(); ok {
+	if value, ok := _u.mutation.ErrorCount(); ok {
 		_spec.SetField(importtemplate.FieldErrorCount, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.AddedErrorCount(); ok {
+	if value, ok := _u.mutation.AddedErrorCount(); ok {
 		_spec.AddField(importtemplate.FieldErrorCount, field.TypeInt, value)
 	}
-	if value, ok := ituo.mutation.SuccessRate(); ok {
+	if value, ok := _u.mutation.SuccessRate(); ok {
 		_spec.SetField(importtemplate.FieldSuccessRate, field.TypeFloat64, value)
 	}
-	if value, ok := ituo.mutation.AddedSuccessRate(); ok {
+	if value, ok := _u.mutation.AddedSuccessRate(); ok {
 		_spec.AddField(importtemplate.FieldSuccessRate, field.TypeFloat64, value)
 	}
-	if value, ok := ituo.mutation.IsPublic(); ok {
+	if value, ok := _u.mutation.IsPublic(); ok {
 		_spec.SetField(importtemplate.FieldIsPublic, field.TypeBool, value)
 	}
-	if value, ok := ituo.mutation.IsSystem(); ok {
+	if value, ok := _u.mutation.IsSystem(); ok {
 		_spec.SetField(importtemplate.FieldIsSystem, field.TypeBool, value)
 	}
-	if value, ok := ituo.mutation.SharedWith(); ok {
+	if value, ok := _u.mutation.SharedWith(); ok {
 		_spec.SetField(importtemplate.FieldSharedWith, field.TypeJSON, value)
 	}
-	if value, ok := ituo.mutation.AppendedSharedWith(); ok {
+	if value, ok := _u.mutation.AppendedSharedWith(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, importtemplate.FieldSharedWith, value)
 		})
 	}
-	if ituo.mutation.SharedWithCleared() {
+	if _u.mutation.SharedWithCleared() {
 		_spec.ClearField(importtemplate.FieldSharedWith, field.TypeJSON)
 	}
-	if value, ok := ituo.mutation.CreatedBy(); ok {
+	if value, ok := _u.mutation.CreatedBy(); ok {
 		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
 	}
-	if ituo.mutation.CreatedByCleared() {
+	if _u.mutation.CreatedByCleared() {
 		_spec.ClearField(importtemplate.FieldCreatedBy, field.TypeUUID)
 	}
-	if value, ok := ituo.mutation.CreatedByName(); ok {
+	if value, ok := _u.mutation.CreatedByName(); ok {
 		_spec.SetField(importtemplate.FieldCreatedByName, field.TypeString, value)
 	}
-	if ituo.mutation.CreatedByNameCleared() {
+	if _u.mutation.CreatedByNameCleared() {
 		_spec.ClearField(importtemplate.FieldCreatedByName, field.TypeString)
 	}
-	if value, ok := ituo.mutation.ApprovedBy(); ok {
+	if value, ok := _u.mutation.ApprovedBy(); ok {
 		_spec.SetField(importtemplate.FieldApprovedBy, field.TypeUUID, value)
 	}
-	if ituo.mutation.ApprovedByCleared() {
+	if _u.mutation.ApprovedByCleared() {
 		_spec.ClearField(importtemplate.FieldApprovedBy, field.TypeUUID)
 	}
-	if value, ok := ituo.mutation.ApprovedByName(); ok {
+	if value, ok := _u.mutation.ApprovedByName(); ok {
 		_spec.SetField(importtemplate.FieldApprovedByName, field.TypeString, value)
 	}
-	if ituo.mutation.ApprovedByNameCleared() {
+	if _u.mutation.ApprovedByNameCleared() {
 		_spec.ClearField(importtemplate.FieldApprovedByName, field.TypeString)
 	}
-	if value, ok := ituo.mutation.ApprovedAt(); ok {
+	if value, ok := _u.mutation.ApprovedAt(); ok {
 		_spec.SetField(importtemplate.FieldApprovedAt, field.TypeTime, value)
 	}
-	if ituo.mutation.ApprovedAtCleared() {
+	if _u.mutation.ApprovedAtCleared() {
 		_spec.ClearField(importtemplate.FieldApprovedAt, field.TypeTime)
 	}
-	if ituo.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -3088,7 +3088,7 @@ func (ituo *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *Import
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ituo.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -3104,7 +3104,7 @@ func (ituo *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *Import
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ituo.mutation.TasksCleared() {
+	if _u.mutation.TasksCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3117,7 +3117,7 @@ func (ituo *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *Import
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ituo.mutation.RemovedTasksIDs(); len(nodes) > 0 && !ituo.mutation.TasksCleared() {
+	if nodes := _u.mutation.RemovedTasksIDs(); len(nodes) > 0 && !_u.mutation.TasksCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3133,7 +3133,7 @@ func (ituo *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *Import
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ituo.mutation.TasksIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TasksIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -3149,10 +3149,10 @@ func (ituo *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *Import
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ImportTemplate{config: ituo.config}
+	_node = &ImportTemplate{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, ituo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{importtemplate.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -3160,6 +3160,6 @@ func (ituo *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *Import
 		}
 		return nil, err
 	}
-	ituo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

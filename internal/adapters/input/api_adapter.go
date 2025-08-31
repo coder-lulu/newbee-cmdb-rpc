@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 )
 
 // APIInputAdapter API输入适配器

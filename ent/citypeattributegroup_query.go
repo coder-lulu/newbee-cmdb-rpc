@@ -12,10 +12,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiTypeAttributeGroupQuery is the builder for querying CiTypeAttributeGroup entities.
@@ -33,44 +33,44 @@ type CiTypeAttributeGroupQuery struct {
 }
 
 // Where adds a new predicate for the CiTypeAttributeGroupQuery builder.
-func (ctagq *CiTypeAttributeGroupQuery) Where(ps ...predicate.CiTypeAttributeGroup) *CiTypeAttributeGroupQuery {
-	ctagq.predicates = append(ctagq.predicates, ps...)
-	return ctagq
+func (_q *CiTypeAttributeGroupQuery) Where(ps ...predicate.CiTypeAttributeGroup) *CiTypeAttributeGroupQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (ctagq *CiTypeAttributeGroupQuery) Limit(limit int) *CiTypeAttributeGroupQuery {
-	ctagq.ctx.Limit = &limit
-	return ctagq
+func (_q *CiTypeAttributeGroupQuery) Limit(limit int) *CiTypeAttributeGroupQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (ctagq *CiTypeAttributeGroupQuery) Offset(offset int) *CiTypeAttributeGroupQuery {
-	ctagq.ctx.Offset = &offset
-	return ctagq
+func (_q *CiTypeAttributeGroupQuery) Offset(offset int) *CiTypeAttributeGroupQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (ctagq *CiTypeAttributeGroupQuery) Unique(unique bool) *CiTypeAttributeGroupQuery {
-	ctagq.ctx.Unique = &unique
-	return ctagq
+func (_q *CiTypeAttributeGroupQuery) Unique(unique bool) *CiTypeAttributeGroupQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (ctagq *CiTypeAttributeGroupQuery) Order(o ...citypeattributegroup.OrderOption) *CiTypeAttributeGroupQuery {
-	ctagq.order = append(ctagq.order, o...)
-	return ctagq
+func (_q *CiTypeAttributeGroupQuery) Order(o ...citypeattributegroup.OrderOption) *CiTypeAttributeGroupQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryCiType chains the current query on the "ci_type" edge.
-func (ctagq *CiTypeAttributeGroupQuery) QueryCiType() *CiTypeQuery {
-	query := (&CiTypeClient{config: ctagq.config}).Query()
+func (_q *CiTypeAttributeGroupQuery) QueryCiType() *CiTypeQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ctagq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ctagq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -79,20 +79,20 @@ func (ctagq *CiTypeAttributeGroupQuery) QueryCiType() *CiTypeQuery {
 			sqlgraph.To(citype.Table, citype.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, citypeattributegroup.CiTypeTable, citypeattributegroup.CiTypeColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ctagq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryGroupItems chains the current query on the "group_items" edge.
-func (ctagq *CiTypeAttributeGroupQuery) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
-	query := (&CiTypeAttributeGroupItemClient{config: ctagq.config}).Query()
+func (_q *CiTypeAttributeGroupQuery) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
+	query := (&CiTypeAttributeGroupItemClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ctagq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ctagq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -101,7 +101,7 @@ func (ctagq *CiTypeAttributeGroupQuery) QueryGroupItems() *CiTypeAttributeGroupI
 			sqlgraph.To(citypeattributegroupitem.Table, citypeattributegroupitem.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, citypeattributegroup.GroupItemsTable, citypeattributegroup.GroupItemsColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ctagq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -109,8 +109,8 @@ func (ctagq *CiTypeAttributeGroupQuery) QueryGroupItems() *CiTypeAttributeGroupI
 
 // First returns the first CiTypeAttributeGroup entity from the query.
 // Returns a *NotFoundError when no CiTypeAttributeGroup was found.
-func (ctagq *CiTypeAttributeGroupQuery) First(ctx context.Context) (*CiTypeAttributeGroup, error) {
-	nodes, err := ctagq.Limit(1).All(setContextOp(ctx, ctagq.ctx, ent.OpQueryFirst))
+func (_q *CiTypeAttributeGroupQuery) First(ctx context.Context) (*CiTypeAttributeGroup, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -121,8 +121,8 @@ func (ctagq *CiTypeAttributeGroupQuery) First(ctx context.Context) (*CiTypeAttri
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (ctagq *CiTypeAttributeGroupQuery) FirstX(ctx context.Context) *CiTypeAttributeGroup {
-	node, err := ctagq.First(ctx)
+func (_q *CiTypeAttributeGroupQuery) FirstX(ctx context.Context) *CiTypeAttributeGroup {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -131,9 +131,9 @@ func (ctagq *CiTypeAttributeGroupQuery) FirstX(ctx context.Context) *CiTypeAttri
 
 // FirstID returns the first CiTypeAttributeGroup ID from the query.
 // Returns a *NotFoundError when no CiTypeAttributeGroup ID was found.
-func (ctagq *CiTypeAttributeGroupQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *CiTypeAttributeGroupQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ctagq.Limit(1).IDs(setContextOp(ctx, ctagq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -144,8 +144,8 @@ func (ctagq *CiTypeAttributeGroupQuery) FirstID(ctx context.Context) (id uint64,
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (ctagq *CiTypeAttributeGroupQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := ctagq.FirstID(ctx)
+func (_q *CiTypeAttributeGroupQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -155,8 +155,8 @@ func (ctagq *CiTypeAttributeGroupQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single CiTypeAttributeGroup entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one CiTypeAttributeGroup entity is found.
 // Returns a *NotFoundError when no CiTypeAttributeGroup entities are found.
-func (ctagq *CiTypeAttributeGroupQuery) Only(ctx context.Context) (*CiTypeAttributeGroup, error) {
-	nodes, err := ctagq.Limit(2).All(setContextOp(ctx, ctagq.ctx, ent.OpQueryOnly))
+func (_q *CiTypeAttributeGroupQuery) Only(ctx context.Context) (*CiTypeAttributeGroup, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -171,8 +171,8 @@ func (ctagq *CiTypeAttributeGroupQuery) Only(ctx context.Context) (*CiTypeAttrib
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (ctagq *CiTypeAttributeGroupQuery) OnlyX(ctx context.Context) *CiTypeAttributeGroup {
-	node, err := ctagq.Only(ctx)
+func (_q *CiTypeAttributeGroupQuery) OnlyX(ctx context.Context) *CiTypeAttributeGroup {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -182,9 +182,9 @@ func (ctagq *CiTypeAttributeGroupQuery) OnlyX(ctx context.Context) *CiTypeAttrib
 // OnlyID is like Only, but returns the only CiTypeAttributeGroup ID in the query.
 // Returns a *NotSingularError when more than one CiTypeAttributeGroup ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (ctagq *CiTypeAttributeGroupQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *CiTypeAttributeGroupQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ctagq.Limit(2).IDs(setContextOp(ctx, ctagq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -199,8 +199,8 @@ func (ctagq *CiTypeAttributeGroupQuery) OnlyID(ctx context.Context) (id uint64, 
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (ctagq *CiTypeAttributeGroupQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := ctagq.OnlyID(ctx)
+func (_q *CiTypeAttributeGroupQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -208,18 +208,18 @@ func (ctagq *CiTypeAttributeGroupQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of CiTypeAttributeGroups.
-func (ctagq *CiTypeAttributeGroupQuery) All(ctx context.Context) ([]*CiTypeAttributeGroup, error) {
-	ctx = setContextOp(ctx, ctagq.ctx, ent.OpQueryAll)
-	if err := ctagq.prepareQuery(ctx); err != nil {
+func (_q *CiTypeAttributeGroupQuery) All(ctx context.Context) ([]*CiTypeAttributeGroup, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*CiTypeAttributeGroup, *CiTypeAttributeGroupQuery]()
-	return withInterceptors[[]*CiTypeAttributeGroup](ctx, ctagq, qr, ctagq.inters)
+	return withInterceptors[[]*CiTypeAttributeGroup](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (ctagq *CiTypeAttributeGroupQuery) AllX(ctx context.Context) []*CiTypeAttributeGroup {
-	nodes, err := ctagq.All(ctx)
+func (_q *CiTypeAttributeGroupQuery) AllX(ctx context.Context) []*CiTypeAttributeGroup {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -227,20 +227,20 @@ func (ctagq *CiTypeAttributeGroupQuery) AllX(ctx context.Context) []*CiTypeAttri
 }
 
 // IDs executes the query and returns a list of CiTypeAttributeGroup IDs.
-func (ctagq *CiTypeAttributeGroupQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if ctagq.ctx.Unique == nil && ctagq.path != nil {
-		ctagq.Unique(true)
+func (_q *CiTypeAttributeGroupQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, ctagq.ctx, ent.OpQueryIDs)
-	if err = ctagq.Select(citypeattributegroup.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(citypeattributegroup.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (ctagq *CiTypeAttributeGroupQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := ctagq.IDs(ctx)
+func (_q *CiTypeAttributeGroupQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -248,17 +248,17 @@ func (ctagq *CiTypeAttributeGroupQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (ctagq *CiTypeAttributeGroupQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, ctagq.ctx, ent.OpQueryCount)
-	if err := ctagq.prepareQuery(ctx); err != nil {
+func (_q *CiTypeAttributeGroupQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, ctagq, querierCount[*CiTypeAttributeGroupQuery](), ctagq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*CiTypeAttributeGroupQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (ctagq *CiTypeAttributeGroupQuery) CountX(ctx context.Context) int {
-	count, err := ctagq.Count(ctx)
+func (_q *CiTypeAttributeGroupQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -266,9 +266,9 @@ func (ctagq *CiTypeAttributeGroupQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (ctagq *CiTypeAttributeGroupQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, ctagq.ctx, ent.OpQueryExist)
-	switch _, err := ctagq.FirstID(ctx); {
+func (_q *CiTypeAttributeGroupQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -279,8 +279,8 @@ func (ctagq *CiTypeAttributeGroupQuery) Exist(ctx context.Context) (bool, error)
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (ctagq *CiTypeAttributeGroupQuery) ExistX(ctx context.Context) bool {
-	exist, err := ctagq.Exist(ctx)
+func (_q *CiTypeAttributeGroupQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -289,44 +289,44 @@ func (ctagq *CiTypeAttributeGroupQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the CiTypeAttributeGroupQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (ctagq *CiTypeAttributeGroupQuery) Clone() *CiTypeAttributeGroupQuery {
-	if ctagq == nil {
+func (_q *CiTypeAttributeGroupQuery) Clone() *CiTypeAttributeGroupQuery {
+	if _q == nil {
 		return nil
 	}
 	return &CiTypeAttributeGroupQuery{
-		config:         ctagq.config,
-		ctx:            ctagq.ctx.Clone(),
-		order:          append([]citypeattributegroup.OrderOption{}, ctagq.order...),
-		inters:         append([]Interceptor{}, ctagq.inters...),
-		predicates:     append([]predicate.CiTypeAttributeGroup{}, ctagq.predicates...),
-		withCiType:     ctagq.withCiType.Clone(),
-		withGroupItems: ctagq.withGroupItems.Clone(),
+		config:         _q.config,
+		ctx:            _q.ctx.Clone(),
+		order:          append([]citypeattributegroup.OrderOption{}, _q.order...),
+		inters:         append([]Interceptor{}, _q.inters...),
+		predicates:     append([]predicate.CiTypeAttributeGroup{}, _q.predicates...),
+		withCiType:     _q.withCiType.Clone(),
+		withGroupItems: _q.withGroupItems.Clone(),
 		// clone intermediate query.
-		sql:  ctagq.sql.Clone(),
-		path: ctagq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithCiType tells the query-builder to eager-load the nodes that are connected to
 // the "ci_type" edge. The optional arguments are used to configure the query builder of the edge.
-func (ctagq *CiTypeAttributeGroupQuery) WithCiType(opts ...func(*CiTypeQuery)) *CiTypeAttributeGroupQuery {
-	query := (&CiTypeClient{config: ctagq.config}).Query()
+func (_q *CiTypeAttributeGroupQuery) WithCiType(opts ...func(*CiTypeQuery)) *CiTypeAttributeGroupQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ctagq.withCiType = query
-	return ctagq
+	_q.withCiType = query
+	return _q
 }
 
 // WithGroupItems tells the query-builder to eager-load the nodes that are connected to
 // the "group_items" edge. The optional arguments are used to configure the query builder of the edge.
-func (ctagq *CiTypeAttributeGroupQuery) WithGroupItems(opts ...func(*CiTypeAttributeGroupItemQuery)) *CiTypeAttributeGroupQuery {
-	query := (&CiTypeAttributeGroupItemClient{config: ctagq.config}).Query()
+func (_q *CiTypeAttributeGroupQuery) WithGroupItems(opts ...func(*CiTypeAttributeGroupItemQuery)) *CiTypeAttributeGroupQuery {
+	query := (&CiTypeAttributeGroupItemClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ctagq.withGroupItems = query
-	return ctagq
+	_q.withGroupItems = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -343,10 +343,10 @@ func (ctagq *CiTypeAttributeGroupQuery) WithGroupItems(opts ...func(*CiTypeAttri
 //		GroupBy(citypeattributegroup.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (ctagq *CiTypeAttributeGroupQuery) GroupBy(field string, fields ...string) *CiTypeAttributeGroupGroupBy {
-	ctagq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &CiTypeAttributeGroupGroupBy{build: ctagq}
-	grbuild.flds = &ctagq.ctx.Fields
+func (_q *CiTypeAttributeGroupQuery) GroupBy(field string, fields ...string) *CiTypeAttributeGroupGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &CiTypeAttributeGroupGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = citypeattributegroup.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -364,59 +364,59 @@ func (ctagq *CiTypeAttributeGroupQuery) GroupBy(field string, fields ...string) 
 //	client.CiTypeAttributeGroup.Query().
 //		Select(citypeattributegroup.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (ctagq *CiTypeAttributeGroupQuery) Select(fields ...string) *CiTypeAttributeGroupSelect {
-	ctagq.ctx.Fields = append(ctagq.ctx.Fields, fields...)
-	sbuild := &CiTypeAttributeGroupSelect{CiTypeAttributeGroupQuery: ctagq}
+func (_q *CiTypeAttributeGroupQuery) Select(fields ...string) *CiTypeAttributeGroupSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &CiTypeAttributeGroupSelect{CiTypeAttributeGroupQuery: _q}
 	sbuild.label = citypeattributegroup.Label
-	sbuild.flds, sbuild.scan = &ctagq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a CiTypeAttributeGroupSelect configured with the given aggregations.
-func (ctagq *CiTypeAttributeGroupQuery) Aggregate(fns ...AggregateFunc) *CiTypeAttributeGroupSelect {
-	return ctagq.Select().Aggregate(fns...)
+func (_q *CiTypeAttributeGroupQuery) Aggregate(fns ...AggregateFunc) *CiTypeAttributeGroupSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (ctagq *CiTypeAttributeGroupQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range ctagq.inters {
+func (_q *CiTypeAttributeGroupQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, ctagq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range ctagq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !citypeattributegroup.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if ctagq.path != nil {
-		prev, err := ctagq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		ctagq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (ctagq *CiTypeAttributeGroupQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTypeAttributeGroup, error) {
+func (_q *CiTypeAttributeGroupQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTypeAttributeGroup, error) {
 	var (
 		nodes       = []*CiTypeAttributeGroup{}
-		_spec       = ctagq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [2]bool{
-			ctagq.withCiType != nil,
-			ctagq.withGroupItems != nil,
+			_q.withCiType != nil,
+			_q.withGroupItems != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*CiTypeAttributeGroup).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &CiTypeAttributeGroup{config: ctagq.config}
+		node := &CiTypeAttributeGroup{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -424,20 +424,20 @@ func (ctagq *CiTypeAttributeGroupQuery) sqlAll(ctx context.Context, hooks ...que
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, ctagq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := ctagq.withCiType; query != nil {
-		if err := ctagq.loadCiType(ctx, query, nodes, nil,
+	if query := _q.withCiType; query != nil {
+		if err := _q.loadCiType(ctx, query, nodes, nil,
 			func(n *CiTypeAttributeGroup, e *CiType) { n.Edges.CiType = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := ctagq.withGroupItems; query != nil {
-		if err := ctagq.loadGroupItems(ctx, query, nodes,
+	if query := _q.withGroupItems; query != nil {
+		if err := _q.loadGroupItems(ctx, query, nodes,
 			func(n *CiTypeAttributeGroup) { n.Edges.GroupItems = []*CiTypeAttributeGroupItem{} },
 			func(n *CiTypeAttributeGroup, e *CiTypeAttributeGroupItem) {
 				n.Edges.GroupItems = append(n.Edges.GroupItems, e)
@@ -448,7 +448,7 @@ func (ctagq *CiTypeAttributeGroupQuery) sqlAll(ctx context.Context, hooks ...que
 	return nodes, nil
 }
 
-func (ctagq *CiTypeAttributeGroupQuery) loadCiType(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeAttributeGroup, init func(*CiTypeAttributeGroup), assign func(*CiTypeAttributeGroup, *CiType)) error {
+func (_q *CiTypeAttributeGroupQuery) loadCiType(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeAttributeGroup, init func(*CiTypeAttributeGroup), assign func(*CiTypeAttributeGroup, *CiType)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*CiTypeAttributeGroup)
 	for i := range nodes {
@@ -477,7 +477,7 @@ func (ctagq *CiTypeAttributeGroupQuery) loadCiType(ctx context.Context, query *C
 	}
 	return nil
 }
-func (ctagq *CiTypeAttributeGroupQuery) loadGroupItems(ctx context.Context, query *CiTypeAttributeGroupItemQuery, nodes []*CiTypeAttributeGroup, init func(*CiTypeAttributeGroup), assign func(*CiTypeAttributeGroup, *CiTypeAttributeGroupItem)) error {
+func (_q *CiTypeAttributeGroupQuery) loadGroupItems(ctx context.Context, query *CiTypeAttributeGroupItemQuery, nodes []*CiTypeAttributeGroup, init func(*CiTypeAttributeGroup), assign func(*CiTypeAttributeGroup, *CiTypeAttributeGroupItem)) error {
 	fks := make([]driver.Value, 0, len(nodes))
 	nodeids := make(map[uint64]*CiTypeAttributeGroup)
 	for i := range nodes {
@@ -508,24 +508,24 @@ func (ctagq *CiTypeAttributeGroupQuery) loadGroupItems(ctx context.Context, quer
 	return nil
 }
 
-func (ctagq *CiTypeAttributeGroupQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := ctagq.querySpec()
-	_spec.Node.Columns = ctagq.ctx.Fields
-	if len(ctagq.ctx.Fields) > 0 {
-		_spec.Unique = ctagq.ctx.Unique != nil && *ctagq.ctx.Unique
+func (_q *CiTypeAttributeGroupQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, ctagq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (ctagq *CiTypeAttributeGroupQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *CiTypeAttributeGroupQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(citypeattributegroup.Table, citypeattributegroup.Columns, sqlgraph.NewFieldSpec(citypeattributegroup.FieldID, field.TypeUint64))
-	_spec.From = ctagq.sql
-	if unique := ctagq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if ctagq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := ctagq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, citypeattributegroup.FieldID)
 		for i := range fields {
@@ -533,24 +533,24 @@ func (ctagq *CiTypeAttributeGroupQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if ctagq.withCiType != nil {
+		if _q.withCiType != nil {
 			_spec.Node.AddColumnOnce(citypeattributegroup.FieldTypeID)
 		}
 	}
-	if ps := ctagq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := ctagq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := ctagq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := ctagq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -560,33 +560,33 @@ func (ctagq *CiTypeAttributeGroupQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (ctagq *CiTypeAttributeGroupQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(ctagq.driver.Dialect())
+func (_q *CiTypeAttributeGroupQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(citypeattributegroup.Table)
-	columns := ctagq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = citypeattributegroup.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if ctagq.sql != nil {
-		selector = ctagq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if ctagq.ctx.Unique != nil && *ctagq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range ctagq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range ctagq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := ctagq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := ctagq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -599,41 +599,41 @@ type CiTypeAttributeGroupGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (ctaggb *CiTypeAttributeGroupGroupBy) Aggregate(fns ...AggregateFunc) *CiTypeAttributeGroupGroupBy {
-	ctaggb.fns = append(ctaggb.fns, fns...)
-	return ctaggb
+func (_g *CiTypeAttributeGroupGroupBy) Aggregate(fns ...AggregateFunc) *CiTypeAttributeGroupGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (ctaggb *CiTypeAttributeGroupGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, ctaggb.build.ctx, ent.OpQueryGroupBy)
-	if err := ctaggb.build.prepareQuery(ctx); err != nil {
+func (_g *CiTypeAttributeGroupGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiTypeAttributeGroupQuery, *CiTypeAttributeGroupGroupBy](ctx, ctaggb.build, ctaggb, ctaggb.build.inters, v)
+	return scanWithInterceptors[*CiTypeAttributeGroupQuery, *CiTypeAttributeGroupGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (ctaggb *CiTypeAttributeGroupGroupBy) sqlScan(ctx context.Context, root *CiTypeAttributeGroupQuery, v any) error {
+func (_g *CiTypeAttributeGroupGroupBy) sqlScan(ctx context.Context, root *CiTypeAttributeGroupQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(ctaggb.fns))
-	for _, fn := range ctaggb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*ctaggb.flds)+len(ctaggb.fns))
-		for _, f := range *ctaggb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*ctaggb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := ctaggb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -647,27 +647,27 @@ type CiTypeAttributeGroupSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (ctags *CiTypeAttributeGroupSelect) Aggregate(fns ...AggregateFunc) *CiTypeAttributeGroupSelect {
-	ctags.fns = append(ctags.fns, fns...)
-	return ctags
+func (_s *CiTypeAttributeGroupSelect) Aggregate(fns ...AggregateFunc) *CiTypeAttributeGroupSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (ctags *CiTypeAttributeGroupSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, ctags.ctx, ent.OpQuerySelect)
-	if err := ctags.prepareQuery(ctx); err != nil {
+func (_s *CiTypeAttributeGroupSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiTypeAttributeGroupQuery, *CiTypeAttributeGroupSelect](ctx, ctags.CiTypeAttributeGroupQuery, ctags, ctags.inters, v)
+	return scanWithInterceptors[*CiTypeAttributeGroupQuery, *CiTypeAttributeGroupSelect](ctx, _s.CiTypeAttributeGroupQuery, _s, _s.inters, v)
 }
 
-func (ctags *CiTypeAttributeGroupSelect) sqlScan(ctx context.Context, root *CiTypeAttributeGroupQuery, v any) error {
+func (_s *CiTypeAttributeGroupSelect) sqlScan(ctx context.Context, root *CiTypeAttributeGroupQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(ctags.fns))
-	for _, fn := range ctags.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*ctags.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -675,7 +675,7 @@ func (ctags *CiTypeAttributeGroupSelect) sqlScan(ctx context.Context, root *CiTy
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := ctags.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

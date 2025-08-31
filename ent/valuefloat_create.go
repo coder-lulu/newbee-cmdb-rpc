@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
 )
 
 // ValueFloatCreate is the builder for creating a ValueFloat entity.
@@ -23,117 +23,131 @@ type ValueFloatCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (vfc *ValueFloatCreate) SetCreatedAt(t time.Time) *ValueFloatCreate {
-	vfc.mutation.SetCreatedAt(t)
-	return vfc
+func (_c *ValueFloatCreate) SetCreatedAt(v time.Time) *ValueFloatCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (vfc *ValueFloatCreate) SetNillableCreatedAt(t *time.Time) *ValueFloatCreate {
-	if t != nil {
-		vfc.SetCreatedAt(*t)
+func (_c *ValueFloatCreate) SetNillableCreatedAt(v *time.Time) *ValueFloatCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return vfc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vfc *ValueFloatCreate) SetUpdatedAt(t time.Time) *ValueFloatCreate {
-	vfc.mutation.SetUpdatedAt(t)
-	return vfc
+func (_c *ValueFloatCreate) SetUpdatedAt(v time.Time) *ValueFloatCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (vfc *ValueFloatCreate) SetNillableUpdatedAt(t *time.Time) *ValueFloatCreate {
-	if t != nil {
-		vfc.SetUpdatedAt(*t)
+func (_c *ValueFloatCreate) SetNillableUpdatedAt(v *time.Time) *ValueFloatCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return vfc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vfc *ValueFloatCreate) SetDeletedAt(t time.Time) *ValueFloatCreate {
-	vfc.mutation.SetDeletedAt(t)
-	return vfc
+func (_c *ValueFloatCreate) SetDeletedAt(v time.Time) *ValueFloatCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vfc *ValueFloatCreate) SetNillableDeletedAt(t *time.Time) *ValueFloatCreate {
-	if t != nil {
-		vfc.SetDeletedAt(*t)
+func (_c *ValueFloatCreate) SetNillableDeletedAt(v *time.Time) *ValueFloatCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return vfc
+	return _c
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (_c *ValueFloatCreate) SetTenantID(v uint64) *ValueFloatCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
+}
+
+// SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
+func (_c *ValueFloatCreate) SetNillableTenantID(v *uint64) *ValueFloatCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
+	}
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (vfc *ValueFloatCreate) SetCiID(u uint64) *ValueFloatCreate {
-	vfc.mutation.SetCiID(u)
-	return vfc
+func (_c *ValueFloatCreate) SetCiID(v uint64) *ValueFloatCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vfc *ValueFloatCreate) SetAttrID(u uint64) *ValueFloatCreate {
-	vfc.mutation.SetAttrID(u)
-	return vfc
+func (_c *ValueFloatCreate) SetAttrID(v uint64) *ValueFloatCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetValue sets the "value" field.
-func (vfc *ValueFloatCreate) SetValue(f float64) *ValueFloatCreate {
-	vfc.mutation.SetValue(f)
-	return vfc
+func (_c *ValueFloatCreate) SetValue(v float64) *ValueFloatCreate {
+	_c.mutation.SetValue(v)
+	return _c
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vfc *ValueFloatCreate) SetIsCover(b bool) *ValueFloatCreate {
-	vfc.mutation.SetIsCover(b)
-	return vfc
+func (_c *ValueFloatCreate) SetIsCover(v bool) *ValueFloatCreate {
+	_c.mutation.SetIsCover(v)
+	return _c
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vfc *ValueFloatCreate) SetNillableIsCover(b *bool) *ValueFloatCreate {
-	if b != nil {
-		vfc.SetIsCover(*b)
+func (_c *ValueFloatCreate) SetNillableIsCover(v *bool) *ValueFloatCreate {
+	if v != nil {
+		_c.SetIsCover(*v)
 	}
-	return vfc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (vfc *ValueFloatCreate) SetID(u uint64) *ValueFloatCreate {
-	vfc.mutation.SetID(u)
-	return vfc
+func (_c *ValueFloatCreate) SetID(v uint64) *ValueFloatCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vfc *ValueFloatCreate) SetCi(c *Cis) *ValueFloatCreate {
-	return vfc.SetCiID(c.ID)
+func (_c *ValueFloatCreate) SetCi(v *Cis) *ValueFloatCreate {
+	return _c.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vfc *ValueFloatCreate) SetAttributeID(id uint64) *ValueFloatCreate {
-	vfc.mutation.SetAttributeID(id)
-	return vfc
+func (_c *ValueFloatCreate) SetAttributeID(id uint64) *ValueFloatCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vfc *ValueFloatCreate) SetAttribute(a *Attribute) *ValueFloatCreate {
-	return vfc.SetAttributeID(a.ID)
+func (_c *ValueFloatCreate) SetAttribute(v *Attribute) *ValueFloatCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueFloatMutation object of the builder.
-func (vfc *ValueFloatCreate) Mutation() *ValueFloatMutation {
-	return vfc.mutation
+func (_c *ValueFloatCreate) Mutation() *ValueFloatMutation {
+	return _c.mutation
 }
 
 // Save creates the ValueFloat in the database.
-func (vfc *ValueFloatCreate) Save(ctx context.Context) (*ValueFloat, error) {
-	if err := vfc.defaults(); err != nil {
+func (_c *ValueFloatCreate) Save(ctx context.Context) (*ValueFloat, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vfc.sqlSave, vfc.mutation, vfc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (vfc *ValueFloatCreate) SaveX(ctx context.Context) *ValueFloat {
-	v, err := vfc.Save(ctx)
+func (_c *ValueFloatCreate) SaveX(ctx context.Context) *ValueFloat {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -141,76 +155,83 @@ func (vfc *ValueFloatCreate) SaveX(ctx context.Context) *ValueFloat {
 }
 
 // Exec executes the query.
-func (vfc *ValueFloatCreate) Exec(ctx context.Context) error {
-	_, err := vfc.Save(ctx)
+func (_c *ValueFloatCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vfc *ValueFloatCreate) ExecX(ctx context.Context) {
-	if err := vfc.Exec(ctx); err != nil {
+func (_c *ValueFloatCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vfc *ValueFloatCreate) defaults() error {
-	if _, ok := vfc.mutation.CreatedAt(); !ok {
+func (_c *ValueFloatCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if valuefloat.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuefloat.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuefloat.DefaultCreatedAt()
-		vfc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := vfc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if valuefloat.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuefloat.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuefloat.DefaultUpdatedAt()
-		vfc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := vfc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		v := valuefloat.DefaultTenantID
+		_c.mutation.SetTenantID(v)
+	}
+	if _, ok := _c.mutation.IsCover(); !ok {
 		v := valuefloat.DefaultIsCover
-		vfc.mutation.SetIsCover(v)
+		_c.mutation.SetIsCover(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vfc *ValueFloatCreate) check() error {
-	if _, ok := vfc.mutation.CreatedAt(); !ok {
+func (_c *ValueFloatCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ValueFloat.created_at"`)}
 	}
-	if _, ok := vfc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ValueFloat.updated_at"`)}
 	}
-	if _, ok := vfc.mutation.CiID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ValueFloat.tenant_id"`)}
+	}
+	if _, ok := _c.mutation.CiID(); !ok {
 		return &ValidationError{Name: "ci_id", err: errors.New(`ent: missing required field "ValueFloat.ci_id"`)}
 	}
-	if _, ok := vfc.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "ValueFloat.attr_id"`)}
 	}
-	if _, ok := vfc.mutation.Value(); !ok {
+	if _, ok := _c.mutation.Value(); !ok {
 		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "ValueFloat.value"`)}
 	}
-	if _, ok := vfc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.IsCover(); !ok {
 		return &ValidationError{Name: "is_cover", err: errors.New(`ent: missing required field "ValueFloat.is_cover"`)}
 	}
-	if len(vfc.mutation.CiIDs()) == 0 {
+	if len(_c.mutation.CiIDs()) == 0 {
 		return &ValidationError{Name: "ci", err: errors.New(`ent: missing required edge "ValueFloat.ci"`)}
 	}
-	if len(vfc.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "ValueFloat.attribute"`)}
 	}
 	return nil
 }
 
-func (vfc *ValueFloatCreate) sqlSave(ctx context.Context) (*ValueFloat, error) {
-	if err := vfc.check(); err != nil {
+func (_c *ValueFloatCreate) sqlSave(ctx context.Context) (*ValueFloat, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := vfc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, vfc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -220,41 +241,45 @@ func (vfc *ValueFloatCreate) sqlSave(ctx context.Context) (*ValueFloat, error) {
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	vfc.mutation.id = &_node.ID
-	vfc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (vfc *ValueFloatCreate) createSpec() (*ValueFloat, *sqlgraph.CreateSpec) {
+func (_c *ValueFloatCreate) createSpec() (*ValueFloat, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ValueFloat{config: vfc.config}
+		_node = &ValueFloat{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(valuefloat.Table, sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64))
 	)
-	if id, ok := vfc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := vfc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(valuefloat.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := vfc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuefloat.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := vfc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(valuefloat.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := vfc.mutation.Value(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
+		_spec.SetField(valuefloat.FieldTenantID, field.TypeUint64, value)
+		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(valuefloat.FieldValue, field.TypeFloat64, value)
 		_node.Value = value
 	}
-	if value, ok := vfc.mutation.IsCover(); ok {
+	if value, ok := _c.mutation.IsCover(); ok {
 		_spec.SetField(valuefloat.FieldIsCover, field.TypeBool, value)
 		_node.IsCover = value
 	}
-	if nodes := vfc.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -271,7 +296,7 @@ func (vfc *ValueFloatCreate) createSpec() (*ValueFloat, *sqlgraph.CreateSpec) {
 		_node.CiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := vfc.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -299,16 +324,16 @@ type ValueFloatCreateBulk struct {
 }
 
 // Save creates the ValueFloat entities in the database.
-func (vfcb *ValueFloatCreateBulk) Save(ctx context.Context) ([]*ValueFloat, error) {
-	if vfcb.err != nil {
-		return nil, vfcb.err
+func (_c *ValueFloatCreateBulk) Save(ctx context.Context) ([]*ValueFloat, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(vfcb.builders))
-	nodes := make([]*ValueFloat, len(vfcb.builders))
-	mutators := make([]Mutator, len(vfcb.builders))
-	for i := range vfcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ValueFloat, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := vfcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ValueFloatMutation)
@@ -322,11 +347,11 @@ func (vfcb *ValueFloatCreateBulk) Save(ctx context.Context) ([]*ValueFloat, erro
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, vfcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, vfcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -350,7 +375,7 @@ func (vfcb *ValueFloatCreateBulk) Save(ctx context.Context) ([]*ValueFloat, erro
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, vfcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -358,8 +383,8 @@ func (vfcb *ValueFloatCreateBulk) Save(ctx context.Context) ([]*ValueFloat, erro
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vfcb *ValueFloatCreateBulk) SaveX(ctx context.Context) []*ValueFloat {
-	v, err := vfcb.Save(ctx)
+func (_c *ValueFloatCreateBulk) SaveX(ctx context.Context) []*ValueFloat {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -367,14 +392,14 @@ func (vfcb *ValueFloatCreateBulk) SaveX(ctx context.Context) []*ValueFloat {
 }
 
 // Exec executes the query.
-func (vfcb *ValueFloatCreateBulk) Exec(ctx context.Context) error {
-	_, err := vfcb.Save(ctx)
+func (_c *ValueFloatCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vfcb *ValueFloatCreateBulk) ExecX(ctx context.Context) {
-	if err := vfcb.Exec(ctx); err != nil {
+func (_c *ValueFloatCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

@@ -3,12 +3,12 @@ package valuejson
 import (
 	"context"
 
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/internal/utils/dberrorhandler"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	"gitee.com/link234/newbee-backend-common/msg/errormsg"
-	jsonx "gitee.com/link234/newbee-backend-common/utils/json"
+	"github.com/coder-lulu/newbee-common/msg/errormsg"
+	jsonx "github.com/coder-lulu/newbee-common/utils/json"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

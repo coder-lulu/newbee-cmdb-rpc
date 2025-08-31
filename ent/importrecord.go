@@ -10,10 +10,10 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
 )
 
 // ImportRecord is the model entity for the ImportRecord schema.
@@ -152,7 +152,7 @@ func (*ImportRecord) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ImportRecord fields.
-func (ir *ImportRecord) assignValues(columns []string, values []any) error {
+func (_m *ImportRecord) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -163,78 +163,78 @@ func (ir *ImportRecord) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			ir.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case importrecord.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				ir.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case importrecord.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				ir.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case importrecord.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				ir.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case importrecord.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				ir.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case importrecord.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				ir.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case importrecord.FieldTaskID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field task_id", values[i])
 			} else if value.Valid {
-				ir.TaskID = uint64(value.Int64)
+				_m.TaskID = uint64(value.Int64)
 			}
 		case importrecord.FieldBatchID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field batch_id", values[i])
 			} else if value.Valid {
-				ir.BatchID = value.String
+				_m.BatchID = value.String
 			}
 		case importrecord.FieldRowNumber:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field row_number", values[i])
 			} else if value.Valid {
-				ir.RowNumber = int(value.Int64)
+				_m.RowNumber = int(value.Int64)
 			}
 		case importrecord.FieldSheetName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field sheet_name", values[i])
 			} else if value.Valid {
-				ir.SheetName = value.String
+				_m.SheetName = value.String
 			}
 		case importrecord.FieldStatus:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
-				ir.Status = importrecord.Status(value.String)
+				_m.Status = importrecord.Status(value.String)
 			}
 		case importrecord.FieldImportAction:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field import_action", values[i])
 			} else if value.Valid {
-				ir.ImportAction = importrecord.ImportAction(value.String)
+				_m.ImportAction = importrecord.ImportAction(value.String)
 			}
 		case importrecord.FieldRawData:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field raw_data", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &ir.RawData); err != nil {
+				if err := json.Unmarshal(*value, &_m.RawData); err != nil {
 					return fmt.Errorf("unmarshal field raw_data: %w", err)
 				}
 			}
@@ -242,7 +242,7 @@ func (ir *ImportRecord) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field final_data", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &ir.FinalData); err != nil {
+				if err := json.Unmarshal(*value, &_m.FinalData); err != nil {
 					return fmt.Errorf("unmarshal field final_data: %w", err)
 				}
 			}
@@ -250,64 +250,64 @@ func (ir *ImportRecord) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				ir.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case importrecord.FieldCiTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_type_id", values[i])
 			} else if value.Valid {
-				ir.CiTypeID = uint64(value.Int64)
+				_m.CiTypeID = uint64(value.Int64)
 			}
 		case importrecord.FieldCiUniqueKey:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_unique_key", values[i])
 			} else if value.Valid {
-				ir.CiUniqueKey = value.String
+				_m.CiUniqueKey = value.String
 			}
 		case importrecord.FieldErrorMessage:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_message", values[i])
 			} else if value.Valid {
-				ir.ErrorMessage = value.String
+				_m.ErrorMessage = value.String
 			}
 		case importrecord.FieldErrorCode:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_code", values[i])
 			} else if value.Valid {
-				ir.ErrorCode = value.String
+				_m.ErrorCode = value.String
 			}
 		case importrecord.FieldErrorType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_type", values[i])
 			} else if value.Valid {
-				ir.ErrorType = importrecord.ErrorType(value.String)
+				_m.ErrorType = importrecord.ErrorType(value.String)
 			}
 		case importrecord.FieldStartTime:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field start_time", values[i])
 			} else if value.Valid {
-				ir.StartTime = value.Time
+				_m.StartTime = value.Time
 			}
 		case importrecord.FieldEndTime:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field end_time", values[i])
 			} else if value.Valid {
-				ir.EndTime = value.Time
+				_m.EndTime = value.Time
 			}
 		case importrecord.FieldRetryCount:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field retry_count", values[i])
 			} else if value.Valid {
-				ir.RetryCount = int(value.Int64)
+				_m.RetryCount = int(value.Int64)
 			}
 		case importrecord.FieldMaxRetries:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field max_retries", values[i])
 			} else if value.Valid {
-				ir.MaxRetries = int(value.Int64)
+				_m.MaxRetries = int(value.Int64)
 			}
 		default:
-			ir.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -315,121 +315,121 @@ func (ir *ImportRecord) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the ImportRecord.
 // This includes values selected through modifiers, order, etc.
-func (ir *ImportRecord) Value(name string) (ent.Value, error) {
-	return ir.selectValues.Get(name)
+func (_m *ImportRecord) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryTask queries the "task" edge of the ImportRecord entity.
-func (ir *ImportRecord) QueryTask() *ImportTaskQuery {
-	return NewImportRecordClient(ir.config).QueryTask(ir)
+func (_m *ImportRecord) QueryTask() *ImportTaskQuery {
+	return NewImportRecordClient(_m.config).QueryTask(_m)
 }
 
 // QueryCi queries the "ci" edge of the ImportRecord entity.
-func (ir *ImportRecord) QueryCi() *CisQuery {
-	return NewImportRecordClient(ir.config).QueryCi(ir)
+func (_m *ImportRecord) QueryCi() *CisQuery {
+	return NewImportRecordClient(_m.config).QueryCi(_m)
 }
 
 // QueryCiType queries the "ci_type" edge of the ImportRecord entity.
-func (ir *ImportRecord) QueryCiType() *CiTypeQuery {
-	return NewImportRecordClient(ir.config).QueryCiType(ir)
+func (_m *ImportRecord) QueryCiType() *CiTypeQuery {
+	return NewImportRecordClient(_m.config).QueryCiType(_m)
 }
 
 // QueryErrors queries the "errors" edge of the ImportRecord entity.
-func (ir *ImportRecord) QueryErrors() *ImportErrorQuery {
-	return NewImportRecordClient(ir.config).QueryErrors(ir)
+func (_m *ImportRecord) QueryErrors() *ImportErrorQuery {
+	return NewImportRecordClient(_m.config).QueryErrors(_m)
 }
 
 // Update returns a builder for updating this ImportRecord.
 // Note that you need to call ImportRecord.Unwrap() before calling this method if this ImportRecord
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (ir *ImportRecord) Update() *ImportRecordUpdateOne {
-	return NewImportRecordClient(ir.config).UpdateOne(ir)
+func (_m *ImportRecord) Update() *ImportRecordUpdateOne {
+	return NewImportRecordClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ImportRecord entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (ir *ImportRecord) Unwrap() *ImportRecord {
-	_tx, ok := ir.config.driver.(*txDriver)
+func (_m *ImportRecord) Unwrap() *ImportRecord {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ImportRecord is not a transactional entity")
 	}
-	ir.config.driver = _tx.drv
-	return ir
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (ir *ImportRecord) String() string {
+func (_m *ImportRecord) String() string {
 	var builder strings.Builder
 	builder.WriteString("ImportRecord(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", ir.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(ir.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(ir.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(ir.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", ir.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", ir.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("task_id=")
-	builder.WriteString(fmt.Sprintf("%v", ir.TaskID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TaskID))
 	builder.WriteString(", ")
 	builder.WriteString("batch_id=")
-	builder.WriteString(ir.BatchID)
+	builder.WriteString(_m.BatchID)
 	builder.WriteString(", ")
 	builder.WriteString("row_number=")
-	builder.WriteString(fmt.Sprintf("%v", ir.RowNumber))
+	builder.WriteString(fmt.Sprintf("%v", _m.RowNumber))
 	builder.WriteString(", ")
 	builder.WriteString("sheet_name=")
-	builder.WriteString(ir.SheetName)
+	builder.WriteString(_m.SheetName)
 	builder.WriteString(", ")
 	builder.WriteString("status=")
-	builder.WriteString(fmt.Sprintf("%v", ir.Status))
+	builder.WriteString(fmt.Sprintf("%v", _m.Status))
 	builder.WriteString(", ")
 	builder.WriteString("import_action=")
-	builder.WriteString(fmt.Sprintf("%v", ir.ImportAction))
+	builder.WriteString(fmt.Sprintf("%v", _m.ImportAction))
 	builder.WriteString(", ")
 	builder.WriteString("raw_data=")
-	builder.WriteString(fmt.Sprintf("%v", ir.RawData))
+	builder.WriteString(fmt.Sprintf("%v", _m.RawData))
 	builder.WriteString(", ")
 	builder.WriteString("final_data=")
-	builder.WriteString(fmt.Sprintf("%v", ir.FinalData))
+	builder.WriteString(fmt.Sprintf("%v", _m.FinalData))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", ir.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", ir.CiTypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiTypeID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_unique_key=")
-	builder.WriteString(ir.CiUniqueKey)
+	builder.WriteString(_m.CiUniqueKey)
 	builder.WriteString(", ")
 	builder.WriteString("error_message=")
-	builder.WriteString(ir.ErrorMessage)
+	builder.WriteString(_m.ErrorMessage)
 	builder.WriteString(", ")
 	builder.WriteString("error_code=")
-	builder.WriteString(ir.ErrorCode)
+	builder.WriteString(_m.ErrorCode)
 	builder.WriteString(", ")
 	builder.WriteString("error_type=")
-	builder.WriteString(fmt.Sprintf("%v", ir.ErrorType))
+	builder.WriteString(fmt.Sprintf("%v", _m.ErrorType))
 	builder.WriteString(", ")
 	builder.WriteString("start_time=")
-	builder.WriteString(ir.StartTime.Format(time.ANSIC))
+	builder.WriteString(_m.StartTime.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("end_time=")
-	builder.WriteString(ir.EndTime.Format(time.ANSIC))
+	builder.WriteString(_m.EndTime.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("retry_count=")
-	builder.WriteString(fmt.Sprintf("%v", ir.RetryCount))
+	builder.WriteString(fmt.Sprintf("%v", _m.RetryCount))
 	builder.WriteString(", ")
 	builder.WriteString("max_retries=")
-	builder.WriteString(fmt.Sprintf("%v", ir.MaxRetries))
+	builder.WriteString(fmt.Sprintf("%v", _m.MaxRetries))
 	builder.WriteByte(')')
 	return builder.String()
 }

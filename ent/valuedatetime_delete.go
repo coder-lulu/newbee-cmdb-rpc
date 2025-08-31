@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
 )
 
 // ValueDatetimeDelete is the builder for deleting a ValueDatetime entity.
@@ -20,56 +20,56 @@ type ValueDatetimeDelete struct {
 }
 
 // Where appends a list predicates to the ValueDatetimeDelete builder.
-func (vdd *ValueDatetimeDelete) Where(ps ...predicate.ValueDatetime) *ValueDatetimeDelete {
-	vdd.mutation.Where(ps...)
-	return vdd
+func (_d *ValueDatetimeDelete) Where(ps ...predicate.ValueDatetime) *ValueDatetimeDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (vdd *ValueDatetimeDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, vdd.sqlExec, vdd.mutation, vdd.hooks)
+func (_d *ValueDatetimeDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vdd *ValueDatetimeDelete) ExecX(ctx context.Context) int {
-	n, err := vdd.Exec(ctx)
+func (_d *ValueDatetimeDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (vdd *ValueDatetimeDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ValueDatetimeDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(valuedatetime.Table, sqlgraph.NewFieldSpec(valuedatetime.FieldID, field.TypeUint64))
-	if ps := vdd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, vdd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	vdd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ValueDatetimeDeleteOne is the builder for deleting a single ValueDatetime entity.
 type ValueDatetimeDeleteOne struct {
-	vdd *ValueDatetimeDelete
+	_d *ValueDatetimeDelete
 }
 
 // Where appends a list predicates to the ValueDatetimeDelete builder.
-func (vddo *ValueDatetimeDeleteOne) Where(ps ...predicate.ValueDatetime) *ValueDatetimeDeleteOne {
-	vddo.vdd.mutation.Where(ps...)
-	return vddo
+func (_d *ValueDatetimeDeleteOne) Where(ps ...predicate.ValueDatetime) *ValueDatetimeDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (vddo *ValueDatetimeDeleteOne) Exec(ctx context.Context) error {
-	n, err := vddo.vdd.Exec(ctx)
+func (_d *ValueDatetimeDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (vddo *ValueDatetimeDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vddo *ValueDatetimeDeleteOne) ExecX(ctx context.Context) {
-	if err := vddo.Exec(ctx); err != nil {
+func (_d *ValueDatetimeDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

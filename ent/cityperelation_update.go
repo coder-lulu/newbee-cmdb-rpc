@@ -12,10 +12,10 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // CiTypeRelationUpdate is the builder for updating CiTypeRelation entities.
@@ -26,238 +26,238 @@ type CiTypeRelationUpdate struct {
 }
 
 // Where appends a list predicates to the CiTypeRelationUpdate builder.
-func (ctru *CiTypeRelationUpdate) Where(ps ...predicate.CiTypeRelation) *CiTypeRelationUpdate {
-	ctru.mutation.Where(ps...)
-	return ctru
+func (_u *CiTypeRelationUpdate) Where(ps ...predicate.CiTypeRelation) *CiTypeRelationUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctru *CiTypeRelationUpdate) SetUpdatedAt(t time.Time) *CiTypeRelationUpdate {
-	ctru.mutation.SetUpdatedAt(t)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetUpdatedAt(v time.Time) *CiTypeRelationUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctru *CiTypeRelationUpdate) SetDeletedAt(t time.Time) *CiTypeRelationUpdate {
-	ctru.mutation.SetDeletedAt(t)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetDeletedAt(v time.Time) *CiTypeRelationUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctru *CiTypeRelationUpdate) SetNillableDeletedAt(t *time.Time) *CiTypeRelationUpdate {
-	if t != nil {
-		ctru.SetDeletedAt(*t)
+func (_u *CiTypeRelationUpdate) SetNillableDeletedAt(v *time.Time) *CiTypeRelationUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctru
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctru *CiTypeRelationUpdate) ClearDeletedAt() *CiTypeRelationUpdate {
-	ctru.mutation.ClearDeletedAt()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearDeletedAt() *CiTypeRelationUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetParentID sets the "parent_id" field.
-func (ctru *CiTypeRelationUpdate) SetParentID(u uint64) *CiTypeRelationUpdate {
-	ctru.mutation.SetParentID(u)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetParentID(v uint64) *CiTypeRelationUpdate {
+	_u.mutation.SetParentID(v)
+	return _u
 }
 
 // SetNillableParentID sets the "parent_id" field if the given value is not nil.
-func (ctru *CiTypeRelationUpdate) SetNillableParentID(u *uint64) *CiTypeRelationUpdate {
-	if u != nil {
-		ctru.SetParentID(*u)
+func (_u *CiTypeRelationUpdate) SetNillableParentID(v *uint64) *CiTypeRelationUpdate {
+	if v != nil {
+		_u.SetParentID(*v)
 	}
-	return ctru
+	return _u
 }
 
 // SetChildID sets the "child_id" field.
-func (ctru *CiTypeRelationUpdate) SetChildID(u uint64) *CiTypeRelationUpdate {
-	ctru.mutation.SetChildID(u)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetChildID(v uint64) *CiTypeRelationUpdate {
+	_u.mutation.SetChildID(v)
+	return _u
 }
 
 // SetNillableChildID sets the "child_id" field if the given value is not nil.
-func (ctru *CiTypeRelationUpdate) SetNillableChildID(u *uint64) *CiTypeRelationUpdate {
-	if u != nil {
-		ctru.SetChildID(*u)
+func (_u *CiTypeRelationUpdate) SetNillableChildID(v *uint64) *CiTypeRelationUpdate {
+	if v != nil {
+		_u.SetChildID(*v)
 	}
-	return ctru
+	return _u
 }
 
 // SetRelationTypeID sets the "relation_type_id" field.
-func (ctru *CiTypeRelationUpdate) SetRelationTypeID(u uint64) *CiTypeRelationUpdate {
-	ctru.mutation.SetRelationTypeID(u)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetRelationTypeID(v uint64) *CiTypeRelationUpdate {
+	_u.mutation.SetRelationTypeID(v)
+	return _u
 }
 
 // SetNillableRelationTypeID sets the "relation_type_id" field if the given value is not nil.
-func (ctru *CiTypeRelationUpdate) SetNillableRelationTypeID(u *uint64) *CiTypeRelationUpdate {
-	if u != nil {
-		ctru.SetRelationTypeID(*u)
+func (_u *CiTypeRelationUpdate) SetNillableRelationTypeID(v *uint64) *CiTypeRelationUpdate {
+	if v != nil {
+		_u.SetRelationTypeID(*v)
 	}
-	return ctru
+	return _u
 }
 
 // SetConstraint sets the "constraint" field.
-func (ctru *CiTypeRelationUpdate) SetConstraint(s string) *CiTypeRelationUpdate {
-	ctru.mutation.SetConstraint(s)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetConstraint(v string) *CiTypeRelationUpdate {
+	_u.mutation.SetConstraint(v)
+	return _u
 }
 
 // SetNillableConstraint sets the "constraint" field if the given value is not nil.
-func (ctru *CiTypeRelationUpdate) SetNillableConstraint(s *string) *CiTypeRelationUpdate {
-	if s != nil {
-		ctru.SetConstraint(*s)
+func (_u *CiTypeRelationUpdate) SetNillableConstraint(v *string) *CiTypeRelationUpdate {
+	if v != nil {
+		_u.SetConstraint(*v)
 	}
-	return ctru
+	return _u
 }
 
 // ClearConstraint clears the value of the "constraint" field.
-func (ctru *CiTypeRelationUpdate) ClearConstraint() *CiTypeRelationUpdate {
-	ctru.mutation.ClearConstraint()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearConstraint() *CiTypeRelationUpdate {
+	_u.mutation.ClearConstraint()
+	return _u
 }
 
 // SetParentAttrID sets the "parent_attr_id" field.
-func (ctru *CiTypeRelationUpdate) SetParentAttrID(u uint64) *CiTypeRelationUpdate {
-	ctru.mutation.ResetParentAttrID()
-	ctru.mutation.SetParentAttrID(u)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetParentAttrID(v uint64) *CiTypeRelationUpdate {
+	_u.mutation.ResetParentAttrID()
+	_u.mutation.SetParentAttrID(v)
+	return _u
 }
 
 // SetNillableParentAttrID sets the "parent_attr_id" field if the given value is not nil.
-func (ctru *CiTypeRelationUpdate) SetNillableParentAttrID(u *uint64) *CiTypeRelationUpdate {
-	if u != nil {
-		ctru.SetParentAttrID(*u)
+func (_u *CiTypeRelationUpdate) SetNillableParentAttrID(v *uint64) *CiTypeRelationUpdate {
+	if v != nil {
+		_u.SetParentAttrID(*v)
 	}
-	return ctru
+	return _u
 }
 
-// AddParentAttrID adds u to the "parent_attr_id" field.
-func (ctru *CiTypeRelationUpdate) AddParentAttrID(u int64) *CiTypeRelationUpdate {
-	ctru.mutation.AddParentAttrID(u)
-	return ctru
+// AddParentAttrID adds value to the "parent_attr_id" field.
+func (_u *CiTypeRelationUpdate) AddParentAttrID(v int64) *CiTypeRelationUpdate {
+	_u.mutation.AddParentAttrID(v)
+	return _u
 }
 
 // ClearParentAttrID clears the value of the "parent_attr_id" field.
-func (ctru *CiTypeRelationUpdate) ClearParentAttrID() *CiTypeRelationUpdate {
-	ctru.mutation.ClearParentAttrID()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearParentAttrID() *CiTypeRelationUpdate {
+	_u.mutation.ClearParentAttrID()
+	return _u
 }
 
 // SetChildAttrID sets the "child_attr_id" field.
-func (ctru *CiTypeRelationUpdate) SetChildAttrID(u uint64) *CiTypeRelationUpdate {
-	ctru.mutation.ResetChildAttrID()
-	ctru.mutation.SetChildAttrID(u)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetChildAttrID(v uint64) *CiTypeRelationUpdate {
+	_u.mutation.ResetChildAttrID()
+	_u.mutation.SetChildAttrID(v)
+	return _u
 }
 
 // SetNillableChildAttrID sets the "child_attr_id" field if the given value is not nil.
-func (ctru *CiTypeRelationUpdate) SetNillableChildAttrID(u *uint64) *CiTypeRelationUpdate {
-	if u != nil {
-		ctru.SetChildAttrID(*u)
+func (_u *CiTypeRelationUpdate) SetNillableChildAttrID(v *uint64) *CiTypeRelationUpdate {
+	if v != nil {
+		_u.SetChildAttrID(*v)
 	}
-	return ctru
+	return _u
 }
 
-// AddChildAttrID adds u to the "child_attr_id" field.
-func (ctru *CiTypeRelationUpdate) AddChildAttrID(u int64) *CiTypeRelationUpdate {
-	ctru.mutation.AddChildAttrID(u)
-	return ctru
+// AddChildAttrID adds value to the "child_attr_id" field.
+func (_u *CiTypeRelationUpdate) AddChildAttrID(v int64) *CiTypeRelationUpdate {
+	_u.mutation.AddChildAttrID(v)
+	return _u
 }
 
 // ClearChildAttrID clears the value of the "child_attr_id" field.
-func (ctru *CiTypeRelationUpdate) ClearChildAttrID() *CiTypeRelationUpdate {
-	ctru.mutation.ClearChildAttrID()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearChildAttrID() *CiTypeRelationUpdate {
+	_u.mutation.ClearChildAttrID()
+	return _u
 }
 
 // SetParentAttrIds sets the "parent_attr_ids" field.
-func (ctru *CiTypeRelationUpdate) SetParentAttrIds(u []uint64) *CiTypeRelationUpdate {
-	ctru.mutation.SetParentAttrIds(u)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetParentAttrIds(v []uint64) *CiTypeRelationUpdate {
+	_u.mutation.SetParentAttrIds(v)
+	return _u
 }
 
-// AppendParentAttrIds appends u to the "parent_attr_ids" field.
-func (ctru *CiTypeRelationUpdate) AppendParentAttrIds(u []uint64) *CiTypeRelationUpdate {
-	ctru.mutation.AppendParentAttrIds(u)
-	return ctru
+// AppendParentAttrIds appends value to the "parent_attr_ids" field.
+func (_u *CiTypeRelationUpdate) AppendParentAttrIds(v []uint64) *CiTypeRelationUpdate {
+	_u.mutation.AppendParentAttrIds(v)
+	return _u
 }
 
 // ClearParentAttrIds clears the value of the "parent_attr_ids" field.
-func (ctru *CiTypeRelationUpdate) ClearParentAttrIds() *CiTypeRelationUpdate {
-	ctru.mutation.ClearParentAttrIds()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearParentAttrIds() *CiTypeRelationUpdate {
+	_u.mutation.ClearParentAttrIds()
+	return _u
 }
 
 // SetChildAttrIds sets the "child_attr_ids" field.
-func (ctru *CiTypeRelationUpdate) SetChildAttrIds(u []uint64) *CiTypeRelationUpdate {
-	ctru.mutation.SetChildAttrIds(u)
-	return ctru
+func (_u *CiTypeRelationUpdate) SetChildAttrIds(v []uint64) *CiTypeRelationUpdate {
+	_u.mutation.SetChildAttrIds(v)
+	return _u
 }
 
-// AppendChildAttrIds appends u to the "child_attr_ids" field.
-func (ctru *CiTypeRelationUpdate) AppendChildAttrIds(u []uint64) *CiTypeRelationUpdate {
-	ctru.mutation.AppendChildAttrIds(u)
-	return ctru
+// AppendChildAttrIds appends value to the "child_attr_ids" field.
+func (_u *CiTypeRelationUpdate) AppendChildAttrIds(v []uint64) *CiTypeRelationUpdate {
+	_u.mutation.AppendChildAttrIds(v)
+	return _u
 }
 
 // ClearChildAttrIds clears the value of the "child_attr_ids" field.
-func (ctru *CiTypeRelationUpdate) ClearChildAttrIds() *CiTypeRelationUpdate {
-	ctru.mutation.ClearChildAttrIds()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearChildAttrIds() *CiTypeRelationUpdate {
+	_u.mutation.ClearChildAttrIds()
+	return _u
 }
 
 // SetParent sets the "parent" edge to the CiType entity.
-func (ctru *CiTypeRelationUpdate) SetParent(c *CiType) *CiTypeRelationUpdate {
-	return ctru.SetParentID(c.ID)
+func (_u *CiTypeRelationUpdate) SetParent(v *CiType) *CiTypeRelationUpdate {
+	return _u.SetParentID(v.ID)
 }
 
 // SetChild sets the "child" edge to the CiType entity.
-func (ctru *CiTypeRelationUpdate) SetChild(c *CiType) *CiTypeRelationUpdate {
-	return ctru.SetChildID(c.ID)
+func (_u *CiTypeRelationUpdate) SetChild(v *CiType) *CiTypeRelationUpdate {
+	return _u.SetChildID(v.ID)
 }
 
 // SetRelationType sets the "relation_type" edge to the RelationType entity.
-func (ctru *CiTypeRelationUpdate) SetRelationType(r *RelationType) *CiTypeRelationUpdate {
-	return ctru.SetRelationTypeID(r.ID)
+func (_u *CiTypeRelationUpdate) SetRelationType(v *RelationType) *CiTypeRelationUpdate {
+	return _u.SetRelationTypeID(v.ID)
 }
 
 // Mutation returns the CiTypeRelationMutation object of the builder.
-func (ctru *CiTypeRelationUpdate) Mutation() *CiTypeRelationMutation {
-	return ctru.mutation
+func (_u *CiTypeRelationUpdate) Mutation() *CiTypeRelationMutation {
+	return _u.mutation
 }
 
 // ClearParent clears the "parent" edge to the CiType entity.
-func (ctru *CiTypeRelationUpdate) ClearParent() *CiTypeRelationUpdate {
-	ctru.mutation.ClearParent()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearParent() *CiTypeRelationUpdate {
+	_u.mutation.ClearParent()
+	return _u
 }
 
 // ClearChild clears the "child" edge to the CiType entity.
-func (ctru *CiTypeRelationUpdate) ClearChild() *CiTypeRelationUpdate {
-	ctru.mutation.ClearChild()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearChild() *CiTypeRelationUpdate {
+	_u.mutation.ClearChild()
+	return _u
 }
 
 // ClearRelationType clears the "relation_type" edge to the RelationType entity.
-func (ctru *CiTypeRelationUpdate) ClearRelationType() *CiTypeRelationUpdate {
-	ctru.mutation.ClearRelationType()
-	return ctru
+func (_u *CiTypeRelationUpdate) ClearRelationType() *CiTypeRelationUpdate {
+	_u.mutation.ClearRelationType()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (ctru *CiTypeRelationUpdate) Save(ctx context.Context) (int, error) {
-	if err := ctru.defaults(); err != nil {
+func (_u *CiTypeRelationUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, ctru.sqlSave, ctru.mutation, ctru.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctru *CiTypeRelationUpdate) SaveX(ctx context.Context) int {
-	affected, err := ctru.Save(ctx)
+func (_u *CiTypeRelationUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -265,112 +265,112 @@ func (ctru *CiTypeRelationUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (ctru *CiTypeRelationUpdate) Exec(ctx context.Context) error {
-	_, err := ctru.Save(ctx)
+func (_u *CiTypeRelationUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctru *CiTypeRelationUpdate) ExecX(ctx context.Context) {
-	if err := ctru.Exec(ctx); err != nil {
+func (_u *CiTypeRelationUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctru *CiTypeRelationUpdate) defaults() error {
-	if _, ok := ctru.mutation.UpdatedAt(); !ok {
+func (_u *CiTypeRelationUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if cityperelation.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cityperelation.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cityperelation.UpdateDefaultUpdatedAt()
-		ctru.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctru *CiTypeRelationUpdate) check() error {
-	if ctru.mutation.ParentCleared() && len(ctru.mutation.ParentIDs()) > 0 {
+func (_u *CiTypeRelationUpdate) check() error {
+	if _u.mutation.ParentCleared() && len(_u.mutation.ParentIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeRelation.parent"`)
 	}
-	if ctru.mutation.ChildCleared() && len(ctru.mutation.ChildIDs()) > 0 {
+	if _u.mutation.ChildCleared() && len(_u.mutation.ChildIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeRelation.child"`)
 	}
-	if ctru.mutation.RelationTypeCleared() && len(ctru.mutation.RelationTypeIDs()) > 0 {
+	if _u.mutation.RelationTypeCleared() && len(_u.mutation.RelationTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeRelation.relation_type"`)
 	}
 	return nil
 }
 
-func (ctru *CiTypeRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := ctru.check(); err != nil {
-		return n, err
+func (_u *CiTypeRelationUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cityperelation.Table, cityperelation.Columns, sqlgraph.NewFieldSpec(cityperelation.FieldID, field.TypeUint64))
-	if ps := ctru.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctru.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cityperelation.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctru.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(cityperelation.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctru.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(cityperelation.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctru.mutation.Constraint(); ok {
+	if value, ok := _u.mutation.Constraint(); ok {
 		_spec.SetField(cityperelation.FieldConstraint, field.TypeString, value)
 	}
-	if ctru.mutation.ConstraintCleared() {
+	if _u.mutation.ConstraintCleared() {
 		_spec.ClearField(cityperelation.FieldConstraint, field.TypeString)
 	}
-	if value, ok := ctru.mutation.ParentAttrID(); ok {
+	if value, ok := _u.mutation.ParentAttrID(); ok {
 		_spec.SetField(cityperelation.FieldParentAttrID, field.TypeUint64, value)
 	}
-	if value, ok := ctru.mutation.AddedParentAttrID(); ok {
+	if value, ok := _u.mutation.AddedParentAttrID(); ok {
 		_spec.AddField(cityperelation.FieldParentAttrID, field.TypeUint64, value)
 	}
-	if ctru.mutation.ParentAttrIDCleared() {
+	if _u.mutation.ParentAttrIDCleared() {
 		_spec.ClearField(cityperelation.FieldParentAttrID, field.TypeUint64)
 	}
-	if value, ok := ctru.mutation.ChildAttrID(); ok {
+	if value, ok := _u.mutation.ChildAttrID(); ok {
 		_spec.SetField(cityperelation.FieldChildAttrID, field.TypeUint64, value)
 	}
-	if value, ok := ctru.mutation.AddedChildAttrID(); ok {
+	if value, ok := _u.mutation.AddedChildAttrID(); ok {
 		_spec.AddField(cityperelation.FieldChildAttrID, field.TypeUint64, value)
 	}
-	if ctru.mutation.ChildAttrIDCleared() {
+	if _u.mutation.ChildAttrIDCleared() {
 		_spec.ClearField(cityperelation.FieldChildAttrID, field.TypeUint64)
 	}
-	if value, ok := ctru.mutation.ParentAttrIds(); ok {
+	if value, ok := _u.mutation.ParentAttrIds(); ok {
 		_spec.SetField(cityperelation.FieldParentAttrIds, field.TypeJSON, value)
 	}
-	if value, ok := ctru.mutation.AppendedParentAttrIds(); ok {
+	if value, ok := _u.mutation.AppendedParentAttrIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cityperelation.FieldParentAttrIds, value)
 		})
 	}
-	if ctru.mutation.ParentAttrIdsCleared() {
+	if _u.mutation.ParentAttrIdsCleared() {
 		_spec.ClearField(cityperelation.FieldParentAttrIds, field.TypeJSON)
 	}
-	if value, ok := ctru.mutation.ChildAttrIds(); ok {
+	if value, ok := _u.mutation.ChildAttrIds(); ok {
 		_spec.SetField(cityperelation.FieldChildAttrIds, field.TypeJSON, value)
 	}
-	if value, ok := ctru.mutation.AppendedChildAttrIds(); ok {
+	if value, ok := _u.mutation.AppendedChildAttrIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cityperelation.FieldChildAttrIds, value)
 		})
 	}
-	if ctru.mutation.ChildAttrIdsCleared() {
+	if _u.mutation.ChildAttrIdsCleared() {
 		_spec.ClearField(cityperelation.FieldChildAttrIds, field.TypeJSON)
 	}
-	if ctru.mutation.ParentCleared() {
+	if _u.mutation.ParentCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -383,7 +383,7 @@ func (ctru *CiTypeRelationUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctru.mutation.ParentIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ParentIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -399,7 +399,7 @@ func (ctru *CiTypeRelationUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctru.mutation.ChildCleared() {
+	if _u.mutation.ChildCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -412,7 +412,7 @@ func (ctru *CiTypeRelationUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctru.mutation.ChildIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ChildIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -428,7 +428,7 @@ func (ctru *CiTypeRelationUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctru.mutation.RelationTypeCleared() {
+	if _u.mutation.RelationTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -441,7 +441,7 @@ func (ctru *CiTypeRelationUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctru.mutation.RelationTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RelationTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -457,7 +457,7 @@ func (ctru *CiTypeRelationUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, ctru.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cityperelation.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -465,8 +465,8 @@ func (ctru *CiTypeRelationUpdate) sqlSave(ctx context.Context) (n int, err error
 		}
 		return 0, err
 	}
-	ctru.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiTypeRelationUpdateOne is the builder for updating a single CiTypeRelation entity.
@@ -478,245 +478,245 @@ type CiTypeRelationUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctruo *CiTypeRelationUpdateOne) SetUpdatedAt(t time.Time) *CiTypeRelationUpdateOne {
-	ctruo.mutation.SetUpdatedAt(t)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetUpdatedAt(v time.Time) *CiTypeRelationUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctruo *CiTypeRelationUpdateOne) SetDeletedAt(t time.Time) *CiTypeRelationUpdateOne {
-	ctruo.mutation.SetDeletedAt(t)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetDeletedAt(v time.Time) *CiTypeRelationUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctruo *CiTypeRelationUpdateOne) SetNillableDeletedAt(t *time.Time) *CiTypeRelationUpdateOne {
-	if t != nil {
-		ctruo.SetDeletedAt(*t)
+func (_u *CiTypeRelationUpdateOne) SetNillableDeletedAt(v *time.Time) *CiTypeRelationUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctruo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctruo *CiTypeRelationUpdateOne) ClearDeletedAt() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearDeletedAt()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearDeletedAt() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetParentID sets the "parent_id" field.
-func (ctruo *CiTypeRelationUpdateOne) SetParentID(u uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.SetParentID(u)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetParentID(v uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.SetParentID(v)
+	return _u
 }
 
 // SetNillableParentID sets the "parent_id" field if the given value is not nil.
-func (ctruo *CiTypeRelationUpdateOne) SetNillableParentID(u *uint64) *CiTypeRelationUpdateOne {
-	if u != nil {
-		ctruo.SetParentID(*u)
+func (_u *CiTypeRelationUpdateOne) SetNillableParentID(v *uint64) *CiTypeRelationUpdateOne {
+	if v != nil {
+		_u.SetParentID(*v)
 	}
-	return ctruo
+	return _u
 }
 
 // SetChildID sets the "child_id" field.
-func (ctruo *CiTypeRelationUpdateOne) SetChildID(u uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.SetChildID(u)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetChildID(v uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.SetChildID(v)
+	return _u
 }
 
 // SetNillableChildID sets the "child_id" field if the given value is not nil.
-func (ctruo *CiTypeRelationUpdateOne) SetNillableChildID(u *uint64) *CiTypeRelationUpdateOne {
-	if u != nil {
-		ctruo.SetChildID(*u)
+func (_u *CiTypeRelationUpdateOne) SetNillableChildID(v *uint64) *CiTypeRelationUpdateOne {
+	if v != nil {
+		_u.SetChildID(*v)
 	}
-	return ctruo
+	return _u
 }
 
 // SetRelationTypeID sets the "relation_type_id" field.
-func (ctruo *CiTypeRelationUpdateOne) SetRelationTypeID(u uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.SetRelationTypeID(u)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetRelationTypeID(v uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.SetRelationTypeID(v)
+	return _u
 }
 
 // SetNillableRelationTypeID sets the "relation_type_id" field if the given value is not nil.
-func (ctruo *CiTypeRelationUpdateOne) SetNillableRelationTypeID(u *uint64) *CiTypeRelationUpdateOne {
-	if u != nil {
-		ctruo.SetRelationTypeID(*u)
+func (_u *CiTypeRelationUpdateOne) SetNillableRelationTypeID(v *uint64) *CiTypeRelationUpdateOne {
+	if v != nil {
+		_u.SetRelationTypeID(*v)
 	}
-	return ctruo
+	return _u
 }
 
 // SetConstraint sets the "constraint" field.
-func (ctruo *CiTypeRelationUpdateOne) SetConstraint(s string) *CiTypeRelationUpdateOne {
-	ctruo.mutation.SetConstraint(s)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetConstraint(v string) *CiTypeRelationUpdateOne {
+	_u.mutation.SetConstraint(v)
+	return _u
 }
 
 // SetNillableConstraint sets the "constraint" field if the given value is not nil.
-func (ctruo *CiTypeRelationUpdateOne) SetNillableConstraint(s *string) *CiTypeRelationUpdateOne {
-	if s != nil {
-		ctruo.SetConstraint(*s)
+func (_u *CiTypeRelationUpdateOne) SetNillableConstraint(v *string) *CiTypeRelationUpdateOne {
+	if v != nil {
+		_u.SetConstraint(*v)
 	}
-	return ctruo
+	return _u
 }
 
 // ClearConstraint clears the value of the "constraint" field.
-func (ctruo *CiTypeRelationUpdateOne) ClearConstraint() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearConstraint()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearConstraint() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearConstraint()
+	return _u
 }
 
 // SetParentAttrID sets the "parent_attr_id" field.
-func (ctruo *CiTypeRelationUpdateOne) SetParentAttrID(u uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.ResetParentAttrID()
-	ctruo.mutation.SetParentAttrID(u)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetParentAttrID(v uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.ResetParentAttrID()
+	_u.mutation.SetParentAttrID(v)
+	return _u
 }
 
 // SetNillableParentAttrID sets the "parent_attr_id" field if the given value is not nil.
-func (ctruo *CiTypeRelationUpdateOne) SetNillableParentAttrID(u *uint64) *CiTypeRelationUpdateOne {
-	if u != nil {
-		ctruo.SetParentAttrID(*u)
+func (_u *CiTypeRelationUpdateOne) SetNillableParentAttrID(v *uint64) *CiTypeRelationUpdateOne {
+	if v != nil {
+		_u.SetParentAttrID(*v)
 	}
-	return ctruo
+	return _u
 }
 
-// AddParentAttrID adds u to the "parent_attr_id" field.
-func (ctruo *CiTypeRelationUpdateOne) AddParentAttrID(u int64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.AddParentAttrID(u)
-	return ctruo
+// AddParentAttrID adds value to the "parent_attr_id" field.
+func (_u *CiTypeRelationUpdateOne) AddParentAttrID(v int64) *CiTypeRelationUpdateOne {
+	_u.mutation.AddParentAttrID(v)
+	return _u
 }
 
 // ClearParentAttrID clears the value of the "parent_attr_id" field.
-func (ctruo *CiTypeRelationUpdateOne) ClearParentAttrID() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearParentAttrID()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearParentAttrID() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearParentAttrID()
+	return _u
 }
 
 // SetChildAttrID sets the "child_attr_id" field.
-func (ctruo *CiTypeRelationUpdateOne) SetChildAttrID(u uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.ResetChildAttrID()
-	ctruo.mutation.SetChildAttrID(u)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetChildAttrID(v uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.ResetChildAttrID()
+	_u.mutation.SetChildAttrID(v)
+	return _u
 }
 
 // SetNillableChildAttrID sets the "child_attr_id" field if the given value is not nil.
-func (ctruo *CiTypeRelationUpdateOne) SetNillableChildAttrID(u *uint64) *CiTypeRelationUpdateOne {
-	if u != nil {
-		ctruo.SetChildAttrID(*u)
+func (_u *CiTypeRelationUpdateOne) SetNillableChildAttrID(v *uint64) *CiTypeRelationUpdateOne {
+	if v != nil {
+		_u.SetChildAttrID(*v)
 	}
-	return ctruo
+	return _u
 }
 
-// AddChildAttrID adds u to the "child_attr_id" field.
-func (ctruo *CiTypeRelationUpdateOne) AddChildAttrID(u int64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.AddChildAttrID(u)
-	return ctruo
+// AddChildAttrID adds value to the "child_attr_id" field.
+func (_u *CiTypeRelationUpdateOne) AddChildAttrID(v int64) *CiTypeRelationUpdateOne {
+	_u.mutation.AddChildAttrID(v)
+	return _u
 }
 
 // ClearChildAttrID clears the value of the "child_attr_id" field.
-func (ctruo *CiTypeRelationUpdateOne) ClearChildAttrID() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearChildAttrID()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearChildAttrID() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearChildAttrID()
+	return _u
 }
 
 // SetParentAttrIds sets the "parent_attr_ids" field.
-func (ctruo *CiTypeRelationUpdateOne) SetParentAttrIds(u []uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.SetParentAttrIds(u)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetParentAttrIds(v []uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.SetParentAttrIds(v)
+	return _u
 }
 
-// AppendParentAttrIds appends u to the "parent_attr_ids" field.
-func (ctruo *CiTypeRelationUpdateOne) AppendParentAttrIds(u []uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.AppendParentAttrIds(u)
-	return ctruo
+// AppendParentAttrIds appends value to the "parent_attr_ids" field.
+func (_u *CiTypeRelationUpdateOne) AppendParentAttrIds(v []uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.AppendParentAttrIds(v)
+	return _u
 }
 
 // ClearParentAttrIds clears the value of the "parent_attr_ids" field.
-func (ctruo *CiTypeRelationUpdateOne) ClearParentAttrIds() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearParentAttrIds()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearParentAttrIds() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearParentAttrIds()
+	return _u
 }
 
 // SetChildAttrIds sets the "child_attr_ids" field.
-func (ctruo *CiTypeRelationUpdateOne) SetChildAttrIds(u []uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.SetChildAttrIds(u)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) SetChildAttrIds(v []uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.SetChildAttrIds(v)
+	return _u
 }
 
-// AppendChildAttrIds appends u to the "child_attr_ids" field.
-func (ctruo *CiTypeRelationUpdateOne) AppendChildAttrIds(u []uint64) *CiTypeRelationUpdateOne {
-	ctruo.mutation.AppendChildAttrIds(u)
-	return ctruo
+// AppendChildAttrIds appends value to the "child_attr_ids" field.
+func (_u *CiTypeRelationUpdateOne) AppendChildAttrIds(v []uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.AppendChildAttrIds(v)
+	return _u
 }
 
 // ClearChildAttrIds clears the value of the "child_attr_ids" field.
-func (ctruo *CiTypeRelationUpdateOne) ClearChildAttrIds() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearChildAttrIds()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearChildAttrIds() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearChildAttrIds()
+	return _u
 }
 
 // SetParent sets the "parent" edge to the CiType entity.
-func (ctruo *CiTypeRelationUpdateOne) SetParent(c *CiType) *CiTypeRelationUpdateOne {
-	return ctruo.SetParentID(c.ID)
+func (_u *CiTypeRelationUpdateOne) SetParent(v *CiType) *CiTypeRelationUpdateOne {
+	return _u.SetParentID(v.ID)
 }
 
 // SetChild sets the "child" edge to the CiType entity.
-func (ctruo *CiTypeRelationUpdateOne) SetChild(c *CiType) *CiTypeRelationUpdateOne {
-	return ctruo.SetChildID(c.ID)
+func (_u *CiTypeRelationUpdateOne) SetChild(v *CiType) *CiTypeRelationUpdateOne {
+	return _u.SetChildID(v.ID)
 }
 
 // SetRelationType sets the "relation_type" edge to the RelationType entity.
-func (ctruo *CiTypeRelationUpdateOne) SetRelationType(r *RelationType) *CiTypeRelationUpdateOne {
-	return ctruo.SetRelationTypeID(r.ID)
+func (_u *CiTypeRelationUpdateOne) SetRelationType(v *RelationType) *CiTypeRelationUpdateOne {
+	return _u.SetRelationTypeID(v.ID)
 }
 
 // Mutation returns the CiTypeRelationMutation object of the builder.
-func (ctruo *CiTypeRelationUpdateOne) Mutation() *CiTypeRelationMutation {
-	return ctruo.mutation
+func (_u *CiTypeRelationUpdateOne) Mutation() *CiTypeRelationMutation {
+	return _u.mutation
 }
 
 // ClearParent clears the "parent" edge to the CiType entity.
-func (ctruo *CiTypeRelationUpdateOne) ClearParent() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearParent()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearParent() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearParent()
+	return _u
 }
 
 // ClearChild clears the "child" edge to the CiType entity.
-func (ctruo *CiTypeRelationUpdateOne) ClearChild() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearChild()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearChild() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearChild()
+	return _u
 }
 
 // ClearRelationType clears the "relation_type" edge to the RelationType entity.
-func (ctruo *CiTypeRelationUpdateOne) ClearRelationType() *CiTypeRelationUpdateOne {
-	ctruo.mutation.ClearRelationType()
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) ClearRelationType() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearRelationType()
+	return _u
 }
 
 // Where appends a list predicates to the CiTypeRelationUpdate builder.
-func (ctruo *CiTypeRelationUpdateOne) Where(ps ...predicate.CiTypeRelation) *CiTypeRelationUpdateOne {
-	ctruo.mutation.Where(ps...)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) Where(ps ...predicate.CiTypeRelation) *CiTypeRelationUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (ctruo *CiTypeRelationUpdateOne) Select(field string, fields ...string) *CiTypeRelationUpdateOne {
-	ctruo.fields = append([]string{field}, fields...)
-	return ctruo
+func (_u *CiTypeRelationUpdateOne) Select(field string, fields ...string) *CiTypeRelationUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiTypeRelation entity.
-func (ctruo *CiTypeRelationUpdateOne) Save(ctx context.Context) (*CiTypeRelation, error) {
-	if err := ctruo.defaults(); err != nil {
+func (_u *CiTypeRelationUpdateOne) Save(ctx context.Context) (*CiTypeRelation, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctruo.sqlSave, ctruo.mutation, ctruo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctruo *CiTypeRelationUpdateOne) SaveX(ctx context.Context) *CiTypeRelation {
-	node, err := ctruo.Save(ctx)
+func (_u *CiTypeRelationUpdateOne) SaveX(ctx context.Context) *CiTypeRelation {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -724,55 +724,55 @@ func (ctruo *CiTypeRelationUpdateOne) SaveX(ctx context.Context) *CiTypeRelation
 }
 
 // Exec executes the query on the entity.
-func (ctruo *CiTypeRelationUpdateOne) Exec(ctx context.Context) error {
-	_, err := ctruo.Save(ctx)
+func (_u *CiTypeRelationUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctruo *CiTypeRelationUpdateOne) ExecX(ctx context.Context) {
-	if err := ctruo.Exec(ctx); err != nil {
+func (_u *CiTypeRelationUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctruo *CiTypeRelationUpdateOne) defaults() error {
-	if _, ok := ctruo.mutation.UpdatedAt(); !ok {
+func (_u *CiTypeRelationUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if cityperelation.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cityperelation.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cityperelation.UpdateDefaultUpdatedAt()
-		ctruo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctruo *CiTypeRelationUpdateOne) check() error {
-	if ctruo.mutation.ParentCleared() && len(ctruo.mutation.ParentIDs()) > 0 {
+func (_u *CiTypeRelationUpdateOne) check() error {
+	if _u.mutation.ParentCleared() && len(_u.mutation.ParentIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeRelation.parent"`)
 	}
-	if ctruo.mutation.ChildCleared() && len(ctruo.mutation.ChildIDs()) > 0 {
+	if _u.mutation.ChildCleared() && len(_u.mutation.ChildIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeRelation.child"`)
 	}
-	if ctruo.mutation.RelationTypeCleared() && len(ctruo.mutation.RelationTypeIDs()) > 0 {
+	if _u.mutation.RelationTypeCleared() && len(_u.mutation.RelationTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeRelation.relation_type"`)
 	}
 	return nil
 }
 
-func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeRelation, err error) {
-	if err := ctruo.check(); err != nil {
+func (_u *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeRelation, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cityperelation.Table, cityperelation.Columns, sqlgraph.NewFieldSpec(cityperelation.FieldID, field.TypeUint64))
-	id, ok := ctruo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiTypeRelation.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := ctruo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cityperelation.FieldID)
 		for _, f := range fields {
@@ -784,69 +784,69 @@ func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTyp
 			}
 		}
 	}
-	if ps := ctruo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctruo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cityperelation.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctruo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(cityperelation.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctruo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(cityperelation.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctruo.mutation.Constraint(); ok {
+	if value, ok := _u.mutation.Constraint(); ok {
 		_spec.SetField(cityperelation.FieldConstraint, field.TypeString, value)
 	}
-	if ctruo.mutation.ConstraintCleared() {
+	if _u.mutation.ConstraintCleared() {
 		_spec.ClearField(cityperelation.FieldConstraint, field.TypeString)
 	}
-	if value, ok := ctruo.mutation.ParentAttrID(); ok {
+	if value, ok := _u.mutation.ParentAttrID(); ok {
 		_spec.SetField(cityperelation.FieldParentAttrID, field.TypeUint64, value)
 	}
-	if value, ok := ctruo.mutation.AddedParentAttrID(); ok {
+	if value, ok := _u.mutation.AddedParentAttrID(); ok {
 		_spec.AddField(cityperelation.FieldParentAttrID, field.TypeUint64, value)
 	}
-	if ctruo.mutation.ParentAttrIDCleared() {
+	if _u.mutation.ParentAttrIDCleared() {
 		_spec.ClearField(cityperelation.FieldParentAttrID, field.TypeUint64)
 	}
-	if value, ok := ctruo.mutation.ChildAttrID(); ok {
+	if value, ok := _u.mutation.ChildAttrID(); ok {
 		_spec.SetField(cityperelation.FieldChildAttrID, field.TypeUint64, value)
 	}
-	if value, ok := ctruo.mutation.AddedChildAttrID(); ok {
+	if value, ok := _u.mutation.AddedChildAttrID(); ok {
 		_spec.AddField(cityperelation.FieldChildAttrID, field.TypeUint64, value)
 	}
-	if ctruo.mutation.ChildAttrIDCleared() {
+	if _u.mutation.ChildAttrIDCleared() {
 		_spec.ClearField(cityperelation.FieldChildAttrID, field.TypeUint64)
 	}
-	if value, ok := ctruo.mutation.ParentAttrIds(); ok {
+	if value, ok := _u.mutation.ParentAttrIds(); ok {
 		_spec.SetField(cityperelation.FieldParentAttrIds, field.TypeJSON, value)
 	}
-	if value, ok := ctruo.mutation.AppendedParentAttrIds(); ok {
+	if value, ok := _u.mutation.AppendedParentAttrIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cityperelation.FieldParentAttrIds, value)
 		})
 	}
-	if ctruo.mutation.ParentAttrIdsCleared() {
+	if _u.mutation.ParentAttrIdsCleared() {
 		_spec.ClearField(cityperelation.FieldParentAttrIds, field.TypeJSON)
 	}
-	if value, ok := ctruo.mutation.ChildAttrIds(); ok {
+	if value, ok := _u.mutation.ChildAttrIds(); ok {
 		_spec.SetField(cityperelation.FieldChildAttrIds, field.TypeJSON, value)
 	}
-	if value, ok := ctruo.mutation.AppendedChildAttrIds(); ok {
+	if value, ok := _u.mutation.AppendedChildAttrIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cityperelation.FieldChildAttrIds, value)
 		})
 	}
-	if ctruo.mutation.ChildAttrIdsCleared() {
+	if _u.mutation.ChildAttrIdsCleared() {
 		_spec.ClearField(cityperelation.FieldChildAttrIds, field.TypeJSON)
 	}
-	if ctruo.mutation.ParentCleared() {
+	if _u.mutation.ParentCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -859,7 +859,7 @@ func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTyp
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctruo.mutation.ParentIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ParentIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -875,7 +875,7 @@ func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTyp
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctruo.mutation.ChildCleared() {
+	if _u.mutation.ChildCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -888,7 +888,7 @@ func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTyp
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctruo.mutation.ChildIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ChildIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -904,7 +904,7 @@ func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTyp
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctruo.mutation.RelationTypeCleared() {
+	if _u.mutation.RelationTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -917,7 +917,7 @@ func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTyp
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctruo.mutation.RelationTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RelationTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -933,10 +933,10 @@ func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTyp
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &CiTypeRelation{config: ctruo.config}
+	_node = &CiTypeRelation{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, ctruo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cityperelation.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -944,6 +944,6 @@ func (ctruo *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTyp
 		}
 		return nil, err
 	}
-	ctruo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

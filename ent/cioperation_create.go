@@ -10,7 +10,7 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cioperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -22,533 +22,533 @@ type CiOperationCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (coc *CiOperationCreate) SetCreatedAt(t time.Time) *CiOperationCreate {
-	coc.mutation.SetCreatedAt(t)
-	return coc
+func (_c *CiOperationCreate) SetCreatedAt(v time.Time) *CiOperationCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableCreatedAt(t *time.Time) *CiOperationCreate {
-	if t != nil {
-		coc.SetCreatedAt(*t)
+func (_c *CiOperationCreate) SetNillableCreatedAt(v *time.Time) *CiOperationCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (coc *CiOperationCreate) SetUpdatedAt(t time.Time) *CiOperationCreate {
-	coc.mutation.SetUpdatedAt(t)
-	return coc
+func (_c *CiOperationCreate) SetUpdatedAt(v time.Time) *CiOperationCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableUpdatedAt(t *time.Time) *CiOperationCreate {
-	if t != nil {
-		coc.SetUpdatedAt(*t)
+func (_c *CiOperationCreate) SetNillableUpdatedAt(v *time.Time) *CiOperationCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (coc *CiOperationCreate) SetTenantID(u uint64) *CiOperationCreate {
-	coc.mutation.SetTenantID(u)
-	return coc
+func (_c *CiOperationCreate) SetTenantID(v uint64) *CiOperationCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableTenantID(u *uint64) *CiOperationCreate {
-	if u != nil {
-		coc.SetTenantID(*u)
+func (_c *CiOperationCreate) SetNillableTenantID(v *uint64) *CiOperationCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (coc *CiOperationCreate) SetDepartmentID(u uint64) *CiOperationCreate {
-	coc.mutation.SetDepartmentID(u)
-	return coc
+func (_c *CiOperationCreate) SetDepartmentID(v uint64) *CiOperationCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableDepartmentID(u *uint64) *CiOperationCreate {
-	if u != nil {
-		coc.SetDepartmentID(*u)
+func (_c *CiOperationCreate) SetNillableDepartmentID(v *uint64) *CiOperationCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetOperationID sets the "operation_id" field.
-func (coc *CiOperationCreate) SetOperationID(s string) *CiOperationCreate {
-	coc.mutation.SetOperationID(s)
-	return coc
+func (_c *CiOperationCreate) SetOperationID(v string) *CiOperationCreate {
+	_c.mutation.SetOperationID(v)
+	return _c
 }
 
 // SetOperationType sets the "operation_type" field.
-func (coc *CiOperationCreate) SetOperationType(ct cioperation.OperationType) *CiOperationCreate {
-	coc.mutation.SetOperationType(ct)
-	return coc
+func (_c *CiOperationCreate) SetOperationType(v cioperation.OperationType) *CiOperationCreate {
+	_c.mutation.SetOperationType(v)
+	return _c
 }
 
 // SetOperationStatus sets the "operation_status" field.
-func (coc *CiOperationCreate) SetOperationStatus(cs cioperation.OperationStatus) *CiOperationCreate {
-	coc.mutation.SetOperationStatus(cs)
-	return coc
+func (_c *CiOperationCreate) SetOperationStatus(v cioperation.OperationStatus) *CiOperationCreate {
+	_c.mutation.SetOperationStatus(v)
+	return _c
 }
 
 // SetNillableOperationStatus sets the "operation_status" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableOperationStatus(cs *cioperation.OperationStatus) *CiOperationCreate {
-	if cs != nil {
-		coc.SetOperationStatus(*cs)
+func (_c *CiOperationCreate) SetNillableOperationStatus(v *cioperation.OperationStatus) *CiOperationCreate {
+	if v != nil {
+		_c.SetOperationStatus(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (coc *CiOperationCreate) SetCiID(u uint64) *CiOperationCreate {
-	coc.mutation.SetCiID(u)
-	return coc
+func (_c *CiOperationCreate) SetCiID(v uint64) *CiOperationCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableCiID(u *uint64) *CiOperationCreate {
-	if u != nil {
-		coc.SetCiID(*u)
+func (_c *CiOperationCreate) SetNillableCiID(v *uint64) *CiOperationCreate {
+	if v != nil {
+		_c.SetCiID(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (coc *CiOperationCreate) SetCiTypeID(u uint64) *CiOperationCreate {
-	coc.mutation.SetCiTypeID(u)
-	return coc
+func (_c *CiOperationCreate) SetCiTypeID(v uint64) *CiOperationCreate {
+	_c.mutation.SetCiTypeID(v)
+	return _c
 }
 
 // SetOperatorID sets the "operator_id" field.
-func (coc *CiOperationCreate) SetOperatorID(u uuid.UUID) *CiOperationCreate {
-	coc.mutation.SetOperatorID(u)
-	return coc
+func (_c *CiOperationCreate) SetOperatorID(v uuid.UUID) *CiOperationCreate {
+	_c.mutation.SetOperatorID(v)
+	return _c
 }
 
 // SetOperatorName sets the "operator_name" field.
-func (coc *CiOperationCreate) SetOperatorName(s string) *CiOperationCreate {
-	coc.mutation.SetOperatorName(s)
-	return coc
+func (_c *CiOperationCreate) SetOperatorName(v string) *CiOperationCreate {
+	_c.mutation.SetOperatorName(v)
+	return _c
 }
 
 // SetOperatorRole sets the "operator_role" field.
-func (coc *CiOperationCreate) SetOperatorRole(s string) *CiOperationCreate {
-	coc.mutation.SetOperatorRole(s)
-	return coc
+func (_c *CiOperationCreate) SetOperatorRole(v string) *CiOperationCreate {
+	_c.mutation.SetOperatorRole(v)
+	return _c
 }
 
 // SetNillableOperatorRole sets the "operator_role" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableOperatorRole(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetOperatorRole(*s)
+func (_c *CiOperationCreate) SetNillableOperatorRole(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetOperatorRole(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetOperatorDepartment sets the "operator_department" field.
-func (coc *CiOperationCreate) SetOperatorDepartment(s string) *CiOperationCreate {
-	coc.mutation.SetOperatorDepartment(s)
-	return coc
+func (_c *CiOperationCreate) SetOperatorDepartment(v string) *CiOperationCreate {
+	_c.mutation.SetOperatorDepartment(v)
+	return _c
 }
 
 // SetNillableOperatorDepartment sets the "operator_department" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableOperatorDepartment(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetOperatorDepartment(*s)
+func (_c *CiOperationCreate) SetNillableOperatorDepartment(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetOperatorDepartment(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetOperationSource sets the "operation_source" field.
-func (coc *CiOperationCreate) SetOperationSource(cs cioperation.OperationSource) *CiOperationCreate {
-	coc.mutation.SetOperationSource(cs)
-	return coc
+func (_c *CiOperationCreate) SetOperationSource(v cioperation.OperationSource) *CiOperationCreate {
+	_c.mutation.SetOperationSource(v)
+	return _c
 }
 
 // SetNillableOperationSource sets the "operation_source" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableOperationSource(cs *cioperation.OperationSource) *CiOperationCreate {
-	if cs != nil {
-		coc.SetOperationSource(*cs)
+func (_c *CiOperationCreate) SetNillableOperationSource(v *cioperation.OperationSource) *CiOperationCreate {
+	if v != nil {
+		_c.SetOperationSource(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetSourceDetail sets the "source_detail" field.
-func (coc *CiOperationCreate) SetSourceDetail(s string) *CiOperationCreate {
-	coc.mutation.SetSourceDetail(s)
-	return coc
+func (_c *CiOperationCreate) SetSourceDetail(v string) *CiOperationCreate {
+	_c.mutation.SetSourceDetail(v)
+	return _c
 }
 
 // SetNillableSourceDetail sets the "source_detail" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableSourceDetail(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetSourceDetail(*s)
+func (_c *CiOperationCreate) SetNillableSourceDetail(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetSourceDetail(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetOperationReason sets the "operation_reason" field.
-func (coc *CiOperationCreate) SetOperationReason(s string) *CiOperationCreate {
-	coc.mutation.SetOperationReason(s)
-	return coc
+func (_c *CiOperationCreate) SetOperationReason(v string) *CiOperationCreate {
+	_c.mutation.SetOperationReason(v)
+	return _c
 }
 
 // SetNillableOperationReason sets the "operation_reason" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableOperationReason(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetOperationReason(*s)
+func (_c *CiOperationCreate) SetNillableOperationReason(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetOperationReason(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetOperationContext sets the "operation_context" field.
-func (coc *CiOperationCreate) SetOperationContext(m map[string]interface{}) *CiOperationCreate {
-	coc.mutation.SetOperationContext(m)
-	return coc
+func (_c *CiOperationCreate) SetOperationContext(v map[string]interface{}) *CiOperationCreate {
+	_c.mutation.SetOperationContext(v)
+	return _c
 }
 
 // SetDataBefore sets the "data_before" field.
-func (coc *CiOperationCreate) SetDataBefore(m map[string]interface{}) *CiOperationCreate {
-	coc.mutation.SetDataBefore(m)
-	return coc
+func (_c *CiOperationCreate) SetDataBefore(v map[string]interface{}) *CiOperationCreate {
+	_c.mutation.SetDataBefore(v)
+	return _c
 }
 
 // SetDataAfter sets the "data_after" field.
-func (coc *CiOperationCreate) SetDataAfter(m map[string]interface{}) *CiOperationCreate {
-	coc.mutation.SetDataAfter(m)
-	return coc
+func (_c *CiOperationCreate) SetDataAfter(v map[string]interface{}) *CiOperationCreate {
+	_c.mutation.SetDataAfter(v)
+	return _c
 }
 
 // SetAffectedAttributes sets the "affected_attributes" field.
-func (coc *CiOperationCreate) SetAffectedAttributes(u []uint64) *CiOperationCreate {
-	coc.mutation.SetAffectedAttributes(u)
-	return coc
+func (_c *CiOperationCreate) SetAffectedAttributes(v []uint64) *CiOperationCreate {
+	_c.mutation.SetAffectedAttributes(v)
+	return _c
 }
 
 // SetBatchCiIds sets the "batch_ci_ids" field.
-func (coc *CiOperationCreate) SetBatchCiIds(u []uint64) *CiOperationCreate {
-	coc.mutation.SetBatchCiIds(u)
-	return coc
+func (_c *CiOperationCreate) SetBatchCiIds(v []uint64) *CiOperationCreate {
+	_c.mutation.SetBatchCiIds(v)
+	return _c
 }
 
 // SetBatchTotal sets the "batch_total" field.
-func (coc *CiOperationCreate) SetBatchTotal(i int) *CiOperationCreate {
-	coc.mutation.SetBatchTotal(i)
-	return coc
+func (_c *CiOperationCreate) SetBatchTotal(v int) *CiOperationCreate {
+	_c.mutation.SetBatchTotal(v)
+	return _c
 }
 
 // SetNillableBatchTotal sets the "batch_total" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableBatchTotal(i *int) *CiOperationCreate {
-	if i != nil {
-		coc.SetBatchTotal(*i)
+func (_c *CiOperationCreate) SetNillableBatchTotal(v *int) *CiOperationCreate {
+	if v != nil {
+		_c.SetBatchTotal(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetBatchSuccess sets the "batch_success" field.
-func (coc *CiOperationCreate) SetBatchSuccess(i int) *CiOperationCreate {
-	coc.mutation.SetBatchSuccess(i)
-	return coc
+func (_c *CiOperationCreate) SetBatchSuccess(v int) *CiOperationCreate {
+	_c.mutation.SetBatchSuccess(v)
+	return _c
 }
 
 // SetNillableBatchSuccess sets the "batch_success" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableBatchSuccess(i *int) *CiOperationCreate {
-	if i != nil {
-		coc.SetBatchSuccess(*i)
+func (_c *CiOperationCreate) SetNillableBatchSuccess(v *int) *CiOperationCreate {
+	if v != nil {
+		_c.SetBatchSuccess(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetBatchFailed sets the "batch_failed" field.
-func (coc *CiOperationCreate) SetBatchFailed(i int) *CiOperationCreate {
-	coc.mutation.SetBatchFailed(i)
-	return coc
+func (_c *CiOperationCreate) SetBatchFailed(v int) *CiOperationCreate {
+	_c.mutation.SetBatchFailed(v)
+	return _c
 }
 
 // SetNillableBatchFailed sets the "batch_failed" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableBatchFailed(i *int) *CiOperationCreate {
-	if i != nil {
-		coc.SetBatchFailed(*i)
+func (_c *CiOperationCreate) SetNillableBatchFailed(v *int) *CiOperationCreate {
+	if v != nil {
+		_c.SetBatchFailed(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetRequireApproval sets the "require_approval" field.
-func (coc *CiOperationCreate) SetRequireApproval(b bool) *CiOperationCreate {
-	coc.mutation.SetRequireApproval(b)
-	return coc
+func (_c *CiOperationCreate) SetRequireApproval(v bool) *CiOperationCreate {
+	_c.mutation.SetRequireApproval(v)
+	return _c
 }
 
 // SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableRequireApproval(b *bool) *CiOperationCreate {
-	if b != nil {
-		coc.SetRequireApproval(*b)
+func (_c *CiOperationCreate) SetNillableRequireApproval(v *bool) *CiOperationCreate {
+	if v != nil {
+		_c.SetRequireApproval(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetApprovalFlowID sets the "approval_flow_id" field.
-func (coc *CiOperationCreate) SetApprovalFlowID(s string) *CiOperationCreate {
-	coc.mutation.SetApprovalFlowID(s)
-	return coc
+func (_c *CiOperationCreate) SetApprovalFlowID(v string) *CiOperationCreate {
+	_c.mutation.SetApprovalFlowID(v)
+	return _c
 }
 
 // SetNillableApprovalFlowID sets the "approval_flow_id" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableApprovalFlowID(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetApprovalFlowID(*s)
+func (_c *CiOperationCreate) SetNillableApprovalFlowID(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetApprovalFlowID(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetApproverID sets the "approver_id" field.
-func (coc *CiOperationCreate) SetApproverID(u uuid.UUID) *CiOperationCreate {
-	coc.mutation.SetApproverID(u)
-	return coc
+func (_c *CiOperationCreate) SetApproverID(v uuid.UUID) *CiOperationCreate {
+	_c.mutation.SetApproverID(v)
+	return _c
 }
 
 // SetNillableApproverID sets the "approver_id" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableApproverID(u *uuid.UUID) *CiOperationCreate {
-	if u != nil {
-		coc.SetApproverID(*u)
+func (_c *CiOperationCreate) SetNillableApproverID(v *uuid.UUID) *CiOperationCreate {
+	if v != nil {
+		_c.SetApproverID(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetApproverName sets the "approver_name" field.
-func (coc *CiOperationCreate) SetApproverName(s string) *CiOperationCreate {
-	coc.mutation.SetApproverName(s)
-	return coc
+func (_c *CiOperationCreate) SetApproverName(v string) *CiOperationCreate {
+	_c.mutation.SetApproverName(v)
+	return _c
 }
 
 // SetNillableApproverName sets the "approver_name" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableApproverName(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetApproverName(*s)
+func (_c *CiOperationCreate) SetNillableApproverName(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetApproverName(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (coc *CiOperationCreate) SetApprovedAt(t time.Time) *CiOperationCreate {
-	coc.mutation.SetApprovedAt(t)
-	return coc
+func (_c *CiOperationCreate) SetApprovedAt(v time.Time) *CiOperationCreate {
+	_c.mutation.SetApprovedAt(v)
+	return _c
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableApprovedAt(t *time.Time) *CiOperationCreate {
-	if t != nil {
-		coc.SetApprovedAt(*t)
+func (_c *CiOperationCreate) SetNillableApprovedAt(v *time.Time) *CiOperationCreate {
+	if v != nil {
+		_c.SetApprovedAt(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetApprovalComment sets the "approval_comment" field.
-func (coc *CiOperationCreate) SetApprovalComment(s string) *CiOperationCreate {
-	coc.mutation.SetApprovalComment(s)
-	return coc
+func (_c *CiOperationCreate) SetApprovalComment(v string) *CiOperationCreate {
+	_c.mutation.SetApprovalComment(v)
+	return _c
 }
 
 // SetNillableApprovalComment sets the "approval_comment" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableApprovalComment(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetApprovalComment(*s)
+func (_c *CiOperationCreate) SetNillableApprovalComment(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetApprovalComment(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetStartedAt sets the "started_at" field.
-func (coc *CiOperationCreate) SetStartedAt(t time.Time) *CiOperationCreate {
-	coc.mutation.SetStartedAt(t)
-	return coc
+func (_c *CiOperationCreate) SetStartedAt(v time.Time) *CiOperationCreate {
+	_c.mutation.SetStartedAt(v)
+	return _c
 }
 
 // SetNillableStartedAt sets the "started_at" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableStartedAt(t *time.Time) *CiOperationCreate {
-	if t != nil {
-		coc.SetStartedAt(*t)
+func (_c *CiOperationCreate) SetNillableStartedAt(v *time.Time) *CiOperationCreate {
+	if v != nil {
+		_c.SetStartedAt(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetCompletedAt sets the "completed_at" field.
-func (coc *CiOperationCreate) SetCompletedAt(t time.Time) *CiOperationCreate {
-	coc.mutation.SetCompletedAt(t)
-	return coc
+func (_c *CiOperationCreate) SetCompletedAt(v time.Time) *CiOperationCreate {
+	_c.mutation.SetCompletedAt(v)
+	return _c
 }
 
 // SetNillableCompletedAt sets the "completed_at" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableCompletedAt(t *time.Time) *CiOperationCreate {
-	if t != nil {
-		coc.SetCompletedAt(*t)
+func (_c *CiOperationCreate) SetNillableCompletedAt(v *time.Time) *CiOperationCreate {
+	if v != nil {
+		_c.SetCompletedAt(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetExecutionDuration sets the "execution_duration" field.
-func (coc *CiOperationCreate) SetExecutionDuration(i int) *CiOperationCreate {
-	coc.mutation.SetExecutionDuration(i)
-	return coc
+func (_c *CiOperationCreate) SetExecutionDuration(v int) *CiOperationCreate {
+	_c.mutation.SetExecutionDuration(v)
+	return _c
 }
 
 // SetNillableExecutionDuration sets the "execution_duration" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableExecutionDuration(i *int) *CiOperationCreate {
-	if i != nil {
-		coc.SetExecutionDuration(*i)
+func (_c *CiOperationCreate) SetNillableExecutionDuration(v *int) *CiOperationCreate {
+	if v != nil {
+		_c.SetExecutionDuration(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetExecutionResult sets the "execution_result" field.
-func (coc *CiOperationCreate) SetExecutionResult(m map[string]interface{}) *CiOperationCreate {
-	coc.mutation.SetExecutionResult(m)
-	return coc
+func (_c *CiOperationCreate) SetExecutionResult(v map[string]interface{}) *CiOperationCreate {
+	_c.mutation.SetExecutionResult(v)
+	return _c
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (coc *CiOperationCreate) SetErrorMessage(s string) *CiOperationCreate {
-	coc.mutation.SetErrorMessage(s)
-	return coc
+func (_c *CiOperationCreate) SetErrorMessage(v string) *CiOperationCreate {
+	_c.mutation.SetErrorMessage(v)
+	return _c
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableErrorMessage(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetErrorMessage(*s)
+func (_c *CiOperationCreate) SetNillableErrorMessage(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetErrorMessage(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetErrorDetails sets the "error_details" field.
-func (coc *CiOperationCreate) SetErrorDetails(m map[string]interface{}) *CiOperationCreate {
-	coc.mutation.SetErrorDetails(m)
-	return coc
+func (_c *CiOperationCreate) SetErrorDetails(v map[string]interface{}) *CiOperationCreate {
+	_c.mutation.SetErrorDetails(v)
+	return _c
 }
 
 // SetLifecycleStage sets the "lifecycle_stage" field.
-func (coc *CiOperationCreate) SetLifecycleStage(cs cioperation.LifecycleStage) *CiOperationCreate {
-	coc.mutation.SetLifecycleStage(cs)
-	return coc
+func (_c *CiOperationCreate) SetLifecycleStage(v cioperation.LifecycleStage) *CiOperationCreate {
+	_c.mutation.SetLifecycleStage(v)
+	return _c
 }
 
 // SetNillableLifecycleStage sets the "lifecycle_stage" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableLifecycleStage(cs *cioperation.LifecycleStage) *CiOperationCreate {
-	if cs != nil {
-		coc.SetLifecycleStage(*cs)
+func (_c *CiOperationCreate) SetNillableLifecycleStage(v *cioperation.LifecycleStage) *CiOperationCreate {
+	if v != nil {
+		_c.SetLifecycleStage(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (coc *CiOperationCreate) SetExpiresAt(t time.Time) *CiOperationCreate {
-	coc.mutation.SetExpiresAt(t)
-	return coc
+func (_c *CiOperationCreate) SetExpiresAt(v time.Time) *CiOperationCreate {
+	_c.mutation.SetExpiresAt(v)
+	return _c
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableExpiresAt(t *time.Time) *CiOperationCreate {
-	if t != nil {
-		coc.SetExpiresAt(*t)
+func (_c *CiOperationCreate) SetNillableExpiresAt(v *time.Time) *CiOperationCreate {
+	if v != nil {
+		_c.SetExpiresAt(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetRequiredPermissions sets the "required_permissions" field.
-func (coc *CiOperationCreate) SetRequiredPermissions(s []string) *CiOperationCreate {
-	coc.mutation.SetRequiredPermissions(s)
-	return coc
+func (_c *CiOperationCreate) SetRequiredPermissions(v []string) *CiOperationCreate {
+	_c.mutation.SetRequiredPermissions(v)
+	return _c
 }
 
 // SetPermissionCheckResult sets the "permission_check_result" field.
-func (coc *CiOperationCreate) SetPermissionCheckResult(m map[string]interface{}) *CiOperationCreate {
-	coc.mutation.SetPermissionCheckResult(m)
-	return coc
+func (_c *CiOperationCreate) SetPermissionCheckResult(v map[string]interface{}) *CiOperationCreate {
+	_c.mutation.SetPermissionCheckResult(v)
+	return _c
 }
 
 // SetIsSensitive sets the "is_sensitive" field.
-func (coc *CiOperationCreate) SetIsSensitive(b bool) *CiOperationCreate {
-	coc.mutation.SetIsSensitive(b)
-	return coc
+func (_c *CiOperationCreate) SetIsSensitive(v bool) *CiOperationCreate {
+	_c.mutation.SetIsSensitive(v)
+	return _c
 }
 
 // SetNillableIsSensitive sets the "is_sensitive" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableIsSensitive(b *bool) *CiOperationCreate {
-	if b != nil {
-		coc.SetIsSensitive(*b)
+func (_c *CiOperationCreate) SetNillableIsSensitive(v *bool) *CiOperationCreate {
+	if v != nil {
+		_c.SetIsSensitive(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetParentOperationID sets the "parent_operation_id" field.
-func (coc *CiOperationCreate) SetParentOperationID(s string) *CiOperationCreate {
-	coc.mutation.SetParentOperationID(s)
-	return coc
+func (_c *CiOperationCreate) SetParentOperationID(v string) *CiOperationCreate {
+	_c.mutation.SetParentOperationID(v)
+	return _c
 }
 
 // SetNillableParentOperationID sets the "parent_operation_id" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableParentOperationID(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetParentOperationID(*s)
+func (_c *CiOperationCreate) SetNillableParentOperationID(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetParentOperationID(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetChildOperationIds sets the "child_operation_ids" field.
-func (coc *CiOperationCreate) SetChildOperationIds(s []string) *CiOperationCreate {
-	coc.mutation.SetChildOperationIds(s)
-	return coc
+func (_c *CiOperationCreate) SetChildOperationIds(v []string) *CiOperationCreate {
+	_c.mutation.SetChildOperationIds(v)
+	return _c
 }
 
 // SetTransactionID sets the "transaction_id" field.
-func (coc *CiOperationCreate) SetTransactionID(s string) *CiOperationCreate {
-	coc.mutation.SetTransactionID(s)
-	return coc
+func (_c *CiOperationCreate) SetTransactionID(v string) *CiOperationCreate {
+	_c.mutation.SetTransactionID(v)
+	return _c
 }
 
 // SetNillableTransactionID sets the "transaction_id" field if the given value is not nil.
-func (coc *CiOperationCreate) SetNillableTransactionID(s *string) *CiOperationCreate {
-	if s != nil {
-		coc.SetTransactionID(*s)
+func (_c *CiOperationCreate) SetNillableTransactionID(v *string) *CiOperationCreate {
+	if v != nil {
+		_c.SetTransactionID(*v)
 	}
-	return coc
+	return _c
 }
 
 // SetMetadata sets the "metadata" field.
-func (coc *CiOperationCreate) SetMetadata(m map[string]interface{}) *CiOperationCreate {
-	coc.mutation.SetMetadata(m)
-	return coc
+func (_c *CiOperationCreate) SetMetadata(v map[string]interface{}) *CiOperationCreate {
+	_c.mutation.SetMetadata(v)
+	return _c
 }
 
 // SetTags sets the "tags" field.
-func (coc *CiOperationCreate) SetTags(s []string) *CiOperationCreate {
-	coc.mutation.SetTags(s)
-	return coc
+func (_c *CiOperationCreate) SetTags(v []string) *CiOperationCreate {
+	_c.mutation.SetTags(v)
+	return _c
 }
 
 // SetID sets the "id" field.
-func (coc *CiOperationCreate) SetID(u uint64) *CiOperationCreate {
-	coc.mutation.SetID(u)
-	return coc
+func (_c *CiOperationCreate) SetID(v uint64) *CiOperationCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // Mutation returns the CiOperationMutation object of the builder.
-func (coc *CiOperationCreate) Mutation() *CiOperationMutation {
-	return coc.mutation
+func (_c *CiOperationCreate) Mutation() *CiOperationMutation {
+	return _c.mutation
 }
 
 // Save creates the CiOperation in the database.
-func (coc *CiOperationCreate) Save(ctx context.Context) (*CiOperation, error) {
-	coc.defaults()
-	return withHooks(ctx, coc.sqlSave, coc.mutation, coc.hooks)
+func (_c *CiOperationCreate) Save(ctx context.Context) (*CiOperation, error) {
+	_c.defaults()
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (coc *CiOperationCreate) SaveX(ctx context.Context) *CiOperation {
-	v, err := coc.Save(ctx)
+func (_c *CiOperationCreate) SaveX(ctx context.Context) *CiOperation {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -556,136 +556,136 @@ func (coc *CiOperationCreate) SaveX(ctx context.Context) *CiOperation {
 }
 
 // Exec executes the query.
-func (coc *CiOperationCreate) Exec(ctx context.Context) error {
-	_, err := coc.Save(ctx)
+func (_c *CiOperationCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (coc *CiOperationCreate) ExecX(ctx context.Context) {
-	if err := coc.Exec(ctx); err != nil {
+func (_c *CiOperationCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (coc *CiOperationCreate) defaults() {
-	if _, ok := coc.mutation.CreatedAt(); !ok {
+func (_c *CiOperationCreate) defaults() {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		v := cioperation.DefaultCreatedAt()
-		coc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := coc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		v := cioperation.DefaultUpdatedAt()
-		coc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := coc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := cioperation.DefaultTenantID
-		coc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := coc.mutation.OperationStatus(); !ok {
+	if _, ok := _c.mutation.OperationStatus(); !ok {
 		v := cioperation.DefaultOperationStatus
-		coc.mutation.SetOperationStatus(v)
+		_c.mutation.SetOperationStatus(v)
 	}
-	if _, ok := coc.mutation.OperationSource(); !ok {
+	if _, ok := _c.mutation.OperationSource(); !ok {
 		v := cioperation.DefaultOperationSource
-		coc.mutation.SetOperationSource(v)
+		_c.mutation.SetOperationSource(v)
 	}
-	if _, ok := coc.mutation.BatchTotal(); !ok {
+	if _, ok := _c.mutation.BatchTotal(); !ok {
 		v := cioperation.DefaultBatchTotal
-		coc.mutation.SetBatchTotal(v)
+		_c.mutation.SetBatchTotal(v)
 	}
-	if _, ok := coc.mutation.BatchSuccess(); !ok {
+	if _, ok := _c.mutation.BatchSuccess(); !ok {
 		v := cioperation.DefaultBatchSuccess
-		coc.mutation.SetBatchSuccess(v)
+		_c.mutation.SetBatchSuccess(v)
 	}
-	if _, ok := coc.mutation.BatchFailed(); !ok {
+	if _, ok := _c.mutation.BatchFailed(); !ok {
 		v := cioperation.DefaultBatchFailed
-		coc.mutation.SetBatchFailed(v)
+		_c.mutation.SetBatchFailed(v)
 	}
-	if _, ok := coc.mutation.RequireApproval(); !ok {
+	if _, ok := _c.mutation.RequireApproval(); !ok {
 		v := cioperation.DefaultRequireApproval
-		coc.mutation.SetRequireApproval(v)
+		_c.mutation.SetRequireApproval(v)
 	}
-	if _, ok := coc.mutation.LifecycleStage(); !ok {
+	if _, ok := _c.mutation.LifecycleStage(); !ok {
 		v := cioperation.DefaultLifecycleStage
-		coc.mutation.SetLifecycleStage(v)
+		_c.mutation.SetLifecycleStage(v)
 	}
-	if _, ok := coc.mutation.IsSensitive(); !ok {
+	if _, ok := _c.mutation.IsSensitive(); !ok {
 		v := cioperation.DefaultIsSensitive
-		coc.mutation.SetIsSensitive(v)
+		_c.mutation.SetIsSensitive(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (coc *CiOperationCreate) check() error {
-	if _, ok := coc.mutation.CreatedAt(); !ok {
+func (_c *CiOperationCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiOperation.created_at"`)}
 	}
-	if _, ok := coc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiOperation.updated_at"`)}
 	}
-	if _, ok := coc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiOperation.tenant_id"`)}
 	}
-	if _, ok := coc.mutation.OperationID(); !ok {
+	if _, ok := _c.mutation.OperationID(); !ok {
 		return &ValidationError{Name: "operation_id", err: errors.New(`ent: missing required field "CiOperation.operation_id"`)}
 	}
-	if _, ok := coc.mutation.OperationType(); !ok {
+	if _, ok := _c.mutation.OperationType(); !ok {
 		return &ValidationError{Name: "operation_type", err: errors.New(`ent: missing required field "CiOperation.operation_type"`)}
 	}
-	if v, ok := coc.mutation.OperationType(); ok {
+	if v, ok := _c.mutation.OperationType(); ok {
 		if err := cioperation.OperationTypeValidator(v); err != nil {
 			return &ValidationError{Name: "operation_type", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_type": %w`, err)}
 		}
 	}
-	if _, ok := coc.mutation.OperationStatus(); !ok {
+	if _, ok := _c.mutation.OperationStatus(); !ok {
 		return &ValidationError{Name: "operation_status", err: errors.New(`ent: missing required field "CiOperation.operation_status"`)}
 	}
-	if v, ok := coc.mutation.OperationStatus(); ok {
+	if v, ok := _c.mutation.OperationStatus(); ok {
 		if err := cioperation.OperationStatusValidator(v); err != nil {
 			return &ValidationError{Name: "operation_status", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_status": %w`, err)}
 		}
 	}
-	if _, ok := coc.mutation.CiTypeID(); !ok {
+	if _, ok := _c.mutation.CiTypeID(); !ok {
 		return &ValidationError{Name: "ci_type_id", err: errors.New(`ent: missing required field "CiOperation.ci_type_id"`)}
 	}
-	if _, ok := coc.mutation.OperatorID(); !ok {
+	if _, ok := _c.mutation.OperatorID(); !ok {
 		return &ValidationError{Name: "operator_id", err: errors.New(`ent: missing required field "CiOperation.operator_id"`)}
 	}
-	if _, ok := coc.mutation.OperatorName(); !ok {
+	if _, ok := _c.mutation.OperatorName(); !ok {
 		return &ValidationError{Name: "operator_name", err: errors.New(`ent: missing required field "CiOperation.operator_name"`)}
 	}
-	if _, ok := coc.mutation.OperationSource(); !ok {
+	if _, ok := _c.mutation.OperationSource(); !ok {
 		return &ValidationError{Name: "operation_source", err: errors.New(`ent: missing required field "CiOperation.operation_source"`)}
 	}
-	if v, ok := coc.mutation.OperationSource(); ok {
+	if v, ok := _c.mutation.OperationSource(); ok {
 		if err := cioperation.OperationSourceValidator(v); err != nil {
 			return &ValidationError{Name: "operation_source", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_source": %w`, err)}
 		}
 	}
-	if _, ok := coc.mutation.RequireApproval(); !ok {
+	if _, ok := _c.mutation.RequireApproval(); !ok {
 		return &ValidationError{Name: "require_approval", err: errors.New(`ent: missing required field "CiOperation.require_approval"`)}
 	}
-	if _, ok := coc.mutation.LifecycleStage(); !ok {
+	if _, ok := _c.mutation.LifecycleStage(); !ok {
 		return &ValidationError{Name: "lifecycle_stage", err: errors.New(`ent: missing required field "CiOperation.lifecycle_stage"`)}
 	}
-	if v, ok := coc.mutation.LifecycleStage(); ok {
+	if v, ok := _c.mutation.LifecycleStage(); ok {
 		if err := cioperation.LifecycleStageValidator(v); err != nil {
 			return &ValidationError{Name: "lifecycle_stage", err: fmt.Errorf(`ent: validator failed for field "CiOperation.lifecycle_stage": %w`, err)}
 		}
 	}
-	if _, ok := coc.mutation.IsSensitive(); !ok {
+	if _, ok := _c.mutation.IsSensitive(); !ok {
 		return &ValidationError{Name: "is_sensitive", err: errors.New(`ent: missing required field "CiOperation.is_sensitive"`)}
 	}
 	return nil
 }
 
-func (coc *CiOperationCreate) sqlSave(ctx context.Context) (*CiOperation, error) {
-	if err := coc.check(); err != nil {
+func (_c *CiOperationCreate) sqlSave(ctx context.Context) (*CiOperation, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := coc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, coc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -695,201 +695,201 @@ func (coc *CiOperationCreate) sqlSave(ctx context.Context) (*CiOperation, error)
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	coc.mutation.id = &_node.ID
-	coc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (coc *CiOperationCreate) createSpec() (*CiOperation, *sqlgraph.CreateSpec) {
+func (_c *CiOperationCreate) createSpec() (*CiOperation, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiOperation{config: coc.config}
+		_node = &CiOperation{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(cioperation.Table, sqlgraph.NewFieldSpec(cioperation.FieldID, field.TypeUint64))
 	)
-	if id, ok := coc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := coc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(cioperation.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := coc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(cioperation.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := coc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(cioperation.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := coc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(cioperation.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := coc.mutation.OperationID(); ok {
+	if value, ok := _c.mutation.OperationID(); ok {
 		_spec.SetField(cioperation.FieldOperationID, field.TypeString, value)
 		_node.OperationID = value
 	}
-	if value, ok := coc.mutation.OperationType(); ok {
+	if value, ok := _c.mutation.OperationType(); ok {
 		_spec.SetField(cioperation.FieldOperationType, field.TypeEnum, value)
 		_node.OperationType = value
 	}
-	if value, ok := coc.mutation.OperationStatus(); ok {
+	if value, ok := _c.mutation.OperationStatus(); ok {
 		_spec.SetField(cioperation.FieldOperationStatus, field.TypeEnum, value)
 		_node.OperationStatus = value
 	}
-	if value, ok := coc.mutation.CiID(); ok {
+	if value, ok := _c.mutation.CiID(); ok {
 		_spec.SetField(cioperation.FieldCiID, field.TypeUint64, value)
 		_node.CiID = value
 	}
-	if value, ok := coc.mutation.CiTypeID(); ok {
+	if value, ok := _c.mutation.CiTypeID(); ok {
 		_spec.SetField(cioperation.FieldCiTypeID, field.TypeUint64, value)
 		_node.CiTypeID = value
 	}
-	if value, ok := coc.mutation.OperatorID(); ok {
+	if value, ok := _c.mutation.OperatorID(); ok {
 		_spec.SetField(cioperation.FieldOperatorID, field.TypeUUID, value)
 		_node.OperatorID = value
 	}
-	if value, ok := coc.mutation.OperatorName(); ok {
+	if value, ok := _c.mutation.OperatorName(); ok {
 		_spec.SetField(cioperation.FieldOperatorName, field.TypeString, value)
 		_node.OperatorName = value
 	}
-	if value, ok := coc.mutation.OperatorRole(); ok {
+	if value, ok := _c.mutation.OperatorRole(); ok {
 		_spec.SetField(cioperation.FieldOperatorRole, field.TypeString, value)
 		_node.OperatorRole = value
 	}
-	if value, ok := coc.mutation.OperatorDepartment(); ok {
+	if value, ok := _c.mutation.OperatorDepartment(); ok {
 		_spec.SetField(cioperation.FieldOperatorDepartment, field.TypeString, value)
 		_node.OperatorDepartment = value
 	}
-	if value, ok := coc.mutation.OperationSource(); ok {
+	if value, ok := _c.mutation.OperationSource(); ok {
 		_spec.SetField(cioperation.FieldOperationSource, field.TypeEnum, value)
 		_node.OperationSource = value
 	}
-	if value, ok := coc.mutation.SourceDetail(); ok {
+	if value, ok := _c.mutation.SourceDetail(); ok {
 		_spec.SetField(cioperation.FieldSourceDetail, field.TypeString, value)
 		_node.SourceDetail = value
 	}
-	if value, ok := coc.mutation.OperationReason(); ok {
+	if value, ok := _c.mutation.OperationReason(); ok {
 		_spec.SetField(cioperation.FieldOperationReason, field.TypeString, value)
 		_node.OperationReason = value
 	}
-	if value, ok := coc.mutation.OperationContext(); ok {
+	if value, ok := _c.mutation.OperationContext(); ok {
 		_spec.SetField(cioperation.FieldOperationContext, field.TypeJSON, value)
 		_node.OperationContext = value
 	}
-	if value, ok := coc.mutation.DataBefore(); ok {
+	if value, ok := _c.mutation.DataBefore(); ok {
 		_spec.SetField(cioperation.FieldDataBefore, field.TypeJSON, value)
 		_node.DataBefore = value
 	}
-	if value, ok := coc.mutation.DataAfter(); ok {
+	if value, ok := _c.mutation.DataAfter(); ok {
 		_spec.SetField(cioperation.FieldDataAfter, field.TypeJSON, value)
 		_node.DataAfter = value
 	}
-	if value, ok := coc.mutation.AffectedAttributes(); ok {
+	if value, ok := _c.mutation.AffectedAttributes(); ok {
 		_spec.SetField(cioperation.FieldAffectedAttributes, field.TypeJSON, value)
 		_node.AffectedAttributes = value
 	}
-	if value, ok := coc.mutation.BatchCiIds(); ok {
+	if value, ok := _c.mutation.BatchCiIds(); ok {
 		_spec.SetField(cioperation.FieldBatchCiIds, field.TypeJSON, value)
 		_node.BatchCiIds = value
 	}
-	if value, ok := coc.mutation.BatchTotal(); ok {
+	if value, ok := _c.mutation.BatchTotal(); ok {
 		_spec.SetField(cioperation.FieldBatchTotal, field.TypeInt, value)
 		_node.BatchTotal = value
 	}
-	if value, ok := coc.mutation.BatchSuccess(); ok {
+	if value, ok := _c.mutation.BatchSuccess(); ok {
 		_spec.SetField(cioperation.FieldBatchSuccess, field.TypeInt, value)
 		_node.BatchSuccess = value
 	}
-	if value, ok := coc.mutation.BatchFailed(); ok {
+	if value, ok := _c.mutation.BatchFailed(); ok {
 		_spec.SetField(cioperation.FieldBatchFailed, field.TypeInt, value)
 		_node.BatchFailed = value
 	}
-	if value, ok := coc.mutation.RequireApproval(); ok {
+	if value, ok := _c.mutation.RequireApproval(); ok {
 		_spec.SetField(cioperation.FieldRequireApproval, field.TypeBool, value)
 		_node.RequireApproval = value
 	}
-	if value, ok := coc.mutation.ApprovalFlowID(); ok {
+	if value, ok := _c.mutation.ApprovalFlowID(); ok {
 		_spec.SetField(cioperation.FieldApprovalFlowID, field.TypeString, value)
 		_node.ApprovalFlowID = value
 	}
-	if value, ok := coc.mutation.ApproverID(); ok {
+	if value, ok := _c.mutation.ApproverID(); ok {
 		_spec.SetField(cioperation.FieldApproverID, field.TypeUUID, value)
 		_node.ApproverID = value
 	}
-	if value, ok := coc.mutation.ApproverName(); ok {
+	if value, ok := _c.mutation.ApproverName(); ok {
 		_spec.SetField(cioperation.FieldApproverName, field.TypeString, value)
 		_node.ApproverName = value
 	}
-	if value, ok := coc.mutation.ApprovedAt(); ok {
+	if value, ok := _c.mutation.ApprovedAt(); ok {
 		_spec.SetField(cioperation.FieldApprovedAt, field.TypeTime, value)
 		_node.ApprovedAt = value
 	}
-	if value, ok := coc.mutation.ApprovalComment(); ok {
+	if value, ok := _c.mutation.ApprovalComment(); ok {
 		_spec.SetField(cioperation.FieldApprovalComment, field.TypeString, value)
 		_node.ApprovalComment = value
 	}
-	if value, ok := coc.mutation.StartedAt(); ok {
+	if value, ok := _c.mutation.StartedAt(); ok {
 		_spec.SetField(cioperation.FieldStartedAt, field.TypeTime, value)
 		_node.StartedAt = value
 	}
-	if value, ok := coc.mutation.CompletedAt(); ok {
+	if value, ok := _c.mutation.CompletedAt(); ok {
 		_spec.SetField(cioperation.FieldCompletedAt, field.TypeTime, value)
 		_node.CompletedAt = value
 	}
-	if value, ok := coc.mutation.ExecutionDuration(); ok {
+	if value, ok := _c.mutation.ExecutionDuration(); ok {
 		_spec.SetField(cioperation.FieldExecutionDuration, field.TypeInt, value)
 		_node.ExecutionDuration = value
 	}
-	if value, ok := coc.mutation.ExecutionResult(); ok {
+	if value, ok := _c.mutation.ExecutionResult(); ok {
 		_spec.SetField(cioperation.FieldExecutionResult, field.TypeJSON, value)
 		_node.ExecutionResult = value
 	}
-	if value, ok := coc.mutation.ErrorMessage(); ok {
+	if value, ok := _c.mutation.ErrorMessage(); ok {
 		_spec.SetField(cioperation.FieldErrorMessage, field.TypeString, value)
 		_node.ErrorMessage = value
 	}
-	if value, ok := coc.mutation.ErrorDetails(); ok {
+	if value, ok := _c.mutation.ErrorDetails(); ok {
 		_spec.SetField(cioperation.FieldErrorDetails, field.TypeJSON, value)
 		_node.ErrorDetails = value
 	}
-	if value, ok := coc.mutation.LifecycleStage(); ok {
+	if value, ok := _c.mutation.LifecycleStage(); ok {
 		_spec.SetField(cioperation.FieldLifecycleStage, field.TypeEnum, value)
 		_node.LifecycleStage = value
 	}
-	if value, ok := coc.mutation.ExpiresAt(); ok {
+	if value, ok := _c.mutation.ExpiresAt(); ok {
 		_spec.SetField(cioperation.FieldExpiresAt, field.TypeTime, value)
 		_node.ExpiresAt = value
 	}
-	if value, ok := coc.mutation.RequiredPermissions(); ok {
+	if value, ok := _c.mutation.RequiredPermissions(); ok {
 		_spec.SetField(cioperation.FieldRequiredPermissions, field.TypeJSON, value)
 		_node.RequiredPermissions = value
 	}
-	if value, ok := coc.mutation.PermissionCheckResult(); ok {
+	if value, ok := _c.mutation.PermissionCheckResult(); ok {
 		_spec.SetField(cioperation.FieldPermissionCheckResult, field.TypeJSON, value)
 		_node.PermissionCheckResult = value
 	}
-	if value, ok := coc.mutation.IsSensitive(); ok {
+	if value, ok := _c.mutation.IsSensitive(); ok {
 		_spec.SetField(cioperation.FieldIsSensitive, field.TypeBool, value)
 		_node.IsSensitive = value
 	}
-	if value, ok := coc.mutation.ParentOperationID(); ok {
+	if value, ok := _c.mutation.ParentOperationID(); ok {
 		_spec.SetField(cioperation.FieldParentOperationID, field.TypeString, value)
 		_node.ParentOperationID = value
 	}
-	if value, ok := coc.mutation.ChildOperationIds(); ok {
+	if value, ok := _c.mutation.ChildOperationIds(); ok {
 		_spec.SetField(cioperation.FieldChildOperationIds, field.TypeJSON, value)
 		_node.ChildOperationIds = value
 	}
-	if value, ok := coc.mutation.TransactionID(); ok {
+	if value, ok := _c.mutation.TransactionID(); ok {
 		_spec.SetField(cioperation.FieldTransactionID, field.TypeString, value)
 		_node.TransactionID = value
 	}
-	if value, ok := coc.mutation.Metadata(); ok {
+	if value, ok := _c.mutation.Metadata(); ok {
 		_spec.SetField(cioperation.FieldMetadata, field.TypeJSON, value)
 		_node.Metadata = value
 	}
-	if value, ok := coc.mutation.Tags(); ok {
+	if value, ok := _c.mutation.Tags(); ok {
 		_spec.SetField(cioperation.FieldTags, field.TypeJSON, value)
 		_node.Tags = value
 	}
@@ -904,16 +904,16 @@ type CiOperationCreateBulk struct {
 }
 
 // Save creates the CiOperation entities in the database.
-func (cocb *CiOperationCreateBulk) Save(ctx context.Context) ([]*CiOperation, error) {
-	if cocb.err != nil {
-		return nil, cocb.err
+func (_c *CiOperationCreateBulk) Save(ctx context.Context) ([]*CiOperation, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(cocb.builders))
-	nodes := make([]*CiOperation, len(cocb.builders))
-	mutators := make([]Mutator, len(cocb.builders))
-	for i := range cocb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiOperation, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := cocb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiOperationMutation)
@@ -927,11 +927,11 @@ func (cocb *CiOperationCreateBulk) Save(ctx context.Context) ([]*CiOperation, er
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, cocb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, cocb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -955,7 +955,7 @@ func (cocb *CiOperationCreateBulk) Save(ctx context.Context) ([]*CiOperation, er
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, cocb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -963,8 +963,8 @@ func (cocb *CiOperationCreateBulk) Save(ctx context.Context) ([]*CiOperation, er
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cocb *CiOperationCreateBulk) SaveX(ctx context.Context) []*CiOperation {
-	v, err := cocb.Save(ctx)
+func (_c *CiOperationCreateBulk) SaveX(ctx context.Context) []*CiOperation {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -972,14 +972,14 @@ func (cocb *CiOperationCreateBulk) SaveX(ctx context.Context) []*CiOperation {
 }
 
 // Exec executes the query.
-func (cocb *CiOperationCreateBulk) Exec(ctx context.Context) error {
-	_, err := cocb.Save(ctx)
+func (_c *CiOperationCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cocb *CiOperationCreateBulk) ExecX(ctx context.Context) {
-	if err := cocb.Exec(ctx); err != nil {
+func (_c *CiOperationCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

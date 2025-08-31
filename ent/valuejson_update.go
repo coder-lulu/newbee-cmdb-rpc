@@ -13,10 +13,10 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
 )
 
 // ValueJSONUpdate is the builder for updating ValueJSON entities.
@@ -27,135 +27,135 @@ type ValueJSONUpdate struct {
 }
 
 // Where appends a list predicates to the ValueJSONUpdate builder.
-func (vju *ValueJSONUpdate) Where(ps ...predicate.ValueJSON) *ValueJSONUpdate {
-	vju.mutation.Where(ps...)
-	return vju
+func (_u *ValueJSONUpdate) Where(ps ...predicate.ValueJSON) *ValueJSONUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vju *ValueJSONUpdate) SetUpdatedAt(t time.Time) *ValueJSONUpdate {
-	vju.mutation.SetUpdatedAt(t)
-	return vju
+func (_u *ValueJSONUpdate) SetUpdatedAt(v time.Time) *ValueJSONUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vju *ValueJSONUpdate) SetDeletedAt(t time.Time) *ValueJSONUpdate {
-	vju.mutation.SetDeletedAt(t)
-	return vju
+func (_u *ValueJSONUpdate) SetDeletedAt(v time.Time) *ValueJSONUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vju *ValueJSONUpdate) SetNillableDeletedAt(t *time.Time) *ValueJSONUpdate {
-	if t != nil {
-		vju.SetDeletedAt(*t)
+func (_u *ValueJSONUpdate) SetNillableDeletedAt(v *time.Time) *ValueJSONUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vju
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vju *ValueJSONUpdate) ClearDeletedAt() *ValueJSONUpdate {
-	vju.mutation.ClearDeletedAt()
-	return vju
+func (_u *ValueJSONUpdate) ClearDeletedAt() *ValueJSONUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vju *ValueJSONUpdate) SetCiID(u uint64) *ValueJSONUpdate {
-	vju.mutation.SetCiID(u)
-	return vju
+func (_u *ValueJSONUpdate) SetCiID(v uint64) *ValueJSONUpdate {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vju *ValueJSONUpdate) SetNillableCiID(u *uint64) *ValueJSONUpdate {
-	if u != nil {
-		vju.SetCiID(*u)
+func (_u *ValueJSONUpdate) SetNillableCiID(v *uint64) *ValueJSONUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vju
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vju *ValueJSONUpdate) SetAttrID(u uint64) *ValueJSONUpdate {
-	vju.mutation.SetAttrID(u)
-	return vju
+func (_u *ValueJSONUpdate) SetAttrID(v uint64) *ValueJSONUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vju *ValueJSONUpdate) SetNillableAttrID(u *uint64) *ValueJSONUpdate {
-	if u != nil {
-		vju.SetAttrID(*u)
+func (_u *ValueJSONUpdate) SetNillableAttrID(v *uint64) *ValueJSONUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vju
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vju *ValueJSONUpdate) SetValue(jm json.RawMessage) *ValueJSONUpdate {
-	vju.mutation.SetValue(jm)
-	return vju
+func (_u *ValueJSONUpdate) SetValue(v json.RawMessage) *ValueJSONUpdate {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
-// AppendValue appends jm to the "value" field.
-func (vju *ValueJSONUpdate) AppendValue(jm json.RawMessage) *ValueJSONUpdate {
-	vju.mutation.AppendValue(jm)
-	return vju
+// AppendValue appends value to the "value" field.
+func (_u *ValueJSONUpdate) AppendValue(v json.RawMessage) *ValueJSONUpdate {
+	_u.mutation.AppendValue(v)
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vju *ValueJSONUpdate) SetIsCover(b bool) *ValueJSONUpdate {
-	vju.mutation.SetIsCover(b)
-	return vju
+func (_u *ValueJSONUpdate) SetIsCover(v bool) *ValueJSONUpdate {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vju *ValueJSONUpdate) SetNillableIsCover(b *bool) *ValueJSONUpdate {
-	if b != nil {
-		vju.SetIsCover(*b)
+func (_u *ValueJSONUpdate) SetNillableIsCover(v *bool) *ValueJSONUpdate {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vju
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vju *ValueJSONUpdate) SetCi(c *Cis) *ValueJSONUpdate {
-	return vju.SetCiID(c.ID)
+func (_u *ValueJSONUpdate) SetCi(v *Cis) *ValueJSONUpdate {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vju *ValueJSONUpdate) SetAttributeID(id uint64) *ValueJSONUpdate {
-	vju.mutation.SetAttributeID(id)
-	return vju
+func (_u *ValueJSONUpdate) SetAttributeID(id uint64) *ValueJSONUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vju *ValueJSONUpdate) SetAttribute(a *Attribute) *ValueJSONUpdate {
-	return vju.SetAttributeID(a.ID)
+func (_u *ValueJSONUpdate) SetAttribute(v *Attribute) *ValueJSONUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueJSONMutation object of the builder.
-func (vju *ValueJSONUpdate) Mutation() *ValueJSONMutation {
-	return vju.mutation
+func (_u *ValueJSONUpdate) Mutation() *ValueJSONMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vju *ValueJSONUpdate) ClearCi() *ValueJSONUpdate {
-	vju.mutation.ClearCi()
-	return vju
+func (_u *ValueJSONUpdate) ClearCi() *ValueJSONUpdate {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vju *ValueJSONUpdate) ClearAttribute() *ValueJSONUpdate {
-	vju.mutation.ClearAttribute()
-	return vju
+func (_u *ValueJSONUpdate) ClearAttribute() *ValueJSONUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (vju *ValueJSONUpdate) Save(ctx context.Context) (int, error) {
-	if err := vju.defaults(); err != nil {
+func (_u *ValueJSONUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, vju.sqlSave, vju.mutation, vju.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vju *ValueJSONUpdate) SaveX(ctx context.Context) int {
-	affected, err := vju.Save(ctx)
+func (_u *ValueJSONUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -163,74 +163,74 @@ func (vju *ValueJSONUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (vju *ValueJSONUpdate) Exec(ctx context.Context) error {
-	_, err := vju.Save(ctx)
+func (_u *ValueJSONUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vju *ValueJSONUpdate) ExecX(ctx context.Context) {
-	if err := vju.Exec(ctx); err != nil {
+func (_u *ValueJSONUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vju *ValueJSONUpdate) defaults() error {
-	if _, ok := vju.mutation.UpdatedAt(); !ok {
+func (_u *ValueJSONUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valuejson.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuejson.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuejson.UpdateDefaultUpdatedAt()
-		vju.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vju *ValueJSONUpdate) check() error {
-	if vju.mutation.CiCleared() && len(vju.mutation.CiIDs()) > 0 {
+func (_u *ValueJSONUpdate) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueJSON.ci"`)
 	}
-	if vju.mutation.AttributeCleared() && len(vju.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueJSON.attribute"`)
 	}
 	return nil
 }
 
-func (vju *ValueJSONUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := vju.check(); err != nil {
-		return n, err
+func (_u *ValueJSONUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valuejson.Table, valuejson.Columns, sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64))
-	if ps := vju.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vju.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuejson.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vju.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valuejson.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vju.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuejson.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vju.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuejson.FieldValue, field.TypeJSON, value)
 	}
-	if value, ok := vju.mutation.AppendedValue(); ok {
+	if value, ok := _u.mutation.AppendedValue(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, valuejson.FieldValue, value)
 		})
 	}
-	if value, ok := vju.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valuejson.FieldIsCover, field.TypeBool, value)
 	}
-	if vju.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -243,7 +243,7 @@ func (vju *ValueJSONUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vju.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -259,7 +259,7 @@ func (vju *ValueJSONUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vju.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -272,7 +272,7 @@ func (vju *ValueJSONUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vju.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -288,7 +288,7 @@ func (vju *ValueJSONUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, vju.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valuejson.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -296,8 +296,8 @@ func (vju *ValueJSONUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	vju.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ValueJSONUpdateOne is the builder for updating a single ValueJSON entity.
@@ -309,142 +309,142 @@ type ValueJSONUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vjuo *ValueJSONUpdateOne) SetUpdatedAt(t time.Time) *ValueJSONUpdateOne {
-	vjuo.mutation.SetUpdatedAt(t)
-	return vjuo
+func (_u *ValueJSONUpdateOne) SetUpdatedAt(v time.Time) *ValueJSONUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vjuo *ValueJSONUpdateOne) SetDeletedAt(t time.Time) *ValueJSONUpdateOne {
-	vjuo.mutation.SetDeletedAt(t)
-	return vjuo
+func (_u *ValueJSONUpdateOne) SetDeletedAt(v time.Time) *ValueJSONUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vjuo *ValueJSONUpdateOne) SetNillableDeletedAt(t *time.Time) *ValueJSONUpdateOne {
-	if t != nil {
-		vjuo.SetDeletedAt(*t)
+func (_u *ValueJSONUpdateOne) SetNillableDeletedAt(v *time.Time) *ValueJSONUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vjuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vjuo *ValueJSONUpdateOne) ClearDeletedAt() *ValueJSONUpdateOne {
-	vjuo.mutation.ClearDeletedAt()
-	return vjuo
+func (_u *ValueJSONUpdateOne) ClearDeletedAt() *ValueJSONUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vjuo *ValueJSONUpdateOne) SetCiID(u uint64) *ValueJSONUpdateOne {
-	vjuo.mutation.SetCiID(u)
-	return vjuo
+func (_u *ValueJSONUpdateOne) SetCiID(v uint64) *ValueJSONUpdateOne {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vjuo *ValueJSONUpdateOne) SetNillableCiID(u *uint64) *ValueJSONUpdateOne {
-	if u != nil {
-		vjuo.SetCiID(*u)
+func (_u *ValueJSONUpdateOne) SetNillableCiID(v *uint64) *ValueJSONUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vjuo
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vjuo *ValueJSONUpdateOne) SetAttrID(u uint64) *ValueJSONUpdateOne {
-	vjuo.mutation.SetAttrID(u)
-	return vjuo
+func (_u *ValueJSONUpdateOne) SetAttrID(v uint64) *ValueJSONUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vjuo *ValueJSONUpdateOne) SetNillableAttrID(u *uint64) *ValueJSONUpdateOne {
-	if u != nil {
-		vjuo.SetAttrID(*u)
+func (_u *ValueJSONUpdateOne) SetNillableAttrID(v *uint64) *ValueJSONUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vjuo
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vjuo *ValueJSONUpdateOne) SetValue(jm json.RawMessage) *ValueJSONUpdateOne {
-	vjuo.mutation.SetValue(jm)
-	return vjuo
+func (_u *ValueJSONUpdateOne) SetValue(v json.RawMessage) *ValueJSONUpdateOne {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
-// AppendValue appends jm to the "value" field.
-func (vjuo *ValueJSONUpdateOne) AppendValue(jm json.RawMessage) *ValueJSONUpdateOne {
-	vjuo.mutation.AppendValue(jm)
-	return vjuo
+// AppendValue appends value to the "value" field.
+func (_u *ValueJSONUpdateOne) AppendValue(v json.RawMessage) *ValueJSONUpdateOne {
+	_u.mutation.AppendValue(v)
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vjuo *ValueJSONUpdateOne) SetIsCover(b bool) *ValueJSONUpdateOne {
-	vjuo.mutation.SetIsCover(b)
-	return vjuo
+func (_u *ValueJSONUpdateOne) SetIsCover(v bool) *ValueJSONUpdateOne {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vjuo *ValueJSONUpdateOne) SetNillableIsCover(b *bool) *ValueJSONUpdateOne {
-	if b != nil {
-		vjuo.SetIsCover(*b)
+func (_u *ValueJSONUpdateOne) SetNillableIsCover(v *bool) *ValueJSONUpdateOne {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vjuo
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vjuo *ValueJSONUpdateOne) SetCi(c *Cis) *ValueJSONUpdateOne {
-	return vjuo.SetCiID(c.ID)
+func (_u *ValueJSONUpdateOne) SetCi(v *Cis) *ValueJSONUpdateOne {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vjuo *ValueJSONUpdateOne) SetAttributeID(id uint64) *ValueJSONUpdateOne {
-	vjuo.mutation.SetAttributeID(id)
-	return vjuo
+func (_u *ValueJSONUpdateOne) SetAttributeID(id uint64) *ValueJSONUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vjuo *ValueJSONUpdateOne) SetAttribute(a *Attribute) *ValueJSONUpdateOne {
-	return vjuo.SetAttributeID(a.ID)
+func (_u *ValueJSONUpdateOne) SetAttribute(v *Attribute) *ValueJSONUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueJSONMutation object of the builder.
-func (vjuo *ValueJSONUpdateOne) Mutation() *ValueJSONMutation {
-	return vjuo.mutation
+func (_u *ValueJSONUpdateOne) Mutation() *ValueJSONMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vjuo *ValueJSONUpdateOne) ClearCi() *ValueJSONUpdateOne {
-	vjuo.mutation.ClearCi()
-	return vjuo
+func (_u *ValueJSONUpdateOne) ClearCi() *ValueJSONUpdateOne {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vjuo *ValueJSONUpdateOne) ClearAttribute() *ValueJSONUpdateOne {
-	vjuo.mutation.ClearAttribute()
-	return vjuo
+func (_u *ValueJSONUpdateOne) ClearAttribute() *ValueJSONUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the ValueJSONUpdate builder.
-func (vjuo *ValueJSONUpdateOne) Where(ps ...predicate.ValueJSON) *ValueJSONUpdateOne {
-	vjuo.mutation.Where(ps...)
-	return vjuo
+func (_u *ValueJSONUpdateOne) Where(ps ...predicate.ValueJSON) *ValueJSONUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (vjuo *ValueJSONUpdateOne) Select(field string, fields ...string) *ValueJSONUpdateOne {
-	vjuo.fields = append([]string{field}, fields...)
-	return vjuo
+func (_u *ValueJSONUpdateOne) Select(field string, fields ...string) *ValueJSONUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ValueJSON entity.
-func (vjuo *ValueJSONUpdateOne) Save(ctx context.Context) (*ValueJSON, error) {
-	if err := vjuo.defaults(); err != nil {
+func (_u *ValueJSONUpdateOne) Save(ctx context.Context) (*ValueJSON, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vjuo.sqlSave, vjuo.mutation, vjuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vjuo *ValueJSONUpdateOne) SaveX(ctx context.Context) *ValueJSON {
-	node, err := vjuo.Save(ctx)
+func (_u *ValueJSONUpdateOne) SaveX(ctx context.Context) *ValueJSON {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -452,52 +452,52 @@ func (vjuo *ValueJSONUpdateOne) SaveX(ctx context.Context) *ValueJSON {
 }
 
 // Exec executes the query on the entity.
-func (vjuo *ValueJSONUpdateOne) Exec(ctx context.Context) error {
-	_, err := vjuo.Save(ctx)
+func (_u *ValueJSONUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vjuo *ValueJSONUpdateOne) ExecX(ctx context.Context) {
-	if err := vjuo.Exec(ctx); err != nil {
+func (_u *ValueJSONUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vjuo *ValueJSONUpdateOne) defaults() error {
-	if _, ok := vjuo.mutation.UpdatedAt(); !ok {
+func (_u *ValueJSONUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valuejson.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuejson.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuejson.UpdateDefaultUpdatedAt()
-		vjuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vjuo *ValueJSONUpdateOne) check() error {
-	if vjuo.mutation.CiCleared() && len(vjuo.mutation.CiIDs()) > 0 {
+func (_u *ValueJSONUpdateOne) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueJSON.ci"`)
 	}
-	if vjuo.mutation.AttributeCleared() && len(vjuo.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueJSON.attribute"`)
 	}
 	return nil
 }
 
-func (vjuo *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, err error) {
-	if err := vjuo.check(); err != nil {
+func (_u *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valuejson.Table, valuejson.Columns, sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64))
-	id, ok := vjuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ValueJSON.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := vjuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valuejson.FieldID)
 		for _, f := range fields {
@@ -509,34 +509,34 @@ func (vjuo *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, 
 			}
 		}
 	}
-	if ps := vjuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vjuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuejson.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vjuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valuejson.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vjuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuejson.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vjuo.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuejson.FieldValue, field.TypeJSON, value)
 	}
-	if value, ok := vjuo.mutation.AppendedValue(); ok {
+	if value, ok := _u.mutation.AppendedValue(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, valuejson.FieldValue, value)
 		})
 	}
-	if value, ok := vjuo.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valuejson.FieldIsCover, field.TypeBool, value)
 	}
-	if vjuo.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -549,7 +549,7 @@ func (vjuo *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vjuo.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -565,7 +565,7 @@ func (vjuo *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vjuo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -578,7 +578,7 @@ func (vjuo *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vjuo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -594,10 +594,10 @@ func (vjuo *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ValueJSON{config: vjuo.config}
+	_node = &ValueJSON{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, vjuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valuejson.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -605,6 +605,6 @@ func (vjuo *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, 
 		}
 		return nil, err
 	}
-	vjuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

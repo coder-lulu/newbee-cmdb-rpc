@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
 )
 
 // ImportErrorCreate is the builder for creating a ImportError entity.
@@ -23,303 +23,303 @@ type ImportErrorCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (iec *ImportErrorCreate) SetCreatedAt(t time.Time) *ImportErrorCreate {
-	iec.mutation.SetCreatedAt(t)
-	return iec
+func (_c *ImportErrorCreate) SetCreatedAt(v time.Time) *ImportErrorCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableCreatedAt(t *time.Time) *ImportErrorCreate {
-	if t != nil {
-		iec.SetCreatedAt(*t)
+func (_c *ImportErrorCreate) SetNillableCreatedAt(v *time.Time) *ImportErrorCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (iec *ImportErrorCreate) SetUpdatedAt(t time.Time) *ImportErrorCreate {
-	iec.mutation.SetUpdatedAt(t)
-	return iec
+func (_c *ImportErrorCreate) SetUpdatedAt(v time.Time) *ImportErrorCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableUpdatedAt(t *time.Time) *ImportErrorCreate {
-	if t != nil {
-		iec.SetUpdatedAt(*t)
+func (_c *ImportErrorCreate) SetNillableUpdatedAt(v *time.Time) *ImportErrorCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (iec *ImportErrorCreate) SetDeletedAt(t time.Time) *ImportErrorCreate {
-	iec.mutation.SetDeletedAt(t)
-	return iec
+func (_c *ImportErrorCreate) SetDeletedAt(v time.Time) *ImportErrorCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableDeletedAt(t *time.Time) *ImportErrorCreate {
-	if t != nil {
-		iec.SetDeletedAt(*t)
+func (_c *ImportErrorCreate) SetNillableDeletedAt(v *time.Time) *ImportErrorCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (iec *ImportErrorCreate) SetTenantID(u uint64) *ImportErrorCreate {
-	iec.mutation.SetTenantID(u)
-	return iec
+func (_c *ImportErrorCreate) SetTenantID(v uint64) *ImportErrorCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableTenantID(u *uint64) *ImportErrorCreate {
-	if u != nil {
-		iec.SetTenantID(*u)
+func (_c *ImportErrorCreate) SetNillableTenantID(v *uint64) *ImportErrorCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (iec *ImportErrorCreate) SetDepartmentID(u uint64) *ImportErrorCreate {
-	iec.mutation.SetDepartmentID(u)
-	return iec
+func (_c *ImportErrorCreate) SetDepartmentID(v uint64) *ImportErrorCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableDepartmentID(u *uint64) *ImportErrorCreate {
-	if u != nil {
-		iec.SetDepartmentID(*u)
+func (_c *ImportErrorCreate) SetNillableDepartmentID(v *uint64) *ImportErrorCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetTaskID sets the "task_id" field.
-func (iec *ImportErrorCreate) SetTaskID(u uint64) *ImportErrorCreate {
-	iec.mutation.SetTaskID(u)
-	return iec
+func (_c *ImportErrorCreate) SetTaskID(v uint64) *ImportErrorCreate {
+	_c.mutation.SetTaskID(v)
+	return _c
 }
 
 // SetRecordID sets the "record_id" field.
-func (iec *ImportErrorCreate) SetRecordID(u uint64) *ImportErrorCreate {
-	iec.mutation.SetRecordID(u)
-	return iec
+func (_c *ImportErrorCreate) SetRecordID(v uint64) *ImportErrorCreate {
+	_c.mutation.SetRecordID(v)
+	return _c
 }
 
 // SetNillableRecordID sets the "record_id" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableRecordID(u *uint64) *ImportErrorCreate {
-	if u != nil {
-		iec.SetRecordID(*u)
+func (_c *ImportErrorCreate) SetNillableRecordID(v *uint64) *ImportErrorCreate {
+	if v != nil {
+		_c.SetRecordID(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetBatchID sets the "batch_id" field.
-func (iec *ImportErrorCreate) SetBatchID(s string) *ImportErrorCreate {
-	iec.mutation.SetBatchID(s)
-	return iec
+func (_c *ImportErrorCreate) SetBatchID(v string) *ImportErrorCreate {
+	_c.mutation.SetBatchID(v)
+	return _c
 }
 
 // SetNillableBatchID sets the "batch_id" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableBatchID(s *string) *ImportErrorCreate {
-	if s != nil {
-		iec.SetBatchID(*s)
+func (_c *ImportErrorCreate) SetNillableBatchID(v *string) *ImportErrorCreate {
+	if v != nil {
+		_c.SetBatchID(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetErrorCode sets the "error_code" field.
-func (iec *ImportErrorCreate) SetErrorCode(s string) *ImportErrorCreate {
-	iec.mutation.SetErrorCode(s)
-	return iec
+func (_c *ImportErrorCreate) SetErrorCode(v string) *ImportErrorCreate {
+	_c.mutation.SetErrorCode(v)
+	return _c
 }
 
 // SetErrorTitle sets the "error_title" field.
-func (iec *ImportErrorCreate) SetErrorTitle(s string) *ImportErrorCreate {
-	iec.mutation.SetErrorTitle(s)
-	return iec
+func (_c *ImportErrorCreate) SetErrorTitle(v string) *ImportErrorCreate {
+	_c.mutation.SetErrorTitle(v)
+	return _c
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (iec *ImportErrorCreate) SetErrorMessage(s string) *ImportErrorCreate {
-	iec.mutation.SetErrorMessage(s)
-	return iec
+func (_c *ImportErrorCreate) SetErrorMessage(v string) *ImportErrorCreate {
+	_c.mutation.SetErrorMessage(v)
+	return _c
 }
 
 // SetErrorDetails sets the "error_details" field.
-func (iec *ImportErrorCreate) SetErrorDetails(s string) *ImportErrorCreate {
-	iec.mutation.SetErrorDetails(s)
-	return iec
+func (_c *ImportErrorCreate) SetErrorDetails(v string) *ImportErrorCreate {
+	_c.mutation.SetErrorDetails(v)
+	return _c
 }
 
 // SetNillableErrorDetails sets the "error_details" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableErrorDetails(s *string) *ImportErrorCreate {
-	if s != nil {
-		iec.SetErrorDetails(*s)
+func (_c *ImportErrorCreate) SetNillableErrorDetails(v *string) *ImportErrorCreate {
+	if v != nil {
+		_c.SetErrorDetails(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetErrorType sets the "error_type" field.
-func (iec *ImportErrorCreate) SetErrorType(it importerror.ErrorType) *ImportErrorCreate {
-	iec.mutation.SetErrorType(it)
-	return iec
+func (_c *ImportErrorCreate) SetErrorType(v importerror.ErrorType) *ImportErrorCreate {
+	_c.mutation.SetErrorType(v)
+	return _c
 }
 
 // SetSeverity sets the "severity" field.
-func (iec *ImportErrorCreate) SetSeverity(i importerror.Severity) *ImportErrorCreate {
-	iec.mutation.SetSeverity(i)
-	return iec
+func (_c *ImportErrorCreate) SetSeverity(v importerror.Severity) *ImportErrorCreate {
+	_c.mutation.SetSeverity(v)
+	return _c
 }
 
 // SetNillableSeverity sets the "severity" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableSeverity(i *importerror.Severity) *ImportErrorCreate {
-	if i != nil {
-		iec.SetSeverity(*i)
+func (_c *ImportErrorCreate) SetNillableSeverity(v *importerror.Severity) *ImportErrorCreate {
+	if v != nil {
+		_c.SetSeverity(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetRowNumber sets the "row_number" field.
-func (iec *ImportErrorCreate) SetRowNumber(i int) *ImportErrorCreate {
-	iec.mutation.SetRowNumber(i)
-	return iec
+func (_c *ImportErrorCreate) SetRowNumber(v int) *ImportErrorCreate {
+	_c.mutation.SetRowNumber(v)
+	return _c
 }
 
 // SetNillableRowNumber sets the "row_number" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableRowNumber(i *int) *ImportErrorCreate {
-	if i != nil {
-		iec.SetRowNumber(*i)
+func (_c *ImportErrorCreate) SetNillableRowNumber(v *int) *ImportErrorCreate {
+	if v != nil {
+		_c.SetRowNumber(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetFieldName sets the "field_name" field.
-func (iec *ImportErrorCreate) SetFieldName(s string) *ImportErrorCreate {
-	iec.mutation.SetFieldName(s)
-	return iec
+func (_c *ImportErrorCreate) SetFieldName(v string) *ImportErrorCreate {
+	_c.mutation.SetFieldName(v)
+	return _c
 }
 
 // SetNillableFieldName sets the "field_name" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableFieldName(s *string) *ImportErrorCreate {
-	if s != nil {
-		iec.SetFieldName(*s)
+func (_c *ImportErrorCreate) SetNillableFieldName(v *string) *ImportErrorCreate {
+	if v != nil {
+		_c.SetFieldName(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetSheetName sets the "sheet_name" field.
-func (iec *ImportErrorCreate) SetSheetName(s string) *ImportErrorCreate {
-	iec.mutation.SetSheetName(s)
-	return iec
+func (_c *ImportErrorCreate) SetSheetName(v string) *ImportErrorCreate {
+	_c.mutation.SetSheetName(v)
+	return _c
 }
 
 // SetNillableSheetName sets the "sheet_name" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableSheetName(s *string) *ImportErrorCreate {
-	if s != nil {
-		iec.SetSheetName(*s)
+func (_c *ImportErrorCreate) SetNillableSheetName(v *string) *ImportErrorCreate {
+	if v != nil {
+		_c.SetSheetName(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetInputData sets the "input_data" field.
-func (iec *ImportErrorCreate) SetInputData(m map[string]interface{}) *ImportErrorCreate {
-	iec.mutation.SetInputData(m)
-	return iec
+func (_c *ImportErrorCreate) SetInputData(v map[string]interface{}) *ImportErrorCreate {
+	_c.mutation.SetInputData(v)
+	return _c
 }
 
 // SetErrorContext sets the "error_context" field.
-func (iec *ImportErrorCreate) SetErrorContext(m map[string]interface{}) *ImportErrorCreate {
-	iec.mutation.SetErrorContext(m)
-	return iec
+func (_c *ImportErrorCreate) SetErrorContext(v map[string]interface{}) *ImportErrorCreate {
+	_c.mutation.SetErrorContext(v)
+	return _c
 }
 
 // SetSuggestion sets the "suggestion" field.
-func (iec *ImportErrorCreate) SetSuggestion(s string) *ImportErrorCreate {
-	iec.mutation.SetSuggestion(s)
-	return iec
+func (_c *ImportErrorCreate) SetSuggestion(v string) *ImportErrorCreate {
+	_c.mutation.SetSuggestion(v)
+	return _c
 }
 
 // SetNillableSuggestion sets the "suggestion" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableSuggestion(s *string) *ImportErrorCreate {
-	if s != nil {
-		iec.SetSuggestion(*s)
+func (_c *ImportErrorCreate) SetNillableSuggestion(v *string) *ImportErrorCreate {
+	if v != nil {
+		_c.SetSuggestion(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetStatus sets the "status" field.
-func (iec *ImportErrorCreate) SetStatus(i importerror.Status) *ImportErrorCreate {
-	iec.mutation.SetStatus(i)
-	return iec
+func (_c *ImportErrorCreate) SetStatus(v importerror.Status) *ImportErrorCreate {
+	_c.mutation.SetStatus(v)
+	return _c
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableStatus(i *importerror.Status) *ImportErrorCreate {
-	if i != nil {
-		iec.SetStatus(*i)
+func (_c *ImportErrorCreate) SetNillableStatus(v *importerror.Status) *ImportErrorCreate {
+	if v != nil {
+		_c.SetStatus(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetResolvedBy sets the "resolved_by" field.
-func (iec *ImportErrorCreate) SetResolvedBy(s string) *ImportErrorCreate {
-	iec.mutation.SetResolvedBy(s)
-	return iec
+func (_c *ImportErrorCreate) SetResolvedBy(v string) *ImportErrorCreate {
+	_c.mutation.SetResolvedBy(v)
+	return _c
 }
 
 // SetNillableResolvedBy sets the "resolved_by" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableResolvedBy(s *string) *ImportErrorCreate {
-	if s != nil {
-		iec.SetResolvedBy(*s)
+func (_c *ImportErrorCreate) SetNillableResolvedBy(v *string) *ImportErrorCreate {
+	if v != nil {
+		_c.SetResolvedBy(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetResolvedAt sets the "resolved_at" field.
-func (iec *ImportErrorCreate) SetResolvedAt(t time.Time) *ImportErrorCreate {
-	iec.mutation.SetResolvedAt(t)
-	return iec
+func (_c *ImportErrorCreate) SetResolvedAt(v time.Time) *ImportErrorCreate {
+	_c.mutation.SetResolvedAt(v)
+	return _c
 }
 
 // SetNillableResolvedAt sets the "resolved_at" field if the given value is not nil.
-func (iec *ImportErrorCreate) SetNillableResolvedAt(t *time.Time) *ImportErrorCreate {
-	if t != nil {
-		iec.SetResolvedAt(*t)
+func (_c *ImportErrorCreate) SetNillableResolvedAt(v *time.Time) *ImportErrorCreate {
+	if v != nil {
+		_c.SetResolvedAt(*v)
 	}
-	return iec
+	return _c
 }
 
 // SetID sets the "id" field.
-func (iec *ImportErrorCreate) SetID(u uint64) *ImportErrorCreate {
-	iec.mutation.SetID(u)
-	return iec
+func (_c *ImportErrorCreate) SetID(v uint64) *ImportErrorCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetTask sets the "task" edge to the ImportTask entity.
-func (iec *ImportErrorCreate) SetTask(i *ImportTask) *ImportErrorCreate {
-	return iec.SetTaskID(i.ID)
+func (_c *ImportErrorCreate) SetTask(v *ImportTask) *ImportErrorCreate {
+	return _c.SetTaskID(v.ID)
 }
 
 // SetRecord sets the "record" edge to the ImportRecord entity.
-func (iec *ImportErrorCreate) SetRecord(i *ImportRecord) *ImportErrorCreate {
-	return iec.SetRecordID(i.ID)
+func (_c *ImportErrorCreate) SetRecord(v *ImportRecord) *ImportErrorCreate {
+	return _c.SetRecordID(v.ID)
 }
 
 // Mutation returns the ImportErrorMutation object of the builder.
-func (iec *ImportErrorCreate) Mutation() *ImportErrorMutation {
-	return iec.mutation
+func (_c *ImportErrorCreate) Mutation() *ImportErrorMutation {
+	return _c.mutation
 }
 
 // Save creates the ImportError in the database.
-func (iec *ImportErrorCreate) Save(ctx context.Context) (*ImportError, error) {
-	if err := iec.defaults(); err != nil {
+func (_c *ImportErrorCreate) Save(ctx context.Context) (*ImportError, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, iec.sqlSave, iec.mutation, iec.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (iec *ImportErrorCreate) SaveX(ctx context.Context) *ImportError {
-	v, err := iec.Save(ctx)
+func (_c *ImportErrorCreate) SaveX(ctx context.Context) *ImportError {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -327,138 +327,138 @@ func (iec *ImportErrorCreate) SaveX(ctx context.Context) *ImportError {
 }
 
 // Exec executes the query.
-func (iec *ImportErrorCreate) Exec(ctx context.Context) error {
-	_, err := iec.Save(ctx)
+func (_c *ImportErrorCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (iec *ImportErrorCreate) ExecX(ctx context.Context) {
-	if err := iec.Exec(ctx); err != nil {
+func (_c *ImportErrorCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (iec *ImportErrorCreate) defaults() error {
-	if _, ok := iec.mutation.CreatedAt(); !ok {
+func (_c *ImportErrorCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if importerror.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importerror.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := importerror.DefaultCreatedAt()
-		iec.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := iec.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if importerror.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importerror.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importerror.DefaultUpdatedAt()
-		iec.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := iec.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := importerror.DefaultTenantID
-		iec.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := iec.mutation.Severity(); !ok {
+	if _, ok := _c.mutation.Severity(); !ok {
 		v := importerror.DefaultSeverity
-		iec.mutation.SetSeverity(v)
+		_c.mutation.SetSeverity(v)
 	}
-	if _, ok := iec.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		v := importerror.DefaultStatus
-		iec.mutation.SetStatus(v)
+		_c.mutation.SetStatus(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (iec *ImportErrorCreate) check() error {
-	if _, ok := iec.mutation.CreatedAt(); !ok {
+func (_c *ImportErrorCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ImportError.created_at"`)}
 	}
-	if _, ok := iec.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ImportError.updated_at"`)}
 	}
-	if _, ok := iec.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ImportError.tenant_id"`)}
 	}
-	if _, ok := iec.mutation.TaskID(); !ok {
+	if _, ok := _c.mutation.TaskID(); !ok {
 		return &ValidationError{Name: "task_id", err: errors.New(`ent: missing required field "ImportError.task_id"`)}
 	}
-	if v, ok := iec.mutation.BatchID(); ok {
+	if v, ok := _c.mutation.BatchID(); ok {
 		if err := importerror.BatchIDValidator(v); err != nil {
 			return &ValidationError{Name: "batch_id", err: fmt.Errorf(`ent: validator failed for field "ImportError.batch_id": %w`, err)}
 		}
 	}
-	if _, ok := iec.mutation.ErrorCode(); !ok {
+	if _, ok := _c.mutation.ErrorCode(); !ok {
 		return &ValidationError{Name: "error_code", err: errors.New(`ent: missing required field "ImportError.error_code"`)}
 	}
-	if v, ok := iec.mutation.ErrorCode(); ok {
+	if v, ok := _c.mutation.ErrorCode(); ok {
 		if err := importerror.ErrorCodeValidator(v); err != nil {
 			return &ValidationError{Name: "error_code", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_code": %w`, err)}
 		}
 	}
-	if _, ok := iec.mutation.ErrorTitle(); !ok {
+	if _, ok := _c.mutation.ErrorTitle(); !ok {
 		return &ValidationError{Name: "error_title", err: errors.New(`ent: missing required field "ImportError.error_title"`)}
 	}
-	if v, ok := iec.mutation.ErrorTitle(); ok {
+	if v, ok := _c.mutation.ErrorTitle(); ok {
 		if err := importerror.ErrorTitleValidator(v); err != nil {
 			return &ValidationError{Name: "error_title", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_title": %w`, err)}
 		}
 	}
-	if _, ok := iec.mutation.ErrorMessage(); !ok {
+	if _, ok := _c.mutation.ErrorMessage(); !ok {
 		return &ValidationError{Name: "error_message", err: errors.New(`ent: missing required field "ImportError.error_message"`)}
 	}
-	if _, ok := iec.mutation.ErrorType(); !ok {
+	if _, ok := _c.mutation.ErrorType(); !ok {
 		return &ValidationError{Name: "error_type", err: errors.New(`ent: missing required field "ImportError.error_type"`)}
 	}
-	if v, ok := iec.mutation.ErrorType(); ok {
+	if v, ok := _c.mutation.ErrorType(); ok {
 		if err := importerror.ErrorTypeValidator(v); err != nil {
 			return &ValidationError{Name: "error_type", err: fmt.Errorf(`ent: validator failed for field "ImportError.error_type": %w`, err)}
 		}
 	}
-	if _, ok := iec.mutation.Severity(); !ok {
+	if _, ok := _c.mutation.Severity(); !ok {
 		return &ValidationError{Name: "severity", err: errors.New(`ent: missing required field "ImportError.severity"`)}
 	}
-	if v, ok := iec.mutation.Severity(); ok {
+	if v, ok := _c.mutation.Severity(); ok {
 		if err := importerror.SeverityValidator(v); err != nil {
 			return &ValidationError{Name: "severity", err: fmt.Errorf(`ent: validator failed for field "ImportError.severity": %w`, err)}
 		}
 	}
-	if v, ok := iec.mutation.FieldName(); ok {
+	if v, ok := _c.mutation.FieldName(); ok {
 		if err := importerror.FieldNameValidator(v); err != nil {
 			return &ValidationError{Name: "field_name", err: fmt.Errorf(`ent: validator failed for field "ImportError.field_name": %w`, err)}
 		}
 	}
-	if v, ok := iec.mutation.SheetName(); ok {
+	if v, ok := _c.mutation.SheetName(); ok {
 		if err := importerror.SheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportError.sheet_name": %w`, err)}
 		}
 	}
-	if _, ok := iec.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "ImportError.status"`)}
 	}
-	if v, ok := iec.mutation.Status(); ok {
+	if v, ok := _c.mutation.Status(); ok {
 		if err := importerror.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "ImportError.status": %w`, err)}
 		}
 	}
-	if v, ok := iec.mutation.ResolvedBy(); ok {
+	if v, ok := _c.mutation.ResolvedBy(); ok {
 		if err := importerror.ResolvedByValidator(v); err != nil {
 			return &ValidationError{Name: "resolved_by", err: fmt.Errorf(`ent: validator failed for field "ImportError.resolved_by": %w`, err)}
 		}
 	}
-	if len(iec.mutation.TaskIDs()) == 0 {
+	if len(_c.mutation.TaskIDs()) == 0 {
 		return &ValidationError{Name: "task", err: errors.New(`ent: missing required edge "ImportError.task"`)}
 	}
 	return nil
 }
 
-func (iec *ImportErrorCreate) sqlSave(ctx context.Context) (*ImportError, error) {
-	if err := iec.check(); err != nil {
+func (_c *ImportErrorCreate) sqlSave(ctx context.Context) (*ImportError, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := iec.createSpec()
-	if err := sqlgraph.CreateNode(ctx, iec.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -468,105 +468,105 @@ func (iec *ImportErrorCreate) sqlSave(ctx context.Context) (*ImportError, error)
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	iec.mutation.id = &_node.ID
-	iec.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (iec *ImportErrorCreate) createSpec() (*ImportError, *sqlgraph.CreateSpec) {
+func (_c *ImportErrorCreate) createSpec() (*ImportError, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ImportError{config: iec.config}
+		_node = &ImportError{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(importerror.Table, sqlgraph.NewFieldSpec(importerror.FieldID, field.TypeUint64))
 	)
-	if id, ok := iec.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := iec.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(importerror.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := iec.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(importerror.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := iec.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(importerror.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := iec.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(importerror.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := iec.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(importerror.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := iec.mutation.BatchID(); ok {
+	if value, ok := _c.mutation.BatchID(); ok {
 		_spec.SetField(importerror.FieldBatchID, field.TypeString, value)
 		_node.BatchID = value
 	}
-	if value, ok := iec.mutation.ErrorCode(); ok {
+	if value, ok := _c.mutation.ErrorCode(); ok {
 		_spec.SetField(importerror.FieldErrorCode, field.TypeString, value)
 		_node.ErrorCode = value
 	}
-	if value, ok := iec.mutation.ErrorTitle(); ok {
+	if value, ok := _c.mutation.ErrorTitle(); ok {
 		_spec.SetField(importerror.FieldErrorTitle, field.TypeString, value)
 		_node.ErrorTitle = value
 	}
-	if value, ok := iec.mutation.ErrorMessage(); ok {
+	if value, ok := _c.mutation.ErrorMessage(); ok {
 		_spec.SetField(importerror.FieldErrorMessage, field.TypeString, value)
 		_node.ErrorMessage = value
 	}
-	if value, ok := iec.mutation.ErrorDetails(); ok {
+	if value, ok := _c.mutation.ErrorDetails(); ok {
 		_spec.SetField(importerror.FieldErrorDetails, field.TypeString, value)
 		_node.ErrorDetails = value
 	}
-	if value, ok := iec.mutation.ErrorType(); ok {
+	if value, ok := _c.mutation.ErrorType(); ok {
 		_spec.SetField(importerror.FieldErrorType, field.TypeEnum, value)
 		_node.ErrorType = value
 	}
-	if value, ok := iec.mutation.Severity(); ok {
+	if value, ok := _c.mutation.Severity(); ok {
 		_spec.SetField(importerror.FieldSeverity, field.TypeEnum, value)
 		_node.Severity = value
 	}
-	if value, ok := iec.mutation.RowNumber(); ok {
+	if value, ok := _c.mutation.RowNumber(); ok {
 		_spec.SetField(importerror.FieldRowNumber, field.TypeInt, value)
 		_node.RowNumber = value
 	}
-	if value, ok := iec.mutation.FieldName(); ok {
+	if value, ok := _c.mutation.FieldName(); ok {
 		_spec.SetField(importerror.FieldFieldName, field.TypeString, value)
 		_node.FieldName = value
 	}
-	if value, ok := iec.mutation.SheetName(); ok {
+	if value, ok := _c.mutation.SheetName(); ok {
 		_spec.SetField(importerror.FieldSheetName, field.TypeString, value)
 		_node.SheetName = value
 	}
-	if value, ok := iec.mutation.InputData(); ok {
+	if value, ok := _c.mutation.InputData(); ok {
 		_spec.SetField(importerror.FieldInputData, field.TypeJSON, value)
 		_node.InputData = value
 	}
-	if value, ok := iec.mutation.ErrorContext(); ok {
+	if value, ok := _c.mutation.ErrorContext(); ok {
 		_spec.SetField(importerror.FieldErrorContext, field.TypeJSON, value)
 		_node.ErrorContext = value
 	}
-	if value, ok := iec.mutation.Suggestion(); ok {
+	if value, ok := _c.mutation.Suggestion(); ok {
 		_spec.SetField(importerror.FieldSuggestion, field.TypeString, value)
 		_node.Suggestion = value
 	}
-	if value, ok := iec.mutation.Status(); ok {
+	if value, ok := _c.mutation.Status(); ok {
 		_spec.SetField(importerror.FieldStatus, field.TypeEnum, value)
 		_node.Status = value
 	}
-	if value, ok := iec.mutation.ResolvedBy(); ok {
+	if value, ok := _c.mutation.ResolvedBy(); ok {
 		_spec.SetField(importerror.FieldResolvedBy, field.TypeString, value)
 		_node.ResolvedBy = value
 	}
-	if value, ok := iec.mutation.ResolvedAt(); ok {
+	if value, ok := _c.mutation.ResolvedAt(); ok {
 		_spec.SetField(importerror.FieldResolvedAt, field.TypeTime, value)
 		_node.ResolvedAt = value
 	}
-	if nodes := iec.mutation.TaskIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.TaskIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -583,7 +583,7 @@ func (iec *ImportErrorCreate) createSpec() (*ImportError, *sqlgraph.CreateSpec) 
 		_node.TaskID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := iec.mutation.RecordIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.RecordIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -611,16 +611,16 @@ type ImportErrorCreateBulk struct {
 }
 
 // Save creates the ImportError entities in the database.
-func (iecb *ImportErrorCreateBulk) Save(ctx context.Context) ([]*ImportError, error) {
-	if iecb.err != nil {
-		return nil, iecb.err
+func (_c *ImportErrorCreateBulk) Save(ctx context.Context) ([]*ImportError, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(iecb.builders))
-	nodes := make([]*ImportError, len(iecb.builders))
-	mutators := make([]Mutator, len(iecb.builders))
-	for i := range iecb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ImportError, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := iecb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ImportErrorMutation)
@@ -634,11 +634,11 @@ func (iecb *ImportErrorCreateBulk) Save(ctx context.Context) ([]*ImportError, er
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, iecb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, iecb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -662,7 +662,7 @@ func (iecb *ImportErrorCreateBulk) Save(ctx context.Context) ([]*ImportError, er
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, iecb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -670,8 +670,8 @@ func (iecb *ImportErrorCreateBulk) Save(ctx context.Context) ([]*ImportError, er
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (iecb *ImportErrorCreateBulk) SaveX(ctx context.Context) []*ImportError {
-	v, err := iecb.Save(ctx)
+func (_c *ImportErrorCreateBulk) SaveX(ctx context.Context) []*ImportError {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -679,14 +679,14 @@ func (iecb *ImportErrorCreateBulk) SaveX(ctx context.Context) []*ImportError {
 }
 
 // Exec executes the query.
-func (iecb *ImportErrorCreateBulk) Exec(ctx context.Context) error {
-	_, err := iecb.Save(ctx)
+func (_c *ImportErrorCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (iecb *ImportErrorCreateBulk) ExecX(ctx context.Context) {
-	if err := iecb.Exec(ctx); err != nil {
+func (_c *ImportErrorCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

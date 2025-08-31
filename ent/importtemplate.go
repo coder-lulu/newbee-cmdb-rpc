@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importtemplate"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -194,7 +194,7 @@ func (*ImportTemplate) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ImportTemplate fields.
-func (it *ImportTemplate) assignValues(columns []string, values []any) error {
+func (_m *ImportTemplate) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -205,102 +205,102 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			it.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case importtemplate.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				it.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case importtemplate.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				it.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case importtemplate.FieldStatus:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
-				it.Status = uint8(value.Int64)
+				_m.Status = uint8(value.Int64)
 			}
 		case importtemplate.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				it.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case importtemplate.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				it.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case importtemplate.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				it.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case importtemplate.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
 			} else if value.Valid {
-				it.Name = value.String
+				_m.Name = value.String
 			}
 		case importtemplate.FieldCode:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field code", values[i])
 			} else if value.Valid {
-				it.Code = value.String
+				_m.Code = value.String
 			}
 		case importtemplate.FieldDescription:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field description", values[i])
 			} else if value.Valid {
-				it.Description = value.String
+				_m.Description = value.String
 			}
 		case importtemplate.FieldVersion:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field version", values[i])
 			} else if value.Valid {
-				it.Version = value.String
+				_m.Version = value.String
 			}
 		case importtemplate.FieldType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field type", values[i])
 			} else if value.Valid {
-				it.Type = importtemplate.Type(value.String)
+				_m.Type = importtemplate.Type(value.String)
 			}
 		case importtemplate.FieldImportMode:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field import_mode", values[i])
 			} else if value.Valid {
-				it.ImportMode = importtemplate.ImportMode(value.String)
+				_m.ImportMode = importtemplate.ImportMode(value.String)
 			}
 		case importtemplate.FieldCiTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_type_id", values[i])
 			} else if value.Valid {
-				it.CiTypeID = uint64(value.Int64)
+				_m.CiTypeID = uint64(value.Int64)
 			}
 		case importtemplate.FieldCiTypeName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_type_name", values[i])
 			} else if value.Valid {
-				it.CiTypeName = value.String
+				_m.CiTypeName = value.String
 			}
 		case importtemplate.FieldAutoCreateCiType:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field auto_create_ci_type", values[i])
 			} else if value.Valid {
-				it.AutoCreateCiType = value.Bool
+				_m.AutoCreateCiType = value.Bool
 			}
 		case importtemplate.FieldFieldMappings:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field field_mappings", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.FieldMappings); err != nil {
+				if err := json.Unmarshal(*value, &_m.FieldMappings); err != nil {
 					return fmt.Errorf("unmarshal field field_mappings: %w", err)
 				}
 			}
@@ -308,7 +308,7 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field header_mappings", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.HeaderMappings); err != nil {
+				if err := json.Unmarshal(*value, &_m.HeaderMappings); err != nil {
 					return fmt.Errorf("unmarshal field header_mappings: %w", err)
 				}
 			}
@@ -316,7 +316,7 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field default_values", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.DefaultValues); err != nil {
+				if err := json.Unmarshal(*value, &_m.DefaultValues); err != nil {
 					return fmt.Errorf("unmarshal field default_values: %w", err)
 				}
 			}
@@ -324,7 +324,7 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field computed_fields", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.ComputedFields); err != nil {
+				if err := json.Unmarshal(*value, &_m.ComputedFields); err != nil {
 					return fmt.Errorf("unmarshal field computed_fields: %w", err)
 				}
 			}
@@ -332,7 +332,7 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field data_transformations", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.DataTransformations); err != nil {
+				if err := json.Unmarshal(*value, &_m.DataTransformations); err != nil {
 					return fmt.Errorf("unmarshal field data_transformations: %w", err)
 				}
 			}
@@ -340,7 +340,7 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field data_filters", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.DataFilters); err != nil {
+				if err := json.Unmarshal(*value, &_m.DataFilters); err != nil {
 					return fmt.Errorf("unmarshal field data_filters: %w", err)
 				}
 			}
@@ -348,7 +348,7 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field data_cleaners", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.DataCleaners); err != nil {
+				if err := json.Unmarshal(*value, &_m.DataCleaners); err != nil {
 					return fmt.Errorf("unmarshal field data_cleaners: %w", err)
 				}
 			}
@@ -356,25 +356,25 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field excel_sheet_name", values[i])
 			} else if value.Valid {
-				it.ExcelSheetName = value.String
+				_m.ExcelSheetName = value.String
 			}
 		case importtemplate.FieldExcelHeaderRow:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field excel_header_row", values[i])
 			} else if value.Valid {
-				it.ExcelHeaderRow = int(value.Int64)
+				_m.ExcelHeaderRow = int(value.Int64)
 			}
 		case importtemplate.FieldExcelDataStartRow:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field excel_data_start_row", values[i])
 			} else if value.Valid {
-				it.ExcelDataStartRow = int(value.Int64)
+				_m.ExcelDataStartRow = int(value.Int64)
 			}
 		case importtemplate.FieldExcelColumnMappings:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field excel_column_mappings", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.ExcelColumnMappings); err != nil {
+				if err := json.Unmarshal(*value, &_m.ExcelColumnMappings); err != nil {
 					return fmt.Errorf("unmarshal field excel_column_mappings: %w", err)
 				}
 			}
@@ -382,19 +382,19 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field api_endpoint", values[i])
 			} else if value.Valid {
-				it.APIEndpoint = value.String
+				_m.APIEndpoint = value.String
 			}
 		case importtemplate.FieldAPIMethod:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field api_method", values[i])
 			} else if value.Valid {
-				it.APIMethod = importtemplate.APIMethod(value.String)
+				_m.APIMethod = importtemplate.APIMethod(value.String)
 			}
 		case importtemplate.FieldAPIHeaders:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field api_headers", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.APIHeaders); err != nil {
+				if err := json.Unmarshal(*value, &_m.APIHeaders); err != nil {
 					return fmt.Errorf("unmarshal field api_headers: %w", err)
 				}
 			}
@@ -402,7 +402,7 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field api_params", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.APIParams); err != nil {
+				if err := json.Unmarshal(*value, &_m.APIParams); err != nil {
 					return fmt.Errorf("unmarshal field api_params: %w", err)
 				}
 			}
@@ -410,55 +410,55 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field api_response_path", values[i])
 			} else if value.Valid {
-				it.APIResponsePath = value.String
+				_m.APIResponsePath = value.String
 			}
 		case importtemplate.FieldMaxErrors:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field max_errors", values[i])
 			} else if value.Valid {
-				it.MaxErrors = int(value.Int64)
+				_m.MaxErrors = int(value.Int64)
 			}
 		case importtemplate.FieldStopOnFirstError:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field stop_on_first_error", values[i])
 			} else if value.Valid {
-				it.StopOnFirstError = value.Bool
+				_m.StopOnFirstError = value.Bool
 			}
 		case importtemplate.FieldSkipInvalidRows:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field skip_invalid_rows", values[i])
 			} else if value.Valid {
-				it.SkipInvalidRows = value.Bool
+				_m.SkipInvalidRows = value.Bool
 			}
 		case importtemplate.FieldErrorHandlingMode:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_handling_mode", values[i])
 			} else if value.Valid {
-				it.ErrorHandlingMode = importtemplate.ErrorHandlingMode(value.String)
+				_m.ErrorHandlingMode = importtemplate.ErrorHandlingMode(value.String)
 			}
 		case importtemplate.FieldBatchSize:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field batch_size", values[i])
 			} else if value.Valid {
-				it.BatchSize = int(value.Int64)
+				_m.BatchSize = int(value.Int64)
 			}
 		case importtemplate.FieldMaxParallelJobs:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field max_parallel_jobs", values[i])
 			} else if value.Valid {
-				it.MaxParallelJobs = int(value.Int64)
+				_m.MaxParallelJobs = int(value.Int64)
 			}
 		case importtemplate.FieldEnableTransaction:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field enable_transaction", values[i])
 			} else if value.Valid {
-				it.EnableTransaction = value.Bool
+				_m.EnableTransaction = value.Bool
 			}
 		case importtemplate.FieldTags:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field tags", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.Tags); err != nil {
+				if err := json.Unmarshal(*value, &_m.Tags); err != nil {
 					return fmt.Errorf("unmarshal field tags: %w", err)
 				}
 			}
@@ -466,7 +466,7 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field metadata", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.Metadata); err != nil {
+				if err := json.Unmarshal(*value, &_m.Metadata); err != nil {
 					return fmt.Errorf("unmarshal field metadata: %w", err)
 				}
 			}
@@ -474,55 +474,55 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field icon", values[i])
 			} else if value.Valid {
-				it.Icon = value.String
+				_m.Icon = value.String
 			}
 		case importtemplate.FieldCategory:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field category", values[i])
 			} else if value.Valid {
-				it.Category = value.String
+				_m.Category = value.String
 			}
 		case importtemplate.FieldUsageCount:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field usage_count", values[i])
 			} else if value.Valid {
-				it.UsageCount = int(value.Int64)
+				_m.UsageCount = int(value.Int64)
 			}
 		case importtemplate.FieldSuccessCount:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field success_count", values[i])
 			} else if value.Valid {
-				it.SuccessCount = int(value.Int64)
+				_m.SuccessCount = int(value.Int64)
 			}
 		case importtemplate.FieldErrorCount:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field error_count", values[i])
 			} else if value.Valid {
-				it.ErrorCount = int(value.Int64)
+				_m.ErrorCount = int(value.Int64)
 			}
 		case importtemplate.FieldSuccessRate:
 			if value, ok := values[i].(*sql.NullFloat64); !ok {
 				return fmt.Errorf("unexpected type %T for field success_rate", values[i])
 			} else if value.Valid {
-				it.SuccessRate = value.Float64
+				_m.SuccessRate = value.Float64
 			}
 		case importtemplate.FieldIsPublic:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_public", values[i])
 			} else if value.Valid {
-				it.IsPublic = value.Bool
+				_m.IsPublic = value.Bool
 			}
 		case importtemplate.FieldIsSystem:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_system", values[i])
 			} else if value.Valid {
-				it.IsSystem = value.Bool
+				_m.IsSystem = value.Bool
 			}
 		case importtemplate.FieldSharedWith:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field shared_with", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &it.SharedWith); err != nil {
+				if err := json.Unmarshal(*value, &_m.SharedWith); err != nil {
 					return fmt.Errorf("unmarshal field shared_with: %w", err)
 				}
 			}
@@ -530,34 +530,34 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by", values[i])
 			} else if value != nil {
-				it.CreatedBy = *value
+				_m.CreatedBy = *value
 			}
 		case importtemplate.FieldCreatedByName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by_name", values[i])
 			} else if value.Valid {
-				it.CreatedByName = value.String
+				_m.CreatedByName = value.String
 			}
 		case importtemplate.FieldApprovedBy:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field approved_by", values[i])
 			} else if value != nil {
-				it.ApprovedBy = *value
+				_m.ApprovedBy = *value
 			}
 		case importtemplate.FieldApprovedByName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approved_by_name", values[i])
 			} else if value.Valid {
-				it.ApprovedByName = value.String
+				_m.ApprovedByName = value.String
 			}
 		case importtemplate.FieldApprovedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field approved_at", values[i])
 			} else if value.Valid {
-				it.ApprovedAt = value.Time
+				_m.ApprovedAt = value.Time
 			}
 		default:
-			it.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -565,204 +565,204 @@ func (it *ImportTemplate) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the ImportTemplate.
 // This includes values selected through modifiers, order, etc.
-func (it *ImportTemplate) Value(name string) (ent.Value, error) {
-	return it.selectValues.Get(name)
+func (_m *ImportTemplate) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCiType queries the "ci_type" edge of the ImportTemplate entity.
-func (it *ImportTemplate) QueryCiType() *CiTypeQuery {
-	return NewImportTemplateClient(it.config).QueryCiType(it)
+func (_m *ImportTemplate) QueryCiType() *CiTypeQuery {
+	return NewImportTemplateClient(_m.config).QueryCiType(_m)
 }
 
 // QueryTasks queries the "tasks" edge of the ImportTemplate entity.
-func (it *ImportTemplate) QueryTasks() *ImportTaskQuery {
-	return NewImportTemplateClient(it.config).QueryTasks(it)
+func (_m *ImportTemplate) QueryTasks() *ImportTaskQuery {
+	return NewImportTemplateClient(_m.config).QueryTasks(_m)
 }
 
 // Update returns a builder for updating this ImportTemplate.
 // Note that you need to call ImportTemplate.Unwrap() before calling this method if this ImportTemplate
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (it *ImportTemplate) Update() *ImportTemplateUpdateOne {
-	return NewImportTemplateClient(it.config).UpdateOne(it)
+func (_m *ImportTemplate) Update() *ImportTemplateUpdateOne {
+	return NewImportTemplateClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ImportTemplate entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (it *ImportTemplate) Unwrap() *ImportTemplate {
-	_tx, ok := it.config.driver.(*txDriver)
+func (_m *ImportTemplate) Unwrap() *ImportTemplate {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ImportTemplate is not a transactional entity")
 	}
-	it.config.driver = _tx.drv
-	return it
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (it *ImportTemplate) String() string {
+func (_m *ImportTemplate) String() string {
 	var builder strings.Builder
 	builder.WriteString("ImportTemplate(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", it.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(it.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(it.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("status=")
-	builder.WriteString(fmt.Sprintf("%v", it.Status))
+	builder.WriteString(fmt.Sprintf("%v", _m.Status))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(it.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", it.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", it.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("name=")
-	builder.WriteString(it.Name)
+	builder.WriteString(_m.Name)
 	builder.WriteString(", ")
 	builder.WriteString("code=")
-	builder.WriteString(it.Code)
+	builder.WriteString(_m.Code)
 	builder.WriteString(", ")
 	builder.WriteString("description=")
-	builder.WriteString(it.Description)
+	builder.WriteString(_m.Description)
 	builder.WriteString(", ")
 	builder.WriteString("version=")
-	builder.WriteString(it.Version)
+	builder.WriteString(_m.Version)
 	builder.WriteString(", ")
 	builder.WriteString("type=")
-	builder.WriteString(fmt.Sprintf("%v", it.Type))
+	builder.WriteString(fmt.Sprintf("%v", _m.Type))
 	builder.WriteString(", ")
 	builder.WriteString("import_mode=")
-	builder.WriteString(fmt.Sprintf("%v", it.ImportMode))
+	builder.WriteString(fmt.Sprintf("%v", _m.ImportMode))
 	builder.WriteString(", ")
 	builder.WriteString("ci_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", it.CiTypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiTypeID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_type_name=")
-	builder.WriteString(it.CiTypeName)
+	builder.WriteString(_m.CiTypeName)
 	builder.WriteString(", ")
 	builder.WriteString("auto_create_ci_type=")
-	builder.WriteString(fmt.Sprintf("%v", it.AutoCreateCiType))
+	builder.WriteString(fmt.Sprintf("%v", _m.AutoCreateCiType))
 	builder.WriteString(", ")
 	builder.WriteString("field_mappings=")
-	builder.WriteString(fmt.Sprintf("%v", it.FieldMappings))
+	builder.WriteString(fmt.Sprintf("%v", _m.FieldMappings))
 	builder.WriteString(", ")
 	builder.WriteString("header_mappings=")
-	builder.WriteString(fmt.Sprintf("%v", it.HeaderMappings))
+	builder.WriteString(fmt.Sprintf("%v", _m.HeaderMappings))
 	builder.WriteString(", ")
 	builder.WriteString("default_values=")
-	builder.WriteString(fmt.Sprintf("%v", it.DefaultValues))
+	builder.WriteString(fmt.Sprintf("%v", _m.DefaultValues))
 	builder.WriteString(", ")
 	builder.WriteString("computed_fields=")
-	builder.WriteString(fmt.Sprintf("%v", it.ComputedFields))
+	builder.WriteString(fmt.Sprintf("%v", _m.ComputedFields))
 	builder.WriteString(", ")
 	builder.WriteString("data_transformations=")
-	builder.WriteString(fmt.Sprintf("%v", it.DataTransformations))
+	builder.WriteString(fmt.Sprintf("%v", _m.DataTransformations))
 	builder.WriteString(", ")
 	builder.WriteString("data_filters=")
-	builder.WriteString(fmt.Sprintf("%v", it.DataFilters))
+	builder.WriteString(fmt.Sprintf("%v", _m.DataFilters))
 	builder.WriteString(", ")
 	builder.WriteString("data_cleaners=")
-	builder.WriteString(fmt.Sprintf("%v", it.DataCleaners))
+	builder.WriteString(fmt.Sprintf("%v", _m.DataCleaners))
 	builder.WriteString(", ")
 	builder.WriteString("excel_sheet_name=")
-	builder.WriteString(it.ExcelSheetName)
+	builder.WriteString(_m.ExcelSheetName)
 	builder.WriteString(", ")
 	builder.WriteString("excel_header_row=")
-	builder.WriteString(fmt.Sprintf("%v", it.ExcelHeaderRow))
+	builder.WriteString(fmt.Sprintf("%v", _m.ExcelHeaderRow))
 	builder.WriteString(", ")
 	builder.WriteString("excel_data_start_row=")
-	builder.WriteString(fmt.Sprintf("%v", it.ExcelDataStartRow))
+	builder.WriteString(fmt.Sprintf("%v", _m.ExcelDataStartRow))
 	builder.WriteString(", ")
 	builder.WriteString("excel_column_mappings=")
-	builder.WriteString(fmt.Sprintf("%v", it.ExcelColumnMappings))
+	builder.WriteString(fmt.Sprintf("%v", _m.ExcelColumnMappings))
 	builder.WriteString(", ")
 	builder.WriteString("api_endpoint=")
-	builder.WriteString(it.APIEndpoint)
+	builder.WriteString(_m.APIEndpoint)
 	builder.WriteString(", ")
 	builder.WriteString("api_method=")
-	builder.WriteString(fmt.Sprintf("%v", it.APIMethod))
+	builder.WriteString(fmt.Sprintf("%v", _m.APIMethod))
 	builder.WriteString(", ")
 	builder.WriteString("api_headers=")
-	builder.WriteString(fmt.Sprintf("%v", it.APIHeaders))
+	builder.WriteString(fmt.Sprintf("%v", _m.APIHeaders))
 	builder.WriteString(", ")
 	builder.WriteString("api_params=")
-	builder.WriteString(fmt.Sprintf("%v", it.APIParams))
+	builder.WriteString(fmt.Sprintf("%v", _m.APIParams))
 	builder.WriteString(", ")
 	builder.WriteString("api_response_path=")
-	builder.WriteString(it.APIResponsePath)
+	builder.WriteString(_m.APIResponsePath)
 	builder.WriteString(", ")
 	builder.WriteString("max_errors=")
-	builder.WriteString(fmt.Sprintf("%v", it.MaxErrors))
+	builder.WriteString(fmt.Sprintf("%v", _m.MaxErrors))
 	builder.WriteString(", ")
 	builder.WriteString("stop_on_first_error=")
-	builder.WriteString(fmt.Sprintf("%v", it.StopOnFirstError))
+	builder.WriteString(fmt.Sprintf("%v", _m.StopOnFirstError))
 	builder.WriteString(", ")
 	builder.WriteString("skip_invalid_rows=")
-	builder.WriteString(fmt.Sprintf("%v", it.SkipInvalidRows))
+	builder.WriteString(fmt.Sprintf("%v", _m.SkipInvalidRows))
 	builder.WriteString(", ")
 	builder.WriteString("error_handling_mode=")
-	builder.WriteString(fmt.Sprintf("%v", it.ErrorHandlingMode))
+	builder.WriteString(fmt.Sprintf("%v", _m.ErrorHandlingMode))
 	builder.WriteString(", ")
 	builder.WriteString("batch_size=")
-	builder.WriteString(fmt.Sprintf("%v", it.BatchSize))
+	builder.WriteString(fmt.Sprintf("%v", _m.BatchSize))
 	builder.WriteString(", ")
 	builder.WriteString("max_parallel_jobs=")
-	builder.WriteString(fmt.Sprintf("%v", it.MaxParallelJobs))
+	builder.WriteString(fmt.Sprintf("%v", _m.MaxParallelJobs))
 	builder.WriteString(", ")
 	builder.WriteString("enable_transaction=")
-	builder.WriteString(fmt.Sprintf("%v", it.EnableTransaction))
+	builder.WriteString(fmt.Sprintf("%v", _m.EnableTransaction))
 	builder.WriteString(", ")
 	builder.WriteString("tags=")
-	builder.WriteString(fmt.Sprintf("%v", it.Tags))
+	builder.WriteString(fmt.Sprintf("%v", _m.Tags))
 	builder.WriteString(", ")
 	builder.WriteString("metadata=")
-	builder.WriteString(fmt.Sprintf("%v", it.Metadata))
+	builder.WriteString(fmt.Sprintf("%v", _m.Metadata))
 	builder.WriteString(", ")
 	builder.WriteString("icon=")
-	builder.WriteString(it.Icon)
+	builder.WriteString(_m.Icon)
 	builder.WriteString(", ")
 	builder.WriteString("category=")
-	builder.WriteString(it.Category)
+	builder.WriteString(_m.Category)
 	builder.WriteString(", ")
 	builder.WriteString("usage_count=")
-	builder.WriteString(fmt.Sprintf("%v", it.UsageCount))
+	builder.WriteString(fmt.Sprintf("%v", _m.UsageCount))
 	builder.WriteString(", ")
 	builder.WriteString("success_count=")
-	builder.WriteString(fmt.Sprintf("%v", it.SuccessCount))
+	builder.WriteString(fmt.Sprintf("%v", _m.SuccessCount))
 	builder.WriteString(", ")
 	builder.WriteString("error_count=")
-	builder.WriteString(fmt.Sprintf("%v", it.ErrorCount))
+	builder.WriteString(fmt.Sprintf("%v", _m.ErrorCount))
 	builder.WriteString(", ")
 	builder.WriteString("success_rate=")
-	builder.WriteString(fmt.Sprintf("%v", it.SuccessRate))
+	builder.WriteString(fmt.Sprintf("%v", _m.SuccessRate))
 	builder.WriteString(", ")
 	builder.WriteString("is_public=")
-	builder.WriteString(fmt.Sprintf("%v", it.IsPublic))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsPublic))
 	builder.WriteString(", ")
 	builder.WriteString("is_system=")
-	builder.WriteString(fmt.Sprintf("%v", it.IsSystem))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsSystem))
 	builder.WriteString(", ")
 	builder.WriteString("shared_with=")
-	builder.WriteString(fmt.Sprintf("%v", it.SharedWith))
+	builder.WriteString(fmt.Sprintf("%v", _m.SharedWith))
 	builder.WriteString(", ")
 	builder.WriteString("created_by=")
-	builder.WriteString(fmt.Sprintf("%v", it.CreatedBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.CreatedBy))
 	builder.WriteString(", ")
 	builder.WriteString("created_by_name=")
-	builder.WriteString(it.CreatedByName)
+	builder.WriteString(_m.CreatedByName)
 	builder.WriteString(", ")
 	builder.WriteString("approved_by=")
-	builder.WriteString(fmt.Sprintf("%v", it.ApprovedBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApprovedBy))
 	builder.WriteString(", ")
 	builder.WriteString("approved_by_name=")
-	builder.WriteString(it.ApprovedByName)
+	builder.WriteString(_m.ApprovedByName)
 	builder.WriteString(", ")
 	builder.WriteString("approved_at=")
-	builder.WriteString(it.ApprovedAt.Format(time.ANSIC))
+	builder.WriteString(_m.ApprovedAt.Format(time.ANSIC))
 	builder.WriteByte(')')
 	return builder.String()
 }

@@ -4,14 +4,14 @@ import (
 	"context"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/internal/utils/dberrorhandler"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	jsonx "gitee.com/link234/newbee-backend-common/utils/json"
-	"gitee.com/link234/newbee-backend-common/utils/pointy"
+	jsonx "github.com/coder-lulu/newbee-common/utils/json"
+	"github.com/coder-lulu/newbee-common/utils/pointy"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

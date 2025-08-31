@@ -12,10 +12,10 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -27,612 +27,612 @@ type CiRecordsUpdate struct {
 }
 
 // Where appends a list predicates to the CiRecordsUpdate builder.
-func (cru *CiRecordsUpdate) Where(ps ...predicate.CiRecords) *CiRecordsUpdate {
-	cru.mutation.Where(ps...)
-	return cru
+func (_u *CiRecordsUpdate) Where(ps ...predicate.CiRecords) *CiRecordsUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cru *CiRecordsUpdate) SetUpdatedAt(t time.Time) *CiRecordsUpdate {
-	cru.mutation.SetUpdatedAt(t)
-	return cru
+func (_u *CiRecordsUpdate) SetUpdatedAt(v time.Time) *CiRecordsUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cru *CiRecordsUpdate) SetDepartmentID(u uint64) *CiRecordsUpdate {
-	cru.mutation.ResetDepartmentID()
-	cru.mutation.SetDepartmentID(u)
-	return cru
+func (_u *CiRecordsUpdate) SetDepartmentID(v uint64) *CiRecordsUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableDepartmentID(u *uint64) *CiRecordsUpdate {
-	if u != nil {
-		cru.SetDepartmentID(*u)
+func (_u *CiRecordsUpdate) SetNillableDepartmentID(v *uint64) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cru
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cru *CiRecordsUpdate) AddDepartmentID(u int64) *CiRecordsUpdate {
-	cru.mutation.AddDepartmentID(u)
-	return cru
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiRecordsUpdate) AddDepartmentID(v int64) *CiRecordsUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cru *CiRecordsUpdate) ClearDepartmentID() *CiRecordsUpdate {
-	cru.mutation.ClearDepartmentID()
-	return cru
+func (_u *CiRecordsUpdate) ClearDepartmentID() *CiRecordsUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (cru *CiRecordsUpdate) SetCiID(u uint64) *CiRecordsUpdate {
-	cru.mutation.SetCiID(u)
-	return cru
+func (_u *CiRecordsUpdate) SetCiID(v uint64) *CiRecordsUpdate {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableCiID(u *uint64) *CiRecordsUpdate {
-	if u != nil {
-		cru.SetCiID(*u)
+func (_u *CiRecordsUpdate) SetNillableCiID(v *uint64) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (cru *CiRecordsUpdate) SetCiTypeID(u uint64) *CiRecordsUpdate {
-	cru.mutation.SetCiTypeID(u)
-	return cru
+func (_u *CiRecordsUpdate) SetCiTypeID(v uint64) *CiRecordsUpdate {
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableCiTypeID(u *uint64) *CiRecordsUpdate {
-	if u != nil {
-		cru.SetCiTypeID(*u)
+func (_u *CiRecordsUpdate) SetNillableCiTypeID(v *uint64) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetCiTypeName sets the "ci_type_name" field.
-func (cru *CiRecordsUpdate) SetCiTypeName(s string) *CiRecordsUpdate {
-	cru.mutation.SetCiTypeName(s)
-	return cru
+func (_u *CiRecordsUpdate) SetCiTypeName(v string) *CiRecordsUpdate {
+	_u.mutation.SetCiTypeName(v)
+	return _u
 }
 
 // SetNillableCiTypeName sets the "ci_type_name" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableCiTypeName(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetCiTypeName(*s)
+func (_u *CiRecordsUpdate) SetNillableCiTypeName(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetCiTypeName(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetCiUniqueKey sets the "ci_unique_key" field.
-func (cru *CiRecordsUpdate) SetCiUniqueKey(s string) *CiRecordsUpdate {
-	cru.mutation.SetCiUniqueKey(s)
-	return cru
+func (_u *CiRecordsUpdate) SetCiUniqueKey(v string) *CiRecordsUpdate {
+	_u.mutation.SetCiUniqueKey(v)
+	return _u
 }
 
 // SetNillableCiUniqueKey sets the "ci_unique_key" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableCiUniqueKey(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetCiUniqueKey(*s)
+func (_u *CiRecordsUpdate) SetNillableCiUniqueKey(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetCiUniqueKey(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearCiUniqueKey clears the value of the "ci_unique_key" field.
-func (cru *CiRecordsUpdate) ClearCiUniqueKey() *CiRecordsUpdate {
-	cru.mutation.ClearCiUniqueKey()
-	return cru
+func (_u *CiRecordsUpdate) ClearCiUniqueKey() *CiRecordsUpdate {
+	_u.mutation.ClearCiUniqueKey()
+	return _u
 }
 
 // SetOperationType sets the "operation_type" field.
-func (cru *CiRecordsUpdate) SetOperationType(ct cirecords.OperationType) *CiRecordsUpdate {
-	cru.mutation.SetOperationType(ct)
-	return cru
+func (_u *CiRecordsUpdate) SetOperationType(v cirecords.OperationType) *CiRecordsUpdate {
+	_u.mutation.SetOperationType(v)
+	return _u
 }
 
 // SetNillableOperationType sets the "operation_type" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableOperationType(ct *cirecords.OperationType) *CiRecordsUpdate {
-	if ct != nil {
-		cru.SetOperationType(*ct)
+func (_u *CiRecordsUpdate) SetNillableOperationType(v *cirecords.OperationType) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetOperationType(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetOperationTime sets the "operation_time" field.
-func (cru *CiRecordsUpdate) SetOperationTime(t time.Time) *CiRecordsUpdate {
-	cru.mutation.SetOperationTime(t)
-	return cru
+func (_u *CiRecordsUpdate) SetOperationTime(v time.Time) *CiRecordsUpdate {
+	_u.mutation.SetOperationTime(v)
+	return _u
 }
 
 // SetNillableOperationTime sets the "operation_time" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableOperationTime(t *time.Time) *CiRecordsUpdate {
-	if t != nil {
-		cru.SetOperationTime(*t)
+func (_u *CiRecordsUpdate) SetNillableOperationTime(v *time.Time) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetOperationTime(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetOperationUserID sets the "operation_user_id" field.
-func (cru *CiRecordsUpdate) SetOperationUserID(u uuid.UUID) *CiRecordsUpdate {
-	cru.mutation.SetOperationUserID(u)
-	return cru
+func (_u *CiRecordsUpdate) SetOperationUserID(v uuid.UUID) *CiRecordsUpdate {
+	_u.mutation.SetOperationUserID(v)
+	return _u
 }
 
 // SetNillableOperationUserID sets the "operation_user_id" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableOperationUserID(u *uuid.UUID) *CiRecordsUpdate {
-	if u != nil {
-		cru.SetOperationUserID(*u)
+func (_u *CiRecordsUpdate) SetNillableOperationUserID(v *uuid.UUID) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetOperationUserID(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearOperationUserID clears the value of the "operation_user_id" field.
-func (cru *CiRecordsUpdate) ClearOperationUserID() *CiRecordsUpdate {
-	cru.mutation.ClearOperationUserID()
-	return cru
+func (_u *CiRecordsUpdate) ClearOperationUserID() *CiRecordsUpdate {
+	_u.mutation.ClearOperationUserID()
+	return _u
 }
 
 // SetOperationUserName sets the "operation_user_name" field.
-func (cru *CiRecordsUpdate) SetOperationUserName(s string) *CiRecordsUpdate {
-	cru.mutation.SetOperationUserName(s)
-	return cru
+func (_u *CiRecordsUpdate) SetOperationUserName(v string) *CiRecordsUpdate {
+	_u.mutation.SetOperationUserName(v)
+	return _u
 }
 
 // SetNillableOperationUserName sets the "operation_user_name" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableOperationUserName(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetOperationUserName(*s)
+func (_u *CiRecordsUpdate) SetNillableOperationUserName(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetOperationUserName(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearOperationUserName clears the value of the "operation_user_name" field.
-func (cru *CiRecordsUpdate) ClearOperationUserName() *CiRecordsUpdate {
-	cru.mutation.ClearOperationUserName()
-	return cru
+func (_u *CiRecordsUpdate) ClearOperationUserName() *CiRecordsUpdate {
+	_u.mutation.ClearOperationUserName()
+	return _u
 }
 
 // SetSourceType sets the "source_type" field.
-func (cru *CiRecordsUpdate) SetSourceType(ct cirecords.SourceType) *CiRecordsUpdate {
-	cru.mutation.SetSourceType(ct)
-	return cru
+func (_u *CiRecordsUpdate) SetSourceType(v cirecords.SourceType) *CiRecordsUpdate {
+	_u.mutation.SetSourceType(v)
+	return _u
 }
 
 // SetNillableSourceType sets the "source_type" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableSourceType(ct *cirecords.SourceType) *CiRecordsUpdate {
-	if ct != nil {
-		cru.SetSourceType(*ct)
+func (_u *CiRecordsUpdate) SetNillableSourceType(v *cirecords.SourceType) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetSourceType(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetSourceID sets the "source_id" field.
-func (cru *CiRecordsUpdate) SetSourceID(s string) *CiRecordsUpdate {
-	cru.mutation.SetSourceID(s)
-	return cru
+func (_u *CiRecordsUpdate) SetSourceID(v string) *CiRecordsUpdate {
+	_u.mutation.SetSourceID(v)
+	return _u
 }
 
 // SetNillableSourceID sets the "source_id" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableSourceID(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetSourceID(*s)
+func (_u *CiRecordsUpdate) SetNillableSourceID(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetSourceID(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearSourceID clears the value of the "source_id" field.
-func (cru *CiRecordsUpdate) ClearSourceID() *CiRecordsUpdate {
-	cru.mutation.ClearSourceID()
-	return cru
+func (_u *CiRecordsUpdate) ClearSourceID() *CiRecordsUpdate {
+	_u.mutation.ClearSourceID()
+	return _u
 }
 
 // SetSourceDescription sets the "source_description" field.
-func (cru *CiRecordsUpdate) SetSourceDescription(s string) *CiRecordsUpdate {
-	cru.mutation.SetSourceDescription(s)
-	return cru
+func (_u *CiRecordsUpdate) SetSourceDescription(v string) *CiRecordsUpdate {
+	_u.mutation.SetSourceDescription(v)
+	return _u
 }
 
 // SetNillableSourceDescription sets the "source_description" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableSourceDescription(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetSourceDescription(*s)
+func (_u *CiRecordsUpdate) SetNillableSourceDescription(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetSourceDescription(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearSourceDescription clears the value of the "source_description" field.
-func (cru *CiRecordsUpdate) ClearSourceDescription() *CiRecordsUpdate {
-	cru.mutation.ClearSourceDescription()
-	return cru
+func (_u *CiRecordsUpdate) ClearSourceDescription() *CiRecordsUpdate {
+	_u.mutation.ClearSourceDescription()
+	return _u
 }
 
 // SetBeforeData sets the "before_data" field.
-func (cru *CiRecordsUpdate) SetBeforeData(m map[string]interface{}) *CiRecordsUpdate {
-	cru.mutation.SetBeforeData(m)
-	return cru
+func (_u *CiRecordsUpdate) SetBeforeData(v map[string]interface{}) *CiRecordsUpdate {
+	_u.mutation.SetBeforeData(v)
+	return _u
 }
 
 // ClearBeforeData clears the value of the "before_data" field.
-func (cru *CiRecordsUpdate) ClearBeforeData() *CiRecordsUpdate {
-	cru.mutation.ClearBeforeData()
-	return cru
+func (_u *CiRecordsUpdate) ClearBeforeData() *CiRecordsUpdate {
+	_u.mutation.ClearBeforeData()
+	return _u
 }
 
 // SetAfterData sets the "after_data" field.
-func (cru *CiRecordsUpdate) SetAfterData(m map[string]interface{}) *CiRecordsUpdate {
-	cru.mutation.SetAfterData(m)
-	return cru
+func (_u *CiRecordsUpdate) SetAfterData(v map[string]interface{}) *CiRecordsUpdate {
+	_u.mutation.SetAfterData(v)
+	return _u
 }
 
 // ClearAfterData clears the value of the "after_data" field.
-func (cru *CiRecordsUpdate) ClearAfterData() *CiRecordsUpdate {
-	cru.mutation.ClearAfterData()
-	return cru
+func (_u *CiRecordsUpdate) ClearAfterData() *CiRecordsUpdate {
+	_u.mutation.ClearAfterData()
+	return _u
 }
 
 // SetChangedFields sets the "changed_fields" field.
-func (cru *CiRecordsUpdate) SetChangedFields(s []string) *CiRecordsUpdate {
-	cru.mutation.SetChangedFields(s)
-	return cru
+func (_u *CiRecordsUpdate) SetChangedFields(v []string) *CiRecordsUpdate {
+	_u.mutation.SetChangedFields(v)
+	return _u
 }
 
-// AppendChangedFields appends s to the "changed_fields" field.
-func (cru *CiRecordsUpdate) AppendChangedFields(s []string) *CiRecordsUpdate {
-	cru.mutation.AppendChangedFields(s)
-	return cru
+// AppendChangedFields appends value to the "changed_fields" field.
+func (_u *CiRecordsUpdate) AppendChangedFields(v []string) *CiRecordsUpdate {
+	_u.mutation.AppendChangedFields(v)
+	return _u
 }
 
 // ClearChangedFields clears the value of the "changed_fields" field.
-func (cru *CiRecordsUpdate) ClearChangedFields() *CiRecordsUpdate {
-	cru.mutation.ClearChangedFields()
-	return cru
+func (_u *CiRecordsUpdate) ClearChangedFields() *CiRecordsUpdate {
+	_u.mutation.ClearChangedFields()
+	return _u
 }
 
 // SetChangeSummary sets the "change_summary" field.
-func (cru *CiRecordsUpdate) SetChangeSummary(m map[string]interface{}) *CiRecordsUpdate {
-	cru.mutation.SetChangeSummary(m)
-	return cru
+func (_u *CiRecordsUpdate) SetChangeSummary(v map[string]interface{}) *CiRecordsUpdate {
+	_u.mutation.SetChangeSummary(v)
+	return _u
 }
 
 // ClearChangeSummary clears the value of the "change_summary" field.
-func (cru *CiRecordsUpdate) ClearChangeSummary() *CiRecordsUpdate {
-	cru.mutation.ClearChangeSummary()
-	return cru
+func (_u *CiRecordsUpdate) ClearChangeSummary() *CiRecordsUpdate {
+	_u.mutation.ClearChangeSummary()
+	return _u
 }
 
 // SetChangeReason sets the "change_reason" field.
-func (cru *CiRecordsUpdate) SetChangeReason(s string) *CiRecordsUpdate {
-	cru.mutation.SetChangeReason(s)
-	return cru
+func (_u *CiRecordsUpdate) SetChangeReason(v string) *CiRecordsUpdate {
+	_u.mutation.SetChangeReason(v)
+	return _u
 }
 
 // SetNillableChangeReason sets the "change_reason" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableChangeReason(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetChangeReason(*s)
+func (_u *CiRecordsUpdate) SetNillableChangeReason(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetChangeReason(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearChangeReason clears the value of the "change_reason" field.
-func (cru *CiRecordsUpdate) ClearChangeReason() *CiRecordsUpdate {
-	cru.mutation.ClearChangeReason()
-	return cru
+func (_u *CiRecordsUpdate) ClearChangeReason() *CiRecordsUpdate {
+	_u.mutation.ClearChangeReason()
+	return _u
 }
 
 // SetDescription sets the "description" field.
-func (cru *CiRecordsUpdate) SetDescription(s string) *CiRecordsUpdate {
-	cru.mutation.SetDescription(s)
-	return cru
+func (_u *CiRecordsUpdate) SetDescription(v string) *CiRecordsUpdate {
+	_u.mutation.SetDescription(v)
+	return _u
 }
 
 // SetNillableDescription sets the "description" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableDescription(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetDescription(*s)
+func (_u *CiRecordsUpdate) SetNillableDescription(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetDescription(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearDescription clears the value of the "description" field.
-func (cru *CiRecordsUpdate) ClearDescription() *CiRecordsUpdate {
-	cru.mutation.ClearDescription()
-	return cru
+func (_u *CiRecordsUpdate) ClearDescription() *CiRecordsUpdate {
+	_u.mutation.ClearDescription()
+	return _u
 }
 
 // SetComments sets the "comments" field.
-func (cru *CiRecordsUpdate) SetComments(s string) *CiRecordsUpdate {
-	cru.mutation.SetComments(s)
-	return cru
+func (_u *CiRecordsUpdate) SetComments(v string) *CiRecordsUpdate {
+	_u.mutation.SetComments(v)
+	return _u
 }
 
 // SetNillableComments sets the "comments" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableComments(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetComments(*s)
+func (_u *CiRecordsUpdate) SetNillableComments(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetComments(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearComments clears the value of the "comments" field.
-func (cru *CiRecordsUpdate) ClearComments() *CiRecordsUpdate {
-	cru.mutation.ClearComments()
-	return cru
+func (_u *CiRecordsUpdate) ClearComments() *CiRecordsUpdate {
+	_u.mutation.ClearComments()
+	return _u
 }
 
 // SetVersionNumber sets the "version_number" field.
-func (cru *CiRecordsUpdate) SetVersionNumber(i int) *CiRecordsUpdate {
-	cru.mutation.ResetVersionNumber()
-	cru.mutation.SetVersionNumber(i)
-	return cru
+func (_u *CiRecordsUpdate) SetVersionNumber(v int) *CiRecordsUpdate {
+	_u.mutation.ResetVersionNumber()
+	_u.mutation.SetVersionNumber(v)
+	return _u
 }
 
 // SetNillableVersionNumber sets the "version_number" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableVersionNumber(i *int) *CiRecordsUpdate {
-	if i != nil {
-		cru.SetVersionNumber(*i)
+func (_u *CiRecordsUpdate) SetNillableVersionNumber(v *int) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetVersionNumber(*v)
 	}
-	return cru
+	return _u
 }
 
-// AddVersionNumber adds i to the "version_number" field.
-func (cru *CiRecordsUpdate) AddVersionNumber(i int) *CiRecordsUpdate {
-	cru.mutation.AddVersionNumber(i)
-	return cru
+// AddVersionNumber adds value to the "version_number" field.
+func (_u *CiRecordsUpdate) AddVersionNumber(v int) *CiRecordsUpdate {
+	_u.mutation.AddVersionNumber(v)
+	return _u
 }
 
 // SetRevisionID sets the "revision_id" field.
-func (cru *CiRecordsUpdate) SetRevisionID(s string) *CiRecordsUpdate {
-	cru.mutation.SetRevisionID(s)
-	return cru
+func (_u *CiRecordsUpdate) SetRevisionID(v string) *CiRecordsUpdate {
+	_u.mutation.SetRevisionID(v)
+	return _u
 }
 
 // SetNillableRevisionID sets the "revision_id" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableRevisionID(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetRevisionID(*s)
+func (_u *CiRecordsUpdate) SetNillableRevisionID(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetRevisionID(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearRevisionID clears the value of the "revision_id" field.
-func (cru *CiRecordsUpdate) ClearRevisionID() *CiRecordsUpdate {
-	cru.mutation.ClearRevisionID()
-	return cru
+func (_u *CiRecordsUpdate) ClearRevisionID() *CiRecordsUpdate {
+	_u.mutation.ClearRevisionID()
+	return _u
 }
 
 // SetClientIP sets the "client_ip" field.
-func (cru *CiRecordsUpdate) SetClientIP(s string) *CiRecordsUpdate {
-	cru.mutation.SetClientIP(s)
-	return cru
+func (_u *CiRecordsUpdate) SetClientIP(v string) *CiRecordsUpdate {
+	_u.mutation.SetClientIP(v)
+	return _u
 }
 
 // SetNillableClientIP sets the "client_ip" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableClientIP(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetClientIP(*s)
+func (_u *CiRecordsUpdate) SetNillableClientIP(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetClientIP(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearClientIP clears the value of the "client_ip" field.
-func (cru *CiRecordsUpdate) ClearClientIP() *CiRecordsUpdate {
-	cru.mutation.ClearClientIP()
-	return cru
+func (_u *CiRecordsUpdate) ClearClientIP() *CiRecordsUpdate {
+	_u.mutation.ClearClientIP()
+	return _u
 }
 
 // SetUserAgent sets the "user_agent" field.
-func (cru *CiRecordsUpdate) SetUserAgent(s string) *CiRecordsUpdate {
-	cru.mutation.SetUserAgent(s)
-	return cru
+func (_u *CiRecordsUpdate) SetUserAgent(v string) *CiRecordsUpdate {
+	_u.mutation.SetUserAgent(v)
+	return _u
 }
 
 // SetNillableUserAgent sets the "user_agent" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableUserAgent(s *string) *CiRecordsUpdate {
-	if s != nil {
-		cru.SetUserAgent(*s)
+func (_u *CiRecordsUpdate) SetNillableUserAgent(v *string) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetUserAgent(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearUserAgent clears the value of the "user_agent" field.
-func (cru *CiRecordsUpdate) ClearUserAgent() *CiRecordsUpdate {
-	cru.mutation.ClearUserAgent()
-	return cru
+func (_u *CiRecordsUpdate) ClearUserAgent() *CiRecordsUpdate {
+	_u.mutation.ClearUserAgent()
+	return _u
 }
 
 // SetRequestContext sets the "request_context" field.
-func (cru *CiRecordsUpdate) SetRequestContext(m map[string]interface{}) *CiRecordsUpdate {
-	cru.mutation.SetRequestContext(m)
-	return cru
+func (_u *CiRecordsUpdate) SetRequestContext(v map[string]interface{}) *CiRecordsUpdate {
+	_u.mutation.SetRequestContext(v)
+	return _u
 }
 
 // ClearRequestContext clears the value of the "request_context" field.
-func (cru *CiRecordsUpdate) ClearRequestContext() *CiRecordsUpdate {
-	cru.mutation.ClearRequestContext()
-	return cru
+func (_u *CiRecordsUpdate) ClearRequestContext() *CiRecordsUpdate {
+	_u.mutation.ClearRequestContext()
+	return _u
 }
 
 // SetAffectedRelations sets the "affected_relations" field.
-func (cru *CiRecordsUpdate) SetAffectedRelations(i int) *CiRecordsUpdate {
-	cru.mutation.ResetAffectedRelations()
-	cru.mutation.SetAffectedRelations(i)
-	return cru
+func (_u *CiRecordsUpdate) SetAffectedRelations(v int) *CiRecordsUpdate {
+	_u.mutation.ResetAffectedRelations()
+	_u.mutation.SetAffectedRelations(v)
+	return _u
 }
 
 // SetNillableAffectedRelations sets the "affected_relations" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableAffectedRelations(i *int) *CiRecordsUpdate {
-	if i != nil {
-		cru.SetAffectedRelations(*i)
+func (_u *CiRecordsUpdate) SetNillableAffectedRelations(v *int) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetAffectedRelations(*v)
 	}
-	return cru
+	return _u
 }
 
-// AddAffectedRelations adds i to the "affected_relations" field.
-func (cru *CiRecordsUpdate) AddAffectedRelations(i int) *CiRecordsUpdate {
-	cru.mutation.AddAffectedRelations(i)
-	return cru
+// AddAffectedRelations adds value to the "affected_relations" field.
+func (_u *CiRecordsUpdate) AddAffectedRelations(v int) *CiRecordsUpdate {
+	_u.mutation.AddAffectedRelations(v)
+	return _u
 }
 
 // SetAffectedRelationIds sets the "affected_relation_ids" field.
-func (cru *CiRecordsUpdate) SetAffectedRelationIds(u []uint64) *CiRecordsUpdate {
-	cru.mutation.SetAffectedRelationIds(u)
-	return cru
+func (_u *CiRecordsUpdate) SetAffectedRelationIds(v []uint64) *CiRecordsUpdate {
+	_u.mutation.SetAffectedRelationIds(v)
+	return _u
 }
 
-// AppendAffectedRelationIds appends u to the "affected_relation_ids" field.
-func (cru *CiRecordsUpdate) AppendAffectedRelationIds(u []uint64) *CiRecordsUpdate {
-	cru.mutation.AppendAffectedRelationIds(u)
-	return cru
+// AppendAffectedRelationIds appends value to the "affected_relation_ids" field.
+func (_u *CiRecordsUpdate) AppendAffectedRelationIds(v []uint64) *CiRecordsUpdate {
+	_u.mutation.AppendAffectedRelationIds(v)
+	return _u
 }
 
 // ClearAffectedRelationIds clears the value of the "affected_relation_ids" field.
-func (cru *CiRecordsUpdate) ClearAffectedRelationIds() *CiRecordsUpdate {
-	cru.mutation.ClearAffectedRelationIds()
-	return cru
+func (_u *CiRecordsUpdate) ClearAffectedRelationIds() *CiRecordsUpdate {
+	_u.mutation.ClearAffectedRelationIds()
+	return _u
 }
 
 // SetCascadeChanges sets the "cascade_changes" field.
-func (cru *CiRecordsUpdate) SetCascadeChanges(b bool) *CiRecordsUpdate {
-	cru.mutation.SetCascadeChanges(b)
-	return cru
+func (_u *CiRecordsUpdate) SetCascadeChanges(v bool) *CiRecordsUpdate {
+	_u.mutation.SetCascadeChanges(v)
+	return _u
 }
 
 // SetNillableCascadeChanges sets the "cascade_changes" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableCascadeChanges(b *bool) *CiRecordsUpdate {
-	if b != nil {
-		cru.SetCascadeChanges(*b)
+func (_u *CiRecordsUpdate) SetNillableCascadeChanges(v *bool) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetCascadeChanges(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetIsMajorChange sets the "is_major_change" field.
-func (cru *CiRecordsUpdate) SetIsMajorChange(b bool) *CiRecordsUpdate {
-	cru.mutation.SetIsMajorChange(b)
-	return cru
+func (_u *CiRecordsUpdate) SetIsMajorChange(v bool) *CiRecordsUpdate {
+	_u.mutation.SetIsMajorChange(v)
+	return _u
 }
 
 // SetNillableIsMajorChange sets the "is_major_change" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableIsMajorChange(b *bool) *CiRecordsUpdate {
-	if b != nil {
-		cru.SetIsMajorChange(*b)
+func (_u *CiRecordsUpdate) SetNillableIsMajorChange(v *bool) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetIsMajorChange(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetRequiresApproval sets the "requires_approval" field.
-func (cru *CiRecordsUpdate) SetRequiresApproval(b bool) *CiRecordsUpdate {
-	cru.mutation.SetRequiresApproval(b)
-	return cru
+func (_u *CiRecordsUpdate) SetRequiresApproval(v bool) *CiRecordsUpdate {
+	_u.mutation.SetRequiresApproval(v)
+	return _u
 }
 
 // SetNillableRequiresApproval sets the "requires_approval" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableRequiresApproval(b *bool) *CiRecordsUpdate {
-	if b != nil {
-		cru.SetRequiresApproval(*b)
+func (_u *CiRecordsUpdate) SetNillableRequiresApproval(v *bool) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetRequiresApproval(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetApprovalStatus sets the "approval_status" field.
-func (cru *CiRecordsUpdate) SetApprovalStatus(cs cirecords.ApprovalStatus) *CiRecordsUpdate {
-	cru.mutation.SetApprovalStatus(cs)
-	return cru
+func (_u *CiRecordsUpdate) SetApprovalStatus(v cirecords.ApprovalStatus) *CiRecordsUpdate {
+	_u.mutation.SetApprovalStatus(v)
+	return _u
 }
 
 // SetNillableApprovalStatus sets the "approval_status" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableApprovalStatus(cs *cirecords.ApprovalStatus) *CiRecordsUpdate {
-	if cs != nil {
-		cru.SetApprovalStatus(*cs)
+func (_u *CiRecordsUpdate) SetNillableApprovalStatus(v *cirecords.ApprovalStatus) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetApprovalStatus(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearApprovalStatus clears the value of the "approval_status" field.
-func (cru *CiRecordsUpdate) ClearApprovalStatus() *CiRecordsUpdate {
-	cru.mutation.ClearApprovalStatus()
-	return cru
+func (_u *CiRecordsUpdate) ClearApprovalStatus() *CiRecordsUpdate {
+	_u.mutation.ClearApprovalStatus()
+	return _u
 }
 
 // SetApprovedBy sets the "approved_by" field.
-func (cru *CiRecordsUpdate) SetApprovedBy(u uuid.UUID) *CiRecordsUpdate {
-	cru.mutation.SetApprovedBy(u)
-	return cru
+func (_u *CiRecordsUpdate) SetApprovedBy(v uuid.UUID) *CiRecordsUpdate {
+	_u.mutation.SetApprovedBy(v)
+	return _u
 }
 
 // SetNillableApprovedBy sets the "approved_by" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableApprovedBy(u *uuid.UUID) *CiRecordsUpdate {
-	if u != nil {
-		cru.SetApprovedBy(*u)
+func (_u *CiRecordsUpdate) SetNillableApprovedBy(v *uuid.UUID) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetApprovedBy(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearApprovedBy clears the value of the "approved_by" field.
-func (cru *CiRecordsUpdate) ClearApprovedBy() *CiRecordsUpdate {
-	cru.mutation.ClearApprovedBy()
-	return cru
+func (_u *CiRecordsUpdate) ClearApprovedBy() *CiRecordsUpdate {
+	_u.mutation.ClearApprovedBy()
+	return _u
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (cru *CiRecordsUpdate) SetApprovedAt(t time.Time) *CiRecordsUpdate {
-	cru.mutation.SetApprovedAt(t)
-	return cru
+func (_u *CiRecordsUpdate) SetApprovedAt(v time.Time) *CiRecordsUpdate {
+	_u.mutation.SetApprovedAt(v)
+	return _u
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (cru *CiRecordsUpdate) SetNillableApprovedAt(t *time.Time) *CiRecordsUpdate {
-	if t != nil {
-		cru.SetApprovedAt(*t)
+func (_u *CiRecordsUpdate) SetNillableApprovedAt(v *time.Time) *CiRecordsUpdate {
+	if v != nil {
+		_u.SetApprovedAt(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearApprovedAt clears the value of the "approved_at" field.
-func (cru *CiRecordsUpdate) ClearApprovedAt() *CiRecordsUpdate {
-	cru.mutation.ClearApprovedAt()
-	return cru
+func (_u *CiRecordsUpdate) ClearApprovedAt() *CiRecordsUpdate {
+	_u.mutation.ClearApprovedAt()
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (cru *CiRecordsUpdate) SetCi(c *Cis) *CiRecordsUpdate {
-	return cru.SetCiID(c.ID)
+func (_u *CiRecordsUpdate) SetCi(v *Cis) *CiRecordsUpdate {
+	return _u.SetCiID(v.ID)
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (cru *CiRecordsUpdate) SetCiType(c *CiType) *CiRecordsUpdate {
-	return cru.SetCiTypeID(c.ID)
+func (_u *CiRecordsUpdate) SetCiType(v *CiType) *CiRecordsUpdate {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // Mutation returns the CiRecordsMutation object of the builder.
-func (cru *CiRecordsUpdate) Mutation() *CiRecordsMutation {
-	return cru.mutation
+func (_u *CiRecordsUpdate) Mutation() *CiRecordsMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (cru *CiRecordsUpdate) ClearCi() *CiRecordsUpdate {
-	cru.mutation.ClearCi()
-	return cru
+func (_u *CiRecordsUpdate) ClearCi() *CiRecordsUpdate {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (cru *CiRecordsUpdate) ClearCiType() *CiRecordsUpdate {
-	cru.mutation.ClearCiType()
-	return cru
+func (_u *CiRecordsUpdate) ClearCiType() *CiRecordsUpdate {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (cru *CiRecordsUpdate) Save(ctx context.Context) (int, error) {
-	cru.defaults()
-	return withHooks(ctx, cru.sqlSave, cru.mutation, cru.hooks)
+func (_u *CiRecordsUpdate) Save(ctx context.Context) (int, error) {
+	_u.defaults()
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cru *CiRecordsUpdate) SaveX(ctx context.Context) int {
-	affected, err := cru.Save(ctx)
+func (_u *CiRecordsUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -640,285 +640,285 @@ func (cru *CiRecordsUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (cru *CiRecordsUpdate) Exec(ctx context.Context) error {
-	_, err := cru.Save(ctx)
+func (_u *CiRecordsUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cru *CiRecordsUpdate) ExecX(ctx context.Context) {
-	if err := cru.Exec(ctx); err != nil {
+func (_u *CiRecordsUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cru *CiRecordsUpdate) defaults() {
-	if _, ok := cru.mutation.UpdatedAt(); !ok {
+func (_u *CiRecordsUpdate) defaults() {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		v := cirecords.UpdateDefaultUpdatedAt()
-		cru.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cru *CiRecordsUpdate) check() error {
-	if v, ok := cru.mutation.CiTypeName(); ok {
+func (_u *CiRecordsUpdate) check() error {
+	if v, ok := _u.mutation.CiTypeName(); ok {
 		if err := cirecords.CiTypeNameValidator(v); err != nil {
 			return &ValidationError{Name: "ci_type_name", err: fmt.Errorf(`ent: validator failed for field "CiRecords.ci_type_name": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.CiUniqueKey(); ok {
+	if v, ok := _u.mutation.CiUniqueKey(); ok {
 		if err := cirecords.CiUniqueKeyValidator(v); err != nil {
 			return &ValidationError{Name: "ci_unique_key", err: fmt.Errorf(`ent: validator failed for field "CiRecords.ci_unique_key": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.OperationType(); ok {
+	if v, ok := _u.mutation.OperationType(); ok {
 		if err := cirecords.OperationTypeValidator(v); err != nil {
 			return &ValidationError{Name: "operation_type", err: fmt.Errorf(`ent: validator failed for field "CiRecords.operation_type": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.OperationUserName(); ok {
+	if v, ok := _u.mutation.OperationUserName(); ok {
 		if err := cirecords.OperationUserNameValidator(v); err != nil {
 			return &ValidationError{Name: "operation_user_name", err: fmt.Errorf(`ent: validator failed for field "CiRecords.operation_user_name": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.SourceType(); ok {
+	if v, ok := _u.mutation.SourceType(); ok {
 		if err := cirecords.SourceTypeValidator(v); err != nil {
 			return &ValidationError{Name: "source_type", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_type": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.SourceID(); ok {
+	if v, ok := _u.mutation.SourceID(); ok {
 		if err := cirecords.SourceIDValidator(v); err != nil {
 			return &ValidationError{Name: "source_id", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_id": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.SourceDescription(); ok {
+	if v, ok := _u.mutation.SourceDescription(); ok {
 		if err := cirecords.SourceDescriptionValidator(v); err != nil {
 			return &ValidationError{Name: "source_description", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_description": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.ChangeReason(); ok {
+	if v, ok := _u.mutation.ChangeReason(); ok {
 		if err := cirecords.ChangeReasonValidator(v); err != nil {
 			return &ValidationError{Name: "change_reason", err: fmt.Errorf(`ent: validator failed for field "CiRecords.change_reason": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.RevisionID(); ok {
+	if v, ok := _u.mutation.RevisionID(); ok {
 		if err := cirecords.RevisionIDValidator(v); err != nil {
 			return &ValidationError{Name: "revision_id", err: fmt.Errorf(`ent: validator failed for field "CiRecords.revision_id": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.ClientIP(); ok {
+	if v, ok := _u.mutation.ClientIP(); ok {
 		if err := cirecords.ClientIPValidator(v); err != nil {
 			return &ValidationError{Name: "client_ip", err: fmt.Errorf(`ent: validator failed for field "CiRecords.client_ip": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.UserAgent(); ok {
+	if v, ok := _u.mutation.UserAgent(); ok {
 		if err := cirecords.UserAgentValidator(v); err != nil {
 			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`ent: validator failed for field "CiRecords.user_agent": %w`, err)}
 		}
 	}
-	if v, ok := cru.mutation.ApprovalStatus(); ok {
+	if v, ok := _u.mutation.ApprovalStatus(); ok {
 		if err := cirecords.ApprovalStatusValidator(v); err != nil {
 			return &ValidationError{Name: "approval_status", err: fmt.Errorf(`ent: validator failed for field "CiRecords.approval_status": %w`, err)}
 		}
 	}
-	if cru.mutation.CiCleared() && len(cru.mutation.CiIDs()) > 0 {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRecords.ci"`)
 	}
-	if cru.mutation.CiTypeCleared() && len(cru.mutation.CiTypeIDs()) > 0 {
+	if _u.mutation.CiTypeCleared() && len(_u.mutation.CiTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRecords.ci_type"`)
 	}
 	return nil
 }
 
-func (cru *CiRecordsUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := cru.check(); err != nil {
-		return n, err
+func (_u *CiRecordsUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cirecords.Table, cirecords.Columns, sqlgraph.NewFieldSpec(cirecords.FieldID, field.TypeUint64))
-	if ps := cru.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cru.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cirecords.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cru.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cirecords.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cru.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cirecords.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cru.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cirecords.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cru.mutation.CiTypeName(); ok {
+	if value, ok := _u.mutation.CiTypeName(); ok {
 		_spec.SetField(cirecords.FieldCiTypeName, field.TypeString, value)
 	}
-	if value, ok := cru.mutation.CiUniqueKey(); ok {
+	if value, ok := _u.mutation.CiUniqueKey(); ok {
 		_spec.SetField(cirecords.FieldCiUniqueKey, field.TypeString, value)
 	}
-	if cru.mutation.CiUniqueKeyCleared() {
+	if _u.mutation.CiUniqueKeyCleared() {
 		_spec.ClearField(cirecords.FieldCiUniqueKey, field.TypeString)
 	}
-	if value, ok := cru.mutation.OperationType(); ok {
+	if value, ok := _u.mutation.OperationType(); ok {
 		_spec.SetField(cirecords.FieldOperationType, field.TypeEnum, value)
 	}
-	if value, ok := cru.mutation.OperationTime(); ok {
+	if value, ok := _u.mutation.OperationTime(); ok {
 		_spec.SetField(cirecords.FieldOperationTime, field.TypeTime, value)
 	}
-	if value, ok := cru.mutation.OperationUserID(); ok {
+	if value, ok := _u.mutation.OperationUserID(); ok {
 		_spec.SetField(cirecords.FieldOperationUserID, field.TypeUUID, value)
 	}
-	if cru.mutation.OperationUserIDCleared() {
+	if _u.mutation.OperationUserIDCleared() {
 		_spec.ClearField(cirecords.FieldOperationUserID, field.TypeUUID)
 	}
-	if value, ok := cru.mutation.OperationUserName(); ok {
+	if value, ok := _u.mutation.OperationUserName(); ok {
 		_spec.SetField(cirecords.FieldOperationUserName, field.TypeString, value)
 	}
-	if cru.mutation.OperationUserNameCleared() {
+	if _u.mutation.OperationUserNameCleared() {
 		_spec.ClearField(cirecords.FieldOperationUserName, field.TypeString)
 	}
-	if value, ok := cru.mutation.SourceType(); ok {
+	if value, ok := _u.mutation.SourceType(); ok {
 		_spec.SetField(cirecords.FieldSourceType, field.TypeEnum, value)
 	}
-	if value, ok := cru.mutation.SourceID(); ok {
+	if value, ok := _u.mutation.SourceID(); ok {
 		_spec.SetField(cirecords.FieldSourceID, field.TypeString, value)
 	}
-	if cru.mutation.SourceIDCleared() {
+	if _u.mutation.SourceIDCleared() {
 		_spec.ClearField(cirecords.FieldSourceID, field.TypeString)
 	}
-	if value, ok := cru.mutation.SourceDescription(); ok {
+	if value, ok := _u.mutation.SourceDescription(); ok {
 		_spec.SetField(cirecords.FieldSourceDescription, field.TypeString, value)
 	}
-	if cru.mutation.SourceDescriptionCleared() {
+	if _u.mutation.SourceDescriptionCleared() {
 		_spec.ClearField(cirecords.FieldSourceDescription, field.TypeString)
 	}
-	if value, ok := cru.mutation.BeforeData(); ok {
+	if value, ok := _u.mutation.BeforeData(); ok {
 		_spec.SetField(cirecords.FieldBeforeData, field.TypeJSON, value)
 	}
-	if cru.mutation.BeforeDataCleared() {
+	if _u.mutation.BeforeDataCleared() {
 		_spec.ClearField(cirecords.FieldBeforeData, field.TypeJSON)
 	}
-	if value, ok := cru.mutation.AfterData(); ok {
+	if value, ok := _u.mutation.AfterData(); ok {
 		_spec.SetField(cirecords.FieldAfterData, field.TypeJSON, value)
 	}
-	if cru.mutation.AfterDataCleared() {
+	if _u.mutation.AfterDataCleared() {
 		_spec.ClearField(cirecords.FieldAfterData, field.TypeJSON)
 	}
-	if value, ok := cru.mutation.ChangedFields(); ok {
+	if value, ok := _u.mutation.ChangedFields(); ok {
 		_spec.SetField(cirecords.FieldChangedFields, field.TypeJSON, value)
 	}
-	if value, ok := cru.mutation.AppendedChangedFields(); ok {
+	if value, ok := _u.mutation.AppendedChangedFields(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cirecords.FieldChangedFields, value)
 		})
 	}
-	if cru.mutation.ChangedFieldsCleared() {
+	if _u.mutation.ChangedFieldsCleared() {
 		_spec.ClearField(cirecords.FieldChangedFields, field.TypeJSON)
 	}
-	if value, ok := cru.mutation.ChangeSummary(); ok {
+	if value, ok := _u.mutation.ChangeSummary(); ok {
 		_spec.SetField(cirecords.FieldChangeSummary, field.TypeJSON, value)
 	}
-	if cru.mutation.ChangeSummaryCleared() {
+	if _u.mutation.ChangeSummaryCleared() {
 		_spec.ClearField(cirecords.FieldChangeSummary, field.TypeJSON)
 	}
-	if value, ok := cru.mutation.ChangeReason(); ok {
+	if value, ok := _u.mutation.ChangeReason(); ok {
 		_spec.SetField(cirecords.FieldChangeReason, field.TypeString, value)
 	}
-	if cru.mutation.ChangeReasonCleared() {
+	if _u.mutation.ChangeReasonCleared() {
 		_spec.ClearField(cirecords.FieldChangeReason, field.TypeString)
 	}
-	if value, ok := cru.mutation.Description(); ok {
+	if value, ok := _u.mutation.Description(); ok {
 		_spec.SetField(cirecords.FieldDescription, field.TypeString, value)
 	}
-	if cru.mutation.DescriptionCleared() {
+	if _u.mutation.DescriptionCleared() {
 		_spec.ClearField(cirecords.FieldDescription, field.TypeString)
 	}
-	if value, ok := cru.mutation.Comments(); ok {
+	if value, ok := _u.mutation.Comments(); ok {
 		_spec.SetField(cirecords.FieldComments, field.TypeString, value)
 	}
-	if cru.mutation.CommentsCleared() {
+	if _u.mutation.CommentsCleared() {
 		_spec.ClearField(cirecords.FieldComments, field.TypeString)
 	}
-	if value, ok := cru.mutation.VersionNumber(); ok {
+	if value, ok := _u.mutation.VersionNumber(); ok {
 		_spec.SetField(cirecords.FieldVersionNumber, field.TypeInt, value)
 	}
-	if value, ok := cru.mutation.AddedVersionNumber(); ok {
+	if value, ok := _u.mutation.AddedVersionNumber(); ok {
 		_spec.AddField(cirecords.FieldVersionNumber, field.TypeInt, value)
 	}
-	if value, ok := cru.mutation.RevisionID(); ok {
+	if value, ok := _u.mutation.RevisionID(); ok {
 		_spec.SetField(cirecords.FieldRevisionID, field.TypeString, value)
 	}
-	if cru.mutation.RevisionIDCleared() {
+	if _u.mutation.RevisionIDCleared() {
 		_spec.ClearField(cirecords.FieldRevisionID, field.TypeString)
 	}
-	if value, ok := cru.mutation.ClientIP(); ok {
+	if value, ok := _u.mutation.ClientIP(); ok {
 		_spec.SetField(cirecords.FieldClientIP, field.TypeString, value)
 	}
-	if cru.mutation.ClientIPCleared() {
+	if _u.mutation.ClientIPCleared() {
 		_spec.ClearField(cirecords.FieldClientIP, field.TypeString)
 	}
-	if value, ok := cru.mutation.UserAgent(); ok {
+	if value, ok := _u.mutation.UserAgent(); ok {
 		_spec.SetField(cirecords.FieldUserAgent, field.TypeString, value)
 	}
-	if cru.mutation.UserAgentCleared() {
+	if _u.mutation.UserAgentCleared() {
 		_spec.ClearField(cirecords.FieldUserAgent, field.TypeString)
 	}
-	if value, ok := cru.mutation.RequestContext(); ok {
+	if value, ok := _u.mutation.RequestContext(); ok {
 		_spec.SetField(cirecords.FieldRequestContext, field.TypeJSON, value)
 	}
-	if cru.mutation.RequestContextCleared() {
+	if _u.mutation.RequestContextCleared() {
 		_spec.ClearField(cirecords.FieldRequestContext, field.TypeJSON)
 	}
-	if value, ok := cru.mutation.AffectedRelations(); ok {
+	if value, ok := _u.mutation.AffectedRelations(); ok {
 		_spec.SetField(cirecords.FieldAffectedRelations, field.TypeInt, value)
 	}
-	if value, ok := cru.mutation.AddedAffectedRelations(); ok {
+	if value, ok := _u.mutation.AddedAffectedRelations(); ok {
 		_spec.AddField(cirecords.FieldAffectedRelations, field.TypeInt, value)
 	}
-	if value, ok := cru.mutation.AffectedRelationIds(); ok {
+	if value, ok := _u.mutation.AffectedRelationIds(); ok {
 		_spec.SetField(cirecords.FieldAffectedRelationIds, field.TypeJSON, value)
 	}
-	if value, ok := cru.mutation.AppendedAffectedRelationIds(); ok {
+	if value, ok := _u.mutation.AppendedAffectedRelationIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cirecords.FieldAffectedRelationIds, value)
 		})
 	}
-	if cru.mutation.AffectedRelationIdsCleared() {
+	if _u.mutation.AffectedRelationIdsCleared() {
 		_spec.ClearField(cirecords.FieldAffectedRelationIds, field.TypeJSON)
 	}
-	if value, ok := cru.mutation.CascadeChanges(); ok {
+	if value, ok := _u.mutation.CascadeChanges(); ok {
 		_spec.SetField(cirecords.FieldCascadeChanges, field.TypeBool, value)
 	}
-	if value, ok := cru.mutation.IsMajorChange(); ok {
+	if value, ok := _u.mutation.IsMajorChange(); ok {
 		_spec.SetField(cirecords.FieldIsMajorChange, field.TypeBool, value)
 	}
-	if value, ok := cru.mutation.RequiresApproval(); ok {
+	if value, ok := _u.mutation.RequiresApproval(); ok {
 		_spec.SetField(cirecords.FieldRequiresApproval, field.TypeBool, value)
 	}
-	if value, ok := cru.mutation.ApprovalStatus(); ok {
+	if value, ok := _u.mutation.ApprovalStatus(); ok {
 		_spec.SetField(cirecords.FieldApprovalStatus, field.TypeEnum, value)
 	}
-	if cru.mutation.ApprovalStatusCleared() {
+	if _u.mutation.ApprovalStatusCleared() {
 		_spec.ClearField(cirecords.FieldApprovalStatus, field.TypeEnum)
 	}
-	if value, ok := cru.mutation.ApprovedBy(); ok {
+	if value, ok := _u.mutation.ApprovedBy(); ok {
 		_spec.SetField(cirecords.FieldApprovedBy, field.TypeUUID, value)
 	}
-	if cru.mutation.ApprovedByCleared() {
+	if _u.mutation.ApprovedByCleared() {
 		_spec.ClearField(cirecords.FieldApprovedBy, field.TypeUUID)
 	}
-	if value, ok := cru.mutation.ApprovedAt(); ok {
+	if value, ok := _u.mutation.ApprovedAt(); ok {
 		_spec.SetField(cirecords.FieldApprovedAt, field.TypeTime, value)
 	}
-	if cru.mutation.ApprovedAtCleared() {
+	if _u.mutation.ApprovedAtCleared() {
 		_spec.ClearField(cirecords.FieldApprovedAt, field.TypeTime)
 	}
-	if cru.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -931,7 +931,7 @@ func (cru *CiRecordsUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cru.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -947,7 +947,7 @@ func (cru *CiRecordsUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cru.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -960,7 +960,7 @@ func (cru *CiRecordsUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cru.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -976,7 +976,7 @@ func (cru *CiRecordsUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, cru.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cirecords.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -984,8 +984,8 @@ func (cru *CiRecordsUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	cru.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiRecordsUpdateOne is the builder for updating a single CiRecords entity.
@@ -997,619 +997,619 @@ type CiRecordsUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cruo *CiRecordsUpdateOne) SetUpdatedAt(t time.Time) *CiRecordsUpdateOne {
-	cruo.mutation.SetUpdatedAt(t)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetUpdatedAt(v time.Time) *CiRecordsUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cruo *CiRecordsUpdateOne) SetDepartmentID(u uint64) *CiRecordsUpdateOne {
-	cruo.mutation.ResetDepartmentID()
-	cruo.mutation.SetDepartmentID(u)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetDepartmentID(v uint64) *CiRecordsUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableDepartmentID(u *uint64) *CiRecordsUpdateOne {
-	if u != nil {
-		cruo.SetDepartmentID(*u)
+func (_u *CiRecordsUpdateOne) SetNillableDepartmentID(v *uint64) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cruo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cruo *CiRecordsUpdateOne) AddDepartmentID(u int64) *CiRecordsUpdateOne {
-	cruo.mutation.AddDepartmentID(u)
-	return cruo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiRecordsUpdateOne) AddDepartmentID(v int64) *CiRecordsUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cruo *CiRecordsUpdateOne) ClearDepartmentID() *CiRecordsUpdateOne {
-	cruo.mutation.ClearDepartmentID()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearDepartmentID() *CiRecordsUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (cruo *CiRecordsUpdateOne) SetCiID(u uint64) *CiRecordsUpdateOne {
-	cruo.mutation.SetCiID(u)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetCiID(v uint64) *CiRecordsUpdateOne {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableCiID(u *uint64) *CiRecordsUpdateOne {
-	if u != nil {
-		cruo.SetCiID(*u)
+func (_u *CiRecordsUpdateOne) SetNillableCiID(v *uint64) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (cruo *CiRecordsUpdateOne) SetCiTypeID(u uint64) *CiRecordsUpdateOne {
-	cruo.mutation.SetCiTypeID(u)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetCiTypeID(v uint64) *CiRecordsUpdateOne {
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableCiTypeID(u *uint64) *CiRecordsUpdateOne {
-	if u != nil {
-		cruo.SetCiTypeID(*u)
+func (_u *CiRecordsUpdateOne) SetNillableCiTypeID(v *uint64) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetCiTypeName sets the "ci_type_name" field.
-func (cruo *CiRecordsUpdateOne) SetCiTypeName(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetCiTypeName(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetCiTypeName(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetCiTypeName(v)
+	return _u
 }
 
 // SetNillableCiTypeName sets the "ci_type_name" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableCiTypeName(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetCiTypeName(*s)
+func (_u *CiRecordsUpdateOne) SetNillableCiTypeName(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetCiTypeName(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetCiUniqueKey sets the "ci_unique_key" field.
-func (cruo *CiRecordsUpdateOne) SetCiUniqueKey(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetCiUniqueKey(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetCiUniqueKey(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetCiUniqueKey(v)
+	return _u
 }
 
 // SetNillableCiUniqueKey sets the "ci_unique_key" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableCiUniqueKey(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetCiUniqueKey(*s)
+func (_u *CiRecordsUpdateOne) SetNillableCiUniqueKey(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetCiUniqueKey(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearCiUniqueKey clears the value of the "ci_unique_key" field.
-func (cruo *CiRecordsUpdateOne) ClearCiUniqueKey() *CiRecordsUpdateOne {
-	cruo.mutation.ClearCiUniqueKey()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearCiUniqueKey() *CiRecordsUpdateOne {
+	_u.mutation.ClearCiUniqueKey()
+	return _u
 }
 
 // SetOperationType sets the "operation_type" field.
-func (cruo *CiRecordsUpdateOne) SetOperationType(ct cirecords.OperationType) *CiRecordsUpdateOne {
-	cruo.mutation.SetOperationType(ct)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetOperationType(v cirecords.OperationType) *CiRecordsUpdateOne {
+	_u.mutation.SetOperationType(v)
+	return _u
 }
 
 // SetNillableOperationType sets the "operation_type" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableOperationType(ct *cirecords.OperationType) *CiRecordsUpdateOne {
-	if ct != nil {
-		cruo.SetOperationType(*ct)
+func (_u *CiRecordsUpdateOne) SetNillableOperationType(v *cirecords.OperationType) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetOperationType(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetOperationTime sets the "operation_time" field.
-func (cruo *CiRecordsUpdateOne) SetOperationTime(t time.Time) *CiRecordsUpdateOne {
-	cruo.mutation.SetOperationTime(t)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetOperationTime(v time.Time) *CiRecordsUpdateOne {
+	_u.mutation.SetOperationTime(v)
+	return _u
 }
 
 // SetNillableOperationTime sets the "operation_time" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableOperationTime(t *time.Time) *CiRecordsUpdateOne {
-	if t != nil {
-		cruo.SetOperationTime(*t)
+func (_u *CiRecordsUpdateOne) SetNillableOperationTime(v *time.Time) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetOperationTime(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetOperationUserID sets the "operation_user_id" field.
-func (cruo *CiRecordsUpdateOne) SetOperationUserID(u uuid.UUID) *CiRecordsUpdateOne {
-	cruo.mutation.SetOperationUserID(u)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetOperationUserID(v uuid.UUID) *CiRecordsUpdateOne {
+	_u.mutation.SetOperationUserID(v)
+	return _u
 }
 
 // SetNillableOperationUserID sets the "operation_user_id" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableOperationUserID(u *uuid.UUID) *CiRecordsUpdateOne {
-	if u != nil {
-		cruo.SetOperationUserID(*u)
+func (_u *CiRecordsUpdateOne) SetNillableOperationUserID(v *uuid.UUID) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetOperationUserID(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearOperationUserID clears the value of the "operation_user_id" field.
-func (cruo *CiRecordsUpdateOne) ClearOperationUserID() *CiRecordsUpdateOne {
-	cruo.mutation.ClearOperationUserID()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearOperationUserID() *CiRecordsUpdateOne {
+	_u.mutation.ClearOperationUserID()
+	return _u
 }
 
 // SetOperationUserName sets the "operation_user_name" field.
-func (cruo *CiRecordsUpdateOne) SetOperationUserName(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetOperationUserName(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetOperationUserName(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetOperationUserName(v)
+	return _u
 }
 
 // SetNillableOperationUserName sets the "operation_user_name" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableOperationUserName(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetOperationUserName(*s)
+func (_u *CiRecordsUpdateOne) SetNillableOperationUserName(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetOperationUserName(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearOperationUserName clears the value of the "operation_user_name" field.
-func (cruo *CiRecordsUpdateOne) ClearOperationUserName() *CiRecordsUpdateOne {
-	cruo.mutation.ClearOperationUserName()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearOperationUserName() *CiRecordsUpdateOne {
+	_u.mutation.ClearOperationUserName()
+	return _u
 }
 
 // SetSourceType sets the "source_type" field.
-func (cruo *CiRecordsUpdateOne) SetSourceType(ct cirecords.SourceType) *CiRecordsUpdateOne {
-	cruo.mutation.SetSourceType(ct)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetSourceType(v cirecords.SourceType) *CiRecordsUpdateOne {
+	_u.mutation.SetSourceType(v)
+	return _u
 }
 
 // SetNillableSourceType sets the "source_type" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableSourceType(ct *cirecords.SourceType) *CiRecordsUpdateOne {
-	if ct != nil {
-		cruo.SetSourceType(*ct)
+func (_u *CiRecordsUpdateOne) SetNillableSourceType(v *cirecords.SourceType) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetSourceType(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetSourceID sets the "source_id" field.
-func (cruo *CiRecordsUpdateOne) SetSourceID(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetSourceID(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetSourceID(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetSourceID(v)
+	return _u
 }
 
 // SetNillableSourceID sets the "source_id" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableSourceID(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetSourceID(*s)
+func (_u *CiRecordsUpdateOne) SetNillableSourceID(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetSourceID(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearSourceID clears the value of the "source_id" field.
-func (cruo *CiRecordsUpdateOne) ClearSourceID() *CiRecordsUpdateOne {
-	cruo.mutation.ClearSourceID()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearSourceID() *CiRecordsUpdateOne {
+	_u.mutation.ClearSourceID()
+	return _u
 }
 
 // SetSourceDescription sets the "source_description" field.
-func (cruo *CiRecordsUpdateOne) SetSourceDescription(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetSourceDescription(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetSourceDescription(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetSourceDescription(v)
+	return _u
 }
 
 // SetNillableSourceDescription sets the "source_description" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableSourceDescription(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetSourceDescription(*s)
+func (_u *CiRecordsUpdateOne) SetNillableSourceDescription(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetSourceDescription(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearSourceDescription clears the value of the "source_description" field.
-func (cruo *CiRecordsUpdateOne) ClearSourceDescription() *CiRecordsUpdateOne {
-	cruo.mutation.ClearSourceDescription()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearSourceDescription() *CiRecordsUpdateOne {
+	_u.mutation.ClearSourceDescription()
+	return _u
 }
 
 // SetBeforeData sets the "before_data" field.
-func (cruo *CiRecordsUpdateOne) SetBeforeData(m map[string]interface{}) *CiRecordsUpdateOne {
-	cruo.mutation.SetBeforeData(m)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetBeforeData(v map[string]interface{}) *CiRecordsUpdateOne {
+	_u.mutation.SetBeforeData(v)
+	return _u
 }
 
 // ClearBeforeData clears the value of the "before_data" field.
-func (cruo *CiRecordsUpdateOne) ClearBeforeData() *CiRecordsUpdateOne {
-	cruo.mutation.ClearBeforeData()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearBeforeData() *CiRecordsUpdateOne {
+	_u.mutation.ClearBeforeData()
+	return _u
 }
 
 // SetAfterData sets the "after_data" field.
-func (cruo *CiRecordsUpdateOne) SetAfterData(m map[string]interface{}) *CiRecordsUpdateOne {
-	cruo.mutation.SetAfterData(m)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetAfterData(v map[string]interface{}) *CiRecordsUpdateOne {
+	_u.mutation.SetAfterData(v)
+	return _u
 }
 
 // ClearAfterData clears the value of the "after_data" field.
-func (cruo *CiRecordsUpdateOne) ClearAfterData() *CiRecordsUpdateOne {
-	cruo.mutation.ClearAfterData()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearAfterData() *CiRecordsUpdateOne {
+	_u.mutation.ClearAfterData()
+	return _u
 }
 
 // SetChangedFields sets the "changed_fields" field.
-func (cruo *CiRecordsUpdateOne) SetChangedFields(s []string) *CiRecordsUpdateOne {
-	cruo.mutation.SetChangedFields(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetChangedFields(v []string) *CiRecordsUpdateOne {
+	_u.mutation.SetChangedFields(v)
+	return _u
 }
 
-// AppendChangedFields appends s to the "changed_fields" field.
-func (cruo *CiRecordsUpdateOne) AppendChangedFields(s []string) *CiRecordsUpdateOne {
-	cruo.mutation.AppendChangedFields(s)
-	return cruo
+// AppendChangedFields appends value to the "changed_fields" field.
+func (_u *CiRecordsUpdateOne) AppendChangedFields(v []string) *CiRecordsUpdateOne {
+	_u.mutation.AppendChangedFields(v)
+	return _u
 }
 
 // ClearChangedFields clears the value of the "changed_fields" field.
-func (cruo *CiRecordsUpdateOne) ClearChangedFields() *CiRecordsUpdateOne {
-	cruo.mutation.ClearChangedFields()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearChangedFields() *CiRecordsUpdateOne {
+	_u.mutation.ClearChangedFields()
+	return _u
 }
 
 // SetChangeSummary sets the "change_summary" field.
-func (cruo *CiRecordsUpdateOne) SetChangeSummary(m map[string]interface{}) *CiRecordsUpdateOne {
-	cruo.mutation.SetChangeSummary(m)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetChangeSummary(v map[string]interface{}) *CiRecordsUpdateOne {
+	_u.mutation.SetChangeSummary(v)
+	return _u
 }
 
 // ClearChangeSummary clears the value of the "change_summary" field.
-func (cruo *CiRecordsUpdateOne) ClearChangeSummary() *CiRecordsUpdateOne {
-	cruo.mutation.ClearChangeSummary()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearChangeSummary() *CiRecordsUpdateOne {
+	_u.mutation.ClearChangeSummary()
+	return _u
 }
 
 // SetChangeReason sets the "change_reason" field.
-func (cruo *CiRecordsUpdateOne) SetChangeReason(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetChangeReason(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetChangeReason(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetChangeReason(v)
+	return _u
 }
 
 // SetNillableChangeReason sets the "change_reason" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableChangeReason(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetChangeReason(*s)
+func (_u *CiRecordsUpdateOne) SetNillableChangeReason(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetChangeReason(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearChangeReason clears the value of the "change_reason" field.
-func (cruo *CiRecordsUpdateOne) ClearChangeReason() *CiRecordsUpdateOne {
-	cruo.mutation.ClearChangeReason()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearChangeReason() *CiRecordsUpdateOne {
+	_u.mutation.ClearChangeReason()
+	return _u
 }
 
 // SetDescription sets the "description" field.
-func (cruo *CiRecordsUpdateOne) SetDescription(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetDescription(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetDescription(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetDescription(v)
+	return _u
 }
 
 // SetNillableDescription sets the "description" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableDescription(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetDescription(*s)
+func (_u *CiRecordsUpdateOne) SetNillableDescription(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetDescription(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearDescription clears the value of the "description" field.
-func (cruo *CiRecordsUpdateOne) ClearDescription() *CiRecordsUpdateOne {
-	cruo.mutation.ClearDescription()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearDescription() *CiRecordsUpdateOne {
+	_u.mutation.ClearDescription()
+	return _u
 }
 
 // SetComments sets the "comments" field.
-func (cruo *CiRecordsUpdateOne) SetComments(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetComments(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetComments(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetComments(v)
+	return _u
 }
 
 // SetNillableComments sets the "comments" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableComments(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetComments(*s)
+func (_u *CiRecordsUpdateOne) SetNillableComments(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetComments(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearComments clears the value of the "comments" field.
-func (cruo *CiRecordsUpdateOne) ClearComments() *CiRecordsUpdateOne {
-	cruo.mutation.ClearComments()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearComments() *CiRecordsUpdateOne {
+	_u.mutation.ClearComments()
+	return _u
 }
 
 // SetVersionNumber sets the "version_number" field.
-func (cruo *CiRecordsUpdateOne) SetVersionNumber(i int) *CiRecordsUpdateOne {
-	cruo.mutation.ResetVersionNumber()
-	cruo.mutation.SetVersionNumber(i)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetVersionNumber(v int) *CiRecordsUpdateOne {
+	_u.mutation.ResetVersionNumber()
+	_u.mutation.SetVersionNumber(v)
+	return _u
 }
 
 // SetNillableVersionNumber sets the "version_number" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableVersionNumber(i *int) *CiRecordsUpdateOne {
-	if i != nil {
-		cruo.SetVersionNumber(*i)
+func (_u *CiRecordsUpdateOne) SetNillableVersionNumber(v *int) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetVersionNumber(*v)
 	}
-	return cruo
+	return _u
 }
 
-// AddVersionNumber adds i to the "version_number" field.
-func (cruo *CiRecordsUpdateOne) AddVersionNumber(i int) *CiRecordsUpdateOne {
-	cruo.mutation.AddVersionNumber(i)
-	return cruo
+// AddVersionNumber adds value to the "version_number" field.
+func (_u *CiRecordsUpdateOne) AddVersionNumber(v int) *CiRecordsUpdateOne {
+	_u.mutation.AddVersionNumber(v)
+	return _u
 }
 
 // SetRevisionID sets the "revision_id" field.
-func (cruo *CiRecordsUpdateOne) SetRevisionID(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetRevisionID(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetRevisionID(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetRevisionID(v)
+	return _u
 }
 
 // SetNillableRevisionID sets the "revision_id" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableRevisionID(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetRevisionID(*s)
+func (_u *CiRecordsUpdateOne) SetNillableRevisionID(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetRevisionID(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearRevisionID clears the value of the "revision_id" field.
-func (cruo *CiRecordsUpdateOne) ClearRevisionID() *CiRecordsUpdateOne {
-	cruo.mutation.ClearRevisionID()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearRevisionID() *CiRecordsUpdateOne {
+	_u.mutation.ClearRevisionID()
+	return _u
 }
 
 // SetClientIP sets the "client_ip" field.
-func (cruo *CiRecordsUpdateOne) SetClientIP(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetClientIP(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetClientIP(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetClientIP(v)
+	return _u
 }
 
 // SetNillableClientIP sets the "client_ip" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableClientIP(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetClientIP(*s)
+func (_u *CiRecordsUpdateOne) SetNillableClientIP(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetClientIP(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearClientIP clears the value of the "client_ip" field.
-func (cruo *CiRecordsUpdateOne) ClearClientIP() *CiRecordsUpdateOne {
-	cruo.mutation.ClearClientIP()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearClientIP() *CiRecordsUpdateOne {
+	_u.mutation.ClearClientIP()
+	return _u
 }
 
 // SetUserAgent sets the "user_agent" field.
-func (cruo *CiRecordsUpdateOne) SetUserAgent(s string) *CiRecordsUpdateOne {
-	cruo.mutation.SetUserAgent(s)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetUserAgent(v string) *CiRecordsUpdateOne {
+	_u.mutation.SetUserAgent(v)
+	return _u
 }
 
 // SetNillableUserAgent sets the "user_agent" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableUserAgent(s *string) *CiRecordsUpdateOne {
-	if s != nil {
-		cruo.SetUserAgent(*s)
+func (_u *CiRecordsUpdateOne) SetNillableUserAgent(v *string) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetUserAgent(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearUserAgent clears the value of the "user_agent" field.
-func (cruo *CiRecordsUpdateOne) ClearUserAgent() *CiRecordsUpdateOne {
-	cruo.mutation.ClearUserAgent()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearUserAgent() *CiRecordsUpdateOne {
+	_u.mutation.ClearUserAgent()
+	return _u
 }
 
 // SetRequestContext sets the "request_context" field.
-func (cruo *CiRecordsUpdateOne) SetRequestContext(m map[string]interface{}) *CiRecordsUpdateOne {
-	cruo.mutation.SetRequestContext(m)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetRequestContext(v map[string]interface{}) *CiRecordsUpdateOne {
+	_u.mutation.SetRequestContext(v)
+	return _u
 }
 
 // ClearRequestContext clears the value of the "request_context" field.
-func (cruo *CiRecordsUpdateOne) ClearRequestContext() *CiRecordsUpdateOne {
-	cruo.mutation.ClearRequestContext()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearRequestContext() *CiRecordsUpdateOne {
+	_u.mutation.ClearRequestContext()
+	return _u
 }
 
 // SetAffectedRelations sets the "affected_relations" field.
-func (cruo *CiRecordsUpdateOne) SetAffectedRelations(i int) *CiRecordsUpdateOne {
-	cruo.mutation.ResetAffectedRelations()
-	cruo.mutation.SetAffectedRelations(i)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetAffectedRelations(v int) *CiRecordsUpdateOne {
+	_u.mutation.ResetAffectedRelations()
+	_u.mutation.SetAffectedRelations(v)
+	return _u
 }
 
 // SetNillableAffectedRelations sets the "affected_relations" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableAffectedRelations(i *int) *CiRecordsUpdateOne {
-	if i != nil {
-		cruo.SetAffectedRelations(*i)
+func (_u *CiRecordsUpdateOne) SetNillableAffectedRelations(v *int) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetAffectedRelations(*v)
 	}
-	return cruo
+	return _u
 }
 
-// AddAffectedRelations adds i to the "affected_relations" field.
-func (cruo *CiRecordsUpdateOne) AddAffectedRelations(i int) *CiRecordsUpdateOne {
-	cruo.mutation.AddAffectedRelations(i)
-	return cruo
+// AddAffectedRelations adds value to the "affected_relations" field.
+func (_u *CiRecordsUpdateOne) AddAffectedRelations(v int) *CiRecordsUpdateOne {
+	_u.mutation.AddAffectedRelations(v)
+	return _u
 }
 
 // SetAffectedRelationIds sets the "affected_relation_ids" field.
-func (cruo *CiRecordsUpdateOne) SetAffectedRelationIds(u []uint64) *CiRecordsUpdateOne {
-	cruo.mutation.SetAffectedRelationIds(u)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetAffectedRelationIds(v []uint64) *CiRecordsUpdateOne {
+	_u.mutation.SetAffectedRelationIds(v)
+	return _u
 }
 
-// AppendAffectedRelationIds appends u to the "affected_relation_ids" field.
-func (cruo *CiRecordsUpdateOne) AppendAffectedRelationIds(u []uint64) *CiRecordsUpdateOne {
-	cruo.mutation.AppendAffectedRelationIds(u)
-	return cruo
+// AppendAffectedRelationIds appends value to the "affected_relation_ids" field.
+func (_u *CiRecordsUpdateOne) AppendAffectedRelationIds(v []uint64) *CiRecordsUpdateOne {
+	_u.mutation.AppendAffectedRelationIds(v)
+	return _u
 }
 
 // ClearAffectedRelationIds clears the value of the "affected_relation_ids" field.
-func (cruo *CiRecordsUpdateOne) ClearAffectedRelationIds() *CiRecordsUpdateOne {
-	cruo.mutation.ClearAffectedRelationIds()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearAffectedRelationIds() *CiRecordsUpdateOne {
+	_u.mutation.ClearAffectedRelationIds()
+	return _u
 }
 
 // SetCascadeChanges sets the "cascade_changes" field.
-func (cruo *CiRecordsUpdateOne) SetCascadeChanges(b bool) *CiRecordsUpdateOne {
-	cruo.mutation.SetCascadeChanges(b)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetCascadeChanges(v bool) *CiRecordsUpdateOne {
+	_u.mutation.SetCascadeChanges(v)
+	return _u
 }
 
 // SetNillableCascadeChanges sets the "cascade_changes" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableCascadeChanges(b *bool) *CiRecordsUpdateOne {
-	if b != nil {
-		cruo.SetCascadeChanges(*b)
+func (_u *CiRecordsUpdateOne) SetNillableCascadeChanges(v *bool) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetCascadeChanges(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetIsMajorChange sets the "is_major_change" field.
-func (cruo *CiRecordsUpdateOne) SetIsMajorChange(b bool) *CiRecordsUpdateOne {
-	cruo.mutation.SetIsMajorChange(b)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetIsMajorChange(v bool) *CiRecordsUpdateOne {
+	_u.mutation.SetIsMajorChange(v)
+	return _u
 }
 
 // SetNillableIsMajorChange sets the "is_major_change" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableIsMajorChange(b *bool) *CiRecordsUpdateOne {
-	if b != nil {
-		cruo.SetIsMajorChange(*b)
+func (_u *CiRecordsUpdateOne) SetNillableIsMajorChange(v *bool) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetIsMajorChange(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetRequiresApproval sets the "requires_approval" field.
-func (cruo *CiRecordsUpdateOne) SetRequiresApproval(b bool) *CiRecordsUpdateOne {
-	cruo.mutation.SetRequiresApproval(b)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetRequiresApproval(v bool) *CiRecordsUpdateOne {
+	_u.mutation.SetRequiresApproval(v)
+	return _u
 }
 
 // SetNillableRequiresApproval sets the "requires_approval" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableRequiresApproval(b *bool) *CiRecordsUpdateOne {
-	if b != nil {
-		cruo.SetRequiresApproval(*b)
+func (_u *CiRecordsUpdateOne) SetNillableRequiresApproval(v *bool) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetRequiresApproval(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetApprovalStatus sets the "approval_status" field.
-func (cruo *CiRecordsUpdateOne) SetApprovalStatus(cs cirecords.ApprovalStatus) *CiRecordsUpdateOne {
-	cruo.mutation.SetApprovalStatus(cs)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetApprovalStatus(v cirecords.ApprovalStatus) *CiRecordsUpdateOne {
+	_u.mutation.SetApprovalStatus(v)
+	return _u
 }
 
 // SetNillableApprovalStatus sets the "approval_status" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableApprovalStatus(cs *cirecords.ApprovalStatus) *CiRecordsUpdateOne {
-	if cs != nil {
-		cruo.SetApprovalStatus(*cs)
+func (_u *CiRecordsUpdateOne) SetNillableApprovalStatus(v *cirecords.ApprovalStatus) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetApprovalStatus(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearApprovalStatus clears the value of the "approval_status" field.
-func (cruo *CiRecordsUpdateOne) ClearApprovalStatus() *CiRecordsUpdateOne {
-	cruo.mutation.ClearApprovalStatus()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearApprovalStatus() *CiRecordsUpdateOne {
+	_u.mutation.ClearApprovalStatus()
+	return _u
 }
 
 // SetApprovedBy sets the "approved_by" field.
-func (cruo *CiRecordsUpdateOne) SetApprovedBy(u uuid.UUID) *CiRecordsUpdateOne {
-	cruo.mutation.SetApprovedBy(u)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetApprovedBy(v uuid.UUID) *CiRecordsUpdateOne {
+	_u.mutation.SetApprovedBy(v)
+	return _u
 }
 
 // SetNillableApprovedBy sets the "approved_by" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableApprovedBy(u *uuid.UUID) *CiRecordsUpdateOne {
-	if u != nil {
-		cruo.SetApprovedBy(*u)
+func (_u *CiRecordsUpdateOne) SetNillableApprovedBy(v *uuid.UUID) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetApprovedBy(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearApprovedBy clears the value of the "approved_by" field.
-func (cruo *CiRecordsUpdateOne) ClearApprovedBy() *CiRecordsUpdateOne {
-	cruo.mutation.ClearApprovedBy()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearApprovedBy() *CiRecordsUpdateOne {
+	_u.mutation.ClearApprovedBy()
+	return _u
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (cruo *CiRecordsUpdateOne) SetApprovedAt(t time.Time) *CiRecordsUpdateOne {
-	cruo.mutation.SetApprovedAt(t)
-	return cruo
+func (_u *CiRecordsUpdateOne) SetApprovedAt(v time.Time) *CiRecordsUpdateOne {
+	_u.mutation.SetApprovedAt(v)
+	return _u
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (cruo *CiRecordsUpdateOne) SetNillableApprovedAt(t *time.Time) *CiRecordsUpdateOne {
-	if t != nil {
-		cruo.SetApprovedAt(*t)
+func (_u *CiRecordsUpdateOne) SetNillableApprovedAt(v *time.Time) *CiRecordsUpdateOne {
+	if v != nil {
+		_u.SetApprovedAt(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearApprovedAt clears the value of the "approved_at" field.
-func (cruo *CiRecordsUpdateOne) ClearApprovedAt() *CiRecordsUpdateOne {
-	cruo.mutation.ClearApprovedAt()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearApprovedAt() *CiRecordsUpdateOne {
+	_u.mutation.ClearApprovedAt()
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (cruo *CiRecordsUpdateOne) SetCi(c *Cis) *CiRecordsUpdateOne {
-	return cruo.SetCiID(c.ID)
+func (_u *CiRecordsUpdateOne) SetCi(v *Cis) *CiRecordsUpdateOne {
+	return _u.SetCiID(v.ID)
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (cruo *CiRecordsUpdateOne) SetCiType(c *CiType) *CiRecordsUpdateOne {
-	return cruo.SetCiTypeID(c.ID)
+func (_u *CiRecordsUpdateOne) SetCiType(v *CiType) *CiRecordsUpdateOne {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // Mutation returns the CiRecordsMutation object of the builder.
-func (cruo *CiRecordsUpdateOne) Mutation() *CiRecordsMutation {
-	return cruo.mutation
+func (_u *CiRecordsUpdateOne) Mutation() *CiRecordsMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (cruo *CiRecordsUpdateOne) ClearCi() *CiRecordsUpdateOne {
-	cruo.mutation.ClearCi()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearCi() *CiRecordsUpdateOne {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (cruo *CiRecordsUpdateOne) ClearCiType() *CiRecordsUpdateOne {
-	cruo.mutation.ClearCiType()
-	return cruo
+func (_u *CiRecordsUpdateOne) ClearCiType() *CiRecordsUpdateOne {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // Where appends a list predicates to the CiRecordsUpdate builder.
-func (cruo *CiRecordsUpdateOne) Where(ps ...predicate.CiRecords) *CiRecordsUpdateOne {
-	cruo.mutation.Where(ps...)
-	return cruo
+func (_u *CiRecordsUpdateOne) Where(ps ...predicate.CiRecords) *CiRecordsUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (cruo *CiRecordsUpdateOne) Select(field string, fields ...string) *CiRecordsUpdateOne {
-	cruo.fields = append([]string{field}, fields...)
-	return cruo
+func (_u *CiRecordsUpdateOne) Select(field string, fields ...string) *CiRecordsUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiRecords entity.
-func (cruo *CiRecordsUpdateOne) Save(ctx context.Context) (*CiRecords, error) {
-	cruo.defaults()
-	return withHooks(ctx, cruo.sqlSave, cruo.mutation, cruo.hooks)
+func (_u *CiRecordsUpdateOne) Save(ctx context.Context) (*CiRecords, error) {
+	_u.defaults()
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cruo *CiRecordsUpdateOne) SaveX(ctx context.Context) *CiRecords {
-	node, err := cruo.Save(ctx)
+func (_u *CiRecordsUpdateOne) SaveX(ctx context.Context) *CiRecords {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1617,108 +1617,108 @@ func (cruo *CiRecordsUpdateOne) SaveX(ctx context.Context) *CiRecords {
 }
 
 // Exec executes the query on the entity.
-func (cruo *CiRecordsUpdateOne) Exec(ctx context.Context) error {
-	_, err := cruo.Save(ctx)
+func (_u *CiRecordsUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cruo *CiRecordsUpdateOne) ExecX(ctx context.Context) {
-	if err := cruo.Exec(ctx); err != nil {
+func (_u *CiRecordsUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cruo *CiRecordsUpdateOne) defaults() {
-	if _, ok := cruo.mutation.UpdatedAt(); !ok {
+func (_u *CiRecordsUpdateOne) defaults() {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		v := cirecords.UpdateDefaultUpdatedAt()
-		cruo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cruo *CiRecordsUpdateOne) check() error {
-	if v, ok := cruo.mutation.CiTypeName(); ok {
+func (_u *CiRecordsUpdateOne) check() error {
+	if v, ok := _u.mutation.CiTypeName(); ok {
 		if err := cirecords.CiTypeNameValidator(v); err != nil {
 			return &ValidationError{Name: "ci_type_name", err: fmt.Errorf(`ent: validator failed for field "CiRecords.ci_type_name": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.CiUniqueKey(); ok {
+	if v, ok := _u.mutation.CiUniqueKey(); ok {
 		if err := cirecords.CiUniqueKeyValidator(v); err != nil {
 			return &ValidationError{Name: "ci_unique_key", err: fmt.Errorf(`ent: validator failed for field "CiRecords.ci_unique_key": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.OperationType(); ok {
+	if v, ok := _u.mutation.OperationType(); ok {
 		if err := cirecords.OperationTypeValidator(v); err != nil {
 			return &ValidationError{Name: "operation_type", err: fmt.Errorf(`ent: validator failed for field "CiRecords.operation_type": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.OperationUserName(); ok {
+	if v, ok := _u.mutation.OperationUserName(); ok {
 		if err := cirecords.OperationUserNameValidator(v); err != nil {
 			return &ValidationError{Name: "operation_user_name", err: fmt.Errorf(`ent: validator failed for field "CiRecords.operation_user_name": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.SourceType(); ok {
+	if v, ok := _u.mutation.SourceType(); ok {
 		if err := cirecords.SourceTypeValidator(v); err != nil {
 			return &ValidationError{Name: "source_type", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_type": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.SourceID(); ok {
+	if v, ok := _u.mutation.SourceID(); ok {
 		if err := cirecords.SourceIDValidator(v); err != nil {
 			return &ValidationError{Name: "source_id", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_id": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.SourceDescription(); ok {
+	if v, ok := _u.mutation.SourceDescription(); ok {
 		if err := cirecords.SourceDescriptionValidator(v); err != nil {
 			return &ValidationError{Name: "source_description", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_description": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.ChangeReason(); ok {
+	if v, ok := _u.mutation.ChangeReason(); ok {
 		if err := cirecords.ChangeReasonValidator(v); err != nil {
 			return &ValidationError{Name: "change_reason", err: fmt.Errorf(`ent: validator failed for field "CiRecords.change_reason": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.RevisionID(); ok {
+	if v, ok := _u.mutation.RevisionID(); ok {
 		if err := cirecords.RevisionIDValidator(v); err != nil {
 			return &ValidationError{Name: "revision_id", err: fmt.Errorf(`ent: validator failed for field "CiRecords.revision_id": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.ClientIP(); ok {
+	if v, ok := _u.mutation.ClientIP(); ok {
 		if err := cirecords.ClientIPValidator(v); err != nil {
 			return &ValidationError{Name: "client_ip", err: fmt.Errorf(`ent: validator failed for field "CiRecords.client_ip": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.UserAgent(); ok {
+	if v, ok := _u.mutation.UserAgent(); ok {
 		if err := cirecords.UserAgentValidator(v); err != nil {
 			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`ent: validator failed for field "CiRecords.user_agent": %w`, err)}
 		}
 	}
-	if v, ok := cruo.mutation.ApprovalStatus(); ok {
+	if v, ok := _u.mutation.ApprovalStatus(); ok {
 		if err := cirecords.ApprovalStatusValidator(v); err != nil {
 			return &ValidationError{Name: "approval_status", err: fmt.Errorf(`ent: validator failed for field "CiRecords.approval_status": %w`, err)}
 		}
 	}
-	if cruo.mutation.CiCleared() && len(cruo.mutation.CiIDs()) > 0 {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRecords.ci"`)
 	}
-	if cruo.mutation.CiTypeCleared() && len(cruo.mutation.CiTypeIDs()) > 0 {
+	if _u.mutation.CiTypeCleared() && len(_u.mutation.CiTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRecords.ci_type"`)
 	}
 	return nil
 }
 
-func (cruo *CiRecordsUpdateOne) sqlSave(ctx context.Context) (_node *CiRecords, err error) {
-	if err := cruo.check(); err != nil {
+func (_u *CiRecordsUpdateOne) sqlSave(ctx context.Context) (_node *CiRecords, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cirecords.Table, cirecords.Columns, sqlgraph.NewFieldSpec(cirecords.FieldID, field.TypeUint64))
-	id, ok := cruo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiRecords.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := cruo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cirecords.FieldID)
 		for _, f := range fields {
@@ -1730,189 +1730,189 @@ func (cruo *CiRecordsUpdateOne) sqlSave(ctx context.Context) (_node *CiRecords, 
 			}
 		}
 	}
-	if ps := cruo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cruo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cirecords.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cruo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cirecords.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cruo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cirecords.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cruo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cirecords.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cruo.mutation.CiTypeName(); ok {
+	if value, ok := _u.mutation.CiTypeName(); ok {
 		_spec.SetField(cirecords.FieldCiTypeName, field.TypeString, value)
 	}
-	if value, ok := cruo.mutation.CiUniqueKey(); ok {
+	if value, ok := _u.mutation.CiUniqueKey(); ok {
 		_spec.SetField(cirecords.FieldCiUniqueKey, field.TypeString, value)
 	}
-	if cruo.mutation.CiUniqueKeyCleared() {
+	if _u.mutation.CiUniqueKeyCleared() {
 		_spec.ClearField(cirecords.FieldCiUniqueKey, field.TypeString)
 	}
-	if value, ok := cruo.mutation.OperationType(); ok {
+	if value, ok := _u.mutation.OperationType(); ok {
 		_spec.SetField(cirecords.FieldOperationType, field.TypeEnum, value)
 	}
-	if value, ok := cruo.mutation.OperationTime(); ok {
+	if value, ok := _u.mutation.OperationTime(); ok {
 		_spec.SetField(cirecords.FieldOperationTime, field.TypeTime, value)
 	}
-	if value, ok := cruo.mutation.OperationUserID(); ok {
+	if value, ok := _u.mutation.OperationUserID(); ok {
 		_spec.SetField(cirecords.FieldOperationUserID, field.TypeUUID, value)
 	}
-	if cruo.mutation.OperationUserIDCleared() {
+	if _u.mutation.OperationUserIDCleared() {
 		_spec.ClearField(cirecords.FieldOperationUserID, field.TypeUUID)
 	}
-	if value, ok := cruo.mutation.OperationUserName(); ok {
+	if value, ok := _u.mutation.OperationUserName(); ok {
 		_spec.SetField(cirecords.FieldOperationUserName, field.TypeString, value)
 	}
-	if cruo.mutation.OperationUserNameCleared() {
+	if _u.mutation.OperationUserNameCleared() {
 		_spec.ClearField(cirecords.FieldOperationUserName, field.TypeString)
 	}
-	if value, ok := cruo.mutation.SourceType(); ok {
+	if value, ok := _u.mutation.SourceType(); ok {
 		_spec.SetField(cirecords.FieldSourceType, field.TypeEnum, value)
 	}
-	if value, ok := cruo.mutation.SourceID(); ok {
+	if value, ok := _u.mutation.SourceID(); ok {
 		_spec.SetField(cirecords.FieldSourceID, field.TypeString, value)
 	}
-	if cruo.mutation.SourceIDCleared() {
+	if _u.mutation.SourceIDCleared() {
 		_spec.ClearField(cirecords.FieldSourceID, field.TypeString)
 	}
-	if value, ok := cruo.mutation.SourceDescription(); ok {
+	if value, ok := _u.mutation.SourceDescription(); ok {
 		_spec.SetField(cirecords.FieldSourceDescription, field.TypeString, value)
 	}
-	if cruo.mutation.SourceDescriptionCleared() {
+	if _u.mutation.SourceDescriptionCleared() {
 		_spec.ClearField(cirecords.FieldSourceDescription, field.TypeString)
 	}
-	if value, ok := cruo.mutation.BeforeData(); ok {
+	if value, ok := _u.mutation.BeforeData(); ok {
 		_spec.SetField(cirecords.FieldBeforeData, field.TypeJSON, value)
 	}
-	if cruo.mutation.BeforeDataCleared() {
+	if _u.mutation.BeforeDataCleared() {
 		_spec.ClearField(cirecords.FieldBeforeData, field.TypeJSON)
 	}
-	if value, ok := cruo.mutation.AfterData(); ok {
+	if value, ok := _u.mutation.AfterData(); ok {
 		_spec.SetField(cirecords.FieldAfterData, field.TypeJSON, value)
 	}
-	if cruo.mutation.AfterDataCleared() {
+	if _u.mutation.AfterDataCleared() {
 		_spec.ClearField(cirecords.FieldAfterData, field.TypeJSON)
 	}
-	if value, ok := cruo.mutation.ChangedFields(); ok {
+	if value, ok := _u.mutation.ChangedFields(); ok {
 		_spec.SetField(cirecords.FieldChangedFields, field.TypeJSON, value)
 	}
-	if value, ok := cruo.mutation.AppendedChangedFields(); ok {
+	if value, ok := _u.mutation.AppendedChangedFields(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cirecords.FieldChangedFields, value)
 		})
 	}
-	if cruo.mutation.ChangedFieldsCleared() {
+	if _u.mutation.ChangedFieldsCleared() {
 		_spec.ClearField(cirecords.FieldChangedFields, field.TypeJSON)
 	}
-	if value, ok := cruo.mutation.ChangeSummary(); ok {
+	if value, ok := _u.mutation.ChangeSummary(); ok {
 		_spec.SetField(cirecords.FieldChangeSummary, field.TypeJSON, value)
 	}
-	if cruo.mutation.ChangeSummaryCleared() {
+	if _u.mutation.ChangeSummaryCleared() {
 		_spec.ClearField(cirecords.FieldChangeSummary, field.TypeJSON)
 	}
-	if value, ok := cruo.mutation.ChangeReason(); ok {
+	if value, ok := _u.mutation.ChangeReason(); ok {
 		_spec.SetField(cirecords.FieldChangeReason, field.TypeString, value)
 	}
-	if cruo.mutation.ChangeReasonCleared() {
+	if _u.mutation.ChangeReasonCleared() {
 		_spec.ClearField(cirecords.FieldChangeReason, field.TypeString)
 	}
-	if value, ok := cruo.mutation.Description(); ok {
+	if value, ok := _u.mutation.Description(); ok {
 		_spec.SetField(cirecords.FieldDescription, field.TypeString, value)
 	}
-	if cruo.mutation.DescriptionCleared() {
+	if _u.mutation.DescriptionCleared() {
 		_spec.ClearField(cirecords.FieldDescription, field.TypeString)
 	}
-	if value, ok := cruo.mutation.Comments(); ok {
+	if value, ok := _u.mutation.Comments(); ok {
 		_spec.SetField(cirecords.FieldComments, field.TypeString, value)
 	}
-	if cruo.mutation.CommentsCleared() {
+	if _u.mutation.CommentsCleared() {
 		_spec.ClearField(cirecords.FieldComments, field.TypeString)
 	}
-	if value, ok := cruo.mutation.VersionNumber(); ok {
+	if value, ok := _u.mutation.VersionNumber(); ok {
 		_spec.SetField(cirecords.FieldVersionNumber, field.TypeInt, value)
 	}
-	if value, ok := cruo.mutation.AddedVersionNumber(); ok {
+	if value, ok := _u.mutation.AddedVersionNumber(); ok {
 		_spec.AddField(cirecords.FieldVersionNumber, field.TypeInt, value)
 	}
-	if value, ok := cruo.mutation.RevisionID(); ok {
+	if value, ok := _u.mutation.RevisionID(); ok {
 		_spec.SetField(cirecords.FieldRevisionID, field.TypeString, value)
 	}
-	if cruo.mutation.RevisionIDCleared() {
+	if _u.mutation.RevisionIDCleared() {
 		_spec.ClearField(cirecords.FieldRevisionID, field.TypeString)
 	}
-	if value, ok := cruo.mutation.ClientIP(); ok {
+	if value, ok := _u.mutation.ClientIP(); ok {
 		_spec.SetField(cirecords.FieldClientIP, field.TypeString, value)
 	}
-	if cruo.mutation.ClientIPCleared() {
+	if _u.mutation.ClientIPCleared() {
 		_spec.ClearField(cirecords.FieldClientIP, field.TypeString)
 	}
-	if value, ok := cruo.mutation.UserAgent(); ok {
+	if value, ok := _u.mutation.UserAgent(); ok {
 		_spec.SetField(cirecords.FieldUserAgent, field.TypeString, value)
 	}
-	if cruo.mutation.UserAgentCleared() {
+	if _u.mutation.UserAgentCleared() {
 		_spec.ClearField(cirecords.FieldUserAgent, field.TypeString)
 	}
-	if value, ok := cruo.mutation.RequestContext(); ok {
+	if value, ok := _u.mutation.RequestContext(); ok {
 		_spec.SetField(cirecords.FieldRequestContext, field.TypeJSON, value)
 	}
-	if cruo.mutation.RequestContextCleared() {
+	if _u.mutation.RequestContextCleared() {
 		_spec.ClearField(cirecords.FieldRequestContext, field.TypeJSON)
 	}
-	if value, ok := cruo.mutation.AffectedRelations(); ok {
+	if value, ok := _u.mutation.AffectedRelations(); ok {
 		_spec.SetField(cirecords.FieldAffectedRelations, field.TypeInt, value)
 	}
-	if value, ok := cruo.mutation.AddedAffectedRelations(); ok {
+	if value, ok := _u.mutation.AddedAffectedRelations(); ok {
 		_spec.AddField(cirecords.FieldAffectedRelations, field.TypeInt, value)
 	}
-	if value, ok := cruo.mutation.AffectedRelationIds(); ok {
+	if value, ok := _u.mutation.AffectedRelationIds(); ok {
 		_spec.SetField(cirecords.FieldAffectedRelationIds, field.TypeJSON, value)
 	}
-	if value, ok := cruo.mutation.AppendedAffectedRelationIds(); ok {
+	if value, ok := _u.mutation.AppendedAffectedRelationIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cirecords.FieldAffectedRelationIds, value)
 		})
 	}
-	if cruo.mutation.AffectedRelationIdsCleared() {
+	if _u.mutation.AffectedRelationIdsCleared() {
 		_spec.ClearField(cirecords.FieldAffectedRelationIds, field.TypeJSON)
 	}
-	if value, ok := cruo.mutation.CascadeChanges(); ok {
+	if value, ok := _u.mutation.CascadeChanges(); ok {
 		_spec.SetField(cirecords.FieldCascadeChanges, field.TypeBool, value)
 	}
-	if value, ok := cruo.mutation.IsMajorChange(); ok {
+	if value, ok := _u.mutation.IsMajorChange(); ok {
 		_spec.SetField(cirecords.FieldIsMajorChange, field.TypeBool, value)
 	}
-	if value, ok := cruo.mutation.RequiresApproval(); ok {
+	if value, ok := _u.mutation.RequiresApproval(); ok {
 		_spec.SetField(cirecords.FieldRequiresApproval, field.TypeBool, value)
 	}
-	if value, ok := cruo.mutation.ApprovalStatus(); ok {
+	if value, ok := _u.mutation.ApprovalStatus(); ok {
 		_spec.SetField(cirecords.FieldApprovalStatus, field.TypeEnum, value)
 	}
-	if cruo.mutation.ApprovalStatusCleared() {
+	if _u.mutation.ApprovalStatusCleared() {
 		_spec.ClearField(cirecords.FieldApprovalStatus, field.TypeEnum)
 	}
-	if value, ok := cruo.mutation.ApprovedBy(); ok {
+	if value, ok := _u.mutation.ApprovedBy(); ok {
 		_spec.SetField(cirecords.FieldApprovedBy, field.TypeUUID, value)
 	}
-	if cruo.mutation.ApprovedByCleared() {
+	if _u.mutation.ApprovedByCleared() {
 		_spec.ClearField(cirecords.FieldApprovedBy, field.TypeUUID)
 	}
-	if value, ok := cruo.mutation.ApprovedAt(); ok {
+	if value, ok := _u.mutation.ApprovedAt(); ok {
 		_spec.SetField(cirecords.FieldApprovedAt, field.TypeTime, value)
 	}
-	if cruo.mutation.ApprovedAtCleared() {
+	if _u.mutation.ApprovedAtCleared() {
 		_spec.ClearField(cirecords.FieldApprovedAt, field.TypeTime)
 	}
-	if cruo.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1925,7 +1925,7 @@ func (cruo *CiRecordsUpdateOne) sqlSave(ctx context.Context) (_node *CiRecords, 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cruo.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1941,7 +1941,7 @@ func (cruo *CiRecordsUpdateOne) sqlSave(ctx context.Context) (_node *CiRecords, 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cruo.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1954,7 +1954,7 @@ func (cruo *CiRecordsUpdateOne) sqlSave(ctx context.Context) (_node *CiRecords, 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cruo.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1970,10 +1970,10 @@ func (cruo *CiRecordsUpdateOne) sqlSave(ctx context.Context) (_node *CiRecords, 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &CiRecords{config: cruo.config}
+	_node = &CiRecords{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, cruo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cirecords.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1981,6 +1981,6 @@ func (cruo *CiRecordsUpdateOne) sqlSave(ctx context.Context) (_node *CiRecords, 
 		}
 		return nil, err
 	}
-	cruo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

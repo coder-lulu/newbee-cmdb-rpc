@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
 )
 
 // ValueJSONDelete is the builder for deleting a ValueJSON entity.
@@ -20,56 +20,56 @@ type ValueJSONDelete struct {
 }
 
 // Where appends a list predicates to the ValueJSONDelete builder.
-func (vjd *ValueJSONDelete) Where(ps ...predicate.ValueJSON) *ValueJSONDelete {
-	vjd.mutation.Where(ps...)
-	return vjd
+func (_d *ValueJSONDelete) Where(ps ...predicate.ValueJSON) *ValueJSONDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (vjd *ValueJSONDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, vjd.sqlExec, vjd.mutation, vjd.hooks)
+func (_d *ValueJSONDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vjd *ValueJSONDelete) ExecX(ctx context.Context) int {
-	n, err := vjd.Exec(ctx)
+func (_d *ValueJSONDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (vjd *ValueJSONDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ValueJSONDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(valuejson.Table, sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64))
-	if ps := vjd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, vjd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	vjd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ValueJSONDeleteOne is the builder for deleting a single ValueJSON entity.
 type ValueJSONDeleteOne struct {
-	vjd *ValueJSONDelete
+	_d *ValueJSONDelete
 }
 
 // Where appends a list predicates to the ValueJSONDelete builder.
-func (vjdo *ValueJSONDeleteOne) Where(ps ...predicate.ValueJSON) *ValueJSONDeleteOne {
-	vjdo.vjd.mutation.Where(ps...)
-	return vjdo
+func (_d *ValueJSONDeleteOne) Where(ps ...predicate.ValueJSON) *ValueJSONDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (vjdo *ValueJSONDeleteOne) Exec(ctx context.Context) error {
-	n, err := vjdo.vjd.Exec(ctx)
+func (_d *ValueJSONDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (vjdo *ValueJSONDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vjdo *ValueJSONDeleteOne) ExecX(ctx context.Context) {
-	if err := vjdo.Exec(ctx); err != nil {
+func (_d *ValueJSONDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

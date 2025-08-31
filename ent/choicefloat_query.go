@@ -11,9 +11,9 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ChoiceFloatQuery is the builder for querying ChoiceFloat entities.
@@ -30,44 +30,44 @@ type ChoiceFloatQuery struct {
 }
 
 // Where adds a new predicate for the ChoiceFloatQuery builder.
-func (cfq *ChoiceFloatQuery) Where(ps ...predicate.ChoiceFloat) *ChoiceFloatQuery {
-	cfq.predicates = append(cfq.predicates, ps...)
-	return cfq
+func (_q *ChoiceFloatQuery) Where(ps ...predicate.ChoiceFloat) *ChoiceFloatQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (cfq *ChoiceFloatQuery) Limit(limit int) *ChoiceFloatQuery {
-	cfq.ctx.Limit = &limit
-	return cfq
+func (_q *ChoiceFloatQuery) Limit(limit int) *ChoiceFloatQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (cfq *ChoiceFloatQuery) Offset(offset int) *ChoiceFloatQuery {
-	cfq.ctx.Offset = &offset
-	return cfq
+func (_q *ChoiceFloatQuery) Offset(offset int) *ChoiceFloatQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (cfq *ChoiceFloatQuery) Unique(unique bool) *ChoiceFloatQuery {
-	cfq.ctx.Unique = &unique
-	return cfq
+func (_q *ChoiceFloatQuery) Unique(unique bool) *ChoiceFloatQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (cfq *ChoiceFloatQuery) Order(o ...choicefloat.OrderOption) *ChoiceFloatQuery {
-	cfq.order = append(cfq.order, o...)
-	return cfq
+func (_q *ChoiceFloatQuery) Order(o ...choicefloat.OrderOption) *ChoiceFloatQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryAttribute chains the current query on the "attribute" edge.
-func (cfq *ChoiceFloatQuery) QueryAttribute() *AttributeQuery {
-	query := (&AttributeClient{config: cfq.config}).Query()
+func (_q *ChoiceFloatQuery) QueryAttribute() *AttributeQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := cfq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := cfq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -76,7 +76,7 @@ func (cfq *ChoiceFloatQuery) QueryAttribute() *AttributeQuery {
 			sqlgraph.To(attribute.Table, attribute.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, choicefloat.AttributeTable, choicefloat.AttributeColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(cfq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -84,8 +84,8 @@ func (cfq *ChoiceFloatQuery) QueryAttribute() *AttributeQuery {
 
 // First returns the first ChoiceFloat entity from the query.
 // Returns a *NotFoundError when no ChoiceFloat was found.
-func (cfq *ChoiceFloatQuery) First(ctx context.Context) (*ChoiceFloat, error) {
-	nodes, err := cfq.Limit(1).All(setContextOp(ctx, cfq.ctx, ent.OpQueryFirst))
+func (_q *ChoiceFloatQuery) First(ctx context.Context) (*ChoiceFloat, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -96,8 +96,8 @@ func (cfq *ChoiceFloatQuery) First(ctx context.Context) (*ChoiceFloat, error) {
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (cfq *ChoiceFloatQuery) FirstX(ctx context.Context) *ChoiceFloat {
-	node, err := cfq.First(ctx)
+func (_q *ChoiceFloatQuery) FirstX(ctx context.Context) *ChoiceFloat {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -106,9 +106,9 @@ func (cfq *ChoiceFloatQuery) FirstX(ctx context.Context) *ChoiceFloat {
 
 // FirstID returns the first ChoiceFloat ID from the query.
 // Returns a *NotFoundError when no ChoiceFloat ID was found.
-func (cfq *ChoiceFloatQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *ChoiceFloatQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = cfq.Limit(1).IDs(setContextOp(ctx, cfq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -119,8 +119,8 @@ func (cfq *ChoiceFloatQuery) FirstID(ctx context.Context) (id uint64, err error)
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (cfq *ChoiceFloatQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := cfq.FirstID(ctx)
+func (_q *ChoiceFloatQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -130,8 +130,8 @@ func (cfq *ChoiceFloatQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single ChoiceFloat entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one ChoiceFloat entity is found.
 // Returns a *NotFoundError when no ChoiceFloat entities are found.
-func (cfq *ChoiceFloatQuery) Only(ctx context.Context) (*ChoiceFloat, error) {
-	nodes, err := cfq.Limit(2).All(setContextOp(ctx, cfq.ctx, ent.OpQueryOnly))
+func (_q *ChoiceFloatQuery) Only(ctx context.Context) (*ChoiceFloat, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -146,8 +146,8 @@ func (cfq *ChoiceFloatQuery) Only(ctx context.Context) (*ChoiceFloat, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (cfq *ChoiceFloatQuery) OnlyX(ctx context.Context) *ChoiceFloat {
-	node, err := cfq.Only(ctx)
+func (_q *ChoiceFloatQuery) OnlyX(ctx context.Context) *ChoiceFloat {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -157,9 +157,9 @@ func (cfq *ChoiceFloatQuery) OnlyX(ctx context.Context) *ChoiceFloat {
 // OnlyID is like Only, but returns the only ChoiceFloat ID in the query.
 // Returns a *NotSingularError when more than one ChoiceFloat ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (cfq *ChoiceFloatQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *ChoiceFloatQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = cfq.Limit(2).IDs(setContextOp(ctx, cfq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -174,8 +174,8 @@ func (cfq *ChoiceFloatQuery) OnlyID(ctx context.Context) (id uint64, err error) 
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (cfq *ChoiceFloatQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := cfq.OnlyID(ctx)
+func (_q *ChoiceFloatQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -183,18 +183,18 @@ func (cfq *ChoiceFloatQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of ChoiceFloats.
-func (cfq *ChoiceFloatQuery) All(ctx context.Context) ([]*ChoiceFloat, error) {
-	ctx = setContextOp(ctx, cfq.ctx, ent.OpQueryAll)
-	if err := cfq.prepareQuery(ctx); err != nil {
+func (_q *ChoiceFloatQuery) All(ctx context.Context) ([]*ChoiceFloat, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*ChoiceFloat, *ChoiceFloatQuery]()
-	return withInterceptors[[]*ChoiceFloat](ctx, cfq, qr, cfq.inters)
+	return withInterceptors[[]*ChoiceFloat](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (cfq *ChoiceFloatQuery) AllX(ctx context.Context) []*ChoiceFloat {
-	nodes, err := cfq.All(ctx)
+func (_q *ChoiceFloatQuery) AllX(ctx context.Context) []*ChoiceFloat {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -202,20 +202,20 @@ func (cfq *ChoiceFloatQuery) AllX(ctx context.Context) []*ChoiceFloat {
 }
 
 // IDs executes the query and returns a list of ChoiceFloat IDs.
-func (cfq *ChoiceFloatQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if cfq.ctx.Unique == nil && cfq.path != nil {
-		cfq.Unique(true)
+func (_q *ChoiceFloatQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, cfq.ctx, ent.OpQueryIDs)
-	if err = cfq.Select(choicefloat.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(choicefloat.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (cfq *ChoiceFloatQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := cfq.IDs(ctx)
+func (_q *ChoiceFloatQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -223,17 +223,17 @@ func (cfq *ChoiceFloatQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (cfq *ChoiceFloatQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, cfq.ctx, ent.OpQueryCount)
-	if err := cfq.prepareQuery(ctx); err != nil {
+func (_q *ChoiceFloatQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, cfq, querierCount[*ChoiceFloatQuery](), cfq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*ChoiceFloatQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (cfq *ChoiceFloatQuery) CountX(ctx context.Context) int {
-	count, err := cfq.Count(ctx)
+func (_q *ChoiceFloatQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -241,9 +241,9 @@ func (cfq *ChoiceFloatQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (cfq *ChoiceFloatQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, cfq.ctx, ent.OpQueryExist)
-	switch _, err := cfq.FirstID(ctx); {
+func (_q *ChoiceFloatQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -254,8 +254,8 @@ func (cfq *ChoiceFloatQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (cfq *ChoiceFloatQuery) ExistX(ctx context.Context) bool {
-	exist, err := cfq.Exist(ctx)
+func (_q *ChoiceFloatQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -264,32 +264,32 @@ func (cfq *ChoiceFloatQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the ChoiceFloatQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (cfq *ChoiceFloatQuery) Clone() *ChoiceFloatQuery {
-	if cfq == nil {
+func (_q *ChoiceFloatQuery) Clone() *ChoiceFloatQuery {
+	if _q == nil {
 		return nil
 	}
 	return &ChoiceFloatQuery{
-		config:        cfq.config,
-		ctx:           cfq.ctx.Clone(),
-		order:         append([]choicefloat.OrderOption{}, cfq.order...),
-		inters:        append([]Interceptor{}, cfq.inters...),
-		predicates:    append([]predicate.ChoiceFloat{}, cfq.predicates...),
-		withAttribute: cfq.withAttribute.Clone(),
+		config:        _q.config,
+		ctx:           _q.ctx.Clone(),
+		order:         append([]choicefloat.OrderOption{}, _q.order...),
+		inters:        append([]Interceptor{}, _q.inters...),
+		predicates:    append([]predicate.ChoiceFloat{}, _q.predicates...),
+		withAttribute: _q.withAttribute.Clone(),
 		// clone intermediate query.
-		sql:  cfq.sql.Clone(),
-		path: cfq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithAttribute tells the query-builder to eager-load the nodes that are connected to
 // the "attribute" edge. The optional arguments are used to configure the query builder of the edge.
-func (cfq *ChoiceFloatQuery) WithAttribute(opts ...func(*AttributeQuery)) *ChoiceFloatQuery {
-	query := (&AttributeClient{config: cfq.config}).Query()
+func (_q *ChoiceFloatQuery) WithAttribute(opts ...func(*AttributeQuery)) *ChoiceFloatQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	cfq.withAttribute = query
-	return cfq
+	_q.withAttribute = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -306,10 +306,10 @@ func (cfq *ChoiceFloatQuery) WithAttribute(opts ...func(*AttributeQuery)) *Choic
 //		GroupBy(choicefloat.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (cfq *ChoiceFloatQuery) GroupBy(field string, fields ...string) *ChoiceFloatGroupBy {
-	cfq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &ChoiceFloatGroupBy{build: cfq}
-	grbuild.flds = &cfq.ctx.Fields
+func (_q *ChoiceFloatQuery) GroupBy(field string, fields ...string) *ChoiceFloatGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &ChoiceFloatGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = choicefloat.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -327,58 +327,58 @@ func (cfq *ChoiceFloatQuery) GroupBy(field string, fields ...string) *ChoiceFloa
 //	client.ChoiceFloat.Query().
 //		Select(choicefloat.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (cfq *ChoiceFloatQuery) Select(fields ...string) *ChoiceFloatSelect {
-	cfq.ctx.Fields = append(cfq.ctx.Fields, fields...)
-	sbuild := &ChoiceFloatSelect{ChoiceFloatQuery: cfq}
+func (_q *ChoiceFloatQuery) Select(fields ...string) *ChoiceFloatSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &ChoiceFloatSelect{ChoiceFloatQuery: _q}
 	sbuild.label = choicefloat.Label
-	sbuild.flds, sbuild.scan = &cfq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a ChoiceFloatSelect configured with the given aggregations.
-func (cfq *ChoiceFloatQuery) Aggregate(fns ...AggregateFunc) *ChoiceFloatSelect {
-	return cfq.Select().Aggregate(fns...)
+func (_q *ChoiceFloatQuery) Aggregate(fns ...AggregateFunc) *ChoiceFloatSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (cfq *ChoiceFloatQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range cfq.inters {
+func (_q *ChoiceFloatQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, cfq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range cfq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !choicefloat.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if cfq.path != nil {
-		prev, err := cfq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		cfq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (cfq *ChoiceFloatQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ChoiceFloat, error) {
+func (_q *ChoiceFloatQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ChoiceFloat, error) {
 	var (
 		nodes       = []*ChoiceFloat{}
-		_spec       = cfq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [1]bool{
-			cfq.withAttribute != nil,
+			_q.withAttribute != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*ChoiceFloat).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &ChoiceFloat{config: cfq.config}
+		node := &ChoiceFloat{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -386,14 +386,14 @@ func (cfq *ChoiceFloatQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, cfq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := cfq.withAttribute; query != nil {
-		if err := cfq.loadAttribute(ctx, query, nodes, nil,
+	if query := _q.withAttribute; query != nil {
+		if err := _q.loadAttribute(ctx, query, nodes, nil,
 			func(n *ChoiceFloat, e *Attribute) { n.Edges.Attribute = e }); err != nil {
 			return nil, err
 		}
@@ -401,7 +401,7 @@ func (cfq *ChoiceFloatQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]
 	return nodes, nil
 }
 
-func (cfq *ChoiceFloatQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ChoiceFloat, init func(*ChoiceFloat), assign func(*ChoiceFloat, *Attribute)) error {
+func (_q *ChoiceFloatQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ChoiceFloat, init func(*ChoiceFloat), assign func(*ChoiceFloat, *Attribute)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ChoiceFloat)
 	for i := range nodes {
@@ -431,24 +431,24 @@ func (cfq *ChoiceFloatQuery) loadAttribute(ctx context.Context, query *Attribute
 	return nil
 }
 
-func (cfq *ChoiceFloatQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := cfq.querySpec()
-	_spec.Node.Columns = cfq.ctx.Fields
-	if len(cfq.ctx.Fields) > 0 {
-		_spec.Unique = cfq.ctx.Unique != nil && *cfq.ctx.Unique
+func (_q *ChoiceFloatQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, cfq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (cfq *ChoiceFloatQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *ChoiceFloatQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(choicefloat.Table, choicefloat.Columns, sqlgraph.NewFieldSpec(choicefloat.FieldID, field.TypeUint64))
-	_spec.From = cfq.sql
-	if unique := cfq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if cfq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := cfq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, choicefloat.FieldID)
 		for i := range fields {
@@ -456,24 +456,24 @@ func (cfq *ChoiceFloatQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if cfq.withAttribute != nil {
+		if _q.withAttribute != nil {
 			_spec.Node.AddColumnOnce(choicefloat.FieldAttrID)
 		}
 	}
-	if ps := cfq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := cfq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := cfq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := cfq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -483,33 +483,33 @@ func (cfq *ChoiceFloatQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (cfq *ChoiceFloatQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(cfq.driver.Dialect())
+func (_q *ChoiceFloatQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(choicefloat.Table)
-	columns := cfq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = choicefloat.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if cfq.sql != nil {
-		selector = cfq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if cfq.ctx.Unique != nil && *cfq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range cfq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range cfq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := cfq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := cfq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -522,41 +522,41 @@ type ChoiceFloatGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (cfgb *ChoiceFloatGroupBy) Aggregate(fns ...AggregateFunc) *ChoiceFloatGroupBy {
-	cfgb.fns = append(cfgb.fns, fns...)
-	return cfgb
+func (_g *ChoiceFloatGroupBy) Aggregate(fns ...AggregateFunc) *ChoiceFloatGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cfgb *ChoiceFloatGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cfgb.build.ctx, ent.OpQueryGroupBy)
-	if err := cfgb.build.prepareQuery(ctx); err != nil {
+func (_g *ChoiceFloatGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ChoiceFloatQuery, *ChoiceFloatGroupBy](ctx, cfgb.build, cfgb, cfgb.build.inters, v)
+	return scanWithInterceptors[*ChoiceFloatQuery, *ChoiceFloatGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (cfgb *ChoiceFloatGroupBy) sqlScan(ctx context.Context, root *ChoiceFloatQuery, v any) error {
+func (_g *ChoiceFloatGroupBy) sqlScan(ctx context.Context, root *ChoiceFloatQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(cfgb.fns))
-	for _, fn := range cfgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*cfgb.flds)+len(cfgb.fns))
-		for _, f := range *cfgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*cfgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cfgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -570,27 +570,27 @@ type ChoiceFloatSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (cfs *ChoiceFloatSelect) Aggregate(fns ...AggregateFunc) *ChoiceFloatSelect {
-	cfs.fns = append(cfs.fns, fns...)
-	return cfs
+func (_s *ChoiceFloatSelect) Aggregate(fns ...AggregateFunc) *ChoiceFloatSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cfs *ChoiceFloatSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cfs.ctx, ent.OpQuerySelect)
-	if err := cfs.prepareQuery(ctx); err != nil {
+func (_s *ChoiceFloatSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ChoiceFloatQuery, *ChoiceFloatSelect](ctx, cfs.ChoiceFloatQuery, cfs, cfs.inters, v)
+	return scanWithInterceptors[*ChoiceFloatQuery, *ChoiceFloatSelect](ctx, _s.ChoiceFloatQuery, _s, _s.inters, v)
 }
 
-func (cfs *ChoiceFloatSelect) sqlScan(ctx context.Context, root *ChoiceFloatQuery, v any) error {
+func (_s *ChoiceFloatSelect) sqlScan(ctx context.Context, root *ChoiceFloatQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(cfs.fns))
-	for _, fn := range cfs.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*cfs.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -598,7 +598,7 @@ func (cfs *ChoiceFloatSelect) sqlScan(ctx context.Context, root *ChoiceFloatQuer
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cfs.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

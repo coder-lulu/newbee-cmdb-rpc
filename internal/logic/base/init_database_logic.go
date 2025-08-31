@@ -4,13 +4,13 @@ import (
 	"context"
 
 	"entgo.io/ent/dialect/sql/schema"
-	"gitee.com/link234/newbee-backend-common/msg/errormsg"
-	"gitee.com/link234/newbee-backend-common/msg/logmsg"
+	"github.com/coder-lulu/newbee-common/msg/errormsg"
+	"github.com/coder-lulu/newbee-common/msg/logmsg"
 	"github.com/zeromicro/go-zero/core/errorx"
 
-	"gitee.com/link234/cmdb-rpc/ent"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

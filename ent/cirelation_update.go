@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // CiRelationUpdate is the builder for updating CiRelation entities.
@@ -25,240 +25,240 @@ type CiRelationUpdate struct {
 }
 
 // Where appends a list predicates to the CiRelationUpdate builder.
-func (cru *CiRelationUpdate) Where(ps ...predicate.CiRelation) *CiRelationUpdate {
-	cru.mutation.Where(ps...)
-	return cru
+func (_u *CiRelationUpdate) Where(ps ...predicate.CiRelation) *CiRelationUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cru *CiRelationUpdate) SetUpdatedAt(t time.Time) *CiRelationUpdate {
-	cru.mutation.SetUpdatedAt(t)
-	return cru
+func (_u *CiRelationUpdate) SetUpdatedAt(v time.Time) *CiRelationUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (cru *CiRelationUpdate) SetDeletedAt(t time.Time) *CiRelationUpdate {
-	cru.mutation.SetDeletedAt(t)
-	return cru
+func (_u *CiRelationUpdate) SetDeletedAt(v time.Time) *CiRelationUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableDeletedAt(t *time.Time) *CiRelationUpdate {
-	if t != nil {
-		cru.SetDeletedAt(*t)
+func (_u *CiRelationUpdate) SetNillableDeletedAt(v *time.Time) *CiRelationUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (cru *CiRelationUpdate) ClearDeletedAt() *CiRelationUpdate {
-	cru.mutation.ClearDeletedAt()
-	return cru
+func (_u *CiRelationUpdate) ClearDeletedAt() *CiRelationUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cru *CiRelationUpdate) SetDepartmentID(u uint64) *CiRelationUpdate {
-	cru.mutation.ResetDepartmentID()
-	cru.mutation.SetDepartmentID(u)
-	return cru
+func (_u *CiRelationUpdate) SetDepartmentID(v uint64) *CiRelationUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableDepartmentID(u *uint64) *CiRelationUpdate {
-	if u != nil {
-		cru.SetDepartmentID(*u)
+func (_u *CiRelationUpdate) SetNillableDepartmentID(v *uint64) *CiRelationUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cru
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cru *CiRelationUpdate) AddDepartmentID(u int64) *CiRelationUpdate {
-	cru.mutation.AddDepartmentID(u)
-	return cru
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiRelationUpdate) AddDepartmentID(v int64) *CiRelationUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cru *CiRelationUpdate) ClearDepartmentID() *CiRelationUpdate {
-	cru.mutation.ClearDepartmentID()
-	return cru
+func (_u *CiRelationUpdate) ClearDepartmentID() *CiRelationUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetFirstCiID sets the "first_ci_id" field.
-func (cru *CiRelationUpdate) SetFirstCiID(u uint64) *CiRelationUpdate {
-	cru.mutation.SetFirstCiID(u)
-	return cru
+func (_u *CiRelationUpdate) SetFirstCiID(v uint64) *CiRelationUpdate {
+	_u.mutation.SetFirstCiID(v)
+	return _u
 }
 
 // SetNillableFirstCiID sets the "first_ci_id" field if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableFirstCiID(u *uint64) *CiRelationUpdate {
-	if u != nil {
-		cru.SetFirstCiID(*u)
+func (_u *CiRelationUpdate) SetNillableFirstCiID(v *uint64) *CiRelationUpdate {
+	if v != nil {
+		_u.SetFirstCiID(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetSecondCiID sets the "second_ci_id" field.
-func (cru *CiRelationUpdate) SetSecondCiID(u uint64) *CiRelationUpdate {
-	cru.mutation.SetSecondCiID(u)
-	return cru
+func (_u *CiRelationUpdate) SetSecondCiID(v uint64) *CiRelationUpdate {
+	_u.mutation.SetSecondCiID(v)
+	return _u
 }
 
 // SetNillableSecondCiID sets the "second_ci_id" field if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableSecondCiID(u *uint64) *CiRelationUpdate {
-	if u != nil {
-		cru.SetSecondCiID(*u)
+func (_u *CiRelationUpdate) SetNillableSecondCiID(v *uint64) *CiRelationUpdate {
+	if v != nil {
+		_u.SetSecondCiID(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetRelationTypeID sets the "relation_type_id" field.
-func (cru *CiRelationUpdate) SetRelationTypeID(u uint64) *CiRelationUpdate {
-	cru.mutation.SetRelationTypeID(u)
-	return cru
+func (_u *CiRelationUpdate) SetRelationTypeID(v uint64) *CiRelationUpdate {
+	_u.mutation.SetRelationTypeID(v)
+	return _u
 }
 
 // SetNillableRelationTypeID sets the "relation_type_id" field if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableRelationTypeID(u *uint64) *CiRelationUpdate {
-	if u != nil {
-		cru.SetRelationTypeID(*u)
+func (_u *CiRelationUpdate) SetNillableRelationTypeID(v *uint64) *CiRelationUpdate {
+	if v != nil {
+		_u.SetRelationTypeID(*v)
 	}
-	return cru
+	return _u
 }
 
 // SetMore sets the "more" field.
-func (cru *CiRelationUpdate) SetMore(u uint64) *CiRelationUpdate {
-	cru.mutation.SetMore(u)
-	return cru
+func (_u *CiRelationUpdate) SetMore(v uint64) *CiRelationUpdate {
+	_u.mutation.SetMore(v)
+	return _u
 }
 
 // SetNillableMore sets the "more" field if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableMore(u *uint64) *CiRelationUpdate {
-	if u != nil {
-		cru.SetMore(*u)
+func (_u *CiRelationUpdate) SetNillableMore(v *uint64) *CiRelationUpdate {
+	if v != nil {
+		_u.SetMore(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearMore clears the value of the "more" field.
-func (cru *CiRelationUpdate) ClearMore() *CiRelationUpdate {
-	cru.mutation.ClearMore()
-	return cru
+func (_u *CiRelationUpdate) ClearMore() *CiRelationUpdate {
+	_u.mutation.ClearMore()
+	return _u
 }
 
 // SetSource sets the "source" field.
-func (cru *CiRelationUpdate) SetSource(s string) *CiRelationUpdate {
-	cru.mutation.SetSource(s)
-	return cru
+func (_u *CiRelationUpdate) SetSource(v string) *CiRelationUpdate {
+	_u.mutation.SetSource(v)
+	return _u
 }
 
 // SetNillableSource sets the "source" field if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableSource(s *string) *CiRelationUpdate {
-	if s != nil {
-		cru.SetSource(*s)
+func (_u *CiRelationUpdate) SetNillableSource(v *string) *CiRelationUpdate {
+	if v != nil {
+		_u.SetSource(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearSource clears the value of the "source" field.
-func (cru *CiRelationUpdate) ClearSource() *CiRelationUpdate {
-	cru.mutation.ClearSource()
-	return cru
+func (_u *CiRelationUpdate) ClearSource() *CiRelationUpdate {
+	_u.mutation.ClearSource()
+	return _u
 }
 
 // SetAncestorIds sets the "ancestor_ids" field.
-func (cru *CiRelationUpdate) SetAncestorIds(s string) *CiRelationUpdate {
-	cru.mutation.SetAncestorIds(s)
-	return cru
+func (_u *CiRelationUpdate) SetAncestorIds(v string) *CiRelationUpdate {
+	_u.mutation.SetAncestorIds(v)
+	return _u
 }
 
 // SetNillableAncestorIds sets the "ancestor_ids" field if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableAncestorIds(s *string) *CiRelationUpdate {
-	if s != nil {
-		cru.SetAncestorIds(*s)
+func (_u *CiRelationUpdate) SetNillableAncestorIds(v *string) *CiRelationUpdate {
+	if v != nil {
+		_u.SetAncestorIds(*v)
 	}
-	return cru
+	return _u
 }
 
 // ClearAncestorIds clears the value of the "ancestor_ids" field.
-func (cru *CiRelationUpdate) ClearAncestorIds() *CiRelationUpdate {
-	cru.mutation.ClearAncestorIds()
-	return cru
+func (_u *CiRelationUpdate) ClearAncestorIds() *CiRelationUpdate {
+	_u.mutation.ClearAncestorIds()
+	return _u
 }
 
 // SetFirstCi sets the "first_ci" edge to the Cis entity.
-func (cru *CiRelationUpdate) SetFirstCi(c *Cis) *CiRelationUpdate {
-	return cru.SetFirstCiID(c.ID)
+func (_u *CiRelationUpdate) SetFirstCi(v *Cis) *CiRelationUpdate {
+	return _u.SetFirstCiID(v.ID)
 }
 
 // SetSecondCi sets the "second_ci" edge to the Cis entity.
-func (cru *CiRelationUpdate) SetSecondCi(c *Cis) *CiRelationUpdate {
-	return cru.SetSecondCiID(c.ID)
+func (_u *CiRelationUpdate) SetSecondCi(v *Cis) *CiRelationUpdate {
+	return _u.SetSecondCiID(v.ID)
 }
 
 // SetRelationType sets the "relation_type" edge to the RelationType entity.
-func (cru *CiRelationUpdate) SetRelationType(r *RelationType) *CiRelationUpdate {
-	return cru.SetRelationTypeID(r.ID)
+func (_u *CiRelationUpdate) SetRelationType(v *RelationType) *CiRelationUpdate {
+	return _u.SetRelationTypeID(v.ID)
 }
 
 // SetMoreCiID sets the "more_ci" edge to the Cis entity by ID.
-func (cru *CiRelationUpdate) SetMoreCiID(id uint64) *CiRelationUpdate {
-	cru.mutation.SetMoreCiID(id)
-	return cru
+func (_u *CiRelationUpdate) SetMoreCiID(id uint64) *CiRelationUpdate {
+	_u.mutation.SetMoreCiID(id)
+	return _u
 }
 
 // SetNillableMoreCiID sets the "more_ci" edge to the Cis entity by ID if the given value is not nil.
-func (cru *CiRelationUpdate) SetNillableMoreCiID(id *uint64) *CiRelationUpdate {
+func (_u *CiRelationUpdate) SetNillableMoreCiID(id *uint64) *CiRelationUpdate {
 	if id != nil {
-		cru = cru.SetMoreCiID(*id)
+		_u = _u.SetMoreCiID(*id)
 	}
-	return cru
+	return _u
 }
 
 // SetMoreCi sets the "more_ci" edge to the Cis entity.
-func (cru *CiRelationUpdate) SetMoreCi(c *Cis) *CiRelationUpdate {
-	return cru.SetMoreCiID(c.ID)
+func (_u *CiRelationUpdate) SetMoreCi(v *Cis) *CiRelationUpdate {
+	return _u.SetMoreCiID(v.ID)
 }
 
 // Mutation returns the CiRelationMutation object of the builder.
-func (cru *CiRelationUpdate) Mutation() *CiRelationMutation {
-	return cru.mutation
+func (_u *CiRelationUpdate) Mutation() *CiRelationMutation {
+	return _u.mutation
 }
 
 // ClearFirstCi clears the "first_ci" edge to the Cis entity.
-func (cru *CiRelationUpdate) ClearFirstCi() *CiRelationUpdate {
-	cru.mutation.ClearFirstCi()
-	return cru
+func (_u *CiRelationUpdate) ClearFirstCi() *CiRelationUpdate {
+	_u.mutation.ClearFirstCi()
+	return _u
 }
 
 // ClearSecondCi clears the "second_ci" edge to the Cis entity.
-func (cru *CiRelationUpdate) ClearSecondCi() *CiRelationUpdate {
-	cru.mutation.ClearSecondCi()
-	return cru
+func (_u *CiRelationUpdate) ClearSecondCi() *CiRelationUpdate {
+	_u.mutation.ClearSecondCi()
+	return _u
 }
 
 // ClearRelationType clears the "relation_type" edge to the RelationType entity.
-func (cru *CiRelationUpdate) ClearRelationType() *CiRelationUpdate {
-	cru.mutation.ClearRelationType()
-	return cru
+func (_u *CiRelationUpdate) ClearRelationType() *CiRelationUpdate {
+	_u.mutation.ClearRelationType()
+	return _u
 }
 
 // ClearMoreCi clears the "more_ci" edge to the Cis entity.
-func (cru *CiRelationUpdate) ClearMoreCi() *CiRelationUpdate {
-	cru.mutation.ClearMoreCi()
-	return cru
+func (_u *CiRelationUpdate) ClearMoreCi() *CiRelationUpdate {
+	_u.mutation.ClearMoreCi()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (cru *CiRelationUpdate) Save(ctx context.Context) (int, error) {
-	if err := cru.defaults(); err != nil {
+func (_u *CiRelationUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, cru.sqlSave, cru.mutation, cru.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cru *CiRelationUpdate) SaveX(ctx context.Context) int {
-	affected, err := cru.Save(ctx)
+func (_u *CiRelationUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -266,92 +266,92 @@ func (cru *CiRelationUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (cru *CiRelationUpdate) Exec(ctx context.Context) error {
-	_, err := cru.Save(ctx)
+func (_u *CiRelationUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cru *CiRelationUpdate) ExecX(ctx context.Context) {
-	if err := cru.Exec(ctx); err != nil {
+func (_u *CiRelationUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cru *CiRelationUpdate) defaults() error {
-	if _, ok := cru.mutation.UpdatedAt(); !ok {
+func (_u *CiRelationUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if cirelation.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cirelation.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cirelation.UpdateDefaultUpdatedAt()
-		cru.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cru *CiRelationUpdate) check() error {
-	if v, ok := cru.mutation.AncestorIds(); ok {
+func (_u *CiRelationUpdate) check() error {
+	if v, ok := _u.mutation.AncestorIds(); ok {
 		if err := cirelation.AncestorIdsValidator(v); err != nil {
 			return &ValidationError{Name: "ancestor_ids", err: fmt.Errorf(`ent: validator failed for field "CiRelation.ancestor_ids": %w`, err)}
 		}
 	}
-	if cru.mutation.FirstCiCleared() && len(cru.mutation.FirstCiIDs()) > 0 {
+	if _u.mutation.FirstCiCleared() && len(_u.mutation.FirstCiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRelation.first_ci"`)
 	}
-	if cru.mutation.SecondCiCleared() && len(cru.mutation.SecondCiIDs()) > 0 {
+	if _u.mutation.SecondCiCleared() && len(_u.mutation.SecondCiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRelation.second_ci"`)
 	}
-	if cru.mutation.RelationTypeCleared() && len(cru.mutation.RelationTypeIDs()) > 0 {
+	if _u.mutation.RelationTypeCleared() && len(_u.mutation.RelationTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRelation.relation_type"`)
 	}
 	return nil
 }
 
-func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := cru.check(); err != nil {
-		return n, err
+func (_u *CiRelationUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cirelation.Table, cirelation.Columns, sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64))
-	if ps := cru.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cru.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cirelation.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cru.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(cirelation.FieldDeletedAt, field.TypeTime, value)
 	}
-	if cru.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(cirelation.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := cru.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cirelation.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cru.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cirelation.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cru.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cirelation.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cru.mutation.Source(); ok {
+	if value, ok := _u.mutation.Source(); ok {
 		_spec.SetField(cirelation.FieldSource, field.TypeString, value)
 	}
-	if cru.mutation.SourceCleared() {
+	if _u.mutation.SourceCleared() {
 		_spec.ClearField(cirelation.FieldSource, field.TypeString)
 	}
-	if value, ok := cru.mutation.AncestorIds(); ok {
+	if value, ok := _u.mutation.AncestorIds(); ok {
 		_spec.SetField(cirelation.FieldAncestorIds, field.TypeString, value)
 	}
-	if cru.mutation.AncestorIdsCleared() {
+	if _u.mutation.AncestorIdsCleared() {
 		_spec.ClearField(cirelation.FieldAncestorIds, field.TypeString)
 	}
-	if cru.mutation.FirstCiCleared() {
+	if _u.mutation.FirstCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -364,7 +364,7 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cru.mutation.FirstCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.FirstCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -380,7 +380,7 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cru.mutation.SecondCiCleared() {
+	if _u.mutation.SecondCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -393,7 +393,7 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cru.mutation.SecondCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.SecondCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -409,7 +409,7 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cru.mutation.RelationTypeCleared() {
+	if _u.mutation.RelationTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -422,7 +422,7 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cru.mutation.RelationTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RelationTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -438,7 +438,7 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cru.mutation.MoreCiCleared() {
+	if _u.mutation.MoreCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -451,7 +451,7 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cru.mutation.MoreCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.MoreCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -467,7 +467,7 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, cru.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cirelation.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -475,8 +475,8 @@ func (cru *CiRelationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	cru.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiRelationUpdateOne is the builder for updating a single CiRelation entity.
@@ -488,247 +488,247 @@ type CiRelationUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cruo *CiRelationUpdateOne) SetUpdatedAt(t time.Time) *CiRelationUpdateOne {
-	cruo.mutation.SetUpdatedAt(t)
-	return cruo
+func (_u *CiRelationUpdateOne) SetUpdatedAt(v time.Time) *CiRelationUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (cruo *CiRelationUpdateOne) SetDeletedAt(t time.Time) *CiRelationUpdateOne {
-	cruo.mutation.SetDeletedAt(t)
-	return cruo
+func (_u *CiRelationUpdateOne) SetDeletedAt(v time.Time) *CiRelationUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableDeletedAt(t *time.Time) *CiRelationUpdateOne {
-	if t != nil {
-		cruo.SetDeletedAt(*t)
+func (_u *CiRelationUpdateOne) SetNillableDeletedAt(v *time.Time) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (cruo *CiRelationUpdateOne) ClearDeletedAt() *CiRelationUpdateOne {
-	cruo.mutation.ClearDeletedAt()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearDeletedAt() *CiRelationUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cruo *CiRelationUpdateOne) SetDepartmentID(u uint64) *CiRelationUpdateOne {
-	cruo.mutation.ResetDepartmentID()
-	cruo.mutation.SetDepartmentID(u)
-	return cruo
+func (_u *CiRelationUpdateOne) SetDepartmentID(v uint64) *CiRelationUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableDepartmentID(u *uint64) *CiRelationUpdateOne {
-	if u != nil {
-		cruo.SetDepartmentID(*u)
+func (_u *CiRelationUpdateOne) SetNillableDepartmentID(v *uint64) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cruo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cruo *CiRelationUpdateOne) AddDepartmentID(u int64) *CiRelationUpdateOne {
-	cruo.mutation.AddDepartmentID(u)
-	return cruo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiRelationUpdateOne) AddDepartmentID(v int64) *CiRelationUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cruo *CiRelationUpdateOne) ClearDepartmentID() *CiRelationUpdateOne {
-	cruo.mutation.ClearDepartmentID()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearDepartmentID() *CiRelationUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetFirstCiID sets the "first_ci_id" field.
-func (cruo *CiRelationUpdateOne) SetFirstCiID(u uint64) *CiRelationUpdateOne {
-	cruo.mutation.SetFirstCiID(u)
-	return cruo
+func (_u *CiRelationUpdateOne) SetFirstCiID(v uint64) *CiRelationUpdateOne {
+	_u.mutation.SetFirstCiID(v)
+	return _u
 }
 
 // SetNillableFirstCiID sets the "first_ci_id" field if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableFirstCiID(u *uint64) *CiRelationUpdateOne {
-	if u != nil {
-		cruo.SetFirstCiID(*u)
+func (_u *CiRelationUpdateOne) SetNillableFirstCiID(v *uint64) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetFirstCiID(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetSecondCiID sets the "second_ci_id" field.
-func (cruo *CiRelationUpdateOne) SetSecondCiID(u uint64) *CiRelationUpdateOne {
-	cruo.mutation.SetSecondCiID(u)
-	return cruo
+func (_u *CiRelationUpdateOne) SetSecondCiID(v uint64) *CiRelationUpdateOne {
+	_u.mutation.SetSecondCiID(v)
+	return _u
 }
 
 // SetNillableSecondCiID sets the "second_ci_id" field if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableSecondCiID(u *uint64) *CiRelationUpdateOne {
-	if u != nil {
-		cruo.SetSecondCiID(*u)
+func (_u *CiRelationUpdateOne) SetNillableSecondCiID(v *uint64) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetSecondCiID(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetRelationTypeID sets the "relation_type_id" field.
-func (cruo *CiRelationUpdateOne) SetRelationTypeID(u uint64) *CiRelationUpdateOne {
-	cruo.mutation.SetRelationTypeID(u)
-	return cruo
+func (_u *CiRelationUpdateOne) SetRelationTypeID(v uint64) *CiRelationUpdateOne {
+	_u.mutation.SetRelationTypeID(v)
+	return _u
 }
 
 // SetNillableRelationTypeID sets the "relation_type_id" field if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableRelationTypeID(u *uint64) *CiRelationUpdateOne {
-	if u != nil {
-		cruo.SetRelationTypeID(*u)
+func (_u *CiRelationUpdateOne) SetNillableRelationTypeID(v *uint64) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetRelationTypeID(*v)
 	}
-	return cruo
+	return _u
 }
 
 // SetMore sets the "more" field.
-func (cruo *CiRelationUpdateOne) SetMore(u uint64) *CiRelationUpdateOne {
-	cruo.mutation.SetMore(u)
-	return cruo
+func (_u *CiRelationUpdateOne) SetMore(v uint64) *CiRelationUpdateOne {
+	_u.mutation.SetMore(v)
+	return _u
 }
 
 // SetNillableMore sets the "more" field if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableMore(u *uint64) *CiRelationUpdateOne {
-	if u != nil {
-		cruo.SetMore(*u)
+func (_u *CiRelationUpdateOne) SetNillableMore(v *uint64) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetMore(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearMore clears the value of the "more" field.
-func (cruo *CiRelationUpdateOne) ClearMore() *CiRelationUpdateOne {
-	cruo.mutation.ClearMore()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearMore() *CiRelationUpdateOne {
+	_u.mutation.ClearMore()
+	return _u
 }
 
 // SetSource sets the "source" field.
-func (cruo *CiRelationUpdateOne) SetSource(s string) *CiRelationUpdateOne {
-	cruo.mutation.SetSource(s)
-	return cruo
+func (_u *CiRelationUpdateOne) SetSource(v string) *CiRelationUpdateOne {
+	_u.mutation.SetSource(v)
+	return _u
 }
 
 // SetNillableSource sets the "source" field if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableSource(s *string) *CiRelationUpdateOne {
-	if s != nil {
-		cruo.SetSource(*s)
+func (_u *CiRelationUpdateOne) SetNillableSource(v *string) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetSource(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearSource clears the value of the "source" field.
-func (cruo *CiRelationUpdateOne) ClearSource() *CiRelationUpdateOne {
-	cruo.mutation.ClearSource()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearSource() *CiRelationUpdateOne {
+	_u.mutation.ClearSource()
+	return _u
 }
 
 // SetAncestorIds sets the "ancestor_ids" field.
-func (cruo *CiRelationUpdateOne) SetAncestorIds(s string) *CiRelationUpdateOne {
-	cruo.mutation.SetAncestorIds(s)
-	return cruo
+func (_u *CiRelationUpdateOne) SetAncestorIds(v string) *CiRelationUpdateOne {
+	_u.mutation.SetAncestorIds(v)
+	return _u
 }
 
 // SetNillableAncestorIds sets the "ancestor_ids" field if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableAncestorIds(s *string) *CiRelationUpdateOne {
-	if s != nil {
-		cruo.SetAncestorIds(*s)
+func (_u *CiRelationUpdateOne) SetNillableAncestorIds(v *string) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetAncestorIds(*v)
 	}
-	return cruo
+	return _u
 }
 
 // ClearAncestorIds clears the value of the "ancestor_ids" field.
-func (cruo *CiRelationUpdateOne) ClearAncestorIds() *CiRelationUpdateOne {
-	cruo.mutation.ClearAncestorIds()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearAncestorIds() *CiRelationUpdateOne {
+	_u.mutation.ClearAncestorIds()
+	return _u
 }
 
 // SetFirstCi sets the "first_ci" edge to the Cis entity.
-func (cruo *CiRelationUpdateOne) SetFirstCi(c *Cis) *CiRelationUpdateOne {
-	return cruo.SetFirstCiID(c.ID)
+func (_u *CiRelationUpdateOne) SetFirstCi(v *Cis) *CiRelationUpdateOne {
+	return _u.SetFirstCiID(v.ID)
 }
 
 // SetSecondCi sets the "second_ci" edge to the Cis entity.
-func (cruo *CiRelationUpdateOne) SetSecondCi(c *Cis) *CiRelationUpdateOne {
-	return cruo.SetSecondCiID(c.ID)
+func (_u *CiRelationUpdateOne) SetSecondCi(v *Cis) *CiRelationUpdateOne {
+	return _u.SetSecondCiID(v.ID)
 }
 
 // SetRelationType sets the "relation_type" edge to the RelationType entity.
-func (cruo *CiRelationUpdateOne) SetRelationType(r *RelationType) *CiRelationUpdateOne {
-	return cruo.SetRelationTypeID(r.ID)
+func (_u *CiRelationUpdateOne) SetRelationType(v *RelationType) *CiRelationUpdateOne {
+	return _u.SetRelationTypeID(v.ID)
 }
 
 // SetMoreCiID sets the "more_ci" edge to the Cis entity by ID.
-func (cruo *CiRelationUpdateOne) SetMoreCiID(id uint64) *CiRelationUpdateOne {
-	cruo.mutation.SetMoreCiID(id)
-	return cruo
+func (_u *CiRelationUpdateOne) SetMoreCiID(id uint64) *CiRelationUpdateOne {
+	_u.mutation.SetMoreCiID(id)
+	return _u
 }
 
 // SetNillableMoreCiID sets the "more_ci" edge to the Cis entity by ID if the given value is not nil.
-func (cruo *CiRelationUpdateOne) SetNillableMoreCiID(id *uint64) *CiRelationUpdateOne {
+func (_u *CiRelationUpdateOne) SetNillableMoreCiID(id *uint64) *CiRelationUpdateOne {
 	if id != nil {
-		cruo = cruo.SetMoreCiID(*id)
+		_u = _u.SetMoreCiID(*id)
 	}
-	return cruo
+	return _u
 }
 
 // SetMoreCi sets the "more_ci" edge to the Cis entity.
-func (cruo *CiRelationUpdateOne) SetMoreCi(c *Cis) *CiRelationUpdateOne {
-	return cruo.SetMoreCiID(c.ID)
+func (_u *CiRelationUpdateOne) SetMoreCi(v *Cis) *CiRelationUpdateOne {
+	return _u.SetMoreCiID(v.ID)
 }
 
 // Mutation returns the CiRelationMutation object of the builder.
-func (cruo *CiRelationUpdateOne) Mutation() *CiRelationMutation {
-	return cruo.mutation
+func (_u *CiRelationUpdateOne) Mutation() *CiRelationMutation {
+	return _u.mutation
 }
 
 // ClearFirstCi clears the "first_ci" edge to the Cis entity.
-func (cruo *CiRelationUpdateOne) ClearFirstCi() *CiRelationUpdateOne {
-	cruo.mutation.ClearFirstCi()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearFirstCi() *CiRelationUpdateOne {
+	_u.mutation.ClearFirstCi()
+	return _u
 }
 
 // ClearSecondCi clears the "second_ci" edge to the Cis entity.
-func (cruo *CiRelationUpdateOne) ClearSecondCi() *CiRelationUpdateOne {
-	cruo.mutation.ClearSecondCi()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearSecondCi() *CiRelationUpdateOne {
+	_u.mutation.ClearSecondCi()
+	return _u
 }
 
 // ClearRelationType clears the "relation_type" edge to the RelationType entity.
-func (cruo *CiRelationUpdateOne) ClearRelationType() *CiRelationUpdateOne {
-	cruo.mutation.ClearRelationType()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearRelationType() *CiRelationUpdateOne {
+	_u.mutation.ClearRelationType()
+	return _u
 }
 
 // ClearMoreCi clears the "more_ci" edge to the Cis entity.
-func (cruo *CiRelationUpdateOne) ClearMoreCi() *CiRelationUpdateOne {
-	cruo.mutation.ClearMoreCi()
-	return cruo
+func (_u *CiRelationUpdateOne) ClearMoreCi() *CiRelationUpdateOne {
+	_u.mutation.ClearMoreCi()
+	return _u
 }
 
 // Where appends a list predicates to the CiRelationUpdate builder.
-func (cruo *CiRelationUpdateOne) Where(ps ...predicate.CiRelation) *CiRelationUpdateOne {
-	cruo.mutation.Where(ps...)
-	return cruo
+func (_u *CiRelationUpdateOne) Where(ps ...predicate.CiRelation) *CiRelationUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (cruo *CiRelationUpdateOne) Select(field string, fields ...string) *CiRelationUpdateOne {
-	cruo.fields = append([]string{field}, fields...)
-	return cruo
+func (_u *CiRelationUpdateOne) Select(field string, fields ...string) *CiRelationUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiRelation entity.
-func (cruo *CiRelationUpdateOne) Save(ctx context.Context) (*CiRelation, error) {
-	if err := cruo.defaults(); err != nil {
+func (_u *CiRelationUpdateOne) Save(ctx context.Context) (*CiRelation, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, cruo.sqlSave, cruo.mutation, cruo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cruo *CiRelationUpdateOne) SaveX(ctx context.Context) *CiRelation {
-	node, err := cruo.Save(ctx)
+func (_u *CiRelationUpdateOne) SaveX(ctx context.Context) *CiRelation {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -736,60 +736,60 @@ func (cruo *CiRelationUpdateOne) SaveX(ctx context.Context) *CiRelation {
 }
 
 // Exec executes the query on the entity.
-func (cruo *CiRelationUpdateOne) Exec(ctx context.Context) error {
-	_, err := cruo.Save(ctx)
+func (_u *CiRelationUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cruo *CiRelationUpdateOne) ExecX(ctx context.Context) {
-	if err := cruo.Exec(ctx); err != nil {
+func (_u *CiRelationUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cruo *CiRelationUpdateOne) defaults() error {
-	if _, ok := cruo.mutation.UpdatedAt(); !ok {
+func (_u *CiRelationUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if cirelation.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cirelation.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cirelation.UpdateDefaultUpdatedAt()
-		cruo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cruo *CiRelationUpdateOne) check() error {
-	if v, ok := cruo.mutation.AncestorIds(); ok {
+func (_u *CiRelationUpdateOne) check() error {
+	if v, ok := _u.mutation.AncestorIds(); ok {
 		if err := cirelation.AncestorIdsValidator(v); err != nil {
 			return &ValidationError{Name: "ancestor_ids", err: fmt.Errorf(`ent: validator failed for field "CiRelation.ancestor_ids": %w`, err)}
 		}
 	}
-	if cruo.mutation.FirstCiCleared() && len(cruo.mutation.FirstCiIDs()) > 0 {
+	if _u.mutation.FirstCiCleared() && len(_u.mutation.FirstCiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRelation.first_ci"`)
 	}
-	if cruo.mutation.SecondCiCleared() && len(cruo.mutation.SecondCiIDs()) > 0 {
+	if _u.mutation.SecondCiCleared() && len(_u.mutation.SecondCiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRelation.second_ci"`)
 	}
-	if cruo.mutation.RelationTypeCleared() && len(cruo.mutation.RelationTypeIDs()) > 0 {
+	if _u.mutation.RelationTypeCleared() && len(_u.mutation.RelationTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRelation.relation_type"`)
 	}
 	return nil
 }
 
-func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation, err error) {
-	if err := cruo.check(); err != nil {
+func (_u *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cirelation.Table, cirelation.Columns, sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64))
-	id, ok := cruo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiRelation.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := cruo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cirelation.FieldID)
 		for _, f := range fields {
@@ -801,44 +801,44 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 			}
 		}
 	}
-	if ps := cruo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cruo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cirelation.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cruo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(cirelation.FieldDeletedAt, field.TypeTime, value)
 	}
-	if cruo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(cirelation.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := cruo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cirelation.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cruo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cirelation.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cruo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cirelation.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cruo.mutation.Source(); ok {
+	if value, ok := _u.mutation.Source(); ok {
 		_spec.SetField(cirelation.FieldSource, field.TypeString, value)
 	}
-	if cruo.mutation.SourceCleared() {
+	if _u.mutation.SourceCleared() {
 		_spec.ClearField(cirelation.FieldSource, field.TypeString)
 	}
-	if value, ok := cruo.mutation.AncestorIds(); ok {
+	if value, ok := _u.mutation.AncestorIds(); ok {
 		_spec.SetField(cirelation.FieldAncestorIds, field.TypeString, value)
 	}
-	if cruo.mutation.AncestorIdsCleared() {
+	if _u.mutation.AncestorIdsCleared() {
 		_spec.ClearField(cirelation.FieldAncestorIds, field.TypeString)
 	}
-	if cruo.mutation.FirstCiCleared() {
+	if _u.mutation.FirstCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -851,7 +851,7 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cruo.mutation.FirstCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.FirstCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -867,7 +867,7 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cruo.mutation.SecondCiCleared() {
+	if _u.mutation.SecondCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -880,7 +880,7 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cruo.mutation.SecondCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.SecondCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -896,7 +896,7 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cruo.mutation.RelationTypeCleared() {
+	if _u.mutation.RelationTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -909,7 +909,7 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cruo.mutation.RelationTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.RelationTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -925,7 +925,7 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cruo.mutation.MoreCiCleared() {
+	if _u.mutation.MoreCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -938,7 +938,7 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := cruo.mutation.MoreCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.MoreCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -954,10 +954,10 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &CiRelation{config: cruo.config}
+	_node = &CiRelation{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, cruo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cirelation.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -965,6 +965,6 @@ func (cruo *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation
 		}
 		return nil, err
 	}
-	cruo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

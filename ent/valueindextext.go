@@ -9,9 +9,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
 )
 
 // ValueIndexText is the model entity for the ValueIndexText schema.
@@ -25,6 +25,8 @@ type ValueIndexText struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Delete Time | 删除日期
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
+	// Tenant ID | 租户 ID
+	TenantID uint64 `json:"tenant_id,omitempty"`
 	// 外键，关联cmdb_cis.id
 	CiID uint64 `json:"ci_id,omitempty"`
 	// 外键，关联cmdb_attributes.id
@@ -79,7 +81,7 @@ func (*ValueIndexText) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case valueindextext.FieldIsCover:
 			values[i] = new(sql.NullBool)
-		case valueindextext.FieldID, valueindextext.FieldCiID, valueindextext.FieldAttrID:
+		case valueindextext.FieldID, valueindextext.FieldTenantID, valueindextext.FieldCiID, valueindextext.FieldAttrID:
 			values[i] = new(sql.NullInt64)
 		case valueindextext.FieldValue:
 			values[i] = new(sql.NullString)
@@ -94,7 +96,7 @@ func (*ValueIndexText) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ValueIndexText fields.
-func (vit *ValueIndexText) assignValues(columns []string, values []any) error {
+func (_m *ValueIndexText) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -105,51 +107,57 @@ func (vit *ValueIndexText) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			vit.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case valueindextext.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				vit.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case valueindextext.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				vit.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case valueindextext.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				vit.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
+			}
+		case valueindextext.FieldTenantID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
+			} else if value.Valid {
+				_m.TenantID = uint64(value.Int64)
 			}
 		case valueindextext.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				vit.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case valueindextext.FieldAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field attr_id", values[i])
 			} else if value.Valid {
-				vit.AttrID = uint64(value.Int64)
+				_m.AttrID = uint64(value.Int64)
 			}
 		case valueindextext.FieldValue:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field value", values[i])
 			} else if value.Valid {
-				vit.Value = value.String
+				_m.Value = value.String
 			}
 		case valueindextext.FieldIsCover:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_cover", values[i])
 			} else if value.Valid {
-				vit.IsCover = value.Bool
+				_m.IsCover = value.Bool
 			}
 		default:
-			vit.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -157,63 +165,66 @@ func (vit *ValueIndexText) assignValues(columns []string, values []any) error {
 
 // GetValue returns the ent.Value that was dynamically selected and assigned to the ValueIndexText.
 // This includes values selected through modifiers, order, etc.
-func (vit *ValueIndexText) GetValue(name string) (ent.Value, error) {
-	return vit.selectValues.Get(name)
+func (_m *ValueIndexText) GetValue(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCi queries the "ci" edge of the ValueIndexText entity.
-func (vit *ValueIndexText) QueryCi() *CisQuery {
-	return NewValueIndexTextClient(vit.config).QueryCi(vit)
+func (_m *ValueIndexText) QueryCi() *CisQuery {
+	return NewValueIndexTextClient(_m.config).QueryCi(_m)
 }
 
 // QueryAttribute queries the "attribute" edge of the ValueIndexText entity.
-func (vit *ValueIndexText) QueryAttribute() *AttributeQuery {
-	return NewValueIndexTextClient(vit.config).QueryAttribute(vit)
+func (_m *ValueIndexText) QueryAttribute() *AttributeQuery {
+	return NewValueIndexTextClient(_m.config).QueryAttribute(_m)
 }
 
 // Update returns a builder for updating this ValueIndexText.
 // Note that you need to call ValueIndexText.Unwrap() before calling this method if this ValueIndexText
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (vit *ValueIndexText) Update() *ValueIndexTextUpdateOne {
-	return NewValueIndexTextClient(vit.config).UpdateOne(vit)
+func (_m *ValueIndexText) Update() *ValueIndexTextUpdateOne {
+	return NewValueIndexTextClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ValueIndexText entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (vit *ValueIndexText) Unwrap() *ValueIndexText {
-	_tx, ok := vit.config.driver.(*txDriver)
+func (_m *ValueIndexText) Unwrap() *ValueIndexText {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ValueIndexText is not a transactional entity")
 	}
-	vit.config.driver = _tx.drv
-	return vit
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (vit *ValueIndexText) String() string {
+func (_m *ValueIndexText) String() string {
 	var builder strings.Builder
 	builder.WriteString("ValueIndexText(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", vit.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(vit.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(vit.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(vit.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("tenant_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", vit.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", vit.AttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.AttrID))
 	builder.WriteString(", ")
 	builder.WriteString("value=")
-	builder.WriteString(vit.Value)
+	builder.WriteString(_m.Value)
 	builder.WriteString(", ")
 	builder.WriteString("is_cover=")
-	builder.WriteString(fmt.Sprintf("%v", vit.IsCover))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsCover))
 	builder.WriteByte(')')
 	return builder.String()
 }

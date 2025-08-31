@@ -9,7 +9,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // RelationType is the model entity for the RelationType schema.
@@ -23,6 +23,8 @@ type RelationType struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Delete Time | 删除日期
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
+	// Tenant ID | 租户 ID
+	TenantID uint64 `json:"tenant_id,omitempty"`
 	// 关系类型名称
 	Name string `json:"name,omitempty"`
 	// 关系类型编码
@@ -71,7 +73,7 @@ func (*RelationType) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case relationtype.FieldID:
+		case relationtype.FieldID, relationtype.FieldTenantID:
 			values[i] = new(sql.NullInt64)
 		case relationtype.FieldName, relationtype.FieldCode, relationtype.FieldCategory, relationtype.FieldDirection:
 			values[i] = new(sql.NullString)
@@ -86,7 +88,7 @@ func (*RelationType) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the RelationType fields.
-func (rt *RelationType) assignValues(columns []string, values []any) error {
+func (_m *RelationType) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -97,51 +99,57 @@ func (rt *RelationType) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			rt.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case relationtype.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				rt.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case relationtype.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				rt.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case relationtype.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				rt.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
+			}
+		case relationtype.FieldTenantID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
+			} else if value.Valid {
+				_m.TenantID = uint64(value.Int64)
 			}
 		case relationtype.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
 			} else if value.Valid {
-				rt.Name = value.String
+				_m.Name = value.String
 			}
 		case relationtype.FieldCode:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field code", values[i])
 			} else if value.Valid {
-				rt.Code = value.String
+				_m.Code = value.String
 			}
 		case relationtype.FieldCategory:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field category", values[i])
 			} else if value.Valid {
-				rt.Category = relationtype.Category(value.String)
+				_m.Category = relationtype.Category(value.String)
 			}
 		case relationtype.FieldDirection:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field direction", values[i])
 			} else if value.Valid {
-				rt.Direction = relationtype.Direction(value.String)
+				_m.Direction = relationtype.Direction(value.String)
 			}
 		default:
-			rt.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -149,63 +157,66 @@ func (rt *RelationType) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the RelationType.
 // This includes values selected through modifiers, order, etc.
-func (rt *RelationType) Value(name string) (ent.Value, error) {
-	return rt.selectValues.Get(name)
+func (_m *RelationType) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCiRelations queries the "ci_relations" edge of the RelationType entity.
-func (rt *RelationType) QueryCiRelations() *CiRelationQuery {
-	return NewRelationTypeClient(rt.config).QueryCiRelations(rt)
+func (_m *RelationType) QueryCiRelations() *CiRelationQuery {
+	return NewRelationTypeClient(_m.config).QueryCiRelations(_m)
 }
 
 // QueryCiTypeRelations queries the "ci_type_relations" edge of the RelationType entity.
-func (rt *RelationType) QueryCiTypeRelations() *CiTypeRelationQuery {
-	return NewRelationTypeClient(rt.config).QueryCiTypeRelations(rt)
+func (_m *RelationType) QueryCiTypeRelations() *CiTypeRelationQuery {
+	return NewRelationTypeClient(_m.config).QueryCiTypeRelations(_m)
 }
 
 // Update returns a builder for updating this RelationType.
 // Note that you need to call RelationType.Unwrap() before calling this method if this RelationType
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (rt *RelationType) Update() *RelationTypeUpdateOne {
-	return NewRelationTypeClient(rt.config).UpdateOne(rt)
+func (_m *RelationType) Update() *RelationTypeUpdateOne {
+	return NewRelationTypeClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the RelationType entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (rt *RelationType) Unwrap() *RelationType {
-	_tx, ok := rt.config.driver.(*txDriver)
+func (_m *RelationType) Unwrap() *RelationType {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: RelationType is not a transactional entity")
 	}
-	rt.config.driver = _tx.drv
-	return rt
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (rt *RelationType) String() string {
+func (_m *RelationType) String() string {
 	var builder strings.Builder
 	builder.WriteString("RelationType(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", rt.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(rt.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(rt.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(rt.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("tenant_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("name=")
-	builder.WriteString(rt.Name)
+	builder.WriteString(_m.Name)
 	builder.WriteString(", ")
 	builder.WriteString("code=")
-	builder.WriteString(rt.Code)
+	builder.WriteString(_m.Code)
 	builder.WriteString(", ")
 	builder.WriteString("category=")
-	builder.WriteString(fmt.Sprintf("%v", rt.Category))
+	builder.WriteString(fmt.Sprintf("%v", _m.Category))
 	builder.WriteString(", ")
 	builder.WriteString("direction=")
-	builder.WriteString(fmt.Sprintf("%v", rt.Direction))
+	builder.WriteString(fmt.Sprintf("%v", _m.Direction))
 	builder.WriteByte(')')
 	return builder.String()
 }

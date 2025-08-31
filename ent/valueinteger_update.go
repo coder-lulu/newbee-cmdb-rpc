@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
 )
 
 // ValueIntegerUpdate is the builder for updating ValueInteger entities.
@@ -25,144 +25,144 @@ type ValueIntegerUpdate struct {
 }
 
 // Where appends a list predicates to the ValueIntegerUpdate builder.
-func (viu *ValueIntegerUpdate) Where(ps ...predicate.ValueInteger) *ValueIntegerUpdate {
-	viu.mutation.Where(ps...)
-	return viu
+func (_u *ValueIntegerUpdate) Where(ps ...predicate.ValueInteger) *ValueIntegerUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (viu *ValueIntegerUpdate) SetUpdatedAt(t time.Time) *ValueIntegerUpdate {
-	viu.mutation.SetUpdatedAt(t)
-	return viu
+func (_u *ValueIntegerUpdate) SetUpdatedAt(v time.Time) *ValueIntegerUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (viu *ValueIntegerUpdate) SetDeletedAt(t time.Time) *ValueIntegerUpdate {
-	viu.mutation.SetDeletedAt(t)
-	return viu
+func (_u *ValueIntegerUpdate) SetDeletedAt(v time.Time) *ValueIntegerUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (viu *ValueIntegerUpdate) SetNillableDeletedAt(t *time.Time) *ValueIntegerUpdate {
-	if t != nil {
-		viu.SetDeletedAt(*t)
+func (_u *ValueIntegerUpdate) SetNillableDeletedAt(v *time.Time) *ValueIntegerUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return viu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (viu *ValueIntegerUpdate) ClearDeletedAt() *ValueIntegerUpdate {
-	viu.mutation.ClearDeletedAt()
-	return viu
+func (_u *ValueIntegerUpdate) ClearDeletedAt() *ValueIntegerUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (viu *ValueIntegerUpdate) SetCiID(u uint64) *ValueIntegerUpdate {
-	viu.mutation.SetCiID(u)
-	return viu
+func (_u *ValueIntegerUpdate) SetCiID(v uint64) *ValueIntegerUpdate {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (viu *ValueIntegerUpdate) SetNillableCiID(u *uint64) *ValueIntegerUpdate {
-	if u != nil {
-		viu.SetCiID(*u)
+func (_u *ValueIntegerUpdate) SetNillableCiID(v *uint64) *ValueIntegerUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return viu
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (viu *ValueIntegerUpdate) SetAttrID(u uint64) *ValueIntegerUpdate {
-	viu.mutation.SetAttrID(u)
-	return viu
+func (_u *ValueIntegerUpdate) SetAttrID(v uint64) *ValueIntegerUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (viu *ValueIntegerUpdate) SetNillableAttrID(u *uint64) *ValueIntegerUpdate {
-	if u != nil {
-		viu.SetAttrID(*u)
+func (_u *ValueIntegerUpdate) SetNillableAttrID(v *uint64) *ValueIntegerUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return viu
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (viu *ValueIntegerUpdate) SetValue(i int) *ValueIntegerUpdate {
-	viu.mutation.ResetValue()
-	viu.mutation.SetValue(i)
-	return viu
+func (_u *ValueIntegerUpdate) SetValue(v int) *ValueIntegerUpdate {
+	_u.mutation.ResetValue()
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (viu *ValueIntegerUpdate) SetNillableValue(i *int) *ValueIntegerUpdate {
-	if i != nil {
-		viu.SetValue(*i)
+func (_u *ValueIntegerUpdate) SetNillableValue(v *int) *ValueIntegerUpdate {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return viu
+	return _u
 }
 
-// AddValue adds i to the "value" field.
-func (viu *ValueIntegerUpdate) AddValue(i int) *ValueIntegerUpdate {
-	viu.mutation.AddValue(i)
-	return viu
+// AddValue adds value to the "value" field.
+func (_u *ValueIntegerUpdate) AddValue(v int) *ValueIntegerUpdate {
+	_u.mutation.AddValue(v)
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (viu *ValueIntegerUpdate) SetIsCover(b bool) *ValueIntegerUpdate {
-	viu.mutation.SetIsCover(b)
-	return viu
+func (_u *ValueIntegerUpdate) SetIsCover(v bool) *ValueIntegerUpdate {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (viu *ValueIntegerUpdate) SetNillableIsCover(b *bool) *ValueIntegerUpdate {
-	if b != nil {
-		viu.SetIsCover(*b)
+func (_u *ValueIntegerUpdate) SetNillableIsCover(v *bool) *ValueIntegerUpdate {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return viu
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (viu *ValueIntegerUpdate) SetCi(c *Cis) *ValueIntegerUpdate {
-	return viu.SetCiID(c.ID)
+func (_u *ValueIntegerUpdate) SetCi(v *Cis) *ValueIntegerUpdate {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (viu *ValueIntegerUpdate) SetAttributeID(id uint64) *ValueIntegerUpdate {
-	viu.mutation.SetAttributeID(id)
-	return viu
+func (_u *ValueIntegerUpdate) SetAttributeID(id uint64) *ValueIntegerUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (viu *ValueIntegerUpdate) SetAttribute(a *Attribute) *ValueIntegerUpdate {
-	return viu.SetAttributeID(a.ID)
+func (_u *ValueIntegerUpdate) SetAttribute(v *Attribute) *ValueIntegerUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueIntegerMutation object of the builder.
-func (viu *ValueIntegerUpdate) Mutation() *ValueIntegerMutation {
-	return viu.mutation
+func (_u *ValueIntegerUpdate) Mutation() *ValueIntegerMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (viu *ValueIntegerUpdate) ClearCi() *ValueIntegerUpdate {
-	viu.mutation.ClearCi()
-	return viu
+func (_u *ValueIntegerUpdate) ClearCi() *ValueIntegerUpdate {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (viu *ValueIntegerUpdate) ClearAttribute() *ValueIntegerUpdate {
-	viu.mutation.ClearAttribute()
-	return viu
+func (_u *ValueIntegerUpdate) ClearAttribute() *ValueIntegerUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (viu *ValueIntegerUpdate) Save(ctx context.Context) (int, error) {
-	if err := viu.defaults(); err != nil {
+func (_u *ValueIntegerUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, viu.sqlSave, viu.mutation, viu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (viu *ValueIntegerUpdate) SaveX(ctx context.Context) int {
-	affected, err := viu.Save(ctx)
+func (_u *ValueIntegerUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -170,72 +170,72 @@ func (viu *ValueIntegerUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (viu *ValueIntegerUpdate) Exec(ctx context.Context) error {
-	_, err := viu.Save(ctx)
+func (_u *ValueIntegerUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (viu *ValueIntegerUpdate) ExecX(ctx context.Context) {
-	if err := viu.Exec(ctx); err != nil {
+func (_u *ValueIntegerUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (viu *ValueIntegerUpdate) defaults() error {
-	if _, ok := viu.mutation.UpdatedAt(); !ok {
+func (_u *ValueIntegerUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valueinteger.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valueinteger.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valueinteger.UpdateDefaultUpdatedAt()
-		viu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (viu *ValueIntegerUpdate) check() error {
-	if viu.mutation.CiCleared() && len(viu.mutation.CiIDs()) > 0 {
+func (_u *ValueIntegerUpdate) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueInteger.ci"`)
 	}
-	if viu.mutation.AttributeCleared() && len(viu.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueInteger.attribute"`)
 	}
 	return nil
 }
 
-func (viu *ValueIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := viu.check(); err != nil {
-		return n, err
+func (_u *ValueIntegerUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valueinteger.Table, valueinteger.Columns, sqlgraph.NewFieldSpec(valueinteger.FieldID, field.TypeUint64))
-	if ps := viu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := viu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valueinteger.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := viu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valueinteger.FieldDeletedAt, field.TypeTime, value)
 	}
-	if viu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valueinteger.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := viu.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valueinteger.FieldValue, field.TypeInt, value)
 	}
-	if value, ok := viu.mutation.AddedValue(); ok {
+	if value, ok := _u.mutation.AddedValue(); ok {
 		_spec.AddField(valueinteger.FieldValue, field.TypeInt, value)
 	}
-	if value, ok := viu.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valueinteger.FieldIsCover, field.TypeBool, value)
 	}
-	if viu.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -248,7 +248,7 @@ func (viu *ValueIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := viu.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -264,7 +264,7 @@ func (viu *ValueIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if viu.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -277,7 +277,7 @@ func (viu *ValueIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := viu.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -293,7 +293,7 @@ func (viu *ValueIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, viu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valueinteger.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -301,8 +301,8 @@ func (viu *ValueIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	viu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ValueIntegerUpdateOne is the builder for updating a single ValueInteger entity.
@@ -314,151 +314,151 @@ type ValueIntegerUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (viuo *ValueIntegerUpdateOne) SetUpdatedAt(t time.Time) *ValueIntegerUpdateOne {
-	viuo.mutation.SetUpdatedAt(t)
-	return viuo
+func (_u *ValueIntegerUpdateOne) SetUpdatedAt(v time.Time) *ValueIntegerUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (viuo *ValueIntegerUpdateOne) SetDeletedAt(t time.Time) *ValueIntegerUpdateOne {
-	viuo.mutation.SetDeletedAt(t)
-	return viuo
+func (_u *ValueIntegerUpdateOne) SetDeletedAt(v time.Time) *ValueIntegerUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (viuo *ValueIntegerUpdateOne) SetNillableDeletedAt(t *time.Time) *ValueIntegerUpdateOne {
-	if t != nil {
-		viuo.SetDeletedAt(*t)
+func (_u *ValueIntegerUpdateOne) SetNillableDeletedAt(v *time.Time) *ValueIntegerUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return viuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (viuo *ValueIntegerUpdateOne) ClearDeletedAt() *ValueIntegerUpdateOne {
-	viuo.mutation.ClearDeletedAt()
-	return viuo
+func (_u *ValueIntegerUpdateOne) ClearDeletedAt() *ValueIntegerUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (viuo *ValueIntegerUpdateOne) SetCiID(u uint64) *ValueIntegerUpdateOne {
-	viuo.mutation.SetCiID(u)
-	return viuo
+func (_u *ValueIntegerUpdateOne) SetCiID(v uint64) *ValueIntegerUpdateOne {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (viuo *ValueIntegerUpdateOne) SetNillableCiID(u *uint64) *ValueIntegerUpdateOne {
-	if u != nil {
-		viuo.SetCiID(*u)
+func (_u *ValueIntegerUpdateOne) SetNillableCiID(v *uint64) *ValueIntegerUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return viuo
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (viuo *ValueIntegerUpdateOne) SetAttrID(u uint64) *ValueIntegerUpdateOne {
-	viuo.mutation.SetAttrID(u)
-	return viuo
+func (_u *ValueIntegerUpdateOne) SetAttrID(v uint64) *ValueIntegerUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (viuo *ValueIntegerUpdateOne) SetNillableAttrID(u *uint64) *ValueIntegerUpdateOne {
-	if u != nil {
-		viuo.SetAttrID(*u)
+func (_u *ValueIntegerUpdateOne) SetNillableAttrID(v *uint64) *ValueIntegerUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return viuo
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (viuo *ValueIntegerUpdateOne) SetValue(i int) *ValueIntegerUpdateOne {
-	viuo.mutation.ResetValue()
-	viuo.mutation.SetValue(i)
-	return viuo
+func (_u *ValueIntegerUpdateOne) SetValue(v int) *ValueIntegerUpdateOne {
+	_u.mutation.ResetValue()
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (viuo *ValueIntegerUpdateOne) SetNillableValue(i *int) *ValueIntegerUpdateOne {
-	if i != nil {
-		viuo.SetValue(*i)
+func (_u *ValueIntegerUpdateOne) SetNillableValue(v *int) *ValueIntegerUpdateOne {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return viuo
+	return _u
 }
 
-// AddValue adds i to the "value" field.
-func (viuo *ValueIntegerUpdateOne) AddValue(i int) *ValueIntegerUpdateOne {
-	viuo.mutation.AddValue(i)
-	return viuo
+// AddValue adds value to the "value" field.
+func (_u *ValueIntegerUpdateOne) AddValue(v int) *ValueIntegerUpdateOne {
+	_u.mutation.AddValue(v)
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (viuo *ValueIntegerUpdateOne) SetIsCover(b bool) *ValueIntegerUpdateOne {
-	viuo.mutation.SetIsCover(b)
-	return viuo
+func (_u *ValueIntegerUpdateOne) SetIsCover(v bool) *ValueIntegerUpdateOne {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (viuo *ValueIntegerUpdateOne) SetNillableIsCover(b *bool) *ValueIntegerUpdateOne {
-	if b != nil {
-		viuo.SetIsCover(*b)
+func (_u *ValueIntegerUpdateOne) SetNillableIsCover(v *bool) *ValueIntegerUpdateOne {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return viuo
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (viuo *ValueIntegerUpdateOne) SetCi(c *Cis) *ValueIntegerUpdateOne {
-	return viuo.SetCiID(c.ID)
+func (_u *ValueIntegerUpdateOne) SetCi(v *Cis) *ValueIntegerUpdateOne {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (viuo *ValueIntegerUpdateOne) SetAttributeID(id uint64) *ValueIntegerUpdateOne {
-	viuo.mutation.SetAttributeID(id)
-	return viuo
+func (_u *ValueIntegerUpdateOne) SetAttributeID(id uint64) *ValueIntegerUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (viuo *ValueIntegerUpdateOne) SetAttribute(a *Attribute) *ValueIntegerUpdateOne {
-	return viuo.SetAttributeID(a.ID)
+func (_u *ValueIntegerUpdateOne) SetAttribute(v *Attribute) *ValueIntegerUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueIntegerMutation object of the builder.
-func (viuo *ValueIntegerUpdateOne) Mutation() *ValueIntegerMutation {
-	return viuo.mutation
+func (_u *ValueIntegerUpdateOne) Mutation() *ValueIntegerMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (viuo *ValueIntegerUpdateOne) ClearCi() *ValueIntegerUpdateOne {
-	viuo.mutation.ClearCi()
-	return viuo
+func (_u *ValueIntegerUpdateOne) ClearCi() *ValueIntegerUpdateOne {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (viuo *ValueIntegerUpdateOne) ClearAttribute() *ValueIntegerUpdateOne {
-	viuo.mutation.ClearAttribute()
-	return viuo
+func (_u *ValueIntegerUpdateOne) ClearAttribute() *ValueIntegerUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the ValueIntegerUpdate builder.
-func (viuo *ValueIntegerUpdateOne) Where(ps ...predicate.ValueInteger) *ValueIntegerUpdateOne {
-	viuo.mutation.Where(ps...)
-	return viuo
+func (_u *ValueIntegerUpdateOne) Where(ps ...predicate.ValueInteger) *ValueIntegerUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (viuo *ValueIntegerUpdateOne) Select(field string, fields ...string) *ValueIntegerUpdateOne {
-	viuo.fields = append([]string{field}, fields...)
-	return viuo
+func (_u *ValueIntegerUpdateOne) Select(field string, fields ...string) *ValueIntegerUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ValueInteger entity.
-func (viuo *ValueIntegerUpdateOne) Save(ctx context.Context) (*ValueInteger, error) {
-	if err := viuo.defaults(); err != nil {
+func (_u *ValueIntegerUpdateOne) Save(ctx context.Context) (*ValueInteger, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, viuo.sqlSave, viuo.mutation, viuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (viuo *ValueIntegerUpdateOne) SaveX(ctx context.Context) *ValueInteger {
-	node, err := viuo.Save(ctx)
+func (_u *ValueIntegerUpdateOne) SaveX(ctx context.Context) *ValueInteger {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -466,52 +466,52 @@ func (viuo *ValueIntegerUpdateOne) SaveX(ctx context.Context) *ValueInteger {
 }
 
 // Exec executes the query on the entity.
-func (viuo *ValueIntegerUpdateOne) Exec(ctx context.Context) error {
-	_, err := viuo.Save(ctx)
+func (_u *ValueIntegerUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (viuo *ValueIntegerUpdateOne) ExecX(ctx context.Context) {
-	if err := viuo.Exec(ctx); err != nil {
+func (_u *ValueIntegerUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (viuo *ValueIntegerUpdateOne) defaults() error {
-	if _, ok := viuo.mutation.UpdatedAt(); !ok {
+func (_u *ValueIntegerUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valueinteger.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valueinteger.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valueinteger.UpdateDefaultUpdatedAt()
-		viuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (viuo *ValueIntegerUpdateOne) check() error {
-	if viuo.mutation.CiCleared() && len(viuo.mutation.CiIDs()) > 0 {
+func (_u *ValueIntegerUpdateOne) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueInteger.ci"`)
 	}
-	if viuo.mutation.AttributeCleared() && len(viuo.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueInteger.attribute"`)
 	}
 	return nil
 }
 
-func (viuo *ValueIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ValueInteger, err error) {
-	if err := viuo.check(); err != nil {
+func (_u *ValueIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ValueInteger, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valueinteger.Table, valueinteger.Columns, sqlgraph.NewFieldSpec(valueinteger.FieldID, field.TypeUint64))
-	id, ok := viuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ValueInteger.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := viuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valueinteger.FieldID)
 		for _, f := range fields {
@@ -523,32 +523,32 @@ func (viuo *ValueIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ValueInt
 			}
 		}
 	}
-	if ps := viuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := viuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valueinteger.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := viuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valueinteger.FieldDeletedAt, field.TypeTime, value)
 	}
-	if viuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valueinteger.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := viuo.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valueinteger.FieldValue, field.TypeInt, value)
 	}
-	if value, ok := viuo.mutation.AddedValue(); ok {
+	if value, ok := _u.mutation.AddedValue(); ok {
 		_spec.AddField(valueinteger.FieldValue, field.TypeInt, value)
 	}
-	if value, ok := viuo.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valueinteger.FieldIsCover, field.TypeBool, value)
 	}
-	if viuo.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -561,7 +561,7 @@ func (viuo *ValueIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ValueInt
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := viuo.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -577,7 +577,7 @@ func (viuo *ValueIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ValueInt
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if viuo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -590,7 +590,7 @@ func (viuo *ValueIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ValueInt
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := viuo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -606,10 +606,10 @@ func (viuo *ValueIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ValueInt
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ValueInteger{config: viuo.config}
+	_node = &ValueInteger{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, viuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valueinteger.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -617,6 +617,6 @@ func (viuo *ValueIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ValueInt
 		}
 		return nil, err
 	}
-	viuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

@@ -7,7 +7,7 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"gitee.com/link234/newbee-backend-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
 )
 
 // PermissionOperation 权限操作明细表 - 将JSON操作拆分为独立表
@@ -19,13 +19,14 @@ type PermissionOperation struct {
 func (PermissionOperation) Mixin() []ent.Mixin {
 	return []ent.Mixin{
 		mixins.IDMixin{},
+		mixins.TenantMixin{},
 	}
 }
 
 // Fields of the PermissionOperation.
 func (PermissionOperation) Fields() []ent.Field {
 	return []ent.Field{
-		field.String("permission_id").
+		field.Uint64("permission_id").
 			Comment("权限ID"),
 
 		field.String("operation_code").

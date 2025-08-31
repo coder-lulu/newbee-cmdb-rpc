@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	uuid "github.com/gofrs/uuid/v5"
+	"entgo.io/ent/dialect/sql/sqlgraph"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ID filters vertices based on their ID field.
@@ -80,28 +80,23 @@ func PermissionID(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldPermissionID, v))
 }
 
-// CiTypeID applies equality check predicate on the "ci_type_id" field. It's identical to CiTypeIDEQ.
-func CiTypeID(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldCiTypeID, v))
+// ScopeTargetType applies equality check predicate on the "scope_target_type" field. It's identical to ScopeTargetTypeEQ.
+func ScopeTargetType(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldScopeTargetType, v))
 }
 
-// CiID applies equality check predicate on the "ci_id" field. It's identical to CiIDEQ.
-func CiID(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldCiID, v))
+// ScopeTargetID applies equality check predicate on the "scope_target_id" field. It's identical to ScopeTargetIDEQ.
+func ScopeTargetID(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldScopeTargetID, v))
 }
 
-// AttributeID applies equality check predicate on the "attribute_id" field. It's identical to AttributeIDEQ.
-func AttributeID(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldAttributeID, v))
-}
-
-// FieldName applies equality check predicate on the "field_name" field. It's identical to FieldNameEQ.
-func FieldName(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldFieldName, v))
+// ScopeFieldName applies equality check predicate on the "scope_field_name" field. It's identical to ScopeFieldNameEQ.
+func ScopeFieldName(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldScopeFieldName, v))
 }
 
 // SubjectID applies equality check predicate on the "subject_id" field. It's identical to SubjectIDEQ.
-func SubjectID(v uuid.UUID) predicate.CiPermission {
+func SubjectID(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldSubjectID, v))
 }
 
@@ -110,14 +105,9 @@ func SubjectName(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldSubjectName, v))
 }
 
-// SubjectCode applies equality check predicate on the "subject_code" field. It's identical to SubjectCodeEQ.
-func SubjectCode(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldSubjectCode, v))
-}
-
-// Priority applies equality check predicate on the "priority" field. It's identical to PriorityEQ.
-func Priority(v int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldPriority, v))
+// OperationsMask applies equality check predicate on the "operations_mask" field. It's identical to OperationsMaskEQ.
+func OperationsMask(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldOperationsMask, v))
 }
 
 // EffectiveFrom applies equality check predicate on the "effective_from" field. It's identical to EffectiveFromEQ.
@@ -135,29 +125,29 @@ func IsTemporary(v bool) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldIsTemporary, v))
 }
 
+// Priority applies equality check predicate on the "priority" field. It's identical to PriorityEQ.
+func Priority(v int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldPriority, v))
+}
+
+// ParentPermissionID applies equality check predicate on the "parent_permission_id" field. It's identical to ParentPermissionIDEQ.
+func ParentPermissionID(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldParentPermissionID, v))
+}
+
+// Inheritable applies equality check predicate on the "inheritable" field. It's identical to InheritableEQ.
+func Inheritable(v bool) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldInheritable, v))
+}
+
 // RequireApproval applies equality check predicate on the "require_approval" field. It's identical to RequireApprovalEQ.
 func RequireApproval(v bool) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldRequireApproval, v))
 }
 
-// GrantedBy applies equality check predicate on the "granted_by" field. It's identical to GrantedByEQ.
-func GrantedBy(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldGrantedBy, v))
-}
-
-// GrantedByName applies equality check predicate on the "granted_by_name" field. It's identical to GrantedByNameEQ.
-func GrantedByName(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldGrantedByName, v))
-}
-
-// GrantedAt applies equality check predicate on the "granted_at" field. It's identical to GrantedAtEQ.
-func GrantedAt(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldGrantedAt, v))
-}
-
-// GrantReason applies equality check predicate on the "grant_reason" field. It's identical to GrantReasonEQ.
-func GrantReason(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldGrantReason, v))
+// RequireMfa applies equality check predicate on the "require_mfa" field. It's identical to RequireMfaEQ.
+func RequireMfa(v bool) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldRequireMfa, v))
 }
 
 // UsageCount applies equality check predicate on the "usage_count" field. It's identical to UsageCountEQ.
@@ -170,24 +160,14 @@ func LastUsedAt(v time.Time) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldLastUsedAt, v))
 }
 
-// StatusReason applies equality check predicate on the "status_reason" field. It's identical to StatusReasonEQ.
-func StatusReason(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldStatusReason, v))
+// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
+func CreatedBy(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldCreatedBy, v))
 }
 
-// Inheritable applies equality check predicate on the "inheritable" field. It's identical to InheritableEQ.
-func Inheritable(v bool) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldInheritable, v))
-}
-
-// ParentPermissionID applies equality check predicate on the "parent_permission_id" field. It's identical to ParentPermissionIDEQ.
-func ParentPermissionID(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldParentPermissionID, v))
-}
-
-// RequireMfa applies equality check predicate on the "require_mfa" field. It's identical to RequireMfaEQ.
-func RequireMfa(v bool) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldRequireMfa, v))
+// UpdatedBy applies equality check predicate on the "updated_by" field. It's identical to UpdatedByEQ.
+func UpdatedBy(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldUpdatedBy, v))
 }
 
 // Description applies equality check predicate on the "description" field. It's identical to DescriptionEQ.
@@ -198,26 +178,6 @@ func Description(v string) predicate.CiPermission {
 // Comments applies equality check predicate on the "comments" field. It's identical to CommentsEQ.
 func Comments(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldComments, v))
-}
-
-// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
-func CreatedBy(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldCreatedBy, v))
-}
-
-// UpdatedBy applies equality check predicate on the "updated_by" field. It's identical to UpdatedByEQ.
-func UpdatedBy(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldUpdatedBy, v))
-}
-
-// LastReviewedAt applies equality check predicate on the "last_reviewed_at" field. It's identical to LastReviewedAtEQ.
-func LastReviewedAt(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldLastReviewedAt, v))
-}
-
-// LastReviewedBy applies equality check predicate on the "last_reviewed_by" field. It's identical to LastReviewedByEQ.
-func LastReviewedBy(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldLastReviewedBy, v))
 }
 
 // CreatedAtEQ applies the EQ predicate on the "created_at" field.
@@ -475,229 +435,204 @@ func ScopeTypeNotIn(vs ...ScopeType) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNotIn(FieldScopeType, vs...))
 }
 
-// CiTypeIDEQ applies the EQ predicate on the "ci_type_id" field.
-func CiTypeIDEQ(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldCiTypeID, v))
+// ScopeTargetTypeEQ applies the EQ predicate on the "scope_target_type" field.
+func ScopeTargetTypeEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldScopeTargetType, v))
 }
 
-// CiTypeIDNEQ applies the NEQ predicate on the "ci_type_id" field.
-func CiTypeIDNEQ(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldCiTypeID, v))
+// ScopeTargetTypeNEQ applies the NEQ predicate on the "scope_target_type" field.
+func ScopeTargetTypeNEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldScopeTargetType, v))
 }
 
-// CiTypeIDIn applies the In predicate on the "ci_type_id" field.
-func CiTypeIDIn(vs ...uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldCiTypeID, vs...))
+// ScopeTargetTypeIn applies the In predicate on the "scope_target_type" field.
+func ScopeTargetTypeIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldScopeTargetType, vs...))
 }
 
-// CiTypeIDNotIn applies the NotIn predicate on the "ci_type_id" field.
-func CiTypeIDNotIn(vs ...uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldCiTypeID, vs...))
+// ScopeTargetTypeNotIn applies the NotIn predicate on the "scope_target_type" field.
+func ScopeTargetTypeNotIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldScopeTargetType, vs...))
 }
 
-// CiTypeIDGT applies the GT predicate on the "ci_type_id" field.
-func CiTypeIDGT(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldCiTypeID, v))
+// ScopeTargetTypeGT applies the GT predicate on the "scope_target_type" field.
+func ScopeTargetTypeGT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGT(FieldScopeTargetType, v))
 }
 
-// CiTypeIDGTE applies the GTE predicate on the "ci_type_id" field.
-func CiTypeIDGTE(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldCiTypeID, v))
+// ScopeTargetTypeGTE applies the GTE predicate on the "scope_target_type" field.
+func ScopeTargetTypeGTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGTE(FieldScopeTargetType, v))
 }
 
-// CiTypeIDLT applies the LT predicate on the "ci_type_id" field.
-func CiTypeIDLT(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldCiTypeID, v))
+// ScopeTargetTypeLT applies the LT predicate on the "scope_target_type" field.
+func ScopeTargetTypeLT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLT(FieldScopeTargetType, v))
 }
 
-// CiTypeIDLTE applies the LTE predicate on the "ci_type_id" field.
-func CiTypeIDLTE(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldCiTypeID, v))
+// ScopeTargetTypeLTE applies the LTE predicate on the "scope_target_type" field.
+func ScopeTargetTypeLTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLTE(FieldScopeTargetType, v))
 }
 
-// CiTypeIDIsNil applies the IsNil predicate on the "ci_type_id" field.
-func CiTypeIDIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldCiTypeID))
+// ScopeTargetTypeContains applies the Contains predicate on the "scope_target_type" field.
+func ScopeTargetTypeContains(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContains(FieldScopeTargetType, v))
 }
 
-// CiTypeIDNotNil applies the NotNil predicate on the "ci_type_id" field.
-func CiTypeIDNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldCiTypeID))
+// ScopeTargetTypeHasPrefix applies the HasPrefix predicate on the "scope_target_type" field.
+func ScopeTargetTypeHasPrefix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasPrefix(FieldScopeTargetType, v))
 }
 
-// CiIDEQ applies the EQ predicate on the "ci_id" field.
-func CiIDEQ(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldCiID, v))
+// ScopeTargetTypeHasSuffix applies the HasSuffix predicate on the "scope_target_type" field.
+func ScopeTargetTypeHasSuffix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasSuffix(FieldScopeTargetType, v))
 }
 
-// CiIDNEQ applies the NEQ predicate on the "ci_id" field.
-func CiIDNEQ(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldCiID, v))
+// ScopeTargetTypeIsNil applies the IsNil predicate on the "scope_target_type" field.
+func ScopeTargetTypeIsNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIsNull(FieldScopeTargetType))
 }
 
-// CiIDIn applies the In predicate on the "ci_id" field.
-func CiIDIn(vs ...uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldCiID, vs...))
+// ScopeTargetTypeNotNil applies the NotNil predicate on the "scope_target_type" field.
+func ScopeTargetTypeNotNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotNull(FieldScopeTargetType))
 }
 
-// CiIDNotIn applies the NotIn predicate on the "ci_id" field.
-func CiIDNotIn(vs ...uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldCiID, vs...))
+// ScopeTargetTypeEqualFold applies the EqualFold predicate on the "scope_target_type" field.
+func ScopeTargetTypeEqualFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEqualFold(FieldScopeTargetType, v))
 }
 
-// CiIDGT applies the GT predicate on the "ci_id" field.
-func CiIDGT(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldCiID, v))
+// ScopeTargetTypeContainsFold applies the ContainsFold predicate on the "scope_target_type" field.
+func ScopeTargetTypeContainsFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContainsFold(FieldScopeTargetType, v))
 }
 
-// CiIDGTE applies the GTE predicate on the "ci_id" field.
-func CiIDGTE(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldCiID, v))
+// ScopeTargetIDEQ applies the EQ predicate on the "scope_target_id" field.
+func ScopeTargetIDEQ(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldScopeTargetID, v))
 }
 
-// CiIDLT applies the LT predicate on the "ci_id" field.
-func CiIDLT(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldCiID, v))
+// ScopeTargetIDNEQ applies the NEQ predicate on the "scope_target_id" field.
+func ScopeTargetIDNEQ(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldScopeTargetID, v))
 }
 
-// CiIDLTE applies the LTE predicate on the "ci_id" field.
-func CiIDLTE(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldCiID, v))
+// ScopeTargetIDIn applies the In predicate on the "scope_target_id" field.
+func ScopeTargetIDIn(vs ...uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldScopeTargetID, vs...))
 }
 
-// CiIDIsNil applies the IsNil predicate on the "ci_id" field.
-func CiIDIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldCiID))
+// ScopeTargetIDNotIn applies the NotIn predicate on the "scope_target_id" field.
+func ScopeTargetIDNotIn(vs ...uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldScopeTargetID, vs...))
 }
 
-// CiIDNotNil applies the NotNil predicate on the "ci_id" field.
-func CiIDNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldCiID))
+// ScopeTargetIDGT applies the GT predicate on the "scope_target_id" field.
+func ScopeTargetIDGT(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGT(FieldScopeTargetID, v))
 }
 
-// AttributeIDEQ applies the EQ predicate on the "attribute_id" field.
-func AttributeIDEQ(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldAttributeID, v))
+// ScopeTargetIDGTE applies the GTE predicate on the "scope_target_id" field.
+func ScopeTargetIDGTE(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGTE(FieldScopeTargetID, v))
 }
 
-// AttributeIDNEQ applies the NEQ predicate on the "attribute_id" field.
-func AttributeIDNEQ(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldAttributeID, v))
+// ScopeTargetIDLT applies the LT predicate on the "scope_target_id" field.
+func ScopeTargetIDLT(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLT(FieldScopeTargetID, v))
 }
 
-// AttributeIDIn applies the In predicate on the "attribute_id" field.
-func AttributeIDIn(vs ...uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldAttributeID, vs...))
+// ScopeTargetIDLTE applies the LTE predicate on the "scope_target_id" field.
+func ScopeTargetIDLTE(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLTE(FieldScopeTargetID, v))
 }
 
-// AttributeIDNotIn applies the NotIn predicate on the "attribute_id" field.
-func AttributeIDNotIn(vs ...uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldAttributeID, vs...))
+// ScopeTargetIDIsNil applies the IsNil predicate on the "scope_target_id" field.
+func ScopeTargetIDIsNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIsNull(FieldScopeTargetID))
 }
 
-// AttributeIDGT applies the GT predicate on the "attribute_id" field.
-func AttributeIDGT(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldAttributeID, v))
+// ScopeTargetIDNotNil applies the NotNil predicate on the "scope_target_id" field.
+func ScopeTargetIDNotNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotNull(FieldScopeTargetID))
 }
 
-// AttributeIDGTE applies the GTE predicate on the "attribute_id" field.
-func AttributeIDGTE(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldAttributeID, v))
+// ScopeFieldNameEQ applies the EQ predicate on the "scope_field_name" field.
+func ScopeFieldNameEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldScopeFieldName, v))
 }
 
-// AttributeIDLT applies the LT predicate on the "attribute_id" field.
-func AttributeIDLT(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldAttributeID, v))
+// ScopeFieldNameNEQ applies the NEQ predicate on the "scope_field_name" field.
+func ScopeFieldNameNEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldScopeFieldName, v))
 }
 
-// AttributeIDLTE applies the LTE predicate on the "attribute_id" field.
-func AttributeIDLTE(v uint64) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldAttributeID, v))
+// ScopeFieldNameIn applies the In predicate on the "scope_field_name" field.
+func ScopeFieldNameIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldScopeFieldName, vs...))
 }
 
-// AttributeIDIsNil applies the IsNil predicate on the "attribute_id" field.
-func AttributeIDIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldAttributeID))
+// ScopeFieldNameNotIn applies the NotIn predicate on the "scope_field_name" field.
+func ScopeFieldNameNotIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldScopeFieldName, vs...))
 }
 
-// AttributeIDNotNil applies the NotNil predicate on the "attribute_id" field.
-func AttributeIDNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldAttributeID))
+// ScopeFieldNameGT applies the GT predicate on the "scope_field_name" field.
+func ScopeFieldNameGT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGT(FieldScopeFieldName, v))
 }
 
-// FieldNameEQ applies the EQ predicate on the "field_name" field.
-func FieldNameEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldFieldName, v))
+// ScopeFieldNameGTE applies the GTE predicate on the "scope_field_name" field.
+func ScopeFieldNameGTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGTE(FieldScopeFieldName, v))
 }
 
-// FieldNameNEQ applies the NEQ predicate on the "field_name" field.
-func FieldNameNEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldFieldName, v))
+// ScopeFieldNameLT applies the LT predicate on the "scope_field_name" field.
+func ScopeFieldNameLT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLT(FieldScopeFieldName, v))
 }
 
-// FieldNameIn applies the In predicate on the "field_name" field.
-func FieldNameIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldFieldName, vs...))
+// ScopeFieldNameLTE applies the LTE predicate on the "scope_field_name" field.
+func ScopeFieldNameLTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLTE(FieldScopeFieldName, v))
 }
 
-// FieldNameNotIn applies the NotIn predicate on the "field_name" field.
-func FieldNameNotIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldFieldName, vs...))
+// ScopeFieldNameContains applies the Contains predicate on the "scope_field_name" field.
+func ScopeFieldNameContains(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContains(FieldScopeFieldName, v))
 }
 
-// FieldNameGT applies the GT predicate on the "field_name" field.
-func FieldNameGT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldFieldName, v))
+// ScopeFieldNameHasPrefix applies the HasPrefix predicate on the "scope_field_name" field.
+func ScopeFieldNameHasPrefix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasPrefix(FieldScopeFieldName, v))
 }
 
-// FieldNameGTE applies the GTE predicate on the "field_name" field.
-func FieldNameGTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldFieldName, v))
+// ScopeFieldNameHasSuffix applies the HasSuffix predicate on the "scope_field_name" field.
+func ScopeFieldNameHasSuffix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasSuffix(FieldScopeFieldName, v))
 }
 
-// FieldNameLT applies the LT predicate on the "field_name" field.
-func FieldNameLT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldFieldName, v))
+// ScopeFieldNameIsNil applies the IsNil predicate on the "scope_field_name" field.
+func ScopeFieldNameIsNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIsNull(FieldScopeFieldName))
 }
 
-// FieldNameLTE applies the LTE predicate on the "field_name" field.
-func FieldNameLTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldFieldName, v))
+// ScopeFieldNameNotNil applies the NotNil predicate on the "scope_field_name" field.
+func ScopeFieldNameNotNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotNull(FieldScopeFieldName))
 }
 
-// FieldNameContains applies the Contains predicate on the "field_name" field.
-func FieldNameContains(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContains(FieldFieldName, v))
+// ScopeFieldNameEqualFold applies the EqualFold predicate on the "scope_field_name" field.
+func ScopeFieldNameEqualFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEqualFold(FieldScopeFieldName, v))
 }
 
-// FieldNameHasPrefix applies the HasPrefix predicate on the "field_name" field.
-func FieldNameHasPrefix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasPrefix(FieldFieldName, v))
-}
-
-// FieldNameHasSuffix applies the HasSuffix predicate on the "field_name" field.
-func FieldNameHasSuffix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasSuffix(FieldFieldName, v))
-}
-
-// FieldNameIsNil applies the IsNil predicate on the "field_name" field.
-func FieldNameIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldFieldName))
-}
-
-// FieldNameNotNil applies the NotNil predicate on the "field_name" field.
-func FieldNameNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldFieldName))
-}
-
-// FieldNameEqualFold applies the EqualFold predicate on the "field_name" field.
-func FieldNameEqualFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEqualFold(FieldFieldName, v))
-}
-
-// FieldNameContainsFold applies the ContainsFold predicate on the "field_name" field.
-func FieldNameContainsFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContainsFold(FieldFieldName, v))
+// ScopeFieldNameContainsFold applies the ContainsFold predicate on the "scope_field_name" field.
+func ScopeFieldNameContainsFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContainsFold(FieldScopeFieldName, v))
 }
 
 // SubjectTypeEQ applies the EQ predicate on the "subject_type" field.
@@ -721,43 +656,58 @@ func SubjectTypeNotIn(vs ...SubjectType) predicate.CiPermission {
 }
 
 // SubjectIDEQ applies the EQ predicate on the "subject_id" field.
-func SubjectIDEQ(v uuid.UUID) predicate.CiPermission {
+func SubjectIDEQ(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldSubjectID, v))
 }
 
 // SubjectIDNEQ applies the NEQ predicate on the "subject_id" field.
-func SubjectIDNEQ(v uuid.UUID) predicate.CiPermission {
+func SubjectIDNEQ(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNEQ(FieldSubjectID, v))
 }
 
 // SubjectIDIn applies the In predicate on the "subject_id" field.
-func SubjectIDIn(vs ...uuid.UUID) predicate.CiPermission {
+func SubjectIDIn(vs ...string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldIn(FieldSubjectID, vs...))
 }
 
 // SubjectIDNotIn applies the NotIn predicate on the "subject_id" field.
-func SubjectIDNotIn(vs ...uuid.UUID) predicate.CiPermission {
+func SubjectIDNotIn(vs ...string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNotIn(FieldSubjectID, vs...))
 }
 
 // SubjectIDGT applies the GT predicate on the "subject_id" field.
-func SubjectIDGT(v uuid.UUID) predicate.CiPermission {
+func SubjectIDGT(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldGT(FieldSubjectID, v))
 }
 
 // SubjectIDGTE applies the GTE predicate on the "subject_id" field.
-func SubjectIDGTE(v uuid.UUID) predicate.CiPermission {
+func SubjectIDGTE(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldGTE(FieldSubjectID, v))
 }
 
 // SubjectIDLT applies the LT predicate on the "subject_id" field.
-func SubjectIDLT(v uuid.UUID) predicate.CiPermission {
+func SubjectIDLT(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldLT(FieldSubjectID, v))
 }
 
 // SubjectIDLTE applies the LTE predicate on the "subject_id" field.
-func SubjectIDLTE(v uuid.UUID) predicate.CiPermission {
+func SubjectIDLTE(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldLTE(FieldSubjectID, v))
+}
+
+// SubjectIDContains applies the Contains predicate on the "subject_id" field.
+func SubjectIDContains(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContains(FieldSubjectID, v))
+}
+
+// SubjectIDHasPrefix applies the HasPrefix predicate on the "subject_id" field.
+func SubjectIDHasPrefix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasPrefix(FieldSubjectID, v))
+}
+
+// SubjectIDHasSuffix applies the HasSuffix predicate on the "subject_id" field.
+func SubjectIDHasSuffix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasSuffix(FieldSubjectID, v))
 }
 
 // SubjectIDIsNil applies the IsNil predicate on the "subject_id" field.
@@ -768,6 +718,16 @@ func SubjectIDIsNil() predicate.CiPermission {
 // SubjectIDNotNil applies the NotNil predicate on the "subject_id" field.
 func SubjectIDNotNil() predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNotNull(FieldSubjectID))
+}
+
+// SubjectIDEqualFold applies the EqualFold predicate on the "subject_id" field.
+func SubjectIDEqualFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEqualFold(FieldSubjectID, v))
+}
+
+// SubjectIDContainsFold applies the ContainsFold predicate on the "subject_id" field.
+func SubjectIDContainsFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContainsFold(FieldSubjectID, v))
 }
 
 // SubjectNameEQ applies the EQ predicate on the "subject_name" field.
@@ -835,81 +795,6 @@ func SubjectNameContainsFold(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldContainsFold(FieldSubjectName, v))
 }
 
-// SubjectCodeEQ applies the EQ predicate on the "subject_code" field.
-func SubjectCodeEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldSubjectCode, v))
-}
-
-// SubjectCodeNEQ applies the NEQ predicate on the "subject_code" field.
-func SubjectCodeNEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldSubjectCode, v))
-}
-
-// SubjectCodeIn applies the In predicate on the "subject_code" field.
-func SubjectCodeIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldSubjectCode, vs...))
-}
-
-// SubjectCodeNotIn applies the NotIn predicate on the "subject_code" field.
-func SubjectCodeNotIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldSubjectCode, vs...))
-}
-
-// SubjectCodeGT applies the GT predicate on the "subject_code" field.
-func SubjectCodeGT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldSubjectCode, v))
-}
-
-// SubjectCodeGTE applies the GTE predicate on the "subject_code" field.
-func SubjectCodeGTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldSubjectCode, v))
-}
-
-// SubjectCodeLT applies the LT predicate on the "subject_code" field.
-func SubjectCodeLT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldSubjectCode, v))
-}
-
-// SubjectCodeLTE applies the LTE predicate on the "subject_code" field.
-func SubjectCodeLTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldSubjectCode, v))
-}
-
-// SubjectCodeContains applies the Contains predicate on the "subject_code" field.
-func SubjectCodeContains(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContains(FieldSubjectCode, v))
-}
-
-// SubjectCodeHasPrefix applies the HasPrefix predicate on the "subject_code" field.
-func SubjectCodeHasPrefix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasPrefix(FieldSubjectCode, v))
-}
-
-// SubjectCodeHasSuffix applies the HasSuffix predicate on the "subject_code" field.
-func SubjectCodeHasSuffix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasSuffix(FieldSubjectCode, v))
-}
-
-// SubjectCodeIsNil applies the IsNil predicate on the "subject_code" field.
-func SubjectCodeIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldSubjectCode))
-}
-
-// SubjectCodeNotNil applies the NotNil predicate on the "subject_code" field.
-func SubjectCodeNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldSubjectCode))
-}
-
-// SubjectCodeEqualFold applies the EqualFold predicate on the "subject_code" field.
-func SubjectCodeEqualFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEqualFold(FieldSubjectCode, v))
-}
-
-// SubjectCodeContainsFold applies the ContainsFold predicate on the "subject_code" field.
-func SubjectCodeContainsFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContainsFold(FieldSubjectCode, v))
-}
-
 // PermissionTypeEQ applies the EQ predicate on the "permission_type" field.
 func PermissionTypeEQ(v PermissionType) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldPermissionType, v))
@@ -930,56 +815,6 @@ func PermissionTypeNotIn(vs ...PermissionType) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNotIn(FieldPermissionType, vs...))
 }
 
-// ConditionsIsNil applies the IsNil predicate on the "conditions" field.
-func ConditionsIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldConditions))
-}
-
-// ConditionsNotNil applies the NotNil predicate on the "conditions" field.
-func ConditionsNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldConditions))
-}
-
-// PriorityEQ applies the EQ predicate on the "priority" field.
-func PriorityEQ(v int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldPriority, v))
-}
-
-// PriorityNEQ applies the NEQ predicate on the "priority" field.
-func PriorityNEQ(v int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldPriority, v))
-}
-
-// PriorityIn applies the In predicate on the "priority" field.
-func PriorityIn(vs ...int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldPriority, vs...))
-}
-
-// PriorityNotIn applies the NotIn predicate on the "priority" field.
-func PriorityNotIn(vs ...int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldPriority, vs...))
-}
-
-// PriorityGT applies the GT predicate on the "priority" field.
-func PriorityGT(v int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldPriority, v))
-}
-
-// PriorityGTE applies the GTE predicate on the "priority" field.
-func PriorityGTE(v int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldPriority, v))
-}
-
-// PriorityLT applies the LT predicate on the "priority" field.
-func PriorityLT(v int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldPriority, v))
-}
-
-// PriorityLTE applies the LTE predicate on the "priority" field.
-func PriorityLTE(v int) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldPriority, v))
-}
-
 // PermissionLevelEQ applies the EQ predicate on the "permission_level" field.
 func PermissionLevelEQ(v PermissionLevel) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldEQ(FieldPermissionLevel, v))
@@ -998,6 +833,46 @@ func PermissionLevelIn(vs ...PermissionLevel) predicate.CiPermission {
 // PermissionLevelNotIn applies the NotIn predicate on the "permission_level" field.
 func PermissionLevelNotIn(vs ...PermissionLevel) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNotIn(FieldPermissionLevel, vs...))
+}
+
+// OperationsMaskEQ applies the EQ predicate on the "operations_mask" field.
+func OperationsMaskEQ(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldOperationsMask, v))
+}
+
+// OperationsMaskNEQ applies the NEQ predicate on the "operations_mask" field.
+func OperationsMaskNEQ(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldOperationsMask, v))
+}
+
+// OperationsMaskIn applies the In predicate on the "operations_mask" field.
+func OperationsMaskIn(vs ...uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldOperationsMask, vs...))
+}
+
+// OperationsMaskNotIn applies the NotIn predicate on the "operations_mask" field.
+func OperationsMaskNotIn(vs ...uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldOperationsMask, vs...))
+}
+
+// OperationsMaskGT applies the GT predicate on the "operations_mask" field.
+func OperationsMaskGT(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGT(FieldOperationsMask, v))
+}
+
+// OperationsMaskGTE applies the GTE predicate on the "operations_mask" field.
+func OperationsMaskGTE(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGTE(FieldOperationsMask, v))
+}
+
+// OperationsMaskLT applies the LT predicate on the "operations_mask" field.
+func OperationsMaskLT(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLT(FieldOperationsMask, v))
+}
+
+// OperationsMaskLTE applies the LTE predicate on the "operations_mask" field.
+func OperationsMaskLTE(v uint64) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLTE(FieldOperationsMask, v))
 }
 
 // EffectiveFromEQ applies the EQ predicate on the "effective_from" field.
@@ -1110,34 +985,149 @@ func IsTemporaryNEQ(v bool) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNEQ(FieldIsTemporary, v))
 }
 
-// DataFiltersIsNil applies the IsNil predicate on the "data_filters" field.
-func DataFiltersIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldDataFilters))
+// PriorityEQ applies the EQ predicate on the "priority" field.
+func PriorityEQ(v int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldPriority, v))
 }
 
-// DataFiltersNotNil applies the NotNil predicate on the "data_filters" field.
-func DataFiltersNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldDataFilters))
+// PriorityNEQ applies the NEQ predicate on the "priority" field.
+func PriorityNEQ(v int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldPriority, v))
 }
 
-// FieldMasksIsNil applies the IsNil predicate on the "field_masks" field.
-func FieldMasksIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldFieldMasks))
+// PriorityIn applies the In predicate on the "priority" field.
+func PriorityIn(vs ...int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldPriority, vs...))
 }
 
-// FieldMasksNotNil applies the NotNil predicate on the "field_masks" field.
-func FieldMasksNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldFieldMasks))
+// PriorityNotIn applies the NotIn predicate on the "priority" field.
+func PriorityNotIn(vs ...int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldPriority, vs...))
 }
 
-// AllowedValuesIsNil applies the IsNil predicate on the "allowed_values" field.
-func AllowedValuesIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldAllowedValues))
+// PriorityGT applies the GT predicate on the "priority" field.
+func PriorityGT(v int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGT(FieldPriority, v))
 }
 
-// AllowedValuesNotNil applies the NotNil predicate on the "allowed_values" field.
-func AllowedValuesNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldAllowedValues))
+// PriorityGTE applies the GTE predicate on the "priority" field.
+func PriorityGTE(v int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGTE(FieldPriority, v))
+}
+
+// PriorityLT applies the LT predicate on the "priority" field.
+func PriorityLT(v int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLT(FieldPriority, v))
+}
+
+// PriorityLTE applies the LTE predicate on the "priority" field.
+func PriorityLTE(v int) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLTE(FieldPriority, v))
+}
+
+// StatusEQ applies the EQ predicate on the "status" field.
+func StatusEQ(v Status) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldStatus, v))
+}
+
+// StatusNEQ applies the NEQ predicate on the "status" field.
+func StatusNEQ(v Status) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldStatus, v))
+}
+
+// StatusIn applies the In predicate on the "status" field.
+func StatusIn(vs ...Status) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldStatus, vs...))
+}
+
+// StatusNotIn applies the NotIn predicate on the "status" field.
+func StatusNotIn(vs ...Status) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldStatus, vs...))
+}
+
+// ParentPermissionIDEQ applies the EQ predicate on the "parent_permission_id" field.
+func ParentPermissionIDEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDNEQ applies the NEQ predicate on the "parent_permission_id" field.
+func ParentPermissionIDNEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDIn applies the In predicate on the "parent_permission_id" field.
+func ParentPermissionIDIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldParentPermissionID, vs...))
+}
+
+// ParentPermissionIDNotIn applies the NotIn predicate on the "parent_permission_id" field.
+func ParentPermissionIDNotIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldParentPermissionID, vs...))
+}
+
+// ParentPermissionIDGT applies the GT predicate on the "parent_permission_id" field.
+func ParentPermissionIDGT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGT(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDGTE applies the GTE predicate on the "parent_permission_id" field.
+func ParentPermissionIDGTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGTE(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDLT applies the LT predicate on the "parent_permission_id" field.
+func ParentPermissionIDLT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLT(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDLTE applies the LTE predicate on the "parent_permission_id" field.
+func ParentPermissionIDLTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLTE(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDContains applies the Contains predicate on the "parent_permission_id" field.
+func ParentPermissionIDContains(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContains(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDHasPrefix applies the HasPrefix predicate on the "parent_permission_id" field.
+func ParentPermissionIDHasPrefix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasPrefix(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDHasSuffix applies the HasSuffix predicate on the "parent_permission_id" field.
+func ParentPermissionIDHasSuffix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasSuffix(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDIsNil applies the IsNil predicate on the "parent_permission_id" field.
+func ParentPermissionIDIsNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIsNull(FieldParentPermissionID))
+}
+
+// ParentPermissionIDNotNil applies the NotNil predicate on the "parent_permission_id" field.
+func ParentPermissionIDNotNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotNull(FieldParentPermissionID))
+}
+
+// ParentPermissionIDEqualFold applies the EqualFold predicate on the "parent_permission_id" field.
+func ParentPermissionIDEqualFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEqualFold(FieldParentPermissionID, v))
+}
+
+// ParentPermissionIDContainsFold applies the ContainsFold predicate on the "parent_permission_id" field.
+func ParentPermissionIDContainsFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContainsFold(FieldParentPermissionID, v))
+}
+
+// InheritableEQ applies the EQ predicate on the "inheritable" field.
+func InheritableEQ(v bool) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldInheritable, v))
+}
+
+// InheritableNEQ applies the NEQ predicate on the "inheritable" field.
+func InheritableNEQ(v bool) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldInheritable, v))
 }
 
 // RequireApprovalEQ applies the EQ predicate on the "require_approval" field.
@@ -1150,254 +1140,34 @@ func RequireApprovalNEQ(v bool) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNEQ(FieldRequireApproval, v))
 }
 
-// GrantedByEQ applies the EQ predicate on the "granted_by" field.
-func GrantedByEQ(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldGrantedBy, v))
+// RequireMfaEQ applies the EQ predicate on the "require_mfa" field.
+func RequireMfaEQ(v bool) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldRequireMfa, v))
 }
 
-// GrantedByNEQ applies the NEQ predicate on the "granted_by" field.
-func GrantedByNEQ(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldGrantedBy, v))
+// RequireMfaNEQ applies the NEQ predicate on the "require_mfa" field.
+func RequireMfaNEQ(v bool) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldRequireMfa, v))
 }
 
-// GrantedByIn applies the In predicate on the "granted_by" field.
-func GrantedByIn(vs ...uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldGrantedBy, vs...))
+// RiskLevelEQ applies the EQ predicate on the "risk_level" field.
+func RiskLevelEQ(v RiskLevel) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldRiskLevel, v))
 }
 
-// GrantedByNotIn applies the NotIn predicate on the "granted_by" field.
-func GrantedByNotIn(vs ...uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldGrantedBy, vs...))
+// RiskLevelNEQ applies the NEQ predicate on the "risk_level" field.
+func RiskLevelNEQ(v RiskLevel) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldRiskLevel, v))
 }
 
-// GrantedByGT applies the GT predicate on the "granted_by" field.
-func GrantedByGT(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldGrantedBy, v))
+// RiskLevelIn applies the In predicate on the "risk_level" field.
+func RiskLevelIn(vs ...RiskLevel) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldRiskLevel, vs...))
 }
 
-// GrantedByGTE applies the GTE predicate on the "granted_by" field.
-func GrantedByGTE(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldGrantedBy, v))
-}
-
-// GrantedByLT applies the LT predicate on the "granted_by" field.
-func GrantedByLT(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldGrantedBy, v))
-}
-
-// GrantedByLTE applies the LTE predicate on the "granted_by" field.
-func GrantedByLTE(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldGrantedBy, v))
-}
-
-// GrantedByIsNil applies the IsNil predicate on the "granted_by" field.
-func GrantedByIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldGrantedBy))
-}
-
-// GrantedByNotNil applies the NotNil predicate on the "granted_by" field.
-func GrantedByNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldGrantedBy))
-}
-
-// GrantedByNameEQ applies the EQ predicate on the "granted_by_name" field.
-func GrantedByNameEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldGrantedByName, v))
-}
-
-// GrantedByNameNEQ applies the NEQ predicate on the "granted_by_name" field.
-func GrantedByNameNEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldGrantedByName, v))
-}
-
-// GrantedByNameIn applies the In predicate on the "granted_by_name" field.
-func GrantedByNameIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldGrantedByName, vs...))
-}
-
-// GrantedByNameNotIn applies the NotIn predicate on the "granted_by_name" field.
-func GrantedByNameNotIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldGrantedByName, vs...))
-}
-
-// GrantedByNameGT applies the GT predicate on the "granted_by_name" field.
-func GrantedByNameGT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldGrantedByName, v))
-}
-
-// GrantedByNameGTE applies the GTE predicate on the "granted_by_name" field.
-func GrantedByNameGTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldGrantedByName, v))
-}
-
-// GrantedByNameLT applies the LT predicate on the "granted_by_name" field.
-func GrantedByNameLT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldGrantedByName, v))
-}
-
-// GrantedByNameLTE applies the LTE predicate on the "granted_by_name" field.
-func GrantedByNameLTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldGrantedByName, v))
-}
-
-// GrantedByNameContains applies the Contains predicate on the "granted_by_name" field.
-func GrantedByNameContains(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContains(FieldGrantedByName, v))
-}
-
-// GrantedByNameHasPrefix applies the HasPrefix predicate on the "granted_by_name" field.
-func GrantedByNameHasPrefix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasPrefix(FieldGrantedByName, v))
-}
-
-// GrantedByNameHasSuffix applies the HasSuffix predicate on the "granted_by_name" field.
-func GrantedByNameHasSuffix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasSuffix(FieldGrantedByName, v))
-}
-
-// GrantedByNameIsNil applies the IsNil predicate on the "granted_by_name" field.
-func GrantedByNameIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldGrantedByName))
-}
-
-// GrantedByNameNotNil applies the NotNil predicate on the "granted_by_name" field.
-func GrantedByNameNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldGrantedByName))
-}
-
-// GrantedByNameEqualFold applies the EqualFold predicate on the "granted_by_name" field.
-func GrantedByNameEqualFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEqualFold(FieldGrantedByName, v))
-}
-
-// GrantedByNameContainsFold applies the ContainsFold predicate on the "granted_by_name" field.
-func GrantedByNameContainsFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContainsFold(FieldGrantedByName, v))
-}
-
-// GrantedAtEQ applies the EQ predicate on the "granted_at" field.
-func GrantedAtEQ(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldGrantedAt, v))
-}
-
-// GrantedAtNEQ applies the NEQ predicate on the "granted_at" field.
-func GrantedAtNEQ(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldGrantedAt, v))
-}
-
-// GrantedAtIn applies the In predicate on the "granted_at" field.
-func GrantedAtIn(vs ...time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldGrantedAt, vs...))
-}
-
-// GrantedAtNotIn applies the NotIn predicate on the "granted_at" field.
-func GrantedAtNotIn(vs ...time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldGrantedAt, vs...))
-}
-
-// GrantedAtGT applies the GT predicate on the "granted_at" field.
-func GrantedAtGT(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldGrantedAt, v))
-}
-
-// GrantedAtGTE applies the GTE predicate on the "granted_at" field.
-func GrantedAtGTE(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldGrantedAt, v))
-}
-
-// GrantedAtLT applies the LT predicate on the "granted_at" field.
-func GrantedAtLT(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldGrantedAt, v))
-}
-
-// GrantedAtLTE applies the LTE predicate on the "granted_at" field.
-func GrantedAtLTE(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldGrantedAt, v))
-}
-
-// GrantedAtIsNil applies the IsNil predicate on the "granted_at" field.
-func GrantedAtIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldGrantedAt))
-}
-
-// GrantedAtNotNil applies the NotNil predicate on the "granted_at" field.
-func GrantedAtNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldGrantedAt))
-}
-
-// GrantReasonEQ applies the EQ predicate on the "grant_reason" field.
-func GrantReasonEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldGrantReason, v))
-}
-
-// GrantReasonNEQ applies the NEQ predicate on the "grant_reason" field.
-func GrantReasonNEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldGrantReason, v))
-}
-
-// GrantReasonIn applies the In predicate on the "grant_reason" field.
-func GrantReasonIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldGrantReason, vs...))
-}
-
-// GrantReasonNotIn applies the NotIn predicate on the "grant_reason" field.
-func GrantReasonNotIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldGrantReason, vs...))
-}
-
-// GrantReasonGT applies the GT predicate on the "grant_reason" field.
-func GrantReasonGT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldGrantReason, v))
-}
-
-// GrantReasonGTE applies the GTE predicate on the "grant_reason" field.
-func GrantReasonGTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldGrantReason, v))
-}
-
-// GrantReasonLT applies the LT predicate on the "grant_reason" field.
-func GrantReasonLT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldGrantReason, v))
-}
-
-// GrantReasonLTE applies the LTE predicate on the "grant_reason" field.
-func GrantReasonLTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldGrantReason, v))
-}
-
-// GrantReasonContains applies the Contains predicate on the "grant_reason" field.
-func GrantReasonContains(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContains(FieldGrantReason, v))
-}
-
-// GrantReasonHasPrefix applies the HasPrefix predicate on the "grant_reason" field.
-func GrantReasonHasPrefix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasPrefix(FieldGrantReason, v))
-}
-
-// GrantReasonHasSuffix applies the HasSuffix predicate on the "grant_reason" field.
-func GrantReasonHasSuffix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasSuffix(FieldGrantReason, v))
-}
-
-// GrantReasonIsNil applies the IsNil predicate on the "grant_reason" field.
-func GrantReasonIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldGrantReason))
-}
-
-// GrantReasonNotNil applies the NotNil predicate on the "grant_reason" field.
-func GrantReasonNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldGrantReason))
-}
-
-// GrantReasonEqualFold applies the EqualFold predicate on the "grant_reason" field.
-func GrantReasonEqualFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEqualFold(FieldGrantReason, v))
-}
-
-// GrantReasonContainsFold applies the ContainsFold predicate on the "grant_reason" field.
-func GrantReasonContainsFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContainsFold(FieldGrantReason, v))
+// RiskLevelNotIn applies the NotIn predicate on the "risk_level" field.
+func RiskLevelNotIn(vs ...RiskLevel) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldRiskLevel, vs...))
 }
 
 // UsageCountEQ applies the EQ predicate on the "usage_count" field.
@@ -1490,264 +1260,154 @@ func LastUsedAtNotNil() predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldNotNull(FieldLastUsedAt))
 }
 
-// UsageStatisticsIsNil applies the IsNil predicate on the "usage_statistics" field.
-func UsageStatisticsIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldUsageStatistics))
+// CreatedByEQ applies the EQ predicate on the "created_by" field.
+func CreatedByEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldCreatedBy, v))
 }
 
-// UsageStatisticsNotNil applies the NotNil predicate on the "usage_statistics" field.
-func UsageStatisticsNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldUsageStatistics))
+// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
+func CreatedByNEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldCreatedBy, v))
 }
 
-// StatusEQ applies the EQ predicate on the "status" field.
-func StatusEQ(v Status) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldStatus, v))
+// CreatedByIn applies the In predicate on the "created_by" field.
+func CreatedByIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldCreatedBy, vs...))
 }
 
-// StatusNEQ applies the NEQ predicate on the "status" field.
-func StatusNEQ(v Status) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldStatus, v))
+// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
+func CreatedByNotIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldCreatedBy, vs...))
 }
 
-// StatusIn applies the In predicate on the "status" field.
-func StatusIn(vs ...Status) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldStatus, vs...))
+// CreatedByGT applies the GT predicate on the "created_by" field.
+func CreatedByGT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGT(FieldCreatedBy, v))
 }
 
-// StatusNotIn applies the NotIn predicate on the "status" field.
-func StatusNotIn(vs ...Status) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldStatus, vs...))
+// CreatedByGTE applies the GTE predicate on the "created_by" field.
+func CreatedByGTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGTE(FieldCreatedBy, v))
 }
 
-// StatusReasonEQ applies the EQ predicate on the "status_reason" field.
-func StatusReasonEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldStatusReason, v))
+// CreatedByLT applies the LT predicate on the "created_by" field.
+func CreatedByLT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLT(FieldCreatedBy, v))
 }
 
-// StatusReasonNEQ applies the NEQ predicate on the "status_reason" field.
-func StatusReasonNEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldStatusReason, v))
+// CreatedByLTE applies the LTE predicate on the "created_by" field.
+func CreatedByLTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLTE(FieldCreatedBy, v))
 }
 
-// StatusReasonIn applies the In predicate on the "status_reason" field.
-func StatusReasonIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldStatusReason, vs...))
+// CreatedByContains applies the Contains predicate on the "created_by" field.
+func CreatedByContains(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContains(FieldCreatedBy, v))
 }
 
-// StatusReasonNotIn applies the NotIn predicate on the "status_reason" field.
-func StatusReasonNotIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldStatusReason, vs...))
+// CreatedByHasPrefix applies the HasPrefix predicate on the "created_by" field.
+func CreatedByHasPrefix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasPrefix(FieldCreatedBy, v))
 }
 
-// StatusReasonGT applies the GT predicate on the "status_reason" field.
-func StatusReasonGT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldStatusReason, v))
+// CreatedByHasSuffix applies the HasSuffix predicate on the "created_by" field.
+func CreatedByHasSuffix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasSuffix(FieldCreatedBy, v))
 }
 
-// StatusReasonGTE applies the GTE predicate on the "status_reason" field.
-func StatusReasonGTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldStatusReason, v))
+// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
+func CreatedByIsNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIsNull(FieldCreatedBy))
 }
 
-// StatusReasonLT applies the LT predicate on the "status_reason" field.
-func StatusReasonLT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldStatusReason, v))
+// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
+func CreatedByNotNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotNull(FieldCreatedBy))
 }
 
-// StatusReasonLTE applies the LTE predicate on the "status_reason" field.
-func StatusReasonLTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldStatusReason, v))
+// CreatedByEqualFold applies the EqualFold predicate on the "created_by" field.
+func CreatedByEqualFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEqualFold(FieldCreatedBy, v))
 }
 
-// StatusReasonContains applies the Contains predicate on the "status_reason" field.
-func StatusReasonContains(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContains(FieldStatusReason, v))
+// CreatedByContainsFold applies the ContainsFold predicate on the "created_by" field.
+func CreatedByContainsFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContainsFold(FieldCreatedBy, v))
 }
 
-// StatusReasonHasPrefix applies the HasPrefix predicate on the "status_reason" field.
-func StatusReasonHasPrefix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasPrefix(FieldStatusReason, v))
+// UpdatedByEQ applies the EQ predicate on the "updated_by" field.
+func UpdatedByEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEQ(FieldUpdatedBy, v))
 }
 
-// StatusReasonHasSuffix applies the HasSuffix predicate on the "status_reason" field.
-func StatusReasonHasSuffix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasSuffix(FieldStatusReason, v))
+// UpdatedByNEQ applies the NEQ predicate on the "updated_by" field.
+func UpdatedByNEQ(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNEQ(FieldUpdatedBy, v))
 }
 
-// StatusReasonIsNil applies the IsNil predicate on the "status_reason" field.
-func StatusReasonIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldStatusReason))
+// UpdatedByIn applies the In predicate on the "updated_by" field.
+func UpdatedByIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIn(FieldUpdatedBy, vs...))
 }
 
-// StatusReasonNotNil applies the NotNil predicate on the "status_reason" field.
-func StatusReasonNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldStatusReason))
+// UpdatedByNotIn applies the NotIn predicate on the "updated_by" field.
+func UpdatedByNotIn(vs ...string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotIn(FieldUpdatedBy, vs...))
 }
 
-// StatusReasonEqualFold applies the EqualFold predicate on the "status_reason" field.
-func StatusReasonEqualFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEqualFold(FieldStatusReason, v))
+// UpdatedByGT applies the GT predicate on the "updated_by" field.
+func UpdatedByGT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGT(FieldUpdatedBy, v))
 }
 
-// StatusReasonContainsFold applies the ContainsFold predicate on the "status_reason" field.
-func StatusReasonContainsFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContainsFold(FieldStatusReason, v))
+// UpdatedByGTE applies the GTE predicate on the "updated_by" field.
+func UpdatedByGTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldGTE(FieldUpdatedBy, v))
 }
 
-// InheritableEQ applies the EQ predicate on the "inheritable" field.
-func InheritableEQ(v bool) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldInheritable, v))
+// UpdatedByLT applies the LT predicate on the "updated_by" field.
+func UpdatedByLT(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLT(FieldUpdatedBy, v))
 }
 
-// InheritableNEQ applies the NEQ predicate on the "inheritable" field.
-func InheritableNEQ(v bool) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldInheritable, v))
+// UpdatedByLTE applies the LTE predicate on the "updated_by" field.
+func UpdatedByLTE(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldLTE(FieldUpdatedBy, v))
 }
 
-// ParentPermissionIDEQ applies the EQ predicate on the "parent_permission_id" field.
-func ParentPermissionIDEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldParentPermissionID, v))
+// UpdatedByContains applies the Contains predicate on the "updated_by" field.
+func UpdatedByContains(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContains(FieldUpdatedBy, v))
 }
 
-// ParentPermissionIDNEQ applies the NEQ predicate on the "parent_permission_id" field.
-func ParentPermissionIDNEQ(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldParentPermissionID, v))
+// UpdatedByHasPrefix applies the HasPrefix predicate on the "updated_by" field.
+func UpdatedByHasPrefix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasPrefix(FieldUpdatedBy, v))
 }
 
-// ParentPermissionIDIn applies the In predicate on the "parent_permission_id" field.
-func ParentPermissionIDIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldParentPermissionID, vs...))
+// UpdatedByHasSuffix applies the HasSuffix predicate on the "updated_by" field.
+func UpdatedByHasSuffix(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldHasSuffix(FieldUpdatedBy, v))
 }
 
-// ParentPermissionIDNotIn applies the NotIn predicate on the "parent_permission_id" field.
-func ParentPermissionIDNotIn(vs ...string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldParentPermissionID, vs...))
+// UpdatedByIsNil applies the IsNil predicate on the "updated_by" field.
+func UpdatedByIsNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldIsNull(FieldUpdatedBy))
 }
 
-// ParentPermissionIDGT applies the GT predicate on the "parent_permission_id" field.
-func ParentPermissionIDGT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldParentPermissionID, v))
+// UpdatedByNotNil applies the NotNil predicate on the "updated_by" field.
+func UpdatedByNotNil() predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldNotNull(FieldUpdatedBy))
 }
 
-// ParentPermissionIDGTE applies the GTE predicate on the "parent_permission_id" field.
-func ParentPermissionIDGTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldParentPermissionID, v))
+// UpdatedByEqualFold applies the EqualFold predicate on the "updated_by" field.
+func UpdatedByEqualFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldEqualFold(FieldUpdatedBy, v))
 }
 
-// ParentPermissionIDLT applies the LT predicate on the "parent_permission_id" field.
-func ParentPermissionIDLT(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldParentPermissionID, v))
-}
-
-// ParentPermissionIDLTE applies the LTE predicate on the "parent_permission_id" field.
-func ParentPermissionIDLTE(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldParentPermissionID, v))
-}
-
-// ParentPermissionIDContains applies the Contains predicate on the "parent_permission_id" field.
-func ParentPermissionIDContains(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContains(FieldParentPermissionID, v))
-}
-
-// ParentPermissionIDHasPrefix applies the HasPrefix predicate on the "parent_permission_id" field.
-func ParentPermissionIDHasPrefix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasPrefix(FieldParentPermissionID, v))
-}
-
-// ParentPermissionIDHasSuffix applies the HasSuffix predicate on the "parent_permission_id" field.
-func ParentPermissionIDHasSuffix(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldHasSuffix(FieldParentPermissionID, v))
-}
-
-// ParentPermissionIDIsNil applies the IsNil predicate on the "parent_permission_id" field.
-func ParentPermissionIDIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldParentPermissionID))
-}
-
-// ParentPermissionIDNotNil applies the NotNil predicate on the "parent_permission_id" field.
-func ParentPermissionIDNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldParentPermissionID))
-}
-
-// ParentPermissionIDEqualFold applies the EqualFold predicate on the "parent_permission_id" field.
-func ParentPermissionIDEqualFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEqualFold(FieldParentPermissionID, v))
-}
-
-// ParentPermissionIDContainsFold applies the ContainsFold predicate on the "parent_permission_id" field.
-func ParentPermissionIDContainsFold(v string) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldContainsFold(FieldParentPermissionID, v))
-}
-
-// InheritedFromIsNil applies the IsNil predicate on the "inherited_from" field.
-func InheritedFromIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldInheritedFrom))
-}
-
-// InheritedFromNotNil applies the NotNil predicate on the "inherited_from" field.
-func InheritedFromNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldInheritedFrom))
-}
-
-// RiskLevelEQ applies the EQ predicate on the "risk_level" field.
-func RiskLevelEQ(v RiskLevel) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldRiskLevel, v))
-}
-
-// RiskLevelNEQ applies the NEQ predicate on the "risk_level" field.
-func RiskLevelNEQ(v RiskLevel) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldRiskLevel, v))
-}
-
-// RiskLevelIn applies the In predicate on the "risk_level" field.
-func RiskLevelIn(vs ...RiskLevel) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldRiskLevel, vs...))
-}
-
-// RiskLevelNotIn applies the NotIn predicate on the "risk_level" field.
-func RiskLevelNotIn(vs ...RiskLevel) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldRiskLevel, vs...))
-}
-
-// RequireMfaEQ applies the EQ predicate on the "require_mfa" field.
-func RequireMfaEQ(v bool) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldRequireMfa, v))
-}
-
-// RequireMfaNEQ applies the NEQ predicate on the "require_mfa" field.
-func RequireMfaNEQ(v bool) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldRequireMfa, v))
-}
-
-// SecurityConstraintsIsNil applies the IsNil predicate on the "security_constraints" field.
-func SecurityConstraintsIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldSecurityConstraints))
-}
-
-// SecurityConstraintsNotNil applies the NotNil predicate on the "security_constraints" field.
-func SecurityConstraintsNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldSecurityConstraints))
-}
-
-// MetadataIsNil applies the IsNil predicate on the "metadata" field.
-func MetadataIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldMetadata))
-}
-
-// MetadataNotNil applies the NotNil predicate on the "metadata" field.
-func MetadataNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldMetadata))
-}
-
-// TagsIsNil applies the IsNil predicate on the "tags" field.
-func TagsIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldTags))
-}
-
-// TagsNotNil applies the NotNil predicate on the "tags" field.
-func TagsNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldTags))
+// UpdatedByContainsFold applies the ContainsFold predicate on the "updated_by" field.
+func UpdatedByContainsFold(v string) predicate.CiPermission {
+	return predicate.CiPermission(sql.FieldContainsFold(FieldUpdatedBy, v))
 }
 
 // DescriptionEQ applies the EQ predicate on the "description" field.
@@ -1900,204 +1560,73 @@ func CommentsContainsFold(v string) predicate.CiPermission {
 	return predicate.CiPermission(sql.FieldContainsFold(FieldComments, v))
 }
 
-// CreatedByEQ applies the EQ predicate on the "created_by" field.
-func CreatedByEQ(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldCreatedBy, v))
+// HasOperations applies the HasEdge predicate on the "operations" edge.
+func HasOperations() predicate.CiPermission {
+	return predicate.CiPermission(func(s *sql.Selector) {
+		step := sqlgraph.NewStep(
+			sqlgraph.From(Table, FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, OperationsTable, OperationsColumn),
+		)
+		sqlgraph.HasNeighbors(s, step)
+	})
 }
 
-// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
-func CreatedByNEQ(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldCreatedBy, v))
+// HasOperationsWith applies the HasEdge predicate on the "operations" edge with a given conditions (other predicates).
+func HasOperationsWith(preds ...predicate.PermissionOperation) predicate.CiPermission {
+	return predicate.CiPermission(func(s *sql.Selector) {
+		step := newOperationsStep()
+		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
+			for _, p := range preds {
+				p(s)
+			}
+		})
+	})
 }
 
-// CreatedByIn applies the In predicate on the "created_by" field.
-func CreatedByIn(vs ...uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldCreatedBy, vs...))
+// HasDataFilters applies the HasEdge predicate on the "data_filters" edge.
+func HasDataFilters() predicate.CiPermission {
+	return predicate.CiPermission(func(s *sql.Selector) {
+		step := sqlgraph.NewStep(
+			sqlgraph.From(Table, FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, DataFiltersTable, DataFiltersColumn),
+		)
+		sqlgraph.HasNeighbors(s, step)
+	})
 }
 
-// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
-func CreatedByNotIn(vs ...uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldCreatedBy, vs...))
+// HasDataFiltersWith applies the HasEdge predicate on the "data_filters" edge with a given conditions (other predicates).
+func HasDataFiltersWith(preds ...predicate.PermissionDataFilter) predicate.CiPermission {
+	return predicate.CiPermission(func(s *sql.Selector) {
+		step := newDataFiltersStep()
+		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
+			for _, p := range preds {
+				p(s)
+			}
+		})
+	})
 }
 
-// CreatedByGT applies the GT predicate on the "created_by" field.
-func CreatedByGT(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldCreatedBy, v))
+// HasFieldMasks applies the HasEdge predicate on the "field_masks" edge.
+func HasFieldMasks() predicate.CiPermission {
+	return predicate.CiPermission(func(s *sql.Selector) {
+		step := sqlgraph.NewStep(
+			sqlgraph.From(Table, FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, FieldMasksTable, FieldMasksColumn),
+		)
+		sqlgraph.HasNeighbors(s, step)
+	})
 }
 
-// CreatedByGTE applies the GTE predicate on the "created_by" field.
-func CreatedByGTE(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldCreatedBy, v))
-}
-
-// CreatedByLT applies the LT predicate on the "created_by" field.
-func CreatedByLT(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldCreatedBy, v))
-}
-
-// CreatedByLTE applies the LTE predicate on the "created_by" field.
-func CreatedByLTE(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldCreatedBy, v))
-}
-
-// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
-func CreatedByIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldCreatedBy))
-}
-
-// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
-func CreatedByNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldCreatedBy))
-}
-
-// UpdatedByEQ applies the EQ predicate on the "updated_by" field.
-func UpdatedByEQ(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldUpdatedBy, v))
-}
-
-// UpdatedByNEQ applies the NEQ predicate on the "updated_by" field.
-func UpdatedByNEQ(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldUpdatedBy, v))
-}
-
-// UpdatedByIn applies the In predicate on the "updated_by" field.
-func UpdatedByIn(vs ...uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldUpdatedBy, vs...))
-}
-
-// UpdatedByNotIn applies the NotIn predicate on the "updated_by" field.
-func UpdatedByNotIn(vs ...uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldUpdatedBy, vs...))
-}
-
-// UpdatedByGT applies the GT predicate on the "updated_by" field.
-func UpdatedByGT(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldUpdatedBy, v))
-}
-
-// UpdatedByGTE applies the GTE predicate on the "updated_by" field.
-func UpdatedByGTE(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldUpdatedBy, v))
-}
-
-// UpdatedByLT applies the LT predicate on the "updated_by" field.
-func UpdatedByLT(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldUpdatedBy, v))
-}
-
-// UpdatedByLTE applies the LTE predicate on the "updated_by" field.
-func UpdatedByLTE(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldUpdatedBy, v))
-}
-
-// UpdatedByIsNil applies the IsNil predicate on the "updated_by" field.
-func UpdatedByIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldUpdatedBy))
-}
-
-// UpdatedByNotNil applies the NotNil predicate on the "updated_by" field.
-func UpdatedByNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldUpdatedBy))
-}
-
-// LastReviewedAtEQ applies the EQ predicate on the "last_reviewed_at" field.
-func LastReviewedAtEQ(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldLastReviewedAt, v))
-}
-
-// LastReviewedAtNEQ applies the NEQ predicate on the "last_reviewed_at" field.
-func LastReviewedAtNEQ(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldLastReviewedAt, v))
-}
-
-// LastReviewedAtIn applies the In predicate on the "last_reviewed_at" field.
-func LastReviewedAtIn(vs ...time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldLastReviewedAt, vs...))
-}
-
-// LastReviewedAtNotIn applies the NotIn predicate on the "last_reviewed_at" field.
-func LastReviewedAtNotIn(vs ...time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldLastReviewedAt, vs...))
-}
-
-// LastReviewedAtGT applies the GT predicate on the "last_reviewed_at" field.
-func LastReviewedAtGT(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldLastReviewedAt, v))
-}
-
-// LastReviewedAtGTE applies the GTE predicate on the "last_reviewed_at" field.
-func LastReviewedAtGTE(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldLastReviewedAt, v))
-}
-
-// LastReviewedAtLT applies the LT predicate on the "last_reviewed_at" field.
-func LastReviewedAtLT(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldLastReviewedAt, v))
-}
-
-// LastReviewedAtLTE applies the LTE predicate on the "last_reviewed_at" field.
-func LastReviewedAtLTE(v time.Time) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldLastReviewedAt, v))
-}
-
-// LastReviewedAtIsNil applies the IsNil predicate on the "last_reviewed_at" field.
-func LastReviewedAtIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldLastReviewedAt))
-}
-
-// LastReviewedAtNotNil applies the NotNil predicate on the "last_reviewed_at" field.
-func LastReviewedAtNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldLastReviewedAt))
-}
-
-// LastReviewedByEQ applies the EQ predicate on the "last_reviewed_by" field.
-func LastReviewedByEQ(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldEQ(FieldLastReviewedBy, v))
-}
-
-// LastReviewedByNEQ applies the NEQ predicate on the "last_reviewed_by" field.
-func LastReviewedByNEQ(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNEQ(FieldLastReviewedBy, v))
-}
-
-// LastReviewedByIn applies the In predicate on the "last_reviewed_by" field.
-func LastReviewedByIn(vs ...uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIn(FieldLastReviewedBy, vs...))
-}
-
-// LastReviewedByNotIn applies the NotIn predicate on the "last_reviewed_by" field.
-func LastReviewedByNotIn(vs ...uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotIn(FieldLastReviewedBy, vs...))
-}
-
-// LastReviewedByGT applies the GT predicate on the "last_reviewed_by" field.
-func LastReviewedByGT(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGT(FieldLastReviewedBy, v))
-}
-
-// LastReviewedByGTE applies the GTE predicate on the "last_reviewed_by" field.
-func LastReviewedByGTE(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldGTE(FieldLastReviewedBy, v))
-}
-
-// LastReviewedByLT applies the LT predicate on the "last_reviewed_by" field.
-func LastReviewedByLT(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLT(FieldLastReviewedBy, v))
-}
-
-// LastReviewedByLTE applies the LTE predicate on the "last_reviewed_by" field.
-func LastReviewedByLTE(v uuid.UUID) predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldLTE(FieldLastReviewedBy, v))
-}
-
-// LastReviewedByIsNil applies the IsNil predicate on the "last_reviewed_by" field.
-func LastReviewedByIsNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldIsNull(FieldLastReviewedBy))
-}
-
-// LastReviewedByNotNil applies the NotNil predicate on the "last_reviewed_by" field.
-func LastReviewedByNotNil() predicate.CiPermission {
-	return predicate.CiPermission(sql.FieldNotNull(FieldLastReviewedBy))
+// HasFieldMasksWith applies the HasEdge predicate on the "field_masks" edge with a given conditions (other predicates).
+func HasFieldMasksWith(preds ...predicate.PermissionFieldMask) predicate.CiPermission {
+	return predicate.CiPermission(func(s *sql.Selector) {
+		step := newFieldMasksStep()
+		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
+			for _, p := range preds {
+				p(s)
+			}
+		})
+	})
 }
 
 // And groups predicates with the AND operator between them.

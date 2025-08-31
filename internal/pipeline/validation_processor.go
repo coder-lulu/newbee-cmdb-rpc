@@ -7,10 +7,10 @@ import (
 
 	"github.com/zeromicro/go-zero/core/logx"
 
-	"gitee.com/link234/cmdb-rpc/internal/adapters/input"
-	"gitee.com/link234/cmdb-rpc/internal/logic/cis"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/adapters/input"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 )
 
 // ValidationProcessor 数据验证处理器 (集成现有验证逻辑)

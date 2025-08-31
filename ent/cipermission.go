@@ -3,15 +3,13 @@
 package ent
 
 import (
-	"encoding/json"
 	"fmt"
 	"strings"
 	"time"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	uuid "github.com/gofrs/uuid/v5"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
 )
 
 // CiPermission is the model entity for the CiPermission schema.
@@ -31,93 +29,100 @@ type CiPermission struct {
 	PermissionID string `json:"permission_id,omitempty"`
 	// 权限范围类型
 	ScopeType cipermission.ScopeType `json:"scope_type,omitempty"`
-	// CI类型ID，当scope_type为ci_type时必填
-	CiTypeID uint64 `json:"ci_type_id,omitempty"`
-	// CI实例ID，当scope_type为ci_instance时必填
-	CiID uint64 `json:"ci_id,omitempty"`
-	// 属性ID，当scope_type为attribute时必填
-	AttributeID uint64 `json:"attribute_id,omitempty"`
-	// 字段名称，当scope_type为field时必填
-	FieldName string `json:"field_name,omitempty"`
+	// 目标类型：ci_type_id/ci_id/attribute_id
+	ScopeTargetType string `json:"scope_target_type,omitempty"`
+	// 目标ID
+	ScopeTargetID uint64 `json:"scope_target_id,omitempty"`
+	// 字段名（仅field类型使用）
+	ScopeFieldName string `json:"scope_field_name,omitempty"`
 	// 权限主体类型
 	SubjectType cipermission.SubjectType `json:"subject_type,omitempty"`
 	// 权限主体ID
-	SubjectID uuid.UUID `json:"subject_id,omitempty"`
+	SubjectID string `json:"subject_id,omitempty"`
 	// 权限主体名称
 	SubjectName string `json:"subject_name,omitempty"`
-	// 权限主体编码
-	SubjectCode string `json:"subject_code,omitempty"`
 	// 权限类型：允许或拒绝
 	PermissionType cipermission.PermissionType `json:"permission_type,omitempty"`
-	// 允许的操作：read, write, create, update, delete, import, export, approve
-	Operations []string `json:"operations,omitempty"`
-	// 权限条件，支持复杂的条件表达式
-	Conditions map[string]interface{} `json:"conditions,omitempty"`
-	// 权限优先级，数值越大优先级越高
-	Priority int `json:"priority,omitempty"`
 	// 权限级别
 	PermissionLevel cipermission.PermissionLevel `json:"permission_level,omitempty"`
+	// 操作位掩码：1-read,2-write,4-delete,8-approve等
+	OperationsMask uint64 `json:"operations_mask,omitempty"`
 	// 权限生效开始时间
 	EffectiveFrom time.Time `json:"effective_from,omitempty"`
 	// 权限生效结束时间
 	EffectiveTo time.Time `json:"effective_to,omitempty"`
 	// 是否为临时权限
 	IsTemporary bool `json:"is_temporary,omitempty"`
-	// 数据过滤规则，用于行级权限控制
-	DataFilters map[string]interface{} `json:"data_filters,omitempty"`
-	// 字段掩码列表，隐藏敏感字段
-	FieldMasks []string `json:"field_masks,omitempty"`
-	// 允许的字段值范围
-	AllowedValues map[string]interface{} `json:"allowed_values,omitempty"`
+	// 权限优先级，数值越大优先级越高
+	Priority int `json:"priority,omitempty"`
+	// 权限状态
+	Status cipermission.Status `json:"status,omitempty"`
+	// 父权限ID
+	ParentPermissionID string `json:"parent_permission_id,omitempty"`
+	// 是否可继承给子级
+	Inheritable bool `json:"inheritable,omitempty"`
 	// 是否需要审批
 	RequireApproval bool `json:"require_approval,omitempty"`
-	// 授权人ID
-	GrantedBy uuid.UUID `json:"granted_by,omitempty"`
-	// 授权人姓名
-	GrantedByName string `json:"granted_by_name,omitempty"`
-	// 授权时间
-	GrantedAt time.Time `json:"granted_at,omitempty"`
-	// 授权原因
-	GrantReason string `json:"grant_reason,omitempty"`
+	// 是否需要多因素认证
+	RequireMfa bool `json:"require_mfa,omitempty"`
+	// 风险等级
+	RiskLevel cipermission.RiskLevel `json:"risk_level,omitempty"`
 	// 权限使用次数
 	UsageCount int `json:"usage_count,omitempty"`
 	// 最后使用时间
 	LastUsedAt time.Time `json:"last_used_at,omitempty"`
-	// 使用统计信息
-	UsageStatistics map[string]interface{} `json:"usage_statistics,omitempty"`
-	// 权限状态
-	Status cipermission.Status `json:"status,omitempty"`
-	// 状态变更原因
-	StatusReason string `json:"status_reason,omitempty"`
-	// 是否可继承给子级
-	Inheritable bool `json:"inheritable,omitempty"`
-	// 父权限ID
-	ParentPermissionID string `json:"parent_permission_id,omitempty"`
-	// 继承来源权限ID列表
-	InheritedFrom []string `json:"inherited_from,omitempty"`
-	// 风险等级
-	RiskLevel cipermission.RiskLevel `json:"risk_level,omitempty"`
-	// 是否需要多因素认证
-	RequireMfa bool `json:"require_mfa,omitempty"`
-	// 安全约束条件
-	SecurityConstraints map[string]interface{} `json:"security_constraints,omitempty"`
-	// 元数据信息
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
-	// 标签列表
-	Tags []string `json:"tags,omitempty"`
+	// 创建人ID
+	CreatedBy string `json:"created_by,omitempty"`
+	// 最后更新人ID
+	UpdatedBy string `json:"updated_by,omitempty"`
 	// 权限描述
 	Description string `json:"description,omitempty"`
 	// 备注信息
 	Comments string `json:"comments,omitempty"`
-	// 创建人ID
-	CreatedBy uuid.UUID `json:"created_by,omitempty"`
-	// 最后更新人ID
-	UpdatedBy uuid.UUID `json:"updated_by,omitempty"`
-	// 最后审查时间
-	LastReviewedAt time.Time `json:"last_reviewed_at,omitempty"`
-	// 最后审查人ID
-	LastReviewedBy uuid.UUID `json:"last_reviewed_by,omitempty"`
-	selectValues   sql.SelectValues
+	// Edges holds the relations/edges for other nodes in the graph.
+	// The values are being populated by the CiPermissionQuery when eager-loading is set.
+	Edges        CiPermissionEdges `json:"edges"`
+	selectValues sql.SelectValues
+}
+
+// CiPermissionEdges holds the relations/edges for other nodes in the graph.
+type CiPermissionEdges struct {
+	// Operations holds the value of the operations edge.
+	Operations []*PermissionOperation `json:"operations,omitempty"`
+	// DataFilters holds the value of the data_filters edge.
+	DataFilters []*PermissionDataFilter `json:"data_filters,omitempty"`
+	// FieldMasks holds the value of the field_masks edge.
+	FieldMasks []*PermissionFieldMask `json:"field_masks,omitempty"`
+	// loadedTypes holds the information for reporting if a
+	// type was loaded (or requested) in eager-loading or not.
+	loadedTypes [3]bool
+}
+
+// OperationsOrErr returns the Operations value or an error if the edge
+// was not loaded in eager-loading.
+func (e CiPermissionEdges) OperationsOrErr() ([]*PermissionOperation, error) {
+	if e.loadedTypes[0] {
+		return e.Operations, nil
+	}
+	return nil, &NotLoadedError{edge: "operations"}
+}
+
+// DataFiltersOrErr returns the DataFilters value or an error if the edge
+// was not loaded in eager-loading.
+func (e CiPermissionEdges) DataFiltersOrErr() ([]*PermissionDataFilter, error) {
+	if e.loadedTypes[1] {
+		return e.DataFilters, nil
+	}
+	return nil, &NotLoadedError{edge: "data_filters"}
+}
+
+// FieldMasksOrErr returns the FieldMasks value or an error if the edge
+// was not loaded in eager-loading.
+func (e CiPermissionEdges) FieldMasksOrErr() ([]*PermissionFieldMask, error) {
+	if e.loadedTypes[2] {
+		return e.FieldMasks, nil
+	}
+	return nil, &NotLoadedError{edge: "field_masks"}
 }
 
 // scanValues returns the types for scanning values from sql.Rows.
@@ -125,18 +130,14 @@ func (*CiPermission) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case cipermission.FieldOperations, cipermission.FieldConditions, cipermission.FieldDataFilters, cipermission.FieldFieldMasks, cipermission.FieldAllowedValues, cipermission.FieldUsageStatistics, cipermission.FieldInheritedFrom, cipermission.FieldSecurityConstraints, cipermission.FieldMetadata, cipermission.FieldTags:
-			values[i] = new([]byte)
-		case cipermission.FieldIsTemporary, cipermission.FieldRequireApproval, cipermission.FieldInheritable, cipermission.FieldRequireMfa:
+		case cipermission.FieldIsTemporary, cipermission.FieldInheritable, cipermission.FieldRequireApproval, cipermission.FieldRequireMfa:
 			values[i] = new(sql.NullBool)
-		case cipermission.FieldID, cipermission.FieldTenantID, cipermission.FieldDepartmentID, cipermission.FieldCiTypeID, cipermission.FieldCiID, cipermission.FieldAttributeID, cipermission.FieldPriority, cipermission.FieldUsageCount:
+		case cipermission.FieldID, cipermission.FieldTenantID, cipermission.FieldDepartmentID, cipermission.FieldScopeTargetID, cipermission.FieldOperationsMask, cipermission.FieldPriority, cipermission.FieldUsageCount:
 			values[i] = new(sql.NullInt64)
-		case cipermission.FieldPermissionID, cipermission.FieldScopeType, cipermission.FieldFieldName, cipermission.FieldSubjectType, cipermission.FieldSubjectName, cipermission.FieldSubjectCode, cipermission.FieldPermissionType, cipermission.FieldPermissionLevel, cipermission.FieldGrantedByName, cipermission.FieldGrantReason, cipermission.FieldStatus, cipermission.FieldStatusReason, cipermission.FieldParentPermissionID, cipermission.FieldRiskLevel, cipermission.FieldDescription, cipermission.FieldComments:
+		case cipermission.FieldPermissionID, cipermission.FieldScopeType, cipermission.FieldScopeTargetType, cipermission.FieldScopeFieldName, cipermission.FieldSubjectType, cipermission.FieldSubjectID, cipermission.FieldSubjectName, cipermission.FieldPermissionType, cipermission.FieldPermissionLevel, cipermission.FieldStatus, cipermission.FieldParentPermissionID, cipermission.FieldRiskLevel, cipermission.FieldCreatedBy, cipermission.FieldUpdatedBy, cipermission.FieldDescription, cipermission.FieldComments:
 			values[i] = new(sql.NullString)
-		case cipermission.FieldCreatedAt, cipermission.FieldUpdatedAt, cipermission.FieldEffectiveFrom, cipermission.FieldEffectiveTo, cipermission.FieldGrantedAt, cipermission.FieldLastUsedAt, cipermission.FieldLastReviewedAt:
+		case cipermission.FieldCreatedAt, cipermission.FieldUpdatedAt, cipermission.FieldEffectiveFrom, cipermission.FieldEffectiveTo, cipermission.FieldLastUsedAt:
 			values[i] = new(sql.NullTime)
-		case cipermission.FieldSubjectID, cipermission.FieldGrantedBy, cipermission.FieldCreatedBy, cipermission.FieldUpdatedBy, cipermission.FieldLastReviewedBy:
-			values[i] = new(uuid.UUID)
 		default:
 			values[i] = new(sql.UnknownType)
 		}
@@ -146,7 +147,7 @@ func (*CiPermission) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiPermission fields.
-func (cp *CiPermission) assignValues(columns []string, values []any) error {
+func (_m *CiPermission) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -157,323 +158,195 @@ func (cp *CiPermission) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			cp.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case cipermission.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				cp.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case cipermission.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				cp.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case cipermission.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				cp.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case cipermission.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				cp.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case cipermission.FieldPermissionID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field permission_id", values[i])
 			} else if value.Valid {
-				cp.PermissionID = value.String
+				_m.PermissionID = value.String
 			}
 		case cipermission.FieldScopeType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field scope_type", values[i])
 			} else if value.Valid {
-				cp.ScopeType = cipermission.ScopeType(value.String)
+				_m.ScopeType = cipermission.ScopeType(value.String)
 			}
-		case cipermission.FieldCiTypeID:
-			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field ci_type_id", values[i])
-			} else if value.Valid {
-				cp.CiTypeID = uint64(value.Int64)
-			}
-		case cipermission.FieldCiID:
-			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
-			} else if value.Valid {
-				cp.CiID = uint64(value.Int64)
-			}
-		case cipermission.FieldAttributeID:
-			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field attribute_id", values[i])
-			} else if value.Valid {
-				cp.AttributeID = uint64(value.Int64)
-			}
-		case cipermission.FieldFieldName:
+		case cipermission.FieldScopeTargetType:
 			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field field_name", values[i])
+				return fmt.Errorf("unexpected type %T for field scope_target_type", values[i])
 			} else if value.Valid {
-				cp.FieldName = value.String
+				_m.ScopeTargetType = value.String
+			}
+		case cipermission.FieldScopeTargetID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field scope_target_id", values[i])
+			} else if value.Valid {
+				_m.ScopeTargetID = uint64(value.Int64)
+			}
+		case cipermission.FieldScopeFieldName:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field scope_field_name", values[i])
+			} else if value.Valid {
+				_m.ScopeFieldName = value.String
 			}
 		case cipermission.FieldSubjectType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field subject_type", values[i])
 			} else if value.Valid {
-				cp.SubjectType = cipermission.SubjectType(value.String)
+				_m.SubjectType = cipermission.SubjectType(value.String)
 			}
 		case cipermission.FieldSubjectID:
-			if value, ok := values[i].(*uuid.UUID); !ok {
+			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field subject_id", values[i])
-			} else if value != nil {
-				cp.SubjectID = *value
+			} else if value.Valid {
+				_m.SubjectID = value.String
 			}
 		case cipermission.FieldSubjectName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field subject_name", values[i])
 			} else if value.Valid {
-				cp.SubjectName = value.String
-			}
-		case cipermission.FieldSubjectCode:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field subject_code", values[i])
-			} else if value.Valid {
-				cp.SubjectCode = value.String
+				_m.SubjectName = value.String
 			}
 		case cipermission.FieldPermissionType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field permission_type", values[i])
 			} else if value.Valid {
-				cp.PermissionType = cipermission.PermissionType(value.String)
-			}
-		case cipermission.FieldOperations:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field operations", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.Operations); err != nil {
-					return fmt.Errorf("unmarshal field operations: %w", err)
-				}
-			}
-		case cipermission.FieldConditions:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field conditions", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.Conditions); err != nil {
-					return fmt.Errorf("unmarshal field conditions: %w", err)
-				}
-			}
-		case cipermission.FieldPriority:
-			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field priority", values[i])
-			} else if value.Valid {
-				cp.Priority = int(value.Int64)
+				_m.PermissionType = cipermission.PermissionType(value.String)
 			}
 		case cipermission.FieldPermissionLevel:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field permission_level", values[i])
 			} else if value.Valid {
-				cp.PermissionLevel = cipermission.PermissionLevel(value.String)
+				_m.PermissionLevel = cipermission.PermissionLevel(value.String)
+			}
+		case cipermission.FieldOperationsMask:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field operations_mask", values[i])
+			} else if value.Valid {
+				_m.OperationsMask = uint64(value.Int64)
 			}
 		case cipermission.FieldEffectiveFrom:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field effective_from", values[i])
 			} else if value.Valid {
-				cp.EffectiveFrom = value.Time
+				_m.EffectiveFrom = value.Time
 			}
 		case cipermission.FieldEffectiveTo:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field effective_to", values[i])
 			} else if value.Valid {
-				cp.EffectiveTo = value.Time
+				_m.EffectiveTo = value.Time
 			}
 		case cipermission.FieldIsTemporary:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_temporary", values[i])
 			} else if value.Valid {
-				cp.IsTemporary = value.Bool
+				_m.IsTemporary = value.Bool
 			}
-		case cipermission.FieldDataFilters:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field data_filters", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.DataFilters); err != nil {
-					return fmt.Errorf("unmarshal field data_filters: %w", err)
-				}
-			}
-		case cipermission.FieldFieldMasks:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field field_masks", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.FieldMasks); err != nil {
-					return fmt.Errorf("unmarshal field field_masks: %w", err)
-				}
-			}
-		case cipermission.FieldAllowedValues:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field allowed_values", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.AllowedValues); err != nil {
-					return fmt.Errorf("unmarshal field allowed_values: %w", err)
-				}
-			}
-		case cipermission.FieldRequireApproval:
-			if value, ok := values[i].(*sql.NullBool); !ok {
-				return fmt.Errorf("unexpected type %T for field require_approval", values[i])
-			} else if value.Valid {
-				cp.RequireApproval = value.Bool
-			}
-		case cipermission.FieldGrantedBy:
-			if value, ok := values[i].(*uuid.UUID); !ok {
-				return fmt.Errorf("unexpected type %T for field granted_by", values[i])
-			} else if value != nil {
-				cp.GrantedBy = *value
-			}
-		case cipermission.FieldGrantedByName:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field granted_by_name", values[i])
-			} else if value.Valid {
-				cp.GrantedByName = value.String
-			}
-		case cipermission.FieldGrantedAt:
-			if value, ok := values[i].(*sql.NullTime); !ok {
-				return fmt.Errorf("unexpected type %T for field granted_at", values[i])
-			} else if value.Valid {
-				cp.GrantedAt = value.Time
-			}
-		case cipermission.FieldGrantReason:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field grant_reason", values[i])
-			} else if value.Valid {
-				cp.GrantReason = value.String
-			}
-		case cipermission.FieldUsageCount:
+		case cipermission.FieldPriority:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field usage_count", values[i])
+				return fmt.Errorf("unexpected type %T for field priority", values[i])
 			} else if value.Valid {
-				cp.UsageCount = int(value.Int64)
-			}
-		case cipermission.FieldLastUsedAt:
-			if value, ok := values[i].(*sql.NullTime); !ok {
-				return fmt.Errorf("unexpected type %T for field last_used_at", values[i])
-			} else if value.Valid {
-				cp.LastUsedAt = value.Time
-			}
-		case cipermission.FieldUsageStatistics:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field usage_statistics", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.UsageStatistics); err != nil {
-					return fmt.Errorf("unmarshal field usage_statistics: %w", err)
-				}
+				_m.Priority = int(value.Int64)
 			}
 		case cipermission.FieldStatus:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
-				cp.Status = cipermission.Status(value.String)
-			}
-		case cipermission.FieldStatusReason:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field status_reason", values[i])
-			} else if value.Valid {
-				cp.StatusReason = value.String
-			}
-		case cipermission.FieldInheritable:
-			if value, ok := values[i].(*sql.NullBool); !ok {
-				return fmt.Errorf("unexpected type %T for field inheritable", values[i])
-			} else if value.Valid {
-				cp.Inheritable = value.Bool
+				_m.Status = cipermission.Status(value.String)
 			}
 		case cipermission.FieldParentPermissionID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field parent_permission_id", values[i])
 			} else if value.Valid {
-				cp.ParentPermissionID = value.String
+				_m.ParentPermissionID = value.String
 			}
-		case cipermission.FieldInheritedFrom:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field inherited_from", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.InheritedFrom); err != nil {
-					return fmt.Errorf("unmarshal field inherited_from: %w", err)
-				}
-			}
-		case cipermission.FieldRiskLevel:
-			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field risk_level", values[i])
+		case cipermission.FieldInheritable:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field inheritable", values[i])
 			} else if value.Valid {
-				cp.RiskLevel = cipermission.RiskLevel(value.String)
+				_m.Inheritable = value.Bool
+			}
+		case cipermission.FieldRequireApproval:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field require_approval", values[i])
+			} else if value.Valid {
+				_m.RequireApproval = value.Bool
 			}
 		case cipermission.FieldRequireMfa:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field require_mfa", values[i])
 			} else if value.Valid {
-				cp.RequireMfa = value.Bool
+				_m.RequireMfa = value.Bool
 			}
-		case cipermission.FieldSecurityConstraints:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field security_constraints", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.SecurityConstraints); err != nil {
-					return fmt.Errorf("unmarshal field security_constraints: %w", err)
-				}
+		case cipermission.FieldRiskLevel:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field risk_level", values[i])
+			} else if value.Valid {
+				_m.RiskLevel = cipermission.RiskLevel(value.String)
 			}
-		case cipermission.FieldMetadata:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field metadata", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.Metadata); err != nil {
-					return fmt.Errorf("unmarshal field metadata: %w", err)
-				}
+		case cipermission.FieldUsageCount:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field usage_count", values[i])
+			} else if value.Valid {
+				_m.UsageCount = int(value.Int64)
 			}
-		case cipermission.FieldTags:
-			if value, ok := values[i].(*[]byte); !ok {
-				return fmt.Errorf("unexpected type %T for field tags", values[i])
-			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cp.Tags); err != nil {
-					return fmt.Errorf("unmarshal field tags: %w", err)
-				}
+		case cipermission.FieldLastUsedAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field last_used_at", values[i])
+			} else if value.Valid {
+				_m.LastUsedAt = value.Time
+			}
+		case cipermission.FieldCreatedBy:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field created_by", values[i])
+			} else if value.Valid {
+				_m.CreatedBy = value.String
+			}
+		case cipermission.FieldUpdatedBy:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field updated_by", values[i])
+			} else if value.Valid {
+				_m.UpdatedBy = value.String
 			}
 		case cipermission.FieldDescription:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field description", values[i])
 			} else if value.Valid {
-				cp.Description = value.String
+				_m.Description = value.String
 			}
 		case cipermission.FieldComments:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field comments", values[i])
 			} else if value.Valid {
-				cp.Comments = value.String
-			}
-		case cipermission.FieldCreatedBy:
-			if value, ok := values[i].(*uuid.UUID); !ok {
-				return fmt.Errorf("unexpected type %T for field created_by", values[i])
-			} else if value != nil {
-				cp.CreatedBy = *value
-			}
-		case cipermission.FieldUpdatedBy:
-			if value, ok := values[i].(*uuid.UUID); !ok {
-				return fmt.Errorf("unexpected type %T for field updated_by", values[i])
-			} else if value != nil {
-				cp.UpdatedBy = *value
-			}
-		case cipermission.FieldLastReviewedAt:
-			if value, ok := values[i].(*sql.NullTime); !ok {
-				return fmt.Errorf("unexpected type %T for field last_reviewed_at", values[i])
-			} else if value.Valid {
-				cp.LastReviewedAt = value.Time
-			}
-		case cipermission.FieldLastReviewedBy:
-			if value, ok := values[i].(*uuid.UUID); !ok {
-				return fmt.Errorf("unexpected type %T for field last_reviewed_by", values[i])
-			} else if value != nil {
-				cp.LastReviewedBy = *value
+				_m.Comments = value.String
 			}
 		default:
-			cp.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -481,179 +354,140 @@ func (cp *CiPermission) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiPermission.
 // This includes values selected through modifiers, order, etc.
-func (cp *CiPermission) Value(name string) (ent.Value, error) {
-	return cp.selectValues.Get(name)
+func (_m *CiPermission) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
+}
+
+// QueryOperations queries the "operations" edge of the CiPermission entity.
+func (_m *CiPermission) QueryOperations() *PermissionOperationQuery {
+	return NewCiPermissionClient(_m.config).QueryOperations(_m)
+}
+
+// QueryDataFilters queries the "data_filters" edge of the CiPermission entity.
+func (_m *CiPermission) QueryDataFilters() *PermissionDataFilterQuery {
+	return NewCiPermissionClient(_m.config).QueryDataFilters(_m)
+}
+
+// QueryFieldMasks queries the "field_masks" edge of the CiPermission entity.
+func (_m *CiPermission) QueryFieldMasks() *PermissionFieldMaskQuery {
+	return NewCiPermissionClient(_m.config).QueryFieldMasks(_m)
 }
 
 // Update returns a builder for updating this CiPermission.
 // Note that you need to call CiPermission.Unwrap() before calling this method if this CiPermission
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (cp *CiPermission) Update() *CiPermissionUpdateOne {
-	return NewCiPermissionClient(cp.config).UpdateOne(cp)
+func (_m *CiPermission) Update() *CiPermissionUpdateOne {
+	return NewCiPermissionClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiPermission entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (cp *CiPermission) Unwrap() *CiPermission {
-	_tx, ok := cp.config.driver.(*txDriver)
+func (_m *CiPermission) Unwrap() *CiPermission {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiPermission is not a transactional entity")
 	}
-	cp.config.driver = _tx.drv
-	return cp
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (cp *CiPermission) String() string {
+func (_m *CiPermission) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiPermission(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", cp.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(cp.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(cp.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", cp.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", cp.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("permission_id=")
-	builder.WriteString(cp.PermissionID)
+	builder.WriteString(_m.PermissionID)
 	builder.WriteString(", ")
 	builder.WriteString("scope_type=")
-	builder.WriteString(fmt.Sprintf("%v", cp.ScopeType))
+	builder.WriteString(fmt.Sprintf("%v", _m.ScopeType))
 	builder.WriteString(", ")
-	builder.WriteString("ci_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", cp.CiTypeID))
+	builder.WriteString("scope_target_type=")
+	builder.WriteString(_m.ScopeTargetType)
 	builder.WriteString(", ")
-	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", cp.CiID))
+	builder.WriteString("scope_target_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.ScopeTargetID))
 	builder.WriteString(", ")
-	builder.WriteString("attribute_id=")
-	builder.WriteString(fmt.Sprintf("%v", cp.AttributeID))
-	builder.WriteString(", ")
-	builder.WriteString("field_name=")
-	builder.WriteString(cp.FieldName)
+	builder.WriteString("scope_field_name=")
+	builder.WriteString(_m.ScopeFieldName)
 	builder.WriteString(", ")
 	builder.WriteString("subject_type=")
-	builder.WriteString(fmt.Sprintf("%v", cp.SubjectType))
+	builder.WriteString(fmt.Sprintf("%v", _m.SubjectType))
 	builder.WriteString(", ")
 	builder.WriteString("subject_id=")
-	builder.WriteString(fmt.Sprintf("%v", cp.SubjectID))
+	builder.WriteString(_m.SubjectID)
 	builder.WriteString(", ")
 	builder.WriteString("subject_name=")
-	builder.WriteString(cp.SubjectName)
-	builder.WriteString(", ")
-	builder.WriteString("subject_code=")
-	builder.WriteString(cp.SubjectCode)
+	builder.WriteString(_m.SubjectName)
 	builder.WriteString(", ")
 	builder.WriteString("permission_type=")
-	builder.WriteString(fmt.Sprintf("%v", cp.PermissionType))
-	builder.WriteString(", ")
-	builder.WriteString("operations=")
-	builder.WriteString(fmt.Sprintf("%v", cp.Operations))
-	builder.WriteString(", ")
-	builder.WriteString("conditions=")
-	builder.WriteString(fmt.Sprintf("%v", cp.Conditions))
-	builder.WriteString(", ")
-	builder.WriteString("priority=")
-	builder.WriteString(fmt.Sprintf("%v", cp.Priority))
+	builder.WriteString(fmt.Sprintf("%v", _m.PermissionType))
 	builder.WriteString(", ")
 	builder.WriteString("permission_level=")
-	builder.WriteString(fmt.Sprintf("%v", cp.PermissionLevel))
+	builder.WriteString(fmt.Sprintf("%v", _m.PermissionLevel))
+	builder.WriteString(", ")
+	builder.WriteString("operations_mask=")
+	builder.WriteString(fmt.Sprintf("%v", _m.OperationsMask))
 	builder.WriteString(", ")
 	builder.WriteString("effective_from=")
-	builder.WriteString(cp.EffectiveFrom.Format(time.ANSIC))
+	builder.WriteString(_m.EffectiveFrom.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("effective_to=")
-	builder.WriteString(cp.EffectiveTo.Format(time.ANSIC))
+	builder.WriteString(_m.EffectiveTo.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("is_temporary=")
-	builder.WriteString(fmt.Sprintf("%v", cp.IsTemporary))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsTemporary))
 	builder.WriteString(", ")
-	builder.WriteString("data_filters=")
-	builder.WriteString(fmt.Sprintf("%v", cp.DataFilters))
-	builder.WriteString(", ")
-	builder.WriteString("field_masks=")
-	builder.WriteString(fmt.Sprintf("%v", cp.FieldMasks))
-	builder.WriteString(", ")
-	builder.WriteString("allowed_values=")
-	builder.WriteString(fmt.Sprintf("%v", cp.AllowedValues))
-	builder.WriteString(", ")
-	builder.WriteString("require_approval=")
-	builder.WriteString(fmt.Sprintf("%v", cp.RequireApproval))
-	builder.WriteString(", ")
-	builder.WriteString("granted_by=")
-	builder.WriteString(fmt.Sprintf("%v", cp.GrantedBy))
-	builder.WriteString(", ")
-	builder.WriteString("granted_by_name=")
-	builder.WriteString(cp.GrantedByName)
-	builder.WriteString(", ")
-	builder.WriteString("granted_at=")
-	builder.WriteString(cp.GrantedAt.Format(time.ANSIC))
-	builder.WriteString(", ")
-	builder.WriteString("grant_reason=")
-	builder.WriteString(cp.GrantReason)
-	builder.WriteString(", ")
-	builder.WriteString("usage_count=")
-	builder.WriteString(fmt.Sprintf("%v", cp.UsageCount))
-	builder.WriteString(", ")
-	builder.WriteString("last_used_at=")
-	builder.WriteString(cp.LastUsedAt.Format(time.ANSIC))
-	builder.WriteString(", ")
-	builder.WriteString("usage_statistics=")
-	builder.WriteString(fmt.Sprintf("%v", cp.UsageStatistics))
+	builder.WriteString("priority=")
+	builder.WriteString(fmt.Sprintf("%v", _m.Priority))
 	builder.WriteString(", ")
 	builder.WriteString("status=")
-	builder.WriteString(fmt.Sprintf("%v", cp.Status))
-	builder.WriteString(", ")
-	builder.WriteString("status_reason=")
-	builder.WriteString(cp.StatusReason)
-	builder.WriteString(", ")
-	builder.WriteString("inheritable=")
-	builder.WriteString(fmt.Sprintf("%v", cp.Inheritable))
+	builder.WriteString(fmt.Sprintf("%v", _m.Status))
 	builder.WriteString(", ")
 	builder.WriteString("parent_permission_id=")
-	builder.WriteString(cp.ParentPermissionID)
+	builder.WriteString(_m.ParentPermissionID)
 	builder.WriteString(", ")
-	builder.WriteString("inherited_from=")
-	builder.WriteString(fmt.Sprintf("%v", cp.InheritedFrom))
+	builder.WriteString("inheritable=")
+	builder.WriteString(fmt.Sprintf("%v", _m.Inheritable))
 	builder.WriteString(", ")
-	builder.WriteString("risk_level=")
-	builder.WriteString(fmt.Sprintf("%v", cp.RiskLevel))
+	builder.WriteString("require_approval=")
+	builder.WriteString(fmt.Sprintf("%v", _m.RequireApproval))
 	builder.WriteString(", ")
 	builder.WriteString("require_mfa=")
-	builder.WriteString(fmt.Sprintf("%v", cp.RequireMfa))
+	builder.WriteString(fmt.Sprintf("%v", _m.RequireMfa))
 	builder.WriteString(", ")
-	builder.WriteString("security_constraints=")
-	builder.WriteString(fmt.Sprintf("%v", cp.SecurityConstraints))
+	builder.WriteString("risk_level=")
+	builder.WriteString(fmt.Sprintf("%v", _m.RiskLevel))
 	builder.WriteString(", ")
-	builder.WriteString("metadata=")
-	builder.WriteString(fmt.Sprintf("%v", cp.Metadata))
+	builder.WriteString("usage_count=")
+	builder.WriteString(fmt.Sprintf("%v", _m.UsageCount))
 	builder.WriteString(", ")
-	builder.WriteString("tags=")
-	builder.WriteString(fmt.Sprintf("%v", cp.Tags))
-	builder.WriteString(", ")
-	builder.WriteString("description=")
-	builder.WriteString(cp.Description)
-	builder.WriteString(", ")
-	builder.WriteString("comments=")
-	builder.WriteString(cp.Comments)
+	builder.WriteString("last_used_at=")
+	builder.WriteString(_m.LastUsedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("created_by=")
-	builder.WriteString(fmt.Sprintf("%v", cp.CreatedBy))
+	builder.WriteString(_m.CreatedBy)
 	builder.WriteString(", ")
 	builder.WriteString("updated_by=")
-	builder.WriteString(fmt.Sprintf("%v", cp.UpdatedBy))
+	builder.WriteString(_m.UpdatedBy)
 	builder.WriteString(", ")
-	builder.WriteString("last_reviewed_at=")
-	builder.WriteString(cp.LastReviewedAt.Format(time.ANSIC))
+	builder.WriteString("description=")
+	builder.WriteString(_m.Description)
 	builder.WriteString(", ")
-	builder.WriteString("last_reviewed_by=")
-	builder.WriteString(fmt.Sprintf("%v", cp.LastReviewedBy))
+	builder.WriteString("comments=")
+	builder.WriteString(_m.Comments)
 	builder.WriteByte(')')
 	return builder.String()
 }

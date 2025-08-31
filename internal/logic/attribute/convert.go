@@ -7,16 +7,16 @@ import (
 	"strconv"
 	"strings"
 
-	"gitee.com/link234/cmdb-rpc/ent"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/cmdb-rpc/internal/consts"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
-	"gitee.com/link234/newbee-backend-common/utils/uuidx"
-	"gitee.com/link234/newbee-backend-common/utils/validator"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/consts"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-common/utils/uuidx"
+	"github.com/coder-lulu/newbee-common/utils/validator"
 )
 
 // isZeroAttributeOptionS 检查 AttributeOptionS 是否为零值

@@ -10,10 +10,10 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
-	"gitee.com/link234/cmdb-rpc/ent/importtemplate"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -25,683 +25,683 @@ type ImportTemplateCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (itc *ImportTemplateCreate) SetCreatedAt(t time.Time) *ImportTemplateCreate {
-	itc.mutation.SetCreatedAt(t)
-	return itc
+func (_c *ImportTemplateCreate) SetCreatedAt(v time.Time) *ImportTemplateCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableCreatedAt(t *time.Time) *ImportTemplateCreate {
-	if t != nil {
-		itc.SetCreatedAt(*t)
+func (_c *ImportTemplateCreate) SetNillableCreatedAt(v *time.Time) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (itc *ImportTemplateCreate) SetUpdatedAt(t time.Time) *ImportTemplateCreate {
-	itc.mutation.SetUpdatedAt(t)
-	return itc
+func (_c *ImportTemplateCreate) SetUpdatedAt(v time.Time) *ImportTemplateCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableUpdatedAt(t *time.Time) *ImportTemplateCreate {
-	if t != nil {
-		itc.SetUpdatedAt(*t)
+func (_c *ImportTemplateCreate) SetNillableUpdatedAt(v *time.Time) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetStatus sets the "status" field.
-func (itc *ImportTemplateCreate) SetStatus(u uint8) *ImportTemplateCreate {
-	itc.mutation.SetStatus(u)
-	return itc
+func (_c *ImportTemplateCreate) SetStatus(v uint8) *ImportTemplateCreate {
+	_c.mutation.SetStatus(v)
+	return _c
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableStatus(u *uint8) *ImportTemplateCreate {
-	if u != nil {
-		itc.SetStatus(*u)
+func (_c *ImportTemplateCreate) SetNillableStatus(v *uint8) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetStatus(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (itc *ImportTemplateCreate) SetDeletedAt(t time.Time) *ImportTemplateCreate {
-	itc.mutation.SetDeletedAt(t)
-	return itc
+func (_c *ImportTemplateCreate) SetDeletedAt(v time.Time) *ImportTemplateCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableDeletedAt(t *time.Time) *ImportTemplateCreate {
-	if t != nil {
-		itc.SetDeletedAt(*t)
+func (_c *ImportTemplateCreate) SetNillableDeletedAt(v *time.Time) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (itc *ImportTemplateCreate) SetTenantID(u uint64) *ImportTemplateCreate {
-	itc.mutation.SetTenantID(u)
-	return itc
+func (_c *ImportTemplateCreate) SetTenantID(v uint64) *ImportTemplateCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableTenantID(u *uint64) *ImportTemplateCreate {
-	if u != nil {
-		itc.SetTenantID(*u)
+func (_c *ImportTemplateCreate) SetNillableTenantID(v *uint64) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (itc *ImportTemplateCreate) SetDepartmentID(u uint64) *ImportTemplateCreate {
-	itc.mutation.SetDepartmentID(u)
-	return itc
+func (_c *ImportTemplateCreate) SetDepartmentID(v uint64) *ImportTemplateCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableDepartmentID(u *uint64) *ImportTemplateCreate {
-	if u != nil {
-		itc.SetDepartmentID(*u)
+func (_c *ImportTemplateCreate) SetNillableDepartmentID(v *uint64) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetName sets the "name" field.
-func (itc *ImportTemplateCreate) SetName(s string) *ImportTemplateCreate {
-	itc.mutation.SetName(s)
-	return itc
+func (_c *ImportTemplateCreate) SetName(v string) *ImportTemplateCreate {
+	_c.mutation.SetName(v)
+	return _c
 }
 
 // SetCode sets the "code" field.
-func (itc *ImportTemplateCreate) SetCode(s string) *ImportTemplateCreate {
-	itc.mutation.SetCode(s)
-	return itc
+func (_c *ImportTemplateCreate) SetCode(v string) *ImportTemplateCreate {
+	_c.mutation.SetCode(v)
+	return _c
 }
 
 // SetDescription sets the "description" field.
-func (itc *ImportTemplateCreate) SetDescription(s string) *ImportTemplateCreate {
-	itc.mutation.SetDescription(s)
-	return itc
+func (_c *ImportTemplateCreate) SetDescription(v string) *ImportTemplateCreate {
+	_c.mutation.SetDescription(v)
+	return _c
 }
 
 // SetNillableDescription sets the "description" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableDescription(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetDescription(*s)
+func (_c *ImportTemplateCreate) SetNillableDescription(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetDescription(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetVersion sets the "version" field.
-func (itc *ImportTemplateCreate) SetVersion(s string) *ImportTemplateCreate {
-	itc.mutation.SetVersion(s)
-	return itc
+func (_c *ImportTemplateCreate) SetVersion(v string) *ImportTemplateCreate {
+	_c.mutation.SetVersion(v)
+	return _c
 }
 
 // SetNillableVersion sets the "version" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableVersion(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetVersion(*s)
+func (_c *ImportTemplateCreate) SetNillableVersion(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetVersion(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetType sets the "type" field.
-func (itc *ImportTemplateCreate) SetType(i importtemplate.Type) *ImportTemplateCreate {
-	itc.mutation.SetType(i)
-	return itc
+func (_c *ImportTemplateCreate) SetType(v importtemplate.Type) *ImportTemplateCreate {
+	_c.mutation.SetType(v)
+	return _c
 }
 
 // SetNillableType sets the "type" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableType(i *importtemplate.Type) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetType(*i)
+func (_c *ImportTemplateCreate) SetNillableType(v *importtemplate.Type) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetType(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetImportMode sets the "import_mode" field.
-func (itc *ImportTemplateCreate) SetImportMode(im importtemplate.ImportMode) *ImportTemplateCreate {
-	itc.mutation.SetImportMode(im)
-	return itc
+func (_c *ImportTemplateCreate) SetImportMode(v importtemplate.ImportMode) *ImportTemplateCreate {
+	_c.mutation.SetImportMode(v)
+	return _c
 }
 
 // SetNillableImportMode sets the "import_mode" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableImportMode(im *importtemplate.ImportMode) *ImportTemplateCreate {
-	if im != nil {
-		itc.SetImportMode(*im)
+func (_c *ImportTemplateCreate) SetNillableImportMode(v *importtemplate.ImportMode) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetImportMode(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (itc *ImportTemplateCreate) SetCiTypeID(u uint64) *ImportTemplateCreate {
-	itc.mutation.SetCiTypeID(u)
-	return itc
+func (_c *ImportTemplateCreate) SetCiTypeID(v uint64) *ImportTemplateCreate {
+	_c.mutation.SetCiTypeID(v)
+	return _c
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableCiTypeID(u *uint64) *ImportTemplateCreate {
-	if u != nil {
-		itc.SetCiTypeID(*u)
+func (_c *ImportTemplateCreate) SetNillableCiTypeID(v *uint64) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetCiTypeID(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetCiTypeName sets the "ci_type_name" field.
-func (itc *ImportTemplateCreate) SetCiTypeName(s string) *ImportTemplateCreate {
-	itc.mutation.SetCiTypeName(s)
-	return itc
+func (_c *ImportTemplateCreate) SetCiTypeName(v string) *ImportTemplateCreate {
+	_c.mutation.SetCiTypeName(v)
+	return _c
 }
 
 // SetNillableCiTypeName sets the "ci_type_name" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableCiTypeName(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetCiTypeName(*s)
+func (_c *ImportTemplateCreate) SetNillableCiTypeName(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetCiTypeName(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetAutoCreateCiType sets the "auto_create_ci_type" field.
-func (itc *ImportTemplateCreate) SetAutoCreateCiType(b bool) *ImportTemplateCreate {
-	itc.mutation.SetAutoCreateCiType(b)
-	return itc
+func (_c *ImportTemplateCreate) SetAutoCreateCiType(v bool) *ImportTemplateCreate {
+	_c.mutation.SetAutoCreateCiType(v)
+	return _c
 }
 
 // SetNillableAutoCreateCiType sets the "auto_create_ci_type" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableAutoCreateCiType(b *bool) *ImportTemplateCreate {
-	if b != nil {
-		itc.SetAutoCreateCiType(*b)
+func (_c *ImportTemplateCreate) SetNillableAutoCreateCiType(v *bool) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetAutoCreateCiType(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetFieldMappings sets the "field_mappings" field.
-func (itc *ImportTemplateCreate) SetFieldMappings(smc []schema.FieldMappingConfig) *ImportTemplateCreate {
-	itc.mutation.SetFieldMappings(smc)
-	return itc
+func (_c *ImportTemplateCreate) SetFieldMappings(v []schema.FieldMappingConfig) *ImportTemplateCreate {
+	_c.mutation.SetFieldMappings(v)
+	return _c
 }
 
 // SetHeaderMappings sets the "header_mappings" field.
-func (itc *ImportTemplateCreate) SetHeaderMappings(m map[string]string) *ImportTemplateCreate {
-	itc.mutation.SetHeaderMappings(m)
-	return itc
+func (_c *ImportTemplateCreate) SetHeaderMappings(v map[string]string) *ImportTemplateCreate {
+	_c.mutation.SetHeaderMappings(v)
+	return _c
 }
 
 // SetDefaultValues sets the "default_values" field.
-func (itc *ImportTemplateCreate) SetDefaultValues(m map[string]interface{}) *ImportTemplateCreate {
-	itc.mutation.SetDefaultValues(m)
-	return itc
+func (_c *ImportTemplateCreate) SetDefaultValues(v map[string]interface{}) *ImportTemplateCreate {
+	_c.mutation.SetDefaultValues(v)
+	return _c
 }
 
 // SetComputedFields sets the "computed_fields" field.
-func (itc *ImportTemplateCreate) SetComputedFields(sfc []schema.ComputedFieldConfig) *ImportTemplateCreate {
-	itc.mutation.SetComputedFields(sfc)
-	return itc
+func (_c *ImportTemplateCreate) SetComputedFields(v []schema.ComputedFieldConfig) *ImportTemplateCreate {
+	_c.mutation.SetComputedFields(v)
+	return _c
 }
 
 // SetDataTransformations sets the "data_transformations" field.
-func (itc *ImportTemplateCreate) SetDataTransformations(stc []schema.DataTransformationConfig) *ImportTemplateCreate {
-	itc.mutation.SetDataTransformations(stc)
-	return itc
+func (_c *ImportTemplateCreate) SetDataTransformations(v []schema.DataTransformationConfig) *ImportTemplateCreate {
+	_c.mutation.SetDataTransformations(v)
+	return _c
 }
 
 // SetDataFilters sets the "data_filters" field.
-func (itc *ImportTemplateCreate) SetDataFilters(sfc []schema.DataFilterConfig) *ImportTemplateCreate {
-	itc.mutation.SetDataFilters(sfc)
-	return itc
+func (_c *ImportTemplateCreate) SetDataFilters(v []schema.DataFilterConfig) *ImportTemplateCreate {
+	_c.mutation.SetDataFilters(v)
+	return _c
 }
 
 // SetDataCleaners sets the "data_cleaners" field.
-func (itc *ImportTemplateCreate) SetDataCleaners(scc []schema.DataCleanerConfig) *ImportTemplateCreate {
-	itc.mutation.SetDataCleaners(scc)
-	return itc
+func (_c *ImportTemplateCreate) SetDataCleaners(v []schema.DataCleanerConfig) *ImportTemplateCreate {
+	_c.mutation.SetDataCleaners(v)
+	return _c
 }
 
 // SetExcelSheetName sets the "excel_sheet_name" field.
-func (itc *ImportTemplateCreate) SetExcelSheetName(s string) *ImportTemplateCreate {
-	itc.mutation.SetExcelSheetName(s)
-	return itc
+func (_c *ImportTemplateCreate) SetExcelSheetName(v string) *ImportTemplateCreate {
+	_c.mutation.SetExcelSheetName(v)
+	return _c
 }
 
 // SetNillableExcelSheetName sets the "excel_sheet_name" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableExcelSheetName(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetExcelSheetName(*s)
+func (_c *ImportTemplateCreate) SetNillableExcelSheetName(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetExcelSheetName(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetExcelHeaderRow sets the "excel_header_row" field.
-func (itc *ImportTemplateCreate) SetExcelHeaderRow(i int) *ImportTemplateCreate {
-	itc.mutation.SetExcelHeaderRow(i)
-	return itc
+func (_c *ImportTemplateCreate) SetExcelHeaderRow(v int) *ImportTemplateCreate {
+	_c.mutation.SetExcelHeaderRow(v)
+	return _c
 }
 
 // SetNillableExcelHeaderRow sets the "excel_header_row" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableExcelHeaderRow(i *int) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetExcelHeaderRow(*i)
+func (_c *ImportTemplateCreate) SetNillableExcelHeaderRow(v *int) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetExcelHeaderRow(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetExcelDataStartRow sets the "excel_data_start_row" field.
-func (itc *ImportTemplateCreate) SetExcelDataStartRow(i int) *ImportTemplateCreate {
-	itc.mutation.SetExcelDataStartRow(i)
-	return itc
+func (_c *ImportTemplateCreate) SetExcelDataStartRow(v int) *ImportTemplateCreate {
+	_c.mutation.SetExcelDataStartRow(v)
+	return _c
 }
 
 // SetNillableExcelDataStartRow sets the "excel_data_start_row" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableExcelDataStartRow(i *int) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetExcelDataStartRow(*i)
+func (_c *ImportTemplateCreate) SetNillableExcelDataStartRow(v *int) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetExcelDataStartRow(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetExcelColumnMappings sets the "excel_column_mappings" field.
-func (itc *ImportTemplateCreate) SetExcelColumnMappings(m map[string]string) *ImportTemplateCreate {
-	itc.mutation.SetExcelColumnMappings(m)
-	return itc
+func (_c *ImportTemplateCreate) SetExcelColumnMappings(v map[string]string) *ImportTemplateCreate {
+	_c.mutation.SetExcelColumnMappings(v)
+	return _c
 }
 
 // SetAPIEndpoint sets the "api_endpoint" field.
-func (itc *ImportTemplateCreate) SetAPIEndpoint(s string) *ImportTemplateCreate {
-	itc.mutation.SetAPIEndpoint(s)
-	return itc
+func (_c *ImportTemplateCreate) SetAPIEndpoint(v string) *ImportTemplateCreate {
+	_c.mutation.SetAPIEndpoint(v)
+	return _c
 }
 
 // SetNillableAPIEndpoint sets the "api_endpoint" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableAPIEndpoint(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetAPIEndpoint(*s)
+func (_c *ImportTemplateCreate) SetNillableAPIEndpoint(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetAPIEndpoint(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetAPIMethod sets the "api_method" field.
-func (itc *ImportTemplateCreate) SetAPIMethod(im importtemplate.APIMethod) *ImportTemplateCreate {
-	itc.mutation.SetAPIMethod(im)
-	return itc
+func (_c *ImportTemplateCreate) SetAPIMethod(v importtemplate.APIMethod) *ImportTemplateCreate {
+	_c.mutation.SetAPIMethod(v)
+	return _c
 }
 
 // SetNillableAPIMethod sets the "api_method" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableAPIMethod(im *importtemplate.APIMethod) *ImportTemplateCreate {
-	if im != nil {
-		itc.SetAPIMethod(*im)
+func (_c *ImportTemplateCreate) SetNillableAPIMethod(v *importtemplate.APIMethod) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetAPIMethod(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetAPIHeaders sets the "api_headers" field.
-func (itc *ImportTemplateCreate) SetAPIHeaders(m map[string]string) *ImportTemplateCreate {
-	itc.mutation.SetAPIHeaders(m)
-	return itc
+func (_c *ImportTemplateCreate) SetAPIHeaders(v map[string]string) *ImportTemplateCreate {
+	_c.mutation.SetAPIHeaders(v)
+	return _c
 }
 
 // SetAPIParams sets the "api_params" field.
-func (itc *ImportTemplateCreate) SetAPIParams(m map[string]interface{}) *ImportTemplateCreate {
-	itc.mutation.SetAPIParams(m)
-	return itc
+func (_c *ImportTemplateCreate) SetAPIParams(v map[string]interface{}) *ImportTemplateCreate {
+	_c.mutation.SetAPIParams(v)
+	return _c
 }
 
 // SetAPIResponsePath sets the "api_response_path" field.
-func (itc *ImportTemplateCreate) SetAPIResponsePath(s string) *ImportTemplateCreate {
-	itc.mutation.SetAPIResponsePath(s)
-	return itc
+func (_c *ImportTemplateCreate) SetAPIResponsePath(v string) *ImportTemplateCreate {
+	_c.mutation.SetAPIResponsePath(v)
+	return _c
 }
 
 // SetNillableAPIResponsePath sets the "api_response_path" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableAPIResponsePath(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetAPIResponsePath(*s)
+func (_c *ImportTemplateCreate) SetNillableAPIResponsePath(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetAPIResponsePath(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetMaxErrors sets the "max_errors" field.
-func (itc *ImportTemplateCreate) SetMaxErrors(i int) *ImportTemplateCreate {
-	itc.mutation.SetMaxErrors(i)
-	return itc
+func (_c *ImportTemplateCreate) SetMaxErrors(v int) *ImportTemplateCreate {
+	_c.mutation.SetMaxErrors(v)
+	return _c
 }
 
 // SetNillableMaxErrors sets the "max_errors" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableMaxErrors(i *int) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetMaxErrors(*i)
+func (_c *ImportTemplateCreate) SetNillableMaxErrors(v *int) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetMaxErrors(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetStopOnFirstError sets the "stop_on_first_error" field.
-func (itc *ImportTemplateCreate) SetStopOnFirstError(b bool) *ImportTemplateCreate {
-	itc.mutation.SetStopOnFirstError(b)
-	return itc
+func (_c *ImportTemplateCreate) SetStopOnFirstError(v bool) *ImportTemplateCreate {
+	_c.mutation.SetStopOnFirstError(v)
+	return _c
 }
 
 // SetNillableStopOnFirstError sets the "stop_on_first_error" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableStopOnFirstError(b *bool) *ImportTemplateCreate {
-	if b != nil {
-		itc.SetStopOnFirstError(*b)
+func (_c *ImportTemplateCreate) SetNillableStopOnFirstError(v *bool) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetStopOnFirstError(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetSkipInvalidRows sets the "skip_invalid_rows" field.
-func (itc *ImportTemplateCreate) SetSkipInvalidRows(b bool) *ImportTemplateCreate {
-	itc.mutation.SetSkipInvalidRows(b)
-	return itc
+func (_c *ImportTemplateCreate) SetSkipInvalidRows(v bool) *ImportTemplateCreate {
+	_c.mutation.SetSkipInvalidRows(v)
+	return _c
 }
 
 // SetNillableSkipInvalidRows sets the "skip_invalid_rows" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableSkipInvalidRows(b *bool) *ImportTemplateCreate {
-	if b != nil {
-		itc.SetSkipInvalidRows(*b)
+func (_c *ImportTemplateCreate) SetNillableSkipInvalidRows(v *bool) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetSkipInvalidRows(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetErrorHandlingMode sets the "error_handling_mode" field.
-func (itc *ImportTemplateCreate) SetErrorHandlingMode(ihm importtemplate.ErrorHandlingMode) *ImportTemplateCreate {
-	itc.mutation.SetErrorHandlingMode(ihm)
-	return itc
+func (_c *ImportTemplateCreate) SetErrorHandlingMode(v importtemplate.ErrorHandlingMode) *ImportTemplateCreate {
+	_c.mutation.SetErrorHandlingMode(v)
+	return _c
 }
 
 // SetNillableErrorHandlingMode sets the "error_handling_mode" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableErrorHandlingMode(ihm *importtemplate.ErrorHandlingMode) *ImportTemplateCreate {
-	if ihm != nil {
-		itc.SetErrorHandlingMode(*ihm)
+func (_c *ImportTemplateCreate) SetNillableErrorHandlingMode(v *importtemplate.ErrorHandlingMode) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetErrorHandlingMode(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetBatchSize sets the "batch_size" field.
-func (itc *ImportTemplateCreate) SetBatchSize(i int) *ImportTemplateCreate {
-	itc.mutation.SetBatchSize(i)
-	return itc
+func (_c *ImportTemplateCreate) SetBatchSize(v int) *ImportTemplateCreate {
+	_c.mutation.SetBatchSize(v)
+	return _c
 }
 
 // SetNillableBatchSize sets the "batch_size" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableBatchSize(i *int) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetBatchSize(*i)
+func (_c *ImportTemplateCreate) SetNillableBatchSize(v *int) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetBatchSize(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetMaxParallelJobs sets the "max_parallel_jobs" field.
-func (itc *ImportTemplateCreate) SetMaxParallelJobs(i int) *ImportTemplateCreate {
-	itc.mutation.SetMaxParallelJobs(i)
-	return itc
+func (_c *ImportTemplateCreate) SetMaxParallelJobs(v int) *ImportTemplateCreate {
+	_c.mutation.SetMaxParallelJobs(v)
+	return _c
 }
 
 // SetNillableMaxParallelJobs sets the "max_parallel_jobs" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableMaxParallelJobs(i *int) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetMaxParallelJobs(*i)
+func (_c *ImportTemplateCreate) SetNillableMaxParallelJobs(v *int) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetMaxParallelJobs(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetEnableTransaction sets the "enable_transaction" field.
-func (itc *ImportTemplateCreate) SetEnableTransaction(b bool) *ImportTemplateCreate {
-	itc.mutation.SetEnableTransaction(b)
-	return itc
+func (_c *ImportTemplateCreate) SetEnableTransaction(v bool) *ImportTemplateCreate {
+	_c.mutation.SetEnableTransaction(v)
+	return _c
 }
 
 // SetNillableEnableTransaction sets the "enable_transaction" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableEnableTransaction(b *bool) *ImportTemplateCreate {
-	if b != nil {
-		itc.SetEnableTransaction(*b)
+func (_c *ImportTemplateCreate) SetNillableEnableTransaction(v *bool) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetEnableTransaction(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetTags sets the "tags" field.
-func (itc *ImportTemplateCreate) SetTags(s []string) *ImportTemplateCreate {
-	itc.mutation.SetTags(s)
-	return itc
+func (_c *ImportTemplateCreate) SetTags(v []string) *ImportTemplateCreate {
+	_c.mutation.SetTags(v)
+	return _c
 }
 
 // SetMetadata sets the "metadata" field.
-func (itc *ImportTemplateCreate) SetMetadata(m map[string]interface{}) *ImportTemplateCreate {
-	itc.mutation.SetMetadata(m)
-	return itc
+func (_c *ImportTemplateCreate) SetMetadata(v map[string]interface{}) *ImportTemplateCreate {
+	_c.mutation.SetMetadata(v)
+	return _c
 }
 
 // SetIcon sets the "icon" field.
-func (itc *ImportTemplateCreate) SetIcon(s string) *ImportTemplateCreate {
-	itc.mutation.SetIcon(s)
-	return itc
+func (_c *ImportTemplateCreate) SetIcon(v string) *ImportTemplateCreate {
+	_c.mutation.SetIcon(v)
+	return _c
 }
 
 // SetNillableIcon sets the "icon" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableIcon(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetIcon(*s)
+func (_c *ImportTemplateCreate) SetNillableIcon(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetIcon(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetCategory sets the "category" field.
-func (itc *ImportTemplateCreate) SetCategory(s string) *ImportTemplateCreate {
-	itc.mutation.SetCategory(s)
-	return itc
+func (_c *ImportTemplateCreate) SetCategory(v string) *ImportTemplateCreate {
+	_c.mutation.SetCategory(v)
+	return _c
 }
 
 // SetNillableCategory sets the "category" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableCategory(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetCategory(*s)
+func (_c *ImportTemplateCreate) SetNillableCategory(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetCategory(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetUsageCount sets the "usage_count" field.
-func (itc *ImportTemplateCreate) SetUsageCount(i int) *ImportTemplateCreate {
-	itc.mutation.SetUsageCount(i)
-	return itc
+func (_c *ImportTemplateCreate) SetUsageCount(v int) *ImportTemplateCreate {
+	_c.mutation.SetUsageCount(v)
+	return _c
 }
 
 // SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableUsageCount(i *int) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetUsageCount(*i)
+func (_c *ImportTemplateCreate) SetNillableUsageCount(v *int) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetUsageCount(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetSuccessCount sets the "success_count" field.
-func (itc *ImportTemplateCreate) SetSuccessCount(i int) *ImportTemplateCreate {
-	itc.mutation.SetSuccessCount(i)
-	return itc
+func (_c *ImportTemplateCreate) SetSuccessCount(v int) *ImportTemplateCreate {
+	_c.mutation.SetSuccessCount(v)
+	return _c
 }
 
 // SetNillableSuccessCount sets the "success_count" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableSuccessCount(i *int) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetSuccessCount(*i)
+func (_c *ImportTemplateCreate) SetNillableSuccessCount(v *int) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetSuccessCount(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetErrorCount sets the "error_count" field.
-func (itc *ImportTemplateCreate) SetErrorCount(i int) *ImportTemplateCreate {
-	itc.mutation.SetErrorCount(i)
-	return itc
+func (_c *ImportTemplateCreate) SetErrorCount(v int) *ImportTemplateCreate {
+	_c.mutation.SetErrorCount(v)
+	return _c
 }
 
 // SetNillableErrorCount sets the "error_count" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableErrorCount(i *int) *ImportTemplateCreate {
-	if i != nil {
-		itc.SetErrorCount(*i)
+func (_c *ImportTemplateCreate) SetNillableErrorCount(v *int) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetErrorCount(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetSuccessRate sets the "success_rate" field.
-func (itc *ImportTemplateCreate) SetSuccessRate(f float64) *ImportTemplateCreate {
-	itc.mutation.SetSuccessRate(f)
-	return itc
+func (_c *ImportTemplateCreate) SetSuccessRate(v float64) *ImportTemplateCreate {
+	_c.mutation.SetSuccessRate(v)
+	return _c
 }
 
 // SetNillableSuccessRate sets the "success_rate" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableSuccessRate(f *float64) *ImportTemplateCreate {
-	if f != nil {
-		itc.SetSuccessRate(*f)
+func (_c *ImportTemplateCreate) SetNillableSuccessRate(v *float64) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetSuccessRate(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetIsPublic sets the "is_public" field.
-func (itc *ImportTemplateCreate) SetIsPublic(b bool) *ImportTemplateCreate {
-	itc.mutation.SetIsPublic(b)
-	return itc
+func (_c *ImportTemplateCreate) SetIsPublic(v bool) *ImportTemplateCreate {
+	_c.mutation.SetIsPublic(v)
+	return _c
 }
 
 // SetNillableIsPublic sets the "is_public" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableIsPublic(b *bool) *ImportTemplateCreate {
-	if b != nil {
-		itc.SetIsPublic(*b)
+func (_c *ImportTemplateCreate) SetNillableIsPublic(v *bool) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetIsPublic(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetIsSystem sets the "is_system" field.
-func (itc *ImportTemplateCreate) SetIsSystem(b bool) *ImportTemplateCreate {
-	itc.mutation.SetIsSystem(b)
-	return itc
+func (_c *ImportTemplateCreate) SetIsSystem(v bool) *ImportTemplateCreate {
+	_c.mutation.SetIsSystem(v)
+	return _c
 }
 
 // SetNillableIsSystem sets the "is_system" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableIsSystem(b *bool) *ImportTemplateCreate {
-	if b != nil {
-		itc.SetIsSystem(*b)
+func (_c *ImportTemplateCreate) SetNillableIsSystem(v *bool) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetIsSystem(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetSharedWith sets the "shared_with" field.
-func (itc *ImportTemplateCreate) SetSharedWith(s []string) *ImportTemplateCreate {
-	itc.mutation.SetSharedWith(s)
-	return itc
+func (_c *ImportTemplateCreate) SetSharedWith(v []string) *ImportTemplateCreate {
+	_c.mutation.SetSharedWith(v)
+	return _c
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (itc *ImportTemplateCreate) SetCreatedBy(u uuid.UUID) *ImportTemplateCreate {
-	itc.mutation.SetCreatedBy(u)
-	return itc
+func (_c *ImportTemplateCreate) SetCreatedBy(v uuid.UUID) *ImportTemplateCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableCreatedBy(u *uuid.UUID) *ImportTemplateCreate {
-	if u != nil {
-		itc.SetCreatedBy(*u)
+func (_c *ImportTemplateCreate) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetCreatedByName sets the "created_by_name" field.
-func (itc *ImportTemplateCreate) SetCreatedByName(s string) *ImportTemplateCreate {
-	itc.mutation.SetCreatedByName(s)
-	return itc
+func (_c *ImportTemplateCreate) SetCreatedByName(v string) *ImportTemplateCreate {
+	_c.mutation.SetCreatedByName(v)
+	return _c
 }
 
 // SetNillableCreatedByName sets the "created_by_name" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableCreatedByName(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetCreatedByName(*s)
+func (_c *ImportTemplateCreate) SetNillableCreatedByName(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetCreatedByName(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetApprovedBy sets the "approved_by" field.
-func (itc *ImportTemplateCreate) SetApprovedBy(u uuid.UUID) *ImportTemplateCreate {
-	itc.mutation.SetApprovedBy(u)
-	return itc
+func (_c *ImportTemplateCreate) SetApprovedBy(v uuid.UUID) *ImportTemplateCreate {
+	_c.mutation.SetApprovedBy(v)
+	return _c
 }
 
 // SetNillableApprovedBy sets the "approved_by" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableApprovedBy(u *uuid.UUID) *ImportTemplateCreate {
-	if u != nil {
-		itc.SetApprovedBy(*u)
+func (_c *ImportTemplateCreate) SetNillableApprovedBy(v *uuid.UUID) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetApprovedBy(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetApprovedByName sets the "approved_by_name" field.
-func (itc *ImportTemplateCreate) SetApprovedByName(s string) *ImportTemplateCreate {
-	itc.mutation.SetApprovedByName(s)
-	return itc
+func (_c *ImportTemplateCreate) SetApprovedByName(v string) *ImportTemplateCreate {
+	_c.mutation.SetApprovedByName(v)
+	return _c
 }
 
 // SetNillableApprovedByName sets the "approved_by_name" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableApprovedByName(s *string) *ImportTemplateCreate {
-	if s != nil {
-		itc.SetApprovedByName(*s)
+func (_c *ImportTemplateCreate) SetNillableApprovedByName(v *string) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetApprovedByName(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (itc *ImportTemplateCreate) SetApprovedAt(t time.Time) *ImportTemplateCreate {
-	itc.mutation.SetApprovedAt(t)
-	return itc
+func (_c *ImportTemplateCreate) SetApprovedAt(v time.Time) *ImportTemplateCreate {
+	_c.mutation.SetApprovedAt(v)
+	return _c
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (itc *ImportTemplateCreate) SetNillableApprovedAt(t *time.Time) *ImportTemplateCreate {
-	if t != nil {
-		itc.SetApprovedAt(*t)
+func (_c *ImportTemplateCreate) SetNillableApprovedAt(v *time.Time) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetApprovedAt(*v)
 	}
-	return itc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (itc *ImportTemplateCreate) SetID(u uint64) *ImportTemplateCreate {
-	itc.mutation.SetID(u)
-	return itc
+func (_c *ImportTemplateCreate) SetID(v uint64) *ImportTemplateCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (itc *ImportTemplateCreate) SetCiType(c *CiType) *ImportTemplateCreate {
-	return itc.SetCiTypeID(c.ID)
+func (_c *ImportTemplateCreate) SetCiType(v *CiType) *ImportTemplateCreate {
+	return _c.SetCiTypeID(v.ID)
 }
 
 // AddTaskIDs adds the "tasks" edge to the ImportTask entity by IDs.
-func (itc *ImportTemplateCreate) AddTaskIDs(ids ...uint64) *ImportTemplateCreate {
-	itc.mutation.AddTaskIDs(ids...)
-	return itc
+func (_c *ImportTemplateCreate) AddTaskIDs(ids ...uint64) *ImportTemplateCreate {
+	_c.mutation.AddTaskIDs(ids...)
+	return _c
 }
 
 // AddTasks adds the "tasks" edges to the ImportTask entity.
-func (itc *ImportTemplateCreate) AddTasks(i ...*ImportTask) *ImportTemplateCreate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_c *ImportTemplateCreate) AddTasks(v ...*ImportTask) *ImportTemplateCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return itc.AddTaskIDs(ids...)
+	return _c.AddTaskIDs(ids...)
 }
 
 // Mutation returns the ImportTemplateMutation object of the builder.
-func (itc *ImportTemplateCreate) Mutation() *ImportTemplateMutation {
-	return itc.mutation
+func (_c *ImportTemplateCreate) Mutation() *ImportTemplateMutation {
+	return _c.mutation
 }
 
 // Save creates the ImportTemplate in the database.
-func (itc *ImportTemplateCreate) Save(ctx context.Context) (*ImportTemplate, error) {
-	if err := itc.defaults(); err != nil {
+func (_c *ImportTemplateCreate) Save(ctx context.Context) (*ImportTemplate, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, itc.sqlSave, itc.mutation, itc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (itc *ImportTemplateCreate) SaveX(ctx context.Context) *ImportTemplate {
-	v, err := itc.Save(ctx)
+func (_c *ImportTemplateCreate) SaveX(ctx context.Context) *ImportTemplate {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -709,256 +709,256 @@ func (itc *ImportTemplateCreate) SaveX(ctx context.Context) *ImportTemplate {
 }
 
 // Exec executes the query.
-func (itc *ImportTemplateCreate) Exec(ctx context.Context) error {
-	_, err := itc.Save(ctx)
+func (_c *ImportTemplateCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (itc *ImportTemplateCreate) ExecX(ctx context.Context) {
-	if err := itc.Exec(ctx); err != nil {
+func (_c *ImportTemplateCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (itc *ImportTemplateCreate) defaults() error {
-	if _, ok := itc.mutation.CreatedAt(); !ok {
+func (_c *ImportTemplateCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if importtemplate.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importtemplate.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := importtemplate.DefaultCreatedAt()
-		itc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := itc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if importtemplate.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importtemplate.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importtemplate.DefaultUpdatedAt()
-		itc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := itc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		v := importtemplate.DefaultStatus
-		itc.mutation.SetStatus(v)
+		_c.mutation.SetStatus(v)
 	}
-	if _, ok := itc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := importtemplate.DefaultTenantID
-		itc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := itc.mutation.Version(); !ok {
+	if _, ok := _c.mutation.Version(); !ok {
 		v := importtemplate.DefaultVersion
-		itc.mutation.SetVersion(v)
+		_c.mutation.SetVersion(v)
 	}
-	if _, ok := itc.mutation.GetType(); !ok {
+	if _, ok := _c.mutation.GetType(); !ok {
 		v := importtemplate.DefaultType
-		itc.mutation.SetType(v)
+		_c.mutation.SetType(v)
 	}
-	if _, ok := itc.mutation.ImportMode(); !ok {
+	if _, ok := _c.mutation.ImportMode(); !ok {
 		v := importtemplate.DefaultImportMode
-		itc.mutation.SetImportMode(v)
+		_c.mutation.SetImportMode(v)
 	}
-	if _, ok := itc.mutation.AutoCreateCiType(); !ok {
+	if _, ok := _c.mutation.AutoCreateCiType(); !ok {
 		v := importtemplate.DefaultAutoCreateCiType
-		itc.mutation.SetAutoCreateCiType(v)
+		_c.mutation.SetAutoCreateCiType(v)
 	}
-	if _, ok := itc.mutation.ExcelHeaderRow(); !ok {
+	if _, ok := _c.mutation.ExcelHeaderRow(); !ok {
 		v := importtemplate.DefaultExcelHeaderRow
-		itc.mutation.SetExcelHeaderRow(v)
+		_c.mutation.SetExcelHeaderRow(v)
 	}
-	if _, ok := itc.mutation.ExcelDataStartRow(); !ok {
+	if _, ok := _c.mutation.ExcelDataStartRow(); !ok {
 		v := importtemplate.DefaultExcelDataStartRow
-		itc.mutation.SetExcelDataStartRow(v)
+		_c.mutation.SetExcelDataStartRow(v)
 	}
-	if _, ok := itc.mutation.MaxErrors(); !ok {
+	if _, ok := _c.mutation.MaxErrors(); !ok {
 		v := importtemplate.DefaultMaxErrors
-		itc.mutation.SetMaxErrors(v)
+		_c.mutation.SetMaxErrors(v)
 	}
-	if _, ok := itc.mutation.StopOnFirstError(); !ok {
+	if _, ok := _c.mutation.StopOnFirstError(); !ok {
 		v := importtemplate.DefaultStopOnFirstError
-		itc.mutation.SetStopOnFirstError(v)
+		_c.mutation.SetStopOnFirstError(v)
 	}
-	if _, ok := itc.mutation.SkipInvalidRows(); !ok {
+	if _, ok := _c.mutation.SkipInvalidRows(); !ok {
 		v := importtemplate.DefaultSkipInvalidRows
-		itc.mutation.SetSkipInvalidRows(v)
+		_c.mutation.SetSkipInvalidRows(v)
 	}
-	if _, ok := itc.mutation.ErrorHandlingMode(); !ok {
+	if _, ok := _c.mutation.ErrorHandlingMode(); !ok {
 		v := importtemplate.DefaultErrorHandlingMode
-		itc.mutation.SetErrorHandlingMode(v)
+		_c.mutation.SetErrorHandlingMode(v)
 	}
-	if _, ok := itc.mutation.BatchSize(); !ok {
+	if _, ok := _c.mutation.BatchSize(); !ok {
 		v := importtemplate.DefaultBatchSize
-		itc.mutation.SetBatchSize(v)
+		_c.mutation.SetBatchSize(v)
 	}
-	if _, ok := itc.mutation.MaxParallelJobs(); !ok {
+	if _, ok := _c.mutation.MaxParallelJobs(); !ok {
 		v := importtemplate.DefaultMaxParallelJobs
-		itc.mutation.SetMaxParallelJobs(v)
+		_c.mutation.SetMaxParallelJobs(v)
 	}
-	if _, ok := itc.mutation.EnableTransaction(); !ok {
+	if _, ok := _c.mutation.EnableTransaction(); !ok {
 		v := importtemplate.DefaultEnableTransaction
-		itc.mutation.SetEnableTransaction(v)
+		_c.mutation.SetEnableTransaction(v)
 	}
-	if _, ok := itc.mutation.UsageCount(); !ok {
+	if _, ok := _c.mutation.UsageCount(); !ok {
 		v := importtemplate.DefaultUsageCount
-		itc.mutation.SetUsageCount(v)
+		_c.mutation.SetUsageCount(v)
 	}
-	if _, ok := itc.mutation.SuccessCount(); !ok {
+	if _, ok := _c.mutation.SuccessCount(); !ok {
 		v := importtemplate.DefaultSuccessCount
-		itc.mutation.SetSuccessCount(v)
+		_c.mutation.SetSuccessCount(v)
 	}
-	if _, ok := itc.mutation.ErrorCount(); !ok {
+	if _, ok := _c.mutation.ErrorCount(); !ok {
 		v := importtemplate.DefaultErrorCount
-		itc.mutation.SetErrorCount(v)
+		_c.mutation.SetErrorCount(v)
 	}
-	if _, ok := itc.mutation.SuccessRate(); !ok {
+	if _, ok := _c.mutation.SuccessRate(); !ok {
 		v := importtemplate.DefaultSuccessRate
-		itc.mutation.SetSuccessRate(v)
+		_c.mutation.SetSuccessRate(v)
 	}
-	if _, ok := itc.mutation.IsPublic(); !ok {
+	if _, ok := _c.mutation.IsPublic(); !ok {
 		v := importtemplate.DefaultIsPublic
-		itc.mutation.SetIsPublic(v)
+		_c.mutation.SetIsPublic(v)
 	}
-	if _, ok := itc.mutation.IsSystem(); !ok {
+	if _, ok := _c.mutation.IsSystem(); !ok {
 		v := importtemplate.DefaultIsSystem
-		itc.mutation.SetIsSystem(v)
+		_c.mutation.SetIsSystem(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (itc *ImportTemplateCreate) check() error {
-	if _, ok := itc.mutation.CreatedAt(); !ok {
+func (_c *ImportTemplateCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ImportTemplate.created_at"`)}
 	}
-	if _, ok := itc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ImportTemplate.updated_at"`)}
 	}
-	if _, ok := itc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ImportTemplate.tenant_id"`)}
 	}
-	if _, ok := itc.mutation.Name(); !ok {
+	if _, ok := _c.mutation.Name(); !ok {
 		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "ImportTemplate.name"`)}
 	}
-	if v, ok := itc.mutation.Name(); ok {
+	if v, ok := _c.mutation.Name(); ok {
 		if err := importtemplate.NameValidator(v); err != nil {
 			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.name": %w`, err)}
 		}
 	}
-	if _, ok := itc.mutation.Code(); !ok {
+	if _, ok := _c.mutation.Code(); !ok {
 		return &ValidationError{Name: "code", err: errors.New(`ent: missing required field "ImportTemplate.code"`)}
 	}
-	if v, ok := itc.mutation.Code(); ok {
+	if v, ok := _c.mutation.Code(); ok {
 		if err := importtemplate.CodeValidator(v); err != nil {
 			return &ValidationError{Name: "code", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.code": %w`, err)}
 		}
 	}
-	if v, ok := itc.mutation.Description(); ok {
+	if v, ok := _c.mutation.Description(); ok {
 		if err := importtemplate.DescriptionValidator(v); err != nil {
 			return &ValidationError{Name: "description", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.description": %w`, err)}
 		}
 	}
-	if _, ok := itc.mutation.Version(); !ok {
+	if _, ok := _c.mutation.Version(); !ok {
 		return &ValidationError{Name: "version", err: errors.New(`ent: missing required field "ImportTemplate.version"`)}
 	}
-	if v, ok := itc.mutation.Version(); ok {
+	if v, ok := _c.mutation.Version(); ok {
 		if err := importtemplate.VersionValidator(v); err != nil {
 			return &ValidationError{Name: "version", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.version": %w`, err)}
 		}
 	}
-	if _, ok := itc.mutation.GetType(); !ok {
+	if _, ok := _c.mutation.GetType(); !ok {
 		return &ValidationError{Name: "type", err: errors.New(`ent: missing required field "ImportTemplate.type"`)}
 	}
-	if v, ok := itc.mutation.GetType(); ok {
+	if v, ok := _c.mutation.GetType(); ok {
 		if err := importtemplate.TypeValidator(v); err != nil {
 			return &ValidationError{Name: "type", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.type": %w`, err)}
 		}
 	}
-	if _, ok := itc.mutation.ImportMode(); !ok {
+	if _, ok := _c.mutation.ImportMode(); !ok {
 		return &ValidationError{Name: "import_mode", err: errors.New(`ent: missing required field "ImportTemplate.import_mode"`)}
 	}
-	if v, ok := itc.mutation.ImportMode(); ok {
+	if v, ok := _c.mutation.ImportMode(); ok {
 		if err := importtemplate.ImportModeValidator(v); err != nil {
 			return &ValidationError{Name: "import_mode", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.import_mode": %w`, err)}
 		}
 	}
-	if v, ok := itc.mutation.CiTypeName(); ok {
+	if v, ok := _c.mutation.CiTypeName(); ok {
 		if err := importtemplate.CiTypeNameValidator(v); err != nil {
 			return &ValidationError{Name: "ci_type_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.ci_type_name": %w`, err)}
 		}
 	}
-	if _, ok := itc.mutation.AutoCreateCiType(); !ok {
+	if _, ok := _c.mutation.AutoCreateCiType(); !ok {
 		return &ValidationError{Name: "auto_create_ci_type", err: errors.New(`ent: missing required field "ImportTemplate.auto_create_ci_type"`)}
 	}
-	if v, ok := itc.mutation.ExcelSheetName(); ok {
+	if v, ok := _c.mutation.ExcelSheetName(); ok {
 		if err := importtemplate.ExcelSheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "excel_sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.excel_sheet_name": %w`, err)}
 		}
 	}
-	if v, ok := itc.mutation.APIEndpoint(); ok {
+	if v, ok := _c.mutation.APIEndpoint(); ok {
 		if err := importtemplate.APIEndpointValidator(v); err != nil {
 			return &ValidationError{Name: "api_endpoint", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_endpoint": %w`, err)}
 		}
 	}
-	if v, ok := itc.mutation.APIMethod(); ok {
+	if v, ok := _c.mutation.APIMethod(); ok {
 		if err := importtemplate.APIMethodValidator(v); err != nil {
 			return &ValidationError{Name: "api_method", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_method": %w`, err)}
 		}
 	}
-	if v, ok := itc.mutation.APIResponsePath(); ok {
+	if v, ok := _c.mutation.APIResponsePath(); ok {
 		if err := importtemplate.APIResponsePathValidator(v); err != nil {
 			return &ValidationError{Name: "api_response_path", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.api_response_path": %w`, err)}
 		}
 	}
-	if _, ok := itc.mutation.StopOnFirstError(); !ok {
+	if _, ok := _c.mutation.StopOnFirstError(); !ok {
 		return &ValidationError{Name: "stop_on_first_error", err: errors.New(`ent: missing required field "ImportTemplate.stop_on_first_error"`)}
 	}
-	if _, ok := itc.mutation.SkipInvalidRows(); !ok {
+	if _, ok := _c.mutation.SkipInvalidRows(); !ok {
 		return &ValidationError{Name: "skip_invalid_rows", err: errors.New(`ent: missing required field "ImportTemplate.skip_invalid_rows"`)}
 	}
-	if _, ok := itc.mutation.ErrorHandlingMode(); !ok {
+	if _, ok := _c.mutation.ErrorHandlingMode(); !ok {
 		return &ValidationError{Name: "error_handling_mode", err: errors.New(`ent: missing required field "ImportTemplate.error_handling_mode"`)}
 	}
-	if v, ok := itc.mutation.ErrorHandlingMode(); ok {
+	if v, ok := _c.mutation.ErrorHandlingMode(); ok {
 		if err := importtemplate.ErrorHandlingModeValidator(v); err != nil {
 			return &ValidationError{Name: "error_handling_mode", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.error_handling_mode": %w`, err)}
 		}
 	}
-	if _, ok := itc.mutation.EnableTransaction(); !ok {
+	if _, ok := _c.mutation.EnableTransaction(); !ok {
 		return &ValidationError{Name: "enable_transaction", err: errors.New(`ent: missing required field "ImportTemplate.enable_transaction"`)}
 	}
-	if v, ok := itc.mutation.Icon(); ok {
+	if v, ok := _c.mutation.Icon(); ok {
 		if err := importtemplate.IconValidator(v); err != nil {
 			return &ValidationError{Name: "icon", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.icon": %w`, err)}
 		}
 	}
-	if v, ok := itc.mutation.Category(); ok {
+	if v, ok := _c.mutation.Category(); ok {
 		if err := importtemplate.CategoryValidator(v); err != nil {
 			return &ValidationError{Name: "category", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.category": %w`, err)}
 		}
 	}
-	if _, ok := itc.mutation.UsageCount(); !ok {
+	if _, ok := _c.mutation.UsageCount(); !ok {
 		return &ValidationError{Name: "usage_count", err: errors.New(`ent: missing required field "ImportTemplate.usage_count"`)}
 	}
-	if _, ok := itc.mutation.SuccessCount(); !ok {
+	if _, ok := _c.mutation.SuccessCount(); !ok {
 		return &ValidationError{Name: "success_count", err: errors.New(`ent: missing required field "ImportTemplate.success_count"`)}
 	}
-	if _, ok := itc.mutation.ErrorCount(); !ok {
+	if _, ok := _c.mutation.ErrorCount(); !ok {
 		return &ValidationError{Name: "error_count", err: errors.New(`ent: missing required field "ImportTemplate.error_count"`)}
 	}
-	if _, ok := itc.mutation.SuccessRate(); !ok {
+	if _, ok := _c.mutation.SuccessRate(); !ok {
 		return &ValidationError{Name: "success_rate", err: errors.New(`ent: missing required field "ImportTemplate.success_rate"`)}
 	}
-	if _, ok := itc.mutation.IsPublic(); !ok {
+	if _, ok := _c.mutation.IsPublic(); !ok {
 		return &ValidationError{Name: "is_public", err: errors.New(`ent: missing required field "ImportTemplate.is_public"`)}
 	}
-	if _, ok := itc.mutation.IsSystem(); !ok {
+	if _, ok := _c.mutation.IsSystem(); !ok {
 		return &ValidationError{Name: "is_system", err: errors.New(`ent: missing required field "ImportTemplate.is_system"`)}
 	}
-	if v, ok := itc.mutation.CreatedByName(); ok {
+	if v, ok := _c.mutation.CreatedByName(); ok {
 		if err := importtemplate.CreatedByNameValidator(v); err != nil {
 			return &ValidationError{Name: "created_by_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.created_by_name": %w`, err)}
 		}
 	}
-	if v, ok := itc.mutation.ApprovedByName(); ok {
+	if v, ok := _c.mutation.ApprovedByName(); ok {
 		if err := importtemplate.ApprovedByNameValidator(v); err != nil {
 			return &ValidationError{Name: "approved_by_name", err: fmt.Errorf(`ent: validator failed for field "ImportTemplate.approved_by_name": %w`, err)}
 		}
@@ -966,12 +966,12 @@ func (itc *ImportTemplateCreate) check() error {
 	return nil
 }
 
-func (itc *ImportTemplateCreate) sqlSave(ctx context.Context) (*ImportTemplate, error) {
-	if err := itc.check(); err != nil {
+func (_c *ImportTemplateCreate) sqlSave(ctx context.Context) (*ImportTemplate, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := itc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, itc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -981,233 +981,233 @@ func (itc *ImportTemplateCreate) sqlSave(ctx context.Context) (*ImportTemplate, 
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	itc.mutation.id = &_node.ID
-	itc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (itc *ImportTemplateCreate) createSpec() (*ImportTemplate, *sqlgraph.CreateSpec) {
+func (_c *ImportTemplateCreate) createSpec() (*ImportTemplate, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ImportTemplate{config: itc.config}
+		_node = &ImportTemplate{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(importtemplate.Table, sqlgraph.NewFieldSpec(importtemplate.FieldID, field.TypeUint64))
 	)
-	if id, ok := itc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := itc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(importtemplate.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := itc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(importtemplate.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := itc.mutation.Status(); ok {
+	if value, ok := _c.mutation.Status(); ok {
 		_spec.SetField(importtemplate.FieldStatus, field.TypeUint8, value)
 		_node.Status = value
 	}
-	if value, ok := itc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(importtemplate.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := itc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(importtemplate.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := itc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(importtemplate.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := itc.mutation.Name(); ok {
+	if value, ok := _c.mutation.Name(); ok {
 		_spec.SetField(importtemplate.FieldName, field.TypeString, value)
 		_node.Name = value
 	}
-	if value, ok := itc.mutation.Code(); ok {
+	if value, ok := _c.mutation.Code(); ok {
 		_spec.SetField(importtemplate.FieldCode, field.TypeString, value)
 		_node.Code = value
 	}
-	if value, ok := itc.mutation.Description(); ok {
+	if value, ok := _c.mutation.Description(); ok {
 		_spec.SetField(importtemplate.FieldDescription, field.TypeString, value)
 		_node.Description = value
 	}
-	if value, ok := itc.mutation.Version(); ok {
+	if value, ok := _c.mutation.Version(); ok {
 		_spec.SetField(importtemplate.FieldVersion, field.TypeString, value)
 		_node.Version = value
 	}
-	if value, ok := itc.mutation.GetType(); ok {
+	if value, ok := _c.mutation.GetType(); ok {
 		_spec.SetField(importtemplate.FieldType, field.TypeEnum, value)
 		_node.Type = value
 	}
-	if value, ok := itc.mutation.ImportMode(); ok {
+	if value, ok := _c.mutation.ImportMode(); ok {
 		_spec.SetField(importtemplate.FieldImportMode, field.TypeEnum, value)
 		_node.ImportMode = value
 	}
-	if value, ok := itc.mutation.CiTypeName(); ok {
+	if value, ok := _c.mutation.CiTypeName(); ok {
 		_spec.SetField(importtemplate.FieldCiTypeName, field.TypeString, value)
 		_node.CiTypeName = value
 	}
-	if value, ok := itc.mutation.AutoCreateCiType(); ok {
+	if value, ok := _c.mutation.AutoCreateCiType(); ok {
 		_spec.SetField(importtemplate.FieldAutoCreateCiType, field.TypeBool, value)
 		_node.AutoCreateCiType = value
 	}
-	if value, ok := itc.mutation.FieldMappings(); ok {
+	if value, ok := _c.mutation.FieldMappings(); ok {
 		_spec.SetField(importtemplate.FieldFieldMappings, field.TypeJSON, value)
 		_node.FieldMappings = value
 	}
-	if value, ok := itc.mutation.HeaderMappings(); ok {
+	if value, ok := _c.mutation.HeaderMappings(); ok {
 		_spec.SetField(importtemplate.FieldHeaderMappings, field.TypeJSON, value)
 		_node.HeaderMappings = value
 	}
-	if value, ok := itc.mutation.DefaultValues(); ok {
+	if value, ok := _c.mutation.DefaultValues(); ok {
 		_spec.SetField(importtemplate.FieldDefaultValues, field.TypeJSON, value)
 		_node.DefaultValues = value
 	}
-	if value, ok := itc.mutation.ComputedFields(); ok {
+	if value, ok := _c.mutation.ComputedFields(); ok {
 		_spec.SetField(importtemplate.FieldComputedFields, field.TypeJSON, value)
 		_node.ComputedFields = value
 	}
-	if value, ok := itc.mutation.DataTransformations(); ok {
+	if value, ok := _c.mutation.DataTransformations(); ok {
 		_spec.SetField(importtemplate.FieldDataTransformations, field.TypeJSON, value)
 		_node.DataTransformations = value
 	}
-	if value, ok := itc.mutation.DataFilters(); ok {
+	if value, ok := _c.mutation.DataFilters(); ok {
 		_spec.SetField(importtemplate.FieldDataFilters, field.TypeJSON, value)
 		_node.DataFilters = value
 	}
-	if value, ok := itc.mutation.DataCleaners(); ok {
+	if value, ok := _c.mutation.DataCleaners(); ok {
 		_spec.SetField(importtemplate.FieldDataCleaners, field.TypeJSON, value)
 		_node.DataCleaners = value
 	}
-	if value, ok := itc.mutation.ExcelSheetName(); ok {
+	if value, ok := _c.mutation.ExcelSheetName(); ok {
 		_spec.SetField(importtemplate.FieldExcelSheetName, field.TypeString, value)
 		_node.ExcelSheetName = value
 	}
-	if value, ok := itc.mutation.ExcelHeaderRow(); ok {
+	if value, ok := _c.mutation.ExcelHeaderRow(); ok {
 		_spec.SetField(importtemplate.FieldExcelHeaderRow, field.TypeInt, value)
 		_node.ExcelHeaderRow = value
 	}
-	if value, ok := itc.mutation.ExcelDataStartRow(); ok {
+	if value, ok := _c.mutation.ExcelDataStartRow(); ok {
 		_spec.SetField(importtemplate.FieldExcelDataStartRow, field.TypeInt, value)
 		_node.ExcelDataStartRow = value
 	}
-	if value, ok := itc.mutation.ExcelColumnMappings(); ok {
+	if value, ok := _c.mutation.ExcelColumnMappings(); ok {
 		_spec.SetField(importtemplate.FieldExcelColumnMappings, field.TypeJSON, value)
 		_node.ExcelColumnMappings = value
 	}
-	if value, ok := itc.mutation.APIEndpoint(); ok {
+	if value, ok := _c.mutation.APIEndpoint(); ok {
 		_spec.SetField(importtemplate.FieldAPIEndpoint, field.TypeString, value)
 		_node.APIEndpoint = value
 	}
-	if value, ok := itc.mutation.APIMethod(); ok {
+	if value, ok := _c.mutation.APIMethod(); ok {
 		_spec.SetField(importtemplate.FieldAPIMethod, field.TypeEnum, value)
 		_node.APIMethod = value
 	}
-	if value, ok := itc.mutation.APIHeaders(); ok {
+	if value, ok := _c.mutation.APIHeaders(); ok {
 		_spec.SetField(importtemplate.FieldAPIHeaders, field.TypeJSON, value)
 		_node.APIHeaders = value
 	}
-	if value, ok := itc.mutation.APIParams(); ok {
+	if value, ok := _c.mutation.APIParams(); ok {
 		_spec.SetField(importtemplate.FieldAPIParams, field.TypeJSON, value)
 		_node.APIParams = value
 	}
-	if value, ok := itc.mutation.APIResponsePath(); ok {
+	if value, ok := _c.mutation.APIResponsePath(); ok {
 		_spec.SetField(importtemplate.FieldAPIResponsePath, field.TypeString, value)
 		_node.APIResponsePath = value
 	}
-	if value, ok := itc.mutation.MaxErrors(); ok {
+	if value, ok := _c.mutation.MaxErrors(); ok {
 		_spec.SetField(importtemplate.FieldMaxErrors, field.TypeInt, value)
 		_node.MaxErrors = value
 	}
-	if value, ok := itc.mutation.StopOnFirstError(); ok {
+	if value, ok := _c.mutation.StopOnFirstError(); ok {
 		_spec.SetField(importtemplate.FieldStopOnFirstError, field.TypeBool, value)
 		_node.StopOnFirstError = value
 	}
-	if value, ok := itc.mutation.SkipInvalidRows(); ok {
+	if value, ok := _c.mutation.SkipInvalidRows(); ok {
 		_spec.SetField(importtemplate.FieldSkipInvalidRows, field.TypeBool, value)
 		_node.SkipInvalidRows = value
 	}
-	if value, ok := itc.mutation.ErrorHandlingMode(); ok {
+	if value, ok := _c.mutation.ErrorHandlingMode(); ok {
 		_spec.SetField(importtemplate.FieldErrorHandlingMode, field.TypeEnum, value)
 		_node.ErrorHandlingMode = value
 	}
-	if value, ok := itc.mutation.BatchSize(); ok {
+	if value, ok := _c.mutation.BatchSize(); ok {
 		_spec.SetField(importtemplate.FieldBatchSize, field.TypeInt, value)
 		_node.BatchSize = value
 	}
-	if value, ok := itc.mutation.MaxParallelJobs(); ok {
+	if value, ok := _c.mutation.MaxParallelJobs(); ok {
 		_spec.SetField(importtemplate.FieldMaxParallelJobs, field.TypeInt, value)
 		_node.MaxParallelJobs = value
 	}
-	if value, ok := itc.mutation.EnableTransaction(); ok {
+	if value, ok := _c.mutation.EnableTransaction(); ok {
 		_spec.SetField(importtemplate.FieldEnableTransaction, field.TypeBool, value)
 		_node.EnableTransaction = value
 	}
-	if value, ok := itc.mutation.Tags(); ok {
+	if value, ok := _c.mutation.Tags(); ok {
 		_spec.SetField(importtemplate.FieldTags, field.TypeJSON, value)
 		_node.Tags = value
 	}
-	if value, ok := itc.mutation.Metadata(); ok {
+	if value, ok := _c.mutation.Metadata(); ok {
 		_spec.SetField(importtemplate.FieldMetadata, field.TypeJSON, value)
 		_node.Metadata = value
 	}
-	if value, ok := itc.mutation.Icon(); ok {
+	if value, ok := _c.mutation.Icon(); ok {
 		_spec.SetField(importtemplate.FieldIcon, field.TypeString, value)
 		_node.Icon = value
 	}
-	if value, ok := itc.mutation.Category(); ok {
+	if value, ok := _c.mutation.Category(); ok {
 		_spec.SetField(importtemplate.FieldCategory, field.TypeString, value)
 		_node.Category = value
 	}
-	if value, ok := itc.mutation.UsageCount(); ok {
+	if value, ok := _c.mutation.UsageCount(); ok {
 		_spec.SetField(importtemplate.FieldUsageCount, field.TypeInt, value)
 		_node.UsageCount = value
 	}
-	if value, ok := itc.mutation.SuccessCount(); ok {
+	if value, ok := _c.mutation.SuccessCount(); ok {
 		_spec.SetField(importtemplate.FieldSuccessCount, field.TypeInt, value)
 		_node.SuccessCount = value
 	}
-	if value, ok := itc.mutation.ErrorCount(); ok {
+	if value, ok := _c.mutation.ErrorCount(); ok {
 		_spec.SetField(importtemplate.FieldErrorCount, field.TypeInt, value)
 		_node.ErrorCount = value
 	}
-	if value, ok := itc.mutation.SuccessRate(); ok {
+	if value, ok := _c.mutation.SuccessRate(); ok {
 		_spec.SetField(importtemplate.FieldSuccessRate, field.TypeFloat64, value)
 		_node.SuccessRate = value
 	}
-	if value, ok := itc.mutation.IsPublic(); ok {
+	if value, ok := _c.mutation.IsPublic(); ok {
 		_spec.SetField(importtemplate.FieldIsPublic, field.TypeBool, value)
 		_node.IsPublic = value
 	}
-	if value, ok := itc.mutation.IsSystem(); ok {
+	if value, ok := _c.mutation.IsSystem(); ok {
 		_spec.SetField(importtemplate.FieldIsSystem, field.TypeBool, value)
 		_node.IsSystem = value
 	}
-	if value, ok := itc.mutation.SharedWith(); ok {
+	if value, ok := _c.mutation.SharedWith(); ok {
 		_spec.SetField(importtemplate.FieldSharedWith, field.TypeJSON, value)
 		_node.SharedWith = value
 	}
-	if value, ok := itc.mutation.CreatedBy(); ok {
+	if value, ok := _c.mutation.CreatedBy(); ok {
 		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
 		_node.CreatedBy = value
 	}
-	if value, ok := itc.mutation.CreatedByName(); ok {
+	if value, ok := _c.mutation.CreatedByName(); ok {
 		_spec.SetField(importtemplate.FieldCreatedByName, field.TypeString, value)
 		_node.CreatedByName = value
 	}
-	if value, ok := itc.mutation.ApprovedBy(); ok {
+	if value, ok := _c.mutation.ApprovedBy(); ok {
 		_spec.SetField(importtemplate.FieldApprovedBy, field.TypeUUID, value)
 		_node.ApprovedBy = value
 	}
-	if value, ok := itc.mutation.ApprovedByName(); ok {
+	if value, ok := _c.mutation.ApprovedByName(); ok {
 		_spec.SetField(importtemplate.FieldApprovedByName, field.TypeString, value)
 		_node.ApprovedByName = value
 	}
-	if value, ok := itc.mutation.ApprovedAt(); ok {
+	if value, ok := _c.mutation.ApprovedAt(); ok {
 		_spec.SetField(importtemplate.FieldApprovedAt, field.TypeTime, value)
 		_node.ApprovedAt = value
 	}
-	if nodes := itc.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -1224,7 +1224,7 @@ func (itc *ImportTemplateCreate) createSpec() (*ImportTemplate, *sqlgraph.Create
 		_node.CiTypeID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := itc.mutation.TasksIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.TasksIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -1251,16 +1251,16 @@ type ImportTemplateCreateBulk struct {
 }
 
 // Save creates the ImportTemplate entities in the database.
-func (itcb *ImportTemplateCreateBulk) Save(ctx context.Context) ([]*ImportTemplate, error) {
-	if itcb.err != nil {
-		return nil, itcb.err
+func (_c *ImportTemplateCreateBulk) Save(ctx context.Context) ([]*ImportTemplate, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(itcb.builders))
-	nodes := make([]*ImportTemplate, len(itcb.builders))
-	mutators := make([]Mutator, len(itcb.builders))
-	for i := range itcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ImportTemplate, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := itcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ImportTemplateMutation)
@@ -1274,11 +1274,11 @@ func (itcb *ImportTemplateCreateBulk) Save(ctx context.Context) ([]*ImportTempla
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, itcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, itcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -1302,7 +1302,7 @@ func (itcb *ImportTemplateCreateBulk) Save(ctx context.Context) ([]*ImportTempla
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, itcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -1310,8 +1310,8 @@ func (itcb *ImportTemplateCreateBulk) Save(ctx context.Context) ([]*ImportTempla
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (itcb *ImportTemplateCreateBulk) SaveX(ctx context.Context) []*ImportTemplate {
-	v, err := itcb.Save(ctx)
+func (_c *ImportTemplateCreateBulk) SaveX(ctx context.Context) []*ImportTemplate {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1319,14 +1319,14 @@ func (itcb *ImportTemplateCreateBulk) SaveX(ctx context.Context) []*ImportTempla
 }
 
 // Exec executes the query.
-func (itcb *ImportTemplateCreateBulk) Exec(ctx context.Context) error {
-	_, err := itcb.Save(ctx)
+func (_c *ImportTemplateCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (itcb *ImportTemplateCreateBulk) ExecX(ctx context.Context) {
-	if err := itcb.Exec(ctx); err != nil {
+func (_c *ImportTemplateCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

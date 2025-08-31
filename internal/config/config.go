@@ -1,7 +1,7 @@
 package config
 
 import (
-	"gitee.com/link234/newbee-backend-common/config"
+	"github.com/coder-lulu/newbee-common/config"
 
 	"github.com/zeromicro/go-zero/zrpc"
 )

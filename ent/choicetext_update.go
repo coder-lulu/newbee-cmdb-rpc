@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 )
 
 // ChoiceTextUpdate is the builder for updating ChoiceText entities.
@@ -25,145 +25,145 @@ type ChoiceTextUpdate struct {
 }
 
 // Where appends a list predicates to the ChoiceTextUpdate builder.
-func (ctu *ChoiceTextUpdate) Where(ps ...predicate.ChoiceText) *ChoiceTextUpdate {
-	ctu.mutation.Where(ps...)
-	return ctu
+func (_u *ChoiceTextUpdate) Where(ps ...predicate.ChoiceText) *ChoiceTextUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctu *ChoiceTextUpdate) SetUpdatedAt(t time.Time) *ChoiceTextUpdate {
-	ctu.mutation.SetUpdatedAt(t)
-	return ctu
+func (_u *ChoiceTextUpdate) SetUpdatedAt(v time.Time) *ChoiceTextUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctu *ChoiceTextUpdate) SetDeletedAt(t time.Time) *ChoiceTextUpdate {
-	ctu.mutation.SetDeletedAt(t)
-	return ctu
+func (_u *ChoiceTextUpdate) SetDeletedAt(v time.Time) *ChoiceTextUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctu *ChoiceTextUpdate) SetNillableDeletedAt(t *time.Time) *ChoiceTextUpdate {
-	if t != nil {
-		ctu.SetDeletedAt(*t)
+func (_u *ChoiceTextUpdate) SetNillableDeletedAt(v *time.Time) *ChoiceTextUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctu *ChoiceTextUpdate) ClearDeletedAt() *ChoiceTextUpdate {
-	ctu.mutation.ClearDeletedAt()
-	return ctu
+func (_u *ChoiceTextUpdate) ClearDeletedAt() *ChoiceTextUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctu *ChoiceTextUpdate) SetDepartmentID(u uint64) *ChoiceTextUpdate {
-	ctu.mutation.ResetDepartmentID()
-	ctu.mutation.SetDepartmentID(u)
-	return ctu
+func (_u *ChoiceTextUpdate) SetDepartmentID(v uint64) *ChoiceTextUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctu *ChoiceTextUpdate) SetNillableDepartmentID(u *uint64) *ChoiceTextUpdate {
-	if u != nil {
-		ctu.SetDepartmentID(*u)
+func (_u *ChoiceTextUpdate) SetNillableDepartmentID(v *uint64) *ChoiceTextUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ctu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ctu *ChoiceTextUpdate) AddDepartmentID(u int64) *ChoiceTextUpdate {
-	ctu.mutation.AddDepartmentID(u)
-	return ctu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ChoiceTextUpdate) AddDepartmentID(v int64) *ChoiceTextUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ctu *ChoiceTextUpdate) ClearDepartmentID() *ChoiceTextUpdate {
-	ctu.mutation.ClearDepartmentID()
-	return ctu
+func (_u *ChoiceTextUpdate) ClearDepartmentID() *ChoiceTextUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (ctu *ChoiceTextUpdate) SetAttrID(u uint64) *ChoiceTextUpdate {
-	ctu.mutation.SetAttrID(u)
-	return ctu
+func (_u *ChoiceTextUpdate) SetAttrID(v uint64) *ChoiceTextUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (ctu *ChoiceTextUpdate) SetNillableAttrID(u *uint64) *ChoiceTextUpdate {
-	if u != nil {
-		ctu.SetAttrID(*u)
+func (_u *ChoiceTextUpdate) SetNillableAttrID(v *uint64) *ChoiceTextUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return ctu
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (ctu *ChoiceTextUpdate) SetValue(s string) *ChoiceTextUpdate {
-	ctu.mutation.SetValue(s)
-	return ctu
+func (_u *ChoiceTextUpdate) SetValue(v string) *ChoiceTextUpdate {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (ctu *ChoiceTextUpdate) SetNillableValue(s *string) *ChoiceTextUpdate {
-	if s != nil {
-		ctu.SetValue(*s)
+func (_u *ChoiceTextUpdate) SetNillableValue(v *string) *ChoiceTextUpdate {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return ctu
+	return _u
 }
 
 // SetOption sets the "option" field.
-func (ctu *ChoiceTextUpdate) SetOption(sim schema.ChoiceItemMetaS) *ChoiceTextUpdate {
-	ctu.mutation.SetOption(sim)
-	return ctu
+func (_u *ChoiceTextUpdate) SetOption(v schema.ChoiceItemMetaS) *ChoiceTextUpdate {
+	_u.mutation.SetOption(v)
+	return _u
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (ctu *ChoiceTextUpdate) SetNillableOption(sim *schema.ChoiceItemMetaS) *ChoiceTextUpdate {
-	if sim != nil {
-		ctu.SetOption(*sim)
+func (_u *ChoiceTextUpdate) SetNillableOption(v *schema.ChoiceItemMetaS) *ChoiceTextUpdate {
+	if v != nil {
+		_u.SetOption(*v)
 	}
-	return ctu
+	return _u
 }
 
 // ClearOption clears the value of the "option" field.
-func (ctu *ChoiceTextUpdate) ClearOption() *ChoiceTextUpdate {
-	ctu.mutation.ClearOption()
-	return ctu
+func (_u *ChoiceTextUpdate) ClearOption() *ChoiceTextUpdate {
+	_u.mutation.ClearOption()
+	return _u
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (ctu *ChoiceTextUpdate) SetAttributeID(id uint64) *ChoiceTextUpdate {
-	ctu.mutation.SetAttributeID(id)
-	return ctu
+func (_u *ChoiceTextUpdate) SetAttributeID(id uint64) *ChoiceTextUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (ctu *ChoiceTextUpdate) SetAttribute(a *Attribute) *ChoiceTextUpdate {
-	return ctu.SetAttributeID(a.ID)
+func (_u *ChoiceTextUpdate) SetAttribute(v *Attribute) *ChoiceTextUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ChoiceTextMutation object of the builder.
-func (ctu *ChoiceTextUpdate) Mutation() *ChoiceTextMutation {
-	return ctu.mutation
+func (_u *ChoiceTextUpdate) Mutation() *ChoiceTextMutation {
+	return _u.mutation
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (ctu *ChoiceTextUpdate) ClearAttribute() *ChoiceTextUpdate {
-	ctu.mutation.ClearAttribute()
-	return ctu
+func (_u *ChoiceTextUpdate) ClearAttribute() *ChoiceTextUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (ctu *ChoiceTextUpdate) Save(ctx context.Context) (int, error) {
-	if err := ctu.defaults(); err != nil {
+func (_u *ChoiceTextUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, ctu.sqlSave, ctu.mutation, ctu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctu *ChoiceTextUpdate) SaveX(ctx context.Context) int {
-	affected, err := ctu.Save(ctx)
+func (_u *ChoiceTextUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -171,78 +171,78 @@ func (ctu *ChoiceTextUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (ctu *ChoiceTextUpdate) Exec(ctx context.Context) error {
-	_, err := ctu.Save(ctx)
+func (_u *ChoiceTextUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctu *ChoiceTextUpdate) ExecX(ctx context.Context) {
-	if err := ctu.Exec(ctx); err != nil {
+func (_u *ChoiceTextUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctu *ChoiceTextUpdate) defaults() error {
-	if _, ok := ctu.mutation.UpdatedAt(); !ok {
+func (_u *ChoiceTextUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if choicetext.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized choicetext.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := choicetext.UpdateDefaultUpdatedAt()
-		ctu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctu *ChoiceTextUpdate) check() error {
-	if ctu.mutation.AttributeCleared() && len(ctu.mutation.AttributeIDs()) > 0 {
+func (_u *ChoiceTextUpdate) check() error {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ChoiceText.attribute"`)
 	}
 	return nil
 }
 
-func (ctu *ChoiceTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := ctu.check(); err != nil {
-		return n, err
+func (_u *ChoiceTextUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(choicetext.Table, choicetext.Columns, sqlgraph.NewFieldSpec(choicetext.FieldID, field.TypeUint64))
-	if ps := ctu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(choicetext.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(choicetext.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(choicetext.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(choicetext.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ctu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(choicetext.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ctu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(choicetext.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ctu.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(choicetext.FieldValue, field.TypeString, value)
 	}
-	if value, ok := ctu.mutation.Option(); ok {
+	if value, ok := _u.mutation.Option(); ok {
 		_spec.SetField(choicetext.FieldOption, field.TypeJSON, value)
 	}
-	if ctu.mutation.OptionCleared() {
+	if _u.mutation.OptionCleared() {
 		_spec.ClearField(choicetext.FieldOption, field.TypeJSON)
 	}
-	if ctu.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -255,7 +255,7 @@ func (ctu *ChoiceTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctu.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -271,7 +271,7 @@ func (ctu *ChoiceTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, ctu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{choicetext.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -279,8 +279,8 @@ func (ctu *ChoiceTextUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	ctu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ChoiceTextUpdateOne is the builder for updating a single ChoiceText entity.
@@ -292,152 +292,152 @@ type ChoiceTextUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctuo *ChoiceTextUpdateOne) SetUpdatedAt(t time.Time) *ChoiceTextUpdateOne {
-	ctuo.mutation.SetUpdatedAt(t)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) SetUpdatedAt(v time.Time) *ChoiceTextUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctuo *ChoiceTextUpdateOne) SetDeletedAt(t time.Time) *ChoiceTextUpdateOne {
-	ctuo.mutation.SetDeletedAt(t)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) SetDeletedAt(v time.Time) *ChoiceTextUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctuo *ChoiceTextUpdateOne) SetNillableDeletedAt(t *time.Time) *ChoiceTextUpdateOne {
-	if t != nil {
-		ctuo.SetDeletedAt(*t)
+func (_u *ChoiceTextUpdateOne) SetNillableDeletedAt(v *time.Time) *ChoiceTextUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctuo *ChoiceTextUpdateOne) ClearDeletedAt() *ChoiceTextUpdateOne {
-	ctuo.mutation.ClearDeletedAt()
-	return ctuo
+func (_u *ChoiceTextUpdateOne) ClearDeletedAt() *ChoiceTextUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctuo *ChoiceTextUpdateOne) SetDepartmentID(u uint64) *ChoiceTextUpdateOne {
-	ctuo.mutation.ResetDepartmentID()
-	ctuo.mutation.SetDepartmentID(u)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) SetDepartmentID(v uint64) *ChoiceTextUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctuo *ChoiceTextUpdateOne) SetNillableDepartmentID(u *uint64) *ChoiceTextUpdateOne {
-	if u != nil {
-		ctuo.SetDepartmentID(*u)
+func (_u *ChoiceTextUpdateOne) SetNillableDepartmentID(v *uint64) *ChoiceTextUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ctuo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ctuo *ChoiceTextUpdateOne) AddDepartmentID(u int64) *ChoiceTextUpdateOne {
-	ctuo.mutation.AddDepartmentID(u)
-	return ctuo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ChoiceTextUpdateOne) AddDepartmentID(v int64) *ChoiceTextUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ctuo *ChoiceTextUpdateOne) ClearDepartmentID() *ChoiceTextUpdateOne {
-	ctuo.mutation.ClearDepartmentID()
-	return ctuo
+func (_u *ChoiceTextUpdateOne) ClearDepartmentID() *ChoiceTextUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (ctuo *ChoiceTextUpdateOne) SetAttrID(u uint64) *ChoiceTextUpdateOne {
-	ctuo.mutation.SetAttrID(u)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) SetAttrID(v uint64) *ChoiceTextUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (ctuo *ChoiceTextUpdateOne) SetNillableAttrID(u *uint64) *ChoiceTextUpdateOne {
-	if u != nil {
-		ctuo.SetAttrID(*u)
+func (_u *ChoiceTextUpdateOne) SetNillableAttrID(v *uint64) *ChoiceTextUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return ctuo
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (ctuo *ChoiceTextUpdateOne) SetValue(s string) *ChoiceTextUpdateOne {
-	ctuo.mutation.SetValue(s)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) SetValue(v string) *ChoiceTextUpdateOne {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (ctuo *ChoiceTextUpdateOne) SetNillableValue(s *string) *ChoiceTextUpdateOne {
-	if s != nil {
-		ctuo.SetValue(*s)
+func (_u *ChoiceTextUpdateOne) SetNillableValue(v *string) *ChoiceTextUpdateOne {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return ctuo
+	return _u
 }
 
 // SetOption sets the "option" field.
-func (ctuo *ChoiceTextUpdateOne) SetOption(sim schema.ChoiceItemMetaS) *ChoiceTextUpdateOne {
-	ctuo.mutation.SetOption(sim)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) SetOption(v schema.ChoiceItemMetaS) *ChoiceTextUpdateOne {
+	_u.mutation.SetOption(v)
+	return _u
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (ctuo *ChoiceTextUpdateOne) SetNillableOption(sim *schema.ChoiceItemMetaS) *ChoiceTextUpdateOne {
-	if sim != nil {
-		ctuo.SetOption(*sim)
+func (_u *ChoiceTextUpdateOne) SetNillableOption(v *schema.ChoiceItemMetaS) *ChoiceTextUpdateOne {
+	if v != nil {
+		_u.SetOption(*v)
 	}
-	return ctuo
+	return _u
 }
 
 // ClearOption clears the value of the "option" field.
-func (ctuo *ChoiceTextUpdateOne) ClearOption() *ChoiceTextUpdateOne {
-	ctuo.mutation.ClearOption()
-	return ctuo
+func (_u *ChoiceTextUpdateOne) ClearOption() *ChoiceTextUpdateOne {
+	_u.mutation.ClearOption()
+	return _u
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (ctuo *ChoiceTextUpdateOne) SetAttributeID(id uint64) *ChoiceTextUpdateOne {
-	ctuo.mutation.SetAttributeID(id)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) SetAttributeID(id uint64) *ChoiceTextUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (ctuo *ChoiceTextUpdateOne) SetAttribute(a *Attribute) *ChoiceTextUpdateOne {
-	return ctuo.SetAttributeID(a.ID)
+func (_u *ChoiceTextUpdateOne) SetAttribute(v *Attribute) *ChoiceTextUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ChoiceTextMutation object of the builder.
-func (ctuo *ChoiceTextUpdateOne) Mutation() *ChoiceTextMutation {
-	return ctuo.mutation
+func (_u *ChoiceTextUpdateOne) Mutation() *ChoiceTextMutation {
+	return _u.mutation
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (ctuo *ChoiceTextUpdateOne) ClearAttribute() *ChoiceTextUpdateOne {
-	ctuo.mutation.ClearAttribute()
-	return ctuo
+func (_u *ChoiceTextUpdateOne) ClearAttribute() *ChoiceTextUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the ChoiceTextUpdate builder.
-func (ctuo *ChoiceTextUpdateOne) Where(ps ...predicate.ChoiceText) *ChoiceTextUpdateOne {
-	ctuo.mutation.Where(ps...)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) Where(ps ...predicate.ChoiceText) *ChoiceTextUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (ctuo *ChoiceTextUpdateOne) Select(field string, fields ...string) *ChoiceTextUpdateOne {
-	ctuo.fields = append([]string{field}, fields...)
-	return ctuo
+func (_u *ChoiceTextUpdateOne) Select(field string, fields ...string) *ChoiceTextUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ChoiceText entity.
-func (ctuo *ChoiceTextUpdateOne) Save(ctx context.Context) (*ChoiceText, error) {
-	if err := ctuo.defaults(); err != nil {
+func (_u *ChoiceTextUpdateOne) Save(ctx context.Context) (*ChoiceText, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctuo.sqlSave, ctuo.mutation, ctuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctuo *ChoiceTextUpdateOne) SaveX(ctx context.Context) *ChoiceText {
-	node, err := ctuo.Save(ctx)
+func (_u *ChoiceTextUpdateOne) SaveX(ctx context.Context) *ChoiceText {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -445,49 +445,49 @@ func (ctuo *ChoiceTextUpdateOne) SaveX(ctx context.Context) *ChoiceText {
 }
 
 // Exec executes the query on the entity.
-func (ctuo *ChoiceTextUpdateOne) Exec(ctx context.Context) error {
-	_, err := ctuo.Save(ctx)
+func (_u *ChoiceTextUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctuo *ChoiceTextUpdateOne) ExecX(ctx context.Context) {
-	if err := ctuo.Exec(ctx); err != nil {
+func (_u *ChoiceTextUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctuo *ChoiceTextUpdateOne) defaults() error {
-	if _, ok := ctuo.mutation.UpdatedAt(); !ok {
+func (_u *ChoiceTextUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if choicetext.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized choicetext.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := choicetext.UpdateDefaultUpdatedAt()
-		ctuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctuo *ChoiceTextUpdateOne) check() error {
-	if ctuo.mutation.AttributeCleared() && len(ctuo.mutation.AttributeIDs()) > 0 {
+func (_u *ChoiceTextUpdateOne) check() error {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ChoiceText.attribute"`)
 	}
 	return nil
 }
 
-func (ctuo *ChoiceTextUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceText, err error) {
-	if err := ctuo.check(); err != nil {
+func (_u *ChoiceTextUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceText, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(choicetext.Table, choicetext.Columns, sqlgraph.NewFieldSpec(choicetext.FieldID, field.TypeUint64))
-	id, ok := ctuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ChoiceText.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := ctuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, choicetext.FieldID)
 		for _, f := range fields {
@@ -499,41 +499,41 @@ func (ctuo *ChoiceTextUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceText
 			}
 		}
 	}
-	if ps := ctuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(choicetext.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(choicetext.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(choicetext.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctuo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(choicetext.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ctuo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(choicetext.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ctuo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(choicetext.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ctuo.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(choicetext.FieldValue, field.TypeString, value)
 	}
-	if value, ok := ctuo.mutation.Option(); ok {
+	if value, ok := _u.mutation.Option(); ok {
 		_spec.SetField(choicetext.FieldOption, field.TypeJSON, value)
 	}
-	if ctuo.mutation.OptionCleared() {
+	if _u.mutation.OptionCleared() {
 		_spec.ClearField(choicetext.FieldOption, field.TypeJSON)
 	}
-	if ctuo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -546,7 +546,7 @@ func (ctuo *ChoiceTextUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceText
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctuo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -562,10 +562,10 @@ func (ctuo *ChoiceTextUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceText
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ChoiceText{config: ctuo.config}
+	_node = &ChoiceText{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, ctuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{choicetext.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -573,6 +573,6 @@ func (ctuo *ChoiceTextUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceText
 		}
 		return nil, err
 	}
-	ctuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

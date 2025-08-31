@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"gitee.com/link234/cmdb-rpc/internal/config"
-	"gitee.com/link234/cmdb-rpc/internal/server"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/config"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/server"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

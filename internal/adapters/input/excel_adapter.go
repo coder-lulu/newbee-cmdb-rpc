@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 	"github.com/xuri/excelize/v2"
 )
 

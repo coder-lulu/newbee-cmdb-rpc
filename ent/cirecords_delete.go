@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiRecordsDelete is the builder for deleting a CiRecords entity.
@@ -20,56 +20,56 @@ type CiRecordsDelete struct {
 }
 
 // Where appends a list predicates to the CiRecordsDelete builder.
-func (crd *CiRecordsDelete) Where(ps ...predicate.CiRecords) *CiRecordsDelete {
-	crd.mutation.Where(ps...)
-	return crd
+func (_d *CiRecordsDelete) Where(ps ...predicate.CiRecords) *CiRecordsDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (crd *CiRecordsDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, crd.sqlExec, crd.mutation, crd.hooks)
+func (_d *CiRecordsDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (crd *CiRecordsDelete) ExecX(ctx context.Context) int {
-	n, err := crd.Exec(ctx)
+func (_d *CiRecordsDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (crd *CiRecordsDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CiRecordsDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(cirecords.Table, sqlgraph.NewFieldSpec(cirecords.FieldID, field.TypeUint64))
-	if ps := crd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, crd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	crd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CiRecordsDeleteOne is the builder for deleting a single CiRecords entity.
 type CiRecordsDeleteOne struct {
-	crd *CiRecordsDelete
+	_d *CiRecordsDelete
 }
 
 // Where appends a list predicates to the CiRecordsDelete builder.
-func (crdo *CiRecordsDeleteOne) Where(ps ...predicate.CiRecords) *CiRecordsDeleteOne {
-	crdo.crd.mutation.Where(ps...)
-	return crdo
+func (_d *CiRecordsDeleteOne) Where(ps ...predicate.CiRecords) *CiRecordsDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (crdo *CiRecordsDeleteOne) Exec(ctx context.Context) error {
-	n, err := crdo.crd.Exec(ctx)
+func (_d *CiRecordsDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (crdo *CiRecordsDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (crdo *CiRecordsDeleteOne) ExecX(ctx context.Context) {
-	if err := crdo.Exec(ctx); err != nil {
+func (_d *CiRecordsDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

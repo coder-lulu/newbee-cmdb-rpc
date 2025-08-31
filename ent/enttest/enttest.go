@@ -5,12 +5,12 @@ package enttest
 import (
 	"context"
 
-	"gitee.com/link234/cmdb-rpc/ent"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent"
 	// required by schema hooks.
-	_ "gitee.com/link234/cmdb-rpc/ent/runtime"
+	_ "github.com/coder-lulu/newbee-cmdb-rpc/ent/runtime"
 
 	"entgo.io/ent/dialect/sql/schema"
-	"gitee.com/link234/cmdb-rpc/ent/migrate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/migrate"
 )
 
 type (

@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/internal/adapters/input"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/adapters/input"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 )
 
 // TestAdapterManager 测试适配器管理器

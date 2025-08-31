@@ -9,9 +9,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
 )
 
 // CiTypeAttribute is the model entity for the CiTypeAttribute schema.
@@ -106,7 +106,7 @@ func (*CiTypeAttribute) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiTypeAttribute fields.
-func (cta *CiTypeAttribute) assignValues(columns []string, values []any) error {
+func (_m *CiTypeAttribute) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -117,93 +117,93 @@ func (cta *CiTypeAttribute) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			cta.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case citypeattribute.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				cta.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case citypeattribute.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				cta.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case citypeattribute.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				cta.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case citypeattribute.FieldSort:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field sort", values[i])
 			} else if value.Valid {
-				cta.Sort = uint32(value.Int64)
+				_m.Sort = uint32(value.Int64)
 			}
 		case citypeattribute.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				cta.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case citypeattribute.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				cta.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case citypeattribute.FieldTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field type_id", values[i])
 			} else if value.Valid {
-				cta.TypeID = uint64(value.Int64)
+				_m.TypeID = uint64(value.Int64)
 			}
 		case citypeattribute.FieldAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field attr_id", values[i])
 			} else if value.Valid {
-				cta.AttrID = uint64(value.Int64)
+				_m.AttrID = uint64(value.Int64)
 			}
 		case citypeattribute.FieldIsRequired:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_required", values[i])
 			} else if value.Valid {
-				cta.IsRequired = value.Bool
+				_m.IsRequired = value.Bool
 			}
 		case citypeattribute.FieldIsUnique:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_unique", values[i])
 			} else if value.Valid {
-				cta.IsUnique = value.Bool
+				_m.IsUnique = value.Bool
 			}
 		case citypeattribute.FieldIsList:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_list", values[i])
 			} else if value.Valid {
-				cta.IsList = value.Bool
+				_m.IsList = value.Bool
 			}
 		case citypeattribute.FieldListShow:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field list_show", values[i])
 			} else if value.Valid {
-				cta.ListShow = value.Bool
+				_m.ListShow = value.Bool
 			}
 		case citypeattribute.FieldDetailShow:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field detail_show", values[i])
 			} else if value.Valid {
-				cta.DetailShow = value.Bool
+				_m.DetailShow = value.Bool
 			}
 		case citypeattribute.FieldIsEdit:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_edit", values[i])
 			} else if value.Valid {
-				cta.IsEdit = value.Bool
+				_m.IsEdit = value.Bool
 			}
 		default:
-			cta.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -211,84 +211,84 @@ func (cta *CiTypeAttribute) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiTypeAttribute.
 // This includes values selected through modifiers, order, etc.
-func (cta *CiTypeAttribute) Value(name string) (ent.Value, error) {
-	return cta.selectValues.Get(name)
+func (_m *CiTypeAttribute) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCiType queries the "ci_type" edge of the CiTypeAttribute entity.
-func (cta *CiTypeAttribute) QueryCiType() *CiTypeQuery {
-	return NewCiTypeAttributeClient(cta.config).QueryCiType(cta)
+func (_m *CiTypeAttribute) QueryCiType() *CiTypeQuery {
+	return NewCiTypeAttributeClient(_m.config).QueryCiType(_m)
 }
 
 // QueryAttribute queries the "attribute" edge of the CiTypeAttribute entity.
-func (cta *CiTypeAttribute) QueryAttribute() *AttributeQuery {
-	return NewCiTypeAttributeClient(cta.config).QueryAttribute(cta)
+func (_m *CiTypeAttribute) QueryAttribute() *AttributeQuery {
+	return NewCiTypeAttributeClient(_m.config).QueryAttribute(_m)
 }
 
 // Update returns a builder for updating this CiTypeAttribute.
 // Note that you need to call CiTypeAttribute.Unwrap() before calling this method if this CiTypeAttribute
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (cta *CiTypeAttribute) Update() *CiTypeAttributeUpdateOne {
-	return NewCiTypeAttributeClient(cta.config).UpdateOne(cta)
+func (_m *CiTypeAttribute) Update() *CiTypeAttributeUpdateOne {
+	return NewCiTypeAttributeClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiTypeAttribute entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (cta *CiTypeAttribute) Unwrap() *CiTypeAttribute {
-	_tx, ok := cta.config.driver.(*txDriver)
+func (_m *CiTypeAttribute) Unwrap() *CiTypeAttribute {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiTypeAttribute is not a transactional entity")
 	}
-	cta.config.driver = _tx.drv
-	return cta
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (cta *CiTypeAttribute) String() string {
+func (_m *CiTypeAttribute) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiTypeAttribute(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", cta.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(cta.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(cta.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(cta.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("sort=")
-	builder.WriteString(fmt.Sprintf("%v", cta.Sort))
+	builder.WriteString(fmt.Sprintf("%v", _m.Sort))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", cta.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", cta.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("type_id=")
-	builder.WriteString(fmt.Sprintf("%v", cta.TypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TypeID))
 	builder.WriteString(", ")
 	builder.WriteString("attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", cta.AttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.AttrID))
 	builder.WriteString(", ")
 	builder.WriteString("is_required=")
-	builder.WriteString(fmt.Sprintf("%v", cta.IsRequired))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsRequired))
 	builder.WriteString(", ")
 	builder.WriteString("is_unique=")
-	builder.WriteString(fmt.Sprintf("%v", cta.IsUnique))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsUnique))
 	builder.WriteString(", ")
 	builder.WriteString("is_list=")
-	builder.WriteString(fmt.Sprintf("%v", cta.IsList))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsList))
 	builder.WriteString(", ")
 	builder.WriteString("list_show=")
-	builder.WriteString(fmt.Sprintf("%v", cta.ListShow))
+	builder.WriteString(fmt.Sprintf("%v", _m.ListShow))
 	builder.WriteString(", ")
 	builder.WriteString("detail_show=")
-	builder.WriteString(fmt.Sprintf("%v", cta.DetailShow))
+	builder.WriteString(fmt.Sprintf("%v", _m.DetailShow))
 	builder.WriteString(", ")
 	builder.WriteString("is_edit=")
-	builder.WriteString(fmt.Sprintf("%v", cta.IsEdit))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsEdit))
 	builder.WriteByte(')')
 	return builder.String()
 }

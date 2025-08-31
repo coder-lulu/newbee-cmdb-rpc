@@ -10,8 +10,10 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	uuid "github.com/gofrs/uuid/v5"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiondatafilter"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionfieldmask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionoperation"
 )
 
 // CiPermissionCreate is the builder for creating a CiPermission entity.
@@ -22,599 +24,472 @@ type CiPermissionCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (cpc *CiPermissionCreate) SetCreatedAt(t time.Time) *CiPermissionCreate {
-	cpc.mutation.SetCreatedAt(t)
-	return cpc
+func (_c *CiPermissionCreate) SetCreatedAt(v time.Time) *CiPermissionCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableCreatedAt(t *time.Time) *CiPermissionCreate {
-	if t != nil {
-		cpc.SetCreatedAt(*t)
+func (_c *CiPermissionCreate) SetNillableCreatedAt(v *time.Time) *CiPermissionCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cpc *CiPermissionCreate) SetUpdatedAt(t time.Time) *CiPermissionCreate {
-	cpc.mutation.SetUpdatedAt(t)
-	return cpc
+func (_c *CiPermissionCreate) SetUpdatedAt(v time.Time) *CiPermissionCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableUpdatedAt(t *time.Time) *CiPermissionCreate {
-	if t != nil {
-		cpc.SetUpdatedAt(*t)
+func (_c *CiPermissionCreate) SetNillableUpdatedAt(v *time.Time) *CiPermissionCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (cpc *CiPermissionCreate) SetTenantID(u uint64) *CiPermissionCreate {
-	cpc.mutation.SetTenantID(u)
-	return cpc
+func (_c *CiPermissionCreate) SetTenantID(v uint64) *CiPermissionCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableTenantID(u *uint64) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetTenantID(*u)
+func (_c *CiPermissionCreate) SetNillableTenantID(v *uint64) *CiPermissionCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cpc *CiPermissionCreate) SetDepartmentID(u uint64) *CiPermissionCreate {
-	cpc.mutation.SetDepartmentID(u)
-	return cpc
+func (_c *CiPermissionCreate) SetDepartmentID(v uint64) *CiPermissionCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableDepartmentID(u *uint64) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetDepartmentID(*u)
+func (_c *CiPermissionCreate) SetNillableDepartmentID(v *uint64) *CiPermissionCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetPermissionID sets the "permission_id" field.
-func (cpc *CiPermissionCreate) SetPermissionID(s string) *CiPermissionCreate {
-	cpc.mutation.SetPermissionID(s)
-	return cpc
+func (_c *CiPermissionCreate) SetPermissionID(v string) *CiPermissionCreate {
+	_c.mutation.SetPermissionID(v)
+	return _c
 }
 
 // SetScopeType sets the "scope_type" field.
-func (cpc *CiPermissionCreate) SetScopeType(ct cipermission.ScopeType) *CiPermissionCreate {
-	cpc.mutation.SetScopeType(ct)
-	return cpc
+func (_c *CiPermissionCreate) SetScopeType(v cipermission.ScopeType) *CiPermissionCreate {
+	_c.mutation.SetScopeType(v)
+	return _c
 }
 
-// SetCiTypeID sets the "ci_type_id" field.
-func (cpc *CiPermissionCreate) SetCiTypeID(u uint64) *CiPermissionCreate {
-	cpc.mutation.SetCiTypeID(u)
-	return cpc
+// SetScopeTargetType sets the "scope_target_type" field.
+func (_c *CiPermissionCreate) SetScopeTargetType(v string) *CiPermissionCreate {
+	_c.mutation.SetScopeTargetType(v)
+	return _c
 }
 
-// SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableCiTypeID(u *uint64) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetCiTypeID(*u)
+// SetNillableScopeTargetType sets the "scope_target_type" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableScopeTargetType(v *string) *CiPermissionCreate {
+	if v != nil {
+		_c.SetScopeTargetType(*v)
 	}
-	return cpc
+	return _c
 }
 
-// SetCiID sets the "ci_id" field.
-func (cpc *CiPermissionCreate) SetCiID(u uint64) *CiPermissionCreate {
-	cpc.mutation.SetCiID(u)
-	return cpc
+// SetScopeTargetID sets the "scope_target_id" field.
+func (_c *CiPermissionCreate) SetScopeTargetID(v uint64) *CiPermissionCreate {
+	_c.mutation.SetScopeTargetID(v)
+	return _c
 }
 
-// SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableCiID(u *uint64) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetCiID(*u)
+// SetNillableScopeTargetID sets the "scope_target_id" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableScopeTargetID(v *uint64) *CiPermissionCreate {
+	if v != nil {
+		_c.SetScopeTargetID(*v)
 	}
-	return cpc
+	return _c
 }
 
-// SetAttributeID sets the "attribute_id" field.
-func (cpc *CiPermissionCreate) SetAttributeID(u uint64) *CiPermissionCreate {
-	cpc.mutation.SetAttributeID(u)
-	return cpc
+// SetScopeFieldName sets the "scope_field_name" field.
+func (_c *CiPermissionCreate) SetScopeFieldName(v string) *CiPermissionCreate {
+	_c.mutation.SetScopeFieldName(v)
+	return _c
 }
 
-// SetNillableAttributeID sets the "attribute_id" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableAttributeID(u *uint64) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetAttributeID(*u)
+// SetNillableScopeFieldName sets the "scope_field_name" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableScopeFieldName(v *string) *CiPermissionCreate {
+	if v != nil {
+		_c.SetScopeFieldName(*v)
 	}
-	return cpc
-}
-
-// SetFieldName sets the "field_name" field.
-func (cpc *CiPermissionCreate) SetFieldName(s string) *CiPermissionCreate {
-	cpc.mutation.SetFieldName(s)
-	return cpc
-}
-
-// SetNillableFieldName sets the "field_name" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableFieldName(s *string) *CiPermissionCreate {
-	if s != nil {
-		cpc.SetFieldName(*s)
-	}
-	return cpc
+	return _c
 }
 
 // SetSubjectType sets the "subject_type" field.
-func (cpc *CiPermissionCreate) SetSubjectType(ct cipermission.SubjectType) *CiPermissionCreate {
-	cpc.mutation.SetSubjectType(ct)
-	return cpc
+func (_c *CiPermissionCreate) SetSubjectType(v cipermission.SubjectType) *CiPermissionCreate {
+	_c.mutation.SetSubjectType(v)
+	return _c
 }
 
 // SetSubjectID sets the "subject_id" field.
-func (cpc *CiPermissionCreate) SetSubjectID(u uuid.UUID) *CiPermissionCreate {
-	cpc.mutation.SetSubjectID(u)
-	return cpc
+func (_c *CiPermissionCreate) SetSubjectID(v string) *CiPermissionCreate {
+	_c.mutation.SetSubjectID(v)
+	return _c
 }
 
 // SetNillableSubjectID sets the "subject_id" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableSubjectID(u *uuid.UUID) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetSubjectID(*u)
+func (_c *CiPermissionCreate) SetNillableSubjectID(v *string) *CiPermissionCreate {
+	if v != nil {
+		_c.SetSubjectID(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetSubjectName sets the "subject_name" field.
-func (cpc *CiPermissionCreate) SetSubjectName(s string) *CiPermissionCreate {
-	cpc.mutation.SetSubjectName(s)
-	return cpc
-}
-
-// SetSubjectCode sets the "subject_code" field.
-func (cpc *CiPermissionCreate) SetSubjectCode(s string) *CiPermissionCreate {
-	cpc.mutation.SetSubjectCode(s)
-	return cpc
-}
-
-// SetNillableSubjectCode sets the "subject_code" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableSubjectCode(s *string) *CiPermissionCreate {
-	if s != nil {
-		cpc.SetSubjectCode(*s)
-	}
-	return cpc
+func (_c *CiPermissionCreate) SetSubjectName(v string) *CiPermissionCreate {
+	_c.mutation.SetSubjectName(v)
+	return _c
 }
 
 // SetPermissionType sets the "permission_type" field.
-func (cpc *CiPermissionCreate) SetPermissionType(ct cipermission.PermissionType) *CiPermissionCreate {
-	cpc.mutation.SetPermissionType(ct)
-	return cpc
+func (_c *CiPermissionCreate) SetPermissionType(v cipermission.PermissionType) *CiPermissionCreate {
+	_c.mutation.SetPermissionType(v)
+	return _c
 }
 
 // SetNillablePermissionType sets the "permission_type" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillablePermissionType(ct *cipermission.PermissionType) *CiPermissionCreate {
-	if ct != nil {
-		cpc.SetPermissionType(*ct)
+func (_c *CiPermissionCreate) SetNillablePermissionType(v *cipermission.PermissionType) *CiPermissionCreate {
+	if v != nil {
+		_c.SetPermissionType(*v)
 	}
-	return cpc
-}
-
-// SetOperations sets the "operations" field.
-func (cpc *CiPermissionCreate) SetOperations(s []string) *CiPermissionCreate {
-	cpc.mutation.SetOperations(s)
-	return cpc
-}
-
-// SetConditions sets the "conditions" field.
-func (cpc *CiPermissionCreate) SetConditions(m map[string]interface{}) *CiPermissionCreate {
-	cpc.mutation.SetConditions(m)
-	return cpc
-}
-
-// SetPriority sets the "priority" field.
-func (cpc *CiPermissionCreate) SetPriority(i int) *CiPermissionCreate {
-	cpc.mutation.SetPriority(i)
-	return cpc
-}
-
-// SetNillablePriority sets the "priority" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillablePriority(i *int) *CiPermissionCreate {
-	if i != nil {
-		cpc.SetPriority(*i)
-	}
-	return cpc
+	return _c
 }
 
 // SetPermissionLevel sets the "permission_level" field.
-func (cpc *CiPermissionCreate) SetPermissionLevel(cl cipermission.PermissionLevel) *CiPermissionCreate {
-	cpc.mutation.SetPermissionLevel(cl)
-	return cpc
+func (_c *CiPermissionCreate) SetPermissionLevel(v cipermission.PermissionLevel) *CiPermissionCreate {
+	_c.mutation.SetPermissionLevel(v)
+	return _c
 }
 
 // SetNillablePermissionLevel sets the "permission_level" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillablePermissionLevel(cl *cipermission.PermissionLevel) *CiPermissionCreate {
-	if cl != nil {
-		cpc.SetPermissionLevel(*cl)
+func (_c *CiPermissionCreate) SetNillablePermissionLevel(v *cipermission.PermissionLevel) *CiPermissionCreate {
+	if v != nil {
+		_c.SetPermissionLevel(*v)
 	}
-	return cpc
+	return _c
+}
+
+// SetOperationsMask sets the "operations_mask" field.
+func (_c *CiPermissionCreate) SetOperationsMask(v uint64) *CiPermissionCreate {
+	_c.mutation.SetOperationsMask(v)
+	return _c
+}
+
+// SetNillableOperationsMask sets the "operations_mask" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableOperationsMask(v *uint64) *CiPermissionCreate {
+	if v != nil {
+		_c.SetOperationsMask(*v)
+	}
+	return _c
 }
 
 // SetEffectiveFrom sets the "effective_from" field.
-func (cpc *CiPermissionCreate) SetEffectiveFrom(t time.Time) *CiPermissionCreate {
-	cpc.mutation.SetEffectiveFrom(t)
-	return cpc
+func (_c *CiPermissionCreate) SetEffectiveFrom(v time.Time) *CiPermissionCreate {
+	_c.mutation.SetEffectiveFrom(v)
+	return _c
 }
 
 // SetNillableEffectiveFrom sets the "effective_from" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableEffectiveFrom(t *time.Time) *CiPermissionCreate {
-	if t != nil {
-		cpc.SetEffectiveFrom(*t)
+func (_c *CiPermissionCreate) SetNillableEffectiveFrom(v *time.Time) *CiPermissionCreate {
+	if v != nil {
+		_c.SetEffectiveFrom(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetEffectiveTo sets the "effective_to" field.
-func (cpc *CiPermissionCreate) SetEffectiveTo(t time.Time) *CiPermissionCreate {
-	cpc.mutation.SetEffectiveTo(t)
-	return cpc
+func (_c *CiPermissionCreate) SetEffectiveTo(v time.Time) *CiPermissionCreate {
+	_c.mutation.SetEffectiveTo(v)
+	return _c
 }
 
 // SetNillableEffectiveTo sets the "effective_to" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableEffectiveTo(t *time.Time) *CiPermissionCreate {
-	if t != nil {
-		cpc.SetEffectiveTo(*t)
+func (_c *CiPermissionCreate) SetNillableEffectiveTo(v *time.Time) *CiPermissionCreate {
+	if v != nil {
+		_c.SetEffectiveTo(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetIsTemporary sets the "is_temporary" field.
-func (cpc *CiPermissionCreate) SetIsTemporary(b bool) *CiPermissionCreate {
-	cpc.mutation.SetIsTemporary(b)
-	return cpc
+func (_c *CiPermissionCreate) SetIsTemporary(v bool) *CiPermissionCreate {
+	_c.mutation.SetIsTemporary(v)
+	return _c
 }
 
 // SetNillableIsTemporary sets the "is_temporary" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableIsTemporary(b *bool) *CiPermissionCreate {
-	if b != nil {
-		cpc.SetIsTemporary(*b)
+func (_c *CiPermissionCreate) SetNillableIsTemporary(v *bool) *CiPermissionCreate {
+	if v != nil {
+		_c.SetIsTemporary(*v)
 	}
-	return cpc
+	return _c
 }
 
-// SetDataFilters sets the "data_filters" field.
-func (cpc *CiPermissionCreate) SetDataFilters(m map[string]interface{}) *CiPermissionCreate {
-	cpc.mutation.SetDataFilters(m)
-	return cpc
+// SetPriority sets the "priority" field.
+func (_c *CiPermissionCreate) SetPriority(v int) *CiPermissionCreate {
+	_c.mutation.SetPriority(v)
+	return _c
 }
 
-// SetFieldMasks sets the "field_masks" field.
-func (cpc *CiPermissionCreate) SetFieldMasks(s []string) *CiPermissionCreate {
-	cpc.mutation.SetFieldMasks(s)
-	return cpc
-}
-
-// SetAllowedValues sets the "allowed_values" field.
-func (cpc *CiPermissionCreate) SetAllowedValues(m map[string]interface{}) *CiPermissionCreate {
-	cpc.mutation.SetAllowedValues(m)
-	return cpc
-}
-
-// SetRequireApproval sets the "require_approval" field.
-func (cpc *CiPermissionCreate) SetRequireApproval(b bool) *CiPermissionCreate {
-	cpc.mutation.SetRequireApproval(b)
-	return cpc
-}
-
-// SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableRequireApproval(b *bool) *CiPermissionCreate {
-	if b != nil {
-		cpc.SetRequireApproval(*b)
+// SetNillablePriority sets the "priority" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillablePriority(v *int) *CiPermissionCreate {
+	if v != nil {
+		_c.SetPriority(*v)
 	}
-	return cpc
-}
-
-// SetGrantedBy sets the "granted_by" field.
-func (cpc *CiPermissionCreate) SetGrantedBy(u uuid.UUID) *CiPermissionCreate {
-	cpc.mutation.SetGrantedBy(u)
-	return cpc
-}
-
-// SetNillableGrantedBy sets the "granted_by" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableGrantedBy(u *uuid.UUID) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetGrantedBy(*u)
-	}
-	return cpc
-}
-
-// SetGrantedByName sets the "granted_by_name" field.
-func (cpc *CiPermissionCreate) SetGrantedByName(s string) *CiPermissionCreate {
-	cpc.mutation.SetGrantedByName(s)
-	return cpc
-}
-
-// SetNillableGrantedByName sets the "granted_by_name" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableGrantedByName(s *string) *CiPermissionCreate {
-	if s != nil {
-		cpc.SetGrantedByName(*s)
-	}
-	return cpc
-}
-
-// SetGrantedAt sets the "granted_at" field.
-func (cpc *CiPermissionCreate) SetGrantedAt(t time.Time) *CiPermissionCreate {
-	cpc.mutation.SetGrantedAt(t)
-	return cpc
-}
-
-// SetNillableGrantedAt sets the "granted_at" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableGrantedAt(t *time.Time) *CiPermissionCreate {
-	if t != nil {
-		cpc.SetGrantedAt(*t)
-	}
-	return cpc
-}
-
-// SetGrantReason sets the "grant_reason" field.
-func (cpc *CiPermissionCreate) SetGrantReason(s string) *CiPermissionCreate {
-	cpc.mutation.SetGrantReason(s)
-	return cpc
-}
-
-// SetNillableGrantReason sets the "grant_reason" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableGrantReason(s *string) *CiPermissionCreate {
-	if s != nil {
-		cpc.SetGrantReason(*s)
-	}
-	return cpc
-}
-
-// SetUsageCount sets the "usage_count" field.
-func (cpc *CiPermissionCreate) SetUsageCount(i int) *CiPermissionCreate {
-	cpc.mutation.SetUsageCount(i)
-	return cpc
-}
-
-// SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableUsageCount(i *int) *CiPermissionCreate {
-	if i != nil {
-		cpc.SetUsageCount(*i)
-	}
-	return cpc
-}
-
-// SetLastUsedAt sets the "last_used_at" field.
-func (cpc *CiPermissionCreate) SetLastUsedAt(t time.Time) *CiPermissionCreate {
-	cpc.mutation.SetLastUsedAt(t)
-	return cpc
-}
-
-// SetNillableLastUsedAt sets the "last_used_at" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableLastUsedAt(t *time.Time) *CiPermissionCreate {
-	if t != nil {
-		cpc.SetLastUsedAt(*t)
-	}
-	return cpc
-}
-
-// SetUsageStatistics sets the "usage_statistics" field.
-func (cpc *CiPermissionCreate) SetUsageStatistics(m map[string]interface{}) *CiPermissionCreate {
-	cpc.mutation.SetUsageStatistics(m)
-	return cpc
+	return _c
 }
 
 // SetStatus sets the "status" field.
-func (cpc *CiPermissionCreate) SetStatus(c cipermission.Status) *CiPermissionCreate {
-	cpc.mutation.SetStatus(c)
-	return cpc
+func (_c *CiPermissionCreate) SetStatus(v cipermission.Status) *CiPermissionCreate {
+	_c.mutation.SetStatus(v)
+	return _c
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableStatus(c *cipermission.Status) *CiPermissionCreate {
-	if c != nil {
-		cpc.SetStatus(*c)
+func (_c *CiPermissionCreate) SetNillableStatus(v *cipermission.Status) *CiPermissionCreate {
+	if v != nil {
+		_c.SetStatus(*v)
 	}
-	return cpc
-}
-
-// SetStatusReason sets the "status_reason" field.
-func (cpc *CiPermissionCreate) SetStatusReason(s string) *CiPermissionCreate {
-	cpc.mutation.SetStatusReason(s)
-	return cpc
-}
-
-// SetNillableStatusReason sets the "status_reason" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableStatusReason(s *string) *CiPermissionCreate {
-	if s != nil {
-		cpc.SetStatusReason(*s)
-	}
-	return cpc
-}
-
-// SetInheritable sets the "inheritable" field.
-func (cpc *CiPermissionCreate) SetInheritable(b bool) *CiPermissionCreate {
-	cpc.mutation.SetInheritable(b)
-	return cpc
-}
-
-// SetNillableInheritable sets the "inheritable" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableInheritable(b *bool) *CiPermissionCreate {
-	if b != nil {
-		cpc.SetInheritable(*b)
-	}
-	return cpc
+	return _c
 }
 
 // SetParentPermissionID sets the "parent_permission_id" field.
-func (cpc *CiPermissionCreate) SetParentPermissionID(s string) *CiPermissionCreate {
-	cpc.mutation.SetParentPermissionID(s)
-	return cpc
+func (_c *CiPermissionCreate) SetParentPermissionID(v string) *CiPermissionCreate {
+	_c.mutation.SetParentPermissionID(v)
+	return _c
 }
 
 // SetNillableParentPermissionID sets the "parent_permission_id" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableParentPermissionID(s *string) *CiPermissionCreate {
-	if s != nil {
-		cpc.SetParentPermissionID(*s)
+func (_c *CiPermissionCreate) SetNillableParentPermissionID(v *string) *CiPermissionCreate {
+	if v != nil {
+		_c.SetParentPermissionID(*v)
 	}
-	return cpc
+	return _c
 }
 
-// SetInheritedFrom sets the "inherited_from" field.
-func (cpc *CiPermissionCreate) SetInheritedFrom(s []string) *CiPermissionCreate {
-	cpc.mutation.SetInheritedFrom(s)
-	return cpc
+// SetInheritable sets the "inheritable" field.
+func (_c *CiPermissionCreate) SetInheritable(v bool) *CiPermissionCreate {
+	_c.mutation.SetInheritable(v)
+	return _c
 }
 
-// SetRiskLevel sets the "risk_level" field.
-func (cpc *CiPermissionCreate) SetRiskLevel(cl cipermission.RiskLevel) *CiPermissionCreate {
-	cpc.mutation.SetRiskLevel(cl)
-	return cpc
-}
-
-// SetNillableRiskLevel sets the "risk_level" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableRiskLevel(cl *cipermission.RiskLevel) *CiPermissionCreate {
-	if cl != nil {
-		cpc.SetRiskLevel(*cl)
+// SetNillableInheritable sets the "inheritable" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableInheritable(v *bool) *CiPermissionCreate {
+	if v != nil {
+		_c.SetInheritable(*v)
 	}
-	return cpc
+	return _c
+}
+
+// SetRequireApproval sets the "require_approval" field.
+func (_c *CiPermissionCreate) SetRequireApproval(v bool) *CiPermissionCreate {
+	_c.mutation.SetRequireApproval(v)
+	return _c
+}
+
+// SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableRequireApproval(v *bool) *CiPermissionCreate {
+	if v != nil {
+		_c.SetRequireApproval(*v)
+	}
+	return _c
 }
 
 // SetRequireMfa sets the "require_mfa" field.
-func (cpc *CiPermissionCreate) SetRequireMfa(b bool) *CiPermissionCreate {
-	cpc.mutation.SetRequireMfa(b)
-	return cpc
+func (_c *CiPermissionCreate) SetRequireMfa(v bool) *CiPermissionCreate {
+	_c.mutation.SetRequireMfa(v)
+	return _c
 }
 
 // SetNillableRequireMfa sets the "require_mfa" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableRequireMfa(b *bool) *CiPermissionCreate {
-	if b != nil {
-		cpc.SetRequireMfa(*b)
+func (_c *CiPermissionCreate) SetNillableRequireMfa(v *bool) *CiPermissionCreate {
+	if v != nil {
+		_c.SetRequireMfa(*v)
 	}
-	return cpc
+	return _c
 }
 
-// SetSecurityConstraints sets the "security_constraints" field.
-func (cpc *CiPermissionCreate) SetSecurityConstraints(m map[string]interface{}) *CiPermissionCreate {
-	cpc.mutation.SetSecurityConstraints(m)
-	return cpc
+// SetRiskLevel sets the "risk_level" field.
+func (_c *CiPermissionCreate) SetRiskLevel(v cipermission.RiskLevel) *CiPermissionCreate {
+	_c.mutation.SetRiskLevel(v)
+	return _c
 }
 
-// SetMetadata sets the "metadata" field.
-func (cpc *CiPermissionCreate) SetMetadata(m map[string]interface{}) *CiPermissionCreate {
-	cpc.mutation.SetMetadata(m)
-	return cpc
-}
-
-// SetTags sets the "tags" field.
-func (cpc *CiPermissionCreate) SetTags(s []string) *CiPermissionCreate {
-	cpc.mutation.SetTags(s)
-	return cpc
-}
-
-// SetDescription sets the "description" field.
-func (cpc *CiPermissionCreate) SetDescription(s string) *CiPermissionCreate {
-	cpc.mutation.SetDescription(s)
-	return cpc
-}
-
-// SetNillableDescription sets the "description" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableDescription(s *string) *CiPermissionCreate {
-	if s != nil {
-		cpc.SetDescription(*s)
+// SetNillableRiskLevel sets the "risk_level" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableRiskLevel(v *cipermission.RiskLevel) *CiPermissionCreate {
+	if v != nil {
+		_c.SetRiskLevel(*v)
 	}
-	return cpc
+	return _c
 }
 
-// SetComments sets the "comments" field.
-func (cpc *CiPermissionCreate) SetComments(s string) *CiPermissionCreate {
-	cpc.mutation.SetComments(s)
-	return cpc
+// SetUsageCount sets the "usage_count" field.
+func (_c *CiPermissionCreate) SetUsageCount(v int) *CiPermissionCreate {
+	_c.mutation.SetUsageCount(v)
+	return _c
 }
 
-// SetNillableComments sets the "comments" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableComments(s *string) *CiPermissionCreate {
-	if s != nil {
-		cpc.SetComments(*s)
+// SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableUsageCount(v *int) *CiPermissionCreate {
+	if v != nil {
+		_c.SetUsageCount(*v)
 	}
-	return cpc
+	return _c
+}
+
+// SetLastUsedAt sets the "last_used_at" field.
+func (_c *CiPermissionCreate) SetLastUsedAt(v time.Time) *CiPermissionCreate {
+	_c.mutation.SetLastUsedAt(v)
+	return _c
+}
+
+// SetNillableLastUsedAt sets the "last_used_at" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableLastUsedAt(v *time.Time) *CiPermissionCreate {
+	if v != nil {
+		_c.SetLastUsedAt(*v)
+	}
+	return _c
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (cpc *CiPermissionCreate) SetCreatedBy(u uuid.UUID) *CiPermissionCreate {
-	cpc.mutation.SetCreatedBy(u)
-	return cpc
+func (_c *CiPermissionCreate) SetCreatedBy(v string) *CiPermissionCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableCreatedBy(u *uuid.UUID) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetCreatedBy(*u)
+func (_c *CiPermissionCreate) SetNillableCreatedBy(v *string) *CiPermissionCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetUpdatedBy sets the "updated_by" field.
-func (cpc *CiPermissionCreate) SetUpdatedBy(u uuid.UUID) *CiPermissionCreate {
-	cpc.mutation.SetUpdatedBy(u)
-	return cpc
+func (_c *CiPermissionCreate) SetUpdatedBy(v string) *CiPermissionCreate {
+	_c.mutation.SetUpdatedBy(v)
+	return _c
 }
 
 // SetNillableUpdatedBy sets the "updated_by" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableUpdatedBy(u *uuid.UUID) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetUpdatedBy(*u)
+func (_c *CiPermissionCreate) SetNillableUpdatedBy(v *string) *CiPermissionCreate {
+	if v != nil {
+		_c.SetUpdatedBy(*v)
 	}
-	return cpc
+	return _c
 }
 
-// SetLastReviewedAt sets the "last_reviewed_at" field.
-func (cpc *CiPermissionCreate) SetLastReviewedAt(t time.Time) *CiPermissionCreate {
-	cpc.mutation.SetLastReviewedAt(t)
-	return cpc
+// SetDescription sets the "description" field.
+func (_c *CiPermissionCreate) SetDescription(v string) *CiPermissionCreate {
+	_c.mutation.SetDescription(v)
+	return _c
 }
 
-// SetNillableLastReviewedAt sets the "last_reviewed_at" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableLastReviewedAt(t *time.Time) *CiPermissionCreate {
-	if t != nil {
-		cpc.SetLastReviewedAt(*t)
+// SetNillableDescription sets the "description" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableDescription(v *string) *CiPermissionCreate {
+	if v != nil {
+		_c.SetDescription(*v)
 	}
-	return cpc
+	return _c
 }
 
-// SetLastReviewedBy sets the "last_reviewed_by" field.
-func (cpc *CiPermissionCreate) SetLastReviewedBy(u uuid.UUID) *CiPermissionCreate {
-	cpc.mutation.SetLastReviewedBy(u)
-	return cpc
+// SetComments sets the "comments" field.
+func (_c *CiPermissionCreate) SetComments(v string) *CiPermissionCreate {
+	_c.mutation.SetComments(v)
+	return _c
 }
 
-// SetNillableLastReviewedBy sets the "last_reviewed_by" field if the given value is not nil.
-func (cpc *CiPermissionCreate) SetNillableLastReviewedBy(u *uuid.UUID) *CiPermissionCreate {
-	if u != nil {
-		cpc.SetLastReviewedBy(*u)
+// SetNillableComments sets the "comments" field if the given value is not nil.
+func (_c *CiPermissionCreate) SetNillableComments(v *string) *CiPermissionCreate {
+	if v != nil {
+		_c.SetComments(*v)
 	}
-	return cpc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (cpc *CiPermissionCreate) SetID(u uint64) *CiPermissionCreate {
-	cpc.mutation.SetID(u)
-	return cpc
+func (_c *CiPermissionCreate) SetID(v uint64) *CiPermissionCreate {
+	_c.mutation.SetID(v)
+	return _c
+}
+
+// AddOperationIDs adds the "operations" edge to the PermissionOperation entity by IDs.
+func (_c *CiPermissionCreate) AddOperationIDs(ids ...uint64) *CiPermissionCreate {
+	_c.mutation.AddOperationIDs(ids...)
+	return _c
+}
+
+// AddOperations adds the "operations" edges to the PermissionOperation entity.
+func (_c *CiPermissionCreate) AddOperations(v ...*PermissionOperation) *CiPermissionCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _c.AddOperationIDs(ids...)
+}
+
+// AddDataFilterIDs adds the "data_filters" edge to the PermissionDataFilter entity by IDs.
+func (_c *CiPermissionCreate) AddDataFilterIDs(ids ...uint64) *CiPermissionCreate {
+	_c.mutation.AddDataFilterIDs(ids...)
+	return _c
+}
+
+// AddDataFilters adds the "data_filters" edges to the PermissionDataFilter entity.
+func (_c *CiPermissionCreate) AddDataFilters(v ...*PermissionDataFilter) *CiPermissionCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _c.AddDataFilterIDs(ids...)
+}
+
+// AddFieldMaskIDs adds the "field_masks" edge to the PermissionFieldMask entity by IDs.
+func (_c *CiPermissionCreate) AddFieldMaskIDs(ids ...uint64) *CiPermissionCreate {
+	_c.mutation.AddFieldMaskIDs(ids...)
+	return _c
+}
+
+// AddFieldMasks adds the "field_masks" edges to the PermissionFieldMask entity.
+func (_c *CiPermissionCreate) AddFieldMasks(v ...*PermissionFieldMask) *CiPermissionCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _c.AddFieldMaskIDs(ids...)
 }
 
 // Mutation returns the CiPermissionMutation object of the builder.
-func (cpc *CiPermissionCreate) Mutation() *CiPermissionMutation {
-	return cpc.mutation
+func (_c *CiPermissionCreate) Mutation() *CiPermissionMutation {
+	return _c.mutation
 }
 
 // Save creates the CiPermission in the database.
-func (cpc *CiPermissionCreate) Save(ctx context.Context) (*CiPermission, error) {
-	cpc.defaults()
-	return withHooks(ctx, cpc.sqlSave, cpc.mutation, cpc.hooks)
+func (_c *CiPermissionCreate) Save(ctx context.Context) (*CiPermission, error) {
+	_c.defaults()
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (cpc *CiPermissionCreate) SaveX(ctx context.Context) *CiPermission {
-	v, err := cpc.Save(ctx)
+func (_c *CiPermissionCreate) SaveX(ctx context.Context) *CiPermission {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -622,169 +497,173 @@ func (cpc *CiPermissionCreate) SaveX(ctx context.Context) *CiPermission {
 }
 
 // Exec executes the query.
-func (cpc *CiPermissionCreate) Exec(ctx context.Context) error {
-	_, err := cpc.Save(ctx)
+func (_c *CiPermissionCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cpc *CiPermissionCreate) ExecX(ctx context.Context) {
-	if err := cpc.Exec(ctx); err != nil {
+func (_c *CiPermissionCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cpc *CiPermissionCreate) defaults() {
-	if _, ok := cpc.mutation.CreatedAt(); !ok {
+func (_c *CiPermissionCreate) defaults() {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		v := cipermission.DefaultCreatedAt()
-		cpc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := cpc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		v := cipermission.DefaultUpdatedAt()
-		cpc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := cpc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := cipermission.DefaultTenantID
-		cpc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := cpc.mutation.PermissionType(); !ok {
+	if _, ok := _c.mutation.PermissionType(); !ok {
 		v := cipermission.DefaultPermissionType
-		cpc.mutation.SetPermissionType(v)
+		_c.mutation.SetPermissionType(v)
 	}
-	if _, ok := cpc.mutation.Priority(); !ok {
-		v := cipermission.DefaultPriority
-		cpc.mutation.SetPriority(v)
-	}
-	if _, ok := cpc.mutation.PermissionLevel(); !ok {
+	if _, ok := _c.mutation.PermissionLevel(); !ok {
 		v := cipermission.DefaultPermissionLevel
-		cpc.mutation.SetPermissionLevel(v)
+		_c.mutation.SetPermissionLevel(v)
 	}
-	if _, ok := cpc.mutation.IsTemporary(); !ok {
+	if _, ok := _c.mutation.OperationsMask(); !ok {
+		v := cipermission.DefaultOperationsMask
+		_c.mutation.SetOperationsMask(v)
+	}
+	if _, ok := _c.mutation.IsTemporary(); !ok {
 		v := cipermission.DefaultIsTemporary
-		cpc.mutation.SetIsTemporary(v)
+		_c.mutation.SetIsTemporary(v)
 	}
-	if _, ok := cpc.mutation.RequireApproval(); !ok {
-		v := cipermission.DefaultRequireApproval
-		cpc.mutation.SetRequireApproval(v)
+	if _, ok := _c.mutation.Priority(); !ok {
+		v := cipermission.DefaultPriority
+		_c.mutation.SetPriority(v)
 	}
-	if _, ok := cpc.mutation.UsageCount(); !ok {
-		v := cipermission.DefaultUsageCount
-		cpc.mutation.SetUsageCount(v)
-	}
-	if _, ok := cpc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		v := cipermission.DefaultStatus
-		cpc.mutation.SetStatus(v)
+		_c.mutation.SetStatus(v)
 	}
-	if _, ok := cpc.mutation.Inheritable(); !ok {
+	if _, ok := _c.mutation.Inheritable(); !ok {
 		v := cipermission.DefaultInheritable
-		cpc.mutation.SetInheritable(v)
+		_c.mutation.SetInheritable(v)
 	}
-	if _, ok := cpc.mutation.RiskLevel(); !ok {
-		v := cipermission.DefaultRiskLevel
-		cpc.mutation.SetRiskLevel(v)
+	if _, ok := _c.mutation.RequireApproval(); !ok {
+		v := cipermission.DefaultRequireApproval
+		_c.mutation.SetRequireApproval(v)
 	}
-	if _, ok := cpc.mutation.RequireMfa(); !ok {
+	if _, ok := _c.mutation.RequireMfa(); !ok {
 		v := cipermission.DefaultRequireMfa
-		cpc.mutation.SetRequireMfa(v)
+		_c.mutation.SetRequireMfa(v)
+	}
+	if _, ok := _c.mutation.RiskLevel(); !ok {
+		v := cipermission.DefaultRiskLevel
+		_c.mutation.SetRiskLevel(v)
+	}
+	if _, ok := _c.mutation.UsageCount(); !ok {
+		v := cipermission.DefaultUsageCount
+		_c.mutation.SetUsageCount(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cpc *CiPermissionCreate) check() error {
-	if _, ok := cpc.mutation.CreatedAt(); !ok {
+func (_c *CiPermissionCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiPermission.created_at"`)}
 	}
-	if _, ok := cpc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiPermission.updated_at"`)}
 	}
-	if _, ok := cpc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiPermission.tenant_id"`)}
 	}
-	if _, ok := cpc.mutation.PermissionID(); !ok {
+	if _, ok := _c.mutation.PermissionID(); !ok {
 		return &ValidationError{Name: "permission_id", err: errors.New(`ent: missing required field "CiPermission.permission_id"`)}
 	}
-	if _, ok := cpc.mutation.ScopeType(); !ok {
+	if _, ok := _c.mutation.ScopeType(); !ok {
 		return &ValidationError{Name: "scope_type", err: errors.New(`ent: missing required field "CiPermission.scope_type"`)}
 	}
-	if v, ok := cpc.mutation.ScopeType(); ok {
+	if v, ok := _c.mutation.ScopeType(); ok {
 		if err := cipermission.ScopeTypeValidator(v); err != nil {
 			return &ValidationError{Name: "scope_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.scope_type": %w`, err)}
 		}
 	}
-	if _, ok := cpc.mutation.SubjectType(); !ok {
+	if _, ok := _c.mutation.SubjectType(); !ok {
 		return &ValidationError{Name: "subject_type", err: errors.New(`ent: missing required field "CiPermission.subject_type"`)}
 	}
-	if v, ok := cpc.mutation.SubjectType(); ok {
+	if v, ok := _c.mutation.SubjectType(); ok {
 		if err := cipermission.SubjectTypeValidator(v); err != nil {
 			return &ValidationError{Name: "subject_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.subject_type": %w`, err)}
 		}
 	}
-	if _, ok := cpc.mutation.SubjectName(); !ok {
+	if _, ok := _c.mutation.SubjectName(); !ok {
 		return &ValidationError{Name: "subject_name", err: errors.New(`ent: missing required field "CiPermission.subject_name"`)}
 	}
-	if _, ok := cpc.mutation.PermissionType(); !ok {
+	if _, ok := _c.mutation.PermissionType(); !ok {
 		return &ValidationError{Name: "permission_type", err: errors.New(`ent: missing required field "CiPermission.permission_type"`)}
 	}
-	if v, ok := cpc.mutation.PermissionType(); ok {
+	if v, ok := _c.mutation.PermissionType(); ok {
 		if err := cipermission.PermissionTypeValidator(v); err != nil {
 			return &ValidationError{Name: "permission_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.permission_type": %w`, err)}
 		}
 	}
-	if _, ok := cpc.mutation.Operations(); !ok {
-		return &ValidationError{Name: "operations", err: errors.New(`ent: missing required field "CiPermission.operations"`)}
-	}
-	if _, ok := cpc.mutation.Priority(); !ok {
-		return &ValidationError{Name: "priority", err: errors.New(`ent: missing required field "CiPermission.priority"`)}
-	}
-	if _, ok := cpc.mutation.PermissionLevel(); !ok {
+	if _, ok := _c.mutation.PermissionLevel(); !ok {
 		return &ValidationError{Name: "permission_level", err: errors.New(`ent: missing required field "CiPermission.permission_level"`)}
 	}
-	if v, ok := cpc.mutation.PermissionLevel(); ok {
+	if v, ok := _c.mutation.PermissionLevel(); ok {
 		if err := cipermission.PermissionLevelValidator(v); err != nil {
 			return &ValidationError{Name: "permission_level", err: fmt.Errorf(`ent: validator failed for field "CiPermission.permission_level": %w`, err)}
 		}
 	}
-	if _, ok := cpc.mutation.IsTemporary(); !ok {
+	if _, ok := _c.mutation.OperationsMask(); !ok {
+		return &ValidationError{Name: "operations_mask", err: errors.New(`ent: missing required field "CiPermission.operations_mask"`)}
+	}
+	if _, ok := _c.mutation.IsTemporary(); !ok {
 		return &ValidationError{Name: "is_temporary", err: errors.New(`ent: missing required field "CiPermission.is_temporary"`)}
 	}
-	if _, ok := cpc.mutation.RequireApproval(); !ok {
-		return &ValidationError{Name: "require_approval", err: errors.New(`ent: missing required field "CiPermission.require_approval"`)}
+	if _, ok := _c.mutation.Priority(); !ok {
+		return &ValidationError{Name: "priority", err: errors.New(`ent: missing required field "CiPermission.priority"`)}
 	}
-	if _, ok := cpc.mutation.UsageCount(); !ok {
-		return &ValidationError{Name: "usage_count", err: errors.New(`ent: missing required field "CiPermission.usage_count"`)}
-	}
-	if _, ok := cpc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "CiPermission.status"`)}
 	}
-	if v, ok := cpc.mutation.Status(); ok {
+	if v, ok := _c.mutation.Status(); ok {
 		if err := cipermission.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "CiPermission.status": %w`, err)}
 		}
 	}
-	if _, ok := cpc.mutation.Inheritable(); !ok {
+	if _, ok := _c.mutation.Inheritable(); !ok {
 		return &ValidationError{Name: "inheritable", err: errors.New(`ent: missing required field "CiPermission.inheritable"`)}
 	}
-	if _, ok := cpc.mutation.RiskLevel(); !ok {
+	if _, ok := _c.mutation.RequireApproval(); !ok {
+		return &ValidationError{Name: "require_approval", err: errors.New(`ent: missing required field "CiPermission.require_approval"`)}
+	}
+	if _, ok := _c.mutation.RequireMfa(); !ok {
+		return &ValidationError{Name: "require_mfa", err: errors.New(`ent: missing required field "CiPermission.require_mfa"`)}
+	}
+	if _, ok := _c.mutation.RiskLevel(); !ok {
 		return &ValidationError{Name: "risk_level", err: errors.New(`ent: missing required field "CiPermission.risk_level"`)}
 	}
-	if v, ok := cpc.mutation.RiskLevel(); ok {
+	if v, ok := _c.mutation.RiskLevel(); ok {
 		if err := cipermission.RiskLevelValidator(v); err != nil {
 			return &ValidationError{Name: "risk_level", err: fmt.Errorf(`ent: validator failed for field "CiPermission.risk_level": %w`, err)}
 		}
 	}
-	if _, ok := cpc.mutation.RequireMfa(); !ok {
-		return &ValidationError{Name: "require_mfa", err: errors.New(`ent: missing required field "CiPermission.require_mfa"`)}
+	if _, ok := _c.mutation.UsageCount(); !ok {
+		return &ValidationError{Name: "usage_count", err: errors.New(`ent: missing required field "CiPermission.usage_count"`)}
 	}
 	return nil
 }
 
-func (cpc *CiPermissionCreate) sqlSave(ctx context.Context) (*CiPermission, error) {
-	if err := cpc.check(); err != nil {
+func (_c *CiPermissionCreate) sqlSave(ctx context.Context) (*CiPermission, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := cpc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, cpc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -794,215 +673,191 @@ func (cpc *CiPermissionCreate) sqlSave(ctx context.Context) (*CiPermission, erro
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	cpc.mutation.id = &_node.ID
-	cpc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (cpc *CiPermissionCreate) createSpec() (*CiPermission, *sqlgraph.CreateSpec) {
+func (_c *CiPermissionCreate) createSpec() (*CiPermission, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiPermission{config: cpc.config}
+		_node = &CiPermission{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(cipermission.Table, sqlgraph.NewFieldSpec(cipermission.FieldID, field.TypeUint64))
 	)
-	if id, ok := cpc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := cpc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(cipermission.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := cpc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(cipermission.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := cpc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(cipermission.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := cpc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(cipermission.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := cpc.mutation.PermissionID(); ok {
+	if value, ok := _c.mutation.PermissionID(); ok {
 		_spec.SetField(cipermission.FieldPermissionID, field.TypeString, value)
 		_node.PermissionID = value
 	}
-	if value, ok := cpc.mutation.ScopeType(); ok {
+	if value, ok := _c.mutation.ScopeType(); ok {
 		_spec.SetField(cipermission.FieldScopeType, field.TypeEnum, value)
 		_node.ScopeType = value
 	}
-	if value, ok := cpc.mutation.CiTypeID(); ok {
-		_spec.SetField(cipermission.FieldCiTypeID, field.TypeUint64, value)
-		_node.CiTypeID = value
+	if value, ok := _c.mutation.ScopeTargetType(); ok {
+		_spec.SetField(cipermission.FieldScopeTargetType, field.TypeString, value)
+		_node.ScopeTargetType = value
 	}
-	if value, ok := cpc.mutation.CiID(); ok {
-		_spec.SetField(cipermission.FieldCiID, field.TypeUint64, value)
-		_node.CiID = value
+	if value, ok := _c.mutation.ScopeTargetID(); ok {
+		_spec.SetField(cipermission.FieldScopeTargetID, field.TypeUint64, value)
+		_node.ScopeTargetID = value
 	}
-	if value, ok := cpc.mutation.AttributeID(); ok {
-		_spec.SetField(cipermission.FieldAttributeID, field.TypeUint64, value)
-		_node.AttributeID = value
+	if value, ok := _c.mutation.ScopeFieldName(); ok {
+		_spec.SetField(cipermission.FieldScopeFieldName, field.TypeString, value)
+		_node.ScopeFieldName = value
 	}
-	if value, ok := cpc.mutation.FieldName(); ok {
-		_spec.SetField(cipermission.FieldFieldName, field.TypeString, value)
-		_node.FieldName = value
-	}
-	if value, ok := cpc.mutation.SubjectType(); ok {
+	if value, ok := _c.mutation.SubjectType(); ok {
 		_spec.SetField(cipermission.FieldSubjectType, field.TypeEnum, value)
 		_node.SubjectType = value
 	}
-	if value, ok := cpc.mutation.SubjectID(); ok {
-		_spec.SetField(cipermission.FieldSubjectID, field.TypeUUID, value)
+	if value, ok := _c.mutation.SubjectID(); ok {
+		_spec.SetField(cipermission.FieldSubjectID, field.TypeString, value)
 		_node.SubjectID = value
 	}
-	if value, ok := cpc.mutation.SubjectName(); ok {
+	if value, ok := _c.mutation.SubjectName(); ok {
 		_spec.SetField(cipermission.FieldSubjectName, field.TypeString, value)
 		_node.SubjectName = value
 	}
-	if value, ok := cpc.mutation.SubjectCode(); ok {
-		_spec.SetField(cipermission.FieldSubjectCode, field.TypeString, value)
-		_node.SubjectCode = value
-	}
-	if value, ok := cpc.mutation.PermissionType(); ok {
+	if value, ok := _c.mutation.PermissionType(); ok {
 		_spec.SetField(cipermission.FieldPermissionType, field.TypeEnum, value)
 		_node.PermissionType = value
 	}
-	if value, ok := cpc.mutation.Operations(); ok {
-		_spec.SetField(cipermission.FieldOperations, field.TypeJSON, value)
-		_node.Operations = value
-	}
-	if value, ok := cpc.mutation.Conditions(); ok {
-		_spec.SetField(cipermission.FieldConditions, field.TypeJSON, value)
-		_node.Conditions = value
-	}
-	if value, ok := cpc.mutation.Priority(); ok {
-		_spec.SetField(cipermission.FieldPriority, field.TypeInt, value)
-		_node.Priority = value
-	}
-	if value, ok := cpc.mutation.PermissionLevel(); ok {
+	if value, ok := _c.mutation.PermissionLevel(); ok {
 		_spec.SetField(cipermission.FieldPermissionLevel, field.TypeEnum, value)
 		_node.PermissionLevel = value
 	}
-	if value, ok := cpc.mutation.EffectiveFrom(); ok {
+	if value, ok := _c.mutation.OperationsMask(); ok {
+		_spec.SetField(cipermission.FieldOperationsMask, field.TypeUint64, value)
+		_node.OperationsMask = value
+	}
+	if value, ok := _c.mutation.EffectiveFrom(); ok {
 		_spec.SetField(cipermission.FieldEffectiveFrom, field.TypeTime, value)
 		_node.EffectiveFrom = value
 	}
-	if value, ok := cpc.mutation.EffectiveTo(); ok {
+	if value, ok := _c.mutation.EffectiveTo(); ok {
 		_spec.SetField(cipermission.FieldEffectiveTo, field.TypeTime, value)
 		_node.EffectiveTo = value
 	}
-	if value, ok := cpc.mutation.IsTemporary(); ok {
+	if value, ok := _c.mutation.IsTemporary(); ok {
 		_spec.SetField(cipermission.FieldIsTemporary, field.TypeBool, value)
 		_node.IsTemporary = value
 	}
-	if value, ok := cpc.mutation.DataFilters(); ok {
-		_spec.SetField(cipermission.FieldDataFilters, field.TypeJSON, value)
-		_node.DataFilters = value
+	if value, ok := _c.mutation.Priority(); ok {
+		_spec.SetField(cipermission.FieldPriority, field.TypeInt, value)
+		_node.Priority = value
 	}
-	if value, ok := cpc.mutation.FieldMasks(); ok {
-		_spec.SetField(cipermission.FieldFieldMasks, field.TypeJSON, value)
-		_node.FieldMasks = value
-	}
-	if value, ok := cpc.mutation.AllowedValues(); ok {
-		_spec.SetField(cipermission.FieldAllowedValues, field.TypeJSON, value)
-		_node.AllowedValues = value
-	}
-	if value, ok := cpc.mutation.RequireApproval(); ok {
-		_spec.SetField(cipermission.FieldRequireApproval, field.TypeBool, value)
-		_node.RequireApproval = value
-	}
-	if value, ok := cpc.mutation.GrantedBy(); ok {
-		_spec.SetField(cipermission.FieldGrantedBy, field.TypeUUID, value)
-		_node.GrantedBy = value
-	}
-	if value, ok := cpc.mutation.GrantedByName(); ok {
-		_spec.SetField(cipermission.FieldGrantedByName, field.TypeString, value)
-		_node.GrantedByName = value
-	}
-	if value, ok := cpc.mutation.GrantedAt(); ok {
-		_spec.SetField(cipermission.FieldGrantedAt, field.TypeTime, value)
-		_node.GrantedAt = value
-	}
-	if value, ok := cpc.mutation.GrantReason(); ok {
-		_spec.SetField(cipermission.FieldGrantReason, field.TypeString, value)
-		_node.GrantReason = value
-	}
-	if value, ok := cpc.mutation.UsageCount(); ok {
-		_spec.SetField(cipermission.FieldUsageCount, field.TypeInt, value)
-		_node.UsageCount = value
-	}
-	if value, ok := cpc.mutation.LastUsedAt(); ok {
-		_spec.SetField(cipermission.FieldLastUsedAt, field.TypeTime, value)
-		_node.LastUsedAt = value
-	}
-	if value, ok := cpc.mutation.UsageStatistics(); ok {
-		_spec.SetField(cipermission.FieldUsageStatistics, field.TypeJSON, value)
-		_node.UsageStatistics = value
-	}
-	if value, ok := cpc.mutation.Status(); ok {
+	if value, ok := _c.mutation.Status(); ok {
 		_spec.SetField(cipermission.FieldStatus, field.TypeEnum, value)
 		_node.Status = value
 	}
-	if value, ok := cpc.mutation.StatusReason(); ok {
-		_spec.SetField(cipermission.FieldStatusReason, field.TypeString, value)
-		_node.StatusReason = value
-	}
-	if value, ok := cpc.mutation.Inheritable(); ok {
-		_spec.SetField(cipermission.FieldInheritable, field.TypeBool, value)
-		_node.Inheritable = value
-	}
-	if value, ok := cpc.mutation.ParentPermissionID(); ok {
+	if value, ok := _c.mutation.ParentPermissionID(); ok {
 		_spec.SetField(cipermission.FieldParentPermissionID, field.TypeString, value)
 		_node.ParentPermissionID = value
 	}
-	if value, ok := cpc.mutation.InheritedFrom(); ok {
-		_spec.SetField(cipermission.FieldInheritedFrom, field.TypeJSON, value)
-		_node.InheritedFrom = value
+	if value, ok := _c.mutation.Inheritable(); ok {
+		_spec.SetField(cipermission.FieldInheritable, field.TypeBool, value)
+		_node.Inheritable = value
 	}
-	if value, ok := cpc.mutation.RiskLevel(); ok {
-		_spec.SetField(cipermission.FieldRiskLevel, field.TypeEnum, value)
-		_node.RiskLevel = value
+	if value, ok := _c.mutation.RequireApproval(); ok {
+		_spec.SetField(cipermission.FieldRequireApproval, field.TypeBool, value)
+		_node.RequireApproval = value
 	}
-	if value, ok := cpc.mutation.RequireMfa(); ok {
+	if value, ok := _c.mutation.RequireMfa(); ok {
 		_spec.SetField(cipermission.FieldRequireMfa, field.TypeBool, value)
 		_node.RequireMfa = value
 	}
-	if value, ok := cpc.mutation.SecurityConstraints(); ok {
-		_spec.SetField(cipermission.FieldSecurityConstraints, field.TypeJSON, value)
-		_node.SecurityConstraints = value
+	if value, ok := _c.mutation.RiskLevel(); ok {
+		_spec.SetField(cipermission.FieldRiskLevel, field.TypeEnum, value)
+		_node.RiskLevel = value
 	}
-	if value, ok := cpc.mutation.Metadata(); ok {
-		_spec.SetField(cipermission.FieldMetadata, field.TypeJSON, value)
-		_node.Metadata = value
+	if value, ok := _c.mutation.UsageCount(); ok {
+		_spec.SetField(cipermission.FieldUsageCount, field.TypeInt, value)
+		_node.UsageCount = value
 	}
-	if value, ok := cpc.mutation.Tags(); ok {
-		_spec.SetField(cipermission.FieldTags, field.TypeJSON, value)
-		_node.Tags = value
+	if value, ok := _c.mutation.LastUsedAt(); ok {
+		_spec.SetField(cipermission.FieldLastUsedAt, field.TypeTime, value)
+		_node.LastUsedAt = value
 	}
-	if value, ok := cpc.mutation.Description(); ok {
+	if value, ok := _c.mutation.CreatedBy(); ok {
+		_spec.SetField(cipermission.FieldCreatedBy, field.TypeString, value)
+		_node.CreatedBy = value
+	}
+	if value, ok := _c.mutation.UpdatedBy(); ok {
+		_spec.SetField(cipermission.FieldUpdatedBy, field.TypeString, value)
+		_node.UpdatedBy = value
+	}
+	if value, ok := _c.mutation.Description(); ok {
 		_spec.SetField(cipermission.FieldDescription, field.TypeString, value)
 		_node.Description = value
 	}
-	if value, ok := cpc.mutation.Comments(); ok {
+	if value, ok := _c.mutation.Comments(); ok {
 		_spec.SetField(cipermission.FieldComments, field.TypeString, value)
 		_node.Comments = value
 	}
-	if value, ok := cpc.mutation.CreatedBy(); ok {
-		_spec.SetField(cipermission.FieldCreatedBy, field.TypeUUID, value)
-		_node.CreatedBy = value
+	if nodes := _c.mutation.OperationsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.OperationsTable,
+			Columns: []string{cipermission.OperationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionoperation.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if value, ok := cpc.mutation.UpdatedBy(); ok {
-		_spec.SetField(cipermission.FieldUpdatedBy, field.TypeUUID, value)
-		_node.UpdatedBy = value
+	if nodes := _c.mutation.DataFiltersIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.DataFiltersTable,
+			Columns: []string{cipermission.DataFiltersColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissiondatafilter.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if value, ok := cpc.mutation.LastReviewedAt(); ok {
-		_spec.SetField(cipermission.FieldLastReviewedAt, field.TypeTime, value)
-		_node.LastReviewedAt = value
-	}
-	if value, ok := cpc.mutation.LastReviewedBy(); ok {
-		_spec.SetField(cipermission.FieldLastReviewedBy, field.TypeUUID, value)
-		_node.LastReviewedBy = value
+	if nodes := _c.mutation.FieldMasksIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.FieldMasksTable,
+			Columns: []string{cipermission.FieldMasksColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionfieldmask.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges = append(_spec.Edges, edge)
 	}
 	return _node, _spec
 }
@@ -1015,16 +870,16 @@ type CiPermissionCreateBulk struct {
 }
 
 // Save creates the CiPermission entities in the database.
-func (cpcb *CiPermissionCreateBulk) Save(ctx context.Context) ([]*CiPermission, error) {
-	if cpcb.err != nil {
-		return nil, cpcb.err
+func (_c *CiPermissionCreateBulk) Save(ctx context.Context) ([]*CiPermission, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(cpcb.builders))
-	nodes := make([]*CiPermission, len(cpcb.builders))
-	mutators := make([]Mutator, len(cpcb.builders))
-	for i := range cpcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiPermission, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := cpcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiPermissionMutation)
@@ -1038,11 +893,11 @@ func (cpcb *CiPermissionCreateBulk) Save(ctx context.Context) ([]*CiPermission, 
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, cpcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, cpcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -1066,7 +921,7 @@ func (cpcb *CiPermissionCreateBulk) Save(ctx context.Context) ([]*CiPermission, 
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, cpcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -1074,8 +929,8 @@ func (cpcb *CiPermissionCreateBulk) Save(ctx context.Context) ([]*CiPermission, 
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cpcb *CiPermissionCreateBulk) SaveX(ctx context.Context) []*CiPermission {
-	v, err := cpcb.Save(ctx)
+func (_c *CiPermissionCreateBulk) SaveX(ctx context.Context) []*CiPermission {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1083,14 +938,14 @@ func (cpcb *CiPermissionCreateBulk) SaveX(ctx context.Context) []*CiPermission {
 }
 
 // Exec executes the query.
-func (cpcb *CiPermissionCreateBulk) Exec(ctx context.Context) error {
-	_, err := cpcb.Save(ctx)
+func (_c *CiPermissionCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cpcb *CiPermissionCreateBulk) ExecX(ctx context.Context) {
-	if err := cpcb.Exec(ctx); err != nil {
+func (_c *CiPermissionCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

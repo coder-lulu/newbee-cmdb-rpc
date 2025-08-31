@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -24,429 +24,429 @@ type CiRecordsCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (crc *CiRecordsCreate) SetCreatedAt(t time.Time) *CiRecordsCreate {
-	crc.mutation.SetCreatedAt(t)
-	return crc
+func (_c *CiRecordsCreate) SetCreatedAt(v time.Time) *CiRecordsCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableCreatedAt(t *time.Time) *CiRecordsCreate {
-	if t != nil {
-		crc.SetCreatedAt(*t)
+func (_c *CiRecordsCreate) SetNillableCreatedAt(v *time.Time) *CiRecordsCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (crc *CiRecordsCreate) SetUpdatedAt(t time.Time) *CiRecordsCreate {
-	crc.mutation.SetUpdatedAt(t)
-	return crc
+func (_c *CiRecordsCreate) SetUpdatedAt(v time.Time) *CiRecordsCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableUpdatedAt(t *time.Time) *CiRecordsCreate {
-	if t != nil {
-		crc.SetUpdatedAt(*t)
+func (_c *CiRecordsCreate) SetNillableUpdatedAt(v *time.Time) *CiRecordsCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (crc *CiRecordsCreate) SetTenantID(u uint64) *CiRecordsCreate {
-	crc.mutation.SetTenantID(u)
-	return crc
+func (_c *CiRecordsCreate) SetTenantID(v uint64) *CiRecordsCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableTenantID(u *uint64) *CiRecordsCreate {
-	if u != nil {
-		crc.SetTenantID(*u)
+func (_c *CiRecordsCreate) SetNillableTenantID(v *uint64) *CiRecordsCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (crc *CiRecordsCreate) SetDepartmentID(u uint64) *CiRecordsCreate {
-	crc.mutation.SetDepartmentID(u)
-	return crc
+func (_c *CiRecordsCreate) SetDepartmentID(v uint64) *CiRecordsCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableDepartmentID(u *uint64) *CiRecordsCreate {
-	if u != nil {
-		crc.SetDepartmentID(*u)
+func (_c *CiRecordsCreate) SetNillableDepartmentID(v *uint64) *CiRecordsCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (crc *CiRecordsCreate) SetCiID(u uint64) *CiRecordsCreate {
-	crc.mutation.SetCiID(u)
-	return crc
+func (_c *CiRecordsCreate) SetCiID(v uint64) *CiRecordsCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (crc *CiRecordsCreate) SetCiTypeID(u uint64) *CiRecordsCreate {
-	crc.mutation.SetCiTypeID(u)
-	return crc
+func (_c *CiRecordsCreate) SetCiTypeID(v uint64) *CiRecordsCreate {
+	_c.mutation.SetCiTypeID(v)
+	return _c
 }
 
 // SetCiTypeName sets the "ci_type_name" field.
-func (crc *CiRecordsCreate) SetCiTypeName(s string) *CiRecordsCreate {
-	crc.mutation.SetCiTypeName(s)
-	return crc
+func (_c *CiRecordsCreate) SetCiTypeName(v string) *CiRecordsCreate {
+	_c.mutation.SetCiTypeName(v)
+	return _c
 }
 
 // SetCiUniqueKey sets the "ci_unique_key" field.
-func (crc *CiRecordsCreate) SetCiUniqueKey(s string) *CiRecordsCreate {
-	crc.mutation.SetCiUniqueKey(s)
-	return crc
+func (_c *CiRecordsCreate) SetCiUniqueKey(v string) *CiRecordsCreate {
+	_c.mutation.SetCiUniqueKey(v)
+	return _c
 }
 
 // SetNillableCiUniqueKey sets the "ci_unique_key" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableCiUniqueKey(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetCiUniqueKey(*s)
+func (_c *CiRecordsCreate) SetNillableCiUniqueKey(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetCiUniqueKey(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetOperationType sets the "operation_type" field.
-func (crc *CiRecordsCreate) SetOperationType(ct cirecords.OperationType) *CiRecordsCreate {
-	crc.mutation.SetOperationType(ct)
-	return crc
+func (_c *CiRecordsCreate) SetOperationType(v cirecords.OperationType) *CiRecordsCreate {
+	_c.mutation.SetOperationType(v)
+	return _c
 }
 
 // SetOperationTime sets the "operation_time" field.
-func (crc *CiRecordsCreate) SetOperationTime(t time.Time) *CiRecordsCreate {
-	crc.mutation.SetOperationTime(t)
-	return crc
+func (_c *CiRecordsCreate) SetOperationTime(v time.Time) *CiRecordsCreate {
+	_c.mutation.SetOperationTime(v)
+	return _c
 }
 
 // SetOperationUserID sets the "operation_user_id" field.
-func (crc *CiRecordsCreate) SetOperationUserID(u uuid.UUID) *CiRecordsCreate {
-	crc.mutation.SetOperationUserID(u)
-	return crc
+func (_c *CiRecordsCreate) SetOperationUserID(v uuid.UUID) *CiRecordsCreate {
+	_c.mutation.SetOperationUserID(v)
+	return _c
 }
 
 // SetNillableOperationUserID sets the "operation_user_id" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableOperationUserID(u *uuid.UUID) *CiRecordsCreate {
-	if u != nil {
-		crc.SetOperationUserID(*u)
+func (_c *CiRecordsCreate) SetNillableOperationUserID(v *uuid.UUID) *CiRecordsCreate {
+	if v != nil {
+		_c.SetOperationUserID(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetOperationUserName sets the "operation_user_name" field.
-func (crc *CiRecordsCreate) SetOperationUserName(s string) *CiRecordsCreate {
-	crc.mutation.SetOperationUserName(s)
-	return crc
+func (_c *CiRecordsCreate) SetOperationUserName(v string) *CiRecordsCreate {
+	_c.mutation.SetOperationUserName(v)
+	return _c
 }
 
 // SetNillableOperationUserName sets the "operation_user_name" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableOperationUserName(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetOperationUserName(*s)
+func (_c *CiRecordsCreate) SetNillableOperationUserName(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetOperationUserName(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetSourceType sets the "source_type" field.
-func (crc *CiRecordsCreate) SetSourceType(ct cirecords.SourceType) *CiRecordsCreate {
-	crc.mutation.SetSourceType(ct)
-	return crc
+func (_c *CiRecordsCreate) SetSourceType(v cirecords.SourceType) *CiRecordsCreate {
+	_c.mutation.SetSourceType(v)
+	return _c
 }
 
 // SetSourceID sets the "source_id" field.
-func (crc *CiRecordsCreate) SetSourceID(s string) *CiRecordsCreate {
-	crc.mutation.SetSourceID(s)
-	return crc
+func (_c *CiRecordsCreate) SetSourceID(v string) *CiRecordsCreate {
+	_c.mutation.SetSourceID(v)
+	return _c
 }
 
 // SetNillableSourceID sets the "source_id" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableSourceID(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetSourceID(*s)
+func (_c *CiRecordsCreate) SetNillableSourceID(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetSourceID(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetSourceDescription sets the "source_description" field.
-func (crc *CiRecordsCreate) SetSourceDescription(s string) *CiRecordsCreate {
-	crc.mutation.SetSourceDescription(s)
-	return crc
+func (_c *CiRecordsCreate) SetSourceDescription(v string) *CiRecordsCreate {
+	_c.mutation.SetSourceDescription(v)
+	return _c
 }
 
 // SetNillableSourceDescription sets the "source_description" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableSourceDescription(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetSourceDescription(*s)
+func (_c *CiRecordsCreate) SetNillableSourceDescription(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetSourceDescription(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetBeforeData sets the "before_data" field.
-func (crc *CiRecordsCreate) SetBeforeData(m map[string]interface{}) *CiRecordsCreate {
-	crc.mutation.SetBeforeData(m)
-	return crc
+func (_c *CiRecordsCreate) SetBeforeData(v map[string]interface{}) *CiRecordsCreate {
+	_c.mutation.SetBeforeData(v)
+	return _c
 }
 
 // SetAfterData sets the "after_data" field.
-func (crc *CiRecordsCreate) SetAfterData(m map[string]interface{}) *CiRecordsCreate {
-	crc.mutation.SetAfterData(m)
-	return crc
+func (_c *CiRecordsCreate) SetAfterData(v map[string]interface{}) *CiRecordsCreate {
+	_c.mutation.SetAfterData(v)
+	return _c
 }
 
 // SetChangedFields sets the "changed_fields" field.
-func (crc *CiRecordsCreate) SetChangedFields(s []string) *CiRecordsCreate {
-	crc.mutation.SetChangedFields(s)
-	return crc
+func (_c *CiRecordsCreate) SetChangedFields(v []string) *CiRecordsCreate {
+	_c.mutation.SetChangedFields(v)
+	return _c
 }
 
 // SetChangeSummary sets the "change_summary" field.
-func (crc *CiRecordsCreate) SetChangeSummary(m map[string]interface{}) *CiRecordsCreate {
-	crc.mutation.SetChangeSummary(m)
-	return crc
+func (_c *CiRecordsCreate) SetChangeSummary(v map[string]interface{}) *CiRecordsCreate {
+	_c.mutation.SetChangeSummary(v)
+	return _c
 }
 
 // SetChangeReason sets the "change_reason" field.
-func (crc *CiRecordsCreate) SetChangeReason(s string) *CiRecordsCreate {
-	crc.mutation.SetChangeReason(s)
-	return crc
+func (_c *CiRecordsCreate) SetChangeReason(v string) *CiRecordsCreate {
+	_c.mutation.SetChangeReason(v)
+	return _c
 }
 
 // SetNillableChangeReason sets the "change_reason" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableChangeReason(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetChangeReason(*s)
+func (_c *CiRecordsCreate) SetNillableChangeReason(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetChangeReason(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetDescription sets the "description" field.
-func (crc *CiRecordsCreate) SetDescription(s string) *CiRecordsCreate {
-	crc.mutation.SetDescription(s)
-	return crc
+func (_c *CiRecordsCreate) SetDescription(v string) *CiRecordsCreate {
+	_c.mutation.SetDescription(v)
+	return _c
 }
 
 // SetNillableDescription sets the "description" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableDescription(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetDescription(*s)
+func (_c *CiRecordsCreate) SetNillableDescription(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetDescription(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetComments sets the "comments" field.
-func (crc *CiRecordsCreate) SetComments(s string) *CiRecordsCreate {
-	crc.mutation.SetComments(s)
-	return crc
+func (_c *CiRecordsCreate) SetComments(v string) *CiRecordsCreate {
+	_c.mutation.SetComments(v)
+	return _c
 }
 
 // SetNillableComments sets the "comments" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableComments(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetComments(*s)
+func (_c *CiRecordsCreate) SetNillableComments(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetComments(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetVersionNumber sets the "version_number" field.
-func (crc *CiRecordsCreate) SetVersionNumber(i int) *CiRecordsCreate {
-	crc.mutation.SetVersionNumber(i)
-	return crc
+func (_c *CiRecordsCreate) SetVersionNumber(v int) *CiRecordsCreate {
+	_c.mutation.SetVersionNumber(v)
+	return _c
 }
 
 // SetNillableVersionNumber sets the "version_number" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableVersionNumber(i *int) *CiRecordsCreate {
-	if i != nil {
-		crc.SetVersionNumber(*i)
+func (_c *CiRecordsCreate) SetNillableVersionNumber(v *int) *CiRecordsCreate {
+	if v != nil {
+		_c.SetVersionNumber(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetRevisionID sets the "revision_id" field.
-func (crc *CiRecordsCreate) SetRevisionID(s string) *CiRecordsCreate {
-	crc.mutation.SetRevisionID(s)
-	return crc
+func (_c *CiRecordsCreate) SetRevisionID(v string) *CiRecordsCreate {
+	_c.mutation.SetRevisionID(v)
+	return _c
 }
 
 // SetNillableRevisionID sets the "revision_id" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableRevisionID(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetRevisionID(*s)
+func (_c *CiRecordsCreate) SetNillableRevisionID(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetRevisionID(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetClientIP sets the "client_ip" field.
-func (crc *CiRecordsCreate) SetClientIP(s string) *CiRecordsCreate {
-	crc.mutation.SetClientIP(s)
-	return crc
+func (_c *CiRecordsCreate) SetClientIP(v string) *CiRecordsCreate {
+	_c.mutation.SetClientIP(v)
+	return _c
 }
 
 // SetNillableClientIP sets the "client_ip" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableClientIP(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetClientIP(*s)
+func (_c *CiRecordsCreate) SetNillableClientIP(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetClientIP(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetUserAgent sets the "user_agent" field.
-func (crc *CiRecordsCreate) SetUserAgent(s string) *CiRecordsCreate {
-	crc.mutation.SetUserAgent(s)
-	return crc
+func (_c *CiRecordsCreate) SetUserAgent(v string) *CiRecordsCreate {
+	_c.mutation.SetUserAgent(v)
+	return _c
 }
 
 // SetNillableUserAgent sets the "user_agent" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableUserAgent(s *string) *CiRecordsCreate {
-	if s != nil {
-		crc.SetUserAgent(*s)
+func (_c *CiRecordsCreate) SetNillableUserAgent(v *string) *CiRecordsCreate {
+	if v != nil {
+		_c.SetUserAgent(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetRequestContext sets the "request_context" field.
-func (crc *CiRecordsCreate) SetRequestContext(m map[string]interface{}) *CiRecordsCreate {
-	crc.mutation.SetRequestContext(m)
-	return crc
+func (_c *CiRecordsCreate) SetRequestContext(v map[string]interface{}) *CiRecordsCreate {
+	_c.mutation.SetRequestContext(v)
+	return _c
 }
 
 // SetAffectedRelations sets the "affected_relations" field.
-func (crc *CiRecordsCreate) SetAffectedRelations(i int) *CiRecordsCreate {
-	crc.mutation.SetAffectedRelations(i)
-	return crc
+func (_c *CiRecordsCreate) SetAffectedRelations(v int) *CiRecordsCreate {
+	_c.mutation.SetAffectedRelations(v)
+	return _c
 }
 
 // SetNillableAffectedRelations sets the "affected_relations" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableAffectedRelations(i *int) *CiRecordsCreate {
-	if i != nil {
-		crc.SetAffectedRelations(*i)
+func (_c *CiRecordsCreate) SetNillableAffectedRelations(v *int) *CiRecordsCreate {
+	if v != nil {
+		_c.SetAffectedRelations(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetAffectedRelationIds sets the "affected_relation_ids" field.
-func (crc *CiRecordsCreate) SetAffectedRelationIds(u []uint64) *CiRecordsCreate {
-	crc.mutation.SetAffectedRelationIds(u)
-	return crc
+func (_c *CiRecordsCreate) SetAffectedRelationIds(v []uint64) *CiRecordsCreate {
+	_c.mutation.SetAffectedRelationIds(v)
+	return _c
 }
 
 // SetCascadeChanges sets the "cascade_changes" field.
-func (crc *CiRecordsCreate) SetCascadeChanges(b bool) *CiRecordsCreate {
-	crc.mutation.SetCascadeChanges(b)
-	return crc
+func (_c *CiRecordsCreate) SetCascadeChanges(v bool) *CiRecordsCreate {
+	_c.mutation.SetCascadeChanges(v)
+	return _c
 }
 
 // SetNillableCascadeChanges sets the "cascade_changes" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableCascadeChanges(b *bool) *CiRecordsCreate {
-	if b != nil {
-		crc.SetCascadeChanges(*b)
+func (_c *CiRecordsCreate) SetNillableCascadeChanges(v *bool) *CiRecordsCreate {
+	if v != nil {
+		_c.SetCascadeChanges(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetIsMajorChange sets the "is_major_change" field.
-func (crc *CiRecordsCreate) SetIsMajorChange(b bool) *CiRecordsCreate {
-	crc.mutation.SetIsMajorChange(b)
-	return crc
+func (_c *CiRecordsCreate) SetIsMajorChange(v bool) *CiRecordsCreate {
+	_c.mutation.SetIsMajorChange(v)
+	return _c
 }
 
 // SetNillableIsMajorChange sets the "is_major_change" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableIsMajorChange(b *bool) *CiRecordsCreate {
-	if b != nil {
-		crc.SetIsMajorChange(*b)
+func (_c *CiRecordsCreate) SetNillableIsMajorChange(v *bool) *CiRecordsCreate {
+	if v != nil {
+		_c.SetIsMajorChange(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetRequiresApproval sets the "requires_approval" field.
-func (crc *CiRecordsCreate) SetRequiresApproval(b bool) *CiRecordsCreate {
-	crc.mutation.SetRequiresApproval(b)
-	return crc
+func (_c *CiRecordsCreate) SetRequiresApproval(v bool) *CiRecordsCreate {
+	_c.mutation.SetRequiresApproval(v)
+	return _c
 }
 
 // SetNillableRequiresApproval sets the "requires_approval" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableRequiresApproval(b *bool) *CiRecordsCreate {
-	if b != nil {
-		crc.SetRequiresApproval(*b)
+func (_c *CiRecordsCreate) SetNillableRequiresApproval(v *bool) *CiRecordsCreate {
+	if v != nil {
+		_c.SetRequiresApproval(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetApprovalStatus sets the "approval_status" field.
-func (crc *CiRecordsCreate) SetApprovalStatus(cs cirecords.ApprovalStatus) *CiRecordsCreate {
-	crc.mutation.SetApprovalStatus(cs)
-	return crc
+func (_c *CiRecordsCreate) SetApprovalStatus(v cirecords.ApprovalStatus) *CiRecordsCreate {
+	_c.mutation.SetApprovalStatus(v)
+	return _c
 }
 
 // SetNillableApprovalStatus sets the "approval_status" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableApprovalStatus(cs *cirecords.ApprovalStatus) *CiRecordsCreate {
-	if cs != nil {
-		crc.SetApprovalStatus(*cs)
+func (_c *CiRecordsCreate) SetNillableApprovalStatus(v *cirecords.ApprovalStatus) *CiRecordsCreate {
+	if v != nil {
+		_c.SetApprovalStatus(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetApprovedBy sets the "approved_by" field.
-func (crc *CiRecordsCreate) SetApprovedBy(u uuid.UUID) *CiRecordsCreate {
-	crc.mutation.SetApprovedBy(u)
-	return crc
+func (_c *CiRecordsCreate) SetApprovedBy(v uuid.UUID) *CiRecordsCreate {
+	_c.mutation.SetApprovedBy(v)
+	return _c
 }
 
 // SetNillableApprovedBy sets the "approved_by" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableApprovedBy(u *uuid.UUID) *CiRecordsCreate {
-	if u != nil {
-		crc.SetApprovedBy(*u)
+func (_c *CiRecordsCreate) SetNillableApprovedBy(v *uuid.UUID) *CiRecordsCreate {
+	if v != nil {
+		_c.SetApprovedBy(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (crc *CiRecordsCreate) SetApprovedAt(t time.Time) *CiRecordsCreate {
-	crc.mutation.SetApprovedAt(t)
-	return crc
+func (_c *CiRecordsCreate) SetApprovedAt(v time.Time) *CiRecordsCreate {
+	_c.mutation.SetApprovedAt(v)
+	return _c
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (crc *CiRecordsCreate) SetNillableApprovedAt(t *time.Time) *CiRecordsCreate {
-	if t != nil {
-		crc.SetApprovedAt(*t)
+func (_c *CiRecordsCreate) SetNillableApprovedAt(v *time.Time) *CiRecordsCreate {
+	if v != nil {
+		_c.SetApprovedAt(*v)
 	}
-	return crc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (crc *CiRecordsCreate) SetID(u uint64) *CiRecordsCreate {
-	crc.mutation.SetID(u)
-	return crc
+func (_c *CiRecordsCreate) SetID(v uint64) *CiRecordsCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (crc *CiRecordsCreate) SetCi(c *Cis) *CiRecordsCreate {
-	return crc.SetCiID(c.ID)
+func (_c *CiRecordsCreate) SetCi(v *Cis) *CiRecordsCreate {
+	return _c.SetCiID(v.ID)
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (crc *CiRecordsCreate) SetCiType(c *CiType) *CiRecordsCreate {
-	return crc.SetCiTypeID(c.ID)
+func (_c *CiRecordsCreate) SetCiType(v *CiType) *CiRecordsCreate {
+	return _c.SetCiTypeID(v.ID)
 }
 
 // Mutation returns the CiRecordsMutation object of the builder.
-func (crc *CiRecordsCreate) Mutation() *CiRecordsMutation {
-	return crc.mutation
+func (_c *CiRecordsCreate) Mutation() *CiRecordsMutation {
+	return _c.mutation
 }
 
 // Save creates the CiRecords in the database.
-func (crc *CiRecordsCreate) Save(ctx context.Context) (*CiRecords, error) {
-	crc.defaults()
-	return withHooks(ctx, crc.sqlSave, crc.mutation, crc.hooks)
+func (_c *CiRecordsCreate) Save(ctx context.Context) (*CiRecords, error) {
+	_c.defaults()
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (crc *CiRecordsCreate) SaveX(ctx context.Context) *CiRecords {
-	v, err := crc.Save(ctx)
+func (_c *CiRecordsCreate) SaveX(ctx context.Context) *CiRecords {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -454,173 +454,173 @@ func (crc *CiRecordsCreate) SaveX(ctx context.Context) *CiRecords {
 }
 
 // Exec executes the query.
-func (crc *CiRecordsCreate) Exec(ctx context.Context) error {
-	_, err := crc.Save(ctx)
+func (_c *CiRecordsCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (crc *CiRecordsCreate) ExecX(ctx context.Context) {
-	if err := crc.Exec(ctx); err != nil {
+func (_c *CiRecordsCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (crc *CiRecordsCreate) defaults() {
-	if _, ok := crc.mutation.CreatedAt(); !ok {
+func (_c *CiRecordsCreate) defaults() {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		v := cirecords.DefaultCreatedAt()
-		crc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := crc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		v := cirecords.DefaultUpdatedAt()
-		crc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := crc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := cirecords.DefaultTenantID
-		crc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := crc.mutation.VersionNumber(); !ok {
+	if _, ok := _c.mutation.VersionNumber(); !ok {
 		v := cirecords.DefaultVersionNumber
-		crc.mutation.SetVersionNumber(v)
+		_c.mutation.SetVersionNumber(v)
 	}
-	if _, ok := crc.mutation.AffectedRelations(); !ok {
+	if _, ok := _c.mutation.AffectedRelations(); !ok {
 		v := cirecords.DefaultAffectedRelations
-		crc.mutation.SetAffectedRelations(v)
+		_c.mutation.SetAffectedRelations(v)
 	}
-	if _, ok := crc.mutation.CascadeChanges(); !ok {
+	if _, ok := _c.mutation.CascadeChanges(); !ok {
 		v := cirecords.DefaultCascadeChanges
-		crc.mutation.SetCascadeChanges(v)
+		_c.mutation.SetCascadeChanges(v)
 	}
-	if _, ok := crc.mutation.IsMajorChange(); !ok {
+	if _, ok := _c.mutation.IsMajorChange(); !ok {
 		v := cirecords.DefaultIsMajorChange
-		crc.mutation.SetIsMajorChange(v)
+		_c.mutation.SetIsMajorChange(v)
 	}
-	if _, ok := crc.mutation.RequiresApproval(); !ok {
+	if _, ok := _c.mutation.RequiresApproval(); !ok {
 		v := cirecords.DefaultRequiresApproval
-		crc.mutation.SetRequiresApproval(v)
+		_c.mutation.SetRequiresApproval(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (crc *CiRecordsCreate) check() error {
-	if _, ok := crc.mutation.CreatedAt(); !ok {
+func (_c *CiRecordsCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiRecords.created_at"`)}
 	}
-	if _, ok := crc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiRecords.updated_at"`)}
 	}
-	if _, ok := crc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiRecords.tenant_id"`)}
 	}
-	if _, ok := crc.mutation.CiID(); !ok {
+	if _, ok := _c.mutation.CiID(); !ok {
 		return &ValidationError{Name: "ci_id", err: errors.New(`ent: missing required field "CiRecords.ci_id"`)}
 	}
-	if _, ok := crc.mutation.CiTypeID(); !ok {
+	if _, ok := _c.mutation.CiTypeID(); !ok {
 		return &ValidationError{Name: "ci_type_id", err: errors.New(`ent: missing required field "CiRecords.ci_type_id"`)}
 	}
-	if _, ok := crc.mutation.CiTypeName(); !ok {
+	if _, ok := _c.mutation.CiTypeName(); !ok {
 		return &ValidationError{Name: "ci_type_name", err: errors.New(`ent: missing required field "CiRecords.ci_type_name"`)}
 	}
-	if v, ok := crc.mutation.CiTypeName(); ok {
+	if v, ok := _c.mutation.CiTypeName(); ok {
 		if err := cirecords.CiTypeNameValidator(v); err != nil {
 			return &ValidationError{Name: "ci_type_name", err: fmt.Errorf(`ent: validator failed for field "CiRecords.ci_type_name": %w`, err)}
 		}
 	}
-	if v, ok := crc.mutation.CiUniqueKey(); ok {
+	if v, ok := _c.mutation.CiUniqueKey(); ok {
 		if err := cirecords.CiUniqueKeyValidator(v); err != nil {
 			return &ValidationError{Name: "ci_unique_key", err: fmt.Errorf(`ent: validator failed for field "CiRecords.ci_unique_key": %w`, err)}
 		}
 	}
-	if _, ok := crc.mutation.OperationType(); !ok {
+	if _, ok := _c.mutation.OperationType(); !ok {
 		return &ValidationError{Name: "operation_type", err: errors.New(`ent: missing required field "CiRecords.operation_type"`)}
 	}
-	if v, ok := crc.mutation.OperationType(); ok {
+	if v, ok := _c.mutation.OperationType(); ok {
 		if err := cirecords.OperationTypeValidator(v); err != nil {
 			return &ValidationError{Name: "operation_type", err: fmt.Errorf(`ent: validator failed for field "CiRecords.operation_type": %w`, err)}
 		}
 	}
-	if _, ok := crc.mutation.OperationTime(); !ok {
+	if _, ok := _c.mutation.OperationTime(); !ok {
 		return &ValidationError{Name: "operation_time", err: errors.New(`ent: missing required field "CiRecords.operation_time"`)}
 	}
-	if v, ok := crc.mutation.OperationUserName(); ok {
+	if v, ok := _c.mutation.OperationUserName(); ok {
 		if err := cirecords.OperationUserNameValidator(v); err != nil {
 			return &ValidationError{Name: "operation_user_name", err: fmt.Errorf(`ent: validator failed for field "CiRecords.operation_user_name": %w`, err)}
 		}
 	}
-	if _, ok := crc.mutation.SourceType(); !ok {
+	if _, ok := _c.mutation.SourceType(); !ok {
 		return &ValidationError{Name: "source_type", err: errors.New(`ent: missing required field "CiRecords.source_type"`)}
 	}
-	if v, ok := crc.mutation.SourceType(); ok {
+	if v, ok := _c.mutation.SourceType(); ok {
 		if err := cirecords.SourceTypeValidator(v); err != nil {
 			return &ValidationError{Name: "source_type", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_type": %w`, err)}
 		}
 	}
-	if v, ok := crc.mutation.SourceID(); ok {
+	if v, ok := _c.mutation.SourceID(); ok {
 		if err := cirecords.SourceIDValidator(v); err != nil {
 			return &ValidationError{Name: "source_id", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_id": %w`, err)}
 		}
 	}
-	if v, ok := crc.mutation.SourceDescription(); ok {
+	if v, ok := _c.mutation.SourceDescription(); ok {
 		if err := cirecords.SourceDescriptionValidator(v); err != nil {
 			return &ValidationError{Name: "source_description", err: fmt.Errorf(`ent: validator failed for field "CiRecords.source_description": %w`, err)}
 		}
 	}
-	if v, ok := crc.mutation.ChangeReason(); ok {
+	if v, ok := _c.mutation.ChangeReason(); ok {
 		if err := cirecords.ChangeReasonValidator(v); err != nil {
 			return &ValidationError{Name: "change_reason", err: fmt.Errorf(`ent: validator failed for field "CiRecords.change_reason": %w`, err)}
 		}
 	}
-	if _, ok := crc.mutation.VersionNumber(); !ok {
+	if _, ok := _c.mutation.VersionNumber(); !ok {
 		return &ValidationError{Name: "version_number", err: errors.New(`ent: missing required field "CiRecords.version_number"`)}
 	}
-	if v, ok := crc.mutation.RevisionID(); ok {
+	if v, ok := _c.mutation.RevisionID(); ok {
 		if err := cirecords.RevisionIDValidator(v); err != nil {
 			return &ValidationError{Name: "revision_id", err: fmt.Errorf(`ent: validator failed for field "CiRecords.revision_id": %w`, err)}
 		}
 	}
-	if v, ok := crc.mutation.ClientIP(); ok {
+	if v, ok := _c.mutation.ClientIP(); ok {
 		if err := cirecords.ClientIPValidator(v); err != nil {
 			return &ValidationError{Name: "client_ip", err: fmt.Errorf(`ent: validator failed for field "CiRecords.client_ip": %w`, err)}
 		}
 	}
-	if v, ok := crc.mutation.UserAgent(); ok {
+	if v, ok := _c.mutation.UserAgent(); ok {
 		if err := cirecords.UserAgentValidator(v); err != nil {
 			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`ent: validator failed for field "CiRecords.user_agent": %w`, err)}
 		}
 	}
-	if _, ok := crc.mutation.AffectedRelations(); !ok {
+	if _, ok := _c.mutation.AffectedRelations(); !ok {
 		return &ValidationError{Name: "affected_relations", err: errors.New(`ent: missing required field "CiRecords.affected_relations"`)}
 	}
-	if _, ok := crc.mutation.CascadeChanges(); !ok {
+	if _, ok := _c.mutation.CascadeChanges(); !ok {
 		return &ValidationError{Name: "cascade_changes", err: errors.New(`ent: missing required field "CiRecords.cascade_changes"`)}
 	}
-	if _, ok := crc.mutation.IsMajorChange(); !ok {
+	if _, ok := _c.mutation.IsMajorChange(); !ok {
 		return &ValidationError{Name: "is_major_change", err: errors.New(`ent: missing required field "CiRecords.is_major_change"`)}
 	}
-	if _, ok := crc.mutation.RequiresApproval(); !ok {
+	if _, ok := _c.mutation.RequiresApproval(); !ok {
 		return &ValidationError{Name: "requires_approval", err: errors.New(`ent: missing required field "CiRecords.requires_approval"`)}
 	}
-	if v, ok := crc.mutation.ApprovalStatus(); ok {
+	if v, ok := _c.mutation.ApprovalStatus(); ok {
 		if err := cirecords.ApprovalStatusValidator(v); err != nil {
 			return &ValidationError{Name: "approval_status", err: fmt.Errorf(`ent: validator failed for field "CiRecords.approval_status": %w`, err)}
 		}
 	}
-	if len(crc.mutation.CiIDs()) == 0 {
+	if len(_c.mutation.CiIDs()) == 0 {
 		return &ValidationError{Name: "ci", err: errors.New(`ent: missing required edge "CiRecords.ci"`)}
 	}
-	if len(crc.mutation.CiTypeIDs()) == 0 {
+	if len(_c.mutation.CiTypeIDs()) == 0 {
 		return &ValidationError{Name: "ci_type", err: errors.New(`ent: missing required edge "CiRecords.ci_type"`)}
 	}
 	return nil
 }
 
-func (crc *CiRecordsCreate) sqlSave(ctx context.Context) (*CiRecords, error) {
-	if err := crc.check(); err != nil {
+func (_c *CiRecordsCreate) sqlSave(ctx context.Context) (*CiRecords, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := crc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, crc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -630,153 +630,153 @@ func (crc *CiRecordsCreate) sqlSave(ctx context.Context) (*CiRecords, error) {
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	crc.mutation.id = &_node.ID
-	crc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (crc *CiRecordsCreate) createSpec() (*CiRecords, *sqlgraph.CreateSpec) {
+func (_c *CiRecordsCreate) createSpec() (*CiRecords, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiRecords{config: crc.config}
+		_node = &CiRecords{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(cirecords.Table, sqlgraph.NewFieldSpec(cirecords.FieldID, field.TypeUint64))
 	)
-	if id, ok := crc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := crc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(cirecords.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := crc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(cirecords.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := crc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(cirecords.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := crc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(cirecords.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := crc.mutation.CiTypeName(); ok {
+	if value, ok := _c.mutation.CiTypeName(); ok {
 		_spec.SetField(cirecords.FieldCiTypeName, field.TypeString, value)
 		_node.CiTypeName = value
 	}
-	if value, ok := crc.mutation.CiUniqueKey(); ok {
+	if value, ok := _c.mutation.CiUniqueKey(); ok {
 		_spec.SetField(cirecords.FieldCiUniqueKey, field.TypeString, value)
 		_node.CiUniqueKey = value
 	}
-	if value, ok := crc.mutation.OperationType(); ok {
+	if value, ok := _c.mutation.OperationType(); ok {
 		_spec.SetField(cirecords.FieldOperationType, field.TypeEnum, value)
 		_node.OperationType = value
 	}
-	if value, ok := crc.mutation.OperationTime(); ok {
+	if value, ok := _c.mutation.OperationTime(); ok {
 		_spec.SetField(cirecords.FieldOperationTime, field.TypeTime, value)
 		_node.OperationTime = value
 	}
-	if value, ok := crc.mutation.OperationUserID(); ok {
+	if value, ok := _c.mutation.OperationUserID(); ok {
 		_spec.SetField(cirecords.FieldOperationUserID, field.TypeUUID, value)
 		_node.OperationUserID = value
 	}
-	if value, ok := crc.mutation.OperationUserName(); ok {
+	if value, ok := _c.mutation.OperationUserName(); ok {
 		_spec.SetField(cirecords.FieldOperationUserName, field.TypeString, value)
 		_node.OperationUserName = value
 	}
-	if value, ok := crc.mutation.SourceType(); ok {
+	if value, ok := _c.mutation.SourceType(); ok {
 		_spec.SetField(cirecords.FieldSourceType, field.TypeEnum, value)
 		_node.SourceType = value
 	}
-	if value, ok := crc.mutation.SourceID(); ok {
+	if value, ok := _c.mutation.SourceID(); ok {
 		_spec.SetField(cirecords.FieldSourceID, field.TypeString, value)
 		_node.SourceID = value
 	}
-	if value, ok := crc.mutation.SourceDescription(); ok {
+	if value, ok := _c.mutation.SourceDescription(); ok {
 		_spec.SetField(cirecords.FieldSourceDescription, field.TypeString, value)
 		_node.SourceDescription = value
 	}
-	if value, ok := crc.mutation.BeforeData(); ok {
+	if value, ok := _c.mutation.BeforeData(); ok {
 		_spec.SetField(cirecords.FieldBeforeData, field.TypeJSON, value)
 		_node.BeforeData = value
 	}
-	if value, ok := crc.mutation.AfterData(); ok {
+	if value, ok := _c.mutation.AfterData(); ok {
 		_spec.SetField(cirecords.FieldAfterData, field.TypeJSON, value)
 		_node.AfterData = value
 	}
-	if value, ok := crc.mutation.ChangedFields(); ok {
+	if value, ok := _c.mutation.ChangedFields(); ok {
 		_spec.SetField(cirecords.FieldChangedFields, field.TypeJSON, value)
 		_node.ChangedFields = value
 	}
-	if value, ok := crc.mutation.ChangeSummary(); ok {
+	if value, ok := _c.mutation.ChangeSummary(); ok {
 		_spec.SetField(cirecords.FieldChangeSummary, field.TypeJSON, value)
 		_node.ChangeSummary = value
 	}
-	if value, ok := crc.mutation.ChangeReason(); ok {
+	if value, ok := _c.mutation.ChangeReason(); ok {
 		_spec.SetField(cirecords.FieldChangeReason, field.TypeString, value)
 		_node.ChangeReason = value
 	}
-	if value, ok := crc.mutation.Description(); ok {
+	if value, ok := _c.mutation.Description(); ok {
 		_spec.SetField(cirecords.FieldDescription, field.TypeString, value)
 		_node.Description = value
 	}
-	if value, ok := crc.mutation.Comments(); ok {
+	if value, ok := _c.mutation.Comments(); ok {
 		_spec.SetField(cirecords.FieldComments, field.TypeString, value)
 		_node.Comments = value
 	}
-	if value, ok := crc.mutation.VersionNumber(); ok {
+	if value, ok := _c.mutation.VersionNumber(); ok {
 		_spec.SetField(cirecords.FieldVersionNumber, field.TypeInt, value)
 		_node.VersionNumber = value
 	}
-	if value, ok := crc.mutation.RevisionID(); ok {
+	if value, ok := _c.mutation.RevisionID(); ok {
 		_spec.SetField(cirecords.FieldRevisionID, field.TypeString, value)
 		_node.RevisionID = value
 	}
-	if value, ok := crc.mutation.ClientIP(); ok {
+	if value, ok := _c.mutation.ClientIP(); ok {
 		_spec.SetField(cirecords.FieldClientIP, field.TypeString, value)
 		_node.ClientIP = value
 	}
-	if value, ok := crc.mutation.UserAgent(); ok {
+	if value, ok := _c.mutation.UserAgent(); ok {
 		_spec.SetField(cirecords.FieldUserAgent, field.TypeString, value)
 		_node.UserAgent = value
 	}
-	if value, ok := crc.mutation.RequestContext(); ok {
+	if value, ok := _c.mutation.RequestContext(); ok {
 		_spec.SetField(cirecords.FieldRequestContext, field.TypeJSON, value)
 		_node.RequestContext = value
 	}
-	if value, ok := crc.mutation.AffectedRelations(); ok {
+	if value, ok := _c.mutation.AffectedRelations(); ok {
 		_spec.SetField(cirecords.FieldAffectedRelations, field.TypeInt, value)
 		_node.AffectedRelations = value
 	}
-	if value, ok := crc.mutation.AffectedRelationIds(); ok {
+	if value, ok := _c.mutation.AffectedRelationIds(); ok {
 		_spec.SetField(cirecords.FieldAffectedRelationIds, field.TypeJSON, value)
 		_node.AffectedRelationIds = value
 	}
-	if value, ok := crc.mutation.CascadeChanges(); ok {
+	if value, ok := _c.mutation.CascadeChanges(); ok {
 		_spec.SetField(cirecords.FieldCascadeChanges, field.TypeBool, value)
 		_node.CascadeChanges = value
 	}
-	if value, ok := crc.mutation.IsMajorChange(); ok {
+	if value, ok := _c.mutation.IsMajorChange(); ok {
 		_spec.SetField(cirecords.FieldIsMajorChange, field.TypeBool, value)
 		_node.IsMajorChange = value
 	}
-	if value, ok := crc.mutation.RequiresApproval(); ok {
+	if value, ok := _c.mutation.RequiresApproval(); ok {
 		_spec.SetField(cirecords.FieldRequiresApproval, field.TypeBool, value)
 		_node.RequiresApproval = value
 	}
-	if value, ok := crc.mutation.ApprovalStatus(); ok {
+	if value, ok := _c.mutation.ApprovalStatus(); ok {
 		_spec.SetField(cirecords.FieldApprovalStatus, field.TypeEnum, value)
 		_node.ApprovalStatus = value
 	}
-	if value, ok := crc.mutation.ApprovedBy(); ok {
+	if value, ok := _c.mutation.ApprovedBy(); ok {
 		_spec.SetField(cirecords.FieldApprovedBy, field.TypeUUID, value)
 		_node.ApprovedBy = value
 	}
-	if value, ok := crc.mutation.ApprovedAt(); ok {
+	if value, ok := _c.mutation.ApprovedAt(); ok {
 		_spec.SetField(cirecords.FieldApprovedAt, field.TypeTime, value)
 		_node.ApprovedAt = value
 	}
-	if nodes := crc.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -793,7 +793,7 @@ func (crc *CiRecordsCreate) createSpec() (*CiRecords, *sqlgraph.CreateSpec) {
 		_node.CiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := crc.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -821,16 +821,16 @@ type CiRecordsCreateBulk struct {
 }
 
 // Save creates the CiRecords entities in the database.
-func (crcb *CiRecordsCreateBulk) Save(ctx context.Context) ([]*CiRecords, error) {
-	if crcb.err != nil {
-		return nil, crcb.err
+func (_c *CiRecordsCreateBulk) Save(ctx context.Context) ([]*CiRecords, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(crcb.builders))
-	nodes := make([]*CiRecords, len(crcb.builders))
-	mutators := make([]Mutator, len(crcb.builders))
-	for i := range crcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiRecords, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := crcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiRecordsMutation)
@@ -844,11 +844,11 @@ func (crcb *CiRecordsCreateBulk) Save(ctx context.Context) ([]*CiRecords, error)
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, crcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, crcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -872,7 +872,7 @@ func (crcb *CiRecordsCreateBulk) Save(ctx context.Context) ([]*CiRecords, error)
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, crcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -880,8 +880,8 @@ func (crcb *CiRecordsCreateBulk) Save(ctx context.Context) ([]*CiRecords, error)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (crcb *CiRecordsCreateBulk) SaveX(ctx context.Context) []*CiRecords {
-	v, err := crcb.Save(ctx)
+func (_c *CiRecordsCreateBulk) SaveX(ctx context.Context) []*CiRecords {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -889,14 +889,14 @@ func (crcb *CiRecordsCreateBulk) SaveX(ctx context.Context) []*CiRecords {
 }
 
 // Exec executes the query.
-func (crcb *CiRecordsCreateBulk) Exec(ctx context.Context) error {
-	_, err := crcb.Save(ctx)
+func (_c *CiRecordsCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (crcb *CiRecordsCreateBulk) ExecX(ctx context.Context) {
-	if err := crcb.Exec(ctx); err != nil {
+func (_c *CiRecordsCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

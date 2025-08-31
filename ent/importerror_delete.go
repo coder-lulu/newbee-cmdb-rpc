@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ImportErrorDelete is the builder for deleting a ImportError entity.
@@ -20,56 +20,56 @@ type ImportErrorDelete struct {
 }
 
 // Where appends a list predicates to the ImportErrorDelete builder.
-func (ied *ImportErrorDelete) Where(ps ...predicate.ImportError) *ImportErrorDelete {
-	ied.mutation.Where(ps...)
-	return ied
+func (_d *ImportErrorDelete) Where(ps ...predicate.ImportError) *ImportErrorDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (ied *ImportErrorDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, ied.sqlExec, ied.mutation, ied.hooks)
+func (_d *ImportErrorDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ied *ImportErrorDelete) ExecX(ctx context.Context) int {
-	n, err := ied.Exec(ctx)
+func (_d *ImportErrorDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (ied *ImportErrorDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ImportErrorDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(importerror.Table, sqlgraph.NewFieldSpec(importerror.FieldID, field.TypeUint64))
-	if ps := ied.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, ied.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	ied.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ImportErrorDeleteOne is the builder for deleting a single ImportError entity.
 type ImportErrorDeleteOne struct {
-	ied *ImportErrorDelete
+	_d *ImportErrorDelete
 }
 
 // Where appends a list predicates to the ImportErrorDelete builder.
-func (iedo *ImportErrorDeleteOne) Where(ps ...predicate.ImportError) *ImportErrorDeleteOne {
-	iedo.ied.mutation.Where(ps...)
-	return iedo
+func (_d *ImportErrorDeleteOne) Where(ps ...predicate.ImportError) *ImportErrorDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (iedo *ImportErrorDeleteOne) Exec(ctx context.Context) error {
-	n, err := iedo.ied.Exec(ctx)
+func (_d *ImportErrorDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (iedo *ImportErrorDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (iedo *ImportErrorDeleteOne) ExecX(ctx context.Context) {
-	if err := iedo.Exec(ctx); err != nil {
+func (_d *ImportErrorDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

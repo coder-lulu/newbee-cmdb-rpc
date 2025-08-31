@@ -9,9 +9,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
 )
 
 // ValueFloat is the model entity for the ValueFloat schema.
@@ -25,6 +25,8 @@ type ValueFloat struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Delete Time | 删除日期
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
+	// Tenant ID | 租户 ID
+	TenantID uint64 `json:"tenant_id,omitempty"`
 	// 外键，关联cmdb_cis.id
 	CiID uint64 `json:"ci_id,omitempty"`
 	// 外键，关联cmdb_attributes.id
@@ -81,7 +83,7 @@ func (*ValueFloat) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullBool)
 		case valuefloat.FieldValue:
 			values[i] = new(sql.NullFloat64)
-		case valuefloat.FieldID, valuefloat.FieldCiID, valuefloat.FieldAttrID:
+		case valuefloat.FieldID, valuefloat.FieldTenantID, valuefloat.FieldCiID, valuefloat.FieldAttrID:
 			values[i] = new(sql.NullInt64)
 		case valuefloat.FieldCreatedAt, valuefloat.FieldUpdatedAt, valuefloat.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -94,7 +96,7 @@ func (*ValueFloat) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ValueFloat fields.
-func (vf *ValueFloat) assignValues(columns []string, values []any) error {
+func (_m *ValueFloat) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -105,51 +107,57 @@ func (vf *ValueFloat) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			vf.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case valuefloat.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				vf.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case valuefloat.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				vf.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case valuefloat.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				vf.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
+			}
+		case valuefloat.FieldTenantID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
+			} else if value.Valid {
+				_m.TenantID = uint64(value.Int64)
 			}
 		case valuefloat.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				vf.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case valuefloat.FieldAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field attr_id", values[i])
 			} else if value.Valid {
-				vf.AttrID = uint64(value.Int64)
+				_m.AttrID = uint64(value.Int64)
 			}
 		case valuefloat.FieldValue:
 			if value, ok := values[i].(*sql.NullFloat64); !ok {
 				return fmt.Errorf("unexpected type %T for field value", values[i])
 			} else if value.Valid {
-				vf.Value = value.Float64
+				_m.Value = value.Float64
 			}
 		case valuefloat.FieldIsCover:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_cover", values[i])
 			} else if value.Valid {
-				vf.IsCover = value.Bool
+				_m.IsCover = value.Bool
 			}
 		default:
-			vf.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -157,63 +165,66 @@ func (vf *ValueFloat) assignValues(columns []string, values []any) error {
 
 // GetValue returns the ent.Value that was dynamically selected and assigned to the ValueFloat.
 // This includes values selected through modifiers, order, etc.
-func (vf *ValueFloat) GetValue(name string) (ent.Value, error) {
-	return vf.selectValues.Get(name)
+func (_m *ValueFloat) GetValue(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCi queries the "ci" edge of the ValueFloat entity.
-func (vf *ValueFloat) QueryCi() *CisQuery {
-	return NewValueFloatClient(vf.config).QueryCi(vf)
+func (_m *ValueFloat) QueryCi() *CisQuery {
+	return NewValueFloatClient(_m.config).QueryCi(_m)
 }
 
 // QueryAttribute queries the "attribute" edge of the ValueFloat entity.
-func (vf *ValueFloat) QueryAttribute() *AttributeQuery {
-	return NewValueFloatClient(vf.config).QueryAttribute(vf)
+func (_m *ValueFloat) QueryAttribute() *AttributeQuery {
+	return NewValueFloatClient(_m.config).QueryAttribute(_m)
 }
 
 // Update returns a builder for updating this ValueFloat.
 // Note that you need to call ValueFloat.Unwrap() before calling this method if this ValueFloat
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (vf *ValueFloat) Update() *ValueFloatUpdateOne {
-	return NewValueFloatClient(vf.config).UpdateOne(vf)
+func (_m *ValueFloat) Update() *ValueFloatUpdateOne {
+	return NewValueFloatClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ValueFloat entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (vf *ValueFloat) Unwrap() *ValueFloat {
-	_tx, ok := vf.config.driver.(*txDriver)
+func (_m *ValueFloat) Unwrap() *ValueFloat {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ValueFloat is not a transactional entity")
 	}
-	vf.config.driver = _tx.drv
-	return vf
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (vf *ValueFloat) String() string {
+func (_m *ValueFloat) String() string {
 	var builder strings.Builder
 	builder.WriteString("ValueFloat(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", vf.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(vf.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(vf.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(vf.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("tenant_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", vf.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", vf.AttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.AttrID))
 	builder.WriteString(", ")
 	builder.WriteString("value=")
-	builder.WriteString(fmt.Sprintf("%v", vf.Value))
+	builder.WriteString(fmt.Sprintf("%v", _m.Value))
 	builder.WriteString(", ")
 	builder.WriteString("is_cover=")
-	builder.WriteString(fmt.Sprintf("%v", vf.IsCover))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsCover))
 	builder.WriteByte(')')
 	return builder.String()
 }

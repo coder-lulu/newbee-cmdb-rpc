@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
 )
 
 // ValueFloatDelete is the builder for deleting a ValueFloat entity.
@@ -20,56 +20,56 @@ type ValueFloatDelete struct {
 }
 
 // Where appends a list predicates to the ValueFloatDelete builder.
-func (vfd *ValueFloatDelete) Where(ps ...predicate.ValueFloat) *ValueFloatDelete {
-	vfd.mutation.Where(ps...)
-	return vfd
+func (_d *ValueFloatDelete) Where(ps ...predicate.ValueFloat) *ValueFloatDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (vfd *ValueFloatDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, vfd.sqlExec, vfd.mutation, vfd.hooks)
+func (_d *ValueFloatDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vfd *ValueFloatDelete) ExecX(ctx context.Context) int {
-	n, err := vfd.Exec(ctx)
+func (_d *ValueFloatDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (vfd *ValueFloatDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ValueFloatDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(valuefloat.Table, sqlgraph.NewFieldSpec(valuefloat.FieldID, field.TypeUint64))
-	if ps := vfd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, vfd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	vfd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ValueFloatDeleteOne is the builder for deleting a single ValueFloat entity.
 type ValueFloatDeleteOne struct {
-	vfd *ValueFloatDelete
+	_d *ValueFloatDelete
 }
 
 // Where appends a list predicates to the ValueFloatDelete builder.
-func (vfdo *ValueFloatDeleteOne) Where(ps ...predicate.ValueFloat) *ValueFloatDeleteOne {
-	vfdo.vfd.mutation.Where(ps...)
-	return vfdo
+func (_d *ValueFloatDeleteOne) Where(ps ...predicate.ValueFloat) *ValueFloatDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (vfdo *ValueFloatDeleteOne) Exec(ctx context.Context) error {
-	n, err := vfdo.vfd.Exec(ctx)
+func (_d *ValueFloatDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (vfdo *ValueFloatDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vfdo *ValueFloatDeleteOne) ExecX(ctx context.Context) {
-	if err := vfdo.Exec(ctx); err != nil {
+func (_d *ValueFloatDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

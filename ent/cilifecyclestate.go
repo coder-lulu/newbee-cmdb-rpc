@@ -10,7 +10,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/cilifecyclestate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -188,7 +188,7 @@ func (*CiLifecycleState) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiLifecycleState fields.
-func (cls *CiLifecycleState) assignValues(columns []string, values []any) error {
+func (_m *CiLifecycleState) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -199,90 +199,90 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			cls.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case cilifecyclestate.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				cls.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case cilifecyclestate.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				cls.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case cilifecyclestate.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				cls.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case cilifecyclestate.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				cls.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case cilifecyclestate.FieldStateID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field state_id", values[i])
 			} else if value.Valid {
-				cls.StateID = value.String
+				_m.StateID = value.String
 			}
 		case cilifecyclestate.FieldStateName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field state_name", values[i])
 			} else if value.Valid {
-				cls.StateName = value.String
+				_m.StateName = value.String
 			}
 		case cilifecyclestate.FieldStateCode:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field state_code", values[i])
 			} else if value.Valid {
-				cls.StateCode = value.String
+				_m.StateCode = value.String
 			}
 		case cilifecyclestate.FieldStateDescription:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field state_description", values[i])
 			} else if value.Valid {
-				cls.StateDescription = value.String
+				_m.StateDescription = value.String
 			}
 		case cilifecyclestate.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				cls.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case cilifecyclestate.FieldCiTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_type_id", values[i])
 			} else if value.Valid {
-				cls.CiTypeID = uint64(value.Int64)
+				_m.CiTypeID = uint64(value.Int64)
 			}
 		case cilifecyclestate.FieldStateType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field state_type", values[i])
 			} else if value.Valid {
-				cls.StateType = cilifecyclestate.StateType(value.String)
+				_m.StateType = cilifecyclestate.StateType(value.String)
 			}
 		case cilifecyclestate.FieldStateCategory:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field state_category", values[i])
 			} else if value.Valid {
-				cls.StateCategory = cilifecyclestate.StateCategory(value.String)
+				_m.StateCategory = cilifecyclestate.StateCategory(value.String)
 			}
 		case cilifecyclestate.FieldStateLevel:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field state_level", values[i])
 			} else if value.Valid {
-				cls.StateLevel = int(value.Int64)
+				_m.StateLevel = int(value.Int64)
 			}
 		case cilifecyclestate.FieldAllowedTransitions:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field allowed_transitions", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.AllowedTransitions); err != nil {
+				if err := json.Unmarshal(*value, &_m.AllowedTransitions); err != nil {
 					return fmt.Errorf("unmarshal field allowed_transitions: %w", err)
 				}
 			}
@@ -290,7 +290,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field transition_conditions", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.TransitionConditions); err != nil {
+				if err := json.Unmarshal(*value, &_m.TransitionConditions); err != nil {
 					return fmt.Errorf("unmarshal field transition_conditions: %w", err)
 				}
 			}
@@ -298,7 +298,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field auto_transition_rules", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.AutoTransitionRules); err != nil {
+				if err := json.Unmarshal(*value, &_m.AutoTransitionRules); err != nil {
 					return fmt.Errorf("unmarshal field auto_transition_rules: %w", err)
 				}
 			}
@@ -306,55 +306,55 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field entered_at", values[i])
 			} else if value.Valid {
-				cls.EnteredAt = value.Time
+				_m.EnteredAt = value.Time
 			}
 		case cilifecyclestate.FieldExpectedExitAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field expected_exit_at", values[i])
 			} else if value.Valid {
-				cls.ExpectedExitAt = value.Time
+				_m.ExpectedExitAt = value.Time
 			}
 		case cilifecyclestate.FieldActualExitAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field actual_exit_at", values[i])
 			} else if value.Valid {
-				cls.ActualExitAt = value.Time
+				_m.ActualExitAt = value.Time
 			}
 		case cilifecyclestate.FieldDurationLimitHours:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field duration_limit_hours", values[i])
 			} else if value.Valid {
-				cls.DurationLimitHours = int(value.Int64)
+				_m.DurationLimitHours = int(value.Int64)
 			}
 		case cilifecyclestate.FieldIsTimeout:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_timeout", values[i])
 			} else if value.Valid {
-				cls.IsTimeout = value.Bool
+				_m.IsTimeout = value.Bool
 			}
 		case cilifecyclestate.FieldTimeoutAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field timeout_at", values[i])
 			} else if value.Valid {
-				cls.TimeoutAt = value.Time
+				_m.TimeoutAt = value.Time
 			}
 		case cilifecyclestate.FieldTriggerType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field trigger_type", values[i])
 			} else if value.Valid {
-				cls.TriggerType = cilifecyclestate.TriggerType(value.String)
+				_m.TriggerType = cilifecyclestate.TriggerType(value.String)
 			}
 		case cilifecyclestate.FieldTriggerSource:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field trigger_source", values[i])
 			} else if value.Valid {
-				cls.TriggerSource = value.String
+				_m.TriggerSource = value.String
 			}
 		case cilifecyclestate.FieldTriggerContext:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field trigger_context", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.TriggerContext); err != nil {
+				if err := json.Unmarshal(*value, &_m.TriggerContext); err != nil {
 					return fmt.Errorf("unmarshal field trigger_context: %w", err)
 				}
 			}
@@ -362,19 +362,19 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field triggered_by", values[i])
 			} else if value != nil {
-				cls.TriggeredBy = *value
+				_m.TriggeredBy = *value
 			}
 		case cilifecyclestate.FieldTriggeredByName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field triggered_by_name", values[i])
 			} else if value.Valid {
-				cls.TriggeredByName = value.String
+				_m.TriggeredByName = value.String
 			}
 		case cilifecyclestate.FieldStateData:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field state_data", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.StateData); err != nil {
+				if err := json.Unmarshal(*value, &_m.StateData); err != nil {
 					return fmt.Errorf("unmarshal field state_data: %w", err)
 				}
 			}
@@ -382,7 +382,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field state_config", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.StateConfig); err != nil {
+				if err := json.Unmarshal(*value, &_m.StateConfig); err != nil {
 					return fmt.Errorf("unmarshal field state_config: %w", err)
 				}
 			}
@@ -390,7 +390,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field validation_rules", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.ValidationRules); err != nil {
+				if err := json.Unmarshal(*value, &_m.ValidationRules); err != nil {
 					return fmt.Errorf("unmarshal field validation_rules: %w", err)
 				}
 			}
@@ -398,7 +398,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field required_permissions", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.RequiredPermissions); err != nil {
+				if err := json.Unmarshal(*value, &_m.RequiredPermissions); err != nil {
 					return fmt.Errorf("unmarshal field required_permissions: %w", err)
 				}
 			}
@@ -406,7 +406,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field granted_permissions", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.GrantedPermissions); err != nil {
+				if err := json.Unmarshal(*value, &_m.GrantedPermissions); err != nil {
 					return fmt.Errorf("unmarshal field granted_permissions: %w", err)
 				}
 			}
@@ -414,7 +414,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field restricted_operations", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.RestrictedOperations); err != nil {
+				if err := json.Unmarshal(*value, &_m.RestrictedOperations); err != nil {
 					return fmt.Errorf("unmarshal field restricted_operations: %w", err)
 				}
 			}
@@ -422,7 +422,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field notification_config", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.NotificationConfig); err != nil {
+				if err := json.Unmarshal(*value, &_m.NotificationConfig); err != nil {
 					return fmt.Errorf("unmarshal field notification_config: %w", err)
 				}
 			}
@@ -430,7 +430,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field reminder_config", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.ReminderConfig); err != nil {
+				if err := json.Unmarshal(*value, &_m.ReminderConfig); err != nil {
 					return fmt.Errorf("unmarshal field reminder_config: %w", err)
 				}
 			}
@@ -438,73 +438,73 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field last_notification_at", values[i])
 			} else if value.Valid {
-				cls.LastNotificationAt = value.Time
+				_m.LastNotificationAt = value.Time
 			}
 		case cilifecyclestate.FieldNotificationCount:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field notification_count", values[i])
 			} else if value.Valid {
-				cls.NotificationCount = int(value.Int64)
+				_m.NotificationCount = int(value.Int64)
 			}
 		case cilifecyclestate.FieldRequireApproval:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field require_approval", values[i])
 			} else if value.Valid {
-				cls.RequireApproval = value.Bool
+				_m.RequireApproval = value.Bool
 			}
 		case cilifecyclestate.FieldApprovalFlowID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approval_flow_id", values[i])
 			} else if value.Valid {
-				cls.ApprovalFlowID = value.String
+				_m.ApprovalFlowID = value.String
 			}
 		case cilifecyclestate.FieldApprovalStatus:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approval_status", values[i])
 			} else if value.Valid {
-				cls.ApprovalStatus = cilifecyclestate.ApprovalStatus(value.String)
+				_m.ApprovalStatus = cilifecyclestate.ApprovalStatus(value.String)
 			}
 		case cilifecyclestate.FieldApproverID:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field approver_id", values[i])
 			} else if value != nil {
-				cls.ApproverID = *value
+				_m.ApproverID = *value
 			}
 		case cilifecyclestate.FieldApproverName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approver_name", values[i])
 			} else if value.Valid {
-				cls.ApproverName = value.String
+				_m.ApproverName = value.String
 			}
 		case cilifecyclestate.FieldApprovedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field approved_at", values[i])
 			} else if value.Valid {
-				cls.ApprovedAt = value.Time
+				_m.ApprovedAt = value.Time
 			}
 		case cilifecyclestate.FieldApprovalComment:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approval_comment", values[i])
 			} else if value.Valid {
-				cls.ApprovalComment = value.String
+				_m.ApprovalComment = value.String
 			}
 		case cilifecyclestate.FieldHasError:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field has_error", values[i])
 			} else if value.Valid {
-				cls.HasError = value.Bool
+				_m.HasError = value.Bool
 			}
 		case cilifecyclestate.FieldErrorMessage:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field error_message", values[i])
 			} else if value.Valid {
-				cls.ErrorMessage = value.String
+				_m.ErrorMessage = value.String
 			}
 		case cilifecyclestate.FieldErrorDetails:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field error_details", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.ErrorDetails); err != nil {
+				if err := json.Unmarshal(*value, &_m.ErrorDetails); err != nil {
 					return fmt.Errorf("unmarshal field error_details: %w", err)
 				}
 			}
@@ -512,25 +512,25 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field retry_count", values[i])
 			} else if value.Valid {
-				cls.RetryCount = int(value.Int64)
+				_m.RetryCount = int(value.Int64)
 			}
 		case cilifecyclestate.FieldLastRetryAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field last_retry_at", values[i])
 			} else if value.Valid {
-				cls.LastRetryAt = value.Time
+				_m.LastRetryAt = value.Time
 			}
 		case cilifecyclestate.FieldProcessingDuration:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field processing_duration", values[i])
 			} else if value.Valid {
-				cls.ProcessingDuration = int(value.Int64)
+				_m.ProcessingDuration = int(value.Int64)
 			}
 		case cilifecyclestate.FieldPerformanceMetrics:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field performance_metrics", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.PerformanceMetrics); err != nil {
+				if err := json.Unmarshal(*value, &_m.PerformanceMetrics); err != nil {
 					return fmt.Errorf("unmarshal field performance_metrics: %w", err)
 				}
 			}
@@ -538,7 +538,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field resource_usage", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.ResourceUsage); err != nil {
+				if err := json.Unmarshal(*value, &_m.ResourceUsage); err != nil {
 					return fmt.Errorf("unmarshal field resource_usage: %w", err)
 				}
 			}
@@ -546,13 +546,13 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field parent_state_id", values[i])
 			} else if value.Valid {
-				cls.ParentStateID = value.String
+				_m.ParentStateID = value.String
 			}
 		case cilifecyclestate.FieldChildStateIds:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field child_state_ids", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.ChildStateIds); err != nil {
+				if err := json.Unmarshal(*value, &_m.ChildStateIds); err != nil {
 					return fmt.Errorf("unmarshal field child_state_ids: %w", err)
 				}
 			}
@@ -560,19 +560,19 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field related_operation_id", values[i])
 			} else if value.Valid {
-				cls.RelatedOperationID = value.String
+				_m.RelatedOperationID = value.String
 			}
 		case cilifecyclestate.FieldVersion:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field version", values[i])
 			} else if value.Valid {
-				cls.Version = int(value.Int64)
+				_m.Version = int(value.Int64)
 			}
 		case cilifecyclestate.FieldChangeHistory:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field change_history", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.ChangeHistory); err != nil {
+				if err := json.Unmarshal(*value, &_m.ChangeHistory); err != nil {
 					return fmt.Errorf("unmarshal field change_history: %w", err)
 				}
 			}
@@ -580,43 +580,43 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_rollback", values[i])
 			} else if value.Valid {
-				cls.IsRollback = value.Bool
+				_m.IsRollback = value.Bool
 			}
 		case cilifecyclestate.FieldRollbackFromStateID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field rollback_from_state_id", values[i])
 			} else if value.Valid {
-				cls.RollbackFromStateID = value.String
+				_m.RollbackFromStateID = value.String
 			}
 		case cilifecyclestate.FieldIsMilestone:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_milestone", values[i])
 			} else if value.Valid {
-				cls.IsMilestone = value.Bool
+				_m.IsMilestone = value.Bool
 			}
 		case cilifecyclestate.FieldIsCritical:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_critical", values[i])
 			} else if value.Valid {
-				cls.IsCritical = value.Bool
+				_m.IsCritical = value.Bool
 			}
 		case cilifecyclestate.FieldIsReversible:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_reversible", values[i])
 			} else if value.Valid {
-				cls.IsReversible = value.Bool
+				_m.IsReversible = value.Bool
 			}
 		case cilifecyclestate.FieldIsFinal:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_final", values[i])
 			} else if value.Valid {
-				cls.IsFinal = value.Bool
+				_m.IsFinal = value.Bool
 			}
 		case cilifecyclestate.FieldCustomAttributes:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field custom_attributes", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.CustomAttributes); err != nil {
+				if err := json.Unmarshal(*value, &_m.CustomAttributes); err != nil {
 					return fmt.Errorf("unmarshal field custom_attributes: %w", err)
 				}
 			}
@@ -624,7 +624,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field integration_data", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.IntegrationData); err != nil {
+				if err := json.Unmarshal(*value, &_m.IntegrationData); err != nil {
 					return fmt.Errorf("unmarshal field integration_data: %w", err)
 				}
 			}
@@ -632,7 +632,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field metadata", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.Metadata); err != nil {
+				if err := json.Unmarshal(*value, &_m.Metadata); err != nil {
 					return fmt.Errorf("unmarshal field metadata: %w", err)
 				}
 			}
@@ -640,7 +640,7 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field tags", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cls.Tags); err != nil {
+				if err := json.Unmarshal(*value, &_m.Tags); err != nil {
 					return fmt.Errorf("unmarshal field tags: %w", err)
 				}
 			}
@@ -648,22 +648,22 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field comments", values[i])
 			} else if value.Valid {
-				cls.Comments = value.String
+				_m.Comments = value.String
 			}
 		case cilifecyclestate.FieldCreatedBy:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by", values[i])
 			} else if value != nil {
-				cls.CreatedBy = *value
+				_m.CreatedBy = *value
 			}
 		case cilifecyclestate.FieldUpdatedBy:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_by", values[i])
 			} else if value != nil {
-				cls.UpdatedBy = *value
+				_m.UpdatedBy = *value
 			}
 		default:
-			cls.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -671,242 +671,242 @@ func (cls *CiLifecycleState) assignValues(columns []string, values []any) error 
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiLifecycleState.
 // This includes values selected through modifiers, order, etc.
-func (cls *CiLifecycleState) Value(name string) (ent.Value, error) {
-	return cls.selectValues.Get(name)
+func (_m *CiLifecycleState) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // Update returns a builder for updating this CiLifecycleState.
 // Note that you need to call CiLifecycleState.Unwrap() before calling this method if this CiLifecycleState
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (cls *CiLifecycleState) Update() *CiLifecycleStateUpdateOne {
-	return NewCiLifecycleStateClient(cls.config).UpdateOne(cls)
+func (_m *CiLifecycleState) Update() *CiLifecycleStateUpdateOne {
+	return NewCiLifecycleStateClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiLifecycleState entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (cls *CiLifecycleState) Unwrap() *CiLifecycleState {
-	_tx, ok := cls.config.driver.(*txDriver)
+func (_m *CiLifecycleState) Unwrap() *CiLifecycleState {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiLifecycleState is not a transactional entity")
 	}
-	cls.config.driver = _tx.drv
-	return cls
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (cls *CiLifecycleState) String() string {
+func (_m *CiLifecycleState) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiLifecycleState(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", cls.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(cls.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(cls.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", cls.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", cls.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("state_id=")
-	builder.WriteString(cls.StateID)
+	builder.WriteString(_m.StateID)
 	builder.WriteString(", ")
 	builder.WriteString("state_name=")
-	builder.WriteString(cls.StateName)
+	builder.WriteString(_m.StateName)
 	builder.WriteString(", ")
 	builder.WriteString("state_code=")
-	builder.WriteString(cls.StateCode)
+	builder.WriteString(_m.StateCode)
 	builder.WriteString(", ")
 	builder.WriteString("state_description=")
-	builder.WriteString(cls.StateDescription)
+	builder.WriteString(_m.StateDescription)
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", cls.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", cls.CiTypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiTypeID))
 	builder.WriteString(", ")
 	builder.WriteString("state_type=")
-	builder.WriteString(fmt.Sprintf("%v", cls.StateType))
+	builder.WriteString(fmt.Sprintf("%v", _m.StateType))
 	builder.WriteString(", ")
 	builder.WriteString("state_category=")
-	builder.WriteString(fmt.Sprintf("%v", cls.StateCategory))
+	builder.WriteString(fmt.Sprintf("%v", _m.StateCategory))
 	builder.WriteString(", ")
 	builder.WriteString("state_level=")
-	builder.WriteString(fmt.Sprintf("%v", cls.StateLevel))
+	builder.WriteString(fmt.Sprintf("%v", _m.StateLevel))
 	builder.WriteString(", ")
 	builder.WriteString("allowed_transitions=")
-	builder.WriteString(fmt.Sprintf("%v", cls.AllowedTransitions))
+	builder.WriteString(fmt.Sprintf("%v", _m.AllowedTransitions))
 	builder.WriteString(", ")
 	builder.WriteString("transition_conditions=")
-	builder.WriteString(fmt.Sprintf("%v", cls.TransitionConditions))
+	builder.WriteString(fmt.Sprintf("%v", _m.TransitionConditions))
 	builder.WriteString(", ")
 	builder.WriteString("auto_transition_rules=")
-	builder.WriteString(fmt.Sprintf("%v", cls.AutoTransitionRules))
+	builder.WriteString(fmt.Sprintf("%v", _m.AutoTransitionRules))
 	builder.WriteString(", ")
 	builder.WriteString("entered_at=")
-	builder.WriteString(cls.EnteredAt.Format(time.ANSIC))
+	builder.WriteString(_m.EnteredAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("expected_exit_at=")
-	builder.WriteString(cls.ExpectedExitAt.Format(time.ANSIC))
+	builder.WriteString(_m.ExpectedExitAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("actual_exit_at=")
-	builder.WriteString(cls.ActualExitAt.Format(time.ANSIC))
+	builder.WriteString(_m.ActualExitAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("duration_limit_hours=")
-	builder.WriteString(fmt.Sprintf("%v", cls.DurationLimitHours))
+	builder.WriteString(fmt.Sprintf("%v", _m.DurationLimitHours))
 	builder.WriteString(", ")
 	builder.WriteString("is_timeout=")
-	builder.WriteString(fmt.Sprintf("%v", cls.IsTimeout))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsTimeout))
 	builder.WriteString(", ")
 	builder.WriteString("timeout_at=")
-	builder.WriteString(cls.TimeoutAt.Format(time.ANSIC))
+	builder.WriteString(_m.TimeoutAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("trigger_type=")
-	builder.WriteString(fmt.Sprintf("%v", cls.TriggerType))
+	builder.WriteString(fmt.Sprintf("%v", _m.TriggerType))
 	builder.WriteString(", ")
 	builder.WriteString("trigger_source=")
-	builder.WriteString(cls.TriggerSource)
+	builder.WriteString(_m.TriggerSource)
 	builder.WriteString(", ")
 	builder.WriteString("trigger_context=")
-	builder.WriteString(fmt.Sprintf("%v", cls.TriggerContext))
+	builder.WriteString(fmt.Sprintf("%v", _m.TriggerContext))
 	builder.WriteString(", ")
 	builder.WriteString("triggered_by=")
-	builder.WriteString(fmt.Sprintf("%v", cls.TriggeredBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.TriggeredBy))
 	builder.WriteString(", ")
 	builder.WriteString("triggered_by_name=")
-	builder.WriteString(cls.TriggeredByName)
+	builder.WriteString(_m.TriggeredByName)
 	builder.WriteString(", ")
 	builder.WriteString("state_data=")
-	builder.WriteString(fmt.Sprintf("%v", cls.StateData))
+	builder.WriteString(fmt.Sprintf("%v", _m.StateData))
 	builder.WriteString(", ")
 	builder.WriteString("state_config=")
-	builder.WriteString(fmt.Sprintf("%v", cls.StateConfig))
+	builder.WriteString(fmt.Sprintf("%v", _m.StateConfig))
 	builder.WriteString(", ")
 	builder.WriteString("validation_rules=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ValidationRules))
+	builder.WriteString(fmt.Sprintf("%v", _m.ValidationRules))
 	builder.WriteString(", ")
 	builder.WriteString("required_permissions=")
-	builder.WriteString(fmt.Sprintf("%v", cls.RequiredPermissions))
+	builder.WriteString(fmt.Sprintf("%v", _m.RequiredPermissions))
 	builder.WriteString(", ")
 	builder.WriteString("granted_permissions=")
-	builder.WriteString(fmt.Sprintf("%v", cls.GrantedPermissions))
+	builder.WriteString(fmt.Sprintf("%v", _m.GrantedPermissions))
 	builder.WriteString(", ")
 	builder.WriteString("restricted_operations=")
-	builder.WriteString(fmt.Sprintf("%v", cls.RestrictedOperations))
+	builder.WriteString(fmt.Sprintf("%v", _m.RestrictedOperations))
 	builder.WriteString(", ")
 	builder.WriteString("notification_config=")
-	builder.WriteString(fmt.Sprintf("%v", cls.NotificationConfig))
+	builder.WriteString(fmt.Sprintf("%v", _m.NotificationConfig))
 	builder.WriteString(", ")
 	builder.WriteString("reminder_config=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ReminderConfig))
+	builder.WriteString(fmt.Sprintf("%v", _m.ReminderConfig))
 	builder.WriteString(", ")
 	builder.WriteString("last_notification_at=")
-	builder.WriteString(cls.LastNotificationAt.Format(time.ANSIC))
+	builder.WriteString(_m.LastNotificationAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("notification_count=")
-	builder.WriteString(fmt.Sprintf("%v", cls.NotificationCount))
+	builder.WriteString(fmt.Sprintf("%v", _m.NotificationCount))
 	builder.WriteString(", ")
 	builder.WriteString("require_approval=")
-	builder.WriteString(fmt.Sprintf("%v", cls.RequireApproval))
+	builder.WriteString(fmt.Sprintf("%v", _m.RequireApproval))
 	builder.WriteString(", ")
 	builder.WriteString("approval_flow_id=")
-	builder.WriteString(cls.ApprovalFlowID)
+	builder.WriteString(_m.ApprovalFlowID)
 	builder.WriteString(", ")
 	builder.WriteString("approval_status=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ApprovalStatus))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApprovalStatus))
 	builder.WriteString(", ")
 	builder.WriteString("approver_id=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ApproverID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApproverID))
 	builder.WriteString(", ")
 	builder.WriteString("approver_name=")
-	builder.WriteString(cls.ApproverName)
+	builder.WriteString(_m.ApproverName)
 	builder.WriteString(", ")
 	builder.WriteString("approved_at=")
-	builder.WriteString(cls.ApprovedAt.Format(time.ANSIC))
+	builder.WriteString(_m.ApprovedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("approval_comment=")
-	builder.WriteString(cls.ApprovalComment)
+	builder.WriteString(_m.ApprovalComment)
 	builder.WriteString(", ")
 	builder.WriteString("has_error=")
-	builder.WriteString(fmt.Sprintf("%v", cls.HasError))
+	builder.WriteString(fmt.Sprintf("%v", _m.HasError))
 	builder.WriteString(", ")
 	builder.WriteString("error_message=")
-	builder.WriteString(cls.ErrorMessage)
+	builder.WriteString(_m.ErrorMessage)
 	builder.WriteString(", ")
 	builder.WriteString("error_details=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ErrorDetails))
+	builder.WriteString(fmt.Sprintf("%v", _m.ErrorDetails))
 	builder.WriteString(", ")
 	builder.WriteString("retry_count=")
-	builder.WriteString(fmt.Sprintf("%v", cls.RetryCount))
+	builder.WriteString(fmt.Sprintf("%v", _m.RetryCount))
 	builder.WriteString(", ")
 	builder.WriteString("last_retry_at=")
-	builder.WriteString(cls.LastRetryAt.Format(time.ANSIC))
+	builder.WriteString(_m.LastRetryAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("processing_duration=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ProcessingDuration))
+	builder.WriteString(fmt.Sprintf("%v", _m.ProcessingDuration))
 	builder.WriteString(", ")
 	builder.WriteString("performance_metrics=")
-	builder.WriteString(fmt.Sprintf("%v", cls.PerformanceMetrics))
+	builder.WriteString(fmt.Sprintf("%v", _m.PerformanceMetrics))
 	builder.WriteString(", ")
 	builder.WriteString("resource_usage=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ResourceUsage))
+	builder.WriteString(fmt.Sprintf("%v", _m.ResourceUsage))
 	builder.WriteString(", ")
 	builder.WriteString("parent_state_id=")
-	builder.WriteString(cls.ParentStateID)
+	builder.WriteString(_m.ParentStateID)
 	builder.WriteString(", ")
 	builder.WriteString("child_state_ids=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ChildStateIds))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChildStateIds))
 	builder.WriteString(", ")
 	builder.WriteString("related_operation_id=")
-	builder.WriteString(cls.RelatedOperationID)
+	builder.WriteString(_m.RelatedOperationID)
 	builder.WriteString(", ")
 	builder.WriteString("version=")
-	builder.WriteString(fmt.Sprintf("%v", cls.Version))
+	builder.WriteString(fmt.Sprintf("%v", _m.Version))
 	builder.WriteString(", ")
 	builder.WriteString("change_history=")
-	builder.WriteString(fmt.Sprintf("%v", cls.ChangeHistory))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChangeHistory))
 	builder.WriteString(", ")
 	builder.WriteString("is_rollback=")
-	builder.WriteString(fmt.Sprintf("%v", cls.IsRollback))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsRollback))
 	builder.WriteString(", ")
 	builder.WriteString("rollback_from_state_id=")
-	builder.WriteString(cls.RollbackFromStateID)
+	builder.WriteString(_m.RollbackFromStateID)
 	builder.WriteString(", ")
 	builder.WriteString("is_milestone=")
-	builder.WriteString(fmt.Sprintf("%v", cls.IsMilestone))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsMilestone))
 	builder.WriteString(", ")
 	builder.WriteString("is_critical=")
-	builder.WriteString(fmt.Sprintf("%v", cls.IsCritical))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsCritical))
 	builder.WriteString(", ")
 	builder.WriteString("is_reversible=")
-	builder.WriteString(fmt.Sprintf("%v", cls.IsReversible))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsReversible))
 	builder.WriteString(", ")
 	builder.WriteString("is_final=")
-	builder.WriteString(fmt.Sprintf("%v", cls.IsFinal))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsFinal))
 	builder.WriteString(", ")
 	builder.WriteString("custom_attributes=")
-	builder.WriteString(fmt.Sprintf("%v", cls.CustomAttributes))
+	builder.WriteString(fmt.Sprintf("%v", _m.CustomAttributes))
 	builder.WriteString(", ")
 	builder.WriteString("integration_data=")
-	builder.WriteString(fmt.Sprintf("%v", cls.IntegrationData))
+	builder.WriteString(fmt.Sprintf("%v", _m.IntegrationData))
 	builder.WriteString(", ")
 	builder.WriteString("metadata=")
-	builder.WriteString(fmt.Sprintf("%v", cls.Metadata))
+	builder.WriteString(fmt.Sprintf("%v", _m.Metadata))
 	builder.WriteString(", ")
 	builder.WriteString("tags=")
-	builder.WriteString(fmt.Sprintf("%v", cls.Tags))
+	builder.WriteString(fmt.Sprintf("%v", _m.Tags))
 	builder.WriteString(", ")
 	builder.WriteString("comments=")
-	builder.WriteString(cls.Comments)
+	builder.WriteString(_m.Comments)
 	builder.WriteString(", ")
 	builder.WriteString("created_by=")
-	builder.WriteString(fmt.Sprintf("%v", cls.CreatedBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.CreatedBy))
 	builder.WriteString(", ")
 	builder.WriteString("updated_by=")
-	builder.WriteString(fmt.Sprintf("%v", cls.UpdatedBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.UpdatedBy))
 	builder.WriteByte(')')
 	return builder.String()
 }

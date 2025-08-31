@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ChoiceFloatDelete is the builder for deleting a ChoiceFloat entity.
@@ -20,56 +20,56 @@ type ChoiceFloatDelete struct {
 }
 
 // Where appends a list predicates to the ChoiceFloatDelete builder.
-func (cfd *ChoiceFloatDelete) Where(ps ...predicate.ChoiceFloat) *ChoiceFloatDelete {
-	cfd.mutation.Where(ps...)
-	return cfd
+func (_d *ChoiceFloatDelete) Where(ps ...predicate.ChoiceFloat) *ChoiceFloatDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (cfd *ChoiceFloatDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, cfd.sqlExec, cfd.mutation, cfd.hooks)
+func (_d *ChoiceFloatDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cfd *ChoiceFloatDelete) ExecX(ctx context.Context) int {
-	n, err := cfd.Exec(ctx)
+func (_d *ChoiceFloatDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (cfd *ChoiceFloatDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ChoiceFloatDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(choicefloat.Table, sqlgraph.NewFieldSpec(choicefloat.FieldID, field.TypeUint64))
-	if ps := cfd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, cfd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	cfd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ChoiceFloatDeleteOne is the builder for deleting a single ChoiceFloat entity.
 type ChoiceFloatDeleteOne struct {
-	cfd *ChoiceFloatDelete
+	_d *ChoiceFloatDelete
 }
 
 // Where appends a list predicates to the ChoiceFloatDelete builder.
-func (cfdo *ChoiceFloatDeleteOne) Where(ps ...predicate.ChoiceFloat) *ChoiceFloatDeleteOne {
-	cfdo.cfd.mutation.Where(ps...)
-	return cfdo
+func (_d *ChoiceFloatDeleteOne) Where(ps ...predicate.ChoiceFloat) *ChoiceFloatDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (cfdo *ChoiceFloatDeleteOne) Exec(ctx context.Context) error {
-	n, err := cfdo.cfd.Exec(ctx)
+func (_d *ChoiceFloatDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (cfdo *ChoiceFloatDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cfdo *ChoiceFloatDeleteOne) ExecX(ctx context.Context) {
-	if err := cfdo.Exec(ctx); err != nil {
+func (_d *ChoiceFloatDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

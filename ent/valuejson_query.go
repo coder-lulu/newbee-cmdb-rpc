@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
 )
 
 // ValueJSONQuery is the builder for querying ValueJSON entities.
@@ -32,44 +32,44 @@ type ValueJSONQuery struct {
 }
 
 // Where adds a new predicate for the ValueJSONQuery builder.
-func (vjq *ValueJSONQuery) Where(ps ...predicate.ValueJSON) *ValueJSONQuery {
-	vjq.predicates = append(vjq.predicates, ps...)
-	return vjq
+func (_q *ValueJSONQuery) Where(ps ...predicate.ValueJSON) *ValueJSONQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (vjq *ValueJSONQuery) Limit(limit int) *ValueJSONQuery {
-	vjq.ctx.Limit = &limit
-	return vjq
+func (_q *ValueJSONQuery) Limit(limit int) *ValueJSONQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (vjq *ValueJSONQuery) Offset(offset int) *ValueJSONQuery {
-	vjq.ctx.Offset = &offset
-	return vjq
+func (_q *ValueJSONQuery) Offset(offset int) *ValueJSONQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (vjq *ValueJSONQuery) Unique(unique bool) *ValueJSONQuery {
-	vjq.ctx.Unique = &unique
-	return vjq
+func (_q *ValueJSONQuery) Unique(unique bool) *ValueJSONQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (vjq *ValueJSONQuery) Order(o ...valuejson.OrderOption) *ValueJSONQuery {
-	vjq.order = append(vjq.order, o...)
-	return vjq
+func (_q *ValueJSONQuery) Order(o ...valuejson.OrderOption) *ValueJSONQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryCi chains the current query on the "ci" edge.
-func (vjq *ValueJSONQuery) QueryCi() *CisQuery {
-	query := (&CisClient{config: vjq.config}).Query()
+func (_q *ValueJSONQuery) QueryCi() *CisQuery {
+	query := (&CisClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := vjq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := vjq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -78,20 +78,20 @@ func (vjq *ValueJSONQuery) QueryCi() *CisQuery {
 			sqlgraph.To(cis.Table, cis.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, valuejson.CiTable, valuejson.CiColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(vjq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryAttribute chains the current query on the "attribute" edge.
-func (vjq *ValueJSONQuery) QueryAttribute() *AttributeQuery {
-	query := (&AttributeClient{config: vjq.config}).Query()
+func (_q *ValueJSONQuery) QueryAttribute() *AttributeQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := vjq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := vjq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -100,7 +100,7 @@ func (vjq *ValueJSONQuery) QueryAttribute() *AttributeQuery {
 			sqlgraph.To(attribute.Table, attribute.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, valuejson.AttributeTable, valuejson.AttributeColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(vjq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -108,8 +108,8 @@ func (vjq *ValueJSONQuery) QueryAttribute() *AttributeQuery {
 
 // First returns the first ValueJSON entity from the query.
 // Returns a *NotFoundError when no ValueJSON was found.
-func (vjq *ValueJSONQuery) First(ctx context.Context) (*ValueJSON, error) {
-	nodes, err := vjq.Limit(1).All(setContextOp(ctx, vjq.ctx, ent.OpQueryFirst))
+func (_q *ValueJSONQuery) First(ctx context.Context) (*ValueJSON, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -120,8 +120,8 @@ func (vjq *ValueJSONQuery) First(ctx context.Context) (*ValueJSON, error) {
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (vjq *ValueJSONQuery) FirstX(ctx context.Context) *ValueJSON {
-	node, err := vjq.First(ctx)
+func (_q *ValueJSONQuery) FirstX(ctx context.Context) *ValueJSON {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -130,9 +130,9 @@ func (vjq *ValueJSONQuery) FirstX(ctx context.Context) *ValueJSON {
 
 // FirstID returns the first ValueJSON ID from the query.
 // Returns a *NotFoundError when no ValueJSON ID was found.
-func (vjq *ValueJSONQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *ValueJSONQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = vjq.Limit(1).IDs(setContextOp(ctx, vjq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -143,8 +143,8 @@ func (vjq *ValueJSONQuery) FirstID(ctx context.Context) (id uint64, err error) {
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (vjq *ValueJSONQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := vjq.FirstID(ctx)
+func (_q *ValueJSONQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -154,8 +154,8 @@ func (vjq *ValueJSONQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single ValueJSON entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one ValueJSON entity is found.
 // Returns a *NotFoundError when no ValueJSON entities are found.
-func (vjq *ValueJSONQuery) Only(ctx context.Context) (*ValueJSON, error) {
-	nodes, err := vjq.Limit(2).All(setContextOp(ctx, vjq.ctx, ent.OpQueryOnly))
+func (_q *ValueJSONQuery) Only(ctx context.Context) (*ValueJSON, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -170,8 +170,8 @@ func (vjq *ValueJSONQuery) Only(ctx context.Context) (*ValueJSON, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (vjq *ValueJSONQuery) OnlyX(ctx context.Context) *ValueJSON {
-	node, err := vjq.Only(ctx)
+func (_q *ValueJSONQuery) OnlyX(ctx context.Context) *ValueJSON {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -181,9 +181,9 @@ func (vjq *ValueJSONQuery) OnlyX(ctx context.Context) *ValueJSON {
 // OnlyID is like Only, but returns the only ValueJSON ID in the query.
 // Returns a *NotSingularError when more than one ValueJSON ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (vjq *ValueJSONQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *ValueJSONQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = vjq.Limit(2).IDs(setContextOp(ctx, vjq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -198,8 +198,8 @@ func (vjq *ValueJSONQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (vjq *ValueJSONQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := vjq.OnlyID(ctx)
+func (_q *ValueJSONQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -207,18 +207,18 @@ func (vjq *ValueJSONQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of ValueJSONs.
-func (vjq *ValueJSONQuery) All(ctx context.Context) ([]*ValueJSON, error) {
-	ctx = setContextOp(ctx, vjq.ctx, ent.OpQueryAll)
-	if err := vjq.prepareQuery(ctx); err != nil {
+func (_q *ValueJSONQuery) All(ctx context.Context) ([]*ValueJSON, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*ValueJSON, *ValueJSONQuery]()
-	return withInterceptors[[]*ValueJSON](ctx, vjq, qr, vjq.inters)
+	return withInterceptors[[]*ValueJSON](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (vjq *ValueJSONQuery) AllX(ctx context.Context) []*ValueJSON {
-	nodes, err := vjq.All(ctx)
+func (_q *ValueJSONQuery) AllX(ctx context.Context) []*ValueJSON {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -226,20 +226,20 @@ func (vjq *ValueJSONQuery) AllX(ctx context.Context) []*ValueJSON {
 }
 
 // IDs executes the query and returns a list of ValueJSON IDs.
-func (vjq *ValueJSONQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if vjq.ctx.Unique == nil && vjq.path != nil {
-		vjq.Unique(true)
+func (_q *ValueJSONQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, vjq.ctx, ent.OpQueryIDs)
-	if err = vjq.Select(valuejson.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(valuejson.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (vjq *ValueJSONQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := vjq.IDs(ctx)
+func (_q *ValueJSONQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -247,17 +247,17 @@ func (vjq *ValueJSONQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (vjq *ValueJSONQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, vjq.ctx, ent.OpQueryCount)
-	if err := vjq.prepareQuery(ctx); err != nil {
+func (_q *ValueJSONQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, vjq, querierCount[*ValueJSONQuery](), vjq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*ValueJSONQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (vjq *ValueJSONQuery) CountX(ctx context.Context) int {
-	count, err := vjq.Count(ctx)
+func (_q *ValueJSONQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -265,9 +265,9 @@ func (vjq *ValueJSONQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (vjq *ValueJSONQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, vjq.ctx, ent.OpQueryExist)
-	switch _, err := vjq.FirstID(ctx); {
+func (_q *ValueJSONQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -278,8 +278,8 @@ func (vjq *ValueJSONQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (vjq *ValueJSONQuery) ExistX(ctx context.Context) bool {
-	exist, err := vjq.Exist(ctx)
+func (_q *ValueJSONQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -288,44 +288,44 @@ func (vjq *ValueJSONQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the ValueJSONQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (vjq *ValueJSONQuery) Clone() *ValueJSONQuery {
-	if vjq == nil {
+func (_q *ValueJSONQuery) Clone() *ValueJSONQuery {
+	if _q == nil {
 		return nil
 	}
 	return &ValueJSONQuery{
-		config:        vjq.config,
-		ctx:           vjq.ctx.Clone(),
-		order:         append([]valuejson.OrderOption{}, vjq.order...),
-		inters:        append([]Interceptor{}, vjq.inters...),
-		predicates:    append([]predicate.ValueJSON{}, vjq.predicates...),
-		withCi:        vjq.withCi.Clone(),
-		withAttribute: vjq.withAttribute.Clone(),
+		config:        _q.config,
+		ctx:           _q.ctx.Clone(),
+		order:         append([]valuejson.OrderOption{}, _q.order...),
+		inters:        append([]Interceptor{}, _q.inters...),
+		predicates:    append([]predicate.ValueJSON{}, _q.predicates...),
+		withCi:        _q.withCi.Clone(),
+		withAttribute: _q.withAttribute.Clone(),
 		// clone intermediate query.
-		sql:  vjq.sql.Clone(),
-		path: vjq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithCi tells the query-builder to eager-load the nodes that are connected to
 // the "ci" edge. The optional arguments are used to configure the query builder of the edge.
-func (vjq *ValueJSONQuery) WithCi(opts ...func(*CisQuery)) *ValueJSONQuery {
-	query := (&CisClient{config: vjq.config}).Query()
+func (_q *ValueJSONQuery) WithCi(opts ...func(*CisQuery)) *ValueJSONQuery {
+	query := (&CisClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	vjq.withCi = query
-	return vjq
+	_q.withCi = query
+	return _q
 }
 
 // WithAttribute tells the query-builder to eager-load the nodes that are connected to
 // the "attribute" edge. The optional arguments are used to configure the query builder of the edge.
-func (vjq *ValueJSONQuery) WithAttribute(opts ...func(*AttributeQuery)) *ValueJSONQuery {
-	query := (&AttributeClient{config: vjq.config}).Query()
+func (_q *ValueJSONQuery) WithAttribute(opts ...func(*AttributeQuery)) *ValueJSONQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	vjq.withAttribute = query
-	return vjq
+	_q.withAttribute = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -342,10 +342,10 @@ func (vjq *ValueJSONQuery) WithAttribute(opts ...func(*AttributeQuery)) *ValueJS
 //		GroupBy(valuejson.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (vjq *ValueJSONQuery) GroupBy(field string, fields ...string) *ValueJSONGroupBy {
-	vjq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &ValueJSONGroupBy{build: vjq}
-	grbuild.flds = &vjq.ctx.Fields
+func (_q *ValueJSONQuery) GroupBy(field string, fields ...string) *ValueJSONGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &ValueJSONGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = valuejson.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -363,59 +363,59 @@ func (vjq *ValueJSONQuery) GroupBy(field string, fields ...string) *ValueJSONGro
 //	client.ValueJSON.Query().
 //		Select(valuejson.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (vjq *ValueJSONQuery) Select(fields ...string) *ValueJSONSelect {
-	vjq.ctx.Fields = append(vjq.ctx.Fields, fields...)
-	sbuild := &ValueJSONSelect{ValueJSONQuery: vjq}
+func (_q *ValueJSONQuery) Select(fields ...string) *ValueJSONSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &ValueJSONSelect{ValueJSONQuery: _q}
 	sbuild.label = valuejson.Label
-	sbuild.flds, sbuild.scan = &vjq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a ValueJSONSelect configured with the given aggregations.
-func (vjq *ValueJSONQuery) Aggregate(fns ...AggregateFunc) *ValueJSONSelect {
-	return vjq.Select().Aggregate(fns...)
+func (_q *ValueJSONQuery) Aggregate(fns ...AggregateFunc) *ValueJSONSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (vjq *ValueJSONQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range vjq.inters {
+func (_q *ValueJSONQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, vjq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range vjq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !valuejson.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if vjq.path != nil {
-		prev, err := vjq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		vjq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (vjq *ValueJSONQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ValueJSON, error) {
+func (_q *ValueJSONQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ValueJSON, error) {
 	var (
 		nodes       = []*ValueJSON{}
-		_spec       = vjq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [2]bool{
-			vjq.withCi != nil,
-			vjq.withAttribute != nil,
+			_q.withCi != nil,
+			_q.withAttribute != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*ValueJSON).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &ValueJSON{config: vjq.config}
+		node := &ValueJSON{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -423,20 +423,20 @@ func (vjq *ValueJSONQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*V
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, vjq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := vjq.withCi; query != nil {
-		if err := vjq.loadCi(ctx, query, nodes, nil,
+	if query := _q.withCi; query != nil {
+		if err := _q.loadCi(ctx, query, nodes, nil,
 			func(n *ValueJSON, e *Cis) { n.Edges.Ci = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := vjq.withAttribute; query != nil {
-		if err := vjq.loadAttribute(ctx, query, nodes, nil,
+	if query := _q.withAttribute; query != nil {
+		if err := _q.loadAttribute(ctx, query, nodes, nil,
 			func(n *ValueJSON, e *Attribute) { n.Edges.Attribute = e }); err != nil {
 			return nil, err
 		}
@@ -444,7 +444,7 @@ func (vjq *ValueJSONQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*V
 	return nodes, nil
 }
 
-func (vjq *ValueJSONQuery) loadCi(ctx context.Context, query *CisQuery, nodes []*ValueJSON, init func(*ValueJSON), assign func(*ValueJSON, *Cis)) error {
+func (_q *ValueJSONQuery) loadCi(ctx context.Context, query *CisQuery, nodes []*ValueJSON, init func(*ValueJSON), assign func(*ValueJSON, *Cis)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ValueJSON)
 	for i := range nodes {
@@ -473,7 +473,7 @@ func (vjq *ValueJSONQuery) loadCi(ctx context.Context, query *CisQuery, nodes []
 	}
 	return nil
 }
-func (vjq *ValueJSONQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ValueJSON, init func(*ValueJSON), assign func(*ValueJSON, *Attribute)) error {
+func (_q *ValueJSONQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ValueJSON, init func(*ValueJSON), assign func(*ValueJSON, *Attribute)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ValueJSON)
 	for i := range nodes {
@@ -503,24 +503,24 @@ func (vjq *ValueJSONQuery) loadAttribute(ctx context.Context, query *AttributeQu
 	return nil
 }
 
-func (vjq *ValueJSONQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := vjq.querySpec()
-	_spec.Node.Columns = vjq.ctx.Fields
-	if len(vjq.ctx.Fields) > 0 {
-		_spec.Unique = vjq.ctx.Unique != nil && *vjq.ctx.Unique
+func (_q *ValueJSONQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, vjq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (vjq *ValueJSONQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *ValueJSONQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(valuejson.Table, valuejson.Columns, sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64))
-	_spec.From = vjq.sql
-	if unique := vjq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if vjq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := vjq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valuejson.FieldID)
 		for i := range fields {
@@ -528,27 +528,27 @@ func (vjq *ValueJSONQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if vjq.withCi != nil {
+		if _q.withCi != nil {
 			_spec.Node.AddColumnOnce(valuejson.FieldCiID)
 		}
-		if vjq.withAttribute != nil {
+		if _q.withAttribute != nil {
 			_spec.Node.AddColumnOnce(valuejson.FieldAttrID)
 		}
 	}
-	if ps := vjq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := vjq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := vjq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := vjq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -558,33 +558,33 @@ func (vjq *ValueJSONQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (vjq *ValueJSONQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(vjq.driver.Dialect())
+func (_q *ValueJSONQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(valuejson.Table)
-	columns := vjq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = valuejson.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if vjq.sql != nil {
-		selector = vjq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if vjq.ctx.Unique != nil && *vjq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range vjq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range vjq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := vjq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := vjq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -597,41 +597,41 @@ type ValueJSONGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (vjgb *ValueJSONGroupBy) Aggregate(fns ...AggregateFunc) *ValueJSONGroupBy {
-	vjgb.fns = append(vjgb.fns, fns...)
-	return vjgb
+func (_g *ValueJSONGroupBy) Aggregate(fns ...AggregateFunc) *ValueJSONGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (vjgb *ValueJSONGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, vjgb.build.ctx, ent.OpQueryGroupBy)
-	if err := vjgb.build.prepareQuery(ctx); err != nil {
+func (_g *ValueJSONGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ValueJSONQuery, *ValueJSONGroupBy](ctx, vjgb.build, vjgb, vjgb.build.inters, v)
+	return scanWithInterceptors[*ValueJSONQuery, *ValueJSONGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (vjgb *ValueJSONGroupBy) sqlScan(ctx context.Context, root *ValueJSONQuery, v any) error {
+func (_g *ValueJSONGroupBy) sqlScan(ctx context.Context, root *ValueJSONQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(vjgb.fns))
-	for _, fn := range vjgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*vjgb.flds)+len(vjgb.fns))
-		for _, f := range *vjgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*vjgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := vjgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -645,27 +645,27 @@ type ValueJSONSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (vjs *ValueJSONSelect) Aggregate(fns ...AggregateFunc) *ValueJSONSelect {
-	vjs.fns = append(vjs.fns, fns...)
-	return vjs
+func (_s *ValueJSONSelect) Aggregate(fns ...AggregateFunc) *ValueJSONSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (vjs *ValueJSONSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, vjs.ctx, ent.OpQuerySelect)
-	if err := vjs.prepareQuery(ctx); err != nil {
+func (_s *ValueJSONSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ValueJSONQuery, *ValueJSONSelect](ctx, vjs.ValueJSONQuery, vjs, vjs.inters, v)
+	return scanWithInterceptors[*ValueJSONQuery, *ValueJSONSelect](ctx, _s.ValueJSONQuery, _s, _s.inters, v)
 }
 
-func (vjs *ValueJSONSelect) sqlScan(ctx context.Context, root *ValueJSONQuery, v any) error {
+func (_s *ValueJSONSelect) sqlScan(ctx context.Context, root *ValueJSONQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(vjs.fns))
-	for _, fn := range vjs.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*vjs.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -673,7 +673,7 @@ func (vjs *ValueJSONSelect) sqlScan(ctx context.Context, root *ValueJSONQuery, v
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := vjs.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

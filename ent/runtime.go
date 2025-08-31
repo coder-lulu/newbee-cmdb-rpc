@@ -2,4 +2,4 @@
 
 package ent
 
-// The schema-stitching logic is generated in gitee.com/link234/cmdb-rpc/ent/runtime/runtime.go
+// The schema-stitching logic is generated in github.com/coder-lulu/newbee-cmdb-rpc/ent/runtime/runtime.go

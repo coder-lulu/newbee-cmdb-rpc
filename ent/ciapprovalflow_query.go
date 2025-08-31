@@ -11,8 +11,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/ciapprovalflow"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiApprovalFlowQuery is the builder for querying CiApprovalFlow entities.
@@ -28,40 +28,40 @@ type CiApprovalFlowQuery struct {
 }
 
 // Where adds a new predicate for the CiApprovalFlowQuery builder.
-func (cafq *CiApprovalFlowQuery) Where(ps ...predicate.CiApprovalFlow) *CiApprovalFlowQuery {
-	cafq.predicates = append(cafq.predicates, ps...)
-	return cafq
+func (_q *CiApprovalFlowQuery) Where(ps ...predicate.CiApprovalFlow) *CiApprovalFlowQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (cafq *CiApprovalFlowQuery) Limit(limit int) *CiApprovalFlowQuery {
-	cafq.ctx.Limit = &limit
-	return cafq
+func (_q *CiApprovalFlowQuery) Limit(limit int) *CiApprovalFlowQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (cafq *CiApprovalFlowQuery) Offset(offset int) *CiApprovalFlowQuery {
-	cafq.ctx.Offset = &offset
-	return cafq
+func (_q *CiApprovalFlowQuery) Offset(offset int) *CiApprovalFlowQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (cafq *CiApprovalFlowQuery) Unique(unique bool) *CiApprovalFlowQuery {
-	cafq.ctx.Unique = &unique
-	return cafq
+func (_q *CiApprovalFlowQuery) Unique(unique bool) *CiApprovalFlowQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (cafq *CiApprovalFlowQuery) Order(o ...ciapprovalflow.OrderOption) *CiApprovalFlowQuery {
-	cafq.order = append(cafq.order, o...)
-	return cafq
+func (_q *CiApprovalFlowQuery) Order(o ...ciapprovalflow.OrderOption) *CiApprovalFlowQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // First returns the first CiApprovalFlow entity from the query.
 // Returns a *NotFoundError when no CiApprovalFlow was found.
-func (cafq *CiApprovalFlowQuery) First(ctx context.Context) (*CiApprovalFlow, error) {
-	nodes, err := cafq.Limit(1).All(setContextOp(ctx, cafq.ctx, ent.OpQueryFirst))
+func (_q *CiApprovalFlowQuery) First(ctx context.Context) (*CiApprovalFlow, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -72,8 +72,8 @@ func (cafq *CiApprovalFlowQuery) First(ctx context.Context) (*CiApprovalFlow, er
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (cafq *CiApprovalFlowQuery) FirstX(ctx context.Context) *CiApprovalFlow {
-	node, err := cafq.First(ctx)
+func (_q *CiApprovalFlowQuery) FirstX(ctx context.Context) *CiApprovalFlow {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -82,9 +82,9 @@ func (cafq *CiApprovalFlowQuery) FirstX(ctx context.Context) *CiApprovalFlow {
 
 // FirstID returns the first CiApprovalFlow ID from the query.
 // Returns a *NotFoundError when no CiApprovalFlow ID was found.
-func (cafq *CiApprovalFlowQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *CiApprovalFlowQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = cafq.Limit(1).IDs(setContextOp(ctx, cafq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -95,8 +95,8 @@ func (cafq *CiApprovalFlowQuery) FirstID(ctx context.Context) (id uint64, err er
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (cafq *CiApprovalFlowQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := cafq.FirstID(ctx)
+func (_q *CiApprovalFlowQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -106,8 +106,8 @@ func (cafq *CiApprovalFlowQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single CiApprovalFlow entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one CiApprovalFlow entity is found.
 // Returns a *NotFoundError when no CiApprovalFlow entities are found.
-func (cafq *CiApprovalFlowQuery) Only(ctx context.Context) (*CiApprovalFlow, error) {
-	nodes, err := cafq.Limit(2).All(setContextOp(ctx, cafq.ctx, ent.OpQueryOnly))
+func (_q *CiApprovalFlowQuery) Only(ctx context.Context) (*CiApprovalFlow, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -122,8 +122,8 @@ func (cafq *CiApprovalFlowQuery) Only(ctx context.Context) (*CiApprovalFlow, err
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (cafq *CiApprovalFlowQuery) OnlyX(ctx context.Context) *CiApprovalFlow {
-	node, err := cafq.Only(ctx)
+func (_q *CiApprovalFlowQuery) OnlyX(ctx context.Context) *CiApprovalFlow {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -133,9 +133,9 @@ func (cafq *CiApprovalFlowQuery) OnlyX(ctx context.Context) *CiApprovalFlow {
 // OnlyID is like Only, but returns the only CiApprovalFlow ID in the query.
 // Returns a *NotSingularError when more than one CiApprovalFlow ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (cafq *CiApprovalFlowQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *CiApprovalFlowQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = cafq.Limit(2).IDs(setContextOp(ctx, cafq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -150,8 +150,8 @@ func (cafq *CiApprovalFlowQuery) OnlyID(ctx context.Context) (id uint64, err err
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (cafq *CiApprovalFlowQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := cafq.OnlyID(ctx)
+func (_q *CiApprovalFlowQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -159,18 +159,18 @@ func (cafq *CiApprovalFlowQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of CiApprovalFlows.
-func (cafq *CiApprovalFlowQuery) All(ctx context.Context) ([]*CiApprovalFlow, error) {
-	ctx = setContextOp(ctx, cafq.ctx, ent.OpQueryAll)
-	if err := cafq.prepareQuery(ctx); err != nil {
+func (_q *CiApprovalFlowQuery) All(ctx context.Context) ([]*CiApprovalFlow, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*CiApprovalFlow, *CiApprovalFlowQuery]()
-	return withInterceptors[[]*CiApprovalFlow](ctx, cafq, qr, cafq.inters)
+	return withInterceptors[[]*CiApprovalFlow](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (cafq *CiApprovalFlowQuery) AllX(ctx context.Context) []*CiApprovalFlow {
-	nodes, err := cafq.All(ctx)
+func (_q *CiApprovalFlowQuery) AllX(ctx context.Context) []*CiApprovalFlow {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -178,20 +178,20 @@ func (cafq *CiApprovalFlowQuery) AllX(ctx context.Context) []*CiApprovalFlow {
 }
 
 // IDs executes the query and returns a list of CiApprovalFlow IDs.
-func (cafq *CiApprovalFlowQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if cafq.ctx.Unique == nil && cafq.path != nil {
-		cafq.Unique(true)
+func (_q *CiApprovalFlowQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, cafq.ctx, ent.OpQueryIDs)
-	if err = cafq.Select(ciapprovalflow.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(ciapprovalflow.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (cafq *CiApprovalFlowQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := cafq.IDs(ctx)
+func (_q *CiApprovalFlowQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -199,17 +199,17 @@ func (cafq *CiApprovalFlowQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (cafq *CiApprovalFlowQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, cafq.ctx, ent.OpQueryCount)
-	if err := cafq.prepareQuery(ctx); err != nil {
+func (_q *CiApprovalFlowQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, cafq, querierCount[*CiApprovalFlowQuery](), cafq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*CiApprovalFlowQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (cafq *CiApprovalFlowQuery) CountX(ctx context.Context) int {
-	count, err := cafq.Count(ctx)
+func (_q *CiApprovalFlowQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -217,9 +217,9 @@ func (cafq *CiApprovalFlowQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (cafq *CiApprovalFlowQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, cafq.ctx, ent.OpQueryExist)
-	switch _, err := cafq.FirstID(ctx); {
+func (_q *CiApprovalFlowQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -230,8 +230,8 @@ func (cafq *CiApprovalFlowQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (cafq *CiApprovalFlowQuery) ExistX(ctx context.Context) bool {
-	exist, err := cafq.Exist(ctx)
+func (_q *CiApprovalFlowQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -240,19 +240,19 @@ func (cafq *CiApprovalFlowQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the CiApprovalFlowQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (cafq *CiApprovalFlowQuery) Clone() *CiApprovalFlowQuery {
-	if cafq == nil {
+func (_q *CiApprovalFlowQuery) Clone() *CiApprovalFlowQuery {
+	if _q == nil {
 		return nil
 	}
 	return &CiApprovalFlowQuery{
-		config:     cafq.config,
-		ctx:        cafq.ctx.Clone(),
-		order:      append([]ciapprovalflow.OrderOption{}, cafq.order...),
-		inters:     append([]Interceptor{}, cafq.inters...),
-		predicates: append([]predicate.CiApprovalFlow{}, cafq.predicates...),
+		config:     _q.config,
+		ctx:        _q.ctx.Clone(),
+		order:      append([]ciapprovalflow.OrderOption{}, _q.order...),
+		inters:     append([]Interceptor{}, _q.inters...),
+		predicates: append([]predicate.CiApprovalFlow{}, _q.predicates...),
 		// clone intermediate query.
-		sql:  cafq.sql.Clone(),
-		path: cafq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
@@ -270,10 +270,10 @@ func (cafq *CiApprovalFlowQuery) Clone() *CiApprovalFlowQuery {
 //		GroupBy(ciapprovalflow.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (cafq *CiApprovalFlowQuery) GroupBy(field string, fields ...string) *CiApprovalFlowGroupBy {
-	cafq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &CiApprovalFlowGroupBy{build: cafq}
-	grbuild.flds = &cafq.ctx.Fields
+func (_q *CiApprovalFlowQuery) GroupBy(field string, fields ...string) *CiApprovalFlowGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &CiApprovalFlowGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = ciapprovalflow.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -291,62 +291,62 @@ func (cafq *CiApprovalFlowQuery) GroupBy(field string, fields ...string) *CiAppr
 //	client.CiApprovalFlow.Query().
 //		Select(ciapprovalflow.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (cafq *CiApprovalFlowQuery) Select(fields ...string) *CiApprovalFlowSelect {
-	cafq.ctx.Fields = append(cafq.ctx.Fields, fields...)
-	sbuild := &CiApprovalFlowSelect{CiApprovalFlowQuery: cafq}
+func (_q *CiApprovalFlowQuery) Select(fields ...string) *CiApprovalFlowSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &CiApprovalFlowSelect{CiApprovalFlowQuery: _q}
 	sbuild.label = ciapprovalflow.Label
-	sbuild.flds, sbuild.scan = &cafq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a CiApprovalFlowSelect configured with the given aggregations.
-func (cafq *CiApprovalFlowQuery) Aggregate(fns ...AggregateFunc) *CiApprovalFlowSelect {
-	return cafq.Select().Aggregate(fns...)
+func (_q *CiApprovalFlowQuery) Aggregate(fns ...AggregateFunc) *CiApprovalFlowSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (cafq *CiApprovalFlowQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range cafq.inters {
+func (_q *CiApprovalFlowQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, cafq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range cafq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !ciapprovalflow.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if cafq.path != nil {
-		prev, err := cafq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		cafq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (cafq *CiApprovalFlowQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiApprovalFlow, error) {
+func (_q *CiApprovalFlowQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiApprovalFlow, error) {
 	var (
 		nodes = []*CiApprovalFlow{}
-		_spec = cafq.querySpec()
+		_spec = _q.querySpec()
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*CiApprovalFlow).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &CiApprovalFlow{config: cafq.config}
+		node := &CiApprovalFlow{config: _q.config}
 		nodes = append(nodes, node)
 		return node.assignValues(columns, values)
 	}
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, cafq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
@@ -355,24 +355,24 @@ func (cafq *CiApprovalFlowQuery) sqlAll(ctx context.Context, hooks ...queryHook)
 	return nodes, nil
 }
 
-func (cafq *CiApprovalFlowQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := cafq.querySpec()
-	_spec.Node.Columns = cafq.ctx.Fields
-	if len(cafq.ctx.Fields) > 0 {
-		_spec.Unique = cafq.ctx.Unique != nil && *cafq.ctx.Unique
+func (_q *CiApprovalFlowQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, cafq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (cafq *CiApprovalFlowQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *CiApprovalFlowQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(ciapprovalflow.Table, ciapprovalflow.Columns, sqlgraph.NewFieldSpec(ciapprovalflow.FieldID, field.TypeUint64))
-	_spec.From = cafq.sql
-	if unique := cafq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if cafq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := cafq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, ciapprovalflow.FieldID)
 		for i := range fields {
@@ -381,20 +381,20 @@ func (cafq *CiApprovalFlowQuery) querySpec() *sqlgraph.QuerySpec {
 			}
 		}
 	}
-	if ps := cafq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := cafq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := cafq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := cafq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -404,33 +404,33 @@ func (cafq *CiApprovalFlowQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (cafq *CiApprovalFlowQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(cafq.driver.Dialect())
+func (_q *CiApprovalFlowQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(ciapprovalflow.Table)
-	columns := cafq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = ciapprovalflow.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if cafq.sql != nil {
-		selector = cafq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if cafq.ctx.Unique != nil && *cafq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range cafq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range cafq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := cafq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := cafq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -443,41 +443,41 @@ type CiApprovalFlowGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (cafgb *CiApprovalFlowGroupBy) Aggregate(fns ...AggregateFunc) *CiApprovalFlowGroupBy {
-	cafgb.fns = append(cafgb.fns, fns...)
-	return cafgb
+func (_g *CiApprovalFlowGroupBy) Aggregate(fns ...AggregateFunc) *CiApprovalFlowGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cafgb *CiApprovalFlowGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cafgb.build.ctx, ent.OpQueryGroupBy)
-	if err := cafgb.build.prepareQuery(ctx); err != nil {
+func (_g *CiApprovalFlowGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiApprovalFlowQuery, *CiApprovalFlowGroupBy](ctx, cafgb.build, cafgb, cafgb.build.inters, v)
+	return scanWithInterceptors[*CiApprovalFlowQuery, *CiApprovalFlowGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (cafgb *CiApprovalFlowGroupBy) sqlScan(ctx context.Context, root *CiApprovalFlowQuery, v any) error {
+func (_g *CiApprovalFlowGroupBy) sqlScan(ctx context.Context, root *CiApprovalFlowQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(cafgb.fns))
-	for _, fn := range cafgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*cafgb.flds)+len(cafgb.fns))
-		for _, f := range *cafgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*cafgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cafgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -491,27 +491,27 @@ type CiApprovalFlowSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (cafs *CiApprovalFlowSelect) Aggregate(fns ...AggregateFunc) *CiApprovalFlowSelect {
-	cafs.fns = append(cafs.fns, fns...)
-	return cafs
+func (_s *CiApprovalFlowSelect) Aggregate(fns ...AggregateFunc) *CiApprovalFlowSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cafs *CiApprovalFlowSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cafs.ctx, ent.OpQuerySelect)
-	if err := cafs.prepareQuery(ctx); err != nil {
+func (_s *CiApprovalFlowSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiApprovalFlowQuery, *CiApprovalFlowSelect](ctx, cafs.CiApprovalFlowQuery, cafs, cafs.inters, v)
+	return scanWithInterceptors[*CiApprovalFlowQuery, *CiApprovalFlowSelect](ctx, _s.CiApprovalFlowQuery, _s, _s.inters, v)
 }
 
-func (cafs *CiApprovalFlowSelect) sqlScan(ctx context.Context, root *CiApprovalFlowQuery, v any) error {
+func (_s *CiApprovalFlowSelect) sqlScan(ctx context.Context, root *CiApprovalFlowQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(cafs.fns))
-	for _, fn := range cafs.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*cafs.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -519,7 +519,7 @@ func (cafs *CiApprovalFlowSelect) sqlScan(ctx context.Context, root *CiApprovalF
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cafs.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

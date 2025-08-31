@@ -4,6 +4,7 @@ package ent
 
 import (
 	"context"
+	"database/sql/driver"
 	"fmt"
 	"math"
 
@@ -11,57 +12,129 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiondatafilter"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionfieldmask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionoperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiPermissionQuery is the builder for querying CiPermission entities.
 type CiPermissionQuery struct {
 	config
-	ctx        *QueryContext
-	order      []cipermission.OrderOption
-	inters     []Interceptor
-	predicates []predicate.CiPermission
+	ctx             *QueryContext
+	order           []cipermission.OrderOption
+	inters          []Interceptor
+	predicates      []predicate.CiPermission
+	withOperations  *PermissionOperationQuery
+	withDataFilters *PermissionDataFilterQuery
+	withFieldMasks  *PermissionFieldMaskQuery
 	// intermediate query (i.e. traversal path).
 	sql  *sql.Selector
 	path func(context.Context) (*sql.Selector, error)
 }
 
 // Where adds a new predicate for the CiPermissionQuery builder.
-func (cpq *CiPermissionQuery) Where(ps ...predicate.CiPermission) *CiPermissionQuery {
-	cpq.predicates = append(cpq.predicates, ps...)
-	return cpq
+func (_q *CiPermissionQuery) Where(ps ...predicate.CiPermission) *CiPermissionQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (cpq *CiPermissionQuery) Limit(limit int) *CiPermissionQuery {
-	cpq.ctx.Limit = &limit
-	return cpq
+func (_q *CiPermissionQuery) Limit(limit int) *CiPermissionQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (cpq *CiPermissionQuery) Offset(offset int) *CiPermissionQuery {
-	cpq.ctx.Offset = &offset
-	return cpq
+func (_q *CiPermissionQuery) Offset(offset int) *CiPermissionQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (cpq *CiPermissionQuery) Unique(unique bool) *CiPermissionQuery {
-	cpq.ctx.Unique = &unique
-	return cpq
+func (_q *CiPermissionQuery) Unique(unique bool) *CiPermissionQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (cpq *CiPermissionQuery) Order(o ...cipermission.OrderOption) *CiPermissionQuery {
-	cpq.order = append(cpq.order, o...)
-	return cpq
+func (_q *CiPermissionQuery) Order(o ...cipermission.OrderOption) *CiPermissionQuery {
+	_q.order = append(_q.order, o...)
+	return _q
+}
+
+// QueryOperations chains the current query on the "operations" edge.
+func (_q *CiPermissionQuery) QueryOperations() *PermissionOperationQuery {
+	query := (&PermissionOperationClient{config: _q.config}).Query()
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := _q.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := _q.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(cipermission.Table, cipermission.FieldID, selector),
+			sqlgraph.To(permissionoperation.Table, permissionoperation.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, cipermission.OperationsTable, cipermission.OperationsColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
+}
+
+// QueryDataFilters chains the current query on the "data_filters" edge.
+func (_q *CiPermissionQuery) QueryDataFilters() *PermissionDataFilterQuery {
+	query := (&PermissionDataFilterClient{config: _q.config}).Query()
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := _q.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := _q.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(cipermission.Table, cipermission.FieldID, selector),
+			sqlgraph.To(permissiondatafilter.Table, permissiondatafilter.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, cipermission.DataFiltersTable, cipermission.DataFiltersColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
+}
+
+// QueryFieldMasks chains the current query on the "field_masks" edge.
+func (_q *CiPermissionQuery) QueryFieldMasks() *PermissionFieldMaskQuery {
+	query := (&PermissionFieldMaskClient{config: _q.config}).Query()
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := _q.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := _q.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(cipermission.Table, cipermission.FieldID, selector),
+			sqlgraph.To(permissionfieldmask.Table, permissionfieldmask.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, cipermission.FieldMasksTable, cipermission.FieldMasksColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
 }
 
 // First returns the first CiPermission entity from the query.
 // Returns a *NotFoundError when no CiPermission was found.
-func (cpq *CiPermissionQuery) First(ctx context.Context) (*CiPermission, error) {
-	nodes, err := cpq.Limit(1).All(setContextOp(ctx, cpq.ctx, ent.OpQueryFirst))
+func (_q *CiPermissionQuery) First(ctx context.Context) (*CiPermission, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -72,8 +145,8 @@ func (cpq *CiPermissionQuery) First(ctx context.Context) (*CiPermission, error) 
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (cpq *CiPermissionQuery) FirstX(ctx context.Context) *CiPermission {
-	node, err := cpq.First(ctx)
+func (_q *CiPermissionQuery) FirstX(ctx context.Context) *CiPermission {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -82,9 +155,9 @@ func (cpq *CiPermissionQuery) FirstX(ctx context.Context) *CiPermission {
 
 // FirstID returns the first CiPermission ID from the query.
 // Returns a *NotFoundError when no CiPermission ID was found.
-func (cpq *CiPermissionQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *CiPermissionQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = cpq.Limit(1).IDs(setContextOp(ctx, cpq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -95,8 +168,8 @@ func (cpq *CiPermissionQuery) FirstID(ctx context.Context) (id uint64, err error
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (cpq *CiPermissionQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := cpq.FirstID(ctx)
+func (_q *CiPermissionQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -106,8 +179,8 @@ func (cpq *CiPermissionQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single CiPermission entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one CiPermission entity is found.
 // Returns a *NotFoundError when no CiPermission entities are found.
-func (cpq *CiPermissionQuery) Only(ctx context.Context) (*CiPermission, error) {
-	nodes, err := cpq.Limit(2).All(setContextOp(ctx, cpq.ctx, ent.OpQueryOnly))
+func (_q *CiPermissionQuery) Only(ctx context.Context) (*CiPermission, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -122,8 +195,8 @@ func (cpq *CiPermissionQuery) Only(ctx context.Context) (*CiPermission, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (cpq *CiPermissionQuery) OnlyX(ctx context.Context) *CiPermission {
-	node, err := cpq.Only(ctx)
+func (_q *CiPermissionQuery) OnlyX(ctx context.Context) *CiPermission {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -133,9 +206,9 @@ func (cpq *CiPermissionQuery) OnlyX(ctx context.Context) *CiPermission {
 // OnlyID is like Only, but returns the only CiPermission ID in the query.
 // Returns a *NotSingularError when more than one CiPermission ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (cpq *CiPermissionQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *CiPermissionQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = cpq.Limit(2).IDs(setContextOp(ctx, cpq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -150,8 +223,8 @@ func (cpq *CiPermissionQuery) OnlyID(ctx context.Context) (id uint64, err error)
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (cpq *CiPermissionQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := cpq.OnlyID(ctx)
+func (_q *CiPermissionQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -159,18 +232,18 @@ func (cpq *CiPermissionQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of CiPermissions.
-func (cpq *CiPermissionQuery) All(ctx context.Context) ([]*CiPermission, error) {
-	ctx = setContextOp(ctx, cpq.ctx, ent.OpQueryAll)
-	if err := cpq.prepareQuery(ctx); err != nil {
+func (_q *CiPermissionQuery) All(ctx context.Context) ([]*CiPermission, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*CiPermission, *CiPermissionQuery]()
-	return withInterceptors[[]*CiPermission](ctx, cpq, qr, cpq.inters)
+	return withInterceptors[[]*CiPermission](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (cpq *CiPermissionQuery) AllX(ctx context.Context) []*CiPermission {
-	nodes, err := cpq.All(ctx)
+func (_q *CiPermissionQuery) AllX(ctx context.Context) []*CiPermission {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -178,20 +251,20 @@ func (cpq *CiPermissionQuery) AllX(ctx context.Context) []*CiPermission {
 }
 
 // IDs executes the query and returns a list of CiPermission IDs.
-func (cpq *CiPermissionQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if cpq.ctx.Unique == nil && cpq.path != nil {
-		cpq.Unique(true)
+func (_q *CiPermissionQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, cpq.ctx, ent.OpQueryIDs)
-	if err = cpq.Select(cipermission.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(cipermission.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (cpq *CiPermissionQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := cpq.IDs(ctx)
+func (_q *CiPermissionQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -199,17 +272,17 @@ func (cpq *CiPermissionQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (cpq *CiPermissionQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, cpq.ctx, ent.OpQueryCount)
-	if err := cpq.prepareQuery(ctx); err != nil {
+func (_q *CiPermissionQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, cpq, querierCount[*CiPermissionQuery](), cpq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*CiPermissionQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (cpq *CiPermissionQuery) CountX(ctx context.Context) int {
-	count, err := cpq.Count(ctx)
+func (_q *CiPermissionQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -217,9 +290,9 @@ func (cpq *CiPermissionQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (cpq *CiPermissionQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, cpq.ctx, ent.OpQueryExist)
-	switch _, err := cpq.FirstID(ctx); {
+func (_q *CiPermissionQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -230,8 +303,8 @@ func (cpq *CiPermissionQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (cpq *CiPermissionQuery) ExistX(ctx context.Context) bool {
-	exist, err := cpq.Exist(ctx)
+func (_q *CiPermissionQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -240,20 +313,56 @@ func (cpq *CiPermissionQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the CiPermissionQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (cpq *CiPermissionQuery) Clone() *CiPermissionQuery {
-	if cpq == nil {
+func (_q *CiPermissionQuery) Clone() *CiPermissionQuery {
+	if _q == nil {
 		return nil
 	}
 	return &CiPermissionQuery{
-		config:     cpq.config,
-		ctx:        cpq.ctx.Clone(),
-		order:      append([]cipermission.OrderOption{}, cpq.order...),
-		inters:     append([]Interceptor{}, cpq.inters...),
-		predicates: append([]predicate.CiPermission{}, cpq.predicates...),
+		config:          _q.config,
+		ctx:             _q.ctx.Clone(),
+		order:           append([]cipermission.OrderOption{}, _q.order...),
+		inters:          append([]Interceptor{}, _q.inters...),
+		predicates:      append([]predicate.CiPermission{}, _q.predicates...),
+		withOperations:  _q.withOperations.Clone(),
+		withDataFilters: _q.withDataFilters.Clone(),
+		withFieldMasks:  _q.withFieldMasks.Clone(),
 		// clone intermediate query.
-		sql:  cpq.sql.Clone(),
-		path: cpq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
+}
+
+// WithOperations tells the query-builder to eager-load the nodes that are connected to
+// the "operations" edge. The optional arguments are used to configure the query builder of the edge.
+func (_q *CiPermissionQuery) WithOperations(opts ...func(*PermissionOperationQuery)) *CiPermissionQuery {
+	query := (&PermissionOperationClient{config: _q.config}).Query()
+	for _, opt := range opts {
+		opt(query)
+	}
+	_q.withOperations = query
+	return _q
+}
+
+// WithDataFilters tells the query-builder to eager-load the nodes that are connected to
+// the "data_filters" edge. The optional arguments are used to configure the query builder of the edge.
+func (_q *CiPermissionQuery) WithDataFilters(opts ...func(*PermissionDataFilterQuery)) *CiPermissionQuery {
+	query := (&PermissionDataFilterClient{config: _q.config}).Query()
+	for _, opt := range opts {
+		opt(query)
+	}
+	_q.withDataFilters = query
+	return _q
+}
+
+// WithFieldMasks tells the query-builder to eager-load the nodes that are connected to
+// the "field_masks" edge. The optional arguments are used to configure the query builder of the edge.
+func (_q *CiPermissionQuery) WithFieldMasks(opts ...func(*PermissionFieldMaskQuery)) *CiPermissionQuery {
+	query := (&PermissionFieldMaskClient{config: _q.config}).Query()
+	for _, opt := range opts {
+		opt(query)
+	}
+	_q.withFieldMasks = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -270,10 +379,10 @@ func (cpq *CiPermissionQuery) Clone() *CiPermissionQuery {
 //		GroupBy(cipermission.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (cpq *CiPermissionQuery) GroupBy(field string, fields ...string) *CiPermissionGroupBy {
-	cpq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &CiPermissionGroupBy{build: cpq}
-	grbuild.flds = &cpq.ctx.Fields
+func (_q *CiPermissionQuery) GroupBy(field string, fields ...string) *CiPermissionGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &CiPermissionGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = cipermission.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -291,88 +400,206 @@ func (cpq *CiPermissionQuery) GroupBy(field string, fields ...string) *CiPermiss
 //	client.CiPermission.Query().
 //		Select(cipermission.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (cpq *CiPermissionQuery) Select(fields ...string) *CiPermissionSelect {
-	cpq.ctx.Fields = append(cpq.ctx.Fields, fields...)
-	sbuild := &CiPermissionSelect{CiPermissionQuery: cpq}
+func (_q *CiPermissionQuery) Select(fields ...string) *CiPermissionSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &CiPermissionSelect{CiPermissionQuery: _q}
 	sbuild.label = cipermission.Label
-	sbuild.flds, sbuild.scan = &cpq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a CiPermissionSelect configured with the given aggregations.
-func (cpq *CiPermissionQuery) Aggregate(fns ...AggregateFunc) *CiPermissionSelect {
-	return cpq.Select().Aggregate(fns...)
+func (_q *CiPermissionQuery) Aggregate(fns ...AggregateFunc) *CiPermissionSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (cpq *CiPermissionQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range cpq.inters {
+func (_q *CiPermissionQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, cpq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range cpq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !cipermission.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if cpq.path != nil {
-		prev, err := cpq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		cpq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (cpq *CiPermissionQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiPermission, error) {
+func (_q *CiPermissionQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiPermission, error) {
 	var (
-		nodes = []*CiPermission{}
-		_spec = cpq.querySpec()
+		nodes       = []*CiPermission{}
+		_spec       = _q.querySpec()
+		loadedTypes = [3]bool{
+			_q.withOperations != nil,
+			_q.withDataFilters != nil,
+			_q.withFieldMasks != nil,
+		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*CiPermission).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &CiPermission{config: cpq.config}
+		node := &CiPermission{config: _q.config}
 		nodes = append(nodes, node)
+		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
 	}
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, cpq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
+	if query := _q.withOperations; query != nil {
+		if err := _q.loadOperations(ctx, query, nodes,
+			func(n *CiPermission) { n.Edges.Operations = []*PermissionOperation{} },
+			func(n *CiPermission, e *PermissionOperation) { n.Edges.Operations = append(n.Edges.Operations, e) }); err != nil {
+			return nil, err
+		}
+	}
+	if query := _q.withDataFilters; query != nil {
+		if err := _q.loadDataFilters(ctx, query, nodes,
+			func(n *CiPermission) { n.Edges.DataFilters = []*PermissionDataFilter{} },
+			func(n *CiPermission, e *PermissionDataFilter) { n.Edges.DataFilters = append(n.Edges.DataFilters, e) }); err != nil {
+			return nil, err
+		}
+	}
+	if query := _q.withFieldMasks; query != nil {
+		if err := _q.loadFieldMasks(ctx, query, nodes,
+			func(n *CiPermission) { n.Edges.FieldMasks = []*PermissionFieldMask{} },
+			func(n *CiPermission, e *PermissionFieldMask) { n.Edges.FieldMasks = append(n.Edges.FieldMasks, e) }); err != nil {
+			return nil, err
+		}
+	}
 	return nodes, nil
 }
 
-func (cpq *CiPermissionQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := cpq.querySpec()
-	_spec.Node.Columns = cpq.ctx.Fields
-	if len(cpq.ctx.Fields) > 0 {
-		_spec.Unique = cpq.ctx.Unique != nil && *cpq.ctx.Unique
+func (_q *CiPermissionQuery) loadOperations(ctx context.Context, query *PermissionOperationQuery, nodes []*CiPermission, init func(*CiPermission), assign func(*CiPermission, *PermissionOperation)) error {
+	fks := make([]driver.Value, 0, len(nodes))
+	nodeids := make(map[uint64]*CiPermission)
+	for i := range nodes {
+		fks = append(fks, nodes[i].ID)
+		nodeids[nodes[i].ID] = nodes[i]
+		if init != nil {
+			init(nodes[i])
+		}
 	}
-	return sqlgraph.CountNodes(ctx, cpq.driver, _spec)
+	if len(query.ctx.Fields) > 0 {
+		query.ctx.AppendFieldOnce(permissionoperation.FieldPermissionID)
+	}
+	query.Where(predicate.PermissionOperation(func(s *sql.Selector) {
+		s.Where(sql.InValues(s.C(cipermission.OperationsColumn), fks...))
+	}))
+	neighbors, err := query.All(ctx)
+	if err != nil {
+		return err
+	}
+	for _, n := range neighbors {
+		fk := n.PermissionID
+		node, ok := nodeids[fk]
+		if !ok {
+			return fmt.Errorf(`unexpected referenced foreign-key "permission_id" returned %v for node %v`, fk, n.ID)
+		}
+		assign(node, n)
+	}
+	return nil
+}
+func (_q *CiPermissionQuery) loadDataFilters(ctx context.Context, query *PermissionDataFilterQuery, nodes []*CiPermission, init func(*CiPermission), assign func(*CiPermission, *PermissionDataFilter)) error {
+	fks := make([]driver.Value, 0, len(nodes))
+	nodeids := make(map[uint64]*CiPermission)
+	for i := range nodes {
+		fks = append(fks, nodes[i].ID)
+		nodeids[nodes[i].ID] = nodes[i]
+		if init != nil {
+			init(nodes[i])
+		}
+	}
+	if len(query.ctx.Fields) > 0 {
+		query.ctx.AppendFieldOnce(permissiondatafilter.FieldPermissionID)
+	}
+	query.Where(predicate.PermissionDataFilter(func(s *sql.Selector) {
+		s.Where(sql.InValues(s.C(cipermission.DataFiltersColumn), fks...))
+	}))
+	neighbors, err := query.All(ctx)
+	if err != nil {
+		return err
+	}
+	for _, n := range neighbors {
+		fk := n.PermissionID
+		node, ok := nodeids[fk]
+		if !ok {
+			return fmt.Errorf(`unexpected referenced foreign-key "permission_id" returned %v for node %v`, fk, n.ID)
+		}
+		assign(node, n)
+	}
+	return nil
+}
+func (_q *CiPermissionQuery) loadFieldMasks(ctx context.Context, query *PermissionFieldMaskQuery, nodes []*CiPermission, init func(*CiPermission), assign func(*CiPermission, *PermissionFieldMask)) error {
+	fks := make([]driver.Value, 0, len(nodes))
+	nodeids := make(map[uint64]*CiPermission)
+	for i := range nodes {
+		fks = append(fks, nodes[i].ID)
+		nodeids[nodes[i].ID] = nodes[i]
+		if init != nil {
+			init(nodes[i])
+		}
+	}
+	if len(query.ctx.Fields) > 0 {
+		query.ctx.AppendFieldOnce(permissionfieldmask.FieldPermissionID)
+	}
+	query.Where(predicate.PermissionFieldMask(func(s *sql.Selector) {
+		s.Where(sql.InValues(s.C(cipermission.FieldMasksColumn), fks...))
+	}))
+	neighbors, err := query.All(ctx)
+	if err != nil {
+		return err
+	}
+	for _, n := range neighbors {
+		fk := n.PermissionID
+		node, ok := nodeids[fk]
+		if !ok {
+			return fmt.Errorf(`unexpected referenced foreign-key "permission_id" returned %v for node %v`, fk, n.ID)
+		}
+		assign(node, n)
+	}
+	return nil
 }
 
-func (cpq *CiPermissionQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *CiPermissionQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
+	}
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
+}
+
+func (_q *CiPermissionQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(cipermission.Table, cipermission.Columns, sqlgraph.NewFieldSpec(cipermission.FieldID, field.TypeUint64))
-	_spec.From = cpq.sql
-	if unique := cpq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if cpq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := cpq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cipermission.FieldID)
 		for i := range fields {
@@ -381,20 +608,20 @@ func (cpq *CiPermissionQuery) querySpec() *sqlgraph.QuerySpec {
 			}
 		}
 	}
-	if ps := cpq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := cpq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := cpq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := cpq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -404,33 +631,33 @@ func (cpq *CiPermissionQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (cpq *CiPermissionQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(cpq.driver.Dialect())
+func (_q *CiPermissionQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(cipermission.Table)
-	columns := cpq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = cipermission.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if cpq.sql != nil {
-		selector = cpq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if cpq.ctx.Unique != nil && *cpq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range cpq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range cpq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := cpq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := cpq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -443,41 +670,41 @@ type CiPermissionGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (cpgb *CiPermissionGroupBy) Aggregate(fns ...AggregateFunc) *CiPermissionGroupBy {
-	cpgb.fns = append(cpgb.fns, fns...)
-	return cpgb
+func (_g *CiPermissionGroupBy) Aggregate(fns ...AggregateFunc) *CiPermissionGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cpgb *CiPermissionGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cpgb.build.ctx, ent.OpQueryGroupBy)
-	if err := cpgb.build.prepareQuery(ctx); err != nil {
+func (_g *CiPermissionGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiPermissionQuery, *CiPermissionGroupBy](ctx, cpgb.build, cpgb, cpgb.build.inters, v)
+	return scanWithInterceptors[*CiPermissionQuery, *CiPermissionGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (cpgb *CiPermissionGroupBy) sqlScan(ctx context.Context, root *CiPermissionQuery, v any) error {
+func (_g *CiPermissionGroupBy) sqlScan(ctx context.Context, root *CiPermissionQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(cpgb.fns))
-	for _, fn := range cpgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*cpgb.flds)+len(cpgb.fns))
-		for _, f := range *cpgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*cpgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cpgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -491,27 +718,27 @@ type CiPermissionSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (cps *CiPermissionSelect) Aggregate(fns ...AggregateFunc) *CiPermissionSelect {
-	cps.fns = append(cps.fns, fns...)
-	return cps
+func (_s *CiPermissionSelect) Aggregate(fns ...AggregateFunc) *CiPermissionSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cps *CiPermissionSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cps.ctx, ent.OpQuerySelect)
-	if err := cps.prepareQuery(ctx); err != nil {
+func (_s *CiPermissionSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiPermissionQuery, *CiPermissionSelect](ctx, cps.CiPermissionQuery, cps, cps.inters, v)
+	return scanWithInterceptors[*CiPermissionQuery, *CiPermissionSelect](ctx, _s.CiPermissionQuery, _s, _s.inters, v)
 }
 
-func (cps *CiPermissionSelect) sqlScan(ctx context.Context, root *CiPermissionQuery, v any) error {
+func (_s *CiPermissionSelect) sqlScan(ctx context.Context, root *CiPermissionQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(cps.fns))
-	for _, fn := range cps.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*cps.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -519,7 +746,7 @@ func (cps *CiPermissionSelect) sqlScan(ctx context.Context, root *CiPermissionQu
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cps.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

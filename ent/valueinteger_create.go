@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
 )
 
 // ValueIntegerCreate is the builder for creating a ValueInteger entity.
@@ -23,117 +23,131 @@ type ValueIntegerCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (vic *ValueIntegerCreate) SetCreatedAt(t time.Time) *ValueIntegerCreate {
-	vic.mutation.SetCreatedAt(t)
-	return vic
+func (_c *ValueIntegerCreate) SetCreatedAt(v time.Time) *ValueIntegerCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (vic *ValueIntegerCreate) SetNillableCreatedAt(t *time.Time) *ValueIntegerCreate {
-	if t != nil {
-		vic.SetCreatedAt(*t)
+func (_c *ValueIntegerCreate) SetNillableCreatedAt(v *time.Time) *ValueIntegerCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return vic
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vic *ValueIntegerCreate) SetUpdatedAt(t time.Time) *ValueIntegerCreate {
-	vic.mutation.SetUpdatedAt(t)
-	return vic
+func (_c *ValueIntegerCreate) SetUpdatedAt(v time.Time) *ValueIntegerCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (vic *ValueIntegerCreate) SetNillableUpdatedAt(t *time.Time) *ValueIntegerCreate {
-	if t != nil {
-		vic.SetUpdatedAt(*t)
+func (_c *ValueIntegerCreate) SetNillableUpdatedAt(v *time.Time) *ValueIntegerCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return vic
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vic *ValueIntegerCreate) SetDeletedAt(t time.Time) *ValueIntegerCreate {
-	vic.mutation.SetDeletedAt(t)
-	return vic
+func (_c *ValueIntegerCreate) SetDeletedAt(v time.Time) *ValueIntegerCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vic *ValueIntegerCreate) SetNillableDeletedAt(t *time.Time) *ValueIntegerCreate {
-	if t != nil {
-		vic.SetDeletedAt(*t)
+func (_c *ValueIntegerCreate) SetNillableDeletedAt(v *time.Time) *ValueIntegerCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return vic
+	return _c
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (_c *ValueIntegerCreate) SetTenantID(v uint64) *ValueIntegerCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
+}
+
+// SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
+func (_c *ValueIntegerCreate) SetNillableTenantID(v *uint64) *ValueIntegerCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
+	}
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (vic *ValueIntegerCreate) SetCiID(u uint64) *ValueIntegerCreate {
-	vic.mutation.SetCiID(u)
-	return vic
+func (_c *ValueIntegerCreate) SetCiID(v uint64) *ValueIntegerCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vic *ValueIntegerCreate) SetAttrID(u uint64) *ValueIntegerCreate {
-	vic.mutation.SetAttrID(u)
-	return vic
+func (_c *ValueIntegerCreate) SetAttrID(v uint64) *ValueIntegerCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetValue sets the "value" field.
-func (vic *ValueIntegerCreate) SetValue(i int) *ValueIntegerCreate {
-	vic.mutation.SetValue(i)
-	return vic
+func (_c *ValueIntegerCreate) SetValue(v int) *ValueIntegerCreate {
+	_c.mutation.SetValue(v)
+	return _c
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vic *ValueIntegerCreate) SetIsCover(b bool) *ValueIntegerCreate {
-	vic.mutation.SetIsCover(b)
-	return vic
+func (_c *ValueIntegerCreate) SetIsCover(v bool) *ValueIntegerCreate {
+	_c.mutation.SetIsCover(v)
+	return _c
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vic *ValueIntegerCreate) SetNillableIsCover(b *bool) *ValueIntegerCreate {
-	if b != nil {
-		vic.SetIsCover(*b)
+func (_c *ValueIntegerCreate) SetNillableIsCover(v *bool) *ValueIntegerCreate {
+	if v != nil {
+		_c.SetIsCover(*v)
 	}
-	return vic
+	return _c
 }
 
 // SetID sets the "id" field.
-func (vic *ValueIntegerCreate) SetID(u uint64) *ValueIntegerCreate {
-	vic.mutation.SetID(u)
-	return vic
+func (_c *ValueIntegerCreate) SetID(v uint64) *ValueIntegerCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vic *ValueIntegerCreate) SetCi(c *Cis) *ValueIntegerCreate {
-	return vic.SetCiID(c.ID)
+func (_c *ValueIntegerCreate) SetCi(v *Cis) *ValueIntegerCreate {
+	return _c.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vic *ValueIntegerCreate) SetAttributeID(id uint64) *ValueIntegerCreate {
-	vic.mutation.SetAttributeID(id)
-	return vic
+func (_c *ValueIntegerCreate) SetAttributeID(id uint64) *ValueIntegerCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vic *ValueIntegerCreate) SetAttribute(a *Attribute) *ValueIntegerCreate {
-	return vic.SetAttributeID(a.ID)
+func (_c *ValueIntegerCreate) SetAttribute(v *Attribute) *ValueIntegerCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueIntegerMutation object of the builder.
-func (vic *ValueIntegerCreate) Mutation() *ValueIntegerMutation {
-	return vic.mutation
+func (_c *ValueIntegerCreate) Mutation() *ValueIntegerMutation {
+	return _c.mutation
 }
 
 // Save creates the ValueInteger in the database.
-func (vic *ValueIntegerCreate) Save(ctx context.Context) (*ValueInteger, error) {
-	if err := vic.defaults(); err != nil {
+func (_c *ValueIntegerCreate) Save(ctx context.Context) (*ValueInteger, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vic.sqlSave, vic.mutation, vic.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (vic *ValueIntegerCreate) SaveX(ctx context.Context) *ValueInteger {
-	v, err := vic.Save(ctx)
+func (_c *ValueIntegerCreate) SaveX(ctx context.Context) *ValueInteger {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -141,76 +155,83 @@ func (vic *ValueIntegerCreate) SaveX(ctx context.Context) *ValueInteger {
 }
 
 // Exec executes the query.
-func (vic *ValueIntegerCreate) Exec(ctx context.Context) error {
-	_, err := vic.Save(ctx)
+func (_c *ValueIntegerCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vic *ValueIntegerCreate) ExecX(ctx context.Context) {
-	if err := vic.Exec(ctx); err != nil {
+func (_c *ValueIntegerCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vic *ValueIntegerCreate) defaults() error {
-	if _, ok := vic.mutation.CreatedAt(); !ok {
+func (_c *ValueIntegerCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if valueinteger.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valueinteger.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := valueinteger.DefaultCreatedAt()
-		vic.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := vic.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if valueinteger.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valueinteger.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valueinteger.DefaultUpdatedAt()
-		vic.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := vic.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		v := valueinteger.DefaultTenantID
+		_c.mutation.SetTenantID(v)
+	}
+	if _, ok := _c.mutation.IsCover(); !ok {
 		v := valueinteger.DefaultIsCover
-		vic.mutation.SetIsCover(v)
+		_c.mutation.SetIsCover(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vic *ValueIntegerCreate) check() error {
-	if _, ok := vic.mutation.CreatedAt(); !ok {
+func (_c *ValueIntegerCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ValueInteger.created_at"`)}
 	}
-	if _, ok := vic.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ValueInteger.updated_at"`)}
 	}
-	if _, ok := vic.mutation.CiID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ValueInteger.tenant_id"`)}
+	}
+	if _, ok := _c.mutation.CiID(); !ok {
 		return &ValidationError{Name: "ci_id", err: errors.New(`ent: missing required field "ValueInteger.ci_id"`)}
 	}
-	if _, ok := vic.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "ValueInteger.attr_id"`)}
 	}
-	if _, ok := vic.mutation.Value(); !ok {
+	if _, ok := _c.mutation.Value(); !ok {
 		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "ValueInteger.value"`)}
 	}
-	if _, ok := vic.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.IsCover(); !ok {
 		return &ValidationError{Name: "is_cover", err: errors.New(`ent: missing required field "ValueInteger.is_cover"`)}
 	}
-	if len(vic.mutation.CiIDs()) == 0 {
+	if len(_c.mutation.CiIDs()) == 0 {
 		return &ValidationError{Name: "ci", err: errors.New(`ent: missing required edge "ValueInteger.ci"`)}
 	}
-	if len(vic.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "ValueInteger.attribute"`)}
 	}
 	return nil
 }
 
-func (vic *ValueIntegerCreate) sqlSave(ctx context.Context) (*ValueInteger, error) {
-	if err := vic.check(); err != nil {
+func (_c *ValueIntegerCreate) sqlSave(ctx context.Context) (*ValueInteger, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := vic.createSpec()
-	if err := sqlgraph.CreateNode(ctx, vic.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -220,41 +241,45 @@ func (vic *ValueIntegerCreate) sqlSave(ctx context.Context) (*ValueInteger, erro
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	vic.mutation.id = &_node.ID
-	vic.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (vic *ValueIntegerCreate) createSpec() (*ValueInteger, *sqlgraph.CreateSpec) {
+func (_c *ValueIntegerCreate) createSpec() (*ValueInteger, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ValueInteger{config: vic.config}
+		_node = &ValueInteger{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(valueinteger.Table, sqlgraph.NewFieldSpec(valueinteger.FieldID, field.TypeUint64))
 	)
-	if id, ok := vic.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := vic.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(valueinteger.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := vic.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(valueinteger.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := vic.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(valueinteger.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := vic.mutation.Value(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
+		_spec.SetField(valueinteger.FieldTenantID, field.TypeUint64, value)
+		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(valueinteger.FieldValue, field.TypeInt, value)
 		_node.Value = value
 	}
-	if value, ok := vic.mutation.IsCover(); ok {
+	if value, ok := _c.mutation.IsCover(); ok {
 		_spec.SetField(valueinteger.FieldIsCover, field.TypeBool, value)
 		_node.IsCover = value
 	}
-	if nodes := vic.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -271,7 +296,7 @@ func (vic *ValueIntegerCreate) createSpec() (*ValueInteger, *sqlgraph.CreateSpec
 		_node.CiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := vic.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -299,16 +324,16 @@ type ValueIntegerCreateBulk struct {
 }
 
 // Save creates the ValueInteger entities in the database.
-func (vicb *ValueIntegerCreateBulk) Save(ctx context.Context) ([]*ValueInteger, error) {
-	if vicb.err != nil {
-		return nil, vicb.err
+func (_c *ValueIntegerCreateBulk) Save(ctx context.Context) ([]*ValueInteger, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(vicb.builders))
-	nodes := make([]*ValueInteger, len(vicb.builders))
-	mutators := make([]Mutator, len(vicb.builders))
-	for i := range vicb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ValueInteger, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := vicb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ValueIntegerMutation)
@@ -322,11 +347,11 @@ func (vicb *ValueIntegerCreateBulk) Save(ctx context.Context) ([]*ValueInteger, 
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, vicb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, vicb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -350,7 +375,7 @@ func (vicb *ValueIntegerCreateBulk) Save(ctx context.Context) ([]*ValueInteger, 
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, vicb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -358,8 +383,8 @@ func (vicb *ValueIntegerCreateBulk) Save(ctx context.Context) ([]*ValueInteger, 
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vicb *ValueIntegerCreateBulk) SaveX(ctx context.Context) []*ValueInteger {
-	v, err := vicb.Save(ctx)
+func (_c *ValueIntegerCreateBulk) SaveX(ctx context.Context) []*ValueInteger {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -367,14 +392,14 @@ func (vicb *ValueIntegerCreateBulk) SaveX(ctx context.Context) []*ValueInteger {
 }
 
 // Exec executes the query.
-func (vicb *ValueIntegerCreateBulk) Exec(ctx context.Context) error {
-	_, err := vicb.Save(ctx)
+func (_c *ValueIntegerCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vicb *ValueIntegerCreateBulk) ExecX(ctx context.Context) {
-	if err := vicb.Exec(ctx); err != nil {
+func (_c *ValueIntegerCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

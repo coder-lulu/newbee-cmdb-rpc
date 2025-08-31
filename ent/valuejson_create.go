@@ -11,9 +11,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
 )
 
 // ValueJSONCreate is the builder for creating a ValueJSON entity.
@@ -24,117 +24,131 @@ type ValueJSONCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (vjc *ValueJSONCreate) SetCreatedAt(t time.Time) *ValueJSONCreate {
-	vjc.mutation.SetCreatedAt(t)
-	return vjc
+func (_c *ValueJSONCreate) SetCreatedAt(v time.Time) *ValueJSONCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (vjc *ValueJSONCreate) SetNillableCreatedAt(t *time.Time) *ValueJSONCreate {
-	if t != nil {
-		vjc.SetCreatedAt(*t)
+func (_c *ValueJSONCreate) SetNillableCreatedAt(v *time.Time) *ValueJSONCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return vjc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vjc *ValueJSONCreate) SetUpdatedAt(t time.Time) *ValueJSONCreate {
-	vjc.mutation.SetUpdatedAt(t)
-	return vjc
+func (_c *ValueJSONCreate) SetUpdatedAt(v time.Time) *ValueJSONCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (vjc *ValueJSONCreate) SetNillableUpdatedAt(t *time.Time) *ValueJSONCreate {
-	if t != nil {
-		vjc.SetUpdatedAt(*t)
+func (_c *ValueJSONCreate) SetNillableUpdatedAt(v *time.Time) *ValueJSONCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return vjc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vjc *ValueJSONCreate) SetDeletedAt(t time.Time) *ValueJSONCreate {
-	vjc.mutation.SetDeletedAt(t)
-	return vjc
+func (_c *ValueJSONCreate) SetDeletedAt(v time.Time) *ValueJSONCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vjc *ValueJSONCreate) SetNillableDeletedAt(t *time.Time) *ValueJSONCreate {
-	if t != nil {
-		vjc.SetDeletedAt(*t)
+func (_c *ValueJSONCreate) SetNillableDeletedAt(v *time.Time) *ValueJSONCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return vjc
+	return _c
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (_c *ValueJSONCreate) SetTenantID(v uint64) *ValueJSONCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
+}
+
+// SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
+func (_c *ValueJSONCreate) SetNillableTenantID(v *uint64) *ValueJSONCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
+	}
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (vjc *ValueJSONCreate) SetCiID(u uint64) *ValueJSONCreate {
-	vjc.mutation.SetCiID(u)
-	return vjc
+func (_c *ValueJSONCreate) SetCiID(v uint64) *ValueJSONCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vjc *ValueJSONCreate) SetAttrID(u uint64) *ValueJSONCreate {
-	vjc.mutation.SetAttrID(u)
-	return vjc
+func (_c *ValueJSONCreate) SetAttrID(v uint64) *ValueJSONCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetValue sets the "value" field.
-func (vjc *ValueJSONCreate) SetValue(jm json.RawMessage) *ValueJSONCreate {
-	vjc.mutation.SetValue(jm)
-	return vjc
+func (_c *ValueJSONCreate) SetValue(v json.RawMessage) *ValueJSONCreate {
+	_c.mutation.SetValue(v)
+	return _c
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vjc *ValueJSONCreate) SetIsCover(b bool) *ValueJSONCreate {
-	vjc.mutation.SetIsCover(b)
-	return vjc
+func (_c *ValueJSONCreate) SetIsCover(v bool) *ValueJSONCreate {
+	_c.mutation.SetIsCover(v)
+	return _c
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vjc *ValueJSONCreate) SetNillableIsCover(b *bool) *ValueJSONCreate {
-	if b != nil {
-		vjc.SetIsCover(*b)
+func (_c *ValueJSONCreate) SetNillableIsCover(v *bool) *ValueJSONCreate {
+	if v != nil {
+		_c.SetIsCover(*v)
 	}
-	return vjc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (vjc *ValueJSONCreate) SetID(u uint64) *ValueJSONCreate {
-	vjc.mutation.SetID(u)
-	return vjc
+func (_c *ValueJSONCreate) SetID(v uint64) *ValueJSONCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vjc *ValueJSONCreate) SetCi(c *Cis) *ValueJSONCreate {
-	return vjc.SetCiID(c.ID)
+func (_c *ValueJSONCreate) SetCi(v *Cis) *ValueJSONCreate {
+	return _c.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vjc *ValueJSONCreate) SetAttributeID(id uint64) *ValueJSONCreate {
-	vjc.mutation.SetAttributeID(id)
-	return vjc
+func (_c *ValueJSONCreate) SetAttributeID(id uint64) *ValueJSONCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vjc *ValueJSONCreate) SetAttribute(a *Attribute) *ValueJSONCreate {
-	return vjc.SetAttributeID(a.ID)
+func (_c *ValueJSONCreate) SetAttribute(v *Attribute) *ValueJSONCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueJSONMutation object of the builder.
-func (vjc *ValueJSONCreate) Mutation() *ValueJSONMutation {
-	return vjc.mutation
+func (_c *ValueJSONCreate) Mutation() *ValueJSONMutation {
+	return _c.mutation
 }
 
 // Save creates the ValueJSON in the database.
-func (vjc *ValueJSONCreate) Save(ctx context.Context) (*ValueJSON, error) {
-	if err := vjc.defaults(); err != nil {
+func (_c *ValueJSONCreate) Save(ctx context.Context) (*ValueJSON, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vjc.sqlSave, vjc.mutation, vjc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (vjc *ValueJSONCreate) SaveX(ctx context.Context) *ValueJSON {
-	v, err := vjc.Save(ctx)
+func (_c *ValueJSONCreate) SaveX(ctx context.Context) *ValueJSON {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -142,76 +156,83 @@ func (vjc *ValueJSONCreate) SaveX(ctx context.Context) *ValueJSON {
 }
 
 // Exec executes the query.
-func (vjc *ValueJSONCreate) Exec(ctx context.Context) error {
-	_, err := vjc.Save(ctx)
+func (_c *ValueJSONCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vjc *ValueJSONCreate) ExecX(ctx context.Context) {
-	if err := vjc.Exec(ctx); err != nil {
+func (_c *ValueJSONCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vjc *ValueJSONCreate) defaults() error {
-	if _, ok := vjc.mutation.CreatedAt(); !ok {
+func (_c *ValueJSONCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if valuejson.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuejson.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuejson.DefaultCreatedAt()
-		vjc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := vjc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if valuejson.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuejson.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuejson.DefaultUpdatedAt()
-		vjc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := vjc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		v := valuejson.DefaultTenantID
+		_c.mutation.SetTenantID(v)
+	}
+	if _, ok := _c.mutation.IsCover(); !ok {
 		v := valuejson.DefaultIsCover
-		vjc.mutation.SetIsCover(v)
+		_c.mutation.SetIsCover(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vjc *ValueJSONCreate) check() error {
-	if _, ok := vjc.mutation.CreatedAt(); !ok {
+func (_c *ValueJSONCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ValueJSON.created_at"`)}
 	}
-	if _, ok := vjc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ValueJSON.updated_at"`)}
 	}
-	if _, ok := vjc.mutation.CiID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ValueJSON.tenant_id"`)}
+	}
+	if _, ok := _c.mutation.CiID(); !ok {
 		return &ValidationError{Name: "ci_id", err: errors.New(`ent: missing required field "ValueJSON.ci_id"`)}
 	}
-	if _, ok := vjc.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "ValueJSON.attr_id"`)}
 	}
-	if _, ok := vjc.mutation.Value(); !ok {
+	if _, ok := _c.mutation.Value(); !ok {
 		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "ValueJSON.value"`)}
 	}
-	if _, ok := vjc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.IsCover(); !ok {
 		return &ValidationError{Name: "is_cover", err: errors.New(`ent: missing required field "ValueJSON.is_cover"`)}
 	}
-	if len(vjc.mutation.CiIDs()) == 0 {
+	if len(_c.mutation.CiIDs()) == 0 {
 		return &ValidationError{Name: "ci", err: errors.New(`ent: missing required edge "ValueJSON.ci"`)}
 	}
-	if len(vjc.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "ValueJSON.attribute"`)}
 	}
 	return nil
 }
 
-func (vjc *ValueJSONCreate) sqlSave(ctx context.Context) (*ValueJSON, error) {
-	if err := vjc.check(); err != nil {
+func (_c *ValueJSONCreate) sqlSave(ctx context.Context) (*ValueJSON, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := vjc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, vjc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -221,41 +242,45 @@ func (vjc *ValueJSONCreate) sqlSave(ctx context.Context) (*ValueJSON, error) {
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	vjc.mutation.id = &_node.ID
-	vjc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (vjc *ValueJSONCreate) createSpec() (*ValueJSON, *sqlgraph.CreateSpec) {
+func (_c *ValueJSONCreate) createSpec() (*ValueJSON, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ValueJSON{config: vjc.config}
+		_node = &ValueJSON{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(valuejson.Table, sqlgraph.NewFieldSpec(valuejson.FieldID, field.TypeUint64))
 	)
-	if id, ok := vjc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := vjc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(valuejson.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := vjc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuejson.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := vjc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(valuejson.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := vjc.mutation.Value(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
+		_spec.SetField(valuejson.FieldTenantID, field.TypeUint64, value)
+		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(valuejson.FieldValue, field.TypeJSON, value)
 		_node.Value = value
 	}
-	if value, ok := vjc.mutation.IsCover(); ok {
+	if value, ok := _c.mutation.IsCover(); ok {
 		_spec.SetField(valuejson.FieldIsCover, field.TypeBool, value)
 		_node.IsCover = value
 	}
-	if nodes := vjc.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -272,7 +297,7 @@ func (vjc *ValueJSONCreate) createSpec() (*ValueJSON, *sqlgraph.CreateSpec) {
 		_node.CiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := vjc.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -300,16 +325,16 @@ type ValueJSONCreateBulk struct {
 }
 
 // Save creates the ValueJSON entities in the database.
-func (vjcb *ValueJSONCreateBulk) Save(ctx context.Context) ([]*ValueJSON, error) {
-	if vjcb.err != nil {
-		return nil, vjcb.err
+func (_c *ValueJSONCreateBulk) Save(ctx context.Context) ([]*ValueJSON, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(vjcb.builders))
-	nodes := make([]*ValueJSON, len(vjcb.builders))
-	mutators := make([]Mutator, len(vjcb.builders))
-	for i := range vjcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ValueJSON, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := vjcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ValueJSONMutation)
@@ -323,11 +348,11 @@ func (vjcb *ValueJSONCreateBulk) Save(ctx context.Context) ([]*ValueJSON, error)
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, vjcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, vjcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -351,7 +376,7 @@ func (vjcb *ValueJSONCreateBulk) Save(ctx context.Context) ([]*ValueJSON, error)
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, vjcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -359,8 +384,8 @@ func (vjcb *ValueJSONCreateBulk) Save(ctx context.Context) ([]*ValueJSON, error)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vjcb *ValueJSONCreateBulk) SaveX(ctx context.Context) []*ValueJSON {
-	v, err := vjcb.Save(ctx)
+func (_c *ValueJSONCreateBulk) SaveX(ctx context.Context) []*ValueJSON {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -368,14 +393,14 @@ func (vjcb *ValueJSONCreateBulk) SaveX(ctx context.Context) []*ValueJSON {
 }
 
 // Exec executes the query.
-func (vjcb *ValueJSONCreateBulk) Exec(ctx context.Context) error {
-	_, err := vjcb.Save(ctx)
+func (_c *ValueJSONCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vjcb *ValueJSONCreateBulk) ExecX(ctx context.Context) {
-	if err := vjcb.Exec(ctx); err != nil {
+func (_c *ValueJSONCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

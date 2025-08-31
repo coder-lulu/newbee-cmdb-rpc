@@ -6,9 +6,9 @@ import (
 	"log"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/internal/adapters/input"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/adapters/input"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 )
 
 // BatchProcessingExamples 批量处理使用示例

@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 )
 
 // ChoiceFloatCreate is the builder for creating a ChoiceFloat entity.
@@ -23,134 +23,134 @@ type ChoiceFloatCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (cfc *ChoiceFloatCreate) SetCreatedAt(t time.Time) *ChoiceFloatCreate {
-	cfc.mutation.SetCreatedAt(t)
-	return cfc
+func (_c *ChoiceFloatCreate) SetCreatedAt(v time.Time) *ChoiceFloatCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (cfc *ChoiceFloatCreate) SetNillableCreatedAt(t *time.Time) *ChoiceFloatCreate {
-	if t != nil {
-		cfc.SetCreatedAt(*t)
+func (_c *ChoiceFloatCreate) SetNillableCreatedAt(v *time.Time) *ChoiceFloatCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return cfc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cfc *ChoiceFloatCreate) SetUpdatedAt(t time.Time) *ChoiceFloatCreate {
-	cfc.mutation.SetUpdatedAt(t)
-	return cfc
+func (_c *ChoiceFloatCreate) SetUpdatedAt(v time.Time) *ChoiceFloatCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (cfc *ChoiceFloatCreate) SetNillableUpdatedAt(t *time.Time) *ChoiceFloatCreate {
-	if t != nil {
-		cfc.SetUpdatedAt(*t)
+func (_c *ChoiceFloatCreate) SetNillableUpdatedAt(v *time.Time) *ChoiceFloatCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return cfc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (cfc *ChoiceFloatCreate) SetDeletedAt(t time.Time) *ChoiceFloatCreate {
-	cfc.mutation.SetDeletedAt(t)
-	return cfc
+func (_c *ChoiceFloatCreate) SetDeletedAt(v time.Time) *ChoiceFloatCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (cfc *ChoiceFloatCreate) SetNillableDeletedAt(t *time.Time) *ChoiceFloatCreate {
-	if t != nil {
-		cfc.SetDeletedAt(*t)
+func (_c *ChoiceFloatCreate) SetNillableDeletedAt(v *time.Time) *ChoiceFloatCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return cfc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (cfc *ChoiceFloatCreate) SetTenantID(u uint64) *ChoiceFloatCreate {
-	cfc.mutation.SetTenantID(u)
-	return cfc
+func (_c *ChoiceFloatCreate) SetTenantID(v uint64) *ChoiceFloatCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (cfc *ChoiceFloatCreate) SetNillableTenantID(u *uint64) *ChoiceFloatCreate {
-	if u != nil {
-		cfc.SetTenantID(*u)
+func (_c *ChoiceFloatCreate) SetNillableTenantID(v *uint64) *ChoiceFloatCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return cfc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cfc *ChoiceFloatCreate) SetDepartmentID(u uint64) *ChoiceFloatCreate {
-	cfc.mutation.SetDepartmentID(u)
-	return cfc
+func (_c *ChoiceFloatCreate) SetDepartmentID(v uint64) *ChoiceFloatCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cfc *ChoiceFloatCreate) SetNillableDepartmentID(u *uint64) *ChoiceFloatCreate {
-	if u != nil {
-		cfc.SetDepartmentID(*u)
+func (_c *ChoiceFloatCreate) SetNillableDepartmentID(v *uint64) *ChoiceFloatCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return cfc
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (cfc *ChoiceFloatCreate) SetAttrID(u uint64) *ChoiceFloatCreate {
-	cfc.mutation.SetAttrID(u)
-	return cfc
+func (_c *ChoiceFloatCreate) SetAttrID(v uint64) *ChoiceFloatCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetValue sets the "value" field.
-func (cfc *ChoiceFloatCreate) SetValue(f float64) *ChoiceFloatCreate {
-	cfc.mutation.SetValue(f)
-	return cfc
+func (_c *ChoiceFloatCreate) SetValue(v float64) *ChoiceFloatCreate {
+	_c.mutation.SetValue(v)
+	return _c
 }
 
 // SetOption sets the "option" field.
-func (cfc *ChoiceFloatCreate) SetOption(sim schema.ChoiceItemMetaS) *ChoiceFloatCreate {
-	cfc.mutation.SetOption(sim)
-	return cfc
+func (_c *ChoiceFloatCreate) SetOption(v schema.ChoiceItemMetaS) *ChoiceFloatCreate {
+	_c.mutation.SetOption(v)
+	return _c
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (cfc *ChoiceFloatCreate) SetNillableOption(sim *schema.ChoiceItemMetaS) *ChoiceFloatCreate {
-	if sim != nil {
-		cfc.SetOption(*sim)
+func (_c *ChoiceFloatCreate) SetNillableOption(v *schema.ChoiceItemMetaS) *ChoiceFloatCreate {
+	if v != nil {
+		_c.SetOption(*v)
 	}
-	return cfc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (cfc *ChoiceFloatCreate) SetID(u uint64) *ChoiceFloatCreate {
-	cfc.mutation.SetID(u)
-	return cfc
+func (_c *ChoiceFloatCreate) SetID(v uint64) *ChoiceFloatCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (cfc *ChoiceFloatCreate) SetAttributeID(id uint64) *ChoiceFloatCreate {
-	cfc.mutation.SetAttributeID(id)
-	return cfc
+func (_c *ChoiceFloatCreate) SetAttributeID(id uint64) *ChoiceFloatCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (cfc *ChoiceFloatCreate) SetAttribute(a *Attribute) *ChoiceFloatCreate {
-	return cfc.SetAttributeID(a.ID)
+func (_c *ChoiceFloatCreate) SetAttribute(v *Attribute) *ChoiceFloatCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ChoiceFloatMutation object of the builder.
-func (cfc *ChoiceFloatCreate) Mutation() *ChoiceFloatMutation {
-	return cfc.mutation
+func (_c *ChoiceFloatCreate) Mutation() *ChoiceFloatMutation {
+	return _c.mutation
 }
 
 // Save creates the ChoiceFloat in the database.
-func (cfc *ChoiceFloatCreate) Save(ctx context.Context) (*ChoiceFloat, error) {
-	if err := cfc.defaults(); err != nil {
+func (_c *ChoiceFloatCreate) Save(ctx context.Context) (*ChoiceFloat, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, cfc.sqlSave, cfc.mutation, cfc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (cfc *ChoiceFloatCreate) SaveX(ctx context.Context) *ChoiceFloat {
-	v, err := cfc.Save(ctx)
+func (_c *ChoiceFloatCreate) SaveX(ctx context.Context) *ChoiceFloat {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -158,70 +158,70 @@ func (cfc *ChoiceFloatCreate) SaveX(ctx context.Context) *ChoiceFloat {
 }
 
 // Exec executes the query.
-func (cfc *ChoiceFloatCreate) Exec(ctx context.Context) error {
-	_, err := cfc.Save(ctx)
+func (_c *ChoiceFloatCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cfc *ChoiceFloatCreate) ExecX(ctx context.Context) {
-	if err := cfc.Exec(ctx); err != nil {
+func (_c *ChoiceFloatCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cfc *ChoiceFloatCreate) defaults() error {
-	if _, ok := cfc.mutation.CreatedAt(); !ok {
+func (_c *ChoiceFloatCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if choicefloat.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized choicefloat.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := choicefloat.DefaultCreatedAt()
-		cfc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := cfc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if choicefloat.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized choicefloat.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := choicefloat.DefaultUpdatedAt()
-		cfc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := cfc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := choicefloat.DefaultTenantID
-		cfc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cfc *ChoiceFloatCreate) check() error {
-	if _, ok := cfc.mutation.CreatedAt(); !ok {
+func (_c *ChoiceFloatCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ChoiceFloat.created_at"`)}
 	}
-	if _, ok := cfc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ChoiceFloat.updated_at"`)}
 	}
-	if _, ok := cfc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ChoiceFloat.tenant_id"`)}
 	}
-	if _, ok := cfc.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "ChoiceFloat.attr_id"`)}
 	}
-	if _, ok := cfc.mutation.Value(); !ok {
+	if _, ok := _c.mutation.Value(); !ok {
 		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "ChoiceFloat.value"`)}
 	}
-	if len(cfc.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "ChoiceFloat.attribute"`)}
 	}
 	return nil
 }
 
-func (cfc *ChoiceFloatCreate) sqlSave(ctx context.Context) (*ChoiceFloat, error) {
-	if err := cfc.check(); err != nil {
+func (_c *ChoiceFloatCreate) sqlSave(ctx context.Context) (*ChoiceFloat, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := cfc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, cfc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -231,49 +231,49 @@ func (cfc *ChoiceFloatCreate) sqlSave(ctx context.Context) (*ChoiceFloat, error)
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	cfc.mutation.id = &_node.ID
-	cfc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (cfc *ChoiceFloatCreate) createSpec() (*ChoiceFloat, *sqlgraph.CreateSpec) {
+func (_c *ChoiceFloatCreate) createSpec() (*ChoiceFloat, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ChoiceFloat{config: cfc.config}
+		_node = &ChoiceFloat{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(choicefloat.Table, sqlgraph.NewFieldSpec(choicefloat.FieldID, field.TypeUint64))
 	)
-	if id, ok := cfc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := cfc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(choicefloat.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := cfc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(choicefloat.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := cfc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(choicefloat.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := cfc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(choicefloat.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := cfc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(choicefloat.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := cfc.mutation.Value(); ok {
+	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(choicefloat.FieldValue, field.TypeFloat64, value)
 		_node.Value = value
 	}
-	if value, ok := cfc.mutation.Option(); ok {
+	if value, ok := _c.mutation.Option(); ok {
 		_spec.SetField(choicefloat.FieldOption, field.TypeJSON, value)
 		_node.Option = value
 	}
-	if nodes := cfc.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -301,16 +301,16 @@ type ChoiceFloatCreateBulk struct {
 }
 
 // Save creates the ChoiceFloat entities in the database.
-func (cfcb *ChoiceFloatCreateBulk) Save(ctx context.Context) ([]*ChoiceFloat, error) {
-	if cfcb.err != nil {
-		return nil, cfcb.err
+func (_c *ChoiceFloatCreateBulk) Save(ctx context.Context) ([]*ChoiceFloat, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(cfcb.builders))
-	nodes := make([]*ChoiceFloat, len(cfcb.builders))
-	mutators := make([]Mutator, len(cfcb.builders))
-	for i := range cfcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ChoiceFloat, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := cfcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ChoiceFloatMutation)
@@ -324,11 +324,11 @@ func (cfcb *ChoiceFloatCreateBulk) Save(ctx context.Context) ([]*ChoiceFloat, er
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, cfcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, cfcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -352,7 +352,7 @@ func (cfcb *ChoiceFloatCreateBulk) Save(ctx context.Context) ([]*ChoiceFloat, er
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, cfcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -360,8 +360,8 @@ func (cfcb *ChoiceFloatCreateBulk) Save(ctx context.Context) ([]*ChoiceFloat, er
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cfcb *ChoiceFloatCreateBulk) SaveX(ctx context.Context) []*ChoiceFloat {
-	v, err := cfcb.Save(ctx)
+func (_c *ChoiceFloatCreateBulk) SaveX(ctx context.Context) []*ChoiceFloat {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -369,14 +369,14 @@ func (cfcb *ChoiceFloatCreateBulk) SaveX(ctx context.Context) []*ChoiceFloat {
 }
 
 // Exec executes the query.
-func (cfcb *ChoiceFloatCreateBulk) Exec(ctx context.Context) error {
-	_, err := cfcb.Save(ctx)
+func (_c *ChoiceFloatCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cfcb *ChoiceFloatCreateBulk) ExecX(ctx context.Context) {
-	if err := cfcb.Exec(ctx); err != nil {
+func (_c *ChoiceFloatCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

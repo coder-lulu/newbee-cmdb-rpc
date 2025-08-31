@@ -9,7 +9,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
 )
 
 // CiTypeGroup is the model entity for the CiTypeGroup schema.
@@ -79,7 +79,7 @@ func (*CiTypeGroup) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiTypeGroup fields.
-func (ctg *CiTypeGroup) assignValues(columns []string, values []any) error {
+func (_m *CiTypeGroup) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -90,63 +90,63 @@ func (ctg *CiTypeGroup) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			ctg.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case citypegroup.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				ctg.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case citypegroup.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				ctg.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case citypegroup.FieldSort:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field sort", values[i])
 			} else if value.Valid {
-				ctg.Sort = uint32(value.Int64)
+				_m.Sort = uint32(value.Int64)
 			}
 		case citypegroup.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				ctg.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case citypegroup.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				ctg.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case citypegroup.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				ctg.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case citypegroup.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
 			} else if value.Valid {
-				ctg.Name = value.String
+				_m.Name = value.String
 			}
 		case citypegroup.FieldDescription:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field description", values[i])
 			} else if value.Valid {
-				ctg.Description = value.String
+				_m.Description = value.String
 			}
 		case citypegroup.FieldIcon:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field icon", values[i])
 			} else if value.Valid {
-				ctg.Icon = value.String
+				_m.Icon = value.String
 			}
 		default:
-			ctg.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -154,64 +154,64 @@ func (ctg *CiTypeGroup) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiTypeGroup.
 // This includes values selected through modifiers, order, etc.
-func (ctg *CiTypeGroup) Value(name string) (ent.Value, error) {
-	return ctg.selectValues.Get(name)
+func (_m *CiTypeGroup) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryGroupItems queries the "group_items" edge of the CiTypeGroup entity.
-func (ctg *CiTypeGroup) QueryGroupItems() *CiTypeGroupItemQuery {
-	return NewCiTypeGroupClient(ctg.config).QueryGroupItems(ctg)
+func (_m *CiTypeGroup) QueryGroupItems() *CiTypeGroupItemQuery {
+	return NewCiTypeGroupClient(_m.config).QueryGroupItems(_m)
 }
 
 // Update returns a builder for updating this CiTypeGroup.
 // Note that you need to call CiTypeGroup.Unwrap() before calling this method if this CiTypeGroup
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (ctg *CiTypeGroup) Update() *CiTypeGroupUpdateOne {
-	return NewCiTypeGroupClient(ctg.config).UpdateOne(ctg)
+func (_m *CiTypeGroup) Update() *CiTypeGroupUpdateOne {
+	return NewCiTypeGroupClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiTypeGroup entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (ctg *CiTypeGroup) Unwrap() *CiTypeGroup {
-	_tx, ok := ctg.config.driver.(*txDriver)
+func (_m *CiTypeGroup) Unwrap() *CiTypeGroup {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiTypeGroup is not a transactional entity")
 	}
-	ctg.config.driver = _tx.drv
-	return ctg
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (ctg *CiTypeGroup) String() string {
+func (_m *CiTypeGroup) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiTypeGroup(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", ctg.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(ctg.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(ctg.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("sort=")
-	builder.WriteString(fmt.Sprintf("%v", ctg.Sort))
+	builder.WriteString(fmt.Sprintf("%v", _m.Sort))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctg.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", ctg.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(ctg.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("name=")
-	builder.WriteString(ctg.Name)
+	builder.WriteString(_m.Name)
 	builder.WriteString(", ")
 	builder.WriteString("description=")
-	builder.WriteString(ctg.Description)
+	builder.WriteString(_m.Description)
 	builder.WriteString(", ")
 	builder.WriteString("icon=")
-	builder.WriteString(ctg.Icon)
+	builder.WriteString(_m.Icon)
 	builder.WriteByte(')')
 	return builder.String()
 }

@@ -9,9 +9,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
 )
 
 // ValueDatetime is the model entity for the ValueDatetime schema.
@@ -25,6 +25,8 @@ type ValueDatetime struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Delete Time | 删除日期
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
+	// Tenant ID | 租户 ID
+	TenantID uint64 `json:"tenant_id,omitempty"`
 	// 外键，关联cmdb_cis.id
 	CiID uint64 `json:"ci_id,omitempty"`
 	// 外键，关联cmdb_attributes.id
@@ -79,7 +81,7 @@ func (*ValueDatetime) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case valuedatetime.FieldIsCover:
 			values[i] = new(sql.NullBool)
-		case valuedatetime.FieldID, valuedatetime.FieldCiID, valuedatetime.FieldAttrID:
+		case valuedatetime.FieldID, valuedatetime.FieldTenantID, valuedatetime.FieldCiID, valuedatetime.FieldAttrID:
 			values[i] = new(sql.NullInt64)
 		case valuedatetime.FieldCreatedAt, valuedatetime.FieldUpdatedAt, valuedatetime.FieldDeletedAt, valuedatetime.FieldValue:
 			values[i] = new(sql.NullTime)
@@ -92,7 +94,7 @@ func (*ValueDatetime) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ValueDatetime fields.
-func (vd *ValueDatetime) assignValues(columns []string, values []any) error {
+func (_m *ValueDatetime) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -103,51 +105,57 @@ func (vd *ValueDatetime) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			vd.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case valuedatetime.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				vd.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case valuedatetime.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				vd.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case valuedatetime.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				vd.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
+			}
+		case valuedatetime.FieldTenantID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
+			} else if value.Valid {
+				_m.TenantID = uint64(value.Int64)
 			}
 		case valuedatetime.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				vd.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case valuedatetime.FieldAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field attr_id", values[i])
 			} else if value.Valid {
-				vd.AttrID = uint64(value.Int64)
+				_m.AttrID = uint64(value.Int64)
 			}
 		case valuedatetime.FieldValue:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field value", values[i])
 			} else if value.Valid {
-				vd.Value = value.Time
+				_m.Value = value.Time
 			}
 		case valuedatetime.FieldIsCover:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_cover", values[i])
 			} else if value.Valid {
-				vd.IsCover = value.Bool
+				_m.IsCover = value.Bool
 			}
 		default:
-			vd.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -155,63 +163,66 @@ func (vd *ValueDatetime) assignValues(columns []string, values []any) error {
 
 // GetValue returns the ent.Value that was dynamically selected and assigned to the ValueDatetime.
 // This includes values selected through modifiers, order, etc.
-func (vd *ValueDatetime) GetValue(name string) (ent.Value, error) {
-	return vd.selectValues.Get(name)
+func (_m *ValueDatetime) GetValue(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCi queries the "ci" edge of the ValueDatetime entity.
-func (vd *ValueDatetime) QueryCi() *CisQuery {
-	return NewValueDatetimeClient(vd.config).QueryCi(vd)
+func (_m *ValueDatetime) QueryCi() *CisQuery {
+	return NewValueDatetimeClient(_m.config).QueryCi(_m)
 }
 
 // QueryAttribute queries the "attribute" edge of the ValueDatetime entity.
-func (vd *ValueDatetime) QueryAttribute() *AttributeQuery {
-	return NewValueDatetimeClient(vd.config).QueryAttribute(vd)
+func (_m *ValueDatetime) QueryAttribute() *AttributeQuery {
+	return NewValueDatetimeClient(_m.config).QueryAttribute(_m)
 }
 
 // Update returns a builder for updating this ValueDatetime.
 // Note that you need to call ValueDatetime.Unwrap() before calling this method if this ValueDatetime
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (vd *ValueDatetime) Update() *ValueDatetimeUpdateOne {
-	return NewValueDatetimeClient(vd.config).UpdateOne(vd)
+func (_m *ValueDatetime) Update() *ValueDatetimeUpdateOne {
+	return NewValueDatetimeClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ValueDatetime entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (vd *ValueDatetime) Unwrap() *ValueDatetime {
-	_tx, ok := vd.config.driver.(*txDriver)
+func (_m *ValueDatetime) Unwrap() *ValueDatetime {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ValueDatetime is not a transactional entity")
 	}
-	vd.config.driver = _tx.drv
-	return vd
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (vd *ValueDatetime) String() string {
+func (_m *ValueDatetime) String() string {
 	var builder strings.Builder
 	builder.WriteString("ValueDatetime(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", vd.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(vd.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(vd.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(vd.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("tenant_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", vd.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", vd.AttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.AttrID))
 	builder.WriteString(", ")
 	builder.WriteString("value=")
-	builder.WriteString(vd.Value.Format(time.ANSIC))
+	builder.WriteString(_m.Value.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("is_cover=")
-	builder.WriteString(fmt.Sprintf("%v", vd.IsCover))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsCover))
 	builder.WriteByte(')')
 	return builder.String()
 }

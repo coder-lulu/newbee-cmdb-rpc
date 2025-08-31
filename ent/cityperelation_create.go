@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 )
 
 // CiTypeRelationCreate is the builder for creating a CiTypeRelation entity.
@@ -23,156 +23,170 @@ type CiTypeRelationCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ctrc *CiTypeRelationCreate) SetCreatedAt(t time.Time) *CiTypeRelationCreate {
-	ctrc.mutation.SetCreatedAt(t)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetCreatedAt(v time.Time) *CiTypeRelationCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ctrc *CiTypeRelationCreate) SetNillableCreatedAt(t *time.Time) *CiTypeRelationCreate {
-	if t != nil {
-		ctrc.SetCreatedAt(*t)
+func (_c *CiTypeRelationCreate) SetNillableCreatedAt(v *time.Time) *CiTypeRelationCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return ctrc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctrc *CiTypeRelationCreate) SetUpdatedAt(t time.Time) *CiTypeRelationCreate {
-	ctrc.mutation.SetUpdatedAt(t)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetUpdatedAt(v time.Time) *CiTypeRelationCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (ctrc *CiTypeRelationCreate) SetNillableUpdatedAt(t *time.Time) *CiTypeRelationCreate {
-	if t != nil {
-		ctrc.SetUpdatedAt(*t)
+func (_c *CiTypeRelationCreate) SetNillableUpdatedAt(v *time.Time) *CiTypeRelationCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return ctrc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctrc *CiTypeRelationCreate) SetDeletedAt(t time.Time) *CiTypeRelationCreate {
-	ctrc.mutation.SetDeletedAt(t)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetDeletedAt(v time.Time) *CiTypeRelationCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctrc *CiTypeRelationCreate) SetNillableDeletedAt(t *time.Time) *CiTypeRelationCreate {
-	if t != nil {
-		ctrc.SetDeletedAt(*t)
+func (_c *CiTypeRelationCreate) SetNillableDeletedAt(v *time.Time) *CiTypeRelationCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return ctrc
+	return _c
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (_c *CiTypeRelationCreate) SetTenantID(v uint64) *CiTypeRelationCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
+}
+
+// SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
+func (_c *CiTypeRelationCreate) SetNillableTenantID(v *uint64) *CiTypeRelationCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
+	}
+	return _c
 }
 
 // SetParentID sets the "parent_id" field.
-func (ctrc *CiTypeRelationCreate) SetParentID(u uint64) *CiTypeRelationCreate {
-	ctrc.mutation.SetParentID(u)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetParentID(v uint64) *CiTypeRelationCreate {
+	_c.mutation.SetParentID(v)
+	return _c
 }
 
 // SetChildID sets the "child_id" field.
-func (ctrc *CiTypeRelationCreate) SetChildID(u uint64) *CiTypeRelationCreate {
-	ctrc.mutation.SetChildID(u)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetChildID(v uint64) *CiTypeRelationCreate {
+	_c.mutation.SetChildID(v)
+	return _c
 }
 
 // SetRelationTypeID sets the "relation_type_id" field.
-func (ctrc *CiTypeRelationCreate) SetRelationTypeID(u uint64) *CiTypeRelationCreate {
-	ctrc.mutation.SetRelationTypeID(u)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetRelationTypeID(v uint64) *CiTypeRelationCreate {
+	_c.mutation.SetRelationTypeID(v)
+	return _c
 }
 
 // SetConstraint sets the "constraint" field.
-func (ctrc *CiTypeRelationCreate) SetConstraint(s string) *CiTypeRelationCreate {
-	ctrc.mutation.SetConstraint(s)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetConstraint(v string) *CiTypeRelationCreate {
+	_c.mutation.SetConstraint(v)
+	return _c
 }
 
 // SetNillableConstraint sets the "constraint" field if the given value is not nil.
-func (ctrc *CiTypeRelationCreate) SetNillableConstraint(s *string) *CiTypeRelationCreate {
-	if s != nil {
-		ctrc.SetConstraint(*s)
+func (_c *CiTypeRelationCreate) SetNillableConstraint(v *string) *CiTypeRelationCreate {
+	if v != nil {
+		_c.SetConstraint(*v)
 	}
-	return ctrc
+	return _c
 }
 
 // SetParentAttrID sets the "parent_attr_id" field.
-func (ctrc *CiTypeRelationCreate) SetParentAttrID(u uint64) *CiTypeRelationCreate {
-	ctrc.mutation.SetParentAttrID(u)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetParentAttrID(v uint64) *CiTypeRelationCreate {
+	_c.mutation.SetParentAttrID(v)
+	return _c
 }
 
 // SetNillableParentAttrID sets the "parent_attr_id" field if the given value is not nil.
-func (ctrc *CiTypeRelationCreate) SetNillableParentAttrID(u *uint64) *CiTypeRelationCreate {
-	if u != nil {
-		ctrc.SetParentAttrID(*u)
+func (_c *CiTypeRelationCreate) SetNillableParentAttrID(v *uint64) *CiTypeRelationCreate {
+	if v != nil {
+		_c.SetParentAttrID(*v)
 	}
-	return ctrc
+	return _c
 }
 
 // SetChildAttrID sets the "child_attr_id" field.
-func (ctrc *CiTypeRelationCreate) SetChildAttrID(u uint64) *CiTypeRelationCreate {
-	ctrc.mutation.SetChildAttrID(u)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetChildAttrID(v uint64) *CiTypeRelationCreate {
+	_c.mutation.SetChildAttrID(v)
+	return _c
 }
 
 // SetNillableChildAttrID sets the "child_attr_id" field if the given value is not nil.
-func (ctrc *CiTypeRelationCreate) SetNillableChildAttrID(u *uint64) *CiTypeRelationCreate {
-	if u != nil {
-		ctrc.SetChildAttrID(*u)
+func (_c *CiTypeRelationCreate) SetNillableChildAttrID(v *uint64) *CiTypeRelationCreate {
+	if v != nil {
+		_c.SetChildAttrID(*v)
 	}
-	return ctrc
+	return _c
 }
 
 // SetParentAttrIds sets the "parent_attr_ids" field.
-func (ctrc *CiTypeRelationCreate) SetParentAttrIds(u []uint64) *CiTypeRelationCreate {
-	ctrc.mutation.SetParentAttrIds(u)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetParentAttrIds(v []uint64) *CiTypeRelationCreate {
+	_c.mutation.SetParentAttrIds(v)
+	return _c
 }
 
 // SetChildAttrIds sets the "child_attr_ids" field.
-func (ctrc *CiTypeRelationCreate) SetChildAttrIds(u []uint64) *CiTypeRelationCreate {
-	ctrc.mutation.SetChildAttrIds(u)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetChildAttrIds(v []uint64) *CiTypeRelationCreate {
+	_c.mutation.SetChildAttrIds(v)
+	return _c
 }
 
 // SetID sets the "id" field.
-func (ctrc *CiTypeRelationCreate) SetID(u uint64) *CiTypeRelationCreate {
-	ctrc.mutation.SetID(u)
-	return ctrc
+func (_c *CiTypeRelationCreate) SetID(v uint64) *CiTypeRelationCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetParent sets the "parent" edge to the CiType entity.
-func (ctrc *CiTypeRelationCreate) SetParent(c *CiType) *CiTypeRelationCreate {
-	return ctrc.SetParentID(c.ID)
+func (_c *CiTypeRelationCreate) SetParent(v *CiType) *CiTypeRelationCreate {
+	return _c.SetParentID(v.ID)
 }
 
 // SetChild sets the "child" edge to the CiType entity.
-func (ctrc *CiTypeRelationCreate) SetChild(c *CiType) *CiTypeRelationCreate {
-	return ctrc.SetChildID(c.ID)
+func (_c *CiTypeRelationCreate) SetChild(v *CiType) *CiTypeRelationCreate {
+	return _c.SetChildID(v.ID)
 }
 
 // SetRelationType sets the "relation_type" edge to the RelationType entity.
-func (ctrc *CiTypeRelationCreate) SetRelationType(r *RelationType) *CiTypeRelationCreate {
-	return ctrc.SetRelationTypeID(r.ID)
+func (_c *CiTypeRelationCreate) SetRelationType(v *RelationType) *CiTypeRelationCreate {
+	return _c.SetRelationTypeID(v.ID)
 }
 
 // Mutation returns the CiTypeRelationMutation object of the builder.
-func (ctrc *CiTypeRelationCreate) Mutation() *CiTypeRelationMutation {
-	return ctrc.mutation
+func (_c *CiTypeRelationCreate) Mutation() *CiTypeRelationMutation {
+	return _c.mutation
 }
 
 // Save creates the CiTypeRelation in the database.
-func (ctrc *CiTypeRelationCreate) Save(ctx context.Context) (*CiTypeRelation, error) {
-	if err := ctrc.defaults(); err != nil {
+func (_c *CiTypeRelationCreate) Save(ctx context.Context) (*CiTypeRelation, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctrc.sqlSave, ctrc.mutation, ctrc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (ctrc *CiTypeRelationCreate) SaveX(ctx context.Context) *CiTypeRelation {
-	v, err := ctrc.Save(ctx)
+func (_c *CiTypeRelationCreate) SaveX(ctx context.Context) *CiTypeRelation {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -180,72 +194,79 @@ func (ctrc *CiTypeRelationCreate) SaveX(ctx context.Context) *CiTypeRelation {
 }
 
 // Exec executes the query.
-func (ctrc *CiTypeRelationCreate) Exec(ctx context.Context) error {
-	_, err := ctrc.Save(ctx)
+func (_c *CiTypeRelationCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctrc *CiTypeRelationCreate) ExecX(ctx context.Context) {
-	if err := ctrc.Exec(ctx); err != nil {
+func (_c *CiTypeRelationCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctrc *CiTypeRelationCreate) defaults() error {
-	if _, ok := ctrc.mutation.CreatedAt(); !ok {
+func (_c *CiTypeRelationCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if cityperelation.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cityperelation.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := cityperelation.DefaultCreatedAt()
-		ctrc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := ctrc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if cityperelation.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized cityperelation.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := cityperelation.DefaultUpdatedAt()
-		ctrc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
+	}
+	if _, ok := _c.mutation.TenantID(); !ok {
+		v := cityperelation.DefaultTenantID
+		_c.mutation.SetTenantID(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctrc *CiTypeRelationCreate) check() error {
-	if _, ok := ctrc.mutation.CreatedAt(); !ok {
+func (_c *CiTypeRelationCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiTypeRelation.created_at"`)}
 	}
-	if _, ok := ctrc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiTypeRelation.updated_at"`)}
 	}
-	if _, ok := ctrc.mutation.ParentID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiTypeRelation.tenant_id"`)}
+	}
+	if _, ok := _c.mutation.ParentID(); !ok {
 		return &ValidationError{Name: "parent_id", err: errors.New(`ent: missing required field "CiTypeRelation.parent_id"`)}
 	}
-	if _, ok := ctrc.mutation.ChildID(); !ok {
+	if _, ok := _c.mutation.ChildID(); !ok {
 		return &ValidationError{Name: "child_id", err: errors.New(`ent: missing required field "CiTypeRelation.child_id"`)}
 	}
-	if _, ok := ctrc.mutation.RelationTypeID(); !ok {
+	if _, ok := _c.mutation.RelationTypeID(); !ok {
 		return &ValidationError{Name: "relation_type_id", err: errors.New(`ent: missing required field "CiTypeRelation.relation_type_id"`)}
 	}
-	if len(ctrc.mutation.ParentIDs()) == 0 {
+	if len(_c.mutation.ParentIDs()) == 0 {
 		return &ValidationError{Name: "parent", err: errors.New(`ent: missing required edge "CiTypeRelation.parent"`)}
 	}
-	if len(ctrc.mutation.ChildIDs()) == 0 {
+	if len(_c.mutation.ChildIDs()) == 0 {
 		return &ValidationError{Name: "child", err: errors.New(`ent: missing required edge "CiTypeRelation.child"`)}
 	}
-	if len(ctrc.mutation.RelationTypeIDs()) == 0 {
+	if len(_c.mutation.RelationTypeIDs()) == 0 {
 		return &ValidationError{Name: "relation_type", err: errors.New(`ent: missing required edge "CiTypeRelation.relation_type"`)}
 	}
 	return nil
 }
 
-func (ctrc *CiTypeRelationCreate) sqlSave(ctx context.Context) (*CiTypeRelation, error) {
-	if err := ctrc.check(); err != nil {
+func (_c *CiTypeRelationCreate) sqlSave(ctx context.Context) (*CiTypeRelation, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := ctrc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, ctrc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -255,53 +276,57 @@ func (ctrc *CiTypeRelationCreate) sqlSave(ctx context.Context) (*CiTypeRelation,
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	ctrc.mutation.id = &_node.ID
-	ctrc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (ctrc *CiTypeRelationCreate) createSpec() (*CiTypeRelation, *sqlgraph.CreateSpec) {
+func (_c *CiTypeRelationCreate) createSpec() (*CiTypeRelation, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiTypeRelation{config: ctrc.config}
+		_node = &CiTypeRelation{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(cityperelation.Table, sqlgraph.NewFieldSpec(cityperelation.FieldID, field.TypeUint64))
 	)
-	if id, ok := ctrc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := ctrc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(cityperelation.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := ctrc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(cityperelation.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := ctrc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(cityperelation.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := ctrc.mutation.Constraint(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
+		_spec.SetField(cityperelation.FieldTenantID, field.TypeUint64, value)
+		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.Constraint(); ok {
 		_spec.SetField(cityperelation.FieldConstraint, field.TypeString, value)
 		_node.Constraint = value
 	}
-	if value, ok := ctrc.mutation.ParentAttrID(); ok {
+	if value, ok := _c.mutation.ParentAttrID(); ok {
 		_spec.SetField(cityperelation.FieldParentAttrID, field.TypeUint64, value)
 		_node.ParentAttrID = value
 	}
-	if value, ok := ctrc.mutation.ChildAttrID(); ok {
+	if value, ok := _c.mutation.ChildAttrID(); ok {
 		_spec.SetField(cityperelation.FieldChildAttrID, field.TypeUint64, value)
 		_node.ChildAttrID = value
 	}
-	if value, ok := ctrc.mutation.ParentAttrIds(); ok {
+	if value, ok := _c.mutation.ParentAttrIds(); ok {
 		_spec.SetField(cityperelation.FieldParentAttrIds, field.TypeJSON, value)
 		_node.ParentAttrIds = value
 	}
-	if value, ok := ctrc.mutation.ChildAttrIds(); ok {
+	if value, ok := _c.mutation.ChildAttrIds(); ok {
 		_spec.SetField(cityperelation.FieldChildAttrIds, field.TypeJSON, value)
 		_node.ChildAttrIds = value
 	}
-	if nodes := ctrc.mutation.ParentIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ParentIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -318,7 +343,7 @@ func (ctrc *CiTypeRelationCreate) createSpec() (*CiTypeRelation, *sqlgraph.Creat
 		_node.ParentID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctrc.mutation.ChildIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ChildIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -335,7 +360,7 @@ func (ctrc *CiTypeRelationCreate) createSpec() (*CiTypeRelation, *sqlgraph.Creat
 		_node.ChildID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctrc.mutation.RelationTypeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.RelationTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -363,16 +388,16 @@ type CiTypeRelationCreateBulk struct {
 }
 
 // Save creates the CiTypeRelation entities in the database.
-func (ctrcb *CiTypeRelationCreateBulk) Save(ctx context.Context) ([]*CiTypeRelation, error) {
-	if ctrcb.err != nil {
-		return nil, ctrcb.err
+func (_c *CiTypeRelationCreateBulk) Save(ctx context.Context) ([]*CiTypeRelation, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(ctrcb.builders))
-	nodes := make([]*CiTypeRelation, len(ctrcb.builders))
-	mutators := make([]Mutator, len(ctrcb.builders))
-	for i := range ctrcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiTypeRelation, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := ctrcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiTypeRelationMutation)
@@ -386,11 +411,11 @@ func (ctrcb *CiTypeRelationCreateBulk) Save(ctx context.Context) ([]*CiTypeRelat
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, ctrcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, ctrcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -414,7 +439,7 @@ func (ctrcb *CiTypeRelationCreateBulk) Save(ctx context.Context) ([]*CiTypeRelat
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, ctrcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -422,8 +447,8 @@ func (ctrcb *CiTypeRelationCreateBulk) Save(ctx context.Context) ([]*CiTypeRelat
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctrcb *CiTypeRelationCreateBulk) SaveX(ctx context.Context) []*CiTypeRelation {
-	v, err := ctrcb.Save(ctx)
+func (_c *CiTypeRelationCreateBulk) SaveX(ctx context.Context) []*CiTypeRelation {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -431,14 +456,14 @@ func (ctrcb *CiTypeRelationCreateBulk) SaveX(ctx context.Context) []*CiTypeRelat
 }
 
 // Exec executes the query.
-func (ctrcb *CiTypeRelationCreateBulk) Exec(ctx context.Context) error {
-	_, err := ctrcb.Save(ctx)
+func (_c *CiTypeRelationCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctrcb *CiTypeRelationCreateBulk) ExecX(ctx context.Context) {
-	if err := ctrcb.Exec(ctx); err != nil {
+func (_c *CiTypeRelationCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

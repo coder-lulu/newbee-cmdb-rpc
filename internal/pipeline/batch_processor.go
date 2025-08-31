@@ -8,8 +8,8 @@ import (
 
 	"github.com/zeromicro/go-zero/core/logx"
 
-	"gitee.com/link234/cmdb-rpc/internal/adapters/input"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/adapters/input"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 )
 
 // BatchProcessor 企业级批量处理器

@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ChoiceTextDelete is the builder for deleting a ChoiceText entity.
@@ -20,56 +20,56 @@ type ChoiceTextDelete struct {
 }
 
 // Where appends a list predicates to the ChoiceTextDelete builder.
-func (ctd *ChoiceTextDelete) Where(ps ...predicate.ChoiceText) *ChoiceTextDelete {
-	ctd.mutation.Where(ps...)
-	return ctd
+func (_d *ChoiceTextDelete) Where(ps ...predicate.ChoiceText) *ChoiceTextDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (ctd *ChoiceTextDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, ctd.sqlExec, ctd.mutation, ctd.hooks)
+func (_d *ChoiceTextDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctd *ChoiceTextDelete) ExecX(ctx context.Context) int {
-	n, err := ctd.Exec(ctx)
+func (_d *ChoiceTextDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (ctd *ChoiceTextDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ChoiceTextDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(choicetext.Table, sqlgraph.NewFieldSpec(choicetext.FieldID, field.TypeUint64))
-	if ps := ctd.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, ctd.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	ctd.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ChoiceTextDeleteOne is the builder for deleting a single ChoiceText entity.
 type ChoiceTextDeleteOne struct {
-	ctd *ChoiceTextDelete
+	_d *ChoiceTextDelete
 }
 
 // Where appends a list predicates to the ChoiceTextDelete builder.
-func (ctdo *ChoiceTextDeleteOne) Where(ps ...predicate.ChoiceText) *ChoiceTextDeleteOne {
-	ctdo.ctd.mutation.Where(ps...)
-	return ctdo
+func (_d *ChoiceTextDeleteOne) Where(ps ...predicate.ChoiceText) *ChoiceTextDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (ctdo *ChoiceTextDeleteOne) Exec(ctx context.Context) error {
-	n, err := ctdo.ctd.Exec(ctx)
+func (_d *ChoiceTextDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (ctdo *ChoiceTextDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctdo *ChoiceTextDeleteOne) ExecX(ctx context.Context) {
-	if err := ctdo.Exec(ctx); err != nil {
+func (_d *ChoiceTextDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

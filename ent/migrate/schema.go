@@ -593,49 +593,31 @@ var (
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "permission_id", Type: field.TypeString, Unique: true},
 		{Name: "scope_type", Type: field.TypeEnum, Enums: []string{"global", "ci_type", "ci_instance", "attribute", "field"}},
-		{Name: "ci_type_id", Type: field.TypeUint64, Nullable: true},
-		{Name: "ci_id", Type: field.TypeUint64, Nullable: true},
-		{Name: "attribute_id", Type: field.TypeUint64, Nullable: true},
-		{Name: "field_name", Type: field.TypeString, Nullable: true},
+		{Name: "scope_target_type", Type: field.TypeString, Nullable: true},
+		{Name: "scope_target_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "scope_field_name", Type: field.TypeString, Nullable: true},
 		{Name: "subject_type", Type: field.TypeEnum, Enums: []string{"user", "role", "department", "group", "system"}},
-		{Name: "subject_id", Type: field.TypeUUID, Nullable: true},
+		{Name: "subject_id", Type: field.TypeString, Nullable: true},
 		{Name: "subject_name", Type: field.TypeString},
-		{Name: "subject_code", Type: field.TypeString, Nullable: true},
 		{Name: "permission_type", Type: field.TypeEnum, Enums: []string{"allow", "deny"}, Default: "allow"},
-		{Name: "operations", Type: field.TypeJSON},
-		{Name: "conditions", Type: field.TypeJSON, Nullable: true},
-		{Name: "priority", Type: field.TypeInt, Default: 0},
 		{Name: "permission_level", Type: field.TypeEnum, Enums: []string{"none", "read", "write", "admin", "super_admin"}, Default: "none"},
+		{Name: "operations_mask", Type: field.TypeUint64, Default: 0},
 		{Name: "effective_from", Type: field.TypeTime, Nullable: true},
 		{Name: "effective_to", Type: field.TypeTime, Nullable: true},
 		{Name: "is_temporary", Type: field.TypeBool, Default: false},
-		{Name: "data_filters", Type: field.TypeJSON, Nullable: true},
-		{Name: "field_masks", Type: field.TypeJSON, Nullable: true},
-		{Name: "allowed_values", Type: field.TypeJSON, Nullable: true},
+		{Name: "priority", Type: field.TypeInt, Default: 0},
+		{Name: "status", Type: field.TypeEnum, Enums: []string{"active", "inactive", "suspended", "revoked", "expired"}, Default: "active"},
+		{Name: "parent_permission_id", Type: field.TypeString, Nullable: true},
+		{Name: "inheritable", Type: field.TypeBool, Default: false},
 		{Name: "require_approval", Type: field.TypeBool, Default: false},
-		{Name: "granted_by", Type: field.TypeUUID, Nullable: true},
-		{Name: "granted_by_name", Type: field.TypeString, Nullable: true},
-		{Name: "granted_at", Type: field.TypeTime, Nullable: true},
-		{Name: "grant_reason", Type: field.TypeString, Nullable: true},
+		{Name: "require_mfa", Type: field.TypeBool, Default: false},
+		{Name: "risk_level", Type: field.TypeEnum, Enums: []string{"low", "medium", "high", "critical"}, Default: "low"},
 		{Name: "usage_count", Type: field.TypeInt, Default: 0},
 		{Name: "last_used_at", Type: field.TypeTime, Nullable: true},
-		{Name: "usage_statistics", Type: field.TypeJSON, Nullable: true},
-		{Name: "status", Type: field.TypeEnum, Enums: []string{"active", "inactive", "suspended", "revoked", "expired"}, Default: "active"},
-		{Name: "status_reason", Type: field.TypeString, Nullable: true},
-		{Name: "inheritable", Type: field.TypeBool, Default: false},
-		{Name: "parent_permission_id", Type: field.TypeString, Nullable: true},
-		{Name: "inherited_from", Type: field.TypeJSON, Nullable: true},
-		{Name: "risk_level", Type: field.TypeEnum, Enums: []string{"low", "medium", "high", "critical"}, Default: "low"},
-		{Name: "require_mfa", Type: field.TypeBool, Default: false},
-		{Name: "security_constraints", Type: field.TypeJSON, Nullable: true},
-		{Name: "metadata", Type: field.TypeJSON, Nullable: true},
-		{Name: "tags", Type: field.TypeJSON, Nullable: true},
+		{Name: "created_by", Type: field.TypeString, Nullable: true},
+		{Name: "updated_by", Type: field.TypeString, Nullable: true},
 		{Name: "description", Type: field.TypeString, Nullable: true, Size: 2147483647},
 		{Name: "comments", Type: field.TypeString, Nullable: true, Size: 2147483647},
-		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
-		{Name: "updated_by", Type: field.TypeUUID, Nullable: true},
-		{Name: "last_reviewed_at", Type: field.TypeTime, Nullable: true},
-		{Name: "last_reviewed_by", Type: field.TypeUUID, Nullable: true},
 	}
 	// CmdbCiPermissionsTable holds the schema information for the "cmdb_ci_permissions" table.
 	CmdbCiPermissionsTable = &schema.Table{
@@ -646,92 +628,72 @@ var (
 			{
 				Name:    "cipermission_scope_type_subject_type_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[6], CmdbCiPermissionsColumns[11], CmdbCiPermissionsColumns[34]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[6], CmdbCiPermissionsColumns[10], CmdbCiPermissionsColumns[20]},
 			},
 			{
-				Name:    "cipermission_subject_id_scope_type",
+				Name:    "cipermission_subject_id_scope_type_scope_target_type_scope_target_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[12], CmdbCiPermissionsColumns[6]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[11], CmdbCiPermissionsColumns[6], CmdbCiPermissionsColumns[7], CmdbCiPermissionsColumns[8]},
 			},
 			{
-				Name:    "cipermission_ci_type_id_subject_type_status",
+				Name:    "cipermission_scope_target_type_scope_target_id_permission_level",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[7], CmdbCiPermissionsColumns[11], CmdbCiPermissionsColumns[34]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[7], CmdbCiPermissionsColumns[8], CmdbCiPermissionsColumns[14]},
 			},
 			{
-				Name:    "cipermission_ci_id_subject_type_status",
+				Name:    "cipermission_effective_from_effective_to_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[8], CmdbCiPermissionsColumns[11], CmdbCiPermissionsColumns[34]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[16], CmdbCiPermissionsColumns[17], CmdbCiPermissionsColumns[20]},
 			},
 			{
-				Name:    "cipermission_subject_type_subject_id_status",
+				Name:    "cipermission_subject_id_scope_type_scope_target_type_scope_target_id_status_effective_from_effective_to",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[11], CmdbCiPermissionsColumns[12], CmdbCiPermissionsColumns[34]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[11], CmdbCiPermissionsColumns[6], CmdbCiPermissionsColumns[7], CmdbCiPermissionsColumns[8], CmdbCiPermissionsColumns[20], CmdbCiPermissionsColumns[16], CmdbCiPermissionsColumns[17]},
 			},
 			{
-				Name:    "cipermission_permission_type_permission_level",
+				Name:    "cipermission_parent_permission_id_inheritable_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[15], CmdbCiPermissionsColumns[19]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[21], CmdbCiPermissionsColumns[22], CmdbCiPermissionsColumns[20]},
+			},
+			{
+				Name:    "cipermission_last_used_at_usage_count",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[27], CmdbCiPermissionsColumns[26]},
+			},
+			{
+				Name:    "cipermission_tenant_id_subject_type_subject_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[3], CmdbCiPermissionsColumns[10], CmdbCiPermissionsColumns[11]},
+			},
+			{
+				Name:    "cipermission_permission_type_permission_level_status",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[13], CmdbCiPermissionsColumns[14], CmdbCiPermissionsColumns[20]},
 			},
 			{
 				Name:    "cipermission_priority_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[18], CmdbCiPermissionsColumns[34]},
-			},
-			{
-				Name:    "cipermission_effective_from_effective_to",
-				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[20], CmdbCiPermissionsColumns[21]},
-			},
-			{
-				Name:    "cipermission_status_effective_from_effective_to",
-				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[34], CmdbCiPermissionsColumns[20], CmdbCiPermissionsColumns[21]},
-			},
-			{
-				Name:    "cipermission_require_approval_status",
-				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[26], CmdbCiPermissionsColumns[34]},
-			},
-			{
-				Name:    "cipermission_granted_by_granted_at",
-				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[27], CmdbCiPermissionsColumns[29]},
-			},
-			{
-				Name:    "cipermission_parent_permission_id",
-				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[37]},
-			},
-			{
-				Name:    "cipermission_inheritable_scope_type",
-				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[36], CmdbCiPermissionsColumns[6]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[19], CmdbCiPermissionsColumns[20]},
 			},
 			{
 				Name:    "cipermission_risk_level_require_mfa",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[39], CmdbCiPermissionsColumns[40]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[25], CmdbCiPermissionsColumns[24]},
+			},
+			{
+				Name:    "cipermission_require_approval_status",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[23], CmdbCiPermissionsColumns[20]},
 			},
 			{
 				Name:    "cipermission_is_temporary_effective_to",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[22], CmdbCiPermissionsColumns[21]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[18], CmdbCiPermissionsColumns[17]},
 			},
 			{
-				Name:    "cipermission_scope_type_ci_type_id_subject_type_status",
+				Name:    "cipermission_subject_id_scope_target_type_scope_target_id_permission_level_operations_mask_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[6], CmdbCiPermissionsColumns[7], CmdbCiPermissionsColumns[11], CmdbCiPermissionsColumns[34]},
-			},
-			{
-				Name:    "cipermission_subject_id_permission_level_status",
-				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[12], CmdbCiPermissionsColumns[19], CmdbCiPermissionsColumns[34]},
-			},
-			{
-				Name:    "cipermission_ci_type_id_attribute_id_subject_type",
-				Unique:  false,
-				Columns: []*schema.Column{CmdbCiPermissionsColumns[7], CmdbCiPermissionsColumns[9], CmdbCiPermissionsColumns[11]},
+				Columns: []*schema.Column{CmdbCiPermissionsColumns[11], CmdbCiPermissionsColumns[7], CmdbCiPermissionsColumns[8], CmdbCiPermissionsColumns[14], CmdbCiPermissionsColumns[15], CmdbCiPermissionsColumns[20]},
 			},
 		},
 	}
@@ -1136,6 +1098,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "constraint", Type: field.TypeString, Nullable: true},
 		{Name: "parent_attr_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "child_attr_id", Type: field.TypeUint64, Nullable: true},
@@ -1153,19 +1116,19 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_ci_type_relations_cmdb_ci_types_child_relations",
-				Columns:    []*schema.Column{CmdbCiTypeRelationsColumns[9]},
-				RefColumns: []*schema.Column{CmdbCiTypesColumns[0]},
-				OnDelete:   schema.NoAction,
-			},
-			{
-				Symbol:     "cmdb_ci_type_relations_cmdb_ci_types_parent_relations",
 				Columns:    []*schema.Column{CmdbCiTypeRelationsColumns[10]},
 				RefColumns: []*schema.Column{CmdbCiTypesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
-				Symbol:     "cmdb_ci_type_relations_cmdb_relation_types_ci_type_relations",
+				Symbol:     "cmdb_ci_type_relations_cmdb_ci_types_parent_relations",
 				Columns:    []*schema.Column{CmdbCiTypeRelationsColumns[11]},
+				RefColumns: []*schema.Column{CmdbCiTypesColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+			{
+				Symbol:     "cmdb_ci_type_relations_cmdb_relation_types_ci_type_relations",
+				Columns:    []*schema.Column{CmdbCiTypeRelationsColumns[12]},
 				RefColumns: []*schema.Column{CmdbRelationTypesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1608,12 +1571,250 @@ var (
 			},
 		},
 	}
+	// CmdbPermissionCacheColumns holds the columns for the "cmdb_permission_cache" table.
+	CmdbPermissionCacheColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "cache_key", Type: field.TypeString, Unique: true},
+		{Name: "user_id", Type: field.TypeString},
+		{Name: "resource_type", Type: field.TypeString},
+		{Name: "resource_id", Type: field.TypeString},
+		{Name: "allowed_operations", Type: field.TypeUint64, Default: 0},
+		{Name: "permission_level", Type: field.TypeEnum, Enums: []string{"none", "read", "write", "admin", "super_admin"}, Default: "none"},
+		{Name: "has_data_filters", Type: field.TypeBool, Default: false},
+		{Name: "has_field_masks", Type: field.TypeBool, Default: false},
+		{Name: "cache_version", Type: field.TypeString},
+		{Name: "expires_at", Type: field.TypeTime},
+		{Name: "last_accessed_at", Type: field.TypeTime},
+		{Name: "access_count", Type: field.TypeInt, Default: 1},
+	}
+	// CmdbPermissionCacheTable holds the schema information for the "cmdb_permission_cache" table.
+	CmdbPermissionCacheTable = &schema.Table{
+		Name:       "cmdb_permission_cache",
+		Columns:    CmdbPermissionCacheColumns,
+		PrimaryKey: []*schema.Column{CmdbPermissionCacheColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "permissioncache_user_id_resource_type_resource_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[5], CmdbPermissionCacheColumns[6], CmdbPermissionCacheColumns[7]},
+			},
+			{
+				Name:    "permissioncache_expires_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[13]},
+			},
+			{
+				Name:    "permissioncache_cache_version",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[12]},
+			},
+			{
+				Name:    "permissioncache_last_accessed_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[14]},
+			},
+			{
+				Name:    "permissioncache_user_id_expires_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[5], CmdbPermissionCacheColumns[13]},
+			},
+			{
+				Name:    "permissioncache_resource_type_resource_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[6], CmdbPermissionCacheColumns[7]},
+			},
+		},
+	}
+	// CmdbPermissionDataFiltersColumns holds the columns for the "cmdb_permission_data_filters" table.
+	CmdbPermissionDataFiltersColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "filter_group", Type: field.TypeInt, Default: 1},
+		{Name: "field_name", Type: field.TypeString},
+		{Name: "operator_type", Type: field.TypeEnum, Enums: []string{"eq", "ne", "gt", "lt", "gte", "lte", "contains", "not_contains", "like", "not_like"}},
+		{Name: "filter_value", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "value_type", Type: field.TypeEnum, Enums: []string{"string", "number", "boolean", "array"}, Default: "string"},
+		{Name: "permission_id", Type: field.TypeUint64},
+	}
+	// CmdbPermissionDataFiltersTable holds the schema information for the "cmdb_permission_data_filters" table.
+	CmdbPermissionDataFiltersTable = &schema.Table{
+		Name:       "cmdb_permission_data_filters",
+		Columns:    CmdbPermissionDataFiltersColumns,
+		PrimaryKey: []*schema.Column{CmdbPermissionDataFiltersColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "cmdb_permission_data_filters_cmdb_ci_permissions_data_filters",
+				Columns:    []*schema.Column{CmdbPermissionDataFiltersColumns[9]},
+				RefColumns: []*schema.Column{CmdbCiPermissionsColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+		},
+		Indexes: []*schema.Index{
+			{
+				Name:    "permissiondatafilter_permission_id_filter_group",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[9], CmdbPermissionDataFiltersColumns[4]},
+			},
+			{
+				Name:    "permissiondatafilter_field_name_operator_type",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[5], CmdbPermissionDataFiltersColumns[6]},
+			},
+			{
+				Name:    "permissiondatafilter_permission_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[9]},
+			},
+		},
+	}
+	// CmdbPermissionFieldMasksColumns holds the columns for the "cmdb_permission_field_masks" table.
+	CmdbPermissionFieldMasksColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "field_name", Type: field.TypeString},
+		{Name: "mask_type", Type: field.TypeEnum, Enums: []string{"hide", "encrypt", "partial"}, Default: "hide"},
+		{Name: "mask_rule", Type: field.TypeString, Nullable: true},
+		{Name: "permission_id", Type: field.TypeUint64},
+	}
+	// CmdbPermissionFieldMasksTable holds the schema information for the "cmdb_permission_field_masks" table.
+	CmdbPermissionFieldMasksTable = &schema.Table{
+		Name:       "cmdb_permission_field_masks",
+		Columns:    CmdbPermissionFieldMasksColumns,
+		PrimaryKey: []*schema.Column{CmdbPermissionFieldMasksColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "cmdb_permission_field_masks_cmdb_ci_permissions_field_masks",
+				Columns:    []*schema.Column{CmdbPermissionFieldMasksColumns[7]},
+				RefColumns: []*schema.Column{CmdbCiPermissionsColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+		},
+		Indexes: []*schema.Index{
+			{
+				Name:    "permissionfieldmask_permission_id_field_name",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[7], CmdbPermissionFieldMasksColumns[4]},
+			},
+			{
+				Name:    "permissionfieldmask_permission_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[7]},
+			},
+			{
+				Name:    "permissionfieldmask_field_name_mask_type",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[4], CmdbPermissionFieldMasksColumns[5]},
+			},
+		},
+	}
+	// CmdbPermissionOperationsColumns holds the columns for the "cmdb_permission_operations" table.
+	CmdbPermissionOperationsColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "operation_code", Type: field.TypeString},
+		{Name: "operation_name", Type: field.TypeString, Nullable: true},
+		{Name: "is_allowed", Type: field.TypeBool, Default: true},
+		{Name: "permission_id", Type: field.TypeUint64},
+	}
+	// CmdbPermissionOperationsTable holds the schema information for the "cmdb_permission_operations" table.
+	CmdbPermissionOperationsTable = &schema.Table{
+		Name:       "cmdb_permission_operations",
+		Columns:    CmdbPermissionOperationsColumns,
+		PrimaryKey: []*schema.Column{CmdbPermissionOperationsColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "cmdb_permission_operations_cmdb_ci_permissions_operations",
+				Columns:    []*schema.Column{CmdbPermissionOperationsColumns[7]},
+				RefColumns: []*schema.Column{CmdbCiPermissionsColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+		},
+		Indexes: []*schema.Index{
+			{
+				Name:    "permissionoperation_permission_id_operation_code",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbPermissionOperationsColumns[7], CmdbPermissionOperationsColumns[4]},
+			},
+			{
+				Name:    "permissionoperation_permission_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionOperationsColumns[7]},
+			},
+			{
+				Name:    "permissionoperation_operation_code",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionOperationsColumns[4]},
+			},
+			{
+				Name:    "permissionoperation_is_allowed",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionOperationsColumns[6]},
+			},
+		},
+	}
+	// CmdbPermissionTemplatesColumns holds the columns for the "cmdb_permission_templates" table.
+	CmdbPermissionTemplatesColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "template_id", Type: field.TypeString, Unique: true},
+		{Name: "template_name", Type: field.TypeString},
+		{Name: "template_description", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "category", Type: field.TypeString, Nullable: true},
+		{Name: "scope_type", Type: field.TypeEnum, Nullable: true, Enums: []string{"global", "ci_type", "ci_instance", "attribute", "field"}},
+		{Name: "permission_level", Type: field.TypeEnum, Nullable: true, Enums: []string{"none", "read", "write", "admin", "super_admin"}},
+		{Name: "operations_mask", Type: field.TypeUint64, Default: 0},
+		{Name: "risk_level", Type: field.TypeEnum, Enums: []string{"low", "medium", "high", "critical"}, Default: "low"},
+		{Name: "is_system_template", Type: field.TypeBool, Default: false},
+		{Name: "is_active", Type: field.TypeBool, Default: true},
+		{Name: "sort_order", Type: field.TypeInt, Default: 0},
+		{Name: "created_by", Type: field.TypeString, Nullable: true},
+	}
+	// CmdbPermissionTemplatesTable holds the schema information for the "cmdb_permission_templates" table.
+	CmdbPermissionTemplatesTable = &schema.Table{
+		Name:       "cmdb_permission_templates",
+		Columns:    CmdbPermissionTemplatesColumns,
+		PrimaryKey: []*schema.Column{CmdbPermissionTemplatesColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "permissiontemplate_category_is_active",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[7], CmdbPermissionTemplatesColumns[13]},
+			},
+			{
+				Name:    "permissiontemplate_scope_type_permission_level",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[8], CmdbPermissionTemplatesColumns[9]},
+			},
+			{
+				Name:    "permissiontemplate_is_system_template_is_active",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[12], CmdbPermissionTemplatesColumns[13]},
+			},
+			{
+				Name:    "permissiontemplate_sort_order",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[14]},
+			},
+		},
+	}
 	// CmdbRelationTypesColumns holds the columns for the "cmdb_relation_types" table.
 	CmdbRelationTypesColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeUint64, Increment: true},
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "name", Type: field.TypeString, Size: 32},
 		{Name: "code", Type: field.TypeString, Size: 32},
 		{Name: "category", Type: field.TypeEnum, Enums: []string{"physical", "logic", "business"}, Default: "logic"},
@@ -1631,6 +1832,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "value", Type: field.TypeTime},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1644,13 +1846,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_datetimes_cmdb_attributes_value_datetimes",
-				Columns:    []*schema.Column{CmdbValueDatetimesColumns[6]},
+				Columns:    []*schema.Column{CmdbValueDatetimesColumns[7]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_datetimes_cmdb_cis_value_datetimes",
-				Columns:    []*schema.Column{CmdbValueDatetimesColumns[7]},
+				Columns:    []*schema.Column{CmdbValueDatetimesColumns[8]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1659,7 +1861,7 @@ var (
 			{
 				Name:    "valuedatetime_attr_id_value",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbValueDatetimesColumns[6], CmdbValueDatetimesColumns[4]},
+				Columns: []*schema.Column{CmdbValueDatetimesColumns[7], CmdbValueDatetimesColumns[5]},
 			},
 		},
 	}
@@ -1669,6 +1871,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "value", Type: field.TypeFloat64},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1682,13 +1885,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_floats_cmdb_attributes_value_floats",
-				Columns:    []*schema.Column{CmdbValueFloatsColumns[6]},
+				Columns:    []*schema.Column{CmdbValueFloatsColumns[7]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_floats_cmdb_cis_value_floats",
-				Columns:    []*schema.Column{CmdbValueFloatsColumns[7]},
+				Columns:    []*schema.Column{CmdbValueFloatsColumns[8]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1697,7 +1900,7 @@ var (
 			{
 				Name:    "valuefloat_attr_id_value",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbValueFloatsColumns[6], CmdbValueFloatsColumns[4]},
+				Columns: []*schema.Column{CmdbValueFloatsColumns[7], CmdbValueFloatsColumns[5]},
 			},
 		},
 	}
@@ -1707,6 +1910,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "value", Type: field.TypeString, Size: 255},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1720,13 +1924,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_index_texts_cmdb_attributes_value_index_texts",
-				Columns:    []*schema.Column{CmdbValueIndexTextsColumns[6]},
+				Columns:    []*schema.Column{CmdbValueIndexTextsColumns[7]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_index_texts_cmdb_cis_value_index_texts",
-				Columns:    []*schema.Column{CmdbValueIndexTextsColumns[7]},
+				Columns:    []*schema.Column{CmdbValueIndexTextsColumns[8]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1735,12 +1939,12 @@ var (
 			{
 				Name:    "valueindextext_ci_id_attr_id",
 				Unique:  true,
-				Columns: []*schema.Column{CmdbValueIndexTextsColumns[7], CmdbValueIndexTextsColumns[6]},
+				Columns: []*schema.Column{CmdbValueIndexTextsColumns[8], CmdbValueIndexTextsColumns[7]},
 			},
 			{
 				Name:    "valueindextext_attr_id_value",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbValueIndexTextsColumns[6], CmdbValueIndexTextsColumns[4]},
+				Columns: []*schema.Column{CmdbValueIndexTextsColumns[7], CmdbValueIndexTextsColumns[5]},
 			},
 		},
 	}
@@ -1750,6 +1954,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "value", Type: field.TypeInt},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1763,13 +1968,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_integers_cmdb_attributes_value_integers",
-				Columns:    []*schema.Column{CmdbValueIntegersColumns[6]},
+				Columns:    []*schema.Column{CmdbValueIntegersColumns[7]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_integers_cmdb_cis_value_integers",
-				Columns:    []*schema.Column{CmdbValueIntegersColumns[7]},
+				Columns:    []*schema.Column{CmdbValueIntegersColumns[8]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1778,7 +1983,7 @@ var (
 			{
 				Name:    "valueinteger_attr_id_value",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbValueIntegersColumns[6], CmdbValueIntegersColumns[4]},
+				Columns: []*schema.Column{CmdbValueIntegersColumns[7], CmdbValueIntegersColumns[5]},
 			},
 		},
 	}
@@ -1788,6 +1993,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "value", Type: field.TypeJSON},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1801,13 +2007,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_json_cmdb_attributes_value_jsons",
-				Columns:    []*schema.Column{CmdbValueJSONColumns[6]},
+				Columns:    []*schema.Column{CmdbValueJSONColumns[7]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_json_cmdb_cis_value_jsons",
-				Columns:    []*schema.Column{CmdbValueJSONColumns[7]},
+				Columns:    []*schema.Column{CmdbValueJSONColumns[8]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1819,6 +2025,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "value", Type: field.TypeString, Size: 2147483647},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1832,13 +2039,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_texts_cmdb_attributes_value_texts",
-				Columns:    []*schema.Column{CmdbValueTextsColumns[6]},
+				Columns:    []*schema.Column{CmdbValueTextsColumns[7]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_texts_cmdb_cis_value_texts",
-				Columns:    []*schema.Column{CmdbValueTextsColumns[7]},
+				Columns:    []*schema.Column{CmdbValueTextsColumns[8]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1869,6 +2076,11 @@ var (
 		CmdbImportRecordsTable,
 		CmdbImportTasksTable,
 		CmdbImportTemplatesTable,
+		CmdbPermissionCacheTable,
+		CmdbPermissionDataFiltersTable,
+		CmdbPermissionFieldMasksTable,
+		CmdbPermissionOperationsTable,
+		CmdbPermissionTemplatesTable,
 		CmdbRelationTypesTable,
 		CmdbValueDatetimesTable,
 		CmdbValueFloatsTable,
@@ -1975,6 +2187,24 @@ func init() {
 	CmdbImportTemplatesTable.ForeignKeys[0].RefTable = CmdbCiTypesTable
 	CmdbImportTemplatesTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_import_templates",
+	}
+	CmdbPermissionCacheTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_permission_cache",
+	}
+	CmdbPermissionDataFiltersTable.ForeignKeys[0].RefTable = CmdbCiPermissionsTable
+	CmdbPermissionDataFiltersTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_permission_data_filters",
+	}
+	CmdbPermissionFieldMasksTable.ForeignKeys[0].RefTable = CmdbCiPermissionsTable
+	CmdbPermissionFieldMasksTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_permission_field_masks",
+	}
+	CmdbPermissionOperationsTable.ForeignKeys[0].RefTable = CmdbCiPermissionsTable
+	CmdbPermissionOperationsTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_permission_operations",
+	}
+	CmdbPermissionTemplatesTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_permission_templates",
 	}
 	CmdbRelationTypesTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_relation_types",

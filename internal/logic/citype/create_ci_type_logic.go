@@ -4,16 +4,16 @@ import (
 	"context"
 	"errors"
 
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroup"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	"gitee.com/link234/newbee-backend-common/msg/errormsg"
-	"gitee.com/link234/newbee-backend-common/utils/pointy"
-	"gitee.com/link234/newbee-backend-common/utils/uuidx"
+	"github.com/coder-lulu/newbee-common/msg/errormsg"
+	"github.com/coder-lulu/newbee-common/utils/pointy"
+	"github.com/coder-lulu/newbee-common/utils/uuidx"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

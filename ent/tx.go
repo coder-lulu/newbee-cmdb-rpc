@@ -60,6 +60,16 @@ type Tx struct {
 	ImportTask *ImportTaskClient
 	// ImportTemplate is the client for interacting with the ImportTemplate builders.
 	ImportTemplate *ImportTemplateClient
+	// PermissionCache is the client for interacting with the PermissionCache builders.
+	PermissionCache *PermissionCacheClient
+	// PermissionDataFilter is the client for interacting with the PermissionDataFilter builders.
+	PermissionDataFilter *PermissionDataFilterClient
+	// PermissionFieldMask is the client for interacting with the PermissionFieldMask builders.
+	PermissionFieldMask *PermissionFieldMaskClient
+	// PermissionOperation is the client for interacting with the PermissionOperation builders.
+	PermissionOperation *PermissionOperationClient
+	// PermissionTemplate is the client for interacting with the PermissionTemplate builders.
+	PermissionTemplate *PermissionTemplateClient
 	// RelationType is the client for interacting with the RelationType builders.
 	RelationType *RelationTypeClient
 	// ValueDatetime is the client for interacting with the ValueDatetime builders.
@@ -228,6 +238,11 @@ func (tx *Tx) init() {
 	tx.ImportRecord = NewImportRecordClient(tx.config)
 	tx.ImportTask = NewImportTaskClient(tx.config)
 	tx.ImportTemplate = NewImportTemplateClient(tx.config)
+	tx.PermissionCache = NewPermissionCacheClient(tx.config)
+	tx.PermissionDataFilter = NewPermissionDataFilterClient(tx.config)
+	tx.PermissionFieldMask = NewPermissionFieldMaskClient(tx.config)
+	tx.PermissionOperation = NewPermissionOperationClient(tx.config)
+	tx.PermissionTemplate = NewPermissionTemplateClient(tx.config)
 	tx.RelationType = NewRelationTypeClient(tx.config)
 	tx.ValueDatetime = NewValueDatetimeClient(tx.config)
 	tx.ValueFloat = NewValueFloatClient(tx.config)

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/internal/adapters/input"
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/adapters/input"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 )
 
 // ExamplePipelineUsage 管道使用示例

@@ -10,8 +10,8 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
 )
 
 // CiTypeInheritanceCreate is the builder for creating a CiTypeInheritance entity.
@@ -22,119 +22,119 @@ type CiTypeInheritanceCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ctic *CiTypeInheritanceCreate) SetCreatedAt(t time.Time) *CiTypeInheritanceCreate {
-	ctic.mutation.SetCreatedAt(t)
-	return ctic
+func (_c *CiTypeInheritanceCreate) SetCreatedAt(v time.Time) *CiTypeInheritanceCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ctic *CiTypeInheritanceCreate) SetNillableCreatedAt(t *time.Time) *CiTypeInheritanceCreate {
-	if t != nil {
-		ctic.SetCreatedAt(*t)
+func (_c *CiTypeInheritanceCreate) SetNillableCreatedAt(v *time.Time) *CiTypeInheritanceCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return ctic
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctic *CiTypeInheritanceCreate) SetUpdatedAt(t time.Time) *CiTypeInheritanceCreate {
-	ctic.mutation.SetUpdatedAt(t)
-	return ctic
+func (_c *CiTypeInheritanceCreate) SetUpdatedAt(v time.Time) *CiTypeInheritanceCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (ctic *CiTypeInheritanceCreate) SetNillableUpdatedAt(t *time.Time) *CiTypeInheritanceCreate {
-	if t != nil {
-		ctic.SetUpdatedAt(*t)
+func (_c *CiTypeInheritanceCreate) SetNillableUpdatedAt(v *time.Time) *CiTypeInheritanceCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return ctic
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctic *CiTypeInheritanceCreate) SetDeletedAt(t time.Time) *CiTypeInheritanceCreate {
-	ctic.mutation.SetDeletedAt(t)
-	return ctic
+func (_c *CiTypeInheritanceCreate) SetDeletedAt(v time.Time) *CiTypeInheritanceCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctic *CiTypeInheritanceCreate) SetNillableDeletedAt(t *time.Time) *CiTypeInheritanceCreate {
-	if t != nil {
-		ctic.SetDeletedAt(*t)
+func (_c *CiTypeInheritanceCreate) SetNillableDeletedAt(v *time.Time) *CiTypeInheritanceCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return ctic
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (ctic *CiTypeInheritanceCreate) SetTenantID(u uint64) *CiTypeInheritanceCreate {
-	ctic.mutation.SetTenantID(u)
-	return ctic
+func (_c *CiTypeInheritanceCreate) SetTenantID(v uint64) *CiTypeInheritanceCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (ctic *CiTypeInheritanceCreate) SetNillableTenantID(u *uint64) *CiTypeInheritanceCreate {
-	if u != nil {
-		ctic.SetTenantID(*u)
+func (_c *CiTypeInheritanceCreate) SetNillableTenantID(v *uint64) *CiTypeInheritanceCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return ctic
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctic *CiTypeInheritanceCreate) SetDepartmentID(u uint64) *CiTypeInheritanceCreate {
-	ctic.mutation.SetDepartmentID(u)
-	return ctic
+func (_c *CiTypeInheritanceCreate) SetDepartmentID(v uint64) *CiTypeInheritanceCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctic *CiTypeInheritanceCreate) SetNillableDepartmentID(u *uint64) *CiTypeInheritanceCreate {
-	if u != nil {
-		ctic.SetDepartmentID(*u)
+func (_c *CiTypeInheritanceCreate) SetNillableDepartmentID(v *uint64) *CiTypeInheritanceCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return ctic
+	return _c
 }
 
 // SetParentID sets the "parent_id" field.
-func (ctic *CiTypeInheritanceCreate) SetParentID(u uint64) *CiTypeInheritanceCreate {
-	ctic.mutation.SetParentID(u)
-	return ctic
+func (_c *CiTypeInheritanceCreate) SetParentID(v uint64) *CiTypeInheritanceCreate {
+	_c.mutation.SetParentID(v)
+	return _c
 }
 
 // SetChildID sets the "child_id" field.
-func (ctic *CiTypeInheritanceCreate) SetChildID(u uint64) *CiTypeInheritanceCreate {
-	ctic.mutation.SetChildID(u)
-	return ctic
+func (_c *CiTypeInheritanceCreate) SetChildID(v uint64) *CiTypeInheritanceCreate {
+	_c.mutation.SetChildID(v)
+	return _c
 }
 
 // SetID sets the "id" field.
-func (ctic *CiTypeInheritanceCreate) SetID(u uint64) *CiTypeInheritanceCreate {
-	ctic.mutation.SetID(u)
-	return ctic
+func (_c *CiTypeInheritanceCreate) SetID(v uint64) *CiTypeInheritanceCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetParent sets the "parent" edge to the CiType entity.
-func (ctic *CiTypeInheritanceCreate) SetParent(c *CiType) *CiTypeInheritanceCreate {
-	return ctic.SetParentID(c.ID)
+func (_c *CiTypeInheritanceCreate) SetParent(v *CiType) *CiTypeInheritanceCreate {
+	return _c.SetParentID(v.ID)
 }
 
 // SetChild sets the "child" edge to the CiType entity.
-func (ctic *CiTypeInheritanceCreate) SetChild(c *CiType) *CiTypeInheritanceCreate {
-	return ctic.SetChildID(c.ID)
+func (_c *CiTypeInheritanceCreate) SetChild(v *CiType) *CiTypeInheritanceCreate {
+	return _c.SetChildID(v.ID)
 }
 
 // Mutation returns the CiTypeInheritanceMutation object of the builder.
-func (ctic *CiTypeInheritanceCreate) Mutation() *CiTypeInheritanceMutation {
-	return ctic.mutation
+func (_c *CiTypeInheritanceCreate) Mutation() *CiTypeInheritanceMutation {
+	return _c.mutation
 }
 
 // Save creates the CiTypeInheritance in the database.
-func (ctic *CiTypeInheritanceCreate) Save(ctx context.Context) (*CiTypeInheritance, error) {
-	if err := ctic.defaults(); err != nil {
+func (_c *CiTypeInheritanceCreate) Save(ctx context.Context) (*CiTypeInheritance, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctic.sqlSave, ctic.mutation, ctic.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (ctic *CiTypeInheritanceCreate) SaveX(ctx context.Context) *CiTypeInheritance {
-	v, err := ctic.Save(ctx)
+func (_c *CiTypeInheritanceCreate) SaveX(ctx context.Context) *CiTypeInheritance {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -142,73 +142,73 @@ func (ctic *CiTypeInheritanceCreate) SaveX(ctx context.Context) *CiTypeInheritan
 }
 
 // Exec executes the query.
-func (ctic *CiTypeInheritanceCreate) Exec(ctx context.Context) error {
-	_, err := ctic.Save(ctx)
+func (_c *CiTypeInheritanceCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctic *CiTypeInheritanceCreate) ExecX(ctx context.Context) {
-	if err := ctic.Exec(ctx); err != nil {
+func (_c *CiTypeInheritanceCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctic *CiTypeInheritanceCreate) defaults() error {
-	if _, ok := ctic.mutation.CreatedAt(); !ok {
+func (_c *CiTypeInheritanceCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if citypeinheritance.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypeinheritance.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypeinheritance.DefaultCreatedAt()
-		ctic.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := ctic.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if citypeinheritance.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypeinheritance.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypeinheritance.DefaultUpdatedAt()
-		ctic.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := ctic.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := citypeinheritance.DefaultTenantID
-		ctic.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctic *CiTypeInheritanceCreate) check() error {
-	if _, ok := ctic.mutation.CreatedAt(); !ok {
+func (_c *CiTypeInheritanceCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiTypeInheritance.created_at"`)}
 	}
-	if _, ok := ctic.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiTypeInheritance.updated_at"`)}
 	}
-	if _, ok := ctic.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiTypeInheritance.tenant_id"`)}
 	}
-	if _, ok := ctic.mutation.ParentID(); !ok {
+	if _, ok := _c.mutation.ParentID(); !ok {
 		return &ValidationError{Name: "parent_id", err: errors.New(`ent: missing required field "CiTypeInheritance.parent_id"`)}
 	}
-	if _, ok := ctic.mutation.ChildID(); !ok {
+	if _, ok := _c.mutation.ChildID(); !ok {
 		return &ValidationError{Name: "child_id", err: errors.New(`ent: missing required field "CiTypeInheritance.child_id"`)}
 	}
-	if len(ctic.mutation.ParentIDs()) == 0 {
+	if len(_c.mutation.ParentIDs()) == 0 {
 		return &ValidationError{Name: "parent", err: errors.New(`ent: missing required edge "CiTypeInheritance.parent"`)}
 	}
-	if len(ctic.mutation.ChildIDs()) == 0 {
+	if len(_c.mutation.ChildIDs()) == 0 {
 		return &ValidationError{Name: "child", err: errors.New(`ent: missing required edge "CiTypeInheritance.child"`)}
 	}
 	return nil
 }
 
-func (ctic *CiTypeInheritanceCreate) sqlSave(ctx context.Context) (*CiTypeInheritance, error) {
-	if err := ctic.check(); err != nil {
+func (_c *CiTypeInheritanceCreate) sqlSave(ctx context.Context) (*CiTypeInheritance, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := ctic.createSpec()
-	if err := sqlgraph.CreateNode(ctx, ctic.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -218,41 +218,41 @@ func (ctic *CiTypeInheritanceCreate) sqlSave(ctx context.Context) (*CiTypeInheri
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	ctic.mutation.id = &_node.ID
-	ctic.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (ctic *CiTypeInheritanceCreate) createSpec() (*CiTypeInheritance, *sqlgraph.CreateSpec) {
+func (_c *CiTypeInheritanceCreate) createSpec() (*CiTypeInheritance, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiTypeInheritance{config: ctic.config}
+		_node = &CiTypeInheritance{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(citypeinheritance.Table, sqlgraph.NewFieldSpec(citypeinheritance.FieldID, field.TypeUint64))
 	)
-	if id, ok := ctic.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := ctic.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(citypeinheritance.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := ctic.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(citypeinheritance.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := ctic.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(citypeinheritance.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := ctic.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(citypeinheritance.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := ctic.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(citypeinheritance.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if nodes := ctic.mutation.ParentIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ParentIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -269,7 +269,7 @@ func (ctic *CiTypeInheritanceCreate) createSpec() (*CiTypeInheritance, *sqlgraph
 		_node.ParentID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctic.mutation.ChildIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ChildIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -297,16 +297,16 @@ type CiTypeInheritanceCreateBulk struct {
 }
 
 // Save creates the CiTypeInheritance entities in the database.
-func (cticb *CiTypeInheritanceCreateBulk) Save(ctx context.Context) ([]*CiTypeInheritance, error) {
-	if cticb.err != nil {
-		return nil, cticb.err
+func (_c *CiTypeInheritanceCreateBulk) Save(ctx context.Context) ([]*CiTypeInheritance, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(cticb.builders))
-	nodes := make([]*CiTypeInheritance, len(cticb.builders))
-	mutators := make([]Mutator, len(cticb.builders))
-	for i := range cticb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiTypeInheritance, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := cticb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiTypeInheritanceMutation)
@@ -320,11 +320,11 @@ func (cticb *CiTypeInheritanceCreateBulk) Save(ctx context.Context) ([]*CiTypeIn
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, cticb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, cticb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -348,7 +348,7 @@ func (cticb *CiTypeInheritanceCreateBulk) Save(ctx context.Context) ([]*CiTypeIn
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, cticb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -356,8 +356,8 @@ func (cticb *CiTypeInheritanceCreateBulk) Save(ctx context.Context) ([]*CiTypeIn
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cticb *CiTypeInheritanceCreateBulk) SaveX(ctx context.Context) []*CiTypeInheritance {
-	v, err := cticb.Save(ctx)
+func (_c *CiTypeInheritanceCreateBulk) SaveX(ctx context.Context) []*CiTypeInheritance {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -365,14 +365,14 @@ func (cticb *CiTypeInheritanceCreateBulk) SaveX(ctx context.Context) []*CiTypeIn
 }
 
 // Exec executes the query.
-func (cticb *CiTypeInheritanceCreateBulk) Exec(ctx context.Context) error {
-	_, err := cticb.Save(ctx)
+func (_c *CiTypeInheritanceCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cticb *CiTypeInheritanceCreateBulk) ExecX(ctx context.Context) {
-	if err := cticb.Exec(ctx); err != nil {
+func (_c *CiTypeInheritanceCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

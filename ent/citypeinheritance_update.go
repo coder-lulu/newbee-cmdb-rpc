@@ -11,9 +11,9 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiTypeInheritanceUpdate is the builder for updating CiTypeInheritance entities.
@@ -24,130 +24,130 @@ type CiTypeInheritanceUpdate struct {
 }
 
 // Where appends a list predicates to the CiTypeInheritanceUpdate builder.
-func (ctiu *CiTypeInheritanceUpdate) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceUpdate {
-	ctiu.mutation.Where(ps...)
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctiu *CiTypeInheritanceUpdate) SetUpdatedAt(t time.Time) *CiTypeInheritanceUpdate {
-	ctiu.mutation.SetUpdatedAt(t)
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) SetUpdatedAt(v time.Time) *CiTypeInheritanceUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctiu *CiTypeInheritanceUpdate) SetDeletedAt(t time.Time) *CiTypeInheritanceUpdate {
-	ctiu.mutation.SetDeletedAt(t)
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) SetDeletedAt(v time.Time) *CiTypeInheritanceUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctiu *CiTypeInheritanceUpdate) SetNillableDeletedAt(t *time.Time) *CiTypeInheritanceUpdate {
-	if t != nil {
-		ctiu.SetDeletedAt(*t)
+func (_u *CiTypeInheritanceUpdate) SetNillableDeletedAt(v *time.Time) *CiTypeInheritanceUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctiu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctiu *CiTypeInheritanceUpdate) ClearDeletedAt() *CiTypeInheritanceUpdate {
-	ctiu.mutation.ClearDeletedAt()
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) ClearDeletedAt() *CiTypeInheritanceUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctiu *CiTypeInheritanceUpdate) SetDepartmentID(u uint64) *CiTypeInheritanceUpdate {
-	ctiu.mutation.ResetDepartmentID()
-	ctiu.mutation.SetDepartmentID(u)
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) SetDepartmentID(v uint64) *CiTypeInheritanceUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctiu *CiTypeInheritanceUpdate) SetNillableDepartmentID(u *uint64) *CiTypeInheritanceUpdate {
-	if u != nil {
-		ctiu.SetDepartmentID(*u)
+func (_u *CiTypeInheritanceUpdate) SetNillableDepartmentID(v *uint64) *CiTypeInheritanceUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ctiu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ctiu *CiTypeInheritanceUpdate) AddDepartmentID(u int64) *CiTypeInheritanceUpdate {
-	ctiu.mutation.AddDepartmentID(u)
-	return ctiu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiTypeInheritanceUpdate) AddDepartmentID(v int64) *CiTypeInheritanceUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ctiu *CiTypeInheritanceUpdate) ClearDepartmentID() *CiTypeInheritanceUpdate {
-	ctiu.mutation.ClearDepartmentID()
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) ClearDepartmentID() *CiTypeInheritanceUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetParentID sets the "parent_id" field.
-func (ctiu *CiTypeInheritanceUpdate) SetParentID(u uint64) *CiTypeInheritanceUpdate {
-	ctiu.mutation.SetParentID(u)
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) SetParentID(v uint64) *CiTypeInheritanceUpdate {
+	_u.mutation.SetParentID(v)
+	return _u
 }
 
 // SetNillableParentID sets the "parent_id" field if the given value is not nil.
-func (ctiu *CiTypeInheritanceUpdate) SetNillableParentID(u *uint64) *CiTypeInheritanceUpdate {
-	if u != nil {
-		ctiu.SetParentID(*u)
+func (_u *CiTypeInheritanceUpdate) SetNillableParentID(v *uint64) *CiTypeInheritanceUpdate {
+	if v != nil {
+		_u.SetParentID(*v)
 	}
-	return ctiu
+	return _u
 }
 
 // SetChildID sets the "child_id" field.
-func (ctiu *CiTypeInheritanceUpdate) SetChildID(u uint64) *CiTypeInheritanceUpdate {
-	ctiu.mutation.SetChildID(u)
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) SetChildID(v uint64) *CiTypeInheritanceUpdate {
+	_u.mutation.SetChildID(v)
+	return _u
 }
 
 // SetNillableChildID sets the "child_id" field if the given value is not nil.
-func (ctiu *CiTypeInheritanceUpdate) SetNillableChildID(u *uint64) *CiTypeInheritanceUpdate {
-	if u != nil {
-		ctiu.SetChildID(*u)
+func (_u *CiTypeInheritanceUpdate) SetNillableChildID(v *uint64) *CiTypeInheritanceUpdate {
+	if v != nil {
+		_u.SetChildID(*v)
 	}
-	return ctiu
+	return _u
 }
 
 // SetParent sets the "parent" edge to the CiType entity.
-func (ctiu *CiTypeInheritanceUpdate) SetParent(c *CiType) *CiTypeInheritanceUpdate {
-	return ctiu.SetParentID(c.ID)
+func (_u *CiTypeInheritanceUpdate) SetParent(v *CiType) *CiTypeInheritanceUpdate {
+	return _u.SetParentID(v.ID)
 }
 
 // SetChild sets the "child" edge to the CiType entity.
-func (ctiu *CiTypeInheritanceUpdate) SetChild(c *CiType) *CiTypeInheritanceUpdate {
-	return ctiu.SetChildID(c.ID)
+func (_u *CiTypeInheritanceUpdate) SetChild(v *CiType) *CiTypeInheritanceUpdate {
+	return _u.SetChildID(v.ID)
 }
 
 // Mutation returns the CiTypeInheritanceMutation object of the builder.
-func (ctiu *CiTypeInheritanceUpdate) Mutation() *CiTypeInheritanceMutation {
-	return ctiu.mutation
+func (_u *CiTypeInheritanceUpdate) Mutation() *CiTypeInheritanceMutation {
+	return _u.mutation
 }
 
 // ClearParent clears the "parent" edge to the CiType entity.
-func (ctiu *CiTypeInheritanceUpdate) ClearParent() *CiTypeInheritanceUpdate {
-	ctiu.mutation.ClearParent()
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) ClearParent() *CiTypeInheritanceUpdate {
+	_u.mutation.ClearParent()
+	return _u
 }
 
 // ClearChild clears the "child" edge to the CiType entity.
-func (ctiu *CiTypeInheritanceUpdate) ClearChild() *CiTypeInheritanceUpdate {
-	ctiu.mutation.ClearChild()
-	return ctiu
+func (_u *CiTypeInheritanceUpdate) ClearChild() *CiTypeInheritanceUpdate {
+	_u.mutation.ClearChild()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (ctiu *CiTypeInheritanceUpdate) Save(ctx context.Context) (int, error) {
-	if err := ctiu.defaults(); err != nil {
+func (_u *CiTypeInheritanceUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, ctiu.sqlSave, ctiu.mutation, ctiu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctiu *CiTypeInheritanceUpdate) SaveX(ctx context.Context) int {
-	affected, err := ctiu.Save(ctx)
+func (_u *CiTypeInheritanceUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -155,72 +155,72 @@ func (ctiu *CiTypeInheritanceUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (ctiu *CiTypeInheritanceUpdate) Exec(ctx context.Context) error {
-	_, err := ctiu.Save(ctx)
+func (_u *CiTypeInheritanceUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctiu *CiTypeInheritanceUpdate) ExecX(ctx context.Context) {
-	if err := ctiu.Exec(ctx); err != nil {
+func (_u *CiTypeInheritanceUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctiu *CiTypeInheritanceUpdate) defaults() error {
-	if _, ok := ctiu.mutation.UpdatedAt(); !ok {
+func (_u *CiTypeInheritanceUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if citypeinheritance.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypeinheritance.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypeinheritance.UpdateDefaultUpdatedAt()
-		ctiu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctiu *CiTypeInheritanceUpdate) check() error {
-	if ctiu.mutation.ParentCleared() && len(ctiu.mutation.ParentIDs()) > 0 {
+func (_u *CiTypeInheritanceUpdate) check() error {
+	if _u.mutation.ParentCleared() && len(_u.mutation.ParentIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeInheritance.parent"`)
 	}
-	if ctiu.mutation.ChildCleared() && len(ctiu.mutation.ChildIDs()) > 0 {
+	if _u.mutation.ChildCleared() && len(_u.mutation.ChildIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeInheritance.child"`)
 	}
 	return nil
 }
 
-func (ctiu *CiTypeInheritanceUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := ctiu.check(); err != nil {
-		return n, err
+func (_u *CiTypeInheritanceUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(citypeinheritance.Table, citypeinheritance.Columns, sqlgraph.NewFieldSpec(citypeinheritance.FieldID, field.TypeUint64))
-	if ps := ctiu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctiu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(citypeinheritance.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctiu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(citypeinheritance.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctiu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(citypeinheritance.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctiu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(citypeinheritance.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ctiu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(citypeinheritance.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ctiu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(citypeinheritance.FieldDepartmentID, field.TypeUint64)
 	}
-	if ctiu.mutation.ParentCleared() {
+	if _u.mutation.ParentCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -233,7 +233,7 @@ func (ctiu *CiTypeInheritanceUpdate) sqlSave(ctx context.Context) (n int, err er
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctiu.mutation.ParentIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ParentIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -249,7 +249,7 @@ func (ctiu *CiTypeInheritanceUpdate) sqlSave(ctx context.Context) (n int, err er
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctiu.mutation.ChildCleared() {
+	if _u.mutation.ChildCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -262,7 +262,7 @@ func (ctiu *CiTypeInheritanceUpdate) sqlSave(ctx context.Context) (n int, err er
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctiu.mutation.ChildIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ChildIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -278,7 +278,7 @@ func (ctiu *CiTypeInheritanceUpdate) sqlSave(ctx context.Context) (n int, err er
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, ctiu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{citypeinheritance.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -286,8 +286,8 @@ func (ctiu *CiTypeInheritanceUpdate) sqlSave(ctx context.Context) (n int, err er
 		}
 		return 0, err
 	}
-	ctiu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiTypeInheritanceUpdateOne is the builder for updating a single CiTypeInheritance entity.
@@ -299,137 +299,137 @@ type CiTypeInheritanceUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetUpdatedAt(t time.Time) *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.SetUpdatedAt(t)
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) SetUpdatedAt(v time.Time) *CiTypeInheritanceUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetDeletedAt(t time.Time) *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.SetDeletedAt(t)
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) SetDeletedAt(v time.Time) *CiTypeInheritanceUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetNillableDeletedAt(t *time.Time) *CiTypeInheritanceUpdateOne {
-	if t != nil {
-		ctiuo.SetDeletedAt(*t)
+func (_u *CiTypeInheritanceUpdateOne) SetNillableDeletedAt(v *time.Time) *CiTypeInheritanceUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctiuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctiuo *CiTypeInheritanceUpdateOne) ClearDeletedAt() *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.ClearDeletedAt()
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) ClearDeletedAt() *CiTypeInheritanceUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetDepartmentID(u uint64) *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.ResetDepartmentID()
-	ctiuo.mutation.SetDepartmentID(u)
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) SetDepartmentID(v uint64) *CiTypeInheritanceUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetNillableDepartmentID(u *uint64) *CiTypeInheritanceUpdateOne {
-	if u != nil {
-		ctiuo.SetDepartmentID(*u)
+func (_u *CiTypeInheritanceUpdateOne) SetNillableDepartmentID(v *uint64) *CiTypeInheritanceUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ctiuo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ctiuo *CiTypeInheritanceUpdateOne) AddDepartmentID(u int64) *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.AddDepartmentID(u)
-	return ctiuo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiTypeInheritanceUpdateOne) AddDepartmentID(v int64) *CiTypeInheritanceUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ctiuo *CiTypeInheritanceUpdateOne) ClearDepartmentID() *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.ClearDepartmentID()
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) ClearDepartmentID() *CiTypeInheritanceUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetParentID sets the "parent_id" field.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetParentID(u uint64) *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.SetParentID(u)
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) SetParentID(v uint64) *CiTypeInheritanceUpdateOne {
+	_u.mutation.SetParentID(v)
+	return _u
 }
 
 // SetNillableParentID sets the "parent_id" field if the given value is not nil.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetNillableParentID(u *uint64) *CiTypeInheritanceUpdateOne {
-	if u != nil {
-		ctiuo.SetParentID(*u)
+func (_u *CiTypeInheritanceUpdateOne) SetNillableParentID(v *uint64) *CiTypeInheritanceUpdateOne {
+	if v != nil {
+		_u.SetParentID(*v)
 	}
-	return ctiuo
+	return _u
 }
 
 // SetChildID sets the "child_id" field.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetChildID(u uint64) *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.SetChildID(u)
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) SetChildID(v uint64) *CiTypeInheritanceUpdateOne {
+	_u.mutation.SetChildID(v)
+	return _u
 }
 
 // SetNillableChildID sets the "child_id" field if the given value is not nil.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetNillableChildID(u *uint64) *CiTypeInheritanceUpdateOne {
-	if u != nil {
-		ctiuo.SetChildID(*u)
+func (_u *CiTypeInheritanceUpdateOne) SetNillableChildID(v *uint64) *CiTypeInheritanceUpdateOne {
+	if v != nil {
+		_u.SetChildID(*v)
 	}
-	return ctiuo
+	return _u
 }
 
 // SetParent sets the "parent" edge to the CiType entity.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetParent(c *CiType) *CiTypeInheritanceUpdateOne {
-	return ctiuo.SetParentID(c.ID)
+func (_u *CiTypeInheritanceUpdateOne) SetParent(v *CiType) *CiTypeInheritanceUpdateOne {
+	return _u.SetParentID(v.ID)
 }
 
 // SetChild sets the "child" edge to the CiType entity.
-func (ctiuo *CiTypeInheritanceUpdateOne) SetChild(c *CiType) *CiTypeInheritanceUpdateOne {
-	return ctiuo.SetChildID(c.ID)
+func (_u *CiTypeInheritanceUpdateOne) SetChild(v *CiType) *CiTypeInheritanceUpdateOne {
+	return _u.SetChildID(v.ID)
 }
 
 // Mutation returns the CiTypeInheritanceMutation object of the builder.
-func (ctiuo *CiTypeInheritanceUpdateOne) Mutation() *CiTypeInheritanceMutation {
-	return ctiuo.mutation
+func (_u *CiTypeInheritanceUpdateOne) Mutation() *CiTypeInheritanceMutation {
+	return _u.mutation
 }
 
 // ClearParent clears the "parent" edge to the CiType entity.
-func (ctiuo *CiTypeInheritanceUpdateOne) ClearParent() *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.ClearParent()
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) ClearParent() *CiTypeInheritanceUpdateOne {
+	_u.mutation.ClearParent()
+	return _u
 }
 
 // ClearChild clears the "child" edge to the CiType entity.
-func (ctiuo *CiTypeInheritanceUpdateOne) ClearChild() *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.ClearChild()
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) ClearChild() *CiTypeInheritanceUpdateOne {
+	_u.mutation.ClearChild()
+	return _u
 }
 
 // Where appends a list predicates to the CiTypeInheritanceUpdate builder.
-func (ctiuo *CiTypeInheritanceUpdateOne) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceUpdateOne {
-	ctiuo.mutation.Where(ps...)
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (ctiuo *CiTypeInheritanceUpdateOne) Select(field string, fields ...string) *CiTypeInheritanceUpdateOne {
-	ctiuo.fields = append([]string{field}, fields...)
-	return ctiuo
+func (_u *CiTypeInheritanceUpdateOne) Select(field string, fields ...string) *CiTypeInheritanceUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiTypeInheritance entity.
-func (ctiuo *CiTypeInheritanceUpdateOne) Save(ctx context.Context) (*CiTypeInheritance, error) {
-	if err := ctiuo.defaults(); err != nil {
+func (_u *CiTypeInheritanceUpdateOne) Save(ctx context.Context) (*CiTypeInheritance, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctiuo.sqlSave, ctiuo.mutation, ctiuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctiuo *CiTypeInheritanceUpdateOne) SaveX(ctx context.Context) *CiTypeInheritance {
-	node, err := ctiuo.Save(ctx)
+func (_u *CiTypeInheritanceUpdateOne) SaveX(ctx context.Context) *CiTypeInheritance {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -437,52 +437,52 @@ func (ctiuo *CiTypeInheritanceUpdateOne) SaveX(ctx context.Context) *CiTypeInher
 }
 
 // Exec executes the query on the entity.
-func (ctiuo *CiTypeInheritanceUpdateOne) Exec(ctx context.Context) error {
-	_, err := ctiuo.Save(ctx)
+func (_u *CiTypeInheritanceUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctiuo *CiTypeInheritanceUpdateOne) ExecX(ctx context.Context) {
-	if err := ctiuo.Exec(ctx); err != nil {
+func (_u *CiTypeInheritanceUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctiuo *CiTypeInheritanceUpdateOne) defaults() error {
-	if _, ok := ctiuo.mutation.UpdatedAt(); !ok {
+func (_u *CiTypeInheritanceUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if citypeinheritance.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypeinheritance.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypeinheritance.UpdateDefaultUpdatedAt()
-		ctiuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctiuo *CiTypeInheritanceUpdateOne) check() error {
-	if ctiuo.mutation.ParentCleared() && len(ctiuo.mutation.ParentIDs()) > 0 {
+func (_u *CiTypeInheritanceUpdateOne) check() error {
+	if _u.mutation.ParentCleared() && len(_u.mutation.ParentIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeInheritance.parent"`)
 	}
-	if ctiuo.mutation.ChildCleared() && len(ctiuo.mutation.ChildIDs()) > 0 {
+	if _u.mutation.ChildCleared() && len(_u.mutation.ChildIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeInheritance.child"`)
 	}
 	return nil
 }
 
-func (ctiuo *CiTypeInheritanceUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeInheritance, err error) {
-	if err := ctiuo.check(); err != nil {
+func (_u *CiTypeInheritanceUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeInheritance, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(citypeinheritance.Table, citypeinheritance.Columns, sqlgraph.NewFieldSpec(citypeinheritance.FieldID, field.TypeUint64))
-	id, ok := ctiuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiTypeInheritance.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := ctiuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, citypeinheritance.FieldID)
 		for _, f := range fields {
@@ -494,32 +494,32 @@ func (ctiuo *CiTypeInheritanceUpdateOne) sqlSave(ctx context.Context) (_node *Ci
 			}
 		}
 	}
-	if ps := ctiuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctiuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(citypeinheritance.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctiuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(citypeinheritance.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctiuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(citypeinheritance.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctiuo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(citypeinheritance.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ctiuo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(citypeinheritance.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ctiuo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(citypeinheritance.FieldDepartmentID, field.TypeUint64)
 	}
-	if ctiuo.mutation.ParentCleared() {
+	if _u.mutation.ParentCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -532,7 +532,7 @@ func (ctiuo *CiTypeInheritanceUpdateOne) sqlSave(ctx context.Context) (_node *Ci
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctiuo.mutation.ParentIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ParentIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -548,7 +548,7 @@ func (ctiuo *CiTypeInheritanceUpdateOne) sqlSave(ctx context.Context) (_node *Ci
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctiuo.mutation.ChildCleared() {
+	if _u.mutation.ChildCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -561,7 +561,7 @@ func (ctiuo *CiTypeInheritanceUpdateOne) sqlSave(ctx context.Context) (_node *Ci
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctiuo.mutation.ChildIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.ChildIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -577,10 +577,10 @@ func (ctiuo *CiTypeInheritanceUpdateOne) sqlSave(ctx context.Context) (_node *Ci
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &CiTypeInheritance{config: ctiuo.config}
+	_node = &CiTypeInheritance{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, ctiuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{citypeinheritance.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -588,6 +588,6 @@ func (ctiuo *CiTypeInheritanceUpdateOne) sqlSave(ctx context.Context) (_node *Ci
 		}
 		return nil, err
 	}
-	ctiuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

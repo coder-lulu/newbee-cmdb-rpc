@@ -9,9 +9,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
 )
 
 // ValueInteger is the model entity for the ValueInteger schema.
@@ -25,6 +25,8 @@ type ValueInteger struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Delete Time | 删除日期
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
+	// Tenant ID | 租户 ID
+	TenantID uint64 `json:"tenant_id,omitempty"`
 	// 外键，关联cmdb_cis.id
 	CiID uint64 `json:"ci_id,omitempty"`
 	// 外键，关联cmdb_attributes.id
@@ -79,7 +81,7 @@ func (*ValueInteger) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case valueinteger.FieldIsCover:
 			values[i] = new(sql.NullBool)
-		case valueinteger.FieldID, valueinteger.FieldCiID, valueinteger.FieldAttrID, valueinteger.FieldValue:
+		case valueinteger.FieldID, valueinteger.FieldTenantID, valueinteger.FieldCiID, valueinteger.FieldAttrID, valueinteger.FieldValue:
 			values[i] = new(sql.NullInt64)
 		case valueinteger.FieldCreatedAt, valueinteger.FieldUpdatedAt, valueinteger.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -92,7 +94,7 @@ func (*ValueInteger) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the ValueInteger fields.
-func (vi *ValueInteger) assignValues(columns []string, values []any) error {
+func (_m *ValueInteger) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -103,51 +105,57 @@ func (vi *ValueInteger) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			vi.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case valueinteger.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				vi.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case valueinteger.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				vi.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case valueinteger.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				vi.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
+			}
+		case valueinteger.FieldTenantID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
+			} else if value.Valid {
+				_m.TenantID = uint64(value.Int64)
 			}
 		case valueinteger.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				vi.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case valueinteger.FieldAttrID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field attr_id", values[i])
 			} else if value.Valid {
-				vi.AttrID = uint64(value.Int64)
+				_m.AttrID = uint64(value.Int64)
 			}
 		case valueinteger.FieldValue:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field value", values[i])
 			} else if value.Valid {
-				vi.Value = int(value.Int64)
+				_m.Value = int(value.Int64)
 			}
 		case valueinteger.FieldIsCover:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_cover", values[i])
 			} else if value.Valid {
-				vi.IsCover = value.Bool
+				_m.IsCover = value.Bool
 			}
 		default:
-			vi.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -155,63 +163,66 @@ func (vi *ValueInteger) assignValues(columns []string, values []any) error {
 
 // GetValue returns the ent.Value that was dynamically selected and assigned to the ValueInteger.
 // This includes values selected through modifiers, order, etc.
-func (vi *ValueInteger) GetValue(name string) (ent.Value, error) {
-	return vi.selectValues.Get(name)
+func (_m *ValueInteger) GetValue(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCi queries the "ci" edge of the ValueInteger entity.
-func (vi *ValueInteger) QueryCi() *CisQuery {
-	return NewValueIntegerClient(vi.config).QueryCi(vi)
+func (_m *ValueInteger) QueryCi() *CisQuery {
+	return NewValueIntegerClient(_m.config).QueryCi(_m)
 }
 
 // QueryAttribute queries the "attribute" edge of the ValueInteger entity.
-func (vi *ValueInteger) QueryAttribute() *AttributeQuery {
-	return NewValueIntegerClient(vi.config).QueryAttribute(vi)
+func (_m *ValueInteger) QueryAttribute() *AttributeQuery {
+	return NewValueIntegerClient(_m.config).QueryAttribute(_m)
 }
 
 // Update returns a builder for updating this ValueInteger.
 // Note that you need to call ValueInteger.Unwrap() before calling this method if this ValueInteger
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (vi *ValueInteger) Update() *ValueIntegerUpdateOne {
-	return NewValueIntegerClient(vi.config).UpdateOne(vi)
+func (_m *ValueInteger) Update() *ValueIntegerUpdateOne {
+	return NewValueIntegerClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the ValueInteger entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (vi *ValueInteger) Unwrap() *ValueInteger {
-	_tx, ok := vi.config.driver.(*txDriver)
+func (_m *ValueInteger) Unwrap() *ValueInteger {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: ValueInteger is not a transactional entity")
 	}
-	vi.config.driver = _tx.drv
-	return vi
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (vi *ValueInteger) String() string {
+func (_m *ValueInteger) String() string {
 	var builder strings.Builder
 	builder.WriteString("ValueInteger(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", vi.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(vi.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(vi.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(vi.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("tenant_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", vi.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("attr_id=")
-	builder.WriteString(fmt.Sprintf("%v", vi.AttrID))
+	builder.WriteString(fmt.Sprintf("%v", _m.AttrID))
 	builder.WriteString(", ")
 	builder.WriteString("value=")
-	builder.WriteString(fmt.Sprintf("%v", vi.Value))
+	builder.WriteString(fmt.Sprintf("%v", _m.Value))
 	builder.WriteString(", ")
 	builder.WriteString("is_cover=")
-	builder.WriteString(fmt.Sprintf("%v", vi.IsCover))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsCover))
 	builder.WriteByte(')')
 	return builder.String()
 }

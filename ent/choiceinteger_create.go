@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 )
 
 // ChoiceIntegerCreate is the builder for creating a ChoiceInteger entity.
@@ -23,134 +23,134 @@ type ChoiceIntegerCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (cic *ChoiceIntegerCreate) SetCreatedAt(t time.Time) *ChoiceIntegerCreate {
-	cic.mutation.SetCreatedAt(t)
-	return cic
+func (_c *ChoiceIntegerCreate) SetCreatedAt(v time.Time) *ChoiceIntegerCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (cic *ChoiceIntegerCreate) SetNillableCreatedAt(t *time.Time) *ChoiceIntegerCreate {
-	if t != nil {
-		cic.SetCreatedAt(*t)
+func (_c *ChoiceIntegerCreate) SetNillableCreatedAt(v *time.Time) *ChoiceIntegerCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return cic
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cic *ChoiceIntegerCreate) SetUpdatedAt(t time.Time) *ChoiceIntegerCreate {
-	cic.mutation.SetUpdatedAt(t)
-	return cic
+func (_c *ChoiceIntegerCreate) SetUpdatedAt(v time.Time) *ChoiceIntegerCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (cic *ChoiceIntegerCreate) SetNillableUpdatedAt(t *time.Time) *ChoiceIntegerCreate {
-	if t != nil {
-		cic.SetUpdatedAt(*t)
+func (_c *ChoiceIntegerCreate) SetNillableUpdatedAt(v *time.Time) *ChoiceIntegerCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return cic
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (cic *ChoiceIntegerCreate) SetDeletedAt(t time.Time) *ChoiceIntegerCreate {
-	cic.mutation.SetDeletedAt(t)
-	return cic
+func (_c *ChoiceIntegerCreate) SetDeletedAt(v time.Time) *ChoiceIntegerCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (cic *ChoiceIntegerCreate) SetNillableDeletedAt(t *time.Time) *ChoiceIntegerCreate {
-	if t != nil {
-		cic.SetDeletedAt(*t)
+func (_c *ChoiceIntegerCreate) SetNillableDeletedAt(v *time.Time) *ChoiceIntegerCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return cic
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (cic *ChoiceIntegerCreate) SetTenantID(u uint64) *ChoiceIntegerCreate {
-	cic.mutation.SetTenantID(u)
-	return cic
+func (_c *ChoiceIntegerCreate) SetTenantID(v uint64) *ChoiceIntegerCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (cic *ChoiceIntegerCreate) SetNillableTenantID(u *uint64) *ChoiceIntegerCreate {
-	if u != nil {
-		cic.SetTenantID(*u)
+func (_c *ChoiceIntegerCreate) SetNillableTenantID(v *uint64) *ChoiceIntegerCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return cic
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cic *ChoiceIntegerCreate) SetDepartmentID(u uint64) *ChoiceIntegerCreate {
-	cic.mutation.SetDepartmentID(u)
-	return cic
+func (_c *ChoiceIntegerCreate) SetDepartmentID(v uint64) *ChoiceIntegerCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cic *ChoiceIntegerCreate) SetNillableDepartmentID(u *uint64) *ChoiceIntegerCreate {
-	if u != nil {
-		cic.SetDepartmentID(*u)
+func (_c *ChoiceIntegerCreate) SetNillableDepartmentID(v *uint64) *ChoiceIntegerCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return cic
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (cic *ChoiceIntegerCreate) SetAttrID(u uint64) *ChoiceIntegerCreate {
-	cic.mutation.SetAttrID(u)
-	return cic
+func (_c *ChoiceIntegerCreate) SetAttrID(v uint64) *ChoiceIntegerCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetValue sets the "value" field.
-func (cic *ChoiceIntegerCreate) SetValue(i int) *ChoiceIntegerCreate {
-	cic.mutation.SetValue(i)
-	return cic
+func (_c *ChoiceIntegerCreate) SetValue(v int) *ChoiceIntegerCreate {
+	_c.mutation.SetValue(v)
+	return _c
 }
 
 // SetOption sets the "option" field.
-func (cic *ChoiceIntegerCreate) SetOption(sim schema.ChoiceItemMetaS) *ChoiceIntegerCreate {
-	cic.mutation.SetOption(sim)
-	return cic
+func (_c *ChoiceIntegerCreate) SetOption(v schema.ChoiceItemMetaS) *ChoiceIntegerCreate {
+	_c.mutation.SetOption(v)
+	return _c
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (cic *ChoiceIntegerCreate) SetNillableOption(sim *schema.ChoiceItemMetaS) *ChoiceIntegerCreate {
-	if sim != nil {
-		cic.SetOption(*sim)
+func (_c *ChoiceIntegerCreate) SetNillableOption(v *schema.ChoiceItemMetaS) *ChoiceIntegerCreate {
+	if v != nil {
+		_c.SetOption(*v)
 	}
-	return cic
+	return _c
 }
 
 // SetID sets the "id" field.
-func (cic *ChoiceIntegerCreate) SetID(u uint64) *ChoiceIntegerCreate {
-	cic.mutation.SetID(u)
-	return cic
+func (_c *ChoiceIntegerCreate) SetID(v uint64) *ChoiceIntegerCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (cic *ChoiceIntegerCreate) SetAttributeID(id uint64) *ChoiceIntegerCreate {
-	cic.mutation.SetAttributeID(id)
-	return cic
+func (_c *ChoiceIntegerCreate) SetAttributeID(id uint64) *ChoiceIntegerCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (cic *ChoiceIntegerCreate) SetAttribute(a *Attribute) *ChoiceIntegerCreate {
-	return cic.SetAttributeID(a.ID)
+func (_c *ChoiceIntegerCreate) SetAttribute(v *Attribute) *ChoiceIntegerCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ChoiceIntegerMutation object of the builder.
-func (cic *ChoiceIntegerCreate) Mutation() *ChoiceIntegerMutation {
-	return cic.mutation
+func (_c *ChoiceIntegerCreate) Mutation() *ChoiceIntegerMutation {
+	return _c.mutation
 }
 
 // Save creates the ChoiceInteger in the database.
-func (cic *ChoiceIntegerCreate) Save(ctx context.Context) (*ChoiceInteger, error) {
-	if err := cic.defaults(); err != nil {
+func (_c *ChoiceIntegerCreate) Save(ctx context.Context) (*ChoiceInteger, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, cic.sqlSave, cic.mutation, cic.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (cic *ChoiceIntegerCreate) SaveX(ctx context.Context) *ChoiceInteger {
-	v, err := cic.Save(ctx)
+func (_c *ChoiceIntegerCreate) SaveX(ctx context.Context) *ChoiceInteger {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -158,70 +158,70 @@ func (cic *ChoiceIntegerCreate) SaveX(ctx context.Context) *ChoiceInteger {
 }
 
 // Exec executes the query.
-func (cic *ChoiceIntegerCreate) Exec(ctx context.Context) error {
-	_, err := cic.Save(ctx)
+func (_c *ChoiceIntegerCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cic *ChoiceIntegerCreate) ExecX(ctx context.Context) {
-	if err := cic.Exec(ctx); err != nil {
+func (_c *ChoiceIntegerCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cic *ChoiceIntegerCreate) defaults() error {
-	if _, ok := cic.mutation.CreatedAt(); !ok {
+func (_c *ChoiceIntegerCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if choiceinteger.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized choiceinteger.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := choiceinteger.DefaultCreatedAt()
-		cic.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := cic.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if choiceinteger.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized choiceinteger.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := choiceinteger.DefaultUpdatedAt()
-		cic.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := cic.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := choiceinteger.DefaultTenantID
-		cic.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cic *ChoiceIntegerCreate) check() error {
-	if _, ok := cic.mutation.CreatedAt(); !ok {
+func (_c *ChoiceIntegerCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ChoiceInteger.created_at"`)}
 	}
-	if _, ok := cic.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ChoiceInteger.updated_at"`)}
 	}
-	if _, ok := cic.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ChoiceInteger.tenant_id"`)}
 	}
-	if _, ok := cic.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "ChoiceInteger.attr_id"`)}
 	}
-	if _, ok := cic.mutation.Value(); !ok {
+	if _, ok := _c.mutation.Value(); !ok {
 		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "ChoiceInteger.value"`)}
 	}
-	if len(cic.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "ChoiceInteger.attribute"`)}
 	}
 	return nil
 }
 
-func (cic *ChoiceIntegerCreate) sqlSave(ctx context.Context) (*ChoiceInteger, error) {
-	if err := cic.check(); err != nil {
+func (_c *ChoiceIntegerCreate) sqlSave(ctx context.Context) (*ChoiceInteger, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := cic.createSpec()
-	if err := sqlgraph.CreateNode(ctx, cic.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -231,49 +231,49 @@ func (cic *ChoiceIntegerCreate) sqlSave(ctx context.Context) (*ChoiceInteger, er
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	cic.mutation.id = &_node.ID
-	cic.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (cic *ChoiceIntegerCreate) createSpec() (*ChoiceInteger, *sqlgraph.CreateSpec) {
+func (_c *ChoiceIntegerCreate) createSpec() (*ChoiceInteger, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ChoiceInteger{config: cic.config}
+		_node = &ChoiceInteger{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(choiceinteger.Table, sqlgraph.NewFieldSpec(choiceinteger.FieldID, field.TypeUint64))
 	)
-	if id, ok := cic.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := cic.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(choiceinteger.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := cic.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(choiceinteger.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := cic.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(choiceinteger.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := cic.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(choiceinteger.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := cic.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(choiceinteger.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := cic.mutation.Value(); ok {
+	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(choiceinteger.FieldValue, field.TypeInt, value)
 		_node.Value = value
 	}
-	if value, ok := cic.mutation.Option(); ok {
+	if value, ok := _c.mutation.Option(); ok {
 		_spec.SetField(choiceinteger.FieldOption, field.TypeJSON, value)
 		_node.Option = value
 	}
-	if nodes := cic.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -301,16 +301,16 @@ type ChoiceIntegerCreateBulk struct {
 }
 
 // Save creates the ChoiceInteger entities in the database.
-func (cicb *ChoiceIntegerCreateBulk) Save(ctx context.Context) ([]*ChoiceInteger, error) {
-	if cicb.err != nil {
-		return nil, cicb.err
+func (_c *ChoiceIntegerCreateBulk) Save(ctx context.Context) ([]*ChoiceInteger, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(cicb.builders))
-	nodes := make([]*ChoiceInteger, len(cicb.builders))
-	mutators := make([]Mutator, len(cicb.builders))
-	for i := range cicb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ChoiceInteger, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := cicb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ChoiceIntegerMutation)
@@ -324,11 +324,11 @@ func (cicb *ChoiceIntegerCreateBulk) Save(ctx context.Context) ([]*ChoiceInteger
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, cicb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, cicb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -352,7 +352,7 @@ func (cicb *ChoiceIntegerCreateBulk) Save(ctx context.Context) ([]*ChoiceInteger
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, cicb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -360,8 +360,8 @@ func (cicb *ChoiceIntegerCreateBulk) Save(ctx context.Context) ([]*ChoiceInteger
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cicb *ChoiceIntegerCreateBulk) SaveX(ctx context.Context) []*ChoiceInteger {
-	v, err := cicb.Save(ctx)
+func (_c *ChoiceIntegerCreateBulk) SaveX(ctx context.Context) []*ChoiceInteger {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -369,14 +369,14 @@ func (cicb *ChoiceIntegerCreateBulk) SaveX(ctx context.Context) []*ChoiceInteger
 }
 
 // Exec executes the query.
-func (cicb *ChoiceIntegerCreateBulk) Exec(ctx context.Context) error {
-	_, err := cicb.Save(ctx)
+func (_c *ChoiceIntegerCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cicb *ChoiceIntegerCreateBulk) ExecX(ctx context.Context) {
-	if err := cicb.Exec(ctx); err != nil {
+func (_c *ChoiceIntegerCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

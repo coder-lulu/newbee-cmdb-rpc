@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 )
 
 // ValueTextQuery is the builder for querying ValueText entities.
@@ -32,44 +32,44 @@ type ValueTextQuery struct {
 }
 
 // Where adds a new predicate for the ValueTextQuery builder.
-func (vtq *ValueTextQuery) Where(ps ...predicate.ValueText) *ValueTextQuery {
-	vtq.predicates = append(vtq.predicates, ps...)
-	return vtq
+func (_q *ValueTextQuery) Where(ps ...predicate.ValueText) *ValueTextQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (vtq *ValueTextQuery) Limit(limit int) *ValueTextQuery {
-	vtq.ctx.Limit = &limit
-	return vtq
+func (_q *ValueTextQuery) Limit(limit int) *ValueTextQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (vtq *ValueTextQuery) Offset(offset int) *ValueTextQuery {
-	vtq.ctx.Offset = &offset
-	return vtq
+func (_q *ValueTextQuery) Offset(offset int) *ValueTextQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (vtq *ValueTextQuery) Unique(unique bool) *ValueTextQuery {
-	vtq.ctx.Unique = &unique
-	return vtq
+func (_q *ValueTextQuery) Unique(unique bool) *ValueTextQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (vtq *ValueTextQuery) Order(o ...valuetext.OrderOption) *ValueTextQuery {
-	vtq.order = append(vtq.order, o...)
-	return vtq
+func (_q *ValueTextQuery) Order(o ...valuetext.OrderOption) *ValueTextQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryCi chains the current query on the "ci" edge.
-func (vtq *ValueTextQuery) QueryCi() *CisQuery {
-	query := (&CisClient{config: vtq.config}).Query()
+func (_q *ValueTextQuery) QueryCi() *CisQuery {
+	query := (&CisClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := vtq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := vtq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -78,20 +78,20 @@ func (vtq *ValueTextQuery) QueryCi() *CisQuery {
 			sqlgraph.To(cis.Table, cis.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, valuetext.CiTable, valuetext.CiColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(vtq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryAttribute chains the current query on the "attribute" edge.
-func (vtq *ValueTextQuery) QueryAttribute() *AttributeQuery {
-	query := (&AttributeClient{config: vtq.config}).Query()
+func (_q *ValueTextQuery) QueryAttribute() *AttributeQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := vtq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := vtq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -100,7 +100,7 @@ func (vtq *ValueTextQuery) QueryAttribute() *AttributeQuery {
 			sqlgraph.To(attribute.Table, attribute.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, valuetext.AttributeTable, valuetext.AttributeColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(vtq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -108,8 +108,8 @@ func (vtq *ValueTextQuery) QueryAttribute() *AttributeQuery {
 
 // First returns the first ValueText entity from the query.
 // Returns a *NotFoundError when no ValueText was found.
-func (vtq *ValueTextQuery) First(ctx context.Context) (*ValueText, error) {
-	nodes, err := vtq.Limit(1).All(setContextOp(ctx, vtq.ctx, ent.OpQueryFirst))
+func (_q *ValueTextQuery) First(ctx context.Context) (*ValueText, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -120,8 +120,8 @@ func (vtq *ValueTextQuery) First(ctx context.Context) (*ValueText, error) {
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (vtq *ValueTextQuery) FirstX(ctx context.Context) *ValueText {
-	node, err := vtq.First(ctx)
+func (_q *ValueTextQuery) FirstX(ctx context.Context) *ValueText {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -130,9 +130,9 @@ func (vtq *ValueTextQuery) FirstX(ctx context.Context) *ValueText {
 
 // FirstID returns the first ValueText ID from the query.
 // Returns a *NotFoundError when no ValueText ID was found.
-func (vtq *ValueTextQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *ValueTextQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = vtq.Limit(1).IDs(setContextOp(ctx, vtq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -143,8 +143,8 @@ func (vtq *ValueTextQuery) FirstID(ctx context.Context) (id uint64, err error) {
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (vtq *ValueTextQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := vtq.FirstID(ctx)
+func (_q *ValueTextQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -154,8 +154,8 @@ func (vtq *ValueTextQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single ValueText entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one ValueText entity is found.
 // Returns a *NotFoundError when no ValueText entities are found.
-func (vtq *ValueTextQuery) Only(ctx context.Context) (*ValueText, error) {
-	nodes, err := vtq.Limit(2).All(setContextOp(ctx, vtq.ctx, ent.OpQueryOnly))
+func (_q *ValueTextQuery) Only(ctx context.Context) (*ValueText, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -170,8 +170,8 @@ func (vtq *ValueTextQuery) Only(ctx context.Context) (*ValueText, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (vtq *ValueTextQuery) OnlyX(ctx context.Context) *ValueText {
-	node, err := vtq.Only(ctx)
+func (_q *ValueTextQuery) OnlyX(ctx context.Context) *ValueText {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -181,9 +181,9 @@ func (vtq *ValueTextQuery) OnlyX(ctx context.Context) *ValueText {
 // OnlyID is like Only, but returns the only ValueText ID in the query.
 // Returns a *NotSingularError when more than one ValueText ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (vtq *ValueTextQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *ValueTextQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = vtq.Limit(2).IDs(setContextOp(ctx, vtq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -198,8 +198,8 @@ func (vtq *ValueTextQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (vtq *ValueTextQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := vtq.OnlyID(ctx)
+func (_q *ValueTextQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -207,18 +207,18 @@ func (vtq *ValueTextQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of ValueTexts.
-func (vtq *ValueTextQuery) All(ctx context.Context) ([]*ValueText, error) {
-	ctx = setContextOp(ctx, vtq.ctx, ent.OpQueryAll)
-	if err := vtq.prepareQuery(ctx); err != nil {
+func (_q *ValueTextQuery) All(ctx context.Context) ([]*ValueText, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*ValueText, *ValueTextQuery]()
-	return withInterceptors[[]*ValueText](ctx, vtq, qr, vtq.inters)
+	return withInterceptors[[]*ValueText](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (vtq *ValueTextQuery) AllX(ctx context.Context) []*ValueText {
-	nodes, err := vtq.All(ctx)
+func (_q *ValueTextQuery) AllX(ctx context.Context) []*ValueText {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -226,20 +226,20 @@ func (vtq *ValueTextQuery) AllX(ctx context.Context) []*ValueText {
 }
 
 // IDs executes the query and returns a list of ValueText IDs.
-func (vtq *ValueTextQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if vtq.ctx.Unique == nil && vtq.path != nil {
-		vtq.Unique(true)
+func (_q *ValueTextQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, vtq.ctx, ent.OpQueryIDs)
-	if err = vtq.Select(valuetext.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(valuetext.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (vtq *ValueTextQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := vtq.IDs(ctx)
+func (_q *ValueTextQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -247,17 +247,17 @@ func (vtq *ValueTextQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (vtq *ValueTextQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, vtq.ctx, ent.OpQueryCount)
-	if err := vtq.prepareQuery(ctx); err != nil {
+func (_q *ValueTextQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, vtq, querierCount[*ValueTextQuery](), vtq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*ValueTextQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (vtq *ValueTextQuery) CountX(ctx context.Context) int {
-	count, err := vtq.Count(ctx)
+func (_q *ValueTextQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -265,9 +265,9 @@ func (vtq *ValueTextQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (vtq *ValueTextQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, vtq.ctx, ent.OpQueryExist)
-	switch _, err := vtq.FirstID(ctx); {
+func (_q *ValueTextQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -278,8 +278,8 @@ func (vtq *ValueTextQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (vtq *ValueTextQuery) ExistX(ctx context.Context) bool {
-	exist, err := vtq.Exist(ctx)
+func (_q *ValueTextQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -288,44 +288,44 @@ func (vtq *ValueTextQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the ValueTextQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (vtq *ValueTextQuery) Clone() *ValueTextQuery {
-	if vtq == nil {
+func (_q *ValueTextQuery) Clone() *ValueTextQuery {
+	if _q == nil {
 		return nil
 	}
 	return &ValueTextQuery{
-		config:        vtq.config,
-		ctx:           vtq.ctx.Clone(),
-		order:         append([]valuetext.OrderOption{}, vtq.order...),
-		inters:        append([]Interceptor{}, vtq.inters...),
-		predicates:    append([]predicate.ValueText{}, vtq.predicates...),
-		withCi:        vtq.withCi.Clone(),
-		withAttribute: vtq.withAttribute.Clone(),
+		config:        _q.config,
+		ctx:           _q.ctx.Clone(),
+		order:         append([]valuetext.OrderOption{}, _q.order...),
+		inters:        append([]Interceptor{}, _q.inters...),
+		predicates:    append([]predicate.ValueText{}, _q.predicates...),
+		withCi:        _q.withCi.Clone(),
+		withAttribute: _q.withAttribute.Clone(),
 		// clone intermediate query.
-		sql:  vtq.sql.Clone(),
-		path: vtq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithCi tells the query-builder to eager-load the nodes that are connected to
 // the "ci" edge. The optional arguments are used to configure the query builder of the edge.
-func (vtq *ValueTextQuery) WithCi(opts ...func(*CisQuery)) *ValueTextQuery {
-	query := (&CisClient{config: vtq.config}).Query()
+func (_q *ValueTextQuery) WithCi(opts ...func(*CisQuery)) *ValueTextQuery {
+	query := (&CisClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	vtq.withCi = query
-	return vtq
+	_q.withCi = query
+	return _q
 }
 
 // WithAttribute tells the query-builder to eager-load the nodes that are connected to
 // the "attribute" edge. The optional arguments are used to configure the query builder of the edge.
-func (vtq *ValueTextQuery) WithAttribute(opts ...func(*AttributeQuery)) *ValueTextQuery {
-	query := (&AttributeClient{config: vtq.config}).Query()
+func (_q *ValueTextQuery) WithAttribute(opts ...func(*AttributeQuery)) *ValueTextQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	vtq.withAttribute = query
-	return vtq
+	_q.withAttribute = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -342,10 +342,10 @@ func (vtq *ValueTextQuery) WithAttribute(opts ...func(*AttributeQuery)) *ValueTe
 //		GroupBy(valuetext.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (vtq *ValueTextQuery) GroupBy(field string, fields ...string) *ValueTextGroupBy {
-	vtq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &ValueTextGroupBy{build: vtq}
-	grbuild.flds = &vtq.ctx.Fields
+func (_q *ValueTextQuery) GroupBy(field string, fields ...string) *ValueTextGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &ValueTextGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = valuetext.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -363,59 +363,59 @@ func (vtq *ValueTextQuery) GroupBy(field string, fields ...string) *ValueTextGro
 //	client.ValueText.Query().
 //		Select(valuetext.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (vtq *ValueTextQuery) Select(fields ...string) *ValueTextSelect {
-	vtq.ctx.Fields = append(vtq.ctx.Fields, fields...)
-	sbuild := &ValueTextSelect{ValueTextQuery: vtq}
+func (_q *ValueTextQuery) Select(fields ...string) *ValueTextSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &ValueTextSelect{ValueTextQuery: _q}
 	sbuild.label = valuetext.Label
-	sbuild.flds, sbuild.scan = &vtq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a ValueTextSelect configured with the given aggregations.
-func (vtq *ValueTextQuery) Aggregate(fns ...AggregateFunc) *ValueTextSelect {
-	return vtq.Select().Aggregate(fns...)
+func (_q *ValueTextQuery) Aggregate(fns ...AggregateFunc) *ValueTextSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (vtq *ValueTextQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range vtq.inters {
+func (_q *ValueTextQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, vtq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range vtq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !valuetext.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if vtq.path != nil {
-		prev, err := vtq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		vtq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (vtq *ValueTextQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ValueText, error) {
+func (_q *ValueTextQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ValueText, error) {
 	var (
 		nodes       = []*ValueText{}
-		_spec       = vtq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [2]bool{
-			vtq.withCi != nil,
-			vtq.withAttribute != nil,
+			_q.withCi != nil,
+			_q.withAttribute != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*ValueText).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &ValueText{config: vtq.config}
+		node := &ValueText{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -423,20 +423,20 @@ func (vtq *ValueTextQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*V
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, vtq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := vtq.withCi; query != nil {
-		if err := vtq.loadCi(ctx, query, nodes, nil,
+	if query := _q.withCi; query != nil {
+		if err := _q.loadCi(ctx, query, nodes, nil,
 			func(n *ValueText, e *Cis) { n.Edges.Ci = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := vtq.withAttribute; query != nil {
-		if err := vtq.loadAttribute(ctx, query, nodes, nil,
+	if query := _q.withAttribute; query != nil {
+		if err := _q.loadAttribute(ctx, query, nodes, nil,
 			func(n *ValueText, e *Attribute) { n.Edges.Attribute = e }); err != nil {
 			return nil, err
 		}
@@ -444,7 +444,7 @@ func (vtq *ValueTextQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*V
 	return nodes, nil
 }
 
-func (vtq *ValueTextQuery) loadCi(ctx context.Context, query *CisQuery, nodes []*ValueText, init func(*ValueText), assign func(*ValueText, *Cis)) error {
+func (_q *ValueTextQuery) loadCi(ctx context.Context, query *CisQuery, nodes []*ValueText, init func(*ValueText), assign func(*ValueText, *Cis)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ValueText)
 	for i := range nodes {
@@ -473,7 +473,7 @@ func (vtq *ValueTextQuery) loadCi(ctx context.Context, query *CisQuery, nodes []
 	}
 	return nil
 }
-func (vtq *ValueTextQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ValueText, init func(*ValueText), assign func(*ValueText, *Attribute)) error {
+func (_q *ValueTextQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ValueText, init func(*ValueText), assign func(*ValueText, *Attribute)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ValueText)
 	for i := range nodes {
@@ -503,24 +503,24 @@ func (vtq *ValueTextQuery) loadAttribute(ctx context.Context, query *AttributeQu
 	return nil
 }
 
-func (vtq *ValueTextQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := vtq.querySpec()
-	_spec.Node.Columns = vtq.ctx.Fields
-	if len(vtq.ctx.Fields) > 0 {
-		_spec.Unique = vtq.ctx.Unique != nil && *vtq.ctx.Unique
+func (_q *ValueTextQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, vtq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (vtq *ValueTextQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *ValueTextQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(valuetext.Table, valuetext.Columns, sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64))
-	_spec.From = vtq.sql
-	if unique := vtq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if vtq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := vtq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valuetext.FieldID)
 		for i := range fields {
@@ -528,27 +528,27 @@ func (vtq *ValueTextQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if vtq.withCi != nil {
+		if _q.withCi != nil {
 			_spec.Node.AddColumnOnce(valuetext.FieldCiID)
 		}
-		if vtq.withAttribute != nil {
+		if _q.withAttribute != nil {
 			_spec.Node.AddColumnOnce(valuetext.FieldAttrID)
 		}
 	}
-	if ps := vtq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := vtq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := vtq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := vtq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -558,33 +558,33 @@ func (vtq *ValueTextQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (vtq *ValueTextQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(vtq.driver.Dialect())
+func (_q *ValueTextQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(valuetext.Table)
-	columns := vtq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = valuetext.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if vtq.sql != nil {
-		selector = vtq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if vtq.ctx.Unique != nil && *vtq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range vtq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range vtq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := vtq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := vtq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -597,41 +597,41 @@ type ValueTextGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (vtgb *ValueTextGroupBy) Aggregate(fns ...AggregateFunc) *ValueTextGroupBy {
-	vtgb.fns = append(vtgb.fns, fns...)
-	return vtgb
+func (_g *ValueTextGroupBy) Aggregate(fns ...AggregateFunc) *ValueTextGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (vtgb *ValueTextGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, vtgb.build.ctx, ent.OpQueryGroupBy)
-	if err := vtgb.build.prepareQuery(ctx); err != nil {
+func (_g *ValueTextGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ValueTextQuery, *ValueTextGroupBy](ctx, vtgb.build, vtgb, vtgb.build.inters, v)
+	return scanWithInterceptors[*ValueTextQuery, *ValueTextGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (vtgb *ValueTextGroupBy) sqlScan(ctx context.Context, root *ValueTextQuery, v any) error {
+func (_g *ValueTextGroupBy) sqlScan(ctx context.Context, root *ValueTextQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(vtgb.fns))
-	for _, fn := range vtgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*vtgb.flds)+len(vtgb.fns))
-		for _, f := range *vtgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*vtgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := vtgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -645,27 +645,27 @@ type ValueTextSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (vts *ValueTextSelect) Aggregate(fns ...AggregateFunc) *ValueTextSelect {
-	vts.fns = append(vts.fns, fns...)
-	return vts
+func (_s *ValueTextSelect) Aggregate(fns ...AggregateFunc) *ValueTextSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (vts *ValueTextSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, vts.ctx, ent.OpQuerySelect)
-	if err := vts.prepareQuery(ctx); err != nil {
+func (_s *ValueTextSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ValueTextQuery, *ValueTextSelect](ctx, vts.ValueTextQuery, vts, vts.inters, v)
+	return scanWithInterceptors[*ValueTextQuery, *ValueTextSelect](ctx, _s.ValueTextQuery, _s, _s.inters, v)
 }
 
-func (vts *ValueTextSelect) sqlScan(ctx context.Context, root *ValueTextQuery, v any) error {
+func (_s *ValueTextSelect) sqlScan(ctx context.Context, root *ValueTextQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(vts.fns))
-	for _, fn := range vts.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*vts.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -673,7 +673,7 @@ func (vts *ValueTextSelect) sqlScan(ctx context.Context, root *ValueTextQuery, v
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := vts.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiTypeAttributeUpdate is the builder for updating CiTypeAttribute entities.
@@ -25,283 +25,283 @@ type CiTypeAttributeUpdate struct {
 }
 
 // Where appends a list predicates to the CiTypeAttributeUpdate builder.
-func (ctau *CiTypeAttributeUpdate) Where(ps ...predicate.CiTypeAttribute) *CiTypeAttributeUpdate {
-	ctau.mutation.Where(ps...)
-	return ctau
+func (_u *CiTypeAttributeUpdate) Where(ps ...predicate.CiTypeAttribute) *CiTypeAttributeUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctau *CiTypeAttributeUpdate) SetUpdatedAt(t time.Time) *CiTypeAttributeUpdate {
-	ctau.mutation.SetUpdatedAt(t)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetUpdatedAt(v time.Time) *CiTypeAttributeUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctau *CiTypeAttributeUpdate) SetDeletedAt(t time.Time) *CiTypeAttributeUpdate {
-	ctau.mutation.SetDeletedAt(t)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetDeletedAt(v time.Time) *CiTypeAttributeUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableDeletedAt(t *time.Time) *CiTypeAttributeUpdate {
-	if t != nil {
-		ctau.SetDeletedAt(*t)
+func (_u *CiTypeAttributeUpdate) SetNillableDeletedAt(v *time.Time) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctau
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctau *CiTypeAttributeUpdate) ClearDeletedAt() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearDeletedAt()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearDeletedAt() *CiTypeAttributeUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetSort sets the "sort" field.
-func (ctau *CiTypeAttributeUpdate) SetSort(u uint32) *CiTypeAttributeUpdate {
-	ctau.mutation.ResetSort()
-	ctau.mutation.SetSort(u)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetSort(v uint32) *CiTypeAttributeUpdate {
+	_u.mutation.ResetSort()
+	_u.mutation.SetSort(v)
+	return _u
 }
 
 // SetNillableSort sets the "sort" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableSort(u *uint32) *CiTypeAttributeUpdate {
-	if u != nil {
-		ctau.SetSort(*u)
+func (_u *CiTypeAttributeUpdate) SetNillableSort(v *uint32) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetSort(*v)
 	}
-	return ctau
+	return _u
 }
 
-// AddSort adds u to the "sort" field.
-func (ctau *CiTypeAttributeUpdate) AddSort(u int32) *CiTypeAttributeUpdate {
-	ctau.mutation.AddSort(u)
-	return ctau
+// AddSort adds value to the "sort" field.
+func (_u *CiTypeAttributeUpdate) AddSort(v int32) *CiTypeAttributeUpdate {
+	_u.mutation.AddSort(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctau *CiTypeAttributeUpdate) SetDepartmentID(u uint64) *CiTypeAttributeUpdate {
-	ctau.mutation.ResetDepartmentID()
-	ctau.mutation.SetDepartmentID(u)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetDepartmentID(v uint64) *CiTypeAttributeUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableDepartmentID(u *uint64) *CiTypeAttributeUpdate {
-	if u != nil {
-		ctau.SetDepartmentID(*u)
+func (_u *CiTypeAttributeUpdate) SetNillableDepartmentID(v *uint64) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ctau
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ctau *CiTypeAttributeUpdate) AddDepartmentID(u int64) *CiTypeAttributeUpdate {
-	ctau.mutation.AddDepartmentID(u)
-	return ctau
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiTypeAttributeUpdate) AddDepartmentID(v int64) *CiTypeAttributeUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ctau *CiTypeAttributeUpdate) ClearDepartmentID() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearDepartmentID()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearDepartmentID() *CiTypeAttributeUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetTypeID sets the "type_id" field.
-func (ctau *CiTypeAttributeUpdate) SetTypeID(u uint64) *CiTypeAttributeUpdate {
-	ctau.mutation.SetTypeID(u)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetTypeID(v uint64) *CiTypeAttributeUpdate {
+	_u.mutation.SetTypeID(v)
+	return _u
 }
 
 // SetNillableTypeID sets the "type_id" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableTypeID(u *uint64) *CiTypeAttributeUpdate {
-	if u != nil {
-		ctau.SetTypeID(*u)
+func (_u *CiTypeAttributeUpdate) SetNillableTypeID(v *uint64) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetTypeID(*v)
 	}
-	return ctau
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (ctau *CiTypeAttributeUpdate) SetAttrID(u uint64) *CiTypeAttributeUpdate {
-	ctau.mutation.SetAttrID(u)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetAttrID(v uint64) *CiTypeAttributeUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableAttrID(u *uint64) *CiTypeAttributeUpdate {
-	if u != nil {
-		ctau.SetAttrID(*u)
+func (_u *CiTypeAttributeUpdate) SetNillableAttrID(v *uint64) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return ctau
+	return _u
 }
 
 // SetIsRequired sets the "is_required" field.
-func (ctau *CiTypeAttributeUpdate) SetIsRequired(b bool) *CiTypeAttributeUpdate {
-	ctau.mutation.SetIsRequired(b)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetIsRequired(v bool) *CiTypeAttributeUpdate {
+	_u.mutation.SetIsRequired(v)
+	return _u
 }
 
 // SetNillableIsRequired sets the "is_required" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableIsRequired(b *bool) *CiTypeAttributeUpdate {
-	if b != nil {
-		ctau.SetIsRequired(*b)
+func (_u *CiTypeAttributeUpdate) SetNillableIsRequired(v *bool) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetIsRequired(*v)
 	}
-	return ctau
+	return _u
 }
 
 // ClearIsRequired clears the value of the "is_required" field.
-func (ctau *CiTypeAttributeUpdate) ClearIsRequired() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearIsRequired()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearIsRequired() *CiTypeAttributeUpdate {
+	_u.mutation.ClearIsRequired()
+	return _u
 }
 
 // SetIsUnique sets the "is_unique" field.
-func (ctau *CiTypeAttributeUpdate) SetIsUnique(b bool) *CiTypeAttributeUpdate {
-	ctau.mutation.SetIsUnique(b)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetIsUnique(v bool) *CiTypeAttributeUpdate {
+	_u.mutation.SetIsUnique(v)
+	return _u
 }
 
 // SetNillableIsUnique sets the "is_unique" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableIsUnique(b *bool) *CiTypeAttributeUpdate {
-	if b != nil {
-		ctau.SetIsUnique(*b)
+func (_u *CiTypeAttributeUpdate) SetNillableIsUnique(v *bool) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetIsUnique(*v)
 	}
-	return ctau
+	return _u
 }
 
 // ClearIsUnique clears the value of the "is_unique" field.
-func (ctau *CiTypeAttributeUpdate) ClearIsUnique() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearIsUnique()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearIsUnique() *CiTypeAttributeUpdate {
+	_u.mutation.ClearIsUnique()
+	return _u
 }
 
 // SetIsList sets the "is_list" field.
-func (ctau *CiTypeAttributeUpdate) SetIsList(b bool) *CiTypeAttributeUpdate {
-	ctau.mutation.SetIsList(b)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetIsList(v bool) *CiTypeAttributeUpdate {
+	_u.mutation.SetIsList(v)
+	return _u
 }
 
 // SetNillableIsList sets the "is_list" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableIsList(b *bool) *CiTypeAttributeUpdate {
-	if b != nil {
-		ctau.SetIsList(*b)
+func (_u *CiTypeAttributeUpdate) SetNillableIsList(v *bool) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetIsList(*v)
 	}
-	return ctau
+	return _u
 }
 
 // ClearIsList clears the value of the "is_list" field.
-func (ctau *CiTypeAttributeUpdate) ClearIsList() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearIsList()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearIsList() *CiTypeAttributeUpdate {
+	_u.mutation.ClearIsList()
+	return _u
 }
 
 // SetListShow sets the "list_show" field.
-func (ctau *CiTypeAttributeUpdate) SetListShow(b bool) *CiTypeAttributeUpdate {
-	ctau.mutation.SetListShow(b)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetListShow(v bool) *CiTypeAttributeUpdate {
+	_u.mutation.SetListShow(v)
+	return _u
 }
 
 // SetNillableListShow sets the "list_show" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableListShow(b *bool) *CiTypeAttributeUpdate {
-	if b != nil {
-		ctau.SetListShow(*b)
+func (_u *CiTypeAttributeUpdate) SetNillableListShow(v *bool) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetListShow(*v)
 	}
-	return ctau
+	return _u
 }
 
 // ClearListShow clears the value of the "list_show" field.
-func (ctau *CiTypeAttributeUpdate) ClearListShow() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearListShow()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearListShow() *CiTypeAttributeUpdate {
+	_u.mutation.ClearListShow()
+	return _u
 }
 
 // SetDetailShow sets the "detail_show" field.
-func (ctau *CiTypeAttributeUpdate) SetDetailShow(b bool) *CiTypeAttributeUpdate {
-	ctau.mutation.SetDetailShow(b)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetDetailShow(v bool) *CiTypeAttributeUpdate {
+	_u.mutation.SetDetailShow(v)
+	return _u
 }
 
 // SetNillableDetailShow sets the "detail_show" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableDetailShow(b *bool) *CiTypeAttributeUpdate {
-	if b != nil {
-		ctau.SetDetailShow(*b)
+func (_u *CiTypeAttributeUpdate) SetNillableDetailShow(v *bool) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetDetailShow(*v)
 	}
-	return ctau
+	return _u
 }
 
 // ClearDetailShow clears the value of the "detail_show" field.
-func (ctau *CiTypeAttributeUpdate) ClearDetailShow() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearDetailShow()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearDetailShow() *CiTypeAttributeUpdate {
+	_u.mutation.ClearDetailShow()
+	return _u
 }
 
 // SetIsEdit sets the "is_edit" field.
-func (ctau *CiTypeAttributeUpdate) SetIsEdit(b bool) *CiTypeAttributeUpdate {
-	ctau.mutation.SetIsEdit(b)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetIsEdit(v bool) *CiTypeAttributeUpdate {
+	_u.mutation.SetIsEdit(v)
+	return _u
 }
 
 // SetNillableIsEdit sets the "is_edit" field if the given value is not nil.
-func (ctau *CiTypeAttributeUpdate) SetNillableIsEdit(b *bool) *CiTypeAttributeUpdate {
-	if b != nil {
-		ctau.SetIsEdit(*b)
+func (_u *CiTypeAttributeUpdate) SetNillableIsEdit(v *bool) *CiTypeAttributeUpdate {
+	if v != nil {
+		_u.SetIsEdit(*v)
 	}
-	return ctau
+	return _u
 }
 
 // ClearIsEdit clears the value of the "is_edit" field.
-func (ctau *CiTypeAttributeUpdate) ClearIsEdit() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearIsEdit()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearIsEdit() *CiTypeAttributeUpdate {
+	_u.mutation.ClearIsEdit()
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type" edge to the CiType entity by ID.
-func (ctau *CiTypeAttributeUpdate) SetCiTypeID(id uint64) *CiTypeAttributeUpdate {
-	ctau.mutation.SetCiTypeID(id)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetCiTypeID(id uint64) *CiTypeAttributeUpdate {
+	_u.mutation.SetCiTypeID(id)
+	return _u
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (ctau *CiTypeAttributeUpdate) SetCiType(c *CiType) *CiTypeAttributeUpdate {
-	return ctau.SetCiTypeID(c.ID)
+func (_u *CiTypeAttributeUpdate) SetCiType(v *CiType) *CiTypeAttributeUpdate {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (ctau *CiTypeAttributeUpdate) SetAttributeID(id uint64) *CiTypeAttributeUpdate {
-	ctau.mutation.SetAttributeID(id)
-	return ctau
+func (_u *CiTypeAttributeUpdate) SetAttributeID(id uint64) *CiTypeAttributeUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (ctau *CiTypeAttributeUpdate) SetAttribute(a *Attribute) *CiTypeAttributeUpdate {
-	return ctau.SetAttributeID(a.ID)
+func (_u *CiTypeAttributeUpdate) SetAttribute(v *Attribute) *CiTypeAttributeUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the CiTypeAttributeMutation object of the builder.
-func (ctau *CiTypeAttributeUpdate) Mutation() *CiTypeAttributeMutation {
-	return ctau.mutation
+func (_u *CiTypeAttributeUpdate) Mutation() *CiTypeAttributeMutation {
+	return _u.mutation
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (ctau *CiTypeAttributeUpdate) ClearCiType() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearCiType()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearCiType() *CiTypeAttributeUpdate {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (ctau *CiTypeAttributeUpdate) ClearAttribute() *CiTypeAttributeUpdate {
-	ctau.mutation.ClearAttribute()
-	return ctau
+func (_u *CiTypeAttributeUpdate) ClearAttribute() *CiTypeAttributeUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (ctau *CiTypeAttributeUpdate) Save(ctx context.Context) (int, error) {
-	if err := ctau.defaults(); err != nil {
+func (_u *CiTypeAttributeUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, ctau.sqlSave, ctau.mutation, ctau.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctau *CiTypeAttributeUpdate) SaveX(ctx context.Context) int {
-	affected, err := ctau.Save(ctx)
+func (_u *CiTypeAttributeUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -309,114 +309,114 @@ func (ctau *CiTypeAttributeUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (ctau *CiTypeAttributeUpdate) Exec(ctx context.Context) error {
-	_, err := ctau.Save(ctx)
+func (_u *CiTypeAttributeUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctau *CiTypeAttributeUpdate) ExecX(ctx context.Context) {
-	if err := ctau.Exec(ctx); err != nil {
+func (_u *CiTypeAttributeUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctau *CiTypeAttributeUpdate) defaults() error {
-	if _, ok := ctau.mutation.UpdatedAt(); !ok {
+func (_u *CiTypeAttributeUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if citypeattribute.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypeattribute.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypeattribute.UpdateDefaultUpdatedAt()
-		ctau.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctau *CiTypeAttributeUpdate) check() error {
-	if ctau.mutation.CiTypeCleared() && len(ctau.mutation.CiTypeIDs()) > 0 {
+func (_u *CiTypeAttributeUpdate) check() error {
+	if _u.mutation.CiTypeCleared() && len(_u.mutation.CiTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeAttribute.ci_type"`)
 	}
-	if ctau.mutation.AttributeCleared() && len(ctau.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeAttribute.attribute"`)
 	}
 	return nil
 }
 
-func (ctau *CiTypeAttributeUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := ctau.check(); err != nil {
-		return n, err
+func (_u *CiTypeAttributeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(citypeattribute.Table, citypeattribute.Columns, sqlgraph.NewFieldSpec(citypeattribute.FieldID, field.TypeUint64))
-	if ps := ctau.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctau.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(citypeattribute.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctau.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(citypeattribute.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctau.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(citypeattribute.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctau.mutation.Sort(); ok {
+	if value, ok := _u.mutation.Sort(); ok {
 		_spec.SetField(citypeattribute.FieldSort, field.TypeUint32, value)
 	}
-	if value, ok := ctau.mutation.AddedSort(); ok {
+	if value, ok := _u.mutation.AddedSort(); ok {
 		_spec.AddField(citypeattribute.FieldSort, field.TypeUint32, value)
 	}
-	if value, ok := ctau.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(citypeattribute.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ctau.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(citypeattribute.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ctau.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(citypeattribute.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ctau.mutation.IsRequired(); ok {
+	if value, ok := _u.mutation.IsRequired(); ok {
 		_spec.SetField(citypeattribute.FieldIsRequired, field.TypeBool, value)
 	}
-	if ctau.mutation.IsRequiredCleared() {
+	if _u.mutation.IsRequiredCleared() {
 		_spec.ClearField(citypeattribute.FieldIsRequired, field.TypeBool)
 	}
-	if value, ok := ctau.mutation.IsUnique(); ok {
+	if value, ok := _u.mutation.IsUnique(); ok {
 		_spec.SetField(citypeattribute.FieldIsUnique, field.TypeBool, value)
 	}
-	if ctau.mutation.IsUniqueCleared() {
+	if _u.mutation.IsUniqueCleared() {
 		_spec.ClearField(citypeattribute.FieldIsUnique, field.TypeBool)
 	}
-	if value, ok := ctau.mutation.IsList(); ok {
+	if value, ok := _u.mutation.IsList(); ok {
 		_spec.SetField(citypeattribute.FieldIsList, field.TypeBool, value)
 	}
-	if ctau.mutation.IsListCleared() {
+	if _u.mutation.IsListCleared() {
 		_spec.ClearField(citypeattribute.FieldIsList, field.TypeBool)
 	}
-	if value, ok := ctau.mutation.ListShow(); ok {
+	if value, ok := _u.mutation.ListShow(); ok {
 		_spec.SetField(citypeattribute.FieldListShow, field.TypeBool, value)
 	}
-	if ctau.mutation.ListShowCleared() {
+	if _u.mutation.ListShowCleared() {
 		_spec.ClearField(citypeattribute.FieldListShow, field.TypeBool)
 	}
-	if value, ok := ctau.mutation.DetailShow(); ok {
+	if value, ok := _u.mutation.DetailShow(); ok {
 		_spec.SetField(citypeattribute.FieldDetailShow, field.TypeBool, value)
 	}
-	if ctau.mutation.DetailShowCleared() {
+	if _u.mutation.DetailShowCleared() {
 		_spec.ClearField(citypeattribute.FieldDetailShow, field.TypeBool)
 	}
-	if value, ok := ctau.mutation.IsEdit(); ok {
+	if value, ok := _u.mutation.IsEdit(); ok {
 		_spec.SetField(citypeattribute.FieldIsEdit, field.TypeBool, value)
 	}
-	if ctau.mutation.IsEditCleared() {
+	if _u.mutation.IsEditCleared() {
 		_spec.ClearField(citypeattribute.FieldIsEdit, field.TypeBool)
 	}
-	if ctau.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -429,7 +429,7 @@ func (ctau *CiTypeAttributeUpdate) sqlSave(ctx context.Context) (n int, err erro
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctau.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -445,7 +445,7 @@ func (ctau *CiTypeAttributeUpdate) sqlSave(ctx context.Context) (n int, err erro
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctau.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -458,7 +458,7 @@ func (ctau *CiTypeAttributeUpdate) sqlSave(ctx context.Context) (n int, err erro
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctau.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -474,7 +474,7 @@ func (ctau *CiTypeAttributeUpdate) sqlSave(ctx context.Context) (n int, err erro
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, ctau.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{citypeattribute.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -482,8 +482,8 @@ func (ctau *CiTypeAttributeUpdate) sqlSave(ctx context.Context) (n int, err erro
 		}
 		return 0, err
 	}
-	ctau.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiTypeAttributeUpdateOne is the builder for updating a single CiTypeAttribute entity.
@@ -495,290 +495,290 @@ type CiTypeAttributeUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetUpdatedAt(t time.Time) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetUpdatedAt(t)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetUpdatedAt(v time.Time) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetDeletedAt(t time.Time) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetDeletedAt(t)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetDeletedAt(v time.Time) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableDeletedAt(t *time.Time) *CiTypeAttributeUpdateOne {
-	if t != nil {
-		ctauo.SetDeletedAt(*t)
+func (_u *CiTypeAttributeUpdateOne) SetNillableDeletedAt(v *time.Time) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ctauo *CiTypeAttributeUpdateOne) ClearDeletedAt() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearDeletedAt()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearDeletedAt() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetSort sets the "sort" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetSort(u uint32) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ResetSort()
-	ctauo.mutation.SetSort(u)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetSort(v uint32) *CiTypeAttributeUpdateOne {
+	_u.mutation.ResetSort()
+	_u.mutation.SetSort(v)
+	return _u
 }
 
 // SetNillableSort sets the "sort" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableSort(u *uint32) *CiTypeAttributeUpdateOne {
-	if u != nil {
-		ctauo.SetSort(*u)
+func (_u *CiTypeAttributeUpdateOne) SetNillableSort(v *uint32) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetSort(*v)
 	}
-	return ctauo
+	return _u
 }
 
-// AddSort adds u to the "sort" field.
-func (ctauo *CiTypeAttributeUpdateOne) AddSort(u int32) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.AddSort(u)
-	return ctauo
+// AddSort adds value to the "sort" field.
+func (_u *CiTypeAttributeUpdateOne) AddSort(v int32) *CiTypeAttributeUpdateOne {
+	_u.mutation.AddSort(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetDepartmentID(u uint64) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ResetDepartmentID()
-	ctauo.mutation.SetDepartmentID(u)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetDepartmentID(v uint64) *CiTypeAttributeUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableDepartmentID(u *uint64) *CiTypeAttributeUpdateOne {
-	if u != nil {
-		ctauo.SetDepartmentID(*u)
+func (_u *CiTypeAttributeUpdateOne) SetNillableDepartmentID(v *uint64) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ctauo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ctauo *CiTypeAttributeUpdateOne) AddDepartmentID(u int64) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.AddDepartmentID(u)
-	return ctauo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiTypeAttributeUpdateOne) AddDepartmentID(v int64) *CiTypeAttributeUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ctauo *CiTypeAttributeUpdateOne) ClearDepartmentID() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearDepartmentID()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearDepartmentID() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetTypeID sets the "type_id" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetTypeID(u uint64) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetTypeID(u)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetTypeID(v uint64) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetTypeID(v)
+	return _u
 }
 
 // SetNillableTypeID sets the "type_id" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableTypeID(u *uint64) *CiTypeAttributeUpdateOne {
-	if u != nil {
-		ctauo.SetTypeID(*u)
+func (_u *CiTypeAttributeUpdateOne) SetNillableTypeID(v *uint64) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetTypeID(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetAttrID(u uint64) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetAttrID(u)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetAttrID(v uint64) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableAttrID(u *uint64) *CiTypeAttributeUpdateOne {
-	if u != nil {
-		ctauo.SetAttrID(*u)
+func (_u *CiTypeAttributeUpdateOne) SetNillableAttrID(v *uint64) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // SetIsRequired sets the "is_required" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetIsRequired(b bool) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetIsRequired(b)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetIsRequired(v bool) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetIsRequired(v)
+	return _u
 }
 
 // SetNillableIsRequired sets the "is_required" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableIsRequired(b *bool) *CiTypeAttributeUpdateOne {
-	if b != nil {
-		ctauo.SetIsRequired(*b)
+func (_u *CiTypeAttributeUpdateOne) SetNillableIsRequired(v *bool) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetIsRequired(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // ClearIsRequired clears the value of the "is_required" field.
-func (ctauo *CiTypeAttributeUpdateOne) ClearIsRequired() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearIsRequired()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearIsRequired() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearIsRequired()
+	return _u
 }
 
 // SetIsUnique sets the "is_unique" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetIsUnique(b bool) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetIsUnique(b)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetIsUnique(v bool) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetIsUnique(v)
+	return _u
 }
 
 // SetNillableIsUnique sets the "is_unique" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableIsUnique(b *bool) *CiTypeAttributeUpdateOne {
-	if b != nil {
-		ctauo.SetIsUnique(*b)
+func (_u *CiTypeAttributeUpdateOne) SetNillableIsUnique(v *bool) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetIsUnique(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // ClearIsUnique clears the value of the "is_unique" field.
-func (ctauo *CiTypeAttributeUpdateOne) ClearIsUnique() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearIsUnique()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearIsUnique() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearIsUnique()
+	return _u
 }
 
 // SetIsList sets the "is_list" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetIsList(b bool) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetIsList(b)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetIsList(v bool) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetIsList(v)
+	return _u
 }
 
 // SetNillableIsList sets the "is_list" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableIsList(b *bool) *CiTypeAttributeUpdateOne {
-	if b != nil {
-		ctauo.SetIsList(*b)
+func (_u *CiTypeAttributeUpdateOne) SetNillableIsList(v *bool) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetIsList(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // ClearIsList clears the value of the "is_list" field.
-func (ctauo *CiTypeAttributeUpdateOne) ClearIsList() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearIsList()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearIsList() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearIsList()
+	return _u
 }
 
 // SetListShow sets the "list_show" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetListShow(b bool) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetListShow(b)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetListShow(v bool) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetListShow(v)
+	return _u
 }
 
 // SetNillableListShow sets the "list_show" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableListShow(b *bool) *CiTypeAttributeUpdateOne {
-	if b != nil {
-		ctauo.SetListShow(*b)
+func (_u *CiTypeAttributeUpdateOne) SetNillableListShow(v *bool) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetListShow(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // ClearListShow clears the value of the "list_show" field.
-func (ctauo *CiTypeAttributeUpdateOne) ClearListShow() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearListShow()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearListShow() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearListShow()
+	return _u
 }
 
 // SetDetailShow sets the "detail_show" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetDetailShow(b bool) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetDetailShow(b)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetDetailShow(v bool) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetDetailShow(v)
+	return _u
 }
 
 // SetNillableDetailShow sets the "detail_show" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableDetailShow(b *bool) *CiTypeAttributeUpdateOne {
-	if b != nil {
-		ctauo.SetDetailShow(*b)
+func (_u *CiTypeAttributeUpdateOne) SetNillableDetailShow(v *bool) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetDetailShow(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // ClearDetailShow clears the value of the "detail_show" field.
-func (ctauo *CiTypeAttributeUpdateOne) ClearDetailShow() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearDetailShow()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearDetailShow() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearDetailShow()
+	return _u
 }
 
 // SetIsEdit sets the "is_edit" field.
-func (ctauo *CiTypeAttributeUpdateOne) SetIsEdit(b bool) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetIsEdit(b)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetIsEdit(v bool) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetIsEdit(v)
+	return _u
 }
 
 // SetNillableIsEdit sets the "is_edit" field if the given value is not nil.
-func (ctauo *CiTypeAttributeUpdateOne) SetNillableIsEdit(b *bool) *CiTypeAttributeUpdateOne {
-	if b != nil {
-		ctauo.SetIsEdit(*b)
+func (_u *CiTypeAttributeUpdateOne) SetNillableIsEdit(v *bool) *CiTypeAttributeUpdateOne {
+	if v != nil {
+		_u.SetIsEdit(*v)
 	}
-	return ctauo
+	return _u
 }
 
 // ClearIsEdit clears the value of the "is_edit" field.
-func (ctauo *CiTypeAttributeUpdateOne) ClearIsEdit() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearIsEdit()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearIsEdit() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearIsEdit()
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type" edge to the CiType entity by ID.
-func (ctauo *CiTypeAttributeUpdateOne) SetCiTypeID(id uint64) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetCiTypeID(id)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetCiTypeID(id uint64) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetCiTypeID(id)
+	return _u
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (ctauo *CiTypeAttributeUpdateOne) SetCiType(c *CiType) *CiTypeAttributeUpdateOne {
-	return ctauo.SetCiTypeID(c.ID)
+func (_u *CiTypeAttributeUpdateOne) SetCiType(v *CiType) *CiTypeAttributeUpdateOne {
+	return _u.SetCiTypeID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (ctauo *CiTypeAttributeUpdateOne) SetAttributeID(id uint64) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.SetAttributeID(id)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) SetAttributeID(id uint64) *CiTypeAttributeUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (ctauo *CiTypeAttributeUpdateOne) SetAttribute(a *Attribute) *CiTypeAttributeUpdateOne {
-	return ctauo.SetAttributeID(a.ID)
+func (_u *CiTypeAttributeUpdateOne) SetAttribute(v *Attribute) *CiTypeAttributeUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the CiTypeAttributeMutation object of the builder.
-func (ctauo *CiTypeAttributeUpdateOne) Mutation() *CiTypeAttributeMutation {
-	return ctauo.mutation
+func (_u *CiTypeAttributeUpdateOne) Mutation() *CiTypeAttributeMutation {
+	return _u.mutation
 }
 
 // ClearCiType clears the "ci_type" edge to the CiType entity.
-func (ctauo *CiTypeAttributeUpdateOne) ClearCiType() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearCiType()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearCiType() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearCiType()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (ctauo *CiTypeAttributeUpdateOne) ClearAttribute() *CiTypeAttributeUpdateOne {
-	ctauo.mutation.ClearAttribute()
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) ClearAttribute() *CiTypeAttributeUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the CiTypeAttributeUpdate builder.
-func (ctauo *CiTypeAttributeUpdateOne) Where(ps ...predicate.CiTypeAttribute) *CiTypeAttributeUpdateOne {
-	ctauo.mutation.Where(ps...)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) Where(ps ...predicate.CiTypeAttribute) *CiTypeAttributeUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (ctauo *CiTypeAttributeUpdateOne) Select(field string, fields ...string) *CiTypeAttributeUpdateOne {
-	ctauo.fields = append([]string{field}, fields...)
-	return ctauo
+func (_u *CiTypeAttributeUpdateOne) Select(field string, fields ...string) *CiTypeAttributeUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiTypeAttribute entity.
-func (ctauo *CiTypeAttributeUpdateOne) Save(ctx context.Context) (*CiTypeAttribute, error) {
-	if err := ctauo.defaults(); err != nil {
+func (_u *CiTypeAttributeUpdateOne) Save(ctx context.Context) (*CiTypeAttribute, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctauo.sqlSave, ctauo.mutation, ctauo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctauo *CiTypeAttributeUpdateOne) SaveX(ctx context.Context) *CiTypeAttribute {
-	node, err := ctauo.Save(ctx)
+func (_u *CiTypeAttributeUpdateOne) SaveX(ctx context.Context) *CiTypeAttribute {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -786,52 +786,52 @@ func (ctauo *CiTypeAttributeUpdateOne) SaveX(ctx context.Context) *CiTypeAttribu
 }
 
 // Exec executes the query on the entity.
-func (ctauo *CiTypeAttributeUpdateOne) Exec(ctx context.Context) error {
-	_, err := ctauo.Save(ctx)
+func (_u *CiTypeAttributeUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctauo *CiTypeAttributeUpdateOne) ExecX(ctx context.Context) {
-	if err := ctauo.Exec(ctx); err != nil {
+func (_u *CiTypeAttributeUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctauo *CiTypeAttributeUpdateOne) defaults() error {
-	if _, ok := ctauo.mutation.UpdatedAt(); !ok {
+func (_u *CiTypeAttributeUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if citypeattribute.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypeattribute.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypeattribute.UpdateDefaultUpdatedAt()
-		ctauo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctauo *CiTypeAttributeUpdateOne) check() error {
-	if ctauo.mutation.CiTypeCleared() && len(ctauo.mutation.CiTypeIDs()) > 0 {
+func (_u *CiTypeAttributeUpdateOne) check() error {
+	if _u.mutation.CiTypeCleared() && len(_u.mutation.CiTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeAttribute.ci_type"`)
 	}
-	if ctauo.mutation.AttributeCleared() && len(ctauo.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiTypeAttribute.attribute"`)
 	}
 	return nil
 }
 
-func (ctauo *CiTypeAttributeUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeAttribute, err error) {
-	if err := ctauo.check(); err != nil {
+func (_u *CiTypeAttributeUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeAttribute, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(citypeattribute.Table, citypeattribute.Columns, sqlgraph.NewFieldSpec(citypeattribute.FieldID, field.TypeUint64))
-	id, ok := ctauo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiTypeAttribute.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := ctauo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, citypeattribute.FieldID)
 		for _, f := range fields {
@@ -843,74 +843,74 @@ func (ctauo *CiTypeAttributeUpdateOne) sqlSave(ctx context.Context) (_node *CiTy
 			}
 		}
 	}
-	if ps := ctauo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ctauo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(citypeattribute.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ctauo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(citypeattribute.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ctauo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(citypeattribute.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ctauo.mutation.Sort(); ok {
+	if value, ok := _u.mutation.Sort(); ok {
 		_spec.SetField(citypeattribute.FieldSort, field.TypeUint32, value)
 	}
-	if value, ok := ctauo.mutation.AddedSort(); ok {
+	if value, ok := _u.mutation.AddedSort(); ok {
 		_spec.AddField(citypeattribute.FieldSort, field.TypeUint32, value)
 	}
-	if value, ok := ctauo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(citypeattribute.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ctauo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(citypeattribute.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ctauo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(citypeattribute.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ctauo.mutation.IsRequired(); ok {
+	if value, ok := _u.mutation.IsRequired(); ok {
 		_spec.SetField(citypeattribute.FieldIsRequired, field.TypeBool, value)
 	}
-	if ctauo.mutation.IsRequiredCleared() {
+	if _u.mutation.IsRequiredCleared() {
 		_spec.ClearField(citypeattribute.FieldIsRequired, field.TypeBool)
 	}
-	if value, ok := ctauo.mutation.IsUnique(); ok {
+	if value, ok := _u.mutation.IsUnique(); ok {
 		_spec.SetField(citypeattribute.FieldIsUnique, field.TypeBool, value)
 	}
-	if ctauo.mutation.IsUniqueCleared() {
+	if _u.mutation.IsUniqueCleared() {
 		_spec.ClearField(citypeattribute.FieldIsUnique, field.TypeBool)
 	}
-	if value, ok := ctauo.mutation.IsList(); ok {
+	if value, ok := _u.mutation.IsList(); ok {
 		_spec.SetField(citypeattribute.FieldIsList, field.TypeBool, value)
 	}
-	if ctauo.mutation.IsListCleared() {
+	if _u.mutation.IsListCleared() {
 		_spec.ClearField(citypeattribute.FieldIsList, field.TypeBool)
 	}
-	if value, ok := ctauo.mutation.ListShow(); ok {
+	if value, ok := _u.mutation.ListShow(); ok {
 		_spec.SetField(citypeattribute.FieldListShow, field.TypeBool, value)
 	}
-	if ctauo.mutation.ListShowCleared() {
+	if _u.mutation.ListShowCleared() {
 		_spec.ClearField(citypeattribute.FieldListShow, field.TypeBool)
 	}
-	if value, ok := ctauo.mutation.DetailShow(); ok {
+	if value, ok := _u.mutation.DetailShow(); ok {
 		_spec.SetField(citypeattribute.FieldDetailShow, field.TypeBool, value)
 	}
-	if ctauo.mutation.DetailShowCleared() {
+	if _u.mutation.DetailShowCleared() {
 		_spec.ClearField(citypeattribute.FieldDetailShow, field.TypeBool)
 	}
-	if value, ok := ctauo.mutation.IsEdit(); ok {
+	if value, ok := _u.mutation.IsEdit(); ok {
 		_spec.SetField(citypeattribute.FieldIsEdit, field.TypeBool, value)
 	}
-	if ctauo.mutation.IsEditCleared() {
+	if _u.mutation.IsEditCleared() {
 		_spec.ClearField(citypeattribute.FieldIsEdit, field.TypeBool)
 	}
-	if ctauo.mutation.CiTypeCleared() {
+	if _u.mutation.CiTypeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -923,7 +923,7 @@ func (ctauo *CiTypeAttributeUpdateOne) sqlSave(ctx context.Context) (_node *CiTy
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctauo.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -939,7 +939,7 @@ func (ctauo *CiTypeAttributeUpdateOne) sqlSave(ctx context.Context) (_node *CiTy
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if ctauo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -952,7 +952,7 @@ func (ctauo *CiTypeAttributeUpdateOne) sqlSave(ctx context.Context) (_node *CiTy
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ctauo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -968,10 +968,10 @@ func (ctauo *CiTypeAttributeUpdateOne) sqlSave(ctx context.Context) (_node *CiTy
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &CiTypeAttribute{config: ctauo.config}
+	_node = &CiTypeAttribute{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, ctauo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{citypeattribute.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -979,6 +979,6 @@ func (ctauo *CiTypeAttributeUpdateOne) sqlSave(ctx context.Context) (_node *CiTy
 		}
 		return nil, err
 	}
-	ctauo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

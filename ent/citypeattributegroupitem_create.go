@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
 )
 
 // CiTypeAttributeGroupItemCreate is the builder for creating a CiTypeAttributeGroupItem entity.
@@ -23,139 +23,139 @@ type CiTypeAttributeGroupItemCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetCreatedAt(t time.Time) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetCreatedAt(t)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetCreatedAt(v time.Time) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetNillableCreatedAt(t *time.Time) *CiTypeAttributeGroupItemCreate {
-	if t != nil {
-		ctagic.SetCreatedAt(*t)
+func (_c *CiTypeAttributeGroupItemCreate) SetNillableCreatedAt(v *time.Time) *CiTypeAttributeGroupItemCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return ctagic
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetUpdatedAt(t time.Time) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetUpdatedAt(t)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetUpdatedAt(v time.Time) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetNillableUpdatedAt(t *time.Time) *CiTypeAttributeGroupItemCreate {
-	if t != nil {
-		ctagic.SetUpdatedAt(*t)
+func (_c *CiTypeAttributeGroupItemCreate) SetNillableUpdatedAt(v *time.Time) *CiTypeAttributeGroupItemCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return ctagic
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetDeletedAt(t time.Time) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetDeletedAt(t)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetDeletedAt(v time.Time) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetNillableDeletedAt(t *time.Time) *CiTypeAttributeGroupItemCreate {
-	if t != nil {
-		ctagic.SetDeletedAt(*t)
+func (_c *CiTypeAttributeGroupItemCreate) SetNillableDeletedAt(v *time.Time) *CiTypeAttributeGroupItemCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return ctagic
+	return _c
 }
 
 // SetSort sets the "sort" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetSort(u uint32) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetSort(u)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetSort(v uint32) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetSort(v)
+	return _c
 }
 
 // SetNillableSort sets the "sort" field if the given value is not nil.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetNillableSort(u *uint32) *CiTypeAttributeGroupItemCreate {
-	if u != nil {
-		ctagic.SetSort(*u)
+func (_c *CiTypeAttributeGroupItemCreate) SetNillableSort(v *uint32) *CiTypeAttributeGroupItemCreate {
+	if v != nil {
+		_c.SetSort(*v)
 	}
-	return ctagic
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetTenantID(u uint64) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetTenantID(u)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetTenantID(v uint64) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetNillableTenantID(u *uint64) *CiTypeAttributeGroupItemCreate {
-	if u != nil {
-		ctagic.SetTenantID(*u)
+func (_c *CiTypeAttributeGroupItemCreate) SetNillableTenantID(v *uint64) *CiTypeAttributeGroupItemCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return ctagic
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetDepartmentID(u uint64) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetDepartmentID(u)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetDepartmentID(v uint64) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetNillableDepartmentID(u *uint64) *CiTypeAttributeGroupItemCreate {
-	if u != nil {
-		ctagic.SetDepartmentID(*u)
+func (_c *CiTypeAttributeGroupItemCreate) SetNillableDepartmentID(v *uint64) *CiTypeAttributeGroupItemCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return ctagic
+	return _c
 }
 
 // SetGroupID sets the "group_id" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetGroupID(u uint64) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetGroupID(u)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetGroupID(v uint64) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetGroupID(v)
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetAttrID(u uint64) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetAttrID(u)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetAttrID(v uint64) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetID sets the "id" field.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetID(u uint64) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetID(u)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetID(v uint64) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetGroup sets the "group" edge to the CiTypeAttributeGroup entity.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetGroup(c *CiTypeAttributeGroup) *CiTypeAttributeGroupItemCreate {
-	return ctagic.SetGroupID(c.ID)
+func (_c *CiTypeAttributeGroupItemCreate) SetGroup(v *CiTypeAttributeGroup) *CiTypeAttributeGroupItemCreate {
+	return _c.SetGroupID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetAttributeID(id uint64) *CiTypeAttributeGroupItemCreate {
-	ctagic.mutation.SetAttributeID(id)
-	return ctagic
+func (_c *CiTypeAttributeGroupItemCreate) SetAttributeID(id uint64) *CiTypeAttributeGroupItemCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (ctagic *CiTypeAttributeGroupItemCreate) SetAttribute(a *Attribute) *CiTypeAttributeGroupItemCreate {
-	return ctagic.SetAttributeID(a.ID)
+func (_c *CiTypeAttributeGroupItemCreate) SetAttribute(v *Attribute) *CiTypeAttributeGroupItemCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the CiTypeAttributeGroupItemMutation object of the builder.
-func (ctagic *CiTypeAttributeGroupItemCreate) Mutation() *CiTypeAttributeGroupItemMutation {
-	return ctagic.mutation
+func (_c *CiTypeAttributeGroupItemCreate) Mutation() *CiTypeAttributeGroupItemMutation {
+	return _c.mutation
 }
 
 // Save creates the CiTypeAttributeGroupItem in the database.
-func (ctagic *CiTypeAttributeGroupItemCreate) Save(ctx context.Context) (*CiTypeAttributeGroupItem, error) {
-	if err := ctagic.defaults(); err != nil {
+func (_c *CiTypeAttributeGroupItemCreate) Save(ctx context.Context) (*CiTypeAttributeGroupItem, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ctagic.sqlSave, ctagic.mutation, ctagic.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (ctagic *CiTypeAttributeGroupItemCreate) SaveX(ctx context.Context) *CiTypeAttributeGroupItem {
-	v, err := ctagic.Save(ctx)
+func (_c *CiTypeAttributeGroupItemCreate) SaveX(ctx context.Context) *CiTypeAttributeGroupItem {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -163,80 +163,80 @@ func (ctagic *CiTypeAttributeGroupItemCreate) SaveX(ctx context.Context) *CiType
 }
 
 // Exec executes the query.
-func (ctagic *CiTypeAttributeGroupItemCreate) Exec(ctx context.Context) error {
-	_, err := ctagic.Save(ctx)
+func (_c *CiTypeAttributeGroupItemCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctagic *CiTypeAttributeGroupItemCreate) ExecX(ctx context.Context) {
-	if err := ctagic.Exec(ctx); err != nil {
+func (_c *CiTypeAttributeGroupItemCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ctagic *CiTypeAttributeGroupItemCreate) defaults() error {
-	if _, ok := ctagic.mutation.CreatedAt(); !ok {
+func (_c *CiTypeAttributeGroupItemCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if citypeattributegroupitem.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypeattributegroupitem.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypeattributegroupitem.DefaultCreatedAt()
-		ctagic.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := ctagic.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if citypeattributegroupitem.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized citypeattributegroupitem.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := citypeattributegroupitem.DefaultUpdatedAt()
-		ctagic.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := ctagic.mutation.Sort(); !ok {
+	if _, ok := _c.mutation.Sort(); !ok {
 		v := citypeattributegroupitem.DefaultSort
-		ctagic.mutation.SetSort(v)
+		_c.mutation.SetSort(v)
 	}
-	if _, ok := ctagic.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := citypeattributegroupitem.DefaultTenantID
-		ctagic.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ctagic *CiTypeAttributeGroupItemCreate) check() error {
-	if _, ok := ctagic.mutation.CreatedAt(); !ok {
+func (_c *CiTypeAttributeGroupItemCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiTypeAttributeGroupItem.created_at"`)}
 	}
-	if _, ok := ctagic.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiTypeAttributeGroupItem.updated_at"`)}
 	}
-	if _, ok := ctagic.mutation.Sort(); !ok {
+	if _, ok := _c.mutation.Sort(); !ok {
 		return &ValidationError{Name: "sort", err: errors.New(`ent: missing required field "CiTypeAttributeGroupItem.sort"`)}
 	}
-	if _, ok := ctagic.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiTypeAttributeGroupItem.tenant_id"`)}
 	}
-	if _, ok := ctagic.mutation.GroupID(); !ok {
+	if _, ok := _c.mutation.GroupID(); !ok {
 		return &ValidationError{Name: "group_id", err: errors.New(`ent: missing required field "CiTypeAttributeGroupItem.group_id"`)}
 	}
-	if _, ok := ctagic.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "CiTypeAttributeGroupItem.attr_id"`)}
 	}
-	if len(ctagic.mutation.GroupIDs()) == 0 {
+	if len(_c.mutation.GroupIDs()) == 0 {
 		return &ValidationError{Name: "group", err: errors.New(`ent: missing required edge "CiTypeAttributeGroupItem.group"`)}
 	}
-	if len(ctagic.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "CiTypeAttributeGroupItem.attribute"`)}
 	}
 	return nil
 }
 
-func (ctagic *CiTypeAttributeGroupItemCreate) sqlSave(ctx context.Context) (*CiTypeAttributeGroupItem, error) {
-	if err := ctagic.check(); err != nil {
+func (_c *CiTypeAttributeGroupItemCreate) sqlSave(ctx context.Context) (*CiTypeAttributeGroupItem, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := ctagic.createSpec()
-	if err := sqlgraph.CreateNode(ctx, ctagic.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -246,45 +246,45 @@ func (ctagic *CiTypeAttributeGroupItemCreate) sqlSave(ctx context.Context) (*CiT
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	ctagic.mutation.id = &_node.ID
-	ctagic.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (ctagic *CiTypeAttributeGroupItemCreate) createSpec() (*CiTypeAttributeGroupItem, *sqlgraph.CreateSpec) {
+func (_c *CiTypeAttributeGroupItemCreate) createSpec() (*CiTypeAttributeGroupItem, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiTypeAttributeGroupItem{config: ctagic.config}
+		_node = &CiTypeAttributeGroupItem{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(citypeattributegroupitem.Table, sqlgraph.NewFieldSpec(citypeattributegroupitem.FieldID, field.TypeUint64))
 	)
-	if id, ok := ctagic.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := ctagic.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(citypeattributegroupitem.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := ctagic.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(citypeattributegroupitem.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := ctagic.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(citypeattributegroupitem.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := ctagic.mutation.Sort(); ok {
+	if value, ok := _c.mutation.Sort(); ok {
 		_spec.SetField(citypeattributegroupitem.FieldSort, field.TypeUint32, value)
 		_node.Sort = value
 	}
-	if value, ok := ctagic.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(citypeattributegroupitem.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := ctagic.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(citypeattributegroupitem.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if nodes := ctagic.mutation.GroupIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.GroupIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -301,7 +301,7 @@ func (ctagic *CiTypeAttributeGroupItemCreate) createSpec() (*CiTypeAttributeGrou
 		_node.GroupID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := ctagic.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -329,16 +329,16 @@ type CiTypeAttributeGroupItemCreateBulk struct {
 }
 
 // Save creates the CiTypeAttributeGroupItem entities in the database.
-func (ctagicb *CiTypeAttributeGroupItemCreateBulk) Save(ctx context.Context) ([]*CiTypeAttributeGroupItem, error) {
-	if ctagicb.err != nil {
-		return nil, ctagicb.err
+func (_c *CiTypeAttributeGroupItemCreateBulk) Save(ctx context.Context) ([]*CiTypeAttributeGroupItem, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(ctagicb.builders))
-	nodes := make([]*CiTypeAttributeGroupItem, len(ctagicb.builders))
-	mutators := make([]Mutator, len(ctagicb.builders))
-	for i := range ctagicb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiTypeAttributeGroupItem, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := ctagicb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiTypeAttributeGroupItemMutation)
@@ -352,11 +352,11 @@ func (ctagicb *CiTypeAttributeGroupItemCreateBulk) Save(ctx context.Context) ([]
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, ctagicb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, ctagicb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -380,7 +380,7 @@ func (ctagicb *CiTypeAttributeGroupItemCreateBulk) Save(ctx context.Context) ([]
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, ctagicb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -388,8 +388,8 @@ func (ctagicb *CiTypeAttributeGroupItemCreateBulk) Save(ctx context.Context) ([]
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ctagicb *CiTypeAttributeGroupItemCreateBulk) SaveX(ctx context.Context) []*CiTypeAttributeGroupItem {
-	v, err := ctagicb.Save(ctx)
+func (_c *CiTypeAttributeGroupItemCreateBulk) SaveX(ctx context.Context) []*CiTypeAttributeGroupItem {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -397,14 +397,14 @@ func (ctagicb *CiTypeAttributeGroupItemCreateBulk) SaveX(ctx context.Context) []
 }
 
 // Exec executes the query.
-func (ctagicb *CiTypeAttributeGroupItemCreateBulk) Exec(ctx context.Context) error {
-	_, err := ctagicb.Save(ctx)
+func (_c *CiTypeAttributeGroupItemCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctagicb *CiTypeAttributeGroupItemCreateBulk) ExecX(ctx context.Context) {
-	if err := ctagicb.Exec(ctx); err != nil {
+func (_c *CiTypeAttributeGroupItemCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

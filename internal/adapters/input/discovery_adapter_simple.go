@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 )
 
 // DiscoveryInputAdapter 自动发现输入适配器 (功能已迁移到Agent)

@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -156,7 +156,7 @@ func (*CiRecords) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiRecords fields.
-func (cr *CiRecords) assignValues(columns []string, values []any) error {
+func (_m *CiRecords) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -167,102 +167,102 @@ func (cr *CiRecords) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			cr.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case cirecords.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				cr.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case cirecords.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				cr.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case cirecords.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				cr.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case cirecords.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				cr.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case cirecords.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_id", values[i])
 			} else if value.Valid {
-				cr.CiID = uint64(value.Int64)
+				_m.CiID = uint64(value.Int64)
 			}
 		case cirecords.FieldCiTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_type_id", values[i])
 			} else if value.Valid {
-				cr.CiTypeID = uint64(value.Int64)
+				_m.CiTypeID = uint64(value.Int64)
 			}
 		case cirecords.FieldCiTypeName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_type_name", values[i])
 			} else if value.Valid {
-				cr.CiTypeName = value.String
+				_m.CiTypeName = value.String
 			}
 		case cirecords.FieldCiUniqueKey:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field ci_unique_key", values[i])
 			} else if value.Valid {
-				cr.CiUniqueKey = value.String
+				_m.CiUniqueKey = value.String
 			}
 		case cirecords.FieldOperationType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_type", values[i])
 			} else if value.Valid {
-				cr.OperationType = cirecords.OperationType(value.String)
+				_m.OperationType = cirecords.OperationType(value.String)
 			}
 		case cirecords.FieldOperationTime:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_time", values[i])
 			} else if value.Valid {
-				cr.OperationTime = value.Time
+				_m.OperationTime = value.Time
 			}
 		case cirecords.FieldOperationUserID:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_user_id", values[i])
 			} else if value != nil {
-				cr.OperationUserID = *value
+				_m.OperationUserID = *value
 			}
 		case cirecords.FieldOperationUserName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field operation_user_name", values[i])
 			} else if value.Valid {
-				cr.OperationUserName = value.String
+				_m.OperationUserName = value.String
 			}
 		case cirecords.FieldSourceType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field source_type", values[i])
 			} else if value.Valid {
-				cr.SourceType = cirecords.SourceType(value.String)
+				_m.SourceType = cirecords.SourceType(value.String)
 			}
 		case cirecords.FieldSourceID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field source_id", values[i])
 			} else if value.Valid {
-				cr.SourceID = value.String
+				_m.SourceID = value.String
 			}
 		case cirecords.FieldSourceDescription:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field source_description", values[i])
 			} else if value.Valid {
-				cr.SourceDescription = value.String
+				_m.SourceDescription = value.String
 			}
 		case cirecords.FieldBeforeData:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field before_data", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cr.BeforeData); err != nil {
+				if err := json.Unmarshal(*value, &_m.BeforeData); err != nil {
 					return fmt.Errorf("unmarshal field before_data: %w", err)
 				}
 			}
@@ -270,7 +270,7 @@ func (cr *CiRecords) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field after_data", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cr.AfterData); err != nil {
+				if err := json.Unmarshal(*value, &_m.AfterData); err != nil {
 					return fmt.Errorf("unmarshal field after_data: %w", err)
 				}
 			}
@@ -278,7 +278,7 @@ func (cr *CiRecords) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field changed_fields", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cr.ChangedFields); err != nil {
+				if err := json.Unmarshal(*value, &_m.ChangedFields); err != nil {
 					return fmt.Errorf("unmarshal field changed_fields: %w", err)
 				}
 			}
@@ -286,7 +286,7 @@ func (cr *CiRecords) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field change_summary", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cr.ChangeSummary); err != nil {
+				if err := json.Unmarshal(*value, &_m.ChangeSummary); err != nil {
 					return fmt.Errorf("unmarshal field change_summary: %w", err)
 				}
 			}
@@ -294,49 +294,49 @@ func (cr *CiRecords) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field change_reason", values[i])
 			} else if value.Valid {
-				cr.ChangeReason = value.String
+				_m.ChangeReason = value.String
 			}
 		case cirecords.FieldDescription:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field description", values[i])
 			} else if value.Valid {
-				cr.Description = value.String
+				_m.Description = value.String
 			}
 		case cirecords.FieldComments:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field comments", values[i])
 			} else if value.Valid {
-				cr.Comments = value.String
+				_m.Comments = value.String
 			}
 		case cirecords.FieldVersionNumber:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field version_number", values[i])
 			} else if value.Valid {
-				cr.VersionNumber = int(value.Int64)
+				_m.VersionNumber = int(value.Int64)
 			}
 		case cirecords.FieldRevisionID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field revision_id", values[i])
 			} else if value.Valid {
-				cr.RevisionID = value.String
+				_m.RevisionID = value.String
 			}
 		case cirecords.FieldClientIP:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field client_ip", values[i])
 			} else if value.Valid {
-				cr.ClientIP = value.String
+				_m.ClientIP = value.String
 			}
 		case cirecords.FieldUserAgent:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field user_agent", values[i])
 			} else if value.Valid {
-				cr.UserAgent = value.String
+				_m.UserAgent = value.String
 			}
 		case cirecords.FieldRequestContext:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field request_context", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cr.RequestContext); err != nil {
+				if err := json.Unmarshal(*value, &_m.RequestContext); err != nil {
 					return fmt.Errorf("unmarshal field request_context: %w", err)
 				}
 			}
@@ -344,13 +344,13 @@ func (cr *CiRecords) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field affected_relations", values[i])
 			} else if value.Valid {
-				cr.AffectedRelations = int(value.Int64)
+				_m.AffectedRelations = int(value.Int64)
 			}
 		case cirecords.FieldAffectedRelationIds:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field affected_relation_ids", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &cr.AffectedRelationIds); err != nil {
+				if err := json.Unmarshal(*value, &_m.AffectedRelationIds); err != nil {
 					return fmt.Errorf("unmarshal field affected_relation_ids: %w", err)
 				}
 			}
@@ -358,40 +358,40 @@ func (cr *CiRecords) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field cascade_changes", values[i])
 			} else if value.Valid {
-				cr.CascadeChanges = value.Bool
+				_m.CascadeChanges = value.Bool
 			}
 		case cirecords.FieldIsMajorChange:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_major_change", values[i])
 			} else if value.Valid {
-				cr.IsMajorChange = value.Bool
+				_m.IsMajorChange = value.Bool
 			}
 		case cirecords.FieldRequiresApproval:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field requires_approval", values[i])
 			} else if value.Valid {
-				cr.RequiresApproval = value.Bool
+				_m.RequiresApproval = value.Bool
 			}
 		case cirecords.FieldApprovalStatus:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field approval_status", values[i])
 			} else if value.Valid {
-				cr.ApprovalStatus = cirecords.ApprovalStatus(value.String)
+				_m.ApprovalStatus = cirecords.ApprovalStatus(value.String)
 			}
 		case cirecords.FieldApprovedBy:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field approved_by", values[i])
 			} else if value != nil {
-				cr.ApprovedBy = *value
+				_m.ApprovedBy = *value
 			}
 		case cirecords.FieldApprovedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field approved_at", values[i])
 			} else if value.Valid {
-				cr.ApprovedAt = value.Time
+				_m.ApprovedAt = value.Time
 			}
 		default:
-			cr.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -399,147 +399,147 @@ func (cr *CiRecords) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiRecords.
 // This includes values selected through modifiers, order, etc.
-func (cr *CiRecords) Value(name string) (ent.Value, error) {
-	return cr.selectValues.Get(name)
+func (_m *CiRecords) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryCi queries the "ci" edge of the CiRecords entity.
-func (cr *CiRecords) QueryCi() *CisQuery {
-	return NewCiRecordsClient(cr.config).QueryCi(cr)
+func (_m *CiRecords) QueryCi() *CisQuery {
+	return NewCiRecordsClient(_m.config).QueryCi(_m)
 }
 
 // QueryCiType queries the "ci_type" edge of the CiRecords entity.
-func (cr *CiRecords) QueryCiType() *CiTypeQuery {
-	return NewCiRecordsClient(cr.config).QueryCiType(cr)
+func (_m *CiRecords) QueryCiType() *CiTypeQuery {
+	return NewCiRecordsClient(_m.config).QueryCiType(_m)
 }
 
 // Update returns a builder for updating this CiRecords.
 // Note that you need to call CiRecords.Unwrap() before calling this method if this CiRecords
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (cr *CiRecords) Update() *CiRecordsUpdateOne {
-	return NewCiRecordsClient(cr.config).UpdateOne(cr)
+func (_m *CiRecords) Update() *CiRecordsUpdateOne {
+	return NewCiRecordsClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiRecords entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (cr *CiRecords) Unwrap() *CiRecords {
-	_tx, ok := cr.config.driver.(*txDriver)
+func (_m *CiRecords) Unwrap() *CiRecords {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiRecords is not a transactional entity")
 	}
-	cr.config.driver = _tx.drv
-	return cr
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (cr *CiRecords) String() string {
+func (_m *CiRecords) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiRecords(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", cr.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(cr.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(cr.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.CiID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.CiTypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.CiTypeID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_type_name=")
-	builder.WriteString(cr.CiTypeName)
+	builder.WriteString(_m.CiTypeName)
 	builder.WriteString(", ")
 	builder.WriteString("ci_unique_key=")
-	builder.WriteString(cr.CiUniqueKey)
+	builder.WriteString(_m.CiUniqueKey)
 	builder.WriteString(", ")
 	builder.WriteString("operation_type=")
-	builder.WriteString(fmt.Sprintf("%v", cr.OperationType))
+	builder.WriteString(fmt.Sprintf("%v", _m.OperationType))
 	builder.WriteString(", ")
 	builder.WriteString("operation_time=")
-	builder.WriteString(cr.OperationTime.Format(time.ANSIC))
+	builder.WriteString(_m.OperationTime.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("operation_user_id=")
-	builder.WriteString(fmt.Sprintf("%v", cr.OperationUserID))
+	builder.WriteString(fmt.Sprintf("%v", _m.OperationUserID))
 	builder.WriteString(", ")
 	builder.WriteString("operation_user_name=")
-	builder.WriteString(cr.OperationUserName)
+	builder.WriteString(_m.OperationUserName)
 	builder.WriteString(", ")
 	builder.WriteString("source_type=")
-	builder.WriteString(fmt.Sprintf("%v", cr.SourceType))
+	builder.WriteString(fmt.Sprintf("%v", _m.SourceType))
 	builder.WriteString(", ")
 	builder.WriteString("source_id=")
-	builder.WriteString(cr.SourceID)
+	builder.WriteString(_m.SourceID)
 	builder.WriteString(", ")
 	builder.WriteString("source_description=")
-	builder.WriteString(cr.SourceDescription)
+	builder.WriteString(_m.SourceDescription)
 	builder.WriteString(", ")
 	builder.WriteString("before_data=")
-	builder.WriteString(fmt.Sprintf("%v", cr.BeforeData))
+	builder.WriteString(fmt.Sprintf("%v", _m.BeforeData))
 	builder.WriteString(", ")
 	builder.WriteString("after_data=")
-	builder.WriteString(fmt.Sprintf("%v", cr.AfterData))
+	builder.WriteString(fmt.Sprintf("%v", _m.AfterData))
 	builder.WriteString(", ")
 	builder.WriteString("changed_fields=")
-	builder.WriteString(fmt.Sprintf("%v", cr.ChangedFields))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChangedFields))
 	builder.WriteString(", ")
 	builder.WriteString("change_summary=")
-	builder.WriteString(fmt.Sprintf("%v", cr.ChangeSummary))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChangeSummary))
 	builder.WriteString(", ")
 	builder.WriteString("change_reason=")
-	builder.WriteString(cr.ChangeReason)
+	builder.WriteString(_m.ChangeReason)
 	builder.WriteString(", ")
 	builder.WriteString("description=")
-	builder.WriteString(cr.Description)
+	builder.WriteString(_m.Description)
 	builder.WriteString(", ")
 	builder.WriteString("comments=")
-	builder.WriteString(cr.Comments)
+	builder.WriteString(_m.Comments)
 	builder.WriteString(", ")
 	builder.WriteString("version_number=")
-	builder.WriteString(fmt.Sprintf("%v", cr.VersionNumber))
+	builder.WriteString(fmt.Sprintf("%v", _m.VersionNumber))
 	builder.WriteString(", ")
 	builder.WriteString("revision_id=")
-	builder.WriteString(cr.RevisionID)
+	builder.WriteString(_m.RevisionID)
 	builder.WriteString(", ")
 	builder.WriteString("client_ip=")
-	builder.WriteString(cr.ClientIP)
+	builder.WriteString(_m.ClientIP)
 	builder.WriteString(", ")
 	builder.WriteString("user_agent=")
-	builder.WriteString(cr.UserAgent)
+	builder.WriteString(_m.UserAgent)
 	builder.WriteString(", ")
 	builder.WriteString("request_context=")
-	builder.WriteString(fmt.Sprintf("%v", cr.RequestContext))
+	builder.WriteString(fmt.Sprintf("%v", _m.RequestContext))
 	builder.WriteString(", ")
 	builder.WriteString("affected_relations=")
-	builder.WriteString(fmt.Sprintf("%v", cr.AffectedRelations))
+	builder.WriteString(fmt.Sprintf("%v", _m.AffectedRelations))
 	builder.WriteString(", ")
 	builder.WriteString("affected_relation_ids=")
-	builder.WriteString(fmt.Sprintf("%v", cr.AffectedRelationIds))
+	builder.WriteString(fmt.Sprintf("%v", _m.AffectedRelationIds))
 	builder.WriteString(", ")
 	builder.WriteString("cascade_changes=")
-	builder.WriteString(fmt.Sprintf("%v", cr.CascadeChanges))
+	builder.WriteString(fmt.Sprintf("%v", _m.CascadeChanges))
 	builder.WriteString(", ")
 	builder.WriteString("is_major_change=")
-	builder.WriteString(fmt.Sprintf("%v", cr.IsMajorChange))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsMajorChange))
 	builder.WriteString(", ")
 	builder.WriteString("requires_approval=")
-	builder.WriteString(fmt.Sprintf("%v", cr.RequiresApproval))
+	builder.WriteString(fmt.Sprintf("%v", _m.RequiresApproval))
 	builder.WriteString(", ")
 	builder.WriteString("approval_status=")
-	builder.WriteString(fmt.Sprintf("%v", cr.ApprovalStatus))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApprovalStatus))
 	builder.WriteString(", ")
 	builder.WriteString("approved_by=")
-	builder.WriteString(fmt.Sprintf("%v", cr.ApprovedBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApprovedBy))
 	builder.WriteString(", ")
 	builder.WriteString("approved_at=")
-	builder.WriteString(cr.ApprovedAt.Format(time.ANSIC))
+	builder.WriteString(_m.ApprovedAt.Format(time.ANSIC))
 	builder.WriteByte(')')
 	return builder.String()
 }

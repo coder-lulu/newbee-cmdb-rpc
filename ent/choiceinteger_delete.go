@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ChoiceIntegerDelete is the builder for deleting a ChoiceInteger entity.
@@ -20,56 +20,56 @@ type ChoiceIntegerDelete struct {
 }
 
 // Where appends a list predicates to the ChoiceIntegerDelete builder.
-func (cid *ChoiceIntegerDelete) Where(ps ...predicate.ChoiceInteger) *ChoiceIntegerDelete {
-	cid.mutation.Where(ps...)
-	return cid
+func (_d *ChoiceIntegerDelete) Where(ps ...predicate.ChoiceInteger) *ChoiceIntegerDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (cid *ChoiceIntegerDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, cid.sqlExec, cid.mutation, cid.hooks)
+func (_d *ChoiceIntegerDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cid *ChoiceIntegerDelete) ExecX(ctx context.Context) int {
-	n, err := cid.Exec(ctx)
+func (_d *ChoiceIntegerDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (cid *ChoiceIntegerDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *ChoiceIntegerDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(choiceinteger.Table, sqlgraph.NewFieldSpec(choiceinteger.FieldID, field.TypeUint64))
-	if ps := cid.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, cid.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	cid.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // ChoiceIntegerDeleteOne is the builder for deleting a single ChoiceInteger entity.
 type ChoiceIntegerDeleteOne struct {
-	cid *ChoiceIntegerDelete
+	_d *ChoiceIntegerDelete
 }
 
 // Where appends a list predicates to the ChoiceIntegerDelete builder.
-func (cido *ChoiceIntegerDeleteOne) Where(ps ...predicate.ChoiceInteger) *ChoiceIntegerDeleteOne {
-	cido.cid.mutation.Where(ps...)
-	return cido
+func (_d *ChoiceIntegerDeleteOne) Where(ps ...predicate.ChoiceInteger) *ChoiceIntegerDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (cido *ChoiceIntegerDeleteOne) Exec(ctx context.Context) error {
-	n, err := cido.cid.Exec(ctx)
+func (_d *ChoiceIntegerDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (cido *ChoiceIntegerDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cido *ChoiceIntegerDeleteOne) ExecX(ctx context.Context) {
-	if err := cido.Exec(ctx); err != nil {
+func (_d *ChoiceIntegerDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

@@ -11,9 +11,9 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // ChoiceTextQuery is the builder for querying ChoiceText entities.
@@ -30,44 +30,44 @@ type ChoiceTextQuery struct {
 }
 
 // Where adds a new predicate for the ChoiceTextQuery builder.
-func (ctq *ChoiceTextQuery) Where(ps ...predicate.ChoiceText) *ChoiceTextQuery {
-	ctq.predicates = append(ctq.predicates, ps...)
-	return ctq
+func (_q *ChoiceTextQuery) Where(ps ...predicate.ChoiceText) *ChoiceTextQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (ctq *ChoiceTextQuery) Limit(limit int) *ChoiceTextQuery {
-	ctq.ctx.Limit = &limit
-	return ctq
+func (_q *ChoiceTextQuery) Limit(limit int) *ChoiceTextQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (ctq *ChoiceTextQuery) Offset(offset int) *ChoiceTextQuery {
-	ctq.ctx.Offset = &offset
-	return ctq
+func (_q *ChoiceTextQuery) Offset(offset int) *ChoiceTextQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (ctq *ChoiceTextQuery) Unique(unique bool) *ChoiceTextQuery {
-	ctq.ctx.Unique = &unique
-	return ctq
+func (_q *ChoiceTextQuery) Unique(unique bool) *ChoiceTextQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (ctq *ChoiceTextQuery) Order(o ...choicetext.OrderOption) *ChoiceTextQuery {
-	ctq.order = append(ctq.order, o...)
-	return ctq
+func (_q *ChoiceTextQuery) Order(o ...choicetext.OrderOption) *ChoiceTextQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryAttribute chains the current query on the "attribute" edge.
-func (ctq *ChoiceTextQuery) QueryAttribute() *AttributeQuery {
-	query := (&AttributeClient{config: ctq.config}).Query()
+func (_q *ChoiceTextQuery) QueryAttribute() *AttributeQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ctq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ctq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -76,7 +76,7 @@ func (ctq *ChoiceTextQuery) QueryAttribute() *AttributeQuery {
 			sqlgraph.To(attribute.Table, attribute.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, choicetext.AttributeTable, choicetext.AttributeColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ctq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -84,8 +84,8 @@ func (ctq *ChoiceTextQuery) QueryAttribute() *AttributeQuery {
 
 // First returns the first ChoiceText entity from the query.
 // Returns a *NotFoundError when no ChoiceText was found.
-func (ctq *ChoiceTextQuery) First(ctx context.Context) (*ChoiceText, error) {
-	nodes, err := ctq.Limit(1).All(setContextOp(ctx, ctq.ctx, ent.OpQueryFirst))
+func (_q *ChoiceTextQuery) First(ctx context.Context) (*ChoiceText, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -96,8 +96,8 @@ func (ctq *ChoiceTextQuery) First(ctx context.Context) (*ChoiceText, error) {
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (ctq *ChoiceTextQuery) FirstX(ctx context.Context) *ChoiceText {
-	node, err := ctq.First(ctx)
+func (_q *ChoiceTextQuery) FirstX(ctx context.Context) *ChoiceText {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -106,9 +106,9 @@ func (ctq *ChoiceTextQuery) FirstX(ctx context.Context) *ChoiceText {
 
 // FirstID returns the first ChoiceText ID from the query.
 // Returns a *NotFoundError when no ChoiceText ID was found.
-func (ctq *ChoiceTextQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *ChoiceTextQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ctq.Limit(1).IDs(setContextOp(ctx, ctq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -119,8 +119,8 @@ func (ctq *ChoiceTextQuery) FirstID(ctx context.Context) (id uint64, err error) 
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (ctq *ChoiceTextQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := ctq.FirstID(ctx)
+func (_q *ChoiceTextQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -130,8 +130,8 @@ func (ctq *ChoiceTextQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single ChoiceText entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one ChoiceText entity is found.
 // Returns a *NotFoundError when no ChoiceText entities are found.
-func (ctq *ChoiceTextQuery) Only(ctx context.Context) (*ChoiceText, error) {
-	nodes, err := ctq.Limit(2).All(setContextOp(ctx, ctq.ctx, ent.OpQueryOnly))
+func (_q *ChoiceTextQuery) Only(ctx context.Context) (*ChoiceText, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -146,8 +146,8 @@ func (ctq *ChoiceTextQuery) Only(ctx context.Context) (*ChoiceText, error) {
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (ctq *ChoiceTextQuery) OnlyX(ctx context.Context) *ChoiceText {
-	node, err := ctq.Only(ctx)
+func (_q *ChoiceTextQuery) OnlyX(ctx context.Context) *ChoiceText {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -157,9 +157,9 @@ func (ctq *ChoiceTextQuery) OnlyX(ctx context.Context) *ChoiceText {
 // OnlyID is like Only, but returns the only ChoiceText ID in the query.
 // Returns a *NotSingularError when more than one ChoiceText ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (ctq *ChoiceTextQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *ChoiceTextQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ctq.Limit(2).IDs(setContextOp(ctx, ctq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -174,8 +174,8 @@ func (ctq *ChoiceTextQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (ctq *ChoiceTextQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := ctq.OnlyID(ctx)
+func (_q *ChoiceTextQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -183,18 +183,18 @@ func (ctq *ChoiceTextQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of ChoiceTexts.
-func (ctq *ChoiceTextQuery) All(ctx context.Context) ([]*ChoiceText, error) {
-	ctx = setContextOp(ctx, ctq.ctx, ent.OpQueryAll)
-	if err := ctq.prepareQuery(ctx); err != nil {
+func (_q *ChoiceTextQuery) All(ctx context.Context) ([]*ChoiceText, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*ChoiceText, *ChoiceTextQuery]()
-	return withInterceptors[[]*ChoiceText](ctx, ctq, qr, ctq.inters)
+	return withInterceptors[[]*ChoiceText](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (ctq *ChoiceTextQuery) AllX(ctx context.Context) []*ChoiceText {
-	nodes, err := ctq.All(ctx)
+func (_q *ChoiceTextQuery) AllX(ctx context.Context) []*ChoiceText {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -202,20 +202,20 @@ func (ctq *ChoiceTextQuery) AllX(ctx context.Context) []*ChoiceText {
 }
 
 // IDs executes the query and returns a list of ChoiceText IDs.
-func (ctq *ChoiceTextQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if ctq.ctx.Unique == nil && ctq.path != nil {
-		ctq.Unique(true)
+func (_q *ChoiceTextQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, ctq.ctx, ent.OpQueryIDs)
-	if err = ctq.Select(choicetext.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(choicetext.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (ctq *ChoiceTextQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := ctq.IDs(ctx)
+func (_q *ChoiceTextQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -223,17 +223,17 @@ func (ctq *ChoiceTextQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (ctq *ChoiceTextQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, ctq.ctx, ent.OpQueryCount)
-	if err := ctq.prepareQuery(ctx); err != nil {
+func (_q *ChoiceTextQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, ctq, querierCount[*ChoiceTextQuery](), ctq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*ChoiceTextQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (ctq *ChoiceTextQuery) CountX(ctx context.Context) int {
-	count, err := ctq.Count(ctx)
+func (_q *ChoiceTextQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -241,9 +241,9 @@ func (ctq *ChoiceTextQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (ctq *ChoiceTextQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, ctq.ctx, ent.OpQueryExist)
-	switch _, err := ctq.FirstID(ctx); {
+func (_q *ChoiceTextQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -254,8 +254,8 @@ func (ctq *ChoiceTextQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (ctq *ChoiceTextQuery) ExistX(ctx context.Context) bool {
-	exist, err := ctq.Exist(ctx)
+func (_q *ChoiceTextQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -264,32 +264,32 @@ func (ctq *ChoiceTextQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the ChoiceTextQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (ctq *ChoiceTextQuery) Clone() *ChoiceTextQuery {
-	if ctq == nil {
+func (_q *ChoiceTextQuery) Clone() *ChoiceTextQuery {
+	if _q == nil {
 		return nil
 	}
 	return &ChoiceTextQuery{
-		config:        ctq.config,
-		ctx:           ctq.ctx.Clone(),
-		order:         append([]choicetext.OrderOption{}, ctq.order...),
-		inters:        append([]Interceptor{}, ctq.inters...),
-		predicates:    append([]predicate.ChoiceText{}, ctq.predicates...),
-		withAttribute: ctq.withAttribute.Clone(),
+		config:        _q.config,
+		ctx:           _q.ctx.Clone(),
+		order:         append([]choicetext.OrderOption{}, _q.order...),
+		inters:        append([]Interceptor{}, _q.inters...),
+		predicates:    append([]predicate.ChoiceText{}, _q.predicates...),
+		withAttribute: _q.withAttribute.Clone(),
 		// clone intermediate query.
-		sql:  ctq.sql.Clone(),
-		path: ctq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithAttribute tells the query-builder to eager-load the nodes that are connected to
 // the "attribute" edge. The optional arguments are used to configure the query builder of the edge.
-func (ctq *ChoiceTextQuery) WithAttribute(opts ...func(*AttributeQuery)) *ChoiceTextQuery {
-	query := (&AttributeClient{config: ctq.config}).Query()
+func (_q *ChoiceTextQuery) WithAttribute(opts ...func(*AttributeQuery)) *ChoiceTextQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ctq.withAttribute = query
-	return ctq
+	_q.withAttribute = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -306,10 +306,10 @@ func (ctq *ChoiceTextQuery) WithAttribute(opts ...func(*AttributeQuery)) *Choice
 //		GroupBy(choicetext.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (ctq *ChoiceTextQuery) GroupBy(field string, fields ...string) *ChoiceTextGroupBy {
-	ctq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &ChoiceTextGroupBy{build: ctq}
-	grbuild.flds = &ctq.ctx.Fields
+func (_q *ChoiceTextQuery) GroupBy(field string, fields ...string) *ChoiceTextGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &ChoiceTextGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = choicetext.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -327,58 +327,58 @@ func (ctq *ChoiceTextQuery) GroupBy(field string, fields ...string) *ChoiceTextG
 //	client.ChoiceText.Query().
 //		Select(choicetext.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (ctq *ChoiceTextQuery) Select(fields ...string) *ChoiceTextSelect {
-	ctq.ctx.Fields = append(ctq.ctx.Fields, fields...)
-	sbuild := &ChoiceTextSelect{ChoiceTextQuery: ctq}
+func (_q *ChoiceTextQuery) Select(fields ...string) *ChoiceTextSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &ChoiceTextSelect{ChoiceTextQuery: _q}
 	sbuild.label = choicetext.Label
-	sbuild.flds, sbuild.scan = &ctq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a ChoiceTextSelect configured with the given aggregations.
-func (ctq *ChoiceTextQuery) Aggregate(fns ...AggregateFunc) *ChoiceTextSelect {
-	return ctq.Select().Aggregate(fns...)
+func (_q *ChoiceTextQuery) Aggregate(fns ...AggregateFunc) *ChoiceTextSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (ctq *ChoiceTextQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range ctq.inters {
+func (_q *ChoiceTextQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, ctq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range ctq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !choicetext.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if ctq.path != nil {
-		prev, err := ctq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		ctq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (ctq *ChoiceTextQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ChoiceText, error) {
+func (_q *ChoiceTextQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ChoiceText, error) {
 	var (
 		nodes       = []*ChoiceText{}
-		_spec       = ctq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [1]bool{
-			ctq.withAttribute != nil,
+			_q.withAttribute != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*ChoiceText).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &ChoiceText{config: ctq.config}
+		node := &ChoiceText{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -386,14 +386,14 @@ func (ctq *ChoiceTextQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, ctq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := ctq.withAttribute; query != nil {
-		if err := ctq.loadAttribute(ctx, query, nodes, nil,
+	if query := _q.withAttribute; query != nil {
+		if err := _q.loadAttribute(ctx, query, nodes, nil,
 			func(n *ChoiceText, e *Attribute) { n.Edges.Attribute = e }); err != nil {
 			return nil, err
 		}
@@ -401,7 +401,7 @@ func (ctq *ChoiceTextQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*
 	return nodes, nil
 }
 
-func (ctq *ChoiceTextQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ChoiceText, init func(*ChoiceText), assign func(*ChoiceText, *Attribute)) error {
+func (_q *ChoiceTextQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ChoiceText, init func(*ChoiceText), assign func(*ChoiceText, *Attribute)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ChoiceText)
 	for i := range nodes {
@@ -431,24 +431,24 @@ func (ctq *ChoiceTextQuery) loadAttribute(ctx context.Context, query *AttributeQ
 	return nil
 }
 
-func (ctq *ChoiceTextQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := ctq.querySpec()
-	_spec.Node.Columns = ctq.ctx.Fields
-	if len(ctq.ctx.Fields) > 0 {
-		_spec.Unique = ctq.ctx.Unique != nil && *ctq.ctx.Unique
+func (_q *ChoiceTextQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, ctq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (ctq *ChoiceTextQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *ChoiceTextQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(choicetext.Table, choicetext.Columns, sqlgraph.NewFieldSpec(choicetext.FieldID, field.TypeUint64))
-	_spec.From = ctq.sql
-	if unique := ctq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if ctq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := ctq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, choicetext.FieldID)
 		for i := range fields {
@@ -456,24 +456,24 @@ func (ctq *ChoiceTextQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if ctq.withAttribute != nil {
+		if _q.withAttribute != nil {
 			_spec.Node.AddColumnOnce(choicetext.FieldAttrID)
 		}
 	}
-	if ps := ctq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := ctq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := ctq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := ctq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -483,33 +483,33 @@ func (ctq *ChoiceTextQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (ctq *ChoiceTextQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(ctq.driver.Dialect())
+func (_q *ChoiceTextQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(choicetext.Table)
-	columns := ctq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = choicetext.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if ctq.sql != nil {
-		selector = ctq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if ctq.ctx.Unique != nil && *ctq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range ctq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range ctq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := ctq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := ctq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -522,41 +522,41 @@ type ChoiceTextGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (ctgb *ChoiceTextGroupBy) Aggregate(fns ...AggregateFunc) *ChoiceTextGroupBy {
-	ctgb.fns = append(ctgb.fns, fns...)
-	return ctgb
+func (_g *ChoiceTextGroupBy) Aggregate(fns ...AggregateFunc) *ChoiceTextGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (ctgb *ChoiceTextGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, ctgb.build.ctx, ent.OpQueryGroupBy)
-	if err := ctgb.build.prepareQuery(ctx); err != nil {
+func (_g *ChoiceTextGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ChoiceTextQuery, *ChoiceTextGroupBy](ctx, ctgb.build, ctgb, ctgb.build.inters, v)
+	return scanWithInterceptors[*ChoiceTextQuery, *ChoiceTextGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (ctgb *ChoiceTextGroupBy) sqlScan(ctx context.Context, root *ChoiceTextQuery, v any) error {
+func (_g *ChoiceTextGroupBy) sqlScan(ctx context.Context, root *ChoiceTextQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(ctgb.fns))
-	for _, fn := range ctgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*ctgb.flds)+len(ctgb.fns))
-		for _, f := range *ctgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*ctgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := ctgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -570,27 +570,27 @@ type ChoiceTextSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (cts *ChoiceTextSelect) Aggregate(fns ...AggregateFunc) *ChoiceTextSelect {
-	cts.fns = append(cts.fns, fns...)
-	return cts
+func (_s *ChoiceTextSelect) Aggregate(fns ...AggregateFunc) *ChoiceTextSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (cts *ChoiceTextSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, cts.ctx, ent.OpQuerySelect)
-	if err := cts.prepareQuery(ctx); err != nil {
+func (_s *ChoiceTextSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ChoiceTextQuery, *ChoiceTextSelect](ctx, cts.ChoiceTextQuery, cts, cts.inters, v)
+	return scanWithInterceptors[*ChoiceTextQuery, *ChoiceTextSelect](ctx, _s.ChoiceTextQuery, _s, _s.inters, v)
 }
 
-func (cts *ChoiceTextSelect) sqlScan(ctx context.Context, root *ChoiceTextQuery, v any) error {
+func (_s *ChoiceTextSelect) sqlScan(ctx context.Context, root *ChoiceTextQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(cts.fns))
-	for _, fn := range cts.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*cts.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -598,7 +598,7 @@ func (cts *ChoiceTextSelect) sqlScan(ctx context.Context, root *ChoiceTextQuery,
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := cts.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

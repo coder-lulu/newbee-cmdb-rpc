@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cioperation"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiOperationDelete is the builder for deleting a CiOperation entity.
@@ -20,56 +20,56 @@ type CiOperationDelete struct {
 }
 
 // Where appends a list predicates to the CiOperationDelete builder.
-func (cod *CiOperationDelete) Where(ps ...predicate.CiOperation) *CiOperationDelete {
-	cod.mutation.Where(ps...)
-	return cod
+func (_d *CiOperationDelete) Where(ps ...predicate.CiOperation) *CiOperationDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (cod *CiOperationDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, cod.sqlExec, cod.mutation, cod.hooks)
+func (_d *CiOperationDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cod *CiOperationDelete) ExecX(ctx context.Context) int {
-	n, err := cod.Exec(ctx)
+func (_d *CiOperationDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (cod *CiOperationDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CiOperationDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(cioperation.Table, sqlgraph.NewFieldSpec(cioperation.FieldID, field.TypeUint64))
-	if ps := cod.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, cod.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	cod.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CiOperationDeleteOne is the builder for deleting a single CiOperation entity.
 type CiOperationDeleteOne struct {
-	cod *CiOperationDelete
+	_d *CiOperationDelete
 }
 
 // Where appends a list predicates to the CiOperationDelete builder.
-func (codo *CiOperationDeleteOne) Where(ps ...predicate.CiOperation) *CiOperationDeleteOne {
-	codo.cod.mutation.Where(ps...)
-	return codo
+func (_d *CiOperationDeleteOne) Where(ps ...predicate.CiOperation) *CiOperationDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (codo *CiOperationDeleteOne) Exec(ctx context.Context) error {
-	n, err := codo.cod.Exec(ctx)
+func (_d *CiOperationDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (codo *CiOperationDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (codo *CiOperationDeleteOne) ExecX(ctx context.Context) {
-	if err := codo.Exec(ctx); err != nil {
+func (_d *CiOperationDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

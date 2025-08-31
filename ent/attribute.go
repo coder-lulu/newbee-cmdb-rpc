@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
-	"gitee.com/link234/newbee-backend-common/utils/validator"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-common/utils/validator"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -229,7 +229,7 @@ func (*Attribute) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the Attribute fields.
-func (a *Attribute) assignValues(columns []string, values []any) error {
+func (_m *Attribute) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -240,85 +240,85 @@ func (a *Attribute) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			a.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case attribute.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				a.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case attribute.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				a.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case attribute.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				a.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case attribute.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				a.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case attribute.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				a.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case attribute.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
 			} else if value.Valid {
-				a.Name = value.String
+				_m.Name = value.String
 			}
 		case attribute.FieldAlias:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field alias", values[i])
 			} else if value.Valid {
-				a.Alias = value.String
+				_m.Alias = value.String
 			}
 		case attribute.FieldValueType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field value_type", values[i])
 			} else if value.Valid {
-				a.ValueType = attribute.ValueType(value.String)
+				_m.ValueType = attribute.ValueType(value.String)
 			}
 		case attribute.FieldIsChoice:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_choice", values[i])
 			} else if value.Valid {
-				a.IsChoice = value.Bool
+				_m.IsChoice = value.Bool
 			}
 		case attribute.FieldIsList:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_list", values[i])
 			} else if value.Valid {
-				a.IsList = value.Bool
+				_m.IsList = value.Bool
 			}
 		case attribute.FieldCreatedBy:
 			if value, ok := values[i].(*sql.NullScanner); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by", values[i])
 			} else if value.Valid {
-				a.CreatedBy = new(uuid.UUID)
-				*a.CreatedBy = *value.S.(*uuid.UUID)
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case attribute.FieldIsComputed:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_computed", values[i])
 			} else if value.Valid {
-				a.IsComputed = value.Bool
+				_m.IsComputed = value.Bool
 			}
 		case attribute.FieldChoiceWebHook:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field choice_web_hook", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &a.ChoiceWebHook); err != nil {
+				if err := json.Unmarshal(*value, &_m.ChoiceWebHook); err != nil {
 					return fmt.Errorf("unmarshal field choice_web_hook: %w", err)
 				}
 			}
@@ -326,7 +326,7 @@ func (a *Attribute) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field option", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &a.Option); err != nil {
+				if err := json.Unmarshal(*value, &_m.Option); err != nil {
 					return fmt.Errorf("unmarshal field option: %w", err)
 				}
 			}
@@ -334,31 +334,31 @@ func (a *Attribute) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_password", values[i])
 			} else if value.Valid {
-				a.IsPassword = value.Bool
+				_m.IsPassword = value.Bool
 			}
 		case attribute.FieldComputeScript:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field compute_script", values[i])
 			} else if value.Valid {
-				a.ComputeScript = value.String
+				_m.ComputeScript = value.String
 			}
 		case attribute.FieldComputeExpr:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field compute_expr", values[i])
 			} else if value.Valid {
-				a.ComputeExpr = value.String
+				_m.ComputeExpr = value.String
 			}
 		case attribute.FieldIsSortable:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_sortable", values[i])
 			} else if value.Valid {
-				a.IsSortable = value.Bool
+				_m.IsSortable = value.Bool
 			}
 		case attribute.FieldDefault:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field default", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &a.Default); err != nil {
+				if err := json.Unmarshal(*value, &_m.Default); err != nil {
 					return fmt.Errorf("unmarshal field default: %w", err)
 				}
 			}
@@ -366,25 +366,25 @@ func (a *Attribute) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_dynamic", values[i])
 			} else if value.Valid {
-				a.IsDynamic = value.Bool
+				_m.IsDynamic = value.Bool
 			}
 		case attribute.FieldIsReference:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_reference", values[i])
 			} else if value.Valid {
-				a.IsReference = value.Bool
+				_m.IsReference = value.Bool
 			}
 		case attribute.FieldReferenceTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field reference_type_id", values[i])
 			} else if value.Valid {
-				a.ReferenceTypeID = uint64(value.Int64)
+				_m.ReferenceTypeID = uint64(value.Int64)
 			}
 		case attribute.FieldChoiceOther:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field choice_other", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &a.ChoiceOther); err != nil {
+				if err := json.Unmarshal(*value, &_m.ChoiceOther); err != nil {
 					return fmt.Errorf("unmarshal field choice_other: %w", err)
 				}
 			}
@@ -392,12 +392,12 @@ func (a *Attribute) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field validator_rules", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &a.ValidatorRules); err != nil {
+				if err := json.Unmarshal(*value, &_m.ValidatorRules); err != nil {
 					return fmt.Errorf("unmarshal field validator_rules: %w", err)
 				}
 			}
 		default:
-			a.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -405,161 +405,161 @@ func (a *Attribute) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the Attribute.
 // This includes values selected through modifiers, order, etc.
-func (a *Attribute) Value(name string) (ent.Value, error) {
-	return a.selectValues.Get(name)
+func (_m *Attribute) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryValueTexts queries the "value_texts" edge of the Attribute entity.
-func (a *Attribute) QueryValueTexts() *ValueTextQuery {
-	return NewAttributeClient(a.config).QueryValueTexts(a)
+func (_m *Attribute) QueryValueTexts() *ValueTextQuery {
+	return NewAttributeClient(_m.config).QueryValueTexts(_m)
 }
 
 // QueryValueIndexTexts queries the "value_index_texts" edge of the Attribute entity.
-func (a *Attribute) QueryValueIndexTexts() *ValueIndexTextQuery {
-	return NewAttributeClient(a.config).QueryValueIndexTexts(a)
+func (_m *Attribute) QueryValueIndexTexts() *ValueIndexTextQuery {
+	return NewAttributeClient(_m.config).QueryValueIndexTexts(_m)
 }
 
 // QueryValueJsons queries the "value_jsons" edge of the Attribute entity.
-func (a *Attribute) QueryValueJsons() *ValueJSONQuery {
-	return NewAttributeClient(a.config).QueryValueJsons(a)
+func (_m *Attribute) QueryValueJsons() *ValueJSONQuery {
+	return NewAttributeClient(_m.config).QueryValueJsons(_m)
 }
 
 // QueryValueIntegers queries the "value_integers" edge of the Attribute entity.
-func (a *Attribute) QueryValueIntegers() *ValueIntegerQuery {
-	return NewAttributeClient(a.config).QueryValueIntegers(a)
+func (_m *Attribute) QueryValueIntegers() *ValueIntegerQuery {
+	return NewAttributeClient(_m.config).QueryValueIntegers(_m)
 }
 
 // QueryValueFloats queries the "value_floats" edge of the Attribute entity.
-func (a *Attribute) QueryValueFloats() *ValueFloatQuery {
-	return NewAttributeClient(a.config).QueryValueFloats(a)
+func (_m *Attribute) QueryValueFloats() *ValueFloatQuery {
+	return NewAttributeClient(_m.config).QueryValueFloats(_m)
 }
 
 // QueryValueDatetimes queries the "value_datetimes" edge of the Attribute entity.
-func (a *Attribute) QueryValueDatetimes() *ValueDatetimeQuery {
-	return NewAttributeClient(a.config).QueryValueDatetimes(a)
+func (_m *Attribute) QueryValueDatetimes() *ValueDatetimeQuery {
+	return NewAttributeClient(_m.config).QueryValueDatetimes(_m)
 }
 
 // QueryChoiceTexts queries the "choice_texts" edge of the Attribute entity.
-func (a *Attribute) QueryChoiceTexts() *ChoiceTextQuery {
-	return NewAttributeClient(a.config).QueryChoiceTexts(a)
+func (_m *Attribute) QueryChoiceTexts() *ChoiceTextQuery {
+	return NewAttributeClient(_m.config).QueryChoiceTexts(_m)
 }
 
 // QueryChoiceIntegers queries the "choice_integers" edge of the Attribute entity.
-func (a *Attribute) QueryChoiceIntegers() *ChoiceIntegerQuery {
-	return NewAttributeClient(a.config).QueryChoiceIntegers(a)
+func (_m *Attribute) QueryChoiceIntegers() *ChoiceIntegerQuery {
+	return NewAttributeClient(_m.config).QueryChoiceIntegers(_m)
 }
 
 // QueryChoiceFloats queries the "choice_floats" edge of the Attribute entity.
-func (a *Attribute) QueryChoiceFloats() *ChoiceFloatQuery {
-	return NewAttributeClient(a.config).QueryChoiceFloats(a)
+func (_m *Attribute) QueryChoiceFloats() *ChoiceFloatQuery {
+	return NewAttributeClient(_m.config).QueryChoiceFloats(_m)
 }
 
 // QueryTypeAttributes queries the "type_attributes" edge of the Attribute entity.
-func (a *Attribute) QueryTypeAttributes() *CiTypeAttributeQuery {
-	return NewAttributeClient(a.config).QueryTypeAttributes(a)
+func (_m *Attribute) QueryTypeAttributes() *CiTypeAttributeQuery {
+	return NewAttributeClient(_m.config).QueryTypeAttributes(_m)
 }
 
 // QueryGroupItems queries the "group_items" edge of the Attribute entity.
-func (a *Attribute) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
-	return NewAttributeClient(a.config).QueryGroupItems(a)
+func (_m *Attribute) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
+	return NewAttributeClient(_m.config).QueryGroupItems(_m)
 }
 
 // Update returns a builder for updating this Attribute.
 // Note that you need to call Attribute.Unwrap() before calling this method if this Attribute
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (a *Attribute) Update() *AttributeUpdateOne {
-	return NewAttributeClient(a.config).UpdateOne(a)
+func (_m *Attribute) Update() *AttributeUpdateOne {
+	return NewAttributeClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the Attribute entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (a *Attribute) Unwrap() *Attribute {
-	_tx, ok := a.config.driver.(*txDriver)
+func (_m *Attribute) Unwrap() *Attribute {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: Attribute is not a transactional entity")
 	}
-	a.config.driver = _tx.drv
-	return a
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (a *Attribute) String() string {
+func (_m *Attribute) String() string {
 	var builder strings.Builder
 	builder.WriteString("Attribute(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", a.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(a.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(a.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(a.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", a.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", a.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("name=")
-	builder.WriteString(a.Name)
+	builder.WriteString(_m.Name)
 	builder.WriteString(", ")
 	builder.WriteString("alias=")
-	builder.WriteString(a.Alias)
+	builder.WriteString(_m.Alias)
 	builder.WriteString(", ")
 	builder.WriteString("value_type=")
-	builder.WriteString(fmt.Sprintf("%v", a.ValueType))
+	builder.WriteString(fmt.Sprintf("%v", _m.ValueType))
 	builder.WriteString(", ")
 	builder.WriteString("is_choice=")
-	builder.WriteString(fmt.Sprintf("%v", a.IsChoice))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsChoice))
 	builder.WriteString(", ")
 	builder.WriteString("is_list=")
-	builder.WriteString(fmt.Sprintf("%v", a.IsList))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsList))
 	builder.WriteString(", ")
-	if v := a.CreatedBy; v != nil {
+	if v := _m.CreatedBy; v != nil {
 		builder.WriteString("created_by=")
 		builder.WriteString(fmt.Sprintf("%v", *v))
 	}
 	builder.WriteString(", ")
 	builder.WriteString("is_computed=")
-	builder.WriteString(fmt.Sprintf("%v", a.IsComputed))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsComputed))
 	builder.WriteString(", ")
 	builder.WriteString("choice_web_hook=")
-	builder.WriteString(fmt.Sprintf("%v", a.ChoiceWebHook))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChoiceWebHook))
 	builder.WriteString(", ")
 	builder.WriteString("option=")
-	builder.WriteString(fmt.Sprintf("%v", a.Option))
+	builder.WriteString(fmt.Sprintf("%v", _m.Option))
 	builder.WriteString(", ")
 	builder.WriteString("is_password=")
-	builder.WriteString(fmt.Sprintf("%v", a.IsPassword))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsPassword))
 	builder.WriteString(", ")
 	builder.WriteString("compute_script=")
-	builder.WriteString(a.ComputeScript)
+	builder.WriteString(_m.ComputeScript)
 	builder.WriteString(", ")
 	builder.WriteString("compute_expr=")
-	builder.WriteString(a.ComputeExpr)
+	builder.WriteString(_m.ComputeExpr)
 	builder.WriteString(", ")
 	builder.WriteString("is_sortable=")
-	builder.WriteString(fmt.Sprintf("%v", a.IsSortable))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsSortable))
 	builder.WriteString(", ")
 	builder.WriteString("default=")
-	builder.WriteString(fmt.Sprintf("%v", a.Default))
+	builder.WriteString(fmt.Sprintf("%v", _m.Default))
 	builder.WriteString(", ")
 	builder.WriteString("is_dynamic=")
-	builder.WriteString(fmt.Sprintf("%v", a.IsDynamic))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsDynamic))
 	builder.WriteString(", ")
 	builder.WriteString("is_reference=")
-	builder.WriteString(fmt.Sprintf("%v", a.IsReference))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsReference))
 	builder.WriteString(", ")
 	builder.WriteString("reference_type_id=")
-	builder.WriteString(fmt.Sprintf("%v", a.ReferenceTypeID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ReferenceTypeID))
 	builder.WriteString(", ")
 	builder.WriteString("choice_other=")
-	builder.WriteString(fmt.Sprintf("%v", a.ChoiceOther))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChoiceOther))
 	builder.WriteString(", ")
 	builder.WriteString("validator_rules=")
-	builder.WriteString(fmt.Sprintf("%v", a.ValidatorRules))
+	builder.WriteString(fmt.Sprintf("%v", _m.ValidatorRules))
 	builder.WriteByte(')')
 	return builder.String()
 }

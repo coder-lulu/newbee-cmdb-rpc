@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 )
 
 // ValueTextCreate is the builder for creating a ValueText entity.
@@ -23,117 +23,131 @@ type ValueTextCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (vtc *ValueTextCreate) SetCreatedAt(t time.Time) *ValueTextCreate {
-	vtc.mutation.SetCreatedAt(t)
-	return vtc
+func (_c *ValueTextCreate) SetCreatedAt(v time.Time) *ValueTextCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (vtc *ValueTextCreate) SetNillableCreatedAt(t *time.Time) *ValueTextCreate {
-	if t != nil {
-		vtc.SetCreatedAt(*t)
+func (_c *ValueTextCreate) SetNillableCreatedAt(v *time.Time) *ValueTextCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return vtc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vtc *ValueTextCreate) SetUpdatedAt(t time.Time) *ValueTextCreate {
-	vtc.mutation.SetUpdatedAt(t)
-	return vtc
+func (_c *ValueTextCreate) SetUpdatedAt(v time.Time) *ValueTextCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (vtc *ValueTextCreate) SetNillableUpdatedAt(t *time.Time) *ValueTextCreate {
-	if t != nil {
-		vtc.SetUpdatedAt(*t)
+func (_c *ValueTextCreate) SetNillableUpdatedAt(v *time.Time) *ValueTextCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return vtc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vtc *ValueTextCreate) SetDeletedAt(t time.Time) *ValueTextCreate {
-	vtc.mutation.SetDeletedAt(t)
-	return vtc
+func (_c *ValueTextCreate) SetDeletedAt(v time.Time) *ValueTextCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vtc *ValueTextCreate) SetNillableDeletedAt(t *time.Time) *ValueTextCreate {
-	if t != nil {
-		vtc.SetDeletedAt(*t)
+func (_c *ValueTextCreate) SetNillableDeletedAt(v *time.Time) *ValueTextCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return vtc
+	return _c
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (_c *ValueTextCreate) SetTenantID(v uint64) *ValueTextCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
+}
+
+// SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
+func (_c *ValueTextCreate) SetNillableTenantID(v *uint64) *ValueTextCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
+	}
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (vtc *ValueTextCreate) SetCiID(u uint64) *ValueTextCreate {
-	vtc.mutation.SetCiID(u)
-	return vtc
+func (_c *ValueTextCreate) SetCiID(v uint64) *ValueTextCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vtc *ValueTextCreate) SetAttrID(u uint64) *ValueTextCreate {
-	vtc.mutation.SetAttrID(u)
-	return vtc
+func (_c *ValueTextCreate) SetAttrID(v uint64) *ValueTextCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetValue sets the "value" field.
-func (vtc *ValueTextCreate) SetValue(s string) *ValueTextCreate {
-	vtc.mutation.SetValue(s)
-	return vtc
+func (_c *ValueTextCreate) SetValue(v string) *ValueTextCreate {
+	_c.mutation.SetValue(v)
+	return _c
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vtc *ValueTextCreate) SetIsCover(b bool) *ValueTextCreate {
-	vtc.mutation.SetIsCover(b)
-	return vtc
+func (_c *ValueTextCreate) SetIsCover(v bool) *ValueTextCreate {
+	_c.mutation.SetIsCover(v)
+	return _c
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vtc *ValueTextCreate) SetNillableIsCover(b *bool) *ValueTextCreate {
-	if b != nil {
-		vtc.SetIsCover(*b)
+func (_c *ValueTextCreate) SetNillableIsCover(v *bool) *ValueTextCreate {
+	if v != nil {
+		_c.SetIsCover(*v)
 	}
-	return vtc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (vtc *ValueTextCreate) SetID(u uint64) *ValueTextCreate {
-	vtc.mutation.SetID(u)
-	return vtc
+func (_c *ValueTextCreate) SetID(v uint64) *ValueTextCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vtc *ValueTextCreate) SetCi(c *Cis) *ValueTextCreate {
-	return vtc.SetCiID(c.ID)
+func (_c *ValueTextCreate) SetCi(v *Cis) *ValueTextCreate {
+	return _c.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vtc *ValueTextCreate) SetAttributeID(id uint64) *ValueTextCreate {
-	vtc.mutation.SetAttributeID(id)
-	return vtc
+func (_c *ValueTextCreate) SetAttributeID(id uint64) *ValueTextCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vtc *ValueTextCreate) SetAttribute(a *Attribute) *ValueTextCreate {
-	return vtc.SetAttributeID(a.ID)
+func (_c *ValueTextCreate) SetAttribute(v *Attribute) *ValueTextCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueTextMutation object of the builder.
-func (vtc *ValueTextCreate) Mutation() *ValueTextMutation {
-	return vtc.mutation
+func (_c *ValueTextCreate) Mutation() *ValueTextMutation {
+	return _c.mutation
 }
 
 // Save creates the ValueText in the database.
-func (vtc *ValueTextCreate) Save(ctx context.Context) (*ValueText, error) {
-	if err := vtc.defaults(); err != nil {
+func (_c *ValueTextCreate) Save(ctx context.Context) (*ValueText, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vtc.sqlSave, vtc.mutation, vtc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (vtc *ValueTextCreate) SaveX(ctx context.Context) *ValueText {
-	v, err := vtc.Save(ctx)
+func (_c *ValueTextCreate) SaveX(ctx context.Context) *ValueText {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -141,76 +155,83 @@ func (vtc *ValueTextCreate) SaveX(ctx context.Context) *ValueText {
 }
 
 // Exec executes the query.
-func (vtc *ValueTextCreate) Exec(ctx context.Context) error {
-	_, err := vtc.Save(ctx)
+func (_c *ValueTextCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vtc *ValueTextCreate) ExecX(ctx context.Context) {
-	if err := vtc.Exec(ctx); err != nil {
+func (_c *ValueTextCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vtc *ValueTextCreate) defaults() error {
-	if _, ok := vtc.mutation.CreatedAt(); !ok {
+func (_c *ValueTextCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if valuetext.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuetext.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuetext.DefaultCreatedAt()
-		vtc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := vtc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if valuetext.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuetext.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuetext.DefaultUpdatedAt()
-		vtc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := vtc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		v := valuetext.DefaultTenantID
+		_c.mutation.SetTenantID(v)
+	}
+	if _, ok := _c.mutation.IsCover(); !ok {
 		v := valuetext.DefaultIsCover
-		vtc.mutation.SetIsCover(v)
+		_c.mutation.SetIsCover(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vtc *ValueTextCreate) check() error {
-	if _, ok := vtc.mutation.CreatedAt(); !ok {
+func (_c *ValueTextCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ValueText.created_at"`)}
 	}
-	if _, ok := vtc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ValueText.updated_at"`)}
 	}
-	if _, ok := vtc.mutation.CiID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ValueText.tenant_id"`)}
+	}
+	if _, ok := _c.mutation.CiID(); !ok {
 		return &ValidationError{Name: "ci_id", err: errors.New(`ent: missing required field "ValueText.ci_id"`)}
 	}
-	if _, ok := vtc.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "ValueText.attr_id"`)}
 	}
-	if _, ok := vtc.mutation.Value(); !ok {
+	if _, ok := _c.mutation.Value(); !ok {
 		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "ValueText.value"`)}
 	}
-	if _, ok := vtc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.IsCover(); !ok {
 		return &ValidationError{Name: "is_cover", err: errors.New(`ent: missing required field "ValueText.is_cover"`)}
 	}
-	if len(vtc.mutation.CiIDs()) == 0 {
+	if len(_c.mutation.CiIDs()) == 0 {
 		return &ValidationError{Name: "ci", err: errors.New(`ent: missing required edge "ValueText.ci"`)}
 	}
-	if len(vtc.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "ValueText.attribute"`)}
 	}
 	return nil
 }
 
-func (vtc *ValueTextCreate) sqlSave(ctx context.Context) (*ValueText, error) {
-	if err := vtc.check(); err != nil {
+func (_c *ValueTextCreate) sqlSave(ctx context.Context) (*ValueText, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := vtc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, vtc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -220,41 +241,45 @@ func (vtc *ValueTextCreate) sqlSave(ctx context.Context) (*ValueText, error) {
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	vtc.mutation.id = &_node.ID
-	vtc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (vtc *ValueTextCreate) createSpec() (*ValueText, *sqlgraph.CreateSpec) {
+func (_c *ValueTextCreate) createSpec() (*ValueText, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ValueText{config: vtc.config}
+		_node = &ValueText{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(valuetext.Table, sqlgraph.NewFieldSpec(valuetext.FieldID, field.TypeUint64))
 	)
-	if id, ok := vtc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := vtc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(valuetext.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := vtc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuetext.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := vtc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(valuetext.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := vtc.mutation.Value(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
+		_spec.SetField(valuetext.FieldTenantID, field.TypeUint64, value)
+		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(valuetext.FieldValue, field.TypeString, value)
 		_node.Value = value
 	}
-	if value, ok := vtc.mutation.IsCover(); ok {
+	if value, ok := _c.mutation.IsCover(); ok {
 		_spec.SetField(valuetext.FieldIsCover, field.TypeBool, value)
 		_node.IsCover = value
 	}
-	if nodes := vtc.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -271,7 +296,7 @@ func (vtc *ValueTextCreate) createSpec() (*ValueText, *sqlgraph.CreateSpec) {
 		_node.CiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := vtc.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -299,16 +324,16 @@ type ValueTextCreateBulk struct {
 }
 
 // Save creates the ValueText entities in the database.
-func (vtcb *ValueTextCreateBulk) Save(ctx context.Context) ([]*ValueText, error) {
-	if vtcb.err != nil {
-		return nil, vtcb.err
+func (_c *ValueTextCreateBulk) Save(ctx context.Context) ([]*ValueText, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(vtcb.builders))
-	nodes := make([]*ValueText, len(vtcb.builders))
-	mutators := make([]Mutator, len(vtcb.builders))
-	for i := range vtcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ValueText, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := vtcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ValueTextMutation)
@@ -322,11 +347,11 @@ func (vtcb *ValueTextCreateBulk) Save(ctx context.Context) ([]*ValueText, error)
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, vtcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, vtcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -350,7 +375,7 @@ func (vtcb *ValueTextCreateBulk) Save(ctx context.Context) ([]*ValueText, error)
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, vtcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -358,8 +383,8 @@ func (vtcb *ValueTextCreateBulk) Save(ctx context.Context) ([]*ValueText, error)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vtcb *ValueTextCreateBulk) SaveX(ctx context.Context) []*ValueText {
-	v, err := vtcb.Save(ctx)
+func (_c *ValueTextCreateBulk) SaveX(ctx context.Context) []*ValueText {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -367,14 +392,14 @@ func (vtcb *ValueTextCreateBulk) SaveX(ctx context.Context) []*ValueText {
 }
 
 // Exec executes the query.
-func (vtcb *ValueTextCreateBulk) Exec(ctx context.Context) error {
-	_, err := vtcb.Save(ctx)
+func (_c *ValueTextCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vtcb *ValueTextCreateBulk) ExecX(ctx context.Context) {
-	if err := vtcb.Exec(ctx); err != nil {
+func (_c *ValueTextCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

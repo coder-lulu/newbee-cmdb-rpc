@@ -10,11 +10,12 @@ import (
 
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
-	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	uuid "github.com/gofrs/uuid/v5"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiondatafilter"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionfieldmask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionoperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiPermissionUpdate is the builder for updating CiPermission entities.
@@ -25,847 +26,644 @@ type CiPermissionUpdate struct {
 }
 
 // Where appends a list predicates to the CiPermissionUpdate builder.
-func (cpu *CiPermissionUpdate) Where(ps ...predicate.CiPermission) *CiPermissionUpdate {
-	cpu.mutation.Where(ps...)
-	return cpu
+func (_u *CiPermissionUpdate) Where(ps ...predicate.CiPermission) *CiPermissionUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cpu *CiPermissionUpdate) SetUpdatedAt(t time.Time) *CiPermissionUpdate {
-	cpu.mutation.SetUpdatedAt(t)
-	return cpu
+func (_u *CiPermissionUpdate) SetUpdatedAt(v time.Time) *CiPermissionUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cpu *CiPermissionUpdate) SetDepartmentID(u uint64) *CiPermissionUpdate {
-	cpu.mutation.ResetDepartmentID()
-	cpu.mutation.SetDepartmentID(u)
-	return cpu
+func (_u *CiPermissionUpdate) SetDepartmentID(v uint64) *CiPermissionUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableDepartmentID(u *uint64) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetDepartmentID(*u)
+func (_u *CiPermissionUpdate) SetNillableDepartmentID(v *uint64) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cpu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cpu *CiPermissionUpdate) AddDepartmentID(u int64) *CiPermissionUpdate {
-	cpu.mutation.AddDepartmentID(u)
-	return cpu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiPermissionUpdate) AddDepartmentID(v int64) *CiPermissionUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cpu *CiPermissionUpdate) ClearDepartmentID() *CiPermissionUpdate {
-	cpu.mutation.ClearDepartmentID()
-	return cpu
+func (_u *CiPermissionUpdate) ClearDepartmentID() *CiPermissionUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetPermissionID sets the "permission_id" field.
-func (cpu *CiPermissionUpdate) SetPermissionID(s string) *CiPermissionUpdate {
-	cpu.mutation.SetPermissionID(s)
-	return cpu
+func (_u *CiPermissionUpdate) SetPermissionID(v string) *CiPermissionUpdate {
+	_u.mutation.SetPermissionID(v)
+	return _u
 }
 
 // SetNillablePermissionID sets the "permission_id" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillablePermissionID(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetPermissionID(*s)
+func (_u *CiPermissionUpdate) SetNillablePermissionID(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetPermissionID(*v)
 	}
-	return cpu
+	return _u
 }
 
 // SetScopeType sets the "scope_type" field.
-func (cpu *CiPermissionUpdate) SetScopeType(ct cipermission.ScopeType) *CiPermissionUpdate {
-	cpu.mutation.SetScopeType(ct)
-	return cpu
+func (_u *CiPermissionUpdate) SetScopeType(v cipermission.ScopeType) *CiPermissionUpdate {
+	_u.mutation.SetScopeType(v)
+	return _u
 }
 
 // SetNillableScopeType sets the "scope_type" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableScopeType(ct *cipermission.ScopeType) *CiPermissionUpdate {
-	if ct != nil {
-		cpu.SetScopeType(*ct)
+func (_u *CiPermissionUpdate) SetNillableScopeType(v *cipermission.ScopeType) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetScopeType(*v)
 	}
-	return cpu
+	return _u
 }
 
-// SetCiTypeID sets the "ci_type_id" field.
-func (cpu *CiPermissionUpdate) SetCiTypeID(u uint64) *CiPermissionUpdate {
-	cpu.mutation.ResetCiTypeID()
-	cpu.mutation.SetCiTypeID(u)
-	return cpu
+// SetScopeTargetType sets the "scope_target_type" field.
+func (_u *CiPermissionUpdate) SetScopeTargetType(v string) *CiPermissionUpdate {
+	_u.mutation.SetScopeTargetType(v)
+	return _u
 }
 
-// SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableCiTypeID(u *uint64) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetCiTypeID(*u)
+// SetNillableScopeTargetType sets the "scope_target_type" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableScopeTargetType(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetScopeTargetType(*v)
 	}
-	return cpu
+	return _u
 }
 
-// AddCiTypeID adds u to the "ci_type_id" field.
-func (cpu *CiPermissionUpdate) AddCiTypeID(u int64) *CiPermissionUpdate {
-	cpu.mutation.AddCiTypeID(u)
-	return cpu
+// ClearScopeTargetType clears the value of the "scope_target_type" field.
+func (_u *CiPermissionUpdate) ClearScopeTargetType() *CiPermissionUpdate {
+	_u.mutation.ClearScopeTargetType()
+	return _u
 }
 
-// ClearCiTypeID clears the value of the "ci_type_id" field.
-func (cpu *CiPermissionUpdate) ClearCiTypeID() *CiPermissionUpdate {
-	cpu.mutation.ClearCiTypeID()
-	return cpu
+// SetScopeTargetID sets the "scope_target_id" field.
+func (_u *CiPermissionUpdate) SetScopeTargetID(v uint64) *CiPermissionUpdate {
+	_u.mutation.ResetScopeTargetID()
+	_u.mutation.SetScopeTargetID(v)
+	return _u
 }
 
-// SetCiID sets the "ci_id" field.
-func (cpu *CiPermissionUpdate) SetCiID(u uint64) *CiPermissionUpdate {
-	cpu.mutation.ResetCiID()
-	cpu.mutation.SetCiID(u)
-	return cpu
-}
-
-// SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableCiID(u *uint64) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetCiID(*u)
+// SetNillableScopeTargetID sets the "scope_target_id" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableScopeTargetID(v *uint64) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetScopeTargetID(*v)
 	}
-	return cpu
+	return _u
 }
 
-// AddCiID adds u to the "ci_id" field.
-func (cpu *CiPermissionUpdate) AddCiID(u int64) *CiPermissionUpdate {
-	cpu.mutation.AddCiID(u)
-	return cpu
+// AddScopeTargetID adds value to the "scope_target_id" field.
+func (_u *CiPermissionUpdate) AddScopeTargetID(v int64) *CiPermissionUpdate {
+	_u.mutation.AddScopeTargetID(v)
+	return _u
 }
 
-// ClearCiID clears the value of the "ci_id" field.
-func (cpu *CiPermissionUpdate) ClearCiID() *CiPermissionUpdate {
-	cpu.mutation.ClearCiID()
-	return cpu
+// ClearScopeTargetID clears the value of the "scope_target_id" field.
+func (_u *CiPermissionUpdate) ClearScopeTargetID() *CiPermissionUpdate {
+	_u.mutation.ClearScopeTargetID()
+	return _u
 }
 
-// SetAttributeID sets the "attribute_id" field.
-func (cpu *CiPermissionUpdate) SetAttributeID(u uint64) *CiPermissionUpdate {
-	cpu.mutation.ResetAttributeID()
-	cpu.mutation.SetAttributeID(u)
-	return cpu
+// SetScopeFieldName sets the "scope_field_name" field.
+func (_u *CiPermissionUpdate) SetScopeFieldName(v string) *CiPermissionUpdate {
+	_u.mutation.SetScopeFieldName(v)
+	return _u
 }
 
-// SetNillableAttributeID sets the "attribute_id" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableAttributeID(u *uint64) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetAttributeID(*u)
+// SetNillableScopeFieldName sets the "scope_field_name" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableScopeFieldName(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetScopeFieldName(*v)
 	}
-	return cpu
+	return _u
 }
 
-// AddAttributeID adds u to the "attribute_id" field.
-func (cpu *CiPermissionUpdate) AddAttributeID(u int64) *CiPermissionUpdate {
-	cpu.mutation.AddAttributeID(u)
-	return cpu
-}
-
-// ClearAttributeID clears the value of the "attribute_id" field.
-func (cpu *CiPermissionUpdate) ClearAttributeID() *CiPermissionUpdate {
-	cpu.mutation.ClearAttributeID()
-	return cpu
-}
-
-// SetFieldName sets the "field_name" field.
-func (cpu *CiPermissionUpdate) SetFieldName(s string) *CiPermissionUpdate {
-	cpu.mutation.SetFieldName(s)
-	return cpu
-}
-
-// SetNillableFieldName sets the "field_name" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableFieldName(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetFieldName(*s)
-	}
-	return cpu
-}
-
-// ClearFieldName clears the value of the "field_name" field.
-func (cpu *CiPermissionUpdate) ClearFieldName() *CiPermissionUpdate {
-	cpu.mutation.ClearFieldName()
-	return cpu
+// ClearScopeFieldName clears the value of the "scope_field_name" field.
+func (_u *CiPermissionUpdate) ClearScopeFieldName() *CiPermissionUpdate {
+	_u.mutation.ClearScopeFieldName()
+	return _u
 }
 
 // SetSubjectType sets the "subject_type" field.
-func (cpu *CiPermissionUpdate) SetSubjectType(ct cipermission.SubjectType) *CiPermissionUpdate {
-	cpu.mutation.SetSubjectType(ct)
-	return cpu
+func (_u *CiPermissionUpdate) SetSubjectType(v cipermission.SubjectType) *CiPermissionUpdate {
+	_u.mutation.SetSubjectType(v)
+	return _u
 }
 
 // SetNillableSubjectType sets the "subject_type" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableSubjectType(ct *cipermission.SubjectType) *CiPermissionUpdate {
-	if ct != nil {
-		cpu.SetSubjectType(*ct)
+func (_u *CiPermissionUpdate) SetNillableSubjectType(v *cipermission.SubjectType) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetSubjectType(*v)
 	}
-	return cpu
+	return _u
 }
 
 // SetSubjectID sets the "subject_id" field.
-func (cpu *CiPermissionUpdate) SetSubjectID(u uuid.UUID) *CiPermissionUpdate {
-	cpu.mutation.SetSubjectID(u)
-	return cpu
+func (_u *CiPermissionUpdate) SetSubjectID(v string) *CiPermissionUpdate {
+	_u.mutation.SetSubjectID(v)
+	return _u
 }
 
 // SetNillableSubjectID sets the "subject_id" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableSubjectID(u *uuid.UUID) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetSubjectID(*u)
+func (_u *CiPermissionUpdate) SetNillableSubjectID(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetSubjectID(*v)
 	}
-	return cpu
+	return _u
 }
 
 // ClearSubjectID clears the value of the "subject_id" field.
-func (cpu *CiPermissionUpdate) ClearSubjectID() *CiPermissionUpdate {
-	cpu.mutation.ClearSubjectID()
-	return cpu
+func (_u *CiPermissionUpdate) ClearSubjectID() *CiPermissionUpdate {
+	_u.mutation.ClearSubjectID()
+	return _u
 }
 
 // SetSubjectName sets the "subject_name" field.
-func (cpu *CiPermissionUpdate) SetSubjectName(s string) *CiPermissionUpdate {
-	cpu.mutation.SetSubjectName(s)
-	return cpu
+func (_u *CiPermissionUpdate) SetSubjectName(v string) *CiPermissionUpdate {
+	_u.mutation.SetSubjectName(v)
+	return _u
 }
 
 // SetNillableSubjectName sets the "subject_name" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableSubjectName(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetSubjectName(*s)
+func (_u *CiPermissionUpdate) SetNillableSubjectName(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetSubjectName(*v)
 	}
-	return cpu
-}
-
-// SetSubjectCode sets the "subject_code" field.
-func (cpu *CiPermissionUpdate) SetSubjectCode(s string) *CiPermissionUpdate {
-	cpu.mutation.SetSubjectCode(s)
-	return cpu
-}
-
-// SetNillableSubjectCode sets the "subject_code" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableSubjectCode(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetSubjectCode(*s)
-	}
-	return cpu
-}
-
-// ClearSubjectCode clears the value of the "subject_code" field.
-func (cpu *CiPermissionUpdate) ClearSubjectCode() *CiPermissionUpdate {
-	cpu.mutation.ClearSubjectCode()
-	return cpu
+	return _u
 }
 
 // SetPermissionType sets the "permission_type" field.
-func (cpu *CiPermissionUpdate) SetPermissionType(ct cipermission.PermissionType) *CiPermissionUpdate {
-	cpu.mutation.SetPermissionType(ct)
-	return cpu
+func (_u *CiPermissionUpdate) SetPermissionType(v cipermission.PermissionType) *CiPermissionUpdate {
+	_u.mutation.SetPermissionType(v)
+	return _u
 }
 
 // SetNillablePermissionType sets the "permission_type" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillablePermissionType(ct *cipermission.PermissionType) *CiPermissionUpdate {
-	if ct != nil {
-		cpu.SetPermissionType(*ct)
+func (_u *CiPermissionUpdate) SetNillablePermissionType(v *cipermission.PermissionType) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetPermissionType(*v)
 	}
-	return cpu
-}
-
-// SetOperations sets the "operations" field.
-func (cpu *CiPermissionUpdate) SetOperations(s []string) *CiPermissionUpdate {
-	cpu.mutation.SetOperations(s)
-	return cpu
-}
-
-// AppendOperations appends s to the "operations" field.
-func (cpu *CiPermissionUpdate) AppendOperations(s []string) *CiPermissionUpdate {
-	cpu.mutation.AppendOperations(s)
-	return cpu
-}
-
-// SetConditions sets the "conditions" field.
-func (cpu *CiPermissionUpdate) SetConditions(m map[string]interface{}) *CiPermissionUpdate {
-	cpu.mutation.SetConditions(m)
-	return cpu
-}
-
-// ClearConditions clears the value of the "conditions" field.
-func (cpu *CiPermissionUpdate) ClearConditions() *CiPermissionUpdate {
-	cpu.mutation.ClearConditions()
-	return cpu
-}
-
-// SetPriority sets the "priority" field.
-func (cpu *CiPermissionUpdate) SetPriority(i int) *CiPermissionUpdate {
-	cpu.mutation.ResetPriority()
-	cpu.mutation.SetPriority(i)
-	return cpu
-}
-
-// SetNillablePriority sets the "priority" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillablePriority(i *int) *CiPermissionUpdate {
-	if i != nil {
-		cpu.SetPriority(*i)
-	}
-	return cpu
-}
-
-// AddPriority adds i to the "priority" field.
-func (cpu *CiPermissionUpdate) AddPriority(i int) *CiPermissionUpdate {
-	cpu.mutation.AddPriority(i)
-	return cpu
+	return _u
 }
 
 // SetPermissionLevel sets the "permission_level" field.
-func (cpu *CiPermissionUpdate) SetPermissionLevel(cl cipermission.PermissionLevel) *CiPermissionUpdate {
-	cpu.mutation.SetPermissionLevel(cl)
-	return cpu
+func (_u *CiPermissionUpdate) SetPermissionLevel(v cipermission.PermissionLevel) *CiPermissionUpdate {
+	_u.mutation.SetPermissionLevel(v)
+	return _u
 }
 
 // SetNillablePermissionLevel sets the "permission_level" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillablePermissionLevel(cl *cipermission.PermissionLevel) *CiPermissionUpdate {
-	if cl != nil {
-		cpu.SetPermissionLevel(*cl)
+func (_u *CiPermissionUpdate) SetNillablePermissionLevel(v *cipermission.PermissionLevel) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetPermissionLevel(*v)
 	}
-	return cpu
+	return _u
+}
+
+// SetOperationsMask sets the "operations_mask" field.
+func (_u *CiPermissionUpdate) SetOperationsMask(v uint64) *CiPermissionUpdate {
+	_u.mutation.ResetOperationsMask()
+	_u.mutation.SetOperationsMask(v)
+	return _u
+}
+
+// SetNillableOperationsMask sets the "operations_mask" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableOperationsMask(v *uint64) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetOperationsMask(*v)
+	}
+	return _u
+}
+
+// AddOperationsMask adds value to the "operations_mask" field.
+func (_u *CiPermissionUpdate) AddOperationsMask(v int64) *CiPermissionUpdate {
+	_u.mutation.AddOperationsMask(v)
+	return _u
 }
 
 // SetEffectiveFrom sets the "effective_from" field.
-func (cpu *CiPermissionUpdate) SetEffectiveFrom(t time.Time) *CiPermissionUpdate {
-	cpu.mutation.SetEffectiveFrom(t)
-	return cpu
+func (_u *CiPermissionUpdate) SetEffectiveFrom(v time.Time) *CiPermissionUpdate {
+	_u.mutation.SetEffectiveFrom(v)
+	return _u
 }
 
 // SetNillableEffectiveFrom sets the "effective_from" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableEffectiveFrom(t *time.Time) *CiPermissionUpdate {
-	if t != nil {
-		cpu.SetEffectiveFrom(*t)
+func (_u *CiPermissionUpdate) SetNillableEffectiveFrom(v *time.Time) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetEffectiveFrom(*v)
 	}
-	return cpu
+	return _u
 }
 
 // ClearEffectiveFrom clears the value of the "effective_from" field.
-func (cpu *CiPermissionUpdate) ClearEffectiveFrom() *CiPermissionUpdate {
-	cpu.mutation.ClearEffectiveFrom()
-	return cpu
+func (_u *CiPermissionUpdate) ClearEffectiveFrom() *CiPermissionUpdate {
+	_u.mutation.ClearEffectiveFrom()
+	return _u
 }
 
 // SetEffectiveTo sets the "effective_to" field.
-func (cpu *CiPermissionUpdate) SetEffectiveTo(t time.Time) *CiPermissionUpdate {
-	cpu.mutation.SetEffectiveTo(t)
-	return cpu
+func (_u *CiPermissionUpdate) SetEffectiveTo(v time.Time) *CiPermissionUpdate {
+	_u.mutation.SetEffectiveTo(v)
+	return _u
 }
 
 // SetNillableEffectiveTo sets the "effective_to" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableEffectiveTo(t *time.Time) *CiPermissionUpdate {
-	if t != nil {
-		cpu.SetEffectiveTo(*t)
+func (_u *CiPermissionUpdate) SetNillableEffectiveTo(v *time.Time) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetEffectiveTo(*v)
 	}
-	return cpu
+	return _u
 }
 
 // ClearEffectiveTo clears the value of the "effective_to" field.
-func (cpu *CiPermissionUpdate) ClearEffectiveTo() *CiPermissionUpdate {
-	cpu.mutation.ClearEffectiveTo()
-	return cpu
+func (_u *CiPermissionUpdate) ClearEffectiveTo() *CiPermissionUpdate {
+	_u.mutation.ClearEffectiveTo()
+	return _u
 }
 
 // SetIsTemporary sets the "is_temporary" field.
-func (cpu *CiPermissionUpdate) SetIsTemporary(b bool) *CiPermissionUpdate {
-	cpu.mutation.SetIsTemporary(b)
-	return cpu
+func (_u *CiPermissionUpdate) SetIsTemporary(v bool) *CiPermissionUpdate {
+	_u.mutation.SetIsTemporary(v)
+	return _u
 }
 
 // SetNillableIsTemporary sets the "is_temporary" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableIsTemporary(b *bool) *CiPermissionUpdate {
-	if b != nil {
-		cpu.SetIsTemporary(*b)
+func (_u *CiPermissionUpdate) SetNillableIsTemporary(v *bool) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetIsTemporary(*v)
 	}
-	return cpu
+	return _u
 }
 
-// SetDataFilters sets the "data_filters" field.
-func (cpu *CiPermissionUpdate) SetDataFilters(m map[string]interface{}) *CiPermissionUpdate {
-	cpu.mutation.SetDataFilters(m)
-	return cpu
+// SetPriority sets the "priority" field.
+func (_u *CiPermissionUpdate) SetPriority(v int) *CiPermissionUpdate {
+	_u.mutation.ResetPriority()
+	_u.mutation.SetPriority(v)
+	return _u
 }
 
-// ClearDataFilters clears the value of the "data_filters" field.
-func (cpu *CiPermissionUpdate) ClearDataFilters() *CiPermissionUpdate {
-	cpu.mutation.ClearDataFilters()
-	return cpu
-}
-
-// SetFieldMasks sets the "field_masks" field.
-func (cpu *CiPermissionUpdate) SetFieldMasks(s []string) *CiPermissionUpdate {
-	cpu.mutation.SetFieldMasks(s)
-	return cpu
-}
-
-// AppendFieldMasks appends s to the "field_masks" field.
-func (cpu *CiPermissionUpdate) AppendFieldMasks(s []string) *CiPermissionUpdate {
-	cpu.mutation.AppendFieldMasks(s)
-	return cpu
-}
-
-// ClearFieldMasks clears the value of the "field_masks" field.
-func (cpu *CiPermissionUpdate) ClearFieldMasks() *CiPermissionUpdate {
-	cpu.mutation.ClearFieldMasks()
-	return cpu
-}
-
-// SetAllowedValues sets the "allowed_values" field.
-func (cpu *CiPermissionUpdate) SetAllowedValues(m map[string]interface{}) *CiPermissionUpdate {
-	cpu.mutation.SetAllowedValues(m)
-	return cpu
-}
-
-// ClearAllowedValues clears the value of the "allowed_values" field.
-func (cpu *CiPermissionUpdate) ClearAllowedValues() *CiPermissionUpdate {
-	cpu.mutation.ClearAllowedValues()
-	return cpu
-}
-
-// SetRequireApproval sets the "require_approval" field.
-func (cpu *CiPermissionUpdate) SetRequireApproval(b bool) *CiPermissionUpdate {
-	cpu.mutation.SetRequireApproval(b)
-	return cpu
-}
-
-// SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableRequireApproval(b *bool) *CiPermissionUpdate {
-	if b != nil {
-		cpu.SetRequireApproval(*b)
+// SetNillablePriority sets the "priority" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillablePriority(v *int) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetPriority(*v)
 	}
-	return cpu
+	return _u
 }
 
-// SetGrantedBy sets the "granted_by" field.
-func (cpu *CiPermissionUpdate) SetGrantedBy(u uuid.UUID) *CiPermissionUpdate {
-	cpu.mutation.SetGrantedBy(u)
-	return cpu
-}
-
-// SetNillableGrantedBy sets the "granted_by" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableGrantedBy(u *uuid.UUID) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetGrantedBy(*u)
-	}
-	return cpu
-}
-
-// ClearGrantedBy clears the value of the "granted_by" field.
-func (cpu *CiPermissionUpdate) ClearGrantedBy() *CiPermissionUpdate {
-	cpu.mutation.ClearGrantedBy()
-	return cpu
-}
-
-// SetGrantedByName sets the "granted_by_name" field.
-func (cpu *CiPermissionUpdate) SetGrantedByName(s string) *CiPermissionUpdate {
-	cpu.mutation.SetGrantedByName(s)
-	return cpu
-}
-
-// SetNillableGrantedByName sets the "granted_by_name" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableGrantedByName(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetGrantedByName(*s)
-	}
-	return cpu
-}
-
-// ClearGrantedByName clears the value of the "granted_by_name" field.
-func (cpu *CiPermissionUpdate) ClearGrantedByName() *CiPermissionUpdate {
-	cpu.mutation.ClearGrantedByName()
-	return cpu
-}
-
-// SetGrantedAt sets the "granted_at" field.
-func (cpu *CiPermissionUpdate) SetGrantedAt(t time.Time) *CiPermissionUpdate {
-	cpu.mutation.SetGrantedAt(t)
-	return cpu
-}
-
-// SetNillableGrantedAt sets the "granted_at" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableGrantedAt(t *time.Time) *CiPermissionUpdate {
-	if t != nil {
-		cpu.SetGrantedAt(*t)
-	}
-	return cpu
-}
-
-// ClearGrantedAt clears the value of the "granted_at" field.
-func (cpu *CiPermissionUpdate) ClearGrantedAt() *CiPermissionUpdate {
-	cpu.mutation.ClearGrantedAt()
-	return cpu
-}
-
-// SetGrantReason sets the "grant_reason" field.
-func (cpu *CiPermissionUpdate) SetGrantReason(s string) *CiPermissionUpdate {
-	cpu.mutation.SetGrantReason(s)
-	return cpu
-}
-
-// SetNillableGrantReason sets the "grant_reason" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableGrantReason(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetGrantReason(*s)
-	}
-	return cpu
-}
-
-// ClearGrantReason clears the value of the "grant_reason" field.
-func (cpu *CiPermissionUpdate) ClearGrantReason() *CiPermissionUpdate {
-	cpu.mutation.ClearGrantReason()
-	return cpu
-}
-
-// SetUsageCount sets the "usage_count" field.
-func (cpu *CiPermissionUpdate) SetUsageCount(i int) *CiPermissionUpdate {
-	cpu.mutation.ResetUsageCount()
-	cpu.mutation.SetUsageCount(i)
-	return cpu
-}
-
-// SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableUsageCount(i *int) *CiPermissionUpdate {
-	if i != nil {
-		cpu.SetUsageCount(*i)
-	}
-	return cpu
-}
-
-// AddUsageCount adds i to the "usage_count" field.
-func (cpu *CiPermissionUpdate) AddUsageCount(i int) *CiPermissionUpdate {
-	cpu.mutation.AddUsageCount(i)
-	return cpu
-}
-
-// SetLastUsedAt sets the "last_used_at" field.
-func (cpu *CiPermissionUpdate) SetLastUsedAt(t time.Time) *CiPermissionUpdate {
-	cpu.mutation.SetLastUsedAt(t)
-	return cpu
-}
-
-// SetNillableLastUsedAt sets the "last_used_at" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableLastUsedAt(t *time.Time) *CiPermissionUpdate {
-	if t != nil {
-		cpu.SetLastUsedAt(*t)
-	}
-	return cpu
-}
-
-// ClearLastUsedAt clears the value of the "last_used_at" field.
-func (cpu *CiPermissionUpdate) ClearLastUsedAt() *CiPermissionUpdate {
-	cpu.mutation.ClearLastUsedAt()
-	return cpu
-}
-
-// SetUsageStatistics sets the "usage_statistics" field.
-func (cpu *CiPermissionUpdate) SetUsageStatistics(m map[string]interface{}) *CiPermissionUpdate {
-	cpu.mutation.SetUsageStatistics(m)
-	return cpu
-}
-
-// ClearUsageStatistics clears the value of the "usage_statistics" field.
-func (cpu *CiPermissionUpdate) ClearUsageStatistics() *CiPermissionUpdate {
-	cpu.mutation.ClearUsageStatistics()
-	return cpu
+// AddPriority adds value to the "priority" field.
+func (_u *CiPermissionUpdate) AddPriority(v int) *CiPermissionUpdate {
+	_u.mutation.AddPriority(v)
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (cpu *CiPermissionUpdate) SetStatus(c cipermission.Status) *CiPermissionUpdate {
-	cpu.mutation.SetStatus(c)
-	return cpu
+func (_u *CiPermissionUpdate) SetStatus(v cipermission.Status) *CiPermissionUpdate {
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableStatus(c *cipermission.Status) *CiPermissionUpdate {
-	if c != nil {
-		cpu.SetStatus(*c)
+func (_u *CiPermissionUpdate) SetNillableStatus(v *cipermission.Status) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return cpu
-}
-
-// SetStatusReason sets the "status_reason" field.
-func (cpu *CiPermissionUpdate) SetStatusReason(s string) *CiPermissionUpdate {
-	cpu.mutation.SetStatusReason(s)
-	return cpu
-}
-
-// SetNillableStatusReason sets the "status_reason" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableStatusReason(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetStatusReason(*s)
-	}
-	return cpu
-}
-
-// ClearStatusReason clears the value of the "status_reason" field.
-func (cpu *CiPermissionUpdate) ClearStatusReason() *CiPermissionUpdate {
-	cpu.mutation.ClearStatusReason()
-	return cpu
-}
-
-// SetInheritable sets the "inheritable" field.
-func (cpu *CiPermissionUpdate) SetInheritable(b bool) *CiPermissionUpdate {
-	cpu.mutation.SetInheritable(b)
-	return cpu
-}
-
-// SetNillableInheritable sets the "inheritable" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableInheritable(b *bool) *CiPermissionUpdate {
-	if b != nil {
-		cpu.SetInheritable(*b)
-	}
-	return cpu
+	return _u
 }
 
 // SetParentPermissionID sets the "parent_permission_id" field.
-func (cpu *CiPermissionUpdate) SetParentPermissionID(s string) *CiPermissionUpdate {
-	cpu.mutation.SetParentPermissionID(s)
-	return cpu
+func (_u *CiPermissionUpdate) SetParentPermissionID(v string) *CiPermissionUpdate {
+	_u.mutation.SetParentPermissionID(v)
+	return _u
 }
 
 // SetNillableParentPermissionID sets the "parent_permission_id" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableParentPermissionID(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetParentPermissionID(*s)
+func (_u *CiPermissionUpdate) SetNillableParentPermissionID(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetParentPermissionID(*v)
 	}
-	return cpu
+	return _u
 }
 
 // ClearParentPermissionID clears the value of the "parent_permission_id" field.
-func (cpu *CiPermissionUpdate) ClearParentPermissionID() *CiPermissionUpdate {
-	cpu.mutation.ClearParentPermissionID()
-	return cpu
+func (_u *CiPermissionUpdate) ClearParentPermissionID() *CiPermissionUpdate {
+	_u.mutation.ClearParentPermissionID()
+	return _u
 }
 
-// SetInheritedFrom sets the "inherited_from" field.
-func (cpu *CiPermissionUpdate) SetInheritedFrom(s []string) *CiPermissionUpdate {
-	cpu.mutation.SetInheritedFrom(s)
-	return cpu
+// SetInheritable sets the "inheritable" field.
+func (_u *CiPermissionUpdate) SetInheritable(v bool) *CiPermissionUpdate {
+	_u.mutation.SetInheritable(v)
+	return _u
 }
 
-// AppendInheritedFrom appends s to the "inherited_from" field.
-func (cpu *CiPermissionUpdate) AppendInheritedFrom(s []string) *CiPermissionUpdate {
-	cpu.mutation.AppendInheritedFrom(s)
-	return cpu
-}
-
-// ClearInheritedFrom clears the value of the "inherited_from" field.
-func (cpu *CiPermissionUpdate) ClearInheritedFrom() *CiPermissionUpdate {
-	cpu.mutation.ClearInheritedFrom()
-	return cpu
-}
-
-// SetRiskLevel sets the "risk_level" field.
-func (cpu *CiPermissionUpdate) SetRiskLevel(cl cipermission.RiskLevel) *CiPermissionUpdate {
-	cpu.mutation.SetRiskLevel(cl)
-	return cpu
-}
-
-// SetNillableRiskLevel sets the "risk_level" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableRiskLevel(cl *cipermission.RiskLevel) *CiPermissionUpdate {
-	if cl != nil {
-		cpu.SetRiskLevel(*cl)
+// SetNillableInheritable sets the "inheritable" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableInheritable(v *bool) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetInheritable(*v)
 	}
-	return cpu
+	return _u
+}
+
+// SetRequireApproval sets the "require_approval" field.
+func (_u *CiPermissionUpdate) SetRequireApproval(v bool) *CiPermissionUpdate {
+	_u.mutation.SetRequireApproval(v)
+	return _u
+}
+
+// SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableRequireApproval(v *bool) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetRequireApproval(*v)
+	}
+	return _u
 }
 
 // SetRequireMfa sets the "require_mfa" field.
-func (cpu *CiPermissionUpdate) SetRequireMfa(b bool) *CiPermissionUpdate {
-	cpu.mutation.SetRequireMfa(b)
-	return cpu
+func (_u *CiPermissionUpdate) SetRequireMfa(v bool) *CiPermissionUpdate {
+	_u.mutation.SetRequireMfa(v)
+	return _u
 }
 
 // SetNillableRequireMfa sets the "require_mfa" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableRequireMfa(b *bool) *CiPermissionUpdate {
-	if b != nil {
-		cpu.SetRequireMfa(*b)
+func (_u *CiPermissionUpdate) SetNillableRequireMfa(v *bool) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetRequireMfa(*v)
 	}
-	return cpu
+	return _u
 }
 
-// SetSecurityConstraints sets the "security_constraints" field.
-func (cpu *CiPermissionUpdate) SetSecurityConstraints(m map[string]interface{}) *CiPermissionUpdate {
-	cpu.mutation.SetSecurityConstraints(m)
-	return cpu
+// SetRiskLevel sets the "risk_level" field.
+func (_u *CiPermissionUpdate) SetRiskLevel(v cipermission.RiskLevel) *CiPermissionUpdate {
+	_u.mutation.SetRiskLevel(v)
+	return _u
 }
 
-// ClearSecurityConstraints clears the value of the "security_constraints" field.
-func (cpu *CiPermissionUpdate) ClearSecurityConstraints() *CiPermissionUpdate {
-	cpu.mutation.ClearSecurityConstraints()
-	return cpu
-}
-
-// SetMetadata sets the "metadata" field.
-func (cpu *CiPermissionUpdate) SetMetadata(m map[string]interface{}) *CiPermissionUpdate {
-	cpu.mutation.SetMetadata(m)
-	return cpu
-}
-
-// ClearMetadata clears the value of the "metadata" field.
-func (cpu *CiPermissionUpdate) ClearMetadata() *CiPermissionUpdate {
-	cpu.mutation.ClearMetadata()
-	return cpu
-}
-
-// SetTags sets the "tags" field.
-func (cpu *CiPermissionUpdate) SetTags(s []string) *CiPermissionUpdate {
-	cpu.mutation.SetTags(s)
-	return cpu
-}
-
-// AppendTags appends s to the "tags" field.
-func (cpu *CiPermissionUpdate) AppendTags(s []string) *CiPermissionUpdate {
-	cpu.mutation.AppendTags(s)
-	return cpu
-}
-
-// ClearTags clears the value of the "tags" field.
-func (cpu *CiPermissionUpdate) ClearTags() *CiPermissionUpdate {
-	cpu.mutation.ClearTags()
-	return cpu
-}
-
-// SetDescription sets the "description" field.
-func (cpu *CiPermissionUpdate) SetDescription(s string) *CiPermissionUpdate {
-	cpu.mutation.SetDescription(s)
-	return cpu
-}
-
-// SetNillableDescription sets the "description" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableDescription(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetDescription(*s)
+// SetNillableRiskLevel sets the "risk_level" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableRiskLevel(v *cipermission.RiskLevel) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetRiskLevel(*v)
 	}
-	return cpu
+	return _u
 }
 
-// ClearDescription clears the value of the "description" field.
-func (cpu *CiPermissionUpdate) ClearDescription() *CiPermissionUpdate {
-	cpu.mutation.ClearDescription()
-	return cpu
+// SetUsageCount sets the "usage_count" field.
+func (_u *CiPermissionUpdate) SetUsageCount(v int) *CiPermissionUpdate {
+	_u.mutation.ResetUsageCount()
+	_u.mutation.SetUsageCount(v)
+	return _u
 }
 
-// SetComments sets the "comments" field.
-func (cpu *CiPermissionUpdate) SetComments(s string) *CiPermissionUpdate {
-	cpu.mutation.SetComments(s)
-	return cpu
-}
-
-// SetNillableComments sets the "comments" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableComments(s *string) *CiPermissionUpdate {
-	if s != nil {
-		cpu.SetComments(*s)
+// SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableUsageCount(v *int) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetUsageCount(*v)
 	}
-	return cpu
+	return _u
 }
 
-// ClearComments clears the value of the "comments" field.
-func (cpu *CiPermissionUpdate) ClearComments() *CiPermissionUpdate {
-	cpu.mutation.ClearComments()
-	return cpu
+// AddUsageCount adds value to the "usage_count" field.
+func (_u *CiPermissionUpdate) AddUsageCount(v int) *CiPermissionUpdate {
+	_u.mutation.AddUsageCount(v)
+	return _u
+}
+
+// SetLastUsedAt sets the "last_used_at" field.
+func (_u *CiPermissionUpdate) SetLastUsedAt(v time.Time) *CiPermissionUpdate {
+	_u.mutation.SetLastUsedAt(v)
+	return _u
+}
+
+// SetNillableLastUsedAt sets the "last_used_at" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableLastUsedAt(v *time.Time) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetLastUsedAt(*v)
+	}
+	return _u
+}
+
+// ClearLastUsedAt clears the value of the "last_used_at" field.
+func (_u *CiPermissionUpdate) ClearLastUsedAt() *CiPermissionUpdate {
+	_u.mutation.ClearLastUsedAt()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (cpu *CiPermissionUpdate) SetCreatedBy(u uuid.UUID) *CiPermissionUpdate {
-	cpu.mutation.SetCreatedBy(u)
-	return cpu
+func (_u *CiPermissionUpdate) SetCreatedBy(v string) *CiPermissionUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableCreatedBy(u *uuid.UUID) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetCreatedBy(*u)
+func (_u *CiPermissionUpdate) SetNillableCreatedBy(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return cpu
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (cpu *CiPermissionUpdate) ClearCreatedBy() *CiPermissionUpdate {
-	cpu.mutation.ClearCreatedBy()
-	return cpu
+func (_u *CiPermissionUpdate) ClearCreatedBy() *CiPermissionUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetUpdatedBy sets the "updated_by" field.
-func (cpu *CiPermissionUpdate) SetUpdatedBy(u uuid.UUID) *CiPermissionUpdate {
-	cpu.mutation.SetUpdatedBy(u)
-	return cpu
+func (_u *CiPermissionUpdate) SetUpdatedBy(v string) *CiPermissionUpdate {
+	_u.mutation.SetUpdatedBy(v)
+	return _u
 }
 
 // SetNillableUpdatedBy sets the "updated_by" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableUpdatedBy(u *uuid.UUID) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetUpdatedBy(*u)
+func (_u *CiPermissionUpdate) SetNillableUpdatedBy(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetUpdatedBy(*v)
 	}
-	return cpu
+	return _u
 }
 
 // ClearUpdatedBy clears the value of the "updated_by" field.
-func (cpu *CiPermissionUpdate) ClearUpdatedBy() *CiPermissionUpdate {
-	cpu.mutation.ClearUpdatedBy()
-	return cpu
+func (_u *CiPermissionUpdate) ClearUpdatedBy() *CiPermissionUpdate {
+	_u.mutation.ClearUpdatedBy()
+	return _u
 }
 
-// SetLastReviewedAt sets the "last_reviewed_at" field.
-func (cpu *CiPermissionUpdate) SetLastReviewedAt(t time.Time) *CiPermissionUpdate {
-	cpu.mutation.SetLastReviewedAt(t)
-	return cpu
+// SetDescription sets the "description" field.
+func (_u *CiPermissionUpdate) SetDescription(v string) *CiPermissionUpdate {
+	_u.mutation.SetDescription(v)
+	return _u
 }
 
-// SetNillableLastReviewedAt sets the "last_reviewed_at" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableLastReviewedAt(t *time.Time) *CiPermissionUpdate {
-	if t != nil {
-		cpu.SetLastReviewedAt(*t)
+// SetNillableDescription sets the "description" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableDescription(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetDescription(*v)
 	}
-	return cpu
+	return _u
 }
 
-// ClearLastReviewedAt clears the value of the "last_reviewed_at" field.
-func (cpu *CiPermissionUpdate) ClearLastReviewedAt() *CiPermissionUpdate {
-	cpu.mutation.ClearLastReviewedAt()
-	return cpu
+// ClearDescription clears the value of the "description" field.
+func (_u *CiPermissionUpdate) ClearDescription() *CiPermissionUpdate {
+	_u.mutation.ClearDescription()
+	return _u
 }
 
-// SetLastReviewedBy sets the "last_reviewed_by" field.
-func (cpu *CiPermissionUpdate) SetLastReviewedBy(u uuid.UUID) *CiPermissionUpdate {
-	cpu.mutation.SetLastReviewedBy(u)
-	return cpu
+// SetComments sets the "comments" field.
+func (_u *CiPermissionUpdate) SetComments(v string) *CiPermissionUpdate {
+	_u.mutation.SetComments(v)
+	return _u
 }
 
-// SetNillableLastReviewedBy sets the "last_reviewed_by" field if the given value is not nil.
-func (cpu *CiPermissionUpdate) SetNillableLastReviewedBy(u *uuid.UUID) *CiPermissionUpdate {
-	if u != nil {
-		cpu.SetLastReviewedBy(*u)
+// SetNillableComments sets the "comments" field if the given value is not nil.
+func (_u *CiPermissionUpdate) SetNillableComments(v *string) *CiPermissionUpdate {
+	if v != nil {
+		_u.SetComments(*v)
 	}
-	return cpu
+	return _u
 }
 
-// ClearLastReviewedBy clears the value of the "last_reviewed_by" field.
-func (cpu *CiPermissionUpdate) ClearLastReviewedBy() *CiPermissionUpdate {
-	cpu.mutation.ClearLastReviewedBy()
-	return cpu
+// ClearComments clears the value of the "comments" field.
+func (_u *CiPermissionUpdate) ClearComments() *CiPermissionUpdate {
+	_u.mutation.ClearComments()
+	return _u
+}
+
+// AddOperationIDs adds the "operations" edge to the PermissionOperation entity by IDs.
+func (_u *CiPermissionUpdate) AddOperationIDs(ids ...uint64) *CiPermissionUpdate {
+	_u.mutation.AddOperationIDs(ids...)
+	return _u
+}
+
+// AddOperations adds the "operations" edges to the PermissionOperation entity.
+func (_u *CiPermissionUpdate) AddOperations(v ...*PermissionOperation) *CiPermissionUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddOperationIDs(ids...)
+}
+
+// AddDataFilterIDs adds the "data_filters" edge to the PermissionDataFilter entity by IDs.
+func (_u *CiPermissionUpdate) AddDataFilterIDs(ids ...uint64) *CiPermissionUpdate {
+	_u.mutation.AddDataFilterIDs(ids...)
+	return _u
+}
+
+// AddDataFilters adds the "data_filters" edges to the PermissionDataFilter entity.
+func (_u *CiPermissionUpdate) AddDataFilters(v ...*PermissionDataFilter) *CiPermissionUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddDataFilterIDs(ids...)
+}
+
+// AddFieldMaskIDs adds the "field_masks" edge to the PermissionFieldMask entity by IDs.
+func (_u *CiPermissionUpdate) AddFieldMaskIDs(ids ...uint64) *CiPermissionUpdate {
+	_u.mutation.AddFieldMaskIDs(ids...)
+	return _u
+}
+
+// AddFieldMasks adds the "field_masks" edges to the PermissionFieldMask entity.
+func (_u *CiPermissionUpdate) AddFieldMasks(v ...*PermissionFieldMask) *CiPermissionUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddFieldMaskIDs(ids...)
 }
 
 // Mutation returns the CiPermissionMutation object of the builder.
-func (cpu *CiPermissionUpdate) Mutation() *CiPermissionMutation {
-	return cpu.mutation
+func (_u *CiPermissionUpdate) Mutation() *CiPermissionMutation {
+	return _u.mutation
+}
+
+// ClearOperations clears all "operations" edges to the PermissionOperation entity.
+func (_u *CiPermissionUpdate) ClearOperations() *CiPermissionUpdate {
+	_u.mutation.ClearOperations()
+	return _u
+}
+
+// RemoveOperationIDs removes the "operations" edge to PermissionOperation entities by IDs.
+func (_u *CiPermissionUpdate) RemoveOperationIDs(ids ...uint64) *CiPermissionUpdate {
+	_u.mutation.RemoveOperationIDs(ids...)
+	return _u
+}
+
+// RemoveOperations removes "operations" edges to PermissionOperation entities.
+func (_u *CiPermissionUpdate) RemoveOperations(v ...*PermissionOperation) *CiPermissionUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveOperationIDs(ids...)
+}
+
+// ClearDataFilters clears all "data_filters" edges to the PermissionDataFilter entity.
+func (_u *CiPermissionUpdate) ClearDataFilters() *CiPermissionUpdate {
+	_u.mutation.ClearDataFilters()
+	return _u
+}
+
+// RemoveDataFilterIDs removes the "data_filters" edge to PermissionDataFilter entities by IDs.
+func (_u *CiPermissionUpdate) RemoveDataFilterIDs(ids ...uint64) *CiPermissionUpdate {
+	_u.mutation.RemoveDataFilterIDs(ids...)
+	return _u
+}
+
+// RemoveDataFilters removes "data_filters" edges to PermissionDataFilter entities.
+func (_u *CiPermissionUpdate) RemoveDataFilters(v ...*PermissionDataFilter) *CiPermissionUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveDataFilterIDs(ids...)
+}
+
+// ClearFieldMasks clears all "field_masks" edges to the PermissionFieldMask entity.
+func (_u *CiPermissionUpdate) ClearFieldMasks() *CiPermissionUpdate {
+	_u.mutation.ClearFieldMasks()
+	return _u
+}
+
+// RemoveFieldMaskIDs removes the "field_masks" edge to PermissionFieldMask entities by IDs.
+func (_u *CiPermissionUpdate) RemoveFieldMaskIDs(ids ...uint64) *CiPermissionUpdate {
+	_u.mutation.RemoveFieldMaskIDs(ids...)
+	return _u
+}
+
+// RemoveFieldMasks removes "field_masks" edges to PermissionFieldMask entities.
+func (_u *CiPermissionUpdate) RemoveFieldMasks(v ...*PermissionFieldMask) *CiPermissionUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveFieldMaskIDs(ids...)
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (cpu *CiPermissionUpdate) Save(ctx context.Context) (int, error) {
-	cpu.defaults()
-	return withHooks(ctx, cpu.sqlSave, cpu.mutation, cpu.hooks)
+func (_u *CiPermissionUpdate) Save(ctx context.Context) (int, error) {
+	_u.defaults()
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cpu *CiPermissionUpdate) SaveX(ctx context.Context) int {
-	affected, err := cpu.Save(ctx)
+func (_u *CiPermissionUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -873,54 +671,54 @@ func (cpu *CiPermissionUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (cpu *CiPermissionUpdate) Exec(ctx context.Context) error {
-	_, err := cpu.Save(ctx)
+func (_u *CiPermissionUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cpu *CiPermissionUpdate) ExecX(ctx context.Context) {
-	if err := cpu.Exec(ctx); err != nil {
+func (_u *CiPermissionUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cpu *CiPermissionUpdate) defaults() {
-	if _, ok := cpu.mutation.UpdatedAt(); !ok {
+func (_u *CiPermissionUpdate) defaults() {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		v := cipermission.UpdateDefaultUpdatedAt()
-		cpu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cpu *CiPermissionUpdate) check() error {
-	if v, ok := cpu.mutation.ScopeType(); ok {
+func (_u *CiPermissionUpdate) check() error {
+	if v, ok := _u.mutation.ScopeType(); ok {
 		if err := cipermission.ScopeTypeValidator(v); err != nil {
 			return &ValidationError{Name: "scope_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.scope_type": %w`, err)}
 		}
 	}
-	if v, ok := cpu.mutation.SubjectType(); ok {
+	if v, ok := _u.mutation.SubjectType(); ok {
 		if err := cipermission.SubjectTypeValidator(v); err != nil {
 			return &ValidationError{Name: "subject_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.subject_type": %w`, err)}
 		}
 	}
-	if v, ok := cpu.mutation.PermissionType(); ok {
+	if v, ok := _u.mutation.PermissionType(); ok {
 		if err := cipermission.PermissionTypeValidator(v); err != nil {
 			return &ValidationError{Name: "permission_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.permission_type": %w`, err)}
 		}
 	}
-	if v, ok := cpu.mutation.PermissionLevel(); ok {
+	if v, ok := _u.mutation.PermissionLevel(); ok {
 		if err := cipermission.PermissionLevelValidator(v); err != nil {
 			return &ValidationError{Name: "permission_level", err: fmt.Errorf(`ent: validator failed for field "CiPermission.permission_level": %w`, err)}
 		}
 	}
-	if v, ok := cpu.mutation.Status(); ok {
+	if v, ok := _u.mutation.Status(); ok {
 		if err := cipermission.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "CiPermission.status": %w`, err)}
 		}
 	}
-	if v, ok := cpu.mutation.RiskLevel(); ok {
+	if v, ok := _u.mutation.RiskLevel(); ok {
 		if err := cipermission.RiskLevelValidator(v); err != nil {
 			return &ValidationError{Name: "risk_level", err: fmt.Errorf(`ent: validator failed for field "CiPermission.risk_level": %w`, err)}
 		}
@@ -928,291 +726,295 @@ func (cpu *CiPermissionUpdate) check() error {
 	return nil
 }
 
-func (cpu *CiPermissionUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := cpu.check(); err != nil {
-		return n, err
+func (_u *CiPermissionUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cipermission.Table, cipermission.Columns, sqlgraph.NewFieldSpec(cipermission.FieldID, field.TypeUint64))
-	if ps := cpu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cpu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cipermission.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cpu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cipermission.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cpu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cipermission.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cpu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cipermission.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cpu.mutation.PermissionID(); ok {
+	if value, ok := _u.mutation.PermissionID(); ok {
 		_spec.SetField(cipermission.FieldPermissionID, field.TypeString, value)
 	}
-	if value, ok := cpu.mutation.ScopeType(); ok {
+	if value, ok := _u.mutation.ScopeType(); ok {
 		_spec.SetField(cipermission.FieldScopeType, field.TypeEnum, value)
 	}
-	if value, ok := cpu.mutation.CiTypeID(); ok {
-		_spec.SetField(cipermission.FieldCiTypeID, field.TypeUint64, value)
+	if value, ok := _u.mutation.ScopeTargetType(); ok {
+		_spec.SetField(cipermission.FieldScopeTargetType, field.TypeString, value)
 	}
-	if value, ok := cpu.mutation.AddedCiTypeID(); ok {
-		_spec.AddField(cipermission.FieldCiTypeID, field.TypeUint64, value)
+	if _u.mutation.ScopeTargetTypeCleared() {
+		_spec.ClearField(cipermission.FieldScopeTargetType, field.TypeString)
 	}
-	if cpu.mutation.CiTypeIDCleared() {
-		_spec.ClearField(cipermission.FieldCiTypeID, field.TypeUint64)
+	if value, ok := _u.mutation.ScopeTargetID(); ok {
+		_spec.SetField(cipermission.FieldScopeTargetID, field.TypeUint64, value)
 	}
-	if value, ok := cpu.mutation.CiID(); ok {
-		_spec.SetField(cipermission.FieldCiID, field.TypeUint64, value)
+	if value, ok := _u.mutation.AddedScopeTargetID(); ok {
+		_spec.AddField(cipermission.FieldScopeTargetID, field.TypeUint64, value)
 	}
-	if value, ok := cpu.mutation.AddedCiID(); ok {
-		_spec.AddField(cipermission.FieldCiID, field.TypeUint64, value)
+	if _u.mutation.ScopeTargetIDCleared() {
+		_spec.ClearField(cipermission.FieldScopeTargetID, field.TypeUint64)
 	}
-	if cpu.mutation.CiIDCleared() {
-		_spec.ClearField(cipermission.FieldCiID, field.TypeUint64)
+	if value, ok := _u.mutation.ScopeFieldName(); ok {
+		_spec.SetField(cipermission.FieldScopeFieldName, field.TypeString, value)
 	}
-	if value, ok := cpu.mutation.AttributeID(); ok {
-		_spec.SetField(cipermission.FieldAttributeID, field.TypeUint64, value)
+	if _u.mutation.ScopeFieldNameCleared() {
+		_spec.ClearField(cipermission.FieldScopeFieldName, field.TypeString)
 	}
-	if value, ok := cpu.mutation.AddedAttributeID(); ok {
-		_spec.AddField(cipermission.FieldAttributeID, field.TypeUint64, value)
-	}
-	if cpu.mutation.AttributeIDCleared() {
-		_spec.ClearField(cipermission.FieldAttributeID, field.TypeUint64)
-	}
-	if value, ok := cpu.mutation.FieldName(); ok {
-		_spec.SetField(cipermission.FieldFieldName, field.TypeString, value)
-	}
-	if cpu.mutation.FieldNameCleared() {
-		_spec.ClearField(cipermission.FieldFieldName, field.TypeString)
-	}
-	if value, ok := cpu.mutation.SubjectType(); ok {
+	if value, ok := _u.mutation.SubjectType(); ok {
 		_spec.SetField(cipermission.FieldSubjectType, field.TypeEnum, value)
 	}
-	if value, ok := cpu.mutation.SubjectID(); ok {
-		_spec.SetField(cipermission.FieldSubjectID, field.TypeUUID, value)
+	if value, ok := _u.mutation.SubjectID(); ok {
+		_spec.SetField(cipermission.FieldSubjectID, field.TypeString, value)
 	}
-	if cpu.mutation.SubjectIDCleared() {
-		_spec.ClearField(cipermission.FieldSubjectID, field.TypeUUID)
+	if _u.mutation.SubjectIDCleared() {
+		_spec.ClearField(cipermission.FieldSubjectID, field.TypeString)
 	}
-	if value, ok := cpu.mutation.SubjectName(); ok {
+	if value, ok := _u.mutation.SubjectName(); ok {
 		_spec.SetField(cipermission.FieldSubjectName, field.TypeString, value)
 	}
-	if value, ok := cpu.mutation.SubjectCode(); ok {
-		_spec.SetField(cipermission.FieldSubjectCode, field.TypeString, value)
-	}
-	if cpu.mutation.SubjectCodeCleared() {
-		_spec.ClearField(cipermission.FieldSubjectCode, field.TypeString)
-	}
-	if value, ok := cpu.mutation.PermissionType(); ok {
+	if value, ok := _u.mutation.PermissionType(); ok {
 		_spec.SetField(cipermission.FieldPermissionType, field.TypeEnum, value)
 	}
-	if value, ok := cpu.mutation.Operations(); ok {
-		_spec.SetField(cipermission.FieldOperations, field.TypeJSON, value)
-	}
-	if value, ok := cpu.mutation.AppendedOperations(); ok {
-		_spec.AddModifier(func(u *sql.UpdateBuilder) {
-			sqljson.Append(u, cipermission.FieldOperations, value)
-		})
-	}
-	if value, ok := cpu.mutation.Conditions(); ok {
-		_spec.SetField(cipermission.FieldConditions, field.TypeJSON, value)
-	}
-	if cpu.mutation.ConditionsCleared() {
-		_spec.ClearField(cipermission.FieldConditions, field.TypeJSON)
-	}
-	if value, ok := cpu.mutation.Priority(); ok {
-		_spec.SetField(cipermission.FieldPriority, field.TypeInt, value)
-	}
-	if value, ok := cpu.mutation.AddedPriority(); ok {
-		_spec.AddField(cipermission.FieldPriority, field.TypeInt, value)
-	}
-	if value, ok := cpu.mutation.PermissionLevel(); ok {
+	if value, ok := _u.mutation.PermissionLevel(); ok {
 		_spec.SetField(cipermission.FieldPermissionLevel, field.TypeEnum, value)
 	}
-	if value, ok := cpu.mutation.EffectiveFrom(); ok {
+	if value, ok := _u.mutation.OperationsMask(); ok {
+		_spec.SetField(cipermission.FieldOperationsMask, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedOperationsMask(); ok {
+		_spec.AddField(cipermission.FieldOperationsMask, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.EffectiveFrom(); ok {
 		_spec.SetField(cipermission.FieldEffectiveFrom, field.TypeTime, value)
 	}
-	if cpu.mutation.EffectiveFromCleared() {
+	if _u.mutation.EffectiveFromCleared() {
 		_spec.ClearField(cipermission.FieldEffectiveFrom, field.TypeTime)
 	}
-	if value, ok := cpu.mutation.EffectiveTo(); ok {
+	if value, ok := _u.mutation.EffectiveTo(); ok {
 		_spec.SetField(cipermission.FieldEffectiveTo, field.TypeTime, value)
 	}
-	if cpu.mutation.EffectiveToCleared() {
+	if _u.mutation.EffectiveToCleared() {
 		_spec.ClearField(cipermission.FieldEffectiveTo, field.TypeTime)
 	}
-	if value, ok := cpu.mutation.IsTemporary(); ok {
+	if value, ok := _u.mutation.IsTemporary(); ok {
 		_spec.SetField(cipermission.FieldIsTemporary, field.TypeBool, value)
 	}
-	if value, ok := cpu.mutation.DataFilters(); ok {
-		_spec.SetField(cipermission.FieldDataFilters, field.TypeJSON, value)
+	if value, ok := _u.mutation.Priority(); ok {
+		_spec.SetField(cipermission.FieldPriority, field.TypeInt, value)
 	}
-	if cpu.mutation.DataFiltersCleared() {
-		_spec.ClearField(cipermission.FieldDataFilters, field.TypeJSON)
+	if value, ok := _u.mutation.AddedPriority(); ok {
+		_spec.AddField(cipermission.FieldPriority, field.TypeInt, value)
 	}
-	if value, ok := cpu.mutation.FieldMasks(); ok {
-		_spec.SetField(cipermission.FieldFieldMasks, field.TypeJSON, value)
-	}
-	if value, ok := cpu.mutation.AppendedFieldMasks(); ok {
-		_spec.AddModifier(func(u *sql.UpdateBuilder) {
-			sqljson.Append(u, cipermission.FieldFieldMasks, value)
-		})
-	}
-	if cpu.mutation.FieldMasksCleared() {
-		_spec.ClearField(cipermission.FieldFieldMasks, field.TypeJSON)
-	}
-	if value, ok := cpu.mutation.AllowedValues(); ok {
-		_spec.SetField(cipermission.FieldAllowedValues, field.TypeJSON, value)
-	}
-	if cpu.mutation.AllowedValuesCleared() {
-		_spec.ClearField(cipermission.FieldAllowedValues, field.TypeJSON)
-	}
-	if value, ok := cpu.mutation.RequireApproval(); ok {
-		_spec.SetField(cipermission.FieldRequireApproval, field.TypeBool, value)
-	}
-	if value, ok := cpu.mutation.GrantedBy(); ok {
-		_spec.SetField(cipermission.FieldGrantedBy, field.TypeUUID, value)
-	}
-	if cpu.mutation.GrantedByCleared() {
-		_spec.ClearField(cipermission.FieldGrantedBy, field.TypeUUID)
-	}
-	if value, ok := cpu.mutation.GrantedByName(); ok {
-		_spec.SetField(cipermission.FieldGrantedByName, field.TypeString, value)
-	}
-	if cpu.mutation.GrantedByNameCleared() {
-		_spec.ClearField(cipermission.FieldGrantedByName, field.TypeString)
-	}
-	if value, ok := cpu.mutation.GrantedAt(); ok {
-		_spec.SetField(cipermission.FieldGrantedAt, field.TypeTime, value)
-	}
-	if cpu.mutation.GrantedAtCleared() {
-		_spec.ClearField(cipermission.FieldGrantedAt, field.TypeTime)
-	}
-	if value, ok := cpu.mutation.GrantReason(); ok {
-		_spec.SetField(cipermission.FieldGrantReason, field.TypeString, value)
-	}
-	if cpu.mutation.GrantReasonCleared() {
-		_spec.ClearField(cipermission.FieldGrantReason, field.TypeString)
-	}
-	if value, ok := cpu.mutation.UsageCount(); ok {
-		_spec.SetField(cipermission.FieldUsageCount, field.TypeInt, value)
-	}
-	if value, ok := cpu.mutation.AddedUsageCount(); ok {
-		_spec.AddField(cipermission.FieldUsageCount, field.TypeInt, value)
-	}
-	if value, ok := cpu.mutation.LastUsedAt(); ok {
-		_spec.SetField(cipermission.FieldLastUsedAt, field.TypeTime, value)
-	}
-	if cpu.mutation.LastUsedAtCleared() {
-		_spec.ClearField(cipermission.FieldLastUsedAt, field.TypeTime)
-	}
-	if value, ok := cpu.mutation.UsageStatistics(); ok {
-		_spec.SetField(cipermission.FieldUsageStatistics, field.TypeJSON, value)
-	}
-	if cpu.mutation.UsageStatisticsCleared() {
-		_spec.ClearField(cipermission.FieldUsageStatistics, field.TypeJSON)
-	}
-	if value, ok := cpu.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(cipermission.FieldStatus, field.TypeEnum, value)
 	}
-	if value, ok := cpu.mutation.StatusReason(); ok {
-		_spec.SetField(cipermission.FieldStatusReason, field.TypeString, value)
-	}
-	if cpu.mutation.StatusReasonCleared() {
-		_spec.ClearField(cipermission.FieldStatusReason, field.TypeString)
-	}
-	if value, ok := cpu.mutation.Inheritable(); ok {
-		_spec.SetField(cipermission.FieldInheritable, field.TypeBool, value)
-	}
-	if value, ok := cpu.mutation.ParentPermissionID(); ok {
+	if value, ok := _u.mutation.ParentPermissionID(); ok {
 		_spec.SetField(cipermission.FieldParentPermissionID, field.TypeString, value)
 	}
-	if cpu.mutation.ParentPermissionIDCleared() {
+	if _u.mutation.ParentPermissionIDCleared() {
 		_spec.ClearField(cipermission.FieldParentPermissionID, field.TypeString)
 	}
-	if value, ok := cpu.mutation.InheritedFrom(); ok {
-		_spec.SetField(cipermission.FieldInheritedFrom, field.TypeJSON, value)
+	if value, ok := _u.mutation.Inheritable(); ok {
+		_spec.SetField(cipermission.FieldInheritable, field.TypeBool, value)
 	}
-	if value, ok := cpu.mutation.AppendedInheritedFrom(); ok {
-		_spec.AddModifier(func(u *sql.UpdateBuilder) {
-			sqljson.Append(u, cipermission.FieldInheritedFrom, value)
-		})
+	if value, ok := _u.mutation.RequireApproval(); ok {
+		_spec.SetField(cipermission.FieldRequireApproval, field.TypeBool, value)
 	}
-	if cpu.mutation.InheritedFromCleared() {
-		_spec.ClearField(cipermission.FieldInheritedFrom, field.TypeJSON)
-	}
-	if value, ok := cpu.mutation.RiskLevel(); ok {
-		_spec.SetField(cipermission.FieldRiskLevel, field.TypeEnum, value)
-	}
-	if value, ok := cpu.mutation.RequireMfa(); ok {
+	if value, ok := _u.mutation.RequireMfa(); ok {
 		_spec.SetField(cipermission.FieldRequireMfa, field.TypeBool, value)
 	}
-	if value, ok := cpu.mutation.SecurityConstraints(); ok {
-		_spec.SetField(cipermission.FieldSecurityConstraints, field.TypeJSON, value)
+	if value, ok := _u.mutation.RiskLevel(); ok {
+		_spec.SetField(cipermission.FieldRiskLevel, field.TypeEnum, value)
 	}
-	if cpu.mutation.SecurityConstraintsCleared() {
-		_spec.ClearField(cipermission.FieldSecurityConstraints, field.TypeJSON)
+	if value, ok := _u.mutation.UsageCount(); ok {
+		_spec.SetField(cipermission.FieldUsageCount, field.TypeInt, value)
 	}
-	if value, ok := cpu.mutation.Metadata(); ok {
-		_spec.SetField(cipermission.FieldMetadata, field.TypeJSON, value)
+	if value, ok := _u.mutation.AddedUsageCount(); ok {
+		_spec.AddField(cipermission.FieldUsageCount, field.TypeInt, value)
 	}
-	if cpu.mutation.MetadataCleared() {
-		_spec.ClearField(cipermission.FieldMetadata, field.TypeJSON)
+	if value, ok := _u.mutation.LastUsedAt(); ok {
+		_spec.SetField(cipermission.FieldLastUsedAt, field.TypeTime, value)
 	}
-	if value, ok := cpu.mutation.Tags(); ok {
-		_spec.SetField(cipermission.FieldTags, field.TypeJSON, value)
+	if _u.mutation.LastUsedAtCleared() {
+		_spec.ClearField(cipermission.FieldLastUsedAt, field.TypeTime)
 	}
-	if value, ok := cpu.mutation.AppendedTags(); ok {
-		_spec.AddModifier(func(u *sql.UpdateBuilder) {
-			sqljson.Append(u, cipermission.FieldTags, value)
-		})
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(cipermission.FieldCreatedBy, field.TypeString, value)
 	}
-	if cpu.mutation.TagsCleared() {
-		_spec.ClearField(cipermission.FieldTags, field.TypeJSON)
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(cipermission.FieldCreatedBy, field.TypeString)
 	}
-	if value, ok := cpu.mutation.Description(); ok {
+	if value, ok := _u.mutation.UpdatedBy(); ok {
+		_spec.SetField(cipermission.FieldUpdatedBy, field.TypeString, value)
+	}
+	if _u.mutation.UpdatedByCleared() {
+		_spec.ClearField(cipermission.FieldUpdatedBy, field.TypeString)
+	}
+	if value, ok := _u.mutation.Description(); ok {
 		_spec.SetField(cipermission.FieldDescription, field.TypeString, value)
 	}
-	if cpu.mutation.DescriptionCleared() {
+	if _u.mutation.DescriptionCleared() {
 		_spec.ClearField(cipermission.FieldDescription, field.TypeString)
 	}
-	if value, ok := cpu.mutation.Comments(); ok {
+	if value, ok := _u.mutation.Comments(); ok {
 		_spec.SetField(cipermission.FieldComments, field.TypeString, value)
 	}
-	if cpu.mutation.CommentsCleared() {
+	if _u.mutation.CommentsCleared() {
 		_spec.ClearField(cipermission.FieldComments, field.TypeString)
 	}
-	if value, ok := cpu.mutation.CreatedBy(); ok {
-		_spec.SetField(cipermission.FieldCreatedBy, field.TypeUUID, value)
+	if _u.mutation.OperationsCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.OperationsTable,
+			Columns: []string{cipermission.OperationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionoperation.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if cpu.mutation.CreatedByCleared() {
-		_spec.ClearField(cipermission.FieldCreatedBy, field.TypeUUID)
+	if nodes := _u.mutation.RemovedOperationsIDs(); len(nodes) > 0 && !_u.mutation.OperationsCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.OperationsTable,
+			Columns: []string{cipermission.OperationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionoperation.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if value, ok := cpu.mutation.UpdatedBy(); ok {
-		_spec.SetField(cipermission.FieldUpdatedBy, field.TypeUUID, value)
+	if nodes := _u.mutation.OperationsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.OperationsTable,
+			Columns: []string{cipermission.OperationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionoperation.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cpu.mutation.UpdatedByCleared() {
-		_spec.ClearField(cipermission.FieldUpdatedBy, field.TypeUUID)
+	if _u.mutation.DataFiltersCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.DataFiltersTable,
+			Columns: []string{cipermission.DataFiltersColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissiondatafilter.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if value, ok := cpu.mutation.LastReviewedAt(); ok {
-		_spec.SetField(cipermission.FieldLastReviewedAt, field.TypeTime, value)
+	if nodes := _u.mutation.RemovedDataFiltersIDs(); len(nodes) > 0 && !_u.mutation.DataFiltersCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.DataFiltersTable,
+			Columns: []string{cipermission.DataFiltersColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissiondatafilter.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if cpu.mutation.LastReviewedAtCleared() {
-		_spec.ClearField(cipermission.FieldLastReviewedAt, field.TypeTime)
+	if nodes := _u.mutation.DataFiltersIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.DataFiltersTable,
+			Columns: []string{cipermission.DataFiltersColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissiondatafilter.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if value, ok := cpu.mutation.LastReviewedBy(); ok {
-		_spec.SetField(cipermission.FieldLastReviewedBy, field.TypeUUID, value)
+	if _u.mutation.FieldMasksCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.FieldMasksTable,
+			Columns: []string{cipermission.FieldMasksColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionfieldmask.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if cpu.mutation.LastReviewedByCleared() {
-		_spec.ClearField(cipermission.FieldLastReviewedBy, field.TypeUUID)
+	if nodes := _u.mutation.RemovedFieldMasksIDs(); len(nodes) > 0 && !_u.mutation.FieldMasksCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.FieldMasksTable,
+			Columns: []string{cipermission.FieldMasksColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionfieldmask.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, cpu.driver, _spec); err != nil {
+	if nodes := _u.mutation.FieldMasksIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.FieldMasksTable,
+			Columns: []string{cipermission.FieldMasksColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionfieldmask.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cipermission.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1220,8 +1022,8 @@ func (cpu *CiPermissionUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	cpu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiPermissionUpdateOne is the builder for updating a single CiPermission entity.
@@ -1233,854 +1035,651 @@ type CiPermissionUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cpuo *CiPermissionUpdateOne) SetUpdatedAt(t time.Time) *CiPermissionUpdateOne {
-	cpuo.mutation.SetUpdatedAt(t)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetUpdatedAt(v time.Time) *CiPermissionUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cpuo *CiPermissionUpdateOne) SetDepartmentID(u uint64) *CiPermissionUpdateOne {
-	cpuo.mutation.ResetDepartmentID()
-	cpuo.mutation.SetDepartmentID(u)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetDepartmentID(v uint64) *CiPermissionUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableDepartmentID(u *uint64) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetDepartmentID(*u)
+func (_u *CiPermissionUpdateOne) SetNillableDepartmentID(v *uint64) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cpuo *CiPermissionUpdateOne) AddDepartmentID(u int64) *CiPermissionUpdateOne {
-	cpuo.mutation.AddDepartmentID(u)
-	return cpuo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiPermissionUpdateOne) AddDepartmentID(v int64) *CiPermissionUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cpuo *CiPermissionUpdateOne) ClearDepartmentID() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearDepartmentID()
-	return cpuo
+func (_u *CiPermissionUpdateOne) ClearDepartmentID() *CiPermissionUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetPermissionID sets the "permission_id" field.
-func (cpuo *CiPermissionUpdateOne) SetPermissionID(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetPermissionID(s)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetPermissionID(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetPermissionID(v)
+	return _u
 }
 
 // SetNillablePermissionID sets the "permission_id" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillablePermissionID(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetPermissionID(*s)
+func (_u *CiPermissionUpdateOne) SetNillablePermissionID(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetPermissionID(*v)
 	}
-	return cpuo
+	return _u
 }
 
 // SetScopeType sets the "scope_type" field.
-func (cpuo *CiPermissionUpdateOne) SetScopeType(ct cipermission.ScopeType) *CiPermissionUpdateOne {
-	cpuo.mutation.SetScopeType(ct)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetScopeType(v cipermission.ScopeType) *CiPermissionUpdateOne {
+	_u.mutation.SetScopeType(v)
+	return _u
 }
 
 // SetNillableScopeType sets the "scope_type" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableScopeType(ct *cipermission.ScopeType) *CiPermissionUpdateOne {
-	if ct != nil {
-		cpuo.SetScopeType(*ct)
+func (_u *CiPermissionUpdateOne) SetNillableScopeType(v *cipermission.ScopeType) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetScopeType(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// SetCiTypeID sets the "ci_type_id" field.
-func (cpuo *CiPermissionUpdateOne) SetCiTypeID(u uint64) *CiPermissionUpdateOne {
-	cpuo.mutation.ResetCiTypeID()
-	cpuo.mutation.SetCiTypeID(u)
-	return cpuo
+// SetScopeTargetType sets the "scope_target_type" field.
+func (_u *CiPermissionUpdateOne) SetScopeTargetType(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetScopeTargetType(v)
+	return _u
 }
 
-// SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableCiTypeID(u *uint64) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetCiTypeID(*u)
+// SetNillableScopeTargetType sets the "scope_target_type" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableScopeTargetType(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetScopeTargetType(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// AddCiTypeID adds u to the "ci_type_id" field.
-func (cpuo *CiPermissionUpdateOne) AddCiTypeID(u int64) *CiPermissionUpdateOne {
-	cpuo.mutation.AddCiTypeID(u)
-	return cpuo
+// ClearScopeTargetType clears the value of the "scope_target_type" field.
+func (_u *CiPermissionUpdateOne) ClearScopeTargetType() *CiPermissionUpdateOne {
+	_u.mutation.ClearScopeTargetType()
+	return _u
 }
 
-// ClearCiTypeID clears the value of the "ci_type_id" field.
-func (cpuo *CiPermissionUpdateOne) ClearCiTypeID() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearCiTypeID()
-	return cpuo
+// SetScopeTargetID sets the "scope_target_id" field.
+func (_u *CiPermissionUpdateOne) SetScopeTargetID(v uint64) *CiPermissionUpdateOne {
+	_u.mutation.ResetScopeTargetID()
+	_u.mutation.SetScopeTargetID(v)
+	return _u
 }
 
-// SetCiID sets the "ci_id" field.
-func (cpuo *CiPermissionUpdateOne) SetCiID(u uint64) *CiPermissionUpdateOne {
-	cpuo.mutation.ResetCiID()
-	cpuo.mutation.SetCiID(u)
-	return cpuo
-}
-
-// SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableCiID(u *uint64) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetCiID(*u)
+// SetNillableScopeTargetID sets the "scope_target_id" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableScopeTargetID(v *uint64) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetScopeTargetID(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// AddCiID adds u to the "ci_id" field.
-func (cpuo *CiPermissionUpdateOne) AddCiID(u int64) *CiPermissionUpdateOne {
-	cpuo.mutation.AddCiID(u)
-	return cpuo
+// AddScopeTargetID adds value to the "scope_target_id" field.
+func (_u *CiPermissionUpdateOne) AddScopeTargetID(v int64) *CiPermissionUpdateOne {
+	_u.mutation.AddScopeTargetID(v)
+	return _u
 }
 
-// ClearCiID clears the value of the "ci_id" field.
-func (cpuo *CiPermissionUpdateOne) ClearCiID() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearCiID()
-	return cpuo
+// ClearScopeTargetID clears the value of the "scope_target_id" field.
+func (_u *CiPermissionUpdateOne) ClearScopeTargetID() *CiPermissionUpdateOne {
+	_u.mutation.ClearScopeTargetID()
+	return _u
 }
 
-// SetAttributeID sets the "attribute_id" field.
-func (cpuo *CiPermissionUpdateOne) SetAttributeID(u uint64) *CiPermissionUpdateOne {
-	cpuo.mutation.ResetAttributeID()
-	cpuo.mutation.SetAttributeID(u)
-	return cpuo
+// SetScopeFieldName sets the "scope_field_name" field.
+func (_u *CiPermissionUpdateOne) SetScopeFieldName(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetScopeFieldName(v)
+	return _u
 }
 
-// SetNillableAttributeID sets the "attribute_id" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableAttributeID(u *uint64) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetAttributeID(*u)
+// SetNillableScopeFieldName sets the "scope_field_name" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableScopeFieldName(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetScopeFieldName(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// AddAttributeID adds u to the "attribute_id" field.
-func (cpuo *CiPermissionUpdateOne) AddAttributeID(u int64) *CiPermissionUpdateOne {
-	cpuo.mutation.AddAttributeID(u)
-	return cpuo
-}
-
-// ClearAttributeID clears the value of the "attribute_id" field.
-func (cpuo *CiPermissionUpdateOne) ClearAttributeID() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearAttributeID()
-	return cpuo
-}
-
-// SetFieldName sets the "field_name" field.
-func (cpuo *CiPermissionUpdateOne) SetFieldName(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetFieldName(s)
-	return cpuo
-}
-
-// SetNillableFieldName sets the "field_name" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableFieldName(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetFieldName(*s)
-	}
-	return cpuo
-}
-
-// ClearFieldName clears the value of the "field_name" field.
-func (cpuo *CiPermissionUpdateOne) ClearFieldName() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearFieldName()
-	return cpuo
+// ClearScopeFieldName clears the value of the "scope_field_name" field.
+func (_u *CiPermissionUpdateOne) ClearScopeFieldName() *CiPermissionUpdateOne {
+	_u.mutation.ClearScopeFieldName()
+	return _u
 }
 
 // SetSubjectType sets the "subject_type" field.
-func (cpuo *CiPermissionUpdateOne) SetSubjectType(ct cipermission.SubjectType) *CiPermissionUpdateOne {
-	cpuo.mutation.SetSubjectType(ct)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetSubjectType(v cipermission.SubjectType) *CiPermissionUpdateOne {
+	_u.mutation.SetSubjectType(v)
+	return _u
 }
 
 // SetNillableSubjectType sets the "subject_type" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableSubjectType(ct *cipermission.SubjectType) *CiPermissionUpdateOne {
-	if ct != nil {
-		cpuo.SetSubjectType(*ct)
+func (_u *CiPermissionUpdateOne) SetNillableSubjectType(v *cipermission.SubjectType) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetSubjectType(*v)
 	}
-	return cpuo
+	return _u
 }
 
 // SetSubjectID sets the "subject_id" field.
-func (cpuo *CiPermissionUpdateOne) SetSubjectID(u uuid.UUID) *CiPermissionUpdateOne {
-	cpuo.mutation.SetSubjectID(u)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetSubjectID(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetSubjectID(v)
+	return _u
 }
 
 // SetNillableSubjectID sets the "subject_id" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableSubjectID(u *uuid.UUID) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetSubjectID(*u)
+func (_u *CiPermissionUpdateOne) SetNillableSubjectID(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetSubjectID(*v)
 	}
-	return cpuo
+	return _u
 }
 
 // ClearSubjectID clears the value of the "subject_id" field.
-func (cpuo *CiPermissionUpdateOne) ClearSubjectID() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearSubjectID()
-	return cpuo
+func (_u *CiPermissionUpdateOne) ClearSubjectID() *CiPermissionUpdateOne {
+	_u.mutation.ClearSubjectID()
+	return _u
 }
 
 // SetSubjectName sets the "subject_name" field.
-func (cpuo *CiPermissionUpdateOne) SetSubjectName(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetSubjectName(s)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetSubjectName(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetSubjectName(v)
+	return _u
 }
 
 // SetNillableSubjectName sets the "subject_name" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableSubjectName(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetSubjectName(*s)
+func (_u *CiPermissionUpdateOne) SetNillableSubjectName(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetSubjectName(*v)
 	}
-	return cpuo
-}
-
-// SetSubjectCode sets the "subject_code" field.
-func (cpuo *CiPermissionUpdateOne) SetSubjectCode(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetSubjectCode(s)
-	return cpuo
-}
-
-// SetNillableSubjectCode sets the "subject_code" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableSubjectCode(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetSubjectCode(*s)
-	}
-	return cpuo
-}
-
-// ClearSubjectCode clears the value of the "subject_code" field.
-func (cpuo *CiPermissionUpdateOne) ClearSubjectCode() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearSubjectCode()
-	return cpuo
+	return _u
 }
 
 // SetPermissionType sets the "permission_type" field.
-func (cpuo *CiPermissionUpdateOne) SetPermissionType(ct cipermission.PermissionType) *CiPermissionUpdateOne {
-	cpuo.mutation.SetPermissionType(ct)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetPermissionType(v cipermission.PermissionType) *CiPermissionUpdateOne {
+	_u.mutation.SetPermissionType(v)
+	return _u
 }
 
 // SetNillablePermissionType sets the "permission_type" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillablePermissionType(ct *cipermission.PermissionType) *CiPermissionUpdateOne {
-	if ct != nil {
-		cpuo.SetPermissionType(*ct)
+func (_u *CiPermissionUpdateOne) SetNillablePermissionType(v *cipermission.PermissionType) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetPermissionType(*v)
 	}
-	return cpuo
-}
-
-// SetOperations sets the "operations" field.
-func (cpuo *CiPermissionUpdateOne) SetOperations(s []string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetOperations(s)
-	return cpuo
-}
-
-// AppendOperations appends s to the "operations" field.
-func (cpuo *CiPermissionUpdateOne) AppendOperations(s []string) *CiPermissionUpdateOne {
-	cpuo.mutation.AppendOperations(s)
-	return cpuo
-}
-
-// SetConditions sets the "conditions" field.
-func (cpuo *CiPermissionUpdateOne) SetConditions(m map[string]interface{}) *CiPermissionUpdateOne {
-	cpuo.mutation.SetConditions(m)
-	return cpuo
-}
-
-// ClearConditions clears the value of the "conditions" field.
-func (cpuo *CiPermissionUpdateOne) ClearConditions() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearConditions()
-	return cpuo
-}
-
-// SetPriority sets the "priority" field.
-func (cpuo *CiPermissionUpdateOne) SetPriority(i int) *CiPermissionUpdateOne {
-	cpuo.mutation.ResetPriority()
-	cpuo.mutation.SetPriority(i)
-	return cpuo
-}
-
-// SetNillablePriority sets the "priority" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillablePriority(i *int) *CiPermissionUpdateOne {
-	if i != nil {
-		cpuo.SetPriority(*i)
-	}
-	return cpuo
-}
-
-// AddPriority adds i to the "priority" field.
-func (cpuo *CiPermissionUpdateOne) AddPriority(i int) *CiPermissionUpdateOne {
-	cpuo.mutation.AddPriority(i)
-	return cpuo
+	return _u
 }
 
 // SetPermissionLevel sets the "permission_level" field.
-func (cpuo *CiPermissionUpdateOne) SetPermissionLevel(cl cipermission.PermissionLevel) *CiPermissionUpdateOne {
-	cpuo.mutation.SetPermissionLevel(cl)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetPermissionLevel(v cipermission.PermissionLevel) *CiPermissionUpdateOne {
+	_u.mutation.SetPermissionLevel(v)
+	return _u
 }
 
 // SetNillablePermissionLevel sets the "permission_level" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillablePermissionLevel(cl *cipermission.PermissionLevel) *CiPermissionUpdateOne {
-	if cl != nil {
-		cpuo.SetPermissionLevel(*cl)
+func (_u *CiPermissionUpdateOne) SetNillablePermissionLevel(v *cipermission.PermissionLevel) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetPermissionLevel(*v)
 	}
-	return cpuo
+	return _u
+}
+
+// SetOperationsMask sets the "operations_mask" field.
+func (_u *CiPermissionUpdateOne) SetOperationsMask(v uint64) *CiPermissionUpdateOne {
+	_u.mutation.ResetOperationsMask()
+	_u.mutation.SetOperationsMask(v)
+	return _u
+}
+
+// SetNillableOperationsMask sets the "operations_mask" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableOperationsMask(v *uint64) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetOperationsMask(*v)
+	}
+	return _u
+}
+
+// AddOperationsMask adds value to the "operations_mask" field.
+func (_u *CiPermissionUpdateOne) AddOperationsMask(v int64) *CiPermissionUpdateOne {
+	_u.mutation.AddOperationsMask(v)
+	return _u
 }
 
 // SetEffectiveFrom sets the "effective_from" field.
-func (cpuo *CiPermissionUpdateOne) SetEffectiveFrom(t time.Time) *CiPermissionUpdateOne {
-	cpuo.mutation.SetEffectiveFrom(t)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetEffectiveFrom(v time.Time) *CiPermissionUpdateOne {
+	_u.mutation.SetEffectiveFrom(v)
+	return _u
 }
 
 // SetNillableEffectiveFrom sets the "effective_from" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableEffectiveFrom(t *time.Time) *CiPermissionUpdateOne {
-	if t != nil {
-		cpuo.SetEffectiveFrom(*t)
+func (_u *CiPermissionUpdateOne) SetNillableEffectiveFrom(v *time.Time) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetEffectiveFrom(*v)
 	}
-	return cpuo
+	return _u
 }
 
 // ClearEffectiveFrom clears the value of the "effective_from" field.
-func (cpuo *CiPermissionUpdateOne) ClearEffectiveFrom() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearEffectiveFrom()
-	return cpuo
+func (_u *CiPermissionUpdateOne) ClearEffectiveFrom() *CiPermissionUpdateOne {
+	_u.mutation.ClearEffectiveFrom()
+	return _u
 }
 
 // SetEffectiveTo sets the "effective_to" field.
-func (cpuo *CiPermissionUpdateOne) SetEffectiveTo(t time.Time) *CiPermissionUpdateOne {
-	cpuo.mutation.SetEffectiveTo(t)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetEffectiveTo(v time.Time) *CiPermissionUpdateOne {
+	_u.mutation.SetEffectiveTo(v)
+	return _u
 }
 
 // SetNillableEffectiveTo sets the "effective_to" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableEffectiveTo(t *time.Time) *CiPermissionUpdateOne {
-	if t != nil {
-		cpuo.SetEffectiveTo(*t)
+func (_u *CiPermissionUpdateOne) SetNillableEffectiveTo(v *time.Time) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetEffectiveTo(*v)
 	}
-	return cpuo
+	return _u
 }
 
 // ClearEffectiveTo clears the value of the "effective_to" field.
-func (cpuo *CiPermissionUpdateOne) ClearEffectiveTo() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearEffectiveTo()
-	return cpuo
+func (_u *CiPermissionUpdateOne) ClearEffectiveTo() *CiPermissionUpdateOne {
+	_u.mutation.ClearEffectiveTo()
+	return _u
 }
 
 // SetIsTemporary sets the "is_temporary" field.
-func (cpuo *CiPermissionUpdateOne) SetIsTemporary(b bool) *CiPermissionUpdateOne {
-	cpuo.mutation.SetIsTemporary(b)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetIsTemporary(v bool) *CiPermissionUpdateOne {
+	_u.mutation.SetIsTemporary(v)
+	return _u
 }
 
 // SetNillableIsTemporary sets the "is_temporary" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableIsTemporary(b *bool) *CiPermissionUpdateOne {
-	if b != nil {
-		cpuo.SetIsTemporary(*b)
+func (_u *CiPermissionUpdateOne) SetNillableIsTemporary(v *bool) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetIsTemporary(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// SetDataFilters sets the "data_filters" field.
-func (cpuo *CiPermissionUpdateOne) SetDataFilters(m map[string]interface{}) *CiPermissionUpdateOne {
-	cpuo.mutation.SetDataFilters(m)
-	return cpuo
+// SetPriority sets the "priority" field.
+func (_u *CiPermissionUpdateOne) SetPriority(v int) *CiPermissionUpdateOne {
+	_u.mutation.ResetPriority()
+	_u.mutation.SetPriority(v)
+	return _u
 }
 
-// ClearDataFilters clears the value of the "data_filters" field.
-func (cpuo *CiPermissionUpdateOne) ClearDataFilters() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearDataFilters()
-	return cpuo
-}
-
-// SetFieldMasks sets the "field_masks" field.
-func (cpuo *CiPermissionUpdateOne) SetFieldMasks(s []string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetFieldMasks(s)
-	return cpuo
-}
-
-// AppendFieldMasks appends s to the "field_masks" field.
-func (cpuo *CiPermissionUpdateOne) AppendFieldMasks(s []string) *CiPermissionUpdateOne {
-	cpuo.mutation.AppendFieldMasks(s)
-	return cpuo
-}
-
-// ClearFieldMasks clears the value of the "field_masks" field.
-func (cpuo *CiPermissionUpdateOne) ClearFieldMasks() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearFieldMasks()
-	return cpuo
-}
-
-// SetAllowedValues sets the "allowed_values" field.
-func (cpuo *CiPermissionUpdateOne) SetAllowedValues(m map[string]interface{}) *CiPermissionUpdateOne {
-	cpuo.mutation.SetAllowedValues(m)
-	return cpuo
-}
-
-// ClearAllowedValues clears the value of the "allowed_values" field.
-func (cpuo *CiPermissionUpdateOne) ClearAllowedValues() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearAllowedValues()
-	return cpuo
-}
-
-// SetRequireApproval sets the "require_approval" field.
-func (cpuo *CiPermissionUpdateOne) SetRequireApproval(b bool) *CiPermissionUpdateOne {
-	cpuo.mutation.SetRequireApproval(b)
-	return cpuo
-}
-
-// SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableRequireApproval(b *bool) *CiPermissionUpdateOne {
-	if b != nil {
-		cpuo.SetRequireApproval(*b)
+// SetNillablePriority sets the "priority" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillablePriority(v *int) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetPriority(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// SetGrantedBy sets the "granted_by" field.
-func (cpuo *CiPermissionUpdateOne) SetGrantedBy(u uuid.UUID) *CiPermissionUpdateOne {
-	cpuo.mutation.SetGrantedBy(u)
-	return cpuo
-}
-
-// SetNillableGrantedBy sets the "granted_by" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableGrantedBy(u *uuid.UUID) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetGrantedBy(*u)
-	}
-	return cpuo
-}
-
-// ClearGrantedBy clears the value of the "granted_by" field.
-func (cpuo *CiPermissionUpdateOne) ClearGrantedBy() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearGrantedBy()
-	return cpuo
-}
-
-// SetGrantedByName sets the "granted_by_name" field.
-func (cpuo *CiPermissionUpdateOne) SetGrantedByName(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetGrantedByName(s)
-	return cpuo
-}
-
-// SetNillableGrantedByName sets the "granted_by_name" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableGrantedByName(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetGrantedByName(*s)
-	}
-	return cpuo
-}
-
-// ClearGrantedByName clears the value of the "granted_by_name" field.
-func (cpuo *CiPermissionUpdateOne) ClearGrantedByName() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearGrantedByName()
-	return cpuo
-}
-
-// SetGrantedAt sets the "granted_at" field.
-func (cpuo *CiPermissionUpdateOne) SetGrantedAt(t time.Time) *CiPermissionUpdateOne {
-	cpuo.mutation.SetGrantedAt(t)
-	return cpuo
-}
-
-// SetNillableGrantedAt sets the "granted_at" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableGrantedAt(t *time.Time) *CiPermissionUpdateOne {
-	if t != nil {
-		cpuo.SetGrantedAt(*t)
-	}
-	return cpuo
-}
-
-// ClearGrantedAt clears the value of the "granted_at" field.
-func (cpuo *CiPermissionUpdateOne) ClearGrantedAt() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearGrantedAt()
-	return cpuo
-}
-
-// SetGrantReason sets the "grant_reason" field.
-func (cpuo *CiPermissionUpdateOne) SetGrantReason(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetGrantReason(s)
-	return cpuo
-}
-
-// SetNillableGrantReason sets the "grant_reason" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableGrantReason(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetGrantReason(*s)
-	}
-	return cpuo
-}
-
-// ClearGrantReason clears the value of the "grant_reason" field.
-func (cpuo *CiPermissionUpdateOne) ClearGrantReason() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearGrantReason()
-	return cpuo
-}
-
-// SetUsageCount sets the "usage_count" field.
-func (cpuo *CiPermissionUpdateOne) SetUsageCount(i int) *CiPermissionUpdateOne {
-	cpuo.mutation.ResetUsageCount()
-	cpuo.mutation.SetUsageCount(i)
-	return cpuo
-}
-
-// SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableUsageCount(i *int) *CiPermissionUpdateOne {
-	if i != nil {
-		cpuo.SetUsageCount(*i)
-	}
-	return cpuo
-}
-
-// AddUsageCount adds i to the "usage_count" field.
-func (cpuo *CiPermissionUpdateOne) AddUsageCount(i int) *CiPermissionUpdateOne {
-	cpuo.mutation.AddUsageCount(i)
-	return cpuo
-}
-
-// SetLastUsedAt sets the "last_used_at" field.
-func (cpuo *CiPermissionUpdateOne) SetLastUsedAt(t time.Time) *CiPermissionUpdateOne {
-	cpuo.mutation.SetLastUsedAt(t)
-	return cpuo
-}
-
-// SetNillableLastUsedAt sets the "last_used_at" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableLastUsedAt(t *time.Time) *CiPermissionUpdateOne {
-	if t != nil {
-		cpuo.SetLastUsedAt(*t)
-	}
-	return cpuo
-}
-
-// ClearLastUsedAt clears the value of the "last_used_at" field.
-func (cpuo *CiPermissionUpdateOne) ClearLastUsedAt() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearLastUsedAt()
-	return cpuo
-}
-
-// SetUsageStatistics sets the "usage_statistics" field.
-func (cpuo *CiPermissionUpdateOne) SetUsageStatistics(m map[string]interface{}) *CiPermissionUpdateOne {
-	cpuo.mutation.SetUsageStatistics(m)
-	return cpuo
-}
-
-// ClearUsageStatistics clears the value of the "usage_statistics" field.
-func (cpuo *CiPermissionUpdateOne) ClearUsageStatistics() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearUsageStatistics()
-	return cpuo
+// AddPriority adds value to the "priority" field.
+func (_u *CiPermissionUpdateOne) AddPriority(v int) *CiPermissionUpdateOne {
+	_u.mutation.AddPriority(v)
+	return _u
 }
 
 // SetStatus sets the "status" field.
-func (cpuo *CiPermissionUpdateOne) SetStatus(c cipermission.Status) *CiPermissionUpdateOne {
-	cpuo.mutation.SetStatus(c)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetStatus(v cipermission.Status) *CiPermissionUpdateOne {
+	_u.mutation.SetStatus(v)
+	return _u
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableStatus(c *cipermission.Status) *CiPermissionUpdateOne {
-	if c != nil {
-		cpuo.SetStatus(*c)
+func (_u *CiPermissionUpdateOne) SetNillableStatus(v *cipermission.Status) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetStatus(*v)
 	}
-	return cpuo
-}
-
-// SetStatusReason sets the "status_reason" field.
-func (cpuo *CiPermissionUpdateOne) SetStatusReason(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetStatusReason(s)
-	return cpuo
-}
-
-// SetNillableStatusReason sets the "status_reason" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableStatusReason(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetStatusReason(*s)
-	}
-	return cpuo
-}
-
-// ClearStatusReason clears the value of the "status_reason" field.
-func (cpuo *CiPermissionUpdateOne) ClearStatusReason() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearStatusReason()
-	return cpuo
-}
-
-// SetInheritable sets the "inheritable" field.
-func (cpuo *CiPermissionUpdateOne) SetInheritable(b bool) *CiPermissionUpdateOne {
-	cpuo.mutation.SetInheritable(b)
-	return cpuo
-}
-
-// SetNillableInheritable sets the "inheritable" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableInheritable(b *bool) *CiPermissionUpdateOne {
-	if b != nil {
-		cpuo.SetInheritable(*b)
-	}
-	return cpuo
+	return _u
 }
 
 // SetParentPermissionID sets the "parent_permission_id" field.
-func (cpuo *CiPermissionUpdateOne) SetParentPermissionID(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetParentPermissionID(s)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetParentPermissionID(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetParentPermissionID(v)
+	return _u
 }
 
 // SetNillableParentPermissionID sets the "parent_permission_id" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableParentPermissionID(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetParentPermissionID(*s)
+func (_u *CiPermissionUpdateOne) SetNillableParentPermissionID(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetParentPermissionID(*v)
 	}
-	return cpuo
+	return _u
 }
 
 // ClearParentPermissionID clears the value of the "parent_permission_id" field.
-func (cpuo *CiPermissionUpdateOne) ClearParentPermissionID() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearParentPermissionID()
-	return cpuo
+func (_u *CiPermissionUpdateOne) ClearParentPermissionID() *CiPermissionUpdateOne {
+	_u.mutation.ClearParentPermissionID()
+	return _u
 }
 
-// SetInheritedFrom sets the "inherited_from" field.
-func (cpuo *CiPermissionUpdateOne) SetInheritedFrom(s []string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetInheritedFrom(s)
-	return cpuo
+// SetInheritable sets the "inheritable" field.
+func (_u *CiPermissionUpdateOne) SetInheritable(v bool) *CiPermissionUpdateOne {
+	_u.mutation.SetInheritable(v)
+	return _u
 }
 
-// AppendInheritedFrom appends s to the "inherited_from" field.
-func (cpuo *CiPermissionUpdateOne) AppendInheritedFrom(s []string) *CiPermissionUpdateOne {
-	cpuo.mutation.AppendInheritedFrom(s)
-	return cpuo
-}
-
-// ClearInheritedFrom clears the value of the "inherited_from" field.
-func (cpuo *CiPermissionUpdateOne) ClearInheritedFrom() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearInheritedFrom()
-	return cpuo
-}
-
-// SetRiskLevel sets the "risk_level" field.
-func (cpuo *CiPermissionUpdateOne) SetRiskLevel(cl cipermission.RiskLevel) *CiPermissionUpdateOne {
-	cpuo.mutation.SetRiskLevel(cl)
-	return cpuo
-}
-
-// SetNillableRiskLevel sets the "risk_level" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableRiskLevel(cl *cipermission.RiskLevel) *CiPermissionUpdateOne {
-	if cl != nil {
-		cpuo.SetRiskLevel(*cl)
+// SetNillableInheritable sets the "inheritable" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableInheritable(v *bool) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetInheritable(*v)
 	}
-	return cpuo
+	return _u
+}
+
+// SetRequireApproval sets the "require_approval" field.
+func (_u *CiPermissionUpdateOne) SetRequireApproval(v bool) *CiPermissionUpdateOne {
+	_u.mutation.SetRequireApproval(v)
+	return _u
+}
+
+// SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableRequireApproval(v *bool) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetRequireApproval(*v)
+	}
+	return _u
 }
 
 // SetRequireMfa sets the "require_mfa" field.
-func (cpuo *CiPermissionUpdateOne) SetRequireMfa(b bool) *CiPermissionUpdateOne {
-	cpuo.mutation.SetRequireMfa(b)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetRequireMfa(v bool) *CiPermissionUpdateOne {
+	_u.mutation.SetRequireMfa(v)
+	return _u
 }
 
 // SetNillableRequireMfa sets the "require_mfa" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableRequireMfa(b *bool) *CiPermissionUpdateOne {
-	if b != nil {
-		cpuo.SetRequireMfa(*b)
+func (_u *CiPermissionUpdateOne) SetNillableRequireMfa(v *bool) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetRequireMfa(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// SetSecurityConstraints sets the "security_constraints" field.
-func (cpuo *CiPermissionUpdateOne) SetSecurityConstraints(m map[string]interface{}) *CiPermissionUpdateOne {
-	cpuo.mutation.SetSecurityConstraints(m)
-	return cpuo
+// SetRiskLevel sets the "risk_level" field.
+func (_u *CiPermissionUpdateOne) SetRiskLevel(v cipermission.RiskLevel) *CiPermissionUpdateOne {
+	_u.mutation.SetRiskLevel(v)
+	return _u
 }
 
-// ClearSecurityConstraints clears the value of the "security_constraints" field.
-func (cpuo *CiPermissionUpdateOne) ClearSecurityConstraints() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearSecurityConstraints()
-	return cpuo
-}
-
-// SetMetadata sets the "metadata" field.
-func (cpuo *CiPermissionUpdateOne) SetMetadata(m map[string]interface{}) *CiPermissionUpdateOne {
-	cpuo.mutation.SetMetadata(m)
-	return cpuo
-}
-
-// ClearMetadata clears the value of the "metadata" field.
-func (cpuo *CiPermissionUpdateOne) ClearMetadata() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearMetadata()
-	return cpuo
-}
-
-// SetTags sets the "tags" field.
-func (cpuo *CiPermissionUpdateOne) SetTags(s []string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetTags(s)
-	return cpuo
-}
-
-// AppendTags appends s to the "tags" field.
-func (cpuo *CiPermissionUpdateOne) AppendTags(s []string) *CiPermissionUpdateOne {
-	cpuo.mutation.AppendTags(s)
-	return cpuo
-}
-
-// ClearTags clears the value of the "tags" field.
-func (cpuo *CiPermissionUpdateOne) ClearTags() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearTags()
-	return cpuo
-}
-
-// SetDescription sets the "description" field.
-func (cpuo *CiPermissionUpdateOne) SetDescription(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetDescription(s)
-	return cpuo
-}
-
-// SetNillableDescription sets the "description" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableDescription(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetDescription(*s)
+// SetNillableRiskLevel sets the "risk_level" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableRiskLevel(v *cipermission.RiskLevel) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetRiskLevel(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// ClearDescription clears the value of the "description" field.
-func (cpuo *CiPermissionUpdateOne) ClearDescription() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearDescription()
-	return cpuo
+// SetUsageCount sets the "usage_count" field.
+func (_u *CiPermissionUpdateOne) SetUsageCount(v int) *CiPermissionUpdateOne {
+	_u.mutation.ResetUsageCount()
+	_u.mutation.SetUsageCount(v)
+	return _u
 }
 
-// SetComments sets the "comments" field.
-func (cpuo *CiPermissionUpdateOne) SetComments(s string) *CiPermissionUpdateOne {
-	cpuo.mutation.SetComments(s)
-	return cpuo
-}
-
-// SetNillableComments sets the "comments" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableComments(s *string) *CiPermissionUpdateOne {
-	if s != nil {
-		cpuo.SetComments(*s)
+// SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableUsageCount(v *int) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetUsageCount(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// ClearComments clears the value of the "comments" field.
-func (cpuo *CiPermissionUpdateOne) ClearComments() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearComments()
-	return cpuo
+// AddUsageCount adds value to the "usage_count" field.
+func (_u *CiPermissionUpdateOne) AddUsageCount(v int) *CiPermissionUpdateOne {
+	_u.mutation.AddUsageCount(v)
+	return _u
+}
+
+// SetLastUsedAt sets the "last_used_at" field.
+func (_u *CiPermissionUpdateOne) SetLastUsedAt(v time.Time) *CiPermissionUpdateOne {
+	_u.mutation.SetLastUsedAt(v)
+	return _u
+}
+
+// SetNillableLastUsedAt sets the "last_used_at" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableLastUsedAt(v *time.Time) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetLastUsedAt(*v)
+	}
+	return _u
+}
+
+// ClearLastUsedAt clears the value of the "last_used_at" field.
+func (_u *CiPermissionUpdateOne) ClearLastUsedAt() *CiPermissionUpdateOne {
+	_u.mutation.ClearLastUsedAt()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (cpuo *CiPermissionUpdateOne) SetCreatedBy(u uuid.UUID) *CiPermissionUpdateOne {
-	cpuo.mutation.SetCreatedBy(u)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetCreatedBy(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableCreatedBy(u *uuid.UUID) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetCreatedBy(*u)
+func (_u *CiPermissionUpdateOne) SetNillableCreatedBy(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return cpuo
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (cpuo *CiPermissionUpdateOne) ClearCreatedBy() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearCreatedBy()
-	return cpuo
+func (_u *CiPermissionUpdateOne) ClearCreatedBy() *CiPermissionUpdateOne {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetUpdatedBy sets the "updated_by" field.
-func (cpuo *CiPermissionUpdateOne) SetUpdatedBy(u uuid.UUID) *CiPermissionUpdateOne {
-	cpuo.mutation.SetUpdatedBy(u)
-	return cpuo
+func (_u *CiPermissionUpdateOne) SetUpdatedBy(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetUpdatedBy(v)
+	return _u
 }
 
 // SetNillableUpdatedBy sets the "updated_by" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableUpdatedBy(u *uuid.UUID) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetUpdatedBy(*u)
+func (_u *CiPermissionUpdateOne) SetNillableUpdatedBy(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetUpdatedBy(*v)
 	}
-	return cpuo
+	return _u
 }
 
 // ClearUpdatedBy clears the value of the "updated_by" field.
-func (cpuo *CiPermissionUpdateOne) ClearUpdatedBy() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearUpdatedBy()
-	return cpuo
+func (_u *CiPermissionUpdateOne) ClearUpdatedBy() *CiPermissionUpdateOne {
+	_u.mutation.ClearUpdatedBy()
+	return _u
 }
 
-// SetLastReviewedAt sets the "last_reviewed_at" field.
-func (cpuo *CiPermissionUpdateOne) SetLastReviewedAt(t time.Time) *CiPermissionUpdateOne {
-	cpuo.mutation.SetLastReviewedAt(t)
-	return cpuo
+// SetDescription sets the "description" field.
+func (_u *CiPermissionUpdateOne) SetDescription(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetDescription(v)
+	return _u
 }
 
-// SetNillableLastReviewedAt sets the "last_reviewed_at" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableLastReviewedAt(t *time.Time) *CiPermissionUpdateOne {
-	if t != nil {
-		cpuo.SetLastReviewedAt(*t)
+// SetNillableDescription sets the "description" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableDescription(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetDescription(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// ClearLastReviewedAt clears the value of the "last_reviewed_at" field.
-func (cpuo *CiPermissionUpdateOne) ClearLastReviewedAt() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearLastReviewedAt()
-	return cpuo
+// ClearDescription clears the value of the "description" field.
+func (_u *CiPermissionUpdateOne) ClearDescription() *CiPermissionUpdateOne {
+	_u.mutation.ClearDescription()
+	return _u
 }
 
-// SetLastReviewedBy sets the "last_reviewed_by" field.
-func (cpuo *CiPermissionUpdateOne) SetLastReviewedBy(u uuid.UUID) *CiPermissionUpdateOne {
-	cpuo.mutation.SetLastReviewedBy(u)
-	return cpuo
+// SetComments sets the "comments" field.
+func (_u *CiPermissionUpdateOne) SetComments(v string) *CiPermissionUpdateOne {
+	_u.mutation.SetComments(v)
+	return _u
 }
 
-// SetNillableLastReviewedBy sets the "last_reviewed_by" field if the given value is not nil.
-func (cpuo *CiPermissionUpdateOne) SetNillableLastReviewedBy(u *uuid.UUID) *CiPermissionUpdateOne {
-	if u != nil {
-		cpuo.SetLastReviewedBy(*u)
+// SetNillableComments sets the "comments" field if the given value is not nil.
+func (_u *CiPermissionUpdateOne) SetNillableComments(v *string) *CiPermissionUpdateOne {
+	if v != nil {
+		_u.SetComments(*v)
 	}
-	return cpuo
+	return _u
 }
 
-// ClearLastReviewedBy clears the value of the "last_reviewed_by" field.
-func (cpuo *CiPermissionUpdateOne) ClearLastReviewedBy() *CiPermissionUpdateOne {
-	cpuo.mutation.ClearLastReviewedBy()
-	return cpuo
+// ClearComments clears the value of the "comments" field.
+func (_u *CiPermissionUpdateOne) ClearComments() *CiPermissionUpdateOne {
+	_u.mutation.ClearComments()
+	return _u
+}
+
+// AddOperationIDs adds the "operations" edge to the PermissionOperation entity by IDs.
+func (_u *CiPermissionUpdateOne) AddOperationIDs(ids ...uint64) *CiPermissionUpdateOne {
+	_u.mutation.AddOperationIDs(ids...)
+	return _u
+}
+
+// AddOperations adds the "operations" edges to the PermissionOperation entity.
+func (_u *CiPermissionUpdateOne) AddOperations(v ...*PermissionOperation) *CiPermissionUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddOperationIDs(ids...)
+}
+
+// AddDataFilterIDs adds the "data_filters" edge to the PermissionDataFilter entity by IDs.
+func (_u *CiPermissionUpdateOne) AddDataFilterIDs(ids ...uint64) *CiPermissionUpdateOne {
+	_u.mutation.AddDataFilterIDs(ids...)
+	return _u
+}
+
+// AddDataFilters adds the "data_filters" edges to the PermissionDataFilter entity.
+func (_u *CiPermissionUpdateOne) AddDataFilters(v ...*PermissionDataFilter) *CiPermissionUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddDataFilterIDs(ids...)
+}
+
+// AddFieldMaskIDs adds the "field_masks" edge to the PermissionFieldMask entity by IDs.
+func (_u *CiPermissionUpdateOne) AddFieldMaskIDs(ids ...uint64) *CiPermissionUpdateOne {
+	_u.mutation.AddFieldMaskIDs(ids...)
+	return _u
+}
+
+// AddFieldMasks adds the "field_masks" edges to the PermissionFieldMask entity.
+func (_u *CiPermissionUpdateOne) AddFieldMasks(v ...*PermissionFieldMask) *CiPermissionUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddFieldMaskIDs(ids...)
 }
 
 // Mutation returns the CiPermissionMutation object of the builder.
-func (cpuo *CiPermissionUpdateOne) Mutation() *CiPermissionMutation {
-	return cpuo.mutation
+func (_u *CiPermissionUpdateOne) Mutation() *CiPermissionMutation {
+	return _u.mutation
+}
+
+// ClearOperations clears all "operations" edges to the PermissionOperation entity.
+func (_u *CiPermissionUpdateOne) ClearOperations() *CiPermissionUpdateOne {
+	_u.mutation.ClearOperations()
+	return _u
+}
+
+// RemoveOperationIDs removes the "operations" edge to PermissionOperation entities by IDs.
+func (_u *CiPermissionUpdateOne) RemoveOperationIDs(ids ...uint64) *CiPermissionUpdateOne {
+	_u.mutation.RemoveOperationIDs(ids...)
+	return _u
+}
+
+// RemoveOperations removes "operations" edges to PermissionOperation entities.
+func (_u *CiPermissionUpdateOne) RemoveOperations(v ...*PermissionOperation) *CiPermissionUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveOperationIDs(ids...)
+}
+
+// ClearDataFilters clears all "data_filters" edges to the PermissionDataFilter entity.
+func (_u *CiPermissionUpdateOne) ClearDataFilters() *CiPermissionUpdateOne {
+	_u.mutation.ClearDataFilters()
+	return _u
+}
+
+// RemoveDataFilterIDs removes the "data_filters" edge to PermissionDataFilter entities by IDs.
+func (_u *CiPermissionUpdateOne) RemoveDataFilterIDs(ids ...uint64) *CiPermissionUpdateOne {
+	_u.mutation.RemoveDataFilterIDs(ids...)
+	return _u
+}
+
+// RemoveDataFilters removes "data_filters" edges to PermissionDataFilter entities.
+func (_u *CiPermissionUpdateOne) RemoveDataFilters(v ...*PermissionDataFilter) *CiPermissionUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveDataFilterIDs(ids...)
+}
+
+// ClearFieldMasks clears all "field_masks" edges to the PermissionFieldMask entity.
+func (_u *CiPermissionUpdateOne) ClearFieldMasks() *CiPermissionUpdateOne {
+	_u.mutation.ClearFieldMasks()
+	return _u
+}
+
+// RemoveFieldMaskIDs removes the "field_masks" edge to PermissionFieldMask entities by IDs.
+func (_u *CiPermissionUpdateOne) RemoveFieldMaskIDs(ids ...uint64) *CiPermissionUpdateOne {
+	_u.mutation.RemoveFieldMaskIDs(ids...)
+	return _u
+}
+
+// RemoveFieldMasks removes "field_masks" edges to PermissionFieldMask entities.
+func (_u *CiPermissionUpdateOne) RemoveFieldMasks(v ...*PermissionFieldMask) *CiPermissionUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveFieldMaskIDs(ids...)
 }
 
 // Where appends a list predicates to the CiPermissionUpdate builder.
-func (cpuo *CiPermissionUpdateOne) Where(ps ...predicate.CiPermission) *CiPermissionUpdateOne {
-	cpuo.mutation.Where(ps...)
-	return cpuo
+func (_u *CiPermissionUpdateOne) Where(ps ...predicate.CiPermission) *CiPermissionUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (cpuo *CiPermissionUpdateOne) Select(field string, fields ...string) *CiPermissionUpdateOne {
-	cpuo.fields = append([]string{field}, fields...)
-	return cpuo
+func (_u *CiPermissionUpdateOne) Select(field string, fields ...string) *CiPermissionUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiPermission entity.
-func (cpuo *CiPermissionUpdateOne) Save(ctx context.Context) (*CiPermission, error) {
-	cpuo.defaults()
-	return withHooks(ctx, cpuo.sqlSave, cpuo.mutation, cpuo.hooks)
+func (_u *CiPermissionUpdateOne) Save(ctx context.Context) (*CiPermission, error) {
+	_u.defaults()
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cpuo *CiPermissionUpdateOne) SaveX(ctx context.Context) *CiPermission {
-	node, err := cpuo.Save(ctx)
+func (_u *CiPermissionUpdateOne) SaveX(ctx context.Context) *CiPermission {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -2088,54 +1687,54 @@ func (cpuo *CiPermissionUpdateOne) SaveX(ctx context.Context) *CiPermission {
 }
 
 // Exec executes the query on the entity.
-func (cpuo *CiPermissionUpdateOne) Exec(ctx context.Context) error {
-	_, err := cpuo.Save(ctx)
+func (_u *CiPermissionUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cpuo *CiPermissionUpdateOne) ExecX(ctx context.Context) {
-	if err := cpuo.Exec(ctx); err != nil {
+func (_u *CiPermissionUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cpuo *CiPermissionUpdateOne) defaults() {
-	if _, ok := cpuo.mutation.UpdatedAt(); !ok {
+func (_u *CiPermissionUpdateOne) defaults() {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		v := cipermission.UpdateDefaultUpdatedAt()
-		cpuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cpuo *CiPermissionUpdateOne) check() error {
-	if v, ok := cpuo.mutation.ScopeType(); ok {
+func (_u *CiPermissionUpdateOne) check() error {
+	if v, ok := _u.mutation.ScopeType(); ok {
 		if err := cipermission.ScopeTypeValidator(v); err != nil {
 			return &ValidationError{Name: "scope_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.scope_type": %w`, err)}
 		}
 	}
-	if v, ok := cpuo.mutation.SubjectType(); ok {
+	if v, ok := _u.mutation.SubjectType(); ok {
 		if err := cipermission.SubjectTypeValidator(v); err != nil {
 			return &ValidationError{Name: "subject_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.subject_type": %w`, err)}
 		}
 	}
-	if v, ok := cpuo.mutation.PermissionType(); ok {
+	if v, ok := _u.mutation.PermissionType(); ok {
 		if err := cipermission.PermissionTypeValidator(v); err != nil {
 			return &ValidationError{Name: "permission_type", err: fmt.Errorf(`ent: validator failed for field "CiPermission.permission_type": %w`, err)}
 		}
 	}
-	if v, ok := cpuo.mutation.PermissionLevel(); ok {
+	if v, ok := _u.mutation.PermissionLevel(); ok {
 		if err := cipermission.PermissionLevelValidator(v); err != nil {
 			return &ValidationError{Name: "permission_level", err: fmt.Errorf(`ent: validator failed for field "CiPermission.permission_level": %w`, err)}
 		}
 	}
-	if v, ok := cpuo.mutation.Status(); ok {
+	if v, ok := _u.mutation.Status(); ok {
 		if err := cipermission.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "CiPermission.status": %w`, err)}
 		}
 	}
-	if v, ok := cpuo.mutation.RiskLevel(); ok {
+	if v, ok := _u.mutation.RiskLevel(); ok {
 		if err := cipermission.RiskLevelValidator(v); err != nil {
 			return &ValidationError{Name: "risk_level", err: fmt.Errorf(`ent: validator failed for field "CiPermission.risk_level": %w`, err)}
 		}
@@ -2143,17 +1742,17 @@ func (cpuo *CiPermissionUpdateOne) check() error {
 	return nil
 }
 
-func (cpuo *CiPermissionUpdateOne) sqlSave(ctx context.Context) (_node *CiPermission, err error) {
-	if err := cpuo.check(); err != nil {
+func (_u *CiPermissionUpdateOne) sqlSave(ctx context.Context) (_node *CiPermission, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cipermission.Table, cipermission.Columns, sqlgraph.NewFieldSpec(cipermission.FieldID, field.TypeUint64))
-	id, ok := cpuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiPermission.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := cpuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cipermission.FieldID)
 		for _, f := range fields {
@@ -2165,289 +1764,293 @@ func (cpuo *CiPermissionUpdateOne) sqlSave(ctx context.Context) (_node *CiPermis
 			}
 		}
 	}
-	if ps := cpuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cpuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cipermission.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cpuo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cipermission.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cpuo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cipermission.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cpuo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cipermission.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cpuo.mutation.PermissionID(); ok {
+	if value, ok := _u.mutation.PermissionID(); ok {
 		_spec.SetField(cipermission.FieldPermissionID, field.TypeString, value)
 	}
-	if value, ok := cpuo.mutation.ScopeType(); ok {
+	if value, ok := _u.mutation.ScopeType(); ok {
 		_spec.SetField(cipermission.FieldScopeType, field.TypeEnum, value)
 	}
-	if value, ok := cpuo.mutation.CiTypeID(); ok {
-		_spec.SetField(cipermission.FieldCiTypeID, field.TypeUint64, value)
+	if value, ok := _u.mutation.ScopeTargetType(); ok {
+		_spec.SetField(cipermission.FieldScopeTargetType, field.TypeString, value)
 	}
-	if value, ok := cpuo.mutation.AddedCiTypeID(); ok {
-		_spec.AddField(cipermission.FieldCiTypeID, field.TypeUint64, value)
+	if _u.mutation.ScopeTargetTypeCleared() {
+		_spec.ClearField(cipermission.FieldScopeTargetType, field.TypeString)
 	}
-	if cpuo.mutation.CiTypeIDCleared() {
-		_spec.ClearField(cipermission.FieldCiTypeID, field.TypeUint64)
+	if value, ok := _u.mutation.ScopeTargetID(); ok {
+		_spec.SetField(cipermission.FieldScopeTargetID, field.TypeUint64, value)
 	}
-	if value, ok := cpuo.mutation.CiID(); ok {
-		_spec.SetField(cipermission.FieldCiID, field.TypeUint64, value)
+	if value, ok := _u.mutation.AddedScopeTargetID(); ok {
+		_spec.AddField(cipermission.FieldScopeTargetID, field.TypeUint64, value)
 	}
-	if value, ok := cpuo.mutation.AddedCiID(); ok {
-		_spec.AddField(cipermission.FieldCiID, field.TypeUint64, value)
+	if _u.mutation.ScopeTargetIDCleared() {
+		_spec.ClearField(cipermission.FieldScopeTargetID, field.TypeUint64)
 	}
-	if cpuo.mutation.CiIDCleared() {
-		_spec.ClearField(cipermission.FieldCiID, field.TypeUint64)
+	if value, ok := _u.mutation.ScopeFieldName(); ok {
+		_spec.SetField(cipermission.FieldScopeFieldName, field.TypeString, value)
 	}
-	if value, ok := cpuo.mutation.AttributeID(); ok {
-		_spec.SetField(cipermission.FieldAttributeID, field.TypeUint64, value)
+	if _u.mutation.ScopeFieldNameCleared() {
+		_spec.ClearField(cipermission.FieldScopeFieldName, field.TypeString)
 	}
-	if value, ok := cpuo.mutation.AddedAttributeID(); ok {
-		_spec.AddField(cipermission.FieldAttributeID, field.TypeUint64, value)
-	}
-	if cpuo.mutation.AttributeIDCleared() {
-		_spec.ClearField(cipermission.FieldAttributeID, field.TypeUint64)
-	}
-	if value, ok := cpuo.mutation.FieldName(); ok {
-		_spec.SetField(cipermission.FieldFieldName, field.TypeString, value)
-	}
-	if cpuo.mutation.FieldNameCleared() {
-		_spec.ClearField(cipermission.FieldFieldName, field.TypeString)
-	}
-	if value, ok := cpuo.mutation.SubjectType(); ok {
+	if value, ok := _u.mutation.SubjectType(); ok {
 		_spec.SetField(cipermission.FieldSubjectType, field.TypeEnum, value)
 	}
-	if value, ok := cpuo.mutation.SubjectID(); ok {
-		_spec.SetField(cipermission.FieldSubjectID, field.TypeUUID, value)
+	if value, ok := _u.mutation.SubjectID(); ok {
+		_spec.SetField(cipermission.FieldSubjectID, field.TypeString, value)
 	}
-	if cpuo.mutation.SubjectIDCleared() {
-		_spec.ClearField(cipermission.FieldSubjectID, field.TypeUUID)
+	if _u.mutation.SubjectIDCleared() {
+		_spec.ClearField(cipermission.FieldSubjectID, field.TypeString)
 	}
-	if value, ok := cpuo.mutation.SubjectName(); ok {
+	if value, ok := _u.mutation.SubjectName(); ok {
 		_spec.SetField(cipermission.FieldSubjectName, field.TypeString, value)
 	}
-	if value, ok := cpuo.mutation.SubjectCode(); ok {
-		_spec.SetField(cipermission.FieldSubjectCode, field.TypeString, value)
-	}
-	if cpuo.mutation.SubjectCodeCleared() {
-		_spec.ClearField(cipermission.FieldSubjectCode, field.TypeString)
-	}
-	if value, ok := cpuo.mutation.PermissionType(); ok {
+	if value, ok := _u.mutation.PermissionType(); ok {
 		_spec.SetField(cipermission.FieldPermissionType, field.TypeEnum, value)
 	}
-	if value, ok := cpuo.mutation.Operations(); ok {
-		_spec.SetField(cipermission.FieldOperations, field.TypeJSON, value)
-	}
-	if value, ok := cpuo.mutation.AppendedOperations(); ok {
-		_spec.AddModifier(func(u *sql.UpdateBuilder) {
-			sqljson.Append(u, cipermission.FieldOperations, value)
-		})
-	}
-	if value, ok := cpuo.mutation.Conditions(); ok {
-		_spec.SetField(cipermission.FieldConditions, field.TypeJSON, value)
-	}
-	if cpuo.mutation.ConditionsCleared() {
-		_spec.ClearField(cipermission.FieldConditions, field.TypeJSON)
-	}
-	if value, ok := cpuo.mutation.Priority(); ok {
-		_spec.SetField(cipermission.FieldPriority, field.TypeInt, value)
-	}
-	if value, ok := cpuo.mutation.AddedPriority(); ok {
-		_spec.AddField(cipermission.FieldPriority, field.TypeInt, value)
-	}
-	if value, ok := cpuo.mutation.PermissionLevel(); ok {
+	if value, ok := _u.mutation.PermissionLevel(); ok {
 		_spec.SetField(cipermission.FieldPermissionLevel, field.TypeEnum, value)
 	}
-	if value, ok := cpuo.mutation.EffectiveFrom(); ok {
+	if value, ok := _u.mutation.OperationsMask(); ok {
+		_spec.SetField(cipermission.FieldOperationsMask, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedOperationsMask(); ok {
+		_spec.AddField(cipermission.FieldOperationsMask, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.EffectiveFrom(); ok {
 		_spec.SetField(cipermission.FieldEffectiveFrom, field.TypeTime, value)
 	}
-	if cpuo.mutation.EffectiveFromCleared() {
+	if _u.mutation.EffectiveFromCleared() {
 		_spec.ClearField(cipermission.FieldEffectiveFrom, field.TypeTime)
 	}
-	if value, ok := cpuo.mutation.EffectiveTo(); ok {
+	if value, ok := _u.mutation.EffectiveTo(); ok {
 		_spec.SetField(cipermission.FieldEffectiveTo, field.TypeTime, value)
 	}
-	if cpuo.mutation.EffectiveToCleared() {
+	if _u.mutation.EffectiveToCleared() {
 		_spec.ClearField(cipermission.FieldEffectiveTo, field.TypeTime)
 	}
-	if value, ok := cpuo.mutation.IsTemporary(); ok {
+	if value, ok := _u.mutation.IsTemporary(); ok {
 		_spec.SetField(cipermission.FieldIsTemporary, field.TypeBool, value)
 	}
-	if value, ok := cpuo.mutation.DataFilters(); ok {
-		_spec.SetField(cipermission.FieldDataFilters, field.TypeJSON, value)
+	if value, ok := _u.mutation.Priority(); ok {
+		_spec.SetField(cipermission.FieldPriority, field.TypeInt, value)
 	}
-	if cpuo.mutation.DataFiltersCleared() {
-		_spec.ClearField(cipermission.FieldDataFilters, field.TypeJSON)
+	if value, ok := _u.mutation.AddedPriority(); ok {
+		_spec.AddField(cipermission.FieldPriority, field.TypeInt, value)
 	}
-	if value, ok := cpuo.mutation.FieldMasks(); ok {
-		_spec.SetField(cipermission.FieldFieldMasks, field.TypeJSON, value)
-	}
-	if value, ok := cpuo.mutation.AppendedFieldMasks(); ok {
-		_spec.AddModifier(func(u *sql.UpdateBuilder) {
-			sqljson.Append(u, cipermission.FieldFieldMasks, value)
-		})
-	}
-	if cpuo.mutation.FieldMasksCleared() {
-		_spec.ClearField(cipermission.FieldFieldMasks, field.TypeJSON)
-	}
-	if value, ok := cpuo.mutation.AllowedValues(); ok {
-		_spec.SetField(cipermission.FieldAllowedValues, field.TypeJSON, value)
-	}
-	if cpuo.mutation.AllowedValuesCleared() {
-		_spec.ClearField(cipermission.FieldAllowedValues, field.TypeJSON)
-	}
-	if value, ok := cpuo.mutation.RequireApproval(); ok {
-		_spec.SetField(cipermission.FieldRequireApproval, field.TypeBool, value)
-	}
-	if value, ok := cpuo.mutation.GrantedBy(); ok {
-		_spec.SetField(cipermission.FieldGrantedBy, field.TypeUUID, value)
-	}
-	if cpuo.mutation.GrantedByCleared() {
-		_spec.ClearField(cipermission.FieldGrantedBy, field.TypeUUID)
-	}
-	if value, ok := cpuo.mutation.GrantedByName(); ok {
-		_spec.SetField(cipermission.FieldGrantedByName, field.TypeString, value)
-	}
-	if cpuo.mutation.GrantedByNameCleared() {
-		_spec.ClearField(cipermission.FieldGrantedByName, field.TypeString)
-	}
-	if value, ok := cpuo.mutation.GrantedAt(); ok {
-		_spec.SetField(cipermission.FieldGrantedAt, field.TypeTime, value)
-	}
-	if cpuo.mutation.GrantedAtCleared() {
-		_spec.ClearField(cipermission.FieldGrantedAt, field.TypeTime)
-	}
-	if value, ok := cpuo.mutation.GrantReason(); ok {
-		_spec.SetField(cipermission.FieldGrantReason, field.TypeString, value)
-	}
-	if cpuo.mutation.GrantReasonCleared() {
-		_spec.ClearField(cipermission.FieldGrantReason, field.TypeString)
-	}
-	if value, ok := cpuo.mutation.UsageCount(); ok {
-		_spec.SetField(cipermission.FieldUsageCount, field.TypeInt, value)
-	}
-	if value, ok := cpuo.mutation.AddedUsageCount(); ok {
-		_spec.AddField(cipermission.FieldUsageCount, field.TypeInt, value)
-	}
-	if value, ok := cpuo.mutation.LastUsedAt(); ok {
-		_spec.SetField(cipermission.FieldLastUsedAt, field.TypeTime, value)
-	}
-	if cpuo.mutation.LastUsedAtCleared() {
-		_spec.ClearField(cipermission.FieldLastUsedAt, field.TypeTime)
-	}
-	if value, ok := cpuo.mutation.UsageStatistics(); ok {
-		_spec.SetField(cipermission.FieldUsageStatistics, field.TypeJSON, value)
-	}
-	if cpuo.mutation.UsageStatisticsCleared() {
-		_spec.ClearField(cipermission.FieldUsageStatistics, field.TypeJSON)
-	}
-	if value, ok := cpuo.mutation.Status(); ok {
+	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(cipermission.FieldStatus, field.TypeEnum, value)
 	}
-	if value, ok := cpuo.mutation.StatusReason(); ok {
-		_spec.SetField(cipermission.FieldStatusReason, field.TypeString, value)
-	}
-	if cpuo.mutation.StatusReasonCleared() {
-		_spec.ClearField(cipermission.FieldStatusReason, field.TypeString)
-	}
-	if value, ok := cpuo.mutation.Inheritable(); ok {
-		_spec.SetField(cipermission.FieldInheritable, field.TypeBool, value)
-	}
-	if value, ok := cpuo.mutation.ParentPermissionID(); ok {
+	if value, ok := _u.mutation.ParentPermissionID(); ok {
 		_spec.SetField(cipermission.FieldParentPermissionID, field.TypeString, value)
 	}
-	if cpuo.mutation.ParentPermissionIDCleared() {
+	if _u.mutation.ParentPermissionIDCleared() {
 		_spec.ClearField(cipermission.FieldParentPermissionID, field.TypeString)
 	}
-	if value, ok := cpuo.mutation.InheritedFrom(); ok {
-		_spec.SetField(cipermission.FieldInheritedFrom, field.TypeJSON, value)
+	if value, ok := _u.mutation.Inheritable(); ok {
+		_spec.SetField(cipermission.FieldInheritable, field.TypeBool, value)
 	}
-	if value, ok := cpuo.mutation.AppendedInheritedFrom(); ok {
-		_spec.AddModifier(func(u *sql.UpdateBuilder) {
-			sqljson.Append(u, cipermission.FieldInheritedFrom, value)
-		})
+	if value, ok := _u.mutation.RequireApproval(); ok {
+		_spec.SetField(cipermission.FieldRequireApproval, field.TypeBool, value)
 	}
-	if cpuo.mutation.InheritedFromCleared() {
-		_spec.ClearField(cipermission.FieldInheritedFrom, field.TypeJSON)
-	}
-	if value, ok := cpuo.mutation.RiskLevel(); ok {
-		_spec.SetField(cipermission.FieldRiskLevel, field.TypeEnum, value)
-	}
-	if value, ok := cpuo.mutation.RequireMfa(); ok {
+	if value, ok := _u.mutation.RequireMfa(); ok {
 		_spec.SetField(cipermission.FieldRequireMfa, field.TypeBool, value)
 	}
-	if value, ok := cpuo.mutation.SecurityConstraints(); ok {
-		_spec.SetField(cipermission.FieldSecurityConstraints, field.TypeJSON, value)
+	if value, ok := _u.mutation.RiskLevel(); ok {
+		_spec.SetField(cipermission.FieldRiskLevel, field.TypeEnum, value)
 	}
-	if cpuo.mutation.SecurityConstraintsCleared() {
-		_spec.ClearField(cipermission.FieldSecurityConstraints, field.TypeJSON)
+	if value, ok := _u.mutation.UsageCount(); ok {
+		_spec.SetField(cipermission.FieldUsageCount, field.TypeInt, value)
 	}
-	if value, ok := cpuo.mutation.Metadata(); ok {
-		_spec.SetField(cipermission.FieldMetadata, field.TypeJSON, value)
+	if value, ok := _u.mutation.AddedUsageCount(); ok {
+		_spec.AddField(cipermission.FieldUsageCount, field.TypeInt, value)
 	}
-	if cpuo.mutation.MetadataCleared() {
-		_spec.ClearField(cipermission.FieldMetadata, field.TypeJSON)
+	if value, ok := _u.mutation.LastUsedAt(); ok {
+		_spec.SetField(cipermission.FieldLastUsedAt, field.TypeTime, value)
 	}
-	if value, ok := cpuo.mutation.Tags(); ok {
-		_spec.SetField(cipermission.FieldTags, field.TypeJSON, value)
+	if _u.mutation.LastUsedAtCleared() {
+		_spec.ClearField(cipermission.FieldLastUsedAt, field.TypeTime)
 	}
-	if value, ok := cpuo.mutation.AppendedTags(); ok {
-		_spec.AddModifier(func(u *sql.UpdateBuilder) {
-			sqljson.Append(u, cipermission.FieldTags, value)
-		})
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(cipermission.FieldCreatedBy, field.TypeString, value)
 	}
-	if cpuo.mutation.TagsCleared() {
-		_spec.ClearField(cipermission.FieldTags, field.TypeJSON)
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(cipermission.FieldCreatedBy, field.TypeString)
 	}
-	if value, ok := cpuo.mutation.Description(); ok {
+	if value, ok := _u.mutation.UpdatedBy(); ok {
+		_spec.SetField(cipermission.FieldUpdatedBy, field.TypeString, value)
+	}
+	if _u.mutation.UpdatedByCleared() {
+		_spec.ClearField(cipermission.FieldUpdatedBy, field.TypeString)
+	}
+	if value, ok := _u.mutation.Description(); ok {
 		_spec.SetField(cipermission.FieldDescription, field.TypeString, value)
 	}
-	if cpuo.mutation.DescriptionCleared() {
+	if _u.mutation.DescriptionCleared() {
 		_spec.ClearField(cipermission.FieldDescription, field.TypeString)
 	}
-	if value, ok := cpuo.mutation.Comments(); ok {
+	if value, ok := _u.mutation.Comments(); ok {
 		_spec.SetField(cipermission.FieldComments, field.TypeString, value)
 	}
-	if cpuo.mutation.CommentsCleared() {
+	if _u.mutation.CommentsCleared() {
 		_spec.ClearField(cipermission.FieldComments, field.TypeString)
 	}
-	if value, ok := cpuo.mutation.CreatedBy(); ok {
-		_spec.SetField(cipermission.FieldCreatedBy, field.TypeUUID, value)
+	if _u.mutation.OperationsCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.OperationsTable,
+			Columns: []string{cipermission.OperationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionoperation.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if cpuo.mutation.CreatedByCleared() {
-		_spec.ClearField(cipermission.FieldCreatedBy, field.TypeUUID)
+	if nodes := _u.mutation.RemovedOperationsIDs(); len(nodes) > 0 && !_u.mutation.OperationsCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.OperationsTable,
+			Columns: []string{cipermission.OperationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionoperation.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if value, ok := cpuo.mutation.UpdatedBy(); ok {
-		_spec.SetField(cipermission.FieldUpdatedBy, field.TypeUUID, value)
+	if nodes := _u.mutation.OperationsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.OperationsTable,
+			Columns: []string{cipermission.OperationsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionoperation.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if cpuo.mutation.UpdatedByCleared() {
-		_spec.ClearField(cipermission.FieldUpdatedBy, field.TypeUUID)
+	if _u.mutation.DataFiltersCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.DataFiltersTable,
+			Columns: []string{cipermission.DataFiltersColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissiondatafilter.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if value, ok := cpuo.mutation.LastReviewedAt(); ok {
-		_spec.SetField(cipermission.FieldLastReviewedAt, field.TypeTime, value)
+	if nodes := _u.mutation.RemovedDataFiltersIDs(); len(nodes) > 0 && !_u.mutation.DataFiltersCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.DataFiltersTable,
+			Columns: []string{cipermission.DataFiltersColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissiondatafilter.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if cpuo.mutation.LastReviewedAtCleared() {
-		_spec.ClearField(cipermission.FieldLastReviewedAt, field.TypeTime)
+	if nodes := _u.mutation.DataFiltersIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.DataFiltersTable,
+			Columns: []string{cipermission.DataFiltersColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissiondatafilter.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if value, ok := cpuo.mutation.LastReviewedBy(); ok {
-		_spec.SetField(cipermission.FieldLastReviewedBy, field.TypeUUID, value)
+	if _u.mutation.FieldMasksCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.FieldMasksTable,
+			Columns: []string{cipermission.FieldMasksColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionfieldmask.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if cpuo.mutation.LastReviewedByCleared() {
-		_spec.ClearField(cipermission.FieldLastReviewedBy, field.TypeUUID)
+	if nodes := _u.mutation.RemovedFieldMasksIDs(); len(nodes) > 0 && !_u.mutation.FieldMasksCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.FieldMasksTable,
+			Columns: []string{cipermission.FieldMasksColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionfieldmask.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	_node = &CiPermission{config: cpuo.config}
+	if nodes := _u.mutation.FieldMasksIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   cipermission.FieldMasksTable,
+			Columns: []string{cipermission.FieldMasksColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(permissionfieldmask.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	_node = &CiPermission{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, cpuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cipermission.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -2455,6 +2058,6 @@ func (cpuo *CiPermissionUpdateOne) sqlSave(ctx context.Context) (_node *CiPermis
 		}
 		return nil, err
 	}
-	cpuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

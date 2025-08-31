@@ -12,8 +12,8 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cilifecyclestate"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -25,1182 +25,1182 @@ type CiLifecycleStateUpdate struct {
 }
 
 // Where appends a list predicates to the CiLifecycleStateUpdate builder.
-func (clsu *CiLifecycleStateUpdate) Where(ps ...predicate.CiLifecycleState) *CiLifecycleStateUpdate {
-	clsu.mutation.Where(ps...)
-	return clsu
+func (_u *CiLifecycleStateUpdate) Where(ps ...predicate.CiLifecycleState) *CiLifecycleStateUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (clsu *CiLifecycleStateUpdate) SetUpdatedAt(t time.Time) *CiLifecycleStateUpdate {
-	clsu.mutation.SetUpdatedAt(t)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetUpdatedAt(v time.Time) *CiLifecycleStateUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (clsu *CiLifecycleStateUpdate) SetDepartmentID(u uint64) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetDepartmentID()
-	clsu.mutation.SetDepartmentID(u)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetDepartmentID(v uint64) *CiLifecycleStateUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableDepartmentID(u *uint64) *CiLifecycleStateUpdate {
-	if u != nil {
-		clsu.SetDepartmentID(*u)
+func (_u *CiLifecycleStateUpdate) SetNillableDepartmentID(v *uint64) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (clsu *CiLifecycleStateUpdate) AddDepartmentID(u int64) *CiLifecycleStateUpdate {
-	clsu.mutation.AddDepartmentID(u)
-	return clsu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiLifecycleStateUpdate) AddDepartmentID(v int64) *CiLifecycleStateUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (clsu *CiLifecycleStateUpdate) ClearDepartmentID() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearDepartmentID()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearDepartmentID() *CiLifecycleStateUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetStateID sets the "state_id" field.
-func (clsu *CiLifecycleStateUpdate) SetStateID(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetStateID(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateID(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetStateID(v)
+	return _u
 }
 
 // SetNillableStateID sets the "state_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableStateID(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetStateID(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableStateID(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetStateID(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetStateName sets the "state_name" field.
-func (clsu *CiLifecycleStateUpdate) SetStateName(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetStateName(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateName(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetStateName(v)
+	return _u
 }
 
 // SetNillableStateName sets the "state_name" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableStateName(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetStateName(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableStateName(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetStateName(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetStateCode sets the "state_code" field.
-func (clsu *CiLifecycleStateUpdate) SetStateCode(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetStateCode(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateCode(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetStateCode(v)
+	return _u
 }
 
 // SetNillableStateCode sets the "state_code" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableStateCode(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetStateCode(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableStateCode(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetStateCode(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetStateDescription sets the "state_description" field.
-func (clsu *CiLifecycleStateUpdate) SetStateDescription(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetStateDescription(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateDescription(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetStateDescription(v)
+	return _u
 }
 
 // SetNillableStateDescription sets the "state_description" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableStateDescription(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetStateDescription(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableStateDescription(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetStateDescription(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearStateDescription clears the value of the "state_description" field.
-func (clsu *CiLifecycleStateUpdate) ClearStateDescription() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearStateDescription()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearStateDescription() *CiLifecycleStateUpdate {
+	_u.mutation.ClearStateDescription()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (clsu *CiLifecycleStateUpdate) SetCiID(u uint64) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetCiID()
-	clsu.mutation.SetCiID(u)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetCiID(v uint64) *CiLifecycleStateUpdate {
+	_u.mutation.ResetCiID()
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableCiID(u *uint64) *CiLifecycleStateUpdate {
-	if u != nil {
-		clsu.SetCiID(*u)
+func (_u *CiLifecycleStateUpdate) SetNillableCiID(v *uint64) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddCiID adds u to the "ci_id" field.
-func (clsu *CiLifecycleStateUpdate) AddCiID(u int64) *CiLifecycleStateUpdate {
-	clsu.mutation.AddCiID(u)
-	return clsu
+// AddCiID adds value to the "ci_id" field.
+func (_u *CiLifecycleStateUpdate) AddCiID(v int64) *CiLifecycleStateUpdate {
+	_u.mutation.AddCiID(v)
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (clsu *CiLifecycleStateUpdate) SetCiTypeID(u uint64) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetCiTypeID()
-	clsu.mutation.SetCiTypeID(u)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetCiTypeID(v uint64) *CiLifecycleStateUpdate {
+	_u.mutation.ResetCiTypeID()
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableCiTypeID(u *uint64) *CiLifecycleStateUpdate {
-	if u != nil {
-		clsu.SetCiTypeID(*u)
+func (_u *CiLifecycleStateUpdate) SetNillableCiTypeID(v *uint64) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddCiTypeID adds u to the "ci_type_id" field.
-func (clsu *CiLifecycleStateUpdate) AddCiTypeID(u int64) *CiLifecycleStateUpdate {
-	clsu.mutation.AddCiTypeID(u)
-	return clsu
+// AddCiTypeID adds value to the "ci_type_id" field.
+func (_u *CiLifecycleStateUpdate) AddCiTypeID(v int64) *CiLifecycleStateUpdate {
+	_u.mutation.AddCiTypeID(v)
+	return _u
 }
 
 // SetStateType sets the "state_type" field.
-func (clsu *CiLifecycleStateUpdate) SetStateType(ct cilifecyclestate.StateType) *CiLifecycleStateUpdate {
-	clsu.mutation.SetStateType(ct)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateType(v cilifecyclestate.StateType) *CiLifecycleStateUpdate {
+	_u.mutation.SetStateType(v)
+	return _u
 }
 
 // SetNillableStateType sets the "state_type" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableStateType(ct *cilifecyclestate.StateType) *CiLifecycleStateUpdate {
-	if ct != nil {
-		clsu.SetStateType(*ct)
+func (_u *CiLifecycleStateUpdate) SetNillableStateType(v *cilifecyclestate.StateType) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetStateType(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetStateCategory sets the "state_category" field.
-func (clsu *CiLifecycleStateUpdate) SetStateCategory(cc cilifecyclestate.StateCategory) *CiLifecycleStateUpdate {
-	clsu.mutation.SetStateCategory(cc)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateCategory(v cilifecyclestate.StateCategory) *CiLifecycleStateUpdate {
+	_u.mutation.SetStateCategory(v)
+	return _u
 }
 
 // SetNillableStateCategory sets the "state_category" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableStateCategory(cc *cilifecyclestate.StateCategory) *CiLifecycleStateUpdate {
-	if cc != nil {
-		clsu.SetStateCategory(*cc)
+func (_u *CiLifecycleStateUpdate) SetNillableStateCategory(v *cilifecyclestate.StateCategory) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetStateCategory(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetStateLevel sets the "state_level" field.
-func (clsu *CiLifecycleStateUpdate) SetStateLevel(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetStateLevel()
-	clsu.mutation.SetStateLevel(i)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateLevel(v int) *CiLifecycleStateUpdate {
+	_u.mutation.ResetStateLevel()
+	_u.mutation.SetStateLevel(v)
+	return _u
 }
 
 // SetNillableStateLevel sets the "state_level" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableStateLevel(i *int) *CiLifecycleStateUpdate {
-	if i != nil {
-		clsu.SetStateLevel(*i)
+func (_u *CiLifecycleStateUpdate) SetNillableStateLevel(v *int) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetStateLevel(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddStateLevel adds i to the "state_level" field.
-func (clsu *CiLifecycleStateUpdate) AddStateLevel(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.AddStateLevel(i)
-	return clsu
+// AddStateLevel adds value to the "state_level" field.
+func (_u *CiLifecycleStateUpdate) AddStateLevel(v int) *CiLifecycleStateUpdate {
+	_u.mutation.AddStateLevel(v)
+	return _u
 }
 
 // SetAllowedTransitions sets the "allowed_transitions" field.
-func (clsu *CiLifecycleStateUpdate) SetAllowedTransitions(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetAllowedTransitions(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetAllowedTransitions(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.SetAllowedTransitions(v)
+	return _u
 }
 
-// AppendAllowedTransitions appends s to the "allowed_transitions" field.
-func (clsu *CiLifecycleStateUpdate) AppendAllowedTransitions(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.AppendAllowedTransitions(s)
-	return clsu
+// AppendAllowedTransitions appends value to the "allowed_transitions" field.
+func (_u *CiLifecycleStateUpdate) AppendAllowedTransitions(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.AppendAllowedTransitions(v)
+	return _u
 }
 
 // ClearAllowedTransitions clears the value of the "allowed_transitions" field.
-func (clsu *CiLifecycleStateUpdate) ClearAllowedTransitions() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearAllowedTransitions()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearAllowedTransitions() *CiLifecycleStateUpdate {
+	_u.mutation.ClearAllowedTransitions()
+	return _u
 }
 
 // SetTransitionConditions sets the "transition_conditions" field.
-func (clsu *CiLifecycleStateUpdate) SetTransitionConditions(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetTransitionConditions(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetTransitionConditions(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetTransitionConditions(v)
+	return _u
 }
 
 // ClearTransitionConditions clears the value of the "transition_conditions" field.
-func (clsu *CiLifecycleStateUpdate) ClearTransitionConditions() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearTransitionConditions()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearTransitionConditions() *CiLifecycleStateUpdate {
+	_u.mutation.ClearTransitionConditions()
+	return _u
 }
 
 // SetAutoTransitionRules sets the "auto_transition_rules" field.
-func (clsu *CiLifecycleStateUpdate) SetAutoTransitionRules(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetAutoTransitionRules(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetAutoTransitionRules(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetAutoTransitionRules(v)
+	return _u
 }
 
 // ClearAutoTransitionRules clears the value of the "auto_transition_rules" field.
-func (clsu *CiLifecycleStateUpdate) ClearAutoTransitionRules() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearAutoTransitionRules()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearAutoTransitionRules() *CiLifecycleStateUpdate {
+	_u.mutation.ClearAutoTransitionRules()
+	return _u
 }
 
 // SetEnteredAt sets the "entered_at" field.
-func (clsu *CiLifecycleStateUpdate) SetEnteredAt(t time.Time) *CiLifecycleStateUpdate {
-	clsu.mutation.SetEnteredAt(t)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetEnteredAt(v time.Time) *CiLifecycleStateUpdate {
+	_u.mutation.SetEnteredAt(v)
+	return _u
 }
 
 // SetNillableEnteredAt sets the "entered_at" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableEnteredAt(t *time.Time) *CiLifecycleStateUpdate {
-	if t != nil {
-		clsu.SetEnteredAt(*t)
+func (_u *CiLifecycleStateUpdate) SetNillableEnteredAt(v *time.Time) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetEnteredAt(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetExpectedExitAt sets the "expected_exit_at" field.
-func (clsu *CiLifecycleStateUpdate) SetExpectedExitAt(t time.Time) *CiLifecycleStateUpdate {
-	clsu.mutation.SetExpectedExitAt(t)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetExpectedExitAt(v time.Time) *CiLifecycleStateUpdate {
+	_u.mutation.SetExpectedExitAt(v)
+	return _u
 }
 
 // SetNillableExpectedExitAt sets the "expected_exit_at" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableExpectedExitAt(t *time.Time) *CiLifecycleStateUpdate {
-	if t != nil {
-		clsu.SetExpectedExitAt(*t)
+func (_u *CiLifecycleStateUpdate) SetNillableExpectedExitAt(v *time.Time) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetExpectedExitAt(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearExpectedExitAt clears the value of the "expected_exit_at" field.
-func (clsu *CiLifecycleStateUpdate) ClearExpectedExitAt() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearExpectedExitAt()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearExpectedExitAt() *CiLifecycleStateUpdate {
+	_u.mutation.ClearExpectedExitAt()
+	return _u
 }
 
 // SetActualExitAt sets the "actual_exit_at" field.
-func (clsu *CiLifecycleStateUpdate) SetActualExitAt(t time.Time) *CiLifecycleStateUpdate {
-	clsu.mutation.SetActualExitAt(t)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetActualExitAt(v time.Time) *CiLifecycleStateUpdate {
+	_u.mutation.SetActualExitAt(v)
+	return _u
 }
 
 // SetNillableActualExitAt sets the "actual_exit_at" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableActualExitAt(t *time.Time) *CiLifecycleStateUpdate {
-	if t != nil {
-		clsu.SetActualExitAt(*t)
+func (_u *CiLifecycleStateUpdate) SetNillableActualExitAt(v *time.Time) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetActualExitAt(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearActualExitAt clears the value of the "actual_exit_at" field.
-func (clsu *CiLifecycleStateUpdate) ClearActualExitAt() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearActualExitAt()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearActualExitAt() *CiLifecycleStateUpdate {
+	_u.mutation.ClearActualExitAt()
+	return _u
 }
 
 // SetDurationLimitHours sets the "duration_limit_hours" field.
-func (clsu *CiLifecycleStateUpdate) SetDurationLimitHours(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetDurationLimitHours()
-	clsu.mutation.SetDurationLimitHours(i)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetDurationLimitHours(v int) *CiLifecycleStateUpdate {
+	_u.mutation.ResetDurationLimitHours()
+	_u.mutation.SetDurationLimitHours(v)
+	return _u
 }
 
 // SetNillableDurationLimitHours sets the "duration_limit_hours" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableDurationLimitHours(i *int) *CiLifecycleStateUpdate {
-	if i != nil {
-		clsu.SetDurationLimitHours(*i)
+func (_u *CiLifecycleStateUpdate) SetNillableDurationLimitHours(v *int) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetDurationLimitHours(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddDurationLimitHours adds i to the "duration_limit_hours" field.
-func (clsu *CiLifecycleStateUpdate) AddDurationLimitHours(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.AddDurationLimitHours(i)
-	return clsu
+// AddDurationLimitHours adds value to the "duration_limit_hours" field.
+func (_u *CiLifecycleStateUpdate) AddDurationLimitHours(v int) *CiLifecycleStateUpdate {
+	_u.mutation.AddDurationLimitHours(v)
+	return _u
 }
 
 // ClearDurationLimitHours clears the value of the "duration_limit_hours" field.
-func (clsu *CiLifecycleStateUpdate) ClearDurationLimitHours() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearDurationLimitHours()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearDurationLimitHours() *CiLifecycleStateUpdate {
+	_u.mutation.ClearDurationLimitHours()
+	return _u
 }
 
 // SetIsTimeout sets the "is_timeout" field.
-func (clsu *CiLifecycleStateUpdate) SetIsTimeout(b bool) *CiLifecycleStateUpdate {
-	clsu.mutation.SetIsTimeout(b)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetIsTimeout(v bool) *CiLifecycleStateUpdate {
+	_u.mutation.SetIsTimeout(v)
+	return _u
 }
 
 // SetNillableIsTimeout sets the "is_timeout" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableIsTimeout(b *bool) *CiLifecycleStateUpdate {
-	if b != nil {
-		clsu.SetIsTimeout(*b)
+func (_u *CiLifecycleStateUpdate) SetNillableIsTimeout(v *bool) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetIsTimeout(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetTimeoutAt sets the "timeout_at" field.
-func (clsu *CiLifecycleStateUpdate) SetTimeoutAt(t time.Time) *CiLifecycleStateUpdate {
-	clsu.mutation.SetTimeoutAt(t)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetTimeoutAt(v time.Time) *CiLifecycleStateUpdate {
+	_u.mutation.SetTimeoutAt(v)
+	return _u
 }
 
 // SetNillableTimeoutAt sets the "timeout_at" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableTimeoutAt(t *time.Time) *CiLifecycleStateUpdate {
-	if t != nil {
-		clsu.SetTimeoutAt(*t)
+func (_u *CiLifecycleStateUpdate) SetNillableTimeoutAt(v *time.Time) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetTimeoutAt(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearTimeoutAt clears the value of the "timeout_at" field.
-func (clsu *CiLifecycleStateUpdate) ClearTimeoutAt() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearTimeoutAt()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearTimeoutAt() *CiLifecycleStateUpdate {
+	_u.mutation.ClearTimeoutAt()
+	return _u
 }
 
 // SetTriggerType sets the "trigger_type" field.
-func (clsu *CiLifecycleStateUpdate) SetTriggerType(ct cilifecyclestate.TriggerType) *CiLifecycleStateUpdate {
-	clsu.mutation.SetTriggerType(ct)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetTriggerType(v cilifecyclestate.TriggerType) *CiLifecycleStateUpdate {
+	_u.mutation.SetTriggerType(v)
+	return _u
 }
 
 // SetNillableTriggerType sets the "trigger_type" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableTriggerType(ct *cilifecyclestate.TriggerType) *CiLifecycleStateUpdate {
-	if ct != nil {
-		clsu.SetTriggerType(*ct)
+func (_u *CiLifecycleStateUpdate) SetNillableTriggerType(v *cilifecyclestate.TriggerType) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetTriggerType(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetTriggerSource sets the "trigger_source" field.
-func (clsu *CiLifecycleStateUpdate) SetTriggerSource(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetTriggerSource(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetTriggerSource(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetTriggerSource(v)
+	return _u
 }
 
 // SetNillableTriggerSource sets the "trigger_source" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableTriggerSource(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetTriggerSource(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableTriggerSource(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetTriggerSource(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearTriggerSource clears the value of the "trigger_source" field.
-func (clsu *CiLifecycleStateUpdate) ClearTriggerSource() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearTriggerSource()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearTriggerSource() *CiLifecycleStateUpdate {
+	_u.mutation.ClearTriggerSource()
+	return _u
 }
 
 // SetTriggerContext sets the "trigger_context" field.
-func (clsu *CiLifecycleStateUpdate) SetTriggerContext(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetTriggerContext(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetTriggerContext(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetTriggerContext(v)
+	return _u
 }
 
 // ClearTriggerContext clears the value of the "trigger_context" field.
-func (clsu *CiLifecycleStateUpdate) ClearTriggerContext() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearTriggerContext()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearTriggerContext() *CiLifecycleStateUpdate {
+	_u.mutation.ClearTriggerContext()
+	return _u
 }
 
 // SetTriggeredBy sets the "triggered_by" field.
-func (clsu *CiLifecycleStateUpdate) SetTriggeredBy(u uuid.UUID) *CiLifecycleStateUpdate {
-	clsu.mutation.SetTriggeredBy(u)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetTriggeredBy(v uuid.UUID) *CiLifecycleStateUpdate {
+	_u.mutation.SetTriggeredBy(v)
+	return _u
 }
 
 // SetNillableTriggeredBy sets the "triggered_by" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableTriggeredBy(u *uuid.UUID) *CiLifecycleStateUpdate {
-	if u != nil {
-		clsu.SetTriggeredBy(*u)
+func (_u *CiLifecycleStateUpdate) SetNillableTriggeredBy(v *uuid.UUID) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetTriggeredBy(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearTriggeredBy clears the value of the "triggered_by" field.
-func (clsu *CiLifecycleStateUpdate) ClearTriggeredBy() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearTriggeredBy()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearTriggeredBy() *CiLifecycleStateUpdate {
+	_u.mutation.ClearTriggeredBy()
+	return _u
 }
 
 // SetTriggeredByName sets the "triggered_by_name" field.
-func (clsu *CiLifecycleStateUpdate) SetTriggeredByName(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetTriggeredByName(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetTriggeredByName(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetTriggeredByName(v)
+	return _u
 }
 
 // SetNillableTriggeredByName sets the "triggered_by_name" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableTriggeredByName(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetTriggeredByName(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableTriggeredByName(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetTriggeredByName(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearTriggeredByName clears the value of the "triggered_by_name" field.
-func (clsu *CiLifecycleStateUpdate) ClearTriggeredByName() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearTriggeredByName()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearTriggeredByName() *CiLifecycleStateUpdate {
+	_u.mutation.ClearTriggeredByName()
+	return _u
 }
 
 // SetStateData sets the "state_data" field.
-func (clsu *CiLifecycleStateUpdate) SetStateData(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetStateData(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateData(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetStateData(v)
+	return _u
 }
 
 // ClearStateData clears the value of the "state_data" field.
-func (clsu *CiLifecycleStateUpdate) ClearStateData() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearStateData()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearStateData() *CiLifecycleStateUpdate {
+	_u.mutation.ClearStateData()
+	return _u
 }
 
 // SetStateConfig sets the "state_config" field.
-func (clsu *CiLifecycleStateUpdate) SetStateConfig(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetStateConfig(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetStateConfig(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetStateConfig(v)
+	return _u
 }
 
 // ClearStateConfig clears the value of the "state_config" field.
-func (clsu *CiLifecycleStateUpdate) ClearStateConfig() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearStateConfig()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearStateConfig() *CiLifecycleStateUpdate {
+	_u.mutation.ClearStateConfig()
+	return _u
 }
 
 // SetValidationRules sets the "validation_rules" field.
-func (clsu *CiLifecycleStateUpdate) SetValidationRules(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetValidationRules(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetValidationRules(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetValidationRules(v)
+	return _u
 }
 
 // ClearValidationRules clears the value of the "validation_rules" field.
-func (clsu *CiLifecycleStateUpdate) ClearValidationRules() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearValidationRules()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearValidationRules() *CiLifecycleStateUpdate {
+	_u.mutation.ClearValidationRules()
+	return _u
 }
 
 // SetRequiredPermissions sets the "required_permissions" field.
-func (clsu *CiLifecycleStateUpdate) SetRequiredPermissions(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetRequiredPermissions(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetRequiredPermissions(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.SetRequiredPermissions(v)
+	return _u
 }
 
-// AppendRequiredPermissions appends s to the "required_permissions" field.
-func (clsu *CiLifecycleStateUpdate) AppendRequiredPermissions(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.AppendRequiredPermissions(s)
-	return clsu
+// AppendRequiredPermissions appends value to the "required_permissions" field.
+func (_u *CiLifecycleStateUpdate) AppendRequiredPermissions(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.AppendRequiredPermissions(v)
+	return _u
 }
 
 // ClearRequiredPermissions clears the value of the "required_permissions" field.
-func (clsu *CiLifecycleStateUpdate) ClearRequiredPermissions() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearRequiredPermissions()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearRequiredPermissions() *CiLifecycleStateUpdate {
+	_u.mutation.ClearRequiredPermissions()
+	return _u
 }
 
 // SetGrantedPermissions sets the "granted_permissions" field.
-func (clsu *CiLifecycleStateUpdate) SetGrantedPermissions(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetGrantedPermissions(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetGrantedPermissions(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.SetGrantedPermissions(v)
+	return _u
 }
 
-// AppendGrantedPermissions appends s to the "granted_permissions" field.
-func (clsu *CiLifecycleStateUpdate) AppendGrantedPermissions(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.AppendGrantedPermissions(s)
-	return clsu
+// AppendGrantedPermissions appends value to the "granted_permissions" field.
+func (_u *CiLifecycleStateUpdate) AppendGrantedPermissions(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.AppendGrantedPermissions(v)
+	return _u
 }
 
 // ClearGrantedPermissions clears the value of the "granted_permissions" field.
-func (clsu *CiLifecycleStateUpdate) ClearGrantedPermissions() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearGrantedPermissions()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearGrantedPermissions() *CiLifecycleStateUpdate {
+	_u.mutation.ClearGrantedPermissions()
+	return _u
 }
 
 // SetRestrictedOperations sets the "restricted_operations" field.
-func (clsu *CiLifecycleStateUpdate) SetRestrictedOperations(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetRestrictedOperations(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetRestrictedOperations(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.SetRestrictedOperations(v)
+	return _u
 }
 
-// AppendRestrictedOperations appends s to the "restricted_operations" field.
-func (clsu *CiLifecycleStateUpdate) AppendRestrictedOperations(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.AppendRestrictedOperations(s)
-	return clsu
+// AppendRestrictedOperations appends value to the "restricted_operations" field.
+func (_u *CiLifecycleStateUpdate) AppendRestrictedOperations(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.AppendRestrictedOperations(v)
+	return _u
 }
 
 // ClearRestrictedOperations clears the value of the "restricted_operations" field.
-func (clsu *CiLifecycleStateUpdate) ClearRestrictedOperations() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearRestrictedOperations()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearRestrictedOperations() *CiLifecycleStateUpdate {
+	_u.mutation.ClearRestrictedOperations()
+	return _u
 }
 
 // SetNotificationConfig sets the "notification_config" field.
-func (clsu *CiLifecycleStateUpdate) SetNotificationConfig(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetNotificationConfig(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetNotificationConfig(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetNotificationConfig(v)
+	return _u
 }
 
 // ClearNotificationConfig clears the value of the "notification_config" field.
-func (clsu *CiLifecycleStateUpdate) ClearNotificationConfig() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearNotificationConfig()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearNotificationConfig() *CiLifecycleStateUpdate {
+	_u.mutation.ClearNotificationConfig()
+	return _u
 }
 
 // SetReminderConfig sets the "reminder_config" field.
-func (clsu *CiLifecycleStateUpdate) SetReminderConfig(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetReminderConfig(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetReminderConfig(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetReminderConfig(v)
+	return _u
 }
 
 // ClearReminderConfig clears the value of the "reminder_config" field.
-func (clsu *CiLifecycleStateUpdate) ClearReminderConfig() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearReminderConfig()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearReminderConfig() *CiLifecycleStateUpdate {
+	_u.mutation.ClearReminderConfig()
+	return _u
 }
 
 // SetLastNotificationAt sets the "last_notification_at" field.
-func (clsu *CiLifecycleStateUpdate) SetLastNotificationAt(t time.Time) *CiLifecycleStateUpdate {
-	clsu.mutation.SetLastNotificationAt(t)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetLastNotificationAt(v time.Time) *CiLifecycleStateUpdate {
+	_u.mutation.SetLastNotificationAt(v)
+	return _u
 }
 
 // SetNillableLastNotificationAt sets the "last_notification_at" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableLastNotificationAt(t *time.Time) *CiLifecycleStateUpdate {
-	if t != nil {
-		clsu.SetLastNotificationAt(*t)
+func (_u *CiLifecycleStateUpdate) SetNillableLastNotificationAt(v *time.Time) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetLastNotificationAt(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearLastNotificationAt clears the value of the "last_notification_at" field.
-func (clsu *CiLifecycleStateUpdate) ClearLastNotificationAt() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearLastNotificationAt()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearLastNotificationAt() *CiLifecycleStateUpdate {
+	_u.mutation.ClearLastNotificationAt()
+	return _u
 }
 
 // SetNotificationCount sets the "notification_count" field.
-func (clsu *CiLifecycleStateUpdate) SetNotificationCount(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetNotificationCount()
-	clsu.mutation.SetNotificationCount(i)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetNotificationCount(v int) *CiLifecycleStateUpdate {
+	_u.mutation.ResetNotificationCount()
+	_u.mutation.SetNotificationCount(v)
+	return _u
 }
 
 // SetNillableNotificationCount sets the "notification_count" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableNotificationCount(i *int) *CiLifecycleStateUpdate {
-	if i != nil {
-		clsu.SetNotificationCount(*i)
+func (_u *CiLifecycleStateUpdate) SetNillableNotificationCount(v *int) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetNotificationCount(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddNotificationCount adds i to the "notification_count" field.
-func (clsu *CiLifecycleStateUpdate) AddNotificationCount(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.AddNotificationCount(i)
-	return clsu
+// AddNotificationCount adds value to the "notification_count" field.
+func (_u *CiLifecycleStateUpdate) AddNotificationCount(v int) *CiLifecycleStateUpdate {
+	_u.mutation.AddNotificationCount(v)
+	return _u
 }
 
 // SetRequireApproval sets the "require_approval" field.
-func (clsu *CiLifecycleStateUpdate) SetRequireApproval(b bool) *CiLifecycleStateUpdate {
-	clsu.mutation.SetRequireApproval(b)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetRequireApproval(v bool) *CiLifecycleStateUpdate {
+	_u.mutation.SetRequireApproval(v)
+	return _u
 }
 
 // SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableRequireApproval(b *bool) *CiLifecycleStateUpdate {
-	if b != nil {
-		clsu.SetRequireApproval(*b)
+func (_u *CiLifecycleStateUpdate) SetNillableRequireApproval(v *bool) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetRequireApproval(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetApprovalFlowID sets the "approval_flow_id" field.
-func (clsu *CiLifecycleStateUpdate) SetApprovalFlowID(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetApprovalFlowID(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetApprovalFlowID(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetApprovalFlowID(v)
+	return _u
 }
 
 // SetNillableApprovalFlowID sets the "approval_flow_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableApprovalFlowID(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetApprovalFlowID(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableApprovalFlowID(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetApprovalFlowID(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearApprovalFlowID clears the value of the "approval_flow_id" field.
-func (clsu *CiLifecycleStateUpdate) ClearApprovalFlowID() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearApprovalFlowID()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearApprovalFlowID() *CiLifecycleStateUpdate {
+	_u.mutation.ClearApprovalFlowID()
+	return _u
 }
 
 // SetApprovalStatus sets the "approval_status" field.
-func (clsu *CiLifecycleStateUpdate) SetApprovalStatus(cs cilifecyclestate.ApprovalStatus) *CiLifecycleStateUpdate {
-	clsu.mutation.SetApprovalStatus(cs)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetApprovalStatus(v cilifecyclestate.ApprovalStatus) *CiLifecycleStateUpdate {
+	_u.mutation.SetApprovalStatus(v)
+	return _u
 }
 
 // SetNillableApprovalStatus sets the "approval_status" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableApprovalStatus(cs *cilifecyclestate.ApprovalStatus) *CiLifecycleStateUpdate {
-	if cs != nil {
-		clsu.SetApprovalStatus(*cs)
+func (_u *CiLifecycleStateUpdate) SetNillableApprovalStatus(v *cilifecyclestate.ApprovalStatus) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetApprovalStatus(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearApprovalStatus clears the value of the "approval_status" field.
-func (clsu *CiLifecycleStateUpdate) ClearApprovalStatus() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearApprovalStatus()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearApprovalStatus() *CiLifecycleStateUpdate {
+	_u.mutation.ClearApprovalStatus()
+	return _u
 }
 
 // SetApproverID sets the "approver_id" field.
-func (clsu *CiLifecycleStateUpdate) SetApproverID(u uuid.UUID) *CiLifecycleStateUpdate {
-	clsu.mutation.SetApproverID(u)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetApproverID(v uuid.UUID) *CiLifecycleStateUpdate {
+	_u.mutation.SetApproverID(v)
+	return _u
 }
 
 // SetNillableApproverID sets the "approver_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableApproverID(u *uuid.UUID) *CiLifecycleStateUpdate {
-	if u != nil {
-		clsu.SetApproverID(*u)
+func (_u *CiLifecycleStateUpdate) SetNillableApproverID(v *uuid.UUID) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetApproverID(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearApproverID clears the value of the "approver_id" field.
-func (clsu *CiLifecycleStateUpdate) ClearApproverID() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearApproverID()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearApproverID() *CiLifecycleStateUpdate {
+	_u.mutation.ClearApproverID()
+	return _u
 }
 
 // SetApproverName sets the "approver_name" field.
-func (clsu *CiLifecycleStateUpdate) SetApproverName(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetApproverName(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetApproverName(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetApproverName(v)
+	return _u
 }
 
 // SetNillableApproverName sets the "approver_name" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableApproverName(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetApproverName(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableApproverName(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetApproverName(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearApproverName clears the value of the "approver_name" field.
-func (clsu *CiLifecycleStateUpdate) ClearApproverName() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearApproverName()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearApproverName() *CiLifecycleStateUpdate {
+	_u.mutation.ClearApproverName()
+	return _u
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (clsu *CiLifecycleStateUpdate) SetApprovedAt(t time.Time) *CiLifecycleStateUpdate {
-	clsu.mutation.SetApprovedAt(t)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetApprovedAt(v time.Time) *CiLifecycleStateUpdate {
+	_u.mutation.SetApprovedAt(v)
+	return _u
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableApprovedAt(t *time.Time) *CiLifecycleStateUpdate {
-	if t != nil {
-		clsu.SetApprovedAt(*t)
+func (_u *CiLifecycleStateUpdate) SetNillableApprovedAt(v *time.Time) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetApprovedAt(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearApprovedAt clears the value of the "approved_at" field.
-func (clsu *CiLifecycleStateUpdate) ClearApprovedAt() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearApprovedAt()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearApprovedAt() *CiLifecycleStateUpdate {
+	_u.mutation.ClearApprovedAt()
+	return _u
 }
 
 // SetApprovalComment sets the "approval_comment" field.
-func (clsu *CiLifecycleStateUpdate) SetApprovalComment(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetApprovalComment(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetApprovalComment(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetApprovalComment(v)
+	return _u
 }
 
 // SetNillableApprovalComment sets the "approval_comment" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableApprovalComment(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetApprovalComment(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableApprovalComment(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetApprovalComment(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearApprovalComment clears the value of the "approval_comment" field.
-func (clsu *CiLifecycleStateUpdate) ClearApprovalComment() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearApprovalComment()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearApprovalComment() *CiLifecycleStateUpdate {
+	_u.mutation.ClearApprovalComment()
+	return _u
 }
 
 // SetHasError sets the "has_error" field.
-func (clsu *CiLifecycleStateUpdate) SetHasError(b bool) *CiLifecycleStateUpdate {
-	clsu.mutation.SetHasError(b)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetHasError(v bool) *CiLifecycleStateUpdate {
+	_u.mutation.SetHasError(v)
+	return _u
 }
 
 // SetNillableHasError sets the "has_error" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableHasError(b *bool) *CiLifecycleStateUpdate {
-	if b != nil {
-		clsu.SetHasError(*b)
+func (_u *CiLifecycleStateUpdate) SetNillableHasError(v *bool) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetHasError(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (clsu *CiLifecycleStateUpdate) SetErrorMessage(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetErrorMessage(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetErrorMessage(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetErrorMessage(v)
+	return _u
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableErrorMessage(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetErrorMessage(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableErrorMessage(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetErrorMessage(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearErrorMessage clears the value of the "error_message" field.
-func (clsu *CiLifecycleStateUpdate) ClearErrorMessage() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearErrorMessage()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearErrorMessage() *CiLifecycleStateUpdate {
+	_u.mutation.ClearErrorMessage()
+	return _u
 }
 
 // SetErrorDetails sets the "error_details" field.
-func (clsu *CiLifecycleStateUpdate) SetErrorDetails(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetErrorDetails(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetErrorDetails(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetErrorDetails(v)
+	return _u
 }
 
 // ClearErrorDetails clears the value of the "error_details" field.
-func (clsu *CiLifecycleStateUpdate) ClearErrorDetails() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearErrorDetails()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearErrorDetails() *CiLifecycleStateUpdate {
+	_u.mutation.ClearErrorDetails()
+	return _u
 }
 
 // SetRetryCount sets the "retry_count" field.
-func (clsu *CiLifecycleStateUpdate) SetRetryCount(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetRetryCount()
-	clsu.mutation.SetRetryCount(i)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetRetryCount(v int) *CiLifecycleStateUpdate {
+	_u.mutation.ResetRetryCount()
+	_u.mutation.SetRetryCount(v)
+	return _u
 }
 
 // SetNillableRetryCount sets the "retry_count" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableRetryCount(i *int) *CiLifecycleStateUpdate {
-	if i != nil {
-		clsu.SetRetryCount(*i)
+func (_u *CiLifecycleStateUpdate) SetNillableRetryCount(v *int) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetRetryCount(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddRetryCount adds i to the "retry_count" field.
-func (clsu *CiLifecycleStateUpdate) AddRetryCount(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.AddRetryCount(i)
-	return clsu
+// AddRetryCount adds value to the "retry_count" field.
+func (_u *CiLifecycleStateUpdate) AddRetryCount(v int) *CiLifecycleStateUpdate {
+	_u.mutation.AddRetryCount(v)
+	return _u
 }
 
 // SetLastRetryAt sets the "last_retry_at" field.
-func (clsu *CiLifecycleStateUpdate) SetLastRetryAt(t time.Time) *CiLifecycleStateUpdate {
-	clsu.mutation.SetLastRetryAt(t)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetLastRetryAt(v time.Time) *CiLifecycleStateUpdate {
+	_u.mutation.SetLastRetryAt(v)
+	return _u
 }
 
 // SetNillableLastRetryAt sets the "last_retry_at" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableLastRetryAt(t *time.Time) *CiLifecycleStateUpdate {
-	if t != nil {
-		clsu.SetLastRetryAt(*t)
+func (_u *CiLifecycleStateUpdate) SetNillableLastRetryAt(v *time.Time) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetLastRetryAt(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearLastRetryAt clears the value of the "last_retry_at" field.
-func (clsu *CiLifecycleStateUpdate) ClearLastRetryAt() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearLastRetryAt()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearLastRetryAt() *CiLifecycleStateUpdate {
+	_u.mutation.ClearLastRetryAt()
+	return _u
 }
 
 // SetProcessingDuration sets the "processing_duration" field.
-func (clsu *CiLifecycleStateUpdate) SetProcessingDuration(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetProcessingDuration()
-	clsu.mutation.SetProcessingDuration(i)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetProcessingDuration(v int) *CiLifecycleStateUpdate {
+	_u.mutation.ResetProcessingDuration()
+	_u.mutation.SetProcessingDuration(v)
+	return _u
 }
 
 // SetNillableProcessingDuration sets the "processing_duration" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableProcessingDuration(i *int) *CiLifecycleStateUpdate {
-	if i != nil {
-		clsu.SetProcessingDuration(*i)
+func (_u *CiLifecycleStateUpdate) SetNillableProcessingDuration(v *int) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetProcessingDuration(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddProcessingDuration adds i to the "processing_duration" field.
-func (clsu *CiLifecycleStateUpdate) AddProcessingDuration(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.AddProcessingDuration(i)
-	return clsu
+// AddProcessingDuration adds value to the "processing_duration" field.
+func (_u *CiLifecycleStateUpdate) AddProcessingDuration(v int) *CiLifecycleStateUpdate {
+	_u.mutation.AddProcessingDuration(v)
+	return _u
 }
 
 // ClearProcessingDuration clears the value of the "processing_duration" field.
-func (clsu *CiLifecycleStateUpdate) ClearProcessingDuration() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearProcessingDuration()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearProcessingDuration() *CiLifecycleStateUpdate {
+	_u.mutation.ClearProcessingDuration()
+	return _u
 }
 
 // SetPerformanceMetrics sets the "performance_metrics" field.
-func (clsu *CiLifecycleStateUpdate) SetPerformanceMetrics(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetPerformanceMetrics(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetPerformanceMetrics(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetPerformanceMetrics(v)
+	return _u
 }
 
 // ClearPerformanceMetrics clears the value of the "performance_metrics" field.
-func (clsu *CiLifecycleStateUpdate) ClearPerformanceMetrics() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearPerformanceMetrics()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearPerformanceMetrics() *CiLifecycleStateUpdate {
+	_u.mutation.ClearPerformanceMetrics()
+	return _u
 }
 
 // SetResourceUsage sets the "resource_usage" field.
-func (clsu *CiLifecycleStateUpdate) SetResourceUsage(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetResourceUsage(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetResourceUsage(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetResourceUsage(v)
+	return _u
 }
 
 // ClearResourceUsage clears the value of the "resource_usage" field.
-func (clsu *CiLifecycleStateUpdate) ClearResourceUsage() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearResourceUsage()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearResourceUsage() *CiLifecycleStateUpdate {
+	_u.mutation.ClearResourceUsage()
+	return _u
 }
 
 // SetParentStateID sets the "parent_state_id" field.
-func (clsu *CiLifecycleStateUpdate) SetParentStateID(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetParentStateID(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetParentStateID(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetParentStateID(v)
+	return _u
 }
 
 // SetNillableParentStateID sets the "parent_state_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableParentStateID(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetParentStateID(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableParentStateID(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetParentStateID(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearParentStateID clears the value of the "parent_state_id" field.
-func (clsu *CiLifecycleStateUpdate) ClearParentStateID() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearParentStateID()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearParentStateID() *CiLifecycleStateUpdate {
+	_u.mutation.ClearParentStateID()
+	return _u
 }
 
 // SetChildStateIds sets the "child_state_ids" field.
-func (clsu *CiLifecycleStateUpdate) SetChildStateIds(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetChildStateIds(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetChildStateIds(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.SetChildStateIds(v)
+	return _u
 }
 
-// AppendChildStateIds appends s to the "child_state_ids" field.
-func (clsu *CiLifecycleStateUpdate) AppendChildStateIds(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.AppendChildStateIds(s)
-	return clsu
+// AppendChildStateIds appends value to the "child_state_ids" field.
+func (_u *CiLifecycleStateUpdate) AppendChildStateIds(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.AppendChildStateIds(v)
+	return _u
 }
 
 // ClearChildStateIds clears the value of the "child_state_ids" field.
-func (clsu *CiLifecycleStateUpdate) ClearChildStateIds() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearChildStateIds()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearChildStateIds() *CiLifecycleStateUpdate {
+	_u.mutation.ClearChildStateIds()
+	return _u
 }
 
 // SetRelatedOperationID sets the "related_operation_id" field.
-func (clsu *CiLifecycleStateUpdate) SetRelatedOperationID(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetRelatedOperationID(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetRelatedOperationID(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetRelatedOperationID(v)
+	return _u
 }
 
 // SetNillableRelatedOperationID sets the "related_operation_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableRelatedOperationID(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetRelatedOperationID(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableRelatedOperationID(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetRelatedOperationID(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearRelatedOperationID clears the value of the "related_operation_id" field.
-func (clsu *CiLifecycleStateUpdate) ClearRelatedOperationID() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearRelatedOperationID()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearRelatedOperationID() *CiLifecycleStateUpdate {
+	_u.mutation.ClearRelatedOperationID()
+	return _u
 }
 
 // SetVersion sets the "version" field.
-func (clsu *CiLifecycleStateUpdate) SetVersion(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.ResetVersion()
-	clsu.mutation.SetVersion(i)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetVersion(v int) *CiLifecycleStateUpdate {
+	_u.mutation.ResetVersion()
+	_u.mutation.SetVersion(v)
+	return _u
 }
 
 // SetNillableVersion sets the "version" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableVersion(i *int) *CiLifecycleStateUpdate {
-	if i != nil {
-		clsu.SetVersion(*i)
+func (_u *CiLifecycleStateUpdate) SetNillableVersion(v *int) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetVersion(*v)
 	}
-	return clsu
+	return _u
 }
 
-// AddVersion adds i to the "version" field.
-func (clsu *CiLifecycleStateUpdate) AddVersion(i int) *CiLifecycleStateUpdate {
-	clsu.mutation.AddVersion(i)
-	return clsu
+// AddVersion adds value to the "version" field.
+func (_u *CiLifecycleStateUpdate) AddVersion(v int) *CiLifecycleStateUpdate {
+	_u.mutation.AddVersion(v)
+	return _u
 }
 
 // SetChangeHistory sets the "change_history" field.
-func (clsu *CiLifecycleStateUpdate) SetChangeHistory(m []map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetChangeHistory(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetChangeHistory(v []map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetChangeHistory(v)
+	return _u
 }
 
-// AppendChangeHistory appends m to the "change_history" field.
-func (clsu *CiLifecycleStateUpdate) AppendChangeHistory(m []map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.AppendChangeHistory(m)
-	return clsu
+// AppendChangeHistory appends value to the "change_history" field.
+func (_u *CiLifecycleStateUpdate) AppendChangeHistory(v []map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.AppendChangeHistory(v)
+	return _u
 }
 
 // ClearChangeHistory clears the value of the "change_history" field.
-func (clsu *CiLifecycleStateUpdate) ClearChangeHistory() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearChangeHistory()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearChangeHistory() *CiLifecycleStateUpdate {
+	_u.mutation.ClearChangeHistory()
+	return _u
 }
 
 // SetIsRollback sets the "is_rollback" field.
-func (clsu *CiLifecycleStateUpdate) SetIsRollback(b bool) *CiLifecycleStateUpdate {
-	clsu.mutation.SetIsRollback(b)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetIsRollback(v bool) *CiLifecycleStateUpdate {
+	_u.mutation.SetIsRollback(v)
+	return _u
 }
 
 // SetNillableIsRollback sets the "is_rollback" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableIsRollback(b *bool) *CiLifecycleStateUpdate {
-	if b != nil {
-		clsu.SetIsRollback(*b)
+func (_u *CiLifecycleStateUpdate) SetNillableIsRollback(v *bool) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetIsRollback(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetRollbackFromStateID sets the "rollback_from_state_id" field.
-func (clsu *CiLifecycleStateUpdate) SetRollbackFromStateID(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetRollbackFromStateID(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetRollbackFromStateID(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetRollbackFromStateID(v)
+	return _u
 }
 
 // SetNillableRollbackFromStateID sets the "rollback_from_state_id" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableRollbackFromStateID(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetRollbackFromStateID(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableRollbackFromStateID(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetRollbackFromStateID(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearRollbackFromStateID clears the value of the "rollback_from_state_id" field.
-func (clsu *CiLifecycleStateUpdate) ClearRollbackFromStateID() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearRollbackFromStateID()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearRollbackFromStateID() *CiLifecycleStateUpdate {
+	_u.mutation.ClearRollbackFromStateID()
+	return _u
 }
 
 // SetIsMilestone sets the "is_milestone" field.
-func (clsu *CiLifecycleStateUpdate) SetIsMilestone(b bool) *CiLifecycleStateUpdate {
-	clsu.mutation.SetIsMilestone(b)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetIsMilestone(v bool) *CiLifecycleStateUpdate {
+	_u.mutation.SetIsMilestone(v)
+	return _u
 }
 
 // SetNillableIsMilestone sets the "is_milestone" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableIsMilestone(b *bool) *CiLifecycleStateUpdate {
-	if b != nil {
-		clsu.SetIsMilestone(*b)
+func (_u *CiLifecycleStateUpdate) SetNillableIsMilestone(v *bool) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetIsMilestone(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetIsCritical sets the "is_critical" field.
-func (clsu *CiLifecycleStateUpdate) SetIsCritical(b bool) *CiLifecycleStateUpdate {
-	clsu.mutation.SetIsCritical(b)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetIsCritical(v bool) *CiLifecycleStateUpdate {
+	_u.mutation.SetIsCritical(v)
+	return _u
 }
 
 // SetNillableIsCritical sets the "is_critical" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableIsCritical(b *bool) *CiLifecycleStateUpdate {
-	if b != nil {
-		clsu.SetIsCritical(*b)
+func (_u *CiLifecycleStateUpdate) SetNillableIsCritical(v *bool) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetIsCritical(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetIsReversible sets the "is_reversible" field.
-func (clsu *CiLifecycleStateUpdate) SetIsReversible(b bool) *CiLifecycleStateUpdate {
-	clsu.mutation.SetIsReversible(b)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetIsReversible(v bool) *CiLifecycleStateUpdate {
+	_u.mutation.SetIsReversible(v)
+	return _u
 }
 
 // SetNillableIsReversible sets the "is_reversible" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableIsReversible(b *bool) *CiLifecycleStateUpdate {
-	if b != nil {
-		clsu.SetIsReversible(*b)
+func (_u *CiLifecycleStateUpdate) SetNillableIsReversible(v *bool) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetIsReversible(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetIsFinal sets the "is_final" field.
-func (clsu *CiLifecycleStateUpdate) SetIsFinal(b bool) *CiLifecycleStateUpdate {
-	clsu.mutation.SetIsFinal(b)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetIsFinal(v bool) *CiLifecycleStateUpdate {
+	_u.mutation.SetIsFinal(v)
+	return _u
 }
 
 // SetNillableIsFinal sets the "is_final" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableIsFinal(b *bool) *CiLifecycleStateUpdate {
-	if b != nil {
-		clsu.SetIsFinal(*b)
+func (_u *CiLifecycleStateUpdate) SetNillableIsFinal(v *bool) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetIsFinal(*v)
 	}
-	return clsu
+	return _u
 }
 
 // SetCustomAttributes sets the "custom_attributes" field.
-func (clsu *CiLifecycleStateUpdate) SetCustomAttributes(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetCustomAttributes(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetCustomAttributes(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetCustomAttributes(v)
+	return _u
 }
 
 // ClearCustomAttributes clears the value of the "custom_attributes" field.
-func (clsu *CiLifecycleStateUpdate) ClearCustomAttributes() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearCustomAttributes()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearCustomAttributes() *CiLifecycleStateUpdate {
+	_u.mutation.ClearCustomAttributes()
+	return _u
 }
 
 // SetIntegrationData sets the "integration_data" field.
-func (clsu *CiLifecycleStateUpdate) SetIntegrationData(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetIntegrationData(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetIntegrationData(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetIntegrationData(v)
+	return _u
 }
 
 // ClearIntegrationData clears the value of the "integration_data" field.
-func (clsu *CiLifecycleStateUpdate) ClearIntegrationData() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearIntegrationData()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearIntegrationData() *CiLifecycleStateUpdate {
+	_u.mutation.ClearIntegrationData()
+	return _u
 }
 
 // SetMetadata sets the "metadata" field.
-func (clsu *CiLifecycleStateUpdate) SetMetadata(m map[string]interface{}) *CiLifecycleStateUpdate {
-	clsu.mutation.SetMetadata(m)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetMetadata(v map[string]interface{}) *CiLifecycleStateUpdate {
+	_u.mutation.SetMetadata(v)
+	return _u
 }
 
 // ClearMetadata clears the value of the "metadata" field.
-func (clsu *CiLifecycleStateUpdate) ClearMetadata() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearMetadata()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearMetadata() *CiLifecycleStateUpdate {
+	_u.mutation.ClearMetadata()
+	return _u
 }
 
 // SetTags sets the "tags" field.
-func (clsu *CiLifecycleStateUpdate) SetTags(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetTags(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetTags(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.SetTags(v)
+	return _u
 }
 
-// AppendTags appends s to the "tags" field.
-func (clsu *CiLifecycleStateUpdate) AppendTags(s []string) *CiLifecycleStateUpdate {
-	clsu.mutation.AppendTags(s)
-	return clsu
+// AppendTags appends value to the "tags" field.
+func (_u *CiLifecycleStateUpdate) AppendTags(v []string) *CiLifecycleStateUpdate {
+	_u.mutation.AppendTags(v)
+	return _u
 }
 
 // ClearTags clears the value of the "tags" field.
-func (clsu *CiLifecycleStateUpdate) ClearTags() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearTags()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearTags() *CiLifecycleStateUpdate {
+	_u.mutation.ClearTags()
+	return _u
 }
 
 // SetComments sets the "comments" field.
-func (clsu *CiLifecycleStateUpdate) SetComments(s string) *CiLifecycleStateUpdate {
-	clsu.mutation.SetComments(s)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetComments(v string) *CiLifecycleStateUpdate {
+	_u.mutation.SetComments(v)
+	return _u
 }
 
 // SetNillableComments sets the "comments" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableComments(s *string) *CiLifecycleStateUpdate {
-	if s != nil {
-		clsu.SetComments(*s)
+func (_u *CiLifecycleStateUpdate) SetNillableComments(v *string) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetComments(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearComments clears the value of the "comments" field.
-func (clsu *CiLifecycleStateUpdate) ClearComments() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearComments()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearComments() *CiLifecycleStateUpdate {
+	_u.mutation.ClearComments()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (clsu *CiLifecycleStateUpdate) SetCreatedBy(u uuid.UUID) *CiLifecycleStateUpdate {
-	clsu.mutation.SetCreatedBy(u)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetCreatedBy(v uuid.UUID) *CiLifecycleStateUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableCreatedBy(u *uuid.UUID) *CiLifecycleStateUpdate {
-	if u != nil {
-		clsu.SetCreatedBy(*u)
+func (_u *CiLifecycleStateUpdate) SetNillableCreatedBy(v *uuid.UUID) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (clsu *CiLifecycleStateUpdate) ClearCreatedBy() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearCreatedBy()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearCreatedBy() *CiLifecycleStateUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetUpdatedBy sets the "updated_by" field.
-func (clsu *CiLifecycleStateUpdate) SetUpdatedBy(u uuid.UUID) *CiLifecycleStateUpdate {
-	clsu.mutation.SetUpdatedBy(u)
-	return clsu
+func (_u *CiLifecycleStateUpdate) SetUpdatedBy(v uuid.UUID) *CiLifecycleStateUpdate {
+	_u.mutation.SetUpdatedBy(v)
+	return _u
 }
 
 // SetNillableUpdatedBy sets the "updated_by" field if the given value is not nil.
-func (clsu *CiLifecycleStateUpdate) SetNillableUpdatedBy(u *uuid.UUID) *CiLifecycleStateUpdate {
-	if u != nil {
-		clsu.SetUpdatedBy(*u)
+func (_u *CiLifecycleStateUpdate) SetNillableUpdatedBy(v *uuid.UUID) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetUpdatedBy(*v)
 	}
-	return clsu
+	return _u
 }
 
 // ClearUpdatedBy clears the value of the "updated_by" field.
-func (clsu *CiLifecycleStateUpdate) ClearUpdatedBy() *CiLifecycleStateUpdate {
-	clsu.mutation.ClearUpdatedBy()
-	return clsu
+func (_u *CiLifecycleStateUpdate) ClearUpdatedBy() *CiLifecycleStateUpdate {
+	_u.mutation.ClearUpdatedBy()
+	return _u
 }
 
 // Mutation returns the CiLifecycleStateMutation object of the builder.
-func (clsu *CiLifecycleStateUpdate) Mutation() *CiLifecycleStateMutation {
-	return clsu.mutation
+func (_u *CiLifecycleStateUpdate) Mutation() *CiLifecycleStateMutation {
+	return _u.mutation
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (clsu *CiLifecycleStateUpdate) Save(ctx context.Context) (int, error) {
-	clsu.defaults()
-	return withHooks(ctx, clsu.sqlSave, clsu.mutation, clsu.hooks)
+func (_u *CiLifecycleStateUpdate) Save(ctx context.Context) (int, error) {
+	_u.defaults()
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (clsu *CiLifecycleStateUpdate) SaveX(ctx context.Context) int {
-	affected, err := clsu.Save(ctx)
+func (_u *CiLifecycleStateUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1208,44 +1208,44 @@ func (clsu *CiLifecycleStateUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (clsu *CiLifecycleStateUpdate) Exec(ctx context.Context) error {
-	_, err := clsu.Save(ctx)
+func (_u *CiLifecycleStateUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (clsu *CiLifecycleStateUpdate) ExecX(ctx context.Context) {
-	if err := clsu.Exec(ctx); err != nil {
+func (_u *CiLifecycleStateUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (clsu *CiLifecycleStateUpdate) defaults() {
-	if _, ok := clsu.mutation.UpdatedAt(); !ok {
+func (_u *CiLifecycleStateUpdate) defaults() {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		v := cilifecyclestate.UpdateDefaultUpdatedAt()
-		clsu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (clsu *CiLifecycleStateUpdate) check() error {
-	if v, ok := clsu.mutation.StateType(); ok {
+func (_u *CiLifecycleStateUpdate) check() error {
+	if v, ok := _u.mutation.StateType(); ok {
 		if err := cilifecyclestate.StateTypeValidator(v); err != nil {
 			return &ValidationError{Name: "state_type", err: fmt.Errorf(`ent: validator failed for field "CiLifecycleState.state_type": %w`, err)}
 		}
 	}
-	if v, ok := clsu.mutation.StateCategory(); ok {
+	if v, ok := _u.mutation.StateCategory(); ok {
 		if err := cilifecyclestate.StateCategoryValidator(v); err != nil {
 			return &ValidationError{Name: "state_category", err: fmt.Errorf(`ent: validator failed for field "CiLifecycleState.state_category": %w`, err)}
 		}
 	}
-	if v, ok := clsu.mutation.TriggerType(); ok {
+	if v, ok := _u.mutation.TriggerType(); ok {
 		if err := cilifecyclestate.TriggerTypeValidator(v); err != nil {
 			return &ValidationError{Name: "trigger_type", err: fmt.Errorf(`ent: validator failed for field "CiLifecycleState.trigger_type": %w`, err)}
 		}
 	}
-	if v, ok := clsu.mutation.ApprovalStatus(); ok {
+	if v, ok := _u.mutation.ApprovalStatus(); ok {
 		if err := cilifecyclestate.ApprovalStatusValidator(v); err != nil {
 			return &ValidationError{Name: "approval_status", err: fmt.Errorf(`ent: validator failed for field "CiLifecycleState.approval_status": %w`, err)}
 		}
@@ -1253,423 +1253,423 @@ func (clsu *CiLifecycleStateUpdate) check() error {
 	return nil
 }
 
-func (clsu *CiLifecycleStateUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := clsu.check(); err != nil {
-		return n, err
+func (_u *CiLifecycleStateUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cilifecyclestate.Table, cilifecyclestate.Columns, sqlgraph.NewFieldSpec(cilifecyclestate.FieldID, field.TypeUint64))
-	if ps := clsu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := clsu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := clsu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cilifecyclestate.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := clsu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cilifecyclestate.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if clsu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := clsu.mutation.StateID(); ok {
+	if value, ok := _u.mutation.StateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateID, field.TypeString, value)
 	}
-	if value, ok := clsu.mutation.StateName(); ok {
+	if value, ok := _u.mutation.StateName(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateName, field.TypeString, value)
 	}
-	if value, ok := clsu.mutation.StateCode(); ok {
+	if value, ok := _u.mutation.StateCode(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateCode, field.TypeString, value)
 	}
-	if value, ok := clsu.mutation.StateDescription(); ok {
+	if value, ok := _u.mutation.StateDescription(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateDescription, field.TypeString, value)
 	}
-	if clsu.mutation.StateDescriptionCleared() {
+	if _u.mutation.StateDescriptionCleared() {
 		_spec.ClearField(cilifecyclestate.FieldStateDescription, field.TypeString)
 	}
-	if value, ok := clsu.mutation.CiID(); ok {
+	if value, ok := _u.mutation.CiID(); ok {
 		_spec.SetField(cilifecyclestate.FieldCiID, field.TypeUint64, value)
 	}
-	if value, ok := clsu.mutation.AddedCiID(); ok {
+	if value, ok := _u.mutation.AddedCiID(); ok {
 		_spec.AddField(cilifecyclestate.FieldCiID, field.TypeUint64, value)
 	}
-	if value, ok := clsu.mutation.CiTypeID(); ok {
+	if value, ok := _u.mutation.CiTypeID(); ok {
 		_spec.SetField(cilifecyclestate.FieldCiTypeID, field.TypeUint64, value)
 	}
-	if value, ok := clsu.mutation.AddedCiTypeID(); ok {
+	if value, ok := _u.mutation.AddedCiTypeID(); ok {
 		_spec.AddField(cilifecyclestate.FieldCiTypeID, field.TypeUint64, value)
 	}
-	if value, ok := clsu.mutation.StateType(); ok {
+	if value, ok := _u.mutation.StateType(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateType, field.TypeEnum, value)
 	}
-	if value, ok := clsu.mutation.StateCategory(); ok {
+	if value, ok := _u.mutation.StateCategory(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateCategory, field.TypeEnum, value)
 	}
-	if value, ok := clsu.mutation.StateLevel(); ok {
+	if value, ok := _u.mutation.StateLevel(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateLevel, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.AddedStateLevel(); ok {
+	if value, ok := _u.mutation.AddedStateLevel(); ok {
 		_spec.AddField(cilifecyclestate.FieldStateLevel, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.AllowedTransitions(); ok {
+	if value, ok := _u.mutation.AllowedTransitions(); ok {
 		_spec.SetField(cilifecyclestate.FieldAllowedTransitions, field.TypeJSON, value)
 	}
-	if value, ok := clsu.mutation.AppendedAllowedTransitions(); ok {
+	if value, ok := _u.mutation.AppendedAllowedTransitions(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldAllowedTransitions, value)
 		})
 	}
-	if clsu.mutation.AllowedTransitionsCleared() {
+	if _u.mutation.AllowedTransitionsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldAllowedTransitions, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.TransitionConditions(); ok {
+	if value, ok := _u.mutation.TransitionConditions(); ok {
 		_spec.SetField(cilifecyclestate.FieldTransitionConditions, field.TypeJSON, value)
 	}
-	if clsu.mutation.TransitionConditionsCleared() {
+	if _u.mutation.TransitionConditionsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTransitionConditions, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.AutoTransitionRules(); ok {
+	if value, ok := _u.mutation.AutoTransitionRules(); ok {
 		_spec.SetField(cilifecyclestate.FieldAutoTransitionRules, field.TypeJSON, value)
 	}
-	if clsu.mutation.AutoTransitionRulesCleared() {
+	if _u.mutation.AutoTransitionRulesCleared() {
 		_spec.ClearField(cilifecyclestate.FieldAutoTransitionRules, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.EnteredAt(); ok {
+	if value, ok := _u.mutation.EnteredAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldEnteredAt, field.TypeTime, value)
 	}
-	if value, ok := clsu.mutation.ExpectedExitAt(); ok {
+	if value, ok := _u.mutation.ExpectedExitAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldExpectedExitAt, field.TypeTime, value)
 	}
-	if clsu.mutation.ExpectedExitAtCleared() {
+	if _u.mutation.ExpectedExitAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldExpectedExitAt, field.TypeTime)
 	}
-	if value, ok := clsu.mutation.ActualExitAt(); ok {
+	if value, ok := _u.mutation.ActualExitAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldActualExitAt, field.TypeTime, value)
 	}
-	if clsu.mutation.ActualExitAtCleared() {
+	if _u.mutation.ActualExitAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldActualExitAt, field.TypeTime)
 	}
-	if value, ok := clsu.mutation.DurationLimitHours(); ok {
+	if value, ok := _u.mutation.DurationLimitHours(); ok {
 		_spec.SetField(cilifecyclestate.FieldDurationLimitHours, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.AddedDurationLimitHours(); ok {
+	if value, ok := _u.mutation.AddedDurationLimitHours(); ok {
 		_spec.AddField(cilifecyclestate.FieldDurationLimitHours, field.TypeInt, value)
 	}
-	if clsu.mutation.DurationLimitHoursCleared() {
+	if _u.mutation.DurationLimitHoursCleared() {
 		_spec.ClearField(cilifecyclestate.FieldDurationLimitHours, field.TypeInt)
 	}
-	if value, ok := clsu.mutation.IsTimeout(); ok {
+	if value, ok := _u.mutation.IsTimeout(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsTimeout, field.TypeBool, value)
 	}
-	if value, ok := clsu.mutation.TimeoutAt(); ok {
+	if value, ok := _u.mutation.TimeoutAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldTimeoutAt, field.TypeTime, value)
 	}
-	if clsu.mutation.TimeoutAtCleared() {
+	if _u.mutation.TimeoutAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTimeoutAt, field.TypeTime)
 	}
-	if value, ok := clsu.mutation.TriggerType(); ok {
+	if value, ok := _u.mutation.TriggerType(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggerType, field.TypeEnum, value)
 	}
-	if value, ok := clsu.mutation.TriggerSource(); ok {
+	if value, ok := _u.mutation.TriggerSource(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggerSource, field.TypeString, value)
 	}
-	if clsu.mutation.TriggerSourceCleared() {
+	if _u.mutation.TriggerSourceCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTriggerSource, field.TypeString)
 	}
-	if value, ok := clsu.mutation.TriggerContext(); ok {
+	if value, ok := _u.mutation.TriggerContext(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggerContext, field.TypeJSON, value)
 	}
-	if clsu.mutation.TriggerContextCleared() {
+	if _u.mutation.TriggerContextCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTriggerContext, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.TriggeredBy(); ok {
+	if value, ok := _u.mutation.TriggeredBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggeredBy, field.TypeUUID, value)
 	}
-	if clsu.mutation.TriggeredByCleared() {
+	if _u.mutation.TriggeredByCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTriggeredBy, field.TypeUUID)
 	}
-	if value, ok := clsu.mutation.TriggeredByName(); ok {
+	if value, ok := _u.mutation.TriggeredByName(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggeredByName, field.TypeString, value)
 	}
-	if clsu.mutation.TriggeredByNameCleared() {
+	if _u.mutation.TriggeredByNameCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTriggeredByName, field.TypeString)
 	}
-	if value, ok := clsu.mutation.StateData(); ok {
+	if value, ok := _u.mutation.StateData(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateData, field.TypeJSON, value)
 	}
-	if clsu.mutation.StateDataCleared() {
+	if _u.mutation.StateDataCleared() {
 		_spec.ClearField(cilifecyclestate.FieldStateData, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.StateConfig(); ok {
+	if value, ok := _u.mutation.StateConfig(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateConfig, field.TypeJSON, value)
 	}
-	if clsu.mutation.StateConfigCleared() {
+	if _u.mutation.StateConfigCleared() {
 		_spec.ClearField(cilifecyclestate.FieldStateConfig, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.ValidationRules(); ok {
+	if value, ok := _u.mutation.ValidationRules(); ok {
 		_spec.SetField(cilifecyclestate.FieldValidationRules, field.TypeJSON, value)
 	}
-	if clsu.mutation.ValidationRulesCleared() {
+	if _u.mutation.ValidationRulesCleared() {
 		_spec.ClearField(cilifecyclestate.FieldValidationRules, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.RequiredPermissions(); ok {
+	if value, ok := _u.mutation.RequiredPermissions(); ok {
 		_spec.SetField(cilifecyclestate.FieldRequiredPermissions, field.TypeJSON, value)
 	}
-	if value, ok := clsu.mutation.AppendedRequiredPermissions(); ok {
+	if value, ok := _u.mutation.AppendedRequiredPermissions(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldRequiredPermissions, value)
 		})
 	}
-	if clsu.mutation.RequiredPermissionsCleared() {
+	if _u.mutation.RequiredPermissionsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldRequiredPermissions, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.GrantedPermissions(); ok {
+	if value, ok := _u.mutation.GrantedPermissions(); ok {
 		_spec.SetField(cilifecyclestate.FieldGrantedPermissions, field.TypeJSON, value)
 	}
-	if value, ok := clsu.mutation.AppendedGrantedPermissions(); ok {
+	if value, ok := _u.mutation.AppendedGrantedPermissions(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldGrantedPermissions, value)
 		})
 	}
-	if clsu.mutation.GrantedPermissionsCleared() {
+	if _u.mutation.GrantedPermissionsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldGrantedPermissions, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.RestrictedOperations(); ok {
+	if value, ok := _u.mutation.RestrictedOperations(); ok {
 		_spec.SetField(cilifecyclestate.FieldRestrictedOperations, field.TypeJSON, value)
 	}
-	if value, ok := clsu.mutation.AppendedRestrictedOperations(); ok {
+	if value, ok := _u.mutation.AppendedRestrictedOperations(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldRestrictedOperations, value)
 		})
 	}
-	if clsu.mutation.RestrictedOperationsCleared() {
+	if _u.mutation.RestrictedOperationsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldRestrictedOperations, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.NotificationConfig(); ok {
+	if value, ok := _u.mutation.NotificationConfig(); ok {
 		_spec.SetField(cilifecyclestate.FieldNotificationConfig, field.TypeJSON, value)
 	}
-	if clsu.mutation.NotificationConfigCleared() {
+	if _u.mutation.NotificationConfigCleared() {
 		_spec.ClearField(cilifecyclestate.FieldNotificationConfig, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.ReminderConfig(); ok {
+	if value, ok := _u.mutation.ReminderConfig(); ok {
 		_spec.SetField(cilifecyclestate.FieldReminderConfig, field.TypeJSON, value)
 	}
-	if clsu.mutation.ReminderConfigCleared() {
+	if _u.mutation.ReminderConfigCleared() {
 		_spec.ClearField(cilifecyclestate.FieldReminderConfig, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.LastNotificationAt(); ok {
+	if value, ok := _u.mutation.LastNotificationAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldLastNotificationAt, field.TypeTime, value)
 	}
-	if clsu.mutation.LastNotificationAtCleared() {
+	if _u.mutation.LastNotificationAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldLastNotificationAt, field.TypeTime)
 	}
-	if value, ok := clsu.mutation.NotificationCount(); ok {
+	if value, ok := _u.mutation.NotificationCount(); ok {
 		_spec.SetField(cilifecyclestate.FieldNotificationCount, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.AddedNotificationCount(); ok {
+	if value, ok := _u.mutation.AddedNotificationCount(); ok {
 		_spec.AddField(cilifecyclestate.FieldNotificationCount, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.RequireApproval(); ok {
+	if value, ok := _u.mutation.RequireApproval(); ok {
 		_spec.SetField(cilifecyclestate.FieldRequireApproval, field.TypeBool, value)
 	}
-	if value, ok := clsu.mutation.ApprovalFlowID(); ok {
+	if value, ok := _u.mutation.ApprovalFlowID(); ok {
 		_spec.SetField(cilifecyclestate.FieldApprovalFlowID, field.TypeString, value)
 	}
-	if clsu.mutation.ApprovalFlowIDCleared() {
+	if _u.mutation.ApprovalFlowIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApprovalFlowID, field.TypeString)
 	}
-	if value, ok := clsu.mutation.ApprovalStatus(); ok {
+	if value, ok := _u.mutation.ApprovalStatus(); ok {
 		_spec.SetField(cilifecyclestate.FieldApprovalStatus, field.TypeEnum, value)
 	}
-	if clsu.mutation.ApprovalStatusCleared() {
+	if _u.mutation.ApprovalStatusCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApprovalStatus, field.TypeEnum)
 	}
-	if value, ok := clsu.mutation.ApproverID(); ok {
+	if value, ok := _u.mutation.ApproverID(); ok {
 		_spec.SetField(cilifecyclestate.FieldApproverID, field.TypeUUID, value)
 	}
-	if clsu.mutation.ApproverIDCleared() {
+	if _u.mutation.ApproverIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApproverID, field.TypeUUID)
 	}
-	if value, ok := clsu.mutation.ApproverName(); ok {
+	if value, ok := _u.mutation.ApproverName(); ok {
 		_spec.SetField(cilifecyclestate.FieldApproverName, field.TypeString, value)
 	}
-	if clsu.mutation.ApproverNameCleared() {
+	if _u.mutation.ApproverNameCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApproverName, field.TypeString)
 	}
-	if value, ok := clsu.mutation.ApprovedAt(); ok {
+	if value, ok := _u.mutation.ApprovedAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldApprovedAt, field.TypeTime, value)
 	}
-	if clsu.mutation.ApprovedAtCleared() {
+	if _u.mutation.ApprovedAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApprovedAt, field.TypeTime)
 	}
-	if value, ok := clsu.mutation.ApprovalComment(); ok {
+	if value, ok := _u.mutation.ApprovalComment(); ok {
 		_spec.SetField(cilifecyclestate.FieldApprovalComment, field.TypeString, value)
 	}
-	if clsu.mutation.ApprovalCommentCleared() {
+	if _u.mutation.ApprovalCommentCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApprovalComment, field.TypeString)
 	}
-	if value, ok := clsu.mutation.HasError(); ok {
+	if value, ok := _u.mutation.HasError(); ok {
 		_spec.SetField(cilifecyclestate.FieldHasError, field.TypeBool, value)
 	}
-	if value, ok := clsu.mutation.ErrorMessage(); ok {
+	if value, ok := _u.mutation.ErrorMessage(); ok {
 		_spec.SetField(cilifecyclestate.FieldErrorMessage, field.TypeString, value)
 	}
-	if clsu.mutation.ErrorMessageCleared() {
+	if _u.mutation.ErrorMessageCleared() {
 		_spec.ClearField(cilifecyclestate.FieldErrorMessage, field.TypeString)
 	}
-	if value, ok := clsu.mutation.ErrorDetails(); ok {
+	if value, ok := _u.mutation.ErrorDetails(); ok {
 		_spec.SetField(cilifecyclestate.FieldErrorDetails, field.TypeJSON, value)
 	}
-	if clsu.mutation.ErrorDetailsCleared() {
+	if _u.mutation.ErrorDetailsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldErrorDetails, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.RetryCount(); ok {
+	if value, ok := _u.mutation.RetryCount(); ok {
 		_spec.SetField(cilifecyclestate.FieldRetryCount, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.AddedRetryCount(); ok {
+	if value, ok := _u.mutation.AddedRetryCount(); ok {
 		_spec.AddField(cilifecyclestate.FieldRetryCount, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.LastRetryAt(); ok {
+	if value, ok := _u.mutation.LastRetryAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldLastRetryAt, field.TypeTime, value)
 	}
-	if clsu.mutation.LastRetryAtCleared() {
+	if _u.mutation.LastRetryAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldLastRetryAt, field.TypeTime)
 	}
-	if value, ok := clsu.mutation.ProcessingDuration(); ok {
+	if value, ok := _u.mutation.ProcessingDuration(); ok {
 		_spec.SetField(cilifecyclestate.FieldProcessingDuration, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.AddedProcessingDuration(); ok {
+	if value, ok := _u.mutation.AddedProcessingDuration(); ok {
 		_spec.AddField(cilifecyclestate.FieldProcessingDuration, field.TypeInt, value)
 	}
-	if clsu.mutation.ProcessingDurationCleared() {
+	if _u.mutation.ProcessingDurationCleared() {
 		_spec.ClearField(cilifecyclestate.FieldProcessingDuration, field.TypeInt)
 	}
-	if value, ok := clsu.mutation.PerformanceMetrics(); ok {
+	if value, ok := _u.mutation.PerformanceMetrics(); ok {
 		_spec.SetField(cilifecyclestate.FieldPerformanceMetrics, field.TypeJSON, value)
 	}
-	if clsu.mutation.PerformanceMetricsCleared() {
+	if _u.mutation.PerformanceMetricsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldPerformanceMetrics, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.ResourceUsage(); ok {
+	if value, ok := _u.mutation.ResourceUsage(); ok {
 		_spec.SetField(cilifecyclestate.FieldResourceUsage, field.TypeJSON, value)
 	}
-	if clsu.mutation.ResourceUsageCleared() {
+	if _u.mutation.ResourceUsageCleared() {
 		_spec.ClearField(cilifecyclestate.FieldResourceUsage, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.ParentStateID(); ok {
+	if value, ok := _u.mutation.ParentStateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldParentStateID, field.TypeString, value)
 	}
-	if clsu.mutation.ParentStateIDCleared() {
+	if _u.mutation.ParentStateIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldParentStateID, field.TypeString)
 	}
-	if value, ok := clsu.mutation.ChildStateIds(); ok {
+	if value, ok := _u.mutation.ChildStateIds(); ok {
 		_spec.SetField(cilifecyclestate.FieldChildStateIds, field.TypeJSON, value)
 	}
-	if value, ok := clsu.mutation.AppendedChildStateIds(); ok {
+	if value, ok := _u.mutation.AppendedChildStateIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldChildStateIds, value)
 		})
 	}
-	if clsu.mutation.ChildStateIdsCleared() {
+	if _u.mutation.ChildStateIdsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldChildStateIds, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.RelatedOperationID(); ok {
+	if value, ok := _u.mutation.RelatedOperationID(); ok {
 		_spec.SetField(cilifecyclestate.FieldRelatedOperationID, field.TypeString, value)
 	}
-	if clsu.mutation.RelatedOperationIDCleared() {
+	if _u.mutation.RelatedOperationIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldRelatedOperationID, field.TypeString)
 	}
-	if value, ok := clsu.mutation.Version(); ok {
+	if value, ok := _u.mutation.Version(); ok {
 		_spec.SetField(cilifecyclestate.FieldVersion, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.AddedVersion(); ok {
+	if value, ok := _u.mutation.AddedVersion(); ok {
 		_spec.AddField(cilifecyclestate.FieldVersion, field.TypeInt, value)
 	}
-	if value, ok := clsu.mutation.ChangeHistory(); ok {
+	if value, ok := _u.mutation.ChangeHistory(); ok {
 		_spec.SetField(cilifecyclestate.FieldChangeHistory, field.TypeJSON, value)
 	}
-	if value, ok := clsu.mutation.AppendedChangeHistory(); ok {
+	if value, ok := _u.mutation.AppendedChangeHistory(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldChangeHistory, value)
 		})
 	}
-	if clsu.mutation.ChangeHistoryCleared() {
+	if _u.mutation.ChangeHistoryCleared() {
 		_spec.ClearField(cilifecyclestate.FieldChangeHistory, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.IsRollback(); ok {
+	if value, ok := _u.mutation.IsRollback(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsRollback, field.TypeBool, value)
 	}
-	if value, ok := clsu.mutation.RollbackFromStateID(); ok {
+	if value, ok := _u.mutation.RollbackFromStateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldRollbackFromStateID, field.TypeString, value)
 	}
-	if clsu.mutation.RollbackFromStateIDCleared() {
+	if _u.mutation.RollbackFromStateIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldRollbackFromStateID, field.TypeString)
 	}
-	if value, ok := clsu.mutation.IsMilestone(); ok {
+	if value, ok := _u.mutation.IsMilestone(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsMilestone, field.TypeBool, value)
 	}
-	if value, ok := clsu.mutation.IsCritical(); ok {
+	if value, ok := _u.mutation.IsCritical(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsCritical, field.TypeBool, value)
 	}
-	if value, ok := clsu.mutation.IsReversible(); ok {
+	if value, ok := _u.mutation.IsReversible(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsReversible, field.TypeBool, value)
 	}
-	if value, ok := clsu.mutation.IsFinal(); ok {
+	if value, ok := _u.mutation.IsFinal(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsFinal, field.TypeBool, value)
 	}
-	if value, ok := clsu.mutation.CustomAttributes(); ok {
+	if value, ok := _u.mutation.CustomAttributes(); ok {
 		_spec.SetField(cilifecyclestate.FieldCustomAttributes, field.TypeJSON, value)
 	}
-	if clsu.mutation.CustomAttributesCleared() {
+	if _u.mutation.CustomAttributesCleared() {
 		_spec.ClearField(cilifecyclestate.FieldCustomAttributes, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.IntegrationData(); ok {
+	if value, ok := _u.mutation.IntegrationData(); ok {
 		_spec.SetField(cilifecyclestate.FieldIntegrationData, field.TypeJSON, value)
 	}
-	if clsu.mutation.IntegrationDataCleared() {
+	if _u.mutation.IntegrationDataCleared() {
 		_spec.ClearField(cilifecyclestate.FieldIntegrationData, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.Metadata(); ok {
+	if value, ok := _u.mutation.Metadata(); ok {
 		_spec.SetField(cilifecyclestate.FieldMetadata, field.TypeJSON, value)
 	}
-	if clsu.mutation.MetadataCleared() {
+	if _u.mutation.MetadataCleared() {
 		_spec.ClearField(cilifecyclestate.FieldMetadata, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.Tags(); ok {
+	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(cilifecyclestate.FieldTags, field.TypeJSON, value)
 	}
-	if value, ok := clsu.mutation.AppendedTags(); ok {
+	if value, ok := _u.mutation.AppendedTags(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldTags, value)
 		})
 	}
-	if clsu.mutation.TagsCleared() {
+	if _u.mutation.TagsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTags, field.TypeJSON)
 	}
-	if value, ok := clsu.mutation.Comments(); ok {
+	if value, ok := _u.mutation.Comments(); ok {
 		_spec.SetField(cilifecyclestate.FieldComments, field.TypeString, value)
 	}
-	if clsu.mutation.CommentsCleared() {
+	if _u.mutation.CommentsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldComments, field.TypeString)
 	}
-	if value, ok := clsu.mutation.CreatedBy(); ok {
+	if value, ok := _u.mutation.CreatedBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldCreatedBy, field.TypeUUID, value)
 	}
-	if clsu.mutation.CreatedByCleared() {
+	if _u.mutation.CreatedByCleared() {
 		_spec.ClearField(cilifecyclestate.FieldCreatedBy, field.TypeUUID)
 	}
-	if value, ok := clsu.mutation.UpdatedBy(); ok {
+	if value, ok := _u.mutation.UpdatedBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldUpdatedBy, field.TypeUUID, value)
 	}
-	if clsu.mutation.UpdatedByCleared() {
+	if _u.mutation.UpdatedByCleared() {
 		_spec.ClearField(cilifecyclestate.FieldUpdatedBy, field.TypeUUID)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, clsu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cilifecyclestate.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1677,8 +1677,8 @@ func (clsu *CiLifecycleStateUpdate) sqlSave(ctx context.Context) (n int, err err
 		}
 		return 0, err
 	}
-	clsu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiLifecycleStateUpdateOne is the builder for updating a single CiLifecycleState entity.
@@ -1690,1189 +1690,1189 @@ type CiLifecycleStateUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetUpdatedAt(t time.Time) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetUpdatedAt(t)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetUpdatedAt(v time.Time) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetDepartmentID(u uint64) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetDepartmentID()
-	clsuo.mutation.SetDepartmentID(u)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetDepartmentID(v uint64) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableDepartmentID(u *uint64) *CiLifecycleStateUpdateOne {
-	if u != nil {
-		clsuo.SetDepartmentID(*u)
+func (_u *CiLifecycleStateUpdateOne) SetNillableDepartmentID(v *uint64) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddDepartmentID(u int64) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddDepartmentID(u)
-	return clsuo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiLifecycleStateUpdateOne) AddDepartmentID(v int64) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearDepartmentID() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearDepartmentID()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearDepartmentID() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetStateID sets the "state_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateID(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetStateID(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateID(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetStateID(v)
+	return _u
 }
 
 // SetNillableStateID sets the "state_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableStateID(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetStateID(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableStateID(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetStateID(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetStateName sets the "state_name" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateName(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetStateName(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateName(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetStateName(v)
+	return _u
 }
 
 // SetNillableStateName sets the "state_name" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableStateName(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetStateName(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableStateName(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetStateName(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetStateCode sets the "state_code" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateCode(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetStateCode(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateCode(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetStateCode(v)
+	return _u
 }
 
 // SetNillableStateCode sets the "state_code" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableStateCode(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetStateCode(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableStateCode(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetStateCode(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetStateDescription sets the "state_description" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateDescription(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetStateDescription(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateDescription(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetStateDescription(v)
+	return _u
 }
 
 // SetNillableStateDescription sets the "state_description" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableStateDescription(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetStateDescription(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableStateDescription(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetStateDescription(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearStateDescription clears the value of the "state_description" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearStateDescription() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearStateDescription()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearStateDescription() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearStateDescription()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetCiID(u uint64) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetCiID()
-	clsuo.mutation.SetCiID(u)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetCiID(v uint64) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetCiID()
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableCiID(u *uint64) *CiLifecycleStateUpdateOne {
-	if u != nil {
-		clsuo.SetCiID(*u)
+func (_u *CiLifecycleStateUpdateOne) SetNillableCiID(v *uint64) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddCiID adds u to the "ci_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddCiID(u int64) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddCiID(u)
-	return clsuo
+// AddCiID adds value to the "ci_id" field.
+func (_u *CiLifecycleStateUpdateOne) AddCiID(v int64) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddCiID(v)
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetCiTypeID(u uint64) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetCiTypeID()
-	clsuo.mutation.SetCiTypeID(u)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetCiTypeID(v uint64) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetCiTypeID()
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableCiTypeID(u *uint64) *CiLifecycleStateUpdateOne {
-	if u != nil {
-		clsuo.SetCiTypeID(*u)
+func (_u *CiLifecycleStateUpdateOne) SetNillableCiTypeID(v *uint64) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddCiTypeID adds u to the "ci_type_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddCiTypeID(u int64) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddCiTypeID(u)
-	return clsuo
+// AddCiTypeID adds value to the "ci_type_id" field.
+func (_u *CiLifecycleStateUpdateOne) AddCiTypeID(v int64) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddCiTypeID(v)
+	return _u
 }
 
 // SetStateType sets the "state_type" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateType(ct cilifecyclestate.StateType) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetStateType(ct)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateType(v cilifecyclestate.StateType) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetStateType(v)
+	return _u
 }
 
 // SetNillableStateType sets the "state_type" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableStateType(ct *cilifecyclestate.StateType) *CiLifecycleStateUpdateOne {
-	if ct != nil {
-		clsuo.SetStateType(*ct)
+func (_u *CiLifecycleStateUpdateOne) SetNillableStateType(v *cilifecyclestate.StateType) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetStateType(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetStateCategory sets the "state_category" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateCategory(cc cilifecyclestate.StateCategory) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetStateCategory(cc)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateCategory(v cilifecyclestate.StateCategory) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetStateCategory(v)
+	return _u
 }
 
 // SetNillableStateCategory sets the "state_category" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableStateCategory(cc *cilifecyclestate.StateCategory) *CiLifecycleStateUpdateOne {
-	if cc != nil {
-		clsuo.SetStateCategory(*cc)
+func (_u *CiLifecycleStateUpdateOne) SetNillableStateCategory(v *cilifecyclestate.StateCategory) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetStateCategory(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetStateLevel sets the "state_level" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateLevel(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetStateLevel()
-	clsuo.mutation.SetStateLevel(i)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateLevel(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetStateLevel()
+	_u.mutation.SetStateLevel(v)
+	return _u
 }
 
 // SetNillableStateLevel sets the "state_level" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableStateLevel(i *int) *CiLifecycleStateUpdateOne {
-	if i != nil {
-		clsuo.SetStateLevel(*i)
+func (_u *CiLifecycleStateUpdateOne) SetNillableStateLevel(v *int) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetStateLevel(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddStateLevel adds i to the "state_level" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddStateLevel(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddStateLevel(i)
-	return clsuo
+// AddStateLevel adds value to the "state_level" field.
+func (_u *CiLifecycleStateUpdateOne) AddStateLevel(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddStateLevel(v)
+	return _u
 }
 
 // SetAllowedTransitions sets the "allowed_transitions" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetAllowedTransitions(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetAllowedTransitions(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetAllowedTransitions(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetAllowedTransitions(v)
+	return _u
 }
 
-// AppendAllowedTransitions appends s to the "allowed_transitions" field.
-func (clsuo *CiLifecycleStateUpdateOne) AppendAllowedTransitions(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AppendAllowedTransitions(s)
-	return clsuo
+// AppendAllowedTransitions appends value to the "allowed_transitions" field.
+func (_u *CiLifecycleStateUpdateOne) AppendAllowedTransitions(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.AppendAllowedTransitions(v)
+	return _u
 }
 
 // ClearAllowedTransitions clears the value of the "allowed_transitions" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearAllowedTransitions() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearAllowedTransitions()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearAllowedTransitions() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearAllowedTransitions()
+	return _u
 }
 
 // SetTransitionConditions sets the "transition_conditions" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetTransitionConditions(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetTransitionConditions(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetTransitionConditions(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetTransitionConditions(v)
+	return _u
 }
 
 // ClearTransitionConditions clears the value of the "transition_conditions" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearTransitionConditions() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearTransitionConditions()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearTransitionConditions() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearTransitionConditions()
+	return _u
 }
 
 // SetAutoTransitionRules sets the "auto_transition_rules" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetAutoTransitionRules(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetAutoTransitionRules(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetAutoTransitionRules(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetAutoTransitionRules(v)
+	return _u
 }
 
 // ClearAutoTransitionRules clears the value of the "auto_transition_rules" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearAutoTransitionRules() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearAutoTransitionRules()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearAutoTransitionRules() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearAutoTransitionRules()
+	return _u
 }
 
 // SetEnteredAt sets the "entered_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetEnteredAt(t time.Time) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetEnteredAt(t)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetEnteredAt(v time.Time) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetEnteredAt(v)
+	return _u
 }
 
 // SetNillableEnteredAt sets the "entered_at" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableEnteredAt(t *time.Time) *CiLifecycleStateUpdateOne {
-	if t != nil {
-		clsuo.SetEnteredAt(*t)
+func (_u *CiLifecycleStateUpdateOne) SetNillableEnteredAt(v *time.Time) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetEnteredAt(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetExpectedExitAt sets the "expected_exit_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetExpectedExitAt(t time.Time) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetExpectedExitAt(t)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetExpectedExitAt(v time.Time) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetExpectedExitAt(v)
+	return _u
 }
 
 // SetNillableExpectedExitAt sets the "expected_exit_at" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableExpectedExitAt(t *time.Time) *CiLifecycleStateUpdateOne {
-	if t != nil {
-		clsuo.SetExpectedExitAt(*t)
+func (_u *CiLifecycleStateUpdateOne) SetNillableExpectedExitAt(v *time.Time) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetExpectedExitAt(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearExpectedExitAt clears the value of the "expected_exit_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearExpectedExitAt() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearExpectedExitAt()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearExpectedExitAt() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearExpectedExitAt()
+	return _u
 }
 
 // SetActualExitAt sets the "actual_exit_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetActualExitAt(t time.Time) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetActualExitAt(t)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetActualExitAt(v time.Time) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetActualExitAt(v)
+	return _u
 }
 
 // SetNillableActualExitAt sets the "actual_exit_at" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableActualExitAt(t *time.Time) *CiLifecycleStateUpdateOne {
-	if t != nil {
-		clsuo.SetActualExitAt(*t)
+func (_u *CiLifecycleStateUpdateOne) SetNillableActualExitAt(v *time.Time) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetActualExitAt(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearActualExitAt clears the value of the "actual_exit_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearActualExitAt() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearActualExitAt()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearActualExitAt() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearActualExitAt()
+	return _u
 }
 
 // SetDurationLimitHours sets the "duration_limit_hours" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetDurationLimitHours(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetDurationLimitHours()
-	clsuo.mutation.SetDurationLimitHours(i)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetDurationLimitHours(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetDurationLimitHours()
+	_u.mutation.SetDurationLimitHours(v)
+	return _u
 }
 
 // SetNillableDurationLimitHours sets the "duration_limit_hours" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableDurationLimitHours(i *int) *CiLifecycleStateUpdateOne {
-	if i != nil {
-		clsuo.SetDurationLimitHours(*i)
+func (_u *CiLifecycleStateUpdateOne) SetNillableDurationLimitHours(v *int) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetDurationLimitHours(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddDurationLimitHours adds i to the "duration_limit_hours" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddDurationLimitHours(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddDurationLimitHours(i)
-	return clsuo
+// AddDurationLimitHours adds value to the "duration_limit_hours" field.
+func (_u *CiLifecycleStateUpdateOne) AddDurationLimitHours(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddDurationLimitHours(v)
+	return _u
 }
 
 // ClearDurationLimitHours clears the value of the "duration_limit_hours" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearDurationLimitHours() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearDurationLimitHours()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearDurationLimitHours() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearDurationLimitHours()
+	return _u
 }
 
 // SetIsTimeout sets the "is_timeout" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetIsTimeout(b bool) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetIsTimeout(b)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetIsTimeout(v bool) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetIsTimeout(v)
+	return _u
 }
 
 // SetNillableIsTimeout sets the "is_timeout" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableIsTimeout(b *bool) *CiLifecycleStateUpdateOne {
-	if b != nil {
-		clsuo.SetIsTimeout(*b)
+func (_u *CiLifecycleStateUpdateOne) SetNillableIsTimeout(v *bool) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetIsTimeout(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetTimeoutAt sets the "timeout_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetTimeoutAt(t time.Time) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetTimeoutAt(t)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetTimeoutAt(v time.Time) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetTimeoutAt(v)
+	return _u
 }
 
 // SetNillableTimeoutAt sets the "timeout_at" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableTimeoutAt(t *time.Time) *CiLifecycleStateUpdateOne {
-	if t != nil {
-		clsuo.SetTimeoutAt(*t)
+func (_u *CiLifecycleStateUpdateOne) SetNillableTimeoutAt(v *time.Time) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetTimeoutAt(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearTimeoutAt clears the value of the "timeout_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearTimeoutAt() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearTimeoutAt()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearTimeoutAt() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearTimeoutAt()
+	return _u
 }
 
 // SetTriggerType sets the "trigger_type" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetTriggerType(ct cilifecyclestate.TriggerType) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetTriggerType(ct)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetTriggerType(v cilifecyclestate.TriggerType) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetTriggerType(v)
+	return _u
 }
 
 // SetNillableTriggerType sets the "trigger_type" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableTriggerType(ct *cilifecyclestate.TriggerType) *CiLifecycleStateUpdateOne {
-	if ct != nil {
-		clsuo.SetTriggerType(*ct)
+func (_u *CiLifecycleStateUpdateOne) SetNillableTriggerType(v *cilifecyclestate.TriggerType) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetTriggerType(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetTriggerSource sets the "trigger_source" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetTriggerSource(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetTriggerSource(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetTriggerSource(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetTriggerSource(v)
+	return _u
 }
 
 // SetNillableTriggerSource sets the "trigger_source" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableTriggerSource(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetTriggerSource(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableTriggerSource(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetTriggerSource(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearTriggerSource clears the value of the "trigger_source" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearTriggerSource() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearTriggerSource()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearTriggerSource() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearTriggerSource()
+	return _u
 }
 
 // SetTriggerContext sets the "trigger_context" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetTriggerContext(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetTriggerContext(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetTriggerContext(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetTriggerContext(v)
+	return _u
 }
 
 // ClearTriggerContext clears the value of the "trigger_context" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearTriggerContext() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearTriggerContext()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearTriggerContext() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearTriggerContext()
+	return _u
 }
 
 // SetTriggeredBy sets the "triggered_by" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetTriggeredBy(u uuid.UUID) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetTriggeredBy(u)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetTriggeredBy(v uuid.UUID) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetTriggeredBy(v)
+	return _u
 }
 
 // SetNillableTriggeredBy sets the "triggered_by" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableTriggeredBy(u *uuid.UUID) *CiLifecycleStateUpdateOne {
-	if u != nil {
-		clsuo.SetTriggeredBy(*u)
+func (_u *CiLifecycleStateUpdateOne) SetNillableTriggeredBy(v *uuid.UUID) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetTriggeredBy(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearTriggeredBy clears the value of the "triggered_by" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearTriggeredBy() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearTriggeredBy()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearTriggeredBy() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearTriggeredBy()
+	return _u
 }
 
 // SetTriggeredByName sets the "triggered_by_name" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetTriggeredByName(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetTriggeredByName(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetTriggeredByName(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetTriggeredByName(v)
+	return _u
 }
 
 // SetNillableTriggeredByName sets the "triggered_by_name" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableTriggeredByName(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetTriggeredByName(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableTriggeredByName(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetTriggeredByName(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearTriggeredByName clears the value of the "triggered_by_name" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearTriggeredByName() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearTriggeredByName()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearTriggeredByName() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearTriggeredByName()
+	return _u
 }
 
 // SetStateData sets the "state_data" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateData(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetStateData(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateData(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetStateData(v)
+	return _u
 }
 
 // ClearStateData clears the value of the "state_data" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearStateData() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearStateData()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearStateData() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearStateData()
+	return _u
 }
 
 // SetStateConfig sets the "state_config" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetStateConfig(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetStateConfig(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetStateConfig(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetStateConfig(v)
+	return _u
 }
 
 // ClearStateConfig clears the value of the "state_config" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearStateConfig() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearStateConfig()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearStateConfig() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearStateConfig()
+	return _u
 }
 
 // SetValidationRules sets the "validation_rules" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetValidationRules(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetValidationRules(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetValidationRules(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetValidationRules(v)
+	return _u
 }
 
 // ClearValidationRules clears the value of the "validation_rules" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearValidationRules() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearValidationRules()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearValidationRules() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearValidationRules()
+	return _u
 }
 
 // SetRequiredPermissions sets the "required_permissions" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetRequiredPermissions(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetRequiredPermissions(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetRequiredPermissions(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetRequiredPermissions(v)
+	return _u
 }
 
-// AppendRequiredPermissions appends s to the "required_permissions" field.
-func (clsuo *CiLifecycleStateUpdateOne) AppendRequiredPermissions(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AppendRequiredPermissions(s)
-	return clsuo
+// AppendRequiredPermissions appends value to the "required_permissions" field.
+func (_u *CiLifecycleStateUpdateOne) AppendRequiredPermissions(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.AppendRequiredPermissions(v)
+	return _u
 }
 
 // ClearRequiredPermissions clears the value of the "required_permissions" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearRequiredPermissions() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearRequiredPermissions()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearRequiredPermissions() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearRequiredPermissions()
+	return _u
 }
 
 // SetGrantedPermissions sets the "granted_permissions" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetGrantedPermissions(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetGrantedPermissions(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetGrantedPermissions(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetGrantedPermissions(v)
+	return _u
 }
 
-// AppendGrantedPermissions appends s to the "granted_permissions" field.
-func (clsuo *CiLifecycleStateUpdateOne) AppendGrantedPermissions(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AppendGrantedPermissions(s)
-	return clsuo
+// AppendGrantedPermissions appends value to the "granted_permissions" field.
+func (_u *CiLifecycleStateUpdateOne) AppendGrantedPermissions(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.AppendGrantedPermissions(v)
+	return _u
 }
 
 // ClearGrantedPermissions clears the value of the "granted_permissions" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearGrantedPermissions() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearGrantedPermissions()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearGrantedPermissions() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearGrantedPermissions()
+	return _u
 }
 
 // SetRestrictedOperations sets the "restricted_operations" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetRestrictedOperations(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetRestrictedOperations(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetRestrictedOperations(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetRestrictedOperations(v)
+	return _u
 }
 
-// AppendRestrictedOperations appends s to the "restricted_operations" field.
-func (clsuo *CiLifecycleStateUpdateOne) AppendRestrictedOperations(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AppendRestrictedOperations(s)
-	return clsuo
+// AppendRestrictedOperations appends value to the "restricted_operations" field.
+func (_u *CiLifecycleStateUpdateOne) AppendRestrictedOperations(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.AppendRestrictedOperations(v)
+	return _u
 }
 
 // ClearRestrictedOperations clears the value of the "restricted_operations" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearRestrictedOperations() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearRestrictedOperations()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearRestrictedOperations() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearRestrictedOperations()
+	return _u
 }
 
 // SetNotificationConfig sets the "notification_config" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetNotificationConfig(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetNotificationConfig(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetNotificationConfig(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetNotificationConfig(v)
+	return _u
 }
 
 // ClearNotificationConfig clears the value of the "notification_config" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearNotificationConfig() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearNotificationConfig()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearNotificationConfig() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearNotificationConfig()
+	return _u
 }
 
 // SetReminderConfig sets the "reminder_config" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetReminderConfig(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetReminderConfig(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetReminderConfig(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetReminderConfig(v)
+	return _u
 }
 
 // ClearReminderConfig clears the value of the "reminder_config" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearReminderConfig() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearReminderConfig()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearReminderConfig() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearReminderConfig()
+	return _u
 }
 
 // SetLastNotificationAt sets the "last_notification_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetLastNotificationAt(t time.Time) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetLastNotificationAt(t)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetLastNotificationAt(v time.Time) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetLastNotificationAt(v)
+	return _u
 }
 
 // SetNillableLastNotificationAt sets the "last_notification_at" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableLastNotificationAt(t *time.Time) *CiLifecycleStateUpdateOne {
-	if t != nil {
-		clsuo.SetLastNotificationAt(*t)
+func (_u *CiLifecycleStateUpdateOne) SetNillableLastNotificationAt(v *time.Time) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetLastNotificationAt(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearLastNotificationAt clears the value of the "last_notification_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearLastNotificationAt() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearLastNotificationAt()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearLastNotificationAt() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearLastNotificationAt()
+	return _u
 }
 
 // SetNotificationCount sets the "notification_count" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetNotificationCount(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetNotificationCount()
-	clsuo.mutation.SetNotificationCount(i)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetNotificationCount(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetNotificationCount()
+	_u.mutation.SetNotificationCount(v)
+	return _u
 }
 
 // SetNillableNotificationCount sets the "notification_count" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableNotificationCount(i *int) *CiLifecycleStateUpdateOne {
-	if i != nil {
-		clsuo.SetNotificationCount(*i)
+func (_u *CiLifecycleStateUpdateOne) SetNillableNotificationCount(v *int) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetNotificationCount(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddNotificationCount adds i to the "notification_count" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddNotificationCount(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddNotificationCount(i)
-	return clsuo
+// AddNotificationCount adds value to the "notification_count" field.
+func (_u *CiLifecycleStateUpdateOne) AddNotificationCount(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddNotificationCount(v)
+	return _u
 }
 
 // SetRequireApproval sets the "require_approval" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetRequireApproval(b bool) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetRequireApproval(b)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetRequireApproval(v bool) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetRequireApproval(v)
+	return _u
 }
 
 // SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableRequireApproval(b *bool) *CiLifecycleStateUpdateOne {
-	if b != nil {
-		clsuo.SetRequireApproval(*b)
+func (_u *CiLifecycleStateUpdateOne) SetNillableRequireApproval(v *bool) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetRequireApproval(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetApprovalFlowID sets the "approval_flow_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetApprovalFlowID(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetApprovalFlowID(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetApprovalFlowID(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetApprovalFlowID(v)
+	return _u
 }
 
 // SetNillableApprovalFlowID sets the "approval_flow_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableApprovalFlowID(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetApprovalFlowID(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableApprovalFlowID(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetApprovalFlowID(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearApprovalFlowID clears the value of the "approval_flow_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearApprovalFlowID() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearApprovalFlowID()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearApprovalFlowID() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearApprovalFlowID()
+	return _u
 }
 
 // SetApprovalStatus sets the "approval_status" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetApprovalStatus(cs cilifecyclestate.ApprovalStatus) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetApprovalStatus(cs)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetApprovalStatus(v cilifecyclestate.ApprovalStatus) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetApprovalStatus(v)
+	return _u
 }
 
 // SetNillableApprovalStatus sets the "approval_status" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableApprovalStatus(cs *cilifecyclestate.ApprovalStatus) *CiLifecycleStateUpdateOne {
-	if cs != nil {
-		clsuo.SetApprovalStatus(*cs)
+func (_u *CiLifecycleStateUpdateOne) SetNillableApprovalStatus(v *cilifecyclestate.ApprovalStatus) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetApprovalStatus(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearApprovalStatus clears the value of the "approval_status" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearApprovalStatus() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearApprovalStatus()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearApprovalStatus() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearApprovalStatus()
+	return _u
 }
 
 // SetApproverID sets the "approver_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetApproverID(u uuid.UUID) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetApproverID(u)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetApproverID(v uuid.UUID) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetApproverID(v)
+	return _u
 }
 
 // SetNillableApproverID sets the "approver_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableApproverID(u *uuid.UUID) *CiLifecycleStateUpdateOne {
-	if u != nil {
-		clsuo.SetApproverID(*u)
+func (_u *CiLifecycleStateUpdateOne) SetNillableApproverID(v *uuid.UUID) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetApproverID(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearApproverID clears the value of the "approver_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearApproverID() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearApproverID()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearApproverID() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearApproverID()
+	return _u
 }
 
 // SetApproverName sets the "approver_name" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetApproverName(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetApproverName(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetApproverName(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetApproverName(v)
+	return _u
 }
 
 // SetNillableApproverName sets the "approver_name" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableApproverName(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetApproverName(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableApproverName(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetApproverName(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearApproverName clears the value of the "approver_name" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearApproverName() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearApproverName()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearApproverName() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearApproverName()
+	return _u
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetApprovedAt(t time.Time) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetApprovedAt(t)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetApprovedAt(v time.Time) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetApprovedAt(v)
+	return _u
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableApprovedAt(t *time.Time) *CiLifecycleStateUpdateOne {
-	if t != nil {
-		clsuo.SetApprovedAt(*t)
+func (_u *CiLifecycleStateUpdateOne) SetNillableApprovedAt(v *time.Time) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetApprovedAt(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearApprovedAt clears the value of the "approved_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearApprovedAt() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearApprovedAt()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearApprovedAt() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearApprovedAt()
+	return _u
 }
 
 // SetApprovalComment sets the "approval_comment" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetApprovalComment(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetApprovalComment(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetApprovalComment(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetApprovalComment(v)
+	return _u
 }
 
 // SetNillableApprovalComment sets the "approval_comment" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableApprovalComment(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetApprovalComment(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableApprovalComment(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetApprovalComment(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearApprovalComment clears the value of the "approval_comment" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearApprovalComment() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearApprovalComment()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearApprovalComment() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearApprovalComment()
+	return _u
 }
 
 // SetHasError sets the "has_error" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetHasError(b bool) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetHasError(b)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetHasError(v bool) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetHasError(v)
+	return _u
 }
 
 // SetNillableHasError sets the "has_error" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableHasError(b *bool) *CiLifecycleStateUpdateOne {
-	if b != nil {
-		clsuo.SetHasError(*b)
+func (_u *CiLifecycleStateUpdateOne) SetNillableHasError(v *bool) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetHasError(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetErrorMessage(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetErrorMessage(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetErrorMessage(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetErrorMessage(v)
+	return _u
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableErrorMessage(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetErrorMessage(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableErrorMessage(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetErrorMessage(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearErrorMessage clears the value of the "error_message" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearErrorMessage() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearErrorMessage()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearErrorMessage() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearErrorMessage()
+	return _u
 }
 
 // SetErrorDetails sets the "error_details" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetErrorDetails(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetErrorDetails(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetErrorDetails(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetErrorDetails(v)
+	return _u
 }
 
 // ClearErrorDetails clears the value of the "error_details" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearErrorDetails() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearErrorDetails()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearErrorDetails() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearErrorDetails()
+	return _u
 }
 
 // SetRetryCount sets the "retry_count" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetRetryCount(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetRetryCount()
-	clsuo.mutation.SetRetryCount(i)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetRetryCount(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetRetryCount()
+	_u.mutation.SetRetryCount(v)
+	return _u
 }
 
 // SetNillableRetryCount sets the "retry_count" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableRetryCount(i *int) *CiLifecycleStateUpdateOne {
-	if i != nil {
-		clsuo.SetRetryCount(*i)
+func (_u *CiLifecycleStateUpdateOne) SetNillableRetryCount(v *int) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetRetryCount(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddRetryCount adds i to the "retry_count" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddRetryCount(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddRetryCount(i)
-	return clsuo
+// AddRetryCount adds value to the "retry_count" field.
+func (_u *CiLifecycleStateUpdateOne) AddRetryCount(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddRetryCount(v)
+	return _u
 }
 
 // SetLastRetryAt sets the "last_retry_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetLastRetryAt(t time.Time) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetLastRetryAt(t)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetLastRetryAt(v time.Time) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetLastRetryAt(v)
+	return _u
 }
 
 // SetNillableLastRetryAt sets the "last_retry_at" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableLastRetryAt(t *time.Time) *CiLifecycleStateUpdateOne {
-	if t != nil {
-		clsuo.SetLastRetryAt(*t)
+func (_u *CiLifecycleStateUpdateOne) SetNillableLastRetryAt(v *time.Time) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetLastRetryAt(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearLastRetryAt clears the value of the "last_retry_at" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearLastRetryAt() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearLastRetryAt()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearLastRetryAt() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearLastRetryAt()
+	return _u
 }
 
 // SetProcessingDuration sets the "processing_duration" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetProcessingDuration(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetProcessingDuration()
-	clsuo.mutation.SetProcessingDuration(i)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetProcessingDuration(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetProcessingDuration()
+	_u.mutation.SetProcessingDuration(v)
+	return _u
 }
 
 // SetNillableProcessingDuration sets the "processing_duration" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableProcessingDuration(i *int) *CiLifecycleStateUpdateOne {
-	if i != nil {
-		clsuo.SetProcessingDuration(*i)
+func (_u *CiLifecycleStateUpdateOne) SetNillableProcessingDuration(v *int) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetProcessingDuration(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddProcessingDuration adds i to the "processing_duration" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddProcessingDuration(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddProcessingDuration(i)
-	return clsuo
+// AddProcessingDuration adds value to the "processing_duration" field.
+func (_u *CiLifecycleStateUpdateOne) AddProcessingDuration(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddProcessingDuration(v)
+	return _u
 }
 
 // ClearProcessingDuration clears the value of the "processing_duration" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearProcessingDuration() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearProcessingDuration()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearProcessingDuration() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearProcessingDuration()
+	return _u
 }
 
 // SetPerformanceMetrics sets the "performance_metrics" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetPerformanceMetrics(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetPerformanceMetrics(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetPerformanceMetrics(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetPerformanceMetrics(v)
+	return _u
 }
 
 // ClearPerformanceMetrics clears the value of the "performance_metrics" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearPerformanceMetrics() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearPerformanceMetrics()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearPerformanceMetrics() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearPerformanceMetrics()
+	return _u
 }
 
 // SetResourceUsage sets the "resource_usage" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetResourceUsage(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetResourceUsage(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetResourceUsage(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetResourceUsage(v)
+	return _u
 }
 
 // ClearResourceUsage clears the value of the "resource_usage" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearResourceUsage() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearResourceUsage()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearResourceUsage() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearResourceUsage()
+	return _u
 }
 
 // SetParentStateID sets the "parent_state_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetParentStateID(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetParentStateID(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetParentStateID(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetParentStateID(v)
+	return _u
 }
 
 // SetNillableParentStateID sets the "parent_state_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableParentStateID(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetParentStateID(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableParentStateID(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetParentStateID(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearParentStateID clears the value of the "parent_state_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearParentStateID() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearParentStateID()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearParentStateID() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearParentStateID()
+	return _u
 }
 
 // SetChildStateIds sets the "child_state_ids" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetChildStateIds(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetChildStateIds(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetChildStateIds(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetChildStateIds(v)
+	return _u
 }
 
-// AppendChildStateIds appends s to the "child_state_ids" field.
-func (clsuo *CiLifecycleStateUpdateOne) AppendChildStateIds(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AppendChildStateIds(s)
-	return clsuo
+// AppendChildStateIds appends value to the "child_state_ids" field.
+func (_u *CiLifecycleStateUpdateOne) AppendChildStateIds(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.AppendChildStateIds(v)
+	return _u
 }
 
 // ClearChildStateIds clears the value of the "child_state_ids" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearChildStateIds() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearChildStateIds()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearChildStateIds() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearChildStateIds()
+	return _u
 }
 
 // SetRelatedOperationID sets the "related_operation_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetRelatedOperationID(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetRelatedOperationID(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetRelatedOperationID(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetRelatedOperationID(v)
+	return _u
 }
 
 // SetNillableRelatedOperationID sets the "related_operation_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableRelatedOperationID(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetRelatedOperationID(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableRelatedOperationID(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetRelatedOperationID(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearRelatedOperationID clears the value of the "related_operation_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearRelatedOperationID() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearRelatedOperationID()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearRelatedOperationID() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearRelatedOperationID()
+	return _u
 }
 
 // SetVersion sets the "version" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetVersion(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ResetVersion()
-	clsuo.mutation.SetVersion(i)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetVersion(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.ResetVersion()
+	_u.mutation.SetVersion(v)
+	return _u
 }
 
 // SetNillableVersion sets the "version" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableVersion(i *int) *CiLifecycleStateUpdateOne {
-	if i != nil {
-		clsuo.SetVersion(*i)
+func (_u *CiLifecycleStateUpdateOne) SetNillableVersion(v *int) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetVersion(*v)
 	}
-	return clsuo
+	return _u
 }
 
-// AddVersion adds i to the "version" field.
-func (clsuo *CiLifecycleStateUpdateOne) AddVersion(i int) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AddVersion(i)
-	return clsuo
+// AddVersion adds value to the "version" field.
+func (_u *CiLifecycleStateUpdateOne) AddVersion(v int) *CiLifecycleStateUpdateOne {
+	_u.mutation.AddVersion(v)
+	return _u
 }
 
 // SetChangeHistory sets the "change_history" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetChangeHistory(m []map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetChangeHistory(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetChangeHistory(v []map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetChangeHistory(v)
+	return _u
 }
 
-// AppendChangeHistory appends m to the "change_history" field.
-func (clsuo *CiLifecycleStateUpdateOne) AppendChangeHistory(m []map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AppendChangeHistory(m)
-	return clsuo
+// AppendChangeHistory appends value to the "change_history" field.
+func (_u *CiLifecycleStateUpdateOne) AppendChangeHistory(v []map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.AppendChangeHistory(v)
+	return _u
 }
 
 // ClearChangeHistory clears the value of the "change_history" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearChangeHistory() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearChangeHistory()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearChangeHistory() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearChangeHistory()
+	return _u
 }
 
 // SetIsRollback sets the "is_rollback" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetIsRollback(b bool) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetIsRollback(b)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetIsRollback(v bool) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetIsRollback(v)
+	return _u
 }
 
 // SetNillableIsRollback sets the "is_rollback" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableIsRollback(b *bool) *CiLifecycleStateUpdateOne {
-	if b != nil {
-		clsuo.SetIsRollback(*b)
+func (_u *CiLifecycleStateUpdateOne) SetNillableIsRollback(v *bool) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetIsRollback(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetRollbackFromStateID sets the "rollback_from_state_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetRollbackFromStateID(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetRollbackFromStateID(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetRollbackFromStateID(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetRollbackFromStateID(v)
+	return _u
 }
 
 // SetNillableRollbackFromStateID sets the "rollback_from_state_id" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableRollbackFromStateID(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetRollbackFromStateID(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableRollbackFromStateID(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetRollbackFromStateID(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearRollbackFromStateID clears the value of the "rollback_from_state_id" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearRollbackFromStateID() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearRollbackFromStateID()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearRollbackFromStateID() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearRollbackFromStateID()
+	return _u
 }
 
 // SetIsMilestone sets the "is_milestone" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetIsMilestone(b bool) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetIsMilestone(b)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetIsMilestone(v bool) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetIsMilestone(v)
+	return _u
 }
 
 // SetNillableIsMilestone sets the "is_milestone" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableIsMilestone(b *bool) *CiLifecycleStateUpdateOne {
-	if b != nil {
-		clsuo.SetIsMilestone(*b)
+func (_u *CiLifecycleStateUpdateOne) SetNillableIsMilestone(v *bool) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetIsMilestone(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetIsCritical sets the "is_critical" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetIsCritical(b bool) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetIsCritical(b)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetIsCritical(v bool) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetIsCritical(v)
+	return _u
 }
 
 // SetNillableIsCritical sets the "is_critical" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableIsCritical(b *bool) *CiLifecycleStateUpdateOne {
-	if b != nil {
-		clsuo.SetIsCritical(*b)
+func (_u *CiLifecycleStateUpdateOne) SetNillableIsCritical(v *bool) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetIsCritical(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetIsReversible sets the "is_reversible" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetIsReversible(b bool) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetIsReversible(b)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetIsReversible(v bool) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetIsReversible(v)
+	return _u
 }
 
 // SetNillableIsReversible sets the "is_reversible" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableIsReversible(b *bool) *CiLifecycleStateUpdateOne {
-	if b != nil {
-		clsuo.SetIsReversible(*b)
+func (_u *CiLifecycleStateUpdateOne) SetNillableIsReversible(v *bool) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetIsReversible(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetIsFinal sets the "is_final" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetIsFinal(b bool) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetIsFinal(b)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetIsFinal(v bool) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetIsFinal(v)
+	return _u
 }
 
 // SetNillableIsFinal sets the "is_final" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableIsFinal(b *bool) *CiLifecycleStateUpdateOne {
-	if b != nil {
-		clsuo.SetIsFinal(*b)
+func (_u *CiLifecycleStateUpdateOne) SetNillableIsFinal(v *bool) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetIsFinal(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // SetCustomAttributes sets the "custom_attributes" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetCustomAttributes(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetCustomAttributes(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetCustomAttributes(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetCustomAttributes(v)
+	return _u
 }
 
 // ClearCustomAttributes clears the value of the "custom_attributes" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearCustomAttributes() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearCustomAttributes()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearCustomAttributes() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearCustomAttributes()
+	return _u
 }
 
 // SetIntegrationData sets the "integration_data" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetIntegrationData(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetIntegrationData(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetIntegrationData(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetIntegrationData(v)
+	return _u
 }
 
 // ClearIntegrationData clears the value of the "integration_data" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearIntegrationData() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearIntegrationData()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearIntegrationData() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearIntegrationData()
+	return _u
 }
 
 // SetMetadata sets the "metadata" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetMetadata(m map[string]interface{}) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetMetadata(m)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetMetadata(v map[string]interface{}) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetMetadata(v)
+	return _u
 }
 
 // ClearMetadata clears the value of the "metadata" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearMetadata() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearMetadata()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearMetadata() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearMetadata()
+	return _u
 }
 
 // SetTags sets the "tags" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetTags(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetTags(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetTags(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetTags(v)
+	return _u
 }
 
-// AppendTags appends s to the "tags" field.
-func (clsuo *CiLifecycleStateUpdateOne) AppendTags(s []string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.AppendTags(s)
-	return clsuo
+// AppendTags appends value to the "tags" field.
+func (_u *CiLifecycleStateUpdateOne) AppendTags(v []string) *CiLifecycleStateUpdateOne {
+	_u.mutation.AppendTags(v)
+	return _u
 }
 
 // ClearTags clears the value of the "tags" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearTags() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearTags()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearTags() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearTags()
+	return _u
 }
 
 // SetComments sets the "comments" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetComments(s string) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetComments(s)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetComments(v string) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetComments(v)
+	return _u
 }
 
 // SetNillableComments sets the "comments" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableComments(s *string) *CiLifecycleStateUpdateOne {
-	if s != nil {
-		clsuo.SetComments(*s)
+func (_u *CiLifecycleStateUpdateOne) SetNillableComments(v *string) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetComments(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearComments clears the value of the "comments" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearComments() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearComments()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearComments() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearComments()
+	return _u
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetCreatedBy(u uuid.UUID) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetCreatedBy(u)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetCreatedBy(v uuid.UUID) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableCreatedBy(u *uuid.UUID) *CiLifecycleStateUpdateOne {
-	if u != nil {
-		clsuo.SetCreatedBy(*u)
+func (_u *CiLifecycleStateUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearCreatedBy clears the value of the "created_by" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearCreatedBy() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearCreatedBy()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearCreatedBy() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearCreatedBy()
+	return _u
 }
 
 // SetUpdatedBy sets the "updated_by" field.
-func (clsuo *CiLifecycleStateUpdateOne) SetUpdatedBy(u uuid.UUID) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.SetUpdatedBy(u)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) SetUpdatedBy(v uuid.UUID) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetUpdatedBy(v)
+	return _u
 }
 
 // SetNillableUpdatedBy sets the "updated_by" field if the given value is not nil.
-func (clsuo *CiLifecycleStateUpdateOne) SetNillableUpdatedBy(u *uuid.UUID) *CiLifecycleStateUpdateOne {
-	if u != nil {
-		clsuo.SetUpdatedBy(*u)
+func (_u *CiLifecycleStateUpdateOne) SetNillableUpdatedBy(v *uuid.UUID) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetUpdatedBy(*v)
 	}
-	return clsuo
+	return _u
 }
 
 // ClearUpdatedBy clears the value of the "updated_by" field.
-func (clsuo *CiLifecycleStateUpdateOne) ClearUpdatedBy() *CiLifecycleStateUpdateOne {
-	clsuo.mutation.ClearUpdatedBy()
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) ClearUpdatedBy() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearUpdatedBy()
+	return _u
 }
 
 // Mutation returns the CiLifecycleStateMutation object of the builder.
-func (clsuo *CiLifecycleStateUpdateOne) Mutation() *CiLifecycleStateMutation {
-	return clsuo.mutation
+func (_u *CiLifecycleStateUpdateOne) Mutation() *CiLifecycleStateMutation {
+	return _u.mutation
 }
 
 // Where appends a list predicates to the CiLifecycleStateUpdate builder.
-func (clsuo *CiLifecycleStateUpdateOne) Where(ps ...predicate.CiLifecycleState) *CiLifecycleStateUpdateOne {
-	clsuo.mutation.Where(ps...)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) Where(ps ...predicate.CiLifecycleState) *CiLifecycleStateUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (clsuo *CiLifecycleStateUpdateOne) Select(field string, fields ...string) *CiLifecycleStateUpdateOne {
-	clsuo.fields = append([]string{field}, fields...)
-	return clsuo
+func (_u *CiLifecycleStateUpdateOne) Select(field string, fields ...string) *CiLifecycleStateUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiLifecycleState entity.
-func (clsuo *CiLifecycleStateUpdateOne) Save(ctx context.Context) (*CiLifecycleState, error) {
-	clsuo.defaults()
-	return withHooks(ctx, clsuo.sqlSave, clsuo.mutation, clsuo.hooks)
+func (_u *CiLifecycleStateUpdateOne) Save(ctx context.Context) (*CiLifecycleState, error) {
+	_u.defaults()
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (clsuo *CiLifecycleStateUpdateOne) SaveX(ctx context.Context) *CiLifecycleState {
-	node, err := clsuo.Save(ctx)
+func (_u *CiLifecycleStateUpdateOne) SaveX(ctx context.Context) *CiLifecycleState {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -2880,44 +2880,44 @@ func (clsuo *CiLifecycleStateUpdateOne) SaveX(ctx context.Context) *CiLifecycleS
 }
 
 // Exec executes the query on the entity.
-func (clsuo *CiLifecycleStateUpdateOne) Exec(ctx context.Context) error {
-	_, err := clsuo.Save(ctx)
+func (_u *CiLifecycleStateUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (clsuo *CiLifecycleStateUpdateOne) ExecX(ctx context.Context) {
-	if err := clsuo.Exec(ctx); err != nil {
+func (_u *CiLifecycleStateUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (clsuo *CiLifecycleStateUpdateOne) defaults() {
-	if _, ok := clsuo.mutation.UpdatedAt(); !ok {
+func (_u *CiLifecycleStateUpdateOne) defaults() {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		v := cilifecyclestate.UpdateDefaultUpdatedAt()
-		clsuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (clsuo *CiLifecycleStateUpdateOne) check() error {
-	if v, ok := clsuo.mutation.StateType(); ok {
+func (_u *CiLifecycleStateUpdateOne) check() error {
+	if v, ok := _u.mutation.StateType(); ok {
 		if err := cilifecyclestate.StateTypeValidator(v); err != nil {
 			return &ValidationError{Name: "state_type", err: fmt.Errorf(`ent: validator failed for field "CiLifecycleState.state_type": %w`, err)}
 		}
 	}
-	if v, ok := clsuo.mutation.StateCategory(); ok {
+	if v, ok := _u.mutation.StateCategory(); ok {
 		if err := cilifecyclestate.StateCategoryValidator(v); err != nil {
 			return &ValidationError{Name: "state_category", err: fmt.Errorf(`ent: validator failed for field "CiLifecycleState.state_category": %w`, err)}
 		}
 	}
-	if v, ok := clsuo.mutation.TriggerType(); ok {
+	if v, ok := _u.mutation.TriggerType(); ok {
 		if err := cilifecyclestate.TriggerTypeValidator(v); err != nil {
 			return &ValidationError{Name: "trigger_type", err: fmt.Errorf(`ent: validator failed for field "CiLifecycleState.trigger_type": %w`, err)}
 		}
 	}
-	if v, ok := clsuo.mutation.ApprovalStatus(); ok {
+	if v, ok := _u.mutation.ApprovalStatus(); ok {
 		if err := cilifecyclestate.ApprovalStatusValidator(v); err != nil {
 			return &ValidationError{Name: "approval_status", err: fmt.Errorf(`ent: validator failed for field "CiLifecycleState.approval_status": %w`, err)}
 		}
@@ -2925,17 +2925,17 @@ func (clsuo *CiLifecycleStateUpdateOne) check() error {
 	return nil
 }
 
-func (clsuo *CiLifecycleStateUpdateOne) sqlSave(ctx context.Context) (_node *CiLifecycleState, err error) {
-	if err := clsuo.check(); err != nil {
+func (_u *CiLifecycleStateUpdateOne) sqlSave(ctx context.Context) (_node *CiLifecycleState, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cilifecyclestate.Table, cilifecyclestate.Columns, sqlgraph.NewFieldSpec(cilifecyclestate.FieldID, field.TypeUint64))
-	id, ok := clsuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiLifecycleState.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := clsuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cilifecyclestate.FieldID)
 		for _, f := range fields {
@@ -2947,421 +2947,421 @@ func (clsuo *CiLifecycleStateUpdateOne) sqlSave(ctx context.Context) (_node *CiL
 			}
 		}
 	}
-	if ps := clsuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := clsuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := clsuo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cilifecyclestate.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := clsuo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cilifecyclestate.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if clsuo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := clsuo.mutation.StateID(); ok {
+	if value, ok := _u.mutation.StateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateID, field.TypeString, value)
 	}
-	if value, ok := clsuo.mutation.StateName(); ok {
+	if value, ok := _u.mutation.StateName(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateName, field.TypeString, value)
 	}
-	if value, ok := clsuo.mutation.StateCode(); ok {
+	if value, ok := _u.mutation.StateCode(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateCode, field.TypeString, value)
 	}
-	if value, ok := clsuo.mutation.StateDescription(); ok {
+	if value, ok := _u.mutation.StateDescription(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateDescription, field.TypeString, value)
 	}
-	if clsuo.mutation.StateDescriptionCleared() {
+	if _u.mutation.StateDescriptionCleared() {
 		_spec.ClearField(cilifecyclestate.FieldStateDescription, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.CiID(); ok {
+	if value, ok := _u.mutation.CiID(); ok {
 		_spec.SetField(cilifecyclestate.FieldCiID, field.TypeUint64, value)
 	}
-	if value, ok := clsuo.mutation.AddedCiID(); ok {
+	if value, ok := _u.mutation.AddedCiID(); ok {
 		_spec.AddField(cilifecyclestate.FieldCiID, field.TypeUint64, value)
 	}
-	if value, ok := clsuo.mutation.CiTypeID(); ok {
+	if value, ok := _u.mutation.CiTypeID(); ok {
 		_spec.SetField(cilifecyclestate.FieldCiTypeID, field.TypeUint64, value)
 	}
-	if value, ok := clsuo.mutation.AddedCiTypeID(); ok {
+	if value, ok := _u.mutation.AddedCiTypeID(); ok {
 		_spec.AddField(cilifecyclestate.FieldCiTypeID, field.TypeUint64, value)
 	}
-	if value, ok := clsuo.mutation.StateType(); ok {
+	if value, ok := _u.mutation.StateType(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateType, field.TypeEnum, value)
 	}
-	if value, ok := clsuo.mutation.StateCategory(); ok {
+	if value, ok := _u.mutation.StateCategory(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateCategory, field.TypeEnum, value)
 	}
-	if value, ok := clsuo.mutation.StateLevel(); ok {
+	if value, ok := _u.mutation.StateLevel(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateLevel, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.AddedStateLevel(); ok {
+	if value, ok := _u.mutation.AddedStateLevel(); ok {
 		_spec.AddField(cilifecyclestate.FieldStateLevel, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.AllowedTransitions(); ok {
+	if value, ok := _u.mutation.AllowedTransitions(); ok {
 		_spec.SetField(cilifecyclestate.FieldAllowedTransitions, field.TypeJSON, value)
 	}
-	if value, ok := clsuo.mutation.AppendedAllowedTransitions(); ok {
+	if value, ok := _u.mutation.AppendedAllowedTransitions(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldAllowedTransitions, value)
 		})
 	}
-	if clsuo.mutation.AllowedTransitionsCleared() {
+	if _u.mutation.AllowedTransitionsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldAllowedTransitions, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.TransitionConditions(); ok {
+	if value, ok := _u.mutation.TransitionConditions(); ok {
 		_spec.SetField(cilifecyclestate.FieldTransitionConditions, field.TypeJSON, value)
 	}
-	if clsuo.mutation.TransitionConditionsCleared() {
+	if _u.mutation.TransitionConditionsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTransitionConditions, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.AutoTransitionRules(); ok {
+	if value, ok := _u.mutation.AutoTransitionRules(); ok {
 		_spec.SetField(cilifecyclestate.FieldAutoTransitionRules, field.TypeJSON, value)
 	}
-	if clsuo.mutation.AutoTransitionRulesCleared() {
+	if _u.mutation.AutoTransitionRulesCleared() {
 		_spec.ClearField(cilifecyclestate.FieldAutoTransitionRules, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.EnteredAt(); ok {
+	if value, ok := _u.mutation.EnteredAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldEnteredAt, field.TypeTime, value)
 	}
-	if value, ok := clsuo.mutation.ExpectedExitAt(); ok {
+	if value, ok := _u.mutation.ExpectedExitAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldExpectedExitAt, field.TypeTime, value)
 	}
-	if clsuo.mutation.ExpectedExitAtCleared() {
+	if _u.mutation.ExpectedExitAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldExpectedExitAt, field.TypeTime)
 	}
-	if value, ok := clsuo.mutation.ActualExitAt(); ok {
+	if value, ok := _u.mutation.ActualExitAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldActualExitAt, field.TypeTime, value)
 	}
-	if clsuo.mutation.ActualExitAtCleared() {
+	if _u.mutation.ActualExitAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldActualExitAt, field.TypeTime)
 	}
-	if value, ok := clsuo.mutation.DurationLimitHours(); ok {
+	if value, ok := _u.mutation.DurationLimitHours(); ok {
 		_spec.SetField(cilifecyclestate.FieldDurationLimitHours, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.AddedDurationLimitHours(); ok {
+	if value, ok := _u.mutation.AddedDurationLimitHours(); ok {
 		_spec.AddField(cilifecyclestate.FieldDurationLimitHours, field.TypeInt, value)
 	}
-	if clsuo.mutation.DurationLimitHoursCleared() {
+	if _u.mutation.DurationLimitHoursCleared() {
 		_spec.ClearField(cilifecyclestate.FieldDurationLimitHours, field.TypeInt)
 	}
-	if value, ok := clsuo.mutation.IsTimeout(); ok {
+	if value, ok := _u.mutation.IsTimeout(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsTimeout, field.TypeBool, value)
 	}
-	if value, ok := clsuo.mutation.TimeoutAt(); ok {
+	if value, ok := _u.mutation.TimeoutAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldTimeoutAt, field.TypeTime, value)
 	}
-	if clsuo.mutation.TimeoutAtCleared() {
+	if _u.mutation.TimeoutAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTimeoutAt, field.TypeTime)
 	}
-	if value, ok := clsuo.mutation.TriggerType(); ok {
+	if value, ok := _u.mutation.TriggerType(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggerType, field.TypeEnum, value)
 	}
-	if value, ok := clsuo.mutation.TriggerSource(); ok {
+	if value, ok := _u.mutation.TriggerSource(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggerSource, field.TypeString, value)
 	}
-	if clsuo.mutation.TriggerSourceCleared() {
+	if _u.mutation.TriggerSourceCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTriggerSource, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.TriggerContext(); ok {
+	if value, ok := _u.mutation.TriggerContext(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggerContext, field.TypeJSON, value)
 	}
-	if clsuo.mutation.TriggerContextCleared() {
+	if _u.mutation.TriggerContextCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTriggerContext, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.TriggeredBy(); ok {
+	if value, ok := _u.mutation.TriggeredBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggeredBy, field.TypeUUID, value)
 	}
-	if clsuo.mutation.TriggeredByCleared() {
+	if _u.mutation.TriggeredByCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTriggeredBy, field.TypeUUID)
 	}
-	if value, ok := clsuo.mutation.TriggeredByName(); ok {
+	if value, ok := _u.mutation.TriggeredByName(); ok {
 		_spec.SetField(cilifecyclestate.FieldTriggeredByName, field.TypeString, value)
 	}
-	if clsuo.mutation.TriggeredByNameCleared() {
+	if _u.mutation.TriggeredByNameCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTriggeredByName, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.StateData(); ok {
+	if value, ok := _u.mutation.StateData(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateData, field.TypeJSON, value)
 	}
-	if clsuo.mutation.StateDataCleared() {
+	if _u.mutation.StateDataCleared() {
 		_spec.ClearField(cilifecyclestate.FieldStateData, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.StateConfig(); ok {
+	if value, ok := _u.mutation.StateConfig(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateConfig, field.TypeJSON, value)
 	}
-	if clsuo.mutation.StateConfigCleared() {
+	if _u.mutation.StateConfigCleared() {
 		_spec.ClearField(cilifecyclestate.FieldStateConfig, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.ValidationRules(); ok {
+	if value, ok := _u.mutation.ValidationRules(); ok {
 		_spec.SetField(cilifecyclestate.FieldValidationRules, field.TypeJSON, value)
 	}
-	if clsuo.mutation.ValidationRulesCleared() {
+	if _u.mutation.ValidationRulesCleared() {
 		_spec.ClearField(cilifecyclestate.FieldValidationRules, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.RequiredPermissions(); ok {
+	if value, ok := _u.mutation.RequiredPermissions(); ok {
 		_spec.SetField(cilifecyclestate.FieldRequiredPermissions, field.TypeJSON, value)
 	}
-	if value, ok := clsuo.mutation.AppendedRequiredPermissions(); ok {
+	if value, ok := _u.mutation.AppendedRequiredPermissions(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldRequiredPermissions, value)
 		})
 	}
-	if clsuo.mutation.RequiredPermissionsCleared() {
+	if _u.mutation.RequiredPermissionsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldRequiredPermissions, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.GrantedPermissions(); ok {
+	if value, ok := _u.mutation.GrantedPermissions(); ok {
 		_spec.SetField(cilifecyclestate.FieldGrantedPermissions, field.TypeJSON, value)
 	}
-	if value, ok := clsuo.mutation.AppendedGrantedPermissions(); ok {
+	if value, ok := _u.mutation.AppendedGrantedPermissions(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldGrantedPermissions, value)
 		})
 	}
-	if clsuo.mutation.GrantedPermissionsCleared() {
+	if _u.mutation.GrantedPermissionsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldGrantedPermissions, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.RestrictedOperations(); ok {
+	if value, ok := _u.mutation.RestrictedOperations(); ok {
 		_spec.SetField(cilifecyclestate.FieldRestrictedOperations, field.TypeJSON, value)
 	}
-	if value, ok := clsuo.mutation.AppendedRestrictedOperations(); ok {
+	if value, ok := _u.mutation.AppendedRestrictedOperations(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldRestrictedOperations, value)
 		})
 	}
-	if clsuo.mutation.RestrictedOperationsCleared() {
+	if _u.mutation.RestrictedOperationsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldRestrictedOperations, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.NotificationConfig(); ok {
+	if value, ok := _u.mutation.NotificationConfig(); ok {
 		_spec.SetField(cilifecyclestate.FieldNotificationConfig, field.TypeJSON, value)
 	}
-	if clsuo.mutation.NotificationConfigCleared() {
+	if _u.mutation.NotificationConfigCleared() {
 		_spec.ClearField(cilifecyclestate.FieldNotificationConfig, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.ReminderConfig(); ok {
+	if value, ok := _u.mutation.ReminderConfig(); ok {
 		_spec.SetField(cilifecyclestate.FieldReminderConfig, field.TypeJSON, value)
 	}
-	if clsuo.mutation.ReminderConfigCleared() {
+	if _u.mutation.ReminderConfigCleared() {
 		_spec.ClearField(cilifecyclestate.FieldReminderConfig, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.LastNotificationAt(); ok {
+	if value, ok := _u.mutation.LastNotificationAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldLastNotificationAt, field.TypeTime, value)
 	}
-	if clsuo.mutation.LastNotificationAtCleared() {
+	if _u.mutation.LastNotificationAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldLastNotificationAt, field.TypeTime)
 	}
-	if value, ok := clsuo.mutation.NotificationCount(); ok {
+	if value, ok := _u.mutation.NotificationCount(); ok {
 		_spec.SetField(cilifecyclestate.FieldNotificationCount, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.AddedNotificationCount(); ok {
+	if value, ok := _u.mutation.AddedNotificationCount(); ok {
 		_spec.AddField(cilifecyclestate.FieldNotificationCount, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.RequireApproval(); ok {
+	if value, ok := _u.mutation.RequireApproval(); ok {
 		_spec.SetField(cilifecyclestate.FieldRequireApproval, field.TypeBool, value)
 	}
-	if value, ok := clsuo.mutation.ApprovalFlowID(); ok {
+	if value, ok := _u.mutation.ApprovalFlowID(); ok {
 		_spec.SetField(cilifecyclestate.FieldApprovalFlowID, field.TypeString, value)
 	}
-	if clsuo.mutation.ApprovalFlowIDCleared() {
+	if _u.mutation.ApprovalFlowIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApprovalFlowID, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.ApprovalStatus(); ok {
+	if value, ok := _u.mutation.ApprovalStatus(); ok {
 		_spec.SetField(cilifecyclestate.FieldApprovalStatus, field.TypeEnum, value)
 	}
-	if clsuo.mutation.ApprovalStatusCleared() {
+	if _u.mutation.ApprovalStatusCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApprovalStatus, field.TypeEnum)
 	}
-	if value, ok := clsuo.mutation.ApproverID(); ok {
+	if value, ok := _u.mutation.ApproverID(); ok {
 		_spec.SetField(cilifecyclestate.FieldApproverID, field.TypeUUID, value)
 	}
-	if clsuo.mutation.ApproverIDCleared() {
+	if _u.mutation.ApproverIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApproverID, field.TypeUUID)
 	}
-	if value, ok := clsuo.mutation.ApproverName(); ok {
+	if value, ok := _u.mutation.ApproverName(); ok {
 		_spec.SetField(cilifecyclestate.FieldApproverName, field.TypeString, value)
 	}
-	if clsuo.mutation.ApproverNameCleared() {
+	if _u.mutation.ApproverNameCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApproverName, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.ApprovedAt(); ok {
+	if value, ok := _u.mutation.ApprovedAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldApprovedAt, field.TypeTime, value)
 	}
-	if clsuo.mutation.ApprovedAtCleared() {
+	if _u.mutation.ApprovedAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApprovedAt, field.TypeTime)
 	}
-	if value, ok := clsuo.mutation.ApprovalComment(); ok {
+	if value, ok := _u.mutation.ApprovalComment(); ok {
 		_spec.SetField(cilifecyclestate.FieldApprovalComment, field.TypeString, value)
 	}
-	if clsuo.mutation.ApprovalCommentCleared() {
+	if _u.mutation.ApprovalCommentCleared() {
 		_spec.ClearField(cilifecyclestate.FieldApprovalComment, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.HasError(); ok {
+	if value, ok := _u.mutation.HasError(); ok {
 		_spec.SetField(cilifecyclestate.FieldHasError, field.TypeBool, value)
 	}
-	if value, ok := clsuo.mutation.ErrorMessage(); ok {
+	if value, ok := _u.mutation.ErrorMessage(); ok {
 		_spec.SetField(cilifecyclestate.FieldErrorMessage, field.TypeString, value)
 	}
-	if clsuo.mutation.ErrorMessageCleared() {
+	if _u.mutation.ErrorMessageCleared() {
 		_spec.ClearField(cilifecyclestate.FieldErrorMessage, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.ErrorDetails(); ok {
+	if value, ok := _u.mutation.ErrorDetails(); ok {
 		_spec.SetField(cilifecyclestate.FieldErrorDetails, field.TypeJSON, value)
 	}
-	if clsuo.mutation.ErrorDetailsCleared() {
+	if _u.mutation.ErrorDetailsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldErrorDetails, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.RetryCount(); ok {
+	if value, ok := _u.mutation.RetryCount(); ok {
 		_spec.SetField(cilifecyclestate.FieldRetryCount, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.AddedRetryCount(); ok {
+	if value, ok := _u.mutation.AddedRetryCount(); ok {
 		_spec.AddField(cilifecyclestate.FieldRetryCount, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.LastRetryAt(); ok {
+	if value, ok := _u.mutation.LastRetryAt(); ok {
 		_spec.SetField(cilifecyclestate.FieldLastRetryAt, field.TypeTime, value)
 	}
-	if clsuo.mutation.LastRetryAtCleared() {
+	if _u.mutation.LastRetryAtCleared() {
 		_spec.ClearField(cilifecyclestate.FieldLastRetryAt, field.TypeTime)
 	}
-	if value, ok := clsuo.mutation.ProcessingDuration(); ok {
+	if value, ok := _u.mutation.ProcessingDuration(); ok {
 		_spec.SetField(cilifecyclestate.FieldProcessingDuration, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.AddedProcessingDuration(); ok {
+	if value, ok := _u.mutation.AddedProcessingDuration(); ok {
 		_spec.AddField(cilifecyclestate.FieldProcessingDuration, field.TypeInt, value)
 	}
-	if clsuo.mutation.ProcessingDurationCleared() {
+	if _u.mutation.ProcessingDurationCleared() {
 		_spec.ClearField(cilifecyclestate.FieldProcessingDuration, field.TypeInt)
 	}
-	if value, ok := clsuo.mutation.PerformanceMetrics(); ok {
+	if value, ok := _u.mutation.PerformanceMetrics(); ok {
 		_spec.SetField(cilifecyclestate.FieldPerformanceMetrics, field.TypeJSON, value)
 	}
-	if clsuo.mutation.PerformanceMetricsCleared() {
+	if _u.mutation.PerformanceMetricsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldPerformanceMetrics, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.ResourceUsage(); ok {
+	if value, ok := _u.mutation.ResourceUsage(); ok {
 		_spec.SetField(cilifecyclestate.FieldResourceUsage, field.TypeJSON, value)
 	}
-	if clsuo.mutation.ResourceUsageCleared() {
+	if _u.mutation.ResourceUsageCleared() {
 		_spec.ClearField(cilifecyclestate.FieldResourceUsage, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.ParentStateID(); ok {
+	if value, ok := _u.mutation.ParentStateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldParentStateID, field.TypeString, value)
 	}
-	if clsuo.mutation.ParentStateIDCleared() {
+	if _u.mutation.ParentStateIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldParentStateID, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.ChildStateIds(); ok {
+	if value, ok := _u.mutation.ChildStateIds(); ok {
 		_spec.SetField(cilifecyclestate.FieldChildStateIds, field.TypeJSON, value)
 	}
-	if value, ok := clsuo.mutation.AppendedChildStateIds(); ok {
+	if value, ok := _u.mutation.AppendedChildStateIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldChildStateIds, value)
 		})
 	}
-	if clsuo.mutation.ChildStateIdsCleared() {
+	if _u.mutation.ChildStateIdsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldChildStateIds, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.RelatedOperationID(); ok {
+	if value, ok := _u.mutation.RelatedOperationID(); ok {
 		_spec.SetField(cilifecyclestate.FieldRelatedOperationID, field.TypeString, value)
 	}
-	if clsuo.mutation.RelatedOperationIDCleared() {
+	if _u.mutation.RelatedOperationIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldRelatedOperationID, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.Version(); ok {
+	if value, ok := _u.mutation.Version(); ok {
 		_spec.SetField(cilifecyclestate.FieldVersion, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.AddedVersion(); ok {
+	if value, ok := _u.mutation.AddedVersion(); ok {
 		_spec.AddField(cilifecyclestate.FieldVersion, field.TypeInt, value)
 	}
-	if value, ok := clsuo.mutation.ChangeHistory(); ok {
+	if value, ok := _u.mutation.ChangeHistory(); ok {
 		_spec.SetField(cilifecyclestate.FieldChangeHistory, field.TypeJSON, value)
 	}
-	if value, ok := clsuo.mutation.AppendedChangeHistory(); ok {
+	if value, ok := _u.mutation.AppendedChangeHistory(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldChangeHistory, value)
 		})
 	}
-	if clsuo.mutation.ChangeHistoryCleared() {
+	if _u.mutation.ChangeHistoryCleared() {
 		_spec.ClearField(cilifecyclestate.FieldChangeHistory, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.IsRollback(); ok {
+	if value, ok := _u.mutation.IsRollback(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsRollback, field.TypeBool, value)
 	}
-	if value, ok := clsuo.mutation.RollbackFromStateID(); ok {
+	if value, ok := _u.mutation.RollbackFromStateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldRollbackFromStateID, field.TypeString, value)
 	}
-	if clsuo.mutation.RollbackFromStateIDCleared() {
+	if _u.mutation.RollbackFromStateIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldRollbackFromStateID, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.IsMilestone(); ok {
+	if value, ok := _u.mutation.IsMilestone(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsMilestone, field.TypeBool, value)
 	}
-	if value, ok := clsuo.mutation.IsCritical(); ok {
+	if value, ok := _u.mutation.IsCritical(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsCritical, field.TypeBool, value)
 	}
-	if value, ok := clsuo.mutation.IsReversible(); ok {
+	if value, ok := _u.mutation.IsReversible(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsReversible, field.TypeBool, value)
 	}
-	if value, ok := clsuo.mutation.IsFinal(); ok {
+	if value, ok := _u.mutation.IsFinal(); ok {
 		_spec.SetField(cilifecyclestate.FieldIsFinal, field.TypeBool, value)
 	}
-	if value, ok := clsuo.mutation.CustomAttributes(); ok {
+	if value, ok := _u.mutation.CustomAttributes(); ok {
 		_spec.SetField(cilifecyclestate.FieldCustomAttributes, field.TypeJSON, value)
 	}
-	if clsuo.mutation.CustomAttributesCleared() {
+	if _u.mutation.CustomAttributesCleared() {
 		_spec.ClearField(cilifecyclestate.FieldCustomAttributes, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.IntegrationData(); ok {
+	if value, ok := _u.mutation.IntegrationData(); ok {
 		_spec.SetField(cilifecyclestate.FieldIntegrationData, field.TypeJSON, value)
 	}
-	if clsuo.mutation.IntegrationDataCleared() {
+	if _u.mutation.IntegrationDataCleared() {
 		_spec.ClearField(cilifecyclestate.FieldIntegrationData, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.Metadata(); ok {
+	if value, ok := _u.mutation.Metadata(); ok {
 		_spec.SetField(cilifecyclestate.FieldMetadata, field.TypeJSON, value)
 	}
-	if clsuo.mutation.MetadataCleared() {
+	if _u.mutation.MetadataCleared() {
 		_spec.ClearField(cilifecyclestate.FieldMetadata, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.Tags(); ok {
+	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(cilifecyclestate.FieldTags, field.TypeJSON, value)
 	}
-	if value, ok := clsuo.mutation.AppendedTags(); ok {
+	if value, ok := _u.mutation.AppendedTags(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cilifecyclestate.FieldTags, value)
 		})
 	}
-	if clsuo.mutation.TagsCleared() {
+	if _u.mutation.TagsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldTags, field.TypeJSON)
 	}
-	if value, ok := clsuo.mutation.Comments(); ok {
+	if value, ok := _u.mutation.Comments(); ok {
 		_spec.SetField(cilifecyclestate.FieldComments, field.TypeString, value)
 	}
-	if clsuo.mutation.CommentsCleared() {
+	if _u.mutation.CommentsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldComments, field.TypeString)
 	}
-	if value, ok := clsuo.mutation.CreatedBy(); ok {
+	if value, ok := _u.mutation.CreatedBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldCreatedBy, field.TypeUUID, value)
 	}
-	if clsuo.mutation.CreatedByCleared() {
+	if _u.mutation.CreatedByCleared() {
 		_spec.ClearField(cilifecyclestate.FieldCreatedBy, field.TypeUUID)
 	}
-	if value, ok := clsuo.mutation.UpdatedBy(); ok {
+	if value, ok := _u.mutation.UpdatedBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldUpdatedBy, field.TypeUUID, value)
 	}
-	if clsuo.mutation.UpdatedByCleared() {
+	if _u.mutation.UpdatedByCleared() {
 		_spec.ClearField(cilifecyclestate.FieldUpdatedBy, field.TypeUUID)
 	}
-	_node = &CiLifecycleState{config: clsuo.config}
+	_node = &CiLifecycleState{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, clsuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cilifecyclestate.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -3369,6 +3369,6 @@ func (clsuo *CiLifecycleStateUpdateOne) sqlSave(ctx context.Context) (_node *CiL
 		}
 		return nil, err
 	}
-	clsuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

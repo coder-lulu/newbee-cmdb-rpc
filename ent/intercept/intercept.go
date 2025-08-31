@@ -7,38 +7,43 @@ import (
 	"fmt"
 
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choicefloat"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/choicetext"
-	"gitee.com/link234/cmdb-rpc/ent/ciapprovalflow"
-	"gitee.com/link234/cmdb-rpc/ent/cilifecyclestate"
-	"gitee.com/link234/cmdb-rpc/ent/cioperation"
-	"gitee.com/link234/cmdb-rpc/ent/cipermission"
-	"gitee.com/link234/cmdb-rpc/ent/cirecords"
-	"gitee.com/link234/cmdb-rpc/ent/cirelation"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattribute"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroup"
-	"gitee.com/link234/cmdb-rpc/ent/citypegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
-	"gitee.com/link234/cmdb-rpc/ent/cityperelation"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
-	"gitee.com/link234/cmdb-rpc/ent/importtemplate"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/relationtype"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
-	"gitee.com/link234/cmdb-rpc/ent/valuefloat"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
-	"gitee.com/link234/cmdb-rpc/ent/valueinteger"
-	"gitee.com/link234/cmdb-rpc/ent/valuejson"
-	"gitee.com/link234/cmdb-rpc/ent/valuetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissioncache"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiondatafilter"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionfieldmask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionoperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiontemplate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
 )
 
 // The Query interface represents an operation that queries a graph.
@@ -718,6 +723,141 @@ func (f TraverseImportTemplate) Traverse(ctx context.Context, q ent.Query) error
 	return fmt.Errorf("unexpected query type %T. expect *ent.ImportTemplateQuery", q)
 }
 
+// The PermissionCacheFunc type is an adapter to allow the use of ordinary function as a Querier.
+type PermissionCacheFunc func(context.Context, *ent.PermissionCacheQuery) (ent.Value, error)
+
+// Query calls f(ctx, q).
+func (f PermissionCacheFunc) Query(ctx context.Context, q ent.Query) (ent.Value, error) {
+	if q, ok := q.(*ent.PermissionCacheQuery); ok {
+		return f(ctx, q)
+	}
+	return nil, fmt.Errorf("unexpected query type %T. expect *ent.PermissionCacheQuery", q)
+}
+
+// The TraversePermissionCache type is an adapter to allow the use of ordinary function as Traverser.
+type TraversePermissionCache func(context.Context, *ent.PermissionCacheQuery) error
+
+// Intercept is a dummy implementation of Intercept that returns the next Querier in the pipeline.
+func (f TraversePermissionCache) Intercept(next ent.Querier) ent.Querier {
+	return next
+}
+
+// Traverse calls f(ctx, q).
+func (f TraversePermissionCache) Traverse(ctx context.Context, q ent.Query) error {
+	if q, ok := q.(*ent.PermissionCacheQuery); ok {
+		return f(ctx, q)
+	}
+	return fmt.Errorf("unexpected query type %T. expect *ent.PermissionCacheQuery", q)
+}
+
+// The PermissionDataFilterFunc type is an adapter to allow the use of ordinary function as a Querier.
+type PermissionDataFilterFunc func(context.Context, *ent.PermissionDataFilterQuery) (ent.Value, error)
+
+// Query calls f(ctx, q).
+func (f PermissionDataFilterFunc) Query(ctx context.Context, q ent.Query) (ent.Value, error) {
+	if q, ok := q.(*ent.PermissionDataFilterQuery); ok {
+		return f(ctx, q)
+	}
+	return nil, fmt.Errorf("unexpected query type %T. expect *ent.PermissionDataFilterQuery", q)
+}
+
+// The TraversePermissionDataFilter type is an adapter to allow the use of ordinary function as Traverser.
+type TraversePermissionDataFilter func(context.Context, *ent.PermissionDataFilterQuery) error
+
+// Intercept is a dummy implementation of Intercept that returns the next Querier in the pipeline.
+func (f TraversePermissionDataFilter) Intercept(next ent.Querier) ent.Querier {
+	return next
+}
+
+// Traverse calls f(ctx, q).
+func (f TraversePermissionDataFilter) Traverse(ctx context.Context, q ent.Query) error {
+	if q, ok := q.(*ent.PermissionDataFilterQuery); ok {
+		return f(ctx, q)
+	}
+	return fmt.Errorf("unexpected query type %T. expect *ent.PermissionDataFilterQuery", q)
+}
+
+// The PermissionFieldMaskFunc type is an adapter to allow the use of ordinary function as a Querier.
+type PermissionFieldMaskFunc func(context.Context, *ent.PermissionFieldMaskQuery) (ent.Value, error)
+
+// Query calls f(ctx, q).
+func (f PermissionFieldMaskFunc) Query(ctx context.Context, q ent.Query) (ent.Value, error) {
+	if q, ok := q.(*ent.PermissionFieldMaskQuery); ok {
+		return f(ctx, q)
+	}
+	return nil, fmt.Errorf("unexpected query type %T. expect *ent.PermissionFieldMaskQuery", q)
+}
+
+// The TraversePermissionFieldMask type is an adapter to allow the use of ordinary function as Traverser.
+type TraversePermissionFieldMask func(context.Context, *ent.PermissionFieldMaskQuery) error
+
+// Intercept is a dummy implementation of Intercept that returns the next Querier in the pipeline.
+func (f TraversePermissionFieldMask) Intercept(next ent.Querier) ent.Querier {
+	return next
+}
+
+// Traverse calls f(ctx, q).
+func (f TraversePermissionFieldMask) Traverse(ctx context.Context, q ent.Query) error {
+	if q, ok := q.(*ent.PermissionFieldMaskQuery); ok {
+		return f(ctx, q)
+	}
+	return fmt.Errorf("unexpected query type %T. expect *ent.PermissionFieldMaskQuery", q)
+}
+
+// The PermissionOperationFunc type is an adapter to allow the use of ordinary function as a Querier.
+type PermissionOperationFunc func(context.Context, *ent.PermissionOperationQuery) (ent.Value, error)
+
+// Query calls f(ctx, q).
+func (f PermissionOperationFunc) Query(ctx context.Context, q ent.Query) (ent.Value, error) {
+	if q, ok := q.(*ent.PermissionOperationQuery); ok {
+		return f(ctx, q)
+	}
+	return nil, fmt.Errorf("unexpected query type %T. expect *ent.PermissionOperationQuery", q)
+}
+
+// The TraversePermissionOperation type is an adapter to allow the use of ordinary function as Traverser.
+type TraversePermissionOperation func(context.Context, *ent.PermissionOperationQuery) error
+
+// Intercept is a dummy implementation of Intercept that returns the next Querier in the pipeline.
+func (f TraversePermissionOperation) Intercept(next ent.Querier) ent.Querier {
+	return next
+}
+
+// Traverse calls f(ctx, q).
+func (f TraversePermissionOperation) Traverse(ctx context.Context, q ent.Query) error {
+	if q, ok := q.(*ent.PermissionOperationQuery); ok {
+		return f(ctx, q)
+	}
+	return fmt.Errorf("unexpected query type %T. expect *ent.PermissionOperationQuery", q)
+}
+
+// The PermissionTemplateFunc type is an adapter to allow the use of ordinary function as a Querier.
+type PermissionTemplateFunc func(context.Context, *ent.PermissionTemplateQuery) (ent.Value, error)
+
+// Query calls f(ctx, q).
+func (f PermissionTemplateFunc) Query(ctx context.Context, q ent.Query) (ent.Value, error) {
+	if q, ok := q.(*ent.PermissionTemplateQuery); ok {
+		return f(ctx, q)
+	}
+	return nil, fmt.Errorf("unexpected query type %T. expect *ent.PermissionTemplateQuery", q)
+}
+
+// The TraversePermissionTemplate type is an adapter to allow the use of ordinary function as Traverser.
+type TraversePermissionTemplate func(context.Context, *ent.PermissionTemplateQuery) error
+
+// Intercept is a dummy implementation of Intercept that returns the next Querier in the pipeline.
+func (f TraversePermissionTemplate) Intercept(next ent.Querier) ent.Querier {
+	return next
+}
+
+// Traverse calls f(ctx, q).
+func (f TraversePermissionTemplate) Traverse(ctx context.Context, q ent.Query) error {
+	if q, ok := q.(*ent.PermissionTemplateQuery); ok {
+		return f(ctx, q)
+	}
+	return fmt.Errorf("unexpected query type %T. expect *ent.PermissionTemplateQuery", q)
+}
+
 // The RelationTypeFunc type is an adapter to allow the use of ordinary function as a Querier.
 type RelationTypeFunc func(context.Context, *ent.RelationTypeQuery) (ent.Value, error)
 
@@ -956,6 +1096,16 @@ func NewQuery(q ent.Query) (Query, error) {
 		return &query[*ent.ImportTaskQuery, predicate.ImportTask, importtask.OrderOption]{typ: ent.TypeImportTask, tq: q}, nil
 	case *ent.ImportTemplateQuery:
 		return &query[*ent.ImportTemplateQuery, predicate.ImportTemplate, importtemplate.OrderOption]{typ: ent.TypeImportTemplate, tq: q}, nil
+	case *ent.PermissionCacheQuery:
+		return &query[*ent.PermissionCacheQuery, predicate.PermissionCache, permissioncache.OrderOption]{typ: ent.TypePermissionCache, tq: q}, nil
+	case *ent.PermissionDataFilterQuery:
+		return &query[*ent.PermissionDataFilterQuery, predicate.PermissionDataFilter, permissiondatafilter.OrderOption]{typ: ent.TypePermissionDataFilter, tq: q}, nil
+	case *ent.PermissionFieldMaskQuery:
+		return &query[*ent.PermissionFieldMaskQuery, predicate.PermissionFieldMask, permissionfieldmask.OrderOption]{typ: ent.TypePermissionFieldMask, tq: q}, nil
+	case *ent.PermissionOperationQuery:
+		return &query[*ent.PermissionOperationQuery, predicate.PermissionOperation, permissionoperation.OrderOption]{typ: ent.TypePermissionOperation, tq: q}, nil
+	case *ent.PermissionTemplateQuery:
+		return &query[*ent.PermissionTemplateQuery, predicate.PermissionTemplate, permissiontemplate.OrderOption]{typ: ent.TypePermissionTemplate, tq: q}, nil
 	case *ent.RelationTypeQuery:
 		return &query[*ent.RelationTypeQuery, predicate.RelationType, relationtype.OrderOption]{typ: ent.TypeRelationType, tq: q}, nil
 	case *ent.ValueDatetimeQuery:

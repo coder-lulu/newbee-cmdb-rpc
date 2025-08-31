@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citypeattributegroupitem"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiTypeAttributeGroupItemDelete is the builder for deleting a CiTypeAttributeGroupItem entity.
@@ -20,56 +20,56 @@ type CiTypeAttributeGroupItemDelete struct {
 }
 
 // Where appends a list predicates to the CiTypeAttributeGroupItemDelete builder.
-func (ctagid *CiTypeAttributeGroupItemDelete) Where(ps ...predicate.CiTypeAttributeGroupItem) *CiTypeAttributeGroupItemDelete {
-	ctagid.mutation.Where(ps...)
-	return ctagid
+func (_d *CiTypeAttributeGroupItemDelete) Where(ps ...predicate.CiTypeAttributeGroupItem) *CiTypeAttributeGroupItemDelete {
+	_d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (ctagid *CiTypeAttributeGroupItemDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, ctagid.sqlExec, ctagid.mutation, ctagid.hooks)
+func (_d *CiTypeAttributeGroupItemDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, _d.sqlExec, _d.mutation, _d.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctagid *CiTypeAttributeGroupItemDelete) ExecX(ctx context.Context) int {
-	n, err := ctagid.Exec(ctx)
+func (_d *CiTypeAttributeGroupItemDelete) ExecX(ctx context.Context) int {
+	n, err := _d.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (ctagid *CiTypeAttributeGroupItemDelete) sqlExec(ctx context.Context) (int, error) {
+func (_d *CiTypeAttributeGroupItemDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(citypeattributegroupitem.Table, sqlgraph.NewFieldSpec(citypeattributegroupitem.FieldID, field.TypeUint64))
-	if ps := ctagid.mutation.predicates; len(ps) > 0 {
+	if ps := _d.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, ctagid.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, _d.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	ctagid.mutation.done = true
+	_d.mutation.done = true
 	return affected, err
 }
 
 // CiTypeAttributeGroupItemDeleteOne is the builder for deleting a single CiTypeAttributeGroupItem entity.
 type CiTypeAttributeGroupItemDeleteOne struct {
-	ctagid *CiTypeAttributeGroupItemDelete
+	_d *CiTypeAttributeGroupItemDelete
 }
 
 // Where appends a list predicates to the CiTypeAttributeGroupItemDelete builder.
-func (ctagido *CiTypeAttributeGroupItemDeleteOne) Where(ps ...predicate.CiTypeAttributeGroupItem) *CiTypeAttributeGroupItemDeleteOne {
-	ctagido.ctagid.mutation.Where(ps...)
-	return ctagido
+func (_d *CiTypeAttributeGroupItemDeleteOne) Where(ps ...predicate.CiTypeAttributeGroupItem) *CiTypeAttributeGroupItemDeleteOne {
+	_d._d.mutation.Where(ps...)
+	return _d
 }
 
 // Exec executes the deletion query.
-func (ctagido *CiTypeAttributeGroupItemDeleteOne) Exec(ctx context.Context) error {
-	n, err := ctagido.ctagid.Exec(ctx)
+func (_d *CiTypeAttributeGroupItemDeleteOne) Exec(ctx context.Context) error {
+	n, err := _d._d.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -81,8 +81,8 @@ func (ctagido *CiTypeAttributeGroupItemDeleteOne) Exec(ctx context.Context) erro
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ctagido *CiTypeAttributeGroupItemDeleteOne) ExecX(ctx context.Context) {
-	if err := ctagido.Exec(ctx); err != nil {
+func (_d *CiTypeAttributeGroupItemDeleteOne) ExecX(ctx context.Context) {
+	if err := _d.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

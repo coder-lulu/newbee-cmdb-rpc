@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/internal/utils/dberrorhandler"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

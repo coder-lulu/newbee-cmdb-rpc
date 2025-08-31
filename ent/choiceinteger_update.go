@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/choiceinteger"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 )
 
 // ChoiceIntegerUpdate is the builder for updating ChoiceInteger entities.
@@ -25,152 +25,152 @@ type ChoiceIntegerUpdate struct {
 }
 
 // Where appends a list predicates to the ChoiceIntegerUpdate builder.
-func (ciu *ChoiceIntegerUpdate) Where(ps ...predicate.ChoiceInteger) *ChoiceIntegerUpdate {
-	ciu.mutation.Where(ps...)
-	return ciu
+func (_u *ChoiceIntegerUpdate) Where(ps ...predicate.ChoiceInteger) *ChoiceIntegerUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ciu *ChoiceIntegerUpdate) SetUpdatedAt(t time.Time) *ChoiceIntegerUpdate {
-	ciu.mutation.SetUpdatedAt(t)
-	return ciu
+func (_u *ChoiceIntegerUpdate) SetUpdatedAt(v time.Time) *ChoiceIntegerUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ciu *ChoiceIntegerUpdate) SetDeletedAt(t time.Time) *ChoiceIntegerUpdate {
-	ciu.mutation.SetDeletedAt(t)
-	return ciu
+func (_u *ChoiceIntegerUpdate) SetDeletedAt(v time.Time) *ChoiceIntegerUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ciu *ChoiceIntegerUpdate) SetNillableDeletedAt(t *time.Time) *ChoiceIntegerUpdate {
-	if t != nil {
-		ciu.SetDeletedAt(*t)
+func (_u *ChoiceIntegerUpdate) SetNillableDeletedAt(v *time.Time) *ChoiceIntegerUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ciu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ciu *ChoiceIntegerUpdate) ClearDeletedAt() *ChoiceIntegerUpdate {
-	ciu.mutation.ClearDeletedAt()
-	return ciu
+func (_u *ChoiceIntegerUpdate) ClearDeletedAt() *ChoiceIntegerUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ciu *ChoiceIntegerUpdate) SetDepartmentID(u uint64) *ChoiceIntegerUpdate {
-	ciu.mutation.ResetDepartmentID()
-	ciu.mutation.SetDepartmentID(u)
-	return ciu
+func (_u *ChoiceIntegerUpdate) SetDepartmentID(v uint64) *ChoiceIntegerUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ciu *ChoiceIntegerUpdate) SetNillableDepartmentID(u *uint64) *ChoiceIntegerUpdate {
-	if u != nil {
-		ciu.SetDepartmentID(*u)
+func (_u *ChoiceIntegerUpdate) SetNillableDepartmentID(v *uint64) *ChoiceIntegerUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ciu
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ciu *ChoiceIntegerUpdate) AddDepartmentID(u int64) *ChoiceIntegerUpdate {
-	ciu.mutation.AddDepartmentID(u)
-	return ciu
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ChoiceIntegerUpdate) AddDepartmentID(v int64) *ChoiceIntegerUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ciu *ChoiceIntegerUpdate) ClearDepartmentID() *ChoiceIntegerUpdate {
-	ciu.mutation.ClearDepartmentID()
-	return ciu
+func (_u *ChoiceIntegerUpdate) ClearDepartmentID() *ChoiceIntegerUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (ciu *ChoiceIntegerUpdate) SetAttrID(u uint64) *ChoiceIntegerUpdate {
-	ciu.mutation.SetAttrID(u)
-	return ciu
+func (_u *ChoiceIntegerUpdate) SetAttrID(v uint64) *ChoiceIntegerUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (ciu *ChoiceIntegerUpdate) SetNillableAttrID(u *uint64) *ChoiceIntegerUpdate {
-	if u != nil {
-		ciu.SetAttrID(*u)
+func (_u *ChoiceIntegerUpdate) SetNillableAttrID(v *uint64) *ChoiceIntegerUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return ciu
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (ciu *ChoiceIntegerUpdate) SetValue(i int) *ChoiceIntegerUpdate {
-	ciu.mutation.ResetValue()
-	ciu.mutation.SetValue(i)
-	return ciu
+func (_u *ChoiceIntegerUpdate) SetValue(v int) *ChoiceIntegerUpdate {
+	_u.mutation.ResetValue()
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (ciu *ChoiceIntegerUpdate) SetNillableValue(i *int) *ChoiceIntegerUpdate {
-	if i != nil {
-		ciu.SetValue(*i)
+func (_u *ChoiceIntegerUpdate) SetNillableValue(v *int) *ChoiceIntegerUpdate {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return ciu
+	return _u
 }
 
-// AddValue adds i to the "value" field.
-func (ciu *ChoiceIntegerUpdate) AddValue(i int) *ChoiceIntegerUpdate {
-	ciu.mutation.AddValue(i)
-	return ciu
+// AddValue adds value to the "value" field.
+func (_u *ChoiceIntegerUpdate) AddValue(v int) *ChoiceIntegerUpdate {
+	_u.mutation.AddValue(v)
+	return _u
 }
 
 // SetOption sets the "option" field.
-func (ciu *ChoiceIntegerUpdate) SetOption(sim schema.ChoiceItemMetaS) *ChoiceIntegerUpdate {
-	ciu.mutation.SetOption(sim)
-	return ciu
+func (_u *ChoiceIntegerUpdate) SetOption(v schema.ChoiceItemMetaS) *ChoiceIntegerUpdate {
+	_u.mutation.SetOption(v)
+	return _u
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (ciu *ChoiceIntegerUpdate) SetNillableOption(sim *schema.ChoiceItemMetaS) *ChoiceIntegerUpdate {
-	if sim != nil {
-		ciu.SetOption(*sim)
+func (_u *ChoiceIntegerUpdate) SetNillableOption(v *schema.ChoiceItemMetaS) *ChoiceIntegerUpdate {
+	if v != nil {
+		_u.SetOption(*v)
 	}
-	return ciu
+	return _u
 }
 
 // ClearOption clears the value of the "option" field.
-func (ciu *ChoiceIntegerUpdate) ClearOption() *ChoiceIntegerUpdate {
-	ciu.mutation.ClearOption()
-	return ciu
+func (_u *ChoiceIntegerUpdate) ClearOption() *ChoiceIntegerUpdate {
+	_u.mutation.ClearOption()
+	return _u
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (ciu *ChoiceIntegerUpdate) SetAttributeID(id uint64) *ChoiceIntegerUpdate {
-	ciu.mutation.SetAttributeID(id)
-	return ciu
+func (_u *ChoiceIntegerUpdate) SetAttributeID(id uint64) *ChoiceIntegerUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (ciu *ChoiceIntegerUpdate) SetAttribute(a *Attribute) *ChoiceIntegerUpdate {
-	return ciu.SetAttributeID(a.ID)
+func (_u *ChoiceIntegerUpdate) SetAttribute(v *Attribute) *ChoiceIntegerUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ChoiceIntegerMutation object of the builder.
-func (ciu *ChoiceIntegerUpdate) Mutation() *ChoiceIntegerMutation {
-	return ciu.mutation
+func (_u *ChoiceIntegerUpdate) Mutation() *ChoiceIntegerMutation {
+	return _u.mutation
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (ciu *ChoiceIntegerUpdate) ClearAttribute() *ChoiceIntegerUpdate {
-	ciu.mutation.ClearAttribute()
-	return ciu
+func (_u *ChoiceIntegerUpdate) ClearAttribute() *ChoiceIntegerUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (ciu *ChoiceIntegerUpdate) Save(ctx context.Context) (int, error) {
-	if err := ciu.defaults(); err != nil {
+func (_u *ChoiceIntegerUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, ciu.sqlSave, ciu.mutation, ciu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ciu *ChoiceIntegerUpdate) SaveX(ctx context.Context) int {
-	affected, err := ciu.Save(ctx)
+func (_u *ChoiceIntegerUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -178,81 +178,81 @@ func (ciu *ChoiceIntegerUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (ciu *ChoiceIntegerUpdate) Exec(ctx context.Context) error {
-	_, err := ciu.Save(ctx)
+func (_u *ChoiceIntegerUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ciu *ChoiceIntegerUpdate) ExecX(ctx context.Context) {
-	if err := ciu.Exec(ctx); err != nil {
+func (_u *ChoiceIntegerUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ciu *ChoiceIntegerUpdate) defaults() error {
-	if _, ok := ciu.mutation.UpdatedAt(); !ok {
+func (_u *ChoiceIntegerUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if choiceinteger.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized choiceinteger.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := choiceinteger.UpdateDefaultUpdatedAt()
-		ciu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ciu *ChoiceIntegerUpdate) check() error {
-	if ciu.mutation.AttributeCleared() && len(ciu.mutation.AttributeIDs()) > 0 {
+func (_u *ChoiceIntegerUpdate) check() error {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ChoiceInteger.attribute"`)
 	}
 	return nil
 }
 
-func (ciu *ChoiceIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := ciu.check(); err != nil {
-		return n, err
+func (_u *ChoiceIntegerUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(choiceinteger.Table, choiceinteger.Columns, sqlgraph.NewFieldSpec(choiceinteger.FieldID, field.TypeUint64))
-	if ps := ciu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ciu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(choiceinteger.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ciu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(choiceinteger.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ciu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(choiceinteger.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ciu.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(choiceinteger.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ciu.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(choiceinteger.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ciu.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(choiceinteger.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ciu.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(choiceinteger.FieldValue, field.TypeInt, value)
 	}
-	if value, ok := ciu.mutation.AddedValue(); ok {
+	if value, ok := _u.mutation.AddedValue(); ok {
 		_spec.AddField(choiceinteger.FieldValue, field.TypeInt, value)
 	}
-	if value, ok := ciu.mutation.Option(); ok {
+	if value, ok := _u.mutation.Option(); ok {
 		_spec.SetField(choiceinteger.FieldOption, field.TypeJSON, value)
 	}
-	if ciu.mutation.OptionCleared() {
+	if _u.mutation.OptionCleared() {
 		_spec.ClearField(choiceinteger.FieldOption, field.TypeJSON)
 	}
-	if ciu.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -265,7 +265,7 @@ func (ciu *ChoiceIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ciu.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -281,7 +281,7 @@ func (ciu *ChoiceIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, ciu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{choiceinteger.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -289,8 +289,8 @@ func (ciu *ChoiceIntegerUpdate) sqlSave(ctx context.Context) (n int, err error) 
 		}
 		return 0, err
 	}
-	ciu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ChoiceIntegerUpdateOne is the builder for updating a single ChoiceInteger entity.
@@ -302,159 +302,159 @@ type ChoiceIntegerUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (ciuo *ChoiceIntegerUpdateOne) SetUpdatedAt(t time.Time) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.SetUpdatedAt(t)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) SetUpdatedAt(v time.Time) *ChoiceIntegerUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ciuo *ChoiceIntegerUpdateOne) SetDeletedAt(t time.Time) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.SetDeletedAt(t)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) SetDeletedAt(v time.Time) *ChoiceIntegerUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (ciuo *ChoiceIntegerUpdateOne) SetNillableDeletedAt(t *time.Time) *ChoiceIntegerUpdateOne {
-	if t != nil {
-		ciuo.SetDeletedAt(*t)
+func (_u *ChoiceIntegerUpdateOne) SetNillableDeletedAt(v *time.Time) *ChoiceIntegerUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return ciuo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (ciuo *ChoiceIntegerUpdateOne) ClearDeletedAt() *ChoiceIntegerUpdateOne {
-	ciuo.mutation.ClearDeletedAt()
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) ClearDeletedAt() *ChoiceIntegerUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (ciuo *ChoiceIntegerUpdateOne) SetDepartmentID(u uint64) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.ResetDepartmentID()
-	ciuo.mutation.SetDepartmentID(u)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) SetDepartmentID(v uint64) *ChoiceIntegerUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (ciuo *ChoiceIntegerUpdateOne) SetNillableDepartmentID(u *uint64) *ChoiceIntegerUpdateOne {
-	if u != nil {
-		ciuo.SetDepartmentID(*u)
+func (_u *ChoiceIntegerUpdateOne) SetNillableDepartmentID(v *uint64) *ChoiceIntegerUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return ciuo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (ciuo *ChoiceIntegerUpdateOne) AddDepartmentID(u int64) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.AddDepartmentID(u)
-	return ciuo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ChoiceIntegerUpdateOne) AddDepartmentID(v int64) *ChoiceIntegerUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (ciuo *ChoiceIntegerUpdateOne) ClearDepartmentID() *ChoiceIntegerUpdateOne {
-	ciuo.mutation.ClearDepartmentID()
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) ClearDepartmentID() *ChoiceIntegerUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (ciuo *ChoiceIntegerUpdateOne) SetAttrID(u uint64) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.SetAttrID(u)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) SetAttrID(v uint64) *ChoiceIntegerUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (ciuo *ChoiceIntegerUpdateOne) SetNillableAttrID(u *uint64) *ChoiceIntegerUpdateOne {
-	if u != nil {
-		ciuo.SetAttrID(*u)
+func (_u *ChoiceIntegerUpdateOne) SetNillableAttrID(v *uint64) *ChoiceIntegerUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return ciuo
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (ciuo *ChoiceIntegerUpdateOne) SetValue(i int) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.ResetValue()
-	ciuo.mutation.SetValue(i)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) SetValue(v int) *ChoiceIntegerUpdateOne {
+	_u.mutation.ResetValue()
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (ciuo *ChoiceIntegerUpdateOne) SetNillableValue(i *int) *ChoiceIntegerUpdateOne {
-	if i != nil {
-		ciuo.SetValue(*i)
+func (_u *ChoiceIntegerUpdateOne) SetNillableValue(v *int) *ChoiceIntegerUpdateOne {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return ciuo
+	return _u
 }
 
-// AddValue adds i to the "value" field.
-func (ciuo *ChoiceIntegerUpdateOne) AddValue(i int) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.AddValue(i)
-	return ciuo
+// AddValue adds value to the "value" field.
+func (_u *ChoiceIntegerUpdateOne) AddValue(v int) *ChoiceIntegerUpdateOne {
+	_u.mutation.AddValue(v)
+	return _u
 }
 
 // SetOption sets the "option" field.
-func (ciuo *ChoiceIntegerUpdateOne) SetOption(sim schema.ChoiceItemMetaS) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.SetOption(sim)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) SetOption(v schema.ChoiceItemMetaS) *ChoiceIntegerUpdateOne {
+	_u.mutation.SetOption(v)
+	return _u
 }
 
 // SetNillableOption sets the "option" field if the given value is not nil.
-func (ciuo *ChoiceIntegerUpdateOne) SetNillableOption(sim *schema.ChoiceItemMetaS) *ChoiceIntegerUpdateOne {
-	if sim != nil {
-		ciuo.SetOption(*sim)
+func (_u *ChoiceIntegerUpdateOne) SetNillableOption(v *schema.ChoiceItemMetaS) *ChoiceIntegerUpdateOne {
+	if v != nil {
+		_u.SetOption(*v)
 	}
-	return ciuo
+	return _u
 }
 
 // ClearOption clears the value of the "option" field.
-func (ciuo *ChoiceIntegerUpdateOne) ClearOption() *ChoiceIntegerUpdateOne {
-	ciuo.mutation.ClearOption()
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) ClearOption() *ChoiceIntegerUpdateOne {
+	_u.mutation.ClearOption()
+	return _u
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (ciuo *ChoiceIntegerUpdateOne) SetAttributeID(id uint64) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.SetAttributeID(id)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) SetAttributeID(id uint64) *ChoiceIntegerUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (ciuo *ChoiceIntegerUpdateOne) SetAttribute(a *Attribute) *ChoiceIntegerUpdateOne {
-	return ciuo.SetAttributeID(a.ID)
+func (_u *ChoiceIntegerUpdateOne) SetAttribute(v *Attribute) *ChoiceIntegerUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ChoiceIntegerMutation object of the builder.
-func (ciuo *ChoiceIntegerUpdateOne) Mutation() *ChoiceIntegerMutation {
-	return ciuo.mutation
+func (_u *ChoiceIntegerUpdateOne) Mutation() *ChoiceIntegerMutation {
+	return _u.mutation
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (ciuo *ChoiceIntegerUpdateOne) ClearAttribute() *ChoiceIntegerUpdateOne {
-	ciuo.mutation.ClearAttribute()
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) ClearAttribute() *ChoiceIntegerUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the ChoiceIntegerUpdate builder.
-func (ciuo *ChoiceIntegerUpdateOne) Where(ps ...predicate.ChoiceInteger) *ChoiceIntegerUpdateOne {
-	ciuo.mutation.Where(ps...)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) Where(ps ...predicate.ChoiceInteger) *ChoiceIntegerUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (ciuo *ChoiceIntegerUpdateOne) Select(field string, fields ...string) *ChoiceIntegerUpdateOne {
-	ciuo.fields = append([]string{field}, fields...)
-	return ciuo
+func (_u *ChoiceIntegerUpdateOne) Select(field string, fields ...string) *ChoiceIntegerUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ChoiceInteger entity.
-func (ciuo *ChoiceIntegerUpdateOne) Save(ctx context.Context) (*ChoiceInteger, error) {
-	if err := ciuo.defaults(); err != nil {
+func (_u *ChoiceIntegerUpdateOne) Save(ctx context.Context) (*ChoiceInteger, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, ciuo.sqlSave, ciuo.mutation, ciuo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ciuo *ChoiceIntegerUpdateOne) SaveX(ctx context.Context) *ChoiceInteger {
-	node, err := ciuo.Save(ctx)
+func (_u *ChoiceIntegerUpdateOne) SaveX(ctx context.Context) *ChoiceInteger {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -462,49 +462,49 @@ func (ciuo *ChoiceIntegerUpdateOne) SaveX(ctx context.Context) *ChoiceInteger {
 }
 
 // Exec executes the query on the entity.
-func (ciuo *ChoiceIntegerUpdateOne) Exec(ctx context.Context) error {
-	_, err := ciuo.Save(ctx)
+func (_u *ChoiceIntegerUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ciuo *ChoiceIntegerUpdateOne) ExecX(ctx context.Context) {
-	if err := ciuo.Exec(ctx); err != nil {
+func (_u *ChoiceIntegerUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (ciuo *ChoiceIntegerUpdateOne) defaults() error {
-	if _, ok := ciuo.mutation.UpdatedAt(); !ok {
+func (_u *ChoiceIntegerUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if choiceinteger.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized choiceinteger.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := choiceinteger.UpdateDefaultUpdatedAt()
-		ciuo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (ciuo *ChoiceIntegerUpdateOne) check() error {
-	if ciuo.mutation.AttributeCleared() && len(ciuo.mutation.AttributeIDs()) > 0 {
+func (_u *ChoiceIntegerUpdateOne) check() error {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ChoiceInteger.attribute"`)
 	}
 	return nil
 }
 
-func (ciuo *ChoiceIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceInteger, err error) {
-	if err := ciuo.check(); err != nil {
+func (_u *ChoiceIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceInteger, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(choiceinteger.Table, choiceinteger.Columns, sqlgraph.NewFieldSpec(choiceinteger.FieldID, field.TypeUint64))
-	id, ok := ciuo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ChoiceInteger.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := ciuo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, choiceinteger.FieldID)
 		for _, f := range fields {
@@ -516,44 +516,44 @@ func (ciuo *ChoiceIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceI
 			}
 		}
 	}
-	if ps := ciuo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := ciuo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(choiceinteger.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := ciuo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(choiceinteger.FieldDeletedAt, field.TypeTime, value)
 	}
-	if ciuo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(choiceinteger.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := ciuo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(choiceinteger.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := ciuo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(choiceinteger.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if ciuo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(choiceinteger.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := ciuo.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(choiceinteger.FieldValue, field.TypeInt, value)
 	}
-	if value, ok := ciuo.mutation.AddedValue(); ok {
+	if value, ok := _u.mutation.AddedValue(); ok {
 		_spec.AddField(choiceinteger.FieldValue, field.TypeInt, value)
 	}
-	if value, ok := ciuo.mutation.Option(); ok {
+	if value, ok := _u.mutation.Option(); ok {
 		_spec.SetField(choiceinteger.FieldOption, field.TypeJSON, value)
 	}
-	if ciuo.mutation.OptionCleared() {
+	if _u.mutation.OptionCleared() {
 		_spec.ClearField(choiceinteger.FieldOption, field.TypeJSON)
 	}
-	if ciuo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -566,7 +566,7 @@ func (ciuo *ChoiceIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceI
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := ciuo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -582,10 +582,10 @@ func (ciuo *ChoiceIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceI
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ChoiceInteger{config: ciuo.config}
+	_node = &ChoiceInteger{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, ciuo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{choiceinteger.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -593,6 +593,6 @@ func (ciuo *ChoiceIntegerUpdateOne) sqlSave(ctx context.Context) (_node *ChoiceI
 		}
 		return nil, err
 	}
-	ciuo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

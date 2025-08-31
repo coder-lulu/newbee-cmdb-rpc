@@ -10,7 +10,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -142,7 +142,7 @@ func (*CiApprovalFlow) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiApprovalFlow fields.
-func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
+func (_m *CiApprovalFlow) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -153,66 +153,66 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			caf.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case ciapprovalflow.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				caf.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case ciapprovalflow.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				caf.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case ciapprovalflow.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				caf.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case ciapprovalflow.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				caf.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case ciapprovalflow.FieldFlowID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field flow_id", values[i])
 			} else if value.Valid {
-				caf.FlowID = value.String
+				_m.FlowID = value.String
 			}
 		case ciapprovalflow.FieldFlowName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field flow_name", values[i])
 			} else if value.Valid {
-				caf.FlowName = value.String
+				_m.FlowName = value.String
 			}
 		case ciapprovalflow.FieldFlowCode:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field flow_code", values[i])
 			} else if value.Valid {
-				caf.FlowCode = value.String
+				_m.FlowCode = value.String
 			}
 		case ciapprovalflow.FieldFlowDescription:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field flow_description", values[i])
 			} else if value.Valid {
-				caf.FlowDescription = value.String
+				_m.FlowDescription = value.String
 			}
 		case ciapprovalflow.FieldScopeType:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field scope_type", values[i])
 			} else if value.Valid {
-				caf.ScopeType = ciapprovalflow.ScopeType(value.String)
+				_m.ScopeType = ciapprovalflow.ScopeType(value.String)
 			}
 		case ciapprovalflow.FieldScopeConfig:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field scope_config", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.ScopeConfig); err != nil {
+				if err := json.Unmarshal(*value, &_m.ScopeConfig); err != nil {
 					return fmt.Errorf("unmarshal field scope_config: %w", err)
 				}
 			}
@@ -220,7 +220,7 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field trigger_conditions", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.TriggerConditions); err != nil {
+				if err := json.Unmarshal(*value, &_m.TriggerConditions); err != nil {
 					return fmt.Errorf("unmarshal field trigger_conditions: %w", err)
 				}
 			}
@@ -228,13 +228,13 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field flow_type", values[i])
 			} else if value.Valid {
-				caf.FlowType = ciapprovalflow.FlowType(value.String)
+				_m.FlowType = ciapprovalflow.FlowType(value.String)
 			}
 		case ciapprovalflow.FieldApprovalStages:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field approval_stages", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.ApprovalStages); err != nil {
+				if err := json.Unmarshal(*value, &_m.ApprovalStages); err != nil {
 					return fmt.Errorf("unmarshal field approval_stages: %w", err)
 				}
 			}
@@ -242,25 +242,25 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field total_stages", values[i])
 			} else if value.Valid {
-				caf.TotalStages = int(value.Int64)
+				_m.TotalStages = int(value.Int64)
 			}
 		case ciapprovalflow.FieldAllowSkipStages:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field allow_skip_stages", values[i])
 			} else if value.Valid {
-				caf.AllowSkipStages = value.Bool
+				_m.AllowSkipStages = value.Bool
 			}
 		case ciapprovalflow.FieldAllowRollback:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field allow_rollback", values[i])
 			} else if value.Valid {
-				caf.AllowRollback = value.Bool
+				_m.AllowRollback = value.Bool
 			}
 		case ciapprovalflow.FieldApproverConfig:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field approver_config", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.ApproverConfig); err != nil {
+				if err := json.Unmarshal(*value, &_m.ApproverConfig); err != nil {
 					return fmt.Errorf("unmarshal field approver_config: %w", err)
 				}
 			}
@@ -268,7 +268,7 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field fallback_approvers", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.FallbackApprovers); err != nil {
+				if err := json.Unmarshal(*value, &_m.FallbackApprovers); err != nil {
 					return fmt.Errorf("unmarshal field fallback_approvers: %w", err)
 				}
 			}
@@ -276,19 +276,19 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field require_all_approvers", values[i])
 			} else if value.Valid {
-				caf.RequireAllApprovers = value.Bool
+				_m.RequireAllApprovers = value.Bool
 			}
 		case ciapprovalflow.FieldTimeoutHours:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field timeout_hours", values[i])
 			} else if value.Valid {
-				caf.TimeoutHours = int(value.Int64)
+				_m.TimeoutHours = int(value.Int64)
 			}
 		case ciapprovalflow.FieldStageTimeouts:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field stage_timeouts", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.StageTimeouts); err != nil {
+				if err := json.Unmarshal(*value, &_m.StageTimeouts); err != nil {
 					return fmt.Errorf("unmarshal field stage_timeouts: %w", err)
 				}
 			}
@@ -296,13 +296,13 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field timeout_action", values[i])
 			} else if value.Valid {
-				caf.TimeoutAction = ciapprovalflow.TimeoutAction(value.String)
+				_m.TimeoutAction = ciapprovalflow.TimeoutAction(value.String)
 			}
 		case ciapprovalflow.FieldNotificationConfig:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field notification_config", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.NotificationConfig); err != nil {
+				if err := json.Unmarshal(*value, &_m.NotificationConfig); err != nil {
 					return fmt.Errorf("unmarshal field notification_config: %w", err)
 				}
 			}
@@ -310,115 +310,115 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field notify_on_submit", values[i])
 			} else if value.Valid {
-				caf.NotifyOnSubmit = value.Bool
+				_m.NotifyOnSubmit = value.Bool
 			}
 		case ciapprovalflow.FieldNotifyOnApprove:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field notify_on_approve", values[i])
 			} else if value.Valid {
-				caf.NotifyOnApprove = value.Bool
+				_m.NotifyOnApprove = value.Bool
 			}
 		case ciapprovalflow.FieldNotifyOnReject:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field notify_on_reject", values[i])
 			} else if value.Valid {
-				caf.NotifyOnReject = value.Bool
+				_m.NotifyOnReject = value.Bool
 			}
 		case ciapprovalflow.FieldStatus:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
-				caf.Status = ciapprovalflow.Status(value.String)
+				_m.Status = ciapprovalflow.Status(value.String)
 			}
 		case ciapprovalflow.FieldStatusReason:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field status_reason", values[i])
 			} else if value.Valid {
-				caf.StatusReason = value.String
+				_m.StatusReason = value.String
 			}
 		case ciapprovalflow.FieldVersion:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field version", values[i])
 			} else if value.Valid {
-				caf.Version = value.String
+				_m.Version = value.String
 			}
 		case ciapprovalflow.FieldParentFlowID:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field parent_flow_id", values[i])
 			} else if value.Valid {
-				caf.ParentFlowID = value.String
+				_m.ParentFlowID = value.String
 			}
 		case ciapprovalflow.FieldIsDefault:
 			if value, ok := values[i].(*sql.NullBool); !ok {
 				return fmt.Errorf("unexpected type %T for field is_default", values[i])
 			} else if value.Valid {
-				caf.IsDefault = value.Bool
+				_m.IsDefault = value.Bool
 			}
 		case ciapprovalflow.FieldUsageCount:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field usage_count", values[i])
 			} else if value.Valid {
-				caf.UsageCount = int(value.Int64)
+				_m.UsageCount = int(value.Int64)
 			}
 		case ciapprovalflow.FieldApprovalRate:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field approval_rate", values[i])
 			} else if value.Valid {
-				caf.ApprovalRate = int(value.Int64)
+				_m.ApprovalRate = int(value.Int64)
 			}
 		case ciapprovalflow.FieldAvgApprovalTime:
 			if value, ok := values[i].(*sql.NullFloat64); !ok {
 				return fmt.Errorf("unexpected type %T for field avg_approval_time", values[i])
 			} else if value.Valid {
-				caf.AvgApprovalTime = value.Float64
+				_m.AvgApprovalTime = value.Float64
 			}
 		case ciapprovalflow.FieldLastUsedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field last_used_at", values[i])
 			} else if value.Valid {
-				caf.LastUsedAt = value.Time
+				_m.LastUsedAt = value.Time
 			}
 		case ciapprovalflow.FieldCreatedBy:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by", values[i])
 			} else if value != nil {
-				caf.CreatedBy = *value
+				_m.CreatedBy = *value
 			}
 		case ciapprovalflow.FieldCreatedByName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by_name", values[i])
 			} else if value.Valid {
-				caf.CreatedByName = value.String
+				_m.CreatedByName = value.String
 			}
 		case ciapprovalflow.FieldUpdatedBy:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_by", values[i])
 			} else if value != nil {
-				caf.UpdatedBy = *value
+				_m.UpdatedBy = *value
 			}
 		case ciapprovalflow.FieldUpdatedByName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_by_name", values[i])
 			} else if value.Valid {
-				caf.UpdatedByName = value.String
+				_m.UpdatedByName = value.String
 			}
 		case ciapprovalflow.FieldPublishedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field published_at", values[i])
 			} else if value.Valid {
-				caf.PublishedAt = value.Time
+				_m.PublishedAt = value.Time
 			}
 		case ciapprovalflow.FieldPublishedBy:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field published_by", values[i])
 			} else if value != nil {
-				caf.PublishedBy = *value
+				_m.PublishedBy = *value
 			}
 		case ciapprovalflow.FieldCustomFields:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field custom_fields", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.CustomFields); err != nil {
+				if err := json.Unmarshal(*value, &_m.CustomFields); err != nil {
 					return fmt.Errorf("unmarshal field custom_fields: %w", err)
 				}
 			}
@@ -426,7 +426,7 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field integration_config", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.IntegrationConfig); err != nil {
+				if err := json.Unmarshal(*value, &_m.IntegrationConfig); err != nil {
 					return fmt.Errorf("unmarshal field integration_config: %w", err)
 				}
 			}
@@ -434,7 +434,7 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field metadata", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.Metadata); err != nil {
+				if err := json.Unmarshal(*value, &_m.Metadata); err != nil {
 					return fmt.Errorf("unmarshal field metadata: %w", err)
 				}
 			}
@@ -442,7 +442,7 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field tags", values[i])
 			} else if value != nil && len(*value) > 0 {
-				if err := json.Unmarshal(*value, &caf.Tags); err != nil {
+				if err := json.Unmarshal(*value, &_m.Tags); err != nil {
 					return fmt.Errorf("unmarshal field tags: %w", err)
 				}
 			}
@@ -450,10 +450,10 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field comments", values[i])
 			} else if value.Valid {
-				caf.Comments = value.String
+				_m.Comments = value.String
 			}
 		default:
-			caf.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -461,170 +461,170 @@ func (caf *CiApprovalFlow) assignValues(columns []string, values []any) error {
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiApprovalFlow.
 // This includes values selected through modifiers, order, etc.
-func (caf *CiApprovalFlow) Value(name string) (ent.Value, error) {
-	return caf.selectValues.Get(name)
+func (_m *CiApprovalFlow) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // Update returns a builder for updating this CiApprovalFlow.
 // Note that you need to call CiApprovalFlow.Unwrap() before calling this method if this CiApprovalFlow
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (caf *CiApprovalFlow) Update() *CiApprovalFlowUpdateOne {
-	return NewCiApprovalFlowClient(caf.config).UpdateOne(caf)
+func (_m *CiApprovalFlow) Update() *CiApprovalFlowUpdateOne {
+	return NewCiApprovalFlowClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiApprovalFlow entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (caf *CiApprovalFlow) Unwrap() *CiApprovalFlow {
-	_tx, ok := caf.config.driver.(*txDriver)
+func (_m *CiApprovalFlow) Unwrap() *CiApprovalFlow {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiApprovalFlow is not a transactional entity")
 	}
-	caf.config.driver = _tx.drv
-	return caf
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (caf *CiApprovalFlow) String() string {
+func (_m *CiApprovalFlow) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiApprovalFlow(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", caf.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(caf.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(caf.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", caf.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", caf.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("flow_id=")
-	builder.WriteString(caf.FlowID)
+	builder.WriteString(_m.FlowID)
 	builder.WriteString(", ")
 	builder.WriteString("flow_name=")
-	builder.WriteString(caf.FlowName)
+	builder.WriteString(_m.FlowName)
 	builder.WriteString(", ")
 	builder.WriteString("flow_code=")
-	builder.WriteString(caf.FlowCode)
+	builder.WriteString(_m.FlowCode)
 	builder.WriteString(", ")
 	builder.WriteString("flow_description=")
-	builder.WriteString(caf.FlowDescription)
+	builder.WriteString(_m.FlowDescription)
 	builder.WriteString(", ")
 	builder.WriteString("scope_type=")
-	builder.WriteString(fmt.Sprintf("%v", caf.ScopeType))
+	builder.WriteString(fmt.Sprintf("%v", _m.ScopeType))
 	builder.WriteString(", ")
 	builder.WriteString("scope_config=")
-	builder.WriteString(fmt.Sprintf("%v", caf.ScopeConfig))
+	builder.WriteString(fmt.Sprintf("%v", _m.ScopeConfig))
 	builder.WriteString(", ")
 	builder.WriteString("trigger_conditions=")
-	builder.WriteString(fmt.Sprintf("%v", caf.TriggerConditions))
+	builder.WriteString(fmt.Sprintf("%v", _m.TriggerConditions))
 	builder.WriteString(", ")
 	builder.WriteString("flow_type=")
-	builder.WriteString(fmt.Sprintf("%v", caf.FlowType))
+	builder.WriteString(fmt.Sprintf("%v", _m.FlowType))
 	builder.WriteString(", ")
 	builder.WriteString("approval_stages=")
-	builder.WriteString(fmt.Sprintf("%v", caf.ApprovalStages))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApprovalStages))
 	builder.WriteString(", ")
 	builder.WriteString("total_stages=")
-	builder.WriteString(fmt.Sprintf("%v", caf.TotalStages))
+	builder.WriteString(fmt.Sprintf("%v", _m.TotalStages))
 	builder.WriteString(", ")
 	builder.WriteString("allow_skip_stages=")
-	builder.WriteString(fmt.Sprintf("%v", caf.AllowSkipStages))
+	builder.WriteString(fmt.Sprintf("%v", _m.AllowSkipStages))
 	builder.WriteString(", ")
 	builder.WriteString("allow_rollback=")
-	builder.WriteString(fmt.Sprintf("%v", caf.AllowRollback))
+	builder.WriteString(fmt.Sprintf("%v", _m.AllowRollback))
 	builder.WriteString(", ")
 	builder.WriteString("approver_config=")
-	builder.WriteString(fmt.Sprintf("%v", caf.ApproverConfig))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApproverConfig))
 	builder.WriteString(", ")
 	builder.WriteString("fallback_approvers=")
-	builder.WriteString(fmt.Sprintf("%v", caf.FallbackApprovers))
+	builder.WriteString(fmt.Sprintf("%v", _m.FallbackApprovers))
 	builder.WriteString(", ")
 	builder.WriteString("require_all_approvers=")
-	builder.WriteString(fmt.Sprintf("%v", caf.RequireAllApprovers))
+	builder.WriteString(fmt.Sprintf("%v", _m.RequireAllApprovers))
 	builder.WriteString(", ")
 	builder.WriteString("timeout_hours=")
-	builder.WriteString(fmt.Sprintf("%v", caf.TimeoutHours))
+	builder.WriteString(fmt.Sprintf("%v", _m.TimeoutHours))
 	builder.WriteString(", ")
 	builder.WriteString("stage_timeouts=")
-	builder.WriteString(fmt.Sprintf("%v", caf.StageTimeouts))
+	builder.WriteString(fmt.Sprintf("%v", _m.StageTimeouts))
 	builder.WriteString(", ")
 	builder.WriteString("timeout_action=")
-	builder.WriteString(fmt.Sprintf("%v", caf.TimeoutAction))
+	builder.WriteString(fmt.Sprintf("%v", _m.TimeoutAction))
 	builder.WriteString(", ")
 	builder.WriteString("notification_config=")
-	builder.WriteString(fmt.Sprintf("%v", caf.NotificationConfig))
+	builder.WriteString(fmt.Sprintf("%v", _m.NotificationConfig))
 	builder.WriteString(", ")
 	builder.WriteString("notify_on_submit=")
-	builder.WriteString(fmt.Sprintf("%v", caf.NotifyOnSubmit))
+	builder.WriteString(fmt.Sprintf("%v", _m.NotifyOnSubmit))
 	builder.WriteString(", ")
 	builder.WriteString("notify_on_approve=")
-	builder.WriteString(fmt.Sprintf("%v", caf.NotifyOnApprove))
+	builder.WriteString(fmt.Sprintf("%v", _m.NotifyOnApprove))
 	builder.WriteString(", ")
 	builder.WriteString("notify_on_reject=")
-	builder.WriteString(fmt.Sprintf("%v", caf.NotifyOnReject))
+	builder.WriteString(fmt.Sprintf("%v", _m.NotifyOnReject))
 	builder.WriteString(", ")
 	builder.WriteString("status=")
-	builder.WriteString(fmt.Sprintf("%v", caf.Status))
+	builder.WriteString(fmt.Sprintf("%v", _m.Status))
 	builder.WriteString(", ")
 	builder.WriteString("status_reason=")
-	builder.WriteString(caf.StatusReason)
+	builder.WriteString(_m.StatusReason)
 	builder.WriteString(", ")
 	builder.WriteString("version=")
-	builder.WriteString(caf.Version)
+	builder.WriteString(_m.Version)
 	builder.WriteString(", ")
 	builder.WriteString("parent_flow_id=")
-	builder.WriteString(caf.ParentFlowID)
+	builder.WriteString(_m.ParentFlowID)
 	builder.WriteString(", ")
 	builder.WriteString("is_default=")
-	builder.WriteString(fmt.Sprintf("%v", caf.IsDefault))
+	builder.WriteString(fmt.Sprintf("%v", _m.IsDefault))
 	builder.WriteString(", ")
 	builder.WriteString("usage_count=")
-	builder.WriteString(fmt.Sprintf("%v", caf.UsageCount))
+	builder.WriteString(fmt.Sprintf("%v", _m.UsageCount))
 	builder.WriteString(", ")
 	builder.WriteString("approval_rate=")
-	builder.WriteString(fmt.Sprintf("%v", caf.ApprovalRate))
+	builder.WriteString(fmt.Sprintf("%v", _m.ApprovalRate))
 	builder.WriteString(", ")
 	builder.WriteString("avg_approval_time=")
-	builder.WriteString(fmt.Sprintf("%v", caf.AvgApprovalTime))
+	builder.WriteString(fmt.Sprintf("%v", _m.AvgApprovalTime))
 	builder.WriteString(", ")
 	builder.WriteString("last_used_at=")
-	builder.WriteString(caf.LastUsedAt.Format(time.ANSIC))
+	builder.WriteString(_m.LastUsedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("created_by=")
-	builder.WriteString(fmt.Sprintf("%v", caf.CreatedBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.CreatedBy))
 	builder.WriteString(", ")
 	builder.WriteString("created_by_name=")
-	builder.WriteString(caf.CreatedByName)
+	builder.WriteString(_m.CreatedByName)
 	builder.WriteString(", ")
 	builder.WriteString("updated_by=")
-	builder.WriteString(fmt.Sprintf("%v", caf.UpdatedBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.UpdatedBy))
 	builder.WriteString(", ")
 	builder.WriteString("updated_by_name=")
-	builder.WriteString(caf.UpdatedByName)
+	builder.WriteString(_m.UpdatedByName)
 	builder.WriteString(", ")
 	builder.WriteString("published_at=")
-	builder.WriteString(caf.PublishedAt.Format(time.ANSIC))
+	builder.WriteString(_m.PublishedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("published_by=")
-	builder.WriteString(fmt.Sprintf("%v", caf.PublishedBy))
+	builder.WriteString(fmt.Sprintf("%v", _m.PublishedBy))
 	builder.WriteString(", ")
 	builder.WriteString("custom_fields=")
-	builder.WriteString(fmt.Sprintf("%v", caf.CustomFields))
+	builder.WriteString(fmt.Sprintf("%v", _m.CustomFields))
 	builder.WriteString(", ")
 	builder.WriteString("integration_config=")
-	builder.WriteString(fmt.Sprintf("%v", caf.IntegrationConfig))
+	builder.WriteString(fmt.Sprintf("%v", _m.IntegrationConfig))
 	builder.WriteString(", ")
 	builder.WriteString("metadata=")
-	builder.WriteString(fmt.Sprintf("%v", caf.Metadata))
+	builder.WriteString(fmt.Sprintf("%v", _m.Metadata))
 	builder.WriteString(", ")
 	builder.WriteString("tags=")
-	builder.WriteString(fmt.Sprintf("%v", caf.Tags))
+	builder.WriteString(fmt.Sprintf("%v", _m.Tags))
 	builder.WriteString(", ")
 	builder.WriteString("comments=")
-	builder.WriteString(caf.Comments)
+	builder.WriteString(_m.Comments)
 	builder.WriteByte(')')
 	return builder.String()
 }

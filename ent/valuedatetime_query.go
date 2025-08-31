@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
 )
 
 // ValueDatetimeQuery is the builder for querying ValueDatetime entities.
@@ -32,44 +32,44 @@ type ValueDatetimeQuery struct {
 }
 
 // Where adds a new predicate for the ValueDatetimeQuery builder.
-func (vdq *ValueDatetimeQuery) Where(ps ...predicate.ValueDatetime) *ValueDatetimeQuery {
-	vdq.predicates = append(vdq.predicates, ps...)
-	return vdq
+func (_q *ValueDatetimeQuery) Where(ps ...predicate.ValueDatetime) *ValueDatetimeQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (vdq *ValueDatetimeQuery) Limit(limit int) *ValueDatetimeQuery {
-	vdq.ctx.Limit = &limit
-	return vdq
+func (_q *ValueDatetimeQuery) Limit(limit int) *ValueDatetimeQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (vdq *ValueDatetimeQuery) Offset(offset int) *ValueDatetimeQuery {
-	vdq.ctx.Offset = &offset
-	return vdq
+func (_q *ValueDatetimeQuery) Offset(offset int) *ValueDatetimeQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (vdq *ValueDatetimeQuery) Unique(unique bool) *ValueDatetimeQuery {
-	vdq.ctx.Unique = &unique
-	return vdq
+func (_q *ValueDatetimeQuery) Unique(unique bool) *ValueDatetimeQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (vdq *ValueDatetimeQuery) Order(o ...valuedatetime.OrderOption) *ValueDatetimeQuery {
-	vdq.order = append(vdq.order, o...)
-	return vdq
+func (_q *ValueDatetimeQuery) Order(o ...valuedatetime.OrderOption) *ValueDatetimeQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryCi chains the current query on the "ci" edge.
-func (vdq *ValueDatetimeQuery) QueryCi() *CisQuery {
-	query := (&CisClient{config: vdq.config}).Query()
+func (_q *ValueDatetimeQuery) QueryCi() *CisQuery {
+	query := (&CisClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := vdq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := vdq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -78,20 +78,20 @@ func (vdq *ValueDatetimeQuery) QueryCi() *CisQuery {
 			sqlgraph.To(cis.Table, cis.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, valuedatetime.CiTable, valuedatetime.CiColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(vdq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryAttribute chains the current query on the "attribute" edge.
-func (vdq *ValueDatetimeQuery) QueryAttribute() *AttributeQuery {
-	query := (&AttributeClient{config: vdq.config}).Query()
+func (_q *ValueDatetimeQuery) QueryAttribute() *AttributeQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := vdq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := vdq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -100,7 +100,7 @@ func (vdq *ValueDatetimeQuery) QueryAttribute() *AttributeQuery {
 			sqlgraph.To(attribute.Table, attribute.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, valuedatetime.AttributeTable, valuedatetime.AttributeColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(vdq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -108,8 +108,8 @@ func (vdq *ValueDatetimeQuery) QueryAttribute() *AttributeQuery {
 
 // First returns the first ValueDatetime entity from the query.
 // Returns a *NotFoundError when no ValueDatetime was found.
-func (vdq *ValueDatetimeQuery) First(ctx context.Context) (*ValueDatetime, error) {
-	nodes, err := vdq.Limit(1).All(setContextOp(ctx, vdq.ctx, ent.OpQueryFirst))
+func (_q *ValueDatetimeQuery) First(ctx context.Context) (*ValueDatetime, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -120,8 +120,8 @@ func (vdq *ValueDatetimeQuery) First(ctx context.Context) (*ValueDatetime, error
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (vdq *ValueDatetimeQuery) FirstX(ctx context.Context) *ValueDatetime {
-	node, err := vdq.First(ctx)
+func (_q *ValueDatetimeQuery) FirstX(ctx context.Context) *ValueDatetime {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -130,9 +130,9 @@ func (vdq *ValueDatetimeQuery) FirstX(ctx context.Context) *ValueDatetime {
 
 // FirstID returns the first ValueDatetime ID from the query.
 // Returns a *NotFoundError when no ValueDatetime ID was found.
-func (vdq *ValueDatetimeQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *ValueDatetimeQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = vdq.Limit(1).IDs(setContextOp(ctx, vdq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -143,8 +143,8 @@ func (vdq *ValueDatetimeQuery) FirstID(ctx context.Context) (id uint64, err erro
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (vdq *ValueDatetimeQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := vdq.FirstID(ctx)
+func (_q *ValueDatetimeQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -154,8 +154,8 @@ func (vdq *ValueDatetimeQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single ValueDatetime entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one ValueDatetime entity is found.
 // Returns a *NotFoundError when no ValueDatetime entities are found.
-func (vdq *ValueDatetimeQuery) Only(ctx context.Context) (*ValueDatetime, error) {
-	nodes, err := vdq.Limit(2).All(setContextOp(ctx, vdq.ctx, ent.OpQueryOnly))
+func (_q *ValueDatetimeQuery) Only(ctx context.Context) (*ValueDatetime, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -170,8 +170,8 @@ func (vdq *ValueDatetimeQuery) Only(ctx context.Context) (*ValueDatetime, error)
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (vdq *ValueDatetimeQuery) OnlyX(ctx context.Context) *ValueDatetime {
-	node, err := vdq.Only(ctx)
+func (_q *ValueDatetimeQuery) OnlyX(ctx context.Context) *ValueDatetime {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -181,9 +181,9 @@ func (vdq *ValueDatetimeQuery) OnlyX(ctx context.Context) *ValueDatetime {
 // OnlyID is like Only, but returns the only ValueDatetime ID in the query.
 // Returns a *NotSingularError when more than one ValueDatetime ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (vdq *ValueDatetimeQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *ValueDatetimeQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = vdq.Limit(2).IDs(setContextOp(ctx, vdq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -198,8 +198,8 @@ func (vdq *ValueDatetimeQuery) OnlyID(ctx context.Context) (id uint64, err error
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (vdq *ValueDatetimeQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := vdq.OnlyID(ctx)
+func (_q *ValueDatetimeQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -207,18 +207,18 @@ func (vdq *ValueDatetimeQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of ValueDatetimes.
-func (vdq *ValueDatetimeQuery) All(ctx context.Context) ([]*ValueDatetime, error) {
-	ctx = setContextOp(ctx, vdq.ctx, ent.OpQueryAll)
-	if err := vdq.prepareQuery(ctx); err != nil {
+func (_q *ValueDatetimeQuery) All(ctx context.Context) ([]*ValueDatetime, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*ValueDatetime, *ValueDatetimeQuery]()
-	return withInterceptors[[]*ValueDatetime](ctx, vdq, qr, vdq.inters)
+	return withInterceptors[[]*ValueDatetime](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (vdq *ValueDatetimeQuery) AllX(ctx context.Context) []*ValueDatetime {
-	nodes, err := vdq.All(ctx)
+func (_q *ValueDatetimeQuery) AllX(ctx context.Context) []*ValueDatetime {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -226,20 +226,20 @@ func (vdq *ValueDatetimeQuery) AllX(ctx context.Context) []*ValueDatetime {
 }
 
 // IDs executes the query and returns a list of ValueDatetime IDs.
-func (vdq *ValueDatetimeQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if vdq.ctx.Unique == nil && vdq.path != nil {
-		vdq.Unique(true)
+func (_q *ValueDatetimeQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, vdq.ctx, ent.OpQueryIDs)
-	if err = vdq.Select(valuedatetime.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(valuedatetime.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (vdq *ValueDatetimeQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := vdq.IDs(ctx)
+func (_q *ValueDatetimeQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -247,17 +247,17 @@ func (vdq *ValueDatetimeQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (vdq *ValueDatetimeQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, vdq.ctx, ent.OpQueryCount)
-	if err := vdq.prepareQuery(ctx); err != nil {
+func (_q *ValueDatetimeQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, vdq, querierCount[*ValueDatetimeQuery](), vdq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*ValueDatetimeQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (vdq *ValueDatetimeQuery) CountX(ctx context.Context) int {
-	count, err := vdq.Count(ctx)
+func (_q *ValueDatetimeQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -265,9 +265,9 @@ func (vdq *ValueDatetimeQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (vdq *ValueDatetimeQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, vdq.ctx, ent.OpQueryExist)
-	switch _, err := vdq.FirstID(ctx); {
+func (_q *ValueDatetimeQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -278,8 +278,8 @@ func (vdq *ValueDatetimeQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (vdq *ValueDatetimeQuery) ExistX(ctx context.Context) bool {
-	exist, err := vdq.Exist(ctx)
+func (_q *ValueDatetimeQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -288,44 +288,44 @@ func (vdq *ValueDatetimeQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the ValueDatetimeQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (vdq *ValueDatetimeQuery) Clone() *ValueDatetimeQuery {
-	if vdq == nil {
+func (_q *ValueDatetimeQuery) Clone() *ValueDatetimeQuery {
+	if _q == nil {
 		return nil
 	}
 	return &ValueDatetimeQuery{
-		config:        vdq.config,
-		ctx:           vdq.ctx.Clone(),
-		order:         append([]valuedatetime.OrderOption{}, vdq.order...),
-		inters:        append([]Interceptor{}, vdq.inters...),
-		predicates:    append([]predicate.ValueDatetime{}, vdq.predicates...),
-		withCi:        vdq.withCi.Clone(),
-		withAttribute: vdq.withAttribute.Clone(),
+		config:        _q.config,
+		ctx:           _q.ctx.Clone(),
+		order:         append([]valuedatetime.OrderOption{}, _q.order...),
+		inters:        append([]Interceptor{}, _q.inters...),
+		predicates:    append([]predicate.ValueDatetime{}, _q.predicates...),
+		withCi:        _q.withCi.Clone(),
+		withAttribute: _q.withAttribute.Clone(),
 		// clone intermediate query.
-		sql:  vdq.sql.Clone(),
-		path: vdq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithCi tells the query-builder to eager-load the nodes that are connected to
 // the "ci" edge. The optional arguments are used to configure the query builder of the edge.
-func (vdq *ValueDatetimeQuery) WithCi(opts ...func(*CisQuery)) *ValueDatetimeQuery {
-	query := (&CisClient{config: vdq.config}).Query()
+func (_q *ValueDatetimeQuery) WithCi(opts ...func(*CisQuery)) *ValueDatetimeQuery {
+	query := (&CisClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	vdq.withCi = query
-	return vdq
+	_q.withCi = query
+	return _q
 }
 
 // WithAttribute tells the query-builder to eager-load the nodes that are connected to
 // the "attribute" edge. The optional arguments are used to configure the query builder of the edge.
-func (vdq *ValueDatetimeQuery) WithAttribute(opts ...func(*AttributeQuery)) *ValueDatetimeQuery {
-	query := (&AttributeClient{config: vdq.config}).Query()
+func (_q *ValueDatetimeQuery) WithAttribute(opts ...func(*AttributeQuery)) *ValueDatetimeQuery {
+	query := (&AttributeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	vdq.withAttribute = query
-	return vdq
+	_q.withAttribute = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -342,10 +342,10 @@ func (vdq *ValueDatetimeQuery) WithAttribute(opts ...func(*AttributeQuery)) *Val
 //		GroupBy(valuedatetime.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (vdq *ValueDatetimeQuery) GroupBy(field string, fields ...string) *ValueDatetimeGroupBy {
-	vdq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &ValueDatetimeGroupBy{build: vdq}
-	grbuild.flds = &vdq.ctx.Fields
+func (_q *ValueDatetimeQuery) GroupBy(field string, fields ...string) *ValueDatetimeGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &ValueDatetimeGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = valuedatetime.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -363,59 +363,59 @@ func (vdq *ValueDatetimeQuery) GroupBy(field string, fields ...string) *ValueDat
 //	client.ValueDatetime.Query().
 //		Select(valuedatetime.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (vdq *ValueDatetimeQuery) Select(fields ...string) *ValueDatetimeSelect {
-	vdq.ctx.Fields = append(vdq.ctx.Fields, fields...)
-	sbuild := &ValueDatetimeSelect{ValueDatetimeQuery: vdq}
+func (_q *ValueDatetimeQuery) Select(fields ...string) *ValueDatetimeSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &ValueDatetimeSelect{ValueDatetimeQuery: _q}
 	sbuild.label = valuedatetime.Label
-	sbuild.flds, sbuild.scan = &vdq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a ValueDatetimeSelect configured with the given aggregations.
-func (vdq *ValueDatetimeQuery) Aggregate(fns ...AggregateFunc) *ValueDatetimeSelect {
-	return vdq.Select().Aggregate(fns...)
+func (_q *ValueDatetimeQuery) Aggregate(fns ...AggregateFunc) *ValueDatetimeSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (vdq *ValueDatetimeQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range vdq.inters {
+func (_q *ValueDatetimeQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, vdq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range vdq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !valuedatetime.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if vdq.path != nil {
-		prev, err := vdq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		vdq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (vdq *ValueDatetimeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ValueDatetime, error) {
+func (_q *ValueDatetimeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*ValueDatetime, error) {
 	var (
 		nodes       = []*ValueDatetime{}
-		_spec       = vdq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [2]bool{
-			vdq.withCi != nil,
-			vdq.withAttribute != nil,
+			_q.withCi != nil,
+			_q.withAttribute != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*ValueDatetime).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &ValueDatetime{config: vdq.config}
+		node := &ValueDatetime{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -423,20 +423,20 @@ func (vdq *ValueDatetimeQuery) sqlAll(ctx context.Context, hooks ...queryHook) (
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, vdq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := vdq.withCi; query != nil {
-		if err := vdq.loadCi(ctx, query, nodes, nil,
+	if query := _q.withCi; query != nil {
+		if err := _q.loadCi(ctx, query, nodes, nil,
 			func(n *ValueDatetime, e *Cis) { n.Edges.Ci = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := vdq.withAttribute; query != nil {
-		if err := vdq.loadAttribute(ctx, query, nodes, nil,
+	if query := _q.withAttribute; query != nil {
+		if err := _q.loadAttribute(ctx, query, nodes, nil,
 			func(n *ValueDatetime, e *Attribute) { n.Edges.Attribute = e }); err != nil {
 			return nil, err
 		}
@@ -444,7 +444,7 @@ func (vdq *ValueDatetimeQuery) sqlAll(ctx context.Context, hooks ...queryHook) (
 	return nodes, nil
 }
 
-func (vdq *ValueDatetimeQuery) loadCi(ctx context.Context, query *CisQuery, nodes []*ValueDatetime, init func(*ValueDatetime), assign func(*ValueDatetime, *Cis)) error {
+func (_q *ValueDatetimeQuery) loadCi(ctx context.Context, query *CisQuery, nodes []*ValueDatetime, init func(*ValueDatetime), assign func(*ValueDatetime, *Cis)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ValueDatetime)
 	for i := range nodes {
@@ -473,7 +473,7 @@ func (vdq *ValueDatetimeQuery) loadCi(ctx context.Context, query *CisQuery, node
 	}
 	return nil
 }
-func (vdq *ValueDatetimeQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ValueDatetime, init func(*ValueDatetime), assign func(*ValueDatetime, *Attribute)) error {
+func (_q *ValueDatetimeQuery) loadAttribute(ctx context.Context, query *AttributeQuery, nodes []*ValueDatetime, init func(*ValueDatetime), assign func(*ValueDatetime, *Attribute)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*ValueDatetime)
 	for i := range nodes {
@@ -503,24 +503,24 @@ func (vdq *ValueDatetimeQuery) loadAttribute(ctx context.Context, query *Attribu
 	return nil
 }
 
-func (vdq *ValueDatetimeQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := vdq.querySpec()
-	_spec.Node.Columns = vdq.ctx.Fields
-	if len(vdq.ctx.Fields) > 0 {
-		_spec.Unique = vdq.ctx.Unique != nil && *vdq.ctx.Unique
+func (_q *ValueDatetimeQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, vdq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (vdq *ValueDatetimeQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *ValueDatetimeQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(valuedatetime.Table, valuedatetime.Columns, sqlgraph.NewFieldSpec(valuedatetime.FieldID, field.TypeUint64))
-	_spec.From = vdq.sql
-	if unique := vdq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if vdq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := vdq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valuedatetime.FieldID)
 		for i := range fields {
@@ -528,27 +528,27 @@ func (vdq *ValueDatetimeQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if vdq.withCi != nil {
+		if _q.withCi != nil {
 			_spec.Node.AddColumnOnce(valuedatetime.FieldCiID)
 		}
-		if vdq.withAttribute != nil {
+		if _q.withAttribute != nil {
 			_spec.Node.AddColumnOnce(valuedatetime.FieldAttrID)
 		}
 	}
-	if ps := vdq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := vdq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := vdq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := vdq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -558,33 +558,33 @@ func (vdq *ValueDatetimeQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (vdq *ValueDatetimeQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(vdq.driver.Dialect())
+func (_q *ValueDatetimeQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(valuedatetime.Table)
-	columns := vdq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = valuedatetime.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if vdq.sql != nil {
-		selector = vdq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if vdq.ctx.Unique != nil && *vdq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range vdq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range vdq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := vdq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := vdq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -597,41 +597,41 @@ type ValueDatetimeGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (vdgb *ValueDatetimeGroupBy) Aggregate(fns ...AggregateFunc) *ValueDatetimeGroupBy {
-	vdgb.fns = append(vdgb.fns, fns...)
-	return vdgb
+func (_g *ValueDatetimeGroupBy) Aggregate(fns ...AggregateFunc) *ValueDatetimeGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (vdgb *ValueDatetimeGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, vdgb.build.ctx, ent.OpQueryGroupBy)
-	if err := vdgb.build.prepareQuery(ctx); err != nil {
+func (_g *ValueDatetimeGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ValueDatetimeQuery, *ValueDatetimeGroupBy](ctx, vdgb.build, vdgb, vdgb.build.inters, v)
+	return scanWithInterceptors[*ValueDatetimeQuery, *ValueDatetimeGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (vdgb *ValueDatetimeGroupBy) sqlScan(ctx context.Context, root *ValueDatetimeQuery, v any) error {
+func (_g *ValueDatetimeGroupBy) sqlScan(ctx context.Context, root *ValueDatetimeQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(vdgb.fns))
-	for _, fn := range vdgb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*vdgb.flds)+len(vdgb.fns))
-		for _, f := range *vdgb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*vdgb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := vdgb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -645,27 +645,27 @@ type ValueDatetimeSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (vds *ValueDatetimeSelect) Aggregate(fns ...AggregateFunc) *ValueDatetimeSelect {
-	vds.fns = append(vds.fns, fns...)
-	return vds
+func (_s *ValueDatetimeSelect) Aggregate(fns ...AggregateFunc) *ValueDatetimeSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (vds *ValueDatetimeSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, vds.ctx, ent.OpQuerySelect)
-	if err := vds.prepareQuery(ctx); err != nil {
+func (_s *ValueDatetimeSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*ValueDatetimeQuery, *ValueDatetimeSelect](ctx, vds.ValueDatetimeQuery, vds, vds.inters, v)
+	return scanWithInterceptors[*ValueDatetimeQuery, *ValueDatetimeSelect](ctx, _s.ValueDatetimeQuery, _s, _s.inters, v)
 }
 
-func (vds *ValueDatetimeSelect) sqlScan(ctx context.Context, root *ValueDatetimeQuery, v any) error {
+func (_s *ValueDatetimeSelect) sqlScan(ctx context.Context, root *ValueDatetimeQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(vds.fns))
-	for _, fn := range vds.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*vds.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -673,7 +673,7 @@ func (vds *ValueDatetimeSelect) sqlScan(ctx context.Context, root *ValueDatetime
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := vds.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

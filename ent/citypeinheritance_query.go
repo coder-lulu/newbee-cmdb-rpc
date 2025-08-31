@@ -11,9 +11,9 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 )
 
 // CiTypeInheritanceQuery is the builder for querying CiTypeInheritance entities.
@@ -31,44 +31,44 @@ type CiTypeInheritanceQuery struct {
 }
 
 // Where adds a new predicate for the CiTypeInheritanceQuery builder.
-func (ctiq *CiTypeInheritanceQuery) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceQuery {
-	ctiq.predicates = append(ctiq.predicates, ps...)
-	return ctiq
+func (_q *CiTypeInheritanceQuery) Where(ps ...predicate.CiTypeInheritance) *CiTypeInheritanceQuery {
+	_q.predicates = append(_q.predicates, ps...)
+	return _q
 }
 
 // Limit the number of records to be returned by this query.
-func (ctiq *CiTypeInheritanceQuery) Limit(limit int) *CiTypeInheritanceQuery {
-	ctiq.ctx.Limit = &limit
-	return ctiq
+func (_q *CiTypeInheritanceQuery) Limit(limit int) *CiTypeInheritanceQuery {
+	_q.ctx.Limit = &limit
+	return _q
 }
 
 // Offset to start from.
-func (ctiq *CiTypeInheritanceQuery) Offset(offset int) *CiTypeInheritanceQuery {
-	ctiq.ctx.Offset = &offset
-	return ctiq
+func (_q *CiTypeInheritanceQuery) Offset(offset int) *CiTypeInheritanceQuery {
+	_q.ctx.Offset = &offset
+	return _q
 }
 
 // Unique configures the query builder to filter duplicate records on query.
 // By default, unique is set to true, and can be disabled using this method.
-func (ctiq *CiTypeInheritanceQuery) Unique(unique bool) *CiTypeInheritanceQuery {
-	ctiq.ctx.Unique = &unique
-	return ctiq
+func (_q *CiTypeInheritanceQuery) Unique(unique bool) *CiTypeInheritanceQuery {
+	_q.ctx.Unique = &unique
+	return _q
 }
 
 // Order specifies how the records should be ordered.
-func (ctiq *CiTypeInheritanceQuery) Order(o ...citypeinheritance.OrderOption) *CiTypeInheritanceQuery {
-	ctiq.order = append(ctiq.order, o...)
-	return ctiq
+func (_q *CiTypeInheritanceQuery) Order(o ...citypeinheritance.OrderOption) *CiTypeInheritanceQuery {
+	_q.order = append(_q.order, o...)
+	return _q
 }
 
 // QueryParent chains the current query on the "parent" edge.
-func (ctiq *CiTypeInheritanceQuery) QueryParent() *CiTypeQuery {
-	query := (&CiTypeClient{config: ctiq.config}).Query()
+func (_q *CiTypeInheritanceQuery) QueryParent() *CiTypeQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ctiq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ctiq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -77,20 +77,20 @@ func (ctiq *CiTypeInheritanceQuery) QueryParent() *CiTypeQuery {
 			sqlgraph.To(citype.Table, citype.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, citypeinheritance.ParentTable, citypeinheritance.ParentColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ctiq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
 }
 
 // QueryChild chains the current query on the "child" edge.
-func (ctiq *CiTypeInheritanceQuery) QueryChild() *CiTypeQuery {
-	query := (&CiTypeClient{config: ctiq.config}).Query()
+func (_q *CiTypeInheritanceQuery) QueryChild() *CiTypeQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
-		if err := ctiq.prepareQuery(ctx); err != nil {
+		if err := _q.prepareQuery(ctx); err != nil {
 			return nil, err
 		}
-		selector := ctiq.sqlQuery(ctx)
+		selector := _q.sqlQuery(ctx)
 		if err := selector.Err(); err != nil {
 			return nil, err
 		}
@@ -99,7 +99,7 @@ func (ctiq *CiTypeInheritanceQuery) QueryChild() *CiTypeQuery {
 			sqlgraph.To(citype.Table, citype.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, citypeinheritance.ChildTable, citypeinheritance.ChildColumn),
 		)
-		fromU = sqlgraph.SetNeighbors(ctiq.driver.Dialect(), step)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
 	}
 	return query
@@ -107,8 +107,8 @@ func (ctiq *CiTypeInheritanceQuery) QueryChild() *CiTypeQuery {
 
 // First returns the first CiTypeInheritance entity from the query.
 // Returns a *NotFoundError when no CiTypeInheritance was found.
-func (ctiq *CiTypeInheritanceQuery) First(ctx context.Context) (*CiTypeInheritance, error) {
-	nodes, err := ctiq.Limit(1).All(setContextOp(ctx, ctiq.ctx, ent.OpQueryFirst))
+func (_q *CiTypeInheritanceQuery) First(ctx context.Context) (*CiTypeInheritance, error) {
+	nodes, err := _q.Limit(1).All(setContextOp(ctx, _q.ctx, ent.OpQueryFirst))
 	if err != nil {
 		return nil, err
 	}
@@ -119,8 +119,8 @@ func (ctiq *CiTypeInheritanceQuery) First(ctx context.Context) (*CiTypeInheritan
 }
 
 // FirstX is like First, but panics if an error occurs.
-func (ctiq *CiTypeInheritanceQuery) FirstX(ctx context.Context) *CiTypeInheritance {
-	node, err := ctiq.First(ctx)
+func (_q *CiTypeInheritanceQuery) FirstX(ctx context.Context) *CiTypeInheritance {
+	node, err := _q.First(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -129,9 +129,9 @@ func (ctiq *CiTypeInheritanceQuery) FirstX(ctx context.Context) *CiTypeInheritan
 
 // FirstID returns the first CiTypeInheritance ID from the query.
 // Returns a *NotFoundError when no CiTypeInheritance ID was found.
-func (ctiq *CiTypeInheritanceQuery) FirstID(ctx context.Context) (id uint64, err error) {
+func (_q *CiTypeInheritanceQuery) FirstID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ctiq.Limit(1).IDs(setContextOp(ctx, ctiq.ctx, ent.OpQueryFirstID)); err != nil {
+	if ids, err = _q.Limit(1).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryFirstID)); err != nil {
 		return
 	}
 	if len(ids) == 0 {
@@ -142,8 +142,8 @@ func (ctiq *CiTypeInheritanceQuery) FirstID(ctx context.Context) (id uint64, err
 }
 
 // FirstIDX is like FirstID, but panics if an error occurs.
-func (ctiq *CiTypeInheritanceQuery) FirstIDX(ctx context.Context) uint64 {
-	id, err := ctiq.FirstID(ctx)
+func (_q *CiTypeInheritanceQuery) FirstIDX(ctx context.Context) uint64 {
+	id, err := _q.FirstID(ctx)
 	if err != nil && !IsNotFound(err) {
 		panic(err)
 	}
@@ -153,8 +153,8 @@ func (ctiq *CiTypeInheritanceQuery) FirstIDX(ctx context.Context) uint64 {
 // Only returns a single CiTypeInheritance entity found by the query, ensuring it only returns one.
 // Returns a *NotSingularError when more than one CiTypeInheritance entity is found.
 // Returns a *NotFoundError when no CiTypeInheritance entities are found.
-func (ctiq *CiTypeInheritanceQuery) Only(ctx context.Context) (*CiTypeInheritance, error) {
-	nodes, err := ctiq.Limit(2).All(setContextOp(ctx, ctiq.ctx, ent.OpQueryOnly))
+func (_q *CiTypeInheritanceQuery) Only(ctx context.Context) (*CiTypeInheritance, error) {
+	nodes, err := _q.Limit(2).All(setContextOp(ctx, _q.ctx, ent.OpQueryOnly))
 	if err != nil {
 		return nil, err
 	}
@@ -169,8 +169,8 @@ func (ctiq *CiTypeInheritanceQuery) Only(ctx context.Context) (*CiTypeInheritanc
 }
 
 // OnlyX is like Only, but panics if an error occurs.
-func (ctiq *CiTypeInheritanceQuery) OnlyX(ctx context.Context) *CiTypeInheritance {
-	node, err := ctiq.Only(ctx)
+func (_q *CiTypeInheritanceQuery) OnlyX(ctx context.Context) *CiTypeInheritance {
+	node, err := _q.Only(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -180,9 +180,9 @@ func (ctiq *CiTypeInheritanceQuery) OnlyX(ctx context.Context) *CiTypeInheritanc
 // OnlyID is like Only, but returns the only CiTypeInheritance ID in the query.
 // Returns a *NotSingularError when more than one CiTypeInheritance ID is found.
 // Returns a *NotFoundError when no entities are found.
-func (ctiq *CiTypeInheritanceQuery) OnlyID(ctx context.Context) (id uint64, err error) {
+func (_q *CiTypeInheritanceQuery) OnlyID(ctx context.Context) (id uint64, err error) {
 	var ids []uint64
-	if ids, err = ctiq.Limit(2).IDs(setContextOp(ctx, ctiq.ctx, ent.OpQueryOnlyID)); err != nil {
+	if ids, err = _q.Limit(2).IDs(setContextOp(ctx, _q.ctx, ent.OpQueryOnlyID)); err != nil {
 		return
 	}
 	switch len(ids) {
@@ -197,8 +197,8 @@ func (ctiq *CiTypeInheritanceQuery) OnlyID(ctx context.Context) (id uint64, err 
 }
 
 // OnlyIDX is like OnlyID, but panics if an error occurs.
-func (ctiq *CiTypeInheritanceQuery) OnlyIDX(ctx context.Context) uint64 {
-	id, err := ctiq.OnlyID(ctx)
+func (_q *CiTypeInheritanceQuery) OnlyIDX(ctx context.Context) uint64 {
+	id, err := _q.OnlyID(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -206,18 +206,18 @@ func (ctiq *CiTypeInheritanceQuery) OnlyIDX(ctx context.Context) uint64 {
 }
 
 // All executes the query and returns a list of CiTypeInheritances.
-func (ctiq *CiTypeInheritanceQuery) All(ctx context.Context) ([]*CiTypeInheritance, error) {
-	ctx = setContextOp(ctx, ctiq.ctx, ent.OpQueryAll)
-	if err := ctiq.prepareQuery(ctx); err != nil {
+func (_q *CiTypeInheritanceQuery) All(ctx context.Context) ([]*CiTypeInheritance, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryAll)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return nil, err
 	}
 	qr := querierAll[[]*CiTypeInheritance, *CiTypeInheritanceQuery]()
-	return withInterceptors[[]*CiTypeInheritance](ctx, ctiq, qr, ctiq.inters)
+	return withInterceptors[[]*CiTypeInheritance](ctx, _q, qr, _q.inters)
 }
 
 // AllX is like All, but panics if an error occurs.
-func (ctiq *CiTypeInheritanceQuery) AllX(ctx context.Context) []*CiTypeInheritance {
-	nodes, err := ctiq.All(ctx)
+func (_q *CiTypeInheritanceQuery) AllX(ctx context.Context) []*CiTypeInheritance {
+	nodes, err := _q.All(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -225,20 +225,20 @@ func (ctiq *CiTypeInheritanceQuery) AllX(ctx context.Context) []*CiTypeInheritan
 }
 
 // IDs executes the query and returns a list of CiTypeInheritance IDs.
-func (ctiq *CiTypeInheritanceQuery) IDs(ctx context.Context) (ids []uint64, err error) {
-	if ctiq.ctx.Unique == nil && ctiq.path != nil {
-		ctiq.Unique(true)
+func (_q *CiTypeInheritanceQuery) IDs(ctx context.Context) (ids []uint64, err error) {
+	if _q.ctx.Unique == nil && _q.path != nil {
+		_q.Unique(true)
 	}
-	ctx = setContextOp(ctx, ctiq.ctx, ent.OpQueryIDs)
-	if err = ctiq.Select(citypeinheritance.FieldID).Scan(ctx, &ids); err != nil {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryIDs)
+	if err = _q.Select(citypeinheritance.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
 }
 
 // IDsX is like IDs, but panics if an error occurs.
-func (ctiq *CiTypeInheritanceQuery) IDsX(ctx context.Context) []uint64 {
-	ids, err := ctiq.IDs(ctx)
+func (_q *CiTypeInheritanceQuery) IDsX(ctx context.Context) []uint64 {
+	ids, err := _q.IDs(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -246,17 +246,17 @@ func (ctiq *CiTypeInheritanceQuery) IDsX(ctx context.Context) []uint64 {
 }
 
 // Count returns the count of the given query.
-func (ctiq *CiTypeInheritanceQuery) Count(ctx context.Context) (int, error) {
-	ctx = setContextOp(ctx, ctiq.ctx, ent.OpQueryCount)
-	if err := ctiq.prepareQuery(ctx); err != nil {
+func (_q *CiTypeInheritanceQuery) Count(ctx context.Context) (int, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryCount)
+	if err := _q.prepareQuery(ctx); err != nil {
 		return 0, err
 	}
-	return withInterceptors[int](ctx, ctiq, querierCount[*CiTypeInheritanceQuery](), ctiq.inters)
+	return withInterceptors[int](ctx, _q, querierCount[*CiTypeInheritanceQuery](), _q.inters)
 }
 
 // CountX is like Count, but panics if an error occurs.
-func (ctiq *CiTypeInheritanceQuery) CountX(ctx context.Context) int {
-	count, err := ctiq.Count(ctx)
+func (_q *CiTypeInheritanceQuery) CountX(ctx context.Context) int {
+	count, err := _q.Count(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -264,9 +264,9 @@ func (ctiq *CiTypeInheritanceQuery) CountX(ctx context.Context) int {
 }
 
 // Exist returns true if the query has elements in the graph.
-func (ctiq *CiTypeInheritanceQuery) Exist(ctx context.Context) (bool, error) {
-	ctx = setContextOp(ctx, ctiq.ctx, ent.OpQueryExist)
-	switch _, err := ctiq.FirstID(ctx); {
+func (_q *CiTypeInheritanceQuery) Exist(ctx context.Context) (bool, error) {
+	ctx = setContextOp(ctx, _q.ctx, ent.OpQueryExist)
+	switch _, err := _q.FirstID(ctx); {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
@@ -277,8 +277,8 @@ func (ctiq *CiTypeInheritanceQuery) Exist(ctx context.Context) (bool, error) {
 }
 
 // ExistX is like Exist, but panics if an error occurs.
-func (ctiq *CiTypeInheritanceQuery) ExistX(ctx context.Context) bool {
-	exist, err := ctiq.Exist(ctx)
+func (_q *CiTypeInheritanceQuery) ExistX(ctx context.Context) bool {
+	exist, err := _q.Exist(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -287,44 +287,44 @@ func (ctiq *CiTypeInheritanceQuery) ExistX(ctx context.Context) bool {
 
 // Clone returns a duplicate of the CiTypeInheritanceQuery builder, including all associated steps. It can be
 // used to prepare common query builders and use them differently after the clone is made.
-func (ctiq *CiTypeInheritanceQuery) Clone() *CiTypeInheritanceQuery {
-	if ctiq == nil {
+func (_q *CiTypeInheritanceQuery) Clone() *CiTypeInheritanceQuery {
+	if _q == nil {
 		return nil
 	}
 	return &CiTypeInheritanceQuery{
-		config:     ctiq.config,
-		ctx:        ctiq.ctx.Clone(),
-		order:      append([]citypeinheritance.OrderOption{}, ctiq.order...),
-		inters:     append([]Interceptor{}, ctiq.inters...),
-		predicates: append([]predicate.CiTypeInheritance{}, ctiq.predicates...),
-		withParent: ctiq.withParent.Clone(),
-		withChild:  ctiq.withChild.Clone(),
+		config:     _q.config,
+		ctx:        _q.ctx.Clone(),
+		order:      append([]citypeinheritance.OrderOption{}, _q.order...),
+		inters:     append([]Interceptor{}, _q.inters...),
+		predicates: append([]predicate.CiTypeInheritance{}, _q.predicates...),
+		withParent: _q.withParent.Clone(),
+		withChild:  _q.withChild.Clone(),
 		// clone intermediate query.
-		sql:  ctiq.sql.Clone(),
-		path: ctiq.path,
+		sql:  _q.sql.Clone(),
+		path: _q.path,
 	}
 }
 
 // WithParent tells the query-builder to eager-load the nodes that are connected to
 // the "parent" edge. The optional arguments are used to configure the query builder of the edge.
-func (ctiq *CiTypeInheritanceQuery) WithParent(opts ...func(*CiTypeQuery)) *CiTypeInheritanceQuery {
-	query := (&CiTypeClient{config: ctiq.config}).Query()
+func (_q *CiTypeInheritanceQuery) WithParent(opts ...func(*CiTypeQuery)) *CiTypeInheritanceQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ctiq.withParent = query
-	return ctiq
+	_q.withParent = query
+	return _q
 }
 
 // WithChild tells the query-builder to eager-load the nodes that are connected to
 // the "child" edge. The optional arguments are used to configure the query builder of the edge.
-func (ctiq *CiTypeInheritanceQuery) WithChild(opts ...func(*CiTypeQuery)) *CiTypeInheritanceQuery {
-	query := (&CiTypeClient{config: ctiq.config}).Query()
+func (_q *CiTypeInheritanceQuery) WithChild(opts ...func(*CiTypeQuery)) *CiTypeInheritanceQuery {
+	query := (&CiTypeClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	ctiq.withChild = query
-	return ctiq
+	_q.withChild = query
+	return _q
 }
 
 // GroupBy is used to group vertices by one or more fields/columns.
@@ -341,10 +341,10 @@ func (ctiq *CiTypeInheritanceQuery) WithChild(opts ...func(*CiTypeQuery)) *CiTyp
 //		GroupBy(citypeinheritance.FieldCreatedAt).
 //		Aggregate(ent.Count()).
 //		Scan(ctx, &v)
-func (ctiq *CiTypeInheritanceQuery) GroupBy(field string, fields ...string) *CiTypeInheritanceGroupBy {
-	ctiq.ctx.Fields = append([]string{field}, fields...)
-	grbuild := &CiTypeInheritanceGroupBy{build: ctiq}
-	grbuild.flds = &ctiq.ctx.Fields
+func (_q *CiTypeInheritanceQuery) GroupBy(field string, fields ...string) *CiTypeInheritanceGroupBy {
+	_q.ctx.Fields = append([]string{field}, fields...)
+	grbuild := &CiTypeInheritanceGroupBy{build: _q}
+	grbuild.flds = &_q.ctx.Fields
 	grbuild.label = citypeinheritance.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
@@ -362,59 +362,59 @@ func (ctiq *CiTypeInheritanceQuery) GroupBy(field string, fields ...string) *CiT
 //	client.CiTypeInheritance.Query().
 //		Select(citypeinheritance.FieldCreatedAt).
 //		Scan(ctx, &v)
-func (ctiq *CiTypeInheritanceQuery) Select(fields ...string) *CiTypeInheritanceSelect {
-	ctiq.ctx.Fields = append(ctiq.ctx.Fields, fields...)
-	sbuild := &CiTypeInheritanceSelect{CiTypeInheritanceQuery: ctiq}
+func (_q *CiTypeInheritanceQuery) Select(fields ...string) *CiTypeInheritanceSelect {
+	_q.ctx.Fields = append(_q.ctx.Fields, fields...)
+	sbuild := &CiTypeInheritanceSelect{CiTypeInheritanceQuery: _q}
 	sbuild.label = citypeinheritance.Label
-	sbuild.flds, sbuild.scan = &ctiq.ctx.Fields, sbuild.Scan
+	sbuild.flds, sbuild.scan = &_q.ctx.Fields, sbuild.Scan
 	return sbuild
 }
 
 // Aggregate returns a CiTypeInheritanceSelect configured with the given aggregations.
-func (ctiq *CiTypeInheritanceQuery) Aggregate(fns ...AggregateFunc) *CiTypeInheritanceSelect {
-	return ctiq.Select().Aggregate(fns...)
+func (_q *CiTypeInheritanceQuery) Aggregate(fns ...AggregateFunc) *CiTypeInheritanceSelect {
+	return _q.Select().Aggregate(fns...)
 }
 
-func (ctiq *CiTypeInheritanceQuery) prepareQuery(ctx context.Context) error {
-	for _, inter := range ctiq.inters {
+func (_q *CiTypeInheritanceQuery) prepareQuery(ctx context.Context) error {
+	for _, inter := range _q.inters {
 		if inter == nil {
 			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
-			if err := trv.Traverse(ctx, ctiq); err != nil {
+			if err := trv.Traverse(ctx, _q); err != nil {
 				return err
 			}
 		}
 	}
-	for _, f := range ctiq.ctx.Fields {
+	for _, f := range _q.ctx.Fields {
 		if !citypeinheritance.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
 		}
 	}
-	if ctiq.path != nil {
-		prev, err := ctiq.path(ctx)
+	if _q.path != nil {
+		prev, err := _q.path(ctx)
 		if err != nil {
 			return err
 		}
-		ctiq.sql = prev
+		_q.sql = prev
 	}
 	return nil
 }
 
-func (ctiq *CiTypeInheritanceQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTypeInheritance, error) {
+func (_q *CiTypeInheritanceQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTypeInheritance, error) {
 	var (
 		nodes       = []*CiTypeInheritance{}
-		_spec       = ctiq.querySpec()
+		_spec       = _q.querySpec()
 		loadedTypes = [2]bool{
-			ctiq.withParent != nil,
-			ctiq.withChild != nil,
+			_q.withParent != nil,
+			_q.withChild != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
 		return (*CiTypeInheritance).scanValues(nil, columns)
 	}
 	_spec.Assign = func(columns []string, values []any) error {
-		node := &CiTypeInheritance{config: ctiq.config}
+		node := &CiTypeInheritance{config: _q.config}
 		nodes = append(nodes, node)
 		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
@@ -422,20 +422,20 @@ func (ctiq *CiTypeInheritanceQuery) sqlAll(ctx context.Context, hooks ...queryHo
 	for i := range hooks {
 		hooks[i](ctx, _spec)
 	}
-	if err := sqlgraph.QueryNodes(ctx, ctiq.driver, _spec); err != nil {
+	if err := sqlgraph.QueryNodes(ctx, _q.driver, _spec); err != nil {
 		return nil, err
 	}
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := ctiq.withParent; query != nil {
-		if err := ctiq.loadParent(ctx, query, nodes, nil,
+	if query := _q.withParent; query != nil {
+		if err := _q.loadParent(ctx, query, nodes, nil,
 			func(n *CiTypeInheritance, e *CiType) { n.Edges.Parent = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := ctiq.withChild; query != nil {
-		if err := ctiq.loadChild(ctx, query, nodes, nil,
+	if query := _q.withChild; query != nil {
+		if err := _q.loadChild(ctx, query, nodes, nil,
 			func(n *CiTypeInheritance, e *CiType) { n.Edges.Child = e }); err != nil {
 			return nil, err
 		}
@@ -443,7 +443,7 @@ func (ctiq *CiTypeInheritanceQuery) sqlAll(ctx context.Context, hooks ...queryHo
 	return nodes, nil
 }
 
-func (ctiq *CiTypeInheritanceQuery) loadParent(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeInheritance, init func(*CiTypeInheritance), assign func(*CiTypeInheritance, *CiType)) error {
+func (_q *CiTypeInheritanceQuery) loadParent(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeInheritance, init func(*CiTypeInheritance), assign func(*CiTypeInheritance, *CiType)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*CiTypeInheritance)
 	for i := range nodes {
@@ -472,7 +472,7 @@ func (ctiq *CiTypeInheritanceQuery) loadParent(ctx context.Context, query *CiTyp
 	}
 	return nil
 }
-func (ctiq *CiTypeInheritanceQuery) loadChild(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeInheritance, init func(*CiTypeInheritance), assign func(*CiTypeInheritance, *CiType)) error {
+func (_q *CiTypeInheritanceQuery) loadChild(ctx context.Context, query *CiTypeQuery, nodes []*CiTypeInheritance, init func(*CiTypeInheritance), assign func(*CiTypeInheritance, *CiType)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*CiTypeInheritance)
 	for i := range nodes {
@@ -502,24 +502,24 @@ func (ctiq *CiTypeInheritanceQuery) loadChild(ctx context.Context, query *CiType
 	return nil
 }
 
-func (ctiq *CiTypeInheritanceQuery) sqlCount(ctx context.Context) (int, error) {
-	_spec := ctiq.querySpec()
-	_spec.Node.Columns = ctiq.ctx.Fields
-	if len(ctiq.ctx.Fields) > 0 {
-		_spec.Unique = ctiq.ctx.Unique != nil && *ctiq.ctx.Unique
+func (_q *CiTypeInheritanceQuery) sqlCount(ctx context.Context) (int, error) {
+	_spec := _q.querySpec()
+	_spec.Node.Columns = _q.ctx.Fields
+	if len(_q.ctx.Fields) > 0 {
+		_spec.Unique = _q.ctx.Unique != nil && *_q.ctx.Unique
 	}
-	return sqlgraph.CountNodes(ctx, ctiq.driver, _spec)
+	return sqlgraph.CountNodes(ctx, _q.driver, _spec)
 }
 
-func (ctiq *CiTypeInheritanceQuery) querySpec() *sqlgraph.QuerySpec {
+func (_q *CiTypeInheritanceQuery) querySpec() *sqlgraph.QuerySpec {
 	_spec := sqlgraph.NewQuerySpec(citypeinheritance.Table, citypeinheritance.Columns, sqlgraph.NewFieldSpec(citypeinheritance.FieldID, field.TypeUint64))
-	_spec.From = ctiq.sql
-	if unique := ctiq.ctx.Unique; unique != nil {
+	_spec.From = _q.sql
+	if unique := _q.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
-	} else if ctiq.path != nil {
+	} else if _q.path != nil {
 		_spec.Unique = true
 	}
-	if fields := ctiq.ctx.Fields; len(fields) > 0 {
+	if fields := _q.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, citypeinheritance.FieldID)
 		for i := range fields {
@@ -527,27 +527,27 @@ func (ctiq *CiTypeInheritanceQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if ctiq.withParent != nil {
+		if _q.withParent != nil {
 			_spec.Node.AddColumnOnce(citypeinheritance.FieldParentID)
 		}
-		if ctiq.withChild != nil {
+		if _q.withChild != nil {
 			_spec.Node.AddColumnOnce(citypeinheritance.FieldChildID)
 		}
 	}
-	if ps := ctiq.predicates; len(ps) > 0 {
+	if ps := _q.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if limit := ctiq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		_spec.Limit = *limit
 	}
-	if offset := ctiq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		_spec.Offset = *offset
 	}
-	if ps := ctiq.order; len(ps) > 0 {
+	if ps := _q.order; len(ps) > 0 {
 		_spec.Order = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
@@ -557,33 +557,33 @@ func (ctiq *CiTypeInheritanceQuery) querySpec() *sqlgraph.QuerySpec {
 	return _spec
 }
 
-func (ctiq *CiTypeInheritanceQuery) sqlQuery(ctx context.Context) *sql.Selector {
-	builder := sql.Dialect(ctiq.driver.Dialect())
+func (_q *CiTypeInheritanceQuery) sqlQuery(ctx context.Context) *sql.Selector {
+	builder := sql.Dialect(_q.driver.Dialect())
 	t1 := builder.Table(citypeinheritance.Table)
-	columns := ctiq.ctx.Fields
+	columns := _q.ctx.Fields
 	if len(columns) == 0 {
 		columns = citypeinheritance.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
-	if ctiq.sql != nil {
-		selector = ctiq.sql
+	if _q.sql != nil {
+		selector = _q.sql
 		selector.Select(selector.Columns(columns...)...)
 	}
-	if ctiq.ctx.Unique != nil && *ctiq.ctx.Unique {
+	if _q.ctx.Unique != nil && *_q.ctx.Unique {
 		selector.Distinct()
 	}
-	for _, p := range ctiq.predicates {
+	for _, p := range _q.predicates {
 		p(selector)
 	}
-	for _, p := range ctiq.order {
+	for _, p := range _q.order {
 		p(selector)
 	}
-	if offset := ctiq.ctx.Offset; offset != nil {
+	if offset := _q.ctx.Offset; offset != nil {
 		// limit is mandatory for offset clause. We start
 		// with default value, and override it below if needed.
 		selector.Offset(*offset).Limit(math.MaxInt32)
 	}
-	if limit := ctiq.ctx.Limit; limit != nil {
+	if limit := _q.ctx.Limit; limit != nil {
 		selector.Limit(*limit)
 	}
 	return selector
@@ -596,41 +596,41 @@ type CiTypeInheritanceGroupBy struct {
 }
 
 // Aggregate adds the given aggregation functions to the group-by query.
-func (ctigb *CiTypeInheritanceGroupBy) Aggregate(fns ...AggregateFunc) *CiTypeInheritanceGroupBy {
-	ctigb.fns = append(ctigb.fns, fns...)
-	return ctigb
+func (_g *CiTypeInheritanceGroupBy) Aggregate(fns ...AggregateFunc) *CiTypeInheritanceGroupBy {
+	_g.fns = append(_g.fns, fns...)
+	return _g
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (ctigb *CiTypeInheritanceGroupBy) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, ctigb.build.ctx, ent.OpQueryGroupBy)
-	if err := ctigb.build.prepareQuery(ctx); err != nil {
+func (_g *CiTypeInheritanceGroupBy) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _g.build.ctx, ent.OpQueryGroupBy)
+	if err := _g.build.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiTypeInheritanceQuery, *CiTypeInheritanceGroupBy](ctx, ctigb.build, ctigb, ctigb.build.inters, v)
+	return scanWithInterceptors[*CiTypeInheritanceQuery, *CiTypeInheritanceGroupBy](ctx, _g.build, _g, _g.build.inters, v)
 }
 
-func (ctigb *CiTypeInheritanceGroupBy) sqlScan(ctx context.Context, root *CiTypeInheritanceQuery, v any) error {
+func (_g *CiTypeInheritanceGroupBy) sqlScan(ctx context.Context, root *CiTypeInheritanceQuery, v any) error {
 	selector := root.sqlQuery(ctx).Select()
-	aggregation := make([]string, 0, len(ctigb.fns))
-	for _, fn := range ctigb.fns {
+	aggregation := make([]string, 0, len(_g.fns))
+	for _, fn := range _g.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
 	if len(selector.SelectedColumns()) == 0 {
-		columns := make([]string, 0, len(*ctigb.flds)+len(ctigb.fns))
-		for _, f := range *ctigb.flds {
+		columns := make([]string, 0, len(*_g.flds)+len(_g.fns))
+		for _, f := range *_g.flds {
 			columns = append(columns, selector.C(f))
 		}
 		columns = append(columns, aggregation...)
 		selector.Select(columns...)
 	}
-	selector.GroupBy(selector.Columns(*ctigb.flds...)...)
+	selector.GroupBy(selector.Columns(*_g.flds...)...)
 	if err := selector.Err(); err != nil {
 		return err
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := ctigb.build.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _g.build.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()
@@ -644,27 +644,27 @@ type CiTypeInheritanceSelect struct {
 }
 
 // Aggregate adds the given aggregation functions to the selector query.
-func (ctis *CiTypeInheritanceSelect) Aggregate(fns ...AggregateFunc) *CiTypeInheritanceSelect {
-	ctis.fns = append(ctis.fns, fns...)
-	return ctis
+func (_s *CiTypeInheritanceSelect) Aggregate(fns ...AggregateFunc) *CiTypeInheritanceSelect {
+	_s.fns = append(_s.fns, fns...)
+	return _s
 }
 
 // Scan applies the selector query and scans the result into the given value.
-func (ctis *CiTypeInheritanceSelect) Scan(ctx context.Context, v any) error {
-	ctx = setContextOp(ctx, ctis.ctx, ent.OpQuerySelect)
-	if err := ctis.prepareQuery(ctx); err != nil {
+func (_s *CiTypeInheritanceSelect) Scan(ctx context.Context, v any) error {
+	ctx = setContextOp(ctx, _s.ctx, ent.OpQuerySelect)
+	if err := _s.prepareQuery(ctx); err != nil {
 		return err
 	}
-	return scanWithInterceptors[*CiTypeInheritanceQuery, *CiTypeInheritanceSelect](ctx, ctis.CiTypeInheritanceQuery, ctis, ctis.inters, v)
+	return scanWithInterceptors[*CiTypeInheritanceQuery, *CiTypeInheritanceSelect](ctx, _s.CiTypeInheritanceQuery, _s, _s.inters, v)
 }
 
-func (ctis *CiTypeInheritanceSelect) sqlScan(ctx context.Context, root *CiTypeInheritanceQuery, v any) error {
+func (_s *CiTypeInheritanceSelect) sqlScan(ctx context.Context, root *CiTypeInheritanceQuery, v any) error {
 	selector := root.sqlQuery(ctx)
-	aggregation := make([]string, 0, len(ctis.fns))
-	for _, fn := range ctis.fns {
+	aggregation := make([]string, 0, len(_s.fns))
+	for _, fn := range _s.fns {
 		aggregation = append(aggregation, fn(selector))
 	}
-	switch n := len(*ctis.selector.flds); {
+	switch n := len(*_s.selector.flds); {
 	case n == 0 && len(aggregation) > 0:
 		selector.Select(aggregation...)
 	case n != 0 && len(aggregation) > 0:
@@ -672,7 +672,7 @@ func (ctis *CiTypeInheritanceSelect) sqlScan(ctx context.Context, root *CiTypeIn
 	}
 	rows := &sql.Rows{}
 	query, args := selector.Query()
-	if err := ctis.driver.Query(ctx, query, args, rows); err != nil {
+	if err := _s.driver.Query(ctx, query, args, rows); err != nil {
 		return err
 	}
 	defer rows.Close()

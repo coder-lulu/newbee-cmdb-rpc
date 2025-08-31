@@ -12,8 +12,8 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cioperation"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -25,814 +25,814 @@ type CiOperationUpdate struct {
 }
 
 // Where appends a list predicates to the CiOperationUpdate builder.
-func (cou *CiOperationUpdate) Where(ps ...predicate.CiOperation) *CiOperationUpdate {
-	cou.mutation.Where(ps...)
-	return cou
+func (_u *CiOperationUpdate) Where(ps ...predicate.CiOperation) *CiOperationUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cou *CiOperationUpdate) SetUpdatedAt(t time.Time) *CiOperationUpdate {
-	cou.mutation.SetUpdatedAt(t)
-	return cou
+func (_u *CiOperationUpdate) SetUpdatedAt(v time.Time) *CiOperationUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cou *CiOperationUpdate) SetDepartmentID(u uint64) *CiOperationUpdate {
-	cou.mutation.ResetDepartmentID()
-	cou.mutation.SetDepartmentID(u)
-	return cou
+func (_u *CiOperationUpdate) SetDepartmentID(v uint64) *CiOperationUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableDepartmentID(u *uint64) *CiOperationUpdate {
-	if u != nil {
-		cou.SetDepartmentID(*u)
+func (_u *CiOperationUpdate) SetNillableDepartmentID(v *uint64) *CiOperationUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return cou
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (cou *CiOperationUpdate) AddDepartmentID(u int64) *CiOperationUpdate {
-	cou.mutation.AddDepartmentID(u)
-	return cou
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiOperationUpdate) AddDepartmentID(v int64) *CiOperationUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (cou *CiOperationUpdate) ClearDepartmentID() *CiOperationUpdate {
-	cou.mutation.ClearDepartmentID()
-	return cou
+func (_u *CiOperationUpdate) ClearDepartmentID() *CiOperationUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetOperationID sets the "operation_id" field.
-func (cou *CiOperationUpdate) SetOperationID(s string) *CiOperationUpdate {
-	cou.mutation.SetOperationID(s)
-	return cou
+func (_u *CiOperationUpdate) SetOperationID(v string) *CiOperationUpdate {
+	_u.mutation.SetOperationID(v)
+	return _u
 }
 
 // SetNillableOperationID sets the "operation_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperationID(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetOperationID(*s)
+func (_u *CiOperationUpdate) SetNillableOperationID(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperationID(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetOperationType sets the "operation_type" field.
-func (cou *CiOperationUpdate) SetOperationType(ct cioperation.OperationType) *CiOperationUpdate {
-	cou.mutation.SetOperationType(ct)
-	return cou
+func (_u *CiOperationUpdate) SetOperationType(v cioperation.OperationType) *CiOperationUpdate {
+	_u.mutation.SetOperationType(v)
+	return _u
 }
 
 // SetNillableOperationType sets the "operation_type" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperationType(ct *cioperation.OperationType) *CiOperationUpdate {
-	if ct != nil {
-		cou.SetOperationType(*ct)
+func (_u *CiOperationUpdate) SetNillableOperationType(v *cioperation.OperationType) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperationType(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetOperationStatus sets the "operation_status" field.
-func (cou *CiOperationUpdate) SetOperationStatus(cs cioperation.OperationStatus) *CiOperationUpdate {
-	cou.mutation.SetOperationStatus(cs)
-	return cou
+func (_u *CiOperationUpdate) SetOperationStatus(v cioperation.OperationStatus) *CiOperationUpdate {
+	_u.mutation.SetOperationStatus(v)
+	return _u
 }
 
 // SetNillableOperationStatus sets the "operation_status" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperationStatus(cs *cioperation.OperationStatus) *CiOperationUpdate {
-	if cs != nil {
-		cou.SetOperationStatus(*cs)
+func (_u *CiOperationUpdate) SetNillableOperationStatus(v *cioperation.OperationStatus) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperationStatus(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (cou *CiOperationUpdate) SetCiID(u uint64) *CiOperationUpdate {
-	cou.mutation.ResetCiID()
-	cou.mutation.SetCiID(u)
-	return cou
+func (_u *CiOperationUpdate) SetCiID(v uint64) *CiOperationUpdate {
+	_u.mutation.ResetCiID()
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableCiID(u *uint64) *CiOperationUpdate {
-	if u != nil {
-		cou.SetCiID(*u)
+func (_u *CiOperationUpdate) SetNillableCiID(v *uint64) *CiOperationUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return cou
+	return _u
 }
 
-// AddCiID adds u to the "ci_id" field.
-func (cou *CiOperationUpdate) AddCiID(u int64) *CiOperationUpdate {
-	cou.mutation.AddCiID(u)
-	return cou
+// AddCiID adds value to the "ci_id" field.
+func (_u *CiOperationUpdate) AddCiID(v int64) *CiOperationUpdate {
+	_u.mutation.AddCiID(v)
+	return _u
 }
 
 // ClearCiID clears the value of the "ci_id" field.
-func (cou *CiOperationUpdate) ClearCiID() *CiOperationUpdate {
-	cou.mutation.ClearCiID()
-	return cou
+func (_u *CiOperationUpdate) ClearCiID() *CiOperationUpdate {
+	_u.mutation.ClearCiID()
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (cou *CiOperationUpdate) SetCiTypeID(u uint64) *CiOperationUpdate {
-	cou.mutation.ResetCiTypeID()
-	cou.mutation.SetCiTypeID(u)
-	return cou
+func (_u *CiOperationUpdate) SetCiTypeID(v uint64) *CiOperationUpdate {
+	_u.mutation.ResetCiTypeID()
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableCiTypeID(u *uint64) *CiOperationUpdate {
-	if u != nil {
-		cou.SetCiTypeID(*u)
+func (_u *CiOperationUpdate) SetNillableCiTypeID(v *uint64) *CiOperationUpdate {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return cou
+	return _u
 }
 
-// AddCiTypeID adds u to the "ci_type_id" field.
-func (cou *CiOperationUpdate) AddCiTypeID(u int64) *CiOperationUpdate {
-	cou.mutation.AddCiTypeID(u)
-	return cou
+// AddCiTypeID adds value to the "ci_type_id" field.
+func (_u *CiOperationUpdate) AddCiTypeID(v int64) *CiOperationUpdate {
+	_u.mutation.AddCiTypeID(v)
+	return _u
 }
 
 // SetOperatorID sets the "operator_id" field.
-func (cou *CiOperationUpdate) SetOperatorID(u uuid.UUID) *CiOperationUpdate {
-	cou.mutation.SetOperatorID(u)
-	return cou
+func (_u *CiOperationUpdate) SetOperatorID(v uuid.UUID) *CiOperationUpdate {
+	_u.mutation.SetOperatorID(v)
+	return _u
 }
 
 // SetNillableOperatorID sets the "operator_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperatorID(u *uuid.UUID) *CiOperationUpdate {
-	if u != nil {
-		cou.SetOperatorID(*u)
+func (_u *CiOperationUpdate) SetNillableOperatorID(v *uuid.UUID) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperatorID(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetOperatorName sets the "operator_name" field.
-func (cou *CiOperationUpdate) SetOperatorName(s string) *CiOperationUpdate {
-	cou.mutation.SetOperatorName(s)
-	return cou
+func (_u *CiOperationUpdate) SetOperatorName(v string) *CiOperationUpdate {
+	_u.mutation.SetOperatorName(v)
+	return _u
 }
 
 // SetNillableOperatorName sets the "operator_name" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperatorName(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetOperatorName(*s)
+func (_u *CiOperationUpdate) SetNillableOperatorName(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperatorName(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetOperatorRole sets the "operator_role" field.
-func (cou *CiOperationUpdate) SetOperatorRole(s string) *CiOperationUpdate {
-	cou.mutation.SetOperatorRole(s)
-	return cou
+func (_u *CiOperationUpdate) SetOperatorRole(v string) *CiOperationUpdate {
+	_u.mutation.SetOperatorRole(v)
+	return _u
 }
 
 // SetNillableOperatorRole sets the "operator_role" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperatorRole(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetOperatorRole(*s)
+func (_u *CiOperationUpdate) SetNillableOperatorRole(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperatorRole(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearOperatorRole clears the value of the "operator_role" field.
-func (cou *CiOperationUpdate) ClearOperatorRole() *CiOperationUpdate {
-	cou.mutation.ClearOperatorRole()
-	return cou
+func (_u *CiOperationUpdate) ClearOperatorRole() *CiOperationUpdate {
+	_u.mutation.ClearOperatorRole()
+	return _u
 }
 
 // SetOperatorDepartment sets the "operator_department" field.
-func (cou *CiOperationUpdate) SetOperatorDepartment(s string) *CiOperationUpdate {
-	cou.mutation.SetOperatorDepartment(s)
-	return cou
+func (_u *CiOperationUpdate) SetOperatorDepartment(v string) *CiOperationUpdate {
+	_u.mutation.SetOperatorDepartment(v)
+	return _u
 }
 
 // SetNillableOperatorDepartment sets the "operator_department" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperatorDepartment(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetOperatorDepartment(*s)
+func (_u *CiOperationUpdate) SetNillableOperatorDepartment(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperatorDepartment(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearOperatorDepartment clears the value of the "operator_department" field.
-func (cou *CiOperationUpdate) ClearOperatorDepartment() *CiOperationUpdate {
-	cou.mutation.ClearOperatorDepartment()
-	return cou
+func (_u *CiOperationUpdate) ClearOperatorDepartment() *CiOperationUpdate {
+	_u.mutation.ClearOperatorDepartment()
+	return _u
 }
 
 // SetOperationSource sets the "operation_source" field.
-func (cou *CiOperationUpdate) SetOperationSource(cs cioperation.OperationSource) *CiOperationUpdate {
-	cou.mutation.SetOperationSource(cs)
-	return cou
+func (_u *CiOperationUpdate) SetOperationSource(v cioperation.OperationSource) *CiOperationUpdate {
+	_u.mutation.SetOperationSource(v)
+	return _u
 }
 
 // SetNillableOperationSource sets the "operation_source" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperationSource(cs *cioperation.OperationSource) *CiOperationUpdate {
-	if cs != nil {
-		cou.SetOperationSource(*cs)
+func (_u *CiOperationUpdate) SetNillableOperationSource(v *cioperation.OperationSource) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperationSource(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetSourceDetail sets the "source_detail" field.
-func (cou *CiOperationUpdate) SetSourceDetail(s string) *CiOperationUpdate {
-	cou.mutation.SetSourceDetail(s)
-	return cou
+func (_u *CiOperationUpdate) SetSourceDetail(v string) *CiOperationUpdate {
+	_u.mutation.SetSourceDetail(v)
+	return _u
 }
 
 // SetNillableSourceDetail sets the "source_detail" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableSourceDetail(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetSourceDetail(*s)
+func (_u *CiOperationUpdate) SetNillableSourceDetail(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetSourceDetail(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearSourceDetail clears the value of the "source_detail" field.
-func (cou *CiOperationUpdate) ClearSourceDetail() *CiOperationUpdate {
-	cou.mutation.ClearSourceDetail()
-	return cou
+func (_u *CiOperationUpdate) ClearSourceDetail() *CiOperationUpdate {
+	_u.mutation.ClearSourceDetail()
+	return _u
 }
 
 // SetOperationReason sets the "operation_reason" field.
-func (cou *CiOperationUpdate) SetOperationReason(s string) *CiOperationUpdate {
-	cou.mutation.SetOperationReason(s)
-	return cou
+func (_u *CiOperationUpdate) SetOperationReason(v string) *CiOperationUpdate {
+	_u.mutation.SetOperationReason(v)
+	return _u
 }
 
 // SetNillableOperationReason sets the "operation_reason" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableOperationReason(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetOperationReason(*s)
+func (_u *CiOperationUpdate) SetNillableOperationReason(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetOperationReason(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearOperationReason clears the value of the "operation_reason" field.
-func (cou *CiOperationUpdate) ClearOperationReason() *CiOperationUpdate {
-	cou.mutation.ClearOperationReason()
-	return cou
+func (_u *CiOperationUpdate) ClearOperationReason() *CiOperationUpdate {
+	_u.mutation.ClearOperationReason()
+	return _u
 }
 
 // SetOperationContext sets the "operation_context" field.
-func (cou *CiOperationUpdate) SetOperationContext(m map[string]interface{}) *CiOperationUpdate {
-	cou.mutation.SetOperationContext(m)
-	return cou
+func (_u *CiOperationUpdate) SetOperationContext(v map[string]interface{}) *CiOperationUpdate {
+	_u.mutation.SetOperationContext(v)
+	return _u
 }
 
 // ClearOperationContext clears the value of the "operation_context" field.
-func (cou *CiOperationUpdate) ClearOperationContext() *CiOperationUpdate {
-	cou.mutation.ClearOperationContext()
-	return cou
+func (_u *CiOperationUpdate) ClearOperationContext() *CiOperationUpdate {
+	_u.mutation.ClearOperationContext()
+	return _u
 }
 
 // SetDataBefore sets the "data_before" field.
-func (cou *CiOperationUpdate) SetDataBefore(m map[string]interface{}) *CiOperationUpdate {
-	cou.mutation.SetDataBefore(m)
-	return cou
+func (_u *CiOperationUpdate) SetDataBefore(v map[string]interface{}) *CiOperationUpdate {
+	_u.mutation.SetDataBefore(v)
+	return _u
 }
 
 // ClearDataBefore clears the value of the "data_before" field.
-func (cou *CiOperationUpdate) ClearDataBefore() *CiOperationUpdate {
-	cou.mutation.ClearDataBefore()
-	return cou
+func (_u *CiOperationUpdate) ClearDataBefore() *CiOperationUpdate {
+	_u.mutation.ClearDataBefore()
+	return _u
 }
 
 // SetDataAfter sets the "data_after" field.
-func (cou *CiOperationUpdate) SetDataAfter(m map[string]interface{}) *CiOperationUpdate {
-	cou.mutation.SetDataAfter(m)
-	return cou
+func (_u *CiOperationUpdate) SetDataAfter(v map[string]interface{}) *CiOperationUpdate {
+	_u.mutation.SetDataAfter(v)
+	return _u
 }
 
 // ClearDataAfter clears the value of the "data_after" field.
-func (cou *CiOperationUpdate) ClearDataAfter() *CiOperationUpdate {
-	cou.mutation.ClearDataAfter()
-	return cou
+func (_u *CiOperationUpdate) ClearDataAfter() *CiOperationUpdate {
+	_u.mutation.ClearDataAfter()
+	return _u
 }
 
 // SetAffectedAttributes sets the "affected_attributes" field.
-func (cou *CiOperationUpdate) SetAffectedAttributes(u []uint64) *CiOperationUpdate {
-	cou.mutation.SetAffectedAttributes(u)
-	return cou
+func (_u *CiOperationUpdate) SetAffectedAttributes(v []uint64) *CiOperationUpdate {
+	_u.mutation.SetAffectedAttributes(v)
+	return _u
 }
 
-// AppendAffectedAttributes appends u to the "affected_attributes" field.
-func (cou *CiOperationUpdate) AppendAffectedAttributes(u []uint64) *CiOperationUpdate {
-	cou.mutation.AppendAffectedAttributes(u)
-	return cou
+// AppendAffectedAttributes appends value to the "affected_attributes" field.
+func (_u *CiOperationUpdate) AppendAffectedAttributes(v []uint64) *CiOperationUpdate {
+	_u.mutation.AppendAffectedAttributes(v)
+	return _u
 }
 
 // ClearAffectedAttributes clears the value of the "affected_attributes" field.
-func (cou *CiOperationUpdate) ClearAffectedAttributes() *CiOperationUpdate {
-	cou.mutation.ClearAffectedAttributes()
-	return cou
+func (_u *CiOperationUpdate) ClearAffectedAttributes() *CiOperationUpdate {
+	_u.mutation.ClearAffectedAttributes()
+	return _u
 }
 
 // SetBatchCiIds sets the "batch_ci_ids" field.
-func (cou *CiOperationUpdate) SetBatchCiIds(u []uint64) *CiOperationUpdate {
-	cou.mutation.SetBatchCiIds(u)
-	return cou
+func (_u *CiOperationUpdate) SetBatchCiIds(v []uint64) *CiOperationUpdate {
+	_u.mutation.SetBatchCiIds(v)
+	return _u
 }
 
-// AppendBatchCiIds appends u to the "batch_ci_ids" field.
-func (cou *CiOperationUpdate) AppendBatchCiIds(u []uint64) *CiOperationUpdate {
-	cou.mutation.AppendBatchCiIds(u)
-	return cou
+// AppendBatchCiIds appends value to the "batch_ci_ids" field.
+func (_u *CiOperationUpdate) AppendBatchCiIds(v []uint64) *CiOperationUpdate {
+	_u.mutation.AppendBatchCiIds(v)
+	return _u
 }
 
 // ClearBatchCiIds clears the value of the "batch_ci_ids" field.
-func (cou *CiOperationUpdate) ClearBatchCiIds() *CiOperationUpdate {
-	cou.mutation.ClearBatchCiIds()
-	return cou
+func (_u *CiOperationUpdate) ClearBatchCiIds() *CiOperationUpdate {
+	_u.mutation.ClearBatchCiIds()
+	return _u
 }
 
 // SetBatchTotal sets the "batch_total" field.
-func (cou *CiOperationUpdate) SetBatchTotal(i int) *CiOperationUpdate {
-	cou.mutation.ResetBatchTotal()
-	cou.mutation.SetBatchTotal(i)
-	return cou
+func (_u *CiOperationUpdate) SetBatchTotal(v int) *CiOperationUpdate {
+	_u.mutation.ResetBatchTotal()
+	_u.mutation.SetBatchTotal(v)
+	return _u
 }
 
 // SetNillableBatchTotal sets the "batch_total" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableBatchTotal(i *int) *CiOperationUpdate {
-	if i != nil {
-		cou.SetBatchTotal(*i)
+func (_u *CiOperationUpdate) SetNillableBatchTotal(v *int) *CiOperationUpdate {
+	if v != nil {
+		_u.SetBatchTotal(*v)
 	}
-	return cou
+	return _u
 }
 
-// AddBatchTotal adds i to the "batch_total" field.
-func (cou *CiOperationUpdate) AddBatchTotal(i int) *CiOperationUpdate {
-	cou.mutation.AddBatchTotal(i)
-	return cou
+// AddBatchTotal adds value to the "batch_total" field.
+func (_u *CiOperationUpdate) AddBatchTotal(v int) *CiOperationUpdate {
+	_u.mutation.AddBatchTotal(v)
+	return _u
 }
 
 // ClearBatchTotal clears the value of the "batch_total" field.
-func (cou *CiOperationUpdate) ClearBatchTotal() *CiOperationUpdate {
-	cou.mutation.ClearBatchTotal()
-	return cou
+func (_u *CiOperationUpdate) ClearBatchTotal() *CiOperationUpdate {
+	_u.mutation.ClearBatchTotal()
+	return _u
 }
 
 // SetBatchSuccess sets the "batch_success" field.
-func (cou *CiOperationUpdate) SetBatchSuccess(i int) *CiOperationUpdate {
-	cou.mutation.ResetBatchSuccess()
-	cou.mutation.SetBatchSuccess(i)
-	return cou
+func (_u *CiOperationUpdate) SetBatchSuccess(v int) *CiOperationUpdate {
+	_u.mutation.ResetBatchSuccess()
+	_u.mutation.SetBatchSuccess(v)
+	return _u
 }
 
 // SetNillableBatchSuccess sets the "batch_success" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableBatchSuccess(i *int) *CiOperationUpdate {
-	if i != nil {
-		cou.SetBatchSuccess(*i)
+func (_u *CiOperationUpdate) SetNillableBatchSuccess(v *int) *CiOperationUpdate {
+	if v != nil {
+		_u.SetBatchSuccess(*v)
 	}
-	return cou
+	return _u
 }
 
-// AddBatchSuccess adds i to the "batch_success" field.
-func (cou *CiOperationUpdate) AddBatchSuccess(i int) *CiOperationUpdate {
-	cou.mutation.AddBatchSuccess(i)
-	return cou
+// AddBatchSuccess adds value to the "batch_success" field.
+func (_u *CiOperationUpdate) AddBatchSuccess(v int) *CiOperationUpdate {
+	_u.mutation.AddBatchSuccess(v)
+	return _u
 }
 
 // ClearBatchSuccess clears the value of the "batch_success" field.
-func (cou *CiOperationUpdate) ClearBatchSuccess() *CiOperationUpdate {
-	cou.mutation.ClearBatchSuccess()
-	return cou
+func (_u *CiOperationUpdate) ClearBatchSuccess() *CiOperationUpdate {
+	_u.mutation.ClearBatchSuccess()
+	return _u
 }
 
 // SetBatchFailed sets the "batch_failed" field.
-func (cou *CiOperationUpdate) SetBatchFailed(i int) *CiOperationUpdate {
-	cou.mutation.ResetBatchFailed()
-	cou.mutation.SetBatchFailed(i)
-	return cou
+func (_u *CiOperationUpdate) SetBatchFailed(v int) *CiOperationUpdate {
+	_u.mutation.ResetBatchFailed()
+	_u.mutation.SetBatchFailed(v)
+	return _u
 }
 
 // SetNillableBatchFailed sets the "batch_failed" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableBatchFailed(i *int) *CiOperationUpdate {
-	if i != nil {
-		cou.SetBatchFailed(*i)
+func (_u *CiOperationUpdate) SetNillableBatchFailed(v *int) *CiOperationUpdate {
+	if v != nil {
+		_u.SetBatchFailed(*v)
 	}
-	return cou
+	return _u
 }
 
-// AddBatchFailed adds i to the "batch_failed" field.
-func (cou *CiOperationUpdate) AddBatchFailed(i int) *CiOperationUpdate {
-	cou.mutation.AddBatchFailed(i)
-	return cou
+// AddBatchFailed adds value to the "batch_failed" field.
+func (_u *CiOperationUpdate) AddBatchFailed(v int) *CiOperationUpdate {
+	_u.mutation.AddBatchFailed(v)
+	return _u
 }
 
 // ClearBatchFailed clears the value of the "batch_failed" field.
-func (cou *CiOperationUpdate) ClearBatchFailed() *CiOperationUpdate {
-	cou.mutation.ClearBatchFailed()
-	return cou
+func (_u *CiOperationUpdate) ClearBatchFailed() *CiOperationUpdate {
+	_u.mutation.ClearBatchFailed()
+	return _u
 }
 
 // SetRequireApproval sets the "require_approval" field.
-func (cou *CiOperationUpdate) SetRequireApproval(b bool) *CiOperationUpdate {
-	cou.mutation.SetRequireApproval(b)
-	return cou
+func (_u *CiOperationUpdate) SetRequireApproval(v bool) *CiOperationUpdate {
+	_u.mutation.SetRequireApproval(v)
+	return _u
 }
 
 // SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableRequireApproval(b *bool) *CiOperationUpdate {
-	if b != nil {
-		cou.SetRequireApproval(*b)
+func (_u *CiOperationUpdate) SetNillableRequireApproval(v *bool) *CiOperationUpdate {
+	if v != nil {
+		_u.SetRequireApproval(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetApprovalFlowID sets the "approval_flow_id" field.
-func (cou *CiOperationUpdate) SetApprovalFlowID(s string) *CiOperationUpdate {
-	cou.mutation.SetApprovalFlowID(s)
-	return cou
+func (_u *CiOperationUpdate) SetApprovalFlowID(v string) *CiOperationUpdate {
+	_u.mutation.SetApprovalFlowID(v)
+	return _u
 }
 
 // SetNillableApprovalFlowID sets the "approval_flow_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableApprovalFlowID(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetApprovalFlowID(*s)
+func (_u *CiOperationUpdate) SetNillableApprovalFlowID(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetApprovalFlowID(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearApprovalFlowID clears the value of the "approval_flow_id" field.
-func (cou *CiOperationUpdate) ClearApprovalFlowID() *CiOperationUpdate {
-	cou.mutation.ClearApprovalFlowID()
-	return cou
+func (_u *CiOperationUpdate) ClearApprovalFlowID() *CiOperationUpdate {
+	_u.mutation.ClearApprovalFlowID()
+	return _u
 }
 
 // SetApproverID sets the "approver_id" field.
-func (cou *CiOperationUpdate) SetApproverID(u uuid.UUID) *CiOperationUpdate {
-	cou.mutation.SetApproverID(u)
-	return cou
+func (_u *CiOperationUpdate) SetApproverID(v uuid.UUID) *CiOperationUpdate {
+	_u.mutation.SetApproverID(v)
+	return _u
 }
 
 // SetNillableApproverID sets the "approver_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableApproverID(u *uuid.UUID) *CiOperationUpdate {
-	if u != nil {
-		cou.SetApproverID(*u)
+func (_u *CiOperationUpdate) SetNillableApproverID(v *uuid.UUID) *CiOperationUpdate {
+	if v != nil {
+		_u.SetApproverID(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearApproverID clears the value of the "approver_id" field.
-func (cou *CiOperationUpdate) ClearApproverID() *CiOperationUpdate {
-	cou.mutation.ClearApproverID()
-	return cou
+func (_u *CiOperationUpdate) ClearApproverID() *CiOperationUpdate {
+	_u.mutation.ClearApproverID()
+	return _u
 }
 
 // SetApproverName sets the "approver_name" field.
-func (cou *CiOperationUpdate) SetApproverName(s string) *CiOperationUpdate {
-	cou.mutation.SetApproverName(s)
-	return cou
+func (_u *CiOperationUpdate) SetApproverName(v string) *CiOperationUpdate {
+	_u.mutation.SetApproverName(v)
+	return _u
 }
 
 // SetNillableApproverName sets the "approver_name" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableApproverName(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetApproverName(*s)
+func (_u *CiOperationUpdate) SetNillableApproverName(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetApproverName(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearApproverName clears the value of the "approver_name" field.
-func (cou *CiOperationUpdate) ClearApproverName() *CiOperationUpdate {
-	cou.mutation.ClearApproverName()
-	return cou
+func (_u *CiOperationUpdate) ClearApproverName() *CiOperationUpdate {
+	_u.mutation.ClearApproverName()
+	return _u
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (cou *CiOperationUpdate) SetApprovedAt(t time.Time) *CiOperationUpdate {
-	cou.mutation.SetApprovedAt(t)
-	return cou
+func (_u *CiOperationUpdate) SetApprovedAt(v time.Time) *CiOperationUpdate {
+	_u.mutation.SetApprovedAt(v)
+	return _u
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableApprovedAt(t *time.Time) *CiOperationUpdate {
-	if t != nil {
-		cou.SetApprovedAt(*t)
+func (_u *CiOperationUpdate) SetNillableApprovedAt(v *time.Time) *CiOperationUpdate {
+	if v != nil {
+		_u.SetApprovedAt(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearApprovedAt clears the value of the "approved_at" field.
-func (cou *CiOperationUpdate) ClearApprovedAt() *CiOperationUpdate {
-	cou.mutation.ClearApprovedAt()
-	return cou
+func (_u *CiOperationUpdate) ClearApprovedAt() *CiOperationUpdate {
+	_u.mutation.ClearApprovedAt()
+	return _u
 }
 
 // SetApprovalComment sets the "approval_comment" field.
-func (cou *CiOperationUpdate) SetApprovalComment(s string) *CiOperationUpdate {
-	cou.mutation.SetApprovalComment(s)
-	return cou
+func (_u *CiOperationUpdate) SetApprovalComment(v string) *CiOperationUpdate {
+	_u.mutation.SetApprovalComment(v)
+	return _u
 }
 
 // SetNillableApprovalComment sets the "approval_comment" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableApprovalComment(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetApprovalComment(*s)
+func (_u *CiOperationUpdate) SetNillableApprovalComment(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetApprovalComment(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearApprovalComment clears the value of the "approval_comment" field.
-func (cou *CiOperationUpdate) ClearApprovalComment() *CiOperationUpdate {
-	cou.mutation.ClearApprovalComment()
-	return cou
+func (_u *CiOperationUpdate) ClearApprovalComment() *CiOperationUpdate {
+	_u.mutation.ClearApprovalComment()
+	return _u
 }
 
 // SetStartedAt sets the "started_at" field.
-func (cou *CiOperationUpdate) SetStartedAt(t time.Time) *CiOperationUpdate {
-	cou.mutation.SetStartedAt(t)
-	return cou
+func (_u *CiOperationUpdate) SetStartedAt(v time.Time) *CiOperationUpdate {
+	_u.mutation.SetStartedAt(v)
+	return _u
 }
 
 // SetNillableStartedAt sets the "started_at" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableStartedAt(t *time.Time) *CiOperationUpdate {
-	if t != nil {
-		cou.SetStartedAt(*t)
+func (_u *CiOperationUpdate) SetNillableStartedAt(v *time.Time) *CiOperationUpdate {
+	if v != nil {
+		_u.SetStartedAt(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearStartedAt clears the value of the "started_at" field.
-func (cou *CiOperationUpdate) ClearStartedAt() *CiOperationUpdate {
-	cou.mutation.ClearStartedAt()
-	return cou
+func (_u *CiOperationUpdate) ClearStartedAt() *CiOperationUpdate {
+	_u.mutation.ClearStartedAt()
+	return _u
 }
 
 // SetCompletedAt sets the "completed_at" field.
-func (cou *CiOperationUpdate) SetCompletedAt(t time.Time) *CiOperationUpdate {
-	cou.mutation.SetCompletedAt(t)
-	return cou
+func (_u *CiOperationUpdate) SetCompletedAt(v time.Time) *CiOperationUpdate {
+	_u.mutation.SetCompletedAt(v)
+	return _u
 }
 
 // SetNillableCompletedAt sets the "completed_at" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableCompletedAt(t *time.Time) *CiOperationUpdate {
-	if t != nil {
-		cou.SetCompletedAt(*t)
+func (_u *CiOperationUpdate) SetNillableCompletedAt(v *time.Time) *CiOperationUpdate {
+	if v != nil {
+		_u.SetCompletedAt(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearCompletedAt clears the value of the "completed_at" field.
-func (cou *CiOperationUpdate) ClearCompletedAt() *CiOperationUpdate {
-	cou.mutation.ClearCompletedAt()
-	return cou
+func (_u *CiOperationUpdate) ClearCompletedAt() *CiOperationUpdate {
+	_u.mutation.ClearCompletedAt()
+	return _u
 }
 
 // SetExecutionDuration sets the "execution_duration" field.
-func (cou *CiOperationUpdate) SetExecutionDuration(i int) *CiOperationUpdate {
-	cou.mutation.ResetExecutionDuration()
-	cou.mutation.SetExecutionDuration(i)
-	return cou
+func (_u *CiOperationUpdate) SetExecutionDuration(v int) *CiOperationUpdate {
+	_u.mutation.ResetExecutionDuration()
+	_u.mutation.SetExecutionDuration(v)
+	return _u
 }
 
 // SetNillableExecutionDuration sets the "execution_duration" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableExecutionDuration(i *int) *CiOperationUpdate {
-	if i != nil {
-		cou.SetExecutionDuration(*i)
+func (_u *CiOperationUpdate) SetNillableExecutionDuration(v *int) *CiOperationUpdate {
+	if v != nil {
+		_u.SetExecutionDuration(*v)
 	}
-	return cou
+	return _u
 }
 
-// AddExecutionDuration adds i to the "execution_duration" field.
-func (cou *CiOperationUpdate) AddExecutionDuration(i int) *CiOperationUpdate {
-	cou.mutation.AddExecutionDuration(i)
-	return cou
+// AddExecutionDuration adds value to the "execution_duration" field.
+func (_u *CiOperationUpdate) AddExecutionDuration(v int) *CiOperationUpdate {
+	_u.mutation.AddExecutionDuration(v)
+	return _u
 }
 
 // ClearExecutionDuration clears the value of the "execution_duration" field.
-func (cou *CiOperationUpdate) ClearExecutionDuration() *CiOperationUpdate {
-	cou.mutation.ClearExecutionDuration()
-	return cou
+func (_u *CiOperationUpdate) ClearExecutionDuration() *CiOperationUpdate {
+	_u.mutation.ClearExecutionDuration()
+	return _u
 }
 
 // SetExecutionResult sets the "execution_result" field.
-func (cou *CiOperationUpdate) SetExecutionResult(m map[string]interface{}) *CiOperationUpdate {
-	cou.mutation.SetExecutionResult(m)
-	return cou
+func (_u *CiOperationUpdate) SetExecutionResult(v map[string]interface{}) *CiOperationUpdate {
+	_u.mutation.SetExecutionResult(v)
+	return _u
 }
 
 // ClearExecutionResult clears the value of the "execution_result" field.
-func (cou *CiOperationUpdate) ClearExecutionResult() *CiOperationUpdate {
-	cou.mutation.ClearExecutionResult()
-	return cou
+func (_u *CiOperationUpdate) ClearExecutionResult() *CiOperationUpdate {
+	_u.mutation.ClearExecutionResult()
+	return _u
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (cou *CiOperationUpdate) SetErrorMessage(s string) *CiOperationUpdate {
-	cou.mutation.SetErrorMessage(s)
-	return cou
+func (_u *CiOperationUpdate) SetErrorMessage(v string) *CiOperationUpdate {
+	_u.mutation.SetErrorMessage(v)
+	return _u
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableErrorMessage(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetErrorMessage(*s)
+func (_u *CiOperationUpdate) SetNillableErrorMessage(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetErrorMessage(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearErrorMessage clears the value of the "error_message" field.
-func (cou *CiOperationUpdate) ClearErrorMessage() *CiOperationUpdate {
-	cou.mutation.ClearErrorMessage()
-	return cou
+func (_u *CiOperationUpdate) ClearErrorMessage() *CiOperationUpdate {
+	_u.mutation.ClearErrorMessage()
+	return _u
 }
 
 // SetErrorDetails sets the "error_details" field.
-func (cou *CiOperationUpdate) SetErrorDetails(m map[string]interface{}) *CiOperationUpdate {
-	cou.mutation.SetErrorDetails(m)
-	return cou
+func (_u *CiOperationUpdate) SetErrorDetails(v map[string]interface{}) *CiOperationUpdate {
+	_u.mutation.SetErrorDetails(v)
+	return _u
 }
 
 // ClearErrorDetails clears the value of the "error_details" field.
-func (cou *CiOperationUpdate) ClearErrorDetails() *CiOperationUpdate {
-	cou.mutation.ClearErrorDetails()
-	return cou
+func (_u *CiOperationUpdate) ClearErrorDetails() *CiOperationUpdate {
+	_u.mutation.ClearErrorDetails()
+	return _u
 }
 
 // SetLifecycleStage sets the "lifecycle_stage" field.
-func (cou *CiOperationUpdate) SetLifecycleStage(cs cioperation.LifecycleStage) *CiOperationUpdate {
-	cou.mutation.SetLifecycleStage(cs)
-	return cou
+func (_u *CiOperationUpdate) SetLifecycleStage(v cioperation.LifecycleStage) *CiOperationUpdate {
+	_u.mutation.SetLifecycleStage(v)
+	return _u
 }
 
 // SetNillableLifecycleStage sets the "lifecycle_stage" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableLifecycleStage(cs *cioperation.LifecycleStage) *CiOperationUpdate {
-	if cs != nil {
-		cou.SetLifecycleStage(*cs)
+func (_u *CiOperationUpdate) SetNillableLifecycleStage(v *cioperation.LifecycleStage) *CiOperationUpdate {
+	if v != nil {
+		_u.SetLifecycleStage(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (cou *CiOperationUpdate) SetExpiresAt(t time.Time) *CiOperationUpdate {
-	cou.mutation.SetExpiresAt(t)
-	return cou
+func (_u *CiOperationUpdate) SetExpiresAt(v time.Time) *CiOperationUpdate {
+	_u.mutation.SetExpiresAt(v)
+	return _u
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableExpiresAt(t *time.Time) *CiOperationUpdate {
-	if t != nil {
-		cou.SetExpiresAt(*t)
+func (_u *CiOperationUpdate) SetNillableExpiresAt(v *time.Time) *CiOperationUpdate {
+	if v != nil {
+		_u.SetExpiresAt(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearExpiresAt clears the value of the "expires_at" field.
-func (cou *CiOperationUpdate) ClearExpiresAt() *CiOperationUpdate {
-	cou.mutation.ClearExpiresAt()
-	return cou
+func (_u *CiOperationUpdate) ClearExpiresAt() *CiOperationUpdate {
+	_u.mutation.ClearExpiresAt()
+	return _u
 }
 
 // SetRequiredPermissions sets the "required_permissions" field.
-func (cou *CiOperationUpdate) SetRequiredPermissions(s []string) *CiOperationUpdate {
-	cou.mutation.SetRequiredPermissions(s)
-	return cou
+func (_u *CiOperationUpdate) SetRequiredPermissions(v []string) *CiOperationUpdate {
+	_u.mutation.SetRequiredPermissions(v)
+	return _u
 }
 
-// AppendRequiredPermissions appends s to the "required_permissions" field.
-func (cou *CiOperationUpdate) AppendRequiredPermissions(s []string) *CiOperationUpdate {
-	cou.mutation.AppendRequiredPermissions(s)
-	return cou
+// AppendRequiredPermissions appends value to the "required_permissions" field.
+func (_u *CiOperationUpdate) AppendRequiredPermissions(v []string) *CiOperationUpdate {
+	_u.mutation.AppendRequiredPermissions(v)
+	return _u
 }
 
 // ClearRequiredPermissions clears the value of the "required_permissions" field.
-func (cou *CiOperationUpdate) ClearRequiredPermissions() *CiOperationUpdate {
-	cou.mutation.ClearRequiredPermissions()
-	return cou
+func (_u *CiOperationUpdate) ClearRequiredPermissions() *CiOperationUpdate {
+	_u.mutation.ClearRequiredPermissions()
+	return _u
 }
 
 // SetPermissionCheckResult sets the "permission_check_result" field.
-func (cou *CiOperationUpdate) SetPermissionCheckResult(m map[string]interface{}) *CiOperationUpdate {
-	cou.mutation.SetPermissionCheckResult(m)
-	return cou
+func (_u *CiOperationUpdate) SetPermissionCheckResult(v map[string]interface{}) *CiOperationUpdate {
+	_u.mutation.SetPermissionCheckResult(v)
+	return _u
 }
 
 // ClearPermissionCheckResult clears the value of the "permission_check_result" field.
-func (cou *CiOperationUpdate) ClearPermissionCheckResult() *CiOperationUpdate {
-	cou.mutation.ClearPermissionCheckResult()
-	return cou
+func (_u *CiOperationUpdate) ClearPermissionCheckResult() *CiOperationUpdate {
+	_u.mutation.ClearPermissionCheckResult()
+	return _u
 }
 
 // SetIsSensitive sets the "is_sensitive" field.
-func (cou *CiOperationUpdate) SetIsSensitive(b bool) *CiOperationUpdate {
-	cou.mutation.SetIsSensitive(b)
-	return cou
+func (_u *CiOperationUpdate) SetIsSensitive(v bool) *CiOperationUpdate {
+	_u.mutation.SetIsSensitive(v)
+	return _u
 }
 
 // SetNillableIsSensitive sets the "is_sensitive" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableIsSensitive(b *bool) *CiOperationUpdate {
-	if b != nil {
-		cou.SetIsSensitive(*b)
+func (_u *CiOperationUpdate) SetNillableIsSensitive(v *bool) *CiOperationUpdate {
+	if v != nil {
+		_u.SetIsSensitive(*v)
 	}
-	return cou
+	return _u
 }
 
 // SetParentOperationID sets the "parent_operation_id" field.
-func (cou *CiOperationUpdate) SetParentOperationID(s string) *CiOperationUpdate {
-	cou.mutation.SetParentOperationID(s)
-	return cou
+func (_u *CiOperationUpdate) SetParentOperationID(v string) *CiOperationUpdate {
+	_u.mutation.SetParentOperationID(v)
+	return _u
 }
 
 // SetNillableParentOperationID sets the "parent_operation_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableParentOperationID(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetParentOperationID(*s)
+func (_u *CiOperationUpdate) SetNillableParentOperationID(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetParentOperationID(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearParentOperationID clears the value of the "parent_operation_id" field.
-func (cou *CiOperationUpdate) ClearParentOperationID() *CiOperationUpdate {
-	cou.mutation.ClearParentOperationID()
-	return cou
+func (_u *CiOperationUpdate) ClearParentOperationID() *CiOperationUpdate {
+	_u.mutation.ClearParentOperationID()
+	return _u
 }
 
 // SetChildOperationIds sets the "child_operation_ids" field.
-func (cou *CiOperationUpdate) SetChildOperationIds(s []string) *CiOperationUpdate {
-	cou.mutation.SetChildOperationIds(s)
-	return cou
+func (_u *CiOperationUpdate) SetChildOperationIds(v []string) *CiOperationUpdate {
+	_u.mutation.SetChildOperationIds(v)
+	return _u
 }
 
-// AppendChildOperationIds appends s to the "child_operation_ids" field.
-func (cou *CiOperationUpdate) AppendChildOperationIds(s []string) *CiOperationUpdate {
-	cou.mutation.AppendChildOperationIds(s)
-	return cou
+// AppendChildOperationIds appends value to the "child_operation_ids" field.
+func (_u *CiOperationUpdate) AppendChildOperationIds(v []string) *CiOperationUpdate {
+	_u.mutation.AppendChildOperationIds(v)
+	return _u
 }
 
 // ClearChildOperationIds clears the value of the "child_operation_ids" field.
-func (cou *CiOperationUpdate) ClearChildOperationIds() *CiOperationUpdate {
-	cou.mutation.ClearChildOperationIds()
-	return cou
+func (_u *CiOperationUpdate) ClearChildOperationIds() *CiOperationUpdate {
+	_u.mutation.ClearChildOperationIds()
+	return _u
 }
 
 // SetTransactionID sets the "transaction_id" field.
-func (cou *CiOperationUpdate) SetTransactionID(s string) *CiOperationUpdate {
-	cou.mutation.SetTransactionID(s)
-	return cou
+func (_u *CiOperationUpdate) SetTransactionID(v string) *CiOperationUpdate {
+	_u.mutation.SetTransactionID(v)
+	return _u
 }
 
 // SetNillableTransactionID sets the "transaction_id" field if the given value is not nil.
-func (cou *CiOperationUpdate) SetNillableTransactionID(s *string) *CiOperationUpdate {
-	if s != nil {
-		cou.SetTransactionID(*s)
+func (_u *CiOperationUpdate) SetNillableTransactionID(v *string) *CiOperationUpdate {
+	if v != nil {
+		_u.SetTransactionID(*v)
 	}
-	return cou
+	return _u
 }
 
 // ClearTransactionID clears the value of the "transaction_id" field.
-func (cou *CiOperationUpdate) ClearTransactionID() *CiOperationUpdate {
-	cou.mutation.ClearTransactionID()
-	return cou
+func (_u *CiOperationUpdate) ClearTransactionID() *CiOperationUpdate {
+	_u.mutation.ClearTransactionID()
+	return _u
 }
 
 // SetMetadata sets the "metadata" field.
-func (cou *CiOperationUpdate) SetMetadata(m map[string]interface{}) *CiOperationUpdate {
-	cou.mutation.SetMetadata(m)
-	return cou
+func (_u *CiOperationUpdate) SetMetadata(v map[string]interface{}) *CiOperationUpdate {
+	_u.mutation.SetMetadata(v)
+	return _u
 }
 
 // ClearMetadata clears the value of the "metadata" field.
-func (cou *CiOperationUpdate) ClearMetadata() *CiOperationUpdate {
-	cou.mutation.ClearMetadata()
-	return cou
+func (_u *CiOperationUpdate) ClearMetadata() *CiOperationUpdate {
+	_u.mutation.ClearMetadata()
+	return _u
 }
 
 // SetTags sets the "tags" field.
-func (cou *CiOperationUpdate) SetTags(s []string) *CiOperationUpdate {
-	cou.mutation.SetTags(s)
-	return cou
+func (_u *CiOperationUpdate) SetTags(v []string) *CiOperationUpdate {
+	_u.mutation.SetTags(v)
+	return _u
 }
 
-// AppendTags appends s to the "tags" field.
-func (cou *CiOperationUpdate) AppendTags(s []string) *CiOperationUpdate {
-	cou.mutation.AppendTags(s)
-	return cou
+// AppendTags appends value to the "tags" field.
+func (_u *CiOperationUpdate) AppendTags(v []string) *CiOperationUpdate {
+	_u.mutation.AppendTags(v)
+	return _u
 }
 
 // ClearTags clears the value of the "tags" field.
-func (cou *CiOperationUpdate) ClearTags() *CiOperationUpdate {
-	cou.mutation.ClearTags()
-	return cou
+func (_u *CiOperationUpdate) ClearTags() *CiOperationUpdate {
+	_u.mutation.ClearTags()
+	return _u
 }
 
 // Mutation returns the CiOperationMutation object of the builder.
-func (cou *CiOperationUpdate) Mutation() *CiOperationMutation {
-	return cou.mutation
+func (_u *CiOperationUpdate) Mutation() *CiOperationMutation {
+	return _u.mutation
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (cou *CiOperationUpdate) Save(ctx context.Context) (int, error) {
-	cou.defaults()
-	return withHooks(ctx, cou.sqlSave, cou.mutation, cou.hooks)
+func (_u *CiOperationUpdate) Save(ctx context.Context) (int, error) {
+	_u.defaults()
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cou *CiOperationUpdate) SaveX(ctx context.Context) int {
-	affected, err := cou.Save(ctx)
+func (_u *CiOperationUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -840,44 +840,44 @@ func (cou *CiOperationUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (cou *CiOperationUpdate) Exec(ctx context.Context) error {
-	_, err := cou.Save(ctx)
+func (_u *CiOperationUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cou *CiOperationUpdate) ExecX(ctx context.Context) {
-	if err := cou.Exec(ctx); err != nil {
+func (_u *CiOperationUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cou *CiOperationUpdate) defaults() {
-	if _, ok := cou.mutation.UpdatedAt(); !ok {
+func (_u *CiOperationUpdate) defaults() {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		v := cioperation.UpdateDefaultUpdatedAt()
-		cou.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cou *CiOperationUpdate) check() error {
-	if v, ok := cou.mutation.OperationType(); ok {
+func (_u *CiOperationUpdate) check() error {
+	if v, ok := _u.mutation.OperationType(); ok {
 		if err := cioperation.OperationTypeValidator(v); err != nil {
 			return &ValidationError{Name: "operation_type", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_type": %w`, err)}
 		}
 	}
-	if v, ok := cou.mutation.OperationStatus(); ok {
+	if v, ok := _u.mutation.OperationStatus(); ok {
 		if err := cioperation.OperationStatusValidator(v); err != nil {
 			return &ValidationError{Name: "operation_status", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_status": %w`, err)}
 		}
 	}
-	if v, ok := cou.mutation.OperationSource(); ok {
+	if v, ok := _u.mutation.OperationSource(); ok {
 		if err := cioperation.OperationSourceValidator(v); err != nil {
 			return &ValidationError{Name: "operation_source", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_source": %w`, err)}
 		}
 	}
-	if v, ok := cou.mutation.LifecycleStage(); ok {
+	if v, ok := _u.mutation.LifecycleStage(); ok {
 		if err := cioperation.LifecycleStageValidator(v); err != nil {
 			return &ValidationError{Name: "lifecycle_stage", err: fmt.Errorf(`ent: validator failed for field "CiOperation.lifecycle_stage": %w`, err)}
 		}
@@ -885,296 +885,296 @@ func (cou *CiOperationUpdate) check() error {
 	return nil
 }
 
-func (cou *CiOperationUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := cou.check(); err != nil {
-		return n, err
+func (_u *CiOperationUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cioperation.Table, cioperation.Columns, sqlgraph.NewFieldSpec(cioperation.FieldID, field.TypeUint64))
-	if ps := cou.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := cou.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cioperation.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := cou.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cioperation.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := cou.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cioperation.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if cou.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cioperation.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := cou.mutation.OperationID(); ok {
+	if value, ok := _u.mutation.OperationID(); ok {
 		_spec.SetField(cioperation.FieldOperationID, field.TypeString, value)
 	}
-	if value, ok := cou.mutation.OperationType(); ok {
+	if value, ok := _u.mutation.OperationType(); ok {
 		_spec.SetField(cioperation.FieldOperationType, field.TypeEnum, value)
 	}
-	if value, ok := cou.mutation.OperationStatus(); ok {
+	if value, ok := _u.mutation.OperationStatus(); ok {
 		_spec.SetField(cioperation.FieldOperationStatus, field.TypeEnum, value)
 	}
-	if value, ok := cou.mutation.CiID(); ok {
+	if value, ok := _u.mutation.CiID(); ok {
 		_spec.SetField(cioperation.FieldCiID, field.TypeUint64, value)
 	}
-	if value, ok := cou.mutation.AddedCiID(); ok {
+	if value, ok := _u.mutation.AddedCiID(); ok {
 		_spec.AddField(cioperation.FieldCiID, field.TypeUint64, value)
 	}
-	if cou.mutation.CiIDCleared() {
+	if _u.mutation.CiIDCleared() {
 		_spec.ClearField(cioperation.FieldCiID, field.TypeUint64)
 	}
-	if value, ok := cou.mutation.CiTypeID(); ok {
+	if value, ok := _u.mutation.CiTypeID(); ok {
 		_spec.SetField(cioperation.FieldCiTypeID, field.TypeUint64, value)
 	}
-	if value, ok := cou.mutation.AddedCiTypeID(); ok {
+	if value, ok := _u.mutation.AddedCiTypeID(); ok {
 		_spec.AddField(cioperation.FieldCiTypeID, field.TypeUint64, value)
 	}
-	if value, ok := cou.mutation.OperatorID(); ok {
+	if value, ok := _u.mutation.OperatorID(); ok {
 		_spec.SetField(cioperation.FieldOperatorID, field.TypeUUID, value)
 	}
-	if value, ok := cou.mutation.OperatorName(); ok {
+	if value, ok := _u.mutation.OperatorName(); ok {
 		_spec.SetField(cioperation.FieldOperatorName, field.TypeString, value)
 	}
-	if value, ok := cou.mutation.OperatorRole(); ok {
+	if value, ok := _u.mutation.OperatorRole(); ok {
 		_spec.SetField(cioperation.FieldOperatorRole, field.TypeString, value)
 	}
-	if cou.mutation.OperatorRoleCleared() {
+	if _u.mutation.OperatorRoleCleared() {
 		_spec.ClearField(cioperation.FieldOperatorRole, field.TypeString)
 	}
-	if value, ok := cou.mutation.OperatorDepartment(); ok {
+	if value, ok := _u.mutation.OperatorDepartment(); ok {
 		_spec.SetField(cioperation.FieldOperatorDepartment, field.TypeString, value)
 	}
-	if cou.mutation.OperatorDepartmentCleared() {
+	if _u.mutation.OperatorDepartmentCleared() {
 		_spec.ClearField(cioperation.FieldOperatorDepartment, field.TypeString)
 	}
-	if value, ok := cou.mutation.OperationSource(); ok {
+	if value, ok := _u.mutation.OperationSource(); ok {
 		_spec.SetField(cioperation.FieldOperationSource, field.TypeEnum, value)
 	}
-	if value, ok := cou.mutation.SourceDetail(); ok {
+	if value, ok := _u.mutation.SourceDetail(); ok {
 		_spec.SetField(cioperation.FieldSourceDetail, field.TypeString, value)
 	}
-	if cou.mutation.SourceDetailCleared() {
+	if _u.mutation.SourceDetailCleared() {
 		_spec.ClearField(cioperation.FieldSourceDetail, field.TypeString)
 	}
-	if value, ok := cou.mutation.OperationReason(); ok {
+	if value, ok := _u.mutation.OperationReason(); ok {
 		_spec.SetField(cioperation.FieldOperationReason, field.TypeString, value)
 	}
-	if cou.mutation.OperationReasonCleared() {
+	if _u.mutation.OperationReasonCleared() {
 		_spec.ClearField(cioperation.FieldOperationReason, field.TypeString)
 	}
-	if value, ok := cou.mutation.OperationContext(); ok {
+	if value, ok := _u.mutation.OperationContext(); ok {
 		_spec.SetField(cioperation.FieldOperationContext, field.TypeJSON, value)
 	}
-	if cou.mutation.OperationContextCleared() {
+	if _u.mutation.OperationContextCleared() {
 		_spec.ClearField(cioperation.FieldOperationContext, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.DataBefore(); ok {
+	if value, ok := _u.mutation.DataBefore(); ok {
 		_spec.SetField(cioperation.FieldDataBefore, field.TypeJSON, value)
 	}
-	if cou.mutation.DataBeforeCleared() {
+	if _u.mutation.DataBeforeCleared() {
 		_spec.ClearField(cioperation.FieldDataBefore, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.DataAfter(); ok {
+	if value, ok := _u.mutation.DataAfter(); ok {
 		_spec.SetField(cioperation.FieldDataAfter, field.TypeJSON, value)
 	}
-	if cou.mutation.DataAfterCleared() {
+	if _u.mutation.DataAfterCleared() {
 		_spec.ClearField(cioperation.FieldDataAfter, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.AffectedAttributes(); ok {
+	if value, ok := _u.mutation.AffectedAttributes(); ok {
 		_spec.SetField(cioperation.FieldAffectedAttributes, field.TypeJSON, value)
 	}
-	if value, ok := cou.mutation.AppendedAffectedAttributes(); ok {
+	if value, ok := _u.mutation.AppendedAffectedAttributes(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldAffectedAttributes, value)
 		})
 	}
-	if cou.mutation.AffectedAttributesCleared() {
+	if _u.mutation.AffectedAttributesCleared() {
 		_spec.ClearField(cioperation.FieldAffectedAttributes, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.BatchCiIds(); ok {
+	if value, ok := _u.mutation.BatchCiIds(); ok {
 		_spec.SetField(cioperation.FieldBatchCiIds, field.TypeJSON, value)
 	}
-	if value, ok := cou.mutation.AppendedBatchCiIds(); ok {
+	if value, ok := _u.mutation.AppendedBatchCiIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldBatchCiIds, value)
 		})
 	}
-	if cou.mutation.BatchCiIdsCleared() {
+	if _u.mutation.BatchCiIdsCleared() {
 		_spec.ClearField(cioperation.FieldBatchCiIds, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.BatchTotal(); ok {
+	if value, ok := _u.mutation.BatchTotal(); ok {
 		_spec.SetField(cioperation.FieldBatchTotal, field.TypeInt, value)
 	}
-	if value, ok := cou.mutation.AddedBatchTotal(); ok {
+	if value, ok := _u.mutation.AddedBatchTotal(); ok {
 		_spec.AddField(cioperation.FieldBatchTotal, field.TypeInt, value)
 	}
-	if cou.mutation.BatchTotalCleared() {
+	if _u.mutation.BatchTotalCleared() {
 		_spec.ClearField(cioperation.FieldBatchTotal, field.TypeInt)
 	}
-	if value, ok := cou.mutation.BatchSuccess(); ok {
+	if value, ok := _u.mutation.BatchSuccess(); ok {
 		_spec.SetField(cioperation.FieldBatchSuccess, field.TypeInt, value)
 	}
-	if value, ok := cou.mutation.AddedBatchSuccess(); ok {
+	if value, ok := _u.mutation.AddedBatchSuccess(); ok {
 		_spec.AddField(cioperation.FieldBatchSuccess, field.TypeInt, value)
 	}
-	if cou.mutation.BatchSuccessCleared() {
+	if _u.mutation.BatchSuccessCleared() {
 		_spec.ClearField(cioperation.FieldBatchSuccess, field.TypeInt)
 	}
-	if value, ok := cou.mutation.BatchFailed(); ok {
+	if value, ok := _u.mutation.BatchFailed(); ok {
 		_spec.SetField(cioperation.FieldBatchFailed, field.TypeInt, value)
 	}
-	if value, ok := cou.mutation.AddedBatchFailed(); ok {
+	if value, ok := _u.mutation.AddedBatchFailed(); ok {
 		_spec.AddField(cioperation.FieldBatchFailed, field.TypeInt, value)
 	}
-	if cou.mutation.BatchFailedCleared() {
+	if _u.mutation.BatchFailedCleared() {
 		_spec.ClearField(cioperation.FieldBatchFailed, field.TypeInt)
 	}
-	if value, ok := cou.mutation.RequireApproval(); ok {
+	if value, ok := _u.mutation.RequireApproval(); ok {
 		_spec.SetField(cioperation.FieldRequireApproval, field.TypeBool, value)
 	}
-	if value, ok := cou.mutation.ApprovalFlowID(); ok {
+	if value, ok := _u.mutation.ApprovalFlowID(); ok {
 		_spec.SetField(cioperation.FieldApprovalFlowID, field.TypeString, value)
 	}
-	if cou.mutation.ApprovalFlowIDCleared() {
+	if _u.mutation.ApprovalFlowIDCleared() {
 		_spec.ClearField(cioperation.FieldApprovalFlowID, field.TypeString)
 	}
-	if value, ok := cou.mutation.ApproverID(); ok {
+	if value, ok := _u.mutation.ApproverID(); ok {
 		_spec.SetField(cioperation.FieldApproverID, field.TypeUUID, value)
 	}
-	if cou.mutation.ApproverIDCleared() {
+	if _u.mutation.ApproverIDCleared() {
 		_spec.ClearField(cioperation.FieldApproverID, field.TypeUUID)
 	}
-	if value, ok := cou.mutation.ApproverName(); ok {
+	if value, ok := _u.mutation.ApproverName(); ok {
 		_spec.SetField(cioperation.FieldApproverName, field.TypeString, value)
 	}
-	if cou.mutation.ApproverNameCleared() {
+	if _u.mutation.ApproverNameCleared() {
 		_spec.ClearField(cioperation.FieldApproverName, field.TypeString)
 	}
-	if value, ok := cou.mutation.ApprovedAt(); ok {
+	if value, ok := _u.mutation.ApprovedAt(); ok {
 		_spec.SetField(cioperation.FieldApprovedAt, field.TypeTime, value)
 	}
-	if cou.mutation.ApprovedAtCleared() {
+	if _u.mutation.ApprovedAtCleared() {
 		_spec.ClearField(cioperation.FieldApprovedAt, field.TypeTime)
 	}
-	if value, ok := cou.mutation.ApprovalComment(); ok {
+	if value, ok := _u.mutation.ApprovalComment(); ok {
 		_spec.SetField(cioperation.FieldApprovalComment, field.TypeString, value)
 	}
-	if cou.mutation.ApprovalCommentCleared() {
+	if _u.mutation.ApprovalCommentCleared() {
 		_spec.ClearField(cioperation.FieldApprovalComment, field.TypeString)
 	}
-	if value, ok := cou.mutation.StartedAt(); ok {
+	if value, ok := _u.mutation.StartedAt(); ok {
 		_spec.SetField(cioperation.FieldStartedAt, field.TypeTime, value)
 	}
-	if cou.mutation.StartedAtCleared() {
+	if _u.mutation.StartedAtCleared() {
 		_spec.ClearField(cioperation.FieldStartedAt, field.TypeTime)
 	}
-	if value, ok := cou.mutation.CompletedAt(); ok {
+	if value, ok := _u.mutation.CompletedAt(); ok {
 		_spec.SetField(cioperation.FieldCompletedAt, field.TypeTime, value)
 	}
-	if cou.mutation.CompletedAtCleared() {
+	if _u.mutation.CompletedAtCleared() {
 		_spec.ClearField(cioperation.FieldCompletedAt, field.TypeTime)
 	}
-	if value, ok := cou.mutation.ExecutionDuration(); ok {
+	if value, ok := _u.mutation.ExecutionDuration(); ok {
 		_spec.SetField(cioperation.FieldExecutionDuration, field.TypeInt, value)
 	}
-	if value, ok := cou.mutation.AddedExecutionDuration(); ok {
+	if value, ok := _u.mutation.AddedExecutionDuration(); ok {
 		_spec.AddField(cioperation.FieldExecutionDuration, field.TypeInt, value)
 	}
-	if cou.mutation.ExecutionDurationCleared() {
+	if _u.mutation.ExecutionDurationCleared() {
 		_spec.ClearField(cioperation.FieldExecutionDuration, field.TypeInt)
 	}
-	if value, ok := cou.mutation.ExecutionResult(); ok {
+	if value, ok := _u.mutation.ExecutionResult(); ok {
 		_spec.SetField(cioperation.FieldExecutionResult, field.TypeJSON, value)
 	}
-	if cou.mutation.ExecutionResultCleared() {
+	if _u.mutation.ExecutionResultCleared() {
 		_spec.ClearField(cioperation.FieldExecutionResult, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.ErrorMessage(); ok {
+	if value, ok := _u.mutation.ErrorMessage(); ok {
 		_spec.SetField(cioperation.FieldErrorMessage, field.TypeString, value)
 	}
-	if cou.mutation.ErrorMessageCleared() {
+	if _u.mutation.ErrorMessageCleared() {
 		_spec.ClearField(cioperation.FieldErrorMessage, field.TypeString)
 	}
-	if value, ok := cou.mutation.ErrorDetails(); ok {
+	if value, ok := _u.mutation.ErrorDetails(); ok {
 		_spec.SetField(cioperation.FieldErrorDetails, field.TypeJSON, value)
 	}
-	if cou.mutation.ErrorDetailsCleared() {
+	if _u.mutation.ErrorDetailsCleared() {
 		_spec.ClearField(cioperation.FieldErrorDetails, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.LifecycleStage(); ok {
+	if value, ok := _u.mutation.LifecycleStage(); ok {
 		_spec.SetField(cioperation.FieldLifecycleStage, field.TypeEnum, value)
 	}
-	if value, ok := cou.mutation.ExpiresAt(); ok {
+	if value, ok := _u.mutation.ExpiresAt(); ok {
 		_spec.SetField(cioperation.FieldExpiresAt, field.TypeTime, value)
 	}
-	if cou.mutation.ExpiresAtCleared() {
+	if _u.mutation.ExpiresAtCleared() {
 		_spec.ClearField(cioperation.FieldExpiresAt, field.TypeTime)
 	}
-	if value, ok := cou.mutation.RequiredPermissions(); ok {
+	if value, ok := _u.mutation.RequiredPermissions(); ok {
 		_spec.SetField(cioperation.FieldRequiredPermissions, field.TypeJSON, value)
 	}
-	if value, ok := cou.mutation.AppendedRequiredPermissions(); ok {
+	if value, ok := _u.mutation.AppendedRequiredPermissions(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldRequiredPermissions, value)
 		})
 	}
-	if cou.mutation.RequiredPermissionsCleared() {
+	if _u.mutation.RequiredPermissionsCleared() {
 		_spec.ClearField(cioperation.FieldRequiredPermissions, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.PermissionCheckResult(); ok {
+	if value, ok := _u.mutation.PermissionCheckResult(); ok {
 		_spec.SetField(cioperation.FieldPermissionCheckResult, field.TypeJSON, value)
 	}
-	if cou.mutation.PermissionCheckResultCleared() {
+	if _u.mutation.PermissionCheckResultCleared() {
 		_spec.ClearField(cioperation.FieldPermissionCheckResult, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.IsSensitive(); ok {
+	if value, ok := _u.mutation.IsSensitive(); ok {
 		_spec.SetField(cioperation.FieldIsSensitive, field.TypeBool, value)
 	}
-	if value, ok := cou.mutation.ParentOperationID(); ok {
+	if value, ok := _u.mutation.ParentOperationID(); ok {
 		_spec.SetField(cioperation.FieldParentOperationID, field.TypeString, value)
 	}
-	if cou.mutation.ParentOperationIDCleared() {
+	if _u.mutation.ParentOperationIDCleared() {
 		_spec.ClearField(cioperation.FieldParentOperationID, field.TypeString)
 	}
-	if value, ok := cou.mutation.ChildOperationIds(); ok {
+	if value, ok := _u.mutation.ChildOperationIds(); ok {
 		_spec.SetField(cioperation.FieldChildOperationIds, field.TypeJSON, value)
 	}
-	if value, ok := cou.mutation.AppendedChildOperationIds(); ok {
+	if value, ok := _u.mutation.AppendedChildOperationIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldChildOperationIds, value)
 		})
 	}
-	if cou.mutation.ChildOperationIdsCleared() {
+	if _u.mutation.ChildOperationIdsCleared() {
 		_spec.ClearField(cioperation.FieldChildOperationIds, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.TransactionID(); ok {
+	if value, ok := _u.mutation.TransactionID(); ok {
 		_spec.SetField(cioperation.FieldTransactionID, field.TypeString, value)
 	}
-	if cou.mutation.TransactionIDCleared() {
+	if _u.mutation.TransactionIDCleared() {
 		_spec.ClearField(cioperation.FieldTransactionID, field.TypeString)
 	}
-	if value, ok := cou.mutation.Metadata(); ok {
+	if value, ok := _u.mutation.Metadata(); ok {
 		_spec.SetField(cioperation.FieldMetadata, field.TypeJSON, value)
 	}
-	if cou.mutation.MetadataCleared() {
+	if _u.mutation.MetadataCleared() {
 		_spec.ClearField(cioperation.FieldMetadata, field.TypeJSON)
 	}
-	if value, ok := cou.mutation.Tags(); ok {
+	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(cioperation.FieldTags, field.TypeJSON, value)
 	}
-	if value, ok := cou.mutation.AppendedTags(); ok {
+	if value, ok := _u.mutation.AppendedTags(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldTags, value)
 		})
 	}
-	if cou.mutation.TagsCleared() {
+	if _u.mutation.TagsCleared() {
 		_spec.ClearField(cioperation.FieldTags, field.TypeJSON)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, cou.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cioperation.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -1182,8 +1182,8 @@ func (cou *CiOperationUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		return 0, err
 	}
-	cou.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // CiOperationUpdateOne is the builder for updating a single CiOperation entity.
@@ -1195,821 +1195,821 @@ type CiOperationUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (couo *CiOperationUpdateOne) SetUpdatedAt(t time.Time) *CiOperationUpdateOne {
-	couo.mutation.SetUpdatedAt(t)
-	return couo
+func (_u *CiOperationUpdateOne) SetUpdatedAt(v time.Time) *CiOperationUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (couo *CiOperationUpdateOne) SetDepartmentID(u uint64) *CiOperationUpdateOne {
-	couo.mutation.ResetDepartmentID()
-	couo.mutation.SetDepartmentID(u)
-	return couo
+func (_u *CiOperationUpdateOne) SetDepartmentID(v uint64) *CiOperationUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableDepartmentID(u *uint64) *CiOperationUpdateOne {
-	if u != nil {
-		couo.SetDepartmentID(*u)
+func (_u *CiOperationUpdateOne) SetNillableDepartmentID(v *uint64) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
 	}
-	return couo
+	return _u
 }
 
-// AddDepartmentID adds u to the "department_id" field.
-func (couo *CiOperationUpdateOne) AddDepartmentID(u int64) *CiOperationUpdateOne {
-	couo.mutation.AddDepartmentID(u)
-	return couo
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiOperationUpdateOne) AddDepartmentID(v int64) *CiOperationUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
 }
 
 // ClearDepartmentID clears the value of the "department_id" field.
-func (couo *CiOperationUpdateOne) ClearDepartmentID() *CiOperationUpdateOne {
-	couo.mutation.ClearDepartmentID()
-	return couo
+func (_u *CiOperationUpdateOne) ClearDepartmentID() *CiOperationUpdateOne {
+	_u.mutation.ClearDepartmentID()
+	return _u
 }
 
 // SetOperationID sets the "operation_id" field.
-func (couo *CiOperationUpdateOne) SetOperationID(s string) *CiOperationUpdateOne {
-	couo.mutation.SetOperationID(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperationID(v string) *CiOperationUpdateOne {
+	_u.mutation.SetOperationID(v)
+	return _u
 }
 
 // SetNillableOperationID sets the "operation_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperationID(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetOperationID(*s)
+func (_u *CiOperationUpdateOne) SetNillableOperationID(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperationID(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetOperationType sets the "operation_type" field.
-func (couo *CiOperationUpdateOne) SetOperationType(ct cioperation.OperationType) *CiOperationUpdateOne {
-	couo.mutation.SetOperationType(ct)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperationType(v cioperation.OperationType) *CiOperationUpdateOne {
+	_u.mutation.SetOperationType(v)
+	return _u
 }
 
 // SetNillableOperationType sets the "operation_type" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperationType(ct *cioperation.OperationType) *CiOperationUpdateOne {
-	if ct != nil {
-		couo.SetOperationType(*ct)
+func (_u *CiOperationUpdateOne) SetNillableOperationType(v *cioperation.OperationType) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperationType(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetOperationStatus sets the "operation_status" field.
-func (couo *CiOperationUpdateOne) SetOperationStatus(cs cioperation.OperationStatus) *CiOperationUpdateOne {
-	couo.mutation.SetOperationStatus(cs)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperationStatus(v cioperation.OperationStatus) *CiOperationUpdateOne {
+	_u.mutation.SetOperationStatus(v)
+	return _u
 }
 
 // SetNillableOperationStatus sets the "operation_status" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperationStatus(cs *cioperation.OperationStatus) *CiOperationUpdateOne {
-	if cs != nil {
-		couo.SetOperationStatus(*cs)
+func (_u *CiOperationUpdateOne) SetNillableOperationStatus(v *cioperation.OperationStatus) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperationStatus(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (couo *CiOperationUpdateOne) SetCiID(u uint64) *CiOperationUpdateOne {
-	couo.mutation.ResetCiID()
-	couo.mutation.SetCiID(u)
-	return couo
+func (_u *CiOperationUpdateOne) SetCiID(v uint64) *CiOperationUpdateOne {
+	_u.mutation.ResetCiID()
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableCiID(u *uint64) *CiOperationUpdateOne {
-	if u != nil {
-		couo.SetCiID(*u)
+func (_u *CiOperationUpdateOne) SetNillableCiID(v *uint64) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return couo
+	return _u
 }
 
-// AddCiID adds u to the "ci_id" field.
-func (couo *CiOperationUpdateOne) AddCiID(u int64) *CiOperationUpdateOne {
-	couo.mutation.AddCiID(u)
-	return couo
+// AddCiID adds value to the "ci_id" field.
+func (_u *CiOperationUpdateOne) AddCiID(v int64) *CiOperationUpdateOne {
+	_u.mutation.AddCiID(v)
+	return _u
 }
 
 // ClearCiID clears the value of the "ci_id" field.
-func (couo *CiOperationUpdateOne) ClearCiID() *CiOperationUpdateOne {
-	couo.mutation.ClearCiID()
-	return couo
+func (_u *CiOperationUpdateOne) ClearCiID() *CiOperationUpdateOne {
+	_u.mutation.ClearCiID()
+	return _u
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (couo *CiOperationUpdateOne) SetCiTypeID(u uint64) *CiOperationUpdateOne {
-	couo.mutation.ResetCiTypeID()
-	couo.mutation.SetCiTypeID(u)
-	return couo
+func (_u *CiOperationUpdateOne) SetCiTypeID(v uint64) *CiOperationUpdateOne {
+	_u.mutation.ResetCiTypeID()
+	_u.mutation.SetCiTypeID(v)
+	return _u
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableCiTypeID(u *uint64) *CiOperationUpdateOne {
-	if u != nil {
-		couo.SetCiTypeID(*u)
+func (_u *CiOperationUpdateOne) SetNillableCiTypeID(v *uint64) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetCiTypeID(*v)
 	}
-	return couo
+	return _u
 }
 
-// AddCiTypeID adds u to the "ci_type_id" field.
-func (couo *CiOperationUpdateOne) AddCiTypeID(u int64) *CiOperationUpdateOne {
-	couo.mutation.AddCiTypeID(u)
-	return couo
+// AddCiTypeID adds value to the "ci_type_id" field.
+func (_u *CiOperationUpdateOne) AddCiTypeID(v int64) *CiOperationUpdateOne {
+	_u.mutation.AddCiTypeID(v)
+	return _u
 }
 
 // SetOperatorID sets the "operator_id" field.
-func (couo *CiOperationUpdateOne) SetOperatorID(u uuid.UUID) *CiOperationUpdateOne {
-	couo.mutation.SetOperatorID(u)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperatorID(v uuid.UUID) *CiOperationUpdateOne {
+	_u.mutation.SetOperatorID(v)
+	return _u
 }
 
 // SetNillableOperatorID sets the "operator_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperatorID(u *uuid.UUID) *CiOperationUpdateOne {
-	if u != nil {
-		couo.SetOperatorID(*u)
+func (_u *CiOperationUpdateOne) SetNillableOperatorID(v *uuid.UUID) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperatorID(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetOperatorName sets the "operator_name" field.
-func (couo *CiOperationUpdateOne) SetOperatorName(s string) *CiOperationUpdateOne {
-	couo.mutation.SetOperatorName(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperatorName(v string) *CiOperationUpdateOne {
+	_u.mutation.SetOperatorName(v)
+	return _u
 }
 
 // SetNillableOperatorName sets the "operator_name" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperatorName(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetOperatorName(*s)
+func (_u *CiOperationUpdateOne) SetNillableOperatorName(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperatorName(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetOperatorRole sets the "operator_role" field.
-func (couo *CiOperationUpdateOne) SetOperatorRole(s string) *CiOperationUpdateOne {
-	couo.mutation.SetOperatorRole(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperatorRole(v string) *CiOperationUpdateOne {
+	_u.mutation.SetOperatorRole(v)
+	return _u
 }
 
 // SetNillableOperatorRole sets the "operator_role" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperatorRole(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetOperatorRole(*s)
+func (_u *CiOperationUpdateOne) SetNillableOperatorRole(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperatorRole(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearOperatorRole clears the value of the "operator_role" field.
-func (couo *CiOperationUpdateOne) ClearOperatorRole() *CiOperationUpdateOne {
-	couo.mutation.ClearOperatorRole()
-	return couo
+func (_u *CiOperationUpdateOne) ClearOperatorRole() *CiOperationUpdateOne {
+	_u.mutation.ClearOperatorRole()
+	return _u
 }
 
 // SetOperatorDepartment sets the "operator_department" field.
-func (couo *CiOperationUpdateOne) SetOperatorDepartment(s string) *CiOperationUpdateOne {
-	couo.mutation.SetOperatorDepartment(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperatorDepartment(v string) *CiOperationUpdateOne {
+	_u.mutation.SetOperatorDepartment(v)
+	return _u
 }
 
 // SetNillableOperatorDepartment sets the "operator_department" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperatorDepartment(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetOperatorDepartment(*s)
+func (_u *CiOperationUpdateOne) SetNillableOperatorDepartment(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperatorDepartment(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearOperatorDepartment clears the value of the "operator_department" field.
-func (couo *CiOperationUpdateOne) ClearOperatorDepartment() *CiOperationUpdateOne {
-	couo.mutation.ClearOperatorDepartment()
-	return couo
+func (_u *CiOperationUpdateOne) ClearOperatorDepartment() *CiOperationUpdateOne {
+	_u.mutation.ClearOperatorDepartment()
+	return _u
 }
 
 // SetOperationSource sets the "operation_source" field.
-func (couo *CiOperationUpdateOne) SetOperationSource(cs cioperation.OperationSource) *CiOperationUpdateOne {
-	couo.mutation.SetOperationSource(cs)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperationSource(v cioperation.OperationSource) *CiOperationUpdateOne {
+	_u.mutation.SetOperationSource(v)
+	return _u
 }
 
 // SetNillableOperationSource sets the "operation_source" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperationSource(cs *cioperation.OperationSource) *CiOperationUpdateOne {
-	if cs != nil {
-		couo.SetOperationSource(*cs)
+func (_u *CiOperationUpdateOne) SetNillableOperationSource(v *cioperation.OperationSource) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperationSource(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetSourceDetail sets the "source_detail" field.
-func (couo *CiOperationUpdateOne) SetSourceDetail(s string) *CiOperationUpdateOne {
-	couo.mutation.SetSourceDetail(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetSourceDetail(v string) *CiOperationUpdateOne {
+	_u.mutation.SetSourceDetail(v)
+	return _u
 }
 
 // SetNillableSourceDetail sets the "source_detail" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableSourceDetail(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetSourceDetail(*s)
+func (_u *CiOperationUpdateOne) SetNillableSourceDetail(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetSourceDetail(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearSourceDetail clears the value of the "source_detail" field.
-func (couo *CiOperationUpdateOne) ClearSourceDetail() *CiOperationUpdateOne {
-	couo.mutation.ClearSourceDetail()
-	return couo
+func (_u *CiOperationUpdateOne) ClearSourceDetail() *CiOperationUpdateOne {
+	_u.mutation.ClearSourceDetail()
+	return _u
 }
 
 // SetOperationReason sets the "operation_reason" field.
-func (couo *CiOperationUpdateOne) SetOperationReason(s string) *CiOperationUpdateOne {
-	couo.mutation.SetOperationReason(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperationReason(v string) *CiOperationUpdateOne {
+	_u.mutation.SetOperationReason(v)
+	return _u
 }
 
 // SetNillableOperationReason sets the "operation_reason" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableOperationReason(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetOperationReason(*s)
+func (_u *CiOperationUpdateOne) SetNillableOperationReason(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetOperationReason(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearOperationReason clears the value of the "operation_reason" field.
-func (couo *CiOperationUpdateOne) ClearOperationReason() *CiOperationUpdateOne {
-	couo.mutation.ClearOperationReason()
-	return couo
+func (_u *CiOperationUpdateOne) ClearOperationReason() *CiOperationUpdateOne {
+	_u.mutation.ClearOperationReason()
+	return _u
 }
 
 // SetOperationContext sets the "operation_context" field.
-func (couo *CiOperationUpdateOne) SetOperationContext(m map[string]interface{}) *CiOperationUpdateOne {
-	couo.mutation.SetOperationContext(m)
-	return couo
+func (_u *CiOperationUpdateOne) SetOperationContext(v map[string]interface{}) *CiOperationUpdateOne {
+	_u.mutation.SetOperationContext(v)
+	return _u
 }
 
 // ClearOperationContext clears the value of the "operation_context" field.
-func (couo *CiOperationUpdateOne) ClearOperationContext() *CiOperationUpdateOne {
-	couo.mutation.ClearOperationContext()
-	return couo
+func (_u *CiOperationUpdateOne) ClearOperationContext() *CiOperationUpdateOne {
+	_u.mutation.ClearOperationContext()
+	return _u
 }
 
 // SetDataBefore sets the "data_before" field.
-func (couo *CiOperationUpdateOne) SetDataBefore(m map[string]interface{}) *CiOperationUpdateOne {
-	couo.mutation.SetDataBefore(m)
-	return couo
+func (_u *CiOperationUpdateOne) SetDataBefore(v map[string]interface{}) *CiOperationUpdateOne {
+	_u.mutation.SetDataBefore(v)
+	return _u
 }
 
 // ClearDataBefore clears the value of the "data_before" field.
-func (couo *CiOperationUpdateOne) ClearDataBefore() *CiOperationUpdateOne {
-	couo.mutation.ClearDataBefore()
-	return couo
+func (_u *CiOperationUpdateOne) ClearDataBefore() *CiOperationUpdateOne {
+	_u.mutation.ClearDataBefore()
+	return _u
 }
 
 // SetDataAfter sets the "data_after" field.
-func (couo *CiOperationUpdateOne) SetDataAfter(m map[string]interface{}) *CiOperationUpdateOne {
-	couo.mutation.SetDataAfter(m)
-	return couo
+func (_u *CiOperationUpdateOne) SetDataAfter(v map[string]interface{}) *CiOperationUpdateOne {
+	_u.mutation.SetDataAfter(v)
+	return _u
 }
 
 // ClearDataAfter clears the value of the "data_after" field.
-func (couo *CiOperationUpdateOne) ClearDataAfter() *CiOperationUpdateOne {
-	couo.mutation.ClearDataAfter()
-	return couo
+func (_u *CiOperationUpdateOne) ClearDataAfter() *CiOperationUpdateOne {
+	_u.mutation.ClearDataAfter()
+	return _u
 }
 
 // SetAffectedAttributes sets the "affected_attributes" field.
-func (couo *CiOperationUpdateOne) SetAffectedAttributes(u []uint64) *CiOperationUpdateOne {
-	couo.mutation.SetAffectedAttributes(u)
-	return couo
+func (_u *CiOperationUpdateOne) SetAffectedAttributes(v []uint64) *CiOperationUpdateOne {
+	_u.mutation.SetAffectedAttributes(v)
+	return _u
 }
 
-// AppendAffectedAttributes appends u to the "affected_attributes" field.
-func (couo *CiOperationUpdateOne) AppendAffectedAttributes(u []uint64) *CiOperationUpdateOne {
-	couo.mutation.AppendAffectedAttributes(u)
-	return couo
+// AppendAffectedAttributes appends value to the "affected_attributes" field.
+func (_u *CiOperationUpdateOne) AppendAffectedAttributes(v []uint64) *CiOperationUpdateOne {
+	_u.mutation.AppendAffectedAttributes(v)
+	return _u
 }
 
 // ClearAffectedAttributes clears the value of the "affected_attributes" field.
-func (couo *CiOperationUpdateOne) ClearAffectedAttributes() *CiOperationUpdateOne {
-	couo.mutation.ClearAffectedAttributes()
-	return couo
+func (_u *CiOperationUpdateOne) ClearAffectedAttributes() *CiOperationUpdateOne {
+	_u.mutation.ClearAffectedAttributes()
+	return _u
 }
 
 // SetBatchCiIds sets the "batch_ci_ids" field.
-func (couo *CiOperationUpdateOne) SetBatchCiIds(u []uint64) *CiOperationUpdateOne {
-	couo.mutation.SetBatchCiIds(u)
-	return couo
+func (_u *CiOperationUpdateOne) SetBatchCiIds(v []uint64) *CiOperationUpdateOne {
+	_u.mutation.SetBatchCiIds(v)
+	return _u
 }
 
-// AppendBatchCiIds appends u to the "batch_ci_ids" field.
-func (couo *CiOperationUpdateOne) AppendBatchCiIds(u []uint64) *CiOperationUpdateOne {
-	couo.mutation.AppendBatchCiIds(u)
-	return couo
+// AppendBatchCiIds appends value to the "batch_ci_ids" field.
+func (_u *CiOperationUpdateOne) AppendBatchCiIds(v []uint64) *CiOperationUpdateOne {
+	_u.mutation.AppendBatchCiIds(v)
+	return _u
 }
 
 // ClearBatchCiIds clears the value of the "batch_ci_ids" field.
-func (couo *CiOperationUpdateOne) ClearBatchCiIds() *CiOperationUpdateOne {
-	couo.mutation.ClearBatchCiIds()
-	return couo
+func (_u *CiOperationUpdateOne) ClearBatchCiIds() *CiOperationUpdateOne {
+	_u.mutation.ClearBatchCiIds()
+	return _u
 }
 
 // SetBatchTotal sets the "batch_total" field.
-func (couo *CiOperationUpdateOne) SetBatchTotal(i int) *CiOperationUpdateOne {
-	couo.mutation.ResetBatchTotal()
-	couo.mutation.SetBatchTotal(i)
-	return couo
+func (_u *CiOperationUpdateOne) SetBatchTotal(v int) *CiOperationUpdateOne {
+	_u.mutation.ResetBatchTotal()
+	_u.mutation.SetBatchTotal(v)
+	return _u
 }
 
 // SetNillableBatchTotal sets the "batch_total" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableBatchTotal(i *int) *CiOperationUpdateOne {
-	if i != nil {
-		couo.SetBatchTotal(*i)
+func (_u *CiOperationUpdateOne) SetNillableBatchTotal(v *int) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetBatchTotal(*v)
 	}
-	return couo
+	return _u
 }
 
-// AddBatchTotal adds i to the "batch_total" field.
-func (couo *CiOperationUpdateOne) AddBatchTotal(i int) *CiOperationUpdateOne {
-	couo.mutation.AddBatchTotal(i)
-	return couo
+// AddBatchTotal adds value to the "batch_total" field.
+func (_u *CiOperationUpdateOne) AddBatchTotal(v int) *CiOperationUpdateOne {
+	_u.mutation.AddBatchTotal(v)
+	return _u
 }
 
 // ClearBatchTotal clears the value of the "batch_total" field.
-func (couo *CiOperationUpdateOne) ClearBatchTotal() *CiOperationUpdateOne {
-	couo.mutation.ClearBatchTotal()
-	return couo
+func (_u *CiOperationUpdateOne) ClearBatchTotal() *CiOperationUpdateOne {
+	_u.mutation.ClearBatchTotal()
+	return _u
 }
 
 // SetBatchSuccess sets the "batch_success" field.
-func (couo *CiOperationUpdateOne) SetBatchSuccess(i int) *CiOperationUpdateOne {
-	couo.mutation.ResetBatchSuccess()
-	couo.mutation.SetBatchSuccess(i)
-	return couo
+func (_u *CiOperationUpdateOne) SetBatchSuccess(v int) *CiOperationUpdateOne {
+	_u.mutation.ResetBatchSuccess()
+	_u.mutation.SetBatchSuccess(v)
+	return _u
 }
 
 // SetNillableBatchSuccess sets the "batch_success" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableBatchSuccess(i *int) *CiOperationUpdateOne {
-	if i != nil {
-		couo.SetBatchSuccess(*i)
+func (_u *CiOperationUpdateOne) SetNillableBatchSuccess(v *int) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetBatchSuccess(*v)
 	}
-	return couo
+	return _u
 }
 
-// AddBatchSuccess adds i to the "batch_success" field.
-func (couo *CiOperationUpdateOne) AddBatchSuccess(i int) *CiOperationUpdateOne {
-	couo.mutation.AddBatchSuccess(i)
-	return couo
+// AddBatchSuccess adds value to the "batch_success" field.
+func (_u *CiOperationUpdateOne) AddBatchSuccess(v int) *CiOperationUpdateOne {
+	_u.mutation.AddBatchSuccess(v)
+	return _u
 }
 
 // ClearBatchSuccess clears the value of the "batch_success" field.
-func (couo *CiOperationUpdateOne) ClearBatchSuccess() *CiOperationUpdateOne {
-	couo.mutation.ClearBatchSuccess()
-	return couo
+func (_u *CiOperationUpdateOne) ClearBatchSuccess() *CiOperationUpdateOne {
+	_u.mutation.ClearBatchSuccess()
+	return _u
 }
 
 // SetBatchFailed sets the "batch_failed" field.
-func (couo *CiOperationUpdateOne) SetBatchFailed(i int) *CiOperationUpdateOne {
-	couo.mutation.ResetBatchFailed()
-	couo.mutation.SetBatchFailed(i)
-	return couo
+func (_u *CiOperationUpdateOne) SetBatchFailed(v int) *CiOperationUpdateOne {
+	_u.mutation.ResetBatchFailed()
+	_u.mutation.SetBatchFailed(v)
+	return _u
 }
 
 // SetNillableBatchFailed sets the "batch_failed" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableBatchFailed(i *int) *CiOperationUpdateOne {
-	if i != nil {
-		couo.SetBatchFailed(*i)
+func (_u *CiOperationUpdateOne) SetNillableBatchFailed(v *int) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetBatchFailed(*v)
 	}
-	return couo
+	return _u
 }
 
-// AddBatchFailed adds i to the "batch_failed" field.
-func (couo *CiOperationUpdateOne) AddBatchFailed(i int) *CiOperationUpdateOne {
-	couo.mutation.AddBatchFailed(i)
-	return couo
+// AddBatchFailed adds value to the "batch_failed" field.
+func (_u *CiOperationUpdateOne) AddBatchFailed(v int) *CiOperationUpdateOne {
+	_u.mutation.AddBatchFailed(v)
+	return _u
 }
 
 // ClearBatchFailed clears the value of the "batch_failed" field.
-func (couo *CiOperationUpdateOne) ClearBatchFailed() *CiOperationUpdateOne {
-	couo.mutation.ClearBatchFailed()
-	return couo
+func (_u *CiOperationUpdateOne) ClearBatchFailed() *CiOperationUpdateOne {
+	_u.mutation.ClearBatchFailed()
+	return _u
 }
 
 // SetRequireApproval sets the "require_approval" field.
-func (couo *CiOperationUpdateOne) SetRequireApproval(b bool) *CiOperationUpdateOne {
-	couo.mutation.SetRequireApproval(b)
-	return couo
+func (_u *CiOperationUpdateOne) SetRequireApproval(v bool) *CiOperationUpdateOne {
+	_u.mutation.SetRequireApproval(v)
+	return _u
 }
 
 // SetNillableRequireApproval sets the "require_approval" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableRequireApproval(b *bool) *CiOperationUpdateOne {
-	if b != nil {
-		couo.SetRequireApproval(*b)
+func (_u *CiOperationUpdateOne) SetNillableRequireApproval(v *bool) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetRequireApproval(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetApprovalFlowID sets the "approval_flow_id" field.
-func (couo *CiOperationUpdateOne) SetApprovalFlowID(s string) *CiOperationUpdateOne {
-	couo.mutation.SetApprovalFlowID(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetApprovalFlowID(v string) *CiOperationUpdateOne {
+	_u.mutation.SetApprovalFlowID(v)
+	return _u
 }
 
 // SetNillableApprovalFlowID sets the "approval_flow_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableApprovalFlowID(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetApprovalFlowID(*s)
+func (_u *CiOperationUpdateOne) SetNillableApprovalFlowID(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetApprovalFlowID(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearApprovalFlowID clears the value of the "approval_flow_id" field.
-func (couo *CiOperationUpdateOne) ClearApprovalFlowID() *CiOperationUpdateOne {
-	couo.mutation.ClearApprovalFlowID()
-	return couo
+func (_u *CiOperationUpdateOne) ClearApprovalFlowID() *CiOperationUpdateOne {
+	_u.mutation.ClearApprovalFlowID()
+	return _u
 }
 
 // SetApproverID sets the "approver_id" field.
-func (couo *CiOperationUpdateOne) SetApproverID(u uuid.UUID) *CiOperationUpdateOne {
-	couo.mutation.SetApproverID(u)
-	return couo
+func (_u *CiOperationUpdateOne) SetApproverID(v uuid.UUID) *CiOperationUpdateOne {
+	_u.mutation.SetApproverID(v)
+	return _u
 }
 
 // SetNillableApproverID sets the "approver_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableApproverID(u *uuid.UUID) *CiOperationUpdateOne {
-	if u != nil {
-		couo.SetApproverID(*u)
+func (_u *CiOperationUpdateOne) SetNillableApproverID(v *uuid.UUID) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetApproverID(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearApproverID clears the value of the "approver_id" field.
-func (couo *CiOperationUpdateOne) ClearApproverID() *CiOperationUpdateOne {
-	couo.mutation.ClearApproverID()
-	return couo
+func (_u *CiOperationUpdateOne) ClearApproverID() *CiOperationUpdateOne {
+	_u.mutation.ClearApproverID()
+	return _u
 }
 
 // SetApproverName sets the "approver_name" field.
-func (couo *CiOperationUpdateOne) SetApproverName(s string) *CiOperationUpdateOne {
-	couo.mutation.SetApproverName(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetApproverName(v string) *CiOperationUpdateOne {
+	_u.mutation.SetApproverName(v)
+	return _u
 }
 
 // SetNillableApproverName sets the "approver_name" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableApproverName(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetApproverName(*s)
+func (_u *CiOperationUpdateOne) SetNillableApproverName(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetApproverName(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearApproverName clears the value of the "approver_name" field.
-func (couo *CiOperationUpdateOne) ClearApproverName() *CiOperationUpdateOne {
-	couo.mutation.ClearApproverName()
-	return couo
+func (_u *CiOperationUpdateOne) ClearApproverName() *CiOperationUpdateOne {
+	_u.mutation.ClearApproverName()
+	return _u
 }
 
 // SetApprovedAt sets the "approved_at" field.
-func (couo *CiOperationUpdateOne) SetApprovedAt(t time.Time) *CiOperationUpdateOne {
-	couo.mutation.SetApprovedAt(t)
-	return couo
+func (_u *CiOperationUpdateOne) SetApprovedAt(v time.Time) *CiOperationUpdateOne {
+	_u.mutation.SetApprovedAt(v)
+	return _u
 }
 
 // SetNillableApprovedAt sets the "approved_at" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableApprovedAt(t *time.Time) *CiOperationUpdateOne {
-	if t != nil {
-		couo.SetApprovedAt(*t)
+func (_u *CiOperationUpdateOne) SetNillableApprovedAt(v *time.Time) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetApprovedAt(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearApprovedAt clears the value of the "approved_at" field.
-func (couo *CiOperationUpdateOne) ClearApprovedAt() *CiOperationUpdateOne {
-	couo.mutation.ClearApprovedAt()
-	return couo
+func (_u *CiOperationUpdateOne) ClearApprovedAt() *CiOperationUpdateOne {
+	_u.mutation.ClearApprovedAt()
+	return _u
 }
 
 // SetApprovalComment sets the "approval_comment" field.
-func (couo *CiOperationUpdateOne) SetApprovalComment(s string) *CiOperationUpdateOne {
-	couo.mutation.SetApprovalComment(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetApprovalComment(v string) *CiOperationUpdateOne {
+	_u.mutation.SetApprovalComment(v)
+	return _u
 }
 
 // SetNillableApprovalComment sets the "approval_comment" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableApprovalComment(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetApprovalComment(*s)
+func (_u *CiOperationUpdateOne) SetNillableApprovalComment(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetApprovalComment(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearApprovalComment clears the value of the "approval_comment" field.
-func (couo *CiOperationUpdateOne) ClearApprovalComment() *CiOperationUpdateOne {
-	couo.mutation.ClearApprovalComment()
-	return couo
+func (_u *CiOperationUpdateOne) ClearApprovalComment() *CiOperationUpdateOne {
+	_u.mutation.ClearApprovalComment()
+	return _u
 }
 
 // SetStartedAt sets the "started_at" field.
-func (couo *CiOperationUpdateOne) SetStartedAt(t time.Time) *CiOperationUpdateOne {
-	couo.mutation.SetStartedAt(t)
-	return couo
+func (_u *CiOperationUpdateOne) SetStartedAt(v time.Time) *CiOperationUpdateOne {
+	_u.mutation.SetStartedAt(v)
+	return _u
 }
 
 // SetNillableStartedAt sets the "started_at" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableStartedAt(t *time.Time) *CiOperationUpdateOne {
-	if t != nil {
-		couo.SetStartedAt(*t)
+func (_u *CiOperationUpdateOne) SetNillableStartedAt(v *time.Time) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetStartedAt(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearStartedAt clears the value of the "started_at" field.
-func (couo *CiOperationUpdateOne) ClearStartedAt() *CiOperationUpdateOne {
-	couo.mutation.ClearStartedAt()
-	return couo
+func (_u *CiOperationUpdateOne) ClearStartedAt() *CiOperationUpdateOne {
+	_u.mutation.ClearStartedAt()
+	return _u
 }
 
 // SetCompletedAt sets the "completed_at" field.
-func (couo *CiOperationUpdateOne) SetCompletedAt(t time.Time) *CiOperationUpdateOne {
-	couo.mutation.SetCompletedAt(t)
-	return couo
+func (_u *CiOperationUpdateOne) SetCompletedAt(v time.Time) *CiOperationUpdateOne {
+	_u.mutation.SetCompletedAt(v)
+	return _u
 }
 
 // SetNillableCompletedAt sets the "completed_at" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableCompletedAt(t *time.Time) *CiOperationUpdateOne {
-	if t != nil {
-		couo.SetCompletedAt(*t)
+func (_u *CiOperationUpdateOne) SetNillableCompletedAt(v *time.Time) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetCompletedAt(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearCompletedAt clears the value of the "completed_at" field.
-func (couo *CiOperationUpdateOne) ClearCompletedAt() *CiOperationUpdateOne {
-	couo.mutation.ClearCompletedAt()
-	return couo
+func (_u *CiOperationUpdateOne) ClearCompletedAt() *CiOperationUpdateOne {
+	_u.mutation.ClearCompletedAt()
+	return _u
 }
 
 // SetExecutionDuration sets the "execution_duration" field.
-func (couo *CiOperationUpdateOne) SetExecutionDuration(i int) *CiOperationUpdateOne {
-	couo.mutation.ResetExecutionDuration()
-	couo.mutation.SetExecutionDuration(i)
-	return couo
+func (_u *CiOperationUpdateOne) SetExecutionDuration(v int) *CiOperationUpdateOne {
+	_u.mutation.ResetExecutionDuration()
+	_u.mutation.SetExecutionDuration(v)
+	return _u
 }
 
 // SetNillableExecutionDuration sets the "execution_duration" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableExecutionDuration(i *int) *CiOperationUpdateOne {
-	if i != nil {
-		couo.SetExecutionDuration(*i)
+func (_u *CiOperationUpdateOne) SetNillableExecutionDuration(v *int) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetExecutionDuration(*v)
 	}
-	return couo
+	return _u
 }
 
-// AddExecutionDuration adds i to the "execution_duration" field.
-func (couo *CiOperationUpdateOne) AddExecutionDuration(i int) *CiOperationUpdateOne {
-	couo.mutation.AddExecutionDuration(i)
-	return couo
+// AddExecutionDuration adds value to the "execution_duration" field.
+func (_u *CiOperationUpdateOne) AddExecutionDuration(v int) *CiOperationUpdateOne {
+	_u.mutation.AddExecutionDuration(v)
+	return _u
 }
 
 // ClearExecutionDuration clears the value of the "execution_duration" field.
-func (couo *CiOperationUpdateOne) ClearExecutionDuration() *CiOperationUpdateOne {
-	couo.mutation.ClearExecutionDuration()
-	return couo
+func (_u *CiOperationUpdateOne) ClearExecutionDuration() *CiOperationUpdateOne {
+	_u.mutation.ClearExecutionDuration()
+	return _u
 }
 
 // SetExecutionResult sets the "execution_result" field.
-func (couo *CiOperationUpdateOne) SetExecutionResult(m map[string]interface{}) *CiOperationUpdateOne {
-	couo.mutation.SetExecutionResult(m)
-	return couo
+func (_u *CiOperationUpdateOne) SetExecutionResult(v map[string]interface{}) *CiOperationUpdateOne {
+	_u.mutation.SetExecutionResult(v)
+	return _u
 }
 
 // ClearExecutionResult clears the value of the "execution_result" field.
-func (couo *CiOperationUpdateOne) ClearExecutionResult() *CiOperationUpdateOne {
-	couo.mutation.ClearExecutionResult()
-	return couo
+func (_u *CiOperationUpdateOne) ClearExecutionResult() *CiOperationUpdateOne {
+	_u.mutation.ClearExecutionResult()
+	return _u
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (couo *CiOperationUpdateOne) SetErrorMessage(s string) *CiOperationUpdateOne {
-	couo.mutation.SetErrorMessage(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetErrorMessage(v string) *CiOperationUpdateOne {
+	_u.mutation.SetErrorMessage(v)
+	return _u
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableErrorMessage(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetErrorMessage(*s)
+func (_u *CiOperationUpdateOne) SetNillableErrorMessage(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetErrorMessage(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearErrorMessage clears the value of the "error_message" field.
-func (couo *CiOperationUpdateOne) ClearErrorMessage() *CiOperationUpdateOne {
-	couo.mutation.ClearErrorMessage()
-	return couo
+func (_u *CiOperationUpdateOne) ClearErrorMessage() *CiOperationUpdateOne {
+	_u.mutation.ClearErrorMessage()
+	return _u
 }
 
 // SetErrorDetails sets the "error_details" field.
-func (couo *CiOperationUpdateOne) SetErrorDetails(m map[string]interface{}) *CiOperationUpdateOne {
-	couo.mutation.SetErrorDetails(m)
-	return couo
+func (_u *CiOperationUpdateOne) SetErrorDetails(v map[string]interface{}) *CiOperationUpdateOne {
+	_u.mutation.SetErrorDetails(v)
+	return _u
 }
 
 // ClearErrorDetails clears the value of the "error_details" field.
-func (couo *CiOperationUpdateOne) ClearErrorDetails() *CiOperationUpdateOne {
-	couo.mutation.ClearErrorDetails()
-	return couo
+func (_u *CiOperationUpdateOne) ClearErrorDetails() *CiOperationUpdateOne {
+	_u.mutation.ClearErrorDetails()
+	return _u
 }
 
 // SetLifecycleStage sets the "lifecycle_stage" field.
-func (couo *CiOperationUpdateOne) SetLifecycleStage(cs cioperation.LifecycleStage) *CiOperationUpdateOne {
-	couo.mutation.SetLifecycleStage(cs)
-	return couo
+func (_u *CiOperationUpdateOne) SetLifecycleStage(v cioperation.LifecycleStage) *CiOperationUpdateOne {
+	_u.mutation.SetLifecycleStage(v)
+	return _u
 }
 
 // SetNillableLifecycleStage sets the "lifecycle_stage" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableLifecycleStage(cs *cioperation.LifecycleStage) *CiOperationUpdateOne {
-	if cs != nil {
-		couo.SetLifecycleStage(*cs)
+func (_u *CiOperationUpdateOne) SetNillableLifecycleStage(v *cioperation.LifecycleStage) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetLifecycleStage(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (couo *CiOperationUpdateOne) SetExpiresAt(t time.Time) *CiOperationUpdateOne {
-	couo.mutation.SetExpiresAt(t)
-	return couo
+func (_u *CiOperationUpdateOne) SetExpiresAt(v time.Time) *CiOperationUpdateOne {
+	_u.mutation.SetExpiresAt(v)
+	return _u
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableExpiresAt(t *time.Time) *CiOperationUpdateOne {
-	if t != nil {
-		couo.SetExpiresAt(*t)
+func (_u *CiOperationUpdateOne) SetNillableExpiresAt(v *time.Time) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetExpiresAt(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearExpiresAt clears the value of the "expires_at" field.
-func (couo *CiOperationUpdateOne) ClearExpiresAt() *CiOperationUpdateOne {
-	couo.mutation.ClearExpiresAt()
-	return couo
+func (_u *CiOperationUpdateOne) ClearExpiresAt() *CiOperationUpdateOne {
+	_u.mutation.ClearExpiresAt()
+	return _u
 }
 
 // SetRequiredPermissions sets the "required_permissions" field.
-func (couo *CiOperationUpdateOne) SetRequiredPermissions(s []string) *CiOperationUpdateOne {
-	couo.mutation.SetRequiredPermissions(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetRequiredPermissions(v []string) *CiOperationUpdateOne {
+	_u.mutation.SetRequiredPermissions(v)
+	return _u
 }
 
-// AppendRequiredPermissions appends s to the "required_permissions" field.
-func (couo *CiOperationUpdateOne) AppendRequiredPermissions(s []string) *CiOperationUpdateOne {
-	couo.mutation.AppendRequiredPermissions(s)
-	return couo
+// AppendRequiredPermissions appends value to the "required_permissions" field.
+func (_u *CiOperationUpdateOne) AppendRequiredPermissions(v []string) *CiOperationUpdateOne {
+	_u.mutation.AppendRequiredPermissions(v)
+	return _u
 }
 
 // ClearRequiredPermissions clears the value of the "required_permissions" field.
-func (couo *CiOperationUpdateOne) ClearRequiredPermissions() *CiOperationUpdateOne {
-	couo.mutation.ClearRequiredPermissions()
-	return couo
+func (_u *CiOperationUpdateOne) ClearRequiredPermissions() *CiOperationUpdateOne {
+	_u.mutation.ClearRequiredPermissions()
+	return _u
 }
 
 // SetPermissionCheckResult sets the "permission_check_result" field.
-func (couo *CiOperationUpdateOne) SetPermissionCheckResult(m map[string]interface{}) *CiOperationUpdateOne {
-	couo.mutation.SetPermissionCheckResult(m)
-	return couo
+func (_u *CiOperationUpdateOne) SetPermissionCheckResult(v map[string]interface{}) *CiOperationUpdateOne {
+	_u.mutation.SetPermissionCheckResult(v)
+	return _u
 }
 
 // ClearPermissionCheckResult clears the value of the "permission_check_result" field.
-func (couo *CiOperationUpdateOne) ClearPermissionCheckResult() *CiOperationUpdateOne {
-	couo.mutation.ClearPermissionCheckResult()
-	return couo
+func (_u *CiOperationUpdateOne) ClearPermissionCheckResult() *CiOperationUpdateOne {
+	_u.mutation.ClearPermissionCheckResult()
+	return _u
 }
 
 // SetIsSensitive sets the "is_sensitive" field.
-func (couo *CiOperationUpdateOne) SetIsSensitive(b bool) *CiOperationUpdateOne {
-	couo.mutation.SetIsSensitive(b)
-	return couo
+func (_u *CiOperationUpdateOne) SetIsSensitive(v bool) *CiOperationUpdateOne {
+	_u.mutation.SetIsSensitive(v)
+	return _u
 }
 
 // SetNillableIsSensitive sets the "is_sensitive" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableIsSensitive(b *bool) *CiOperationUpdateOne {
-	if b != nil {
-		couo.SetIsSensitive(*b)
+func (_u *CiOperationUpdateOne) SetNillableIsSensitive(v *bool) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetIsSensitive(*v)
 	}
-	return couo
+	return _u
 }
 
 // SetParentOperationID sets the "parent_operation_id" field.
-func (couo *CiOperationUpdateOne) SetParentOperationID(s string) *CiOperationUpdateOne {
-	couo.mutation.SetParentOperationID(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetParentOperationID(v string) *CiOperationUpdateOne {
+	_u.mutation.SetParentOperationID(v)
+	return _u
 }
 
 // SetNillableParentOperationID sets the "parent_operation_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableParentOperationID(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetParentOperationID(*s)
+func (_u *CiOperationUpdateOne) SetNillableParentOperationID(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetParentOperationID(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearParentOperationID clears the value of the "parent_operation_id" field.
-func (couo *CiOperationUpdateOne) ClearParentOperationID() *CiOperationUpdateOne {
-	couo.mutation.ClearParentOperationID()
-	return couo
+func (_u *CiOperationUpdateOne) ClearParentOperationID() *CiOperationUpdateOne {
+	_u.mutation.ClearParentOperationID()
+	return _u
 }
 
 // SetChildOperationIds sets the "child_operation_ids" field.
-func (couo *CiOperationUpdateOne) SetChildOperationIds(s []string) *CiOperationUpdateOne {
-	couo.mutation.SetChildOperationIds(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetChildOperationIds(v []string) *CiOperationUpdateOne {
+	_u.mutation.SetChildOperationIds(v)
+	return _u
 }
 
-// AppendChildOperationIds appends s to the "child_operation_ids" field.
-func (couo *CiOperationUpdateOne) AppendChildOperationIds(s []string) *CiOperationUpdateOne {
-	couo.mutation.AppendChildOperationIds(s)
-	return couo
+// AppendChildOperationIds appends value to the "child_operation_ids" field.
+func (_u *CiOperationUpdateOne) AppendChildOperationIds(v []string) *CiOperationUpdateOne {
+	_u.mutation.AppendChildOperationIds(v)
+	return _u
 }
 
 // ClearChildOperationIds clears the value of the "child_operation_ids" field.
-func (couo *CiOperationUpdateOne) ClearChildOperationIds() *CiOperationUpdateOne {
-	couo.mutation.ClearChildOperationIds()
-	return couo
+func (_u *CiOperationUpdateOne) ClearChildOperationIds() *CiOperationUpdateOne {
+	_u.mutation.ClearChildOperationIds()
+	return _u
 }
 
 // SetTransactionID sets the "transaction_id" field.
-func (couo *CiOperationUpdateOne) SetTransactionID(s string) *CiOperationUpdateOne {
-	couo.mutation.SetTransactionID(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetTransactionID(v string) *CiOperationUpdateOne {
+	_u.mutation.SetTransactionID(v)
+	return _u
 }
 
 // SetNillableTransactionID sets the "transaction_id" field if the given value is not nil.
-func (couo *CiOperationUpdateOne) SetNillableTransactionID(s *string) *CiOperationUpdateOne {
-	if s != nil {
-		couo.SetTransactionID(*s)
+func (_u *CiOperationUpdateOne) SetNillableTransactionID(v *string) *CiOperationUpdateOne {
+	if v != nil {
+		_u.SetTransactionID(*v)
 	}
-	return couo
+	return _u
 }
 
 // ClearTransactionID clears the value of the "transaction_id" field.
-func (couo *CiOperationUpdateOne) ClearTransactionID() *CiOperationUpdateOne {
-	couo.mutation.ClearTransactionID()
-	return couo
+func (_u *CiOperationUpdateOne) ClearTransactionID() *CiOperationUpdateOne {
+	_u.mutation.ClearTransactionID()
+	return _u
 }
 
 // SetMetadata sets the "metadata" field.
-func (couo *CiOperationUpdateOne) SetMetadata(m map[string]interface{}) *CiOperationUpdateOne {
-	couo.mutation.SetMetadata(m)
-	return couo
+func (_u *CiOperationUpdateOne) SetMetadata(v map[string]interface{}) *CiOperationUpdateOne {
+	_u.mutation.SetMetadata(v)
+	return _u
 }
 
 // ClearMetadata clears the value of the "metadata" field.
-func (couo *CiOperationUpdateOne) ClearMetadata() *CiOperationUpdateOne {
-	couo.mutation.ClearMetadata()
-	return couo
+func (_u *CiOperationUpdateOne) ClearMetadata() *CiOperationUpdateOne {
+	_u.mutation.ClearMetadata()
+	return _u
 }
 
 // SetTags sets the "tags" field.
-func (couo *CiOperationUpdateOne) SetTags(s []string) *CiOperationUpdateOne {
-	couo.mutation.SetTags(s)
-	return couo
+func (_u *CiOperationUpdateOne) SetTags(v []string) *CiOperationUpdateOne {
+	_u.mutation.SetTags(v)
+	return _u
 }
 
-// AppendTags appends s to the "tags" field.
-func (couo *CiOperationUpdateOne) AppendTags(s []string) *CiOperationUpdateOne {
-	couo.mutation.AppendTags(s)
-	return couo
+// AppendTags appends value to the "tags" field.
+func (_u *CiOperationUpdateOne) AppendTags(v []string) *CiOperationUpdateOne {
+	_u.mutation.AppendTags(v)
+	return _u
 }
 
 // ClearTags clears the value of the "tags" field.
-func (couo *CiOperationUpdateOne) ClearTags() *CiOperationUpdateOne {
-	couo.mutation.ClearTags()
-	return couo
+func (_u *CiOperationUpdateOne) ClearTags() *CiOperationUpdateOne {
+	_u.mutation.ClearTags()
+	return _u
 }
 
 // Mutation returns the CiOperationMutation object of the builder.
-func (couo *CiOperationUpdateOne) Mutation() *CiOperationMutation {
-	return couo.mutation
+func (_u *CiOperationUpdateOne) Mutation() *CiOperationMutation {
+	return _u.mutation
 }
 
 // Where appends a list predicates to the CiOperationUpdate builder.
-func (couo *CiOperationUpdateOne) Where(ps ...predicate.CiOperation) *CiOperationUpdateOne {
-	couo.mutation.Where(ps...)
-	return couo
+func (_u *CiOperationUpdateOne) Where(ps ...predicate.CiOperation) *CiOperationUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (couo *CiOperationUpdateOne) Select(field string, fields ...string) *CiOperationUpdateOne {
-	couo.fields = append([]string{field}, fields...)
-	return couo
+func (_u *CiOperationUpdateOne) Select(field string, fields ...string) *CiOperationUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated CiOperation entity.
-func (couo *CiOperationUpdateOne) Save(ctx context.Context) (*CiOperation, error) {
-	couo.defaults()
-	return withHooks(ctx, couo.sqlSave, couo.mutation, couo.hooks)
+func (_u *CiOperationUpdateOne) Save(ctx context.Context) (*CiOperation, error) {
+	_u.defaults()
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (couo *CiOperationUpdateOne) SaveX(ctx context.Context) *CiOperation {
-	node, err := couo.Save(ctx)
+func (_u *CiOperationUpdateOne) SaveX(ctx context.Context) *CiOperation {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -2017,44 +2017,44 @@ func (couo *CiOperationUpdateOne) SaveX(ctx context.Context) *CiOperation {
 }
 
 // Exec executes the query on the entity.
-func (couo *CiOperationUpdateOne) Exec(ctx context.Context) error {
-	_, err := couo.Save(ctx)
+func (_u *CiOperationUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (couo *CiOperationUpdateOne) ExecX(ctx context.Context) {
-	if err := couo.Exec(ctx); err != nil {
+func (_u *CiOperationUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (couo *CiOperationUpdateOne) defaults() {
-	if _, ok := couo.mutation.UpdatedAt(); !ok {
+func (_u *CiOperationUpdateOne) defaults() {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		v := cioperation.UpdateDefaultUpdatedAt()
-		couo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (couo *CiOperationUpdateOne) check() error {
-	if v, ok := couo.mutation.OperationType(); ok {
+func (_u *CiOperationUpdateOne) check() error {
+	if v, ok := _u.mutation.OperationType(); ok {
 		if err := cioperation.OperationTypeValidator(v); err != nil {
 			return &ValidationError{Name: "operation_type", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_type": %w`, err)}
 		}
 	}
-	if v, ok := couo.mutation.OperationStatus(); ok {
+	if v, ok := _u.mutation.OperationStatus(); ok {
 		if err := cioperation.OperationStatusValidator(v); err != nil {
 			return &ValidationError{Name: "operation_status", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_status": %w`, err)}
 		}
 	}
-	if v, ok := couo.mutation.OperationSource(); ok {
+	if v, ok := _u.mutation.OperationSource(); ok {
 		if err := cioperation.OperationSourceValidator(v); err != nil {
 			return &ValidationError{Name: "operation_source", err: fmt.Errorf(`ent: validator failed for field "CiOperation.operation_source": %w`, err)}
 		}
 	}
-	if v, ok := couo.mutation.LifecycleStage(); ok {
+	if v, ok := _u.mutation.LifecycleStage(); ok {
 		if err := cioperation.LifecycleStageValidator(v); err != nil {
 			return &ValidationError{Name: "lifecycle_stage", err: fmt.Errorf(`ent: validator failed for field "CiOperation.lifecycle_stage": %w`, err)}
 		}
@@ -2062,17 +2062,17 @@ func (couo *CiOperationUpdateOne) check() error {
 	return nil
 }
 
-func (couo *CiOperationUpdateOne) sqlSave(ctx context.Context) (_node *CiOperation, err error) {
-	if err := couo.check(); err != nil {
+func (_u *CiOperationUpdateOne) sqlSave(ctx context.Context) (_node *CiOperation, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(cioperation.Table, cioperation.Columns, sqlgraph.NewFieldSpec(cioperation.FieldID, field.TypeUint64))
-	id, ok := couo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "CiOperation.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := couo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, cioperation.FieldID)
 		for _, f := range fields {
@@ -2084,294 +2084,294 @@ func (couo *CiOperationUpdateOne) sqlSave(ctx context.Context) (_node *CiOperati
 			}
 		}
 	}
-	if ps := couo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := couo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(cioperation.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := couo.mutation.DepartmentID(); ok {
+	if value, ok := _u.mutation.DepartmentID(); ok {
 		_spec.SetField(cioperation.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if value, ok := couo.mutation.AddedDepartmentID(); ok {
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
 		_spec.AddField(cioperation.FieldDepartmentID, field.TypeUint64, value)
 	}
-	if couo.mutation.DepartmentIDCleared() {
+	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cioperation.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := couo.mutation.OperationID(); ok {
+	if value, ok := _u.mutation.OperationID(); ok {
 		_spec.SetField(cioperation.FieldOperationID, field.TypeString, value)
 	}
-	if value, ok := couo.mutation.OperationType(); ok {
+	if value, ok := _u.mutation.OperationType(); ok {
 		_spec.SetField(cioperation.FieldOperationType, field.TypeEnum, value)
 	}
-	if value, ok := couo.mutation.OperationStatus(); ok {
+	if value, ok := _u.mutation.OperationStatus(); ok {
 		_spec.SetField(cioperation.FieldOperationStatus, field.TypeEnum, value)
 	}
-	if value, ok := couo.mutation.CiID(); ok {
+	if value, ok := _u.mutation.CiID(); ok {
 		_spec.SetField(cioperation.FieldCiID, field.TypeUint64, value)
 	}
-	if value, ok := couo.mutation.AddedCiID(); ok {
+	if value, ok := _u.mutation.AddedCiID(); ok {
 		_spec.AddField(cioperation.FieldCiID, field.TypeUint64, value)
 	}
-	if couo.mutation.CiIDCleared() {
+	if _u.mutation.CiIDCleared() {
 		_spec.ClearField(cioperation.FieldCiID, field.TypeUint64)
 	}
-	if value, ok := couo.mutation.CiTypeID(); ok {
+	if value, ok := _u.mutation.CiTypeID(); ok {
 		_spec.SetField(cioperation.FieldCiTypeID, field.TypeUint64, value)
 	}
-	if value, ok := couo.mutation.AddedCiTypeID(); ok {
+	if value, ok := _u.mutation.AddedCiTypeID(); ok {
 		_spec.AddField(cioperation.FieldCiTypeID, field.TypeUint64, value)
 	}
-	if value, ok := couo.mutation.OperatorID(); ok {
+	if value, ok := _u.mutation.OperatorID(); ok {
 		_spec.SetField(cioperation.FieldOperatorID, field.TypeUUID, value)
 	}
-	if value, ok := couo.mutation.OperatorName(); ok {
+	if value, ok := _u.mutation.OperatorName(); ok {
 		_spec.SetField(cioperation.FieldOperatorName, field.TypeString, value)
 	}
-	if value, ok := couo.mutation.OperatorRole(); ok {
+	if value, ok := _u.mutation.OperatorRole(); ok {
 		_spec.SetField(cioperation.FieldOperatorRole, field.TypeString, value)
 	}
-	if couo.mutation.OperatorRoleCleared() {
+	if _u.mutation.OperatorRoleCleared() {
 		_spec.ClearField(cioperation.FieldOperatorRole, field.TypeString)
 	}
-	if value, ok := couo.mutation.OperatorDepartment(); ok {
+	if value, ok := _u.mutation.OperatorDepartment(); ok {
 		_spec.SetField(cioperation.FieldOperatorDepartment, field.TypeString, value)
 	}
-	if couo.mutation.OperatorDepartmentCleared() {
+	if _u.mutation.OperatorDepartmentCleared() {
 		_spec.ClearField(cioperation.FieldOperatorDepartment, field.TypeString)
 	}
-	if value, ok := couo.mutation.OperationSource(); ok {
+	if value, ok := _u.mutation.OperationSource(); ok {
 		_spec.SetField(cioperation.FieldOperationSource, field.TypeEnum, value)
 	}
-	if value, ok := couo.mutation.SourceDetail(); ok {
+	if value, ok := _u.mutation.SourceDetail(); ok {
 		_spec.SetField(cioperation.FieldSourceDetail, field.TypeString, value)
 	}
-	if couo.mutation.SourceDetailCleared() {
+	if _u.mutation.SourceDetailCleared() {
 		_spec.ClearField(cioperation.FieldSourceDetail, field.TypeString)
 	}
-	if value, ok := couo.mutation.OperationReason(); ok {
+	if value, ok := _u.mutation.OperationReason(); ok {
 		_spec.SetField(cioperation.FieldOperationReason, field.TypeString, value)
 	}
-	if couo.mutation.OperationReasonCleared() {
+	if _u.mutation.OperationReasonCleared() {
 		_spec.ClearField(cioperation.FieldOperationReason, field.TypeString)
 	}
-	if value, ok := couo.mutation.OperationContext(); ok {
+	if value, ok := _u.mutation.OperationContext(); ok {
 		_spec.SetField(cioperation.FieldOperationContext, field.TypeJSON, value)
 	}
-	if couo.mutation.OperationContextCleared() {
+	if _u.mutation.OperationContextCleared() {
 		_spec.ClearField(cioperation.FieldOperationContext, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.DataBefore(); ok {
+	if value, ok := _u.mutation.DataBefore(); ok {
 		_spec.SetField(cioperation.FieldDataBefore, field.TypeJSON, value)
 	}
-	if couo.mutation.DataBeforeCleared() {
+	if _u.mutation.DataBeforeCleared() {
 		_spec.ClearField(cioperation.FieldDataBefore, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.DataAfter(); ok {
+	if value, ok := _u.mutation.DataAfter(); ok {
 		_spec.SetField(cioperation.FieldDataAfter, field.TypeJSON, value)
 	}
-	if couo.mutation.DataAfterCleared() {
+	if _u.mutation.DataAfterCleared() {
 		_spec.ClearField(cioperation.FieldDataAfter, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.AffectedAttributes(); ok {
+	if value, ok := _u.mutation.AffectedAttributes(); ok {
 		_spec.SetField(cioperation.FieldAffectedAttributes, field.TypeJSON, value)
 	}
-	if value, ok := couo.mutation.AppendedAffectedAttributes(); ok {
+	if value, ok := _u.mutation.AppendedAffectedAttributes(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldAffectedAttributes, value)
 		})
 	}
-	if couo.mutation.AffectedAttributesCleared() {
+	if _u.mutation.AffectedAttributesCleared() {
 		_spec.ClearField(cioperation.FieldAffectedAttributes, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.BatchCiIds(); ok {
+	if value, ok := _u.mutation.BatchCiIds(); ok {
 		_spec.SetField(cioperation.FieldBatchCiIds, field.TypeJSON, value)
 	}
-	if value, ok := couo.mutation.AppendedBatchCiIds(); ok {
+	if value, ok := _u.mutation.AppendedBatchCiIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldBatchCiIds, value)
 		})
 	}
-	if couo.mutation.BatchCiIdsCleared() {
+	if _u.mutation.BatchCiIdsCleared() {
 		_spec.ClearField(cioperation.FieldBatchCiIds, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.BatchTotal(); ok {
+	if value, ok := _u.mutation.BatchTotal(); ok {
 		_spec.SetField(cioperation.FieldBatchTotal, field.TypeInt, value)
 	}
-	if value, ok := couo.mutation.AddedBatchTotal(); ok {
+	if value, ok := _u.mutation.AddedBatchTotal(); ok {
 		_spec.AddField(cioperation.FieldBatchTotal, field.TypeInt, value)
 	}
-	if couo.mutation.BatchTotalCleared() {
+	if _u.mutation.BatchTotalCleared() {
 		_spec.ClearField(cioperation.FieldBatchTotal, field.TypeInt)
 	}
-	if value, ok := couo.mutation.BatchSuccess(); ok {
+	if value, ok := _u.mutation.BatchSuccess(); ok {
 		_spec.SetField(cioperation.FieldBatchSuccess, field.TypeInt, value)
 	}
-	if value, ok := couo.mutation.AddedBatchSuccess(); ok {
+	if value, ok := _u.mutation.AddedBatchSuccess(); ok {
 		_spec.AddField(cioperation.FieldBatchSuccess, field.TypeInt, value)
 	}
-	if couo.mutation.BatchSuccessCleared() {
+	if _u.mutation.BatchSuccessCleared() {
 		_spec.ClearField(cioperation.FieldBatchSuccess, field.TypeInt)
 	}
-	if value, ok := couo.mutation.BatchFailed(); ok {
+	if value, ok := _u.mutation.BatchFailed(); ok {
 		_spec.SetField(cioperation.FieldBatchFailed, field.TypeInt, value)
 	}
-	if value, ok := couo.mutation.AddedBatchFailed(); ok {
+	if value, ok := _u.mutation.AddedBatchFailed(); ok {
 		_spec.AddField(cioperation.FieldBatchFailed, field.TypeInt, value)
 	}
-	if couo.mutation.BatchFailedCleared() {
+	if _u.mutation.BatchFailedCleared() {
 		_spec.ClearField(cioperation.FieldBatchFailed, field.TypeInt)
 	}
-	if value, ok := couo.mutation.RequireApproval(); ok {
+	if value, ok := _u.mutation.RequireApproval(); ok {
 		_spec.SetField(cioperation.FieldRequireApproval, field.TypeBool, value)
 	}
-	if value, ok := couo.mutation.ApprovalFlowID(); ok {
+	if value, ok := _u.mutation.ApprovalFlowID(); ok {
 		_spec.SetField(cioperation.FieldApprovalFlowID, field.TypeString, value)
 	}
-	if couo.mutation.ApprovalFlowIDCleared() {
+	if _u.mutation.ApprovalFlowIDCleared() {
 		_spec.ClearField(cioperation.FieldApprovalFlowID, field.TypeString)
 	}
-	if value, ok := couo.mutation.ApproverID(); ok {
+	if value, ok := _u.mutation.ApproverID(); ok {
 		_spec.SetField(cioperation.FieldApproverID, field.TypeUUID, value)
 	}
-	if couo.mutation.ApproverIDCleared() {
+	if _u.mutation.ApproverIDCleared() {
 		_spec.ClearField(cioperation.FieldApproverID, field.TypeUUID)
 	}
-	if value, ok := couo.mutation.ApproverName(); ok {
+	if value, ok := _u.mutation.ApproverName(); ok {
 		_spec.SetField(cioperation.FieldApproverName, field.TypeString, value)
 	}
-	if couo.mutation.ApproverNameCleared() {
+	if _u.mutation.ApproverNameCleared() {
 		_spec.ClearField(cioperation.FieldApproverName, field.TypeString)
 	}
-	if value, ok := couo.mutation.ApprovedAt(); ok {
+	if value, ok := _u.mutation.ApprovedAt(); ok {
 		_spec.SetField(cioperation.FieldApprovedAt, field.TypeTime, value)
 	}
-	if couo.mutation.ApprovedAtCleared() {
+	if _u.mutation.ApprovedAtCleared() {
 		_spec.ClearField(cioperation.FieldApprovedAt, field.TypeTime)
 	}
-	if value, ok := couo.mutation.ApprovalComment(); ok {
+	if value, ok := _u.mutation.ApprovalComment(); ok {
 		_spec.SetField(cioperation.FieldApprovalComment, field.TypeString, value)
 	}
-	if couo.mutation.ApprovalCommentCleared() {
+	if _u.mutation.ApprovalCommentCleared() {
 		_spec.ClearField(cioperation.FieldApprovalComment, field.TypeString)
 	}
-	if value, ok := couo.mutation.StartedAt(); ok {
+	if value, ok := _u.mutation.StartedAt(); ok {
 		_spec.SetField(cioperation.FieldStartedAt, field.TypeTime, value)
 	}
-	if couo.mutation.StartedAtCleared() {
+	if _u.mutation.StartedAtCleared() {
 		_spec.ClearField(cioperation.FieldStartedAt, field.TypeTime)
 	}
-	if value, ok := couo.mutation.CompletedAt(); ok {
+	if value, ok := _u.mutation.CompletedAt(); ok {
 		_spec.SetField(cioperation.FieldCompletedAt, field.TypeTime, value)
 	}
-	if couo.mutation.CompletedAtCleared() {
+	if _u.mutation.CompletedAtCleared() {
 		_spec.ClearField(cioperation.FieldCompletedAt, field.TypeTime)
 	}
-	if value, ok := couo.mutation.ExecutionDuration(); ok {
+	if value, ok := _u.mutation.ExecutionDuration(); ok {
 		_spec.SetField(cioperation.FieldExecutionDuration, field.TypeInt, value)
 	}
-	if value, ok := couo.mutation.AddedExecutionDuration(); ok {
+	if value, ok := _u.mutation.AddedExecutionDuration(); ok {
 		_spec.AddField(cioperation.FieldExecutionDuration, field.TypeInt, value)
 	}
-	if couo.mutation.ExecutionDurationCleared() {
+	if _u.mutation.ExecutionDurationCleared() {
 		_spec.ClearField(cioperation.FieldExecutionDuration, field.TypeInt)
 	}
-	if value, ok := couo.mutation.ExecutionResult(); ok {
+	if value, ok := _u.mutation.ExecutionResult(); ok {
 		_spec.SetField(cioperation.FieldExecutionResult, field.TypeJSON, value)
 	}
-	if couo.mutation.ExecutionResultCleared() {
+	if _u.mutation.ExecutionResultCleared() {
 		_spec.ClearField(cioperation.FieldExecutionResult, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.ErrorMessage(); ok {
+	if value, ok := _u.mutation.ErrorMessage(); ok {
 		_spec.SetField(cioperation.FieldErrorMessage, field.TypeString, value)
 	}
-	if couo.mutation.ErrorMessageCleared() {
+	if _u.mutation.ErrorMessageCleared() {
 		_spec.ClearField(cioperation.FieldErrorMessage, field.TypeString)
 	}
-	if value, ok := couo.mutation.ErrorDetails(); ok {
+	if value, ok := _u.mutation.ErrorDetails(); ok {
 		_spec.SetField(cioperation.FieldErrorDetails, field.TypeJSON, value)
 	}
-	if couo.mutation.ErrorDetailsCleared() {
+	if _u.mutation.ErrorDetailsCleared() {
 		_spec.ClearField(cioperation.FieldErrorDetails, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.LifecycleStage(); ok {
+	if value, ok := _u.mutation.LifecycleStage(); ok {
 		_spec.SetField(cioperation.FieldLifecycleStage, field.TypeEnum, value)
 	}
-	if value, ok := couo.mutation.ExpiresAt(); ok {
+	if value, ok := _u.mutation.ExpiresAt(); ok {
 		_spec.SetField(cioperation.FieldExpiresAt, field.TypeTime, value)
 	}
-	if couo.mutation.ExpiresAtCleared() {
+	if _u.mutation.ExpiresAtCleared() {
 		_spec.ClearField(cioperation.FieldExpiresAt, field.TypeTime)
 	}
-	if value, ok := couo.mutation.RequiredPermissions(); ok {
+	if value, ok := _u.mutation.RequiredPermissions(); ok {
 		_spec.SetField(cioperation.FieldRequiredPermissions, field.TypeJSON, value)
 	}
-	if value, ok := couo.mutation.AppendedRequiredPermissions(); ok {
+	if value, ok := _u.mutation.AppendedRequiredPermissions(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldRequiredPermissions, value)
 		})
 	}
-	if couo.mutation.RequiredPermissionsCleared() {
+	if _u.mutation.RequiredPermissionsCleared() {
 		_spec.ClearField(cioperation.FieldRequiredPermissions, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.PermissionCheckResult(); ok {
+	if value, ok := _u.mutation.PermissionCheckResult(); ok {
 		_spec.SetField(cioperation.FieldPermissionCheckResult, field.TypeJSON, value)
 	}
-	if couo.mutation.PermissionCheckResultCleared() {
+	if _u.mutation.PermissionCheckResultCleared() {
 		_spec.ClearField(cioperation.FieldPermissionCheckResult, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.IsSensitive(); ok {
+	if value, ok := _u.mutation.IsSensitive(); ok {
 		_spec.SetField(cioperation.FieldIsSensitive, field.TypeBool, value)
 	}
-	if value, ok := couo.mutation.ParentOperationID(); ok {
+	if value, ok := _u.mutation.ParentOperationID(); ok {
 		_spec.SetField(cioperation.FieldParentOperationID, field.TypeString, value)
 	}
-	if couo.mutation.ParentOperationIDCleared() {
+	if _u.mutation.ParentOperationIDCleared() {
 		_spec.ClearField(cioperation.FieldParentOperationID, field.TypeString)
 	}
-	if value, ok := couo.mutation.ChildOperationIds(); ok {
+	if value, ok := _u.mutation.ChildOperationIds(); ok {
 		_spec.SetField(cioperation.FieldChildOperationIds, field.TypeJSON, value)
 	}
-	if value, ok := couo.mutation.AppendedChildOperationIds(); ok {
+	if value, ok := _u.mutation.AppendedChildOperationIds(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldChildOperationIds, value)
 		})
 	}
-	if couo.mutation.ChildOperationIdsCleared() {
+	if _u.mutation.ChildOperationIdsCleared() {
 		_spec.ClearField(cioperation.FieldChildOperationIds, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.TransactionID(); ok {
+	if value, ok := _u.mutation.TransactionID(); ok {
 		_spec.SetField(cioperation.FieldTransactionID, field.TypeString, value)
 	}
-	if couo.mutation.TransactionIDCleared() {
+	if _u.mutation.TransactionIDCleared() {
 		_spec.ClearField(cioperation.FieldTransactionID, field.TypeString)
 	}
-	if value, ok := couo.mutation.Metadata(); ok {
+	if value, ok := _u.mutation.Metadata(); ok {
 		_spec.SetField(cioperation.FieldMetadata, field.TypeJSON, value)
 	}
-	if couo.mutation.MetadataCleared() {
+	if _u.mutation.MetadataCleared() {
 		_spec.ClearField(cioperation.FieldMetadata, field.TypeJSON)
 	}
-	if value, ok := couo.mutation.Tags(); ok {
+	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(cioperation.FieldTags, field.TypeJSON, value)
 	}
-	if value, ok := couo.mutation.AppendedTags(); ok {
+	if value, ok := _u.mutation.AppendedTags(); ok {
 		_spec.AddModifier(func(u *sql.UpdateBuilder) {
 			sqljson.Append(u, cioperation.FieldTags, value)
 		})
 	}
-	if couo.mutation.TagsCleared() {
+	if _u.mutation.TagsCleared() {
 		_spec.ClearField(cioperation.FieldTags, field.TypeJSON)
 	}
-	_node = &CiOperation{config: couo.config}
+	_node = &CiOperation{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, couo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{cioperation.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -2379,6 +2379,6 @@ func (couo *CiOperationUpdateOne) sqlSave(ctx context.Context) (_node *CiOperati
 		}
 		return nil, err
 	}
-	couo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

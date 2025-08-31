@@ -10,7 +10,7 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -22,549 +22,549 @@ type CiApprovalFlowCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (cafc *CiApprovalFlowCreate) SetCreatedAt(t time.Time) *CiApprovalFlowCreate {
-	cafc.mutation.SetCreatedAt(t)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetCreatedAt(v time.Time) *CiApprovalFlowCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableCreatedAt(t *time.Time) *CiApprovalFlowCreate {
-	if t != nil {
-		cafc.SetCreatedAt(*t)
+func (_c *CiApprovalFlowCreate) SetNillableCreatedAt(v *time.Time) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (cafc *CiApprovalFlowCreate) SetUpdatedAt(t time.Time) *CiApprovalFlowCreate {
-	cafc.mutation.SetUpdatedAt(t)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetUpdatedAt(v time.Time) *CiApprovalFlowCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableUpdatedAt(t *time.Time) *CiApprovalFlowCreate {
-	if t != nil {
-		cafc.SetUpdatedAt(*t)
+func (_c *CiApprovalFlowCreate) SetNillableUpdatedAt(v *time.Time) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (cafc *CiApprovalFlowCreate) SetTenantID(u uint64) *CiApprovalFlowCreate {
-	cafc.mutation.SetTenantID(u)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetTenantID(v uint64) *CiApprovalFlowCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableTenantID(u *uint64) *CiApprovalFlowCreate {
-	if u != nil {
-		cafc.SetTenantID(*u)
+func (_c *CiApprovalFlowCreate) SetNillableTenantID(v *uint64) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (cafc *CiApprovalFlowCreate) SetDepartmentID(u uint64) *CiApprovalFlowCreate {
-	cafc.mutation.SetDepartmentID(u)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetDepartmentID(v uint64) *CiApprovalFlowCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableDepartmentID(u *uint64) *CiApprovalFlowCreate {
-	if u != nil {
-		cafc.SetDepartmentID(*u)
+func (_c *CiApprovalFlowCreate) SetNillableDepartmentID(v *uint64) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetFlowID sets the "flow_id" field.
-func (cafc *CiApprovalFlowCreate) SetFlowID(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetFlowID(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetFlowID(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetFlowID(v)
+	return _c
 }
 
 // SetFlowName sets the "flow_name" field.
-func (cafc *CiApprovalFlowCreate) SetFlowName(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetFlowName(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetFlowName(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetFlowName(v)
+	return _c
 }
 
 // SetFlowCode sets the "flow_code" field.
-func (cafc *CiApprovalFlowCreate) SetFlowCode(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetFlowCode(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetFlowCode(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetFlowCode(v)
+	return _c
 }
 
 // SetNillableFlowCode sets the "flow_code" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableFlowCode(s *string) *CiApprovalFlowCreate {
-	if s != nil {
-		cafc.SetFlowCode(*s)
+func (_c *CiApprovalFlowCreate) SetNillableFlowCode(v *string) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetFlowCode(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetFlowDescription sets the "flow_description" field.
-func (cafc *CiApprovalFlowCreate) SetFlowDescription(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetFlowDescription(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetFlowDescription(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetFlowDescription(v)
+	return _c
 }
 
 // SetNillableFlowDescription sets the "flow_description" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableFlowDescription(s *string) *CiApprovalFlowCreate {
-	if s != nil {
-		cafc.SetFlowDescription(*s)
+func (_c *CiApprovalFlowCreate) SetNillableFlowDescription(v *string) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetFlowDescription(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetScopeType sets the "scope_type" field.
-func (cafc *CiApprovalFlowCreate) SetScopeType(ct ciapprovalflow.ScopeType) *CiApprovalFlowCreate {
-	cafc.mutation.SetScopeType(ct)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetScopeType(v ciapprovalflow.ScopeType) *CiApprovalFlowCreate {
+	_c.mutation.SetScopeType(v)
+	return _c
 }
 
 // SetScopeConfig sets the "scope_config" field.
-func (cafc *CiApprovalFlowCreate) SetScopeConfig(m map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetScopeConfig(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetScopeConfig(v map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetScopeConfig(v)
+	return _c
 }
 
 // SetTriggerConditions sets the "trigger_conditions" field.
-func (cafc *CiApprovalFlowCreate) SetTriggerConditions(m map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetTriggerConditions(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetTriggerConditions(v map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetTriggerConditions(v)
+	return _c
 }
 
 // SetFlowType sets the "flow_type" field.
-func (cafc *CiApprovalFlowCreate) SetFlowType(ct ciapprovalflow.FlowType) *CiApprovalFlowCreate {
-	cafc.mutation.SetFlowType(ct)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetFlowType(v ciapprovalflow.FlowType) *CiApprovalFlowCreate {
+	_c.mutation.SetFlowType(v)
+	return _c
 }
 
 // SetNillableFlowType sets the "flow_type" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableFlowType(ct *ciapprovalflow.FlowType) *CiApprovalFlowCreate {
-	if ct != nil {
-		cafc.SetFlowType(*ct)
+func (_c *CiApprovalFlowCreate) SetNillableFlowType(v *ciapprovalflow.FlowType) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetFlowType(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetApprovalStages sets the "approval_stages" field.
-func (cafc *CiApprovalFlowCreate) SetApprovalStages(m []map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetApprovalStages(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetApprovalStages(v []map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetApprovalStages(v)
+	return _c
 }
 
 // SetTotalStages sets the "total_stages" field.
-func (cafc *CiApprovalFlowCreate) SetTotalStages(i int) *CiApprovalFlowCreate {
-	cafc.mutation.SetTotalStages(i)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetTotalStages(v int) *CiApprovalFlowCreate {
+	_c.mutation.SetTotalStages(v)
+	return _c
 }
 
 // SetAllowSkipStages sets the "allow_skip_stages" field.
-func (cafc *CiApprovalFlowCreate) SetAllowSkipStages(b bool) *CiApprovalFlowCreate {
-	cafc.mutation.SetAllowSkipStages(b)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetAllowSkipStages(v bool) *CiApprovalFlowCreate {
+	_c.mutation.SetAllowSkipStages(v)
+	return _c
 }
 
 // SetNillableAllowSkipStages sets the "allow_skip_stages" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableAllowSkipStages(b *bool) *CiApprovalFlowCreate {
-	if b != nil {
-		cafc.SetAllowSkipStages(*b)
+func (_c *CiApprovalFlowCreate) SetNillableAllowSkipStages(v *bool) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetAllowSkipStages(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetAllowRollback sets the "allow_rollback" field.
-func (cafc *CiApprovalFlowCreate) SetAllowRollback(b bool) *CiApprovalFlowCreate {
-	cafc.mutation.SetAllowRollback(b)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetAllowRollback(v bool) *CiApprovalFlowCreate {
+	_c.mutation.SetAllowRollback(v)
+	return _c
 }
 
 // SetNillableAllowRollback sets the "allow_rollback" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableAllowRollback(b *bool) *CiApprovalFlowCreate {
-	if b != nil {
-		cafc.SetAllowRollback(*b)
+func (_c *CiApprovalFlowCreate) SetNillableAllowRollback(v *bool) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetAllowRollback(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetApproverConfig sets the "approver_config" field.
-func (cafc *CiApprovalFlowCreate) SetApproverConfig(m map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetApproverConfig(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetApproverConfig(v map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetApproverConfig(v)
+	return _c
 }
 
 // SetFallbackApprovers sets the "fallback_approvers" field.
-func (cafc *CiApprovalFlowCreate) SetFallbackApprovers(m []map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetFallbackApprovers(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetFallbackApprovers(v []map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetFallbackApprovers(v)
+	return _c
 }
 
 // SetRequireAllApprovers sets the "require_all_approvers" field.
-func (cafc *CiApprovalFlowCreate) SetRequireAllApprovers(b bool) *CiApprovalFlowCreate {
-	cafc.mutation.SetRequireAllApprovers(b)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetRequireAllApprovers(v bool) *CiApprovalFlowCreate {
+	_c.mutation.SetRequireAllApprovers(v)
+	return _c
 }
 
 // SetNillableRequireAllApprovers sets the "require_all_approvers" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableRequireAllApprovers(b *bool) *CiApprovalFlowCreate {
-	if b != nil {
-		cafc.SetRequireAllApprovers(*b)
+func (_c *CiApprovalFlowCreate) SetNillableRequireAllApprovers(v *bool) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetRequireAllApprovers(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetTimeoutHours sets the "timeout_hours" field.
-func (cafc *CiApprovalFlowCreate) SetTimeoutHours(i int) *CiApprovalFlowCreate {
-	cafc.mutation.SetTimeoutHours(i)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetTimeoutHours(v int) *CiApprovalFlowCreate {
+	_c.mutation.SetTimeoutHours(v)
+	return _c
 }
 
 // SetNillableTimeoutHours sets the "timeout_hours" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableTimeoutHours(i *int) *CiApprovalFlowCreate {
-	if i != nil {
-		cafc.SetTimeoutHours(*i)
+func (_c *CiApprovalFlowCreate) SetNillableTimeoutHours(v *int) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetTimeoutHours(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetStageTimeouts sets the "stage_timeouts" field.
-func (cafc *CiApprovalFlowCreate) SetStageTimeouts(m map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetStageTimeouts(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetStageTimeouts(v map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetStageTimeouts(v)
+	return _c
 }
 
 // SetTimeoutAction sets the "timeout_action" field.
-func (cafc *CiApprovalFlowCreate) SetTimeoutAction(ca ciapprovalflow.TimeoutAction) *CiApprovalFlowCreate {
-	cafc.mutation.SetTimeoutAction(ca)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetTimeoutAction(v ciapprovalflow.TimeoutAction) *CiApprovalFlowCreate {
+	_c.mutation.SetTimeoutAction(v)
+	return _c
 }
 
 // SetNillableTimeoutAction sets the "timeout_action" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableTimeoutAction(ca *ciapprovalflow.TimeoutAction) *CiApprovalFlowCreate {
-	if ca != nil {
-		cafc.SetTimeoutAction(*ca)
+func (_c *CiApprovalFlowCreate) SetNillableTimeoutAction(v *ciapprovalflow.TimeoutAction) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetTimeoutAction(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetNotificationConfig sets the "notification_config" field.
-func (cafc *CiApprovalFlowCreate) SetNotificationConfig(m map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetNotificationConfig(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetNotificationConfig(v map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetNotificationConfig(v)
+	return _c
 }
 
 // SetNotifyOnSubmit sets the "notify_on_submit" field.
-func (cafc *CiApprovalFlowCreate) SetNotifyOnSubmit(b bool) *CiApprovalFlowCreate {
-	cafc.mutation.SetNotifyOnSubmit(b)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetNotifyOnSubmit(v bool) *CiApprovalFlowCreate {
+	_c.mutation.SetNotifyOnSubmit(v)
+	return _c
 }
 
 // SetNillableNotifyOnSubmit sets the "notify_on_submit" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableNotifyOnSubmit(b *bool) *CiApprovalFlowCreate {
-	if b != nil {
-		cafc.SetNotifyOnSubmit(*b)
+func (_c *CiApprovalFlowCreate) SetNillableNotifyOnSubmit(v *bool) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetNotifyOnSubmit(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetNotifyOnApprove sets the "notify_on_approve" field.
-func (cafc *CiApprovalFlowCreate) SetNotifyOnApprove(b bool) *CiApprovalFlowCreate {
-	cafc.mutation.SetNotifyOnApprove(b)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetNotifyOnApprove(v bool) *CiApprovalFlowCreate {
+	_c.mutation.SetNotifyOnApprove(v)
+	return _c
 }
 
 // SetNillableNotifyOnApprove sets the "notify_on_approve" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableNotifyOnApprove(b *bool) *CiApprovalFlowCreate {
-	if b != nil {
-		cafc.SetNotifyOnApprove(*b)
+func (_c *CiApprovalFlowCreate) SetNillableNotifyOnApprove(v *bool) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetNotifyOnApprove(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetNotifyOnReject sets the "notify_on_reject" field.
-func (cafc *CiApprovalFlowCreate) SetNotifyOnReject(b bool) *CiApprovalFlowCreate {
-	cafc.mutation.SetNotifyOnReject(b)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetNotifyOnReject(v bool) *CiApprovalFlowCreate {
+	_c.mutation.SetNotifyOnReject(v)
+	return _c
 }
 
 // SetNillableNotifyOnReject sets the "notify_on_reject" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableNotifyOnReject(b *bool) *CiApprovalFlowCreate {
-	if b != nil {
-		cafc.SetNotifyOnReject(*b)
+func (_c *CiApprovalFlowCreate) SetNillableNotifyOnReject(v *bool) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetNotifyOnReject(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetStatus sets the "status" field.
-func (cafc *CiApprovalFlowCreate) SetStatus(c ciapprovalflow.Status) *CiApprovalFlowCreate {
-	cafc.mutation.SetStatus(c)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetStatus(v ciapprovalflow.Status) *CiApprovalFlowCreate {
+	_c.mutation.SetStatus(v)
+	return _c
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableStatus(c *ciapprovalflow.Status) *CiApprovalFlowCreate {
-	if c != nil {
-		cafc.SetStatus(*c)
+func (_c *CiApprovalFlowCreate) SetNillableStatus(v *ciapprovalflow.Status) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetStatus(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetStatusReason sets the "status_reason" field.
-func (cafc *CiApprovalFlowCreate) SetStatusReason(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetStatusReason(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetStatusReason(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetStatusReason(v)
+	return _c
 }
 
 // SetNillableStatusReason sets the "status_reason" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableStatusReason(s *string) *CiApprovalFlowCreate {
-	if s != nil {
-		cafc.SetStatusReason(*s)
+func (_c *CiApprovalFlowCreate) SetNillableStatusReason(v *string) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetStatusReason(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetVersion sets the "version" field.
-func (cafc *CiApprovalFlowCreate) SetVersion(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetVersion(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetVersion(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetVersion(v)
+	return _c
 }
 
 // SetNillableVersion sets the "version" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableVersion(s *string) *CiApprovalFlowCreate {
-	if s != nil {
-		cafc.SetVersion(*s)
+func (_c *CiApprovalFlowCreate) SetNillableVersion(v *string) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetVersion(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetParentFlowID sets the "parent_flow_id" field.
-func (cafc *CiApprovalFlowCreate) SetParentFlowID(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetParentFlowID(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetParentFlowID(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetParentFlowID(v)
+	return _c
 }
 
 // SetNillableParentFlowID sets the "parent_flow_id" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableParentFlowID(s *string) *CiApprovalFlowCreate {
-	if s != nil {
-		cafc.SetParentFlowID(*s)
+func (_c *CiApprovalFlowCreate) SetNillableParentFlowID(v *string) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetParentFlowID(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetIsDefault sets the "is_default" field.
-func (cafc *CiApprovalFlowCreate) SetIsDefault(b bool) *CiApprovalFlowCreate {
-	cafc.mutation.SetIsDefault(b)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetIsDefault(v bool) *CiApprovalFlowCreate {
+	_c.mutation.SetIsDefault(v)
+	return _c
 }
 
 // SetNillableIsDefault sets the "is_default" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableIsDefault(b *bool) *CiApprovalFlowCreate {
-	if b != nil {
-		cafc.SetIsDefault(*b)
+func (_c *CiApprovalFlowCreate) SetNillableIsDefault(v *bool) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetIsDefault(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetUsageCount sets the "usage_count" field.
-func (cafc *CiApprovalFlowCreate) SetUsageCount(i int) *CiApprovalFlowCreate {
-	cafc.mutation.SetUsageCount(i)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetUsageCount(v int) *CiApprovalFlowCreate {
+	_c.mutation.SetUsageCount(v)
+	return _c
 }
 
 // SetNillableUsageCount sets the "usage_count" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableUsageCount(i *int) *CiApprovalFlowCreate {
-	if i != nil {
-		cafc.SetUsageCount(*i)
+func (_c *CiApprovalFlowCreate) SetNillableUsageCount(v *int) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetUsageCount(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetApprovalRate sets the "approval_rate" field.
-func (cafc *CiApprovalFlowCreate) SetApprovalRate(i int) *CiApprovalFlowCreate {
-	cafc.mutation.SetApprovalRate(i)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetApprovalRate(v int) *CiApprovalFlowCreate {
+	_c.mutation.SetApprovalRate(v)
+	return _c
 }
 
 // SetNillableApprovalRate sets the "approval_rate" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableApprovalRate(i *int) *CiApprovalFlowCreate {
-	if i != nil {
-		cafc.SetApprovalRate(*i)
+func (_c *CiApprovalFlowCreate) SetNillableApprovalRate(v *int) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetApprovalRate(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetAvgApprovalTime sets the "avg_approval_time" field.
-func (cafc *CiApprovalFlowCreate) SetAvgApprovalTime(f float64) *CiApprovalFlowCreate {
-	cafc.mutation.SetAvgApprovalTime(f)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetAvgApprovalTime(v float64) *CiApprovalFlowCreate {
+	_c.mutation.SetAvgApprovalTime(v)
+	return _c
 }
 
 // SetNillableAvgApprovalTime sets the "avg_approval_time" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableAvgApprovalTime(f *float64) *CiApprovalFlowCreate {
-	if f != nil {
-		cafc.SetAvgApprovalTime(*f)
+func (_c *CiApprovalFlowCreate) SetNillableAvgApprovalTime(v *float64) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetAvgApprovalTime(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetLastUsedAt sets the "last_used_at" field.
-func (cafc *CiApprovalFlowCreate) SetLastUsedAt(t time.Time) *CiApprovalFlowCreate {
-	cafc.mutation.SetLastUsedAt(t)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetLastUsedAt(v time.Time) *CiApprovalFlowCreate {
+	_c.mutation.SetLastUsedAt(v)
+	return _c
 }
 
 // SetNillableLastUsedAt sets the "last_used_at" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableLastUsedAt(t *time.Time) *CiApprovalFlowCreate {
-	if t != nil {
-		cafc.SetLastUsedAt(*t)
+func (_c *CiApprovalFlowCreate) SetNillableLastUsedAt(v *time.Time) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetLastUsedAt(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetCreatedBy sets the "created_by" field.
-func (cafc *CiApprovalFlowCreate) SetCreatedBy(u uuid.UUID) *CiApprovalFlowCreate {
-	cafc.mutation.SetCreatedBy(u)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetCreatedBy(v uuid.UUID) *CiApprovalFlowCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
 }
 
 // SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableCreatedBy(u *uuid.UUID) *CiApprovalFlowCreate {
-	if u != nil {
-		cafc.SetCreatedBy(*u)
+func (_c *CiApprovalFlowCreate) SetNillableCreatedBy(v *uuid.UUID) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetCreatedByName sets the "created_by_name" field.
-func (cafc *CiApprovalFlowCreate) SetCreatedByName(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetCreatedByName(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetCreatedByName(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetCreatedByName(v)
+	return _c
 }
 
 // SetNillableCreatedByName sets the "created_by_name" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableCreatedByName(s *string) *CiApprovalFlowCreate {
-	if s != nil {
-		cafc.SetCreatedByName(*s)
+func (_c *CiApprovalFlowCreate) SetNillableCreatedByName(v *string) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetCreatedByName(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetUpdatedBy sets the "updated_by" field.
-func (cafc *CiApprovalFlowCreate) SetUpdatedBy(u uuid.UUID) *CiApprovalFlowCreate {
-	cafc.mutation.SetUpdatedBy(u)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetUpdatedBy(v uuid.UUID) *CiApprovalFlowCreate {
+	_c.mutation.SetUpdatedBy(v)
+	return _c
 }
 
 // SetNillableUpdatedBy sets the "updated_by" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableUpdatedBy(u *uuid.UUID) *CiApprovalFlowCreate {
-	if u != nil {
-		cafc.SetUpdatedBy(*u)
+func (_c *CiApprovalFlowCreate) SetNillableUpdatedBy(v *uuid.UUID) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetUpdatedBy(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetUpdatedByName sets the "updated_by_name" field.
-func (cafc *CiApprovalFlowCreate) SetUpdatedByName(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetUpdatedByName(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetUpdatedByName(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetUpdatedByName(v)
+	return _c
 }
 
 // SetNillableUpdatedByName sets the "updated_by_name" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableUpdatedByName(s *string) *CiApprovalFlowCreate {
-	if s != nil {
-		cafc.SetUpdatedByName(*s)
+func (_c *CiApprovalFlowCreate) SetNillableUpdatedByName(v *string) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetUpdatedByName(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetPublishedAt sets the "published_at" field.
-func (cafc *CiApprovalFlowCreate) SetPublishedAt(t time.Time) *CiApprovalFlowCreate {
-	cafc.mutation.SetPublishedAt(t)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetPublishedAt(v time.Time) *CiApprovalFlowCreate {
+	_c.mutation.SetPublishedAt(v)
+	return _c
 }
 
 // SetNillablePublishedAt sets the "published_at" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillablePublishedAt(t *time.Time) *CiApprovalFlowCreate {
-	if t != nil {
-		cafc.SetPublishedAt(*t)
+func (_c *CiApprovalFlowCreate) SetNillablePublishedAt(v *time.Time) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetPublishedAt(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetPublishedBy sets the "published_by" field.
-func (cafc *CiApprovalFlowCreate) SetPublishedBy(u uuid.UUID) *CiApprovalFlowCreate {
-	cafc.mutation.SetPublishedBy(u)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetPublishedBy(v uuid.UUID) *CiApprovalFlowCreate {
+	_c.mutation.SetPublishedBy(v)
+	return _c
 }
 
 // SetNillablePublishedBy sets the "published_by" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillablePublishedBy(u *uuid.UUID) *CiApprovalFlowCreate {
-	if u != nil {
-		cafc.SetPublishedBy(*u)
+func (_c *CiApprovalFlowCreate) SetNillablePublishedBy(v *uuid.UUID) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetPublishedBy(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetCustomFields sets the "custom_fields" field.
-func (cafc *CiApprovalFlowCreate) SetCustomFields(m map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetCustomFields(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetCustomFields(v map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetCustomFields(v)
+	return _c
 }
 
 // SetIntegrationConfig sets the "integration_config" field.
-func (cafc *CiApprovalFlowCreate) SetIntegrationConfig(m map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetIntegrationConfig(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetIntegrationConfig(v map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetIntegrationConfig(v)
+	return _c
 }
 
 // SetMetadata sets the "metadata" field.
-func (cafc *CiApprovalFlowCreate) SetMetadata(m map[string]interface{}) *CiApprovalFlowCreate {
-	cafc.mutation.SetMetadata(m)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetMetadata(v map[string]interface{}) *CiApprovalFlowCreate {
+	_c.mutation.SetMetadata(v)
+	return _c
 }
 
 // SetTags sets the "tags" field.
-func (cafc *CiApprovalFlowCreate) SetTags(s []string) *CiApprovalFlowCreate {
-	cafc.mutation.SetTags(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetTags(v []string) *CiApprovalFlowCreate {
+	_c.mutation.SetTags(v)
+	return _c
 }
 
 // SetComments sets the "comments" field.
-func (cafc *CiApprovalFlowCreate) SetComments(s string) *CiApprovalFlowCreate {
-	cafc.mutation.SetComments(s)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetComments(v string) *CiApprovalFlowCreate {
+	_c.mutation.SetComments(v)
+	return _c
 }
 
 // SetNillableComments sets the "comments" field if the given value is not nil.
-func (cafc *CiApprovalFlowCreate) SetNillableComments(s *string) *CiApprovalFlowCreate {
-	if s != nil {
-		cafc.SetComments(*s)
+func (_c *CiApprovalFlowCreate) SetNillableComments(v *string) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetComments(*v)
 	}
-	return cafc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (cafc *CiApprovalFlowCreate) SetID(u uint64) *CiApprovalFlowCreate {
-	cafc.mutation.SetID(u)
-	return cafc
+func (_c *CiApprovalFlowCreate) SetID(v uint64) *CiApprovalFlowCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // Mutation returns the CiApprovalFlowMutation object of the builder.
-func (cafc *CiApprovalFlowCreate) Mutation() *CiApprovalFlowMutation {
-	return cafc.mutation
+func (_c *CiApprovalFlowCreate) Mutation() *CiApprovalFlowMutation {
+	return _c.mutation
 }
 
 // Save creates the CiApprovalFlow in the database.
-func (cafc *CiApprovalFlowCreate) Save(ctx context.Context) (*CiApprovalFlow, error) {
-	cafc.defaults()
-	return withHooks(ctx, cafc.sqlSave, cafc.mutation, cafc.hooks)
+func (_c *CiApprovalFlowCreate) Save(ctx context.Context) (*CiApprovalFlow, error) {
+	_c.defaults()
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (cafc *CiApprovalFlowCreate) SaveX(ctx context.Context) *CiApprovalFlow {
-	v, err := cafc.Save(ctx)
+func (_c *CiApprovalFlowCreate) SaveX(ctx context.Context) *CiApprovalFlow {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -572,197 +572,197 @@ func (cafc *CiApprovalFlowCreate) SaveX(ctx context.Context) *CiApprovalFlow {
 }
 
 // Exec executes the query.
-func (cafc *CiApprovalFlowCreate) Exec(ctx context.Context) error {
-	_, err := cafc.Save(ctx)
+func (_c *CiApprovalFlowCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cafc *CiApprovalFlowCreate) ExecX(ctx context.Context) {
-	if err := cafc.Exec(ctx); err != nil {
+func (_c *CiApprovalFlowCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (cafc *CiApprovalFlowCreate) defaults() {
-	if _, ok := cafc.mutation.CreatedAt(); !ok {
+func (_c *CiApprovalFlowCreate) defaults() {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		v := ciapprovalflow.DefaultCreatedAt()
-		cafc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := cafc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		v := ciapprovalflow.DefaultUpdatedAt()
-		cafc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := cafc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := ciapprovalflow.DefaultTenantID
-		cafc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := cafc.mutation.FlowType(); !ok {
+	if _, ok := _c.mutation.FlowType(); !ok {
 		v := ciapprovalflow.DefaultFlowType
-		cafc.mutation.SetFlowType(v)
+		_c.mutation.SetFlowType(v)
 	}
-	if _, ok := cafc.mutation.AllowSkipStages(); !ok {
+	if _, ok := _c.mutation.AllowSkipStages(); !ok {
 		v := ciapprovalflow.DefaultAllowSkipStages
-		cafc.mutation.SetAllowSkipStages(v)
+		_c.mutation.SetAllowSkipStages(v)
 	}
-	if _, ok := cafc.mutation.AllowRollback(); !ok {
+	if _, ok := _c.mutation.AllowRollback(); !ok {
 		v := ciapprovalflow.DefaultAllowRollback
-		cafc.mutation.SetAllowRollback(v)
+		_c.mutation.SetAllowRollback(v)
 	}
-	if _, ok := cafc.mutation.RequireAllApprovers(); !ok {
+	if _, ok := _c.mutation.RequireAllApprovers(); !ok {
 		v := ciapprovalflow.DefaultRequireAllApprovers
-		cafc.mutation.SetRequireAllApprovers(v)
+		_c.mutation.SetRequireAllApprovers(v)
 	}
-	if _, ok := cafc.mutation.TimeoutHours(); !ok {
+	if _, ok := _c.mutation.TimeoutHours(); !ok {
 		v := ciapprovalflow.DefaultTimeoutHours
-		cafc.mutation.SetTimeoutHours(v)
+		_c.mutation.SetTimeoutHours(v)
 	}
-	if _, ok := cafc.mutation.TimeoutAction(); !ok {
+	if _, ok := _c.mutation.TimeoutAction(); !ok {
 		v := ciapprovalflow.DefaultTimeoutAction
-		cafc.mutation.SetTimeoutAction(v)
+		_c.mutation.SetTimeoutAction(v)
 	}
-	if _, ok := cafc.mutation.NotifyOnSubmit(); !ok {
+	if _, ok := _c.mutation.NotifyOnSubmit(); !ok {
 		v := ciapprovalflow.DefaultNotifyOnSubmit
-		cafc.mutation.SetNotifyOnSubmit(v)
+		_c.mutation.SetNotifyOnSubmit(v)
 	}
-	if _, ok := cafc.mutation.NotifyOnApprove(); !ok {
+	if _, ok := _c.mutation.NotifyOnApprove(); !ok {
 		v := ciapprovalflow.DefaultNotifyOnApprove
-		cafc.mutation.SetNotifyOnApprove(v)
+		_c.mutation.SetNotifyOnApprove(v)
 	}
-	if _, ok := cafc.mutation.NotifyOnReject(); !ok {
+	if _, ok := _c.mutation.NotifyOnReject(); !ok {
 		v := ciapprovalflow.DefaultNotifyOnReject
-		cafc.mutation.SetNotifyOnReject(v)
+		_c.mutation.SetNotifyOnReject(v)
 	}
-	if _, ok := cafc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		v := ciapprovalflow.DefaultStatus
-		cafc.mutation.SetStatus(v)
+		_c.mutation.SetStatus(v)
 	}
-	if _, ok := cafc.mutation.Version(); !ok {
+	if _, ok := _c.mutation.Version(); !ok {
 		v := ciapprovalflow.DefaultVersion
-		cafc.mutation.SetVersion(v)
+		_c.mutation.SetVersion(v)
 	}
-	if _, ok := cafc.mutation.IsDefault(); !ok {
+	if _, ok := _c.mutation.IsDefault(); !ok {
 		v := ciapprovalflow.DefaultIsDefault
-		cafc.mutation.SetIsDefault(v)
+		_c.mutation.SetIsDefault(v)
 	}
-	if _, ok := cafc.mutation.UsageCount(); !ok {
+	if _, ok := _c.mutation.UsageCount(); !ok {
 		v := ciapprovalflow.DefaultUsageCount
-		cafc.mutation.SetUsageCount(v)
+		_c.mutation.SetUsageCount(v)
 	}
-	if _, ok := cafc.mutation.ApprovalRate(); !ok {
+	if _, ok := _c.mutation.ApprovalRate(); !ok {
 		v := ciapprovalflow.DefaultApprovalRate
-		cafc.mutation.SetApprovalRate(v)
+		_c.mutation.SetApprovalRate(v)
 	}
-	if _, ok := cafc.mutation.AvgApprovalTime(); !ok {
+	if _, ok := _c.mutation.AvgApprovalTime(); !ok {
 		v := ciapprovalflow.DefaultAvgApprovalTime
-		cafc.mutation.SetAvgApprovalTime(v)
+		_c.mutation.SetAvgApprovalTime(v)
 	}
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (cafc *CiApprovalFlowCreate) check() error {
-	if _, ok := cafc.mutation.CreatedAt(); !ok {
+func (_c *CiApprovalFlowCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "CiApprovalFlow.created_at"`)}
 	}
-	if _, ok := cafc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "CiApprovalFlow.updated_at"`)}
 	}
-	if _, ok := cafc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "CiApprovalFlow.tenant_id"`)}
 	}
-	if _, ok := cafc.mutation.FlowID(); !ok {
+	if _, ok := _c.mutation.FlowID(); !ok {
 		return &ValidationError{Name: "flow_id", err: errors.New(`ent: missing required field "CiApprovalFlow.flow_id"`)}
 	}
-	if _, ok := cafc.mutation.FlowName(); !ok {
+	if _, ok := _c.mutation.FlowName(); !ok {
 		return &ValidationError{Name: "flow_name", err: errors.New(`ent: missing required field "CiApprovalFlow.flow_name"`)}
 	}
-	if _, ok := cafc.mutation.ScopeType(); !ok {
+	if _, ok := _c.mutation.ScopeType(); !ok {
 		return &ValidationError{Name: "scope_type", err: errors.New(`ent: missing required field "CiApprovalFlow.scope_type"`)}
 	}
-	if v, ok := cafc.mutation.ScopeType(); ok {
+	if v, ok := _c.mutation.ScopeType(); ok {
 		if err := ciapprovalflow.ScopeTypeValidator(v); err != nil {
 			return &ValidationError{Name: "scope_type", err: fmt.Errorf(`ent: validator failed for field "CiApprovalFlow.scope_type": %w`, err)}
 		}
 	}
-	if _, ok := cafc.mutation.FlowType(); !ok {
+	if _, ok := _c.mutation.FlowType(); !ok {
 		return &ValidationError{Name: "flow_type", err: errors.New(`ent: missing required field "CiApprovalFlow.flow_type"`)}
 	}
-	if v, ok := cafc.mutation.FlowType(); ok {
+	if v, ok := _c.mutation.FlowType(); ok {
 		if err := ciapprovalflow.FlowTypeValidator(v); err != nil {
 			return &ValidationError{Name: "flow_type", err: fmt.Errorf(`ent: validator failed for field "CiApprovalFlow.flow_type": %w`, err)}
 		}
 	}
-	if _, ok := cafc.mutation.ApprovalStages(); !ok {
+	if _, ok := _c.mutation.ApprovalStages(); !ok {
 		return &ValidationError{Name: "approval_stages", err: errors.New(`ent: missing required field "CiApprovalFlow.approval_stages"`)}
 	}
-	if _, ok := cafc.mutation.TotalStages(); !ok {
+	if _, ok := _c.mutation.TotalStages(); !ok {
 		return &ValidationError{Name: "total_stages", err: errors.New(`ent: missing required field "CiApprovalFlow.total_stages"`)}
 	}
-	if _, ok := cafc.mutation.AllowSkipStages(); !ok {
+	if _, ok := _c.mutation.AllowSkipStages(); !ok {
 		return &ValidationError{Name: "allow_skip_stages", err: errors.New(`ent: missing required field "CiApprovalFlow.allow_skip_stages"`)}
 	}
-	if _, ok := cafc.mutation.AllowRollback(); !ok {
+	if _, ok := _c.mutation.AllowRollback(); !ok {
 		return &ValidationError{Name: "allow_rollback", err: errors.New(`ent: missing required field "CiApprovalFlow.allow_rollback"`)}
 	}
-	if _, ok := cafc.mutation.ApproverConfig(); !ok {
+	if _, ok := _c.mutation.ApproverConfig(); !ok {
 		return &ValidationError{Name: "approver_config", err: errors.New(`ent: missing required field "CiApprovalFlow.approver_config"`)}
 	}
-	if _, ok := cafc.mutation.RequireAllApprovers(); !ok {
+	if _, ok := _c.mutation.RequireAllApprovers(); !ok {
 		return &ValidationError{Name: "require_all_approvers", err: errors.New(`ent: missing required field "CiApprovalFlow.require_all_approvers"`)}
 	}
-	if _, ok := cafc.mutation.TimeoutHours(); !ok {
+	if _, ok := _c.mutation.TimeoutHours(); !ok {
 		return &ValidationError{Name: "timeout_hours", err: errors.New(`ent: missing required field "CiApprovalFlow.timeout_hours"`)}
 	}
-	if _, ok := cafc.mutation.TimeoutAction(); !ok {
+	if _, ok := _c.mutation.TimeoutAction(); !ok {
 		return &ValidationError{Name: "timeout_action", err: errors.New(`ent: missing required field "CiApprovalFlow.timeout_action"`)}
 	}
-	if v, ok := cafc.mutation.TimeoutAction(); ok {
+	if v, ok := _c.mutation.TimeoutAction(); ok {
 		if err := ciapprovalflow.TimeoutActionValidator(v); err != nil {
 			return &ValidationError{Name: "timeout_action", err: fmt.Errorf(`ent: validator failed for field "CiApprovalFlow.timeout_action": %w`, err)}
 		}
 	}
-	if _, ok := cafc.mutation.NotifyOnSubmit(); !ok {
+	if _, ok := _c.mutation.NotifyOnSubmit(); !ok {
 		return &ValidationError{Name: "notify_on_submit", err: errors.New(`ent: missing required field "CiApprovalFlow.notify_on_submit"`)}
 	}
-	if _, ok := cafc.mutation.NotifyOnApprove(); !ok {
+	if _, ok := _c.mutation.NotifyOnApprove(); !ok {
 		return &ValidationError{Name: "notify_on_approve", err: errors.New(`ent: missing required field "CiApprovalFlow.notify_on_approve"`)}
 	}
-	if _, ok := cafc.mutation.NotifyOnReject(); !ok {
+	if _, ok := _c.mutation.NotifyOnReject(); !ok {
 		return &ValidationError{Name: "notify_on_reject", err: errors.New(`ent: missing required field "CiApprovalFlow.notify_on_reject"`)}
 	}
-	if _, ok := cafc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "CiApprovalFlow.status"`)}
 	}
-	if v, ok := cafc.mutation.Status(); ok {
+	if v, ok := _c.mutation.Status(); ok {
 		if err := ciapprovalflow.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "CiApprovalFlow.status": %w`, err)}
 		}
 	}
-	if _, ok := cafc.mutation.Version(); !ok {
+	if _, ok := _c.mutation.Version(); !ok {
 		return &ValidationError{Name: "version", err: errors.New(`ent: missing required field "CiApprovalFlow.version"`)}
 	}
-	if _, ok := cafc.mutation.IsDefault(); !ok {
+	if _, ok := _c.mutation.IsDefault(); !ok {
 		return &ValidationError{Name: "is_default", err: errors.New(`ent: missing required field "CiApprovalFlow.is_default"`)}
 	}
-	if _, ok := cafc.mutation.UsageCount(); !ok {
+	if _, ok := _c.mutation.UsageCount(); !ok {
 		return &ValidationError{Name: "usage_count", err: errors.New(`ent: missing required field "CiApprovalFlow.usage_count"`)}
 	}
-	if _, ok := cafc.mutation.ApprovalRate(); !ok {
+	if _, ok := _c.mutation.ApprovalRate(); !ok {
 		return &ValidationError{Name: "approval_rate", err: errors.New(`ent: missing required field "CiApprovalFlow.approval_rate"`)}
 	}
-	if _, ok := cafc.mutation.AvgApprovalTime(); !ok {
+	if _, ok := _c.mutation.AvgApprovalTime(); !ok {
 		return &ValidationError{Name: "avg_approval_time", err: errors.New(`ent: missing required field "CiApprovalFlow.avg_approval_time"`)}
 	}
 	return nil
 }
 
-func (cafc *CiApprovalFlowCreate) sqlSave(ctx context.Context) (*CiApprovalFlow, error) {
-	if err := cafc.check(); err != nil {
+func (_c *CiApprovalFlowCreate) sqlSave(ctx context.Context) (*CiApprovalFlow, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := cafc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, cafc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -772,201 +772,201 @@ func (cafc *CiApprovalFlowCreate) sqlSave(ctx context.Context) (*CiApprovalFlow,
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	cafc.mutation.id = &_node.ID
-	cafc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (cafc *CiApprovalFlowCreate) createSpec() (*CiApprovalFlow, *sqlgraph.CreateSpec) {
+func (_c *CiApprovalFlowCreate) createSpec() (*CiApprovalFlow, *sqlgraph.CreateSpec) {
 	var (
-		_node = &CiApprovalFlow{config: cafc.config}
+		_node = &CiApprovalFlow{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(ciapprovalflow.Table, sqlgraph.NewFieldSpec(ciapprovalflow.FieldID, field.TypeUint64))
 	)
-	if id, ok := cafc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := cafc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(ciapprovalflow.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := cafc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(ciapprovalflow.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := cafc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(ciapprovalflow.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := cafc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(ciapprovalflow.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := cafc.mutation.FlowID(); ok {
+	if value, ok := _c.mutation.FlowID(); ok {
 		_spec.SetField(ciapprovalflow.FieldFlowID, field.TypeString, value)
 		_node.FlowID = value
 	}
-	if value, ok := cafc.mutation.FlowName(); ok {
+	if value, ok := _c.mutation.FlowName(); ok {
 		_spec.SetField(ciapprovalflow.FieldFlowName, field.TypeString, value)
 		_node.FlowName = value
 	}
-	if value, ok := cafc.mutation.FlowCode(); ok {
+	if value, ok := _c.mutation.FlowCode(); ok {
 		_spec.SetField(ciapprovalflow.FieldFlowCode, field.TypeString, value)
 		_node.FlowCode = value
 	}
-	if value, ok := cafc.mutation.FlowDescription(); ok {
+	if value, ok := _c.mutation.FlowDescription(); ok {
 		_spec.SetField(ciapprovalflow.FieldFlowDescription, field.TypeString, value)
 		_node.FlowDescription = value
 	}
-	if value, ok := cafc.mutation.ScopeType(); ok {
+	if value, ok := _c.mutation.ScopeType(); ok {
 		_spec.SetField(ciapprovalflow.FieldScopeType, field.TypeEnum, value)
 		_node.ScopeType = value
 	}
-	if value, ok := cafc.mutation.ScopeConfig(); ok {
+	if value, ok := _c.mutation.ScopeConfig(); ok {
 		_spec.SetField(ciapprovalflow.FieldScopeConfig, field.TypeJSON, value)
 		_node.ScopeConfig = value
 	}
-	if value, ok := cafc.mutation.TriggerConditions(); ok {
+	if value, ok := _c.mutation.TriggerConditions(); ok {
 		_spec.SetField(ciapprovalflow.FieldTriggerConditions, field.TypeJSON, value)
 		_node.TriggerConditions = value
 	}
-	if value, ok := cafc.mutation.FlowType(); ok {
+	if value, ok := _c.mutation.FlowType(); ok {
 		_spec.SetField(ciapprovalflow.FieldFlowType, field.TypeEnum, value)
 		_node.FlowType = value
 	}
-	if value, ok := cafc.mutation.ApprovalStages(); ok {
+	if value, ok := _c.mutation.ApprovalStages(); ok {
 		_spec.SetField(ciapprovalflow.FieldApprovalStages, field.TypeJSON, value)
 		_node.ApprovalStages = value
 	}
-	if value, ok := cafc.mutation.TotalStages(); ok {
+	if value, ok := _c.mutation.TotalStages(); ok {
 		_spec.SetField(ciapprovalflow.FieldTotalStages, field.TypeInt, value)
 		_node.TotalStages = value
 	}
-	if value, ok := cafc.mutation.AllowSkipStages(); ok {
+	if value, ok := _c.mutation.AllowSkipStages(); ok {
 		_spec.SetField(ciapprovalflow.FieldAllowSkipStages, field.TypeBool, value)
 		_node.AllowSkipStages = value
 	}
-	if value, ok := cafc.mutation.AllowRollback(); ok {
+	if value, ok := _c.mutation.AllowRollback(); ok {
 		_spec.SetField(ciapprovalflow.FieldAllowRollback, field.TypeBool, value)
 		_node.AllowRollback = value
 	}
-	if value, ok := cafc.mutation.ApproverConfig(); ok {
+	if value, ok := _c.mutation.ApproverConfig(); ok {
 		_spec.SetField(ciapprovalflow.FieldApproverConfig, field.TypeJSON, value)
 		_node.ApproverConfig = value
 	}
-	if value, ok := cafc.mutation.FallbackApprovers(); ok {
+	if value, ok := _c.mutation.FallbackApprovers(); ok {
 		_spec.SetField(ciapprovalflow.FieldFallbackApprovers, field.TypeJSON, value)
 		_node.FallbackApprovers = value
 	}
-	if value, ok := cafc.mutation.RequireAllApprovers(); ok {
+	if value, ok := _c.mutation.RequireAllApprovers(); ok {
 		_spec.SetField(ciapprovalflow.FieldRequireAllApprovers, field.TypeBool, value)
 		_node.RequireAllApprovers = value
 	}
-	if value, ok := cafc.mutation.TimeoutHours(); ok {
+	if value, ok := _c.mutation.TimeoutHours(); ok {
 		_spec.SetField(ciapprovalflow.FieldTimeoutHours, field.TypeInt, value)
 		_node.TimeoutHours = value
 	}
-	if value, ok := cafc.mutation.StageTimeouts(); ok {
+	if value, ok := _c.mutation.StageTimeouts(); ok {
 		_spec.SetField(ciapprovalflow.FieldStageTimeouts, field.TypeJSON, value)
 		_node.StageTimeouts = value
 	}
-	if value, ok := cafc.mutation.TimeoutAction(); ok {
+	if value, ok := _c.mutation.TimeoutAction(); ok {
 		_spec.SetField(ciapprovalflow.FieldTimeoutAction, field.TypeEnum, value)
 		_node.TimeoutAction = value
 	}
-	if value, ok := cafc.mutation.NotificationConfig(); ok {
+	if value, ok := _c.mutation.NotificationConfig(); ok {
 		_spec.SetField(ciapprovalflow.FieldNotificationConfig, field.TypeJSON, value)
 		_node.NotificationConfig = value
 	}
-	if value, ok := cafc.mutation.NotifyOnSubmit(); ok {
+	if value, ok := _c.mutation.NotifyOnSubmit(); ok {
 		_spec.SetField(ciapprovalflow.FieldNotifyOnSubmit, field.TypeBool, value)
 		_node.NotifyOnSubmit = value
 	}
-	if value, ok := cafc.mutation.NotifyOnApprove(); ok {
+	if value, ok := _c.mutation.NotifyOnApprove(); ok {
 		_spec.SetField(ciapprovalflow.FieldNotifyOnApprove, field.TypeBool, value)
 		_node.NotifyOnApprove = value
 	}
-	if value, ok := cafc.mutation.NotifyOnReject(); ok {
+	if value, ok := _c.mutation.NotifyOnReject(); ok {
 		_spec.SetField(ciapprovalflow.FieldNotifyOnReject, field.TypeBool, value)
 		_node.NotifyOnReject = value
 	}
-	if value, ok := cafc.mutation.Status(); ok {
+	if value, ok := _c.mutation.Status(); ok {
 		_spec.SetField(ciapprovalflow.FieldStatus, field.TypeEnum, value)
 		_node.Status = value
 	}
-	if value, ok := cafc.mutation.StatusReason(); ok {
+	if value, ok := _c.mutation.StatusReason(); ok {
 		_spec.SetField(ciapprovalflow.FieldStatusReason, field.TypeString, value)
 		_node.StatusReason = value
 	}
-	if value, ok := cafc.mutation.Version(); ok {
+	if value, ok := _c.mutation.Version(); ok {
 		_spec.SetField(ciapprovalflow.FieldVersion, field.TypeString, value)
 		_node.Version = value
 	}
-	if value, ok := cafc.mutation.ParentFlowID(); ok {
+	if value, ok := _c.mutation.ParentFlowID(); ok {
 		_spec.SetField(ciapprovalflow.FieldParentFlowID, field.TypeString, value)
 		_node.ParentFlowID = value
 	}
-	if value, ok := cafc.mutation.IsDefault(); ok {
+	if value, ok := _c.mutation.IsDefault(); ok {
 		_spec.SetField(ciapprovalflow.FieldIsDefault, field.TypeBool, value)
 		_node.IsDefault = value
 	}
-	if value, ok := cafc.mutation.UsageCount(); ok {
+	if value, ok := _c.mutation.UsageCount(); ok {
 		_spec.SetField(ciapprovalflow.FieldUsageCount, field.TypeInt, value)
 		_node.UsageCount = value
 	}
-	if value, ok := cafc.mutation.ApprovalRate(); ok {
+	if value, ok := _c.mutation.ApprovalRate(); ok {
 		_spec.SetField(ciapprovalflow.FieldApprovalRate, field.TypeInt, value)
 		_node.ApprovalRate = value
 	}
-	if value, ok := cafc.mutation.AvgApprovalTime(); ok {
+	if value, ok := _c.mutation.AvgApprovalTime(); ok {
 		_spec.SetField(ciapprovalflow.FieldAvgApprovalTime, field.TypeFloat64, value)
 		_node.AvgApprovalTime = value
 	}
-	if value, ok := cafc.mutation.LastUsedAt(); ok {
+	if value, ok := _c.mutation.LastUsedAt(); ok {
 		_spec.SetField(ciapprovalflow.FieldLastUsedAt, field.TypeTime, value)
 		_node.LastUsedAt = value
 	}
-	if value, ok := cafc.mutation.CreatedBy(); ok {
+	if value, ok := _c.mutation.CreatedBy(); ok {
 		_spec.SetField(ciapprovalflow.FieldCreatedBy, field.TypeUUID, value)
 		_node.CreatedBy = value
 	}
-	if value, ok := cafc.mutation.CreatedByName(); ok {
+	if value, ok := _c.mutation.CreatedByName(); ok {
 		_spec.SetField(ciapprovalflow.FieldCreatedByName, field.TypeString, value)
 		_node.CreatedByName = value
 	}
-	if value, ok := cafc.mutation.UpdatedBy(); ok {
+	if value, ok := _c.mutation.UpdatedBy(); ok {
 		_spec.SetField(ciapprovalflow.FieldUpdatedBy, field.TypeUUID, value)
 		_node.UpdatedBy = value
 	}
-	if value, ok := cafc.mutation.UpdatedByName(); ok {
+	if value, ok := _c.mutation.UpdatedByName(); ok {
 		_spec.SetField(ciapprovalflow.FieldUpdatedByName, field.TypeString, value)
 		_node.UpdatedByName = value
 	}
-	if value, ok := cafc.mutation.PublishedAt(); ok {
+	if value, ok := _c.mutation.PublishedAt(); ok {
 		_spec.SetField(ciapprovalflow.FieldPublishedAt, field.TypeTime, value)
 		_node.PublishedAt = value
 	}
-	if value, ok := cafc.mutation.PublishedBy(); ok {
+	if value, ok := _c.mutation.PublishedBy(); ok {
 		_spec.SetField(ciapprovalflow.FieldPublishedBy, field.TypeUUID, value)
 		_node.PublishedBy = value
 	}
-	if value, ok := cafc.mutation.CustomFields(); ok {
+	if value, ok := _c.mutation.CustomFields(); ok {
 		_spec.SetField(ciapprovalflow.FieldCustomFields, field.TypeJSON, value)
 		_node.CustomFields = value
 	}
-	if value, ok := cafc.mutation.IntegrationConfig(); ok {
+	if value, ok := _c.mutation.IntegrationConfig(); ok {
 		_spec.SetField(ciapprovalflow.FieldIntegrationConfig, field.TypeJSON, value)
 		_node.IntegrationConfig = value
 	}
-	if value, ok := cafc.mutation.Metadata(); ok {
+	if value, ok := _c.mutation.Metadata(); ok {
 		_spec.SetField(ciapprovalflow.FieldMetadata, field.TypeJSON, value)
 		_node.Metadata = value
 	}
-	if value, ok := cafc.mutation.Tags(); ok {
+	if value, ok := _c.mutation.Tags(); ok {
 		_spec.SetField(ciapprovalflow.FieldTags, field.TypeJSON, value)
 		_node.Tags = value
 	}
-	if value, ok := cafc.mutation.Comments(); ok {
+	if value, ok := _c.mutation.Comments(); ok {
 		_spec.SetField(ciapprovalflow.FieldComments, field.TypeString, value)
 		_node.Comments = value
 	}
@@ -981,16 +981,16 @@ type CiApprovalFlowCreateBulk struct {
 }
 
 // Save creates the CiApprovalFlow entities in the database.
-func (cafcb *CiApprovalFlowCreateBulk) Save(ctx context.Context) ([]*CiApprovalFlow, error) {
-	if cafcb.err != nil {
-		return nil, cafcb.err
+func (_c *CiApprovalFlowCreateBulk) Save(ctx context.Context) ([]*CiApprovalFlow, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(cafcb.builders))
-	nodes := make([]*CiApprovalFlow, len(cafcb.builders))
-	mutators := make([]Mutator, len(cafcb.builders))
-	for i := range cafcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*CiApprovalFlow, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := cafcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*CiApprovalFlowMutation)
@@ -1004,11 +1004,11 @@ func (cafcb *CiApprovalFlowCreateBulk) Save(ctx context.Context) ([]*CiApprovalF
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, cafcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, cafcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -1032,7 +1032,7 @@ func (cafcb *CiApprovalFlowCreateBulk) Save(ctx context.Context) ([]*CiApprovalF
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, cafcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -1040,8 +1040,8 @@ func (cafcb *CiApprovalFlowCreateBulk) Save(ctx context.Context) ([]*CiApprovalF
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (cafcb *CiApprovalFlowCreateBulk) SaveX(ctx context.Context) []*CiApprovalFlow {
-	v, err := cafcb.Save(ctx)
+func (_c *CiApprovalFlowCreateBulk) SaveX(ctx context.Context) []*CiApprovalFlow {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -1049,14 +1049,14 @@ func (cafcb *CiApprovalFlowCreateBulk) SaveX(ctx context.Context) []*CiApprovalF
 }
 
 // Exec executes the query.
-func (cafcb *CiApprovalFlowCreateBulk) Exec(ctx context.Context) error {
-	_, err := cafcb.Save(ctx)
+func (_c *CiApprovalFlowCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (cafcb *CiApprovalFlowCreateBulk) ExecX(ctx context.Context) {
-	if err := cafcb.Exec(ctx); err != nil {
+func (_c *CiApprovalFlowCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

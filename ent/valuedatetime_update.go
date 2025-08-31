@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/predicate"
-	"gitee.com/link234/cmdb-rpc/ent/valuedatetime"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
 )
 
 // ValueDatetimeUpdate is the builder for updating ValueDatetime entities.
@@ -25,137 +25,137 @@ type ValueDatetimeUpdate struct {
 }
 
 // Where appends a list predicates to the ValueDatetimeUpdate builder.
-func (vdu *ValueDatetimeUpdate) Where(ps ...predicate.ValueDatetime) *ValueDatetimeUpdate {
-	vdu.mutation.Where(ps...)
-	return vdu
+func (_u *ValueDatetimeUpdate) Where(ps ...predicate.ValueDatetime) *ValueDatetimeUpdate {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vdu *ValueDatetimeUpdate) SetUpdatedAt(t time.Time) *ValueDatetimeUpdate {
-	vdu.mutation.SetUpdatedAt(t)
-	return vdu
+func (_u *ValueDatetimeUpdate) SetUpdatedAt(v time.Time) *ValueDatetimeUpdate {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vdu *ValueDatetimeUpdate) SetDeletedAt(t time.Time) *ValueDatetimeUpdate {
-	vdu.mutation.SetDeletedAt(t)
-	return vdu
+func (_u *ValueDatetimeUpdate) SetDeletedAt(v time.Time) *ValueDatetimeUpdate {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vdu *ValueDatetimeUpdate) SetNillableDeletedAt(t *time.Time) *ValueDatetimeUpdate {
-	if t != nil {
-		vdu.SetDeletedAt(*t)
+func (_u *ValueDatetimeUpdate) SetNillableDeletedAt(v *time.Time) *ValueDatetimeUpdate {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vdu
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vdu *ValueDatetimeUpdate) ClearDeletedAt() *ValueDatetimeUpdate {
-	vdu.mutation.ClearDeletedAt()
-	return vdu
+func (_u *ValueDatetimeUpdate) ClearDeletedAt() *ValueDatetimeUpdate {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vdu *ValueDatetimeUpdate) SetCiID(u uint64) *ValueDatetimeUpdate {
-	vdu.mutation.SetCiID(u)
-	return vdu
+func (_u *ValueDatetimeUpdate) SetCiID(v uint64) *ValueDatetimeUpdate {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vdu *ValueDatetimeUpdate) SetNillableCiID(u *uint64) *ValueDatetimeUpdate {
-	if u != nil {
-		vdu.SetCiID(*u)
+func (_u *ValueDatetimeUpdate) SetNillableCiID(v *uint64) *ValueDatetimeUpdate {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vdu
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vdu *ValueDatetimeUpdate) SetAttrID(u uint64) *ValueDatetimeUpdate {
-	vdu.mutation.SetAttrID(u)
-	return vdu
+func (_u *ValueDatetimeUpdate) SetAttrID(v uint64) *ValueDatetimeUpdate {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vdu *ValueDatetimeUpdate) SetNillableAttrID(u *uint64) *ValueDatetimeUpdate {
-	if u != nil {
-		vdu.SetAttrID(*u)
+func (_u *ValueDatetimeUpdate) SetNillableAttrID(v *uint64) *ValueDatetimeUpdate {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vdu
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vdu *ValueDatetimeUpdate) SetValue(t time.Time) *ValueDatetimeUpdate {
-	vdu.mutation.SetValue(t)
-	return vdu
+func (_u *ValueDatetimeUpdate) SetValue(v time.Time) *ValueDatetimeUpdate {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (vdu *ValueDatetimeUpdate) SetNillableValue(t *time.Time) *ValueDatetimeUpdate {
-	if t != nil {
-		vdu.SetValue(*t)
+func (_u *ValueDatetimeUpdate) SetNillableValue(v *time.Time) *ValueDatetimeUpdate {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return vdu
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vdu *ValueDatetimeUpdate) SetIsCover(b bool) *ValueDatetimeUpdate {
-	vdu.mutation.SetIsCover(b)
-	return vdu
+func (_u *ValueDatetimeUpdate) SetIsCover(v bool) *ValueDatetimeUpdate {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vdu *ValueDatetimeUpdate) SetNillableIsCover(b *bool) *ValueDatetimeUpdate {
-	if b != nil {
-		vdu.SetIsCover(*b)
+func (_u *ValueDatetimeUpdate) SetNillableIsCover(v *bool) *ValueDatetimeUpdate {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vdu
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vdu *ValueDatetimeUpdate) SetCi(c *Cis) *ValueDatetimeUpdate {
-	return vdu.SetCiID(c.ID)
+func (_u *ValueDatetimeUpdate) SetCi(v *Cis) *ValueDatetimeUpdate {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vdu *ValueDatetimeUpdate) SetAttributeID(id uint64) *ValueDatetimeUpdate {
-	vdu.mutation.SetAttributeID(id)
-	return vdu
+func (_u *ValueDatetimeUpdate) SetAttributeID(id uint64) *ValueDatetimeUpdate {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vdu *ValueDatetimeUpdate) SetAttribute(a *Attribute) *ValueDatetimeUpdate {
-	return vdu.SetAttributeID(a.ID)
+func (_u *ValueDatetimeUpdate) SetAttribute(v *Attribute) *ValueDatetimeUpdate {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueDatetimeMutation object of the builder.
-func (vdu *ValueDatetimeUpdate) Mutation() *ValueDatetimeMutation {
-	return vdu.mutation
+func (_u *ValueDatetimeUpdate) Mutation() *ValueDatetimeMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vdu *ValueDatetimeUpdate) ClearCi() *ValueDatetimeUpdate {
-	vdu.mutation.ClearCi()
-	return vdu
+func (_u *ValueDatetimeUpdate) ClearCi() *ValueDatetimeUpdate {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vdu *ValueDatetimeUpdate) ClearAttribute() *ValueDatetimeUpdate {
-	vdu.mutation.ClearAttribute()
-	return vdu
+func (_u *ValueDatetimeUpdate) ClearAttribute() *ValueDatetimeUpdate {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (vdu *ValueDatetimeUpdate) Save(ctx context.Context) (int, error) {
-	if err := vdu.defaults(); err != nil {
+func (_u *ValueDatetimeUpdate) Save(ctx context.Context) (int, error) {
+	if err := _u.defaults(); err != nil {
 		return 0, err
 	}
-	return withHooks(ctx, vdu.sqlSave, vdu.mutation, vdu.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vdu *ValueDatetimeUpdate) SaveX(ctx context.Context) int {
-	affected, err := vdu.Save(ctx)
+func (_u *ValueDatetimeUpdate) SaveX(ctx context.Context) int {
+	affected, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -163,69 +163,69 @@ func (vdu *ValueDatetimeUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (vdu *ValueDatetimeUpdate) Exec(ctx context.Context) error {
-	_, err := vdu.Save(ctx)
+func (_u *ValueDatetimeUpdate) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vdu *ValueDatetimeUpdate) ExecX(ctx context.Context) {
-	if err := vdu.Exec(ctx); err != nil {
+func (_u *ValueDatetimeUpdate) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vdu *ValueDatetimeUpdate) defaults() error {
-	if _, ok := vdu.mutation.UpdatedAt(); !ok {
+func (_u *ValueDatetimeUpdate) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valuedatetime.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuedatetime.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuedatetime.UpdateDefaultUpdatedAt()
-		vdu.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vdu *ValueDatetimeUpdate) check() error {
-	if vdu.mutation.CiCleared() && len(vdu.mutation.CiIDs()) > 0 {
+func (_u *ValueDatetimeUpdate) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueDatetime.ci"`)
 	}
-	if vdu.mutation.AttributeCleared() && len(vdu.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueDatetime.attribute"`)
 	}
 	return nil
 }
 
-func (vdu *ValueDatetimeUpdate) sqlSave(ctx context.Context) (n int, err error) {
-	if err := vdu.check(); err != nil {
-		return n, err
+func (_u *ValueDatetimeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
+	if err := _u.check(); err != nil {
+		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valuedatetime.Table, valuedatetime.Columns, sqlgraph.NewFieldSpec(valuedatetime.FieldID, field.TypeUint64))
-	if ps := vdu.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vdu.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuedatetime.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vdu.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valuedatetime.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vdu.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuedatetime.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vdu.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuedatetime.FieldValue, field.TypeTime, value)
 	}
-	if value, ok := vdu.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valuedatetime.FieldIsCover, field.TypeBool, value)
 	}
-	if vdu.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -238,7 +238,7 @@ func (vdu *ValueDatetimeUpdate) sqlSave(ctx context.Context) (n int, err error) 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vdu.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -254,7 +254,7 @@ func (vdu *ValueDatetimeUpdate) sqlSave(ctx context.Context) (n int, err error) 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vdu.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -267,7 +267,7 @@ func (vdu *ValueDatetimeUpdate) sqlSave(ctx context.Context) (n int, err error) 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vdu.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -283,7 +283,7 @@ func (vdu *ValueDatetimeUpdate) sqlSave(ctx context.Context) (n int, err error) 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if n, err = sqlgraph.UpdateNodes(ctx, vdu.driver, _spec); err != nil {
+	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valuedatetime.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -291,8 +291,8 @@ func (vdu *ValueDatetimeUpdate) sqlSave(ctx context.Context) (n int, err error) 
 		}
 		return 0, err
 	}
-	vdu.mutation.done = true
-	return n, nil
+	_u.mutation.done = true
+	return _node, nil
 }
 
 // ValueDatetimeUpdateOne is the builder for updating a single ValueDatetime entity.
@@ -304,144 +304,144 @@ type ValueDatetimeUpdateOne struct {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vduo *ValueDatetimeUpdateOne) SetUpdatedAt(t time.Time) *ValueDatetimeUpdateOne {
-	vduo.mutation.SetUpdatedAt(t)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) SetUpdatedAt(v time.Time) *ValueDatetimeUpdateOne {
+	_u.mutation.SetUpdatedAt(v)
+	return _u
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vduo *ValueDatetimeUpdateOne) SetDeletedAt(t time.Time) *ValueDatetimeUpdateOne {
-	vduo.mutation.SetDeletedAt(t)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) SetDeletedAt(v time.Time) *ValueDatetimeUpdateOne {
+	_u.mutation.SetDeletedAt(v)
+	return _u
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vduo *ValueDatetimeUpdateOne) SetNillableDeletedAt(t *time.Time) *ValueDatetimeUpdateOne {
-	if t != nil {
-		vduo.SetDeletedAt(*t)
+func (_u *ValueDatetimeUpdateOne) SetNillableDeletedAt(v *time.Time) *ValueDatetimeUpdateOne {
+	if v != nil {
+		_u.SetDeletedAt(*v)
 	}
-	return vduo
+	return _u
 }
 
 // ClearDeletedAt clears the value of the "deleted_at" field.
-func (vduo *ValueDatetimeUpdateOne) ClearDeletedAt() *ValueDatetimeUpdateOne {
-	vduo.mutation.ClearDeletedAt()
-	return vduo
+func (_u *ValueDatetimeUpdateOne) ClearDeletedAt() *ValueDatetimeUpdateOne {
+	_u.mutation.ClearDeletedAt()
+	return _u
 }
 
 // SetCiID sets the "ci_id" field.
-func (vduo *ValueDatetimeUpdateOne) SetCiID(u uint64) *ValueDatetimeUpdateOne {
-	vduo.mutation.SetCiID(u)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) SetCiID(v uint64) *ValueDatetimeUpdateOne {
+	_u.mutation.SetCiID(v)
+	return _u
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (vduo *ValueDatetimeUpdateOne) SetNillableCiID(u *uint64) *ValueDatetimeUpdateOne {
-	if u != nil {
-		vduo.SetCiID(*u)
+func (_u *ValueDatetimeUpdateOne) SetNillableCiID(v *uint64) *ValueDatetimeUpdateOne {
+	if v != nil {
+		_u.SetCiID(*v)
 	}
-	return vduo
+	return _u
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vduo *ValueDatetimeUpdateOne) SetAttrID(u uint64) *ValueDatetimeUpdateOne {
-	vduo.mutation.SetAttrID(u)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) SetAttrID(v uint64) *ValueDatetimeUpdateOne {
+	_u.mutation.SetAttrID(v)
+	return _u
 }
 
 // SetNillableAttrID sets the "attr_id" field if the given value is not nil.
-func (vduo *ValueDatetimeUpdateOne) SetNillableAttrID(u *uint64) *ValueDatetimeUpdateOne {
-	if u != nil {
-		vduo.SetAttrID(*u)
+func (_u *ValueDatetimeUpdateOne) SetNillableAttrID(v *uint64) *ValueDatetimeUpdateOne {
+	if v != nil {
+		_u.SetAttrID(*v)
 	}
-	return vduo
+	return _u
 }
 
 // SetValue sets the "value" field.
-func (vduo *ValueDatetimeUpdateOne) SetValue(t time.Time) *ValueDatetimeUpdateOne {
-	vduo.mutation.SetValue(t)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) SetValue(v time.Time) *ValueDatetimeUpdateOne {
+	_u.mutation.SetValue(v)
+	return _u
 }
 
 // SetNillableValue sets the "value" field if the given value is not nil.
-func (vduo *ValueDatetimeUpdateOne) SetNillableValue(t *time.Time) *ValueDatetimeUpdateOne {
-	if t != nil {
-		vduo.SetValue(*t)
+func (_u *ValueDatetimeUpdateOne) SetNillableValue(v *time.Time) *ValueDatetimeUpdateOne {
+	if v != nil {
+		_u.SetValue(*v)
 	}
-	return vduo
+	return _u
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vduo *ValueDatetimeUpdateOne) SetIsCover(b bool) *ValueDatetimeUpdateOne {
-	vduo.mutation.SetIsCover(b)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) SetIsCover(v bool) *ValueDatetimeUpdateOne {
+	_u.mutation.SetIsCover(v)
+	return _u
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vduo *ValueDatetimeUpdateOne) SetNillableIsCover(b *bool) *ValueDatetimeUpdateOne {
-	if b != nil {
-		vduo.SetIsCover(*b)
+func (_u *ValueDatetimeUpdateOne) SetNillableIsCover(v *bool) *ValueDatetimeUpdateOne {
+	if v != nil {
+		_u.SetIsCover(*v)
 	}
-	return vduo
+	return _u
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vduo *ValueDatetimeUpdateOne) SetCi(c *Cis) *ValueDatetimeUpdateOne {
-	return vduo.SetCiID(c.ID)
+func (_u *ValueDatetimeUpdateOne) SetCi(v *Cis) *ValueDatetimeUpdateOne {
+	return _u.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vduo *ValueDatetimeUpdateOne) SetAttributeID(id uint64) *ValueDatetimeUpdateOne {
-	vduo.mutation.SetAttributeID(id)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) SetAttributeID(id uint64) *ValueDatetimeUpdateOne {
+	_u.mutation.SetAttributeID(id)
+	return _u
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vduo *ValueDatetimeUpdateOne) SetAttribute(a *Attribute) *ValueDatetimeUpdateOne {
-	return vduo.SetAttributeID(a.ID)
+func (_u *ValueDatetimeUpdateOne) SetAttribute(v *Attribute) *ValueDatetimeUpdateOne {
+	return _u.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueDatetimeMutation object of the builder.
-func (vduo *ValueDatetimeUpdateOne) Mutation() *ValueDatetimeMutation {
-	return vduo.mutation
+func (_u *ValueDatetimeUpdateOne) Mutation() *ValueDatetimeMutation {
+	return _u.mutation
 }
 
 // ClearCi clears the "ci" edge to the Cis entity.
-func (vduo *ValueDatetimeUpdateOne) ClearCi() *ValueDatetimeUpdateOne {
-	vduo.mutation.ClearCi()
-	return vduo
+func (_u *ValueDatetimeUpdateOne) ClearCi() *ValueDatetimeUpdateOne {
+	_u.mutation.ClearCi()
+	return _u
 }
 
 // ClearAttribute clears the "attribute" edge to the Attribute entity.
-func (vduo *ValueDatetimeUpdateOne) ClearAttribute() *ValueDatetimeUpdateOne {
-	vduo.mutation.ClearAttribute()
-	return vduo
+func (_u *ValueDatetimeUpdateOne) ClearAttribute() *ValueDatetimeUpdateOne {
+	_u.mutation.ClearAttribute()
+	return _u
 }
 
 // Where appends a list predicates to the ValueDatetimeUpdate builder.
-func (vduo *ValueDatetimeUpdateOne) Where(ps ...predicate.ValueDatetime) *ValueDatetimeUpdateOne {
-	vduo.mutation.Where(ps...)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) Where(ps ...predicate.ValueDatetime) *ValueDatetimeUpdateOne {
+	_u.mutation.Where(ps...)
+	return _u
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (vduo *ValueDatetimeUpdateOne) Select(field string, fields ...string) *ValueDatetimeUpdateOne {
-	vduo.fields = append([]string{field}, fields...)
-	return vduo
+func (_u *ValueDatetimeUpdateOne) Select(field string, fields ...string) *ValueDatetimeUpdateOne {
+	_u.fields = append([]string{field}, fields...)
+	return _u
 }
 
 // Save executes the query and returns the updated ValueDatetime entity.
-func (vduo *ValueDatetimeUpdateOne) Save(ctx context.Context) (*ValueDatetime, error) {
-	if err := vduo.defaults(); err != nil {
+func (_u *ValueDatetimeUpdateOne) Save(ctx context.Context) (*ValueDatetime, error) {
+	if err := _u.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vduo.sqlSave, vduo.mutation, vduo.hooks)
+	return withHooks(ctx, _u.sqlSave, _u.mutation, _u.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vduo *ValueDatetimeUpdateOne) SaveX(ctx context.Context) *ValueDatetime {
-	node, err := vduo.Save(ctx)
+func (_u *ValueDatetimeUpdateOne) SaveX(ctx context.Context) *ValueDatetime {
+	node, err := _u.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -449,52 +449,52 @@ func (vduo *ValueDatetimeUpdateOne) SaveX(ctx context.Context) *ValueDatetime {
 }
 
 // Exec executes the query on the entity.
-func (vduo *ValueDatetimeUpdateOne) Exec(ctx context.Context) error {
-	_, err := vduo.Save(ctx)
+func (_u *ValueDatetimeUpdateOne) Exec(ctx context.Context) error {
+	_, err := _u.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vduo *ValueDatetimeUpdateOne) ExecX(ctx context.Context) {
-	if err := vduo.Exec(ctx); err != nil {
+func (_u *ValueDatetimeUpdateOne) ExecX(ctx context.Context) {
+	if err := _u.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vduo *ValueDatetimeUpdateOne) defaults() error {
-	if _, ok := vduo.mutation.UpdatedAt(); !ok {
+func (_u *ValueDatetimeUpdateOne) defaults() error {
+	if _, ok := _u.mutation.UpdatedAt(); !ok {
 		if valuedatetime.UpdateDefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valuedatetime.UpdateDefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valuedatetime.UpdateDefaultUpdatedAt()
-		vduo.mutation.SetUpdatedAt(v)
+		_u.mutation.SetUpdatedAt(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vduo *ValueDatetimeUpdateOne) check() error {
-	if vduo.mutation.CiCleared() && len(vduo.mutation.CiIDs()) > 0 {
+func (_u *ValueDatetimeUpdateOne) check() error {
+	if _u.mutation.CiCleared() && len(_u.mutation.CiIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueDatetime.ci"`)
 	}
-	if vduo.mutation.AttributeCleared() && len(vduo.mutation.AttributeIDs()) > 0 {
+	if _u.mutation.AttributeCleared() && len(_u.mutation.AttributeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "ValueDatetime.attribute"`)
 	}
 	return nil
 }
 
-func (vduo *ValueDatetimeUpdateOne) sqlSave(ctx context.Context) (_node *ValueDatetime, err error) {
-	if err := vduo.check(); err != nil {
+func (_u *ValueDatetimeUpdateOne) sqlSave(ctx context.Context) (_node *ValueDatetime, err error) {
+	if err := _u.check(); err != nil {
 		return _node, err
 	}
 	_spec := sqlgraph.NewUpdateSpec(valuedatetime.Table, valuedatetime.Columns, sqlgraph.NewFieldSpec(valuedatetime.FieldID, field.TypeUint64))
-	id, ok := vduo.mutation.ID()
+	id, ok := _u.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ValueDatetime.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
-	if fields := vduo.fields; len(fields) > 0 {
+	if fields := _u.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
 		_spec.Node.Columns = append(_spec.Node.Columns, valuedatetime.FieldID)
 		for _, f := range fields {
@@ -506,29 +506,29 @@ func (vduo *ValueDatetimeUpdateOne) sqlSave(ctx context.Context) (_node *ValueDa
 			}
 		}
 	}
-	if ps := vduo.mutation.predicates; len(ps) > 0 {
+	if ps := _u.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	if value, ok := vduo.mutation.UpdatedAt(); ok {
+	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(valuedatetime.FieldUpdatedAt, field.TypeTime, value)
 	}
-	if value, ok := vduo.mutation.DeletedAt(); ok {
+	if value, ok := _u.mutation.DeletedAt(); ok {
 		_spec.SetField(valuedatetime.FieldDeletedAt, field.TypeTime, value)
 	}
-	if vduo.mutation.DeletedAtCleared() {
+	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuedatetime.FieldDeletedAt, field.TypeTime)
 	}
-	if value, ok := vduo.mutation.Value(); ok {
+	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuedatetime.FieldValue, field.TypeTime, value)
 	}
-	if value, ok := vduo.mutation.IsCover(); ok {
+	if value, ok := _u.mutation.IsCover(); ok {
 		_spec.SetField(valuedatetime.FieldIsCover, field.TypeBool, value)
 	}
-	if vduo.mutation.CiCleared() {
+	if _u.mutation.CiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -541,7 +541,7 @@ func (vduo *ValueDatetimeUpdateOne) sqlSave(ctx context.Context) (_node *ValueDa
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vduo.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -557,7 +557,7 @@ func (vduo *ValueDatetimeUpdateOne) sqlSave(ctx context.Context) (_node *ValueDa
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if vduo.mutation.AttributeCleared() {
+	if _u.mutation.AttributeCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -570,7 +570,7 @@ func (vduo *ValueDatetimeUpdateOne) sqlSave(ctx context.Context) (_node *ValueDa
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := vduo.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -586,10 +586,10 @@ func (vduo *ValueDatetimeUpdateOne) sqlSave(ctx context.Context) (_node *ValueDa
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	_node = &ValueDatetime{config: vduo.config}
+	_node = &ValueDatetime{config: _u.config}
 	_spec.Assign = _node.assignValues
 	_spec.ScanValues = _node.scanValues
-	if err = sqlgraph.UpdateNode(ctx, vduo.driver, _spec); err != nil {
+	if err = sqlgraph.UpdateNode(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{valuedatetime.Label}
 		} else if sqlgraph.IsConstraintError(err) {
@@ -597,6 +597,6 @@ func (vduo *ValueDatetimeUpdateOne) sqlSave(ctx context.Context) (_node *ValueDa
 		}
 		return nil, err
 	}
-	vduo.mutation.done = true
+	_u.mutation.done = true
 	return _node, nil
 }

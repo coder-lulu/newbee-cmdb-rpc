@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"gitee.com/link234/cmdb-rpc/ent"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent"
 )
 
 // The AttributeFunc type is an adapter to allow the use of ordinary
@@ -283,6 +283,66 @@ func (f ImportTemplateFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Val
 		return f(ctx, mv)
 	}
 	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.ImportTemplateMutation", m)
+}
+
+// The PermissionCacheFunc type is an adapter to allow the use of ordinary
+// function as PermissionCache mutator.
+type PermissionCacheFunc func(context.Context, *ent.PermissionCacheMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f PermissionCacheFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.PermissionCacheMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.PermissionCacheMutation", m)
+}
+
+// The PermissionDataFilterFunc type is an adapter to allow the use of ordinary
+// function as PermissionDataFilter mutator.
+type PermissionDataFilterFunc func(context.Context, *ent.PermissionDataFilterMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f PermissionDataFilterFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.PermissionDataFilterMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.PermissionDataFilterMutation", m)
+}
+
+// The PermissionFieldMaskFunc type is an adapter to allow the use of ordinary
+// function as PermissionFieldMask mutator.
+type PermissionFieldMaskFunc func(context.Context, *ent.PermissionFieldMaskMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f PermissionFieldMaskFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.PermissionFieldMaskMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.PermissionFieldMaskMutation", m)
+}
+
+// The PermissionOperationFunc type is an adapter to allow the use of ordinary
+// function as PermissionOperation mutator.
+type PermissionOperationFunc func(context.Context, *ent.PermissionOperationMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f PermissionOperationFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.PermissionOperationMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.PermissionOperationMutation", m)
+}
+
+// The PermissionTemplateFunc type is an adapter to allow the use of ordinary
+// function as PermissionTemplate mutator.
+type PermissionTemplateFunc func(context.Context, *ent.PermissionTemplateMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f PermissionTemplateFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.PermissionTemplateMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.PermissionTemplateMutation", m)
 }
 
 // The RelationTypeFunc type is an adapter to allow the use of ordinary

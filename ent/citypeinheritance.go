@@ -9,8 +9,8 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/citypeinheritance"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
 )
 
 // CiTypeInheritance is the model entity for the CiTypeInheritance schema.
@@ -89,7 +89,7 @@ func (*CiTypeInheritance) scanValues(columns []string) ([]any, error) {
 
 // assignValues assigns the values that were returned from sql.Rows (after scanning)
 // to the CiTypeInheritance fields.
-func (cti *CiTypeInheritance) assignValues(columns []string, values []any) error {
+func (_m *CiTypeInheritance) assignValues(columns []string, values []any) error {
 	if m, n := len(values), len(columns); m < n {
 		return fmt.Errorf("mismatch number of scan values: %d != %d", m, n)
 	}
@@ -100,51 +100,51 @@ func (cti *CiTypeInheritance) assignValues(columns []string, values []any) error
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
-			cti.ID = uint64(value.Int64)
+			_m.ID = uint64(value.Int64)
 		case citypeinheritance.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
-				cti.CreatedAt = value.Time
+				_m.CreatedAt = value.Time
 			}
 		case citypeinheritance.FieldUpdatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_at", values[i])
 			} else if value.Valid {
-				cti.UpdatedAt = value.Time
+				_m.UpdatedAt = value.Time
 			}
 		case citypeinheritance.FieldDeletedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field deleted_at", values[i])
 			} else if value.Valid {
-				cti.DeletedAt = value.Time
+				_m.DeletedAt = value.Time
 			}
 		case citypeinheritance.FieldTenantID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
-				cti.TenantID = uint64(value.Int64)
+				_m.TenantID = uint64(value.Int64)
 			}
 		case citypeinheritance.FieldDepartmentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
-				cti.DepartmentID = uint64(value.Int64)
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case citypeinheritance.FieldParentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field parent_id", values[i])
 			} else if value.Valid {
-				cti.ParentID = uint64(value.Int64)
+				_m.ParentID = uint64(value.Int64)
 			}
 		case citypeinheritance.FieldChildID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field child_id", values[i])
 			} else if value.Valid {
-				cti.ChildID = uint64(value.Int64)
+				_m.ChildID = uint64(value.Int64)
 			}
 		default:
-			cti.selectValues.Set(columns[i], values[i])
+			_m.selectValues.Set(columns[i], values[i])
 		}
 	}
 	return nil
@@ -152,63 +152,63 @@ func (cti *CiTypeInheritance) assignValues(columns []string, values []any) error
 
 // Value returns the ent.Value that was dynamically selected and assigned to the CiTypeInheritance.
 // This includes values selected through modifiers, order, etc.
-func (cti *CiTypeInheritance) Value(name string) (ent.Value, error) {
-	return cti.selectValues.Get(name)
+func (_m *CiTypeInheritance) Value(name string) (ent.Value, error) {
+	return _m.selectValues.Get(name)
 }
 
 // QueryParent queries the "parent" edge of the CiTypeInheritance entity.
-func (cti *CiTypeInheritance) QueryParent() *CiTypeQuery {
-	return NewCiTypeInheritanceClient(cti.config).QueryParent(cti)
+func (_m *CiTypeInheritance) QueryParent() *CiTypeQuery {
+	return NewCiTypeInheritanceClient(_m.config).QueryParent(_m)
 }
 
 // QueryChild queries the "child" edge of the CiTypeInheritance entity.
-func (cti *CiTypeInheritance) QueryChild() *CiTypeQuery {
-	return NewCiTypeInheritanceClient(cti.config).QueryChild(cti)
+func (_m *CiTypeInheritance) QueryChild() *CiTypeQuery {
+	return NewCiTypeInheritanceClient(_m.config).QueryChild(_m)
 }
 
 // Update returns a builder for updating this CiTypeInheritance.
 // Note that you need to call CiTypeInheritance.Unwrap() before calling this method if this CiTypeInheritance
 // was returned from a transaction, and the transaction was committed or rolled back.
-func (cti *CiTypeInheritance) Update() *CiTypeInheritanceUpdateOne {
-	return NewCiTypeInheritanceClient(cti.config).UpdateOne(cti)
+func (_m *CiTypeInheritance) Update() *CiTypeInheritanceUpdateOne {
+	return NewCiTypeInheritanceClient(_m.config).UpdateOne(_m)
 }
 
 // Unwrap unwraps the CiTypeInheritance entity that was returned from a transaction after it was closed,
 // so that all future queries will be executed through the driver which created the transaction.
-func (cti *CiTypeInheritance) Unwrap() *CiTypeInheritance {
-	_tx, ok := cti.config.driver.(*txDriver)
+func (_m *CiTypeInheritance) Unwrap() *CiTypeInheritance {
+	_tx, ok := _m.config.driver.(*txDriver)
 	if !ok {
 		panic("ent: CiTypeInheritance is not a transactional entity")
 	}
-	cti.config.driver = _tx.drv
-	return cti
+	_m.config.driver = _tx.drv
+	return _m
 }
 
 // String implements the fmt.Stringer.
-func (cti *CiTypeInheritance) String() string {
+func (_m *CiTypeInheritance) String() string {
 	var builder strings.Builder
 	builder.WriteString("CiTypeInheritance(")
-	builder.WriteString(fmt.Sprintf("id=%v, ", cti.ID))
+	builder.WriteString(fmt.Sprintf("id=%v, ", _m.ID))
 	builder.WriteString("created_at=")
-	builder.WriteString(cti.CreatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.CreatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("updated_at=")
-	builder.WriteString(cti.UpdatedAt.Format(time.ANSIC))
+	builder.WriteString(_m.UpdatedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("deleted_at=")
-	builder.WriteString(cti.DeletedAt.Format(time.ANSIC))
+	builder.WriteString(_m.DeletedAt.Format(time.ANSIC))
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
-	builder.WriteString(fmt.Sprintf("%v", cti.TenantID))
+	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
-	builder.WriteString(fmt.Sprintf("%v", cti.DepartmentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("parent_id=")
-	builder.WriteString(fmt.Sprintf("%v", cti.ParentID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ParentID))
 	builder.WriteString(", ")
 	builder.WriteString("child_id=")
-	builder.WriteString(fmt.Sprintf("%v", cti.ChildID))
+	builder.WriteString(fmt.Sprintf("%v", _m.ChildID))
 	builder.WriteByte(')')
 	return builder.String()
 }

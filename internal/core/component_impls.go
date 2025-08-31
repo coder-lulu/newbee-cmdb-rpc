@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"gitee.com/link234/cmdb-rpc/internal/svc"
-	"gitee.com/link234/cmdb-rpc/types/cmdb"
-	"gitee.com/link234/newbee-backend-common/utils/uuidx"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
+	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
+	"github.com/coder-lulu/newbee-common/utils/uuidx"
 	"github.com/gofrs/uuid/v5"
 	"github.com/zeromicro/go-zero/core/logx"
 )

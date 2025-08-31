@@ -10,11 +10,11 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/citype"
-	"gitee.com/link234/cmdb-rpc/ent/importerror"
-	"gitee.com/link234/cmdb-rpc/ent/importrecord"
-	"gitee.com/link234/cmdb-rpc/ent/importtask"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
 )
 
 // ImportRecordCreate is the builder for creating a ImportRecord entity.
@@ -25,347 +25,347 @@ type ImportRecordCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (irc *ImportRecordCreate) SetCreatedAt(t time.Time) *ImportRecordCreate {
-	irc.mutation.SetCreatedAt(t)
-	return irc
+func (_c *ImportRecordCreate) SetCreatedAt(v time.Time) *ImportRecordCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableCreatedAt(t *time.Time) *ImportRecordCreate {
-	if t != nil {
-		irc.SetCreatedAt(*t)
+func (_c *ImportRecordCreate) SetNillableCreatedAt(v *time.Time) *ImportRecordCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (irc *ImportRecordCreate) SetUpdatedAt(t time.Time) *ImportRecordCreate {
-	irc.mutation.SetUpdatedAt(t)
-	return irc
+func (_c *ImportRecordCreate) SetUpdatedAt(v time.Time) *ImportRecordCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableUpdatedAt(t *time.Time) *ImportRecordCreate {
-	if t != nil {
-		irc.SetUpdatedAt(*t)
+func (_c *ImportRecordCreate) SetNillableUpdatedAt(v *time.Time) *ImportRecordCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (irc *ImportRecordCreate) SetDeletedAt(t time.Time) *ImportRecordCreate {
-	irc.mutation.SetDeletedAt(t)
-	return irc
+func (_c *ImportRecordCreate) SetDeletedAt(v time.Time) *ImportRecordCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableDeletedAt(t *time.Time) *ImportRecordCreate {
-	if t != nil {
-		irc.SetDeletedAt(*t)
+func (_c *ImportRecordCreate) SetNillableDeletedAt(v *time.Time) *ImportRecordCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetTenantID sets the "tenant_id" field.
-func (irc *ImportRecordCreate) SetTenantID(u uint64) *ImportRecordCreate {
-	irc.mutation.SetTenantID(u)
-	return irc
+func (_c *ImportRecordCreate) SetTenantID(v uint64) *ImportRecordCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
 }
 
 // SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableTenantID(u *uint64) *ImportRecordCreate {
-	if u != nil {
-		irc.SetTenantID(*u)
+func (_c *ImportRecordCreate) SetNillableTenantID(v *uint64) *ImportRecordCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetDepartmentID sets the "department_id" field.
-func (irc *ImportRecordCreate) SetDepartmentID(u uint64) *ImportRecordCreate {
-	irc.mutation.SetDepartmentID(u)
-	return irc
+func (_c *ImportRecordCreate) SetDepartmentID(v uint64) *ImportRecordCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
 }
 
 // SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableDepartmentID(u *uint64) *ImportRecordCreate {
-	if u != nil {
-		irc.SetDepartmentID(*u)
+func (_c *ImportRecordCreate) SetNillableDepartmentID(v *uint64) *ImportRecordCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetTaskID sets the "task_id" field.
-func (irc *ImportRecordCreate) SetTaskID(u uint64) *ImportRecordCreate {
-	irc.mutation.SetTaskID(u)
-	return irc
+func (_c *ImportRecordCreate) SetTaskID(v uint64) *ImportRecordCreate {
+	_c.mutation.SetTaskID(v)
+	return _c
 }
 
 // SetBatchID sets the "batch_id" field.
-func (irc *ImportRecordCreate) SetBatchID(s string) *ImportRecordCreate {
-	irc.mutation.SetBatchID(s)
-	return irc
+func (_c *ImportRecordCreate) SetBatchID(v string) *ImportRecordCreate {
+	_c.mutation.SetBatchID(v)
+	return _c
 }
 
 // SetNillableBatchID sets the "batch_id" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableBatchID(s *string) *ImportRecordCreate {
-	if s != nil {
-		irc.SetBatchID(*s)
+func (_c *ImportRecordCreate) SetNillableBatchID(v *string) *ImportRecordCreate {
+	if v != nil {
+		_c.SetBatchID(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetRowNumber sets the "row_number" field.
-func (irc *ImportRecordCreate) SetRowNumber(i int) *ImportRecordCreate {
-	irc.mutation.SetRowNumber(i)
-	return irc
+func (_c *ImportRecordCreate) SetRowNumber(v int) *ImportRecordCreate {
+	_c.mutation.SetRowNumber(v)
+	return _c
 }
 
 // SetSheetName sets the "sheet_name" field.
-func (irc *ImportRecordCreate) SetSheetName(s string) *ImportRecordCreate {
-	irc.mutation.SetSheetName(s)
-	return irc
+func (_c *ImportRecordCreate) SetSheetName(v string) *ImportRecordCreate {
+	_c.mutation.SetSheetName(v)
+	return _c
 }
 
 // SetNillableSheetName sets the "sheet_name" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableSheetName(s *string) *ImportRecordCreate {
-	if s != nil {
-		irc.SetSheetName(*s)
+func (_c *ImportRecordCreate) SetNillableSheetName(v *string) *ImportRecordCreate {
+	if v != nil {
+		_c.SetSheetName(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetStatus sets the "status" field.
-func (irc *ImportRecordCreate) SetStatus(i importrecord.Status) *ImportRecordCreate {
-	irc.mutation.SetStatus(i)
-	return irc
+func (_c *ImportRecordCreate) SetStatus(v importrecord.Status) *ImportRecordCreate {
+	_c.mutation.SetStatus(v)
+	return _c
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableStatus(i *importrecord.Status) *ImportRecordCreate {
-	if i != nil {
-		irc.SetStatus(*i)
+func (_c *ImportRecordCreate) SetNillableStatus(v *importrecord.Status) *ImportRecordCreate {
+	if v != nil {
+		_c.SetStatus(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetImportAction sets the "import_action" field.
-func (irc *ImportRecordCreate) SetImportAction(ia importrecord.ImportAction) *ImportRecordCreate {
-	irc.mutation.SetImportAction(ia)
-	return irc
+func (_c *ImportRecordCreate) SetImportAction(v importrecord.ImportAction) *ImportRecordCreate {
+	_c.mutation.SetImportAction(v)
+	return _c
 }
 
 // SetNillableImportAction sets the "import_action" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableImportAction(ia *importrecord.ImportAction) *ImportRecordCreate {
-	if ia != nil {
-		irc.SetImportAction(*ia)
+func (_c *ImportRecordCreate) SetNillableImportAction(v *importrecord.ImportAction) *ImportRecordCreate {
+	if v != nil {
+		_c.SetImportAction(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetRawData sets the "raw_data" field.
-func (irc *ImportRecordCreate) SetRawData(m map[string]interface{}) *ImportRecordCreate {
-	irc.mutation.SetRawData(m)
-	return irc
+func (_c *ImportRecordCreate) SetRawData(v map[string]interface{}) *ImportRecordCreate {
+	_c.mutation.SetRawData(v)
+	return _c
 }
 
 // SetFinalData sets the "final_data" field.
-func (irc *ImportRecordCreate) SetFinalData(m map[string]interface{}) *ImportRecordCreate {
-	irc.mutation.SetFinalData(m)
-	return irc
+func (_c *ImportRecordCreate) SetFinalData(v map[string]interface{}) *ImportRecordCreate {
+	_c.mutation.SetFinalData(v)
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (irc *ImportRecordCreate) SetCiID(u uint64) *ImportRecordCreate {
-	irc.mutation.SetCiID(u)
-	return irc
+func (_c *ImportRecordCreate) SetCiID(v uint64) *ImportRecordCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetNillableCiID sets the "ci_id" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableCiID(u *uint64) *ImportRecordCreate {
-	if u != nil {
-		irc.SetCiID(*u)
+func (_c *ImportRecordCreate) SetNillableCiID(v *uint64) *ImportRecordCreate {
+	if v != nil {
+		_c.SetCiID(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetCiTypeID sets the "ci_type_id" field.
-func (irc *ImportRecordCreate) SetCiTypeID(u uint64) *ImportRecordCreate {
-	irc.mutation.SetCiTypeID(u)
-	return irc
+func (_c *ImportRecordCreate) SetCiTypeID(v uint64) *ImportRecordCreate {
+	_c.mutation.SetCiTypeID(v)
+	return _c
 }
 
 // SetNillableCiTypeID sets the "ci_type_id" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableCiTypeID(u *uint64) *ImportRecordCreate {
-	if u != nil {
-		irc.SetCiTypeID(*u)
+func (_c *ImportRecordCreate) SetNillableCiTypeID(v *uint64) *ImportRecordCreate {
+	if v != nil {
+		_c.SetCiTypeID(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetCiUniqueKey sets the "ci_unique_key" field.
-func (irc *ImportRecordCreate) SetCiUniqueKey(s string) *ImportRecordCreate {
-	irc.mutation.SetCiUniqueKey(s)
-	return irc
+func (_c *ImportRecordCreate) SetCiUniqueKey(v string) *ImportRecordCreate {
+	_c.mutation.SetCiUniqueKey(v)
+	return _c
 }
 
 // SetNillableCiUniqueKey sets the "ci_unique_key" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableCiUniqueKey(s *string) *ImportRecordCreate {
-	if s != nil {
-		irc.SetCiUniqueKey(*s)
+func (_c *ImportRecordCreate) SetNillableCiUniqueKey(v *string) *ImportRecordCreate {
+	if v != nil {
+		_c.SetCiUniqueKey(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetErrorMessage sets the "error_message" field.
-func (irc *ImportRecordCreate) SetErrorMessage(s string) *ImportRecordCreate {
-	irc.mutation.SetErrorMessage(s)
-	return irc
+func (_c *ImportRecordCreate) SetErrorMessage(v string) *ImportRecordCreate {
+	_c.mutation.SetErrorMessage(v)
+	return _c
 }
 
 // SetNillableErrorMessage sets the "error_message" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableErrorMessage(s *string) *ImportRecordCreate {
-	if s != nil {
-		irc.SetErrorMessage(*s)
+func (_c *ImportRecordCreate) SetNillableErrorMessage(v *string) *ImportRecordCreate {
+	if v != nil {
+		_c.SetErrorMessage(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetErrorCode sets the "error_code" field.
-func (irc *ImportRecordCreate) SetErrorCode(s string) *ImportRecordCreate {
-	irc.mutation.SetErrorCode(s)
-	return irc
+func (_c *ImportRecordCreate) SetErrorCode(v string) *ImportRecordCreate {
+	_c.mutation.SetErrorCode(v)
+	return _c
 }
 
 // SetNillableErrorCode sets the "error_code" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableErrorCode(s *string) *ImportRecordCreate {
-	if s != nil {
-		irc.SetErrorCode(*s)
+func (_c *ImportRecordCreate) SetNillableErrorCode(v *string) *ImportRecordCreate {
+	if v != nil {
+		_c.SetErrorCode(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetErrorType sets the "error_type" field.
-func (irc *ImportRecordCreate) SetErrorType(it importrecord.ErrorType) *ImportRecordCreate {
-	irc.mutation.SetErrorType(it)
-	return irc
+func (_c *ImportRecordCreate) SetErrorType(v importrecord.ErrorType) *ImportRecordCreate {
+	_c.mutation.SetErrorType(v)
+	return _c
 }
 
 // SetNillableErrorType sets the "error_type" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableErrorType(it *importrecord.ErrorType) *ImportRecordCreate {
-	if it != nil {
-		irc.SetErrorType(*it)
+func (_c *ImportRecordCreate) SetNillableErrorType(v *importrecord.ErrorType) *ImportRecordCreate {
+	if v != nil {
+		_c.SetErrorType(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetStartTime sets the "start_time" field.
-func (irc *ImportRecordCreate) SetStartTime(t time.Time) *ImportRecordCreate {
-	irc.mutation.SetStartTime(t)
-	return irc
+func (_c *ImportRecordCreate) SetStartTime(v time.Time) *ImportRecordCreate {
+	_c.mutation.SetStartTime(v)
+	return _c
 }
 
 // SetNillableStartTime sets the "start_time" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableStartTime(t *time.Time) *ImportRecordCreate {
-	if t != nil {
-		irc.SetStartTime(*t)
+func (_c *ImportRecordCreate) SetNillableStartTime(v *time.Time) *ImportRecordCreate {
+	if v != nil {
+		_c.SetStartTime(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetEndTime sets the "end_time" field.
-func (irc *ImportRecordCreate) SetEndTime(t time.Time) *ImportRecordCreate {
-	irc.mutation.SetEndTime(t)
-	return irc
+func (_c *ImportRecordCreate) SetEndTime(v time.Time) *ImportRecordCreate {
+	_c.mutation.SetEndTime(v)
+	return _c
 }
 
 // SetNillableEndTime sets the "end_time" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableEndTime(t *time.Time) *ImportRecordCreate {
-	if t != nil {
-		irc.SetEndTime(*t)
+func (_c *ImportRecordCreate) SetNillableEndTime(v *time.Time) *ImportRecordCreate {
+	if v != nil {
+		_c.SetEndTime(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetRetryCount sets the "retry_count" field.
-func (irc *ImportRecordCreate) SetRetryCount(i int) *ImportRecordCreate {
-	irc.mutation.SetRetryCount(i)
-	return irc
+func (_c *ImportRecordCreate) SetRetryCount(v int) *ImportRecordCreate {
+	_c.mutation.SetRetryCount(v)
+	return _c
 }
 
 // SetNillableRetryCount sets the "retry_count" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableRetryCount(i *int) *ImportRecordCreate {
-	if i != nil {
-		irc.SetRetryCount(*i)
+func (_c *ImportRecordCreate) SetNillableRetryCount(v *int) *ImportRecordCreate {
+	if v != nil {
+		_c.SetRetryCount(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetMaxRetries sets the "max_retries" field.
-func (irc *ImportRecordCreate) SetMaxRetries(i int) *ImportRecordCreate {
-	irc.mutation.SetMaxRetries(i)
-	return irc
+func (_c *ImportRecordCreate) SetMaxRetries(v int) *ImportRecordCreate {
+	_c.mutation.SetMaxRetries(v)
+	return _c
 }
 
 // SetNillableMaxRetries sets the "max_retries" field if the given value is not nil.
-func (irc *ImportRecordCreate) SetNillableMaxRetries(i *int) *ImportRecordCreate {
-	if i != nil {
-		irc.SetMaxRetries(*i)
+func (_c *ImportRecordCreate) SetNillableMaxRetries(v *int) *ImportRecordCreate {
+	if v != nil {
+		_c.SetMaxRetries(*v)
 	}
-	return irc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (irc *ImportRecordCreate) SetID(u uint64) *ImportRecordCreate {
-	irc.mutation.SetID(u)
-	return irc
+func (_c *ImportRecordCreate) SetID(v uint64) *ImportRecordCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetTask sets the "task" edge to the ImportTask entity.
-func (irc *ImportRecordCreate) SetTask(i *ImportTask) *ImportRecordCreate {
-	return irc.SetTaskID(i.ID)
+func (_c *ImportRecordCreate) SetTask(v *ImportTask) *ImportRecordCreate {
+	return _c.SetTaskID(v.ID)
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (irc *ImportRecordCreate) SetCi(c *Cis) *ImportRecordCreate {
-	return irc.SetCiID(c.ID)
+func (_c *ImportRecordCreate) SetCi(v *Cis) *ImportRecordCreate {
+	return _c.SetCiID(v.ID)
 }
 
 // SetCiType sets the "ci_type" edge to the CiType entity.
-func (irc *ImportRecordCreate) SetCiType(c *CiType) *ImportRecordCreate {
-	return irc.SetCiTypeID(c.ID)
+func (_c *ImportRecordCreate) SetCiType(v *CiType) *ImportRecordCreate {
+	return _c.SetCiTypeID(v.ID)
 }
 
 // AddErrorIDs adds the "errors" edge to the ImportError entity by IDs.
-func (irc *ImportRecordCreate) AddErrorIDs(ids ...uint64) *ImportRecordCreate {
-	irc.mutation.AddErrorIDs(ids...)
-	return irc
+func (_c *ImportRecordCreate) AddErrorIDs(ids ...uint64) *ImportRecordCreate {
+	_c.mutation.AddErrorIDs(ids...)
+	return _c
 }
 
 // AddErrors adds the "errors" edges to the ImportError entity.
-func (irc *ImportRecordCreate) AddErrors(i ...*ImportError) *ImportRecordCreate {
-	ids := make([]uint64, len(i))
-	for j := range i {
-		ids[j] = i[j].ID
+func (_c *ImportRecordCreate) AddErrors(v ...*ImportError) *ImportRecordCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
 	}
-	return irc.AddErrorIDs(ids...)
+	return _c.AddErrorIDs(ids...)
 }
 
 // Mutation returns the ImportRecordMutation object of the builder.
-func (irc *ImportRecordCreate) Mutation() *ImportRecordMutation {
-	return irc.mutation
+func (_c *ImportRecordCreate) Mutation() *ImportRecordMutation {
+	return _c.mutation
 }
 
 // Save creates the ImportRecord in the database.
-func (irc *ImportRecordCreate) Save(ctx context.Context) (*ImportRecord, error) {
-	if err := irc.defaults(); err != nil {
+func (_c *ImportRecordCreate) Save(ctx context.Context) (*ImportRecord, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, irc.sqlSave, irc.mutation, irc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (irc *ImportRecordCreate) SaveX(ctx context.Context) *ImportRecord {
-	v, err := irc.Save(ctx)
+func (_c *ImportRecordCreate) SaveX(ctx context.Context) *ImportRecord {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -373,126 +373,126 @@ func (irc *ImportRecordCreate) SaveX(ctx context.Context) *ImportRecord {
 }
 
 // Exec executes the query.
-func (irc *ImportRecordCreate) Exec(ctx context.Context) error {
-	_, err := irc.Save(ctx)
+func (_c *ImportRecordCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (irc *ImportRecordCreate) ExecX(ctx context.Context) {
-	if err := irc.Exec(ctx); err != nil {
+func (_c *ImportRecordCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (irc *ImportRecordCreate) defaults() error {
-	if _, ok := irc.mutation.CreatedAt(); !ok {
+func (_c *ImportRecordCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if importrecord.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importrecord.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := importrecord.DefaultCreatedAt()
-		irc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := irc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if importrecord.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized importrecord.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := importrecord.DefaultUpdatedAt()
-		irc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := irc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		v := importrecord.DefaultTenantID
-		irc.mutation.SetTenantID(v)
+		_c.mutation.SetTenantID(v)
 	}
-	if _, ok := irc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		v := importrecord.DefaultStatus
-		irc.mutation.SetStatus(v)
+		_c.mutation.SetStatus(v)
 	}
-	if _, ok := irc.mutation.RetryCount(); !ok {
+	if _, ok := _c.mutation.RetryCount(); !ok {
 		v := importrecord.DefaultRetryCount
-		irc.mutation.SetRetryCount(v)
+		_c.mutation.SetRetryCount(v)
 	}
-	if _, ok := irc.mutation.MaxRetries(); !ok {
+	if _, ok := _c.mutation.MaxRetries(); !ok {
 		v := importrecord.DefaultMaxRetries
-		irc.mutation.SetMaxRetries(v)
+		_c.mutation.SetMaxRetries(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (irc *ImportRecordCreate) check() error {
-	if _, ok := irc.mutation.CreatedAt(); !ok {
+func (_c *ImportRecordCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ImportRecord.created_at"`)}
 	}
-	if _, ok := irc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ImportRecord.updated_at"`)}
 	}
-	if _, ok := irc.mutation.TenantID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
 		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ImportRecord.tenant_id"`)}
 	}
-	if _, ok := irc.mutation.TaskID(); !ok {
+	if _, ok := _c.mutation.TaskID(); !ok {
 		return &ValidationError{Name: "task_id", err: errors.New(`ent: missing required field "ImportRecord.task_id"`)}
 	}
-	if v, ok := irc.mutation.BatchID(); ok {
+	if v, ok := _c.mutation.BatchID(); ok {
 		if err := importrecord.BatchIDValidator(v); err != nil {
 			return &ValidationError{Name: "batch_id", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.batch_id": %w`, err)}
 		}
 	}
-	if _, ok := irc.mutation.RowNumber(); !ok {
+	if _, ok := _c.mutation.RowNumber(); !ok {
 		return &ValidationError{Name: "row_number", err: errors.New(`ent: missing required field "ImportRecord.row_number"`)}
 	}
-	if v, ok := irc.mutation.SheetName(); ok {
+	if v, ok := _c.mutation.SheetName(); ok {
 		if err := importrecord.SheetNameValidator(v); err != nil {
 			return &ValidationError{Name: "sheet_name", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.sheet_name": %w`, err)}
 		}
 	}
-	if _, ok := irc.mutation.Status(); !ok {
+	if _, ok := _c.mutation.Status(); !ok {
 		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "ImportRecord.status"`)}
 	}
-	if v, ok := irc.mutation.Status(); ok {
+	if v, ok := _c.mutation.Status(); ok {
 		if err := importrecord.StatusValidator(v); err != nil {
 			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.status": %w`, err)}
 		}
 	}
-	if v, ok := irc.mutation.ImportAction(); ok {
+	if v, ok := _c.mutation.ImportAction(); ok {
 		if err := importrecord.ImportActionValidator(v); err != nil {
 			return &ValidationError{Name: "import_action", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.import_action": %w`, err)}
 		}
 	}
-	if v, ok := irc.mutation.CiUniqueKey(); ok {
+	if v, ok := _c.mutation.CiUniqueKey(); ok {
 		if err := importrecord.CiUniqueKeyValidator(v); err != nil {
 			return &ValidationError{Name: "ci_unique_key", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.ci_unique_key": %w`, err)}
 		}
 	}
-	if v, ok := irc.mutation.ErrorCode(); ok {
+	if v, ok := _c.mutation.ErrorCode(); ok {
 		if err := importrecord.ErrorCodeValidator(v); err != nil {
 			return &ValidationError{Name: "error_code", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.error_code": %w`, err)}
 		}
 	}
-	if v, ok := irc.mutation.ErrorType(); ok {
+	if v, ok := _c.mutation.ErrorType(); ok {
 		if err := importrecord.ErrorTypeValidator(v); err != nil {
 			return &ValidationError{Name: "error_type", err: fmt.Errorf(`ent: validator failed for field "ImportRecord.error_type": %w`, err)}
 		}
 	}
-	if _, ok := irc.mutation.RetryCount(); !ok {
+	if _, ok := _c.mutation.RetryCount(); !ok {
 		return &ValidationError{Name: "retry_count", err: errors.New(`ent: missing required field "ImportRecord.retry_count"`)}
 	}
-	if _, ok := irc.mutation.MaxRetries(); !ok {
+	if _, ok := _c.mutation.MaxRetries(); !ok {
 		return &ValidationError{Name: "max_retries", err: errors.New(`ent: missing required field "ImportRecord.max_retries"`)}
 	}
-	if len(irc.mutation.TaskIDs()) == 0 {
+	if len(_c.mutation.TaskIDs()) == 0 {
 		return &ValidationError{Name: "task", err: errors.New(`ent: missing required edge "ImportRecord.task"`)}
 	}
 	return nil
 }
 
-func (irc *ImportRecordCreate) sqlSave(ctx context.Context) (*ImportRecord, error) {
-	if err := irc.check(); err != nil {
+func (_c *ImportRecordCreate) sqlSave(ctx context.Context) (*ImportRecord, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := irc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, irc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -502,101 +502,101 @@ func (irc *ImportRecordCreate) sqlSave(ctx context.Context) (*ImportRecord, erro
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	irc.mutation.id = &_node.ID
-	irc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (irc *ImportRecordCreate) createSpec() (*ImportRecord, *sqlgraph.CreateSpec) {
+func (_c *ImportRecordCreate) createSpec() (*ImportRecord, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ImportRecord{config: irc.config}
+		_node = &ImportRecord{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(importrecord.Table, sqlgraph.NewFieldSpec(importrecord.FieldID, field.TypeUint64))
 	)
-	if id, ok := irc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := irc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(importrecord.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := irc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(importrecord.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := irc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(importrecord.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := irc.mutation.TenantID(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(importrecord.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
-	if value, ok := irc.mutation.DepartmentID(); ok {
+	if value, ok := _c.mutation.DepartmentID(); ok {
 		_spec.SetField(importrecord.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := irc.mutation.BatchID(); ok {
+	if value, ok := _c.mutation.BatchID(); ok {
 		_spec.SetField(importrecord.FieldBatchID, field.TypeString, value)
 		_node.BatchID = value
 	}
-	if value, ok := irc.mutation.RowNumber(); ok {
+	if value, ok := _c.mutation.RowNumber(); ok {
 		_spec.SetField(importrecord.FieldRowNumber, field.TypeInt, value)
 		_node.RowNumber = value
 	}
-	if value, ok := irc.mutation.SheetName(); ok {
+	if value, ok := _c.mutation.SheetName(); ok {
 		_spec.SetField(importrecord.FieldSheetName, field.TypeString, value)
 		_node.SheetName = value
 	}
-	if value, ok := irc.mutation.Status(); ok {
+	if value, ok := _c.mutation.Status(); ok {
 		_spec.SetField(importrecord.FieldStatus, field.TypeEnum, value)
 		_node.Status = value
 	}
-	if value, ok := irc.mutation.ImportAction(); ok {
+	if value, ok := _c.mutation.ImportAction(); ok {
 		_spec.SetField(importrecord.FieldImportAction, field.TypeEnum, value)
 		_node.ImportAction = value
 	}
-	if value, ok := irc.mutation.RawData(); ok {
+	if value, ok := _c.mutation.RawData(); ok {
 		_spec.SetField(importrecord.FieldRawData, field.TypeJSON, value)
 		_node.RawData = value
 	}
-	if value, ok := irc.mutation.FinalData(); ok {
+	if value, ok := _c.mutation.FinalData(); ok {
 		_spec.SetField(importrecord.FieldFinalData, field.TypeJSON, value)
 		_node.FinalData = value
 	}
-	if value, ok := irc.mutation.CiUniqueKey(); ok {
+	if value, ok := _c.mutation.CiUniqueKey(); ok {
 		_spec.SetField(importrecord.FieldCiUniqueKey, field.TypeString, value)
 		_node.CiUniqueKey = value
 	}
-	if value, ok := irc.mutation.ErrorMessage(); ok {
+	if value, ok := _c.mutation.ErrorMessage(); ok {
 		_spec.SetField(importrecord.FieldErrorMessage, field.TypeString, value)
 		_node.ErrorMessage = value
 	}
-	if value, ok := irc.mutation.ErrorCode(); ok {
+	if value, ok := _c.mutation.ErrorCode(); ok {
 		_spec.SetField(importrecord.FieldErrorCode, field.TypeString, value)
 		_node.ErrorCode = value
 	}
-	if value, ok := irc.mutation.ErrorType(); ok {
+	if value, ok := _c.mutation.ErrorType(); ok {
 		_spec.SetField(importrecord.FieldErrorType, field.TypeEnum, value)
 		_node.ErrorType = value
 	}
-	if value, ok := irc.mutation.StartTime(); ok {
+	if value, ok := _c.mutation.StartTime(); ok {
 		_spec.SetField(importrecord.FieldStartTime, field.TypeTime, value)
 		_node.StartTime = value
 	}
-	if value, ok := irc.mutation.EndTime(); ok {
+	if value, ok := _c.mutation.EndTime(); ok {
 		_spec.SetField(importrecord.FieldEndTime, field.TypeTime, value)
 		_node.EndTime = value
 	}
-	if value, ok := irc.mutation.RetryCount(); ok {
+	if value, ok := _c.mutation.RetryCount(); ok {
 		_spec.SetField(importrecord.FieldRetryCount, field.TypeInt, value)
 		_node.RetryCount = value
 	}
-	if value, ok := irc.mutation.MaxRetries(); ok {
+	if value, ok := _c.mutation.MaxRetries(); ok {
 		_spec.SetField(importrecord.FieldMaxRetries, field.TypeInt, value)
 		_node.MaxRetries = value
 	}
-	if nodes := irc.mutation.TaskIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.TaskIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -613,7 +613,7 @@ func (irc *ImportRecordCreate) createSpec() (*ImportRecord, *sqlgraph.CreateSpec
 		_node.TaskID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := irc.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -630,7 +630,7 @@ func (irc *ImportRecordCreate) createSpec() (*ImportRecord, *sqlgraph.CreateSpec
 		_node.CiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := irc.mutation.CiTypeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiTypeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -647,7 +647,7 @@ func (irc *ImportRecordCreate) createSpec() (*ImportRecord, *sqlgraph.CreateSpec
 		_node.CiTypeID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := irc.mutation.ErrorsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.ErrorsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
@@ -674,16 +674,16 @@ type ImportRecordCreateBulk struct {
 }
 
 // Save creates the ImportRecord entities in the database.
-func (ircb *ImportRecordCreateBulk) Save(ctx context.Context) ([]*ImportRecord, error) {
-	if ircb.err != nil {
-		return nil, ircb.err
+func (_c *ImportRecordCreateBulk) Save(ctx context.Context) ([]*ImportRecord, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(ircb.builders))
-	nodes := make([]*ImportRecord, len(ircb.builders))
-	mutators := make([]Mutator, len(ircb.builders))
-	for i := range ircb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ImportRecord, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := ircb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ImportRecordMutation)
@@ -697,11 +697,11 @@ func (ircb *ImportRecordCreateBulk) Save(ctx context.Context) ([]*ImportRecord, 
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, ircb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, ircb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -725,7 +725,7 @@ func (ircb *ImportRecordCreateBulk) Save(ctx context.Context) ([]*ImportRecord, 
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, ircb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -733,8 +733,8 @@ func (ircb *ImportRecordCreateBulk) Save(ctx context.Context) ([]*ImportRecord, 
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (ircb *ImportRecordCreateBulk) SaveX(ctx context.Context) []*ImportRecord {
-	v, err := ircb.Save(ctx)
+func (_c *ImportRecordCreateBulk) SaveX(ctx context.Context) []*ImportRecord {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -742,14 +742,14 @@ func (ircb *ImportRecordCreateBulk) SaveX(ctx context.Context) []*ImportRecord {
 }
 
 // Exec executes the query.
-func (ircb *ImportRecordCreateBulk) Exec(ctx context.Context) error {
-	_, err := ircb.Save(ctx)
+func (_c *ImportRecordCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ircb *ImportRecordCreateBulk) ExecX(ctx context.Context) {
-	if err := ircb.Exec(ctx); err != nil {
+func (_c *ImportRecordCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

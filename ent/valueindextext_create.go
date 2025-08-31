@@ -10,9 +10,9 @@ import (
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitee.com/link234/cmdb-rpc/ent/attribute"
-	"gitee.com/link234/cmdb-rpc/ent/cis"
-	"gitee.com/link234/cmdb-rpc/ent/valueindextext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
 )
 
 // ValueIndexTextCreate is the builder for creating a ValueIndexText entity.
@@ -23,117 +23,131 @@ type ValueIndexTextCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (vitc *ValueIndexTextCreate) SetCreatedAt(t time.Time) *ValueIndexTextCreate {
-	vitc.mutation.SetCreatedAt(t)
-	return vitc
+func (_c *ValueIndexTextCreate) SetCreatedAt(v time.Time) *ValueIndexTextCreate {
+	_c.mutation.SetCreatedAt(v)
+	return _c
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (vitc *ValueIndexTextCreate) SetNillableCreatedAt(t *time.Time) *ValueIndexTextCreate {
-	if t != nil {
-		vitc.SetCreatedAt(*t)
+func (_c *ValueIndexTextCreate) SetNillableCreatedAt(v *time.Time) *ValueIndexTextCreate {
+	if v != nil {
+		_c.SetCreatedAt(*v)
 	}
-	return vitc
+	return _c
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (vitc *ValueIndexTextCreate) SetUpdatedAt(t time.Time) *ValueIndexTextCreate {
-	vitc.mutation.SetUpdatedAt(t)
-	return vitc
+func (_c *ValueIndexTextCreate) SetUpdatedAt(v time.Time) *ValueIndexTextCreate {
+	_c.mutation.SetUpdatedAt(v)
+	return _c
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (vitc *ValueIndexTextCreate) SetNillableUpdatedAt(t *time.Time) *ValueIndexTextCreate {
-	if t != nil {
-		vitc.SetUpdatedAt(*t)
+func (_c *ValueIndexTextCreate) SetNillableUpdatedAt(v *time.Time) *ValueIndexTextCreate {
+	if v != nil {
+		_c.SetUpdatedAt(*v)
 	}
-	return vitc
+	return _c
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (vitc *ValueIndexTextCreate) SetDeletedAt(t time.Time) *ValueIndexTextCreate {
-	vitc.mutation.SetDeletedAt(t)
-	return vitc
+func (_c *ValueIndexTextCreate) SetDeletedAt(v time.Time) *ValueIndexTextCreate {
+	_c.mutation.SetDeletedAt(v)
+	return _c
 }
 
 // SetNillableDeletedAt sets the "deleted_at" field if the given value is not nil.
-func (vitc *ValueIndexTextCreate) SetNillableDeletedAt(t *time.Time) *ValueIndexTextCreate {
-	if t != nil {
-		vitc.SetDeletedAt(*t)
+func (_c *ValueIndexTextCreate) SetNillableDeletedAt(v *time.Time) *ValueIndexTextCreate {
+	if v != nil {
+		_c.SetDeletedAt(*v)
 	}
-	return vitc
+	return _c
+}
+
+// SetTenantID sets the "tenant_id" field.
+func (_c *ValueIndexTextCreate) SetTenantID(v uint64) *ValueIndexTextCreate {
+	_c.mutation.SetTenantID(v)
+	return _c
+}
+
+// SetNillableTenantID sets the "tenant_id" field if the given value is not nil.
+func (_c *ValueIndexTextCreate) SetNillableTenantID(v *uint64) *ValueIndexTextCreate {
+	if v != nil {
+		_c.SetTenantID(*v)
+	}
+	return _c
 }
 
 // SetCiID sets the "ci_id" field.
-func (vitc *ValueIndexTextCreate) SetCiID(u uint64) *ValueIndexTextCreate {
-	vitc.mutation.SetCiID(u)
-	return vitc
+func (_c *ValueIndexTextCreate) SetCiID(v uint64) *ValueIndexTextCreate {
+	_c.mutation.SetCiID(v)
+	return _c
 }
 
 // SetAttrID sets the "attr_id" field.
-func (vitc *ValueIndexTextCreate) SetAttrID(u uint64) *ValueIndexTextCreate {
-	vitc.mutation.SetAttrID(u)
-	return vitc
+func (_c *ValueIndexTextCreate) SetAttrID(v uint64) *ValueIndexTextCreate {
+	_c.mutation.SetAttrID(v)
+	return _c
 }
 
 // SetValue sets the "value" field.
-func (vitc *ValueIndexTextCreate) SetValue(s string) *ValueIndexTextCreate {
-	vitc.mutation.SetValue(s)
-	return vitc
+func (_c *ValueIndexTextCreate) SetValue(v string) *ValueIndexTextCreate {
+	_c.mutation.SetValue(v)
+	return _c
 }
 
 // SetIsCover sets the "is_cover" field.
-func (vitc *ValueIndexTextCreate) SetIsCover(b bool) *ValueIndexTextCreate {
-	vitc.mutation.SetIsCover(b)
-	return vitc
+func (_c *ValueIndexTextCreate) SetIsCover(v bool) *ValueIndexTextCreate {
+	_c.mutation.SetIsCover(v)
+	return _c
 }
 
 // SetNillableIsCover sets the "is_cover" field if the given value is not nil.
-func (vitc *ValueIndexTextCreate) SetNillableIsCover(b *bool) *ValueIndexTextCreate {
-	if b != nil {
-		vitc.SetIsCover(*b)
+func (_c *ValueIndexTextCreate) SetNillableIsCover(v *bool) *ValueIndexTextCreate {
+	if v != nil {
+		_c.SetIsCover(*v)
 	}
-	return vitc
+	return _c
 }
 
 // SetID sets the "id" field.
-func (vitc *ValueIndexTextCreate) SetID(u uint64) *ValueIndexTextCreate {
-	vitc.mutation.SetID(u)
-	return vitc
+func (_c *ValueIndexTextCreate) SetID(v uint64) *ValueIndexTextCreate {
+	_c.mutation.SetID(v)
+	return _c
 }
 
 // SetCi sets the "ci" edge to the Cis entity.
-func (vitc *ValueIndexTextCreate) SetCi(c *Cis) *ValueIndexTextCreate {
-	return vitc.SetCiID(c.ID)
+func (_c *ValueIndexTextCreate) SetCi(v *Cis) *ValueIndexTextCreate {
+	return _c.SetCiID(v.ID)
 }
 
 // SetAttributeID sets the "attribute" edge to the Attribute entity by ID.
-func (vitc *ValueIndexTextCreate) SetAttributeID(id uint64) *ValueIndexTextCreate {
-	vitc.mutation.SetAttributeID(id)
-	return vitc
+func (_c *ValueIndexTextCreate) SetAttributeID(id uint64) *ValueIndexTextCreate {
+	_c.mutation.SetAttributeID(id)
+	return _c
 }
 
 // SetAttribute sets the "attribute" edge to the Attribute entity.
-func (vitc *ValueIndexTextCreate) SetAttribute(a *Attribute) *ValueIndexTextCreate {
-	return vitc.SetAttributeID(a.ID)
+func (_c *ValueIndexTextCreate) SetAttribute(v *Attribute) *ValueIndexTextCreate {
+	return _c.SetAttributeID(v.ID)
 }
 
 // Mutation returns the ValueIndexTextMutation object of the builder.
-func (vitc *ValueIndexTextCreate) Mutation() *ValueIndexTextMutation {
-	return vitc.mutation
+func (_c *ValueIndexTextCreate) Mutation() *ValueIndexTextMutation {
+	return _c.mutation
 }
 
 // Save creates the ValueIndexText in the database.
-func (vitc *ValueIndexTextCreate) Save(ctx context.Context) (*ValueIndexText, error) {
-	if err := vitc.defaults(); err != nil {
+func (_c *ValueIndexTextCreate) Save(ctx context.Context) (*ValueIndexText, error) {
+	if err := _c.defaults(); err != nil {
 		return nil, err
 	}
-	return withHooks(ctx, vitc.sqlSave, vitc.mutation, vitc.hooks)
+	return withHooks(ctx, _c.sqlSave, _c.mutation, _c.hooks)
 }
 
 // SaveX calls Save and panics if Save returns an error.
-func (vitc *ValueIndexTextCreate) SaveX(ctx context.Context) *ValueIndexText {
-	v, err := vitc.Save(ctx)
+func (_c *ValueIndexTextCreate) SaveX(ctx context.Context) *ValueIndexText {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -141,81 +155,88 @@ func (vitc *ValueIndexTextCreate) SaveX(ctx context.Context) *ValueIndexText {
 }
 
 // Exec executes the query.
-func (vitc *ValueIndexTextCreate) Exec(ctx context.Context) error {
-	_, err := vitc.Save(ctx)
+func (_c *ValueIndexTextCreate) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vitc *ValueIndexTextCreate) ExecX(ctx context.Context) {
-	if err := vitc.Exec(ctx); err != nil {
+func (_c *ValueIndexTextCreate) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
 // defaults sets the default values of the builder before save.
-func (vitc *ValueIndexTextCreate) defaults() error {
-	if _, ok := vitc.mutation.CreatedAt(); !ok {
+func (_c *ValueIndexTextCreate) defaults() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		if valueindextext.DefaultCreatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valueindextext.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := valueindextext.DefaultCreatedAt()
-		vitc.mutation.SetCreatedAt(v)
+		_c.mutation.SetCreatedAt(v)
 	}
-	if _, ok := vitc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		if valueindextext.DefaultUpdatedAt == nil {
 			return fmt.Errorf("ent: uninitialized valueindextext.DefaultUpdatedAt (forgotten import ent/runtime?)")
 		}
 		v := valueindextext.DefaultUpdatedAt()
-		vitc.mutation.SetUpdatedAt(v)
+		_c.mutation.SetUpdatedAt(v)
 	}
-	if _, ok := vitc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		v := valueindextext.DefaultTenantID
+		_c.mutation.SetTenantID(v)
+	}
+	if _, ok := _c.mutation.IsCover(); !ok {
 		v := valueindextext.DefaultIsCover
-		vitc.mutation.SetIsCover(v)
+		_c.mutation.SetIsCover(v)
 	}
 	return nil
 }
 
 // check runs all checks and user-defined validators on the builder.
-func (vitc *ValueIndexTextCreate) check() error {
-	if _, ok := vitc.mutation.CreatedAt(); !ok {
+func (_c *ValueIndexTextCreate) check() error {
+	if _, ok := _c.mutation.CreatedAt(); !ok {
 		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "ValueIndexText.created_at"`)}
 	}
-	if _, ok := vitc.mutation.UpdatedAt(); !ok {
+	if _, ok := _c.mutation.UpdatedAt(); !ok {
 		return &ValidationError{Name: "updated_at", err: errors.New(`ent: missing required field "ValueIndexText.updated_at"`)}
 	}
-	if _, ok := vitc.mutation.CiID(); !ok {
+	if _, ok := _c.mutation.TenantID(); !ok {
+		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "ValueIndexText.tenant_id"`)}
+	}
+	if _, ok := _c.mutation.CiID(); !ok {
 		return &ValidationError{Name: "ci_id", err: errors.New(`ent: missing required field "ValueIndexText.ci_id"`)}
 	}
-	if _, ok := vitc.mutation.AttrID(); !ok {
+	if _, ok := _c.mutation.AttrID(); !ok {
 		return &ValidationError{Name: "attr_id", err: errors.New(`ent: missing required field "ValueIndexText.attr_id"`)}
 	}
-	if _, ok := vitc.mutation.Value(); !ok {
+	if _, ok := _c.mutation.Value(); !ok {
 		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "ValueIndexText.value"`)}
 	}
-	if v, ok := vitc.mutation.Value(); ok {
+	if v, ok := _c.mutation.Value(); ok {
 		if err := valueindextext.ValueValidator(v); err != nil {
 			return &ValidationError{Name: "value", err: fmt.Errorf(`ent: validator failed for field "ValueIndexText.value": %w`, err)}
 		}
 	}
-	if _, ok := vitc.mutation.IsCover(); !ok {
+	if _, ok := _c.mutation.IsCover(); !ok {
 		return &ValidationError{Name: "is_cover", err: errors.New(`ent: missing required field "ValueIndexText.is_cover"`)}
 	}
-	if len(vitc.mutation.CiIDs()) == 0 {
+	if len(_c.mutation.CiIDs()) == 0 {
 		return &ValidationError{Name: "ci", err: errors.New(`ent: missing required edge "ValueIndexText.ci"`)}
 	}
-	if len(vitc.mutation.AttributeIDs()) == 0 {
+	if len(_c.mutation.AttributeIDs()) == 0 {
 		return &ValidationError{Name: "attribute", err: errors.New(`ent: missing required edge "ValueIndexText.attribute"`)}
 	}
 	return nil
 }
 
-func (vitc *ValueIndexTextCreate) sqlSave(ctx context.Context) (*ValueIndexText, error) {
-	if err := vitc.check(); err != nil {
+func (_c *ValueIndexTextCreate) sqlSave(ctx context.Context) (*ValueIndexText, error) {
+	if err := _c.check(); err != nil {
 		return nil, err
 	}
-	_node, _spec := vitc.createSpec()
-	if err := sqlgraph.CreateNode(ctx, vitc.driver, _spec); err != nil {
+	_node, _spec := _c.createSpec()
+	if err := sqlgraph.CreateNode(ctx, _c.driver, _spec); err != nil {
 		if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -225,41 +246,45 @@ func (vitc *ValueIndexTextCreate) sqlSave(ctx context.Context) (*ValueIndexText,
 		id := _spec.ID.Value.(int64)
 		_node.ID = uint64(id)
 	}
-	vitc.mutation.id = &_node.ID
-	vitc.mutation.done = true
+	_c.mutation.id = &_node.ID
+	_c.mutation.done = true
 	return _node, nil
 }
 
-func (vitc *ValueIndexTextCreate) createSpec() (*ValueIndexText, *sqlgraph.CreateSpec) {
+func (_c *ValueIndexTextCreate) createSpec() (*ValueIndexText, *sqlgraph.CreateSpec) {
 	var (
-		_node = &ValueIndexText{config: vitc.config}
+		_node = &ValueIndexText{config: _c.config}
 		_spec = sqlgraph.NewCreateSpec(valueindextext.Table, sqlgraph.NewFieldSpec(valueindextext.FieldID, field.TypeUint64))
 	)
-	if id, ok := vitc.mutation.ID(); ok {
+	if id, ok := _c.mutation.ID(); ok {
 		_node.ID = id
 		_spec.ID.Value = id
 	}
-	if value, ok := vitc.mutation.CreatedAt(); ok {
+	if value, ok := _c.mutation.CreatedAt(); ok {
 		_spec.SetField(valueindextext.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = value
 	}
-	if value, ok := vitc.mutation.UpdatedAt(); ok {
+	if value, ok := _c.mutation.UpdatedAt(); ok {
 		_spec.SetField(valueindextext.FieldUpdatedAt, field.TypeTime, value)
 		_node.UpdatedAt = value
 	}
-	if value, ok := vitc.mutation.DeletedAt(); ok {
+	if value, ok := _c.mutation.DeletedAt(); ok {
 		_spec.SetField(valueindextext.FieldDeletedAt, field.TypeTime, value)
 		_node.DeletedAt = value
 	}
-	if value, ok := vitc.mutation.Value(); ok {
+	if value, ok := _c.mutation.TenantID(); ok {
+		_spec.SetField(valueindextext.FieldTenantID, field.TypeUint64, value)
+		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(valueindextext.FieldValue, field.TypeString, value)
 		_node.Value = value
 	}
-	if value, ok := vitc.mutation.IsCover(); ok {
+	if value, ok := _c.mutation.IsCover(); ok {
 		_spec.SetField(valueindextext.FieldIsCover, field.TypeBool, value)
 		_node.IsCover = value
 	}
-	if nodes := vitc.mutation.CiIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.CiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -276,7 +301,7 @@ func (vitc *ValueIndexTextCreate) createSpec() (*ValueIndexText, *sqlgraph.Creat
 		_node.CiID = nodes[0]
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := vitc.mutation.AttributeIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.AttributeIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
@@ -304,16 +329,16 @@ type ValueIndexTextCreateBulk struct {
 }
 
 // Save creates the ValueIndexText entities in the database.
-func (vitcb *ValueIndexTextCreateBulk) Save(ctx context.Context) ([]*ValueIndexText, error) {
-	if vitcb.err != nil {
-		return nil, vitcb.err
+func (_c *ValueIndexTextCreateBulk) Save(ctx context.Context) ([]*ValueIndexText, error) {
+	if _c.err != nil {
+		return nil, _c.err
 	}
-	specs := make([]*sqlgraph.CreateSpec, len(vitcb.builders))
-	nodes := make([]*ValueIndexText, len(vitcb.builders))
-	mutators := make([]Mutator, len(vitcb.builders))
-	for i := range vitcb.builders {
+	specs := make([]*sqlgraph.CreateSpec, len(_c.builders))
+	nodes := make([]*ValueIndexText, len(_c.builders))
+	mutators := make([]Mutator, len(_c.builders))
+	for i := range _c.builders {
 		func(i int, root context.Context) {
-			builder := vitcb.builders[i]
+			builder := _c.builders[i]
 			builder.defaults()
 			var mut Mutator = MutateFunc(func(ctx context.Context, m Mutation) (Value, error) {
 				mutation, ok := m.(*ValueIndexTextMutation)
@@ -327,11 +352,11 @@ func (vitcb *ValueIndexTextCreateBulk) Save(ctx context.Context) ([]*ValueIndexT
 				var err error
 				nodes[i], specs[i] = builder.createSpec()
 				if i < len(mutators)-1 {
-					_, err = mutators[i+1].Mutate(root, vitcb.builders[i+1].mutation)
+					_, err = mutators[i+1].Mutate(root, _c.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
 					// Invoke the actual operation on the latest mutation in the chain.
-					if err = sqlgraph.BatchCreate(ctx, vitcb.driver, spec); err != nil {
+					if err = sqlgraph.BatchCreate(ctx, _c.driver, spec); err != nil {
 						if sqlgraph.IsConstraintError(err) {
 							err = &ConstraintError{msg: err.Error(), wrap: err}
 						}
@@ -355,7 +380,7 @@ func (vitcb *ValueIndexTextCreateBulk) Save(ctx context.Context) ([]*ValueIndexT
 		}(i, ctx)
 	}
 	if len(mutators) > 0 {
-		if _, err := mutators[0].Mutate(ctx, vitcb.builders[0].mutation); err != nil {
+		if _, err := mutators[0].Mutate(ctx, _c.builders[0].mutation); err != nil {
 			return nil, err
 		}
 	}
@@ -363,8 +388,8 @@ func (vitcb *ValueIndexTextCreateBulk) Save(ctx context.Context) ([]*ValueIndexT
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (vitcb *ValueIndexTextCreateBulk) SaveX(ctx context.Context) []*ValueIndexText {
-	v, err := vitcb.Save(ctx)
+func (_c *ValueIndexTextCreateBulk) SaveX(ctx context.Context) []*ValueIndexText {
+	v, err := _c.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -372,14 +397,14 @@ func (vitcb *ValueIndexTextCreateBulk) SaveX(ctx context.Context) []*ValueIndexT
 }
 
 // Exec executes the query.
-func (vitcb *ValueIndexTextCreateBulk) Exec(ctx context.Context) error {
-	_, err := vitcb.Save(ctx)
+func (_c *ValueIndexTextCreateBulk) Exec(ctx context.Context) error {
+	_, err := _c.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (vitcb *ValueIndexTextCreateBulk) ExecX(ctx context.Context) {
-	if err := vitcb.Exec(ctx); err != nil {
+func (_c *ValueIndexTextCreateBulk) ExecX(ctx context.Context) {
+	if err := _c.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
