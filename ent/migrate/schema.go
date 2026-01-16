@@ -9,6 +9,193 @@ import (
 )
 
 var (
+	// CmdbAggregationCacheColumns holds the columns for the "cmdb_aggregation_cache" table.
+	CmdbAggregationCacheColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime, Comment: "Create Time | 创建日期"},
+		{Name: "updated_at", Type: field.TypeTime, Comment: "Update Time | 修改日期"},
+		{Name: "tenant_id", Type: field.TypeUint64, Comment: "Tenant ID | 租户 ID", Default: 1},
+		{Name: "config_id", Type: field.TypeUint64, Comment: "关联dynamic_aggregation_config表的ID"},
+		{Name: "cache_key", Type: field.TypeString, Size: 512, Comment: "缓存键，基于查询参数生成的唯一标识"},
+		{Name: "params_hash", Type: field.TypeString, Size: 64, Comment: "查询参数的MD5哈希值"},
+		{Name: "aggregation_result", Type: field.TypeJSON, Comment: "聚合计算结果，JSON格式存储"},
+		{Name: "result_metadata", Type: field.TypeJSON, Nullable: true, Comment: "结果元数据，如：记录数量、计算时间、数据来源等"},
+		{Name: "dimension_values", Type: field.TypeJSON, Nullable: true, Comment: "维度值映射，用于支持钻取操作"},
+		{Name: "data_snapshot_time", Type: field.TypeTime, Comment: "数据快照时间，表示缓存数据的时间点"},
+		{Name: "cache_created_at", Type: field.TypeTime, Comment: "缓存创建时间"},
+		{Name: "expires_at", Type: field.TypeTime, Comment: "缓存过期时间"},
+		{Name: "cache_status", Type: field.TypeEnum, Comment: "缓存状态", Enums: []string{"building", "ready", "expired", "invalid", "error"}, Default: "building"},
+		{Name: "computation_time_ms", Type: field.TypeUint64, Nullable: true, Comment: "聚合计算耗时（毫秒）"},
+		{Name: "access_count", Type: field.TypeUint64, Comment: "缓存被访问的次数", Default: 0},
+		{Name: "last_accessed_at", Type: field.TypeTime, Nullable: true, Comment: "最后访问时间"},
+		{Name: "hit_rate", Type: field.TypeFloat64, Nullable: true, Comment: "缓存命中率"},
+		{Name: "data_source_versions", Type: field.TypeJSON, Nullable: true, Comment: "数据源版本信息，用于检测底层数据是否发生变更"},
+		{Name: "dependent_tables", Type: field.TypeJSON, Nullable: true, Comment: "依赖的基础表列表，用于缓存失效判断"},
+		{Name: "cache_size_bytes", Type: field.TypeUint64, Nullable: true, Comment: "缓存数据大小（字节）"},
+		{Name: "is_compressed", Type: field.TypeBool, Comment: "结果数据是否经过压缩", Default: false},
+		{Name: "compression_algorithm", Type: field.TypeString, Nullable: true, Size: 32, Comment: "压缩算法：gzip, lz4, snappy等"},
+		{Name: "cache_level", Type: field.TypeEnum, Comment: "缓存层级：L1内存、L2Redis、L3数据库", Enums: []string{"l1_memory", "l2_redis", "l3_database"}, Default: "l3_database"},
+		{Name: "refresh_strategy", Type: field.TypeEnum, Comment: "缓存刷新策略", Enums: []string{"manual", "scheduled", "on_demand", "incremental"}, Default: "scheduled"},
+		{Name: "next_refresh_time", Type: field.TypeTime, Nullable: true, Comment: "下次计划刷新时间"},
+		{Name: "refresh_interval_seconds", Type: field.TypeUint64, Nullable: true, Comment: "刷新间隔（秒）"},
+		{Name: "cache_priority", Type: field.TypeEnum, Comment: "缓存优先级，影响内存分配和清理策略", Enums: []string{"low", "normal", "high", "critical"}, Default: "normal"},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true, Comment: "部门ID，用于权限隔离"},
+		{Name: "user_id", Type: field.TypeUint64, Nullable: true, Comment: "缓存创建者用户ID"},
+		{Name: "sharing_level", Type: field.TypeEnum, Comment: "缓存共享级别", Enums: []string{"private", "department", "tenant", "public"}, Default: "department"},
+		{Name: "error_message", Type: field.TypeString, Nullable: true, Size: 1024, Comment: "缓存构建错误信息"},
+		{Name: "error_stack", Type: field.TypeString, Nullable: true, Size: 2147483647, Comment: "错误堆栈信息"},
+		{Name: "retry_count", Type: field.TypeUint64, Comment: "缓存构建重试次数", Default: 0},
+		{Name: "max_retry_count", Type: field.TypeUint64, Comment: "最大重试次数", Default: 3},
+		{Name: "cache_tags", Type: field.TypeJSON, Nullable: true, Comment: "缓存标签，用于分类和批量操作"},
+		{Name: "incremental_update_enabled", Type: field.TypeBool, Comment: "是否启用增量更新", Default: false},
+		{Name: "last_incremental_update", Type: field.TypeTime, Nullable: true, Comment: "最后增量更新时间"},
+		{Name: "incremental_checkpoint", Type: field.TypeJSON, Nullable: true, Comment: "增量更新检查点，用于跟踪数据变更位置"},
+	}
+	// CmdbAggregationCacheTable holds the schema information for the "cmdb_aggregation_cache" table.
+	CmdbAggregationCacheTable = &schema.Table{
+		Name:       "cmdb_aggregation_cache",
+		Columns:    CmdbAggregationCacheColumns,
+		PrimaryKey: []*schema.Column{CmdbAggregationCacheColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "aggregationcache_tenant_id_cache_key",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[5]},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_config_id_params_hash",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[4], CmdbAggregationCacheColumns[6]},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_cache_status_expires_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[13], CmdbAggregationCacheColumns[12]},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_expires_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[12]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbAggregationCacheColumns[12].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_config_id_cache_created_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[4], CmdbAggregationCacheColumns[11]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbAggregationCacheColumns[11].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_department_id_sharing_level",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[28], CmdbAggregationCacheColumns[30]},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_user_id_cache_created_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[29], CmdbAggregationCacheColumns[11]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbAggregationCacheColumns[11].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_access_count",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[15]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbAggregationCacheColumns[15].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_last_accessed_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[16]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbAggregationCacheColumns[16].Name: true,
+					},
+					Where: "last_accessed_at IS NOT NULL",
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_cache_level_cache_priority",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[23], CmdbAggregationCacheColumns[27]},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_refresh_strategy_next_refresh_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[24], CmdbAggregationCacheColumns[25]},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_next_refresh_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[25]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "next_refresh_time IS NOT NULL",
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_cache_status_retry_count",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[13], CmdbAggregationCacheColumns[33]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "cache_status = 'error'",
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_cache_size_bytes",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[20]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbAggregationCacheColumns[20].Name: true,
+					},
+					Where: "cache_size_bytes IS NOT NULL",
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_incremental_update_enabled_last_incremental_update",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[36], CmdbAggregationCacheColumns[37]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "incremental_update_enabled = true",
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_computation_time_ms",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[14]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbAggregationCacheColumns[14].Name: true,
+					},
+					Where: "computation_time_ms IS NOT NULL",
+				},
+			},
+			{
+				Name:    "aggregationcache_tenant_id_data_snapshot_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbAggregationCacheColumns[3], CmdbAggregationCacheColumns[10]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbAggregationCacheColumns[10].Name: true,
+					},
+				},
+			},
+		},
+	}
 	// CmdbAttributesColumns holds the columns for the "cmdb_attributes" table.
 	CmdbAttributesColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeUint64, Increment: true},
@@ -17,12 +204,12 @@ var (
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "name", Type: field.TypeString, Unique: true, Size: 64},
 		{Name: "alias", Type: field.TypeString, Size: 32},
 		{Name: "value_type", Type: field.TypeEnum, Enums: []string{"int", "float", "text", "longtext", "datetime", "date", "time", "json", "password", "link", "reference", "boolean", "image"}, Default: "text"},
 		{Name: "is_choice", Type: field.TypeBool, Nullable: true, Default: false},
 		{Name: "is_list", Type: field.TypeBool, Nullable: true, Default: false},
-		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "is_computed", Type: field.TypeBool, Nullable: true, Default: false},
 		{Name: "choice_web_hook", Type: field.TypeJSON, Nullable: true},
 		{Name: "option", Type: field.TypeJSON, Nullable: true},
@@ -42,6 +229,55 @@ var (
 		Name:       "cmdb_attributes",
 		Columns:    CmdbAttributesColumns,
 		PrimaryKey: []*schema.Column{CmdbAttributesColumns[0]},
+	}
+	// CmdbAttributeMappingRulesColumns holds the columns for the "cmdb_attribute_mapping_rules" table.
+	CmdbAttributeMappingRulesColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "status", Type: field.TypeUint8, Nullable: true, Default: 1},
+		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "source_field", Type: field.TypeString},
+		{Name: "source_path", Type: field.TypeString, Nullable: true},
+		{Name: "target_attribute", Type: field.TypeString},
+		{Name: "transform_type", Type: field.TypeString, Default: "direct"},
+		{Name: "transform_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "default_value", Type: field.TypeString, Nullable: true},
+		{Name: "validation_rules", Type: field.TypeJSON, Nullable: true},
+		{Name: "validation_regex", Type: field.TypeString, Nullable: true},
+		{Name: "is_required", Type: field.TypeBool, Default: false},
+		{Name: "is_unique", Type: field.TypeBool, Default: false},
+		{Name: "priority", Type: field.TypeInt, Default: 100},
+		{Name: "enabled", Type: field.TypeBool, Default: true},
+		{Name: "update_strategy", Type: field.TypeString, Default: "overwrite"},
+		{Name: "success_count", Type: field.TypeInt64, Default: 0},
+		{Name: "failed_count", Type: field.TypeInt64, Default: 0},
+		{Name: "last_success_at", Type: field.TypeTime, Nullable: true},
+		{Name: "description", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "metadata", Type: field.TypeJSON, Nullable: true},
+		{Name: "ci_attribute_id", Type: field.TypeUint64},
+		{Name: "discovery_config_id", Type: field.TypeUint64},
+	}
+	// CmdbAttributeMappingRulesTable holds the schema information for the "cmdb_attribute_mapping_rules" table.
+	CmdbAttributeMappingRulesTable = &schema.Table{
+		Name:       "cmdb_attribute_mapping_rules",
+		Columns:    CmdbAttributeMappingRulesColumns,
+		PrimaryKey: []*schema.Column{CmdbAttributeMappingRulesColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "cmdb_attribute_mapping_rules_cmdb_attributes_mapping_rules",
+				Columns:    []*schema.Column{CmdbAttributeMappingRulesColumns[24]},
+				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+			{
+				Symbol:     "cmdb_attribute_mapping_rules_cmdb_ci_type_discovery_configs_attribute_mapping_rules",
+				Columns:    []*schema.Column{CmdbAttributeMappingRulesColumns[25]},
+				RefColumns: []*schema.Column{CmdbCiTypeDiscoveryConfigsColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+		},
 	}
 	// CmdbChoiceFloatsColumns holds the columns for the "cmdb_choice_floats" table.
 	CmdbChoiceFloatsColumns = []*schema.Column{
@@ -128,6 +364,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "flow_id", Type: field.TypeString, Unique: true},
 		{Name: "flow_name", Type: field.TypeString},
 		{Name: "flow_code", Type: field.TypeString, Nullable: true},
@@ -159,7 +396,6 @@ var (
 		{Name: "approval_rate", Type: field.TypeInt, Default: 0},
 		{Name: "avg_approval_time", Type: field.TypeFloat64, Default: 0},
 		{Name: "last_used_at", Type: field.TypeTime, Nullable: true},
-		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "created_by_name", Type: field.TypeString, Nullable: true},
 		{Name: "updated_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "updated_by_name", Type: field.TypeString, Nullable: true},
@@ -180,52 +416,52 @@ var (
 			{
 				Name:    "ciapprovalflow_flow_code",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[7]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[8]},
 			},
 			{
 				Name:    "ciapprovalflow_scope_type_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[9], CmdbCiApprovalFlowsColumns[27]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[10], CmdbCiApprovalFlowsColumns[28]},
 			},
 			{
 				Name:    "ciapprovalflow_flow_type_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[12], CmdbCiApprovalFlowsColumns[27]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[13], CmdbCiApprovalFlowsColumns[28]},
 			},
 			{
 				Name:    "ciapprovalflow_status_is_default",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[27], CmdbCiApprovalFlowsColumns[31]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[28], CmdbCiApprovalFlowsColumns[32]},
 			},
 			{
 				Name:    "ciapprovalflow_usage_count_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[32], CmdbCiApprovalFlowsColumns[27]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[33], CmdbCiApprovalFlowsColumns[28]},
 			},
 			{
 				Name:    "ciapprovalflow_last_used_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[35]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[36]},
 			},
 			{
 				Name:    "ciapprovalflow_approval_rate",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[33]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[34]},
 			},
 			{
 				Name:    "ciapprovalflow_parent_flow_id_version",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[30], CmdbCiApprovalFlowsColumns[29]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[31], CmdbCiApprovalFlowsColumns[30]},
 			},
 			{
 				Name:    "ciapprovalflow_version_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[29], CmdbCiApprovalFlowsColumns[27]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[30], CmdbCiApprovalFlowsColumns[28]},
 			},
 			{
 				Name:    "ciapprovalflow_created_by_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[36], CmdbCiApprovalFlowsColumns[1]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[5], CmdbCiApprovalFlowsColumns[1]},
 			},
 			{
 				Name:    "ciapprovalflow_updated_by_updated_at",
@@ -240,12 +476,195 @@ var (
 			{
 				Name:    "ciapprovalflow_scope_type_is_default_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[9], CmdbCiApprovalFlowsColumns[31], CmdbCiApprovalFlowsColumns[27]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[10], CmdbCiApprovalFlowsColumns[32], CmdbCiApprovalFlowsColumns[28]},
 			},
 			{
 				Name:    "ciapprovalflow_flow_type_total_stages_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[12], CmdbCiApprovalFlowsColumns[14], CmdbCiApprovalFlowsColumns[27]},
+				Columns: []*schema.Column{CmdbCiApprovalFlowsColumns[13], CmdbCiApprovalFlowsColumns[15], CmdbCiApprovalFlowsColumns[28]},
+			},
+		},
+	}
+	// CmdbCiAttributeDistributionColumns holds the columns for the "cmdb_ci_attribute_distribution" table.
+	CmdbCiAttributeDistributionColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "ci_type_id", Type: field.TypeUint64},
+		{Name: "attribute_id", Type: field.TypeUint64},
+		{Name: "attribute_name", Type: field.TypeString, Size: 128},
+		{Name: "attribute_alias", Type: field.TypeString, Nullable: true, Size: 64},
+		{Name: "value_type", Type: field.TypeEnum, Enums: []string{"text", "integer", "float", "datetime", "json", "boolean"}},
+		{Name: "value_distribution", Type: field.TypeJSON},
+		{Name: "statistical_metrics", Type: field.TypeJSON, Nullable: true},
+		{Name: "quality_score", Type: field.TypeFloat64, Default: 0},
+		{Name: "completeness_stats", Type: field.TypeJSON, Nullable: true},
+		{Name: "outlier_analysis", Type: field.TypeJSON, Nullable: true},
+		{Name: "total_count", Type: field.TypeUint64, Default: 0},
+		{Name: "unique_count", Type: field.TypeUint64, Default: 0},
+		{Name: "last_analyzed_at", Type: field.TypeTime},
+		{Name: "sample_rate", Type: field.TypeFloat64, Default: 1},
+		{Name: "analysis_status", Type: field.TypeEnum, Enums: []string{"pending", "analyzing", "completed", "failed"}, Default: "pending"},
+		{Name: "trend_analysis", Type: field.TypeJSON, Nullable: true},
+	}
+	// CmdbCiAttributeDistributionTable holds the schema information for the "cmdb_ci_attribute_distribution" table.
+	CmdbCiAttributeDistributionTable = &schema.Table{
+		Name:       "cmdb_ci_attribute_distribution",
+		Columns:    CmdbCiAttributeDistributionColumns,
+		PrimaryKey: []*schema.Column{CmdbCiAttributeDistributionColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "ciattributedistribution_tenant_id_ci_type_id_attribute_id",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbCiAttributeDistributionColumns[3], CmdbCiAttributeDistributionColumns[5], CmdbCiAttributeDistributionColumns[6]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "deleted_at IS NULL",
+				},
+			},
+			{
+				Name:    "ciattributedistribution_tenant_id_attribute_name",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiAttributeDistributionColumns[3], CmdbCiAttributeDistributionColumns[7]},
+			},
+			{
+				Name:    "ciattributedistribution_tenant_id_value_type_last_analyzed_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiAttributeDistributionColumns[3], CmdbCiAttributeDistributionColumns[9], CmdbCiAttributeDistributionColumns[17]},
+			},
+			{
+				Name:    "ciattributedistribution_tenant_id_quality_score",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiAttributeDistributionColumns[3], CmdbCiAttributeDistributionColumns[12]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbCiAttributeDistributionColumns[12].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "ciattributedistribution_tenant_id_analysis_status_created_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiAttributeDistributionColumns[3], CmdbCiAttributeDistributionColumns[19], CmdbCiAttributeDistributionColumns[1]},
+			},
+			{
+				Name:    "ciattributedistribution_tenant_id_department_id_ci_type_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiAttributeDistributionColumns[3], CmdbCiAttributeDistributionColumns[4], CmdbCiAttributeDistributionColumns[5]},
+			},
+			{
+				Name:    "ciattributedistribution_tenant_id_last_analyzed_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiAttributeDistributionColumns[3], CmdbCiAttributeDistributionColumns[17]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbCiAttributeDistributionColumns[17].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "ciattributedistribution_tenant_id_total_count",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiAttributeDistributionColumns[3], CmdbCiAttributeDistributionColumns[15]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbCiAttributeDistributionColumns[15].Name: true,
+					},
+				},
+			},
+		},
+	}
+	// CmdbCiDimensionColumns holds the columns for the "cmdb_ci_dimension" table.
+	CmdbCiDimensionColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "ci_type_id", Type: field.TypeUint64},
+		{Name: "ci_type_name", Type: field.TypeString, Size: 128},
+		{Name: "ci_type_alias", Type: field.TypeString, Nullable: true, Size: 64},
+		{Name: "ci_category", Type: field.TypeString, Nullable: true, Size: 64},
+		{Name: "lifecycle_stage", Type: field.TypeEnum, Enums: []string{"development", "testing", "staging", "production", "retired"}, Default: "production"},
+		{Name: "business_criticality", Type: field.TypeEnum, Enums: []string{"low", "medium", "high", "critical"}, Default: "medium"},
+		{Name: "environment", Type: field.TypeString, Nullable: true, Size: 32},
+		{Name: "location", Type: field.TypeString, Nullable: true, Size: 128},
+		{Name: "organization_hierarchy", Type: field.TypeJSON, Nullable: true},
+		{Name: "tag_dimensions", Type: field.TypeJSON, Nullable: true},
+		{Name: "cost_center", Type: field.TypeString, Nullable: true, Size: 64},
+		{Name: "owner_info", Type: field.TypeJSON, Nullable: true},
+		{Name: "custom_dimensions", Type: field.TypeJSON, Nullable: true},
+		{Name: "sla_level", Type: field.TypeEnum, Nullable: true, Enums: []string{"bronze", "silver", "gold", "platinum"}},
+		{Name: "compliance_tags", Type: field.TypeJSON, Nullable: true},
+		{Name: "risk_level", Type: field.TypeEnum, Enums: []string{"low", "medium", "high", "critical"}, Default: "low"},
+		{Name: "is_active", Type: field.TypeBool, Default: true},
+		{Name: "dimension_version", Type: field.TypeUint64, Default: 1},
+		{Name: "dimension_updated_at", Type: field.TypeTime},
+	}
+	// CmdbCiDimensionTable holds the schema information for the "cmdb_ci_dimension" table.
+	CmdbCiDimensionTable = &schema.Table{
+		Name:       "cmdb_ci_dimension",
+		Columns:    CmdbCiDimensionColumns,
+		PrimaryKey: []*schema.Column{CmdbCiDimensionColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "cidimension_tenant_id_ci_type_id",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[5]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "deleted_at IS NULL",
+				},
+			},
+			{
+				Name:    "cidimension_tenant_id_ci_type_name",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[6]},
+			},
+			{
+				Name:    "cidimension_tenant_id_ci_category_lifecycle_stage",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[8], CmdbCiDimensionColumns[9]},
+			},
+			{
+				Name:    "cidimension_tenant_id_business_criticality",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[10]},
+			},
+			{
+				Name:    "cidimension_tenant_id_environment_location",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[11], CmdbCiDimensionColumns[12]},
+			},
+			{
+				Name:    "cidimension_tenant_id_sla_level_risk_level",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[18], CmdbCiDimensionColumns[20]},
+			},
+			{
+				Name:    "cidimension_tenant_id_department_id_ci_type_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[4], CmdbCiDimensionColumns[5]},
+			},
+			{
+				Name:    "cidimension_tenant_id_cost_center",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[15]},
+			},
+			{
+				Name:    "cidimension_tenant_id_is_active_dimension_updated_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[21], CmdbCiDimensionColumns[23]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbCiDimensionColumns[23].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "cidimension_tenant_id_ci_type_id_dimension_version",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiDimensionColumns[3], CmdbCiDimensionColumns[5], CmdbCiDimensionColumns[22]},
 			},
 		},
 	}
@@ -256,6 +675,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "state_id", Type: field.TypeString, Unique: true},
 		{Name: "state_name", Type: field.TypeString},
 		{Name: "state_code", Type: field.TypeString},
@@ -320,7 +740,6 @@ var (
 		{Name: "metadata", Type: field.TypeJSON, Nullable: true},
 		{Name: "tags", Type: field.TypeJSON, Nullable: true},
 		{Name: "comments", Type: field.TypeString, Nullable: true, Size: 2147483647},
-		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "updated_by", Type: field.TypeUUID, Nullable: true},
 	}
 	// CmdbCiLifecycleStatesTable holds the schema information for the "cmdb_ci_lifecycle_states" table.
@@ -332,132 +751,132 @@ var (
 			{
 				Name:    "cilifecyclestate_ci_id_state_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[9], CmdbCiLifecycleStatesColumns[11]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[10], CmdbCiLifecycleStatesColumns[12]},
 			},
 			{
 				Name:    "cilifecyclestate_ci_id_entered_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[9], CmdbCiLifecycleStatesColumns[17]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[10], CmdbCiLifecycleStatesColumns[18]},
 			},
 			{
 				Name:    "cilifecyclestate_ci_type_id_state_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[10], CmdbCiLifecycleStatesColumns[11]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[11], CmdbCiLifecycleStatesColumns[12]},
 			},
 			{
 				Name:    "cilifecyclestate_state_type_state_category",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[11], CmdbCiLifecycleStatesColumns[12]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[12], CmdbCiLifecycleStatesColumns[13]},
 			},
 			{
 				Name:    "cilifecyclestate_state_code",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[7]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[8]},
 			},
 			{
 				Name:    "cilifecyclestate_state_level_state_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[13], CmdbCiLifecycleStatesColumns[11]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[14], CmdbCiLifecycleStatesColumns[12]},
 			},
 			{
 				Name:    "cilifecyclestate_entered_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[17]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[18]},
 			},
 			{
 				Name:    "cilifecyclestate_expected_exit_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[18]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[19]},
 			},
 			{
 				Name:    "cilifecyclestate_timeout_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[22]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[23]},
 			},
 			{
 				Name:    "cilifecyclestate_is_timeout_timeout_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[21], CmdbCiLifecycleStatesColumns[22]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[22], CmdbCiLifecycleStatesColumns[23]},
 			},
 			{
 				Name:    "cilifecyclestate_trigger_type_entered_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[23], CmdbCiLifecycleStatesColumns[17]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[24], CmdbCiLifecycleStatesColumns[18]},
 			},
 			{
 				Name:    "cilifecyclestate_triggered_by_entered_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[26], CmdbCiLifecycleStatesColumns[17]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[27], CmdbCiLifecycleStatesColumns[18]},
 			},
 			{
 				Name:    "cilifecyclestate_require_approval_approval_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[38], CmdbCiLifecycleStatesColumns[40]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[39], CmdbCiLifecycleStatesColumns[41]},
 			},
 			{
 				Name:    "cilifecyclestate_approval_flow_id_approval_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[39], CmdbCiLifecycleStatesColumns[40]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[40], CmdbCiLifecycleStatesColumns[41]},
 			},
 			{
 				Name:    "cilifecyclestate_approver_id_approved_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[41], CmdbCiLifecycleStatesColumns[43]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[42], CmdbCiLifecycleStatesColumns[44]},
 			},
 			{
 				Name:    "cilifecyclestate_has_error_retry_count",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[45], CmdbCiLifecycleStatesColumns[48]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[46], CmdbCiLifecycleStatesColumns[49]},
 			},
 			{
 				Name:    "cilifecyclestate_state_type_has_error",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[11], CmdbCiLifecycleStatesColumns[45]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[12], CmdbCiLifecycleStatesColumns[46]},
 			},
 			{
 				Name:    "cilifecyclestate_parent_state_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[53]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[54]},
 			},
 			{
 				Name:    "cilifecyclestate_related_operation_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[55]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[56]},
 			},
 			{
 				Name:    "cilifecyclestate_is_milestone_entered_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[60], CmdbCiLifecycleStatesColumns[17]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[61], CmdbCiLifecycleStatesColumns[18]},
 			},
 			{
 				Name:    "cilifecyclestate_is_critical_state_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[61], CmdbCiLifecycleStatesColumns[11]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[62], CmdbCiLifecycleStatesColumns[12]},
 			},
 			{
 				Name:    "cilifecyclestate_is_final_state_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[63], CmdbCiLifecycleStatesColumns[11]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[64], CmdbCiLifecycleStatesColumns[12]},
 			},
 			{
 				Name:    "cilifecyclestate_ci_id_state_type_entered_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[9], CmdbCiLifecycleStatesColumns[11], CmdbCiLifecycleStatesColumns[17]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[10], CmdbCiLifecycleStatesColumns[12], CmdbCiLifecycleStatesColumns[18]},
 			},
 			{
 				Name:    "cilifecyclestate_state_type_approval_status_entered_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[11], CmdbCiLifecycleStatesColumns[40], CmdbCiLifecycleStatesColumns[17]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[12], CmdbCiLifecycleStatesColumns[41], CmdbCiLifecycleStatesColumns[18]},
 			},
 			{
 				Name:    "cilifecyclestate_trigger_type_state_type_entered_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[23], CmdbCiLifecycleStatesColumns[11], CmdbCiLifecycleStatesColumns[17]},
+				Columns: []*schema.Column{CmdbCiLifecycleStatesColumns[24], CmdbCiLifecycleStatesColumns[12], CmdbCiLifecycleStatesColumns[18]},
 			},
 		},
 	}
-	// CiOperationsColumns holds the columns for the "ci_operations" table.
-	CiOperationsColumns = []*schema.Column{
+	// CmdbCiOperationsColumns holds the columns for the "cmdb_ci_operations" table.
+	CmdbCiOperationsColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeUint64, Increment: true},
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
@@ -506,81 +925,81 @@ var (
 		{Name: "metadata", Type: field.TypeJSON, Nullable: true},
 		{Name: "tags", Type: field.TypeJSON, Nullable: true},
 	}
-	// CiOperationsTable holds the schema information for the "ci_operations" table.
-	CiOperationsTable = &schema.Table{
-		Name:       "ci_operations",
-		Columns:    CiOperationsColumns,
-		PrimaryKey: []*schema.Column{CiOperationsColumns[0]},
+	// CmdbCiOperationsTable holds the schema information for the "cmdb_ci_operations" table.
+	CmdbCiOperationsTable = &schema.Table{
+		Name:       "cmdb_ci_operations",
+		Columns:    CmdbCiOperationsColumns,
+		PrimaryKey: []*schema.Column{CmdbCiOperationsColumns[0]},
 		Indexes: []*schema.Index{
 			{
 				Name:    "cioperation_operation_type_operation_status_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[6], CiOperationsColumns[7], CiOperationsColumns[1]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[6], CmdbCiOperationsColumns[7], CmdbCiOperationsColumns[1]},
 			},
 			{
 				Name:    "cioperation_ci_id_operation_type_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[8], CiOperationsColumns[6], CiOperationsColumns[1]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[8], CmdbCiOperationsColumns[6], CmdbCiOperationsColumns[1]},
 			},
 			{
 				Name:    "cioperation_ci_type_id_operation_type_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[9], CiOperationsColumns[6], CiOperationsColumns[1]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[9], CmdbCiOperationsColumns[6], CmdbCiOperationsColumns[1]},
 			},
 			{
 				Name:    "cioperation_operator_id_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[10], CiOperationsColumns[1]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[10], CmdbCiOperationsColumns[1]},
 			},
 			{
 				Name:    "cioperation_operation_status_lifecycle_stage",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[7], CiOperationsColumns[37]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[7], CmdbCiOperationsColumns[37]},
 			},
 			{
 				Name:    "cioperation_require_approval_operation_status",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[25], CiOperationsColumns[7]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[25], CmdbCiOperationsColumns[7]},
 			},
 			{
 				Name:    "cioperation_started_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[31]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[31]},
 			},
 			{
 				Name:    "cioperation_completed_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[32]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[32]},
 			},
 			{
 				Name:    "cioperation_expires_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[38]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[38]},
 			},
 			{
 				Name:    "cioperation_operation_source_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[14], CiOperationsColumns[1]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[14], CmdbCiOperationsColumns[1]},
 			},
 			{
 				Name:    "cioperation_transaction_id",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[44]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[44]},
 			},
 			{
 				Name:    "cioperation_parent_operation_id",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[42]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[42]},
 			},
 			{
 				Name:    "cioperation_operation_type_ci_type_id_operation_status_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[6], CiOperationsColumns[9], CiOperationsColumns[7], CiOperationsColumns[1]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[6], CmdbCiOperationsColumns[9], CmdbCiOperationsColumns[7], CmdbCiOperationsColumns[1]},
 			},
 			{
 				Name:    "cioperation_operator_id_operation_type_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CiOperationsColumns[10], CiOperationsColumns[6], CiOperationsColumns[1]},
+				Columns: []*schema.Column{CmdbCiOperationsColumns[10], CmdbCiOperationsColumns[6], CmdbCiOperationsColumns[1]},
 			},
 		},
 	}
@@ -841,10 +1260,18 @@ var (
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
-		{Name: "source", Type: field.TypeString, Nullable: true},
+		{Name: "discovery_source", Type: field.TypeString, Nullable: true},
 		{Name: "ancestor_ids", Type: field.TypeString, Nullable: true, Size: 128},
-		{Name: "first_ci_id", Type: field.TypeUint64},
-		{Name: "second_ci_id", Type: field.TypeUint64},
+		{Name: "properties", Type: field.TypeJSON, Nullable: true},
+		{Name: "attribute_mappings", Type: field.TypeJSON, Nullable: true},
+		{Name: "status", Type: field.TypeString, Nullable: true, Default: "active"},
+		{Name: "validation_result", Type: field.TypeJSON, Nullable: true},
+		{Name: "last_validated_at", Type: field.TypeTime, Nullable: true},
+		{Name: "auto_sync_enabled", Type: field.TypeBool, Nullable: true, Default: true},
+		{Name: "sync_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "relation_strength", Type: field.TypeString, Nullable: true, Default: "normal"},
+		{Name: "source_ci_id", Type: field.TypeUint64},
+		{Name: "target_ci_id", Type: field.TypeUint64},
 		{Name: "more", Type: field.TypeUint64, Nullable: true},
 		{Name: "relation_type_id", Type: field.TypeUint64},
 	}
@@ -855,28 +1282,95 @@ var (
 		PrimaryKey: []*schema.Column{CmdbCiRelationsColumns[0]},
 		ForeignKeys: []*schema.ForeignKey{
 			{
-				Symbol:     "cmdb_ci_relations_cmdb_cis_first_relations",
-				Columns:    []*schema.Column{CmdbCiRelationsColumns[8]},
+				Symbol:     "cmdb_ci_relations_cmdb_cis_source_relations",
+				Columns:    []*schema.Column{CmdbCiRelationsColumns[16]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
-				Symbol:     "cmdb_ci_relations_cmdb_cis_second_relations",
-				Columns:    []*schema.Column{CmdbCiRelationsColumns[9]},
+				Symbol:     "cmdb_ci_relations_cmdb_cis_target_relations",
+				Columns:    []*schema.Column{CmdbCiRelationsColumns[17]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_ci_relations_cmdb_cis_more_relations",
-				Columns:    []*schema.Column{CmdbCiRelationsColumns[10]},
+				Columns:    []*schema.Column{CmdbCiRelationsColumns[18]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.SetNull,
 			},
 			{
 				Symbol:     "cmdb_ci_relations_cmdb_relation_types_ci_relations",
-				Columns:    []*schema.Column{CmdbCiRelationsColumns[11]},
+				Columns:    []*schema.Column{CmdbCiRelationsColumns[19]},
 				RefColumns: []*schema.Column{CmdbRelationTypesColumns[0]},
 				OnDelete:   schema.NoAction,
+			},
+		},
+	}
+	// CmdbCiStatisticsFactColumns holds the columns for the "cmdb_ci_statistics_fact" table.
+	CmdbCiStatisticsFactColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime, Comment: "Create Time | 创建日期"},
+		{Name: "updated_at", Type: field.TypeTime, Comment: "Update Time | 修改日期"},
+		{Name: "tenant_id", Type: field.TypeUint64, Comment: "Tenant ID | 租户 ID", Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true, Comment: "Department ID | 部门 ID"},
+		{Name: "ci_type_id", Type: field.TypeUint64, Comment: "外键，关联cmdb_ci_types.id"},
+		{Name: "ci_count", Type: field.TypeUint64, Comment: "CI实例数量", Default: 0},
+		{Name: "attribute_distribution", Type: field.TypeJSON, Nullable: true, Comment: "属性分布统计，格式: {\"memory\": {\"avg\": 16, \"max\": 128, \"min\": 4, \"count\": 100}}"},
+		{Name: "relation_metrics", Type: field.TypeJSON, Nullable: true, Comment: "关系统计指标，格式: {\"host_to_vm\": 10, \"vm_to_storage\": 5}"},
+		{Name: "lifecycle_stage", Type: field.TypeEnum, Comment: "生命周期阶段", Enums: []string{"development", "testing", "staging", "production", "retired"}, Default: "production"},
+		{Name: "status_distribution", Type: field.TypeJSON, Nullable: true, Comment: "状态分布统计，格式: {\"active\": 80, \"inactive\": 20}"},
+		{Name: "department_distribution", Type: field.TypeJSON, Nullable: true, Comment: "部门分布统计"},
+		{Name: "user_activity", Type: field.TypeJSON, Nullable: true, Comment: "用户操作活动统计"},
+		{Name: "time_window", Type: field.TypeEnum, Comment: "统计时间窗口", Enums: []string{"hourly", "daily", "weekly", "monthly", "yearly"}, Default: "daily"},
+		{Name: "stat_time", Type: field.TypeTime, Comment: "统计数据的基准时间"},
+		{Name: "version", Type: field.TypeUint64, Comment: "统计数据版本号", Default: 1},
+		{Name: "compute_status", Type: field.TypeEnum, Comment: "统计计算状态", Enums: []string{"pending", "computing", "completed", "failed"}, Default: "pending"},
+		{Name: "data_hash", Type: field.TypeString, Nullable: true, Comment: "原始数据Hash值，用于增量更新检测"},
+	}
+	// CmdbCiStatisticsFactTable holds the schema information for the "cmdb_ci_statistics_fact" table.
+	CmdbCiStatisticsFactTable = &schema.Table{
+		Name:       "cmdb_ci_statistics_fact",
+		Columns:    CmdbCiStatisticsFactColumns,
+		PrimaryKey: []*schema.Column{CmdbCiStatisticsFactColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "cistatisticsfact_tenant_id_ci_type_id_time_window_stat_time",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbCiStatisticsFactColumns[3], CmdbCiStatisticsFactColumns[5], CmdbCiStatisticsFactColumns[13], CmdbCiStatisticsFactColumns[14]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "deleted_at IS NULL",
+				},
+			},
+			{
+				Name:    "cistatisticsfact_tenant_id_lifecycle_stage_stat_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiStatisticsFactColumns[3], CmdbCiStatisticsFactColumns[9], CmdbCiStatisticsFactColumns[14]},
+			},
+			{
+				Name:    "cistatisticsfact_tenant_id_compute_status_created_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiStatisticsFactColumns[3], CmdbCiStatisticsFactColumns[16], CmdbCiStatisticsFactColumns[1]},
+			},
+			{
+				Name:    "cistatisticsfact_tenant_id_department_id_ci_type_id_stat_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiStatisticsFactColumns[3], CmdbCiStatisticsFactColumns[4], CmdbCiStatisticsFactColumns[5], CmdbCiStatisticsFactColumns[14]},
+			},
+			{
+				Name:    "cistatisticsfact_tenant_id_stat_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiStatisticsFactColumns[3], CmdbCiStatisticsFactColumns[14]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbCiStatisticsFactColumns[14].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "cistatisticsfact_tenant_id_ci_type_id_version",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbCiStatisticsFactColumns[3], CmdbCiStatisticsFactColumns[5], CmdbCiStatisticsFactColumns[15]},
 			},
 		},
 	}
@@ -890,10 +1384,10 @@ var (
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "name", Type: field.TypeString, Size: 32},
 		{Name: "alias", Type: field.TypeString, Size: 32},
 		{Name: "is_inherited", Type: field.TypeBool, Nullable: true, Default: false},
-		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "icon", Type: field.TypeString, Nullable: true},
 		{Name: "default_order_attr_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "show_id", Type: field.TypeUint64, Nullable: true},
@@ -1010,6 +1504,56 @@ var (
 			},
 		},
 	}
+	// CmdbCiTypeDiscoveryConfigsColumns holds the columns for the "cmdb_ci_type_discovery_configs" table.
+	CmdbCiTypeDiscoveryConfigsColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "status", Type: field.TypeUint8, Nullable: true, Default: 1},
+		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
+		{Name: "config_name", Type: field.TypeString, Size: 200},
+		{Name: "description", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "discovery_mode", Type: field.TypeString, Default: "attribute"},
+		{Name: "discovery_type", Type: field.TypeString},
+		{Name: "provider_id", Type: field.TypeString},
+		{Name: "provider_config", Type: field.TypeJSON},
+		{Name: "attribute_mappings", Type: field.TypeJSON},
+		{Name: "discovery_rules", Type: field.TypeJSON},
+		{Name: "filter_conditions", Type: field.TypeJSON},
+		{Name: "execution_mode", Type: field.TypeString, Default: "manual"},
+		{Name: "schedule_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "priority", Type: field.TypeInt, Default: 100},
+		{Name: "batch_size", Type: field.TypeInt, Default: 100},
+		{Name: "timeout_seconds", Type: field.TypeInt, Default: 300},
+		{Name: "conflict_resolution", Type: field.TypeString, Default: "priority"},
+		{Name: "auto_create_ci", Type: field.TypeBool, Default: false},
+		{Name: "auto_update_attributes", Type: field.TypeBool, Default: true},
+		{Name: "notification_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "enabled", Type: field.TypeBool, Default: true},
+		{Name: "config_status", Type: field.TypeString, Default: "active"},
+		{Name: "last_executed_at", Type: field.TypeTime, Nullable: true},
+		{Name: "next_execution_at", Type: field.TypeTime, Nullable: true},
+		{Name: "execution_stats", Type: field.TypeJSON, Nullable: true},
+		{Name: "last_error", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "ci_type_id", Type: field.TypeUint64},
+	}
+	// CmdbCiTypeDiscoveryConfigsTable holds the schema information for the "cmdb_ci_type_discovery_configs" table.
+	CmdbCiTypeDiscoveryConfigsTable = &schema.Table{
+		Name:       "cmdb_ci_type_discovery_configs",
+		Columns:    CmdbCiTypeDiscoveryConfigsColumns,
+		PrimaryKey: []*schema.Column{CmdbCiTypeDiscoveryConfigsColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "cmdb_ci_type_discovery_configs_cmdb_ci_types_discovery_configs",
+				Columns:    []*schema.Column{CmdbCiTypeDiscoveryConfigsColumns[32]},
+				RefColumns: []*schema.Column{CmdbCiTypesColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+		},
+	}
 	// CmdbCiTypeGroupsColumns holds the columns for the "cmdb_ci_type_groups" table.
 	CmdbCiTypeGroupsColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeUint64, Increment: true},
@@ -1099,6 +1643,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "constraint", Type: field.TypeString, Nullable: true},
 		{Name: "parent_attr_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "child_attr_id", Type: field.TypeUint64, Nullable: true},
@@ -1116,19 +1661,19 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_ci_type_relations_cmdb_ci_types_child_relations",
-				Columns:    []*schema.Column{CmdbCiTypeRelationsColumns[10]},
-				RefColumns: []*schema.Column{CmdbCiTypesColumns[0]},
-				OnDelete:   schema.NoAction,
-			},
-			{
-				Symbol:     "cmdb_ci_type_relations_cmdb_ci_types_parent_relations",
 				Columns:    []*schema.Column{CmdbCiTypeRelationsColumns[11]},
 				RefColumns: []*schema.Column{CmdbCiTypesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
-				Symbol:     "cmdb_ci_type_relations_cmdb_relation_types_ci_type_relations",
+				Symbol:     "cmdb_ci_type_relations_cmdb_ci_types_parent_relations",
 				Columns:    []*schema.Column{CmdbCiTypeRelationsColumns[12]},
+				RefColumns: []*schema.Column{CmdbCiTypesColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+			{
+				Symbol:     "cmdb_ci_type_relations_cmdb_relation_types_ci_type_relations",
+				Columns:    []*schema.Column{CmdbCiTypeRelationsColumns[13]},
 				RefColumns: []*schema.Column{CmdbRelationTypesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1142,8 +1687,8 @@ var (
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
-		{Name: "status", Type: field.TypeUint32, Nullable: true, Default: 1},
 		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
+		{Name: "status", Type: field.TypeUint32, Nullable: true, Default: 1},
 		{Name: "tags", Type: field.TypeJSON, Nullable: true},
 		{Name: "metadata", Type: field.TypeJSON, Nullable: true},
 		{Name: "custom_fields", Type: field.TypeJSON, Nullable: true},
@@ -1160,6 +1705,221 @@ var (
 				Columns:    []*schema.Column{CmdbCisColumns[11]},
 				RefColumns: []*schema.Column{CmdbCiTypesColumns[0]},
 				OnDelete:   schema.NoAction,
+			},
+		},
+	}
+	// CmdbDiscoveryExecutionHistoriesColumns holds the columns for the "cmdb_discovery_execution_histories" table.
+	CmdbDiscoveryExecutionHistoriesColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "execution_id", Type: field.TypeString},
+		{Name: "trigger_type", Type: field.TypeString},
+		{Name: "triggered_by", Type: field.TypeUint64, Nullable: true},
+		{Name: "started_at", Type: field.TypeTime},
+		{Name: "completed_at", Type: field.TypeTime, Nullable: true},
+		{Name: "duration_seconds", Type: field.TypeInt, Nullable: true},
+		{Name: "exec_status", Type: field.TypeString},
+		{Name: "stage", Type: field.TypeString, Nullable: true},
+		{Name: "progress", Type: field.TypeInt, Default: 0},
+		{Name: "total_records", Type: field.TypeInt64, Default: 0},
+		{Name: "processed_records", Type: field.TypeInt64, Default: 0},
+		{Name: "success_records", Type: field.TypeInt64, Default: 0},
+		{Name: "failed_records", Type: field.TypeInt64, Default: 0},
+		{Name: "skipped_records", Type: field.TypeInt64, Default: 0},
+		{Name: "created_cis", Type: field.TypeInt64, Default: 0},
+		{Name: "updated_cis", Type: field.TypeInt64, Default: 0},
+		{Name: "error_message", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "error_details", Type: field.TypeJSON, Nullable: true},
+		{Name: "validation_errors", Type: field.TypeJSON, Nullable: true},
+		{Name: "execution_result", Type: field.TypeJSON, Nullable: true},
+		{Name: "performance_metrics", Type: field.TypeJSON, Nullable: true},
+		{Name: "config_snapshot", Type: field.TypeJSON, Nullable: true},
+		{Name: "provider_info", Type: field.TypeJSON, Nullable: true},
+		{Name: "execution_log", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "metadata", Type: field.TypeJSON, Nullable: true},
+		{Name: "tags", Type: field.TypeJSON, Nullable: true},
+		{Name: "discovery_config_id", Type: field.TypeUint64},
+	}
+	// CmdbDiscoveryExecutionHistoriesTable holds the schema information for the "cmdb_discovery_execution_histories" table.
+	CmdbDiscoveryExecutionHistoriesTable = &schema.Table{
+		Name:       "cmdb_discovery_execution_histories",
+		Columns:    CmdbDiscoveryExecutionHistoriesColumns,
+		PrimaryKey: []*schema.Column{CmdbDiscoveryExecutionHistoriesColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "cmdb_discovery_execution_histories_cmdb_ci_type_discovery_configs_execution_histories",
+				Columns:    []*schema.Column{CmdbDiscoveryExecutionHistoriesColumns[31]},
+				RefColumns: []*schema.Column{CmdbCiTypeDiscoveryConfigsColumns[0]},
+				OnDelete:   schema.NoAction,
+			},
+		},
+	}
+	// CmdbDynamicAggregationConfigColumns holds the columns for the "cmdb_dynamic_aggregation_config" table.
+	CmdbDynamicAggregationConfigColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime},
+		{Name: "updated_at", Type: field.TypeTime},
+		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "config_name", Type: field.TypeString, Size: 128},
+		{Name: "config_alias", Type: field.TypeString, Nullable: true, Size: 64},
+		{Name: "description", Type: field.TypeString, Nullable: true, Size: 512},
+		{Name: "config_type", Type: field.TypeEnum, Enums: []string{"dashboard", "report", "alert", "custom"}},
+		{Name: "data_sources", Type: field.TypeJSON},
+		{Name: "dimensions", Type: field.TypeJSON},
+		{Name: "measures", Type: field.TypeJSON},
+		{Name: "filters", Type: field.TypeJSON, Nullable: true},
+		{Name: "sort_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "pagination_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "time_dimension_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "drill_down_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "output_format", Type: field.TypeJSON, Nullable: true},
+		{Name: "cache_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "permission_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "dynamic_attribute_mapping", Type: field.TypeJSON, Nullable: true},
+		{Name: "calculated_fields", Type: field.TypeJSON, Nullable: true},
+		{Name: "pre_aggregation_config", Type: field.TypeJSON, Nullable: true},
+		{Name: "freshness_requirement", Type: field.TypeEnum, Enums: []string{"real_time", "near_real_time", "batch", "historical"}, Default: "near_real_time"},
+		{Name: "complexity_level", Type: field.TypeEnum, Enums: []string{"simple", "medium", "complex", "very_complex"}, Default: "medium"},
+		{Name: "estimated_query_time", Type: field.TypeFloat64, Nullable: true},
+		{Name: "estimated_data_size", Type: field.TypeUint64, Nullable: true},
+		{Name: "status", Type: field.TypeEnum, Enums: []string{"active", "inactive", "testing", "deprecated"}, Default: "testing"},
+		{Name: "config_version", Type: field.TypeUint64, Default: 1},
+		{Name: "last_executed_at", Type: field.TypeTime, Nullable: true},
+		{Name: "execution_count", Type: field.TypeUint64, Default: 0},
+		{Name: "avg_execution_time", Type: field.TypeFloat64, Nullable: true},
+		{Name: "max_execution_time", Type: field.TypeFloat64, Nullable: true},
+		{Name: "error_count", Type: field.TypeUint64, Default: 0},
+		{Name: "last_error_message", Type: field.TypeString, Nullable: true, Size: 1024},
+		{Name: "creator_id", Type: field.TypeUint64},
+		{Name: "creator_name", Type: field.TypeString, Size: 128},
+		{Name: "tags", Type: field.TypeJSON, Nullable: true},
+		{Name: "is_system_config", Type: field.TypeBool, Default: false},
+		{Name: "valid_until", Type: field.TypeTime, Nullable: true},
+		{Name: "monitoring_config", Type: field.TypeJSON, Nullable: true},
+	}
+	// CmdbDynamicAggregationConfigTable holds the schema information for the "cmdb_dynamic_aggregation_config" table.
+	CmdbDynamicAggregationConfigTable = &schema.Table{
+		Name:       "cmdb_dynamic_aggregation_config",
+		Columns:    CmdbDynamicAggregationConfigColumns,
+		PrimaryKey: []*schema.Column{CmdbDynamicAggregationConfigColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_config_name",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[5]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "deleted_at IS NULL",
+				},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_config_type_status",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[8], CmdbDynamicAggregationConfigColumns[27]},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_status_created_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[27], CmdbDynamicAggregationConfigColumns[1]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbDynamicAggregationConfigColumns[1].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_department_id_config_type",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[4], CmdbDynamicAggregationConfigColumns[8]},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_creator_id_created_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[35], CmdbDynamicAggregationConfigColumns[1]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbDynamicAggregationConfigColumns[1].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_freshness_requirement",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[23]},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_complexity_level",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[24]},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_execution_count",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[30]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbDynamicAggregationConfigColumns[30].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_last_executed_at",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[29]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbDynamicAggregationConfigColumns[29].Name: true,
+					},
+					Where: "last_executed_at IS NOT NULL",
+				},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_avg_execution_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[31]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbDynamicAggregationConfigColumns[31].Name: true,
+					},
+					Where: "avg_execution_time IS NOT NULL",
+				},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_error_count",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[33]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbDynamicAggregationConfigColumns[33].Name: true,
+					},
+					Where: "error_count > 0",
+				},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_is_system_config_status",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[38], CmdbDynamicAggregationConfigColumns[27]},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_valid_until",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[39]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "valid_until IS NOT NULL",
+				},
+			},
+			{
+				Name:    "dynamicaggregationconfig_tenant_id_config_name_config_version",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbDynamicAggregationConfigColumns[3], CmdbDynamicAggregationConfigColumns[5], CmdbDynamicAggregationConfigColumns[28]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbDynamicAggregationConfigColumns[28].Name: true,
+					},
+				},
 			},
 		},
 	}
@@ -1365,6 +2125,7 @@ var (
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "task_id", Type: field.TypeString, Unique: true, Size: 64},
 		{Name: "name", Type: field.TypeString, Size: 255},
 		{Name: "description", Type: field.TypeString, Nullable: true, Size: 500},
@@ -1387,7 +2148,6 @@ var (
 		{Name: "end_time", Type: field.TypeTime, Nullable: true},
 		{Name: "error_message", Type: field.TypeString, Nullable: true, Size: 2147483647},
 		{Name: "result_file_path", Type: field.TypeString, Nullable: true, Size: 500},
-		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "created_by_name", Type: field.TypeString, Nullable: true, Size: 100},
 		{Name: "template_id", Type: field.TypeUint64, Nullable: true},
 	}
@@ -1408,37 +2168,37 @@ var (
 			{
 				Name:    "importtask_task_id",
 				Unique:  true,
-				Columns: []*schema.Column{CmdbImportTasksColumns[6]},
+				Columns: []*schema.Column{CmdbImportTasksColumns[7]},
 			},
 			{
 				Name:    "importtask_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTasksColumns[10]},
+				Columns: []*schema.Column{CmdbImportTasksColumns[11]},
 			},
 			{
 				Name:    "importtask_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTasksColumns[9]},
+				Columns: []*schema.Column{CmdbImportTasksColumns[10]},
 			},
 			{
 				Name:    "importtask_created_by",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTasksColumns[28]},
+				Columns: []*schema.Column{CmdbImportTasksColumns[6]},
 			},
 			{
 				Name:    "importtask_status_priority_created_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTasksColumns[10], CmdbImportTasksColumns[11], CmdbImportTasksColumns[1]},
+				Columns: []*schema.Column{CmdbImportTasksColumns[11], CmdbImportTasksColumns[12], CmdbImportTasksColumns[1]},
 			},
 			{
 				Name:    "importtask_type_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTasksColumns[9], CmdbImportTasksColumns[10]},
+				Columns: []*schema.Column{CmdbImportTasksColumns[10], CmdbImportTasksColumns[11]},
 			},
 			{
 				Name:    "importtask_created_by_status",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTasksColumns[28], CmdbImportTasksColumns[10]},
+				Columns: []*schema.Column{CmdbImportTasksColumns[6], CmdbImportTasksColumns[11]},
 			},
 		},
 	}
@@ -1451,6 +2211,7 @@ var (
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
 		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
+		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "name", Type: field.TypeString, Size: 255},
 		{Name: "code", Type: field.TypeString, Unique: true, Size: 64},
 		{Name: "description", Type: field.TypeString, Nullable: true, Size: 500},
@@ -1493,7 +2254,6 @@ var (
 		{Name: "is_public", Type: field.TypeBool, Default: false},
 		{Name: "is_system", Type: field.TypeBool, Default: false},
 		{Name: "shared_with", Type: field.TypeJSON, Nullable: true},
-		{Name: "created_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "created_by_name", Type: field.TypeString, Nullable: true, Size: 100},
 		{Name: "approved_by", Type: field.TypeUUID, Nullable: true},
 		{Name: "approved_by_name", Type: field.TypeString, Nullable: true, Size: 100},
@@ -1517,17 +2277,17 @@ var (
 			{
 				Name:    "importtemplate_code",
 				Unique:  true,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[8]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[9]},
 			},
 			{
 				Name:    "importtemplate_name",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[7]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[8]},
 			},
 			{
 				Name:    "importtemplate_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[11]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[12]},
 			},
 			{
 				Name:    "importtemplate_ci_type_id",
@@ -1537,37 +2297,37 @@ var (
 			{
 				Name:    "importtemplate_created_by",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[49]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[7]},
 			},
 			{
 				Name:    "importtemplate_is_public",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[46]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[47]},
 			},
 			{
 				Name:    "importtemplate_is_system",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[47]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[48]},
 			},
 			{
 				Name:    "importtemplate_type_ci_type_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[11], CmdbImportTemplatesColumns[54]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[12], CmdbImportTemplatesColumns[54]},
 			},
 			{
 				Name:    "importtemplate_created_by_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[49], CmdbImportTemplatesColumns[11]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[7], CmdbImportTemplatesColumns[12]},
 			},
 			{
 				Name:    "importtemplate_is_public_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[46], CmdbImportTemplatesColumns[11]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[47], CmdbImportTemplatesColumns[12]},
 			},
 			{
 				Name:    "importtemplate_category_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbImportTemplatesColumns[41], CmdbImportTemplatesColumns[11]},
+				Columns: []*schema.Column{CmdbImportTemplatesColumns[42], CmdbImportTemplatesColumns[12]},
 			},
 		},
 	}
@@ -1577,6 +2337,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "cache_key", Type: field.TypeString, Unique: true},
 		{Name: "user_id", Type: field.TypeString},
 		{Name: "resource_type", Type: field.TypeString},
@@ -1599,32 +2360,32 @@ var (
 			{
 				Name:    "permissioncache_user_id_resource_type_resource_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionCacheColumns[5], CmdbPermissionCacheColumns[6], CmdbPermissionCacheColumns[7]},
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[6], CmdbPermissionCacheColumns[7], CmdbPermissionCacheColumns[8]},
 			},
 			{
 				Name:    "permissioncache_expires_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionCacheColumns[13]},
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[14]},
 			},
 			{
 				Name:    "permissioncache_cache_version",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionCacheColumns[12]},
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[13]},
 			},
 			{
 				Name:    "permissioncache_last_accessed_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionCacheColumns[14]},
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[15]},
 			},
 			{
 				Name:    "permissioncache_user_id_expires_at",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionCacheColumns[5], CmdbPermissionCacheColumns[13]},
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[6], CmdbPermissionCacheColumns[14]},
 			},
 			{
 				Name:    "permissioncache_resource_type_resource_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionCacheColumns[6], CmdbPermissionCacheColumns[7]},
+				Columns: []*schema.Column{CmdbPermissionCacheColumns[7], CmdbPermissionCacheColumns[8]},
 			},
 		},
 	}
@@ -1634,6 +2395,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "filter_group", Type: field.TypeInt, Default: 1},
 		{Name: "field_name", Type: field.TypeString},
 		{Name: "operator_type", Type: field.TypeEnum, Enums: []string{"eq", "ne", "gt", "lt", "gte", "lte", "contains", "not_contains", "like", "not_like"}},
@@ -1649,7 +2411,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_permission_data_filters_cmdb_ci_permissions_data_filters",
-				Columns:    []*schema.Column{CmdbPermissionDataFiltersColumns[9]},
+				Columns:    []*schema.Column{CmdbPermissionDataFiltersColumns[10]},
 				RefColumns: []*schema.Column{CmdbCiPermissionsColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1658,17 +2420,17 @@ var (
 			{
 				Name:    "permissiondatafilter_permission_id_filter_group",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[9], CmdbPermissionDataFiltersColumns[4]},
+				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[10], CmdbPermissionDataFiltersColumns[5]},
 			},
 			{
 				Name:    "permissiondatafilter_field_name_operator_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[5], CmdbPermissionDataFiltersColumns[6]},
+				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[6], CmdbPermissionDataFiltersColumns[7]},
 			},
 			{
 				Name:    "permissiondatafilter_permission_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[9]},
+				Columns: []*schema.Column{CmdbPermissionDataFiltersColumns[10]},
 			},
 		},
 	}
@@ -1678,6 +2440,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "field_name", Type: field.TypeString},
 		{Name: "mask_type", Type: field.TypeEnum, Enums: []string{"hide", "encrypt", "partial"}, Default: "hide"},
 		{Name: "mask_rule", Type: field.TypeString, Nullable: true},
@@ -1691,7 +2454,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_permission_field_masks_cmdb_ci_permissions_field_masks",
-				Columns:    []*schema.Column{CmdbPermissionFieldMasksColumns[7]},
+				Columns:    []*schema.Column{CmdbPermissionFieldMasksColumns[8]},
 				RefColumns: []*schema.Column{CmdbCiPermissionsColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1700,17 +2463,17 @@ var (
 			{
 				Name:    "permissionfieldmask_permission_id_field_name",
 				Unique:  true,
-				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[7], CmdbPermissionFieldMasksColumns[4]},
+				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[8], CmdbPermissionFieldMasksColumns[5]},
 			},
 			{
 				Name:    "permissionfieldmask_permission_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[7]},
+				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[8]},
 			},
 			{
 				Name:    "permissionfieldmask_field_name_mask_type",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[4], CmdbPermissionFieldMasksColumns[5]},
+				Columns: []*schema.Column{CmdbPermissionFieldMasksColumns[5], CmdbPermissionFieldMasksColumns[6]},
 			},
 		},
 	}
@@ -1720,6 +2483,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "operation_code", Type: field.TypeString},
 		{Name: "operation_name", Type: field.TypeString, Nullable: true},
 		{Name: "is_allowed", Type: field.TypeBool, Default: true},
@@ -1733,7 +2497,7 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_permission_operations_cmdb_ci_permissions_operations",
-				Columns:    []*schema.Column{CmdbPermissionOperationsColumns[7]},
+				Columns:    []*schema.Column{CmdbPermissionOperationsColumns[8]},
 				RefColumns: []*schema.Column{CmdbCiPermissionsColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1742,22 +2506,22 @@ var (
 			{
 				Name:    "permissionoperation_permission_id_operation_code",
 				Unique:  true,
-				Columns: []*schema.Column{CmdbPermissionOperationsColumns[7], CmdbPermissionOperationsColumns[4]},
+				Columns: []*schema.Column{CmdbPermissionOperationsColumns[8], CmdbPermissionOperationsColumns[5]},
 			},
 			{
 				Name:    "permissionoperation_permission_id",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionOperationsColumns[7]},
+				Columns: []*schema.Column{CmdbPermissionOperationsColumns[8]},
 			},
 			{
 				Name:    "permissionoperation_operation_code",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionOperationsColumns[4]},
+				Columns: []*schema.Column{CmdbPermissionOperationsColumns[5]},
 			},
 			{
 				Name:    "permissionoperation_is_allowed",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionOperationsColumns[6]},
+				Columns: []*schema.Column{CmdbPermissionOperationsColumns[7]},
 			},
 		},
 	}
@@ -1767,6 +2531,7 @@ var (
 		{Name: "created_at", Type: field.TypeTime},
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "template_id", Type: field.TypeString, Unique: true},
 		{Name: "template_name", Type: field.TypeString},
 		{Name: "template_description", Type: field.TypeString, Nullable: true, Size: 2147483647},
@@ -1789,22 +2554,22 @@ var (
 			{
 				Name:    "permissiontemplate_category_is_active",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[7], CmdbPermissionTemplatesColumns[13]},
+				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[8], CmdbPermissionTemplatesColumns[14]},
 			},
 			{
 				Name:    "permissiontemplate_scope_type_permission_level",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[8], CmdbPermissionTemplatesColumns[9]},
+				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[9], CmdbPermissionTemplatesColumns[10]},
 			},
 			{
 				Name:    "permissiontemplate_is_system_template_is_active",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[12], CmdbPermissionTemplatesColumns[13]},
+				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[13], CmdbPermissionTemplatesColumns[14]},
 			},
 			{
 				Name:    "permissiontemplate_sort_order",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[14]},
+				Columns: []*schema.Column{CmdbPermissionTemplatesColumns[15]},
 			},
 		},
 	}
@@ -1815,16 +2580,341 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "name", Type: field.TypeString, Size: 32},
-		{Name: "code", Type: field.TypeString, Size: 32},
-		{Name: "category", Type: field.TypeEnum, Enums: []string{"physical", "logic", "business"}, Default: "logic"},
+		{Name: "code", Type: field.TypeString, Unique: true, Size: 32},
+		{Name: "category", Type: field.TypeEnum, Enums: []string{"physical", "logical", "business"}, Default: "logical"},
 		{Name: "direction", Type: field.TypeEnum, Enums: []string{"unidirectional", "bidirectional"}, Default: "bidirectional"},
+		{Name: "description", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "is_standard", Type: field.TypeBool, Default: false},
+		{Name: "sort_order", Type: field.TypeInt, Default: 0},
+		{Name: "is_enabled", Type: field.TypeBool, Default: true},
+		{Name: "display_color", Type: field.TypeString, Size: 16, Default: "#666666"},
+		{Name: "line_type", Type: field.TypeEnum, Enums: []string{"solid", "dashed", "dotted"}, Default: "solid"},
+		{Name: "icon", Type: field.TypeString, Nullable: true, Size: 64},
+		{Name: "weight", Type: field.TypeInt, Default: 1},
+		{Name: "display_label", Type: field.TypeString, Nullable: true, Size: 64},
+		{Name: "tooltip_template", Type: field.TypeString, Nullable: true, Size: 2147483647},
+		{Name: "display_style", Type: field.TypeJSON, Nullable: true},
 	}
 	// CmdbRelationTypesTable holds the schema information for the "cmdb_relation_types" table.
 	CmdbRelationTypesTable = &schema.Table{
 		Name:       "cmdb_relation_types",
 		Columns:    CmdbRelationTypesColumns,
 		PrimaryKey: []*schema.Column{CmdbRelationTypesColumns[0]},
+	}
+	// CmdbTimeDimensionColumns holds the columns for the "cmdb_time_dimension" table.
+	CmdbTimeDimensionColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime, Comment: "Create Time | 创建日期"},
+		{Name: "updated_at", Type: field.TypeTime, Comment: "Update Time | 修改日期"},
+		{Name: "tenant_id", Type: field.TypeUint64, Comment: "Tenant ID | 租户 ID", Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true, Comment: "Department ID | 部门 ID"},
+		{Name: "date_time", Type: field.TypeTime, Comment: "完整的日期时间"},
+		{Name: "date", Type: field.TypeString, Size: 10, Comment: "日期字符串，格式：YYYY-MM-DD"},
+		{Name: "year", Type: field.TypeInt, Comment: "年份，如：2024"},
+		{Name: "quarter", Type: field.TypeInt, Comment: "季度，1-4"},
+		{Name: "month", Type: field.TypeInt, Comment: "月份，1-12"},
+		{Name: "week_of_year", Type: field.TypeInt, Comment: "年内第几周，1-53"},
+		{Name: "week_of_month", Type: field.TypeInt, Comment: "月内第几周，1-6"},
+		{Name: "day_of_month", Type: field.TypeInt, Comment: "月内第几天，1-31"},
+		{Name: "day_of_year", Type: field.TypeInt, Comment: "年内第几天，1-366"},
+		{Name: "day_of_week", Type: field.TypeInt, Comment: "星期几，1=周一，7=周日"},
+		{Name: "hour", Type: field.TypeInt, Comment: "小时，0-23"},
+		{Name: "minute", Type: field.TypeInt, Comment: "分钟，0-59"},
+		{Name: "time_period", Type: field.TypeEnum, Comment: "时间段：morning(6-12), afternoon(12-18), evening(18-22), night(22-6)", Enums: []string{"morning", "afternoon", "evening", "night"}},
+		{Name: "is_weekday", Type: field.TypeBool, Comment: "是否工作日"},
+		{Name: "is_weekend", Type: field.TypeBool, Comment: "是否周末"},
+		{Name: "is_holiday", Type: field.TypeBool, Comment: "是否节假日", Default: false},
+		{Name: "holiday_name", Type: field.TypeString, Nullable: true, Size: 64, Comment: "节假日名称，如：春节、国庆节等"},
+		{Name: "quarter_name", Type: field.TypeString, Size: 16, Comment: "季度名称，如：Q1, Q2, Q3, Q4"},
+		{Name: "month_name", Type: field.TypeString, Size: 16, Comment: "月份名称，如：January, 一月等"},
+		{Name: "weekday_name", Type: field.TypeString, Size: 16, Comment: "星期名称，如：Monday, 周一等"},
+		{Name: "timezone", Type: field.TypeString, Size: 32, Comment: "时区标识，如：Asia/Shanghai, UTC等", Default: "Asia/Shanghai"},
+		{Name: "utc_offset", Type: field.TypeInt, Comment: "相对UTC的偏移小时数", Default: 8},
+		{Name: "fiscal_year", Type: field.TypeInt, Nullable: true, Comment: "财务年度（可能与自然年不同）"},
+		{Name: "fiscal_quarter", Type: field.TypeInt, Nullable: true, Comment: "财务季度，1-4"},
+		{Name: "fiscal_month", Type: field.TypeInt, Nullable: true, Comment: "财务月份，1-12"},
+		{Name: "business_cycle", Type: field.TypeString, Nullable: true, Size: 32, Comment: "业务周期标识，支持自定义业务场景"},
+		{Name: "relative_time_flags", Type: field.TypeJSON, Nullable: true, Comment: "相对时间标识，格式: {JSON格式}"},
+		{Name: "dimension_version", Type: field.TypeUint64, Comment: "时间维度版本号", Default: 1},
+	}
+	// CmdbTimeDimensionTable holds the schema information for the "cmdb_time_dimension" table.
+	CmdbTimeDimensionTable = &schema.Table{
+		Name:       "cmdb_time_dimension",
+		Columns:    CmdbTimeDimensionColumns,
+		PrimaryKey: []*schema.Column{CmdbTimeDimensionColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "timedimension_tenant_id_date_time",
+				Unique:  true,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[5]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "deleted_at IS NULL",
+				},
+			},
+			{
+				Name:    "timedimension_tenant_id_date",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[6]},
+			},
+			{
+				Name:    "timedimension_tenant_id_year_month",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[7], CmdbTimeDimensionColumns[9]},
+			},
+			{
+				Name:    "timedimension_tenant_id_year_quarter",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[7], CmdbTimeDimensionColumns[8]},
+			},
+			{
+				Name:    "timedimension_tenant_id_year_week_of_year",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[7], CmdbTimeDimensionColumns[10]},
+			},
+			{
+				Name:    "timedimension_tenant_id_is_weekday_date",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[18], CmdbTimeDimensionColumns[6]},
+			},
+			{
+				Name:    "timedimension_tenant_id_is_holiday_date",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[20], CmdbTimeDimensionColumns[6]},
+			},
+			{
+				Name:    "timedimension_tenant_id_time_period_date",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[17], CmdbTimeDimensionColumns[6]},
+			},
+			{
+				Name:    "timedimension_tenant_id_year_month_day_of_month_hour",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[7], CmdbTimeDimensionColumns[9], CmdbTimeDimensionColumns[12], CmdbTimeDimensionColumns[15]},
+			},
+			{
+				Name:    "timedimension_tenant_id_fiscal_year_fiscal_quarter",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[27], CmdbTimeDimensionColumns[28]},
+			},
+			{
+				Name:    "timedimension_tenant_id_business_cycle_date",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[30], CmdbTimeDimensionColumns[6]},
+			},
+			{
+				Name:    "timedimension_tenant_id_timezone_date",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[25], CmdbTimeDimensionColumns[6]},
+			},
+			{
+				Name:    "timedimension_tenant_id_year",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[3], CmdbTimeDimensionColumns[7]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbTimeDimensionColumns[7].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "timedimension_date_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbTimeDimensionColumns[5]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbTimeDimensionColumns[5].Name: true,
+					},
+				},
+			},
+		},
+	}
+	// CmdbUserActivityFactColumns holds the columns for the "cmdb_user_activity_fact" table.
+	CmdbUserActivityFactColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeUint64, Increment: true},
+		{Name: "created_at", Type: field.TypeTime, Comment: "Create Time | 创建日期"},
+		{Name: "updated_at", Type: field.TypeTime, Comment: "Update Time | 修改日期"},
+		{Name: "tenant_id", Type: field.TypeUint64, Comment: "Tenant ID | 租户 ID", Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true, Comment: "Department ID | 部门 ID"},
+		{Name: "user_id", Type: field.TypeUint64, Comment: "操作用户ID"},
+		{Name: "username", Type: field.TypeString, Size: 128, Comment: "用户名"},
+		{Name: "user_roles", Type: field.TypeJSON, Nullable: true, Comment: "用户角色列表"},
+		{Name: "operation_type", Type: field.TypeEnum, Comment: "操作类型", Enums: []string{"create", "read", "update", "delete", "batch_update", "batch_delete", "import", "export", "search", "login", "logout"}},
+		{Name: "resource_type", Type: field.TypeString, Size: 64, Comment: "资源类型：ci, ci_type, attribute, relation等"},
+		{Name: "resource_id", Type: field.TypeUint64, Nullable: true, Comment: "操作的资源ID"},
+		{Name: "ci_type_id", Type: field.TypeUint64, Nullable: true, Comment: "相关CI类型ID"},
+		{Name: "operation_details", Type: field.TypeJSON, Nullable: true, Comment: "操作详情，如：修改的字段、搜索条件、批量操作的数量等"},
+		{Name: "status", Type: field.TypeEnum, Comment: "操作结果状态", Enums: []string{"success", "failed", "partial", "unauthorized", "forbidden"}},
+		{Name: "error_message", Type: field.TypeString, Nullable: true, Size: 512, Comment: "错误信息"},
+		{Name: "response_time_ms", Type: field.TypeUint64, Nullable: true, Comment: "操作响应时间（毫秒）"},
+		{Name: "affected_records", Type: field.TypeUint64, Comment: "操作影响的记录数量", Default: 0},
+		{Name: "ip_address", Type: field.TypeString, Nullable: true, Size: 45, Comment: "客户端IP地址"},
+		{Name: "user_agent", Type: field.TypeString, Nullable: true, Size: 512, Comment: "客户端User Agent信息"},
+		{Name: "session_id", Type: field.TypeString, Nullable: true, Size: 128, Comment: "会话标识"},
+		{Name: "api_path", Type: field.TypeString, Nullable: true, Size: 256, Comment: "API请求路径"},
+		{Name: "http_method", Type: field.TypeEnum, Nullable: true, Comment: "HTTP请求方法", Enums: []string{"GET", "POST", "PUT", "DELETE", "PATCH"}},
+		{Name: "before_snapshot", Type: field.TypeJSON, Nullable: true, Comment: "变更前的数据快照（仅记录关键操作）"},
+		{Name: "after_snapshot", Type: field.TypeJSON, Nullable: true, Comment: "变更后的数据快照（仅记录关键操作）"},
+		{Name: "operation_time", Type: field.TypeTime, Comment: "操作发生时间"},
+		{Name: "time_dimension_id", Type: field.TypeUint64, Nullable: true, Comment: "关联时间维度表ID"},
+		{Name: "business_tags", Type: field.TypeJSON, Nullable: true, Comment: "业务标签，用于业务层面的操作分类和统计"},
+		{Name: "risk_level", Type: field.TypeEnum, Comment: "操作风险等级评估", Enums: []string{"low", "medium", "high", "critical"}, Default: "low"},
+		{Name: "compliance_flags", Type: field.TypeJSON, Nullable: true, Comment: "合规性相关标记，如：audit_required, sensitive_data等"},
+		{Name: "operation_source", Type: field.TypeEnum, Comment: "操作来源渠道", Enums: []string{"web_ui", "api", "batch_job", "system", "import", "sync"}, Default: "web_ui"},
+		{Name: "geo_location", Type: field.TypeJSON, Nullable: true, Comment: "地理位置信息，格式: {JSON格式}"},
+		{Name: "device_info", Type: field.TypeJSON, Nullable: true, Comment: "设备信息，格式: {JSON格式}"},
+		{Name: "batch_id", Type: field.TypeString, Nullable: true, Size: 64, Comment: "批量操作批次标识"},
+		{Name: "parent_operation_id", Type: field.TypeUint64, Nullable: true, Comment: "父操作ID，用于追踪操作链"},
+		{Name: "data_version", Type: field.TypeUint64, Comment: "数据版本号", Default: 1},
+	}
+	// CmdbUserActivityFactTable holds the schema information for the "cmdb_user_activity_fact" table.
+	CmdbUserActivityFactTable = &schema.Table{
+		Name:       "cmdb_user_activity_fact",
+		Columns:    CmdbUserActivityFactColumns,
+		PrimaryKey: []*schema.Column{CmdbUserActivityFactColumns[0]},
+		Indexes: []*schema.Index{
+			{
+				Name:    "useractivityfact_tenant_id_user_id_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[5], CmdbUserActivityFactColumns[24]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbUserActivityFactColumns[24].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_operation_type_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[8], CmdbUserActivityFactColumns[24]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbUserActivityFactColumns[24].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_resource_type_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[9], CmdbUserActivityFactColumns[24]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbUserActivityFactColumns[24].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_ci_type_id_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[11], CmdbUserActivityFactColumns[24]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbUserActivityFactColumns[24].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_status_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[13], CmdbUserActivityFactColumns[24]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbUserActivityFactColumns[24].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_department_id_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[4], CmdbUserActivityFactColumns[24]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbUserActivityFactColumns[24].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_user_id_operation_type_status",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[5], CmdbUserActivityFactColumns[8], CmdbUserActivityFactColumns[13]},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_resource_type_resource_id_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[9], CmdbUserActivityFactColumns[10], CmdbUserActivityFactColumns[24]},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_time_dimension_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[25]},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_risk_level_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[27], CmdbUserActivityFactColumns[24]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbUserActivityFactColumns[24].Name: true,
+					},
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_operation_source_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[29], CmdbUserActivityFactColumns[24]},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_ip_address_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[17], CmdbUserActivityFactColumns[24]},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_session_id_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[19], CmdbUserActivityFactColumns[24]},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_batch_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[32]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "batch_id IS NOT NULL",
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_parent_operation_id",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[33]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "parent_operation_id IS NOT NULL",
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_api_path_http_method_operation_time",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[20], CmdbUserActivityFactColumns[21], CmdbUserActivityFactColumns[24]},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_response_time_ms",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[15]},
+				Annotation: &entsql.IndexAnnotation{
+					DescColumns: map[string]bool{
+						CmdbUserActivityFactColumns[15].Name: true,
+					},
+					Where: "response_time_ms IS NOT NULL",
+				},
+			},
+			{
+				Name:    "useractivityfact_tenant_id_status_error_message",
+				Unique:  false,
+				Columns: []*schema.Column{CmdbUserActivityFactColumns[3], CmdbUserActivityFactColumns[13], CmdbUserActivityFactColumns[14]},
+				Annotation: &entsql.IndexAnnotation{
+					Where: "status IN ('failed', 'partial', 'unauthorized', 'forbidden') AND error_message IS NOT NULL",
+				},
+			},
+		},
 	}
 	// CmdbValueDatetimesColumns holds the columns for the "cmdb_value_datetimes" table.
 	CmdbValueDatetimesColumns = []*schema.Column{
@@ -1833,6 +2923,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "value", Type: field.TypeTime},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1846,13 +2937,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_datetimes_cmdb_attributes_value_datetimes",
-				Columns:    []*schema.Column{CmdbValueDatetimesColumns[7]},
+				Columns:    []*schema.Column{CmdbValueDatetimesColumns[8]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_datetimes_cmdb_cis_value_datetimes",
-				Columns:    []*schema.Column{CmdbValueDatetimesColumns[8]},
+				Columns:    []*schema.Column{CmdbValueDatetimesColumns[9]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1861,7 +2952,7 @@ var (
 			{
 				Name:    "valuedatetime_attr_id_value",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbValueDatetimesColumns[7], CmdbValueDatetimesColumns[5]},
+				Columns: []*schema.Column{CmdbValueDatetimesColumns[8], CmdbValueDatetimesColumns[6]},
 			},
 		},
 	}
@@ -1872,6 +2963,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "value", Type: field.TypeFloat64},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1885,13 +2977,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_floats_cmdb_attributes_value_floats",
-				Columns:    []*schema.Column{CmdbValueFloatsColumns[7]},
+				Columns:    []*schema.Column{CmdbValueFloatsColumns[8]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_floats_cmdb_cis_value_floats",
-				Columns:    []*schema.Column{CmdbValueFloatsColumns[8]},
+				Columns:    []*schema.Column{CmdbValueFloatsColumns[9]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1900,7 +2992,7 @@ var (
 			{
 				Name:    "valuefloat_attr_id_value",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbValueFloatsColumns[7], CmdbValueFloatsColumns[5]},
+				Columns: []*schema.Column{CmdbValueFloatsColumns[8], CmdbValueFloatsColumns[6]},
 			},
 		},
 	}
@@ -1911,6 +3003,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "value", Type: field.TypeString, Size: 255},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1924,13 +3017,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_index_texts_cmdb_attributes_value_index_texts",
-				Columns:    []*schema.Column{CmdbValueIndexTextsColumns[7]},
+				Columns:    []*schema.Column{CmdbValueIndexTextsColumns[8]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_index_texts_cmdb_cis_value_index_texts",
-				Columns:    []*schema.Column{CmdbValueIndexTextsColumns[8]},
+				Columns:    []*schema.Column{CmdbValueIndexTextsColumns[9]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1939,12 +3032,12 @@ var (
 			{
 				Name:    "valueindextext_ci_id_attr_id",
 				Unique:  true,
-				Columns: []*schema.Column{CmdbValueIndexTextsColumns[8], CmdbValueIndexTextsColumns[7]},
+				Columns: []*schema.Column{CmdbValueIndexTextsColumns[9], CmdbValueIndexTextsColumns[8]},
 			},
 			{
 				Name:    "valueindextext_attr_id_value",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbValueIndexTextsColumns[7], CmdbValueIndexTextsColumns[5]},
+				Columns: []*schema.Column{CmdbValueIndexTextsColumns[8], CmdbValueIndexTextsColumns[6]},
 			},
 		},
 	}
@@ -1955,6 +3048,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "value", Type: field.TypeInt},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -1968,13 +3062,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_integers_cmdb_attributes_value_integers",
-				Columns:    []*schema.Column{CmdbValueIntegersColumns[7]},
+				Columns:    []*schema.Column{CmdbValueIntegersColumns[8]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_integers_cmdb_cis_value_integers",
-				Columns:    []*schema.Column{CmdbValueIntegersColumns[8]},
+				Columns:    []*schema.Column{CmdbValueIntegersColumns[9]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -1983,7 +3077,7 @@ var (
 			{
 				Name:    "valueinteger_attr_id_value",
 				Unique:  false,
-				Columns: []*schema.Column{CmdbValueIntegersColumns[7], CmdbValueIntegersColumns[5]},
+				Columns: []*schema.Column{CmdbValueIntegersColumns[8], CmdbValueIntegersColumns[6]},
 			},
 		},
 	}
@@ -1994,6 +3088,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "value", Type: field.TypeJSON},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -2007,13 +3102,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_json_cmdb_attributes_value_jsons",
-				Columns:    []*schema.Column{CmdbValueJSONColumns[7]},
+				Columns:    []*schema.Column{CmdbValueJSONColumns[8]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_json_cmdb_cis_value_jsons",
-				Columns:    []*schema.Column{CmdbValueJSONColumns[8]},
+				Columns:    []*schema.Column{CmdbValueJSONColumns[9]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -2026,6 +3121,7 @@ var (
 		{Name: "updated_at", Type: field.TypeTime},
 		{Name: "deleted_at", Type: field.TypeTime, Nullable: true},
 		{Name: "tenant_id", Type: field.TypeUint64, Default: 1},
+		{Name: "department_id", Type: field.TypeUint64, Nullable: true},
 		{Name: "value", Type: field.TypeString, Size: 2147483647},
 		{Name: "is_cover", Type: field.TypeBool, Default: true},
 		{Name: "attr_id", Type: field.TypeUint64},
@@ -2039,13 +3135,13 @@ var (
 		ForeignKeys: []*schema.ForeignKey{
 			{
 				Symbol:     "cmdb_value_texts_cmdb_attributes_value_texts",
-				Columns:    []*schema.Column{CmdbValueTextsColumns[7]},
+				Columns:    []*schema.Column{CmdbValueTextsColumns[8]},
 				RefColumns: []*schema.Column{CmdbAttributesColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
 			{
 				Symbol:     "cmdb_value_texts_cmdb_cis_value_texts",
-				Columns:    []*schema.Column{CmdbValueTextsColumns[8]},
+				Columns:    []*schema.Column{CmdbValueTextsColumns[9]},
 				RefColumns: []*schema.Column{CmdbCisColumns[0]},
 				OnDelete:   schema.NoAction,
 			},
@@ -2053,25 +3149,33 @@ var (
 	}
 	// Tables holds all the tables in the schema.
 	Tables = []*schema.Table{
+		CmdbAggregationCacheTable,
 		CmdbAttributesTable,
+		CmdbAttributeMappingRulesTable,
 		CmdbChoiceFloatsTable,
 		CmdbChoiceIntegersTable,
 		CmdbChoiceTextsTable,
 		CmdbCiApprovalFlowsTable,
+		CmdbCiAttributeDistributionTable,
+		CmdbCiDimensionTable,
 		CmdbCiLifecycleStatesTable,
-		CiOperationsTable,
+		CmdbCiOperationsTable,
 		CmdbCiPermissionsTable,
 		CmdbCiRecordsTable,
 		CmdbCiRelationsTable,
+		CmdbCiStatisticsFactTable,
 		CmdbCiTypesTable,
 		CmdbCiTypeAttributesTable,
 		CmdbCiTypeAttributeGroupsTable,
 		CmdbCiTypeAttributeGroupItemsTable,
+		CmdbCiTypeDiscoveryConfigsTable,
 		CmdbCiTypeGroupsTable,
 		CmdbCiTypeGroupItemsTable,
 		CmdbCiTypeInheritanceTable,
 		CmdbCiTypeRelationsTable,
 		CmdbCisTable,
+		CmdbDiscoveryExecutionHistoriesTable,
+		CmdbDynamicAggregationConfigTable,
 		CmdbImportErrorsTable,
 		CmdbImportRecordsTable,
 		CmdbImportTasksTable,
@@ -2082,6 +3186,8 @@ var (
 		CmdbPermissionOperationsTable,
 		CmdbPermissionTemplatesTable,
 		CmdbRelationTypesTable,
+		CmdbTimeDimensionTable,
+		CmdbUserActivityFactTable,
 		CmdbValueDatetimesTable,
 		CmdbValueFloatsTable,
 		CmdbValueIndexTextsTable,
@@ -2092,8 +3198,19 @@ var (
 )
 
 func init() {
+	CmdbAggregationCacheTable.Annotation = &entsql.Annotation{
+		Table:     "cmdb_aggregation_cache",
+		Charset:   "utf8mb4",
+		Collation: "utf8mb4_unicode_ci",
+		Options:   "ENGINE=InnoDB ROW_FORMAT=DYNAMIC COMMENT='聚合结果缓存表 - 存储预计算聚合结果'",
+	}
 	CmdbAttributesTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_attributes",
+	}
+	CmdbAttributeMappingRulesTable.ForeignKeys[0].RefTable = CmdbAttributesTable
+	CmdbAttributeMappingRulesTable.ForeignKeys[1].RefTable = CmdbCiTypeDiscoveryConfigsTable
+	CmdbAttributeMappingRulesTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_attribute_mapping_rules",
 	}
 	CmdbChoiceFloatsTable.ForeignKeys[0].RefTable = CmdbAttributesTable
 	CmdbChoiceFloatsTable.Annotation = &entsql.Annotation{
@@ -2110,8 +3227,23 @@ func init() {
 	CmdbCiApprovalFlowsTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_ci_approval_flows",
 	}
+	CmdbCiAttributeDistributionTable.Annotation = &entsql.Annotation{
+		Table:     "cmdb_ci_attribute_distribution",
+		Charset:   "utf8mb4",
+		Collation: "utf8mb4_unicode_ci",
+		Options:   "ENGINE=InnoDB ROW_FORMAT=DYNAMIC COMMENT='CI属性分布统计表 - 支持动态属性统计分析'",
+	}
+	CmdbCiDimensionTable.Annotation = &entsql.Annotation{
+		Table:     "cmdb_ci_dimension",
+		Charset:   "utf8mb4",
+		Collation: "utf8mb4_unicode_ci",
+		Options:   "ENGINE=InnoDB ROW_FORMAT=DYNAMIC COMMENT='CI统计维度表 - OLAP分析的核心维度表'",
+	}
 	CmdbCiLifecycleStatesTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_ci_lifecycle_states",
+	}
+	CmdbCiOperationsTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_ci_operations",
 	}
 	CmdbCiPermissionsTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_ci_permissions",
@@ -2127,6 +3259,12 @@ func init() {
 	CmdbCiRelationsTable.ForeignKeys[3].RefTable = CmdbRelationTypesTable
 	CmdbCiRelationsTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_ci_relations",
+	}
+	CmdbCiStatisticsFactTable.Annotation = &entsql.Annotation{
+		Table:     "cmdb_ci_statistics_fact",
+		Charset:   "utf8mb4",
+		Collation: "utf8mb4_unicode_ci",
+		Options:   "ENGINE=InnoDB ROW_FORMAT=DYNAMIC COMMENT='CI统计事实表 - 支持动态属性的OLAP分析'",
 	}
 	CmdbCiTypesTable.ForeignKeys[0].RefTable = CmdbAttributesTable
 	CmdbCiTypesTable.Annotation = &entsql.Annotation{
@@ -2145,6 +3283,10 @@ func init() {
 	CmdbCiTypeAttributeGroupItemsTable.ForeignKeys[1].RefTable = CmdbCiTypeAttributeGroupsTable
 	CmdbCiTypeAttributeGroupItemsTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_ci_type_attribute_group_items",
+	}
+	CmdbCiTypeDiscoveryConfigsTable.ForeignKeys[0].RefTable = CmdbCiTypesTable
+	CmdbCiTypeDiscoveryConfigsTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_ci_type_discovery_configs",
 	}
 	CmdbCiTypeGroupsTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_ci_type_groups",
@@ -2168,6 +3310,16 @@ func init() {
 	CmdbCisTable.ForeignKeys[0].RefTable = CmdbCiTypesTable
 	CmdbCisTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_cis",
+	}
+	CmdbDiscoveryExecutionHistoriesTable.ForeignKeys[0].RefTable = CmdbCiTypeDiscoveryConfigsTable
+	CmdbDiscoveryExecutionHistoriesTable.Annotation = &entsql.Annotation{
+		Table: "cmdb_discovery_execution_histories",
+	}
+	CmdbDynamicAggregationConfigTable.Annotation = &entsql.Annotation{
+		Table:     "cmdb_dynamic_aggregation_config",
+		Charset:   "utf8mb4",
+		Collation: "utf8mb4_unicode_ci",
+		Options:   "ENGINE=InnoDB ROW_FORMAT=DYNAMIC COMMENT='动态聚合配置表 - 支持灵活配置统计分析'",
 	}
 	CmdbImportErrorsTable.ForeignKeys[0].RefTable = CmdbImportRecordsTable
 	CmdbImportErrorsTable.ForeignKeys[1].RefTable = CmdbImportTasksTable
@@ -2208,6 +3360,18 @@ func init() {
 	}
 	CmdbRelationTypesTable.Annotation = &entsql.Annotation{
 		Table: "cmdb_relation_types",
+	}
+	CmdbTimeDimensionTable.Annotation = &entsql.Annotation{
+		Table:     "cmdb_time_dimension",
+		Charset:   "utf8mb4",
+		Collation: "utf8mb4_unicode_ci",
+		Options:   "ENGINE=InnoDB ROW_FORMAT=DYNAMIC COMMENT='时间维度表 - 支持多粒度时间分析'",
+	}
+	CmdbUserActivityFactTable.Annotation = &entsql.Annotation{
+		Table:     "cmdb_user_activity_fact",
+		Charset:   "utf8mb4",
+		Collation: "utf8mb4_unicode_ci",
+		Options:   "ENGINE=InnoDB ROW_FORMAT=DYNAMIC COMMENT='用户活动统计事实表 - 追踪CMDB系统操作行为'",
 	}
 	CmdbValueDatetimesTable.ForeignKeys[0].RefTable = CmdbAttributesTable
 	CmdbValueDatetimesTable.ForeignKeys[1].RefTable = CmdbCisTable

@@ -7,7 +7,7 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 )
 
 // PermissionOperation 权限操作明细表 - 将JSON操作拆分为独立表
@@ -20,6 +20,7 @@ func (PermissionOperation) Mixin() []ent.Mixin {
 	return []ent.Mixin{
 		mixins.IDMixin{},
 		mixins.TenantMixin{},
+		mixins.DepartmentMixin{},
 	}
 }
 

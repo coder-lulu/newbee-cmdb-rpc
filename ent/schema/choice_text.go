@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 )
 
 // ChoiceText 对应于数据库cmdb_choice_texts

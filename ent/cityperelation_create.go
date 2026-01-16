@@ -78,6 +78,20 @@ func (_c *CiTypeRelationCreate) SetNillableTenantID(v *uint64) *CiTypeRelationCr
 	return _c
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_c *CiTypeRelationCreate) SetDepartmentID(v uint64) *CiTypeRelationCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_c *CiTypeRelationCreate) SetNillableDepartmentID(v *uint64) *CiTypeRelationCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
+	}
+	return _c
+}
+
 // SetParentID sets the "parent_id" field.
 func (_c *CiTypeRelationCreate) SetParentID(v uint64) *CiTypeRelationCreate {
 	_c.mutation.SetParentID(v)
@@ -305,6 +319,10 @@ func (_c *CiTypeRelationCreate) createSpec() (*CiTypeRelation, *sqlgraph.CreateS
 	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(cityperelation.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.DepartmentID(); ok {
+		_spec.SetField(cityperelation.FieldDepartmentID, field.TypeUint64, value)
+		_node.DepartmentID = value
 	}
 	if value, ok := _c.mutation.Constraint(); ok {
 		_spec.SetField(cityperelation.FieldConstraint, field.TypeString, value)

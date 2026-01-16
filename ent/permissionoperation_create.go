@@ -63,6 +63,20 @@ func (_c *PermissionOperationCreate) SetNillableTenantID(v *uint64) *PermissionO
 	return _c
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_c *PermissionOperationCreate) SetDepartmentID(v uint64) *PermissionOperationCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_c *PermissionOperationCreate) SetNillableDepartmentID(v *uint64) *PermissionOperationCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
+	}
+	return _c
+}
+
 // SetPermissionID sets the "permission_id" field.
 func (_c *PermissionOperationCreate) SetPermissionID(v uint64) *PermissionOperationCreate {
 	_c.mutation.SetPermissionID(v)
@@ -233,6 +247,10 @@ func (_c *PermissionOperationCreate) createSpec() (*PermissionOperation, *sqlgra
 	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(permissionoperation.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.DepartmentID(); ok {
+		_spec.SetField(permissionoperation.FieldDepartmentID, field.TypeUint64, value)
+		_node.DepartmentID = value
 	}
 	if value, ok := _c.mutation.OperationCode(); ok {
 		_spec.SetField(permissionoperation.FieldOperationCode, field.TypeString, value)

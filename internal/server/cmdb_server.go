@@ -6,22 +6,25 @@ package server
 import (
 	"context"
 
-	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/async_task"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/attributemappingrule"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/base"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/choicefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/choiceinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/choicetext"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/cipermission"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/cirelation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/cis"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypeattribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypeattributegroup"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypediscoveryconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypegroup"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypegroupitem"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/citypeinheritance"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/discoveryexecutionhistory"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/relationtype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/valuedatetime"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/valuefloat"
@@ -41,32 +44,6 @@ func NewCmdbServer(svcCtx *svc.ServiceContext) *CmdbServer {
 	return &CmdbServer{
 		svcCtx: svcCtx,
 	}
-}
-
-// 异步任务管理接口
-func (s *CmdbServer) SubmitAsyncTask(ctx context.Context, in *cmdb.AsyncTaskReq) (*cmdb.AsyncTaskResp, error) {
-	l := async_task.NewSubmitAsyncTaskLogic(ctx, s.svcCtx)
-	return l.SubmitAsyncTask(in)
-}
-
-func (s *CmdbServer) GetTaskStatus(ctx context.Context, in *cmdb.TaskStatusReq) (*cmdb.TaskStatusResp, error) {
-	l := async_task.NewGetTaskStatusLogic(ctx, s.svcCtx)
-	return l.GetTaskStatus(in)
-}
-
-func (s *CmdbServer) CancelTask(ctx context.Context, in *cmdb.TaskCancelReq) (*cmdb.BaseResp, error) {
-	l := async_task.NewCancelTaskLogic(ctx, s.svcCtx)
-	return l.CancelTask(in)
-}
-
-func (s *CmdbServer) GetTaskList(ctx context.Context, in *cmdb.TaskListReq) (*cmdb.TaskListResp, error) {
-	l := async_task.NewGetTaskListLogic(ctx, s.svcCtx)
-	return l.GetTaskList(in)
-}
-
-func (s *CmdbServer) GetTaskStats(ctx context.Context, in *cmdb.TaskStatsReq) (*cmdb.TaskStatsResp, error) {
-	l := async_task.NewGetTaskStatsLogic(ctx, s.svcCtx)
-	return l.GetTaskStats(in)
 }
 
 // Attribute management
@@ -98,6 +75,32 @@ func (s *CmdbServer) GetAttributeById(ctx context.Context, in *cmdb.IDReq) (*cmd
 func (s *CmdbServer) DeleteAttribute(ctx context.Context, in *cmdb.IDsReq) (*cmdb.BaseResp, error) {
 	l := attribute.NewDeleteAttributeLogic(ctx, s.svcCtx)
 	return l.DeleteAttribute(in)
+}
+
+// AttributeMappingRule management
+func (s *CmdbServer) CreateAttributeMappingRule(ctx context.Context, in *cmdb.AttributeMappingRuleInfo) (*cmdb.BaseIDResp, error) {
+	l := attributemappingrule.NewCreateAttributeMappingRuleLogic(ctx, s.svcCtx)
+	return l.CreateAttributeMappingRule(in)
+}
+
+func (s *CmdbServer) UpdateAttributeMappingRule(ctx context.Context, in *cmdb.AttributeMappingRuleInfo) (*cmdb.BaseResp, error) {
+	l := attributemappingrule.NewUpdateAttributeMappingRuleLogic(ctx, s.svcCtx)
+	return l.UpdateAttributeMappingRule(in)
+}
+
+func (s *CmdbServer) GetAttributeMappingRuleList(ctx context.Context, in *cmdb.AttributeMappingRuleListReq) (*cmdb.AttributeMappingRuleListResp, error) {
+	l := attributemappingrule.NewGetAttributeMappingRuleListLogic(ctx, s.svcCtx)
+	return l.GetAttributeMappingRuleList(in)
+}
+
+func (s *CmdbServer) GetAttributeMappingRuleById(ctx context.Context, in *cmdb.IDReq) (*cmdb.AttributeMappingRuleInfo, error) {
+	l := attributemappingrule.NewGetAttributeMappingRuleByIdLogic(ctx, s.svcCtx)
+	return l.GetAttributeMappingRuleById(in)
+}
+
+func (s *CmdbServer) DeleteAttributeMappingRule(ctx context.Context, in *cmdb.IDsReq) (*cmdb.BaseResp, error) {
+	l := attributemappingrule.NewDeleteAttributeMappingRuleLogic(ctx, s.svcCtx)
+	return l.DeleteAttributeMappingRule(in)
 }
 
 func (s *CmdbServer) InitDatabase(ctx context.Context, in *cmdb.Empty) (*cmdb.BaseResp, error) {
@@ -183,37 +186,40 @@ func (s *CmdbServer) DeleteChoiceText(ctx context.Context, in *cmdb.IDsReq) (*cm
 	return l.DeleteChoiceText(in)
 }
 
-// CiPermission management - 暂时禁用复杂权限功能，待系统完善后启用
+// CiPermission management
 func (s *CmdbServer) CreateCiPermission(ctx context.Context, in *cmdb.CiPermissionInfo) (*cmdb.BaseIDResp, error) {
-	return &cmdb.BaseIDResp{Id: 1, Msg: "权限功能暂时禁用"}, nil
+	l := cipermission.NewCreateCiPermissionLogic(ctx, s.svcCtx)
+	return l.CreateCiPermission(in)
 }
 
 func (s *CmdbServer) UpdateCiPermission(ctx context.Context, in *cmdb.CiPermissionInfo) (*cmdb.BaseResp, error) {
-	return &cmdb.BaseResp{Msg: "权限功能暂时禁用"}, nil
+	l := cipermission.NewUpdateCiPermissionLogic(ctx, s.svcCtx)
+	return l.UpdateCiPermission(in)
 }
 
 func (s *CmdbServer) GetCiPermissionList(ctx context.Context, in *cmdb.CiPermissionListReq) (*cmdb.CiPermissionListResp, error) {
-	return &cmdb.CiPermissionListResp{
-		Total: 0,
-		Data:  []*cmdb.CiPermissionInfo{},
-	}, nil
+	l := cipermission.NewGetCiPermissionListLogic(ctx, s.svcCtx)
+	return l.GetCiPermissionList(in)
 }
 
 func (s *CmdbServer) GetCiPermissionById(ctx context.Context, in *cmdb.IDReq) (*cmdb.CiPermissionInfo, error) {
-	id := in.Id
-	permissionId := "temp_disabled"
-	subjectName := "权限功能暂时禁用"
-	status := uint32(1)
-	return &cmdb.CiPermissionInfo{
-		Id:           &id,
-		PermissionId: &permissionId,
-		SubjectName:  &subjectName,
-		Status:       &status,
-	}, nil
+	l := cipermission.NewGetCiPermissionByIdLogic(ctx, s.svcCtx)
+	return l.GetCiPermissionById(in)
 }
 
 func (s *CmdbServer) DeleteCiPermission(ctx context.Context, in *cmdb.IDsReq) (*cmdb.BaseResp, error) {
-	return &cmdb.BaseResp{Msg: "权限功能暂时禁用"}, nil
+	l := cipermission.NewDeleteCiPermissionLogic(ctx, s.svcCtx)
+	return l.DeleteCiPermission(in)
+}
+
+func (s *CmdbServer) CheckCiTypePermission(ctx context.Context, in *cmdb.CiPermissionReq) (*cmdb.CiPermissionResp, error) {
+	l := cipermission.NewCheckCiTypePermissionLogic(ctx, s.svcCtx)
+	return l.CheckCiTypePermission(in)
+}
+
+func (s *CmdbServer) GetUserPermissionScope(ctx context.Context, in *cmdb.UserPermissionScopeReq) (*cmdb.UserPermissionScopeResp, error) {
+	l := cipermission.NewGetUserPermissionScopeLogic(ctx, s.svcCtx)
+	return l.GetUserPermissionScope(in)
 }
 
 // CiRelation management
@@ -240,6 +246,11 @@ func (s *CmdbServer) GetCiRelationById(ctx context.Context, in *cmdb.IDReq) (*cm
 func (s *CmdbServer) DeleteCiRelation(ctx context.Context, in *cmdb.IDsReq) (*cmdb.BaseResp, error) {
 	l := cirelation.NewDeleteCiRelationLogic(ctx, s.svcCtx)
 	return l.DeleteCiRelation(in)
+}
+
+func (s *CmdbServer) GetCiRelationsBatch(ctx context.Context, in *cmdb.CiRelationBatchQueryReq) (*cmdb.CiRelationBatchQueryResp, error) {
+	l := cirelation.NewGetCiRelationsBatchLogic(ctx, s.svcCtx)
+	return l.GetCiRelationsBatch(in)
 }
 
 // Cis management
@@ -281,6 +292,11 @@ func (s *CmdbServer) CisBatchOperation(ctx context.Context, in *cmdb.CisBatchOpe
 func (s *CmdbServer) ValidateCisAttributes(ctx context.Context, in *cmdb.CisAttributeValidateReq) (*cmdb.CisAttributeValidateResp, error) {
 	l := cis.NewValidateCisAttributesLogic(ctx, s.svcCtx)
 	return l.ValidateCisAttributes(in)
+}
+
+func (s *CmdbServer) WriteDiscoveredCI(ctx context.Context, in *cmdb.DiscoveredCIData) (*cmdb.WriteDiscoveredCIResp, error) {
+	l := cis.NewWriteDiscoveredCILogic(ctx, s.svcCtx)
+	return l.WriteDiscoveredCI(in)
 }
 
 // CiType management
@@ -381,6 +397,11 @@ func (s *CmdbServer) SortCiTypeAttributeGroup(ctx context.Context, in *cmdb.CiTy
 	return l.SortCiTypeAttributeGroup(in)
 }
 
+func (s *CmdbServer) ListAttributeGroupWithAttribute(ctx context.Context, in *cmdb.IDReq) (*cmdb.CiTypeAttributeGroupWithAttrListResp, error) {
+	l := citypeattributegroup.NewListAttributeGroupWithAttributeLogic(ctx, s.svcCtx)
+	return l.ListAttributeGroupWithAttribute(in)
+}
+
 // CiTypeAttributeGroupItem management
 func (s *CmdbServer) CreateCiTypeAttributeGroupItem(ctx context.Context, in *cmdb.CiTypeAttributeGroupItemInfo) (*cmdb.BaseIDResp, error) {
 	l := citypeattributegroupitem.NewCreateCiTypeAttributeGroupItemLogic(ctx, s.svcCtx)
@@ -410,6 +431,52 @@ func (s *CmdbServer) DeleteCiTypeAttributeGroupItem(ctx context.Context, in *cmd
 func (s *CmdbServer) SortCiTypeAttributeGroupItem(ctx context.Context, in *cmdb.CiTypeAttributeGroupItemSortReq) (*cmdb.BaseResp, error) {
 	l := citypeattributegroupitem.NewSortCiTypeAttributeGroupItemLogic(ctx, s.svcCtx)
 	return l.SortCiTypeAttributeGroupItem(in)
+}
+
+// CiTypeDiscoveryConfig management
+func (s *CmdbServer) CreateCiTypeDiscoveryConfig(ctx context.Context, in *cmdb.CiTypeDiscoveryConfigInfo) (*cmdb.BaseIDResp, error) {
+	l := citypediscoveryconfig.NewCreateCiTypeDiscoveryConfigLogic(ctx, s.svcCtx)
+	return l.CreateCiTypeDiscoveryConfig(in)
+}
+
+func (s *CmdbServer) UpdateCiTypeDiscoveryConfig(ctx context.Context, in *cmdb.CiTypeDiscoveryConfigInfo) (*cmdb.BaseResp, error) {
+	l := citypediscoveryconfig.NewUpdateCiTypeDiscoveryConfigLogic(ctx, s.svcCtx)
+	return l.UpdateCiTypeDiscoveryConfig(in)
+}
+
+func (s *CmdbServer) GetCiTypeDiscoveryConfigList(ctx context.Context, in *cmdb.CiTypeDiscoveryConfigListReq) (*cmdb.CiTypeDiscoveryConfigListResp, error) {
+	l := citypediscoveryconfig.NewGetCiTypeDiscoveryConfigListLogic(ctx, s.svcCtx)
+	return l.GetCiTypeDiscoveryConfigList(in)
+}
+
+func (s *CmdbServer) GetCiTypeDiscoveryConfigById(ctx context.Context, in *cmdb.IDReq) (*cmdb.CiTypeDiscoveryConfigInfo, error) {
+	l := citypediscoveryconfig.NewGetCiTypeDiscoveryConfigByIdLogic(ctx, s.svcCtx)
+	return l.GetCiTypeDiscoveryConfigById(in)
+}
+
+func (s *CmdbServer) DeleteCiTypeDiscoveryConfig(ctx context.Context, in *cmdb.IDsReq) (*cmdb.BaseResp, error) {
+	l := citypediscoveryconfig.NewDeleteCiTypeDiscoveryConfigLogic(ctx, s.svcCtx)
+	return l.DeleteCiTypeDiscoveryConfig(in)
+}
+
+func (s *CmdbServer) ExecuteDiscovery(ctx context.Context, in *cmdb.IDReq) (*cmdb.DiscoveryExecutionResp, error) {
+	l := citypediscoveryconfig.NewExecuteDiscoveryLogic(ctx, s.svcCtx)
+	return l.ExecuteDiscovery(in)
+}
+
+func (s *CmdbServer) TestProviderConnection(ctx context.Context, in *cmdb.TestProviderConnectionReq) (*cmdb.BaseResp, error) {
+	l := citypediscoveryconfig.NewTestProviderConnectionLogic(ctx, s.svcCtx)
+	return l.TestProviderConnection(in)
+}
+
+func (s *CmdbServer) GetProviderSchema(ctx context.Context, in *cmdb.TestProviderConnectionReq) (*cmdb.ProviderSchemaResp, error) {
+	l := citypediscoveryconfig.NewGetProviderSchemaLogic(ctx, s.svcCtx)
+	return l.GetProviderSchema(in)
+}
+
+func (s *CmdbServer) ListProviders(ctx context.Context, in *cmdb.Empty) (*cmdb.ListProvidersResp, error) {
+	l := citypediscoveryconfig.NewListProvidersLogic(ctx, s.svcCtx)
+	return l.ListProviders(in)
 }
 
 // CiTypeGroup management
@@ -529,6 +596,42 @@ func (s *CmdbServer) GetCiTypeRelationById(ctx context.Context, in *cmdb.IDReq) 
 func (s *CmdbServer) DeleteCiTypeRelation(ctx context.Context, in *cmdb.IDsReq) (*cmdb.BaseResp, error) {
 	l := cityperelation.NewDeleteCiTypeRelationLogic(ctx, s.svcCtx)
 	return l.DeleteCiTypeRelation(in)
+}
+
+func (s *CmdbServer) GetCiTypeRelationDefinitions(ctx context.Context, in *cmdb.CiTypeRelationDefinitionReq) (*cmdb.CiTypeRelationDefinitionResp, error) {
+	l := cityperelation.NewGetCiTypeRelationDefinitionsLogic(ctx, s.svcCtx)
+	return l.GetCiTypeRelationDefinitions(in)
+}
+
+func (s *CmdbServer) GetAttributeMappingConfigs(ctx context.Context, in *cmdb.AttributeMappingConfigReq) (*cmdb.AttributeMappingConfigResp, error) {
+	l := cityperelation.NewGetAttributeMappingConfigsLogic(ctx, s.svcCtx)
+	return l.GetAttributeMappingConfigs(in)
+}
+
+// DiscoveryExecutionHistory management
+func (s *CmdbServer) CreateDiscoveryExecutionHistory(ctx context.Context, in *cmdb.DiscoveryExecutionHistoryInfo) (*cmdb.BaseIDResp, error) {
+	l := discoveryexecutionhistory.NewCreateDiscoveryExecutionHistoryLogic(ctx, s.svcCtx)
+	return l.CreateDiscoveryExecutionHistory(in)
+}
+
+func (s *CmdbServer) UpdateDiscoveryExecutionHistory(ctx context.Context, in *cmdb.DiscoveryExecutionHistoryInfo) (*cmdb.BaseResp, error) {
+	l := discoveryexecutionhistory.NewUpdateDiscoveryExecutionHistoryLogic(ctx, s.svcCtx)
+	return l.UpdateDiscoveryExecutionHistory(in)
+}
+
+func (s *CmdbServer) GetDiscoveryExecutionHistoryList(ctx context.Context, in *cmdb.DiscoveryExecutionHistoryListReq) (*cmdb.DiscoveryExecutionHistoryListResp, error) {
+	l := discoveryexecutionhistory.NewGetDiscoveryExecutionHistoryListLogic(ctx, s.svcCtx)
+	return l.GetDiscoveryExecutionHistoryList(in)
+}
+
+func (s *CmdbServer) GetDiscoveryExecutionHistoryById(ctx context.Context, in *cmdb.IDReq) (*cmdb.DiscoveryExecutionHistoryInfo, error) {
+	l := discoveryexecutionhistory.NewGetDiscoveryExecutionHistoryByIdLogic(ctx, s.svcCtx)
+	return l.GetDiscoveryExecutionHistoryById(in)
+}
+
+func (s *CmdbServer) DeleteDiscoveryExecutionHistory(ctx context.Context, in *cmdb.IDsReq) (*cmdb.BaseResp, error) {
+	l := discoveryexecutionhistory.NewDeleteDiscoveryExecutionHistoryLogic(ctx, s.svcCtx)
+	return l.DeleteDiscoveryExecutionHistory(in)
 }
 
 // RelationType management

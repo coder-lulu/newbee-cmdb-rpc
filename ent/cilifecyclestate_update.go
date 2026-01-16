@@ -63,6 +63,26 @@ func (_u *CiLifecycleStateUpdate) ClearDepartmentID() *CiLifecycleStateUpdate {
 	return _u
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_u *CiLifecycleStateUpdate) SetCreatedBy(v uuid.UUID) *CiLifecycleStateUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *CiLifecycleStateUpdate) SetNillableCreatedBy(v *uuid.UUID) *CiLifecycleStateUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *CiLifecycleStateUpdate) ClearCreatedBy() *CiLifecycleStateUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
+}
+
 // SetStateID sets the "state_id" field.
 func (_u *CiLifecycleStateUpdate) SetStateID(v string) *CiLifecycleStateUpdate {
 	_u.mutation.SetStateID(v)
@@ -1147,26 +1167,6 @@ func (_u *CiLifecycleStateUpdate) ClearComments() *CiLifecycleStateUpdate {
 	return _u
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_u *CiLifecycleStateUpdate) SetCreatedBy(v uuid.UUID) *CiLifecycleStateUpdate {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *CiLifecycleStateUpdate) SetNillableCreatedBy(v *uuid.UUID) *CiLifecycleStateUpdate {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *CiLifecycleStateUpdate) ClearCreatedBy() *CiLifecycleStateUpdate {
-	_u.mutation.ClearCreatedBy()
-	return _u
-}
-
 // SetUpdatedBy sets the "updated_by" field.
 func (_u *CiLifecycleStateUpdate) SetUpdatedBy(v uuid.UUID) *CiLifecycleStateUpdate {
 	_u.mutation.SetUpdatedBy(v)
@@ -1276,6 +1276,12 @@ func (_u *CiLifecycleStateUpdate) sqlSave(ctx context.Context) (_node int, err e
 	}
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldDepartmentID, field.TypeUint64)
+	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(cilifecyclestate.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(cilifecyclestate.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.StateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateID, field.TypeString, value)
@@ -1657,12 +1663,6 @@ func (_u *CiLifecycleStateUpdate) sqlSave(ctx context.Context) (_node int, err e
 	if _u.mutation.CommentsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldComments, field.TypeString)
 	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(cilifecyclestate.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(cilifecyclestate.FieldCreatedBy, field.TypeUUID)
-	}
 	if value, ok := _u.mutation.UpdatedBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldUpdatedBy, field.TypeUUID, value)
 	}
@@ -1719,6 +1719,26 @@ func (_u *CiLifecycleStateUpdateOne) AddDepartmentID(v int64) *CiLifecycleStateU
 // ClearDepartmentID clears the value of the "department_id" field.
 func (_u *CiLifecycleStateUpdateOne) ClearDepartmentID() *CiLifecycleStateUpdateOne {
 	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
+// SetCreatedBy sets the "created_by" field.
+func (_u *CiLifecycleStateUpdateOne) SetCreatedBy(v uuid.UUID) *CiLifecycleStateUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *CiLifecycleStateUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CiLifecycleStateUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *CiLifecycleStateUpdateOne) ClearCreatedBy() *CiLifecycleStateUpdateOne {
+	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -2806,26 +2826,6 @@ func (_u *CiLifecycleStateUpdateOne) ClearComments() *CiLifecycleStateUpdateOne 
 	return _u
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_u *CiLifecycleStateUpdateOne) SetCreatedBy(v uuid.UUID) *CiLifecycleStateUpdateOne {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *CiLifecycleStateUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CiLifecycleStateUpdateOne {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *CiLifecycleStateUpdateOne) ClearCreatedBy() *CiLifecycleStateUpdateOne {
-	_u.mutation.ClearCreatedBy()
-	return _u
-}
-
 // SetUpdatedBy sets the "updated_by" field.
 func (_u *CiLifecycleStateUpdateOne) SetUpdatedBy(v uuid.UUID) *CiLifecycleStateUpdateOne {
 	_u.mutation.SetUpdatedBy(v)
@@ -2965,6 +2965,12 @@ func (_u *CiLifecycleStateUpdateOne) sqlSave(ctx context.Context) (_node *CiLife
 	}
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cilifecyclestate.FieldDepartmentID, field.TypeUint64)
+	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(cilifecyclestate.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(cilifecyclestate.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.StateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateID, field.TypeString, value)
@@ -3345,12 +3351,6 @@ func (_u *CiLifecycleStateUpdateOne) sqlSave(ctx context.Context) (_node *CiLife
 	}
 	if _u.mutation.CommentsCleared() {
 		_spec.ClearField(cilifecyclestate.FieldComments, field.TypeString)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(cilifecyclestate.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(cilifecyclestate.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.UpdatedBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldUpdatedBy, field.TypeUUID, value)

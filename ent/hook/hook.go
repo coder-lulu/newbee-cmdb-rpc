@@ -9,6 +9,18 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent"
 )
 
+// The AggregationCacheFunc type is an adapter to allow the use of ordinary
+// function as AggregationCache mutator.
+type AggregationCacheFunc func(context.Context, *ent.AggregationCacheMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f AggregationCacheFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.AggregationCacheMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.AggregationCacheMutation", m)
+}
+
 // The AttributeFunc type is an adapter to allow the use of ordinary
 // function as Attribute mutator.
 type AttributeFunc func(context.Context, *ent.AttributeMutation) (ent.Value, error)
@@ -19,6 +31,18 @@ func (f AttributeFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, e
 		return f(ctx, mv)
 	}
 	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.AttributeMutation", m)
+}
+
+// The AttributeMappingRuleFunc type is an adapter to allow the use of ordinary
+// function as AttributeMappingRule mutator.
+type AttributeMappingRuleFunc func(context.Context, *ent.AttributeMappingRuleMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f AttributeMappingRuleFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.AttributeMappingRuleMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.AttributeMappingRuleMutation", m)
 }
 
 // The ChoiceFloatFunc type is an adapter to allow the use of ordinary
@@ -67,6 +91,30 @@ func (f CiApprovalFlowFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Val
 		return f(ctx, mv)
 	}
 	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.CiApprovalFlowMutation", m)
+}
+
+// The CiAttributeDistributionFunc type is an adapter to allow the use of ordinary
+// function as CiAttributeDistribution mutator.
+type CiAttributeDistributionFunc func(context.Context, *ent.CiAttributeDistributionMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f CiAttributeDistributionFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.CiAttributeDistributionMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.CiAttributeDistributionMutation", m)
+}
+
+// The CiDimensionFunc type is an adapter to allow the use of ordinary
+// function as CiDimension mutator.
+type CiDimensionFunc func(context.Context, *ent.CiDimensionMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f CiDimensionFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.CiDimensionMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.CiDimensionMutation", m)
 }
 
 // The CiLifecycleStateFunc type is an adapter to allow the use of ordinary
@@ -129,6 +177,18 @@ func (f CiRelationFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, 
 	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.CiRelationMutation", m)
 }
 
+// The CiStatisticsFactFunc type is an adapter to allow the use of ordinary
+// function as CiStatisticsFact mutator.
+type CiStatisticsFactFunc func(context.Context, *ent.CiStatisticsFactMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f CiStatisticsFactFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.CiStatisticsFactMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.CiStatisticsFactMutation", m)
+}
+
 // The CiTypeFunc type is an adapter to allow the use of ordinary
 // function as CiType mutator.
 type CiTypeFunc func(context.Context, *ent.CiTypeMutation) (ent.Value, error)
@@ -175,6 +235,18 @@ func (f CiTypeAttributeGroupItemFunc) Mutate(ctx context.Context, m ent.Mutation
 		return f(ctx, mv)
 	}
 	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.CiTypeAttributeGroupItemMutation", m)
+}
+
+// The CiTypeDiscoveryConfigFunc type is an adapter to allow the use of ordinary
+// function as CiTypeDiscoveryConfig mutator.
+type CiTypeDiscoveryConfigFunc func(context.Context, *ent.CiTypeDiscoveryConfigMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f CiTypeDiscoveryConfigFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.CiTypeDiscoveryConfigMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.CiTypeDiscoveryConfigMutation", m)
 }
 
 // The CiTypeGroupFunc type is an adapter to allow the use of ordinary
@@ -235,6 +307,30 @@ func (f CisFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) 
 		return f(ctx, mv)
 	}
 	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.CisMutation", m)
+}
+
+// The DiscoveryExecutionHistoryFunc type is an adapter to allow the use of ordinary
+// function as DiscoveryExecutionHistory mutator.
+type DiscoveryExecutionHistoryFunc func(context.Context, *ent.DiscoveryExecutionHistoryMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f DiscoveryExecutionHistoryFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.DiscoveryExecutionHistoryMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.DiscoveryExecutionHistoryMutation", m)
+}
+
+// The DynamicAggregationConfigFunc type is an adapter to allow the use of ordinary
+// function as DynamicAggregationConfig mutator.
+type DynamicAggregationConfigFunc func(context.Context, *ent.DynamicAggregationConfigMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f DynamicAggregationConfigFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.DynamicAggregationConfigMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.DynamicAggregationConfigMutation", m)
 }
 
 // The ImportErrorFunc type is an adapter to allow the use of ordinary
@@ -355,6 +451,30 @@ func (f RelationTypeFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value
 		return f(ctx, mv)
 	}
 	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.RelationTypeMutation", m)
+}
+
+// The TimeDimensionFunc type is an adapter to allow the use of ordinary
+// function as TimeDimension mutator.
+type TimeDimensionFunc func(context.Context, *ent.TimeDimensionMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f TimeDimensionFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.TimeDimensionMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.TimeDimensionMutation", m)
+}
+
+// The UserActivityFactFunc type is an adapter to allow the use of ordinary
+// function as UserActivityFact mutator.
+type UserActivityFactFunc func(context.Context, *ent.UserActivityFactMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f UserActivityFactFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	if mv, ok := m.(*ent.UserActivityFactMutation); ok {
+		return f(ctx, mv)
+	}
+	return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.UserActivityFactMutation", m)
 }
 
 // The ValueDatetimeFunc type is an adapter to allow the use of ordinary

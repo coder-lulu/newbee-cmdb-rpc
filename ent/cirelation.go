@@ -3,6 +3,7 @@
 package ent
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 	"time"
@@ -12,6 +13,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 )
 
 // CiRelation is the model entity for the CiRelation schema.
@@ -29,18 +31,34 @@ type CiRelation struct {
 	TenantID uint64 `json:"tenant_id,omitempty"`
 	// Department ID | 部门 ID
 	DepartmentID uint64 `json:"department_id,omitempty"`
-	// 外键，关联cmdb_cis.id，第一CI
-	FirstCiID uint64 `json:"first_ci_id,omitempty"`
-	// 外键，关联cmdb_cis.id，第二CI
-	SecondCiID uint64 `json:"second_ci_id,omitempty"`
+	// 外键，关联cmdb_cis.id，源CI
+	SourceCiID uint64 `json:"source_ci_id,omitempty"`
+	// 外键，关联cmdb_cis.id，目标CI
+	TargetCiID uint64 `json:"target_ci_id,omitempty"`
 	// 外键，关联cmdb_relation_types.id
 	RelationTypeID uint64 `json:"relation_type_id,omitempty"`
 	// 更多CI，外键，关联cmdb_cis.id
 	More uint64 `json:"more,omitempty"`
-	// 来源，枚举类
-	Source string `json:"source,omitempty"`
-	// 祖先ID
+	// 发现来源：manual, auto_discovery, import
+	DiscoverySource string `json:"discovery_source,omitempty"`
+	// 祖先关系ID链，用于关系路径追踪
 	AncestorIds string `json:"ancestor_ids,omitempty"`
+	// 关系属性，扩展关系的自定义信息
+	Properties map[string]interface{} `json:"properties,omitempty"`
+	// 属性映射数据，记录实际的映射值
+	AttributeMappings []schema.AttributeMappingData `json:"attribute_mappings,omitempty"`
+	// 关系状态：active, inactive, suspended
+	Status string `json:"status,omitempty"`
+	// 关系验证结果
+	ValidationResult schema.ValidationResult `json:"validation_result,omitempty"`
+	// 最后验证时间
+	LastValidatedAt time.Time `json:"last_validated_at,omitempty"`
+	// 是否启用属性自动同步
+	AutoSyncEnabled bool `json:"auto_sync_enabled,omitempty"`
+	// 同步配置
+	SyncConfig schema.SyncConfig `json:"sync_config,omitempty"`
+	// 关系强度：weak, normal, strong
+	RelationStrength string `json:"relation_strength,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
 	// The values are being populated by the CiRelationQuery when eager-loading is set.
 	Edges        CiRelationEdges `json:"edges"`
@@ -49,10 +67,10 @@ type CiRelation struct {
 
 // CiRelationEdges holds the relations/edges for other nodes in the graph.
 type CiRelationEdges struct {
-	// 第一CI
-	FirstCi *Cis `json:"first_ci,omitempty"`
-	// 第二CI
-	SecondCi *Cis `json:"second_ci,omitempty"`
+	// 源CI
+	SourceCi *Cis `json:"source_ci,omitempty"`
+	// 目标CI
+	TargetCi *Cis `json:"target_ci,omitempty"`
 	// 关系类型
 	RelationType *RelationType `json:"relation_type,omitempty"`
 	// 更多CI
@@ -62,26 +80,26 @@ type CiRelationEdges struct {
 	loadedTypes [4]bool
 }
 
-// FirstCiOrErr returns the FirstCi value or an error if the edge
+// SourceCiOrErr returns the SourceCi value or an error if the edge
 // was not loaded in eager-loading, or loaded but was not found.
-func (e CiRelationEdges) FirstCiOrErr() (*Cis, error) {
-	if e.FirstCi != nil {
-		return e.FirstCi, nil
+func (e CiRelationEdges) SourceCiOrErr() (*Cis, error) {
+	if e.SourceCi != nil {
+		return e.SourceCi, nil
 	} else if e.loadedTypes[0] {
 		return nil, &NotFoundError{label: cis.Label}
 	}
-	return nil, &NotLoadedError{edge: "first_ci"}
+	return nil, &NotLoadedError{edge: "source_ci"}
 }
 
-// SecondCiOrErr returns the SecondCi value or an error if the edge
+// TargetCiOrErr returns the TargetCi value or an error if the edge
 // was not loaded in eager-loading, or loaded but was not found.
-func (e CiRelationEdges) SecondCiOrErr() (*Cis, error) {
-	if e.SecondCi != nil {
-		return e.SecondCi, nil
+func (e CiRelationEdges) TargetCiOrErr() (*Cis, error) {
+	if e.TargetCi != nil {
+		return e.TargetCi, nil
 	} else if e.loadedTypes[1] {
 		return nil, &NotFoundError{label: cis.Label}
 	}
-	return nil, &NotLoadedError{edge: "second_ci"}
+	return nil, &NotLoadedError{edge: "target_ci"}
 }
 
 // RelationTypeOrErr returns the RelationType value or an error if the edge
@@ -111,11 +129,15 @@ func (*CiRelation) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case cirelation.FieldID, cirelation.FieldTenantID, cirelation.FieldDepartmentID, cirelation.FieldFirstCiID, cirelation.FieldSecondCiID, cirelation.FieldRelationTypeID, cirelation.FieldMore:
+		case cirelation.FieldProperties, cirelation.FieldAttributeMappings, cirelation.FieldValidationResult, cirelation.FieldSyncConfig:
+			values[i] = new([]byte)
+		case cirelation.FieldAutoSyncEnabled:
+			values[i] = new(sql.NullBool)
+		case cirelation.FieldID, cirelation.FieldTenantID, cirelation.FieldDepartmentID, cirelation.FieldSourceCiID, cirelation.FieldTargetCiID, cirelation.FieldRelationTypeID, cirelation.FieldMore:
 			values[i] = new(sql.NullInt64)
-		case cirelation.FieldSource, cirelation.FieldAncestorIds:
+		case cirelation.FieldDiscoverySource, cirelation.FieldAncestorIds, cirelation.FieldStatus, cirelation.FieldRelationStrength:
 			values[i] = new(sql.NullString)
-		case cirelation.FieldCreatedAt, cirelation.FieldUpdatedAt, cirelation.FieldDeletedAt:
+		case cirelation.FieldCreatedAt, cirelation.FieldUpdatedAt, cirelation.FieldDeletedAt, cirelation.FieldLastValidatedAt:
 			values[i] = new(sql.NullTime)
 		default:
 			values[i] = new(sql.UnknownType)
@@ -168,17 +190,17 @@ func (_m *CiRelation) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.DepartmentID = uint64(value.Int64)
 			}
-		case cirelation.FieldFirstCiID:
+		case cirelation.FieldSourceCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field first_ci_id", values[i])
+				return fmt.Errorf("unexpected type %T for field source_ci_id", values[i])
 			} else if value.Valid {
-				_m.FirstCiID = uint64(value.Int64)
+				_m.SourceCiID = uint64(value.Int64)
 			}
-		case cirelation.FieldSecondCiID:
+		case cirelation.FieldTargetCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field second_ci_id", values[i])
+				return fmt.Errorf("unexpected type %T for field target_ci_id", values[i])
 			} else if value.Valid {
-				_m.SecondCiID = uint64(value.Int64)
+				_m.TargetCiID = uint64(value.Int64)
 			}
 		case cirelation.FieldRelationTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -192,17 +214,73 @@ func (_m *CiRelation) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.More = uint64(value.Int64)
 			}
-		case cirelation.FieldSource:
+		case cirelation.FieldDiscoverySource:
 			if value, ok := values[i].(*sql.NullString); !ok {
-				return fmt.Errorf("unexpected type %T for field source", values[i])
+				return fmt.Errorf("unexpected type %T for field discovery_source", values[i])
 			} else if value.Valid {
-				_m.Source = value.String
+				_m.DiscoverySource = value.String
 			}
 		case cirelation.FieldAncestorIds:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field ancestor_ids", values[i])
 			} else if value.Valid {
 				_m.AncestorIds = value.String
+			}
+		case cirelation.FieldProperties:
+			if value, ok := values[i].(*[]byte); !ok {
+				return fmt.Errorf("unexpected type %T for field properties", values[i])
+			} else if value != nil && len(*value) > 0 {
+				if err := json.Unmarshal(*value, &_m.Properties); err != nil {
+					return fmt.Errorf("unmarshal field properties: %w", err)
+				}
+			}
+		case cirelation.FieldAttributeMappings:
+			if value, ok := values[i].(*[]byte); !ok {
+				return fmt.Errorf("unexpected type %T for field attribute_mappings", values[i])
+			} else if value != nil && len(*value) > 0 {
+				if err := json.Unmarshal(*value, &_m.AttributeMappings); err != nil {
+					return fmt.Errorf("unmarshal field attribute_mappings: %w", err)
+				}
+			}
+		case cirelation.FieldStatus:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field status", values[i])
+			} else if value.Valid {
+				_m.Status = value.String
+			}
+		case cirelation.FieldValidationResult:
+			if value, ok := values[i].(*[]byte); !ok {
+				return fmt.Errorf("unexpected type %T for field validation_result", values[i])
+			} else if value != nil && len(*value) > 0 {
+				if err := json.Unmarshal(*value, &_m.ValidationResult); err != nil {
+					return fmt.Errorf("unmarshal field validation_result: %w", err)
+				}
+			}
+		case cirelation.FieldLastValidatedAt:
+			if value, ok := values[i].(*sql.NullTime); !ok {
+				return fmt.Errorf("unexpected type %T for field last_validated_at", values[i])
+			} else if value.Valid {
+				_m.LastValidatedAt = value.Time
+			}
+		case cirelation.FieldAutoSyncEnabled:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field auto_sync_enabled", values[i])
+			} else if value.Valid {
+				_m.AutoSyncEnabled = value.Bool
+			}
+		case cirelation.FieldSyncConfig:
+			if value, ok := values[i].(*[]byte); !ok {
+				return fmt.Errorf("unexpected type %T for field sync_config", values[i])
+			} else if value != nil && len(*value) > 0 {
+				if err := json.Unmarshal(*value, &_m.SyncConfig); err != nil {
+					return fmt.Errorf("unmarshal field sync_config: %w", err)
+				}
+			}
+		case cirelation.FieldRelationStrength:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field relation_strength", values[i])
+			} else if value.Valid {
+				_m.RelationStrength = value.String
 			}
 		default:
 			_m.selectValues.Set(columns[i], values[i])
@@ -217,14 +295,14 @@ func (_m *CiRelation) Value(name string) (ent.Value, error) {
 	return _m.selectValues.Get(name)
 }
 
-// QueryFirstCi queries the "first_ci" edge of the CiRelation entity.
-func (_m *CiRelation) QueryFirstCi() *CisQuery {
-	return NewCiRelationClient(_m.config).QueryFirstCi(_m)
+// QuerySourceCi queries the "source_ci" edge of the CiRelation entity.
+func (_m *CiRelation) QuerySourceCi() *CisQuery {
+	return NewCiRelationClient(_m.config).QuerySourceCi(_m)
 }
 
-// QuerySecondCi queries the "second_ci" edge of the CiRelation entity.
-func (_m *CiRelation) QuerySecondCi() *CisQuery {
-	return NewCiRelationClient(_m.config).QuerySecondCi(_m)
+// QueryTargetCi queries the "target_ci" edge of the CiRelation entity.
+func (_m *CiRelation) QueryTargetCi() *CisQuery {
+	return NewCiRelationClient(_m.config).QueryTargetCi(_m)
 }
 
 // QueryRelationType queries the "relation_type" edge of the CiRelation entity.
@@ -275,11 +353,11 @@ func (_m *CiRelation) String() string {
 	builder.WriteString("department_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
-	builder.WriteString("first_ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", _m.FirstCiID))
+	builder.WriteString("source_ci_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.SourceCiID))
 	builder.WriteString(", ")
-	builder.WriteString("second_ci_id=")
-	builder.WriteString(fmt.Sprintf("%v", _m.SecondCiID))
+	builder.WriteString("target_ci_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.TargetCiID))
 	builder.WriteString(", ")
 	builder.WriteString("relation_type_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.RelationTypeID))
@@ -287,11 +365,35 @@ func (_m *CiRelation) String() string {
 	builder.WriteString("more=")
 	builder.WriteString(fmt.Sprintf("%v", _m.More))
 	builder.WriteString(", ")
-	builder.WriteString("source=")
-	builder.WriteString(_m.Source)
+	builder.WriteString("discovery_source=")
+	builder.WriteString(_m.DiscoverySource)
 	builder.WriteString(", ")
 	builder.WriteString("ancestor_ids=")
 	builder.WriteString(_m.AncestorIds)
+	builder.WriteString(", ")
+	builder.WriteString("properties=")
+	builder.WriteString(fmt.Sprintf("%v", _m.Properties))
+	builder.WriteString(", ")
+	builder.WriteString("attribute_mappings=")
+	builder.WriteString(fmt.Sprintf("%v", _m.AttributeMappings))
+	builder.WriteString(", ")
+	builder.WriteString("status=")
+	builder.WriteString(_m.Status)
+	builder.WriteString(", ")
+	builder.WriteString("validation_result=")
+	builder.WriteString(fmt.Sprintf("%v", _m.ValidationResult))
+	builder.WriteString(", ")
+	builder.WriteString("last_validated_at=")
+	builder.WriteString(_m.LastValidatedAt.Format(time.ANSIC))
+	builder.WriteString(", ")
+	builder.WriteString("auto_sync_enabled=")
+	builder.WriteString(fmt.Sprintf("%v", _m.AutoSyncEnabled))
+	builder.WriteString(", ")
+	builder.WriteString("sync_config=")
+	builder.WriteString(fmt.Sprintf("%v", _m.SyncConfig))
+	builder.WriteString(", ")
+	builder.WriteString("relation_strength=")
+	builder.WriteString(_m.RelationStrength)
 	builder.WriteByte(')')
 	return builder.String()
 }

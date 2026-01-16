@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
 	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 )
 
 // ValueInteger 对应于数据库c_value_integers
@@ -21,6 +21,7 @@ func (ValueInteger) Mixin() []ent.Mixin {
 		mixins.IDMixin{},
 		mixins2.SoftDeleteMixin{},
 		mixins.TenantMixin{},
+		mixins.DepartmentMixin{},
 	}
 }
 
@@ -30,7 +31,6 @@ func (ValueInteger) Fields() []ent.Field {
 		field.Uint64("attr_id").Comment("外键，关联cmdb_attributes.id"),
 		field.Int("value").Comment("属性值"),
 		field.Bool("is_cover").Comment("是否可被覆盖").Default(true),
-
 	}
 }
 

@@ -27,6 +27,8 @@ type ValueText struct {
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 外键，关联cmdb_cis.id
 	CiID uint64 `json:"ci_id,omitempty"`
 	// 外键，关联cmdb_attributes.id
@@ -81,7 +83,7 @@ func (*ValueText) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case valuetext.FieldIsCover:
 			values[i] = new(sql.NullBool)
-		case valuetext.FieldID, valuetext.FieldTenantID, valuetext.FieldCiID, valuetext.FieldAttrID:
+		case valuetext.FieldID, valuetext.FieldTenantID, valuetext.FieldDepartmentID, valuetext.FieldCiID, valuetext.FieldAttrID:
 			values[i] = new(sql.NullInt64)
 		case valuetext.FieldValue:
 			values[i] = new(sql.NullString)
@@ -131,6 +133,12 @@ func (_m *ValueText) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case valuetext.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case valuetext.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -213,6 +221,9 @@ func (_m *ValueText) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.CiID))

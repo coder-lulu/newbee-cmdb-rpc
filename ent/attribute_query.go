@@ -13,6 +13,7 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attributemappingrule"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
@@ -45,6 +46,7 @@ type AttributeQuery struct {
 	withChoiceFloats    *ChoiceFloatQuery
 	withTypeAttributes  *CiTypeAttributeQuery
 	withGroupItems      *CiTypeAttributeGroupItemQuery
+	withMappingRules    *AttributeMappingRuleQuery
 	// intermediate query (i.e. traversal path).
 	sql  *sql.Selector
 	path func(context.Context) (*sql.Selector, error)
@@ -323,6 +325,28 @@ func (_q *AttributeQuery) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
 	return query
 }
 
+// QueryMappingRules chains the current query on the "mapping_rules" edge.
+func (_q *AttributeQuery) QueryMappingRules() *AttributeMappingRuleQuery {
+	query := (&AttributeMappingRuleClient{config: _q.config}).Query()
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := _q.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := _q.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(attribute.Table, attribute.FieldID, selector),
+			sqlgraph.To(attributemappingrule.Table, attributemappingrule.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, attribute.MappingRulesTable, attribute.MappingRulesColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
+}
+
 // First returns the first Attribute entity from the query.
 // Returns a *NotFoundError when no Attribute was found.
 func (_q *AttributeQuery) First(ctx context.Context) (*Attribute, error) {
@@ -526,6 +550,7 @@ func (_q *AttributeQuery) Clone() *AttributeQuery {
 		withChoiceFloats:    _q.withChoiceFloats.Clone(),
 		withTypeAttributes:  _q.withTypeAttributes.Clone(),
 		withGroupItems:      _q.withGroupItems.Clone(),
+		withMappingRules:    _q.withMappingRules.Clone(),
 		// clone intermediate query.
 		sql:  _q.sql.Clone(),
 		path: _q.path,
@@ -653,6 +678,17 @@ func (_q *AttributeQuery) WithGroupItems(opts ...func(*CiTypeAttributeGroupItemQ
 	return _q
 }
 
+// WithMappingRules tells the query-builder to eager-load the nodes that are connected to
+// the "mapping_rules" edge. The optional arguments are used to configure the query builder of the edge.
+func (_q *AttributeQuery) WithMappingRules(opts ...func(*AttributeMappingRuleQuery)) *AttributeQuery {
+	query := (&AttributeMappingRuleClient{config: _q.config}).Query()
+	for _, opt := range opts {
+		opt(query)
+	}
+	_q.withMappingRules = query
+	return _q
+}
+
 // GroupBy is used to group vertices by one or more fields/columns.
 // It is often used with aggregate functions, like: count, max, mean, min, sum.
 //
@@ -731,7 +767,7 @@ func (_q *AttributeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*At
 	var (
 		nodes       = []*Attribute{}
 		_spec       = _q.querySpec()
-		loadedTypes = [11]bool{
+		loadedTypes = [12]bool{
 			_q.withValueTexts != nil,
 			_q.withValueIndexTexts != nil,
 			_q.withValueJsons != nil,
@@ -743,6 +779,7 @@ func (_q *AttributeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*At
 			_q.withChoiceFloats != nil,
 			_q.withTypeAttributes != nil,
 			_q.withGroupItems != nil,
+			_q.withMappingRules != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
@@ -837,6 +874,13 @@ func (_q *AttributeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*At
 		if err := _q.loadGroupItems(ctx, query, nodes,
 			func(n *Attribute) { n.Edges.GroupItems = []*CiTypeAttributeGroupItem{} },
 			func(n *Attribute, e *CiTypeAttributeGroupItem) { n.Edges.GroupItems = append(n.Edges.GroupItems, e) }); err != nil {
+			return nil, err
+		}
+	}
+	if query := _q.withMappingRules; query != nil {
+		if err := _q.loadMappingRules(ctx, query, nodes,
+			func(n *Attribute) { n.Edges.MappingRules = []*AttributeMappingRule{} },
+			func(n *Attribute, e *AttributeMappingRule) { n.Edges.MappingRules = append(n.Edges.MappingRules, e) }); err != nil {
 			return nil, err
 		}
 	}
@@ -1168,6 +1212,36 @@ func (_q *AttributeQuery) loadGroupItems(ctx context.Context, query *CiTypeAttri
 		node, ok := nodeids[fk]
 		if !ok {
 			return fmt.Errorf(`unexpected referenced foreign-key "attr_id" returned %v for node %v`, fk, n.ID)
+		}
+		assign(node, n)
+	}
+	return nil
+}
+func (_q *AttributeQuery) loadMappingRules(ctx context.Context, query *AttributeMappingRuleQuery, nodes []*Attribute, init func(*Attribute), assign func(*Attribute, *AttributeMappingRule)) error {
+	fks := make([]driver.Value, 0, len(nodes))
+	nodeids := make(map[uint64]*Attribute)
+	for i := range nodes {
+		fks = append(fks, nodes[i].ID)
+		nodeids[nodes[i].ID] = nodes[i]
+		if init != nil {
+			init(nodes[i])
+		}
+	}
+	if len(query.ctx.Fields) > 0 {
+		query.ctx.AppendFieldOnce(attributemappingrule.FieldCiAttributeID)
+	}
+	query.Where(predicate.AttributeMappingRule(func(s *sql.Selector) {
+		s.Where(sql.InValues(s.C(attribute.MappingRulesColumn), fks...))
+	}))
+	neighbors, err := query.All(ctx)
+	if err != nil {
+		return err
+	}
+	for _, n := range neighbors {
+		fk := n.CiAttributeID
+		node, ok := nodeids[fk]
+		if !ok {
+			return fmt.Errorf(`unexpected referenced foreign-key "ci_attribute_id" returned %v for node %v`, fk, n.ID)
 		}
 		assign(node, n)
 	}

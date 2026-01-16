@@ -102,6 +102,20 @@ func (_c *CisCreate) SetNillableDepartmentID(v *uint64) *CisCreate {
 	return _c
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_c *CisCreate) SetCreatedBy(v uuid.UUID) *CisCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_c *CisCreate) SetNillableCreatedBy(v *uuid.UUID) *CisCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
+	}
+	return _c
+}
+
 // SetTypeID sets the "type_id" field.
 func (_c *CisCreate) SetTypeID(v uint64) *CisCreate {
 	_c.mutation.SetTypeID(v)
@@ -118,20 +132,6 @@ func (_c *CisCreate) SetStatus(v uint32) *CisCreate {
 func (_c *CisCreate) SetNillableStatus(v *uint32) *CisCreate {
 	if v != nil {
 		_c.SetStatus(*v)
-	}
-	return _c
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_c *CisCreate) SetCreatedBy(v uuid.UUID) *CisCreate {
-	_c.mutation.SetCreatedBy(v)
-	return _c
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_c *CisCreate) SetNillableCreatedBy(v *uuid.UUID) *CisCreate {
-	if v != nil {
-		_c.SetCreatedBy(*v)
 	}
 	return _c
 }
@@ -261,34 +261,34 @@ func (_c *CisCreate) AddValueDatetimes(v ...*ValueDatetime) *CisCreate {
 	return _c.AddValueDatetimeIDs(ids...)
 }
 
-// AddFirstRelationIDs adds the "first_relations" edge to the CiRelation entity by IDs.
-func (_c *CisCreate) AddFirstRelationIDs(ids ...uint64) *CisCreate {
-	_c.mutation.AddFirstRelationIDs(ids...)
+// AddSourceRelationIDs adds the "source_relations" edge to the CiRelation entity by IDs.
+func (_c *CisCreate) AddSourceRelationIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddSourceRelationIDs(ids...)
 	return _c
 }
 
-// AddFirstRelations adds the "first_relations" edges to the CiRelation entity.
-func (_c *CisCreate) AddFirstRelations(v ...*CiRelation) *CisCreate {
+// AddSourceRelations adds the "source_relations" edges to the CiRelation entity.
+func (_c *CisCreate) AddSourceRelations(v ...*CiRelation) *CisCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _c.AddFirstRelationIDs(ids...)
+	return _c.AddSourceRelationIDs(ids...)
 }
 
-// AddSecondRelationIDs adds the "second_relations" edge to the CiRelation entity by IDs.
-func (_c *CisCreate) AddSecondRelationIDs(ids ...uint64) *CisCreate {
-	_c.mutation.AddSecondRelationIDs(ids...)
+// AddTargetRelationIDs adds the "target_relations" edge to the CiRelation entity by IDs.
+func (_c *CisCreate) AddTargetRelationIDs(ids ...uint64) *CisCreate {
+	_c.mutation.AddTargetRelationIDs(ids...)
 	return _c
 }
 
-// AddSecondRelations adds the "second_relations" edges to the CiRelation entity.
-func (_c *CisCreate) AddSecondRelations(v ...*CiRelation) *CisCreate {
+// AddTargetRelations adds the "target_relations" edges to the CiRelation entity.
+func (_c *CisCreate) AddTargetRelations(v ...*CiRelation) *CisCreate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _c.AddSecondRelationIDs(ids...)
+	return _c.AddTargetRelationIDs(ids...)
 }
 
 // AddMoreRelationIDs adds the "more_relations" edge to the CiRelation entity by IDs.
@@ -467,13 +467,13 @@ func (_c *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		_spec.SetField(cis.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
-	if value, ok := _c.mutation.Status(); ok {
-		_spec.SetField(cis.FieldStatus, field.TypeUint32, value)
-		_node.Status = value
-	}
 	if value, ok := _c.mutation.CreatedBy(); ok {
 		_spec.SetField(cis.FieldCreatedBy, field.TypeUUID, value)
 		_node.CreatedBy = &value
+	}
+	if value, ok := _c.mutation.Status(); ok {
+		_spec.SetField(cis.FieldStatus, field.TypeUint32, value)
+		_node.Status = value
 	}
 	if value, ok := _c.mutation.Tags(); ok {
 		_spec.SetField(cis.FieldTags, field.TypeJSON, value)
@@ -600,12 +600,12 @@ func (_c *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := _c.mutation.FirstRelationsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.SourceRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
+			Table:   cis.SourceRelationsTable,
+			Columns: []string{cis.SourceRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -616,12 +616,12 @@ func (_c *CisCreate) createSpec() (*Cis, *sqlgraph.CreateSpec) {
 		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
-	if nodes := _c.mutation.SecondRelationsIDs(); len(nodes) > 0 {
+	if nodes := _c.mutation.TargetRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.SecondRelationsTable,
-			Columns: []string{cis.SecondRelationsColumn},
+			Table:   cis.TargetRelationsTable,
+			Columns: []string{cis.TargetRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),

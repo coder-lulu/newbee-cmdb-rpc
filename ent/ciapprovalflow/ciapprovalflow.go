@@ -22,6 +22,8 @@ const (
 	FieldTenantID = "tenant_id"
 	// FieldDepartmentID holds the string denoting the department_id field in the database.
 	FieldDepartmentID = "department_id"
+	// FieldCreatedBy holds the string denoting the created_by field in the database.
+	FieldCreatedBy = "created_by"
 	// FieldFlowID holds the string denoting the flow_id field in the database.
 	FieldFlowID = "flow_id"
 	// FieldFlowName holds the string denoting the flow_name field in the database.
@@ -84,8 +86,6 @@ const (
 	FieldAvgApprovalTime = "avg_approval_time"
 	// FieldLastUsedAt holds the string denoting the last_used_at field in the database.
 	FieldLastUsedAt = "last_used_at"
-	// FieldCreatedBy holds the string denoting the created_by field in the database.
-	FieldCreatedBy = "created_by"
 	// FieldCreatedByName holds the string denoting the created_by_name field in the database.
 	FieldCreatedByName = "created_by_name"
 	// FieldUpdatedBy holds the string denoting the updated_by field in the database.
@@ -117,6 +117,7 @@ var Columns = []string{
 	FieldUpdatedAt,
 	FieldTenantID,
 	FieldDepartmentID,
+	FieldCreatedBy,
 	FieldFlowID,
 	FieldFlowName,
 	FieldFlowCode,
@@ -148,7 +149,6 @@ var Columns = []string{
 	FieldApprovalRate,
 	FieldAvgApprovalTime,
 	FieldLastUsedAt,
-	FieldCreatedBy,
 	FieldCreatedByName,
 	FieldUpdatedBy,
 	FieldUpdatedByName,
@@ -345,6 +345,11 @@ func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
 }
 
+// ByCreatedBy orders the results by the created_by field.
+func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
+}
+
 // ByFlowID orders the results by the flow_id field.
 func ByFlowID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldFlowID, opts...).ToFunc()
@@ -463,11 +468,6 @@ func ByAvgApprovalTime(opts ...sql.OrderTermOption) OrderOption {
 // ByLastUsedAt orders the results by the last_used_at field.
 func ByLastUsedAt(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldLastUsedAt, opts...).ToFunc()
-}
-
-// ByCreatedBy orders the results by the created_by field.
-func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
 // ByCreatedByName orders the results by the created_by_name field.

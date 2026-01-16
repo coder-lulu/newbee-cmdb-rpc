@@ -9,7 +9,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
-	"github.com/coder-lulu/newbee-common/utils/pointy"
+	"github.com/coder-lulu/newbee-common/v2/utils/pointy"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

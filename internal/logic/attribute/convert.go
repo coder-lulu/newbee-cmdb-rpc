@@ -15,8 +15,8 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/consts"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
-	"github.com/coder-lulu/newbee-common/utils/uuidx"
-	"github.com/coder-lulu/newbee-common/utils/validator"
+	"github.com/coder-lulu/newbee-common/v2/utils/uuidx"
+	"github.com/coder-lulu/newbee-common/v2/utils/validator"
 )
 
 // isZeroAttributeOptionS 检查 AttributeOptionS 是否为零值

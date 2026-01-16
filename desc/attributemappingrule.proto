@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+// AttributeMappingRule message
+
+message AttributeMappingRuleInfo {
+  optional uint64 id = 1;
+  optional int64 created_at = 2;
+  optional int64 updated_at = 3;
+  // Status 1: normal 2: ban | 状态 1 正常 2 禁用
+  optional uint32 status = 4;
+  // 发现配置ID
+  optional uint64 discovery_config_id = 5;
+  // CI属性ID
+  optional uint64 ci_attribute_id = 6;
+  // 源字段名
+  optional string source_field = 7;
+  // 源字段路径(支持JSON路径)
+  optional string source_path = 8;
+  // 目标属性名
+  optional string target_attribute = 9;
+  // 转换类型: direct, lookup, script, template
+  optional string transform_type = 10;
+  // 转换配置JSON
+  optional string transform_config = 11;
+  // 默认值
+  optional string default_value = 12;
+  // 验证规则JSON
+  optional string validation_rules = 13;
+  // 验证正则表达式
+  optional string validation_regex = 14;
+  // 是否必填
+  optional bool is_required = 15;
+  // 是否唯一
+  optional bool is_unique = 16;
+  // 映射优先级
+  optional int64 priority = 17;
+  // 是否启用
+  optional bool enabled = 18;
+  // 更新策略: overwrite, merge, append
+  optional string update_strategy = 19;
+  // 成功次数
+  optional int64 success_count = 20;
+  // 失败次数
+  optional int64 failed_count = 21;
+  // 上次成功时间
+  optional int64  last_success_at = 22;
+  // 映射描述
+  optional string description = 23;
+  // 扩展元数据JSON
+  optional string metadata = 24;
+}
+
+message AttributeMappingRuleListResp {
+  uint64 total = 1;
+  repeated AttributeMappingRuleInfo data = 2;
+}
+
+message AttributeMappingRuleListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int64 created_at = 3;
+  optional int64 updated_at = 4;
+  optional uint32 status = 5;
+  optional int64 deleted_at = 6;
+  optional uint64 discovery_config_id = 7;
+  optional uint64 ci_attribute_id = 8;
+  optional string source_field = 9;
+  optional string source_path = 10;
+  optional string target_attribute = 11;
+  optional string transform_type = 12;
+  optional string transform_config = 13;
+  optional string default_value = 14;
+  optional string validation_rules = 15;
+  optional string validation_regex = 16;
+  optional bool is_required = 17;
+  optional bool is_unique = 18;
+  optional int64 priority = 19;
+  optional bool enabled = 20;
+  optional string update_strategy = 21;
+  optional int64 success_count = 22;
+  optional int64 failed_count = 23;
+  optional int64 last_success_at = 24;
+  optional string description = 25;
+  optional string metadata = 26;
+}
+
+
+service Cmdb {
+
+  // AttributeMappingRule management
+  // group: attributemappingrule
+  rpc createAttributeMappingRule (AttributeMappingRuleInfo) returns (BaseIDResp);
+  // group: attributemappingrule
+  rpc updateAttributeMappingRule (AttributeMappingRuleInfo) returns (BaseResp);
+  // group: attributemappingrule
+  rpc getAttributeMappingRuleList (AttributeMappingRuleListReq) returns (AttributeMappingRuleListResp);
+  // group: attributemappingrule
+  rpc getAttributeMappingRuleById (IDReq) returns (AttributeMappingRuleInfo);
+  // group: attributemappingrule
+  rpc deleteAttributeMappingRule (IDsReq) returns (BaseResp);
+
+
+}

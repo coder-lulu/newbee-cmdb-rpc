@@ -1,23 +1,89 @@
 syntax = "proto3";
 
+// AttributeMappingData 属性映射数据结构
+message AttributeMappingData {
+  // 源属性ID
+  uint64 source_attr_id = 1;
+  // 目标属性ID
+  uint64 target_attr_id = 2;
+  // 源属性值
+  optional string source_value = 3;
+  // 目标属性值
+  optional string target_value = 4;
+  // 最后同步时间
+  optional int64 last_sync_at = 5;
+  // 同步状态: synced, pending, failed
+  optional string sync_status = 6;
+  // 冲突原因
+  optional string conflict_reason = 7;
+}
+
+// ValidationResult 关系验证结果
+message ValidationResult {
+  // 是否有效
+  bool is_valid = 1;
+  // 错误信息
+  repeated string errors = 2;
+  // 警告信息
+  repeated string warnings = 3;
+  // 验证时间
+  int64 validated_at = 4;
+  // 验证类型: auto, manual
+  string validation_type = 5;
+}
+
+// SyncConfig 同步配置
+message SyncConfig {
+  // 同步方向: bidirectional, source_to_target, target_to_source
+  string sync_direction = 1;
+  // 同步频率: realtime, hourly, daily
+  string sync_frequency = 2;
+  // 冲突策略: manual, source_priority, target_priority, latest
+  string conflict_policy = 3;
+  // 重试次数
+  int32 retry_attempts = 4;
+  // 重试间隔(秒)
+  int64 retry_interval = 5;
+  // 启用的映射ID列表
+  repeated uint64 enabled_mappings = 6;
+}
+
 // CiRelation message
 
 message CiRelationInfo {
   optional uint64 id = 1;
   optional int64 created_at = 2;
   optional int64 updated_at = 3;
-  // 外键，关联cmdb_cis.id，第一CI
-  optional uint64 first_ci_id = 4;
-  // 外键，关联cmdb_cis.id，第二CI
-  optional uint64 second_ci_id = 5;
+  // 外键，关联cmdb_cis.id，源CI
+  optional uint64 source_ci_id = 4;
+  // 外键，关联cmdb_cis.id，目标CI
+  optional uint64 target_ci_id = 5;
   // 外键，关联cmdb_relation_types.id
   optional uint64 relation_type_id = 6;
   // 更多CI，外键，关联cmdb_cis.id
   optional uint64 more = 7;
-  // 来源，枚举类
-  optional string source = 8;
-  // 祖先ID
+  // 发现来源：manual, auto_discovery, import
+  optional string discovery_source = 8;
+  // 祖先关系ID链，用于关系路径追踪
   optional string ancestor_ids = 9;
+  // 关系属性，扩展关系的自定义信息
+  optional string properties = 10;
+  
+  // 扩展字段：支持属性映射和关系状态管理
+  // 属性映射数据，记录实际的映射值
+  repeated AttributeMappingData attribute_mappings = 11;
+  // 关系状态：active, inactive, suspended
+  optional string status = 12;
+  // 关系验证结果
+  optional ValidationResult validation_result = 13;
+  // 最后验证时间
+  optional int64 last_validated_at = 14;
+  // 是否启用属性自动同步
+  optional bool auto_sync_enabled = 15;
+  // 同步配置
+  optional SyncConfig sync_config = 16;
+  // 关系强度：weak, normal, strong
+  optional string relation_strength = 17;
 }
 
 message CiRelationListResp {
@@ -31,12 +97,54 @@ message CiRelationListReq {
   optional int64 created_at = 3;
   optional int64 updated_at = 4;
   optional int64 deleted_at = 5;
-  optional uint64 first_ci_id = 6;
-  optional uint64 second_ci_id = 7;
+  optional uint64 source_ci_id = 6;
+  optional uint64 target_ci_id = 7;
   optional uint64 relation_type_id = 8;
   optional uint64 more = 9;
-  optional string source = 10;
+  optional string discovery_source = 10;
   optional string ancestor_ids = 11;
+}
+
+// CiRelationBatchQueryReq CI实例关系批量查询请求
+message CiRelationBatchQueryReq {
+  // CI ID列表，批量查询这些CI的关系
+  repeated uint64 ci_ids = 1;
+  // 关系方向：source(作为源), target(作为目标), both(双向)，默认both
+  optional string direction = 2;
+  // 关系类型ID过滤
+  repeated uint64 relation_type_ids = 3;
+  // 是否包含属性映射数据
+  optional bool include_attribute_mappings = 4;
+  // 是否只查询激活状态的关系
+  optional bool active_only = 5;
+  // 关系状态过滤：active, inactive, suspended
+  repeated string status_filter = 6;
+  // 发现来源过滤：manual, auto_discovery, import
+  repeated string discovery_source_filter = 7;
+  // 深度限制，用于关系链追踪（默认1层）
+  optional int32 depth_limit = 8;
+}
+
+// CiRelationBatchQueryResp CI实例关系批量查询响应
+message CiRelationBatchQueryResp {
+  // 按CI ID分组的关系数据
+  map<uint64, CiRelationGroup> relations_by_ci = 1;
+  // 总关系数量
+  uint64 total_relations = 2;
+  // 查询的CI总数
+  uint64 total_cis = 3;
+}
+
+// CiRelationGroup 单个CI的关系分组
+message CiRelationGroup {
+  // CI ID
+  uint64 ci_id = 1;
+  // 作为源CI的关系
+  repeated CiRelationInfo source_relations = 2;
+  // 作为目标CI的关系  
+  repeated CiRelationInfo target_relations = 3;
+  // 关系总数
+  uint64 total_count = 4;
 }
 
 
@@ -53,6 +161,8 @@ service Cmdb {
   rpc getCiRelationById (IDReq) returns (CiRelationInfo);
   // group: cirelation
   rpc deleteCiRelation (IDsReq) returns (BaseResp);
+  // group: cirelation
+  rpc getCiRelationsBatch (CiRelationBatchQueryReq) returns (CiRelationBatchQueryResp);
 
 
 }

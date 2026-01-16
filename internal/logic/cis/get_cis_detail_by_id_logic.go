@@ -42,11 +42,24 @@ func (l *GetCisDetailByIdLogic) GetCisDetailById(in *cmdb.IDReq) (*cmdb.CisDetai
 		return nil, dberrorhandler.DefaultEntError(l.Logger, err, in)
 	}
 
+	// 加载关系数据
+	relationResult, err := LoadCiRelations(l.ctx, l.svcCtx.DB, in.Id)
+	if err != nil {
+		return nil, dberrorhandler.DefaultEntError(l.Logger, err, in)
+	}
+
 	// 转换为响应格式
 	cisInfo := CisEntToProto(result, attributes)
 	if cisInfo == nil {
 		return nil, dberrorhandler.DefaultEntError(l.Logger,
 			fmt.Errorf("failed to convert CI entity to proto"), in)
+	}
+
+	// 设置关系数据
+	if relationResult != nil {
+		cisInfo.Relations = &cmdb.CiRelationsData{
+			QueryResult: relationResult,
+		}
 	}
 
 	// 构建详情响应

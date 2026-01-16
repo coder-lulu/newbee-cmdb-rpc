@@ -30,6 +30,8 @@ type ImportTask struct {
 	TenantID uint64 `json:"tenant_id,omitempty"`
 	// Department ID | 部门 ID
 	DepartmentID uint64 `json:"department_id,omitempty"`
+	// Created user's UUID | 创建者 UUID
+	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 任务唯一标识
 	TaskID string `json:"task_id,omitempty"`
 	// 任务名称
@@ -76,8 +78,6 @@ type ImportTask struct {
 	ErrorMessage string `json:"error_message,omitempty"`
 	// 结果文件路径
 	ResultFilePath string `json:"result_file_path,omitempty"`
-	// 创建者ID
-	CreatedBy uuid.UUID `json:"created_by,omitempty"`
 	// 创建者姓名
 	CreatedByName string `json:"created_by_name,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
@@ -133,6 +133,8 @@ func (*ImportTask) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
+		case importtask.FieldCreatedBy:
+			values[i] = &sql.NullScanner{S: new(uuid.UUID)}
 		case importtask.FieldMappingConfig:
 			values[i] = new([]byte)
 		case importtask.FieldDryRun:
@@ -145,8 +147,6 @@ func (*ImportTask) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullString)
 		case importtask.FieldCreatedAt, importtask.FieldUpdatedAt, importtask.FieldDeletedAt, importtask.FieldStartTime, importtask.FieldEndTime:
 			values[i] = new(sql.NullTime)
-		case importtask.FieldCreatedBy:
-			values[i] = new(uuid.UUID)
 		default:
 			values[i] = new(sql.UnknownType)
 		}
@@ -197,6 +197,13 @@ func (_m *ImportTask) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
 				_m.DepartmentID = uint64(value.Int64)
+			}
+		case importtask.FieldCreatedBy:
+			if value, ok := values[i].(*sql.NullScanner); !ok {
+				return fmt.Errorf("unexpected type %T for field created_by", values[i])
+			} else if value.Valid {
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case importtask.FieldTaskID:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -338,12 +345,6 @@ func (_m *ImportTask) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.ResultFilePath = value.String
 			}
-		case importtask.FieldCreatedBy:
-			if value, ok := values[i].(*uuid.UUID); !ok {
-				return fmt.Errorf("unexpected type %T for field created_by", values[i])
-			} else if value != nil {
-				_m.CreatedBy = *value
-			}
 		case importtask.FieldCreatedByName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by_name", values[i])
@@ -416,6 +417,11 @@ func (_m *ImportTask) String() string {
 	builder.WriteString("department_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
+	if v := _m.CreatedBy; v != nil {
+		builder.WriteString("created_by=")
+		builder.WriteString(fmt.Sprintf("%v", *v))
+	}
+	builder.WriteString(", ")
 	builder.WriteString("task_id=")
 	builder.WriteString(_m.TaskID)
 	builder.WriteString(", ")
@@ -484,9 +490,6 @@ func (_m *ImportTask) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("result_file_path=")
 	builder.WriteString(_m.ResultFilePath)
-	builder.WriteString(", ")
-	builder.WriteString("created_by=")
-	builder.WriteString(fmt.Sprintf("%v", _m.CreatedBy))
 	builder.WriteString(", ")
 	builder.WriteString("created_by_name=")
 	builder.WriteString(_m.CreatedByName)

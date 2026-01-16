@@ -8,7 +8,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
-	"github.com/coder-lulu/newbee-common/msg/errormsg"
+	"github.com/coder-lulu/newbee-common/v2/msg/errormsg"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 

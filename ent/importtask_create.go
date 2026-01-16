@@ -94,6 +94,20 @@ func (_c *ImportTaskCreate) SetNillableDepartmentID(v *uint64) *ImportTaskCreate
 	return _c
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_c *ImportTaskCreate) SetCreatedBy(v uuid.UUID) *ImportTaskCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_c *ImportTaskCreate) SetNillableCreatedBy(v *uuid.UUID) *ImportTaskCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
+	}
+	return _c
+}
+
 // SetTaskID sets the "task_id" field.
 func (_c *ImportTaskCreate) SetTaskID(v string) *ImportTaskCreate {
 	_c.mutation.SetTaskID(v)
@@ -388,20 +402,6 @@ func (_c *ImportTaskCreate) SetResultFilePath(v string) *ImportTaskCreate {
 func (_c *ImportTaskCreate) SetNillableResultFilePath(v *string) *ImportTaskCreate {
 	if v != nil {
 		_c.SetResultFilePath(*v)
-	}
-	return _c
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_c *ImportTaskCreate) SetCreatedBy(v uuid.UUID) *ImportTaskCreate {
-	_c.mutation.SetCreatedBy(v)
-	return _c
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_c *ImportTaskCreate) SetNillableCreatedBy(v *uuid.UUID) *ImportTaskCreate {
-	if v != nil {
-		_c.SetCreatedBy(*v)
 	}
 	return _c
 }
@@ -709,6 +709,10 @@ func (_c *ImportTaskCreate) createSpec() (*ImportTask, *sqlgraph.CreateSpec) {
 		_spec.SetField(importtask.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
+	if value, ok := _c.mutation.CreatedBy(); ok {
+		_spec.SetField(importtask.FieldCreatedBy, field.TypeUUID, value)
+		_node.CreatedBy = &value
+	}
 	if value, ok := _c.mutation.TaskID(); ok {
 		_spec.SetField(importtask.FieldTaskID, field.TypeString, value)
 		_node.TaskID = value
@@ -796,10 +800,6 @@ func (_c *ImportTaskCreate) createSpec() (*ImportTask, *sqlgraph.CreateSpec) {
 	if value, ok := _c.mutation.ResultFilePath(); ok {
 		_spec.SetField(importtask.FieldResultFilePath, field.TypeString, value)
 		_node.ResultFilePath = value
-	}
-	if value, ok := _c.mutation.CreatedBy(); ok {
-		_spec.SetField(importtask.FieldCreatedBy, field.TypeUUID, value)
-		_node.CreatedBy = value
 	}
 	if value, ok := _c.mutation.CreatedByName(); ok {
 		_spec.SetField(importtask.FieldCreatedByName, field.TypeString, value)

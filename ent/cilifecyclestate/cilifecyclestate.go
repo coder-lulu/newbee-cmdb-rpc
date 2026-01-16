@@ -22,6 +22,8 @@ const (
 	FieldTenantID = "tenant_id"
 	// FieldDepartmentID holds the string denoting the department_id field in the database.
 	FieldDepartmentID = "department_id"
+	// FieldCreatedBy holds the string denoting the created_by field in the database.
+	FieldCreatedBy = "created_by"
 	// FieldStateID holds the string denoting the state_id field in the database.
 	FieldStateID = "state_id"
 	// FieldStateName holds the string denoting the state_name field in the database.
@@ -150,8 +152,6 @@ const (
 	FieldTags = "tags"
 	// FieldComments holds the string denoting the comments field in the database.
 	FieldComments = "comments"
-	// FieldCreatedBy holds the string denoting the created_by field in the database.
-	FieldCreatedBy = "created_by"
 	// FieldUpdatedBy holds the string denoting the updated_by field in the database.
 	FieldUpdatedBy = "updated_by"
 	// Table holds the table name of the cilifecyclestate in the database.
@@ -165,6 +165,7 @@ var Columns = []string{
 	FieldUpdatedAt,
 	FieldTenantID,
 	FieldDepartmentID,
+	FieldCreatedBy,
 	FieldStateID,
 	FieldStateName,
 	FieldStateCode,
@@ -229,7 +230,6 @@ var Columns = []string{
 	FieldMetadata,
 	FieldTags,
 	FieldComments,
-	FieldCreatedBy,
 	FieldUpdatedBy,
 }
 
@@ -413,6 +413,11 @@ func ByTenantID(opts ...sql.OrderTermOption) OrderOption {
 // ByDepartmentID orders the results by the department_id field.
 func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
+}
+
+// ByCreatedBy orders the results by the created_by field.
+func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
 // ByStateID orders the results by the state_id field.
@@ -628,11 +633,6 @@ func ByIsFinal(opts ...sql.OrderTermOption) OrderOption {
 // ByComments orders the results by the comments field.
 func ByComments(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldComments, opts...).ToFunc()
-}
-
-// ByCreatedBy orders the results by the created_by field.
-func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
 // ByUpdatedBy orders the results by the updated_by field.

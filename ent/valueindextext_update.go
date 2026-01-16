@@ -56,6 +56,33 @@ func (_u *ValueIndexTextUpdate) ClearDeletedAt() *ValueIndexTextUpdate {
 	return _u
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_u *ValueIndexTextUpdate) SetDepartmentID(v uint64) *ValueIndexTextUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_u *ValueIndexTextUpdate) SetNillableDepartmentID(v *uint64) *ValueIndexTextUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
+	}
+	return _u
+}
+
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ValueIndexTextUpdate) AddDepartmentID(v int64) *ValueIndexTextUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
+}
+
+// ClearDepartmentID clears the value of the "department_id" field.
+func (_u *ValueIndexTextUpdate) ClearDepartmentID() *ValueIndexTextUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
 // SetCiID sets the "ci_id" field.
 func (_u *ValueIndexTextUpdate) SetCiID(v uint64) *ValueIndexTextUpdate {
 	_u.mutation.SetCiID(v)
@@ -224,6 +251,15 @@ func (_u *ValueIndexTextUpdate) sqlSave(ctx context.Context) (_node int, err err
 	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valueindextext.FieldDeletedAt, field.TypeTime)
 	}
+	if value, ok := _u.mutation.DepartmentID(); ok {
+		_spec.SetField(valueindextext.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
+		_spec.AddField(valueindextext.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if _u.mutation.DepartmentIDCleared() {
+		_spec.ClearField(valueindextext.FieldDepartmentID, field.TypeUint64)
+	}
 	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valueindextext.FieldValue, field.TypeString, value)
 	}
@@ -331,6 +367,33 @@ func (_u *ValueIndexTextUpdateOne) SetNillableDeletedAt(v *time.Time) *ValueInde
 // ClearDeletedAt clears the value of the "deleted_at" field.
 func (_u *ValueIndexTextUpdateOne) ClearDeletedAt() *ValueIndexTextUpdateOne {
 	_u.mutation.ClearDeletedAt()
+	return _u
+}
+
+// SetDepartmentID sets the "department_id" field.
+func (_u *ValueIndexTextUpdateOne) SetDepartmentID(v uint64) *ValueIndexTextUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_u *ValueIndexTextUpdateOne) SetNillableDepartmentID(v *uint64) *ValueIndexTextUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
+	}
+	return _u
+}
+
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ValueIndexTextUpdateOne) AddDepartmentID(v int64) *ValueIndexTextUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
+}
+
+// ClearDepartmentID clears the value of the "department_id" field.
+func (_u *ValueIndexTextUpdateOne) ClearDepartmentID() *ValueIndexTextUpdateOne {
+	_u.mutation.ClearDepartmentID()
 	return _u
 }
 
@@ -531,6 +594,15 @@ func (_u *ValueIndexTextUpdateOne) sqlSave(ctx context.Context) (_node *ValueInd
 	}
 	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valueindextext.FieldDeletedAt, field.TypeTime)
+	}
+	if value, ok := _u.mutation.DepartmentID(); ok {
+		_spec.SetField(valueindextext.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
+		_spec.AddField(valueindextext.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if _u.mutation.DepartmentIDCleared() {
+		_spec.ClearField(valueindextext.FieldDepartmentID, field.TypeUint64)
 	}
 	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valueindextext.FieldValue, field.TypeString, value)

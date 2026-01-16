@@ -24,6 +24,8 @@ const (
 	FieldDeletedAt = "deleted_at"
 	// FieldTenantID holds the string denoting the tenant_id field in the database.
 	FieldTenantID = "tenant_id"
+	// FieldDepartmentID holds the string denoting the department_id field in the database.
+	FieldDepartmentID = "department_id"
 	// FieldName holds the string denoting the name field in the database.
 	FieldName = "name"
 	// FieldCode holds the string denoting the code field in the database.
@@ -32,6 +34,28 @@ const (
 	FieldCategory = "category"
 	// FieldDirection holds the string denoting the direction field in the database.
 	FieldDirection = "direction"
+	// FieldDescription holds the string denoting the description field in the database.
+	FieldDescription = "description"
+	// FieldIsStandard holds the string denoting the is_standard field in the database.
+	FieldIsStandard = "is_standard"
+	// FieldSortOrder holds the string denoting the sort_order field in the database.
+	FieldSortOrder = "sort_order"
+	// FieldIsEnabled holds the string denoting the is_enabled field in the database.
+	FieldIsEnabled = "is_enabled"
+	// FieldDisplayColor holds the string denoting the display_color field in the database.
+	FieldDisplayColor = "display_color"
+	// FieldLineType holds the string denoting the line_type field in the database.
+	FieldLineType = "line_type"
+	// FieldIcon holds the string denoting the icon field in the database.
+	FieldIcon = "icon"
+	// FieldWeight holds the string denoting the weight field in the database.
+	FieldWeight = "weight"
+	// FieldDisplayLabel holds the string denoting the display_label field in the database.
+	FieldDisplayLabel = "display_label"
+	// FieldTooltipTemplate holds the string denoting the tooltip_template field in the database.
+	FieldTooltipTemplate = "tooltip_template"
+	// FieldDisplayStyle holds the string denoting the display_style field in the database.
+	FieldDisplayStyle = "display_style"
 	// EdgeCiRelations holds the string denoting the ci_relations edge name in mutations.
 	EdgeCiRelations = "ci_relations"
 	// EdgeCiTypeRelations holds the string denoting the ci_type_relations edge name in mutations.
@@ -61,10 +85,22 @@ var Columns = []string{
 	FieldUpdatedAt,
 	FieldDeletedAt,
 	FieldTenantID,
+	FieldDepartmentID,
 	FieldName,
 	FieldCode,
 	FieldCategory,
 	FieldDirection,
+	FieldDescription,
+	FieldIsStandard,
+	FieldSortOrder,
+	FieldIsEnabled,
+	FieldDisplayColor,
+	FieldLineType,
+	FieldIcon,
+	FieldWeight,
+	FieldDisplayLabel,
+	FieldTooltipTemplate,
+	FieldDisplayStyle,
 }
 
 // ValidColumn reports if the column name is valid (part of the table columns).
@@ -97,18 +133,34 @@ var (
 	NameValidator func(string) error
 	// CodeValidator is a validator for the "code" field. It is called by the builders before save.
 	CodeValidator func(string) error
+	// DefaultIsStandard holds the default value on creation for the "is_standard" field.
+	DefaultIsStandard bool
+	// DefaultSortOrder holds the default value on creation for the "sort_order" field.
+	DefaultSortOrder int
+	// DefaultIsEnabled holds the default value on creation for the "is_enabled" field.
+	DefaultIsEnabled bool
+	// DefaultDisplayColor holds the default value on creation for the "display_color" field.
+	DefaultDisplayColor string
+	// DisplayColorValidator is a validator for the "display_color" field. It is called by the builders before save.
+	DisplayColorValidator func(string) error
+	// IconValidator is a validator for the "icon" field. It is called by the builders before save.
+	IconValidator func(string) error
+	// DefaultWeight holds the default value on creation for the "weight" field.
+	DefaultWeight int
+	// DisplayLabelValidator is a validator for the "display_label" field. It is called by the builders before save.
+	DisplayLabelValidator func(string) error
 )
 
 // Category defines the type for the "category" enum field.
 type Category string
 
-// CategoryLogic is the default value of the Category enum.
-const DefaultCategory = CategoryLogic
+// CategoryLogical is the default value of the Category enum.
+const DefaultCategory = CategoryLogical
 
 // Category values.
 const (
 	CategoryPhysical Category = "physical"
-	CategoryLogic    Category = "logic"
+	CategoryLogical  Category = "logical"
 	CategoryBusiness Category = "business"
 )
 
@@ -119,7 +171,7 @@ func (c Category) String() string {
 // CategoryValidator is a validator for the "category" field enum values. It is called by the builders before save.
 func CategoryValidator(c Category) error {
 	switch c {
-	case CategoryPhysical, CategoryLogic, CategoryBusiness:
+	case CategoryPhysical, CategoryLogical, CategoryBusiness:
 		return nil
 	default:
 		return fmt.Errorf("relationtype: invalid enum value for category field: %q", c)
@@ -152,6 +204,33 @@ func DirectionValidator(d Direction) error {
 	}
 }
 
+// LineType defines the type for the "line_type" enum field.
+type LineType string
+
+// LineTypeSolid is the default value of the LineType enum.
+const DefaultLineType = LineTypeSolid
+
+// LineType values.
+const (
+	LineTypeSolid  LineType = "solid"
+	LineTypeDashed LineType = "dashed"
+	LineTypeDotted LineType = "dotted"
+)
+
+func (lt LineType) String() string {
+	return string(lt)
+}
+
+// LineTypeValidator is a validator for the "line_type" field enum values. It is called by the builders before save.
+func LineTypeValidator(lt LineType) error {
+	switch lt {
+	case LineTypeSolid, LineTypeDashed, LineTypeDotted:
+		return nil
+	default:
+		return fmt.Errorf("relationtype: invalid enum value for line_type field: %q", lt)
+	}
+}
+
 // OrderOption defines the ordering options for the RelationType queries.
 type OrderOption func(*sql.Selector)
 
@@ -180,6 +259,11 @@ func ByTenantID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldTenantID, opts...).ToFunc()
 }
 
+// ByDepartmentID orders the results by the department_id field.
+func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
+}
+
 // ByName orders the results by the name field.
 func ByName(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldName, opts...).ToFunc()
@@ -198,6 +282,56 @@ func ByCategory(opts ...sql.OrderTermOption) OrderOption {
 // ByDirection orders the results by the direction field.
 func ByDirection(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDirection, opts...).ToFunc()
+}
+
+// ByDescription orders the results by the description field.
+func ByDescription(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldDescription, opts...).ToFunc()
+}
+
+// ByIsStandard orders the results by the is_standard field.
+func ByIsStandard(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldIsStandard, opts...).ToFunc()
+}
+
+// BySortOrder orders the results by the sort_order field.
+func BySortOrder(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldSortOrder, opts...).ToFunc()
+}
+
+// ByIsEnabled orders the results by the is_enabled field.
+func ByIsEnabled(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldIsEnabled, opts...).ToFunc()
+}
+
+// ByDisplayColor orders the results by the display_color field.
+func ByDisplayColor(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldDisplayColor, opts...).ToFunc()
+}
+
+// ByLineType orders the results by the line_type field.
+func ByLineType(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLineType, opts...).ToFunc()
+}
+
+// ByIcon orders the results by the icon field.
+func ByIcon(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldIcon, opts...).ToFunc()
+}
+
+// ByWeight orders the results by the weight field.
+func ByWeight(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldWeight, opts...).ToFunc()
+}
+
+// ByDisplayLabel orders the results by the display_label field.
+func ByDisplayLabel(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldDisplayLabel, opts...).ToFunc()
+}
+
+// ByTooltipTemplate orders the results by the tooltip_template field.
+func ByTooltipTemplate(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldTooltipTemplate, opts...).ToFunc()
 }
 
 // ByCiRelationsCount orders the results by ci_relations count.

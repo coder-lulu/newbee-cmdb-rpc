@@ -14,8 +14,12 @@ import (
 // Tx is a transactional client that is created by calling Client.Tx().
 type Tx struct {
 	config
+	// AggregationCache is the client for interacting with the AggregationCache builders.
+	AggregationCache *AggregationCacheClient
 	// Attribute is the client for interacting with the Attribute builders.
 	Attribute *AttributeClient
+	// AttributeMappingRule is the client for interacting with the AttributeMappingRule builders.
+	AttributeMappingRule *AttributeMappingRuleClient
 	// ChoiceFloat is the client for interacting with the ChoiceFloat builders.
 	ChoiceFloat *ChoiceFloatClient
 	// ChoiceInteger is the client for interacting with the ChoiceInteger builders.
@@ -24,6 +28,10 @@ type Tx struct {
 	ChoiceText *ChoiceTextClient
 	// CiApprovalFlow is the client for interacting with the CiApprovalFlow builders.
 	CiApprovalFlow *CiApprovalFlowClient
+	// CiAttributeDistribution is the client for interacting with the CiAttributeDistribution builders.
+	CiAttributeDistribution *CiAttributeDistributionClient
+	// CiDimension is the client for interacting with the CiDimension builders.
+	CiDimension *CiDimensionClient
 	// CiLifecycleState is the client for interacting with the CiLifecycleState builders.
 	CiLifecycleState *CiLifecycleStateClient
 	// CiOperation is the client for interacting with the CiOperation builders.
@@ -34,6 +42,8 @@ type Tx struct {
 	CiRecords *CiRecordsClient
 	// CiRelation is the client for interacting with the CiRelation builders.
 	CiRelation *CiRelationClient
+	// CiStatisticsFact is the client for interacting with the CiStatisticsFact builders.
+	CiStatisticsFact *CiStatisticsFactClient
 	// CiType is the client for interacting with the CiType builders.
 	CiType *CiTypeClient
 	// CiTypeAttribute is the client for interacting with the CiTypeAttribute builders.
@@ -42,6 +52,8 @@ type Tx struct {
 	CiTypeAttributeGroup *CiTypeAttributeGroupClient
 	// CiTypeAttributeGroupItem is the client for interacting with the CiTypeAttributeGroupItem builders.
 	CiTypeAttributeGroupItem *CiTypeAttributeGroupItemClient
+	// CiTypeDiscoveryConfig is the client for interacting with the CiTypeDiscoveryConfig builders.
+	CiTypeDiscoveryConfig *CiTypeDiscoveryConfigClient
 	// CiTypeGroup is the client for interacting with the CiTypeGroup builders.
 	CiTypeGroup *CiTypeGroupClient
 	// CiTypeGroupItem is the client for interacting with the CiTypeGroupItem builders.
@@ -52,6 +64,10 @@ type Tx struct {
 	CiTypeRelation *CiTypeRelationClient
 	// Cis is the client for interacting with the Cis builders.
 	Cis *CisClient
+	// DiscoveryExecutionHistory is the client for interacting with the DiscoveryExecutionHistory builders.
+	DiscoveryExecutionHistory *DiscoveryExecutionHistoryClient
+	// DynamicAggregationConfig is the client for interacting with the DynamicAggregationConfig builders.
+	DynamicAggregationConfig *DynamicAggregationConfigClient
 	// ImportError is the client for interacting with the ImportError builders.
 	ImportError *ImportErrorClient
 	// ImportRecord is the client for interacting with the ImportRecord builders.
@@ -72,6 +88,10 @@ type Tx struct {
 	PermissionTemplate *PermissionTemplateClient
 	// RelationType is the client for interacting with the RelationType builders.
 	RelationType *RelationTypeClient
+	// TimeDimension is the client for interacting with the TimeDimension builders.
+	TimeDimension *TimeDimensionClient
+	// UserActivityFact is the client for interacting with the UserActivityFact builders.
+	UserActivityFact *UserActivityFactClient
 	// ValueDatetime is the client for interacting with the ValueDatetime builders.
 	ValueDatetime *ValueDatetimeClient
 	// ValueFloat is the client for interacting with the ValueFloat builders.
@@ -215,25 +235,33 @@ func (tx *Tx) Client() *Client {
 }
 
 func (tx *Tx) init() {
+	tx.AggregationCache = NewAggregationCacheClient(tx.config)
 	tx.Attribute = NewAttributeClient(tx.config)
+	tx.AttributeMappingRule = NewAttributeMappingRuleClient(tx.config)
 	tx.ChoiceFloat = NewChoiceFloatClient(tx.config)
 	tx.ChoiceInteger = NewChoiceIntegerClient(tx.config)
 	tx.ChoiceText = NewChoiceTextClient(tx.config)
 	tx.CiApprovalFlow = NewCiApprovalFlowClient(tx.config)
+	tx.CiAttributeDistribution = NewCiAttributeDistributionClient(tx.config)
+	tx.CiDimension = NewCiDimensionClient(tx.config)
 	tx.CiLifecycleState = NewCiLifecycleStateClient(tx.config)
 	tx.CiOperation = NewCiOperationClient(tx.config)
 	tx.CiPermission = NewCiPermissionClient(tx.config)
 	tx.CiRecords = NewCiRecordsClient(tx.config)
 	tx.CiRelation = NewCiRelationClient(tx.config)
+	tx.CiStatisticsFact = NewCiStatisticsFactClient(tx.config)
 	tx.CiType = NewCiTypeClient(tx.config)
 	tx.CiTypeAttribute = NewCiTypeAttributeClient(tx.config)
 	tx.CiTypeAttributeGroup = NewCiTypeAttributeGroupClient(tx.config)
 	tx.CiTypeAttributeGroupItem = NewCiTypeAttributeGroupItemClient(tx.config)
+	tx.CiTypeDiscoveryConfig = NewCiTypeDiscoveryConfigClient(tx.config)
 	tx.CiTypeGroup = NewCiTypeGroupClient(tx.config)
 	tx.CiTypeGroupItem = NewCiTypeGroupItemClient(tx.config)
 	tx.CiTypeInheritance = NewCiTypeInheritanceClient(tx.config)
 	tx.CiTypeRelation = NewCiTypeRelationClient(tx.config)
 	tx.Cis = NewCisClient(tx.config)
+	tx.DiscoveryExecutionHistory = NewDiscoveryExecutionHistoryClient(tx.config)
+	tx.DynamicAggregationConfig = NewDynamicAggregationConfigClient(tx.config)
 	tx.ImportError = NewImportErrorClient(tx.config)
 	tx.ImportRecord = NewImportRecordClient(tx.config)
 	tx.ImportTask = NewImportTaskClient(tx.config)
@@ -244,6 +272,8 @@ func (tx *Tx) init() {
 	tx.PermissionOperation = NewPermissionOperationClient(tx.config)
 	tx.PermissionTemplate = NewPermissionTemplateClient(tx.config)
 	tx.RelationType = NewRelationTypeClient(tx.config)
+	tx.TimeDimension = NewTimeDimensionClient(tx.config)
+	tx.UserActivityFact = NewUserActivityFactClient(tx.config)
 	tx.ValueDatetime = NewValueDatetimeClient(tx.config)
 	tx.ValueFloat = NewValueFloatClient(tx.config)
 	tx.ValueIndexText = NewValueIndexTextClient(tx.config)
@@ -259,7 +289,7 @@ func (tx *Tx) init() {
 // of them in order to commit or rollback the transaction.
 //
 // If a closed transaction is embedded in one of the generated entities, and the entity
-// applies a query, for example: Attribute.QueryXXX(), the query will be executed
+// applies a query, for example: AggregationCache.QueryXXX(), the query will be executed
 // through the driver which created this transaction.
 //
 // Note that txDriver is not goroutine safe.

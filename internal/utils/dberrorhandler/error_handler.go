@@ -7,10 +7,10 @@ import (
 
 	"github.com/zeromicro/go-zero/core/logx"
 
-	"github.com/coder-lulu/newbee-common/msg/logmsg"
+	"github.com/coder-lulu/newbee-common/v2/msg/logmsg"
 
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent"
-	"github.com/coder-lulu/newbee-common/i18n"
+	"github.com/coder-lulu/newbee-common/v2/i18n"
 )
 
 // DefaultEntError returns errors dealing with default functions.

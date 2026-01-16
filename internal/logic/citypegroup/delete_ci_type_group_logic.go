@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/coder-lulu/newbee-common/msg/errormsg"
+	"github.com/coder-lulu/newbee-common/v2/msg/errormsg"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

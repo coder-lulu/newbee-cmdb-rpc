@@ -26,6 +26,8 @@ const (
 	FieldTenantID = "tenant_id"
 	// FieldDepartmentID holds the string denoting the department_id field in the database.
 	FieldDepartmentID = "department_id"
+	// FieldCreatedBy holds the string denoting the created_by field in the database.
+	FieldCreatedBy = "created_by"
 	// FieldName holds the string denoting the name field in the database.
 	FieldName = "name"
 	// FieldAlias holds the string denoting the alias field in the database.
@@ -36,8 +38,6 @@ const (
 	FieldIsChoice = "is_choice"
 	// FieldIsList holds the string denoting the is_list field in the database.
 	FieldIsList = "is_list"
-	// FieldCreatedBy holds the string denoting the created_by field in the database.
-	FieldCreatedBy = "created_by"
 	// FieldIsComputed holds the string denoting the is_computed field in the database.
 	FieldIsComputed = "is_computed"
 	// FieldChoiceWebHook holds the string denoting the choice_web_hook field in the database.
@@ -86,6 +86,8 @@ const (
 	EdgeTypeAttributes = "type_attributes"
 	// EdgeGroupItems holds the string denoting the group_items edge name in mutations.
 	EdgeGroupItems = "group_items"
+	// EdgeMappingRules holds the string denoting the mapping_rules edge name in mutations.
+	EdgeMappingRules = "mapping_rules"
 	// Table holds the table name of the attribute in the database.
 	Table = "cmdb_attributes"
 	// ValueTextsTable is the table that holds the value_texts relation/edge.
@@ -165,6 +167,13 @@ const (
 	GroupItemsInverseTable = "cmdb_ci_type_attribute_group_items"
 	// GroupItemsColumn is the table column denoting the group_items relation/edge.
 	GroupItemsColumn = "attr_id"
+	// MappingRulesTable is the table that holds the mapping_rules relation/edge.
+	MappingRulesTable = "cmdb_attribute_mapping_rules"
+	// MappingRulesInverseTable is the table name for the AttributeMappingRule entity.
+	// It exists in this package in order to avoid circular dependency with the "attributemappingrule" package.
+	MappingRulesInverseTable = "cmdb_attribute_mapping_rules"
+	// MappingRulesColumn is the table column denoting the mapping_rules relation/edge.
+	MappingRulesColumn = "ci_attribute_id"
 )
 
 // Columns holds all SQL columns for attribute fields.
@@ -175,12 +184,12 @@ var Columns = []string{
 	FieldDeletedAt,
 	FieldTenantID,
 	FieldDepartmentID,
+	FieldCreatedBy,
 	FieldName,
 	FieldAlias,
 	FieldValueType,
 	FieldIsChoice,
 	FieldIsList,
-	FieldCreatedBy,
 	FieldIsComputed,
 	FieldChoiceWebHook,
 	FieldOption,
@@ -312,6 +321,11 @@ func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
 }
 
+// ByCreatedBy orders the results by the created_by field.
+func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
+}
+
 // ByName orders the results by the name field.
 func ByName(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldName, opts...).ToFunc()
@@ -335,11 +349,6 @@ func ByIsChoice(opts ...sql.OrderTermOption) OrderOption {
 // ByIsList orders the results by the is_list field.
 func ByIsList(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldIsList, opts...).ToFunc()
-}
-
-// ByCreatedBy orders the results by the created_by field.
-func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
 // ByIsComputed orders the results by the is_computed field.
@@ -535,6 +544,20 @@ func ByGroupItems(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
 		sqlgraph.OrderByNeighborTerms(s, newGroupItemsStep(), append([]sql.OrderTerm{term}, terms...)...)
 	}
 }
+
+// ByMappingRulesCount orders the results by mapping_rules count.
+func ByMappingRulesCount(opts ...sql.OrderTermOption) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborsCount(s, newMappingRulesStep(), opts...)
+	}
+}
+
+// ByMappingRules orders the results by mapping_rules terms.
+func ByMappingRules(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborTerms(s, newMappingRulesStep(), append([]sql.OrderTerm{term}, terms...)...)
+	}
+}
 func newValueTextsStep() *sqlgraph.Step {
 	return sqlgraph.NewStep(
 		sqlgraph.From(Table, FieldID),
@@ -610,5 +633,12 @@ func newGroupItemsStep() *sqlgraph.Step {
 		sqlgraph.From(Table, FieldID),
 		sqlgraph.To(GroupItemsInverseTable, FieldID),
 		sqlgraph.Edge(sqlgraph.O2M, false, GroupItemsTable, GroupItemsColumn),
+	)
+}
+func newMappingRulesStep() *sqlgraph.Step {
+	return sqlgraph.NewStep(
+		sqlgraph.From(Table, FieldID),
+		sqlgraph.To(MappingRulesInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.O2M, false, MappingRulesTable, MappingRulesColumn),
 	)
 }

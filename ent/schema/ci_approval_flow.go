@@ -6,7 +6,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 	"github.com/gofrs/uuid/v5"
 )
 
@@ -22,6 +22,7 @@ func (CiApprovalFlow) Mixin() []ent.Mixin {
 		mixins.IDMixin{},
 		mixins.TenantMixin{},
 		mixins.DepartmentMixin{},
+		mixins.CreatedByMixin{},
 	}
 }
 
@@ -161,10 +162,6 @@ func (CiApprovalFlow) Fields() []ent.Field {
 			Comment("最后使用时间"),
 
 		// 审计信息
-		field.UUID("created_by", uuid.UUID{}).
-			Optional().
-			Comment("创建人ID"),
-
 		field.String("created_by_name").
 			Optional().
 			Comment("创建人姓名"),

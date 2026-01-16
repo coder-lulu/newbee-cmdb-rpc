@@ -6,7 +6,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 	"github.com/gofrs/uuid/v5"
 )
 
@@ -22,6 +22,7 @@ func (CiLifecycleState) Mixin() []ent.Mixin {
 		mixins.IDMixin{},
 		mixins.TenantMixin{},
 		mixins.DepartmentMixin{},
+		mixins.CreatedByMixin{},
 	}
 }
 
@@ -297,10 +298,6 @@ func (CiLifecycleState) Fields() []ent.Field {
 			Comment("备注信息"),
 
 		// 审计字段
-		field.UUID("created_by", uuid.UUID{}).
-			Optional().
-			Comment("创建人ID"),
-
 		field.UUID("updated_by", uuid.UUID{}).
 			Optional().
 			Comment("最后更新人ID"),

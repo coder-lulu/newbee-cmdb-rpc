@@ -7,7 +7,8 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	"github.com/coder-lulu/newbee-common/msg/errormsg"
+	"github.com/coder-lulu/newbee-common/v2/msg/errormsg"
+	"github.com/zeromicro/go-zero/core/errorx"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -76,6 +77,18 @@ func (l *UpdateCisLogic) UpdateCis(in *cmdb.CisInfo) (*cmdb.BaseResp, error) {
 		err = SaveCiAttributes(l.ctx, tx, *in.Id, in.Attributes)
 		if err != nil {
 			tx.Rollback()
+			return nil, dberrorhandler.DefaultEntError(l.Logger, err, in)
+		}
+	}
+
+	// 处理关系数据
+	if in.Relations != nil {
+		err = ProcessCiRelations(l.ctx, tx, *in.Id, in.Relations, l.Logger)
+		if err != nil {
+			tx.Rollback()
+			if ce, ok := err.(*errorx.CodeError); ok {
+				return nil, ce
+			}
 			return nil, dberrorhandler.DefaultEntError(l.Logger, err, in)
 		}
 	}

@@ -13,174 +13,196 @@ import (
 )
 
 type (
-	AsyncTaskReq                        = cmdb.AsyncTaskReq
-	AsyncTaskResp                       = cmdb.AsyncTaskResp
-	AttributeChoiceItem                 = cmdb.AttributeChoiceItem
-	AttributeChoiceItemMeta             = cmdb.AttributeChoiceItemMeta
-	AttributeChoiceOther                = cmdb.AttributeChoiceOther
-	AttributeChoiceWebHook              = cmdb.AttributeChoiceWebHook
-	AttributeDefault                    = cmdb.AttributeDefault
-	AttributeFontOption                 = cmdb.AttributeFontOption
-	AttributeImageOption                = cmdb.AttributeImageOption
-	AttributeInfo                       = cmdb.AttributeInfo
-	AttributeListReq                    = cmdb.AttributeListReq
-	AttributeListResp                   = cmdb.AttributeListResp
-	AttributeOption                     = cmdb.AttributeOption
-	AttributeSimple                     = cmdb.AttributeSimple
-	AttributeSimpleListReq              = cmdb.AttributeSimpleListReq
-	AttributeSimpleListResp             = cmdb.AttributeSimpleListResp
-	BaseIDInt32Resp                     = cmdb.BaseIDInt32Resp
-	BaseIDInt64Resp                     = cmdb.BaseIDInt64Resp
-	BaseIDResp                          = cmdb.BaseIDResp
-	BaseIDStringResp                    = cmdb.BaseIDStringResp
-	BaseIDUint32Resp                    = cmdb.BaseIDUint32Resp
-	BaseResp                            = cmdb.BaseResp
-	BaseUUIDResp                        = cmdb.BaseUUIDResp
-	ChoiceFloatInfo                     = cmdb.ChoiceFloatInfo
-	ChoiceFloatListReq                  = cmdb.ChoiceFloatListReq
-	ChoiceFloatListResp                 = cmdb.ChoiceFloatListResp
-	ChoiceIntegerInfo                   = cmdb.ChoiceIntegerInfo
-	ChoiceIntegerListReq                = cmdb.ChoiceIntegerListReq
-	ChoiceIntegerListResp               = cmdb.ChoiceIntegerListResp
-	ChoiceTextInfo                      = cmdb.ChoiceTextInfo
-	ChoiceTextListReq                   = cmdb.ChoiceTextListReq
-	ChoiceTextListResp                  = cmdb.ChoiceTextListResp
-	CiAttributeError                    = cmdb.CiAttributeError
-	CiAttributeFilter                   = cmdb.CiAttributeFilter
-	CiAttributeValue                    = cmdb.CiAttributeValue
-	CiFacetSearch                       = cmdb.CiFacetSearch
-	CiFilterGroup                       = cmdb.CiFilterGroup
-	CiInheritanceSearch                 = cmdb.CiInheritanceSearch
-	CiMetadataFilter                    = cmdb.CiMetadataFilter
-	CiPermissionAllowedValues           = cmdb.CiPermissionAllowedValues
-	CiPermissionConditions              = cmdb.CiPermissionConditions
-	CiPermissionDataFilters             = cmdb.CiPermissionDataFilters
-	CiPermissionFieldMasks              = cmdb.CiPermissionFieldMasks
-	CiPermissionFilterRule              = cmdb.CiPermissionFilterRule
-	CiPermissionInfo                    = cmdb.CiPermissionInfo
-	CiPermissionInheritedFrom           = cmdb.CiPermissionInheritedFrom
-	CiPermissionListReq                 = cmdb.CiPermissionListReq
-	CiPermissionListResp                = cmdb.CiPermissionListResp
-	CiPermissionMetadata                = cmdb.CiPermissionMetadata
-	CiPermissionOperation               = cmdb.CiPermissionOperation
-	CiPermissionOperations              = cmdb.CiPermissionOperations
-	CiPermissionSecurityConstraints     = cmdb.CiPermissionSecurityConstraints
-	CiPermissionTag                     = cmdb.CiPermissionTag
-	CiPermissionUsageStatistics         = cmdb.CiPermissionUsageStatistics
-	CiRelationFilter                    = cmdb.CiRelationFilter
-	CiRelationInfo                      = cmdb.CiRelationInfo
-	CiRelationListReq                   = cmdb.CiRelationListReq
-	CiRelationListResp                  = cmdb.CiRelationListResp
-	CiSortField                         = cmdb.CiSortField
-	CiTagFilter                         = cmdb.CiTagFilter
-	CiTimeRangeSearch                   = cmdb.CiTimeRangeSearch
-	CiTypeAppendAttributeReq            = cmdb.CiTypeAppendAttributeReq
-	CiTypeAttributeChangeDefaultShowReq = cmdb.CiTypeAttributeChangeDefaultShowReq
-	CiTypeAttributeGroupInfo            = cmdb.CiTypeAttributeGroupInfo
-	CiTypeAttributeGroupItemInfo        = cmdb.CiTypeAttributeGroupItemInfo
-	CiTypeAttributeGroupItemListReq     = cmdb.CiTypeAttributeGroupItemListReq
-	CiTypeAttributeGroupItemListResp    = cmdb.CiTypeAttributeGroupItemListResp
-	CiTypeAttributeGroupItemSort        = cmdb.CiTypeAttributeGroupItemSort
-	CiTypeAttributeGroupItemSortItem    = cmdb.CiTypeAttributeGroupItemSortItem
-	CiTypeAttributeGroupItemSortReq     = cmdb.CiTypeAttributeGroupItemSortReq
-	CiTypeAttributeGroupListReq         = cmdb.CiTypeAttributeGroupListReq
-	CiTypeAttributeGroupListResp        = cmdb.CiTypeAttributeGroupListResp
-	CiTypeAttributeGroupSort            = cmdb.CiTypeAttributeGroupSort
-	CiTypeAttributeGroupSortReq         = cmdb.CiTypeAttributeGroupSortReq
-	CiTypeAttributeInfo                 = cmdb.CiTypeAttributeInfo
-	CiTypeAttributeItem                 = cmdb.CiTypeAttributeItem
-	CiTypeAttributeListReq              = cmdb.CiTypeAttributeListReq
-	CiTypeAttributeListResp             = cmdb.CiTypeAttributeListResp
-	CiTypeAttributeListWithGroupInfo    = cmdb.CiTypeAttributeListWithGroupInfo
-	CiTypeAttributeListWithGroupReq     = cmdb.CiTypeAttributeListWithGroupReq
-	CiTypeAttributeListWithGroupResp    = cmdb.CiTypeAttributeListWithGroupResp
-	CiTypeGroupInfo                     = cmdb.CiTypeGroupInfo
-	CiTypeGroupItemInfo                 = cmdb.CiTypeGroupItemInfo
-	CiTypeGroupItemListReq              = cmdb.CiTypeGroupItemListReq
-	CiTypeGroupItemListResp             = cmdb.CiTypeGroupItemListResp
-	CiTypeGroupItemSort                 = cmdb.CiTypeGroupItemSort
-	CiTypeGroupItemSortReq              = cmdb.CiTypeGroupItemSortReq
-	CiTypeGroupItemTreeListInfo         = cmdb.CiTypeGroupItemTreeListInfo
-	CiTypeGroupItemTreeListResp         = cmdb.CiTypeGroupItemTreeListResp
-	CiTypeGroupListReq                  = cmdb.CiTypeGroupListReq
-	CiTypeGroupListResp                 = cmdb.CiTypeGroupListResp
-	CiTypeGroupSort                     = cmdb.CiTypeGroupSort
-	CiTypeGroupSortReq                  = cmdb.CiTypeGroupSortReq
-	CiTypeInfo                          = cmdb.CiTypeInfo
-	CiTypeInheritanceInfo               = cmdb.CiTypeInheritanceInfo
-	CiTypeInheritanceListReq            = cmdb.CiTypeInheritanceListReq
-	CiTypeInheritanceListResp           = cmdb.CiTypeInheritanceListResp
-	CiTypeListReq                       = cmdb.CiTypeListReq
-	CiTypeListResp                      = cmdb.CiTypeListResp
-	CiTypeRelationInfo                  = cmdb.CiTypeRelationInfo
-	CiTypeRelationListReq               = cmdb.CiTypeRelationListReq
-	CiTypeRelationListResp              = cmdb.CiTypeRelationListResp
-	CiTypeUniqueConst                   = cmdb.CiTypeUniqueConst
-	CisAttributeValidateReq             = cmdb.CisAttributeValidateReq
-	CisAttributeValidateResp            = cmdb.CisAttributeValidateResp
-	CisBatchOperationReq                = cmdb.CisBatchOperationReq
-	CisDetailInfo                       = cmdb.CisDetailInfo
-	CisInfo                             = cmdb.CisInfo
-	CisListReq                          = cmdb.CisListReq
-	CisListResp                         = cmdb.CisListResp
-	CisMetadata                         = cmdb.CisMetadata
-	Empty                               = cmdb.Empty
-	IDInt32Req                          = cmdb.IDInt32Req
-	IDInt64Req                          = cmdb.IDInt64Req
-	IDReq                               = cmdb.IDReq
-	IDStringReq                         = cmdb.IDStringReq
-	IDUint32Req                         = cmdb.IDUint32Req
-	IDsInt32Req                         = cmdb.IDsInt32Req
-	IDsInt64Req                         = cmdb.IDsInt64Req
-	IDsReq                              = cmdb.IDsReq
-	IDsStringReq                        = cmdb.IDsStringReq
-	IDsUint32Req                        = cmdb.IDsUint32Req
-	LocationRestriction                 = cmdb.LocationRestriction
-	OperationStat                       = cmdb.OperationStat
-	PageInfoReq                         = cmdb.PageInfoReq
-	RelationTypeInfo                    = cmdb.RelationTypeInfo
-	RelationTypeListReq                 = cmdb.RelationTypeListReq
-	RelationTypeListResp                = cmdb.RelationTypeListResp
-	TaskCancelReq                       = cmdb.TaskCancelReq
-	TaskListReq                         = cmdb.TaskListReq
-	TaskListResp                        = cmdb.TaskListResp
-	TaskProgressInfo                    = cmdb.TaskProgressInfo
-	TaskResultInfo                      = cmdb.TaskResultInfo
-	TaskStatistics                      = cmdb.TaskStatistics
-	TaskStatsReq                        = cmdb.TaskStatsReq
-	TaskStatsResp                       = cmdb.TaskStatsResp
-	TaskStatusInfo                      = cmdb.TaskStatusInfo
-	TaskStatusReq                       = cmdb.TaskStatusReq
-	TaskStatusResp                      = cmdb.TaskStatusResp
-	TaskTypeStats                       = cmdb.TaskTypeStats
-	TimeRestriction                     = cmdb.TimeRestriction
-	UUIDReq                             = cmdb.UUIDReq
-	UUIDsReq                            = cmdb.UUIDsReq
-	ValidationRule                      = cmdb.ValidationRule
-	ValidationRuleParams                = cmdb.ValidationRuleParams
-	ValueDatetimeInfo                   = cmdb.ValueDatetimeInfo
-	ValueDatetimeListReq                = cmdb.ValueDatetimeListReq
-	ValueDatetimeListResp               = cmdb.ValueDatetimeListResp
-	ValueFloatInfo                      = cmdb.ValueFloatInfo
-	ValueFloatListReq                   = cmdb.ValueFloatListReq
-	ValueFloatListResp                  = cmdb.ValueFloatListResp
-	ValueIntegerInfo                    = cmdb.ValueIntegerInfo
-	ValueIntegerListReq                 = cmdb.ValueIntegerListReq
-	ValueIntegerListResp                = cmdb.ValueIntegerListResp
-	ValueJSONInfo                       = cmdb.ValueJSONInfo
-	ValueJSONListReq                    = cmdb.ValueJSONListReq
-	ValueJSONListResp                   = cmdb.ValueJSONListResp
-	ValueTextInfo                       = cmdb.ValueTextInfo
-	ValueTextListReq                    = cmdb.ValueTextListReq
-	ValueTextListResp                   = cmdb.ValueTextListResp
+	AttributeBasicInfo                   = cmdb.AttributeBasicInfo
+	AttributeChoiceItem                  = cmdb.AttributeChoiceItem
+	AttributeChoiceItemMeta              = cmdb.AttributeChoiceItemMeta
+	AttributeChoiceOther                 = cmdb.AttributeChoiceOther
+	AttributeChoiceWebHook               = cmdb.AttributeChoiceWebHook
+	AttributeDefault                     = cmdb.AttributeDefault
+	AttributeFontOption                  = cmdb.AttributeFontOption
+	AttributeImageOption                 = cmdb.AttributeImageOption
+	AttributeInfo                        = cmdb.AttributeInfo
+	AttributeListReq                     = cmdb.AttributeListReq
+	AttributeListResp                    = cmdb.AttributeListResp
+	AttributeMappingConfigInfo           = cmdb.AttributeMappingConfigInfo
+	AttributeMappingConfigReq            = cmdb.AttributeMappingConfigReq
+	AttributeMappingConfigResp           = cmdb.AttributeMappingConfigResp
+	AttributeMappingData                 = cmdb.AttributeMappingData
+	AttributeMappingPair                 = cmdb.AttributeMappingPair
+	AttributeMappingRuleInfo             = cmdb.AttributeMappingRuleInfo
+	AttributeMappingRuleListReq          = cmdb.AttributeMappingRuleListReq
+	AttributeMappingRuleListResp         = cmdb.AttributeMappingRuleListResp
+	AttributeOption                      = cmdb.AttributeOption
+	AttributeSimple                      = cmdb.AttributeSimple
+	AttributeSimpleListReq               = cmdb.AttributeSimpleListReq
+	AttributeSimpleListResp              = cmdb.AttributeSimpleListResp
+	BaseIDInt32Resp                      = cmdb.BaseIDInt32Resp
+	BaseIDInt64Resp                      = cmdb.BaseIDInt64Resp
+	BaseIDResp                           = cmdb.BaseIDResp
+	BaseIDStringResp                     = cmdb.BaseIDStringResp
+	BaseIDUint32Resp                     = cmdb.BaseIDUint32Resp
+	BaseResp                             = cmdb.BaseResp
+	BaseUUIDResp                         = cmdb.BaseUUIDResp
+	ChoiceFloatInfo                      = cmdb.ChoiceFloatInfo
+	ChoiceFloatListReq                   = cmdb.ChoiceFloatListReq
+	ChoiceFloatListResp                  = cmdb.ChoiceFloatListResp
+	ChoiceIntegerInfo                    = cmdb.ChoiceIntegerInfo
+	ChoiceIntegerListReq                 = cmdb.ChoiceIntegerListReq
+	ChoiceIntegerListResp                = cmdb.ChoiceIntegerListResp
+	ChoiceTextInfo                       = cmdb.ChoiceTextInfo
+	ChoiceTextListReq                    = cmdb.ChoiceTextListReq
+	ChoiceTextListResp                   = cmdb.ChoiceTextListResp
+	CiAttributeError                     = cmdb.CiAttributeError
+	CiAttributeFilter                    = cmdb.CiAttributeFilter
+	CiAttributeValue                     = cmdb.CiAttributeValue
+	CiFacetSearch                        = cmdb.CiFacetSearch
+	CiFilterGroup                        = cmdb.CiFilterGroup
+	CiInheritanceSearch                  = cmdb.CiInheritanceSearch
+	CiMetadataFilter                     = cmdb.CiMetadataFilter
+	CiPermissionAllowedValues            = cmdb.CiPermissionAllowedValues
+	CiPermissionConditions               = cmdb.CiPermissionConditions
+	CiPermissionDataFilters              = cmdb.CiPermissionDataFilters
+	CiPermissionFieldMasks               = cmdb.CiPermissionFieldMasks
+	CiPermissionFilterRule               = cmdb.CiPermissionFilterRule
+	CiPermissionInfo                     = cmdb.CiPermissionInfo
+	CiPermissionInheritedFrom            = cmdb.CiPermissionInheritedFrom
+	CiPermissionListReq                  = cmdb.CiPermissionListReq
+	CiPermissionListResp                 = cmdb.CiPermissionListResp
+	CiPermissionMetadata                 = cmdb.CiPermissionMetadata
+	CiPermissionOperation                = cmdb.CiPermissionOperation
+	CiPermissionOperations               = cmdb.CiPermissionOperations
+	CiPermissionReq                      = cmdb.CiPermissionReq
+	CiPermissionResp                     = cmdb.CiPermissionResp
+	CiPermissionSecurityConstraints      = cmdb.CiPermissionSecurityConstraints
+	CiPermissionTag                      = cmdb.CiPermissionTag
+	CiPermissionUsageStatistics          = cmdb.CiPermissionUsageStatistics
+	CiRelationBatchQueryReq              = cmdb.CiRelationBatchQueryReq
+	CiRelationBatchQueryResp             = cmdb.CiRelationBatchQueryResp
+	CiRelationCreateInfo                 = cmdb.CiRelationCreateInfo
+	CiRelationFilter                     = cmdb.CiRelationFilter
+	CiRelationGroup                      = cmdb.CiRelationGroup
+	CiRelationInfo                       = cmdb.CiRelationInfo
+	CiRelationListReq                    = cmdb.CiRelationListReq
+	CiRelationListResp                   = cmdb.CiRelationListResp
+	CiRelationQueryResult                = cmdb.CiRelationQueryResult
+	CiRelationUpdateInfo                 = cmdb.CiRelationUpdateInfo
+	CiRelationsData                      = cmdb.CiRelationsData
+	CiSortField                          = cmdb.CiSortField
+	CiTagFilter                          = cmdb.CiTagFilter
+	CiTimeRangeSearch                    = cmdb.CiTimeRangeSearch
+	CiTypeAppendAttributeReq             = cmdb.CiTypeAppendAttributeReq
+	CiTypeAttributeChangeDefaultShowReq  = cmdb.CiTypeAttributeChangeDefaultShowReq
+	CiTypeAttributeGroupInfo             = cmdb.CiTypeAttributeGroupInfo
+	CiTypeAttributeGroupItemInfo         = cmdb.CiTypeAttributeGroupItemInfo
+	CiTypeAttributeGroupItemListReq      = cmdb.CiTypeAttributeGroupItemListReq
+	CiTypeAttributeGroupItemListResp     = cmdb.CiTypeAttributeGroupItemListResp
+	CiTypeAttributeGroupItemSort         = cmdb.CiTypeAttributeGroupItemSort
+	CiTypeAttributeGroupItemSortItem     = cmdb.CiTypeAttributeGroupItemSortItem
+	CiTypeAttributeGroupItemSortReq      = cmdb.CiTypeAttributeGroupItemSortReq
+	CiTypeAttributeGroupItemWithAttrInfo = cmdb.CiTypeAttributeGroupItemWithAttrInfo
+	CiTypeAttributeGroupListReq          = cmdb.CiTypeAttributeGroupListReq
+	CiTypeAttributeGroupListResp         = cmdb.CiTypeAttributeGroupListResp
+	CiTypeAttributeGroupSort             = cmdb.CiTypeAttributeGroupSort
+	CiTypeAttributeGroupSortReq          = cmdb.CiTypeAttributeGroupSortReq
+	CiTypeAttributeGroupWithAttrInfo     = cmdb.CiTypeAttributeGroupWithAttrInfo
+	CiTypeAttributeGroupWithAttrListResp = cmdb.CiTypeAttributeGroupWithAttrListResp
+	CiTypeAttributeInfo                  = cmdb.CiTypeAttributeInfo
+	CiTypeAttributeItem                  = cmdb.CiTypeAttributeItem
+	CiTypeAttributeListReq               = cmdb.CiTypeAttributeListReq
+	CiTypeAttributeListResp              = cmdb.CiTypeAttributeListResp
+	CiTypeAttributeListWithGroupInfo     = cmdb.CiTypeAttributeListWithGroupInfo
+	CiTypeAttributeListWithGroupReq      = cmdb.CiTypeAttributeListWithGroupReq
+	CiTypeAttributeListWithGroupResp     = cmdb.CiTypeAttributeListWithGroupResp
+	CiTypeBasicInfo                      = cmdb.CiTypeBasicInfo
+	CiTypeDiscoveryConfigInfo            = cmdb.CiTypeDiscoveryConfigInfo
+	CiTypeDiscoveryConfigListReq         = cmdb.CiTypeDiscoveryConfigListReq
+	CiTypeDiscoveryConfigListResp        = cmdb.CiTypeDiscoveryConfigListResp
+	CiTypeGroupInfo                      = cmdb.CiTypeGroupInfo
+	CiTypeGroupItemInfo                  = cmdb.CiTypeGroupItemInfo
+	CiTypeGroupItemListReq               = cmdb.CiTypeGroupItemListReq
+	CiTypeGroupItemListResp              = cmdb.CiTypeGroupItemListResp
+	CiTypeGroupItemSort                  = cmdb.CiTypeGroupItemSort
+	CiTypeGroupItemSortReq               = cmdb.CiTypeGroupItemSortReq
+	CiTypeGroupItemTreeListInfo          = cmdb.CiTypeGroupItemTreeListInfo
+	CiTypeGroupItemTreeListResp          = cmdb.CiTypeGroupItemTreeListResp
+	CiTypeGroupListReq                   = cmdb.CiTypeGroupListReq
+	CiTypeGroupListResp                  = cmdb.CiTypeGroupListResp
+	CiTypeGroupSort                      = cmdb.CiTypeGroupSort
+	CiTypeGroupSortReq                   = cmdb.CiTypeGroupSortReq
+	CiTypeInfo                           = cmdb.CiTypeInfo
+	CiTypeInheritanceInfo                = cmdb.CiTypeInheritanceInfo
+	CiTypeInheritanceListReq             = cmdb.CiTypeInheritanceListReq
+	CiTypeInheritanceListResp            = cmdb.CiTypeInheritanceListResp
+	CiTypeListReq                        = cmdb.CiTypeListReq
+	CiTypeListResp                       = cmdb.CiTypeListResp
+	CiTypeRelationDefinitionReq          = cmdb.CiTypeRelationDefinitionReq
+	CiTypeRelationDefinitionResp         = cmdb.CiTypeRelationDefinitionResp
+	CiTypeRelationInfo                   = cmdb.CiTypeRelationInfo
+	CiTypeRelationListReq                = cmdb.CiTypeRelationListReq
+	CiTypeRelationListResp               = cmdb.CiTypeRelationListResp
+	CiTypeUniqueConst                    = cmdb.CiTypeUniqueConst
+	CisAttributeValidateReq              = cmdb.CisAttributeValidateReq
+	CisAttributeValidateResp             = cmdb.CisAttributeValidateResp
+	CisBatchOperationReq                 = cmdb.CisBatchOperationReq
+	CisDetailInfo                        = cmdb.CisDetailInfo
+	CisInfo                              = cmdb.CisInfo
+	CisListReq                           = cmdb.CisListReq
+	CisListResp                          = cmdb.CisListResp
+	CisMetadata                          = cmdb.CisMetadata
+	DiscoveredCIData                     = cmdb.DiscoveredCIData
+	DiscoveryExecutionHistoryInfo        = cmdb.DiscoveryExecutionHistoryInfo
+	DiscoveryExecutionHistoryListReq     = cmdb.DiscoveryExecutionHistoryListReq
+	DiscoveryExecutionHistoryListResp    = cmdb.DiscoveryExecutionHistoryListResp
+	DiscoveryExecutionResp               = cmdb.DiscoveryExecutionResp
+	Empty                                = cmdb.Empty
+	IDInt32Req                           = cmdb.IDInt32Req
+	IDInt64Req                           = cmdb.IDInt64Req
+	IDReq                                = cmdb.IDReq
+	IDStringReq                          = cmdb.IDStringReq
+	IDUint32Req                          = cmdb.IDUint32Req
+	IDsInt32Req                          = cmdb.IDsInt32Req
+	IDsInt64Req                          = cmdb.IDsInt64Req
+	IDsReq                               = cmdb.IDsReq
+	IDsStringReq                         = cmdb.IDsStringReq
+	IDsUint32Req                         = cmdb.IDsUint32Req
+	ListProvidersResp                    = cmdb.ListProvidersResp
+	LocationRestriction                  = cmdb.LocationRestriction
+	OperationStat                        = cmdb.OperationStat
+	PageInfoReq                          = cmdb.PageInfoReq
+	ProviderInfo                         = cmdb.ProviderInfo
+	ProviderSchemaResp                   = cmdb.ProviderSchemaResp
+	RelationTypeBasicInfo                = cmdb.RelationTypeBasicInfo
+	RelationTypeInfo                     = cmdb.RelationTypeInfo
+	RelationTypeListReq                  = cmdb.RelationTypeListReq
+	RelationTypeListResp                 = cmdb.RelationTypeListResp
+	SyncConfig                           = cmdb.SyncConfig
+	TestProviderConnectionReq            = cmdb.TestProviderConnectionReq
+	TimeRestriction                      = cmdb.TimeRestriction
+	UUIDReq                              = cmdb.UUIDReq
+	UUIDsReq                             = cmdb.UUIDsReq
+	UserPermissionScopeReq               = cmdb.UserPermissionScopeReq
+	UserPermissionScopeResp              = cmdb.UserPermissionScopeResp
+	ValidationResult                     = cmdb.ValidationResult
+	ValidationRule                       = cmdb.ValidationRule
+	ValidationRuleParams                 = cmdb.ValidationRuleParams
+	ValueDatetimeInfo                    = cmdb.ValueDatetimeInfo
+	ValueDatetimeListReq                 = cmdb.ValueDatetimeListReq
+	ValueDatetimeListResp                = cmdb.ValueDatetimeListResp
+	ValueFloatInfo                       = cmdb.ValueFloatInfo
+	ValueFloatListReq                    = cmdb.ValueFloatListReq
+	ValueFloatListResp                   = cmdb.ValueFloatListResp
+	ValueIntegerInfo                     = cmdb.ValueIntegerInfo
+	ValueIntegerListReq                  = cmdb.ValueIntegerListReq
+	ValueIntegerListResp                 = cmdb.ValueIntegerListResp
+	ValueJSONInfo                        = cmdb.ValueJSONInfo
+	ValueJSONListReq                     = cmdb.ValueJSONListReq
+	ValueJSONListResp                    = cmdb.ValueJSONListResp
+	ValueTextInfo                        = cmdb.ValueTextInfo
+	ValueTextListReq                     = cmdb.ValueTextListReq
+	ValueTextListResp                    = cmdb.ValueTextListResp
+	WriteDiscoveredCIResp                = cmdb.WriteDiscoveredCIResp
 
 	Cmdb interface {
-		// 异步任务管理接口
-		SubmitAsyncTask(ctx context.Context, in *AsyncTaskReq, opts ...grpc.CallOption) (*AsyncTaskResp, error)
-		GetTaskStatus(ctx context.Context, in *TaskStatusReq, opts ...grpc.CallOption) (*TaskStatusResp, error)
-		CancelTask(ctx context.Context, in *TaskCancelReq, opts ...grpc.CallOption) (*BaseResp, error)
-		GetTaskList(ctx context.Context, in *TaskListReq, opts ...grpc.CallOption) (*TaskListResp, error)
-		GetTaskStats(ctx context.Context, in *TaskStatsReq, opts ...grpc.CallOption) (*TaskStatsResp, error)
 		// Attribute management
 		CreateAttribute(ctx context.Context, in *AttributeInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
 		UpdateAttribute(ctx context.Context, in *AttributeInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
@@ -188,6 +210,12 @@ type (
 		GetAttributeSimpleList(ctx context.Context, in *AttributeSimpleListReq, opts ...grpc.CallOption) (*AttributeSimpleListResp, error)
 		GetAttributeById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*AttributeInfo, error)
 		DeleteAttribute(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
+		// AttributeMappingRule management
+		CreateAttributeMappingRule(ctx context.Context, in *AttributeMappingRuleInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
+		UpdateAttributeMappingRule(ctx context.Context, in *AttributeMappingRuleInfo, opts ...grpc.CallOption) (*BaseResp, error)
+		GetAttributeMappingRuleList(ctx context.Context, in *AttributeMappingRuleListReq, opts ...grpc.CallOption) (*AttributeMappingRuleListResp, error)
+		GetAttributeMappingRuleById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*AttributeMappingRuleInfo, error)
+		DeleteAttributeMappingRule(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
 		InitDatabase(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*BaseResp, error)
 		// ChoiceFloat management
 		CreateChoiceFloat(ctx context.Context, in *ChoiceFloatInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
@@ -213,12 +241,15 @@ type (
 		GetCiPermissionList(ctx context.Context, in *CiPermissionListReq, opts ...grpc.CallOption) (*CiPermissionListResp, error)
 		GetCiPermissionById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiPermissionInfo, error)
 		DeleteCiPermission(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
+		CheckCiTypePermission(ctx context.Context, in *CiPermissionReq, opts ...grpc.CallOption) (*CiPermissionResp, error)
+		GetUserPermissionScope(ctx context.Context, in *UserPermissionScopeReq, opts ...grpc.CallOption) (*UserPermissionScopeResp, error)
 		// CiRelation management
 		CreateCiRelation(ctx context.Context, in *CiRelationInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
 		UpdateCiRelation(ctx context.Context, in *CiRelationInfo, opts ...grpc.CallOption) (*BaseResp, error)
 		GetCiRelationList(ctx context.Context, in *CiRelationListReq, opts ...grpc.CallOption) (*CiRelationListResp, error)
 		GetCiRelationById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiRelationInfo, error)
 		DeleteCiRelation(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
+		GetCiRelationsBatch(ctx context.Context, in *CiRelationBatchQueryReq, opts ...grpc.CallOption) (*CiRelationBatchQueryResp, error)
 		// Cis management
 		CreateCis(ctx context.Context, in *CisInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
 		UpdateCis(ctx context.Context, in *CisInfo, opts ...grpc.CallOption) (*BaseResp, error)
@@ -228,6 +259,7 @@ type (
 		DeleteCis(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
 		CisBatchOperation(ctx context.Context, in *CisBatchOperationReq, opts ...grpc.CallOption) (*BaseResp, error)
 		ValidateCisAttributes(ctx context.Context, in *CisAttributeValidateReq, opts ...grpc.CallOption) (*CisAttributeValidateResp, error)
+		WriteDiscoveredCI(ctx context.Context, in *DiscoveredCIData, opts ...grpc.CallOption) (*WriteDiscoveredCIResp, error)
 		// CiType management
 		CreateCiType(ctx context.Context, in *CiTypeInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
 		UpdateCiType(ctx context.Context, in *CiTypeInfo, opts ...grpc.CallOption) (*BaseResp, error)
@@ -250,6 +282,7 @@ type (
 		GetCiTypeAttributeGroupById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiTypeAttributeGroupInfo, error)
 		DeleteCiTypeAttributeGroup(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
 		SortCiTypeAttributeGroup(ctx context.Context, in *CiTypeAttributeGroupSortReq, opts ...grpc.CallOption) (*BaseResp, error)
+		ListAttributeGroupWithAttribute(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiTypeAttributeGroupWithAttrListResp, error)
 		// CiTypeAttributeGroupItem management
 		CreateCiTypeAttributeGroupItem(ctx context.Context, in *CiTypeAttributeGroupItemInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
 		UpdateCiTypeAttributeGroupItem(ctx context.Context, in *CiTypeAttributeGroupItemInfo, opts ...grpc.CallOption) (*BaseResp, error)
@@ -257,6 +290,16 @@ type (
 		GetCiTypeAttributeGroupItemById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiTypeAttributeGroupItemInfo, error)
 		DeleteCiTypeAttributeGroupItem(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
 		SortCiTypeAttributeGroupItem(ctx context.Context, in *CiTypeAttributeGroupItemSortReq, opts ...grpc.CallOption) (*BaseResp, error)
+		// CiTypeDiscoveryConfig management
+		CreateCiTypeDiscoveryConfig(ctx context.Context, in *CiTypeDiscoveryConfigInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
+		UpdateCiTypeDiscoveryConfig(ctx context.Context, in *CiTypeDiscoveryConfigInfo, opts ...grpc.CallOption) (*BaseResp, error)
+		GetCiTypeDiscoveryConfigList(ctx context.Context, in *CiTypeDiscoveryConfigListReq, opts ...grpc.CallOption) (*CiTypeDiscoveryConfigListResp, error)
+		GetCiTypeDiscoveryConfigById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiTypeDiscoveryConfigInfo, error)
+		DeleteCiTypeDiscoveryConfig(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
+		ExecuteDiscovery(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*DiscoveryExecutionResp, error)
+		TestProviderConnection(ctx context.Context, in *TestProviderConnectionReq, opts ...grpc.CallOption) (*BaseResp, error)
+		GetProviderSchema(ctx context.Context, in *TestProviderConnectionReq, opts ...grpc.CallOption) (*ProviderSchemaResp, error)
+		ListProviders(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ListProvidersResp, error)
 		// CiTypeGroup management
 		CreateCiTypeGroup(ctx context.Context, in *CiTypeGroupInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
 		UpdateCiTypeGroup(ctx context.Context, in *CiTypeGroupInfo, opts ...grpc.CallOption) (*BaseResp, error)
@@ -284,6 +327,14 @@ type (
 		GetCiTypeRelationList(ctx context.Context, in *CiTypeRelationListReq, opts ...grpc.CallOption) (*CiTypeRelationListResp, error)
 		GetCiTypeRelationById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiTypeRelationInfo, error)
 		DeleteCiTypeRelation(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
+		GetCiTypeRelationDefinitions(ctx context.Context, in *CiTypeRelationDefinitionReq, opts ...grpc.CallOption) (*CiTypeRelationDefinitionResp, error)
+		GetAttributeMappingConfigs(ctx context.Context, in *AttributeMappingConfigReq, opts ...grpc.CallOption) (*AttributeMappingConfigResp, error)
+		// DiscoveryExecutionHistory management
+		CreateDiscoveryExecutionHistory(ctx context.Context, in *DiscoveryExecutionHistoryInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
+		UpdateDiscoveryExecutionHistory(ctx context.Context, in *DiscoveryExecutionHistoryInfo, opts ...grpc.CallOption) (*BaseResp, error)
+		GetDiscoveryExecutionHistoryList(ctx context.Context, in *DiscoveryExecutionHistoryListReq, opts ...grpc.CallOption) (*DiscoveryExecutionHistoryListResp, error)
+		GetDiscoveryExecutionHistoryById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*DiscoveryExecutionHistoryInfo, error)
+		DeleteDiscoveryExecutionHistory(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error)
 		// RelationType management
 		CreateRelationType(ctx context.Context, in *RelationTypeInfo, opts ...grpc.CallOption) (*BaseIDResp, error)
 		UpdateRelationType(ctx context.Context, in *RelationTypeInfo, opts ...grpc.CallOption) (*BaseResp, error)
@@ -333,32 +384,6 @@ func NewCmdb(cli zrpc.Client) Cmdb {
 	}
 }
 
-// 异步任务管理接口
-func (m *defaultCmdb) SubmitAsyncTask(ctx context.Context, in *AsyncTaskReq, opts ...grpc.CallOption) (*AsyncTaskResp, error) {
-	client := cmdb.NewCmdbClient(m.cli.Conn())
-	return client.SubmitAsyncTask(ctx, in, opts...)
-}
-
-func (m *defaultCmdb) GetTaskStatus(ctx context.Context, in *TaskStatusReq, opts ...grpc.CallOption) (*TaskStatusResp, error) {
-	client := cmdb.NewCmdbClient(m.cli.Conn())
-	return client.GetTaskStatus(ctx, in, opts...)
-}
-
-func (m *defaultCmdb) CancelTask(ctx context.Context, in *TaskCancelReq, opts ...grpc.CallOption) (*BaseResp, error) {
-	client := cmdb.NewCmdbClient(m.cli.Conn())
-	return client.CancelTask(ctx, in, opts...)
-}
-
-func (m *defaultCmdb) GetTaskList(ctx context.Context, in *TaskListReq, opts ...grpc.CallOption) (*TaskListResp, error) {
-	client := cmdb.NewCmdbClient(m.cli.Conn())
-	return client.GetTaskList(ctx, in, opts...)
-}
-
-func (m *defaultCmdb) GetTaskStats(ctx context.Context, in *TaskStatsReq, opts ...grpc.CallOption) (*TaskStatsResp, error) {
-	client := cmdb.NewCmdbClient(m.cli.Conn())
-	return client.GetTaskStats(ctx, in, opts...)
-}
-
 // Attribute management
 func (m *defaultCmdb) CreateAttribute(ctx context.Context, in *AttributeInfo, opts ...grpc.CallOption) (*BaseIDResp, error) {
 	client := cmdb.NewCmdbClient(m.cli.Conn())
@@ -388,6 +413,32 @@ func (m *defaultCmdb) GetAttributeById(ctx context.Context, in *IDReq, opts ...g
 func (m *defaultCmdb) DeleteAttribute(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error) {
 	client := cmdb.NewCmdbClient(m.cli.Conn())
 	return client.DeleteAttribute(ctx, in, opts...)
+}
+
+// AttributeMappingRule management
+func (m *defaultCmdb) CreateAttributeMappingRule(ctx context.Context, in *AttributeMappingRuleInfo, opts ...grpc.CallOption) (*BaseIDResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.CreateAttributeMappingRule(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) UpdateAttributeMappingRule(ctx context.Context, in *AttributeMappingRuleInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.UpdateAttributeMappingRule(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetAttributeMappingRuleList(ctx context.Context, in *AttributeMappingRuleListReq, opts ...grpc.CallOption) (*AttributeMappingRuleListResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetAttributeMappingRuleList(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetAttributeMappingRuleById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*AttributeMappingRuleInfo, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetAttributeMappingRuleById(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) DeleteAttributeMappingRule(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.DeleteAttributeMappingRule(ctx, in, opts...)
 }
 
 func (m *defaultCmdb) InitDatabase(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*BaseResp, error) {
@@ -499,6 +550,16 @@ func (m *defaultCmdb) DeleteCiPermission(ctx context.Context, in *IDsReq, opts .
 	return client.DeleteCiPermission(ctx, in, opts...)
 }
 
+func (m *defaultCmdb) CheckCiTypePermission(ctx context.Context, in *CiPermissionReq, opts ...grpc.CallOption) (*CiPermissionResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.CheckCiTypePermission(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetUserPermissionScope(ctx context.Context, in *UserPermissionScopeReq, opts ...grpc.CallOption) (*UserPermissionScopeResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetUserPermissionScope(ctx, in, opts...)
+}
+
 // CiRelation management
 func (m *defaultCmdb) CreateCiRelation(ctx context.Context, in *CiRelationInfo, opts ...grpc.CallOption) (*BaseIDResp, error) {
 	client := cmdb.NewCmdbClient(m.cli.Conn())
@@ -523,6 +584,11 @@ func (m *defaultCmdb) GetCiRelationById(ctx context.Context, in *IDReq, opts ...
 func (m *defaultCmdb) DeleteCiRelation(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error) {
 	client := cmdb.NewCmdbClient(m.cli.Conn())
 	return client.DeleteCiRelation(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetCiRelationsBatch(ctx context.Context, in *CiRelationBatchQueryReq, opts ...grpc.CallOption) (*CiRelationBatchQueryResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetCiRelationsBatch(ctx, in, opts...)
 }
 
 // Cis management
@@ -564,6 +630,11 @@ func (m *defaultCmdb) CisBatchOperation(ctx context.Context, in *CisBatchOperati
 func (m *defaultCmdb) ValidateCisAttributes(ctx context.Context, in *CisAttributeValidateReq, opts ...grpc.CallOption) (*CisAttributeValidateResp, error) {
 	client := cmdb.NewCmdbClient(m.cli.Conn())
 	return client.ValidateCisAttributes(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) WriteDiscoveredCI(ctx context.Context, in *DiscoveredCIData, opts ...grpc.CallOption) (*WriteDiscoveredCIResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.WriteDiscoveredCI(ctx, in, opts...)
 }
 
 // CiType management
@@ -664,6 +735,11 @@ func (m *defaultCmdb) SortCiTypeAttributeGroup(ctx context.Context, in *CiTypeAt
 	return client.SortCiTypeAttributeGroup(ctx, in, opts...)
 }
 
+func (m *defaultCmdb) ListAttributeGroupWithAttribute(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiTypeAttributeGroupWithAttrListResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.ListAttributeGroupWithAttribute(ctx, in, opts...)
+}
+
 // CiTypeAttributeGroupItem management
 func (m *defaultCmdb) CreateCiTypeAttributeGroupItem(ctx context.Context, in *CiTypeAttributeGroupItemInfo, opts ...grpc.CallOption) (*BaseIDResp, error) {
 	client := cmdb.NewCmdbClient(m.cli.Conn())
@@ -693,6 +769,52 @@ func (m *defaultCmdb) DeleteCiTypeAttributeGroupItem(ctx context.Context, in *ID
 func (m *defaultCmdb) SortCiTypeAttributeGroupItem(ctx context.Context, in *CiTypeAttributeGroupItemSortReq, opts ...grpc.CallOption) (*BaseResp, error) {
 	client := cmdb.NewCmdbClient(m.cli.Conn())
 	return client.SortCiTypeAttributeGroupItem(ctx, in, opts...)
+}
+
+// CiTypeDiscoveryConfig management
+func (m *defaultCmdb) CreateCiTypeDiscoveryConfig(ctx context.Context, in *CiTypeDiscoveryConfigInfo, opts ...grpc.CallOption) (*BaseIDResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.CreateCiTypeDiscoveryConfig(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) UpdateCiTypeDiscoveryConfig(ctx context.Context, in *CiTypeDiscoveryConfigInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.UpdateCiTypeDiscoveryConfig(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetCiTypeDiscoveryConfigList(ctx context.Context, in *CiTypeDiscoveryConfigListReq, opts ...grpc.CallOption) (*CiTypeDiscoveryConfigListResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetCiTypeDiscoveryConfigList(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetCiTypeDiscoveryConfigById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*CiTypeDiscoveryConfigInfo, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetCiTypeDiscoveryConfigById(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) DeleteCiTypeDiscoveryConfig(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.DeleteCiTypeDiscoveryConfig(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) ExecuteDiscovery(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*DiscoveryExecutionResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.ExecuteDiscovery(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) TestProviderConnection(ctx context.Context, in *TestProviderConnectionReq, opts ...grpc.CallOption) (*BaseResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.TestProviderConnection(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetProviderSchema(ctx context.Context, in *TestProviderConnectionReq, opts ...grpc.CallOption) (*ProviderSchemaResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetProviderSchema(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) ListProviders(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ListProvidersResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.ListProviders(ctx, in, opts...)
 }
 
 // CiTypeGroup management
@@ -812,6 +934,42 @@ func (m *defaultCmdb) GetCiTypeRelationById(ctx context.Context, in *IDReq, opts
 func (m *defaultCmdb) DeleteCiTypeRelation(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error) {
 	client := cmdb.NewCmdbClient(m.cli.Conn())
 	return client.DeleteCiTypeRelation(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetCiTypeRelationDefinitions(ctx context.Context, in *CiTypeRelationDefinitionReq, opts ...grpc.CallOption) (*CiTypeRelationDefinitionResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetCiTypeRelationDefinitions(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetAttributeMappingConfigs(ctx context.Context, in *AttributeMappingConfigReq, opts ...grpc.CallOption) (*AttributeMappingConfigResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetAttributeMappingConfigs(ctx, in, opts...)
+}
+
+// DiscoveryExecutionHistory management
+func (m *defaultCmdb) CreateDiscoveryExecutionHistory(ctx context.Context, in *DiscoveryExecutionHistoryInfo, opts ...grpc.CallOption) (*BaseIDResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.CreateDiscoveryExecutionHistory(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) UpdateDiscoveryExecutionHistory(ctx context.Context, in *DiscoveryExecutionHistoryInfo, opts ...grpc.CallOption) (*BaseResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.UpdateDiscoveryExecutionHistory(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetDiscoveryExecutionHistoryList(ctx context.Context, in *DiscoveryExecutionHistoryListReq, opts ...grpc.CallOption) (*DiscoveryExecutionHistoryListResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetDiscoveryExecutionHistoryList(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) GetDiscoveryExecutionHistoryById(ctx context.Context, in *IDReq, opts ...grpc.CallOption) (*DiscoveryExecutionHistoryInfo, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.GetDiscoveryExecutionHistoryById(ctx, in, opts...)
+}
+
+func (m *defaultCmdb) DeleteDiscoveryExecutionHistory(ctx context.Context, in *IDsReq, opts ...grpc.CallOption) (*BaseResp, error) {
+	client := cmdb.NewCmdbClient(m.cli.Conn())
+	return client.DeleteDiscoveryExecutionHistory(ctx, in, opts...)
 }
 
 // RelationType management

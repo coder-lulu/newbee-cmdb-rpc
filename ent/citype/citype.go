@@ -29,6 +29,8 @@ const (
 	FieldTenantID = "tenant_id"
 	// FieldDepartmentID holds the string denoting the department_id field in the database.
 	FieldDepartmentID = "department_id"
+	// FieldCreatedBy holds the string denoting the created_by field in the database.
+	FieldCreatedBy = "created_by"
 	// FieldName holds the string denoting the name field in the database.
 	FieldName = "name"
 	// FieldAlias holds the string denoting the alias field in the database.
@@ -37,8 +39,6 @@ const (
 	FieldUniqueID = "unique_id"
 	// FieldIsInherited holds the string denoting the is_inherited field in the database.
 	FieldIsInherited = "is_inherited"
-	// FieldCreatedBy holds the string denoting the created_by field in the database.
-	FieldCreatedBy = "created_by"
 	// FieldIcon holds the string denoting the icon field in the database.
 	FieldIcon = "icon"
 	// FieldDefaultOrderAttrID holds the string denoting the default_order_attr_id field in the database.
@@ -71,6 +71,8 @@ const (
 	EdgeImportRecords = "import_records"
 	// EdgeCiRecords holds the string denoting the ci_records edge name in mutations.
 	EdgeCiRecords = "ci_records"
+	// EdgeDiscoveryConfigs holds the string denoting the discovery_configs edge name in mutations.
+	EdgeDiscoveryConfigs = "discovery_configs"
 	// Table holds the table name of the citype in the database.
 	Table = "cmdb_ci_types"
 	// AttributesTable is the table that holds the attributes relation/edge.
@@ -157,6 +159,13 @@ const (
 	CiRecordsInverseTable = "cmdb_ci_records"
 	// CiRecordsColumn is the table column denoting the ci_records relation/edge.
 	CiRecordsColumn = "ci_type_id"
+	// DiscoveryConfigsTable is the table that holds the discovery_configs relation/edge.
+	DiscoveryConfigsTable = "cmdb_ci_type_discovery_configs"
+	// DiscoveryConfigsInverseTable is the table name for the CiTypeDiscoveryConfig entity.
+	// It exists in this package in order to avoid circular dependency with the "citypediscoveryconfig" package.
+	DiscoveryConfigsInverseTable = "cmdb_ci_type_discovery_configs"
+	// DiscoveryConfigsColumn is the table column denoting the discovery_configs relation/edge.
+	DiscoveryConfigsColumn = "ci_type_id"
 )
 
 // Columns holds all SQL columns for citype fields.
@@ -169,11 +178,11 @@ var Columns = []string{
 	FieldDeletedAt,
 	FieldTenantID,
 	FieldDepartmentID,
+	FieldCreatedBy,
 	FieldName,
 	FieldAlias,
 	FieldUniqueID,
 	FieldIsInherited,
-	FieldCreatedBy,
 	FieldIcon,
 	FieldDefaultOrderAttrID,
 	FieldShowID,
@@ -261,6 +270,11 @@ func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
 }
 
+// ByCreatedBy orders the results by the created_by field.
+func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
+}
+
 // ByName orders the results by the name field.
 func ByName(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldName, opts...).ToFunc()
@@ -279,11 +293,6 @@ func ByUniqueID(opts ...sql.OrderTermOption) OrderOption {
 // ByIsInherited orders the results by the is_inherited field.
 func ByIsInherited(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldIsInherited, opts...).ToFunc()
-}
-
-// ByCreatedBy orders the results by the created_by field.
-func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
 // ByIcon orders the results by the icon field.
@@ -461,6 +470,20 @@ func ByCiRecords(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
 		sqlgraph.OrderByNeighborTerms(s, newCiRecordsStep(), append([]sql.OrderTerm{term}, terms...)...)
 	}
 }
+
+// ByDiscoveryConfigsCount orders the results by discovery_configs count.
+func ByDiscoveryConfigsCount(opts ...sql.OrderTermOption) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborsCount(s, newDiscoveryConfigsStep(), opts...)
+	}
+}
+
+// ByDiscoveryConfigs orders the results by discovery_configs terms.
+func ByDiscoveryConfigs(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
+	return func(s *sql.Selector) {
+		sqlgraph.OrderByNeighborTerms(s, newDiscoveryConfigsStep(), append([]sql.OrderTerm{term}, terms...)...)
+	}
+}
 func newAttributesStep() *sqlgraph.Step {
 	return sqlgraph.NewStep(
 		sqlgraph.From(Table, FieldID),
@@ -543,5 +566,12 @@ func newCiRecordsStep() *sqlgraph.Step {
 		sqlgraph.From(Table, FieldID),
 		sqlgraph.To(CiRecordsInverseTable, FieldID),
 		sqlgraph.Edge(sqlgraph.O2M, false, CiRecordsTable, CiRecordsColumn),
+	)
+}
+func newDiscoveryConfigsStep() *sqlgraph.Step {
+	return sqlgraph.NewStep(
+		sqlgraph.From(Table, FieldID),
+		sqlgraph.To(DiscoveryConfigsInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.O2M, false, DiscoveryConfigsTable, DiscoveryConfigsColumn),
 	)
 }

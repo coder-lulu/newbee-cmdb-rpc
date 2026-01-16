@@ -6,8 +6,14 @@ import (
 	"entgo.io/ent/dialect/sql"
 )
 
+// AggregationCache is the predicate function for aggregationcache builders.
+type AggregationCache func(*sql.Selector)
+
 // Attribute is the predicate function for attribute builders.
 type Attribute func(*sql.Selector)
+
+// AttributeMappingRule is the predicate function for attributemappingrule builders.
+type AttributeMappingRule func(*sql.Selector)
 
 // ChoiceFloat is the predicate function for choicefloat builders.
 type ChoiceFloat func(*sql.Selector)
@@ -20,6 +26,12 @@ type ChoiceText func(*sql.Selector)
 
 // CiApprovalFlow is the predicate function for ciapprovalflow builders.
 type CiApprovalFlow func(*sql.Selector)
+
+// CiAttributeDistribution is the predicate function for ciattributedistribution builders.
+type CiAttributeDistribution func(*sql.Selector)
+
+// CiDimension is the predicate function for cidimension builders.
+type CiDimension func(*sql.Selector)
 
 // CiLifecycleState is the predicate function for cilifecyclestate builders.
 type CiLifecycleState func(*sql.Selector)
@@ -36,6 +48,9 @@ type CiRecords func(*sql.Selector)
 // CiRelation is the predicate function for cirelation builders.
 type CiRelation func(*sql.Selector)
 
+// CiStatisticsFact is the predicate function for cistatisticsfact builders.
+type CiStatisticsFact func(*sql.Selector)
+
 // CiType is the predicate function for citype builders.
 type CiType func(*sql.Selector)
 
@@ -47,6 +62,9 @@ type CiTypeAttributeGroup func(*sql.Selector)
 
 // CiTypeAttributeGroupItem is the predicate function for citypeattributegroupitem builders.
 type CiTypeAttributeGroupItem func(*sql.Selector)
+
+// CiTypeDiscoveryConfig is the predicate function for citypediscoveryconfig builders.
+type CiTypeDiscoveryConfig func(*sql.Selector)
 
 // CiTypeGroup is the predicate function for citypegroup builders.
 type CiTypeGroup func(*sql.Selector)
@@ -62,6 +80,12 @@ type CiTypeRelation func(*sql.Selector)
 
 // Cis is the predicate function for cis builders.
 type Cis func(*sql.Selector)
+
+// DiscoveryExecutionHistory is the predicate function for discoveryexecutionhistory builders.
+type DiscoveryExecutionHistory func(*sql.Selector)
+
+// DynamicAggregationConfig is the predicate function for dynamicaggregationconfig builders.
+type DynamicAggregationConfig func(*sql.Selector)
 
 // ImportError is the predicate function for importerror builders.
 type ImportError func(*sql.Selector)
@@ -92,6 +116,12 @@ type PermissionTemplate func(*sql.Selector)
 
 // RelationType is the predicate function for relationtype builders.
 type RelationType func(*sql.Selector)
+
+// TimeDimension is the predicate function for timedimension builders.
+type TimeDimension func(*sql.Selector)
+
+// UserActivityFact is the predicate function for useractivityfact builders.
+type UserActivityFact func(*sql.Selector)
 
 // ValueDatetime is the predicate function for valuedatetime builders.
 type ValueDatetime func(*sql.Selector)

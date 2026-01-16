@@ -28,6 +28,8 @@ const (
 	FieldTenantID = "tenant_id"
 	// FieldDepartmentID holds the string denoting the department_id field in the database.
 	FieldDepartmentID = "department_id"
+	// FieldCreatedBy holds the string denoting the created_by field in the database.
+	FieldCreatedBy = "created_by"
 	// FieldName holds the string denoting the name field in the database.
 	FieldName = "name"
 	// FieldCode holds the string denoting the code field in the database.
@@ -114,8 +116,6 @@ const (
 	FieldIsSystem = "is_system"
 	// FieldSharedWith holds the string denoting the shared_with field in the database.
 	FieldSharedWith = "shared_with"
-	// FieldCreatedBy holds the string denoting the created_by field in the database.
-	FieldCreatedBy = "created_by"
 	// FieldCreatedByName holds the string denoting the created_by_name field in the database.
 	FieldCreatedByName = "created_by_name"
 	// FieldApprovedBy holds the string denoting the approved_by field in the database.
@@ -155,6 +155,7 @@ var Columns = []string{
 	FieldDeletedAt,
 	FieldTenantID,
 	FieldDepartmentID,
+	FieldCreatedBy,
 	FieldName,
 	FieldCode,
 	FieldDescription,
@@ -198,7 +199,6 @@ var Columns = []string{
 	FieldIsPublic,
 	FieldIsSystem,
 	FieldSharedWith,
-	FieldCreatedBy,
 	FieldCreatedByName,
 	FieldApprovedBy,
 	FieldApprovedByName,
@@ -438,6 +438,11 @@ func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
 }
 
+// ByCreatedBy orders the results by the created_by field.
+func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
+}
+
 // ByName orders the results by the name field.
 func ByName(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldName, opts...).ToFunc()
@@ -586,11 +591,6 @@ func ByIsPublic(opts ...sql.OrderTermOption) OrderOption {
 // ByIsSystem orders the results by the is_system field.
 func ByIsSystem(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldIsSystem, opts...).ToFunc()
-}
-
-// ByCreatedBy orders the results by the created_by field.
-func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
 // ByCreatedByName orders the results by the created_by_name field.

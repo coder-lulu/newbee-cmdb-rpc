@@ -2,12 +2,14 @@ package cityperelation
 
 import (
 	"context"
+	"errors"
 
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	"github.com/coder-lulu/newbee-common/msg/errormsg"
+	"github.com/coder-lulu/newbee-common/v2/msg/errormsg"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -26,6 +28,25 @@ func NewCreateCiTypeRelationLogic(ctx context.Context, svcCtx *svc.ServiceContex
 }
 
 func (l *CreateCiTypeRelationLogic) CreateCiTypeRelation(in *cmdb.CiTypeRelationInfo) (*cmdb.BaseIDResp, error) {
+	// 检查是否已存在相同的父子关系组合
+	if in.ParentId != nil && in.ChildId != nil && in.RelationTypeId != nil {
+		exists, err := l.svcCtx.DB.CiTypeRelation.Query().
+			Where(
+				cityperelation.ParentIDEQ(*in.ParentId),
+				cityperelation.ChildIDEQ(*in.ChildId),
+				cityperelation.RelationTypeIDEQ(*in.RelationTypeId),
+			).
+			Exist(l.ctx)
+		
+		if err != nil {
+			return nil, dberrorhandler.DefaultEntError(l.Logger, err, in)
+		}
+		
+		if exists {
+			return nil, errors.New("该父子模型关系已存在，不能重复创建")
+		}
+	}
+
 	creator := l.svcCtx.DB.CiTypeRelation.Create().
 		SetNotNilParentID(in.ParentId).
 		SetNotNilChildID(in.ChildId).

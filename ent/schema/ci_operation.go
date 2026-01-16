@@ -2,9 +2,11 @@ package schema
 
 import (
 	"entgo.io/ent"
+	"entgo.io/ent/dialect/entsql"
+	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 	"github.com/gofrs/uuid/v5"
 )
 
@@ -239,5 +241,12 @@ func (CiOperation) Indexes() []ent.Index {
 		// 复合索引用于复杂查询
 		index.Fields("operation_type", "ci_type_id", "operation_status", "created_at"),
 		index.Fields("operator_id", "operation_type", "created_at"),
+	}
+}
+
+// Annotations 返回表的注释
+func (CiOperation) Annotations() []schema.Annotation {
+	return []schema.Annotation{
+		entsql.Annotation{Table: "cmdb_ci_operations"},
 	}
 }

@@ -33,6 +33,8 @@ type ImportTemplate struct {
 	TenantID uint64 `json:"tenant_id,omitempty"`
 	// Department ID | 部门 ID
 	DepartmentID uint64 `json:"department_id,omitempty"`
+	// Created user's UUID | 创建者 UUID
+	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 模板名称
 	Name string `json:"name,omitempty"`
 	// 模板编码
@@ -119,8 +121,6 @@ type ImportTemplate struct {
 	IsSystem bool `json:"is_system,omitempty"`
 	// 共享给用户列表
 	SharedWith []string `json:"shared_with,omitempty"`
-	// 创建者ID
-	CreatedBy uuid.UUID `json:"created_by,omitempty"`
 	// 创建者姓名
 	CreatedByName string `json:"created_by_name,omitempty"`
 	// 审核者ID
@@ -171,6 +171,8 @@ func (*ImportTemplate) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
+		case importtemplate.FieldCreatedBy:
+			values[i] = &sql.NullScanner{S: new(uuid.UUID)}
 		case importtemplate.FieldFieldMappings, importtemplate.FieldHeaderMappings, importtemplate.FieldDefaultValues, importtemplate.FieldComputedFields, importtemplate.FieldDataTransformations, importtemplate.FieldDataFilters, importtemplate.FieldDataCleaners, importtemplate.FieldExcelColumnMappings, importtemplate.FieldAPIHeaders, importtemplate.FieldAPIParams, importtemplate.FieldTags, importtemplate.FieldMetadata, importtemplate.FieldSharedWith:
 			values[i] = new([]byte)
 		case importtemplate.FieldAutoCreateCiType, importtemplate.FieldStopOnFirstError, importtemplate.FieldSkipInvalidRows, importtemplate.FieldEnableTransaction, importtemplate.FieldIsPublic, importtemplate.FieldIsSystem:
@@ -183,7 +185,7 @@ func (*ImportTemplate) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullString)
 		case importtemplate.FieldCreatedAt, importtemplate.FieldUpdatedAt, importtemplate.FieldDeletedAt, importtemplate.FieldApprovedAt:
 			values[i] = new(sql.NullTime)
-		case importtemplate.FieldCreatedBy, importtemplate.FieldApprovedBy:
+		case importtemplate.FieldApprovedBy:
 			values[i] = new(uuid.UUID)
 		default:
 			values[i] = new(sql.UnknownType)
@@ -241,6 +243,13 @@ func (_m *ImportTemplate) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
 				_m.DepartmentID = uint64(value.Int64)
+			}
+		case importtemplate.FieldCreatedBy:
+			if value, ok := values[i].(*sql.NullScanner); !ok {
+				return fmt.Errorf("unexpected type %T for field created_by", values[i])
+			} else if value.Valid {
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case importtemplate.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -526,12 +535,6 @@ func (_m *ImportTemplate) assignValues(columns []string, values []any) error {
 					return fmt.Errorf("unmarshal field shared_with: %w", err)
 				}
 			}
-		case importtemplate.FieldCreatedBy:
-			if value, ok := values[i].(*uuid.UUID); !ok {
-				return fmt.Errorf("unexpected type %T for field created_by", values[i])
-			} else if value != nil {
-				_m.CreatedBy = *value
-			}
 		case importtemplate.FieldCreatedByName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by_name", values[i])
@@ -619,6 +622,11 @@ func (_m *ImportTemplate) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
+	builder.WriteString(", ")
+	if v := _m.CreatedBy; v != nil {
+		builder.WriteString("created_by=")
+		builder.WriteString(fmt.Sprintf("%v", *v))
+	}
 	builder.WriteString(", ")
 	builder.WriteString("name=")
 	builder.WriteString(_m.Name)
@@ -748,9 +756,6 @@ func (_m *ImportTemplate) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("shared_with=")
 	builder.WriteString(fmt.Sprintf("%v", _m.SharedWith))
-	builder.WriteString(", ")
-	builder.WriteString("created_by=")
-	builder.WriteString(fmt.Sprintf("%v", _m.CreatedBy))
 	builder.WriteString(", ")
 	builder.WriteString("created_by_name=")
 	builder.WriteString(_m.CreatedByName)

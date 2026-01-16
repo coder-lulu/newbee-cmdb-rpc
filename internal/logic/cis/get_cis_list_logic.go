@@ -22,7 +22,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	"github.com/coder-lulu/newbee-common/utils/uuidx"
+	"github.com/coder-lulu/newbee-common/v2/utils/uuidx"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -112,7 +112,7 @@ func (l *GetCisListLogic) shouldUseEnhancedSearch(in *cmdb.CisListReq) bool {
 
 // getListWithEnhancedSearch 使用增强搜索引擎获取CI列表
 func (l *GetCisListLogic) getListWithEnhancedSearch(in *cmdb.CisListReq) (*cmdb.CisListResp, error) {
-	engine := NewEnhancedSearchEngine(l.ctx, l.svcCtx)
+	engine := NewSearchEngine(l.ctx, l.svcCtx)
 
 	// 构建搜索请求
 	searchReq := &SearchRequest{

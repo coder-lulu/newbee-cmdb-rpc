@@ -77,6 +77,20 @@ func (_c *CiApprovalFlowCreate) SetNillableDepartmentID(v *uint64) *CiApprovalFl
 	return _c
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_c *CiApprovalFlowCreate) SetCreatedBy(v uuid.UUID) *CiApprovalFlowCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_c *CiApprovalFlowCreate) SetNillableCreatedBy(v *uuid.UUID) *CiApprovalFlowCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
+	}
+	return _c
+}
+
 // SetFlowID sets the "flow_id" field.
 func (_c *CiApprovalFlowCreate) SetFlowID(v string) *CiApprovalFlowCreate {
 	_c.mutation.SetFlowID(v)
@@ -419,20 +433,6 @@ func (_c *CiApprovalFlowCreate) SetLastUsedAt(v time.Time) *CiApprovalFlowCreate
 func (_c *CiApprovalFlowCreate) SetNillableLastUsedAt(v *time.Time) *CiApprovalFlowCreate {
 	if v != nil {
 		_c.SetLastUsedAt(*v)
-	}
-	return _c
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_c *CiApprovalFlowCreate) SetCreatedBy(v uuid.UUID) *CiApprovalFlowCreate {
-	_c.mutation.SetCreatedBy(v)
-	return _c
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_c *CiApprovalFlowCreate) SetNillableCreatedBy(v *uuid.UUID) *CiApprovalFlowCreate {
-	if v != nil {
-		_c.SetCreatedBy(*v)
 	}
 	return _c
 }
@@ -802,6 +802,10 @@ func (_c *CiApprovalFlowCreate) createSpec() (*CiApprovalFlow, *sqlgraph.CreateS
 		_spec.SetField(ciapprovalflow.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
+	if value, ok := _c.mutation.CreatedBy(); ok {
+		_spec.SetField(ciapprovalflow.FieldCreatedBy, field.TypeUUID, value)
+		_node.CreatedBy = &value
+	}
 	if value, ok := _c.mutation.FlowID(); ok {
 		_spec.SetField(ciapprovalflow.FieldFlowID, field.TypeString, value)
 		_node.FlowID = value
@@ -925,10 +929,6 @@ func (_c *CiApprovalFlowCreate) createSpec() (*CiApprovalFlow, *sqlgraph.CreateS
 	if value, ok := _c.mutation.LastUsedAt(); ok {
 		_spec.SetField(ciapprovalflow.FieldLastUsedAt, field.TypeTime, value)
 		_node.LastUsedAt = value
-	}
-	if value, ok := _c.mutation.CreatedBy(); ok {
-		_spec.SetField(ciapprovalflow.FieldCreatedBy, field.TypeUUID, value)
-		_node.CreatedBy = value
 	}
 	if value, ok := _c.mutation.CreatedByName(); ok {
 		_spec.SetField(ciapprovalflow.FieldCreatedByName, field.TypeString, value)

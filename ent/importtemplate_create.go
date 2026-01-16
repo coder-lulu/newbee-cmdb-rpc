@@ -108,6 +108,20 @@ func (_c *ImportTemplateCreate) SetNillableDepartmentID(v *uint64) *ImportTempla
 	return _c
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_c *ImportTemplateCreate) SetCreatedBy(v uuid.UUID) *ImportTemplateCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_c *ImportTemplateCreate) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
+	}
+	return _c
+}
+
 // SetName sets the "name" field.
 func (_c *ImportTemplateCreate) SetName(v string) *ImportTemplateCreate {
 	_c.mutation.SetName(v)
@@ -590,20 +604,6 @@ func (_c *ImportTemplateCreate) SetSharedWith(v []string) *ImportTemplateCreate 
 	return _c
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_c *ImportTemplateCreate) SetCreatedBy(v uuid.UUID) *ImportTemplateCreate {
-	_c.mutation.SetCreatedBy(v)
-	return _c
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_c *ImportTemplateCreate) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateCreate {
-	if v != nil {
-		_c.SetCreatedBy(*v)
-	}
-	return _c
-}
-
 // SetCreatedByName sets the "created_by_name" field.
 func (_c *ImportTemplateCreate) SetCreatedByName(v string) *ImportTemplateCreate {
 	_c.mutation.SetCreatedByName(v)
@@ -1019,6 +1019,10 @@ func (_c *ImportTemplateCreate) createSpec() (*ImportTemplate, *sqlgraph.CreateS
 		_spec.SetField(importtemplate.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
+	if value, ok := _c.mutation.CreatedBy(); ok {
+		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
+		_node.CreatedBy = &value
+	}
 	if value, ok := _c.mutation.Name(); ok {
 		_spec.SetField(importtemplate.FieldName, field.TypeString, value)
 		_node.Name = value
@@ -1186,10 +1190,6 @@ func (_c *ImportTemplateCreate) createSpec() (*ImportTemplate, *sqlgraph.CreateS
 	if value, ok := _c.mutation.SharedWith(); ok {
 		_spec.SetField(importtemplate.FieldSharedWith, field.TypeJSON, value)
 		_node.SharedWith = value
-	}
-	if value, ok := _c.mutation.CreatedBy(); ok {
-		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
-		_node.CreatedBy = value
 	}
 	if value, ok := _c.mutation.CreatedByName(); ok {
 		_spec.SetField(importtemplate.FieldCreatedByName, field.TypeString, value)

@@ -27,6 +27,8 @@ type CiLifecycleState struct {
 	TenantID uint64 `json:"tenant_id,omitempty"`
 	// Department ID | 部门 ID
 	DepartmentID uint64 `json:"department_id,omitempty"`
+	// Created user's UUID | 创建者 UUID
+	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 状态ID，全局唯一标识
 	StateID string `json:"state_id,omitempty"`
 	// 状态名称
@@ -155,8 +157,6 @@ type CiLifecycleState struct {
 	Tags []string `json:"tags,omitempty"`
 	// 备注信息
 	Comments string `json:"comments,omitempty"`
-	// 创建人ID
-	CreatedBy uuid.UUID `json:"created_by,omitempty"`
 	// 最后更新人ID
 	UpdatedBy    uuid.UUID `json:"updated_by,omitempty"`
 	selectValues sql.SelectValues
@@ -167,6 +167,8 @@ func (*CiLifecycleState) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
+		case cilifecyclestate.FieldCreatedBy:
+			values[i] = &sql.NullScanner{S: new(uuid.UUID)}
 		case cilifecyclestate.FieldAllowedTransitions, cilifecyclestate.FieldTransitionConditions, cilifecyclestate.FieldAutoTransitionRules, cilifecyclestate.FieldTriggerContext, cilifecyclestate.FieldStateData, cilifecyclestate.FieldStateConfig, cilifecyclestate.FieldValidationRules, cilifecyclestate.FieldRequiredPermissions, cilifecyclestate.FieldGrantedPermissions, cilifecyclestate.FieldRestrictedOperations, cilifecyclestate.FieldNotificationConfig, cilifecyclestate.FieldReminderConfig, cilifecyclestate.FieldErrorDetails, cilifecyclestate.FieldPerformanceMetrics, cilifecyclestate.FieldResourceUsage, cilifecyclestate.FieldChildStateIds, cilifecyclestate.FieldChangeHistory, cilifecyclestate.FieldCustomAttributes, cilifecyclestate.FieldIntegrationData, cilifecyclestate.FieldMetadata, cilifecyclestate.FieldTags:
 			values[i] = new([]byte)
 		case cilifecyclestate.FieldIsTimeout, cilifecyclestate.FieldRequireApproval, cilifecyclestate.FieldHasError, cilifecyclestate.FieldIsRollback, cilifecyclestate.FieldIsMilestone, cilifecyclestate.FieldIsCritical, cilifecyclestate.FieldIsReversible, cilifecyclestate.FieldIsFinal:
@@ -177,7 +179,7 @@ func (*CiLifecycleState) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullString)
 		case cilifecyclestate.FieldCreatedAt, cilifecyclestate.FieldUpdatedAt, cilifecyclestate.FieldEnteredAt, cilifecyclestate.FieldExpectedExitAt, cilifecyclestate.FieldActualExitAt, cilifecyclestate.FieldTimeoutAt, cilifecyclestate.FieldLastNotificationAt, cilifecyclestate.FieldApprovedAt, cilifecyclestate.FieldLastRetryAt:
 			values[i] = new(sql.NullTime)
-		case cilifecyclestate.FieldTriggeredBy, cilifecyclestate.FieldApproverID, cilifecyclestate.FieldCreatedBy, cilifecyclestate.FieldUpdatedBy:
+		case cilifecyclestate.FieldTriggeredBy, cilifecyclestate.FieldApproverID, cilifecyclestate.FieldUpdatedBy:
 			values[i] = new(uuid.UUID)
 		default:
 			values[i] = new(sql.UnknownType)
@@ -223,6 +225,13 @@ func (_m *CiLifecycleState) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
 				_m.DepartmentID = uint64(value.Int64)
+			}
+		case cilifecyclestate.FieldCreatedBy:
+			if value, ok := values[i].(*sql.NullScanner); !ok {
+				return fmt.Errorf("unexpected type %T for field created_by", values[i])
+			} else if value.Valid {
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case cilifecyclestate.FieldStateID:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -650,12 +659,6 @@ func (_m *CiLifecycleState) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.Comments = value.String
 			}
-		case cilifecyclestate.FieldCreatedBy:
-			if value, ok := values[i].(*uuid.UUID); !ok {
-				return fmt.Errorf("unexpected type %T for field created_by", values[i])
-			} else if value != nil {
-				_m.CreatedBy = *value
-			}
 		case cilifecyclestate.FieldUpdatedBy:
 			if value, ok := values[i].(*uuid.UUID); !ok {
 				return fmt.Errorf("unexpected type %T for field updated_by", values[i])
@@ -709,6 +712,11 @@ func (_m *CiLifecycleState) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("department_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
+	builder.WriteString(", ")
+	if v := _m.CreatedBy; v != nil {
+		builder.WriteString("created_by=")
+		builder.WriteString(fmt.Sprintf("%v", *v))
+	}
 	builder.WriteString(", ")
 	builder.WriteString("state_id=")
 	builder.WriteString(_m.StateID)
@@ -901,9 +909,6 @@ func (_m *CiLifecycleState) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("comments=")
 	builder.WriteString(_m.Comments)
-	builder.WriteString(", ")
-	builder.WriteString("created_by=")
-	builder.WriteString(fmt.Sprintf("%v", _m.CreatedBy))
 	builder.WriteString(", ")
 	builder.WriteString("updated_by=")
 	builder.WriteString(fmt.Sprintf("%v", _m.UpdatedBy))

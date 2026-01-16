@@ -57,6 +57,33 @@ func (_u *CiTypeRelationUpdate) ClearDeletedAt() *CiTypeRelationUpdate {
 	return _u
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_u *CiTypeRelationUpdate) SetDepartmentID(v uint64) *CiTypeRelationUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_u *CiTypeRelationUpdate) SetNillableDepartmentID(v *uint64) *CiTypeRelationUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
+	}
+	return _u
+}
+
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiTypeRelationUpdate) AddDepartmentID(v int64) *CiTypeRelationUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
+}
+
+// ClearDepartmentID clears the value of the "department_id" field.
+func (_u *CiTypeRelationUpdate) ClearDepartmentID() *CiTypeRelationUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
 // SetParentID sets the "parent_id" field.
 func (_u *CiTypeRelationUpdate) SetParentID(v uint64) *CiTypeRelationUpdate {
 	_u.mutation.SetParentID(v)
@@ -324,6 +351,15 @@ func (_u *CiTypeRelationUpdate) sqlSave(ctx context.Context) (_node int, err err
 	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(cityperelation.FieldDeletedAt, field.TypeTime)
 	}
+	if value, ok := _u.mutation.DepartmentID(); ok {
+		_spec.SetField(cityperelation.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
+		_spec.AddField(cityperelation.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if _u.mutation.DepartmentIDCleared() {
+		_spec.ClearField(cityperelation.FieldDepartmentID, field.TypeUint64)
+	}
 	if value, ok := _u.mutation.Constraint(); ok {
 		_spec.SetField(cityperelation.FieldConstraint, field.TypeString, value)
 	}
@@ -500,6 +536,33 @@ func (_u *CiTypeRelationUpdateOne) SetNillableDeletedAt(v *time.Time) *CiTypeRel
 // ClearDeletedAt clears the value of the "deleted_at" field.
 func (_u *CiTypeRelationUpdateOne) ClearDeletedAt() *CiTypeRelationUpdateOne {
 	_u.mutation.ClearDeletedAt()
+	return _u
+}
+
+// SetDepartmentID sets the "department_id" field.
+func (_u *CiTypeRelationUpdateOne) SetDepartmentID(v uint64) *CiTypeRelationUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_u *CiTypeRelationUpdateOne) SetNillableDepartmentID(v *uint64) *CiTypeRelationUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
+	}
+	return _u
+}
+
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *CiTypeRelationUpdateOne) AddDepartmentID(v int64) *CiTypeRelationUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
+}
+
+// ClearDepartmentID clears the value of the "department_id" field.
+func (_u *CiTypeRelationUpdateOne) ClearDepartmentID() *CiTypeRelationUpdateOne {
+	_u.mutation.ClearDepartmentID()
 	return _u
 }
 
@@ -799,6 +862,15 @@ func (_u *CiTypeRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiTypeRe
 	}
 	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(cityperelation.FieldDeletedAt, field.TypeTime)
+	}
+	if value, ok := _u.mutation.DepartmentID(); ok {
+		_spec.SetField(cityperelation.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
+		_spec.AddField(cityperelation.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if _u.mutation.DepartmentIDCleared() {
+		_spec.ClearField(cityperelation.FieldDepartmentID, field.TypeUint64)
 	}
 	if value, ok := _u.mutation.Constraint(); ok {
 		_spec.SetField(cityperelation.FieldConstraint, field.TypeString, value)

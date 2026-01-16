@@ -27,6 +27,8 @@ type CiApprovalFlow struct {
 	TenantID uint64 `json:"tenant_id,omitempty"`
 	// Department ID | 部门 ID
 	DepartmentID uint64 `json:"department_id,omitempty"`
+	// Created user's UUID | 创建者 UUID
+	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 流程ID，全局唯一标识
 	FlowID string `json:"flow_id,omitempty"`
 	// 流程名称
@@ -89,8 +91,6 @@ type CiApprovalFlow struct {
 	AvgApprovalTime float64 `json:"avg_approval_time,omitempty"`
 	// 最后使用时间
 	LastUsedAt time.Time `json:"last_used_at,omitempty"`
-	// 创建人ID
-	CreatedBy uuid.UUID `json:"created_by,omitempty"`
 	// 创建人姓名
 	CreatedByName string `json:"created_by_name,omitempty"`
 	// 最后更新人ID
@@ -119,6 +119,8 @@ func (*CiApprovalFlow) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
+		case ciapprovalflow.FieldCreatedBy:
+			values[i] = &sql.NullScanner{S: new(uuid.UUID)}
 		case ciapprovalflow.FieldScopeConfig, ciapprovalflow.FieldTriggerConditions, ciapprovalflow.FieldApprovalStages, ciapprovalflow.FieldApproverConfig, ciapprovalflow.FieldFallbackApprovers, ciapprovalflow.FieldStageTimeouts, ciapprovalflow.FieldNotificationConfig, ciapprovalflow.FieldCustomFields, ciapprovalflow.FieldIntegrationConfig, ciapprovalflow.FieldMetadata, ciapprovalflow.FieldTags:
 			values[i] = new([]byte)
 		case ciapprovalflow.FieldAllowSkipStages, ciapprovalflow.FieldAllowRollback, ciapprovalflow.FieldRequireAllApprovers, ciapprovalflow.FieldNotifyOnSubmit, ciapprovalflow.FieldNotifyOnApprove, ciapprovalflow.FieldNotifyOnReject, ciapprovalflow.FieldIsDefault:
@@ -131,7 +133,7 @@ func (*CiApprovalFlow) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullString)
 		case ciapprovalflow.FieldCreatedAt, ciapprovalflow.FieldUpdatedAt, ciapprovalflow.FieldLastUsedAt, ciapprovalflow.FieldPublishedAt:
 			values[i] = new(sql.NullTime)
-		case ciapprovalflow.FieldCreatedBy, ciapprovalflow.FieldUpdatedBy, ciapprovalflow.FieldPublishedBy:
+		case ciapprovalflow.FieldUpdatedBy, ciapprovalflow.FieldPublishedBy:
 			values[i] = new(uuid.UUID)
 		default:
 			values[i] = new(sql.UnknownType)
@@ -177,6 +179,13 @@ func (_m *CiApprovalFlow) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field department_id", values[i])
 			} else if value.Valid {
 				_m.DepartmentID = uint64(value.Int64)
+			}
+		case ciapprovalflow.FieldCreatedBy:
+			if value, ok := values[i].(*sql.NullScanner); !ok {
+				return fmt.Errorf("unexpected type %T for field created_by", values[i])
+			} else if value.Valid {
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case ciapprovalflow.FieldFlowID:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -378,12 +387,6 @@ func (_m *CiApprovalFlow) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.LastUsedAt = value.Time
 			}
-		case ciapprovalflow.FieldCreatedBy:
-			if value, ok := values[i].(*uuid.UUID); !ok {
-				return fmt.Errorf("unexpected type %T for field created_by", values[i])
-			} else if value != nil {
-				_m.CreatedBy = *value
-			}
 		case ciapprovalflow.FieldCreatedByName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field created_by_name", values[i])
@@ -500,6 +503,11 @@ func (_m *CiApprovalFlow) String() string {
 	builder.WriteString("department_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
+	if v := _m.CreatedBy; v != nil {
+		builder.WriteString("created_by=")
+		builder.WriteString(fmt.Sprintf("%v", *v))
+	}
+	builder.WriteString(", ")
 	builder.WriteString("flow_id=")
 	builder.WriteString(_m.FlowID)
 	builder.WriteString(", ")
@@ -592,9 +600,6 @@ func (_m *CiApprovalFlow) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("last_used_at=")
 	builder.WriteString(_m.LastUsedAt.Format(time.ANSIC))
-	builder.WriteString(", ")
-	builder.WriteString("created_by=")
-	builder.WriteString(fmt.Sprintf("%v", _m.CreatedBy))
 	builder.WriteString(", ")
 	builder.WriteString("created_by_name=")
 	builder.WriteString(_m.CreatedByName)

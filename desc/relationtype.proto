@@ -14,6 +14,28 @@ message RelationTypeInfo {
   optional string category = 6;
   // 关系类型方向
   optional string direction = 7;
+  // 描述
+  optional string description = 8;
+  // 是否标准
+  optional bool is_standard = 9;
+  // 排序号
+  optional uint32 sort_order = 10;
+  // 是否启用
+  optional bool is_enabled = 11;
+  // 显示颜色
+  optional string display_color = 12;
+  // 线条类型
+  optional string line_type = 13;
+  // 图标
+  optional string icon = 14;
+  // 权重
+  optional uint32 weight = 15;
+  // 显示标签
+  optional string display_label = 16;
+  // 提示模板
+  optional string tooltip_template = 17;
+  // 显示样式
+  optional string display_style = 18;
 }
 
 message RelationTypeListResp {

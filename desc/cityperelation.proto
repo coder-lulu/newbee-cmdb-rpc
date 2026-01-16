@@ -45,6 +45,98 @@ message CiTypeRelationListReq {
   repeated uint64 child_attr_ids = 13;
 }
 
+// CiTypeRelationDefinitionReq 查询CI类型关系定义请求
+message CiTypeRelationDefinitionReq {
+  // CI类型ID，查询作为源或目标的关系定义
+  uint64 ci_type_id = 1;
+  // 关系方向：source(作为源), target(作为目标), both(双向)，默认both
+  optional string direction = 2;
+  // 是否包含属性映射信息
+  optional bool include_attribute_mapping = 3;
+  // 是否只查询有效的关系定义
+  optional bool active_only = 4;
+}
+
+// CiTypeRelationDefinitionResp 关系定义响应
+message CiTypeRelationDefinitionResp {
+  // 作为源CI类型的关系定义
+  repeated CiTypeRelationInfo source_relations = 1;
+  // 作为目标CI类型的关系定义
+  repeated CiTypeRelationInfo target_relations = 2;
+  // 总数统计
+  uint64 total_count = 3;
+}
+
+// AttributeMappingConfigReq 属性映射配置查询请求
+message AttributeMappingConfigReq {
+  // 源CI类型ID
+  optional uint64 source_ci_type_id = 1;
+  // 目标CI类型ID  
+  optional uint64 target_ci_type_id = 2;
+  // 关系类型ID
+  optional uint64 relation_type_id = 3;
+  // 是否包含详细的属性信息
+  optional bool include_attribute_details = 4;
+  // 是否只返回已配置映射的关系
+  optional bool configured_only = 5;
+}
+
+// AttributeMappingConfigResp 属性映射配置响应
+message AttributeMappingConfigResp {
+  // 映射配置列表
+  repeated AttributeMappingConfigInfo configs = 1;
+  // 总数
+  uint64 total_count = 2;
+}
+
+// AttributeMappingConfigInfo 属性映射配置信息
+message AttributeMappingConfigInfo {
+  // 关系定义ID
+  uint64 relation_id = 1;
+  // 源CI类型信息
+  CiTypeBasicInfo source_ci_type = 2;
+  // 目标CI类型信息
+  CiTypeBasicInfo target_ci_type = 3;
+  // 关系类型信息
+  RelationTypeBasicInfo relation_type = 4;
+  // 单属性映射
+  optional AttributeMappingPair single_mapping = 5;
+  // 多属性映射
+  repeated AttributeMappingPair multiple_mappings = 6;
+  // 约束条件
+  optional string constraint = 7;
+}
+
+// AttributeMappingPair 属性映射对
+message AttributeMappingPair {
+  // 源属性信息
+  AttributeBasicInfo source_attribute = 1;
+  // 目标属性信息
+  AttributeBasicInfo target_attribute = 2;
+}
+
+// CiTypeBasicInfo CI类型基础信息
+message CiTypeBasicInfo {
+  uint64 id = 1;
+  string name = 2;
+  string alias = 3;
+}
+
+// RelationTypeBasicInfo 关系类型基础信息
+message RelationTypeBasicInfo {
+  uint64 id = 1;
+  string name = 2;
+  string code = 3;
+}
+
+// AttributeBasicInfo 属性基础信息
+message AttributeBasicInfo {
+  uint64 id = 1;
+  string name = 2;
+  string alias = 3;
+  string data_type = 4;
+}
+
 
 service Cmdb {
 
@@ -59,6 +151,10 @@ service Cmdb {
   rpc getCiTypeRelationById (IDReq) returns (CiTypeRelationInfo);
   // group: cityperelation
   rpc deleteCiTypeRelation (IDsReq) returns (BaseResp);
+  // group: cityperelation
+  rpc getCiTypeRelationDefinitions (CiTypeRelationDefinitionReq) returns (CiTypeRelationDefinitionResp);
+  // group: cityperelation
+  rpc getAttributeMappingConfigs (AttributeMappingConfigReq) returns (AttributeMappingConfigResp);
 
 
 }

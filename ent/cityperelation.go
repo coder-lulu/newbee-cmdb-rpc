@@ -28,6 +28,8 @@ type CiTypeRelation struct {
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 外键，关联cmdb_ci_types.id，父类型
 	ParentID uint64 `json:"parent_id,omitempty"`
 	// 外键，关联cmdb_ci_types.id，子类型
@@ -103,7 +105,7 @@ func (*CiTypeRelation) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case cityperelation.FieldParentAttrIds, cityperelation.FieldChildAttrIds:
 			values[i] = new([]byte)
-		case cityperelation.FieldID, cityperelation.FieldTenantID, cityperelation.FieldParentID, cityperelation.FieldChildID, cityperelation.FieldRelationTypeID, cityperelation.FieldParentAttrID, cityperelation.FieldChildAttrID:
+		case cityperelation.FieldID, cityperelation.FieldTenantID, cityperelation.FieldDepartmentID, cityperelation.FieldParentID, cityperelation.FieldChildID, cityperelation.FieldRelationTypeID, cityperelation.FieldParentAttrID, cityperelation.FieldChildAttrID:
 			values[i] = new(sql.NullInt64)
 		case cityperelation.FieldConstraint:
 			values[i] = new(sql.NullString)
@@ -153,6 +155,12 @@ func (_m *CiTypeRelation) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case cityperelation.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case cityperelation.FieldParentID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -268,6 +276,9 @@ func (_m *CiTypeRelation) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("parent_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.ParentID))

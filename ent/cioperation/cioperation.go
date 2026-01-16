@@ -107,7 +107,7 @@ const (
 	// FieldTags holds the string denoting the tags field in the database.
 	FieldTags = "tags"
 	// Table holds the table name of the cioperation in the database.
-	Table = "ci_operations"
+	Table = "cmdb_ci_operations"
 )
 
 // Columns holds all SQL columns for cioperation fields.

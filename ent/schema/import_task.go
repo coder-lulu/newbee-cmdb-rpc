@@ -8,8 +8,7 @@ import (
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
 	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
-	"github.com/gofrs/uuid/v5"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 )
 
 // ImportTask 对应于数据库cmdb_import_tasks
@@ -24,6 +23,7 @@ func (ImportTask) Mixin() []ent.Mixin {
 		mixins2.SoftDeleteMixin{},
 		mixins.TenantMixin{},
 		mixins.DepartmentMixin{},
+		mixins.CreatedByMixin{},
 	}
 }
 
@@ -70,7 +70,6 @@ func (ImportTask) Fields() []ent.Field {
 		field.String("result_file_path").MaxLen(500).Optional().Comment("结果文件路径"),
 
 		// 用户信息
-		field.UUID("created_by", uuid.UUID{}).Optional().Comment("创建者ID"),
 		field.String("created_by_name").MaxLen(100).Optional().Comment("创建者姓名"),
 	}
 }

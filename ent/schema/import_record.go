@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
 	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 )
 
 // ImportRecord 对应于数据库cmdb_import_records

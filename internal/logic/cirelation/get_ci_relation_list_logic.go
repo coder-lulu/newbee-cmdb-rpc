@@ -10,7 +10,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	"github.com/coder-lulu/newbee-common/utils/pointy"
+	"github.com/coder-lulu/newbee-common/v2/utils/pointy"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -39,11 +39,11 @@ func (l *GetCiRelationListLogic) GetCiRelationList(in *cmdb.CiRelationListReq) (
 	if in.DeletedAt != nil {
 		predicates = append(predicates, cirelation.DeletedAtGTE(time.UnixMilli(*in.DeletedAt)))
 	}
-	if in.FirstCiId != nil {
-		predicates = append(predicates, cirelation.FirstCiIDEQ(*in.FirstCiId))
+	if in.SourceCiId != nil {
+		predicates = append(predicates, cirelation.SourceCiIDEQ(*in.SourceCiId))
 	}
-	if in.SecondCiId != nil {
-		predicates = append(predicates, cirelation.SecondCiIDEQ(*in.SecondCiId))
+	if in.TargetCiId != nil {
+		predicates = append(predicates, cirelation.TargetCiIDEQ(*in.TargetCiId))
 	}
 	if in.RelationTypeId != nil {
 		predicates = append(predicates, cirelation.RelationTypeIDEQ(*in.RelationTypeId))
@@ -51,8 +51,8 @@ func (l *GetCiRelationListLogic) GetCiRelationList(in *cmdb.CiRelationListReq) (
 	if in.More != nil {
 		predicates = append(predicates, cirelation.MoreEQ(*in.More))
 	}
-	if in.Source != nil {
-		predicates = append(predicates, cirelation.SourceContains(*in.Source))
+	if in.DiscoverySource != nil {
+		predicates = append(predicates, cirelation.DiscoverySourceContains(*in.DiscoverySource))
 	}
 	if in.AncestorIds != nil {
 		predicates = append(predicates, cirelation.AncestorIdsContains(*in.AncestorIds))
@@ -67,16 +67,25 @@ func (l *GetCiRelationListLogic) GetCiRelationList(in *cmdb.CiRelationListReq) (
 	resp.Total = result.PageDetails.Total
 
 	for _, v := range result.List {
+		// 构建properties JSON字符串
+		var propertiesStr *string
+		if v.Properties != nil {
+			if raw, ok := v.Properties["raw"].(string); ok {
+				propertiesStr = &raw
+			}
+		}
+
 		resp.Data = append(resp.Data, &cmdb.CiRelationInfo{
-			Id:             &v.ID,
-			CreatedAt:      pointy.GetPointer(v.CreatedAt.UnixMilli()),
-			UpdatedAt:      pointy.GetPointer(v.UpdatedAt.UnixMilli()),
-			FirstCiId:      &v.FirstCiID,
-			SecondCiId:     &v.SecondCiID,
-			RelationTypeId: &v.RelationTypeID,
-			More:           &v.More,
-			Source:         &v.Source,
-			AncestorIds:    &v.AncestorIds,
+			Id:              &v.ID,
+			CreatedAt:       pointy.GetPointer(v.CreatedAt.UnixMilli()),
+			UpdatedAt:       pointy.GetPointer(v.UpdatedAt.UnixMilli()),
+			SourceCiId:      &v.SourceCiID,
+			TargetCiId:      &v.TargetCiID,
+			RelationTypeId:  &v.RelationTypeID,
+			More:            &v.More,
+			DiscoverySource: &v.DiscoverySource,
+			AncestorIds:     &v.AncestorIds,
+			Properties:      propertiesStr,
 		})
 	}
 

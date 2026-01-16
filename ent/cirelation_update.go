@@ -10,11 +10,13 @@ import (
 
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
+	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/predicate"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
 )
 
 // CiRelationUpdate is the builder for updating CiRelation entities.
@@ -83,30 +85,30 @@ func (_u *CiRelationUpdate) ClearDepartmentID() *CiRelationUpdate {
 	return _u
 }
 
-// SetFirstCiID sets the "first_ci_id" field.
-func (_u *CiRelationUpdate) SetFirstCiID(v uint64) *CiRelationUpdate {
-	_u.mutation.SetFirstCiID(v)
+// SetSourceCiID sets the "source_ci_id" field.
+func (_u *CiRelationUpdate) SetSourceCiID(v uint64) *CiRelationUpdate {
+	_u.mutation.SetSourceCiID(v)
 	return _u
 }
 
-// SetNillableFirstCiID sets the "first_ci_id" field if the given value is not nil.
-func (_u *CiRelationUpdate) SetNillableFirstCiID(v *uint64) *CiRelationUpdate {
+// SetNillableSourceCiID sets the "source_ci_id" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableSourceCiID(v *uint64) *CiRelationUpdate {
 	if v != nil {
-		_u.SetFirstCiID(*v)
+		_u.SetSourceCiID(*v)
 	}
 	return _u
 }
 
-// SetSecondCiID sets the "second_ci_id" field.
-func (_u *CiRelationUpdate) SetSecondCiID(v uint64) *CiRelationUpdate {
-	_u.mutation.SetSecondCiID(v)
+// SetTargetCiID sets the "target_ci_id" field.
+func (_u *CiRelationUpdate) SetTargetCiID(v uint64) *CiRelationUpdate {
+	_u.mutation.SetTargetCiID(v)
 	return _u
 }
 
-// SetNillableSecondCiID sets the "second_ci_id" field if the given value is not nil.
-func (_u *CiRelationUpdate) SetNillableSecondCiID(v *uint64) *CiRelationUpdate {
+// SetNillableTargetCiID sets the "target_ci_id" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableTargetCiID(v *uint64) *CiRelationUpdate {
 	if v != nil {
-		_u.SetSecondCiID(*v)
+		_u.SetTargetCiID(*v)
 	}
 	return _u
 }
@@ -145,23 +147,23 @@ func (_u *CiRelationUpdate) ClearMore() *CiRelationUpdate {
 	return _u
 }
 
-// SetSource sets the "source" field.
-func (_u *CiRelationUpdate) SetSource(v string) *CiRelationUpdate {
-	_u.mutation.SetSource(v)
+// SetDiscoverySource sets the "discovery_source" field.
+func (_u *CiRelationUpdate) SetDiscoverySource(v string) *CiRelationUpdate {
+	_u.mutation.SetDiscoverySource(v)
 	return _u
 }
 
-// SetNillableSource sets the "source" field if the given value is not nil.
-func (_u *CiRelationUpdate) SetNillableSource(v *string) *CiRelationUpdate {
+// SetNillableDiscoverySource sets the "discovery_source" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableDiscoverySource(v *string) *CiRelationUpdate {
 	if v != nil {
-		_u.SetSource(*v)
+		_u.SetDiscoverySource(*v)
 	}
 	return _u
 }
 
-// ClearSource clears the value of the "source" field.
-func (_u *CiRelationUpdate) ClearSource() *CiRelationUpdate {
-	_u.mutation.ClearSource()
+// ClearDiscoverySource clears the value of the "discovery_source" field.
+func (_u *CiRelationUpdate) ClearDiscoverySource() *CiRelationUpdate {
+	_u.mutation.ClearDiscoverySource()
 	return _u
 }
 
@@ -185,14 +187,164 @@ func (_u *CiRelationUpdate) ClearAncestorIds() *CiRelationUpdate {
 	return _u
 }
 
-// SetFirstCi sets the "first_ci" edge to the Cis entity.
-func (_u *CiRelationUpdate) SetFirstCi(v *Cis) *CiRelationUpdate {
-	return _u.SetFirstCiID(v.ID)
+// SetProperties sets the "properties" field.
+func (_u *CiRelationUpdate) SetProperties(v map[string]interface{}) *CiRelationUpdate {
+	_u.mutation.SetProperties(v)
+	return _u
 }
 
-// SetSecondCi sets the "second_ci" edge to the Cis entity.
-func (_u *CiRelationUpdate) SetSecondCi(v *Cis) *CiRelationUpdate {
-	return _u.SetSecondCiID(v.ID)
+// ClearProperties clears the value of the "properties" field.
+func (_u *CiRelationUpdate) ClearProperties() *CiRelationUpdate {
+	_u.mutation.ClearProperties()
+	return _u
+}
+
+// SetAttributeMappings sets the "attribute_mappings" field.
+func (_u *CiRelationUpdate) SetAttributeMappings(v []schema.AttributeMappingData) *CiRelationUpdate {
+	_u.mutation.SetAttributeMappings(v)
+	return _u
+}
+
+// AppendAttributeMappings appends value to the "attribute_mappings" field.
+func (_u *CiRelationUpdate) AppendAttributeMappings(v []schema.AttributeMappingData) *CiRelationUpdate {
+	_u.mutation.AppendAttributeMappings(v)
+	return _u
+}
+
+// ClearAttributeMappings clears the value of the "attribute_mappings" field.
+func (_u *CiRelationUpdate) ClearAttributeMappings() *CiRelationUpdate {
+	_u.mutation.ClearAttributeMappings()
+	return _u
+}
+
+// SetStatus sets the "status" field.
+func (_u *CiRelationUpdate) SetStatus(v string) *CiRelationUpdate {
+	_u.mutation.SetStatus(v)
+	return _u
+}
+
+// SetNillableStatus sets the "status" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableStatus(v *string) *CiRelationUpdate {
+	if v != nil {
+		_u.SetStatus(*v)
+	}
+	return _u
+}
+
+// ClearStatus clears the value of the "status" field.
+func (_u *CiRelationUpdate) ClearStatus() *CiRelationUpdate {
+	_u.mutation.ClearStatus()
+	return _u
+}
+
+// SetValidationResult sets the "validation_result" field.
+func (_u *CiRelationUpdate) SetValidationResult(v schema.ValidationResult) *CiRelationUpdate {
+	_u.mutation.SetValidationResult(v)
+	return _u
+}
+
+// SetNillableValidationResult sets the "validation_result" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableValidationResult(v *schema.ValidationResult) *CiRelationUpdate {
+	if v != nil {
+		_u.SetValidationResult(*v)
+	}
+	return _u
+}
+
+// ClearValidationResult clears the value of the "validation_result" field.
+func (_u *CiRelationUpdate) ClearValidationResult() *CiRelationUpdate {
+	_u.mutation.ClearValidationResult()
+	return _u
+}
+
+// SetLastValidatedAt sets the "last_validated_at" field.
+func (_u *CiRelationUpdate) SetLastValidatedAt(v time.Time) *CiRelationUpdate {
+	_u.mutation.SetLastValidatedAt(v)
+	return _u
+}
+
+// SetNillableLastValidatedAt sets the "last_validated_at" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableLastValidatedAt(v *time.Time) *CiRelationUpdate {
+	if v != nil {
+		_u.SetLastValidatedAt(*v)
+	}
+	return _u
+}
+
+// ClearLastValidatedAt clears the value of the "last_validated_at" field.
+func (_u *CiRelationUpdate) ClearLastValidatedAt() *CiRelationUpdate {
+	_u.mutation.ClearLastValidatedAt()
+	return _u
+}
+
+// SetAutoSyncEnabled sets the "auto_sync_enabled" field.
+func (_u *CiRelationUpdate) SetAutoSyncEnabled(v bool) *CiRelationUpdate {
+	_u.mutation.SetAutoSyncEnabled(v)
+	return _u
+}
+
+// SetNillableAutoSyncEnabled sets the "auto_sync_enabled" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableAutoSyncEnabled(v *bool) *CiRelationUpdate {
+	if v != nil {
+		_u.SetAutoSyncEnabled(*v)
+	}
+	return _u
+}
+
+// ClearAutoSyncEnabled clears the value of the "auto_sync_enabled" field.
+func (_u *CiRelationUpdate) ClearAutoSyncEnabled() *CiRelationUpdate {
+	_u.mutation.ClearAutoSyncEnabled()
+	return _u
+}
+
+// SetSyncConfig sets the "sync_config" field.
+func (_u *CiRelationUpdate) SetSyncConfig(v schema.SyncConfig) *CiRelationUpdate {
+	_u.mutation.SetSyncConfig(v)
+	return _u
+}
+
+// SetNillableSyncConfig sets the "sync_config" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableSyncConfig(v *schema.SyncConfig) *CiRelationUpdate {
+	if v != nil {
+		_u.SetSyncConfig(*v)
+	}
+	return _u
+}
+
+// ClearSyncConfig clears the value of the "sync_config" field.
+func (_u *CiRelationUpdate) ClearSyncConfig() *CiRelationUpdate {
+	_u.mutation.ClearSyncConfig()
+	return _u
+}
+
+// SetRelationStrength sets the "relation_strength" field.
+func (_u *CiRelationUpdate) SetRelationStrength(v string) *CiRelationUpdate {
+	_u.mutation.SetRelationStrength(v)
+	return _u
+}
+
+// SetNillableRelationStrength sets the "relation_strength" field if the given value is not nil.
+func (_u *CiRelationUpdate) SetNillableRelationStrength(v *string) *CiRelationUpdate {
+	if v != nil {
+		_u.SetRelationStrength(*v)
+	}
+	return _u
+}
+
+// ClearRelationStrength clears the value of the "relation_strength" field.
+func (_u *CiRelationUpdate) ClearRelationStrength() *CiRelationUpdate {
+	_u.mutation.ClearRelationStrength()
+	return _u
+}
+
+// SetSourceCi sets the "source_ci" edge to the Cis entity.
+func (_u *CiRelationUpdate) SetSourceCi(v *Cis) *CiRelationUpdate {
+	return _u.SetSourceCiID(v.ID)
+}
+
+// SetTargetCi sets the "target_ci" edge to the Cis entity.
+func (_u *CiRelationUpdate) SetTargetCi(v *Cis) *CiRelationUpdate {
+	return _u.SetTargetCiID(v.ID)
 }
 
 // SetRelationType sets the "relation_type" edge to the RelationType entity.
@@ -224,15 +376,15 @@ func (_u *CiRelationUpdate) Mutation() *CiRelationMutation {
 	return _u.mutation
 }
 
-// ClearFirstCi clears the "first_ci" edge to the Cis entity.
-func (_u *CiRelationUpdate) ClearFirstCi() *CiRelationUpdate {
-	_u.mutation.ClearFirstCi()
+// ClearSourceCi clears the "source_ci" edge to the Cis entity.
+func (_u *CiRelationUpdate) ClearSourceCi() *CiRelationUpdate {
+	_u.mutation.ClearSourceCi()
 	return _u
 }
 
-// ClearSecondCi clears the "second_ci" edge to the Cis entity.
-func (_u *CiRelationUpdate) ClearSecondCi() *CiRelationUpdate {
-	_u.mutation.ClearSecondCi()
+// ClearTargetCi clears the "target_ci" edge to the Cis entity.
+func (_u *CiRelationUpdate) ClearTargetCi() *CiRelationUpdate {
+	_u.mutation.ClearTargetCi()
 	return _u
 }
 
@@ -297,11 +449,11 @@ func (_u *CiRelationUpdate) check() error {
 			return &ValidationError{Name: "ancestor_ids", err: fmt.Errorf(`ent: validator failed for field "CiRelation.ancestor_ids": %w`, err)}
 		}
 	}
-	if _u.mutation.FirstCiCleared() && len(_u.mutation.FirstCiIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "CiRelation.first_ci"`)
+	if _u.mutation.SourceCiCleared() && len(_u.mutation.SourceCiIDs()) > 0 {
+		return errors.New(`ent: clearing a required unique edge "CiRelation.source_ci"`)
 	}
-	if _u.mutation.SecondCiCleared() && len(_u.mutation.SecondCiIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "CiRelation.second_ci"`)
+	if _u.mutation.TargetCiCleared() && len(_u.mutation.TargetCiIDs()) > 0 {
+		return errors.New(`ent: clearing a required unique edge "CiRelation.target_ci"`)
 	}
 	if _u.mutation.RelationTypeCleared() && len(_u.mutation.RelationTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRelation.relation_type"`)
@@ -339,11 +491,11 @@ func (_u *CiRelationUpdate) sqlSave(ctx context.Context) (_node int, err error) 
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cirelation.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := _u.mutation.Source(); ok {
-		_spec.SetField(cirelation.FieldSource, field.TypeString, value)
+	if value, ok := _u.mutation.DiscoverySource(); ok {
+		_spec.SetField(cirelation.FieldDiscoverySource, field.TypeString, value)
 	}
-	if _u.mutation.SourceCleared() {
-		_spec.ClearField(cirelation.FieldSource, field.TypeString)
+	if _u.mutation.DiscoverySourceCleared() {
+		_spec.ClearField(cirelation.FieldDiscoverySource, field.TypeString)
 	}
 	if value, ok := _u.mutation.AncestorIds(); ok {
 		_spec.SetField(cirelation.FieldAncestorIds, field.TypeString, value)
@@ -351,12 +503,65 @@ func (_u *CiRelationUpdate) sqlSave(ctx context.Context) (_node int, err error) 
 	if _u.mutation.AncestorIdsCleared() {
 		_spec.ClearField(cirelation.FieldAncestorIds, field.TypeString)
 	}
-	if _u.mutation.FirstCiCleared() {
+	if value, ok := _u.mutation.Properties(); ok {
+		_spec.SetField(cirelation.FieldProperties, field.TypeJSON, value)
+	}
+	if _u.mutation.PropertiesCleared() {
+		_spec.ClearField(cirelation.FieldProperties, field.TypeJSON)
+	}
+	if value, ok := _u.mutation.AttributeMappings(); ok {
+		_spec.SetField(cirelation.FieldAttributeMappings, field.TypeJSON, value)
+	}
+	if value, ok := _u.mutation.AppendedAttributeMappings(); ok {
+		_spec.AddModifier(func(u *sql.UpdateBuilder) {
+			sqljson.Append(u, cirelation.FieldAttributeMappings, value)
+		})
+	}
+	if _u.mutation.AttributeMappingsCleared() {
+		_spec.ClearField(cirelation.FieldAttributeMappings, field.TypeJSON)
+	}
+	if value, ok := _u.mutation.Status(); ok {
+		_spec.SetField(cirelation.FieldStatus, field.TypeString, value)
+	}
+	if _u.mutation.StatusCleared() {
+		_spec.ClearField(cirelation.FieldStatus, field.TypeString)
+	}
+	if value, ok := _u.mutation.ValidationResult(); ok {
+		_spec.SetField(cirelation.FieldValidationResult, field.TypeJSON, value)
+	}
+	if _u.mutation.ValidationResultCleared() {
+		_spec.ClearField(cirelation.FieldValidationResult, field.TypeJSON)
+	}
+	if value, ok := _u.mutation.LastValidatedAt(); ok {
+		_spec.SetField(cirelation.FieldLastValidatedAt, field.TypeTime, value)
+	}
+	if _u.mutation.LastValidatedAtCleared() {
+		_spec.ClearField(cirelation.FieldLastValidatedAt, field.TypeTime)
+	}
+	if value, ok := _u.mutation.AutoSyncEnabled(); ok {
+		_spec.SetField(cirelation.FieldAutoSyncEnabled, field.TypeBool, value)
+	}
+	if _u.mutation.AutoSyncEnabledCleared() {
+		_spec.ClearField(cirelation.FieldAutoSyncEnabled, field.TypeBool)
+	}
+	if value, ok := _u.mutation.SyncConfig(); ok {
+		_spec.SetField(cirelation.FieldSyncConfig, field.TypeJSON, value)
+	}
+	if _u.mutation.SyncConfigCleared() {
+		_spec.ClearField(cirelation.FieldSyncConfig, field.TypeJSON)
+	}
+	if value, ok := _u.mutation.RelationStrength(); ok {
+		_spec.SetField(cirelation.FieldRelationStrength, field.TypeString, value)
+	}
+	if _u.mutation.RelationStrengthCleared() {
+		_spec.ClearField(cirelation.FieldRelationStrength, field.TypeString)
+	}
+	if _u.mutation.SourceCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
-			Table:   cirelation.FirstCiTable,
-			Columns: []string{cirelation.FirstCiColumn},
+			Table:   cirelation.SourceCiTable,
+			Columns: []string{cirelation.SourceCiColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64),
@@ -364,12 +569,12 @@ func (_u *CiRelationUpdate) sqlSave(ctx context.Context) (_node int, err error) 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.FirstCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.SourceCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
-			Table:   cirelation.FirstCiTable,
-			Columns: []string{cirelation.FirstCiColumn},
+			Table:   cirelation.SourceCiTable,
+			Columns: []string{cirelation.SourceCiColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64),
@@ -380,12 +585,12 @@ func (_u *CiRelationUpdate) sqlSave(ctx context.Context) (_node int, err error) 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if _u.mutation.SecondCiCleared() {
+	if _u.mutation.TargetCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
-			Table:   cirelation.SecondCiTable,
-			Columns: []string{cirelation.SecondCiColumn},
+			Table:   cirelation.TargetCiTable,
+			Columns: []string{cirelation.TargetCiColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64),
@@ -393,12 +598,12 @@ func (_u *CiRelationUpdate) sqlSave(ctx context.Context) (_node int, err error) 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.SecondCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TargetCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
-			Table:   cirelation.SecondCiTable,
-			Columns: []string{cirelation.SecondCiColumn},
+			Table:   cirelation.TargetCiTable,
+			Columns: []string{cirelation.TargetCiColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64),
@@ -540,30 +745,30 @@ func (_u *CiRelationUpdateOne) ClearDepartmentID() *CiRelationUpdateOne {
 	return _u
 }
 
-// SetFirstCiID sets the "first_ci_id" field.
-func (_u *CiRelationUpdateOne) SetFirstCiID(v uint64) *CiRelationUpdateOne {
-	_u.mutation.SetFirstCiID(v)
+// SetSourceCiID sets the "source_ci_id" field.
+func (_u *CiRelationUpdateOne) SetSourceCiID(v uint64) *CiRelationUpdateOne {
+	_u.mutation.SetSourceCiID(v)
 	return _u
 }
 
-// SetNillableFirstCiID sets the "first_ci_id" field if the given value is not nil.
-func (_u *CiRelationUpdateOne) SetNillableFirstCiID(v *uint64) *CiRelationUpdateOne {
+// SetNillableSourceCiID sets the "source_ci_id" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableSourceCiID(v *uint64) *CiRelationUpdateOne {
 	if v != nil {
-		_u.SetFirstCiID(*v)
+		_u.SetSourceCiID(*v)
 	}
 	return _u
 }
 
-// SetSecondCiID sets the "second_ci_id" field.
-func (_u *CiRelationUpdateOne) SetSecondCiID(v uint64) *CiRelationUpdateOne {
-	_u.mutation.SetSecondCiID(v)
+// SetTargetCiID sets the "target_ci_id" field.
+func (_u *CiRelationUpdateOne) SetTargetCiID(v uint64) *CiRelationUpdateOne {
+	_u.mutation.SetTargetCiID(v)
 	return _u
 }
 
-// SetNillableSecondCiID sets the "second_ci_id" field if the given value is not nil.
-func (_u *CiRelationUpdateOne) SetNillableSecondCiID(v *uint64) *CiRelationUpdateOne {
+// SetNillableTargetCiID sets the "target_ci_id" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableTargetCiID(v *uint64) *CiRelationUpdateOne {
 	if v != nil {
-		_u.SetSecondCiID(*v)
+		_u.SetTargetCiID(*v)
 	}
 	return _u
 }
@@ -602,23 +807,23 @@ func (_u *CiRelationUpdateOne) ClearMore() *CiRelationUpdateOne {
 	return _u
 }
 
-// SetSource sets the "source" field.
-func (_u *CiRelationUpdateOne) SetSource(v string) *CiRelationUpdateOne {
-	_u.mutation.SetSource(v)
+// SetDiscoverySource sets the "discovery_source" field.
+func (_u *CiRelationUpdateOne) SetDiscoverySource(v string) *CiRelationUpdateOne {
+	_u.mutation.SetDiscoverySource(v)
 	return _u
 }
 
-// SetNillableSource sets the "source" field if the given value is not nil.
-func (_u *CiRelationUpdateOne) SetNillableSource(v *string) *CiRelationUpdateOne {
+// SetNillableDiscoverySource sets the "discovery_source" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableDiscoverySource(v *string) *CiRelationUpdateOne {
 	if v != nil {
-		_u.SetSource(*v)
+		_u.SetDiscoverySource(*v)
 	}
 	return _u
 }
 
-// ClearSource clears the value of the "source" field.
-func (_u *CiRelationUpdateOne) ClearSource() *CiRelationUpdateOne {
-	_u.mutation.ClearSource()
+// ClearDiscoverySource clears the value of the "discovery_source" field.
+func (_u *CiRelationUpdateOne) ClearDiscoverySource() *CiRelationUpdateOne {
+	_u.mutation.ClearDiscoverySource()
 	return _u
 }
 
@@ -642,14 +847,164 @@ func (_u *CiRelationUpdateOne) ClearAncestorIds() *CiRelationUpdateOne {
 	return _u
 }
 
-// SetFirstCi sets the "first_ci" edge to the Cis entity.
-func (_u *CiRelationUpdateOne) SetFirstCi(v *Cis) *CiRelationUpdateOne {
-	return _u.SetFirstCiID(v.ID)
+// SetProperties sets the "properties" field.
+func (_u *CiRelationUpdateOne) SetProperties(v map[string]interface{}) *CiRelationUpdateOne {
+	_u.mutation.SetProperties(v)
+	return _u
 }
 
-// SetSecondCi sets the "second_ci" edge to the Cis entity.
-func (_u *CiRelationUpdateOne) SetSecondCi(v *Cis) *CiRelationUpdateOne {
-	return _u.SetSecondCiID(v.ID)
+// ClearProperties clears the value of the "properties" field.
+func (_u *CiRelationUpdateOne) ClearProperties() *CiRelationUpdateOne {
+	_u.mutation.ClearProperties()
+	return _u
+}
+
+// SetAttributeMappings sets the "attribute_mappings" field.
+func (_u *CiRelationUpdateOne) SetAttributeMappings(v []schema.AttributeMappingData) *CiRelationUpdateOne {
+	_u.mutation.SetAttributeMappings(v)
+	return _u
+}
+
+// AppendAttributeMappings appends value to the "attribute_mappings" field.
+func (_u *CiRelationUpdateOne) AppendAttributeMappings(v []schema.AttributeMappingData) *CiRelationUpdateOne {
+	_u.mutation.AppendAttributeMappings(v)
+	return _u
+}
+
+// ClearAttributeMappings clears the value of the "attribute_mappings" field.
+func (_u *CiRelationUpdateOne) ClearAttributeMappings() *CiRelationUpdateOne {
+	_u.mutation.ClearAttributeMappings()
+	return _u
+}
+
+// SetStatus sets the "status" field.
+func (_u *CiRelationUpdateOne) SetStatus(v string) *CiRelationUpdateOne {
+	_u.mutation.SetStatus(v)
+	return _u
+}
+
+// SetNillableStatus sets the "status" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableStatus(v *string) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetStatus(*v)
+	}
+	return _u
+}
+
+// ClearStatus clears the value of the "status" field.
+func (_u *CiRelationUpdateOne) ClearStatus() *CiRelationUpdateOne {
+	_u.mutation.ClearStatus()
+	return _u
+}
+
+// SetValidationResult sets the "validation_result" field.
+func (_u *CiRelationUpdateOne) SetValidationResult(v schema.ValidationResult) *CiRelationUpdateOne {
+	_u.mutation.SetValidationResult(v)
+	return _u
+}
+
+// SetNillableValidationResult sets the "validation_result" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableValidationResult(v *schema.ValidationResult) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetValidationResult(*v)
+	}
+	return _u
+}
+
+// ClearValidationResult clears the value of the "validation_result" field.
+func (_u *CiRelationUpdateOne) ClearValidationResult() *CiRelationUpdateOne {
+	_u.mutation.ClearValidationResult()
+	return _u
+}
+
+// SetLastValidatedAt sets the "last_validated_at" field.
+func (_u *CiRelationUpdateOne) SetLastValidatedAt(v time.Time) *CiRelationUpdateOne {
+	_u.mutation.SetLastValidatedAt(v)
+	return _u
+}
+
+// SetNillableLastValidatedAt sets the "last_validated_at" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableLastValidatedAt(v *time.Time) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetLastValidatedAt(*v)
+	}
+	return _u
+}
+
+// ClearLastValidatedAt clears the value of the "last_validated_at" field.
+func (_u *CiRelationUpdateOne) ClearLastValidatedAt() *CiRelationUpdateOne {
+	_u.mutation.ClearLastValidatedAt()
+	return _u
+}
+
+// SetAutoSyncEnabled sets the "auto_sync_enabled" field.
+func (_u *CiRelationUpdateOne) SetAutoSyncEnabled(v bool) *CiRelationUpdateOne {
+	_u.mutation.SetAutoSyncEnabled(v)
+	return _u
+}
+
+// SetNillableAutoSyncEnabled sets the "auto_sync_enabled" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableAutoSyncEnabled(v *bool) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetAutoSyncEnabled(*v)
+	}
+	return _u
+}
+
+// ClearAutoSyncEnabled clears the value of the "auto_sync_enabled" field.
+func (_u *CiRelationUpdateOne) ClearAutoSyncEnabled() *CiRelationUpdateOne {
+	_u.mutation.ClearAutoSyncEnabled()
+	return _u
+}
+
+// SetSyncConfig sets the "sync_config" field.
+func (_u *CiRelationUpdateOne) SetSyncConfig(v schema.SyncConfig) *CiRelationUpdateOne {
+	_u.mutation.SetSyncConfig(v)
+	return _u
+}
+
+// SetNillableSyncConfig sets the "sync_config" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableSyncConfig(v *schema.SyncConfig) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetSyncConfig(*v)
+	}
+	return _u
+}
+
+// ClearSyncConfig clears the value of the "sync_config" field.
+func (_u *CiRelationUpdateOne) ClearSyncConfig() *CiRelationUpdateOne {
+	_u.mutation.ClearSyncConfig()
+	return _u
+}
+
+// SetRelationStrength sets the "relation_strength" field.
+func (_u *CiRelationUpdateOne) SetRelationStrength(v string) *CiRelationUpdateOne {
+	_u.mutation.SetRelationStrength(v)
+	return _u
+}
+
+// SetNillableRelationStrength sets the "relation_strength" field if the given value is not nil.
+func (_u *CiRelationUpdateOne) SetNillableRelationStrength(v *string) *CiRelationUpdateOne {
+	if v != nil {
+		_u.SetRelationStrength(*v)
+	}
+	return _u
+}
+
+// ClearRelationStrength clears the value of the "relation_strength" field.
+func (_u *CiRelationUpdateOne) ClearRelationStrength() *CiRelationUpdateOne {
+	_u.mutation.ClearRelationStrength()
+	return _u
+}
+
+// SetSourceCi sets the "source_ci" edge to the Cis entity.
+func (_u *CiRelationUpdateOne) SetSourceCi(v *Cis) *CiRelationUpdateOne {
+	return _u.SetSourceCiID(v.ID)
+}
+
+// SetTargetCi sets the "target_ci" edge to the Cis entity.
+func (_u *CiRelationUpdateOne) SetTargetCi(v *Cis) *CiRelationUpdateOne {
+	return _u.SetTargetCiID(v.ID)
 }
 
 // SetRelationType sets the "relation_type" edge to the RelationType entity.
@@ -681,15 +1036,15 @@ func (_u *CiRelationUpdateOne) Mutation() *CiRelationMutation {
 	return _u.mutation
 }
 
-// ClearFirstCi clears the "first_ci" edge to the Cis entity.
-func (_u *CiRelationUpdateOne) ClearFirstCi() *CiRelationUpdateOne {
-	_u.mutation.ClearFirstCi()
+// ClearSourceCi clears the "source_ci" edge to the Cis entity.
+func (_u *CiRelationUpdateOne) ClearSourceCi() *CiRelationUpdateOne {
+	_u.mutation.ClearSourceCi()
 	return _u
 }
 
-// ClearSecondCi clears the "second_ci" edge to the Cis entity.
-func (_u *CiRelationUpdateOne) ClearSecondCi() *CiRelationUpdateOne {
-	_u.mutation.ClearSecondCi()
+// ClearTargetCi clears the "target_ci" edge to the Cis entity.
+func (_u *CiRelationUpdateOne) ClearTargetCi() *CiRelationUpdateOne {
+	_u.mutation.ClearTargetCi()
 	return _u
 }
 
@@ -767,11 +1122,11 @@ func (_u *CiRelationUpdateOne) check() error {
 			return &ValidationError{Name: "ancestor_ids", err: fmt.Errorf(`ent: validator failed for field "CiRelation.ancestor_ids": %w`, err)}
 		}
 	}
-	if _u.mutation.FirstCiCleared() && len(_u.mutation.FirstCiIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "CiRelation.first_ci"`)
+	if _u.mutation.SourceCiCleared() && len(_u.mutation.SourceCiIDs()) > 0 {
+		return errors.New(`ent: clearing a required unique edge "CiRelation.source_ci"`)
 	}
-	if _u.mutation.SecondCiCleared() && len(_u.mutation.SecondCiIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "CiRelation.second_ci"`)
+	if _u.mutation.TargetCiCleared() && len(_u.mutation.TargetCiIDs()) > 0 {
+		return errors.New(`ent: clearing a required unique edge "CiRelation.target_ci"`)
 	}
 	if _u.mutation.RelationTypeCleared() && len(_u.mutation.RelationTypeIDs()) > 0 {
 		return errors.New(`ent: clearing a required unique edge "CiRelation.relation_type"`)
@@ -826,11 +1181,11 @@ func (_u *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation, 
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cirelation.FieldDepartmentID, field.TypeUint64)
 	}
-	if value, ok := _u.mutation.Source(); ok {
-		_spec.SetField(cirelation.FieldSource, field.TypeString, value)
+	if value, ok := _u.mutation.DiscoverySource(); ok {
+		_spec.SetField(cirelation.FieldDiscoverySource, field.TypeString, value)
 	}
-	if _u.mutation.SourceCleared() {
-		_spec.ClearField(cirelation.FieldSource, field.TypeString)
+	if _u.mutation.DiscoverySourceCleared() {
+		_spec.ClearField(cirelation.FieldDiscoverySource, field.TypeString)
 	}
 	if value, ok := _u.mutation.AncestorIds(); ok {
 		_spec.SetField(cirelation.FieldAncestorIds, field.TypeString, value)
@@ -838,12 +1193,65 @@ func (_u *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation, 
 	if _u.mutation.AncestorIdsCleared() {
 		_spec.ClearField(cirelation.FieldAncestorIds, field.TypeString)
 	}
-	if _u.mutation.FirstCiCleared() {
+	if value, ok := _u.mutation.Properties(); ok {
+		_spec.SetField(cirelation.FieldProperties, field.TypeJSON, value)
+	}
+	if _u.mutation.PropertiesCleared() {
+		_spec.ClearField(cirelation.FieldProperties, field.TypeJSON)
+	}
+	if value, ok := _u.mutation.AttributeMappings(); ok {
+		_spec.SetField(cirelation.FieldAttributeMappings, field.TypeJSON, value)
+	}
+	if value, ok := _u.mutation.AppendedAttributeMappings(); ok {
+		_spec.AddModifier(func(u *sql.UpdateBuilder) {
+			sqljson.Append(u, cirelation.FieldAttributeMappings, value)
+		})
+	}
+	if _u.mutation.AttributeMappingsCleared() {
+		_spec.ClearField(cirelation.FieldAttributeMappings, field.TypeJSON)
+	}
+	if value, ok := _u.mutation.Status(); ok {
+		_spec.SetField(cirelation.FieldStatus, field.TypeString, value)
+	}
+	if _u.mutation.StatusCleared() {
+		_spec.ClearField(cirelation.FieldStatus, field.TypeString)
+	}
+	if value, ok := _u.mutation.ValidationResult(); ok {
+		_spec.SetField(cirelation.FieldValidationResult, field.TypeJSON, value)
+	}
+	if _u.mutation.ValidationResultCleared() {
+		_spec.ClearField(cirelation.FieldValidationResult, field.TypeJSON)
+	}
+	if value, ok := _u.mutation.LastValidatedAt(); ok {
+		_spec.SetField(cirelation.FieldLastValidatedAt, field.TypeTime, value)
+	}
+	if _u.mutation.LastValidatedAtCleared() {
+		_spec.ClearField(cirelation.FieldLastValidatedAt, field.TypeTime)
+	}
+	if value, ok := _u.mutation.AutoSyncEnabled(); ok {
+		_spec.SetField(cirelation.FieldAutoSyncEnabled, field.TypeBool, value)
+	}
+	if _u.mutation.AutoSyncEnabledCleared() {
+		_spec.ClearField(cirelation.FieldAutoSyncEnabled, field.TypeBool)
+	}
+	if value, ok := _u.mutation.SyncConfig(); ok {
+		_spec.SetField(cirelation.FieldSyncConfig, field.TypeJSON, value)
+	}
+	if _u.mutation.SyncConfigCleared() {
+		_spec.ClearField(cirelation.FieldSyncConfig, field.TypeJSON)
+	}
+	if value, ok := _u.mutation.RelationStrength(); ok {
+		_spec.SetField(cirelation.FieldRelationStrength, field.TypeString, value)
+	}
+	if _u.mutation.RelationStrengthCleared() {
+		_spec.ClearField(cirelation.FieldRelationStrength, field.TypeString)
+	}
+	if _u.mutation.SourceCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
-			Table:   cirelation.FirstCiTable,
-			Columns: []string{cirelation.FirstCiColumn},
+			Table:   cirelation.SourceCiTable,
+			Columns: []string{cirelation.SourceCiColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64),
@@ -851,12 +1259,12 @@ func (_u *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation, 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.FirstCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.SourceCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
-			Table:   cirelation.FirstCiTable,
-			Columns: []string{cirelation.FirstCiColumn},
+			Table:   cirelation.SourceCiTable,
+			Columns: []string{cirelation.SourceCiColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64),
@@ -867,12 +1275,12 @@ func (_u *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation, 
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if _u.mutation.SecondCiCleared() {
+	if _u.mutation.TargetCiCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
-			Table:   cirelation.SecondCiTable,
-			Columns: []string{cirelation.SecondCiColumn},
+			Table:   cirelation.TargetCiTable,
+			Columns: []string{cirelation.TargetCiColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64),
@@ -880,12 +1288,12 @@ func (_u *CiRelationUpdateOne) sqlSave(ctx context.Context) (_node *CiRelation, 
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.SecondCiIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TargetCiIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: true,
-			Table:   cirelation.SecondCiTable,
-			Columns: []string{cirelation.SecondCiColumn},
+			Table:   cirelation.TargetCiTable,
+			Columns: []string{cirelation.TargetCiColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cis.FieldID, field.TypeUint64),

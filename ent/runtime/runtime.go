@@ -5,25 +5,33 @@ package runtime
 import (
 	"time"
 
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/aggregationcache"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attributemappingrule"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciattributedistribution"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cidimension"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cistatisticsfact"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypediscoveryconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/discoveryexecutionhistory"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/dynamicaggregationconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
@@ -35,6 +43,8 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiontemplate"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/timedimension"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/useractivityfact"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
@@ -47,6 +57,71 @@ import (
 // (default values, validators, hooks and policies) and stitches it
 // to their package variables.
 func init() {
+	aggregationcacheMixin := schema.AggregationCache{}.Mixin()
+	aggregationcacheMixinFields0 := aggregationcacheMixin[0].Fields()
+	_ = aggregationcacheMixinFields0
+	aggregationcacheMixinFields1 := aggregationcacheMixin[1].Fields()
+	_ = aggregationcacheMixinFields1
+	aggregationcacheFields := schema.AggregationCache{}.Fields()
+	_ = aggregationcacheFields
+	// aggregationcacheDescCreatedAt is the schema descriptor for created_at field.
+	aggregationcacheDescCreatedAt := aggregationcacheMixinFields0[1].Descriptor()
+	// aggregationcache.DefaultCreatedAt holds the default value on creation for the created_at field.
+	aggregationcache.DefaultCreatedAt = aggregationcacheDescCreatedAt.Default.(func() time.Time)
+	// aggregationcacheDescUpdatedAt is the schema descriptor for updated_at field.
+	aggregationcacheDescUpdatedAt := aggregationcacheMixinFields0[2].Descriptor()
+	// aggregationcache.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	aggregationcache.DefaultUpdatedAt = aggregationcacheDescUpdatedAt.Default.(func() time.Time)
+	// aggregationcache.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	aggregationcache.UpdateDefaultUpdatedAt = aggregationcacheDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// aggregationcacheDescTenantID is the schema descriptor for tenant_id field.
+	aggregationcacheDescTenantID := aggregationcacheMixinFields1[0].Descriptor()
+	// aggregationcache.DefaultTenantID holds the default value on creation for the tenant_id field.
+	aggregationcache.DefaultTenantID = aggregationcacheDescTenantID.Default.(uint64)
+	// aggregationcacheDescCacheKey is the schema descriptor for cache_key field.
+	aggregationcacheDescCacheKey := aggregationcacheFields[1].Descriptor()
+	// aggregationcache.CacheKeyValidator is a validator for the "cache_key" field. It is called by the builders before save.
+	aggregationcache.CacheKeyValidator = aggregationcacheDescCacheKey.Validators[0].(func(string) error)
+	// aggregationcacheDescParamsHash is the schema descriptor for params_hash field.
+	aggregationcacheDescParamsHash := aggregationcacheFields[2].Descriptor()
+	// aggregationcache.ParamsHashValidator is a validator for the "params_hash" field. It is called by the builders before save.
+	aggregationcache.ParamsHashValidator = aggregationcacheDescParamsHash.Validators[0].(func(string) error)
+	// aggregationcacheDescDataSnapshotTime is the schema descriptor for data_snapshot_time field.
+	aggregationcacheDescDataSnapshotTime := aggregationcacheFields[6].Descriptor()
+	// aggregationcache.DefaultDataSnapshotTime holds the default value on creation for the data_snapshot_time field.
+	aggregationcache.DefaultDataSnapshotTime = aggregationcacheDescDataSnapshotTime.Default.(func() time.Time)
+	// aggregationcacheDescCacheCreatedAt is the schema descriptor for cache_created_at field.
+	aggregationcacheDescCacheCreatedAt := aggregationcacheFields[7].Descriptor()
+	// aggregationcache.DefaultCacheCreatedAt holds the default value on creation for the cache_created_at field.
+	aggregationcache.DefaultCacheCreatedAt = aggregationcacheDescCacheCreatedAt.Default.(func() time.Time)
+	// aggregationcacheDescAccessCount is the schema descriptor for access_count field.
+	aggregationcacheDescAccessCount := aggregationcacheFields[11].Descriptor()
+	// aggregationcache.DefaultAccessCount holds the default value on creation for the access_count field.
+	aggregationcache.DefaultAccessCount = aggregationcacheDescAccessCount.Default.(uint64)
+	// aggregationcacheDescIsCompressed is the schema descriptor for is_compressed field.
+	aggregationcacheDescIsCompressed := aggregationcacheFields[17].Descriptor()
+	// aggregationcache.DefaultIsCompressed holds the default value on creation for the is_compressed field.
+	aggregationcache.DefaultIsCompressed = aggregationcacheDescIsCompressed.Default.(bool)
+	// aggregationcacheDescCompressionAlgorithm is the schema descriptor for compression_algorithm field.
+	aggregationcacheDescCompressionAlgorithm := aggregationcacheFields[18].Descriptor()
+	// aggregationcache.CompressionAlgorithmValidator is a validator for the "compression_algorithm" field. It is called by the builders before save.
+	aggregationcache.CompressionAlgorithmValidator = aggregationcacheDescCompressionAlgorithm.Validators[0].(func(string) error)
+	// aggregationcacheDescErrorMessage is the schema descriptor for error_message field.
+	aggregationcacheDescErrorMessage := aggregationcacheFields[27].Descriptor()
+	// aggregationcache.ErrorMessageValidator is a validator for the "error_message" field. It is called by the builders before save.
+	aggregationcache.ErrorMessageValidator = aggregationcacheDescErrorMessage.Validators[0].(func(string) error)
+	// aggregationcacheDescRetryCount is the schema descriptor for retry_count field.
+	aggregationcacheDescRetryCount := aggregationcacheFields[29].Descriptor()
+	// aggregationcache.DefaultRetryCount holds the default value on creation for the retry_count field.
+	aggregationcache.DefaultRetryCount = aggregationcacheDescRetryCount.Default.(uint64)
+	// aggregationcacheDescMaxRetryCount is the schema descriptor for max_retry_count field.
+	aggregationcacheDescMaxRetryCount := aggregationcacheFields[30].Descriptor()
+	// aggregationcache.DefaultMaxRetryCount holds the default value on creation for the max_retry_count field.
+	aggregationcache.DefaultMaxRetryCount = aggregationcacheDescMaxRetryCount.Default.(uint64)
+	// aggregationcacheDescIncrementalUpdateEnabled is the schema descriptor for incremental_update_enabled field.
+	aggregationcacheDescIncrementalUpdateEnabled := aggregationcacheFields[32].Descriptor()
+	// aggregationcache.DefaultIncrementalUpdateEnabled holds the default value on creation for the incremental_update_enabled field.
+	aggregationcache.DefaultIncrementalUpdateEnabled = aggregationcacheDescIncrementalUpdateEnabled.Default.(bool)
 	attributeMixin := schema.Attribute{}.Mixin()
 	attributeMixinHooks1 := attributeMixin[1].Hooks()
 	attribute.Hooks[0] = attributeMixinHooks1[0]
@@ -117,25 +192,88 @@ func init() {
 	// attribute.DefaultIsList holds the default value on creation for the is_list field.
 	attribute.DefaultIsList = attributeDescIsList.Default.(bool)
 	// attributeDescIsComputed is the schema descriptor for is_computed field.
-	attributeDescIsComputed := attributeFields[6].Descriptor()
+	attributeDescIsComputed := attributeFields[5].Descriptor()
 	// attribute.DefaultIsComputed holds the default value on creation for the is_computed field.
 	attribute.DefaultIsComputed = attributeDescIsComputed.Default.(bool)
 	// attributeDescIsPassword is the schema descriptor for is_password field.
-	attributeDescIsPassword := attributeFields[9].Descriptor()
+	attributeDescIsPassword := attributeFields[8].Descriptor()
 	// attribute.DefaultIsPassword holds the default value on creation for the is_password field.
 	attribute.DefaultIsPassword = attributeDescIsPassword.Default.(bool)
 	// attributeDescIsSortable is the schema descriptor for is_sortable field.
-	attributeDescIsSortable := attributeFields[12].Descriptor()
+	attributeDescIsSortable := attributeFields[11].Descriptor()
 	// attribute.DefaultIsSortable holds the default value on creation for the is_sortable field.
 	attribute.DefaultIsSortable = attributeDescIsSortable.Default.(bool)
 	// attributeDescIsDynamic is the schema descriptor for is_dynamic field.
-	attributeDescIsDynamic := attributeFields[14].Descriptor()
+	attributeDescIsDynamic := attributeFields[13].Descriptor()
 	// attribute.DefaultIsDynamic holds the default value on creation for the is_dynamic field.
 	attribute.DefaultIsDynamic = attributeDescIsDynamic.Default.(bool)
 	// attributeDescIsReference is the schema descriptor for is_reference field.
-	attributeDescIsReference := attributeFields[15].Descriptor()
+	attributeDescIsReference := attributeFields[14].Descriptor()
 	// attribute.DefaultIsReference holds the default value on creation for the is_reference field.
 	attribute.DefaultIsReference = attributeDescIsReference.Default.(bool)
+	attributemappingruleMixin := schema.AttributeMappingRule{}.Mixin()
+	attributemappingruleMixinHooks2 := attributemappingruleMixin[2].Hooks()
+	attributemappingrule.Hooks[0] = attributemappingruleMixinHooks2[0]
+	attributemappingruleMixinInters2 := attributemappingruleMixin[2].Interceptors()
+	attributemappingrule.Interceptors[0] = attributemappingruleMixinInters2[0]
+	attributemappingruleMixinFields0 := attributemappingruleMixin[0].Fields()
+	_ = attributemappingruleMixinFields0
+	attributemappingruleMixinFields1 := attributemappingruleMixin[1].Fields()
+	_ = attributemappingruleMixinFields1
+	attributemappingruleMixinFields3 := attributemappingruleMixin[3].Fields()
+	_ = attributemappingruleMixinFields3
+	attributemappingruleFields := schema.AttributeMappingRule{}.Fields()
+	_ = attributemappingruleFields
+	// attributemappingruleDescCreatedAt is the schema descriptor for created_at field.
+	attributemappingruleDescCreatedAt := attributemappingruleMixinFields0[1].Descriptor()
+	// attributemappingrule.DefaultCreatedAt holds the default value on creation for the created_at field.
+	attributemappingrule.DefaultCreatedAt = attributemappingruleDescCreatedAt.Default.(func() time.Time)
+	// attributemappingruleDescUpdatedAt is the schema descriptor for updated_at field.
+	attributemappingruleDescUpdatedAt := attributemappingruleMixinFields0[2].Descriptor()
+	// attributemappingrule.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	attributemappingrule.DefaultUpdatedAt = attributemappingruleDescUpdatedAt.Default.(func() time.Time)
+	// attributemappingrule.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	attributemappingrule.UpdateDefaultUpdatedAt = attributemappingruleDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// attributemappingruleDescStatus is the schema descriptor for status field.
+	attributemappingruleDescStatus := attributemappingruleMixinFields1[0].Descriptor()
+	// attributemappingrule.DefaultStatus holds the default value on creation for the status field.
+	attributemappingrule.DefaultStatus = attributemappingruleDescStatus.Default.(uint8)
+	// attributemappingruleDescTenantID is the schema descriptor for tenant_id field.
+	attributemappingruleDescTenantID := attributemappingruleMixinFields3[0].Descriptor()
+	// attributemappingrule.DefaultTenantID holds the default value on creation for the tenant_id field.
+	attributemappingrule.DefaultTenantID = attributemappingruleDescTenantID.Default.(uint64)
+	// attributemappingruleDescTransformType is the schema descriptor for transform_type field.
+	attributemappingruleDescTransformType := attributemappingruleFields[5].Descriptor()
+	// attributemappingrule.DefaultTransformType holds the default value on creation for the transform_type field.
+	attributemappingrule.DefaultTransformType = attributemappingruleDescTransformType.Default.(string)
+	// attributemappingruleDescIsRequired is the schema descriptor for is_required field.
+	attributemappingruleDescIsRequired := attributemappingruleFields[10].Descriptor()
+	// attributemappingrule.DefaultIsRequired holds the default value on creation for the is_required field.
+	attributemappingrule.DefaultIsRequired = attributemappingruleDescIsRequired.Default.(bool)
+	// attributemappingruleDescIsUnique is the schema descriptor for is_unique field.
+	attributemappingruleDescIsUnique := attributemappingruleFields[11].Descriptor()
+	// attributemappingrule.DefaultIsUnique holds the default value on creation for the is_unique field.
+	attributemappingrule.DefaultIsUnique = attributemappingruleDescIsUnique.Default.(bool)
+	// attributemappingruleDescPriority is the schema descriptor for priority field.
+	attributemappingruleDescPriority := attributemappingruleFields[12].Descriptor()
+	// attributemappingrule.DefaultPriority holds the default value on creation for the priority field.
+	attributemappingrule.DefaultPriority = attributemappingruleDescPriority.Default.(int)
+	// attributemappingruleDescEnabled is the schema descriptor for enabled field.
+	attributemappingruleDescEnabled := attributemappingruleFields[13].Descriptor()
+	// attributemappingrule.DefaultEnabled holds the default value on creation for the enabled field.
+	attributemappingrule.DefaultEnabled = attributemappingruleDescEnabled.Default.(bool)
+	// attributemappingruleDescUpdateStrategy is the schema descriptor for update_strategy field.
+	attributemappingruleDescUpdateStrategy := attributemappingruleFields[14].Descriptor()
+	// attributemappingrule.DefaultUpdateStrategy holds the default value on creation for the update_strategy field.
+	attributemappingrule.DefaultUpdateStrategy = attributemappingruleDescUpdateStrategy.Default.(string)
+	// attributemappingruleDescSuccessCount is the schema descriptor for success_count field.
+	attributemappingruleDescSuccessCount := attributemappingruleFields[15].Descriptor()
+	// attributemappingrule.DefaultSuccessCount holds the default value on creation for the success_count field.
+	attributemappingrule.DefaultSuccessCount = attributemappingruleDescSuccessCount.Default.(int64)
+	// attributemappingruleDescFailedCount is the schema descriptor for failed_count field.
+	attributemappingruleDescFailedCount := attributemappingruleFields[16].Descriptor()
+	// attributemappingrule.DefaultFailedCount holds the default value on creation for the failed_count field.
+	attributemappingrule.DefaultFailedCount = attributemappingruleDescFailedCount.Default.(int64)
 	choicefloatMixin := schema.ChoiceFloat{}.Mixin()
 	choicefloatMixinHooks1 := choicefloatMixin[1].Hooks()
 	choicefloat.Hooks[0] = choicefloatMixinHooks1[0]
@@ -280,6 +418,112 @@ func init() {
 	ciapprovalflowDescAvgApprovalTime := ciapprovalflowFields[29].Descriptor()
 	// ciapprovalflow.DefaultAvgApprovalTime holds the default value on creation for the avg_approval_time field.
 	ciapprovalflow.DefaultAvgApprovalTime = ciapprovalflowDescAvgApprovalTime.Default.(float64)
+	ciattributedistributionMixin := schema.CiAttributeDistribution{}.Mixin()
+	ciattributedistributionMixinFields0 := ciattributedistributionMixin[0].Fields()
+	_ = ciattributedistributionMixinFields0
+	ciattributedistributionMixinFields1 := ciattributedistributionMixin[1].Fields()
+	_ = ciattributedistributionMixinFields1
+	ciattributedistributionFields := schema.CiAttributeDistribution{}.Fields()
+	_ = ciattributedistributionFields
+	// ciattributedistributionDescCreatedAt is the schema descriptor for created_at field.
+	ciattributedistributionDescCreatedAt := ciattributedistributionMixinFields0[1].Descriptor()
+	// ciattributedistribution.DefaultCreatedAt holds the default value on creation for the created_at field.
+	ciattributedistribution.DefaultCreatedAt = ciattributedistributionDescCreatedAt.Default.(func() time.Time)
+	// ciattributedistributionDescUpdatedAt is the schema descriptor for updated_at field.
+	ciattributedistributionDescUpdatedAt := ciattributedistributionMixinFields0[2].Descriptor()
+	// ciattributedistribution.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	ciattributedistribution.DefaultUpdatedAt = ciattributedistributionDescUpdatedAt.Default.(func() time.Time)
+	// ciattributedistribution.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	ciattributedistribution.UpdateDefaultUpdatedAt = ciattributedistributionDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// ciattributedistributionDescTenantID is the schema descriptor for tenant_id field.
+	ciattributedistributionDescTenantID := ciattributedistributionMixinFields1[0].Descriptor()
+	// ciattributedistribution.DefaultTenantID holds the default value on creation for the tenant_id field.
+	ciattributedistribution.DefaultTenantID = ciattributedistributionDescTenantID.Default.(uint64)
+	// ciattributedistributionDescAttributeName is the schema descriptor for attribute_name field.
+	ciattributedistributionDescAttributeName := ciattributedistributionFields[2].Descriptor()
+	// ciattributedistribution.AttributeNameValidator is a validator for the "attribute_name" field. It is called by the builders before save.
+	ciattributedistribution.AttributeNameValidator = ciattributedistributionDescAttributeName.Validators[0].(func(string) error)
+	// ciattributedistributionDescAttributeAlias is the schema descriptor for attribute_alias field.
+	ciattributedistributionDescAttributeAlias := ciattributedistributionFields[3].Descriptor()
+	// ciattributedistribution.AttributeAliasValidator is a validator for the "attribute_alias" field. It is called by the builders before save.
+	ciattributedistribution.AttributeAliasValidator = ciattributedistributionDescAttributeAlias.Validators[0].(func(string) error)
+	// ciattributedistributionDescQualityScore is the schema descriptor for quality_score field.
+	ciattributedistributionDescQualityScore := ciattributedistributionFields[7].Descriptor()
+	// ciattributedistribution.DefaultQualityScore holds the default value on creation for the quality_score field.
+	ciattributedistribution.DefaultQualityScore = ciattributedistributionDescQualityScore.Default.(float64)
+	// ciattributedistributionDescTotalCount is the schema descriptor for total_count field.
+	ciattributedistributionDescTotalCount := ciattributedistributionFields[10].Descriptor()
+	// ciattributedistribution.DefaultTotalCount holds the default value on creation for the total_count field.
+	ciattributedistribution.DefaultTotalCount = ciattributedistributionDescTotalCount.Default.(uint64)
+	// ciattributedistributionDescUniqueCount is the schema descriptor for unique_count field.
+	ciattributedistributionDescUniqueCount := ciattributedistributionFields[11].Descriptor()
+	// ciattributedistribution.DefaultUniqueCount holds the default value on creation for the unique_count field.
+	ciattributedistribution.DefaultUniqueCount = ciattributedistributionDescUniqueCount.Default.(uint64)
+	// ciattributedistributionDescLastAnalyzedAt is the schema descriptor for last_analyzed_at field.
+	ciattributedistributionDescLastAnalyzedAt := ciattributedistributionFields[12].Descriptor()
+	// ciattributedistribution.DefaultLastAnalyzedAt holds the default value on creation for the last_analyzed_at field.
+	ciattributedistribution.DefaultLastAnalyzedAt = ciattributedistributionDescLastAnalyzedAt.Default.(func() time.Time)
+	// ciattributedistributionDescSampleRate is the schema descriptor for sample_rate field.
+	ciattributedistributionDescSampleRate := ciattributedistributionFields[13].Descriptor()
+	// ciattributedistribution.DefaultSampleRate holds the default value on creation for the sample_rate field.
+	ciattributedistribution.DefaultSampleRate = ciattributedistributionDescSampleRate.Default.(float64)
+	cidimensionMixin := schema.CiDimension{}.Mixin()
+	cidimensionMixinFields0 := cidimensionMixin[0].Fields()
+	_ = cidimensionMixinFields0
+	cidimensionMixinFields1 := cidimensionMixin[1].Fields()
+	_ = cidimensionMixinFields1
+	cidimensionFields := schema.CiDimension{}.Fields()
+	_ = cidimensionFields
+	// cidimensionDescCreatedAt is the schema descriptor for created_at field.
+	cidimensionDescCreatedAt := cidimensionMixinFields0[1].Descriptor()
+	// cidimension.DefaultCreatedAt holds the default value on creation for the created_at field.
+	cidimension.DefaultCreatedAt = cidimensionDescCreatedAt.Default.(func() time.Time)
+	// cidimensionDescUpdatedAt is the schema descriptor for updated_at field.
+	cidimensionDescUpdatedAt := cidimensionMixinFields0[2].Descriptor()
+	// cidimension.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	cidimension.DefaultUpdatedAt = cidimensionDescUpdatedAt.Default.(func() time.Time)
+	// cidimension.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	cidimension.UpdateDefaultUpdatedAt = cidimensionDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// cidimensionDescTenantID is the schema descriptor for tenant_id field.
+	cidimensionDescTenantID := cidimensionMixinFields1[0].Descriptor()
+	// cidimension.DefaultTenantID holds the default value on creation for the tenant_id field.
+	cidimension.DefaultTenantID = cidimensionDescTenantID.Default.(uint64)
+	// cidimensionDescCiTypeName is the schema descriptor for ci_type_name field.
+	cidimensionDescCiTypeName := cidimensionFields[1].Descriptor()
+	// cidimension.CiTypeNameValidator is a validator for the "ci_type_name" field. It is called by the builders before save.
+	cidimension.CiTypeNameValidator = cidimensionDescCiTypeName.Validators[0].(func(string) error)
+	// cidimensionDescCiTypeAlias is the schema descriptor for ci_type_alias field.
+	cidimensionDescCiTypeAlias := cidimensionFields[2].Descriptor()
+	// cidimension.CiTypeAliasValidator is a validator for the "ci_type_alias" field. It is called by the builders before save.
+	cidimension.CiTypeAliasValidator = cidimensionDescCiTypeAlias.Validators[0].(func(string) error)
+	// cidimensionDescCiCategory is the schema descriptor for ci_category field.
+	cidimensionDescCiCategory := cidimensionFields[3].Descriptor()
+	// cidimension.CiCategoryValidator is a validator for the "ci_category" field. It is called by the builders before save.
+	cidimension.CiCategoryValidator = cidimensionDescCiCategory.Validators[0].(func(string) error)
+	// cidimensionDescEnvironment is the schema descriptor for environment field.
+	cidimensionDescEnvironment := cidimensionFields[6].Descriptor()
+	// cidimension.EnvironmentValidator is a validator for the "environment" field. It is called by the builders before save.
+	cidimension.EnvironmentValidator = cidimensionDescEnvironment.Validators[0].(func(string) error)
+	// cidimensionDescLocation is the schema descriptor for location field.
+	cidimensionDescLocation := cidimensionFields[7].Descriptor()
+	// cidimension.LocationValidator is a validator for the "location" field. It is called by the builders before save.
+	cidimension.LocationValidator = cidimensionDescLocation.Validators[0].(func(string) error)
+	// cidimensionDescCostCenter is the schema descriptor for cost_center field.
+	cidimensionDescCostCenter := cidimensionFields[10].Descriptor()
+	// cidimension.CostCenterValidator is a validator for the "cost_center" field. It is called by the builders before save.
+	cidimension.CostCenterValidator = cidimensionDescCostCenter.Validators[0].(func(string) error)
+	// cidimensionDescIsActive is the schema descriptor for is_active field.
+	cidimensionDescIsActive := cidimensionFields[16].Descriptor()
+	// cidimension.DefaultIsActive holds the default value on creation for the is_active field.
+	cidimension.DefaultIsActive = cidimensionDescIsActive.Default.(bool)
+	// cidimensionDescDimensionVersion is the schema descriptor for dimension_version field.
+	cidimensionDescDimensionVersion := cidimensionFields[17].Descriptor()
+	// cidimension.DefaultDimensionVersion holds the default value on creation for the dimension_version field.
+	cidimension.DefaultDimensionVersion = cidimensionDescDimensionVersion.Default.(uint64)
+	// cidimensionDescDimensionUpdatedAt is the schema descriptor for dimension_updated_at field.
+	cidimensionDescDimensionUpdatedAt := cidimensionFields[18].Descriptor()
+	// cidimension.DefaultDimensionUpdatedAt holds the default value on creation for the dimension_updated_at field.
+	cidimension.DefaultDimensionUpdatedAt = cidimensionDescDimensionUpdatedAt.Default.(func() time.Time)
 	cilifecyclestateMixin := schema.CiLifecycleState{}.Mixin()
 	cilifecyclestateMixinFields0 := cilifecyclestateMixin[0].Fields()
 	_ = cilifecyclestateMixinFields0
@@ -545,6 +789,51 @@ func init() {
 	cirelationDescAncestorIds := cirelationFields[5].Descriptor()
 	// cirelation.AncestorIdsValidator is a validator for the "ancestor_ids" field. It is called by the builders before save.
 	cirelation.AncestorIdsValidator = cirelationDescAncestorIds.Validators[0].(func(string) error)
+	// cirelationDescStatus is the schema descriptor for status field.
+	cirelationDescStatus := cirelationFields[8].Descriptor()
+	// cirelation.DefaultStatus holds the default value on creation for the status field.
+	cirelation.DefaultStatus = cirelationDescStatus.Default.(string)
+	// cirelationDescAutoSyncEnabled is the schema descriptor for auto_sync_enabled field.
+	cirelationDescAutoSyncEnabled := cirelationFields[11].Descriptor()
+	// cirelation.DefaultAutoSyncEnabled holds the default value on creation for the auto_sync_enabled field.
+	cirelation.DefaultAutoSyncEnabled = cirelationDescAutoSyncEnabled.Default.(bool)
+	// cirelationDescRelationStrength is the schema descriptor for relation_strength field.
+	cirelationDescRelationStrength := cirelationFields[13].Descriptor()
+	// cirelation.DefaultRelationStrength holds the default value on creation for the relation_strength field.
+	cirelation.DefaultRelationStrength = cirelationDescRelationStrength.Default.(string)
+	cistatisticsfactMixin := schema.CiStatisticsFact{}.Mixin()
+	cistatisticsfactMixinFields0 := cistatisticsfactMixin[0].Fields()
+	_ = cistatisticsfactMixinFields0
+	cistatisticsfactMixinFields1 := cistatisticsfactMixin[1].Fields()
+	_ = cistatisticsfactMixinFields1
+	cistatisticsfactFields := schema.CiStatisticsFact{}.Fields()
+	_ = cistatisticsfactFields
+	// cistatisticsfactDescCreatedAt is the schema descriptor for created_at field.
+	cistatisticsfactDescCreatedAt := cistatisticsfactMixinFields0[1].Descriptor()
+	// cistatisticsfact.DefaultCreatedAt holds the default value on creation for the created_at field.
+	cistatisticsfact.DefaultCreatedAt = cistatisticsfactDescCreatedAt.Default.(func() time.Time)
+	// cistatisticsfactDescUpdatedAt is the schema descriptor for updated_at field.
+	cistatisticsfactDescUpdatedAt := cistatisticsfactMixinFields0[2].Descriptor()
+	// cistatisticsfact.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	cistatisticsfact.DefaultUpdatedAt = cistatisticsfactDescUpdatedAt.Default.(func() time.Time)
+	// cistatisticsfact.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	cistatisticsfact.UpdateDefaultUpdatedAt = cistatisticsfactDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// cistatisticsfactDescTenantID is the schema descriptor for tenant_id field.
+	cistatisticsfactDescTenantID := cistatisticsfactMixinFields1[0].Descriptor()
+	// cistatisticsfact.DefaultTenantID holds the default value on creation for the tenant_id field.
+	cistatisticsfact.DefaultTenantID = cistatisticsfactDescTenantID.Default.(uint64)
+	// cistatisticsfactDescCiCount is the schema descriptor for ci_count field.
+	cistatisticsfactDescCiCount := cistatisticsfactFields[1].Descriptor()
+	// cistatisticsfact.DefaultCiCount holds the default value on creation for the ci_count field.
+	cistatisticsfact.DefaultCiCount = cistatisticsfactDescCiCount.Default.(uint64)
+	// cistatisticsfactDescStatTime is the schema descriptor for stat_time field.
+	cistatisticsfactDescStatTime := cistatisticsfactFields[9].Descriptor()
+	// cistatisticsfact.DefaultStatTime holds the default value on creation for the stat_time field.
+	cistatisticsfact.DefaultStatTime = cistatisticsfactDescStatTime.Default.(func() time.Time)
+	// cistatisticsfactDescVersion is the schema descriptor for version field.
+	cistatisticsfactDescVersion := cistatisticsfactFields[10].Descriptor()
+	// cistatisticsfact.DefaultVersion holds the default value on creation for the version field.
+	cistatisticsfact.DefaultVersion = cistatisticsfactDescVersion.Default.(uint64)
 	citypeMixin := schema.CiType{}.Mixin()
 	citypeMixinHooks3 := citypeMixin[3].Hooks()
 	citype.Hooks[0] = citypeMixinHooks3[0]
@@ -757,6 +1046,81 @@ func init() {
 	citypeattributegroupitemDescTenantID := citypeattributegroupitemMixinFields3[0].Descriptor()
 	// citypeattributegroupitem.DefaultTenantID holds the default value on creation for the tenant_id field.
 	citypeattributegroupitem.DefaultTenantID = citypeattributegroupitemDescTenantID.Default.(uint64)
+	citypediscoveryconfigMixin := schema.CiTypeDiscoveryConfig{}.Mixin()
+	citypediscoveryconfigMixinHooks2 := citypediscoveryconfigMixin[2].Hooks()
+	citypediscoveryconfig.Hooks[0] = citypediscoveryconfigMixinHooks2[0]
+	citypediscoveryconfigMixinInters2 := citypediscoveryconfigMixin[2].Interceptors()
+	citypediscoveryconfig.Interceptors[0] = citypediscoveryconfigMixinInters2[0]
+	citypediscoveryconfigMixinFields0 := citypediscoveryconfigMixin[0].Fields()
+	_ = citypediscoveryconfigMixinFields0
+	citypediscoveryconfigMixinFields1 := citypediscoveryconfigMixin[1].Fields()
+	_ = citypediscoveryconfigMixinFields1
+	citypediscoveryconfigMixinFields3 := citypediscoveryconfigMixin[3].Fields()
+	_ = citypediscoveryconfigMixinFields3
+	citypediscoveryconfigFields := schema.CiTypeDiscoveryConfig{}.Fields()
+	_ = citypediscoveryconfigFields
+	// citypediscoveryconfigDescCreatedAt is the schema descriptor for created_at field.
+	citypediscoveryconfigDescCreatedAt := citypediscoveryconfigMixinFields0[1].Descriptor()
+	// citypediscoveryconfig.DefaultCreatedAt holds the default value on creation for the created_at field.
+	citypediscoveryconfig.DefaultCreatedAt = citypediscoveryconfigDescCreatedAt.Default.(func() time.Time)
+	// citypediscoveryconfigDescUpdatedAt is the schema descriptor for updated_at field.
+	citypediscoveryconfigDescUpdatedAt := citypediscoveryconfigMixinFields0[2].Descriptor()
+	// citypediscoveryconfig.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	citypediscoveryconfig.DefaultUpdatedAt = citypediscoveryconfigDescUpdatedAt.Default.(func() time.Time)
+	// citypediscoveryconfig.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	citypediscoveryconfig.UpdateDefaultUpdatedAt = citypediscoveryconfigDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// citypediscoveryconfigDescStatus is the schema descriptor for status field.
+	citypediscoveryconfigDescStatus := citypediscoveryconfigMixinFields1[0].Descriptor()
+	// citypediscoveryconfig.DefaultStatus holds the default value on creation for the status field.
+	citypediscoveryconfig.DefaultStatus = citypediscoveryconfigDescStatus.Default.(uint8)
+	// citypediscoveryconfigDescTenantID is the schema descriptor for tenant_id field.
+	citypediscoveryconfigDescTenantID := citypediscoveryconfigMixinFields3[0].Descriptor()
+	// citypediscoveryconfig.DefaultTenantID holds the default value on creation for the tenant_id field.
+	citypediscoveryconfig.DefaultTenantID = citypediscoveryconfigDescTenantID.Default.(uint64)
+	// citypediscoveryconfigDescConfigName is the schema descriptor for config_name field.
+	citypediscoveryconfigDescConfigName := citypediscoveryconfigFields[1].Descriptor()
+	// citypediscoveryconfig.ConfigNameValidator is a validator for the "config_name" field. It is called by the builders before save.
+	citypediscoveryconfig.ConfigNameValidator = citypediscoveryconfigDescConfigName.Validators[0].(func(string) error)
+	// citypediscoveryconfigDescDiscoveryMode is the schema descriptor for discovery_mode field.
+	citypediscoveryconfigDescDiscoveryMode := citypediscoveryconfigFields[3].Descriptor()
+	// citypediscoveryconfig.DefaultDiscoveryMode holds the default value on creation for the discovery_mode field.
+	citypediscoveryconfig.DefaultDiscoveryMode = citypediscoveryconfigDescDiscoveryMode.Default.(string)
+	// citypediscoveryconfigDescExecutionMode is the schema descriptor for execution_mode field.
+	citypediscoveryconfigDescExecutionMode := citypediscoveryconfigFields[10].Descriptor()
+	// citypediscoveryconfig.DefaultExecutionMode holds the default value on creation for the execution_mode field.
+	citypediscoveryconfig.DefaultExecutionMode = citypediscoveryconfigDescExecutionMode.Default.(string)
+	// citypediscoveryconfigDescPriority is the schema descriptor for priority field.
+	citypediscoveryconfigDescPriority := citypediscoveryconfigFields[12].Descriptor()
+	// citypediscoveryconfig.DefaultPriority holds the default value on creation for the priority field.
+	citypediscoveryconfig.DefaultPriority = citypediscoveryconfigDescPriority.Default.(int)
+	// citypediscoveryconfigDescBatchSize is the schema descriptor for batch_size field.
+	citypediscoveryconfigDescBatchSize := citypediscoveryconfigFields[13].Descriptor()
+	// citypediscoveryconfig.DefaultBatchSize holds the default value on creation for the batch_size field.
+	citypediscoveryconfig.DefaultBatchSize = citypediscoveryconfigDescBatchSize.Default.(int)
+	// citypediscoveryconfigDescTimeoutSeconds is the schema descriptor for timeout_seconds field.
+	citypediscoveryconfigDescTimeoutSeconds := citypediscoveryconfigFields[14].Descriptor()
+	// citypediscoveryconfig.DefaultTimeoutSeconds holds the default value on creation for the timeout_seconds field.
+	citypediscoveryconfig.DefaultTimeoutSeconds = citypediscoveryconfigDescTimeoutSeconds.Default.(int)
+	// citypediscoveryconfigDescConflictResolution is the schema descriptor for conflict_resolution field.
+	citypediscoveryconfigDescConflictResolution := citypediscoveryconfigFields[15].Descriptor()
+	// citypediscoveryconfig.DefaultConflictResolution holds the default value on creation for the conflict_resolution field.
+	citypediscoveryconfig.DefaultConflictResolution = citypediscoveryconfigDescConflictResolution.Default.(string)
+	// citypediscoveryconfigDescAutoCreateCi is the schema descriptor for auto_create_ci field.
+	citypediscoveryconfigDescAutoCreateCi := citypediscoveryconfigFields[16].Descriptor()
+	// citypediscoveryconfig.DefaultAutoCreateCi holds the default value on creation for the auto_create_ci field.
+	citypediscoveryconfig.DefaultAutoCreateCi = citypediscoveryconfigDescAutoCreateCi.Default.(bool)
+	// citypediscoveryconfigDescAutoUpdateAttributes is the schema descriptor for auto_update_attributes field.
+	citypediscoveryconfigDescAutoUpdateAttributes := citypediscoveryconfigFields[17].Descriptor()
+	// citypediscoveryconfig.DefaultAutoUpdateAttributes holds the default value on creation for the auto_update_attributes field.
+	citypediscoveryconfig.DefaultAutoUpdateAttributes = citypediscoveryconfigDescAutoUpdateAttributes.Default.(bool)
+	// citypediscoveryconfigDescEnabled is the schema descriptor for enabled field.
+	citypediscoveryconfigDescEnabled := citypediscoveryconfigFields[19].Descriptor()
+	// citypediscoveryconfig.DefaultEnabled holds the default value on creation for the enabled field.
+	citypediscoveryconfig.DefaultEnabled = citypediscoveryconfigDescEnabled.Default.(bool)
+	// citypediscoveryconfigDescConfigStatus is the schema descriptor for config_status field.
+	citypediscoveryconfigDescConfigStatus := citypediscoveryconfigFields[20].Descriptor()
+	// citypediscoveryconfig.DefaultConfigStatus holds the default value on creation for the config_status field.
+	citypediscoveryconfig.DefaultConfigStatus = citypediscoveryconfigDescConfigStatus.Default.(string)
 	citypegroupMixin := schema.CiTypeGroup{}.Mixin()
 	citypegroupMixinHooks4 := citypegroupMixin[4].Hooks()
 	citypegroup.Hooks[0] = citypegroupMixinHooks4[0]
@@ -924,6 +1288,120 @@ func init() {
 	cisDescStatus := cisFields[1].Descriptor()
 	// cis.DefaultStatus holds the default value on creation for the status field.
 	cis.DefaultStatus = cisDescStatus.Default.(uint32)
+	discoveryexecutionhistoryMixin := schema.DiscoveryExecutionHistory{}.Mixin()
+	discoveryexecutionhistoryMixinHooks1 := discoveryexecutionhistoryMixin[1].Hooks()
+	discoveryexecutionhistory.Hooks[0] = discoveryexecutionhistoryMixinHooks1[0]
+	discoveryexecutionhistoryMixinInters1 := discoveryexecutionhistoryMixin[1].Interceptors()
+	discoveryexecutionhistory.Interceptors[0] = discoveryexecutionhistoryMixinInters1[0]
+	discoveryexecutionhistoryMixinFields0 := discoveryexecutionhistoryMixin[0].Fields()
+	_ = discoveryexecutionhistoryMixinFields0
+	discoveryexecutionhistoryMixinFields2 := discoveryexecutionhistoryMixin[2].Fields()
+	_ = discoveryexecutionhistoryMixinFields2
+	discoveryexecutionhistoryFields := schema.DiscoveryExecutionHistory{}.Fields()
+	_ = discoveryexecutionhistoryFields
+	// discoveryexecutionhistoryDescCreatedAt is the schema descriptor for created_at field.
+	discoveryexecutionhistoryDescCreatedAt := discoveryexecutionhistoryMixinFields0[1].Descriptor()
+	// discoveryexecutionhistory.DefaultCreatedAt holds the default value on creation for the created_at field.
+	discoveryexecutionhistory.DefaultCreatedAt = discoveryexecutionhistoryDescCreatedAt.Default.(func() time.Time)
+	// discoveryexecutionhistoryDescUpdatedAt is the schema descriptor for updated_at field.
+	discoveryexecutionhistoryDescUpdatedAt := discoveryexecutionhistoryMixinFields0[2].Descriptor()
+	// discoveryexecutionhistory.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	discoveryexecutionhistory.DefaultUpdatedAt = discoveryexecutionhistoryDescUpdatedAt.Default.(func() time.Time)
+	// discoveryexecutionhistory.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	discoveryexecutionhistory.UpdateDefaultUpdatedAt = discoveryexecutionhistoryDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// discoveryexecutionhistoryDescTenantID is the schema descriptor for tenant_id field.
+	discoveryexecutionhistoryDescTenantID := discoveryexecutionhistoryMixinFields2[0].Descriptor()
+	// discoveryexecutionhistory.DefaultTenantID holds the default value on creation for the tenant_id field.
+	discoveryexecutionhistory.DefaultTenantID = discoveryexecutionhistoryDescTenantID.Default.(uint64)
+	// discoveryexecutionhistoryDescProgress is the schema descriptor for progress field.
+	discoveryexecutionhistoryDescProgress := discoveryexecutionhistoryFields[9].Descriptor()
+	// discoveryexecutionhistory.DefaultProgress holds the default value on creation for the progress field.
+	discoveryexecutionhistory.DefaultProgress = discoveryexecutionhistoryDescProgress.Default.(int)
+	// discoveryexecutionhistoryDescTotalRecords is the schema descriptor for total_records field.
+	discoveryexecutionhistoryDescTotalRecords := discoveryexecutionhistoryFields[10].Descriptor()
+	// discoveryexecutionhistory.DefaultTotalRecords holds the default value on creation for the total_records field.
+	discoveryexecutionhistory.DefaultTotalRecords = discoveryexecutionhistoryDescTotalRecords.Default.(int64)
+	// discoveryexecutionhistoryDescProcessedRecords is the schema descriptor for processed_records field.
+	discoveryexecutionhistoryDescProcessedRecords := discoveryexecutionhistoryFields[11].Descriptor()
+	// discoveryexecutionhistory.DefaultProcessedRecords holds the default value on creation for the processed_records field.
+	discoveryexecutionhistory.DefaultProcessedRecords = discoveryexecutionhistoryDescProcessedRecords.Default.(int64)
+	// discoveryexecutionhistoryDescSuccessRecords is the schema descriptor for success_records field.
+	discoveryexecutionhistoryDescSuccessRecords := discoveryexecutionhistoryFields[12].Descriptor()
+	// discoveryexecutionhistory.DefaultSuccessRecords holds the default value on creation for the success_records field.
+	discoveryexecutionhistory.DefaultSuccessRecords = discoveryexecutionhistoryDescSuccessRecords.Default.(int64)
+	// discoveryexecutionhistoryDescFailedRecords is the schema descriptor for failed_records field.
+	discoveryexecutionhistoryDescFailedRecords := discoveryexecutionhistoryFields[13].Descriptor()
+	// discoveryexecutionhistory.DefaultFailedRecords holds the default value on creation for the failed_records field.
+	discoveryexecutionhistory.DefaultFailedRecords = discoveryexecutionhistoryDescFailedRecords.Default.(int64)
+	// discoveryexecutionhistoryDescSkippedRecords is the schema descriptor for skipped_records field.
+	discoveryexecutionhistoryDescSkippedRecords := discoveryexecutionhistoryFields[14].Descriptor()
+	// discoveryexecutionhistory.DefaultSkippedRecords holds the default value on creation for the skipped_records field.
+	discoveryexecutionhistory.DefaultSkippedRecords = discoveryexecutionhistoryDescSkippedRecords.Default.(int64)
+	// discoveryexecutionhistoryDescCreatedCis is the schema descriptor for created_cis field.
+	discoveryexecutionhistoryDescCreatedCis := discoveryexecutionhistoryFields[15].Descriptor()
+	// discoveryexecutionhistory.DefaultCreatedCis holds the default value on creation for the created_cis field.
+	discoveryexecutionhistory.DefaultCreatedCis = discoveryexecutionhistoryDescCreatedCis.Default.(int64)
+	// discoveryexecutionhistoryDescUpdatedCis is the schema descriptor for updated_cis field.
+	discoveryexecutionhistoryDescUpdatedCis := discoveryexecutionhistoryFields[16].Descriptor()
+	// discoveryexecutionhistory.DefaultUpdatedCis holds the default value on creation for the updated_cis field.
+	discoveryexecutionhistory.DefaultUpdatedCis = discoveryexecutionhistoryDescUpdatedCis.Default.(int64)
+	dynamicaggregationconfigMixin := schema.DynamicAggregationConfig{}.Mixin()
+	dynamicaggregationconfigMixinFields0 := dynamicaggregationconfigMixin[0].Fields()
+	_ = dynamicaggregationconfigMixinFields0
+	dynamicaggregationconfigMixinFields1 := dynamicaggregationconfigMixin[1].Fields()
+	_ = dynamicaggregationconfigMixinFields1
+	dynamicaggregationconfigFields := schema.DynamicAggregationConfig{}.Fields()
+	_ = dynamicaggregationconfigFields
+	// dynamicaggregationconfigDescCreatedAt is the schema descriptor for created_at field.
+	dynamicaggregationconfigDescCreatedAt := dynamicaggregationconfigMixinFields0[1].Descriptor()
+	// dynamicaggregationconfig.DefaultCreatedAt holds the default value on creation for the created_at field.
+	dynamicaggregationconfig.DefaultCreatedAt = dynamicaggregationconfigDescCreatedAt.Default.(func() time.Time)
+	// dynamicaggregationconfigDescUpdatedAt is the schema descriptor for updated_at field.
+	dynamicaggregationconfigDescUpdatedAt := dynamicaggregationconfigMixinFields0[2].Descriptor()
+	// dynamicaggregationconfig.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	dynamicaggregationconfig.DefaultUpdatedAt = dynamicaggregationconfigDescUpdatedAt.Default.(func() time.Time)
+	// dynamicaggregationconfig.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	dynamicaggregationconfig.UpdateDefaultUpdatedAt = dynamicaggregationconfigDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// dynamicaggregationconfigDescTenantID is the schema descriptor for tenant_id field.
+	dynamicaggregationconfigDescTenantID := dynamicaggregationconfigMixinFields1[0].Descriptor()
+	// dynamicaggregationconfig.DefaultTenantID holds the default value on creation for the tenant_id field.
+	dynamicaggregationconfig.DefaultTenantID = dynamicaggregationconfigDescTenantID.Default.(uint64)
+	// dynamicaggregationconfigDescConfigName is the schema descriptor for config_name field.
+	dynamicaggregationconfigDescConfigName := dynamicaggregationconfigFields[0].Descriptor()
+	// dynamicaggregationconfig.ConfigNameValidator is a validator for the "config_name" field. It is called by the builders before save.
+	dynamicaggregationconfig.ConfigNameValidator = dynamicaggregationconfigDescConfigName.Validators[0].(func(string) error)
+	// dynamicaggregationconfigDescConfigAlias is the schema descriptor for config_alias field.
+	dynamicaggregationconfigDescConfigAlias := dynamicaggregationconfigFields[1].Descriptor()
+	// dynamicaggregationconfig.ConfigAliasValidator is a validator for the "config_alias" field. It is called by the builders before save.
+	dynamicaggregationconfig.ConfigAliasValidator = dynamicaggregationconfigDescConfigAlias.Validators[0].(func(string) error)
+	// dynamicaggregationconfigDescDescription is the schema descriptor for description field.
+	dynamicaggregationconfigDescDescription := dynamicaggregationconfigFields[2].Descriptor()
+	// dynamicaggregationconfig.DescriptionValidator is a validator for the "description" field. It is called by the builders before save.
+	dynamicaggregationconfig.DescriptionValidator = dynamicaggregationconfigDescDescription.Validators[0].(func(string) error)
+	// dynamicaggregationconfigDescConfigVersion is the schema descriptor for config_version field.
+	dynamicaggregationconfigDescConfigVersion := dynamicaggregationconfigFields[23].Descriptor()
+	// dynamicaggregationconfig.DefaultConfigVersion holds the default value on creation for the config_version field.
+	dynamicaggregationconfig.DefaultConfigVersion = dynamicaggregationconfigDescConfigVersion.Default.(uint64)
+	// dynamicaggregationconfigDescExecutionCount is the schema descriptor for execution_count field.
+	dynamicaggregationconfigDescExecutionCount := dynamicaggregationconfigFields[25].Descriptor()
+	// dynamicaggregationconfig.DefaultExecutionCount holds the default value on creation for the execution_count field.
+	dynamicaggregationconfig.DefaultExecutionCount = dynamicaggregationconfigDescExecutionCount.Default.(uint64)
+	// dynamicaggregationconfigDescErrorCount is the schema descriptor for error_count field.
+	dynamicaggregationconfigDescErrorCount := dynamicaggregationconfigFields[28].Descriptor()
+	// dynamicaggregationconfig.DefaultErrorCount holds the default value on creation for the error_count field.
+	dynamicaggregationconfig.DefaultErrorCount = dynamicaggregationconfigDescErrorCount.Default.(uint64)
+	// dynamicaggregationconfigDescLastErrorMessage is the schema descriptor for last_error_message field.
+	dynamicaggregationconfigDescLastErrorMessage := dynamicaggregationconfigFields[29].Descriptor()
+	// dynamicaggregationconfig.LastErrorMessageValidator is a validator for the "last_error_message" field. It is called by the builders before save.
+	dynamicaggregationconfig.LastErrorMessageValidator = dynamicaggregationconfigDescLastErrorMessage.Validators[0].(func(string) error)
+	// dynamicaggregationconfigDescCreatorName is the schema descriptor for creator_name field.
+	dynamicaggregationconfigDescCreatorName := dynamicaggregationconfigFields[31].Descriptor()
+	// dynamicaggregationconfig.CreatorNameValidator is a validator for the "creator_name" field. It is called by the builders before save.
+	dynamicaggregationconfig.CreatorNameValidator = dynamicaggregationconfigDescCreatorName.Validators[0].(func(string) error)
+	// dynamicaggregationconfigDescIsSystemConfig is the schema descriptor for is_system_config field.
+	dynamicaggregationconfigDescIsSystemConfig := dynamicaggregationconfigFields[33].Descriptor()
+	// dynamicaggregationconfig.DefaultIsSystemConfig holds the default value on creation for the is_system_config field.
+	dynamicaggregationconfig.DefaultIsSystemConfig = dynamicaggregationconfigDescIsSystemConfig.Default.(bool)
 	importerrorMixin := schema.ImportError{}.Mixin()
 	importerrorMixinHooks1 := importerrorMixin[1].Hooks()
 	importerror.Hooks[0] = importerrorMixinHooks1[0]
@@ -1132,7 +1610,7 @@ func init() {
 	// importtask.ResultFilePathValidator is a validator for the "result_file_path" field. It is called by the builders before save.
 	importtask.ResultFilePathValidator = importtaskDescResultFilePath.Validators[0].(func(string) error)
 	// importtaskDescCreatedByName is the schema descriptor for created_by_name field.
-	importtaskDescCreatedByName := importtaskFields[24].Descriptor()
+	importtaskDescCreatedByName := importtaskFields[23].Descriptor()
 	// importtask.CreatedByNameValidator is a validator for the "created_by_name" field. It is called by the builders before save.
 	importtask.CreatedByNameValidator = importtaskDescCreatedByName.Validators[0].(func(string) error)
 	importtemplateMixin := schema.ImportTemplate{}.Mixin()
@@ -1297,11 +1775,11 @@ func init() {
 	// importtemplate.DefaultIsSystem holds the default value on creation for the is_system field.
 	importtemplate.DefaultIsSystem = importtemplateDescIsSystem.Default.(bool)
 	// importtemplateDescCreatedByName is the schema descriptor for created_by_name field.
-	importtemplateDescCreatedByName := importtemplateFields[44].Descriptor()
+	importtemplateDescCreatedByName := importtemplateFields[43].Descriptor()
 	// importtemplate.CreatedByNameValidator is a validator for the "created_by_name" field. It is called by the builders before save.
 	importtemplate.CreatedByNameValidator = importtemplateDescCreatedByName.Validators[0].(func(string) error)
 	// importtemplateDescApprovedByName is the schema descriptor for approved_by_name field.
-	importtemplateDescApprovedByName := importtemplateFields[46].Descriptor()
+	importtemplateDescApprovedByName := importtemplateFields[45].Descriptor()
 	// importtemplate.ApprovedByNameValidator is a validator for the "approved_by_name" field. It is called by the builders before save.
 	importtemplate.ApprovedByNameValidator = importtemplateDescApprovedByName.Validators[0].(func(string) error)
 	permissioncacheMixin := schema.PermissionCache{}.Mixin()
@@ -1514,6 +1992,208 @@ func init() {
 			return nil
 		}
 	}()
+	// relationtypeDescIsStandard is the schema descriptor for is_standard field.
+	relationtypeDescIsStandard := relationtypeFields[5].Descriptor()
+	// relationtype.DefaultIsStandard holds the default value on creation for the is_standard field.
+	relationtype.DefaultIsStandard = relationtypeDescIsStandard.Default.(bool)
+	// relationtypeDescSortOrder is the schema descriptor for sort_order field.
+	relationtypeDescSortOrder := relationtypeFields[6].Descriptor()
+	// relationtype.DefaultSortOrder holds the default value on creation for the sort_order field.
+	relationtype.DefaultSortOrder = relationtypeDescSortOrder.Default.(int)
+	// relationtypeDescIsEnabled is the schema descriptor for is_enabled field.
+	relationtypeDescIsEnabled := relationtypeFields[7].Descriptor()
+	// relationtype.DefaultIsEnabled holds the default value on creation for the is_enabled field.
+	relationtype.DefaultIsEnabled = relationtypeDescIsEnabled.Default.(bool)
+	// relationtypeDescDisplayColor is the schema descriptor for display_color field.
+	relationtypeDescDisplayColor := relationtypeFields[8].Descriptor()
+	// relationtype.DefaultDisplayColor holds the default value on creation for the display_color field.
+	relationtype.DefaultDisplayColor = relationtypeDescDisplayColor.Default.(string)
+	// relationtype.DisplayColorValidator is a validator for the "display_color" field. It is called by the builders before save.
+	relationtype.DisplayColorValidator = relationtypeDescDisplayColor.Validators[0].(func(string) error)
+	// relationtypeDescIcon is the schema descriptor for icon field.
+	relationtypeDescIcon := relationtypeFields[10].Descriptor()
+	// relationtype.IconValidator is a validator for the "icon" field. It is called by the builders before save.
+	relationtype.IconValidator = relationtypeDescIcon.Validators[0].(func(string) error)
+	// relationtypeDescWeight is the schema descriptor for weight field.
+	relationtypeDescWeight := relationtypeFields[11].Descriptor()
+	// relationtype.DefaultWeight holds the default value on creation for the weight field.
+	relationtype.DefaultWeight = relationtypeDescWeight.Default.(int)
+	// relationtypeDescDisplayLabel is the schema descriptor for display_label field.
+	relationtypeDescDisplayLabel := relationtypeFields[12].Descriptor()
+	// relationtype.DisplayLabelValidator is a validator for the "display_label" field. It is called by the builders before save.
+	relationtype.DisplayLabelValidator = relationtypeDescDisplayLabel.Validators[0].(func(string) error)
+	timedimensionMixin := schema.TimeDimension{}.Mixin()
+	timedimensionMixinFields0 := timedimensionMixin[0].Fields()
+	_ = timedimensionMixinFields0
+	timedimensionMixinFields1 := timedimensionMixin[1].Fields()
+	_ = timedimensionMixinFields1
+	timedimensionFields := schema.TimeDimension{}.Fields()
+	_ = timedimensionFields
+	// timedimensionDescCreatedAt is the schema descriptor for created_at field.
+	timedimensionDescCreatedAt := timedimensionMixinFields0[1].Descriptor()
+	// timedimension.DefaultCreatedAt holds the default value on creation for the created_at field.
+	timedimension.DefaultCreatedAt = timedimensionDescCreatedAt.Default.(func() time.Time)
+	// timedimensionDescUpdatedAt is the schema descriptor for updated_at field.
+	timedimensionDescUpdatedAt := timedimensionMixinFields0[2].Descriptor()
+	// timedimension.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	timedimension.DefaultUpdatedAt = timedimensionDescUpdatedAt.Default.(func() time.Time)
+	// timedimension.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	timedimension.UpdateDefaultUpdatedAt = timedimensionDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// timedimensionDescTenantID is the schema descriptor for tenant_id field.
+	timedimensionDescTenantID := timedimensionMixinFields1[0].Descriptor()
+	// timedimension.DefaultTenantID holds the default value on creation for the tenant_id field.
+	timedimension.DefaultTenantID = timedimensionDescTenantID.Default.(uint64)
+	// timedimensionDescDate is the schema descriptor for date field.
+	timedimensionDescDate := timedimensionFields[1].Descriptor()
+	// timedimension.DateValidator is a validator for the "date" field. It is called by the builders before save.
+	timedimension.DateValidator = timedimensionDescDate.Validators[0].(func(string) error)
+	// timedimensionDescQuarter is the schema descriptor for quarter field.
+	timedimensionDescQuarter := timedimensionFields[3].Descriptor()
+	// timedimension.QuarterValidator is a validator for the "quarter" field. It is called by the builders before save.
+	timedimension.QuarterValidator = timedimensionDescQuarter.Validators[0].(func(int) error)
+	// timedimensionDescMonth is the schema descriptor for month field.
+	timedimensionDescMonth := timedimensionFields[4].Descriptor()
+	// timedimension.MonthValidator is a validator for the "month" field. It is called by the builders before save.
+	timedimension.MonthValidator = timedimensionDescMonth.Validators[0].(func(int) error)
+	// timedimensionDescWeekOfYear is the schema descriptor for week_of_year field.
+	timedimensionDescWeekOfYear := timedimensionFields[5].Descriptor()
+	// timedimension.WeekOfYearValidator is a validator for the "week_of_year" field. It is called by the builders before save.
+	timedimension.WeekOfYearValidator = timedimensionDescWeekOfYear.Validators[0].(func(int) error)
+	// timedimensionDescWeekOfMonth is the schema descriptor for week_of_month field.
+	timedimensionDescWeekOfMonth := timedimensionFields[6].Descriptor()
+	// timedimension.WeekOfMonthValidator is a validator for the "week_of_month" field. It is called by the builders before save.
+	timedimension.WeekOfMonthValidator = timedimensionDescWeekOfMonth.Validators[0].(func(int) error)
+	// timedimensionDescDayOfMonth is the schema descriptor for day_of_month field.
+	timedimensionDescDayOfMonth := timedimensionFields[7].Descriptor()
+	// timedimension.DayOfMonthValidator is a validator for the "day_of_month" field. It is called by the builders before save.
+	timedimension.DayOfMonthValidator = timedimensionDescDayOfMonth.Validators[0].(func(int) error)
+	// timedimensionDescDayOfYear is the schema descriptor for day_of_year field.
+	timedimensionDescDayOfYear := timedimensionFields[8].Descriptor()
+	// timedimension.DayOfYearValidator is a validator for the "day_of_year" field. It is called by the builders before save.
+	timedimension.DayOfYearValidator = timedimensionDescDayOfYear.Validators[0].(func(int) error)
+	// timedimensionDescDayOfWeek is the schema descriptor for day_of_week field.
+	timedimensionDescDayOfWeek := timedimensionFields[9].Descriptor()
+	// timedimension.DayOfWeekValidator is a validator for the "day_of_week" field. It is called by the builders before save.
+	timedimension.DayOfWeekValidator = timedimensionDescDayOfWeek.Validators[0].(func(int) error)
+	// timedimensionDescHour is the schema descriptor for hour field.
+	timedimensionDescHour := timedimensionFields[10].Descriptor()
+	// timedimension.HourValidator is a validator for the "hour" field. It is called by the builders before save.
+	timedimension.HourValidator = timedimensionDescHour.Validators[0].(func(int) error)
+	// timedimensionDescMinute is the schema descriptor for minute field.
+	timedimensionDescMinute := timedimensionFields[11].Descriptor()
+	// timedimension.MinuteValidator is a validator for the "minute" field. It is called by the builders before save.
+	timedimension.MinuteValidator = timedimensionDescMinute.Validators[0].(func(int) error)
+	// timedimensionDescIsHoliday is the schema descriptor for is_holiday field.
+	timedimensionDescIsHoliday := timedimensionFields[15].Descriptor()
+	// timedimension.DefaultIsHoliday holds the default value on creation for the is_holiday field.
+	timedimension.DefaultIsHoliday = timedimensionDescIsHoliday.Default.(bool)
+	// timedimensionDescHolidayName is the schema descriptor for holiday_name field.
+	timedimensionDescHolidayName := timedimensionFields[16].Descriptor()
+	// timedimension.HolidayNameValidator is a validator for the "holiday_name" field. It is called by the builders before save.
+	timedimension.HolidayNameValidator = timedimensionDescHolidayName.Validators[0].(func(string) error)
+	// timedimensionDescQuarterName is the schema descriptor for quarter_name field.
+	timedimensionDescQuarterName := timedimensionFields[17].Descriptor()
+	// timedimension.QuarterNameValidator is a validator for the "quarter_name" field. It is called by the builders before save.
+	timedimension.QuarterNameValidator = timedimensionDescQuarterName.Validators[0].(func(string) error)
+	// timedimensionDescMonthName is the schema descriptor for month_name field.
+	timedimensionDescMonthName := timedimensionFields[18].Descriptor()
+	// timedimension.MonthNameValidator is a validator for the "month_name" field. It is called by the builders before save.
+	timedimension.MonthNameValidator = timedimensionDescMonthName.Validators[0].(func(string) error)
+	// timedimensionDescWeekdayName is the schema descriptor for weekday_name field.
+	timedimensionDescWeekdayName := timedimensionFields[19].Descriptor()
+	// timedimension.WeekdayNameValidator is a validator for the "weekday_name" field. It is called by the builders before save.
+	timedimension.WeekdayNameValidator = timedimensionDescWeekdayName.Validators[0].(func(string) error)
+	// timedimensionDescTimezone is the schema descriptor for timezone field.
+	timedimensionDescTimezone := timedimensionFields[20].Descriptor()
+	// timedimension.DefaultTimezone holds the default value on creation for the timezone field.
+	timedimension.DefaultTimezone = timedimensionDescTimezone.Default.(string)
+	// timedimension.TimezoneValidator is a validator for the "timezone" field. It is called by the builders before save.
+	timedimension.TimezoneValidator = timedimensionDescTimezone.Validators[0].(func(string) error)
+	// timedimensionDescUtcOffset is the schema descriptor for utc_offset field.
+	timedimensionDescUtcOffset := timedimensionFields[21].Descriptor()
+	// timedimension.DefaultUtcOffset holds the default value on creation for the utc_offset field.
+	timedimension.DefaultUtcOffset = timedimensionDescUtcOffset.Default.(int)
+	// timedimensionDescFiscalQuarter is the schema descriptor for fiscal_quarter field.
+	timedimensionDescFiscalQuarter := timedimensionFields[23].Descriptor()
+	// timedimension.FiscalQuarterValidator is a validator for the "fiscal_quarter" field. It is called by the builders before save.
+	timedimension.FiscalQuarterValidator = timedimensionDescFiscalQuarter.Validators[0].(func(int) error)
+	// timedimensionDescFiscalMonth is the schema descriptor for fiscal_month field.
+	timedimensionDescFiscalMonth := timedimensionFields[24].Descriptor()
+	// timedimension.FiscalMonthValidator is a validator for the "fiscal_month" field. It is called by the builders before save.
+	timedimension.FiscalMonthValidator = timedimensionDescFiscalMonth.Validators[0].(func(int) error)
+	// timedimensionDescBusinessCycle is the schema descriptor for business_cycle field.
+	timedimensionDescBusinessCycle := timedimensionFields[25].Descriptor()
+	// timedimension.BusinessCycleValidator is a validator for the "business_cycle" field. It is called by the builders before save.
+	timedimension.BusinessCycleValidator = timedimensionDescBusinessCycle.Validators[0].(func(string) error)
+	// timedimensionDescDimensionVersion is the schema descriptor for dimension_version field.
+	timedimensionDescDimensionVersion := timedimensionFields[27].Descriptor()
+	// timedimension.DefaultDimensionVersion holds the default value on creation for the dimension_version field.
+	timedimension.DefaultDimensionVersion = timedimensionDescDimensionVersion.Default.(uint64)
+	useractivityfactMixin := schema.UserActivityFact{}.Mixin()
+	useractivityfactMixinFields0 := useractivityfactMixin[0].Fields()
+	_ = useractivityfactMixinFields0
+	useractivityfactMixinFields1 := useractivityfactMixin[1].Fields()
+	_ = useractivityfactMixinFields1
+	useractivityfactFields := schema.UserActivityFact{}.Fields()
+	_ = useractivityfactFields
+	// useractivityfactDescCreatedAt is the schema descriptor for created_at field.
+	useractivityfactDescCreatedAt := useractivityfactMixinFields0[1].Descriptor()
+	// useractivityfact.DefaultCreatedAt holds the default value on creation for the created_at field.
+	useractivityfact.DefaultCreatedAt = useractivityfactDescCreatedAt.Default.(func() time.Time)
+	// useractivityfactDescUpdatedAt is the schema descriptor for updated_at field.
+	useractivityfactDescUpdatedAt := useractivityfactMixinFields0[2].Descriptor()
+	// useractivityfact.DefaultUpdatedAt holds the default value on creation for the updated_at field.
+	useractivityfact.DefaultUpdatedAt = useractivityfactDescUpdatedAt.Default.(func() time.Time)
+	// useractivityfact.UpdateDefaultUpdatedAt holds the default value on update for the updated_at field.
+	useractivityfact.UpdateDefaultUpdatedAt = useractivityfactDescUpdatedAt.UpdateDefault.(func() time.Time)
+	// useractivityfactDescTenantID is the schema descriptor for tenant_id field.
+	useractivityfactDescTenantID := useractivityfactMixinFields1[0].Descriptor()
+	// useractivityfact.DefaultTenantID holds the default value on creation for the tenant_id field.
+	useractivityfact.DefaultTenantID = useractivityfactDescTenantID.Default.(uint64)
+	// useractivityfactDescUsername is the schema descriptor for username field.
+	useractivityfactDescUsername := useractivityfactFields[1].Descriptor()
+	// useractivityfact.UsernameValidator is a validator for the "username" field. It is called by the builders before save.
+	useractivityfact.UsernameValidator = useractivityfactDescUsername.Validators[0].(func(string) error)
+	// useractivityfactDescResourceType is the schema descriptor for resource_type field.
+	useractivityfactDescResourceType := useractivityfactFields[4].Descriptor()
+	// useractivityfact.ResourceTypeValidator is a validator for the "resource_type" field. It is called by the builders before save.
+	useractivityfact.ResourceTypeValidator = useractivityfactDescResourceType.Validators[0].(func(string) error)
+	// useractivityfactDescErrorMessage is the schema descriptor for error_message field.
+	useractivityfactDescErrorMessage := useractivityfactFields[9].Descriptor()
+	// useractivityfact.ErrorMessageValidator is a validator for the "error_message" field. It is called by the builders before save.
+	useractivityfact.ErrorMessageValidator = useractivityfactDescErrorMessage.Validators[0].(func(string) error)
+	// useractivityfactDescAffectedRecords is the schema descriptor for affected_records field.
+	useractivityfactDescAffectedRecords := useractivityfactFields[11].Descriptor()
+	// useractivityfact.DefaultAffectedRecords holds the default value on creation for the affected_records field.
+	useractivityfact.DefaultAffectedRecords = useractivityfactDescAffectedRecords.Default.(uint64)
+	// useractivityfactDescIPAddress is the schema descriptor for ip_address field.
+	useractivityfactDescIPAddress := useractivityfactFields[12].Descriptor()
+	// useractivityfact.IPAddressValidator is a validator for the "ip_address" field. It is called by the builders before save.
+	useractivityfact.IPAddressValidator = useractivityfactDescIPAddress.Validators[0].(func(string) error)
+	// useractivityfactDescUserAgent is the schema descriptor for user_agent field.
+	useractivityfactDescUserAgent := useractivityfactFields[13].Descriptor()
+	// useractivityfact.UserAgentValidator is a validator for the "user_agent" field. It is called by the builders before save.
+	useractivityfact.UserAgentValidator = useractivityfactDescUserAgent.Validators[0].(func(string) error)
+	// useractivityfactDescSessionID is the schema descriptor for session_id field.
+	useractivityfactDescSessionID := useractivityfactFields[14].Descriptor()
+	// useractivityfact.SessionIDValidator is a validator for the "session_id" field. It is called by the builders before save.
+	useractivityfact.SessionIDValidator = useractivityfactDescSessionID.Validators[0].(func(string) error)
+	// useractivityfactDescAPIPath is the schema descriptor for api_path field.
+	useractivityfactDescAPIPath := useractivityfactFields[15].Descriptor()
+	// useractivityfact.APIPathValidator is a validator for the "api_path" field. It is called by the builders before save.
+	useractivityfact.APIPathValidator = useractivityfactDescAPIPath.Validators[0].(func(string) error)
+	// useractivityfactDescOperationTime is the schema descriptor for operation_time field.
+	useractivityfactDescOperationTime := useractivityfactFields[19].Descriptor()
+	// useractivityfact.DefaultOperationTime holds the default value on creation for the operation_time field.
+	useractivityfact.DefaultOperationTime = useractivityfactDescOperationTime.Default.(func() time.Time)
+	// useractivityfactDescBatchID is the schema descriptor for batch_id field.
+	useractivityfactDescBatchID := useractivityfactFields[27].Descriptor()
+	// useractivityfact.BatchIDValidator is a validator for the "batch_id" field. It is called by the builders before save.
+	useractivityfact.BatchIDValidator = useractivityfactDescBatchID.Validators[0].(func(string) error)
+	// useractivityfactDescDataVersion is the schema descriptor for data_version field.
+	useractivityfactDescDataVersion := useractivityfactFields[29].Descriptor()
+	// useractivityfact.DefaultDataVersion holds the default value on creation for the data_version field.
+	useractivityfact.DefaultDataVersion = useractivityfactDescDataVersion.Default.(uint64)
 	valuedatetimeMixin := schema.ValueDatetime{}.Mixin()
 	valuedatetimeMixinHooks1 := valuedatetimeMixin[1].Hooks()
 	valuedatetime.Hooks[0] = valuedatetimeMixinHooks1[0]

@@ -7,8 +7,8 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	"github.com/coder-lulu/newbee-common/msg/errormsg"
-	jsonx "github.com/coder-lulu/newbee-common/utils/json"
+	"github.com/coder-lulu/newbee-common/v2/msg/errormsg"
+	jsonx "github.com/coder-lulu/newbee-common/v2/utils/json"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

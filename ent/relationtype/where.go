@@ -75,6 +75,11 @@ func TenantID(v uint64) predicate.RelationType {
 	return predicate.RelationType(sql.FieldEQ(FieldTenantID, v))
 }
 
+// DepartmentID applies equality check predicate on the "department_id" field. It's identical to DepartmentIDEQ.
+func DepartmentID(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldDepartmentID, v))
+}
+
 // Name applies equality check predicate on the "name" field. It's identical to NameEQ.
 func Name(v string) predicate.RelationType {
 	return predicate.RelationType(sql.FieldEQ(FieldName, v))
@@ -83,6 +88,51 @@ func Name(v string) predicate.RelationType {
 // Code applies equality check predicate on the "code" field. It's identical to CodeEQ.
 func Code(v string) predicate.RelationType {
 	return predicate.RelationType(sql.FieldEQ(FieldCode, v))
+}
+
+// Description applies equality check predicate on the "description" field. It's identical to DescriptionEQ.
+func Description(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldDescription, v))
+}
+
+// IsStandard applies equality check predicate on the "is_standard" field. It's identical to IsStandardEQ.
+func IsStandard(v bool) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldIsStandard, v))
+}
+
+// SortOrder applies equality check predicate on the "sort_order" field. It's identical to SortOrderEQ.
+func SortOrder(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldSortOrder, v))
+}
+
+// IsEnabled applies equality check predicate on the "is_enabled" field. It's identical to IsEnabledEQ.
+func IsEnabled(v bool) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldIsEnabled, v))
+}
+
+// DisplayColor applies equality check predicate on the "display_color" field. It's identical to DisplayColorEQ.
+func DisplayColor(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldDisplayColor, v))
+}
+
+// Icon applies equality check predicate on the "icon" field. It's identical to IconEQ.
+func Icon(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldIcon, v))
+}
+
+// Weight applies equality check predicate on the "weight" field. It's identical to WeightEQ.
+func Weight(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldWeight, v))
+}
+
+// DisplayLabel applies equality check predicate on the "display_label" field. It's identical to DisplayLabelEQ.
+func DisplayLabel(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldDisplayLabel, v))
+}
+
+// TooltipTemplate applies equality check predicate on the "tooltip_template" field. It's identical to TooltipTemplateEQ.
+func TooltipTemplate(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldTooltipTemplate, v))
 }
 
 // CreatedAtEQ applies the EQ predicate on the "created_at" field.
@@ -255,6 +305,56 @@ func TenantIDLTE(v uint64) predicate.RelationType {
 	return predicate.RelationType(sql.FieldLTE(FieldTenantID, v))
 }
 
+// DepartmentIDEQ applies the EQ predicate on the "department_id" field.
+func DepartmentIDEQ(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldDepartmentID, v))
+}
+
+// DepartmentIDNEQ applies the NEQ predicate on the "department_id" field.
+func DepartmentIDNEQ(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldDepartmentID, v))
+}
+
+// DepartmentIDIn applies the In predicate on the "department_id" field.
+func DepartmentIDIn(vs ...uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldDepartmentID, vs...))
+}
+
+// DepartmentIDNotIn applies the NotIn predicate on the "department_id" field.
+func DepartmentIDNotIn(vs ...uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldDepartmentID, vs...))
+}
+
+// DepartmentIDGT applies the GT predicate on the "department_id" field.
+func DepartmentIDGT(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldDepartmentID, v))
+}
+
+// DepartmentIDGTE applies the GTE predicate on the "department_id" field.
+func DepartmentIDGTE(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldDepartmentID, v))
+}
+
+// DepartmentIDLT applies the LT predicate on the "department_id" field.
+func DepartmentIDLT(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldDepartmentID, v))
+}
+
+// DepartmentIDLTE applies the LTE predicate on the "department_id" field.
+func DepartmentIDLTE(v uint64) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldDepartmentID, v))
+}
+
+// DepartmentIDIsNil applies the IsNil predicate on the "department_id" field.
+func DepartmentIDIsNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldIsNull(FieldDepartmentID))
+}
+
+// DepartmentIDNotNil applies the NotNil predicate on the "department_id" field.
+func DepartmentIDNotNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotNull(FieldDepartmentID))
+}
+
 // NameEQ applies the EQ predicate on the "name" field.
 func NameEQ(v string) predicate.RelationType {
 	return predicate.RelationType(sql.FieldEQ(FieldName, v))
@@ -423,6 +523,501 @@ func DirectionIn(vs ...Direction) predicate.RelationType {
 // DirectionNotIn applies the NotIn predicate on the "direction" field.
 func DirectionNotIn(vs ...Direction) predicate.RelationType {
 	return predicate.RelationType(sql.FieldNotIn(FieldDirection, vs...))
+}
+
+// DescriptionEQ applies the EQ predicate on the "description" field.
+func DescriptionEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldDescription, v))
+}
+
+// DescriptionNEQ applies the NEQ predicate on the "description" field.
+func DescriptionNEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldDescription, v))
+}
+
+// DescriptionIn applies the In predicate on the "description" field.
+func DescriptionIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldDescription, vs...))
+}
+
+// DescriptionNotIn applies the NotIn predicate on the "description" field.
+func DescriptionNotIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldDescription, vs...))
+}
+
+// DescriptionGT applies the GT predicate on the "description" field.
+func DescriptionGT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldDescription, v))
+}
+
+// DescriptionGTE applies the GTE predicate on the "description" field.
+func DescriptionGTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldDescription, v))
+}
+
+// DescriptionLT applies the LT predicate on the "description" field.
+func DescriptionLT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldDescription, v))
+}
+
+// DescriptionLTE applies the LTE predicate on the "description" field.
+func DescriptionLTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldDescription, v))
+}
+
+// DescriptionContains applies the Contains predicate on the "description" field.
+func DescriptionContains(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContains(FieldDescription, v))
+}
+
+// DescriptionHasPrefix applies the HasPrefix predicate on the "description" field.
+func DescriptionHasPrefix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasPrefix(FieldDescription, v))
+}
+
+// DescriptionHasSuffix applies the HasSuffix predicate on the "description" field.
+func DescriptionHasSuffix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasSuffix(FieldDescription, v))
+}
+
+// DescriptionIsNil applies the IsNil predicate on the "description" field.
+func DescriptionIsNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldIsNull(FieldDescription))
+}
+
+// DescriptionNotNil applies the NotNil predicate on the "description" field.
+func DescriptionNotNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotNull(FieldDescription))
+}
+
+// DescriptionEqualFold applies the EqualFold predicate on the "description" field.
+func DescriptionEqualFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEqualFold(FieldDescription, v))
+}
+
+// DescriptionContainsFold applies the ContainsFold predicate on the "description" field.
+func DescriptionContainsFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContainsFold(FieldDescription, v))
+}
+
+// IsStandardEQ applies the EQ predicate on the "is_standard" field.
+func IsStandardEQ(v bool) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldIsStandard, v))
+}
+
+// IsStandardNEQ applies the NEQ predicate on the "is_standard" field.
+func IsStandardNEQ(v bool) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldIsStandard, v))
+}
+
+// SortOrderEQ applies the EQ predicate on the "sort_order" field.
+func SortOrderEQ(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldSortOrder, v))
+}
+
+// SortOrderNEQ applies the NEQ predicate on the "sort_order" field.
+func SortOrderNEQ(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldSortOrder, v))
+}
+
+// SortOrderIn applies the In predicate on the "sort_order" field.
+func SortOrderIn(vs ...int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldSortOrder, vs...))
+}
+
+// SortOrderNotIn applies the NotIn predicate on the "sort_order" field.
+func SortOrderNotIn(vs ...int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldSortOrder, vs...))
+}
+
+// SortOrderGT applies the GT predicate on the "sort_order" field.
+func SortOrderGT(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldSortOrder, v))
+}
+
+// SortOrderGTE applies the GTE predicate on the "sort_order" field.
+func SortOrderGTE(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldSortOrder, v))
+}
+
+// SortOrderLT applies the LT predicate on the "sort_order" field.
+func SortOrderLT(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldSortOrder, v))
+}
+
+// SortOrderLTE applies the LTE predicate on the "sort_order" field.
+func SortOrderLTE(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldSortOrder, v))
+}
+
+// IsEnabledEQ applies the EQ predicate on the "is_enabled" field.
+func IsEnabledEQ(v bool) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldIsEnabled, v))
+}
+
+// IsEnabledNEQ applies the NEQ predicate on the "is_enabled" field.
+func IsEnabledNEQ(v bool) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldIsEnabled, v))
+}
+
+// DisplayColorEQ applies the EQ predicate on the "display_color" field.
+func DisplayColorEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldDisplayColor, v))
+}
+
+// DisplayColorNEQ applies the NEQ predicate on the "display_color" field.
+func DisplayColorNEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldDisplayColor, v))
+}
+
+// DisplayColorIn applies the In predicate on the "display_color" field.
+func DisplayColorIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldDisplayColor, vs...))
+}
+
+// DisplayColorNotIn applies the NotIn predicate on the "display_color" field.
+func DisplayColorNotIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldDisplayColor, vs...))
+}
+
+// DisplayColorGT applies the GT predicate on the "display_color" field.
+func DisplayColorGT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldDisplayColor, v))
+}
+
+// DisplayColorGTE applies the GTE predicate on the "display_color" field.
+func DisplayColorGTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldDisplayColor, v))
+}
+
+// DisplayColorLT applies the LT predicate on the "display_color" field.
+func DisplayColorLT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldDisplayColor, v))
+}
+
+// DisplayColorLTE applies the LTE predicate on the "display_color" field.
+func DisplayColorLTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldDisplayColor, v))
+}
+
+// DisplayColorContains applies the Contains predicate on the "display_color" field.
+func DisplayColorContains(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContains(FieldDisplayColor, v))
+}
+
+// DisplayColorHasPrefix applies the HasPrefix predicate on the "display_color" field.
+func DisplayColorHasPrefix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasPrefix(FieldDisplayColor, v))
+}
+
+// DisplayColorHasSuffix applies the HasSuffix predicate on the "display_color" field.
+func DisplayColorHasSuffix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasSuffix(FieldDisplayColor, v))
+}
+
+// DisplayColorEqualFold applies the EqualFold predicate on the "display_color" field.
+func DisplayColorEqualFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEqualFold(FieldDisplayColor, v))
+}
+
+// DisplayColorContainsFold applies the ContainsFold predicate on the "display_color" field.
+func DisplayColorContainsFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContainsFold(FieldDisplayColor, v))
+}
+
+// LineTypeEQ applies the EQ predicate on the "line_type" field.
+func LineTypeEQ(v LineType) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldLineType, v))
+}
+
+// LineTypeNEQ applies the NEQ predicate on the "line_type" field.
+func LineTypeNEQ(v LineType) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldLineType, v))
+}
+
+// LineTypeIn applies the In predicate on the "line_type" field.
+func LineTypeIn(vs ...LineType) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldLineType, vs...))
+}
+
+// LineTypeNotIn applies the NotIn predicate on the "line_type" field.
+func LineTypeNotIn(vs ...LineType) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldLineType, vs...))
+}
+
+// IconEQ applies the EQ predicate on the "icon" field.
+func IconEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldIcon, v))
+}
+
+// IconNEQ applies the NEQ predicate on the "icon" field.
+func IconNEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldIcon, v))
+}
+
+// IconIn applies the In predicate on the "icon" field.
+func IconIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldIcon, vs...))
+}
+
+// IconNotIn applies the NotIn predicate on the "icon" field.
+func IconNotIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldIcon, vs...))
+}
+
+// IconGT applies the GT predicate on the "icon" field.
+func IconGT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldIcon, v))
+}
+
+// IconGTE applies the GTE predicate on the "icon" field.
+func IconGTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldIcon, v))
+}
+
+// IconLT applies the LT predicate on the "icon" field.
+func IconLT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldIcon, v))
+}
+
+// IconLTE applies the LTE predicate on the "icon" field.
+func IconLTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldIcon, v))
+}
+
+// IconContains applies the Contains predicate on the "icon" field.
+func IconContains(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContains(FieldIcon, v))
+}
+
+// IconHasPrefix applies the HasPrefix predicate on the "icon" field.
+func IconHasPrefix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasPrefix(FieldIcon, v))
+}
+
+// IconHasSuffix applies the HasSuffix predicate on the "icon" field.
+func IconHasSuffix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasSuffix(FieldIcon, v))
+}
+
+// IconIsNil applies the IsNil predicate on the "icon" field.
+func IconIsNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldIsNull(FieldIcon))
+}
+
+// IconNotNil applies the NotNil predicate on the "icon" field.
+func IconNotNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotNull(FieldIcon))
+}
+
+// IconEqualFold applies the EqualFold predicate on the "icon" field.
+func IconEqualFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEqualFold(FieldIcon, v))
+}
+
+// IconContainsFold applies the ContainsFold predicate on the "icon" field.
+func IconContainsFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContainsFold(FieldIcon, v))
+}
+
+// WeightEQ applies the EQ predicate on the "weight" field.
+func WeightEQ(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldWeight, v))
+}
+
+// WeightNEQ applies the NEQ predicate on the "weight" field.
+func WeightNEQ(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldWeight, v))
+}
+
+// WeightIn applies the In predicate on the "weight" field.
+func WeightIn(vs ...int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldWeight, vs...))
+}
+
+// WeightNotIn applies the NotIn predicate on the "weight" field.
+func WeightNotIn(vs ...int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldWeight, vs...))
+}
+
+// WeightGT applies the GT predicate on the "weight" field.
+func WeightGT(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldWeight, v))
+}
+
+// WeightGTE applies the GTE predicate on the "weight" field.
+func WeightGTE(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldWeight, v))
+}
+
+// WeightLT applies the LT predicate on the "weight" field.
+func WeightLT(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldWeight, v))
+}
+
+// WeightLTE applies the LTE predicate on the "weight" field.
+func WeightLTE(v int) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldWeight, v))
+}
+
+// DisplayLabelEQ applies the EQ predicate on the "display_label" field.
+func DisplayLabelEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldDisplayLabel, v))
+}
+
+// DisplayLabelNEQ applies the NEQ predicate on the "display_label" field.
+func DisplayLabelNEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldDisplayLabel, v))
+}
+
+// DisplayLabelIn applies the In predicate on the "display_label" field.
+func DisplayLabelIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldDisplayLabel, vs...))
+}
+
+// DisplayLabelNotIn applies the NotIn predicate on the "display_label" field.
+func DisplayLabelNotIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldDisplayLabel, vs...))
+}
+
+// DisplayLabelGT applies the GT predicate on the "display_label" field.
+func DisplayLabelGT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldDisplayLabel, v))
+}
+
+// DisplayLabelGTE applies the GTE predicate on the "display_label" field.
+func DisplayLabelGTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldDisplayLabel, v))
+}
+
+// DisplayLabelLT applies the LT predicate on the "display_label" field.
+func DisplayLabelLT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldDisplayLabel, v))
+}
+
+// DisplayLabelLTE applies the LTE predicate on the "display_label" field.
+func DisplayLabelLTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldDisplayLabel, v))
+}
+
+// DisplayLabelContains applies the Contains predicate on the "display_label" field.
+func DisplayLabelContains(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContains(FieldDisplayLabel, v))
+}
+
+// DisplayLabelHasPrefix applies the HasPrefix predicate on the "display_label" field.
+func DisplayLabelHasPrefix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasPrefix(FieldDisplayLabel, v))
+}
+
+// DisplayLabelHasSuffix applies the HasSuffix predicate on the "display_label" field.
+func DisplayLabelHasSuffix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasSuffix(FieldDisplayLabel, v))
+}
+
+// DisplayLabelIsNil applies the IsNil predicate on the "display_label" field.
+func DisplayLabelIsNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldIsNull(FieldDisplayLabel))
+}
+
+// DisplayLabelNotNil applies the NotNil predicate on the "display_label" field.
+func DisplayLabelNotNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotNull(FieldDisplayLabel))
+}
+
+// DisplayLabelEqualFold applies the EqualFold predicate on the "display_label" field.
+func DisplayLabelEqualFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEqualFold(FieldDisplayLabel, v))
+}
+
+// DisplayLabelContainsFold applies the ContainsFold predicate on the "display_label" field.
+func DisplayLabelContainsFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContainsFold(FieldDisplayLabel, v))
+}
+
+// TooltipTemplateEQ applies the EQ predicate on the "tooltip_template" field.
+func TooltipTemplateEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEQ(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateNEQ applies the NEQ predicate on the "tooltip_template" field.
+func TooltipTemplateNEQ(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNEQ(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateIn applies the In predicate on the "tooltip_template" field.
+func TooltipTemplateIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldIn(FieldTooltipTemplate, vs...))
+}
+
+// TooltipTemplateNotIn applies the NotIn predicate on the "tooltip_template" field.
+func TooltipTemplateNotIn(vs ...string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotIn(FieldTooltipTemplate, vs...))
+}
+
+// TooltipTemplateGT applies the GT predicate on the "tooltip_template" field.
+func TooltipTemplateGT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGT(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateGTE applies the GTE predicate on the "tooltip_template" field.
+func TooltipTemplateGTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldGTE(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateLT applies the LT predicate on the "tooltip_template" field.
+func TooltipTemplateLT(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLT(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateLTE applies the LTE predicate on the "tooltip_template" field.
+func TooltipTemplateLTE(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldLTE(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateContains applies the Contains predicate on the "tooltip_template" field.
+func TooltipTemplateContains(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContains(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateHasPrefix applies the HasPrefix predicate on the "tooltip_template" field.
+func TooltipTemplateHasPrefix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasPrefix(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateHasSuffix applies the HasSuffix predicate on the "tooltip_template" field.
+func TooltipTemplateHasSuffix(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldHasSuffix(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateIsNil applies the IsNil predicate on the "tooltip_template" field.
+func TooltipTemplateIsNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldIsNull(FieldTooltipTemplate))
+}
+
+// TooltipTemplateNotNil applies the NotNil predicate on the "tooltip_template" field.
+func TooltipTemplateNotNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotNull(FieldTooltipTemplate))
+}
+
+// TooltipTemplateEqualFold applies the EqualFold predicate on the "tooltip_template" field.
+func TooltipTemplateEqualFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldEqualFold(FieldTooltipTemplate, v))
+}
+
+// TooltipTemplateContainsFold applies the ContainsFold predicate on the "tooltip_template" field.
+func TooltipTemplateContainsFold(v string) predicate.RelationType {
+	return predicate.RelationType(sql.FieldContainsFold(FieldTooltipTemplate, v))
+}
+
+// DisplayStyleIsNil applies the IsNil predicate on the "display_style" field.
+func DisplayStyleIsNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldIsNull(FieldDisplayStyle))
+}
+
+// DisplayStyleNotNil applies the NotNil predicate on the "display_style" field.
+func DisplayStyleNotNil() predicate.RelationType {
+	return predicate.RelationType(sql.FieldNotNull(FieldDisplayStyle))
 }
 
 // HasCiRelations applies the HasEdge predicate on the "ci_relations" edge.

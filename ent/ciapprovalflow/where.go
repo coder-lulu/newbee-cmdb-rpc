@@ -75,6 +75,11 @@ func DepartmentID(v uint64) predicate.CiApprovalFlow {
 	return predicate.CiApprovalFlow(sql.FieldEQ(FieldDepartmentID, v))
 }
 
+// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
+func CreatedBy(v uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldEQ(FieldCreatedBy, v))
+}
+
 // FlowID applies equality check predicate on the "flow_id" field. It's identical to FlowIDEQ.
 func FlowID(v string) predicate.CiApprovalFlow {
 	return predicate.CiApprovalFlow(sql.FieldEQ(FieldFlowID, v))
@@ -173,11 +178,6 @@ func AvgApprovalTime(v float64) predicate.CiApprovalFlow {
 // LastUsedAt applies equality check predicate on the "last_used_at" field. It's identical to LastUsedAtEQ.
 func LastUsedAt(v time.Time) predicate.CiApprovalFlow {
 	return predicate.CiApprovalFlow(sql.FieldEQ(FieldLastUsedAt, v))
-}
-
-// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
-func CreatedBy(v uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldEQ(FieldCreatedBy, v))
 }
 
 // CreatedByName applies equality check predicate on the "created_by_name" field. It's identical to CreatedByNameEQ.
@@ -378,6 +378,56 @@ func DepartmentIDIsNil() predicate.CiApprovalFlow {
 // DepartmentIDNotNil applies the NotNil predicate on the "department_id" field.
 func DepartmentIDNotNil() predicate.CiApprovalFlow {
 	return predicate.CiApprovalFlow(sql.FieldNotNull(FieldDepartmentID))
+}
+
+// CreatedByEQ applies the EQ predicate on the "created_by" field.
+func CreatedByEQ(v uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldEQ(FieldCreatedBy, v))
+}
+
+// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
+func CreatedByNEQ(v uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldNEQ(FieldCreatedBy, v))
+}
+
+// CreatedByIn applies the In predicate on the "created_by" field.
+func CreatedByIn(vs ...uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
+func CreatedByNotIn(vs ...uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldNotIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByGT applies the GT predicate on the "created_by" field.
+func CreatedByGT(v uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldGT(FieldCreatedBy, v))
+}
+
+// CreatedByGTE applies the GTE predicate on the "created_by" field.
+func CreatedByGTE(v uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldGTE(FieldCreatedBy, v))
+}
+
+// CreatedByLT applies the LT predicate on the "created_by" field.
+func CreatedByLT(v uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldLT(FieldCreatedBy, v))
+}
+
+// CreatedByLTE applies the LTE predicate on the "created_by" field.
+func CreatedByLTE(v uuid.UUID) predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldLTE(FieldCreatedBy, v))
+}
+
+// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
+func CreatedByIsNil() predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldIsNull(FieldCreatedBy))
+}
+
+// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
+func CreatedByNotNil() predicate.CiApprovalFlow {
+	return predicate.CiApprovalFlow(sql.FieldNotNull(FieldCreatedBy))
 }
 
 // FlowIDEQ applies the EQ predicate on the "flow_id" field.
@@ -1323,56 +1373,6 @@ func LastUsedAtIsNil() predicate.CiApprovalFlow {
 // LastUsedAtNotNil applies the NotNil predicate on the "last_used_at" field.
 func LastUsedAtNotNil() predicate.CiApprovalFlow {
 	return predicate.CiApprovalFlow(sql.FieldNotNull(FieldLastUsedAt))
-}
-
-// CreatedByEQ applies the EQ predicate on the "created_by" field.
-func CreatedByEQ(v uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldEQ(FieldCreatedBy, v))
-}
-
-// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
-func CreatedByNEQ(v uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldNEQ(FieldCreatedBy, v))
-}
-
-// CreatedByIn applies the In predicate on the "created_by" field.
-func CreatedByIn(vs ...uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
-func CreatedByNotIn(vs ...uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldNotIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByGT applies the GT predicate on the "created_by" field.
-func CreatedByGT(v uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldGT(FieldCreatedBy, v))
-}
-
-// CreatedByGTE applies the GTE predicate on the "created_by" field.
-func CreatedByGTE(v uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldGTE(FieldCreatedBy, v))
-}
-
-// CreatedByLT applies the LT predicate on the "created_by" field.
-func CreatedByLT(v uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldLT(FieldCreatedBy, v))
-}
-
-// CreatedByLTE applies the LTE predicate on the "created_by" field.
-func CreatedByLTE(v uuid.UUID) predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldLTE(FieldCreatedBy, v))
-}
-
-// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
-func CreatedByIsNil() predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldIsNull(FieldCreatedBy))
-}
-
-// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
-func CreatedByNotNil() predicate.CiApprovalFlow {
-	return predicate.CiApprovalFlow(sql.FieldNotNull(FieldCreatedBy))
 }
 
 // CreatedByNameEQ applies the EQ predicate on the "created_by_name" field.

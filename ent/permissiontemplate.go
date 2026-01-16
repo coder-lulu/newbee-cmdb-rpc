@@ -23,6 +23,8 @@ type PermissionTemplate struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 模板ID
 	TemplateID string `json:"template_id,omitempty"`
 	// 模板名称
@@ -57,7 +59,7 @@ func (*PermissionTemplate) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case permissiontemplate.FieldIsSystemTemplate, permissiontemplate.FieldIsActive:
 			values[i] = new(sql.NullBool)
-		case permissiontemplate.FieldID, permissiontemplate.FieldTenantID, permissiontemplate.FieldOperationsMask, permissiontemplate.FieldSortOrder:
+		case permissiontemplate.FieldID, permissiontemplate.FieldTenantID, permissiontemplate.FieldDepartmentID, permissiontemplate.FieldOperationsMask, permissiontemplate.FieldSortOrder:
 			values[i] = new(sql.NullInt64)
 		case permissiontemplate.FieldTemplateID, permissiontemplate.FieldTemplateName, permissiontemplate.FieldTemplateDescription, permissiontemplate.FieldCategory, permissiontemplate.FieldScopeType, permissiontemplate.FieldPermissionLevel, permissiontemplate.FieldRiskLevel, permissiontemplate.FieldCreatedBy:
 			values[i] = new(sql.NullString)
@@ -101,6 +103,12 @@ func (_m *PermissionTemplate) assignValues(columns []string, values []any) error
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case permissiontemplate.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case permissiontemplate.FieldTemplateID:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -218,6 +226,9 @@ func (_m *PermissionTemplate) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("template_id=")
 	builder.WriteString(_m.TemplateID)

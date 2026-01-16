@@ -23,6 +23,8 @@ type PermissionCache struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 缓存键：user_id:resource_type:resource_id
 	CacheKey string `json:"cache_key,omitempty"`
 	// 用户ID
@@ -57,7 +59,7 @@ func (*PermissionCache) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case permissioncache.FieldHasDataFilters, permissioncache.FieldHasFieldMasks:
 			values[i] = new(sql.NullBool)
-		case permissioncache.FieldID, permissioncache.FieldTenantID, permissioncache.FieldAllowedOperations, permissioncache.FieldAccessCount:
+		case permissioncache.FieldID, permissioncache.FieldTenantID, permissioncache.FieldDepartmentID, permissioncache.FieldAllowedOperations, permissioncache.FieldAccessCount:
 			values[i] = new(sql.NullInt64)
 		case permissioncache.FieldCacheKey, permissioncache.FieldUserID, permissioncache.FieldResourceType, permissioncache.FieldResourceID, permissioncache.FieldPermissionLevel, permissioncache.FieldCacheVersion:
 			values[i] = new(sql.NullString)
@@ -101,6 +103,12 @@ func (_m *PermissionCache) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case permissioncache.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case permissioncache.FieldCacheKey:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -218,6 +226,9 @@ func (_m *PermissionCache) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("cache_key=")
 	builder.WriteString(_m.CacheKey)

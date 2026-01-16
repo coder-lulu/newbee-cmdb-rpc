@@ -63,6 +63,26 @@ func (_u *CiApprovalFlowUpdate) ClearDepartmentID() *CiApprovalFlowUpdate {
 	return _u
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_u *CiApprovalFlowUpdate) SetCreatedBy(v uuid.UUID) *CiApprovalFlowUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *CiApprovalFlowUpdate) SetNillableCreatedBy(v *uuid.UUID) *CiApprovalFlowUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *CiApprovalFlowUpdate) ClearCreatedBy() *CiApprovalFlowUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
+}
+
 // SetFlowID sets the "flow_id" field.
 func (_u *CiApprovalFlowUpdate) SetFlowID(v string) *CiApprovalFlowUpdate {
 	_u.mutation.SetFlowID(v)
@@ -548,26 +568,6 @@ func (_u *CiApprovalFlowUpdate) ClearLastUsedAt() *CiApprovalFlowUpdate {
 	return _u
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_u *CiApprovalFlowUpdate) SetCreatedBy(v uuid.UUID) *CiApprovalFlowUpdate {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *CiApprovalFlowUpdate) SetNillableCreatedBy(v *uuid.UUID) *CiApprovalFlowUpdate {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *CiApprovalFlowUpdate) ClearCreatedBy() *CiApprovalFlowUpdate {
-	_u.mutation.ClearCreatedBy()
-	return _u
-}
-
 // SetCreatedByName sets the "created_by_name" field.
 func (_u *CiApprovalFlowUpdate) SetCreatedByName(v string) *CiApprovalFlowUpdate {
 	_u.mutation.SetCreatedByName(v)
@@ -832,6 +832,12 @@ func (_u *CiApprovalFlowUpdate) sqlSave(ctx context.Context) (_node int, err err
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(ciapprovalflow.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(ciapprovalflow.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(ciapprovalflow.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.FlowID(); ok {
 		_spec.SetField(ciapprovalflow.FieldFlowID, field.TypeString, value)
 	}
@@ -980,12 +986,6 @@ func (_u *CiApprovalFlowUpdate) sqlSave(ctx context.Context) (_node int, err err
 	if _u.mutation.LastUsedAtCleared() {
 		_spec.ClearField(ciapprovalflow.FieldLastUsedAt, field.TypeTime)
 	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(ciapprovalflow.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(ciapprovalflow.FieldCreatedBy, field.TypeUUID)
-	}
 	if value, ok := _u.mutation.CreatedByName(); ok {
 		_spec.SetField(ciapprovalflow.FieldCreatedByName, field.TypeString, value)
 	}
@@ -1101,6 +1101,26 @@ func (_u *CiApprovalFlowUpdateOne) AddDepartmentID(v int64) *CiApprovalFlowUpdat
 // ClearDepartmentID clears the value of the "department_id" field.
 func (_u *CiApprovalFlowUpdateOne) ClearDepartmentID() *CiApprovalFlowUpdateOne {
 	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
+// SetCreatedBy sets the "created_by" field.
+func (_u *CiApprovalFlowUpdateOne) SetCreatedBy(v uuid.UUID) *CiApprovalFlowUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *CiApprovalFlowUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CiApprovalFlowUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *CiApprovalFlowUpdateOne) ClearCreatedBy() *CiApprovalFlowUpdateOne {
+	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -1589,26 +1609,6 @@ func (_u *CiApprovalFlowUpdateOne) ClearLastUsedAt() *CiApprovalFlowUpdateOne {
 	return _u
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_u *CiApprovalFlowUpdateOne) SetCreatedBy(v uuid.UUID) *CiApprovalFlowUpdateOne {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *CiApprovalFlowUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CiApprovalFlowUpdateOne {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *CiApprovalFlowUpdateOne) ClearCreatedBy() *CiApprovalFlowUpdateOne {
-	_u.mutation.ClearCreatedBy()
-	return _u
-}
-
 // SetCreatedByName sets the "created_by_name" field.
 func (_u *CiApprovalFlowUpdateOne) SetCreatedByName(v string) *CiApprovalFlowUpdateOne {
 	_u.mutation.SetCreatedByName(v)
@@ -1903,6 +1903,12 @@ func (_u *CiApprovalFlowUpdateOne) sqlSave(ctx context.Context) (_node *CiApprov
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(ciapprovalflow.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(ciapprovalflow.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(ciapprovalflow.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.FlowID(); ok {
 		_spec.SetField(ciapprovalflow.FieldFlowID, field.TypeString, value)
 	}
@@ -2050,12 +2056,6 @@ func (_u *CiApprovalFlowUpdateOne) sqlSave(ctx context.Context) (_node *CiApprov
 	}
 	if _u.mutation.LastUsedAtCleared() {
 		_spec.ClearField(ciapprovalflow.FieldLastUsedAt, field.TypeTime)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(ciapprovalflow.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(ciapprovalflow.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.CreatedByName(); ok {
 		_spec.SetField(ciapprovalflow.FieldCreatedByName, field.TypeString, value)

@@ -24,6 +24,8 @@ type PermissionFieldMask struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 权限ID
 	PermissionID uint64 `json:"permission_id,omitempty"`
 	// 掩码字段名
@@ -63,7 +65,7 @@ func (*PermissionFieldMask) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case permissionfieldmask.FieldID, permissionfieldmask.FieldTenantID, permissionfieldmask.FieldPermissionID:
+		case permissionfieldmask.FieldID, permissionfieldmask.FieldTenantID, permissionfieldmask.FieldDepartmentID, permissionfieldmask.FieldPermissionID:
 			values[i] = new(sql.NullInt64)
 		case permissionfieldmask.FieldFieldName, permissionfieldmask.FieldMaskType, permissionfieldmask.FieldMaskRule:
 			values[i] = new(sql.NullString)
@@ -107,6 +109,12 @@ func (_m *PermissionFieldMask) assignValues(columns []string, values []any) erro
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case permissionfieldmask.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case permissionfieldmask.FieldPermissionID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -181,6 +189,9 @@ func (_m *PermissionFieldMask) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("permission_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.PermissionID))

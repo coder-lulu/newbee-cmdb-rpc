@@ -35,6 +35,8 @@ type CiType struct {
 	TenantID uint64 `json:"tenant_id,omitempty"`
 	// Department ID | 部门 ID
 	DepartmentID uint64 `json:"department_id,omitempty"`
+	// Created user's UUID | 创建者 UUID
+	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 名称
 	Name string `json:"name,omitempty"`
 	// 别名
@@ -43,8 +45,6 @@ type CiType struct {
 	UniqueID uint64 `json:"unique_id,omitempty"`
 	// 是否继承
 	IsInherited *bool `json:"is_inherited,omitempty"`
-	// 创建者
-	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 图标
 	Icon *string `json:"icon,omitempty"`
 	// 默认排序属性
@@ -85,9 +85,11 @@ type CiTypeEdges struct {
 	ImportRecords []*ImportRecord `json:"import_records,omitempty"`
 	// CiRecords holds the value of the ci_records edge.
 	CiRecords []*CiRecords `json:"ci_records,omitempty"`
+	// DiscoveryConfigs holds the value of the discovery_configs edge.
+	DiscoveryConfigs []*CiTypeDiscoveryConfig `json:"discovery_configs,omitempty"`
 	// loadedTypes holds the information for reporting if a
 	// type was loaded (or requested) in eager-loading or not.
-	loadedTypes [12]bool
+	loadedTypes [13]bool
 }
 
 // AttributesOrErr returns the Attributes value or an error if the edge
@@ -200,6 +202,15 @@ func (e CiTypeEdges) CiRecordsOrErr() ([]*CiRecords, error) {
 	return nil, &NotLoadedError{edge: "ci_records"}
 }
 
+// DiscoveryConfigsOrErr returns the DiscoveryConfigs value or an error if the edge
+// was not loaded in eager-loading.
+func (e CiTypeEdges) DiscoveryConfigsOrErr() ([]*CiTypeDiscoveryConfig, error) {
+	if e.loadedTypes[12] {
+		return e.DiscoveryConfigs, nil
+	}
+	return nil, &NotLoadedError{edge: "discovery_configs"}
+}
+
 // scanValues returns the types for scanning values from sql.Rows.
 func (*CiType) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
@@ -280,6 +291,13 @@ func (_m *CiType) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.DepartmentID = uint64(value.Int64)
 			}
+		case citype.FieldCreatedBy:
+			if value, ok := values[i].(*sql.NullScanner); !ok {
+				return fmt.Errorf("unexpected type %T for field created_by", values[i])
+			} else if value.Valid {
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
+			}
 		case citype.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
@@ -304,13 +322,6 @@ func (_m *CiType) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.IsInherited = new(bool)
 				*_m.IsInherited = value.Bool
-			}
-		case citype.FieldCreatedBy:
-			if value, ok := values[i].(*sql.NullScanner); !ok {
-				return fmt.Errorf("unexpected type %T for field created_by", values[i])
-			} else if value.Valid {
-				_m.CreatedBy = new(uuid.UUID)
-				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case citype.FieldIcon:
 			if value, ok := values[i].(*sql.NullString); !ok {
@@ -414,6 +425,11 @@ func (_m *CiType) QueryCiRecords() *CiRecordsQuery {
 	return NewCiTypeClient(_m.config).QueryCiRecords(_m)
 }
 
+// QueryDiscoveryConfigs queries the "discovery_configs" edge of the CiType entity.
+func (_m *CiType) QueryDiscoveryConfigs() *CiTypeDiscoveryConfigQuery {
+	return NewCiTypeClient(_m.config).QueryDiscoveryConfigs(_m)
+}
+
 // Update returns a builder for updating this CiType.
 // Note that you need to call CiType.Unwrap() before calling this method if this CiType
 // was returned from a transaction, and the transaction was committed or rolled back.
@@ -458,6 +474,11 @@ func (_m *CiType) String() string {
 	builder.WriteString("department_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
+	if v := _m.CreatedBy; v != nil {
+		builder.WriteString("created_by=")
+		builder.WriteString(fmt.Sprintf("%v", *v))
+	}
+	builder.WriteString(", ")
 	builder.WriteString("name=")
 	builder.WriteString(_m.Name)
 	builder.WriteString(", ")
@@ -469,11 +490,6 @@ func (_m *CiType) String() string {
 	builder.WriteString(", ")
 	if v := _m.IsInherited; v != nil {
 		builder.WriteString("is_inherited=")
-		builder.WriteString(fmt.Sprintf("%v", *v))
-	}
-	builder.WriteString(", ")
-	if v := _m.CreatedBy; v != nil {
-		builder.WriteString("created_by=")
 		builder.WriteString(fmt.Sprintf("%v", *v))
 	}
 	builder.WriteString(", ")

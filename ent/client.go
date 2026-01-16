@@ -15,25 +15,33 @@ import (
 	"entgo.io/ent/dialect"
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/aggregationcache"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attributemappingrule"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciattributedistribution"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cidimension"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cistatisticsfact"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypediscoveryconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/discoveryexecutionhistory"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/dynamicaggregationconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
@@ -44,6 +52,8 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionoperation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiontemplate"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/timedimension"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/useractivityfact"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
@@ -59,8 +69,12 @@ type Client struct {
 	config
 	// Schema is the client for creating, migrating and dropping schema.
 	Schema *migrate.Schema
+	// AggregationCache is the client for interacting with the AggregationCache builders.
+	AggregationCache *AggregationCacheClient
 	// Attribute is the client for interacting with the Attribute builders.
 	Attribute *AttributeClient
+	// AttributeMappingRule is the client for interacting with the AttributeMappingRule builders.
+	AttributeMappingRule *AttributeMappingRuleClient
 	// ChoiceFloat is the client for interacting with the ChoiceFloat builders.
 	ChoiceFloat *ChoiceFloatClient
 	// ChoiceInteger is the client for interacting with the ChoiceInteger builders.
@@ -69,6 +83,10 @@ type Client struct {
 	ChoiceText *ChoiceTextClient
 	// CiApprovalFlow is the client for interacting with the CiApprovalFlow builders.
 	CiApprovalFlow *CiApprovalFlowClient
+	// CiAttributeDistribution is the client for interacting with the CiAttributeDistribution builders.
+	CiAttributeDistribution *CiAttributeDistributionClient
+	// CiDimension is the client for interacting with the CiDimension builders.
+	CiDimension *CiDimensionClient
 	// CiLifecycleState is the client for interacting with the CiLifecycleState builders.
 	CiLifecycleState *CiLifecycleStateClient
 	// CiOperation is the client for interacting with the CiOperation builders.
@@ -79,6 +97,8 @@ type Client struct {
 	CiRecords *CiRecordsClient
 	// CiRelation is the client for interacting with the CiRelation builders.
 	CiRelation *CiRelationClient
+	// CiStatisticsFact is the client for interacting with the CiStatisticsFact builders.
+	CiStatisticsFact *CiStatisticsFactClient
 	// CiType is the client for interacting with the CiType builders.
 	CiType *CiTypeClient
 	// CiTypeAttribute is the client for interacting with the CiTypeAttribute builders.
@@ -87,6 +107,8 @@ type Client struct {
 	CiTypeAttributeGroup *CiTypeAttributeGroupClient
 	// CiTypeAttributeGroupItem is the client for interacting with the CiTypeAttributeGroupItem builders.
 	CiTypeAttributeGroupItem *CiTypeAttributeGroupItemClient
+	// CiTypeDiscoveryConfig is the client for interacting with the CiTypeDiscoveryConfig builders.
+	CiTypeDiscoveryConfig *CiTypeDiscoveryConfigClient
 	// CiTypeGroup is the client for interacting with the CiTypeGroup builders.
 	CiTypeGroup *CiTypeGroupClient
 	// CiTypeGroupItem is the client for interacting with the CiTypeGroupItem builders.
@@ -97,6 +119,10 @@ type Client struct {
 	CiTypeRelation *CiTypeRelationClient
 	// Cis is the client for interacting with the Cis builders.
 	Cis *CisClient
+	// DiscoveryExecutionHistory is the client for interacting with the DiscoveryExecutionHistory builders.
+	DiscoveryExecutionHistory *DiscoveryExecutionHistoryClient
+	// DynamicAggregationConfig is the client for interacting with the DynamicAggregationConfig builders.
+	DynamicAggregationConfig *DynamicAggregationConfigClient
 	// ImportError is the client for interacting with the ImportError builders.
 	ImportError *ImportErrorClient
 	// ImportRecord is the client for interacting with the ImportRecord builders.
@@ -117,6 +143,10 @@ type Client struct {
 	PermissionTemplate *PermissionTemplateClient
 	// RelationType is the client for interacting with the RelationType builders.
 	RelationType *RelationTypeClient
+	// TimeDimension is the client for interacting with the TimeDimension builders.
+	TimeDimension *TimeDimensionClient
+	// UserActivityFact is the client for interacting with the UserActivityFact builders.
+	UserActivityFact *UserActivityFactClient
 	// ValueDatetime is the client for interacting with the ValueDatetime builders.
 	ValueDatetime *ValueDatetimeClient
 	// ValueFloat is the client for interacting with the ValueFloat builders.
@@ -140,25 +170,33 @@ func NewClient(opts ...Option) *Client {
 
 func (c *Client) init() {
 	c.Schema = migrate.NewSchema(c.driver)
+	c.AggregationCache = NewAggregationCacheClient(c.config)
 	c.Attribute = NewAttributeClient(c.config)
+	c.AttributeMappingRule = NewAttributeMappingRuleClient(c.config)
 	c.ChoiceFloat = NewChoiceFloatClient(c.config)
 	c.ChoiceInteger = NewChoiceIntegerClient(c.config)
 	c.ChoiceText = NewChoiceTextClient(c.config)
 	c.CiApprovalFlow = NewCiApprovalFlowClient(c.config)
+	c.CiAttributeDistribution = NewCiAttributeDistributionClient(c.config)
+	c.CiDimension = NewCiDimensionClient(c.config)
 	c.CiLifecycleState = NewCiLifecycleStateClient(c.config)
 	c.CiOperation = NewCiOperationClient(c.config)
 	c.CiPermission = NewCiPermissionClient(c.config)
 	c.CiRecords = NewCiRecordsClient(c.config)
 	c.CiRelation = NewCiRelationClient(c.config)
+	c.CiStatisticsFact = NewCiStatisticsFactClient(c.config)
 	c.CiType = NewCiTypeClient(c.config)
 	c.CiTypeAttribute = NewCiTypeAttributeClient(c.config)
 	c.CiTypeAttributeGroup = NewCiTypeAttributeGroupClient(c.config)
 	c.CiTypeAttributeGroupItem = NewCiTypeAttributeGroupItemClient(c.config)
+	c.CiTypeDiscoveryConfig = NewCiTypeDiscoveryConfigClient(c.config)
 	c.CiTypeGroup = NewCiTypeGroupClient(c.config)
 	c.CiTypeGroupItem = NewCiTypeGroupItemClient(c.config)
 	c.CiTypeInheritance = NewCiTypeInheritanceClient(c.config)
 	c.CiTypeRelation = NewCiTypeRelationClient(c.config)
 	c.Cis = NewCisClient(c.config)
+	c.DiscoveryExecutionHistory = NewDiscoveryExecutionHistoryClient(c.config)
+	c.DynamicAggregationConfig = NewDynamicAggregationConfigClient(c.config)
 	c.ImportError = NewImportErrorClient(c.config)
 	c.ImportRecord = NewImportRecordClient(c.config)
 	c.ImportTask = NewImportTaskClient(c.config)
@@ -169,6 +207,8 @@ func (c *Client) init() {
 	c.PermissionOperation = NewPermissionOperationClient(c.config)
 	c.PermissionTemplate = NewPermissionTemplateClient(c.config)
 	c.RelationType = NewRelationTypeClient(c.config)
+	c.TimeDimension = NewTimeDimensionClient(c.config)
+	c.UserActivityFact = NewUserActivityFactClient(c.config)
 	c.ValueDatetime = NewValueDatetimeClient(c.config)
 	c.ValueFloat = NewValueFloatClient(c.config)
 	c.ValueIndexText = NewValueIndexTextClient(c.config)
@@ -265,43 +305,53 @@ func (c *Client) Tx(ctx context.Context) (*Tx, error) {
 	cfg := c.config
 	cfg.driver = tx
 	return &Tx{
-		ctx:                      ctx,
-		config:                   cfg,
-		Attribute:                NewAttributeClient(cfg),
-		ChoiceFloat:              NewChoiceFloatClient(cfg),
-		ChoiceInteger:            NewChoiceIntegerClient(cfg),
-		ChoiceText:               NewChoiceTextClient(cfg),
-		CiApprovalFlow:           NewCiApprovalFlowClient(cfg),
-		CiLifecycleState:         NewCiLifecycleStateClient(cfg),
-		CiOperation:              NewCiOperationClient(cfg),
-		CiPermission:             NewCiPermissionClient(cfg),
-		CiRecords:                NewCiRecordsClient(cfg),
-		CiRelation:               NewCiRelationClient(cfg),
-		CiType:                   NewCiTypeClient(cfg),
-		CiTypeAttribute:          NewCiTypeAttributeClient(cfg),
-		CiTypeAttributeGroup:     NewCiTypeAttributeGroupClient(cfg),
-		CiTypeAttributeGroupItem: NewCiTypeAttributeGroupItemClient(cfg),
-		CiTypeGroup:              NewCiTypeGroupClient(cfg),
-		CiTypeGroupItem:          NewCiTypeGroupItemClient(cfg),
-		CiTypeInheritance:        NewCiTypeInheritanceClient(cfg),
-		CiTypeRelation:           NewCiTypeRelationClient(cfg),
-		Cis:                      NewCisClient(cfg),
-		ImportError:              NewImportErrorClient(cfg),
-		ImportRecord:             NewImportRecordClient(cfg),
-		ImportTask:               NewImportTaskClient(cfg),
-		ImportTemplate:           NewImportTemplateClient(cfg),
-		PermissionCache:          NewPermissionCacheClient(cfg),
-		PermissionDataFilter:     NewPermissionDataFilterClient(cfg),
-		PermissionFieldMask:      NewPermissionFieldMaskClient(cfg),
-		PermissionOperation:      NewPermissionOperationClient(cfg),
-		PermissionTemplate:       NewPermissionTemplateClient(cfg),
-		RelationType:             NewRelationTypeClient(cfg),
-		ValueDatetime:            NewValueDatetimeClient(cfg),
-		ValueFloat:               NewValueFloatClient(cfg),
-		ValueIndexText:           NewValueIndexTextClient(cfg),
-		ValueInteger:             NewValueIntegerClient(cfg),
-		ValueJSON:                NewValueJSONClient(cfg),
-		ValueText:                NewValueTextClient(cfg),
+		ctx:                       ctx,
+		config:                    cfg,
+		AggregationCache:          NewAggregationCacheClient(cfg),
+		Attribute:                 NewAttributeClient(cfg),
+		AttributeMappingRule:      NewAttributeMappingRuleClient(cfg),
+		ChoiceFloat:               NewChoiceFloatClient(cfg),
+		ChoiceInteger:             NewChoiceIntegerClient(cfg),
+		ChoiceText:                NewChoiceTextClient(cfg),
+		CiApprovalFlow:            NewCiApprovalFlowClient(cfg),
+		CiAttributeDistribution:   NewCiAttributeDistributionClient(cfg),
+		CiDimension:               NewCiDimensionClient(cfg),
+		CiLifecycleState:          NewCiLifecycleStateClient(cfg),
+		CiOperation:               NewCiOperationClient(cfg),
+		CiPermission:              NewCiPermissionClient(cfg),
+		CiRecords:                 NewCiRecordsClient(cfg),
+		CiRelation:                NewCiRelationClient(cfg),
+		CiStatisticsFact:          NewCiStatisticsFactClient(cfg),
+		CiType:                    NewCiTypeClient(cfg),
+		CiTypeAttribute:           NewCiTypeAttributeClient(cfg),
+		CiTypeAttributeGroup:      NewCiTypeAttributeGroupClient(cfg),
+		CiTypeAttributeGroupItem:  NewCiTypeAttributeGroupItemClient(cfg),
+		CiTypeDiscoveryConfig:     NewCiTypeDiscoveryConfigClient(cfg),
+		CiTypeGroup:               NewCiTypeGroupClient(cfg),
+		CiTypeGroupItem:           NewCiTypeGroupItemClient(cfg),
+		CiTypeInheritance:         NewCiTypeInheritanceClient(cfg),
+		CiTypeRelation:            NewCiTypeRelationClient(cfg),
+		Cis:                       NewCisClient(cfg),
+		DiscoveryExecutionHistory: NewDiscoveryExecutionHistoryClient(cfg),
+		DynamicAggregationConfig:  NewDynamicAggregationConfigClient(cfg),
+		ImportError:               NewImportErrorClient(cfg),
+		ImportRecord:              NewImportRecordClient(cfg),
+		ImportTask:                NewImportTaskClient(cfg),
+		ImportTemplate:            NewImportTemplateClient(cfg),
+		PermissionCache:           NewPermissionCacheClient(cfg),
+		PermissionDataFilter:      NewPermissionDataFilterClient(cfg),
+		PermissionFieldMask:       NewPermissionFieldMaskClient(cfg),
+		PermissionOperation:       NewPermissionOperationClient(cfg),
+		PermissionTemplate:        NewPermissionTemplateClient(cfg),
+		RelationType:              NewRelationTypeClient(cfg),
+		TimeDimension:             NewTimeDimensionClient(cfg),
+		UserActivityFact:          NewUserActivityFactClient(cfg),
+		ValueDatetime:             NewValueDatetimeClient(cfg),
+		ValueFloat:                NewValueFloatClient(cfg),
+		ValueIndexText:            NewValueIndexTextClient(cfg),
+		ValueInteger:              NewValueIntegerClient(cfg),
+		ValueJSON:                 NewValueJSONClient(cfg),
+		ValueText:                 NewValueTextClient(cfg),
 	}, nil
 }
 
@@ -319,50 +369,60 @@ func (c *Client) BeginTx(ctx context.Context, opts *sql.TxOptions) (*Tx, error) 
 	cfg := c.config
 	cfg.driver = &txDriver{tx: tx, drv: c.driver}
 	return &Tx{
-		ctx:                      ctx,
-		config:                   cfg,
-		Attribute:                NewAttributeClient(cfg),
-		ChoiceFloat:              NewChoiceFloatClient(cfg),
-		ChoiceInteger:            NewChoiceIntegerClient(cfg),
-		ChoiceText:               NewChoiceTextClient(cfg),
-		CiApprovalFlow:           NewCiApprovalFlowClient(cfg),
-		CiLifecycleState:         NewCiLifecycleStateClient(cfg),
-		CiOperation:              NewCiOperationClient(cfg),
-		CiPermission:             NewCiPermissionClient(cfg),
-		CiRecords:                NewCiRecordsClient(cfg),
-		CiRelation:               NewCiRelationClient(cfg),
-		CiType:                   NewCiTypeClient(cfg),
-		CiTypeAttribute:          NewCiTypeAttributeClient(cfg),
-		CiTypeAttributeGroup:     NewCiTypeAttributeGroupClient(cfg),
-		CiTypeAttributeGroupItem: NewCiTypeAttributeGroupItemClient(cfg),
-		CiTypeGroup:              NewCiTypeGroupClient(cfg),
-		CiTypeGroupItem:          NewCiTypeGroupItemClient(cfg),
-		CiTypeInheritance:        NewCiTypeInheritanceClient(cfg),
-		CiTypeRelation:           NewCiTypeRelationClient(cfg),
-		Cis:                      NewCisClient(cfg),
-		ImportError:              NewImportErrorClient(cfg),
-		ImportRecord:             NewImportRecordClient(cfg),
-		ImportTask:               NewImportTaskClient(cfg),
-		ImportTemplate:           NewImportTemplateClient(cfg),
-		PermissionCache:          NewPermissionCacheClient(cfg),
-		PermissionDataFilter:     NewPermissionDataFilterClient(cfg),
-		PermissionFieldMask:      NewPermissionFieldMaskClient(cfg),
-		PermissionOperation:      NewPermissionOperationClient(cfg),
-		PermissionTemplate:       NewPermissionTemplateClient(cfg),
-		RelationType:             NewRelationTypeClient(cfg),
-		ValueDatetime:            NewValueDatetimeClient(cfg),
-		ValueFloat:               NewValueFloatClient(cfg),
-		ValueIndexText:           NewValueIndexTextClient(cfg),
-		ValueInteger:             NewValueIntegerClient(cfg),
-		ValueJSON:                NewValueJSONClient(cfg),
-		ValueText:                NewValueTextClient(cfg),
+		ctx:                       ctx,
+		config:                    cfg,
+		AggregationCache:          NewAggregationCacheClient(cfg),
+		Attribute:                 NewAttributeClient(cfg),
+		AttributeMappingRule:      NewAttributeMappingRuleClient(cfg),
+		ChoiceFloat:               NewChoiceFloatClient(cfg),
+		ChoiceInteger:             NewChoiceIntegerClient(cfg),
+		ChoiceText:                NewChoiceTextClient(cfg),
+		CiApprovalFlow:            NewCiApprovalFlowClient(cfg),
+		CiAttributeDistribution:   NewCiAttributeDistributionClient(cfg),
+		CiDimension:               NewCiDimensionClient(cfg),
+		CiLifecycleState:          NewCiLifecycleStateClient(cfg),
+		CiOperation:               NewCiOperationClient(cfg),
+		CiPermission:              NewCiPermissionClient(cfg),
+		CiRecords:                 NewCiRecordsClient(cfg),
+		CiRelation:                NewCiRelationClient(cfg),
+		CiStatisticsFact:          NewCiStatisticsFactClient(cfg),
+		CiType:                    NewCiTypeClient(cfg),
+		CiTypeAttribute:           NewCiTypeAttributeClient(cfg),
+		CiTypeAttributeGroup:      NewCiTypeAttributeGroupClient(cfg),
+		CiTypeAttributeGroupItem:  NewCiTypeAttributeGroupItemClient(cfg),
+		CiTypeDiscoveryConfig:     NewCiTypeDiscoveryConfigClient(cfg),
+		CiTypeGroup:               NewCiTypeGroupClient(cfg),
+		CiTypeGroupItem:           NewCiTypeGroupItemClient(cfg),
+		CiTypeInheritance:         NewCiTypeInheritanceClient(cfg),
+		CiTypeRelation:            NewCiTypeRelationClient(cfg),
+		Cis:                       NewCisClient(cfg),
+		DiscoveryExecutionHistory: NewDiscoveryExecutionHistoryClient(cfg),
+		DynamicAggregationConfig:  NewDynamicAggregationConfigClient(cfg),
+		ImportError:               NewImportErrorClient(cfg),
+		ImportRecord:              NewImportRecordClient(cfg),
+		ImportTask:                NewImportTaskClient(cfg),
+		ImportTemplate:            NewImportTemplateClient(cfg),
+		PermissionCache:           NewPermissionCacheClient(cfg),
+		PermissionDataFilter:      NewPermissionDataFilterClient(cfg),
+		PermissionFieldMask:       NewPermissionFieldMaskClient(cfg),
+		PermissionOperation:       NewPermissionOperationClient(cfg),
+		PermissionTemplate:        NewPermissionTemplateClient(cfg),
+		RelationType:              NewRelationTypeClient(cfg),
+		TimeDimension:             NewTimeDimensionClient(cfg),
+		UserActivityFact:          NewUserActivityFactClient(cfg),
+		ValueDatetime:             NewValueDatetimeClient(cfg),
+		ValueFloat:                NewValueFloatClient(cfg),
+		ValueIndexText:            NewValueIndexTextClient(cfg),
+		ValueInteger:              NewValueIntegerClient(cfg),
+		ValueJSON:                 NewValueJSONClient(cfg),
+		ValueText:                 NewValueTextClient(cfg),
 	}, nil
 }
 
 // Debug returns a new debug-client. It's used to get verbose logging on specific operations.
 //
 //	client.Debug().
-//		Attribute.
+//		AggregationCache.
 //		Query().
 //		Count(ctx)
 func (c *Client) Debug() *Client {
@@ -385,15 +445,18 @@ func (c *Client) Close() error {
 // In order to add hooks to a specific client, call: `client.Node.Use(...)`.
 func (c *Client) Use(hooks ...Hook) {
 	for _, n := range []interface{ Use(...Hook) }{
-		c.Attribute, c.ChoiceFloat, c.ChoiceInteger, c.ChoiceText, c.CiApprovalFlow,
-		c.CiLifecycleState, c.CiOperation, c.CiPermission, c.CiRecords, c.CiRelation,
-		c.CiType, c.CiTypeAttribute, c.CiTypeAttributeGroup,
-		c.CiTypeAttributeGroupItem, c.CiTypeGroup, c.CiTypeGroupItem,
-		c.CiTypeInheritance, c.CiTypeRelation, c.Cis, c.ImportError, c.ImportRecord,
-		c.ImportTask, c.ImportTemplate, c.PermissionCache, c.PermissionDataFilter,
-		c.PermissionFieldMask, c.PermissionOperation, c.PermissionTemplate,
-		c.RelationType, c.ValueDatetime, c.ValueFloat, c.ValueIndexText,
-		c.ValueInteger, c.ValueJSON, c.ValueText,
+		c.AggregationCache, c.Attribute, c.AttributeMappingRule, c.ChoiceFloat,
+		c.ChoiceInteger, c.ChoiceText, c.CiApprovalFlow, c.CiAttributeDistribution,
+		c.CiDimension, c.CiLifecycleState, c.CiOperation, c.CiPermission, c.CiRecords,
+		c.CiRelation, c.CiStatisticsFact, c.CiType, c.CiTypeAttribute,
+		c.CiTypeAttributeGroup, c.CiTypeAttributeGroupItem, c.CiTypeDiscoveryConfig,
+		c.CiTypeGroup, c.CiTypeGroupItem, c.CiTypeInheritance, c.CiTypeRelation, c.Cis,
+		c.DiscoveryExecutionHistory, c.DynamicAggregationConfig, c.ImportError,
+		c.ImportRecord, c.ImportTask, c.ImportTemplate, c.PermissionCache,
+		c.PermissionDataFilter, c.PermissionFieldMask, c.PermissionOperation,
+		c.PermissionTemplate, c.RelationType, c.TimeDimension, c.UserActivityFact,
+		c.ValueDatetime, c.ValueFloat, c.ValueIndexText, c.ValueInteger, c.ValueJSON,
+		c.ValueText,
 	} {
 		n.Use(hooks...)
 	}
@@ -403,15 +466,18 @@ func (c *Client) Use(hooks ...Hook) {
 // In order to add interceptors to a specific client, call: `client.Node.Intercept(...)`.
 func (c *Client) Intercept(interceptors ...Interceptor) {
 	for _, n := range []interface{ Intercept(...Interceptor) }{
-		c.Attribute, c.ChoiceFloat, c.ChoiceInteger, c.ChoiceText, c.CiApprovalFlow,
-		c.CiLifecycleState, c.CiOperation, c.CiPermission, c.CiRecords, c.CiRelation,
-		c.CiType, c.CiTypeAttribute, c.CiTypeAttributeGroup,
-		c.CiTypeAttributeGroupItem, c.CiTypeGroup, c.CiTypeGroupItem,
-		c.CiTypeInheritance, c.CiTypeRelation, c.Cis, c.ImportError, c.ImportRecord,
-		c.ImportTask, c.ImportTemplate, c.PermissionCache, c.PermissionDataFilter,
-		c.PermissionFieldMask, c.PermissionOperation, c.PermissionTemplate,
-		c.RelationType, c.ValueDatetime, c.ValueFloat, c.ValueIndexText,
-		c.ValueInteger, c.ValueJSON, c.ValueText,
+		c.AggregationCache, c.Attribute, c.AttributeMappingRule, c.ChoiceFloat,
+		c.ChoiceInteger, c.ChoiceText, c.CiApprovalFlow, c.CiAttributeDistribution,
+		c.CiDimension, c.CiLifecycleState, c.CiOperation, c.CiPermission, c.CiRecords,
+		c.CiRelation, c.CiStatisticsFact, c.CiType, c.CiTypeAttribute,
+		c.CiTypeAttributeGroup, c.CiTypeAttributeGroupItem, c.CiTypeDiscoveryConfig,
+		c.CiTypeGroup, c.CiTypeGroupItem, c.CiTypeInheritance, c.CiTypeRelation, c.Cis,
+		c.DiscoveryExecutionHistory, c.DynamicAggregationConfig, c.ImportError,
+		c.ImportRecord, c.ImportTask, c.ImportTemplate, c.PermissionCache,
+		c.PermissionDataFilter, c.PermissionFieldMask, c.PermissionOperation,
+		c.PermissionTemplate, c.RelationType, c.TimeDimension, c.UserActivityFact,
+		c.ValueDatetime, c.ValueFloat, c.ValueIndexText, c.ValueInteger, c.ValueJSON,
+		c.ValueText,
 	} {
 		n.Intercept(interceptors...)
 	}
@@ -420,8 +486,12 @@ func (c *Client) Intercept(interceptors ...Interceptor) {
 // Mutate implements the ent.Mutator interface.
 func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 	switch m := m.(type) {
+	case *AggregationCacheMutation:
+		return c.AggregationCache.mutate(ctx, m)
 	case *AttributeMutation:
 		return c.Attribute.mutate(ctx, m)
+	case *AttributeMappingRuleMutation:
+		return c.AttributeMappingRule.mutate(ctx, m)
 	case *ChoiceFloatMutation:
 		return c.ChoiceFloat.mutate(ctx, m)
 	case *ChoiceIntegerMutation:
@@ -430,6 +500,10 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 		return c.ChoiceText.mutate(ctx, m)
 	case *CiApprovalFlowMutation:
 		return c.CiApprovalFlow.mutate(ctx, m)
+	case *CiAttributeDistributionMutation:
+		return c.CiAttributeDistribution.mutate(ctx, m)
+	case *CiDimensionMutation:
+		return c.CiDimension.mutate(ctx, m)
 	case *CiLifecycleStateMutation:
 		return c.CiLifecycleState.mutate(ctx, m)
 	case *CiOperationMutation:
@@ -440,6 +514,8 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 		return c.CiRecords.mutate(ctx, m)
 	case *CiRelationMutation:
 		return c.CiRelation.mutate(ctx, m)
+	case *CiStatisticsFactMutation:
+		return c.CiStatisticsFact.mutate(ctx, m)
 	case *CiTypeMutation:
 		return c.CiType.mutate(ctx, m)
 	case *CiTypeAttributeMutation:
@@ -448,6 +524,8 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 		return c.CiTypeAttributeGroup.mutate(ctx, m)
 	case *CiTypeAttributeGroupItemMutation:
 		return c.CiTypeAttributeGroupItem.mutate(ctx, m)
+	case *CiTypeDiscoveryConfigMutation:
+		return c.CiTypeDiscoveryConfig.mutate(ctx, m)
 	case *CiTypeGroupMutation:
 		return c.CiTypeGroup.mutate(ctx, m)
 	case *CiTypeGroupItemMutation:
@@ -458,6 +536,10 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 		return c.CiTypeRelation.mutate(ctx, m)
 	case *CisMutation:
 		return c.Cis.mutate(ctx, m)
+	case *DiscoveryExecutionHistoryMutation:
+		return c.DiscoveryExecutionHistory.mutate(ctx, m)
+	case *DynamicAggregationConfigMutation:
+		return c.DynamicAggregationConfig.mutate(ctx, m)
 	case *ImportErrorMutation:
 		return c.ImportError.mutate(ctx, m)
 	case *ImportRecordMutation:
@@ -478,6 +560,10 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 		return c.PermissionTemplate.mutate(ctx, m)
 	case *RelationTypeMutation:
 		return c.RelationType.mutate(ctx, m)
+	case *TimeDimensionMutation:
+		return c.TimeDimension.mutate(ctx, m)
+	case *UserActivityFactMutation:
+		return c.UserActivityFact.mutate(ctx, m)
 	case *ValueDatetimeMutation:
 		return c.ValueDatetime.mutate(ctx, m)
 	case *ValueFloatMutation:
@@ -492,6 +578,139 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 		return c.ValueText.mutate(ctx, m)
 	default:
 		return nil, fmt.Errorf("ent: unknown mutation type %T", m)
+	}
+}
+
+// AggregationCacheClient is a client for the AggregationCache schema.
+type AggregationCacheClient struct {
+	config
+}
+
+// NewAggregationCacheClient returns a client for the AggregationCache from the given config.
+func NewAggregationCacheClient(c config) *AggregationCacheClient {
+	return &AggregationCacheClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `aggregationcache.Hooks(f(g(h())))`.
+func (c *AggregationCacheClient) Use(hooks ...Hook) {
+	c.hooks.AggregationCache = append(c.hooks.AggregationCache, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `aggregationcache.Intercept(f(g(h())))`.
+func (c *AggregationCacheClient) Intercept(interceptors ...Interceptor) {
+	c.inters.AggregationCache = append(c.inters.AggregationCache, interceptors...)
+}
+
+// Create returns a builder for creating a AggregationCache entity.
+func (c *AggregationCacheClient) Create() *AggregationCacheCreate {
+	mutation := newAggregationCacheMutation(c.config, OpCreate)
+	return &AggregationCacheCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of AggregationCache entities.
+func (c *AggregationCacheClient) CreateBulk(builders ...*AggregationCacheCreate) *AggregationCacheCreateBulk {
+	return &AggregationCacheCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *AggregationCacheClient) MapCreateBulk(slice any, setFunc func(*AggregationCacheCreate, int)) *AggregationCacheCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &AggregationCacheCreateBulk{err: fmt.Errorf("calling to AggregationCacheClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*AggregationCacheCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &AggregationCacheCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for AggregationCache.
+func (c *AggregationCacheClient) Update() *AggregationCacheUpdate {
+	mutation := newAggregationCacheMutation(c.config, OpUpdate)
+	return &AggregationCacheUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *AggregationCacheClient) UpdateOne(_m *AggregationCache) *AggregationCacheUpdateOne {
+	mutation := newAggregationCacheMutation(c.config, OpUpdateOne, withAggregationCache(_m))
+	return &AggregationCacheUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *AggregationCacheClient) UpdateOneID(id uint64) *AggregationCacheUpdateOne {
+	mutation := newAggregationCacheMutation(c.config, OpUpdateOne, withAggregationCacheID(id))
+	return &AggregationCacheUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for AggregationCache.
+func (c *AggregationCacheClient) Delete() *AggregationCacheDelete {
+	mutation := newAggregationCacheMutation(c.config, OpDelete)
+	return &AggregationCacheDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *AggregationCacheClient) DeleteOne(_m *AggregationCache) *AggregationCacheDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *AggregationCacheClient) DeleteOneID(id uint64) *AggregationCacheDeleteOne {
+	builder := c.Delete().Where(aggregationcache.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &AggregationCacheDeleteOne{builder}
+}
+
+// Query returns a query builder for AggregationCache.
+func (c *AggregationCacheClient) Query() *AggregationCacheQuery {
+	return &AggregationCacheQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeAggregationCache},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a AggregationCache entity by its id.
+func (c *AggregationCacheClient) Get(ctx context.Context, id uint64) (*AggregationCache, error) {
+	return c.Query().Where(aggregationcache.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *AggregationCacheClient) GetX(ctx context.Context, id uint64) *AggregationCache {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// Hooks returns the client hooks.
+func (c *AggregationCacheClient) Hooks() []Hook {
+	return c.hooks.AggregationCache
+}
+
+// Interceptors returns the client interceptors.
+func (c *AggregationCacheClient) Interceptors() []Interceptor {
+	return c.inters.AggregationCache
+}
+
+func (c *AggregationCacheClient) mutate(ctx context.Context, m *AggregationCacheMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&AggregationCacheCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&AggregationCacheUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&AggregationCacheUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&AggregationCacheDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown AggregationCache mutation op: %q", m.Op())
 	}
 }
 
@@ -779,6 +998,22 @@ func (c *AttributeClient) QueryGroupItems(_m *Attribute) *CiTypeAttributeGroupIt
 	return query
 }
 
+// QueryMappingRules queries the mapping_rules edge of a Attribute.
+func (c *AttributeClient) QueryMappingRules(_m *Attribute) *AttributeMappingRuleQuery {
+	query := (&AttributeMappingRuleClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := _m.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(attribute.Table, attribute.FieldID, id),
+			sqlgraph.To(attributemappingrule.Table, attributemappingrule.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, attribute.MappingRulesTable, attribute.MappingRulesColumn),
+		)
+		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
 // Hooks returns the client hooks.
 func (c *AttributeClient) Hooks() []Hook {
 	hooks := c.hooks.Attribute
@@ -803,6 +1038,173 @@ func (c *AttributeClient) mutate(ctx context.Context, m *AttributeMutation) (Val
 		return (&AttributeDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
 		return nil, fmt.Errorf("ent: unknown Attribute mutation op: %q", m.Op())
+	}
+}
+
+// AttributeMappingRuleClient is a client for the AttributeMappingRule schema.
+type AttributeMappingRuleClient struct {
+	config
+}
+
+// NewAttributeMappingRuleClient returns a client for the AttributeMappingRule from the given config.
+func NewAttributeMappingRuleClient(c config) *AttributeMappingRuleClient {
+	return &AttributeMappingRuleClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `attributemappingrule.Hooks(f(g(h())))`.
+func (c *AttributeMappingRuleClient) Use(hooks ...Hook) {
+	c.hooks.AttributeMappingRule = append(c.hooks.AttributeMappingRule, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `attributemappingrule.Intercept(f(g(h())))`.
+func (c *AttributeMappingRuleClient) Intercept(interceptors ...Interceptor) {
+	c.inters.AttributeMappingRule = append(c.inters.AttributeMappingRule, interceptors...)
+}
+
+// Create returns a builder for creating a AttributeMappingRule entity.
+func (c *AttributeMappingRuleClient) Create() *AttributeMappingRuleCreate {
+	mutation := newAttributeMappingRuleMutation(c.config, OpCreate)
+	return &AttributeMappingRuleCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of AttributeMappingRule entities.
+func (c *AttributeMappingRuleClient) CreateBulk(builders ...*AttributeMappingRuleCreate) *AttributeMappingRuleCreateBulk {
+	return &AttributeMappingRuleCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *AttributeMappingRuleClient) MapCreateBulk(slice any, setFunc func(*AttributeMappingRuleCreate, int)) *AttributeMappingRuleCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &AttributeMappingRuleCreateBulk{err: fmt.Errorf("calling to AttributeMappingRuleClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*AttributeMappingRuleCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &AttributeMappingRuleCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for AttributeMappingRule.
+func (c *AttributeMappingRuleClient) Update() *AttributeMappingRuleUpdate {
+	mutation := newAttributeMappingRuleMutation(c.config, OpUpdate)
+	return &AttributeMappingRuleUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *AttributeMappingRuleClient) UpdateOne(_m *AttributeMappingRule) *AttributeMappingRuleUpdateOne {
+	mutation := newAttributeMappingRuleMutation(c.config, OpUpdateOne, withAttributeMappingRule(_m))
+	return &AttributeMappingRuleUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *AttributeMappingRuleClient) UpdateOneID(id uint64) *AttributeMappingRuleUpdateOne {
+	mutation := newAttributeMappingRuleMutation(c.config, OpUpdateOne, withAttributeMappingRuleID(id))
+	return &AttributeMappingRuleUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for AttributeMappingRule.
+func (c *AttributeMappingRuleClient) Delete() *AttributeMappingRuleDelete {
+	mutation := newAttributeMappingRuleMutation(c.config, OpDelete)
+	return &AttributeMappingRuleDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *AttributeMappingRuleClient) DeleteOne(_m *AttributeMappingRule) *AttributeMappingRuleDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *AttributeMappingRuleClient) DeleteOneID(id uint64) *AttributeMappingRuleDeleteOne {
+	builder := c.Delete().Where(attributemappingrule.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &AttributeMappingRuleDeleteOne{builder}
+}
+
+// Query returns a query builder for AttributeMappingRule.
+func (c *AttributeMappingRuleClient) Query() *AttributeMappingRuleQuery {
+	return &AttributeMappingRuleQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeAttributeMappingRule},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a AttributeMappingRule entity by its id.
+func (c *AttributeMappingRuleClient) Get(ctx context.Context, id uint64) (*AttributeMappingRule, error) {
+	return c.Query().Where(attributemappingrule.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *AttributeMappingRuleClient) GetX(ctx context.Context, id uint64) *AttributeMappingRule {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryDiscoveryConfig queries the discovery_config edge of a AttributeMappingRule.
+func (c *AttributeMappingRuleClient) QueryDiscoveryConfig(_m *AttributeMappingRule) *CiTypeDiscoveryConfigQuery {
+	query := (&CiTypeDiscoveryConfigClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := _m.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(attributemappingrule.Table, attributemappingrule.FieldID, id),
+			sqlgraph.To(citypediscoveryconfig.Table, citypediscoveryconfig.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, attributemappingrule.DiscoveryConfigTable, attributemappingrule.DiscoveryConfigColumn),
+		)
+		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// QueryCiAttribute queries the ci_attribute edge of a AttributeMappingRule.
+func (c *AttributeMappingRuleClient) QueryCiAttribute(_m *AttributeMappingRule) *AttributeQuery {
+	query := (&AttributeClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := _m.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(attributemappingrule.Table, attributemappingrule.FieldID, id),
+			sqlgraph.To(attribute.Table, attribute.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, attributemappingrule.CiAttributeTable, attributemappingrule.CiAttributeColumn),
+		)
+		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *AttributeMappingRuleClient) Hooks() []Hook {
+	hooks := c.hooks.AttributeMappingRule
+	return append(hooks[:len(hooks):len(hooks)], attributemappingrule.Hooks[:]...)
+}
+
+// Interceptors returns the client interceptors.
+func (c *AttributeMappingRuleClient) Interceptors() []Interceptor {
+	inters := c.inters.AttributeMappingRule
+	return append(inters[:len(inters):len(inters)], attributemappingrule.Interceptors[:]...)
+}
+
+func (c *AttributeMappingRuleClient) mutate(ctx context.Context, m *AttributeMappingRuleMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&AttributeMappingRuleCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&AttributeMappingRuleUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&AttributeMappingRuleUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&AttributeMappingRuleDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown AttributeMappingRule mutation op: %q", m.Op())
 	}
 }
 
@@ -1389,6 +1791,272 @@ func (c *CiApprovalFlowClient) mutate(ctx context.Context, m *CiApprovalFlowMuta
 		return (&CiApprovalFlowDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
 		return nil, fmt.Errorf("ent: unknown CiApprovalFlow mutation op: %q", m.Op())
+	}
+}
+
+// CiAttributeDistributionClient is a client for the CiAttributeDistribution schema.
+type CiAttributeDistributionClient struct {
+	config
+}
+
+// NewCiAttributeDistributionClient returns a client for the CiAttributeDistribution from the given config.
+func NewCiAttributeDistributionClient(c config) *CiAttributeDistributionClient {
+	return &CiAttributeDistributionClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `ciattributedistribution.Hooks(f(g(h())))`.
+func (c *CiAttributeDistributionClient) Use(hooks ...Hook) {
+	c.hooks.CiAttributeDistribution = append(c.hooks.CiAttributeDistribution, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `ciattributedistribution.Intercept(f(g(h())))`.
+func (c *CiAttributeDistributionClient) Intercept(interceptors ...Interceptor) {
+	c.inters.CiAttributeDistribution = append(c.inters.CiAttributeDistribution, interceptors...)
+}
+
+// Create returns a builder for creating a CiAttributeDistribution entity.
+func (c *CiAttributeDistributionClient) Create() *CiAttributeDistributionCreate {
+	mutation := newCiAttributeDistributionMutation(c.config, OpCreate)
+	return &CiAttributeDistributionCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of CiAttributeDistribution entities.
+func (c *CiAttributeDistributionClient) CreateBulk(builders ...*CiAttributeDistributionCreate) *CiAttributeDistributionCreateBulk {
+	return &CiAttributeDistributionCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *CiAttributeDistributionClient) MapCreateBulk(slice any, setFunc func(*CiAttributeDistributionCreate, int)) *CiAttributeDistributionCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &CiAttributeDistributionCreateBulk{err: fmt.Errorf("calling to CiAttributeDistributionClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*CiAttributeDistributionCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &CiAttributeDistributionCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for CiAttributeDistribution.
+func (c *CiAttributeDistributionClient) Update() *CiAttributeDistributionUpdate {
+	mutation := newCiAttributeDistributionMutation(c.config, OpUpdate)
+	return &CiAttributeDistributionUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *CiAttributeDistributionClient) UpdateOne(_m *CiAttributeDistribution) *CiAttributeDistributionUpdateOne {
+	mutation := newCiAttributeDistributionMutation(c.config, OpUpdateOne, withCiAttributeDistribution(_m))
+	return &CiAttributeDistributionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *CiAttributeDistributionClient) UpdateOneID(id uint64) *CiAttributeDistributionUpdateOne {
+	mutation := newCiAttributeDistributionMutation(c.config, OpUpdateOne, withCiAttributeDistributionID(id))
+	return &CiAttributeDistributionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for CiAttributeDistribution.
+func (c *CiAttributeDistributionClient) Delete() *CiAttributeDistributionDelete {
+	mutation := newCiAttributeDistributionMutation(c.config, OpDelete)
+	return &CiAttributeDistributionDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *CiAttributeDistributionClient) DeleteOne(_m *CiAttributeDistribution) *CiAttributeDistributionDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *CiAttributeDistributionClient) DeleteOneID(id uint64) *CiAttributeDistributionDeleteOne {
+	builder := c.Delete().Where(ciattributedistribution.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &CiAttributeDistributionDeleteOne{builder}
+}
+
+// Query returns a query builder for CiAttributeDistribution.
+func (c *CiAttributeDistributionClient) Query() *CiAttributeDistributionQuery {
+	return &CiAttributeDistributionQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeCiAttributeDistribution},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a CiAttributeDistribution entity by its id.
+func (c *CiAttributeDistributionClient) Get(ctx context.Context, id uint64) (*CiAttributeDistribution, error) {
+	return c.Query().Where(ciattributedistribution.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *CiAttributeDistributionClient) GetX(ctx context.Context, id uint64) *CiAttributeDistribution {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// Hooks returns the client hooks.
+func (c *CiAttributeDistributionClient) Hooks() []Hook {
+	return c.hooks.CiAttributeDistribution
+}
+
+// Interceptors returns the client interceptors.
+func (c *CiAttributeDistributionClient) Interceptors() []Interceptor {
+	return c.inters.CiAttributeDistribution
+}
+
+func (c *CiAttributeDistributionClient) mutate(ctx context.Context, m *CiAttributeDistributionMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&CiAttributeDistributionCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&CiAttributeDistributionUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&CiAttributeDistributionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&CiAttributeDistributionDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown CiAttributeDistribution mutation op: %q", m.Op())
+	}
+}
+
+// CiDimensionClient is a client for the CiDimension schema.
+type CiDimensionClient struct {
+	config
+}
+
+// NewCiDimensionClient returns a client for the CiDimension from the given config.
+func NewCiDimensionClient(c config) *CiDimensionClient {
+	return &CiDimensionClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `cidimension.Hooks(f(g(h())))`.
+func (c *CiDimensionClient) Use(hooks ...Hook) {
+	c.hooks.CiDimension = append(c.hooks.CiDimension, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `cidimension.Intercept(f(g(h())))`.
+func (c *CiDimensionClient) Intercept(interceptors ...Interceptor) {
+	c.inters.CiDimension = append(c.inters.CiDimension, interceptors...)
+}
+
+// Create returns a builder for creating a CiDimension entity.
+func (c *CiDimensionClient) Create() *CiDimensionCreate {
+	mutation := newCiDimensionMutation(c.config, OpCreate)
+	return &CiDimensionCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of CiDimension entities.
+func (c *CiDimensionClient) CreateBulk(builders ...*CiDimensionCreate) *CiDimensionCreateBulk {
+	return &CiDimensionCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *CiDimensionClient) MapCreateBulk(slice any, setFunc func(*CiDimensionCreate, int)) *CiDimensionCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &CiDimensionCreateBulk{err: fmt.Errorf("calling to CiDimensionClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*CiDimensionCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &CiDimensionCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for CiDimension.
+func (c *CiDimensionClient) Update() *CiDimensionUpdate {
+	mutation := newCiDimensionMutation(c.config, OpUpdate)
+	return &CiDimensionUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *CiDimensionClient) UpdateOne(_m *CiDimension) *CiDimensionUpdateOne {
+	mutation := newCiDimensionMutation(c.config, OpUpdateOne, withCiDimension(_m))
+	return &CiDimensionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *CiDimensionClient) UpdateOneID(id uint64) *CiDimensionUpdateOne {
+	mutation := newCiDimensionMutation(c.config, OpUpdateOne, withCiDimensionID(id))
+	return &CiDimensionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for CiDimension.
+func (c *CiDimensionClient) Delete() *CiDimensionDelete {
+	mutation := newCiDimensionMutation(c.config, OpDelete)
+	return &CiDimensionDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *CiDimensionClient) DeleteOne(_m *CiDimension) *CiDimensionDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *CiDimensionClient) DeleteOneID(id uint64) *CiDimensionDeleteOne {
+	builder := c.Delete().Where(cidimension.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &CiDimensionDeleteOne{builder}
+}
+
+// Query returns a query builder for CiDimension.
+func (c *CiDimensionClient) Query() *CiDimensionQuery {
+	return &CiDimensionQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeCiDimension},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a CiDimension entity by its id.
+func (c *CiDimensionClient) Get(ctx context.Context, id uint64) (*CiDimension, error) {
+	return c.Query().Where(cidimension.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *CiDimensionClient) GetX(ctx context.Context, id uint64) *CiDimension {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// Hooks returns the client hooks.
+func (c *CiDimensionClient) Hooks() []Hook {
+	return c.hooks.CiDimension
+}
+
+// Interceptors returns the client interceptors.
+func (c *CiDimensionClient) Interceptors() []Interceptor {
+	return c.inters.CiDimension
+}
+
+func (c *CiDimensionClient) mutate(ctx context.Context, m *CiDimensionMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&CiDimensionCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&CiDimensionUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&CiDimensionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&CiDimensionDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown CiDimension mutation op: %q", m.Op())
 	}
 }
 
@@ -2112,15 +2780,15 @@ func (c *CiRelationClient) GetX(ctx context.Context, id uint64) *CiRelation {
 	return obj
 }
 
-// QueryFirstCi queries the first_ci edge of a CiRelation.
-func (c *CiRelationClient) QueryFirstCi(_m *CiRelation) *CisQuery {
+// QuerySourceCi queries the source_ci edge of a CiRelation.
+func (c *CiRelationClient) QuerySourceCi(_m *CiRelation) *CisQuery {
 	query := (&CisClient{config: c.config}).Query()
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := _m.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(cirelation.Table, cirelation.FieldID, id),
 			sqlgraph.To(cis.Table, cis.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, true, cirelation.FirstCiTable, cirelation.FirstCiColumn),
+			sqlgraph.Edge(sqlgraph.M2O, true, cirelation.SourceCiTable, cirelation.SourceCiColumn),
 		)
 		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
 		return fromV, nil
@@ -2128,15 +2796,15 @@ func (c *CiRelationClient) QueryFirstCi(_m *CiRelation) *CisQuery {
 	return query
 }
 
-// QuerySecondCi queries the second_ci edge of a CiRelation.
-func (c *CiRelationClient) QuerySecondCi(_m *CiRelation) *CisQuery {
+// QueryTargetCi queries the target_ci edge of a CiRelation.
+func (c *CiRelationClient) QueryTargetCi(_m *CiRelation) *CisQuery {
 	query := (&CisClient{config: c.config}).Query()
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := _m.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(cirelation.Table, cirelation.FieldID, id),
 			sqlgraph.To(cis.Table, cis.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, true, cirelation.SecondCiTable, cirelation.SecondCiColumn),
+			sqlgraph.Edge(sqlgraph.M2O, true, cirelation.TargetCiTable, cirelation.TargetCiColumn),
 		)
 		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
 		return fromV, nil
@@ -2200,6 +2868,139 @@ func (c *CiRelationClient) mutate(ctx context.Context, m *CiRelationMutation) (V
 		return (&CiRelationDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
 		return nil, fmt.Errorf("ent: unknown CiRelation mutation op: %q", m.Op())
+	}
+}
+
+// CiStatisticsFactClient is a client for the CiStatisticsFact schema.
+type CiStatisticsFactClient struct {
+	config
+}
+
+// NewCiStatisticsFactClient returns a client for the CiStatisticsFact from the given config.
+func NewCiStatisticsFactClient(c config) *CiStatisticsFactClient {
+	return &CiStatisticsFactClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `cistatisticsfact.Hooks(f(g(h())))`.
+func (c *CiStatisticsFactClient) Use(hooks ...Hook) {
+	c.hooks.CiStatisticsFact = append(c.hooks.CiStatisticsFact, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `cistatisticsfact.Intercept(f(g(h())))`.
+func (c *CiStatisticsFactClient) Intercept(interceptors ...Interceptor) {
+	c.inters.CiStatisticsFact = append(c.inters.CiStatisticsFact, interceptors...)
+}
+
+// Create returns a builder for creating a CiStatisticsFact entity.
+func (c *CiStatisticsFactClient) Create() *CiStatisticsFactCreate {
+	mutation := newCiStatisticsFactMutation(c.config, OpCreate)
+	return &CiStatisticsFactCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of CiStatisticsFact entities.
+func (c *CiStatisticsFactClient) CreateBulk(builders ...*CiStatisticsFactCreate) *CiStatisticsFactCreateBulk {
+	return &CiStatisticsFactCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *CiStatisticsFactClient) MapCreateBulk(slice any, setFunc func(*CiStatisticsFactCreate, int)) *CiStatisticsFactCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &CiStatisticsFactCreateBulk{err: fmt.Errorf("calling to CiStatisticsFactClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*CiStatisticsFactCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &CiStatisticsFactCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for CiStatisticsFact.
+func (c *CiStatisticsFactClient) Update() *CiStatisticsFactUpdate {
+	mutation := newCiStatisticsFactMutation(c.config, OpUpdate)
+	return &CiStatisticsFactUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *CiStatisticsFactClient) UpdateOne(_m *CiStatisticsFact) *CiStatisticsFactUpdateOne {
+	mutation := newCiStatisticsFactMutation(c.config, OpUpdateOne, withCiStatisticsFact(_m))
+	return &CiStatisticsFactUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *CiStatisticsFactClient) UpdateOneID(id uint64) *CiStatisticsFactUpdateOne {
+	mutation := newCiStatisticsFactMutation(c.config, OpUpdateOne, withCiStatisticsFactID(id))
+	return &CiStatisticsFactUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for CiStatisticsFact.
+func (c *CiStatisticsFactClient) Delete() *CiStatisticsFactDelete {
+	mutation := newCiStatisticsFactMutation(c.config, OpDelete)
+	return &CiStatisticsFactDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *CiStatisticsFactClient) DeleteOne(_m *CiStatisticsFact) *CiStatisticsFactDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *CiStatisticsFactClient) DeleteOneID(id uint64) *CiStatisticsFactDeleteOne {
+	builder := c.Delete().Where(cistatisticsfact.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &CiStatisticsFactDeleteOne{builder}
+}
+
+// Query returns a query builder for CiStatisticsFact.
+func (c *CiStatisticsFactClient) Query() *CiStatisticsFactQuery {
+	return &CiStatisticsFactQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeCiStatisticsFact},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a CiStatisticsFact entity by its id.
+func (c *CiStatisticsFactClient) Get(ctx context.Context, id uint64) (*CiStatisticsFact, error) {
+	return c.Query().Where(cistatisticsfact.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *CiStatisticsFactClient) GetX(ctx context.Context, id uint64) *CiStatisticsFact {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// Hooks returns the client hooks.
+func (c *CiStatisticsFactClient) Hooks() []Hook {
+	return c.hooks.CiStatisticsFact
+}
+
+// Interceptors returns the client interceptors.
+func (c *CiStatisticsFactClient) Interceptors() []Interceptor {
+	return c.inters.CiStatisticsFact
+}
+
+func (c *CiStatisticsFactClient) mutate(ctx context.Context, m *CiStatisticsFactMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&CiStatisticsFactCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&CiStatisticsFactUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&CiStatisticsFactUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&CiStatisticsFactDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown CiStatisticsFact mutation op: %q", m.Op())
 	}
 }
 
@@ -2496,6 +3297,22 @@ func (c *CiTypeClient) QueryCiRecords(_m *CiType) *CiRecordsQuery {
 			sqlgraph.From(citype.Table, citype.FieldID, id),
 			sqlgraph.To(cirecords.Table, cirecords.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, citype.CiRecordsTable, citype.CiRecordsColumn),
+		)
+		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// QueryDiscoveryConfigs queries the discovery_configs edge of a CiType.
+func (c *CiTypeClient) QueryDiscoveryConfigs(_m *CiType) *CiTypeDiscoveryConfigQuery {
+	query := (&CiTypeDiscoveryConfigClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := _m.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(citype.Table, citype.FieldID, id),
+			sqlgraph.To(citypediscoveryconfig.Table, citypediscoveryconfig.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, citype.DiscoveryConfigsTable, citype.DiscoveryConfigsColumn),
 		)
 		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
 		return fromV, nil
@@ -3028,6 +3845,189 @@ func (c *CiTypeAttributeGroupItemClient) mutate(ctx context.Context, m *CiTypeAt
 		return (&CiTypeAttributeGroupItemDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
 		return nil, fmt.Errorf("ent: unknown CiTypeAttributeGroupItem mutation op: %q", m.Op())
+	}
+}
+
+// CiTypeDiscoveryConfigClient is a client for the CiTypeDiscoveryConfig schema.
+type CiTypeDiscoveryConfigClient struct {
+	config
+}
+
+// NewCiTypeDiscoveryConfigClient returns a client for the CiTypeDiscoveryConfig from the given config.
+func NewCiTypeDiscoveryConfigClient(c config) *CiTypeDiscoveryConfigClient {
+	return &CiTypeDiscoveryConfigClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `citypediscoveryconfig.Hooks(f(g(h())))`.
+func (c *CiTypeDiscoveryConfigClient) Use(hooks ...Hook) {
+	c.hooks.CiTypeDiscoveryConfig = append(c.hooks.CiTypeDiscoveryConfig, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `citypediscoveryconfig.Intercept(f(g(h())))`.
+func (c *CiTypeDiscoveryConfigClient) Intercept(interceptors ...Interceptor) {
+	c.inters.CiTypeDiscoveryConfig = append(c.inters.CiTypeDiscoveryConfig, interceptors...)
+}
+
+// Create returns a builder for creating a CiTypeDiscoveryConfig entity.
+func (c *CiTypeDiscoveryConfigClient) Create() *CiTypeDiscoveryConfigCreate {
+	mutation := newCiTypeDiscoveryConfigMutation(c.config, OpCreate)
+	return &CiTypeDiscoveryConfigCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of CiTypeDiscoveryConfig entities.
+func (c *CiTypeDiscoveryConfigClient) CreateBulk(builders ...*CiTypeDiscoveryConfigCreate) *CiTypeDiscoveryConfigCreateBulk {
+	return &CiTypeDiscoveryConfigCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *CiTypeDiscoveryConfigClient) MapCreateBulk(slice any, setFunc func(*CiTypeDiscoveryConfigCreate, int)) *CiTypeDiscoveryConfigCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &CiTypeDiscoveryConfigCreateBulk{err: fmt.Errorf("calling to CiTypeDiscoveryConfigClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*CiTypeDiscoveryConfigCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &CiTypeDiscoveryConfigCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for CiTypeDiscoveryConfig.
+func (c *CiTypeDiscoveryConfigClient) Update() *CiTypeDiscoveryConfigUpdate {
+	mutation := newCiTypeDiscoveryConfigMutation(c.config, OpUpdate)
+	return &CiTypeDiscoveryConfigUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *CiTypeDiscoveryConfigClient) UpdateOne(_m *CiTypeDiscoveryConfig) *CiTypeDiscoveryConfigUpdateOne {
+	mutation := newCiTypeDiscoveryConfigMutation(c.config, OpUpdateOne, withCiTypeDiscoveryConfig(_m))
+	return &CiTypeDiscoveryConfigUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *CiTypeDiscoveryConfigClient) UpdateOneID(id uint64) *CiTypeDiscoveryConfigUpdateOne {
+	mutation := newCiTypeDiscoveryConfigMutation(c.config, OpUpdateOne, withCiTypeDiscoveryConfigID(id))
+	return &CiTypeDiscoveryConfigUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for CiTypeDiscoveryConfig.
+func (c *CiTypeDiscoveryConfigClient) Delete() *CiTypeDiscoveryConfigDelete {
+	mutation := newCiTypeDiscoveryConfigMutation(c.config, OpDelete)
+	return &CiTypeDiscoveryConfigDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *CiTypeDiscoveryConfigClient) DeleteOne(_m *CiTypeDiscoveryConfig) *CiTypeDiscoveryConfigDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *CiTypeDiscoveryConfigClient) DeleteOneID(id uint64) *CiTypeDiscoveryConfigDeleteOne {
+	builder := c.Delete().Where(citypediscoveryconfig.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &CiTypeDiscoveryConfigDeleteOne{builder}
+}
+
+// Query returns a query builder for CiTypeDiscoveryConfig.
+func (c *CiTypeDiscoveryConfigClient) Query() *CiTypeDiscoveryConfigQuery {
+	return &CiTypeDiscoveryConfigQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeCiTypeDiscoveryConfig},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a CiTypeDiscoveryConfig entity by its id.
+func (c *CiTypeDiscoveryConfigClient) Get(ctx context.Context, id uint64) (*CiTypeDiscoveryConfig, error) {
+	return c.Query().Where(citypediscoveryconfig.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *CiTypeDiscoveryConfigClient) GetX(ctx context.Context, id uint64) *CiTypeDiscoveryConfig {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryCiType queries the ci_type edge of a CiTypeDiscoveryConfig.
+func (c *CiTypeDiscoveryConfigClient) QueryCiType(_m *CiTypeDiscoveryConfig) *CiTypeQuery {
+	query := (&CiTypeClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := _m.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(citypediscoveryconfig.Table, citypediscoveryconfig.FieldID, id),
+			sqlgraph.To(citype.Table, citype.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, citypediscoveryconfig.CiTypeTable, citypediscoveryconfig.CiTypeColumn),
+		)
+		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// QueryExecutionHistories queries the execution_histories edge of a CiTypeDiscoveryConfig.
+func (c *CiTypeDiscoveryConfigClient) QueryExecutionHistories(_m *CiTypeDiscoveryConfig) *DiscoveryExecutionHistoryQuery {
+	query := (&DiscoveryExecutionHistoryClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := _m.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(citypediscoveryconfig.Table, citypediscoveryconfig.FieldID, id),
+			sqlgraph.To(discoveryexecutionhistory.Table, discoveryexecutionhistory.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, citypediscoveryconfig.ExecutionHistoriesTable, citypediscoveryconfig.ExecutionHistoriesColumn),
+		)
+		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// QueryAttributeMappingRules queries the attribute_mapping_rules edge of a CiTypeDiscoveryConfig.
+func (c *CiTypeDiscoveryConfigClient) QueryAttributeMappingRules(_m *CiTypeDiscoveryConfig) *AttributeMappingRuleQuery {
+	query := (&AttributeMappingRuleClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := _m.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(citypediscoveryconfig.Table, citypediscoveryconfig.FieldID, id),
+			sqlgraph.To(attributemappingrule.Table, attributemappingrule.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, citypediscoveryconfig.AttributeMappingRulesTable, citypediscoveryconfig.AttributeMappingRulesColumn),
+		)
+		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *CiTypeDiscoveryConfigClient) Hooks() []Hook {
+	hooks := c.hooks.CiTypeDiscoveryConfig
+	return append(hooks[:len(hooks):len(hooks)], citypediscoveryconfig.Hooks[:]...)
+}
+
+// Interceptors returns the client interceptors.
+func (c *CiTypeDiscoveryConfigClient) Interceptors() []Interceptor {
+	inters := c.inters.CiTypeDiscoveryConfig
+	return append(inters[:len(inters):len(inters)], citypediscoveryconfig.Interceptors[:]...)
+}
+
+func (c *CiTypeDiscoveryConfigClient) mutate(ctx context.Context, m *CiTypeDiscoveryConfigMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&CiTypeDiscoveryConfigCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&CiTypeDiscoveryConfigUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&CiTypeDiscoveryConfigUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&CiTypeDiscoveryConfigDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown CiTypeDiscoveryConfig mutation op: %q", m.Op())
 	}
 }
 
@@ -3919,15 +4919,15 @@ func (c *CisClient) QueryValueDatetimes(_m *Cis) *ValueDatetimeQuery {
 	return query
 }
 
-// QueryFirstRelations queries the first_relations edge of a Cis.
-func (c *CisClient) QueryFirstRelations(_m *Cis) *CiRelationQuery {
+// QuerySourceRelations queries the source_relations edge of a Cis.
+func (c *CisClient) QuerySourceRelations(_m *Cis) *CiRelationQuery {
 	query := (&CiRelationClient{config: c.config}).Query()
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := _m.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(cis.Table, cis.FieldID, id),
 			sqlgraph.To(cirelation.Table, cirelation.FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, cis.FirstRelationsTable, cis.FirstRelationsColumn),
+			sqlgraph.Edge(sqlgraph.O2M, false, cis.SourceRelationsTable, cis.SourceRelationsColumn),
 		)
 		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
 		return fromV, nil
@@ -3935,15 +4935,15 @@ func (c *CisClient) QueryFirstRelations(_m *Cis) *CiRelationQuery {
 	return query
 }
 
-// QuerySecondRelations queries the second_relations edge of a Cis.
-func (c *CisClient) QuerySecondRelations(_m *Cis) *CiRelationQuery {
+// QueryTargetRelations queries the target_relations edge of a Cis.
+func (c *CisClient) QueryTargetRelations(_m *Cis) *CiRelationQuery {
 	query := (&CiRelationClient{config: c.config}).Query()
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := _m.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(cis.Table, cis.FieldID, id),
 			sqlgraph.To(cirelation.Table, cirelation.FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, cis.SecondRelationsTable, cis.SecondRelationsColumn),
+			sqlgraph.Edge(sqlgraph.O2M, false, cis.TargetRelationsTable, cis.TargetRelationsColumn),
 		)
 		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
 		return fromV, nil
@@ -4023,6 +5023,290 @@ func (c *CisClient) mutate(ctx context.Context, m *CisMutation) (Value, error) {
 		return (&CisDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
 		return nil, fmt.Errorf("ent: unknown Cis mutation op: %q", m.Op())
+	}
+}
+
+// DiscoveryExecutionHistoryClient is a client for the DiscoveryExecutionHistory schema.
+type DiscoveryExecutionHistoryClient struct {
+	config
+}
+
+// NewDiscoveryExecutionHistoryClient returns a client for the DiscoveryExecutionHistory from the given config.
+func NewDiscoveryExecutionHistoryClient(c config) *DiscoveryExecutionHistoryClient {
+	return &DiscoveryExecutionHistoryClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `discoveryexecutionhistory.Hooks(f(g(h())))`.
+func (c *DiscoveryExecutionHistoryClient) Use(hooks ...Hook) {
+	c.hooks.DiscoveryExecutionHistory = append(c.hooks.DiscoveryExecutionHistory, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `discoveryexecutionhistory.Intercept(f(g(h())))`.
+func (c *DiscoveryExecutionHistoryClient) Intercept(interceptors ...Interceptor) {
+	c.inters.DiscoveryExecutionHistory = append(c.inters.DiscoveryExecutionHistory, interceptors...)
+}
+
+// Create returns a builder for creating a DiscoveryExecutionHistory entity.
+func (c *DiscoveryExecutionHistoryClient) Create() *DiscoveryExecutionHistoryCreate {
+	mutation := newDiscoveryExecutionHistoryMutation(c.config, OpCreate)
+	return &DiscoveryExecutionHistoryCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of DiscoveryExecutionHistory entities.
+func (c *DiscoveryExecutionHistoryClient) CreateBulk(builders ...*DiscoveryExecutionHistoryCreate) *DiscoveryExecutionHistoryCreateBulk {
+	return &DiscoveryExecutionHistoryCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *DiscoveryExecutionHistoryClient) MapCreateBulk(slice any, setFunc func(*DiscoveryExecutionHistoryCreate, int)) *DiscoveryExecutionHistoryCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &DiscoveryExecutionHistoryCreateBulk{err: fmt.Errorf("calling to DiscoveryExecutionHistoryClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*DiscoveryExecutionHistoryCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &DiscoveryExecutionHistoryCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for DiscoveryExecutionHistory.
+func (c *DiscoveryExecutionHistoryClient) Update() *DiscoveryExecutionHistoryUpdate {
+	mutation := newDiscoveryExecutionHistoryMutation(c.config, OpUpdate)
+	return &DiscoveryExecutionHistoryUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *DiscoveryExecutionHistoryClient) UpdateOne(_m *DiscoveryExecutionHistory) *DiscoveryExecutionHistoryUpdateOne {
+	mutation := newDiscoveryExecutionHistoryMutation(c.config, OpUpdateOne, withDiscoveryExecutionHistory(_m))
+	return &DiscoveryExecutionHistoryUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *DiscoveryExecutionHistoryClient) UpdateOneID(id uint64) *DiscoveryExecutionHistoryUpdateOne {
+	mutation := newDiscoveryExecutionHistoryMutation(c.config, OpUpdateOne, withDiscoveryExecutionHistoryID(id))
+	return &DiscoveryExecutionHistoryUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for DiscoveryExecutionHistory.
+func (c *DiscoveryExecutionHistoryClient) Delete() *DiscoveryExecutionHistoryDelete {
+	mutation := newDiscoveryExecutionHistoryMutation(c.config, OpDelete)
+	return &DiscoveryExecutionHistoryDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *DiscoveryExecutionHistoryClient) DeleteOne(_m *DiscoveryExecutionHistory) *DiscoveryExecutionHistoryDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *DiscoveryExecutionHistoryClient) DeleteOneID(id uint64) *DiscoveryExecutionHistoryDeleteOne {
+	builder := c.Delete().Where(discoveryexecutionhistory.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &DiscoveryExecutionHistoryDeleteOne{builder}
+}
+
+// Query returns a query builder for DiscoveryExecutionHistory.
+func (c *DiscoveryExecutionHistoryClient) Query() *DiscoveryExecutionHistoryQuery {
+	return &DiscoveryExecutionHistoryQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeDiscoveryExecutionHistory},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a DiscoveryExecutionHistory entity by its id.
+func (c *DiscoveryExecutionHistoryClient) Get(ctx context.Context, id uint64) (*DiscoveryExecutionHistory, error) {
+	return c.Query().Where(discoveryexecutionhistory.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *DiscoveryExecutionHistoryClient) GetX(ctx context.Context, id uint64) *DiscoveryExecutionHistory {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryDiscoveryConfig queries the discovery_config edge of a DiscoveryExecutionHistory.
+func (c *DiscoveryExecutionHistoryClient) QueryDiscoveryConfig(_m *DiscoveryExecutionHistory) *CiTypeDiscoveryConfigQuery {
+	query := (&CiTypeDiscoveryConfigClient{config: c.config}).Query()
+	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
+		id := _m.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(discoveryexecutionhistory.Table, discoveryexecutionhistory.FieldID, id),
+			sqlgraph.To(citypediscoveryconfig.Table, citypediscoveryconfig.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, discoveryexecutionhistory.DiscoveryConfigTable, discoveryexecutionhistory.DiscoveryConfigColumn),
+		)
+		fromV = sqlgraph.Neighbors(_m.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *DiscoveryExecutionHistoryClient) Hooks() []Hook {
+	hooks := c.hooks.DiscoveryExecutionHistory
+	return append(hooks[:len(hooks):len(hooks)], discoveryexecutionhistory.Hooks[:]...)
+}
+
+// Interceptors returns the client interceptors.
+func (c *DiscoveryExecutionHistoryClient) Interceptors() []Interceptor {
+	inters := c.inters.DiscoveryExecutionHistory
+	return append(inters[:len(inters):len(inters)], discoveryexecutionhistory.Interceptors[:]...)
+}
+
+func (c *DiscoveryExecutionHistoryClient) mutate(ctx context.Context, m *DiscoveryExecutionHistoryMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&DiscoveryExecutionHistoryCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&DiscoveryExecutionHistoryUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&DiscoveryExecutionHistoryUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&DiscoveryExecutionHistoryDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown DiscoveryExecutionHistory mutation op: %q", m.Op())
+	}
+}
+
+// DynamicAggregationConfigClient is a client for the DynamicAggregationConfig schema.
+type DynamicAggregationConfigClient struct {
+	config
+}
+
+// NewDynamicAggregationConfigClient returns a client for the DynamicAggregationConfig from the given config.
+func NewDynamicAggregationConfigClient(c config) *DynamicAggregationConfigClient {
+	return &DynamicAggregationConfigClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `dynamicaggregationconfig.Hooks(f(g(h())))`.
+func (c *DynamicAggregationConfigClient) Use(hooks ...Hook) {
+	c.hooks.DynamicAggregationConfig = append(c.hooks.DynamicAggregationConfig, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `dynamicaggregationconfig.Intercept(f(g(h())))`.
+func (c *DynamicAggregationConfigClient) Intercept(interceptors ...Interceptor) {
+	c.inters.DynamicAggregationConfig = append(c.inters.DynamicAggregationConfig, interceptors...)
+}
+
+// Create returns a builder for creating a DynamicAggregationConfig entity.
+func (c *DynamicAggregationConfigClient) Create() *DynamicAggregationConfigCreate {
+	mutation := newDynamicAggregationConfigMutation(c.config, OpCreate)
+	return &DynamicAggregationConfigCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of DynamicAggregationConfig entities.
+func (c *DynamicAggregationConfigClient) CreateBulk(builders ...*DynamicAggregationConfigCreate) *DynamicAggregationConfigCreateBulk {
+	return &DynamicAggregationConfigCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *DynamicAggregationConfigClient) MapCreateBulk(slice any, setFunc func(*DynamicAggregationConfigCreate, int)) *DynamicAggregationConfigCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &DynamicAggregationConfigCreateBulk{err: fmt.Errorf("calling to DynamicAggregationConfigClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*DynamicAggregationConfigCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &DynamicAggregationConfigCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for DynamicAggregationConfig.
+func (c *DynamicAggregationConfigClient) Update() *DynamicAggregationConfigUpdate {
+	mutation := newDynamicAggregationConfigMutation(c.config, OpUpdate)
+	return &DynamicAggregationConfigUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *DynamicAggregationConfigClient) UpdateOne(_m *DynamicAggregationConfig) *DynamicAggregationConfigUpdateOne {
+	mutation := newDynamicAggregationConfigMutation(c.config, OpUpdateOne, withDynamicAggregationConfig(_m))
+	return &DynamicAggregationConfigUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *DynamicAggregationConfigClient) UpdateOneID(id uint64) *DynamicAggregationConfigUpdateOne {
+	mutation := newDynamicAggregationConfigMutation(c.config, OpUpdateOne, withDynamicAggregationConfigID(id))
+	return &DynamicAggregationConfigUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for DynamicAggregationConfig.
+func (c *DynamicAggregationConfigClient) Delete() *DynamicAggregationConfigDelete {
+	mutation := newDynamicAggregationConfigMutation(c.config, OpDelete)
+	return &DynamicAggregationConfigDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *DynamicAggregationConfigClient) DeleteOne(_m *DynamicAggregationConfig) *DynamicAggregationConfigDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *DynamicAggregationConfigClient) DeleteOneID(id uint64) *DynamicAggregationConfigDeleteOne {
+	builder := c.Delete().Where(dynamicaggregationconfig.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &DynamicAggregationConfigDeleteOne{builder}
+}
+
+// Query returns a query builder for DynamicAggregationConfig.
+func (c *DynamicAggregationConfigClient) Query() *DynamicAggregationConfigQuery {
+	return &DynamicAggregationConfigQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeDynamicAggregationConfig},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a DynamicAggregationConfig entity by its id.
+func (c *DynamicAggregationConfigClient) Get(ctx context.Context, id uint64) (*DynamicAggregationConfig, error) {
+	return c.Query().Where(dynamicaggregationconfig.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *DynamicAggregationConfigClient) GetX(ctx context.Context, id uint64) *DynamicAggregationConfig {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// Hooks returns the client hooks.
+func (c *DynamicAggregationConfigClient) Hooks() []Hook {
+	return c.hooks.DynamicAggregationConfig
+}
+
+// Interceptors returns the client interceptors.
+func (c *DynamicAggregationConfigClient) Interceptors() []Interceptor {
+	return c.inters.DynamicAggregationConfig
+}
+
+func (c *DynamicAggregationConfigClient) mutate(ctx context.Context, m *DynamicAggregationConfigMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&DynamicAggregationConfigCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&DynamicAggregationConfigUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&DynamicAggregationConfigUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&DynamicAggregationConfigDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown DynamicAggregationConfig mutation op: %q", m.Op())
 	}
 }
 
@@ -5622,6 +6906,272 @@ func (c *RelationTypeClient) mutate(ctx context.Context, m *RelationTypeMutation
 	}
 }
 
+// TimeDimensionClient is a client for the TimeDimension schema.
+type TimeDimensionClient struct {
+	config
+}
+
+// NewTimeDimensionClient returns a client for the TimeDimension from the given config.
+func NewTimeDimensionClient(c config) *TimeDimensionClient {
+	return &TimeDimensionClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `timedimension.Hooks(f(g(h())))`.
+func (c *TimeDimensionClient) Use(hooks ...Hook) {
+	c.hooks.TimeDimension = append(c.hooks.TimeDimension, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `timedimension.Intercept(f(g(h())))`.
+func (c *TimeDimensionClient) Intercept(interceptors ...Interceptor) {
+	c.inters.TimeDimension = append(c.inters.TimeDimension, interceptors...)
+}
+
+// Create returns a builder for creating a TimeDimension entity.
+func (c *TimeDimensionClient) Create() *TimeDimensionCreate {
+	mutation := newTimeDimensionMutation(c.config, OpCreate)
+	return &TimeDimensionCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of TimeDimension entities.
+func (c *TimeDimensionClient) CreateBulk(builders ...*TimeDimensionCreate) *TimeDimensionCreateBulk {
+	return &TimeDimensionCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *TimeDimensionClient) MapCreateBulk(slice any, setFunc func(*TimeDimensionCreate, int)) *TimeDimensionCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &TimeDimensionCreateBulk{err: fmt.Errorf("calling to TimeDimensionClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*TimeDimensionCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &TimeDimensionCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for TimeDimension.
+func (c *TimeDimensionClient) Update() *TimeDimensionUpdate {
+	mutation := newTimeDimensionMutation(c.config, OpUpdate)
+	return &TimeDimensionUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *TimeDimensionClient) UpdateOne(_m *TimeDimension) *TimeDimensionUpdateOne {
+	mutation := newTimeDimensionMutation(c.config, OpUpdateOne, withTimeDimension(_m))
+	return &TimeDimensionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *TimeDimensionClient) UpdateOneID(id uint64) *TimeDimensionUpdateOne {
+	mutation := newTimeDimensionMutation(c.config, OpUpdateOne, withTimeDimensionID(id))
+	return &TimeDimensionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for TimeDimension.
+func (c *TimeDimensionClient) Delete() *TimeDimensionDelete {
+	mutation := newTimeDimensionMutation(c.config, OpDelete)
+	return &TimeDimensionDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *TimeDimensionClient) DeleteOne(_m *TimeDimension) *TimeDimensionDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *TimeDimensionClient) DeleteOneID(id uint64) *TimeDimensionDeleteOne {
+	builder := c.Delete().Where(timedimension.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &TimeDimensionDeleteOne{builder}
+}
+
+// Query returns a query builder for TimeDimension.
+func (c *TimeDimensionClient) Query() *TimeDimensionQuery {
+	return &TimeDimensionQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeTimeDimension},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a TimeDimension entity by its id.
+func (c *TimeDimensionClient) Get(ctx context.Context, id uint64) (*TimeDimension, error) {
+	return c.Query().Where(timedimension.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *TimeDimensionClient) GetX(ctx context.Context, id uint64) *TimeDimension {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// Hooks returns the client hooks.
+func (c *TimeDimensionClient) Hooks() []Hook {
+	return c.hooks.TimeDimension
+}
+
+// Interceptors returns the client interceptors.
+func (c *TimeDimensionClient) Interceptors() []Interceptor {
+	return c.inters.TimeDimension
+}
+
+func (c *TimeDimensionClient) mutate(ctx context.Context, m *TimeDimensionMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&TimeDimensionCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&TimeDimensionUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&TimeDimensionUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&TimeDimensionDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown TimeDimension mutation op: %q", m.Op())
+	}
+}
+
+// UserActivityFactClient is a client for the UserActivityFact schema.
+type UserActivityFactClient struct {
+	config
+}
+
+// NewUserActivityFactClient returns a client for the UserActivityFact from the given config.
+func NewUserActivityFactClient(c config) *UserActivityFactClient {
+	return &UserActivityFactClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `useractivityfact.Hooks(f(g(h())))`.
+func (c *UserActivityFactClient) Use(hooks ...Hook) {
+	c.hooks.UserActivityFact = append(c.hooks.UserActivityFact, hooks...)
+}
+
+// Intercept adds a list of query interceptors to the interceptors stack.
+// A call to `Intercept(f, g, h)` equals to `useractivityfact.Intercept(f(g(h())))`.
+func (c *UserActivityFactClient) Intercept(interceptors ...Interceptor) {
+	c.inters.UserActivityFact = append(c.inters.UserActivityFact, interceptors...)
+}
+
+// Create returns a builder for creating a UserActivityFact entity.
+func (c *UserActivityFactClient) Create() *UserActivityFactCreate {
+	mutation := newUserActivityFactMutation(c.config, OpCreate)
+	return &UserActivityFactCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of UserActivityFact entities.
+func (c *UserActivityFactClient) CreateBulk(builders ...*UserActivityFactCreate) *UserActivityFactCreateBulk {
+	return &UserActivityFactCreateBulk{config: c.config, builders: builders}
+}
+
+// MapCreateBulk creates a bulk creation builder from the given slice. For each item in the slice, the function creates
+// a builder and applies setFunc on it.
+func (c *UserActivityFactClient) MapCreateBulk(slice any, setFunc func(*UserActivityFactCreate, int)) *UserActivityFactCreateBulk {
+	rv := reflect.ValueOf(slice)
+	if rv.Kind() != reflect.Slice {
+		return &UserActivityFactCreateBulk{err: fmt.Errorf("calling to UserActivityFactClient.MapCreateBulk with wrong type %T, need slice", slice)}
+	}
+	builders := make([]*UserActivityFactCreate, rv.Len())
+	for i := 0; i < rv.Len(); i++ {
+		builders[i] = c.Create()
+		setFunc(builders[i], i)
+	}
+	return &UserActivityFactCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for UserActivityFact.
+func (c *UserActivityFactClient) Update() *UserActivityFactUpdate {
+	mutation := newUserActivityFactMutation(c.config, OpUpdate)
+	return &UserActivityFactUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *UserActivityFactClient) UpdateOne(_m *UserActivityFact) *UserActivityFactUpdateOne {
+	mutation := newUserActivityFactMutation(c.config, OpUpdateOne, withUserActivityFact(_m))
+	return &UserActivityFactUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *UserActivityFactClient) UpdateOneID(id uint64) *UserActivityFactUpdateOne {
+	mutation := newUserActivityFactMutation(c.config, OpUpdateOne, withUserActivityFactID(id))
+	return &UserActivityFactUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for UserActivityFact.
+func (c *UserActivityFactClient) Delete() *UserActivityFactDelete {
+	mutation := newUserActivityFactMutation(c.config, OpDelete)
+	return &UserActivityFactDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a builder for deleting the given entity.
+func (c *UserActivityFactClient) DeleteOne(_m *UserActivityFact) *UserActivityFactDeleteOne {
+	return c.DeleteOneID(_m.ID)
+}
+
+// DeleteOneID returns a builder for deleting the given entity by its id.
+func (c *UserActivityFactClient) DeleteOneID(id uint64) *UserActivityFactDeleteOne {
+	builder := c.Delete().Where(useractivityfact.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &UserActivityFactDeleteOne{builder}
+}
+
+// Query returns a query builder for UserActivityFact.
+func (c *UserActivityFactClient) Query() *UserActivityFactQuery {
+	return &UserActivityFactQuery{
+		config: c.config,
+		ctx:    &QueryContext{Type: TypeUserActivityFact},
+		inters: c.Interceptors(),
+	}
+}
+
+// Get returns a UserActivityFact entity by its id.
+func (c *UserActivityFactClient) Get(ctx context.Context, id uint64) (*UserActivityFact, error) {
+	return c.Query().Where(useractivityfact.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *UserActivityFactClient) GetX(ctx context.Context, id uint64) *UserActivityFact {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// Hooks returns the client hooks.
+func (c *UserActivityFactClient) Hooks() []Hook {
+	return c.hooks.UserActivityFact
+}
+
+// Interceptors returns the client interceptors.
+func (c *UserActivityFactClient) Interceptors() []Interceptor {
+	return c.inters.UserActivityFact
+}
+
+func (c *UserActivityFactClient) mutate(ctx context.Context, m *UserActivityFactMutation) (Value, error) {
+	switch m.Op() {
+	case OpCreate:
+		return (&UserActivityFactCreate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdate:
+		return (&UserActivityFactUpdate{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpUpdateOne:
+		return (&UserActivityFactUpdateOne{config: c.config, hooks: c.Hooks(), mutation: m}).Save(ctx)
+	case OpDelete, OpDeleteOne:
+		return (&UserActivityFactDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
+	default:
+		return nil, fmt.Errorf("ent: unknown UserActivityFact mutation op: %q", m.Op())
+	}
+}
+
 // ValueDatetimeClient is a client for the ValueDatetime schema.
 type ValueDatetimeClient struct {
 	config
@@ -6627,24 +8177,30 @@ func (c *ValueTextClient) mutate(ctx context.Context, m *ValueTextMutation) (Val
 // hooks and interceptors per client, for fast access.
 type (
 	hooks struct {
-		Attribute, ChoiceFloat, ChoiceInteger, ChoiceText, CiApprovalFlow,
-		CiLifecycleState, CiOperation, CiPermission, CiRecords, CiRelation, CiType,
-		CiTypeAttribute, CiTypeAttributeGroup, CiTypeAttributeGroupItem, CiTypeGroup,
-		CiTypeGroupItem, CiTypeInheritance, CiTypeRelation, Cis, ImportError,
-		ImportRecord, ImportTask, ImportTemplate, PermissionCache,
-		PermissionDataFilter, PermissionFieldMask, PermissionOperation,
-		PermissionTemplate, RelationType, ValueDatetime, ValueFloat, ValueIndexText,
-		ValueInteger, ValueJSON, ValueText []ent.Hook
+		AggregationCache, Attribute, AttributeMappingRule, ChoiceFloat, ChoiceInteger,
+		ChoiceText, CiApprovalFlow, CiAttributeDistribution, CiDimension,
+		CiLifecycleState, CiOperation, CiPermission, CiRecords, CiRelation,
+		CiStatisticsFact, CiType, CiTypeAttribute, CiTypeAttributeGroup,
+		CiTypeAttributeGroupItem, CiTypeDiscoveryConfig, CiTypeGroup, CiTypeGroupItem,
+		CiTypeInheritance, CiTypeRelation, Cis, DiscoveryExecutionHistory,
+		DynamicAggregationConfig, ImportError, ImportRecord, ImportTask,
+		ImportTemplate, PermissionCache, PermissionDataFilter, PermissionFieldMask,
+		PermissionOperation, PermissionTemplate, RelationType, TimeDimension,
+		UserActivityFact, ValueDatetime, ValueFloat, ValueIndexText, ValueInteger,
+		ValueJSON, ValueText []ent.Hook
 	}
 	inters struct {
-		Attribute, ChoiceFloat, ChoiceInteger, ChoiceText, CiApprovalFlow,
-		CiLifecycleState, CiOperation, CiPermission, CiRecords, CiRelation, CiType,
-		CiTypeAttribute, CiTypeAttributeGroup, CiTypeAttributeGroupItem, CiTypeGroup,
-		CiTypeGroupItem, CiTypeInheritance, CiTypeRelation, Cis, ImportError,
-		ImportRecord, ImportTask, ImportTemplate, PermissionCache,
-		PermissionDataFilter, PermissionFieldMask, PermissionOperation,
-		PermissionTemplate, RelationType, ValueDatetime, ValueFloat, ValueIndexText,
-		ValueInteger, ValueJSON, ValueText []ent.Interceptor
+		AggregationCache, Attribute, AttributeMappingRule, ChoiceFloat, ChoiceInteger,
+		ChoiceText, CiApprovalFlow, CiAttributeDistribution, CiDimension,
+		CiLifecycleState, CiOperation, CiPermission, CiRecords, CiRelation,
+		CiStatisticsFact, CiType, CiTypeAttribute, CiTypeAttributeGroup,
+		CiTypeAttributeGroupItem, CiTypeDiscoveryConfig, CiTypeGroup, CiTypeGroupItem,
+		CiTypeInheritance, CiTypeRelation, Cis, DiscoveryExecutionHistory,
+		DynamicAggregationConfig, ImportError, ImportRecord, ImportTask,
+		ImportTemplate, PermissionCache, PermissionDataFilter, PermissionFieldMask,
+		PermissionOperation, PermissionTemplate, RelationType, TimeDimension,
+		UserActivityFact, ValueDatetime, ValueFloat, ValueIndexText, ValueInteger,
+		ValueJSON, ValueText []ent.Interceptor
 	}
 )
 

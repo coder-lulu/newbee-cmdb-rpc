@@ -77,6 +77,20 @@ func (_c *CiLifecycleStateCreate) SetNillableDepartmentID(v *uint64) *CiLifecycl
 	return _c
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_c *CiLifecycleStateCreate) SetCreatedBy(v uuid.UUID) *CiLifecycleStateCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_c *CiLifecycleStateCreate) SetNillableCreatedBy(v *uuid.UUID) *CiLifecycleStateCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
+	}
+	return _c
+}
+
 // SetStateID sets the "state_id" field.
 func (_c *CiLifecycleStateCreate) SetStateID(v string) *CiLifecycleStateCreate {
 	_c.mutation.SetStateID(v)
@@ -733,20 +747,6 @@ func (_c *CiLifecycleStateCreate) SetNillableComments(v *string) *CiLifecycleSta
 	return _c
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_c *CiLifecycleStateCreate) SetCreatedBy(v uuid.UUID) *CiLifecycleStateCreate {
-	_c.mutation.SetCreatedBy(v)
-	return _c
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_c *CiLifecycleStateCreate) SetNillableCreatedBy(v *uuid.UUID) *CiLifecycleStateCreate {
-	if v != nil {
-		_c.SetCreatedBy(*v)
-	}
-	return _c
-}
-
 // SetUpdatedBy sets the "updated_by" field.
 func (_c *CiLifecycleStateCreate) SetUpdatedBy(v uuid.UUID) *CiLifecycleStateCreate {
 	_c.mutation.SetUpdatedBy(v)
@@ -1006,6 +1006,10 @@ func (_c *CiLifecycleStateCreate) createSpec() (*CiLifecycleState, *sqlgraph.Cre
 		_spec.SetField(cilifecyclestate.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
+	if value, ok := _c.mutation.CreatedBy(); ok {
+		_spec.SetField(cilifecyclestate.FieldCreatedBy, field.TypeUUID, value)
+		_node.CreatedBy = &value
+	}
 	if value, ok := _c.mutation.StateID(); ok {
 		_spec.SetField(cilifecyclestate.FieldStateID, field.TypeString, value)
 		_node.StateID = value
@@ -1261,10 +1265,6 @@ func (_c *CiLifecycleStateCreate) createSpec() (*CiLifecycleState, *sqlgraph.Cre
 	if value, ok := _c.mutation.Comments(); ok {
 		_spec.SetField(cilifecyclestate.FieldComments, field.TypeString, value)
 		_node.Comments = value
-	}
-	if value, ok := _c.mutation.CreatedBy(); ok {
-		_spec.SetField(cilifecyclestate.FieldCreatedBy, field.TypeUUID, value)
-		_node.CreatedBy = value
 	}
 	if value, ok := _c.mutation.UpdatedBy(); ok {
 		_spec.SetField(cilifecyclestate.FieldUpdatedBy, field.TypeUUID, value)

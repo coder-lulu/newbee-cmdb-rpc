@@ -24,6 +24,8 @@ type PermissionDataFilter struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 权限ID
 	PermissionID uint64 `json:"permission_id,omitempty"`
 	// 过滤组，同组内为AND关系
@@ -67,7 +69,7 @@ func (*PermissionDataFilter) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case permissiondatafilter.FieldID, permissiondatafilter.FieldTenantID, permissiondatafilter.FieldPermissionID, permissiondatafilter.FieldFilterGroup:
+		case permissiondatafilter.FieldID, permissiondatafilter.FieldTenantID, permissiondatafilter.FieldDepartmentID, permissiondatafilter.FieldPermissionID, permissiondatafilter.FieldFilterGroup:
 			values[i] = new(sql.NullInt64)
 		case permissiondatafilter.FieldFieldName, permissiondatafilter.FieldOperatorType, permissiondatafilter.FieldFilterValue, permissiondatafilter.FieldValueType:
 			values[i] = new(sql.NullString)
@@ -111,6 +113,12 @@ func (_m *PermissionDataFilter) assignValues(columns []string, values []any) err
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case permissiondatafilter.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case permissiondatafilter.FieldPermissionID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -197,6 +205,9 @@ func (_m *PermissionDataFilter) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("permission_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.PermissionID))

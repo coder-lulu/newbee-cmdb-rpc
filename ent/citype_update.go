@@ -18,6 +18,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypediscoveryconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
@@ -142,6 +143,26 @@ func (_u *CiTypeUpdate) ClearDepartmentID() *CiTypeUpdate {
 	return _u
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_u *CiTypeUpdate) SetCreatedBy(v uuid.UUID) *CiTypeUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *CiTypeUpdate) SetNillableCreatedBy(v *uuid.UUID) *CiTypeUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *CiTypeUpdate) ClearCreatedBy() *CiTypeUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
+}
+
 // SetName sets the "name" field.
 func (_u *CiTypeUpdate) SetName(v string) *CiTypeUpdate {
 	_u.mutation.SetName(v)
@@ -201,26 +222,6 @@ func (_u *CiTypeUpdate) SetNillableIsInherited(v *bool) *CiTypeUpdate {
 // ClearIsInherited clears the value of the "is_inherited" field.
 func (_u *CiTypeUpdate) ClearIsInherited() *CiTypeUpdate {
 	_u.mutation.ClearIsInherited()
-	return _u
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_u *CiTypeUpdate) SetCreatedBy(v uuid.UUID) *CiTypeUpdate {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *CiTypeUpdate) SetNillableCreatedBy(v *uuid.UUID) *CiTypeUpdate {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *CiTypeUpdate) ClearCreatedBy() *CiTypeUpdate {
-	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -492,6 +493,21 @@ func (_u *CiTypeUpdate) AddCiRecords(v ...*CiRecords) *CiTypeUpdate {
 	return _u.AddCiRecordIDs(ids...)
 }
 
+// AddDiscoveryConfigIDs adds the "discovery_configs" edge to the CiTypeDiscoveryConfig entity by IDs.
+func (_u *CiTypeUpdate) AddDiscoveryConfigIDs(ids ...uint64) *CiTypeUpdate {
+	_u.mutation.AddDiscoveryConfigIDs(ids...)
+	return _u
+}
+
+// AddDiscoveryConfigs adds the "discovery_configs" edges to the CiTypeDiscoveryConfig entity.
+func (_u *CiTypeUpdate) AddDiscoveryConfigs(v ...*CiTypeDiscoveryConfig) *CiTypeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddDiscoveryConfigIDs(ids...)
+}
+
 // Mutation returns the CiTypeMutation object of the builder.
 func (_u *CiTypeUpdate) Mutation() *CiTypeMutation {
 	return _u.mutation
@@ -734,6 +750,27 @@ func (_u *CiTypeUpdate) RemoveCiRecords(v ...*CiRecords) *CiTypeUpdate {
 	return _u.RemoveCiRecordIDs(ids...)
 }
 
+// ClearDiscoveryConfigs clears all "discovery_configs" edges to the CiTypeDiscoveryConfig entity.
+func (_u *CiTypeUpdate) ClearDiscoveryConfigs() *CiTypeUpdate {
+	_u.mutation.ClearDiscoveryConfigs()
+	return _u
+}
+
+// RemoveDiscoveryConfigIDs removes the "discovery_configs" edge to CiTypeDiscoveryConfig entities by IDs.
+func (_u *CiTypeUpdate) RemoveDiscoveryConfigIDs(ids ...uint64) *CiTypeUpdate {
+	_u.mutation.RemoveDiscoveryConfigIDs(ids...)
+	return _u
+}
+
+// RemoveDiscoveryConfigs removes "discovery_configs" edges to CiTypeDiscoveryConfig entities.
+func (_u *CiTypeUpdate) RemoveDiscoveryConfigs(v ...*CiTypeDiscoveryConfig) *CiTypeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveDiscoveryConfigIDs(ids...)
+}
+
 // Save executes the query and returns the number of nodes affected by the update operation.
 func (_u *CiTypeUpdate) Save(ctx context.Context) (int, error) {
 	if err := _u.defaults(); err != nil {
@@ -839,6 +876,12 @@ func (_u *CiTypeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(citype.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(citype.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(citype.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(citype.FieldName, field.TypeString, value)
 	}
@@ -850,12 +893,6 @@ func (_u *CiTypeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	}
 	if _u.mutation.IsInheritedCleared() {
 		_spec.ClearField(citype.FieldIsInherited, field.TypeBool)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(citype.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(citype.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.Icon(); ok {
 		_spec.SetField(citype.FieldIcon, field.TypeString, value)
@@ -1416,6 +1453,51 @@ func (_u *CiTypeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
+	if _u.mutation.DiscoveryConfigsCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   citype.DiscoveryConfigsTable,
+			Columns: []string{citype.DiscoveryConfigsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(citypediscoveryconfig.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.RemovedDiscoveryConfigsIDs(); len(nodes) > 0 && !_u.mutation.DiscoveryConfigsCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   citype.DiscoveryConfigsTable,
+			Columns: []string{citype.DiscoveryConfigsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(citypediscoveryconfig.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.DiscoveryConfigsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   citype.DiscoveryConfigsTable,
+			Columns: []string{citype.DiscoveryConfigsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(citypediscoveryconfig.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
 	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{citype.Label}
@@ -1537,6 +1619,26 @@ func (_u *CiTypeUpdateOne) ClearDepartmentID() *CiTypeUpdateOne {
 	return _u
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_u *CiTypeUpdateOne) SetCreatedBy(v uuid.UUID) *CiTypeUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *CiTypeUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CiTypeUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *CiTypeUpdateOne) ClearCreatedBy() *CiTypeUpdateOne {
+	_u.mutation.ClearCreatedBy()
+	return _u
+}
+
 // SetName sets the "name" field.
 func (_u *CiTypeUpdateOne) SetName(v string) *CiTypeUpdateOne {
 	_u.mutation.SetName(v)
@@ -1596,26 +1698,6 @@ func (_u *CiTypeUpdateOne) SetNillableIsInherited(v *bool) *CiTypeUpdateOne {
 // ClearIsInherited clears the value of the "is_inherited" field.
 func (_u *CiTypeUpdateOne) ClearIsInherited() *CiTypeUpdateOne {
 	_u.mutation.ClearIsInherited()
-	return _u
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_u *CiTypeUpdateOne) SetCreatedBy(v uuid.UUID) *CiTypeUpdateOne {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *CiTypeUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CiTypeUpdateOne {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *CiTypeUpdateOne) ClearCreatedBy() *CiTypeUpdateOne {
-	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -1887,6 +1969,21 @@ func (_u *CiTypeUpdateOne) AddCiRecords(v ...*CiRecords) *CiTypeUpdateOne {
 	return _u.AddCiRecordIDs(ids...)
 }
 
+// AddDiscoveryConfigIDs adds the "discovery_configs" edge to the CiTypeDiscoveryConfig entity by IDs.
+func (_u *CiTypeUpdateOne) AddDiscoveryConfigIDs(ids ...uint64) *CiTypeUpdateOne {
+	_u.mutation.AddDiscoveryConfigIDs(ids...)
+	return _u
+}
+
+// AddDiscoveryConfigs adds the "discovery_configs" edges to the CiTypeDiscoveryConfig entity.
+func (_u *CiTypeUpdateOne) AddDiscoveryConfigs(v ...*CiTypeDiscoveryConfig) *CiTypeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddDiscoveryConfigIDs(ids...)
+}
+
 // Mutation returns the CiTypeMutation object of the builder.
 func (_u *CiTypeUpdateOne) Mutation() *CiTypeMutation {
 	return _u.mutation
@@ -2129,6 +2226,27 @@ func (_u *CiTypeUpdateOne) RemoveCiRecords(v ...*CiRecords) *CiTypeUpdateOne {
 	return _u.RemoveCiRecordIDs(ids...)
 }
 
+// ClearDiscoveryConfigs clears all "discovery_configs" edges to the CiTypeDiscoveryConfig entity.
+func (_u *CiTypeUpdateOne) ClearDiscoveryConfigs() *CiTypeUpdateOne {
+	_u.mutation.ClearDiscoveryConfigs()
+	return _u
+}
+
+// RemoveDiscoveryConfigIDs removes the "discovery_configs" edge to CiTypeDiscoveryConfig entities by IDs.
+func (_u *CiTypeUpdateOne) RemoveDiscoveryConfigIDs(ids ...uint64) *CiTypeUpdateOne {
+	_u.mutation.RemoveDiscoveryConfigIDs(ids...)
+	return _u
+}
+
+// RemoveDiscoveryConfigs removes "discovery_configs" edges to CiTypeDiscoveryConfig entities.
+func (_u *CiTypeUpdateOne) RemoveDiscoveryConfigs(v ...*CiTypeDiscoveryConfig) *CiTypeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveDiscoveryConfigIDs(ids...)
+}
+
 // Where appends a list predicates to the CiTypeUpdate builder.
 func (_u *CiTypeUpdateOne) Where(ps ...predicate.CiType) *CiTypeUpdateOne {
 	_u.mutation.Where(ps...)
@@ -2264,6 +2382,12 @@ func (_u *CiTypeUpdateOne) sqlSave(ctx context.Context) (_node *CiType, err erro
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(citype.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(citype.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(citype.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(citype.FieldName, field.TypeString, value)
 	}
@@ -2275,12 +2399,6 @@ func (_u *CiTypeUpdateOne) sqlSave(ctx context.Context) (_node *CiType, err erro
 	}
 	if _u.mutation.IsInheritedCleared() {
 		_spec.ClearField(citype.FieldIsInherited, field.TypeBool)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(citype.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(citype.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.Icon(); ok {
 		_spec.SetField(citype.FieldIcon, field.TypeString, value)
@@ -2834,6 +2952,51 @@ func (_u *CiTypeUpdateOne) sqlSave(ctx context.Context) (_node *CiType, err erro
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirecords.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if _u.mutation.DiscoveryConfigsCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   citype.DiscoveryConfigsTable,
+			Columns: []string{citype.DiscoveryConfigsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(citypediscoveryconfig.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.RemovedDiscoveryConfigsIDs(); len(nodes) > 0 && !_u.mutation.DiscoveryConfigsCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   citype.DiscoveryConfigsTable,
+			Columns: []string{citype.DiscoveryConfigsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(citypediscoveryconfig.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.DiscoveryConfigsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   citype.DiscoveryConfigsTable,
+			Columns: []string{citype.DiscoveryConfigsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(citypediscoveryconfig.FieldID, field.TypeUint64),
 			},
 		}
 		for _, k := range nodes {

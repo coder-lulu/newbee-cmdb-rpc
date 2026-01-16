@@ -34,6 +34,33 @@ func (_u *PermissionCacheUpdate) SetUpdatedAt(v time.Time) *PermissionCacheUpdat
 	return _u
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_u *PermissionCacheUpdate) SetDepartmentID(v uint64) *PermissionCacheUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_u *PermissionCacheUpdate) SetNillableDepartmentID(v *uint64) *PermissionCacheUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
+	}
+	return _u
+}
+
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *PermissionCacheUpdate) AddDepartmentID(v int64) *PermissionCacheUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
+}
+
+// ClearDepartmentID clears the value of the "department_id" field.
+func (_u *PermissionCacheUpdate) ClearDepartmentID() *PermissionCacheUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
 // SetCacheKey sets the "cache_key" field.
 func (_u *PermissionCacheUpdate) SetCacheKey(v string) *PermissionCacheUpdate {
 	_u.mutation.SetCacheKey(v)
@@ -282,6 +309,15 @@ func (_u *PermissionCacheUpdate) sqlSave(ctx context.Context) (_node int, err er
 	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(permissioncache.FieldUpdatedAt, field.TypeTime, value)
 	}
+	if value, ok := _u.mutation.DepartmentID(); ok {
+		_spec.SetField(permissioncache.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
+		_spec.AddField(permissioncache.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if _u.mutation.DepartmentIDCleared() {
+		_spec.ClearField(permissioncache.FieldDepartmentID, field.TypeUint64)
+	}
 	if value, ok := _u.mutation.CacheKey(); ok {
 		_spec.SetField(permissioncache.FieldCacheKey, field.TypeString, value)
 	}
@@ -347,6 +383,33 @@ type PermissionCacheUpdateOne struct {
 // SetUpdatedAt sets the "updated_at" field.
 func (_u *PermissionCacheUpdateOne) SetUpdatedAt(v time.Time) *PermissionCacheUpdateOne {
 	_u.mutation.SetUpdatedAt(v)
+	return _u
+}
+
+// SetDepartmentID sets the "department_id" field.
+func (_u *PermissionCacheUpdateOne) SetDepartmentID(v uint64) *PermissionCacheUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_u *PermissionCacheUpdateOne) SetNillableDepartmentID(v *uint64) *PermissionCacheUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
+	}
+	return _u
+}
+
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *PermissionCacheUpdateOne) AddDepartmentID(v int64) *PermissionCacheUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
+}
+
+// ClearDepartmentID clears the value of the "department_id" field.
+func (_u *PermissionCacheUpdateOne) ClearDepartmentID() *PermissionCacheUpdateOne {
+	_u.mutation.ClearDepartmentID()
 	return _u
 }
 
@@ -627,6 +690,15 @@ func (_u *PermissionCacheUpdateOne) sqlSave(ctx context.Context) (_node *Permiss
 	}
 	if value, ok := _u.mutation.UpdatedAt(); ok {
 		_spec.SetField(permissioncache.FieldUpdatedAt, field.TypeTime, value)
+	}
+	if value, ok := _u.mutation.DepartmentID(); ok {
+		_spec.SetField(permissioncache.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
+		_spec.AddField(permissioncache.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if _u.mutation.DepartmentIDCleared() {
+		_spec.ClearField(permissioncache.FieldDepartmentID, field.TypeUint64)
 	}
 	if value, ok := _u.mutation.CacheKey(); ok {
 		_spec.SetField(permissioncache.FieldCacheKey, field.TypeString, value)

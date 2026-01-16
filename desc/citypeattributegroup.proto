@@ -2,6 +2,28 @@ syntax = "proto3";
 
 // CiTypeAttributeGroup message
 
+message CiTypeAttributeGroupItemWithAttrInfo {
+  optional uint64 id = 1;
+  optional uint64 group_id = 2;
+  optional uint64 attr_id = 3;
+  optional uint32 sort = 4;
+  optional bool is_required = 5;
+  optional bool default_show = 6;
+  AttributeInfo attribute = 7;
+}
+
+message CiTypeAttributeGroupWithAttrInfo {
+  optional uint64 id = 1;
+  optional string name = 2;
+  optional uint32 sort = 3;
+  repeated CiTypeAttributeGroupItemWithAttrInfo items = 4;
+}
+
+message CiTypeAttributeGroupWithAttrListResp {
+  uint64 total = 1;
+  repeated CiTypeAttributeGroupWithAttrInfo data = 2;
+}
+
 message CiTypeAttributeGroupInfo {
   optional uint64 id = 1;
   optional int64 created_at = 2;
@@ -55,5 +77,7 @@ service Cmdb {
   rpc deleteCiTypeAttributeGroup (IDsReq) returns (BaseResp);
   // group: citypeattributegroup
   rpc sortCiTypeAttributeGroup (CiTypeAttributeGroupSortReq) returns (BaseResp);
+  // group: citypeattributegroup
+  rpc listAttributeGroupWithAttribute (IDReq) returns (CiTypeAttributeGroupWithAttrListResp);
 
 }

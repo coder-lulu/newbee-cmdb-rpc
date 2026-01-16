@@ -21,34 +21,31 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-//  异步任务相关消息定义
-type AsyncTaskReq struct {
+// AttributeBasicInfo 属性基础信息
+type AttributeBasicInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          string                 `protobuf:"bytes,1,opt,name=type,proto3" json:"type"`
-	Operation     string                 `protobuf:"bytes,2,opt,name=operation,proto3" json:"operation"`
-	CiIds         []uint64               `protobuf:"varint,3,rep,packed,name=ci_ids,json=ciIds,proto3" json:"ci_ids"`
-	Params        *string                `protobuf:"bytes,4,opt,name=params,proto3,oneof" json:"params"`
-	Data          *string                `protobuf:"bytes,5,opt,name=data,proto3,oneof" json:"data"`
-	Priority      *int32                 `protobuf:"varint,6,opt,name=priority,proto3,oneof" json:"priority"`
-	CreatedBy     *string                `protobuf:"bytes,7,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Alias         string                 `protobuf:"bytes,3,opt,name=alias,proto3" json:"alias"`
+	DataType      string                 `protobuf:"bytes,4,opt,name=data_type,json=dataType,proto3" json:"data_type"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AsyncTaskReq) Reset() {
-	*x = AsyncTaskReq{}
+func (x *AttributeBasicInfo) Reset() {
+	*x = AttributeBasicInfo{}
 	mi := &file_cmdb_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AsyncTaskReq) String() string {
+func (x *AttributeBasicInfo) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AsyncTaskReq) ProtoMessage() {}
+func (*AttributeBasicInfo) ProtoMessage() {}
 
-func (x *AsyncTaskReq) ProtoReflect() protoreflect.Message {
+func (x *AttributeBasicInfo) ProtoReflect() protoreflect.Message {
 	mi := &file_cmdb_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -60,126 +57,37 @@ func (x *AsyncTaskReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AsyncTaskReq.ProtoReflect.Descriptor instead.
-func (*AsyncTaskReq) Descriptor() ([]byte, []int) {
+// Deprecated: Use AttributeBasicInfo.ProtoReflect.Descriptor instead.
+func (*AttributeBasicInfo) Descriptor() ([]byte, []int) {
 	return file_cmdb_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AsyncTaskReq) GetType() string {
+func (x *AttributeBasicInfo) GetId() uint64 {
 	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
-func (x *AsyncTaskReq) GetOperation() string {
-	if x != nil {
-		return x.Operation
-	}
-	return ""
-}
-
-func (x *AsyncTaskReq) GetCiIds() []uint64 {
-	if x != nil {
-		return x.CiIds
-	}
-	return nil
-}
-
-func (x *AsyncTaskReq) GetParams() string {
-	if x != nil && x.Params != nil {
-		return *x.Params
-	}
-	return ""
-}
-
-func (x *AsyncTaskReq) GetData() string {
-	if x != nil && x.Data != nil {
-		return *x.Data
-	}
-	return ""
-}
-
-func (x *AsyncTaskReq) GetPriority() int32 {
-	if x != nil && x.Priority != nil {
-		return *x.Priority
+		return x.Id
 	}
 	return 0
 }
 
-func (x *AsyncTaskReq) GetCreatedBy() string {
-	if x != nil && x.CreatedBy != nil {
-		return *x.CreatedBy
+func (x *AttributeBasicInfo) GetName() string {
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
 
-type AsyncTaskResp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	TaskId        string                 `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message"`
-	Success       bool                   `protobuf:"varint,3,opt,name=success,proto3" json:"success"`
-	InitialStatus *TaskStatusInfo        `protobuf:"bytes,4,opt,name=initial_status,json=initialStatus,proto3,oneof" json:"initial_status"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *AsyncTaskResp) Reset() {
-	*x = AsyncTaskResp{}
-	mi := &file_cmdb_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *AsyncTaskResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AsyncTaskResp) ProtoMessage() {}
-
-func (x *AsyncTaskResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[1]
+func (x *AttributeBasicInfo) GetAlias() string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AsyncTaskResp.ProtoReflect.Descriptor instead.
-func (*AsyncTaskResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *AsyncTaskResp) GetTaskId() string {
-	if x != nil {
-		return x.TaskId
+		return x.Alias
 	}
 	return ""
 }
 
-func (x *AsyncTaskResp) GetMessage() string {
+func (x *AttributeBasicInfo) GetDataType() string {
 	if x != nil {
-		return x.Message
+		return x.DataType
 	}
 	return ""
-}
-
-func (x *AsyncTaskResp) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *AsyncTaskResp) GetInitialStatus() *TaskStatusInfo {
-	if x != nil {
-		return x.InitialStatus
-	}
-	return nil
 }
 
 // 选项
@@ -197,7 +105,7 @@ type AttributeChoiceItem struct {
 
 func (x *AttributeChoiceItem) Reset() {
 	*x = AttributeChoiceItem{}
-	mi := &file_cmdb_proto_msgTypes[2]
+	mi := &file_cmdb_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -209,7 +117,7 @@ func (x *AttributeChoiceItem) String() string {
 func (*AttributeChoiceItem) ProtoMessage() {}
 
 func (x *AttributeChoiceItem) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[2]
+	mi := &file_cmdb_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -222,7 +130,7 @@ func (x *AttributeChoiceItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeChoiceItem.ProtoReflect.Descriptor instead.
 func (*AttributeChoiceItem) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{2}
+	return file_cmdb_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *AttributeChoiceItem) GetId() uint64 {
@@ -258,7 +166,7 @@ type AttributeChoiceItemMeta struct {
 
 func (x *AttributeChoiceItemMeta) Reset() {
 	*x = AttributeChoiceItemMeta{}
-	mi := &file_cmdb_proto_msgTypes[3]
+	mi := &file_cmdb_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -270,7 +178,7 @@ func (x *AttributeChoiceItemMeta) String() string {
 func (*AttributeChoiceItemMeta) ProtoMessage() {}
 
 func (x *AttributeChoiceItemMeta) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[3]
+	mi := &file_cmdb_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -283,7 +191,7 @@ func (x *AttributeChoiceItemMeta) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeChoiceItemMeta.ProtoReflect.Descriptor instead.
 func (*AttributeChoiceItemMeta) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{3}
+	return file_cmdb_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *AttributeChoiceItemMeta) GetIcon() string {
@@ -318,7 +226,7 @@ type AttributeChoiceOther struct {
 
 func (x *AttributeChoiceOther) Reset() {
 	*x = AttributeChoiceOther{}
-	mi := &file_cmdb_proto_msgTypes[4]
+	mi := &file_cmdb_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -330,7 +238,7 @@ func (x *AttributeChoiceOther) String() string {
 func (*AttributeChoiceOther) ProtoMessage() {}
 
 func (x *AttributeChoiceOther) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[4]
+	mi := &file_cmdb_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -343,7 +251,7 @@ func (x *AttributeChoiceOther) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeChoiceOther.ProtoReflect.Descriptor instead.
 func (*AttributeChoiceOther) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{4}
+	return file_cmdb_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *AttributeChoiceOther) GetFilter() string {
@@ -382,7 +290,7 @@ type AttributeChoiceWebHook struct {
 
 func (x *AttributeChoiceWebHook) Reset() {
 	*x = AttributeChoiceWebHook{}
-	mi := &file_cmdb_proto_msgTypes[5]
+	mi := &file_cmdb_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -394,7 +302,7 @@ func (x *AttributeChoiceWebHook) String() string {
 func (*AttributeChoiceWebHook) ProtoMessage() {}
 
 func (x *AttributeChoiceWebHook) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[5]
+	mi := &file_cmdb_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -407,7 +315,7 @@ func (x *AttributeChoiceWebHook) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeChoiceWebHook.ProtoReflect.Descriptor instead.
 func (*AttributeChoiceWebHook) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{5}
+	return file_cmdb_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *AttributeChoiceWebHook) GetUrl() string {
@@ -468,7 +376,7 @@ type AttributeDefault struct {
 
 func (x *AttributeDefault) Reset() {
 	*x = AttributeDefault{}
-	mi := &file_cmdb_proto_msgTypes[6]
+	mi := &file_cmdb_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -480,7 +388,7 @@ func (x *AttributeDefault) String() string {
 func (*AttributeDefault) ProtoMessage() {}
 
 func (x *AttributeDefault) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[6]
+	mi := &file_cmdb_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -493,7 +401,7 @@ func (x *AttributeDefault) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeDefault.ProtoReflect.Descriptor instead.
 func (*AttributeDefault) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{6}
+	return file_cmdb_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *AttributeDefault) GetDefault() string {
@@ -516,7 +424,7 @@ type AttributeFontOption struct {
 
 func (x *AttributeFontOption) Reset() {
 	*x = AttributeFontOption{}
-	mi := &file_cmdb_proto_msgTypes[7]
+	mi := &file_cmdb_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -528,7 +436,7 @@ func (x *AttributeFontOption) String() string {
 func (*AttributeFontOption) ProtoMessage() {}
 
 func (x *AttributeFontOption) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[7]
+	mi := &file_cmdb_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -541,7 +449,7 @@ func (x *AttributeFontOption) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeFontOption.ProtoReflect.Descriptor instead.
 func (*AttributeFontOption) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{7}
+	return file_cmdb_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AttributeFontOption) GetColor() string {
@@ -591,7 +499,7 @@ type AttributeImageOption struct {
 
 func (x *AttributeImageOption) Reset() {
 	*x = AttributeImageOption{}
-	mi := &file_cmdb_proto_msgTypes[8]
+	mi := &file_cmdb_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -603,7 +511,7 @@ func (x *AttributeImageOption) String() string {
 func (*AttributeImageOption) ProtoMessage() {}
 
 func (x *AttributeImageOption) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[8]
+	mi := &file_cmdb_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -616,7 +524,7 @@ func (x *AttributeImageOption) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeImageOption.ProtoReflect.Descriptor instead.
 func (*AttributeImageOption) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{8}
+	return file_cmdb_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *AttributeImageOption) GetPath() string {
@@ -696,7 +604,7 @@ type AttributeInfo struct {
 
 func (x *AttributeInfo) Reset() {
 	*x = AttributeInfo{}
-	mi := &file_cmdb_proto_msgTypes[9]
+	mi := &file_cmdb_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -708,7 +616,7 @@ func (x *AttributeInfo) String() string {
 func (*AttributeInfo) ProtoMessage() {}
 
 func (x *AttributeInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[9]
+	mi := &file_cmdb_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -721,7 +629,7 @@ func (x *AttributeInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeInfo.ProtoReflect.Descriptor instead.
 func (*AttributeInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{9}
+	return file_cmdb_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *AttributeInfo) GetId() uint64 {
@@ -883,7 +791,7 @@ type AttributeListReq struct {
 
 func (x *AttributeListReq) Reset() {
 	*x = AttributeListReq{}
-	mi := &file_cmdb_proto_msgTypes[10]
+	mi := &file_cmdb_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -895,7 +803,7 @@ func (x *AttributeListReq) String() string {
 func (*AttributeListReq) ProtoMessage() {}
 
 func (x *AttributeListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[10]
+	mi := &file_cmdb_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -908,7 +816,7 @@ func (x *AttributeListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeListReq.ProtoReflect.Descriptor instead.
 func (*AttributeListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{10}
+	return file_cmdb_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *AttributeListReq) GetPage() uint64 {
@@ -949,7 +857,7 @@ type AttributeListResp struct {
 
 func (x *AttributeListResp) Reset() {
 	*x = AttributeListResp{}
-	mi := &file_cmdb_proto_msgTypes[11]
+	mi := &file_cmdb_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -961,7 +869,7 @@ func (x *AttributeListResp) String() string {
 func (*AttributeListResp) ProtoMessage() {}
 
 func (x *AttributeListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[11]
+	mi := &file_cmdb_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -974,7 +882,7 @@ func (x *AttributeListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeListResp.ProtoReflect.Descriptor instead.
 func (*AttributeListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{11}
+	return file_cmdb_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *AttributeListResp) GetTotal() uint64 {
@@ -991,6 +899,943 @@ func (x *AttributeListResp) GetData() []*AttributeInfo {
 	return nil
 }
 
+// AttributeMappingConfigInfo 属性映射配置信息
+type AttributeMappingConfigInfo struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 关系定义ID
+	RelationId uint64 `protobuf:"varint,1,opt,name=relation_id,json=relationId,proto3" json:"relation_id"`
+	// 源CI类型信息
+	SourceCiType *CiTypeBasicInfo `protobuf:"bytes,2,opt,name=source_ci_type,json=sourceCiType,proto3" json:"source_ci_type"`
+	// 目标CI类型信息
+	TargetCiType *CiTypeBasicInfo `protobuf:"bytes,3,opt,name=target_ci_type,json=targetCiType,proto3" json:"target_ci_type"`
+	// 关系类型信息
+	RelationType *RelationTypeBasicInfo `protobuf:"bytes,4,opt,name=relation_type,json=relationType,proto3" json:"relation_type"`
+	// 单属性映射
+	SingleMapping *AttributeMappingPair `protobuf:"bytes,5,opt,name=single_mapping,json=singleMapping,proto3,oneof" json:"single_mapping"`
+	// 多属性映射
+	MultipleMappings []*AttributeMappingPair `protobuf:"bytes,6,rep,name=multiple_mappings,json=multipleMappings,proto3" json:"multiple_mappings"`
+	// 约束条件
+	Constraint    *string `protobuf:"bytes,7,opt,name=constraint,proto3,oneof" json:"constraint"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttributeMappingConfigInfo) Reset() {
+	*x = AttributeMappingConfigInfo{}
+	mi := &file_cmdb_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttributeMappingConfigInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttributeMappingConfigInfo) ProtoMessage() {}
+
+func (x *AttributeMappingConfigInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttributeMappingConfigInfo.ProtoReflect.Descriptor instead.
+func (*AttributeMappingConfigInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *AttributeMappingConfigInfo) GetRelationId() uint64 {
+	if x != nil {
+		return x.RelationId
+	}
+	return 0
+}
+
+func (x *AttributeMappingConfigInfo) GetSourceCiType() *CiTypeBasicInfo {
+	if x != nil {
+		return x.SourceCiType
+	}
+	return nil
+}
+
+func (x *AttributeMappingConfigInfo) GetTargetCiType() *CiTypeBasicInfo {
+	if x != nil {
+		return x.TargetCiType
+	}
+	return nil
+}
+
+func (x *AttributeMappingConfigInfo) GetRelationType() *RelationTypeBasicInfo {
+	if x != nil {
+		return x.RelationType
+	}
+	return nil
+}
+
+func (x *AttributeMappingConfigInfo) GetSingleMapping() *AttributeMappingPair {
+	if x != nil {
+		return x.SingleMapping
+	}
+	return nil
+}
+
+func (x *AttributeMappingConfigInfo) GetMultipleMappings() []*AttributeMappingPair {
+	if x != nil {
+		return x.MultipleMappings
+	}
+	return nil
+}
+
+func (x *AttributeMappingConfigInfo) GetConstraint() string {
+	if x != nil && x.Constraint != nil {
+		return *x.Constraint
+	}
+	return ""
+}
+
+// AttributeMappingConfigReq 属性映射配置查询请求
+type AttributeMappingConfigReq struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 源CI类型ID
+	SourceCiTypeId *uint64 `protobuf:"varint,1,opt,name=source_ci_type_id,json=sourceCiTypeId,proto3,oneof" json:"source_ci_type_id"`
+	// 目标CI类型ID
+	TargetCiTypeId *uint64 `protobuf:"varint,2,opt,name=target_ci_type_id,json=targetCiTypeId,proto3,oneof" json:"target_ci_type_id"`
+	// 关系类型ID
+	RelationTypeId *uint64 `protobuf:"varint,3,opt,name=relation_type_id,json=relationTypeId,proto3,oneof" json:"relation_type_id"`
+	// 是否包含详细的属性信息
+	IncludeAttributeDetails *bool `protobuf:"varint,4,opt,name=include_attribute_details,json=includeAttributeDetails,proto3,oneof" json:"include_attribute_details"`
+	// 是否只返回已配置映射的关系
+	ConfiguredOnly *bool `protobuf:"varint,5,opt,name=configured_only,json=configuredOnly,proto3,oneof" json:"configured_only"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *AttributeMappingConfigReq) Reset() {
+	*x = AttributeMappingConfigReq{}
+	mi := &file_cmdb_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttributeMappingConfigReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttributeMappingConfigReq) ProtoMessage() {}
+
+func (x *AttributeMappingConfigReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttributeMappingConfigReq.ProtoReflect.Descriptor instead.
+func (*AttributeMappingConfigReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *AttributeMappingConfigReq) GetSourceCiTypeId() uint64 {
+	if x != nil && x.SourceCiTypeId != nil {
+		return *x.SourceCiTypeId
+	}
+	return 0
+}
+
+func (x *AttributeMappingConfigReq) GetTargetCiTypeId() uint64 {
+	if x != nil && x.TargetCiTypeId != nil {
+		return *x.TargetCiTypeId
+	}
+	return 0
+}
+
+func (x *AttributeMappingConfigReq) GetRelationTypeId() uint64 {
+	if x != nil && x.RelationTypeId != nil {
+		return *x.RelationTypeId
+	}
+	return 0
+}
+
+func (x *AttributeMappingConfigReq) GetIncludeAttributeDetails() bool {
+	if x != nil && x.IncludeAttributeDetails != nil {
+		return *x.IncludeAttributeDetails
+	}
+	return false
+}
+
+func (x *AttributeMappingConfigReq) GetConfiguredOnly() bool {
+	if x != nil && x.ConfiguredOnly != nil {
+		return *x.ConfiguredOnly
+	}
+	return false
+}
+
+// AttributeMappingConfigResp 属性映射配置响应
+type AttributeMappingConfigResp struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 映射配置列表
+	Configs []*AttributeMappingConfigInfo `protobuf:"bytes,1,rep,name=configs,proto3" json:"configs"`
+	// 总数
+	TotalCount    uint64 `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttributeMappingConfigResp) Reset() {
+	*x = AttributeMappingConfigResp{}
+	mi := &file_cmdb_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttributeMappingConfigResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttributeMappingConfigResp) ProtoMessage() {}
+
+func (x *AttributeMappingConfigResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttributeMappingConfigResp.ProtoReflect.Descriptor instead.
+func (*AttributeMappingConfigResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *AttributeMappingConfigResp) GetConfigs() []*AttributeMappingConfigInfo {
+	if x != nil {
+		return x.Configs
+	}
+	return nil
+}
+
+func (x *AttributeMappingConfigResp) GetTotalCount() uint64 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
+// AttributeMappingData 属性映射数据结构
+type AttributeMappingData struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 源属性ID
+	SourceAttrId uint64 `protobuf:"varint,1,opt,name=source_attr_id,json=sourceAttrId,proto3" json:"source_attr_id"`
+	// 目标属性ID
+	TargetAttrId uint64 `protobuf:"varint,2,opt,name=target_attr_id,json=targetAttrId,proto3" json:"target_attr_id"`
+	// 源属性值
+	SourceValue *string `protobuf:"bytes,3,opt,name=source_value,json=sourceValue,proto3,oneof" json:"source_value"`
+	// 目标属性值
+	TargetValue *string `protobuf:"bytes,4,opt,name=target_value,json=targetValue,proto3,oneof" json:"target_value"`
+	// 最后同步时间
+	LastSyncAt *int64 `protobuf:"varint,5,opt,name=last_sync_at,json=lastSyncAt,proto3,oneof" json:"last_sync_at"`
+	// 同步状态: synced, pending, failed
+	SyncStatus *string `protobuf:"bytes,6,opt,name=sync_status,json=syncStatus,proto3,oneof" json:"sync_status"`
+	// 冲突原因
+	ConflictReason *string `protobuf:"bytes,7,opt,name=conflict_reason,json=conflictReason,proto3,oneof" json:"conflict_reason"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *AttributeMappingData) Reset() {
+	*x = AttributeMappingData{}
+	mi := &file_cmdb_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttributeMappingData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttributeMappingData) ProtoMessage() {}
+
+func (x *AttributeMappingData) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttributeMappingData.ProtoReflect.Descriptor instead.
+func (*AttributeMappingData) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *AttributeMappingData) GetSourceAttrId() uint64 {
+	if x != nil {
+		return x.SourceAttrId
+	}
+	return 0
+}
+
+func (x *AttributeMappingData) GetTargetAttrId() uint64 {
+	if x != nil {
+		return x.TargetAttrId
+	}
+	return 0
+}
+
+func (x *AttributeMappingData) GetSourceValue() string {
+	if x != nil && x.SourceValue != nil {
+		return *x.SourceValue
+	}
+	return ""
+}
+
+func (x *AttributeMappingData) GetTargetValue() string {
+	if x != nil && x.TargetValue != nil {
+		return *x.TargetValue
+	}
+	return ""
+}
+
+func (x *AttributeMappingData) GetLastSyncAt() int64 {
+	if x != nil && x.LastSyncAt != nil {
+		return *x.LastSyncAt
+	}
+	return 0
+}
+
+func (x *AttributeMappingData) GetSyncStatus() string {
+	if x != nil && x.SyncStatus != nil {
+		return *x.SyncStatus
+	}
+	return ""
+}
+
+func (x *AttributeMappingData) GetConflictReason() string {
+	if x != nil && x.ConflictReason != nil {
+		return *x.ConflictReason
+	}
+	return ""
+}
+
+// AttributeMappingPair 属性映射对
+type AttributeMappingPair struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 源属性信息
+	SourceAttribute *AttributeBasicInfo `protobuf:"bytes,1,opt,name=source_attribute,json=sourceAttribute,proto3" json:"source_attribute"`
+	// 目标属性信息
+	TargetAttribute *AttributeBasicInfo `protobuf:"bytes,2,opt,name=target_attribute,json=targetAttribute,proto3" json:"target_attribute"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *AttributeMappingPair) Reset() {
+	*x = AttributeMappingPair{}
+	mi := &file_cmdb_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttributeMappingPair) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttributeMappingPair) ProtoMessage() {}
+
+func (x *AttributeMappingPair) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttributeMappingPair.ProtoReflect.Descriptor instead.
+func (*AttributeMappingPair) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *AttributeMappingPair) GetSourceAttribute() *AttributeBasicInfo {
+	if x != nil {
+		return x.SourceAttribute
+	}
+	return nil
+}
+
+func (x *AttributeMappingPair) GetTargetAttribute() *AttributeBasicInfo {
+	if x != nil {
+		return x.TargetAttribute
+	}
+	return nil
+}
+
+type AttributeMappingRuleInfo struct {
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	Id        *uint64                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id"`
+	CreatedAt *int64                 `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
+	UpdatedAt *int64                 `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
+	// Status 1: normal 2: ban | 状态 1 正常 2 禁用
+	Status *uint32 `protobuf:"varint,4,opt,name=status,proto3,oneof" json:"status"`
+	// 发现配置ID
+	DiscoveryConfigId *uint64 `protobuf:"varint,5,opt,name=discovery_config_id,json=discoveryConfigId,proto3,oneof" json:"discovery_config_id"`
+	// CI属性ID
+	CiAttributeId *uint64 `protobuf:"varint,6,opt,name=ci_attribute_id,json=ciAttributeId,proto3,oneof" json:"ci_attribute_id"`
+	// 源字段名
+	SourceField *string `protobuf:"bytes,7,opt,name=source_field,json=sourceField,proto3,oneof" json:"source_field"`
+	// 源字段路径(支持JSON路径)
+	SourcePath *string `protobuf:"bytes,8,opt,name=source_path,json=sourcePath,proto3,oneof" json:"source_path"`
+	// 目标属性名
+	TargetAttribute *string `protobuf:"bytes,9,opt,name=target_attribute,json=targetAttribute,proto3,oneof" json:"target_attribute"`
+	// 转换类型: direct, lookup, script, template
+	TransformType *string `protobuf:"bytes,10,opt,name=transform_type,json=transformType,proto3,oneof" json:"transform_type"`
+	// 转换配置JSON
+	TransformConfig *string `protobuf:"bytes,11,opt,name=transform_config,json=transformConfig,proto3,oneof" json:"transform_config"`
+	// 默认值
+	DefaultValue *string `protobuf:"bytes,12,opt,name=default_value,json=defaultValue,proto3,oneof" json:"default_value"`
+	// 验证规则JSON
+	ValidationRules *string `protobuf:"bytes,13,opt,name=validation_rules,json=validationRules,proto3,oneof" json:"validation_rules"`
+	// 验证正则表达式
+	ValidationRegex *string `protobuf:"bytes,14,opt,name=validation_regex,json=validationRegex,proto3,oneof" json:"validation_regex"`
+	// 是否必填
+	IsRequired *bool `protobuf:"varint,15,opt,name=is_required,json=isRequired,proto3,oneof" json:"is_required"`
+	// 是否唯一
+	IsUnique *bool `protobuf:"varint,16,opt,name=is_unique,json=isUnique,proto3,oneof" json:"is_unique"`
+	// 映射优先级
+	Priority *int64 `protobuf:"varint,17,opt,name=priority,proto3,oneof" json:"priority"`
+	// 是否启用
+	Enabled *bool `protobuf:"varint,18,opt,name=enabled,proto3,oneof" json:"enabled"`
+	// 更新策略: overwrite, merge, append
+	UpdateStrategy *string `protobuf:"bytes,19,opt,name=update_strategy,json=updateStrategy,proto3,oneof" json:"update_strategy"`
+	// 成功次数
+	SuccessCount *int64 `protobuf:"varint,20,opt,name=success_count,json=successCount,proto3,oneof" json:"success_count"`
+	// 失败次数
+	FailedCount *int64 `protobuf:"varint,21,opt,name=failed_count,json=failedCount,proto3,oneof" json:"failed_count"`
+	// 上次成功时间
+	LastSuccessAt *int64 `protobuf:"varint,22,opt,name=last_success_at,json=lastSuccessAt,proto3,oneof" json:"last_success_at"`
+	// 映射描述
+	Description *string `protobuf:"bytes,23,opt,name=description,proto3,oneof" json:"description"`
+	// 扩展元数据JSON
+	Metadata      *string `protobuf:"bytes,24,opt,name=metadata,proto3,oneof" json:"metadata"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttributeMappingRuleInfo) Reset() {
+	*x = AttributeMappingRuleInfo{}
+	mi := &file_cmdb_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttributeMappingRuleInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttributeMappingRuleInfo) ProtoMessage() {}
+
+func (x *AttributeMappingRuleInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttributeMappingRuleInfo.ProtoReflect.Descriptor instead.
+func (*AttributeMappingRuleInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *AttributeMappingRuleInfo) GetId() uint64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetCreatedAt() int64 {
+	if x != nil && x.CreatedAt != nil {
+		return *x.CreatedAt
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetUpdatedAt() int64 {
+	if x != nil && x.UpdatedAt != nil {
+		return *x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetStatus() uint32 {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetDiscoveryConfigId() uint64 {
+	if x != nil && x.DiscoveryConfigId != nil {
+		return *x.DiscoveryConfigId
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetCiAttributeId() uint64 {
+	if x != nil && x.CiAttributeId != nil {
+		return *x.CiAttributeId
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetSourceField() string {
+	if x != nil && x.SourceField != nil {
+		return *x.SourceField
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetSourcePath() string {
+	if x != nil && x.SourcePath != nil {
+		return *x.SourcePath
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetTargetAttribute() string {
+	if x != nil && x.TargetAttribute != nil {
+		return *x.TargetAttribute
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetTransformType() string {
+	if x != nil && x.TransformType != nil {
+		return *x.TransformType
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetTransformConfig() string {
+	if x != nil && x.TransformConfig != nil {
+		return *x.TransformConfig
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetDefaultValue() string {
+	if x != nil && x.DefaultValue != nil {
+		return *x.DefaultValue
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetValidationRules() string {
+	if x != nil && x.ValidationRules != nil {
+		return *x.ValidationRules
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetValidationRegex() string {
+	if x != nil && x.ValidationRegex != nil {
+		return *x.ValidationRegex
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetIsRequired() bool {
+	if x != nil && x.IsRequired != nil {
+		return *x.IsRequired
+	}
+	return false
+}
+
+func (x *AttributeMappingRuleInfo) GetIsUnique() bool {
+	if x != nil && x.IsUnique != nil {
+		return *x.IsUnique
+	}
+	return false
+}
+
+func (x *AttributeMappingRuleInfo) GetPriority() int64 {
+	if x != nil && x.Priority != nil {
+		return *x.Priority
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *AttributeMappingRuleInfo) GetUpdateStrategy() string {
+	if x != nil && x.UpdateStrategy != nil {
+		return *x.UpdateStrategy
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetSuccessCount() int64 {
+	if x != nil && x.SuccessCount != nil {
+		return *x.SuccessCount
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetFailedCount() int64 {
+	if x != nil && x.FailedCount != nil {
+		return *x.FailedCount
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetLastSuccessAt() int64 {
+	if x != nil && x.LastSuccessAt != nil {
+		return *x.LastSuccessAt
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleInfo) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleInfo) GetMetadata() string {
+	if x != nil && x.Metadata != nil {
+		return *x.Metadata
+	}
+	return ""
+}
+
+type AttributeMappingRuleListReq struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Page              uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
+	PageSize          uint64                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	CreatedAt         *int64                 `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
+	UpdatedAt         *int64                 `protobuf:"varint,4,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
+	Status            *uint32                `protobuf:"varint,5,opt,name=status,proto3,oneof" json:"status"`
+	DeletedAt         *int64                 `protobuf:"varint,6,opt,name=deleted_at,json=deletedAt,proto3,oneof" json:"deleted_at"`
+	DiscoveryConfigId *uint64                `protobuf:"varint,7,opt,name=discovery_config_id,json=discoveryConfigId,proto3,oneof" json:"discovery_config_id"`
+	CiAttributeId     *uint64                `protobuf:"varint,8,opt,name=ci_attribute_id,json=ciAttributeId,proto3,oneof" json:"ci_attribute_id"`
+	SourceField       *string                `protobuf:"bytes,9,opt,name=source_field,json=sourceField,proto3,oneof" json:"source_field"`
+	SourcePath        *string                `protobuf:"bytes,10,opt,name=source_path,json=sourcePath,proto3,oneof" json:"source_path"`
+	TargetAttribute   *string                `protobuf:"bytes,11,opt,name=target_attribute,json=targetAttribute,proto3,oneof" json:"target_attribute"`
+	TransformType     *string                `protobuf:"bytes,12,opt,name=transform_type,json=transformType,proto3,oneof" json:"transform_type"`
+	TransformConfig   *string                `protobuf:"bytes,13,opt,name=transform_config,json=transformConfig,proto3,oneof" json:"transform_config"`
+	DefaultValue      *string                `protobuf:"bytes,14,opt,name=default_value,json=defaultValue,proto3,oneof" json:"default_value"`
+	ValidationRules   *string                `protobuf:"bytes,15,opt,name=validation_rules,json=validationRules,proto3,oneof" json:"validation_rules"`
+	ValidationRegex   *string                `protobuf:"bytes,16,opt,name=validation_regex,json=validationRegex,proto3,oneof" json:"validation_regex"`
+	IsRequired        *bool                  `protobuf:"varint,17,opt,name=is_required,json=isRequired,proto3,oneof" json:"is_required"`
+	IsUnique          *bool                  `protobuf:"varint,18,opt,name=is_unique,json=isUnique,proto3,oneof" json:"is_unique"`
+	Priority          *int64                 `protobuf:"varint,19,opt,name=priority,proto3,oneof" json:"priority"`
+	Enabled           *bool                  `protobuf:"varint,20,opt,name=enabled,proto3,oneof" json:"enabled"`
+	UpdateStrategy    *string                `protobuf:"bytes,21,opt,name=update_strategy,json=updateStrategy,proto3,oneof" json:"update_strategy"`
+	SuccessCount      *int64                 `protobuf:"varint,22,opt,name=success_count,json=successCount,proto3,oneof" json:"success_count"`
+	FailedCount       *int64                 `protobuf:"varint,23,opt,name=failed_count,json=failedCount,proto3,oneof" json:"failed_count"`
+	LastSuccessAt     *int64                 `protobuf:"varint,24,opt,name=last_success_at,json=lastSuccessAt,proto3,oneof" json:"last_success_at"`
+	Description       *string                `protobuf:"bytes,25,opt,name=description,proto3,oneof" json:"description"`
+	Metadata          *string                `protobuf:"bytes,26,opt,name=metadata,proto3,oneof" json:"metadata"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *AttributeMappingRuleListReq) Reset() {
+	*x = AttributeMappingRuleListReq{}
+	mi := &file_cmdb_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttributeMappingRuleListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttributeMappingRuleListReq) ProtoMessage() {}
+
+func (x *AttributeMappingRuleListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttributeMappingRuleListReq.ProtoReflect.Descriptor instead.
+func (*AttributeMappingRuleListReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *AttributeMappingRuleListReq) GetPage() uint64 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetPageSize() uint64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetCreatedAt() int64 {
+	if x != nil && x.CreatedAt != nil {
+		return *x.CreatedAt
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetUpdatedAt() int64 {
+	if x != nil && x.UpdatedAt != nil {
+		return *x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetStatus() uint32 {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetDeletedAt() int64 {
+	if x != nil && x.DeletedAt != nil {
+		return *x.DeletedAt
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetDiscoveryConfigId() uint64 {
+	if x != nil && x.DiscoveryConfigId != nil {
+		return *x.DiscoveryConfigId
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetCiAttributeId() uint64 {
+	if x != nil && x.CiAttributeId != nil {
+		return *x.CiAttributeId
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetSourceField() string {
+	if x != nil && x.SourceField != nil {
+		return *x.SourceField
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetSourcePath() string {
+	if x != nil && x.SourcePath != nil {
+		return *x.SourcePath
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetTargetAttribute() string {
+	if x != nil && x.TargetAttribute != nil {
+		return *x.TargetAttribute
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetTransformType() string {
+	if x != nil && x.TransformType != nil {
+		return *x.TransformType
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetTransformConfig() string {
+	if x != nil && x.TransformConfig != nil {
+		return *x.TransformConfig
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetDefaultValue() string {
+	if x != nil && x.DefaultValue != nil {
+		return *x.DefaultValue
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetValidationRules() string {
+	if x != nil && x.ValidationRules != nil {
+		return *x.ValidationRules
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetValidationRegex() string {
+	if x != nil && x.ValidationRegex != nil {
+		return *x.ValidationRegex
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetIsRequired() bool {
+	if x != nil && x.IsRequired != nil {
+		return *x.IsRequired
+	}
+	return false
+}
+
+func (x *AttributeMappingRuleListReq) GetIsUnique() bool {
+	if x != nil && x.IsUnique != nil {
+		return *x.IsUnique
+	}
+	return false
+}
+
+func (x *AttributeMappingRuleListReq) GetPriority() int64 {
+	if x != nil && x.Priority != nil {
+		return *x.Priority
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *AttributeMappingRuleListReq) GetUpdateStrategy() string {
+	if x != nil && x.UpdateStrategy != nil {
+		return *x.UpdateStrategy
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetSuccessCount() int64 {
+	if x != nil && x.SuccessCount != nil {
+		return *x.SuccessCount
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetFailedCount() int64 {
+	if x != nil && x.FailedCount != nil {
+		return *x.FailedCount
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetLastSuccessAt() int64 {
+	if x != nil && x.LastSuccessAt != nil {
+		return *x.LastSuccessAt
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListReq) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *AttributeMappingRuleListReq) GetMetadata() string {
+	if x != nil && x.Metadata != nil {
+		return *x.Metadata
+	}
+	return ""
+}
+
+type AttributeMappingRuleListResp struct {
+	state         protoimpl.MessageState      `protogen:"open.v1"`
+	Total         uint64                      `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
+	Data          []*AttributeMappingRuleInfo `protobuf:"bytes,2,rep,name=data,proto3" json:"data"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AttributeMappingRuleListResp) Reset() {
+	*x = AttributeMappingRuleListResp{}
+	mi := &file_cmdb_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AttributeMappingRuleListResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AttributeMappingRuleListResp) ProtoMessage() {}
+
+func (x *AttributeMappingRuleListResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AttributeMappingRuleListResp.ProtoReflect.Descriptor instead.
+func (*AttributeMappingRuleListResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *AttributeMappingRuleListResp) GetTotal() uint64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *AttributeMappingRuleListResp) GetData() []*AttributeMappingRuleInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 type AttributeOption struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
 	FontOption    *AttributeFontOption    `protobuf:"bytes,1,opt,name=fontOption,proto3,oneof" json:"fontOption"`
@@ -1001,7 +1846,7 @@ type AttributeOption struct {
 
 func (x *AttributeOption) Reset() {
 	*x = AttributeOption{}
-	mi := &file_cmdb_proto_msgTypes[12]
+	mi := &file_cmdb_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1013,7 +1858,7 @@ func (x *AttributeOption) String() string {
 func (*AttributeOption) ProtoMessage() {}
 
 func (x *AttributeOption) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[12]
+	mi := &file_cmdb_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1026,7 +1871,7 @@ func (x *AttributeOption) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeOption.ProtoReflect.Descriptor instead.
 func (*AttributeOption) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{12}
+	return file_cmdb_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *AttributeOption) GetFontOption() *AttributeFontOption {
@@ -1057,7 +1902,7 @@ type AttributeSimple struct {
 
 func (x *AttributeSimple) Reset() {
 	*x = AttributeSimple{}
-	mi := &file_cmdb_proto_msgTypes[13]
+	mi := &file_cmdb_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1069,7 +1914,7 @@ func (x *AttributeSimple) String() string {
 func (*AttributeSimple) ProtoMessage() {}
 
 func (x *AttributeSimple) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[13]
+	mi := &file_cmdb_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1082,7 +1927,7 @@ func (x *AttributeSimple) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeSimple.ProtoReflect.Descriptor instead.
 func (*AttributeSimple) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{13}
+	return file_cmdb_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *AttributeSimple) GetId() uint64 {
@@ -1138,7 +1983,7 @@ type AttributeSimpleListReq struct {
 
 func (x *AttributeSimpleListReq) Reset() {
 	*x = AttributeSimpleListReq{}
-	mi := &file_cmdb_proto_msgTypes[14]
+	mi := &file_cmdb_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1150,7 +1995,7 @@ func (x *AttributeSimpleListReq) String() string {
 func (*AttributeSimpleListReq) ProtoMessage() {}
 
 func (x *AttributeSimpleListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[14]
+	mi := &file_cmdb_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1163,7 +2008,7 @@ func (x *AttributeSimpleListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeSimpleListReq.ProtoReflect.Descriptor instead.
 func (*AttributeSimpleListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{14}
+	return file_cmdb_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *AttributeSimpleListReq) GetExcludeCiType() uint64 {
@@ -1197,7 +2042,7 @@ type AttributeSimpleListResp struct {
 
 func (x *AttributeSimpleListResp) Reset() {
 	*x = AttributeSimpleListResp{}
-	mi := &file_cmdb_proto_msgTypes[15]
+	mi := &file_cmdb_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1209,7 +2054,7 @@ func (x *AttributeSimpleListResp) String() string {
 func (*AttributeSimpleListResp) ProtoMessage() {}
 
 func (x *AttributeSimpleListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[15]
+	mi := &file_cmdb_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1222,7 +2067,7 @@ func (x *AttributeSimpleListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttributeSimpleListResp.ProtoReflect.Descriptor instead.
 func (*AttributeSimpleListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{15}
+	return file_cmdb_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *AttributeSimpleListResp) GetTotal() uint64 {
@@ -1249,7 +2094,7 @@ type BaseIDInt32Resp struct {
 
 func (x *BaseIDInt32Resp) Reset() {
 	*x = BaseIDInt32Resp{}
-	mi := &file_cmdb_proto_msgTypes[16]
+	mi := &file_cmdb_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1261,7 +2106,7 @@ func (x *BaseIDInt32Resp) String() string {
 func (*BaseIDInt32Resp) ProtoMessage() {}
 
 func (x *BaseIDInt32Resp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[16]
+	mi := &file_cmdb_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1274,7 +2119,7 @@ func (x *BaseIDInt32Resp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BaseIDInt32Resp.ProtoReflect.Descriptor instead.
 func (*BaseIDInt32Resp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{16}
+	return file_cmdb_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *BaseIDInt32Resp) GetId() int32 {
@@ -1301,7 +2146,7 @@ type BaseIDInt64Resp struct {
 
 func (x *BaseIDInt64Resp) Reset() {
 	*x = BaseIDInt64Resp{}
-	mi := &file_cmdb_proto_msgTypes[17]
+	mi := &file_cmdb_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1313,7 +2158,7 @@ func (x *BaseIDInt64Resp) String() string {
 func (*BaseIDInt64Resp) ProtoMessage() {}
 
 func (x *BaseIDInt64Resp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[17]
+	mi := &file_cmdb_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1326,7 +2171,7 @@ func (x *BaseIDInt64Resp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BaseIDInt64Resp.ProtoReflect.Descriptor instead.
 func (*BaseIDInt64Resp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{17}
+	return file_cmdb_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *BaseIDInt64Resp) GetId() int64 {
@@ -1353,7 +2198,7 @@ type BaseIDResp struct {
 
 func (x *BaseIDResp) Reset() {
 	*x = BaseIDResp{}
-	mi := &file_cmdb_proto_msgTypes[18]
+	mi := &file_cmdb_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1365,7 +2210,7 @@ func (x *BaseIDResp) String() string {
 func (*BaseIDResp) ProtoMessage() {}
 
 func (x *BaseIDResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[18]
+	mi := &file_cmdb_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1378,7 +2223,7 @@ func (x *BaseIDResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BaseIDResp.ProtoReflect.Descriptor instead.
 func (*BaseIDResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{18}
+	return file_cmdb_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *BaseIDResp) GetId() uint64 {
@@ -1405,7 +2250,7 @@ type BaseIDStringResp struct {
 
 func (x *BaseIDStringResp) Reset() {
 	*x = BaseIDStringResp{}
-	mi := &file_cmdb_proto_msgTypes[19]
+	mi := &file_cmdb_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1417,7 +2262,7 @@ func (x *BaseIDStringResp) String() string {
 func (*BaseIDStringResp) ProtoMessage() {}
 
 func (x *BaseIDStringResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[19]
+	mi := &file_cmdb_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1430,7 +2275,7 @@ func (x *BaseIDStringResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BaseIDStringResp.ProtoReflect.Descriptor instead.
 func (*BaseIDStringResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{19}
+	return file_cmdb_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *BaseIDStringResp) GetId() string {
@@ -1457,7 +2302,7 @@ type BaseIDUint32Resp struct {
 
 func (x *BaseIDUint32Resp) Reset() {
 	*x = BaseIDUint32Resp{}
-	mi := &file_cmdb_proto_msgTypes[20]
+	mi := &file_cmdb_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1469,7 +2314,7 @@ func (x *BaseIDUint32Resp) String() string {
 func (*BaseIDUint32Resp) ProtoMessage() {}
 
 func (x *BaseIDUint32Resp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[20]
+	mi := &file_cmdb_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1482,7 +2327,7 @@ func (x *BaseIDUint32Resp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BaseIDUint32Resp.ProtoReflect.Descriptor instead.
 func (*BaseIDUint32Resp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{20}
+	return file_cmdb_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *BaseIDUint32Resp) GetId() uint32 {
@@ -1508,7 +2353,7 @@ type BaseResp struct {
 
 func (x *BaseResp) Reset() {
 	*x = BaseResp{}
-	mi := &file_cmdb_proto_msgTypes[21]
+	mi := &file_cmdb_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1520,7 +2365,7 @@ func (x *BaseResp) String() string {
 func (*BaseResp) ProtoMessage() {}
 
 func (x *BaseResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[21]
+	mi := &file_cmdb_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1533,7 +2378,7 @@ func (x *BaseResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BaseResp.ProtoReflect.Descriptor instead.
 func (*BaseResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{21}
+	return file_cmdb_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *BaseResp) GetMsg() string {
@@ -1553,7 +2398,7 @@ type BaseUUIDResp struct {
 
 func (x *BaseUUIDResp) Reset() {
 	*x = BaseUUIDResp{}
-	mi := &file_cmdb_proto_msgTypes[22]
+	mi := &file_cmdb_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1565,7 +2410,7 @@ func (x *BaseUUIDResp) String() string {
 func (*BaseUUIDResp) ProtoMessage() {}
 
 func (x *BaseUUIDResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[22]
+	mi := &file_cmdb_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1578,7 +2423,7 @@ func (x *BaseUUIDResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BaseUUIDResp.ProtoReflect.Descriptor instead.
 func (*BaseUUIDResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{22}
+	return file_cmdb_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *BaseUUIDResp) GetId() string {
@@ -1612,7 +2457,7 @@ type ChoiceFloatInfo struct {
 
 func (x *ChoiceFloatInfo) Reset() {
 	*x = ChoiceFloatInfo{}
-	mi := &file_cmdb_proto_msgTypes[23]
+	mi := &file_cmdb_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1624,7 +2469,7 @@ func (x *ChoiceFloatInfo) String() string {
 func (*ChoiceFloatInfo) ProtoMessage() {}
 
 func (x *ChoiceFloatInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[23]
+	mi := &file_cmdb_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1637,7 +2482,7 @@ func (x *ChoiceFloatInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceFloatInfo.ProtoReflect.Descriptor instead.
 func (*ChoiceFloatInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{23}
+	return file_cmdb_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ChoiceFloatInfo) GetId() uint64 {
@@ -1698,7 +2543,7 @@ type ChoiceFloatListReq struct {
 
 func (x *ChoiceFloatListReq) Reset() {
 	*x = ChoiceFloatListReq{}
-	mi := &file_cmdb_proto_msgTypes[24]
+	mi := &file_cmdb_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1710,7 +2555,7 @@ func (x *ChoiceFloatListReq) String() string {
 func (*ChoiceFloatListReq) ProtoMessage() {}
 
 func (x *ChoiceFloatListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[24]
+	mi := &file_cmdb_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1723,7 +2568,7 @@ func (x *ChoiceFloatListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceFloatListReq.ProtoReflect.Descriptor instead.
 func (*ChoiceFloatListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{24}
+	return file_cmdb_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ChoiceFloatListReq) GetPage() uint64 {
@@ -1792,7 +2637,7 @@ type ChoiceFloatListResp struct {
 
 func (x *ChoiceFloatListResp) Reset() {
 	*x = ChoiceFloatListResp{}
-	mi := &file_cmdb_proto_msgTypes[25]
+	mi := &file_cmdb_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1804,7 +2649,7 @@ func (x *ChoiceFloatListResp) String() string {
 func (*ChoiceFloatListResp) ProtoMessage() {}
 
 func (x *ChoiceFloatListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[25]
+	mi := &file_cmdb_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1817,7 +2662,7 @@ func (x *ChoiceFloatListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceFloatListResp.ProtoReflect.Descriptor instead.
 func (*ChoiceFloatListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{25}
+	return file_cmdb_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ChoiceFloatListResp) GetTotal() uint64 {
@@ -1851,7 +2696,7 @@ type ChoiceIntegerInfo struct {
 
 func (x *ChoiceIntegerInfo) Reset() {
 	*x = ChoiceIntegerInfo{}
-	mi := &file_cmdb_proto_msgTypes[26]
+	mi := &file_cmdb_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1863,7 +2708,7 @@ func (x *ChoiceIntegerInfo) String() string {
 func (*ChoiceIntegerInfo) ProtoMessage() {}
 
 func (x *ChoiceIntegerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[26]
+	mi := &file_cmdb_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1876,7 +2721,7 @@ func (x *ChoiceIntegerInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceIntegerInfo.ProtoReflect.Descriptor instead.
 func (*ChoiceIntegerInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{26}
+	return file_cmdb_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *ChoiceIntegerInfo) GetId() uint64 {
@@ -1937,7 +2782,7 @@ type ChoiceIntegerListReq struct {
 
 func (x *ChoiceIntegerListReq) Reset() {
 	*x = ChoiceIntegerListReq{}
-	mi := &file_cmdb_proto_msgTypes[27]
+	mi := &file_cmdb_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1949,7 +2794,7 @@ func (x *ChoiceIntegerListReq) String() string {
 func (*ChoiceIntegerListReq) ProtoMessage() {}
 
 func (x *ChoiceIntegerListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[27]
+	mi := &file_cmdb_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1962,7 +2807,7 @@ func (x *ChoiceIntegerListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceIntegerListReq.ProtoReflect.Descriptor instead.
 func (*ChoiceIntegerListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{27}
+	return file_cmdb_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *ChoiceIntegerListReq) GetPage() uint64 {
@@ -2031,7 +2876,7 @@ type ChoiceIntegerListResp struct {
 
 func (x *ChoiceIntegerListResp) Reset() {
 	*x = ChoiceIntegerListResp{}
-	mi := &file_cmdb_proto_msgTypes[28]
+	mi := &file_cmdb_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2043,7 +2888,7 @@ func (x *ChoiceIntegerListResp) String() string {
 func (*ChoiceIntegerListResp) ProtoMessage() {}
 
 func (x *ChoiceIntegerListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[28]
+	mi := &file_cmdb_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2056,7 +2901,7 @@ func (x *ChoiceIntegerListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceIntegerListResp.ProtoReflect.Descriptor instead.
 func (*ChoiceIntegerListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{28}
+	return file_cmdb_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *ChoiceIntegerListResp) GetTotal() uint64 {
@@ -2090,7 +2935,7 @@ type ChoiceTextInfo struct {
 
 func (x *ChoiceTextInfo) Reset() {
 	*x = ChoiceTextInfo{}
-	mi := &file_cmdb_proto_msgTypes[29]
+	mi := &file_cmdb_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2102,7 +2947,7 @@ func (x *ChoiceTextInfo) String() string {
 func (*ChoiceTextInfo) ProtoMessage() {}
 
 func (x *ChoiceTextInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[29]
+	mi := &file_cmdb_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2115,7 +2960,7 @@ func (x *ChoiceTextInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceTextInfo.ProtoReflect.Descriptor instead.
 func (*ChoiceTextInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{29}
+	return file_cmdb_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ChoiceTextInfo) GetId() uint64 {
@@ -2176,7 +3021,7 @@ type ChoiceTextListReq struct {
 
 func (x *ChoiceTextListReq) Reset() {
 	*x = ChoiceTextListReq{}
-	mi := &file_cmdb_proto_msgTypes[30]
+	mi := &file_cmdb_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2188,7 +3033,7 @@ func (x *ChoiceTextListReq) String() string {
 func (*ChoiceTextListReq) ProtoMessage() {}
 
 func (x *ChoiceTextListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[30]
+	mi := &file_cmdb_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2201,7 +3046,7 @@ func (x *ChoiceTextListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceTextListReq.ProtoReflect.Descriptor instead.
 func (*ChoiceTextListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{30}
+	return file_cmdb_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ChoiceTextListReq) GetPage() uint64 {
@@ -2270,7 +3115,7 @@ type ChoiceTextListResp struct {
 
 func (x *ChoiceTextListResp) Reset() {
 	*x = ChoiceTextListResp{}
-	mi := &file_cmdb_proto_msgTypes[31]
+	mi := &file_cmdb_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2282,7 +3127,7 @@ func (x *ChoiceTextListResp) String() string {
 func (*ChoiceTextListResp) ProtoMessage() {}
 
 func (x *ChoiceTextListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[31]
+	mi := &file_cmdb_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2295,7 +3140,7 @@ func (x *ChoiceTextListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChoiceTextListResp.ProtoReflect.Descriptor instead.
 func (*ChoiceTextListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{31}
+	return file_cmdb_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ChoiceTextListResp) GetTotal() uint64 {
@@ -2325,7 +3170,7 @@ type CiAttributeError struct {
 
 func (x *CiAttributeError) Reset() {
 	*x = CiAttributeError{}
-	mi := &file_cmdb_proto_msgTypes[32]
+	mi := &file_cmdb_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2337,7 +3182,7 @@ func (x *CiAttributeError) String() string {
 func (*CiAttributeError) ProtoMessage() {}
 
 func (x *CiAttributeError) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[32]
+	mi := &file_cmdb_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2350,7 +3195,7 @@ func (x *CiAttributeError) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiAttributeError.ProtoReflect.Descriptor instead.
 func (*CiAttributeError) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{32}
+	return file_cmdb_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *CiAttributeError) GetAttrId() uint64 {
@@ -2404,7 +3249,7 @@ type CiAttributeFilter struct {
 
 func (x *CiAttributeFilter) Reset() {
 	*x = CiAttributeFilter{}
-	mi := &file_cmdb_proto_msgTypes[33]
+	mi := &file_cmdb_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2416,7 +3261,7 @@ func (x *CiAttributeFilter) String() string {
 func (*CiAttributeFilter) ProtoMessage() {}
 
 func (x *CiAttributeFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[33]
+	mi := &file_cmdb_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2429,7 +3274,7 @@ func (x *CiAttributeFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiAttributeFilter.ProtoReflect.Descriptor instead.
 func (*CiAttributeFilter) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{33}
+	return file_cmdb_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *CiAttributeFilter) GetAttrId() uint64 {
@@ -2502,7 +3347,7 @@ type CiAttributeValue struct {
 
 func (x *CiAttributeValue) Reset() {
 	*x = CiAttributeValue{}
-	mi := &file_cmdb_proto_msgTypes[34]
+	mi := &file_cmdb_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2514,7 +3359,7 @@ func (x *CiAttributeValue) String() string {
 func (*CiAttributeValue) ProtoMessage() {}
 
 func (x *CiAttributeValue) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[34]
+	mi := &file_cmdb_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2527,7 +3372,7 @@ func (x *CiAttributeValue) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiAttributeValue.ProtoReflect.Descriptor instead.
 func (*CiAttributeValue) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{34}
+	return file_cmdb_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *CiAttributeValue) GetAttrId() uint64 {
@@ -2585,7 +3430,7 @@ type CiFacetSearch struct {
 
 func (x *CiFacetSearch) Reset() {
 	*x = CiFacetSearch{}
-	mi := &file_cmdb_proto_msgTypes[35]
+	mi := &file_cmdb_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2597,7 +3442,7 @@ func (x *CiFacetSearch) String() string {
 func (*CiFacetSearch) ProtoMessage() {}
 
 func (x *CiFacetSearch) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[35]
+	mi := &file_cmdb_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2610,7 +3455,7 @@ func (x *CiFacetSearch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiFacetSearch.ProtoReflect.Descriptor instead.
 func (*CiFacetSearch) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{35}
+	return file_cmdb_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CiFacetSearch) GetFields() []string {
@@ -2642,7 +3487,7 @@ type CiFilterGroup struct {
 
 func (x *CiFilterGroup) Reset() {
 	*x = CiFilterGroup{}
-	mi := &file_cmdb_proto_msgTypes[36]
+	mi := &file_cmdb_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2654,7 +3499,7 @@ func (x *CiFilterGroup) String() string {
 func (*CiFilterGroup) ProtoMessage() {}
 
 func (x *CiFilterGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[36]
+	mi := &file_cmdb_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2667,7 +3512,7 @@ func (x *CiFilterGroup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiFilterGroup.ProtoReflect.Descriptor instead.
 func (*CiFilterGroup) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{36}
+	return file_cmdb_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *CiFilterGroup) GetLogic() string {
@@ -2706,7 +3551,7 @@ type CiInheritanceSearch struct {
 
 func (x *CiInheritanceSearch) Reset() {
 	*x = CiInheritanceSearch{}
-	mi := &file_cmdb_proto_msgTypes[37]
+	mi := &file_cmdb_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2718,7 +3563,7 @@ func (x *CiInheritanceSearch) String() string {
 func (*CiInheritanceSearch) ProtoMessage() {}
 
 func (x *CiInheritanceSearch) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[37]
+	mi := &file_cmdb_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2731,7 +3576,7 @@ func (x *CiInheritanceSearch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiInheritanceSearch.ProtoReflect.Descriptor instead.
 func (*CiInheritanceSearch) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{37}
+	return file_cmdb_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *CiInheritanceSearch) GetIncludeChildren() bool {
@@ -2770,7 +3615,7 @@ type CiMetadataFilter struct {
 
 func (x *CiMetadataFilter) Reset() {
 	*x = CiMetadataFilter{}
-	mi := &file_cmdb_proto_msgTypes[38]
+	mi := &file_cmdb_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2782,7 +3627,7 @@ func (x *CiMetadataFilter) String() string {
 func (*CiMetadataFilter) ProtoMessage() {}
 
 func (x *CiMetadataFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[38]
+	mi := &file_cmdb_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2795,7 +3640,7 @@ func (x *CiMetadataFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiMetadataFilter.ProtoReflect.Descriptor instead.
 func (*CiMetadataFilter) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{38}
+	return file_cmdb_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *CiMetadataFilter) GetPath() string {
@@ -2830,7 +3675,7 @@ type CiPermissionAllowedValues struct {
 
 func (x *CiPermissionAllowedValues) Reset() {
 	*x = CiPermissionAllowedValues{}
-	mi := &file_cmdb_proto_msgTypes[39]
+	mi := &file_cmdb_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2842,7 +3687,7 @@ func (x *CiPermissionAllowedValues) String() string {
 func (*CiPermissionAllowedValues) ProtoMessage() {}
 
 func (x *CiPermissionAllowedValues) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[39]
+	mi := &file_cmdb_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2855,7 +3700,7 @@ func (x *CiPermissionAllowedValues) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionAllowedValues.ProtoReflect.Descriptor instead.
 func (*CiPermissionAllowedValues) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{39}
+	return file_cmdb_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *CiPermissionAllowedValues) GetFieldValues() map[string]string {
@@ -2878,7 +3723,7 @@ type CiPermissionConditions struct {
 
 func (x *CiPermissionConditions) Reset() {
 	*x = CiPermissionConditions{}
-	mi := &file_cmdb_proto_msgTypes[40]
+	mi := &file_cmdb_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2890,7 +3735,7 @@ func (x *CiPermissionConditions) String() string {
 func (*CiPermissionConditions) ProtoMessage() {}
 
 func (x *CiPermissionConditions) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[40]
+	mi := &file_cmdb_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2903,7 +3748,7 @@ func (x *CiPermissionConditions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionConditions.ProtoReflect.Descriptor instead.
 func (*CiPermissionConditions) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{40}
+	return file_cmdb_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *CiPermissionConditions) GetField() string {
@@ -2945,7 +3790,7 @@ type CiPermissionDataFilters struct {
 
 func (x *CiPermissionDataFilters) Reset() {
 	*x = CiPermissionDataFilters{}
-	mi := &file_cmdb_proto_msgTypes[41]
+	mi := &file_cmdb_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2957,7 +3802,7 @@ func (x *CiPermissionDataFilters) String() string {
 func (*CiPermissionDataFilters) ProtoMessage() {}
 
 func (x *CiPermissionDataFilters) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[41]
+	mi := &file_cmdb_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2970,7 +3815,7 @@ func (x *CiPermissionDataFilters) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionDataFilters.ProtoReflect.Descriptor instead.
 func (*CiPermissionDataFilters) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{41}
+	return file_cmdb_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *CiPermissionDataFilters) GetRules() []*CiPermissionFilterRule {
@@ -2997,7 +3842,7 @@ type CiPermissionFieldMasks struct {
 
 func (x *CiPermissionFieldMasks) Reset() {
 	*x = CiPermissionFieldMasks{}
-	mi := &file_cmdb_proto_msgTypes[42]
+	mi := &file_cmdb_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3009,7 +3854,7 @@ func (x *CiPermissionFieldMasks) String() string {
 func (*CiPermissionFieldMasks) ProtoMessage() {}
 
 func (x *CiPermissionFieldMasks) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[42]
+	mi := &file_cmdb_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3022,7 +3867,7 @@ func (x *CiPermissionFieldMasks) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionFieldMasks.ProtoReflect.Descriptor instead.
 func (*CiPermissionFieldMasks) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{42}
+	return file_cmdb_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *CiPermissionFieldMasks) GetFields() []string {
@@ -3044,7 +3889,7 @@ type CiPermissionFilterRule struct {
 
 func (x *CiPermissionFilterRule) Reset() {
 	*x = CiPermissionFilterRule{}
-	mi := &file_cmdb_proto_msgTypes[43]
+	mi := &file_cmdb_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3056,7 +3901,7 @@ func (x *CiPermissionFilterRule) String() string {
 func (*CiPermissionFilterRule) ProtoMessage() {}
 
 func (x *CiPermissionFilterRule) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[43]
+	mi := &file_cmdb_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3069,7 +3914,7 @@ func (x *CiPermissionFilterRule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionFilterRule.ProtoReflect.Descriptor instead.
 func (*CiPermissionFilterRule) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{43}
+	return file_cmdb_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *CiPermissionFilterRule) GetField() string {
@@ -3196,7 +4041,7 @@ type CiPermissionInfo struct {
 
 func (x *CiPermissionInfo) Reset() {
 	*x = CiPermissionInfo{}
-	mi := &file_cmdb_proto_msgTypes[44]
+	mi := &file_cmdb_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3208,7 +4053,7 @@ func (x *CiPermissionInfo) String() string {
 func (*CiPermissionInfo) ProtoMessage() {}
 
 func (x *CiPermissionInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[44]
+	mi := &file_cmdb_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3221,7 +4066,7 @@ func (x *CiPermissionInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionInfo.ProtoReflect.Descriptor instead.
 func (*CiPermissionInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{44}
+	return file_cmdb_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *CiPermissionInfo) GetId() uint64 {
@@ -3577,7 +4422,7 @@ type CiPermissionInheritedFrom struct {
 
 func (x *CiPermissionInheritedFrom) Reset() {
 	*x = CiPermissionInheritedFrom{}
-	mi := &file_cmdb_proto_msgTypes[45]
+	mi := &file_cmdb_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3589,7 +4434,7 @@ func (x *CiPermissionInheritedFrom) String() string {
 func (*CiPermissionInheritedFrom) ProtoMessage() {}
 
 func (x *CiPermissionInheritedFrom) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[45]
+	mi := &file_cmdb_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3602,7 +4447,7 @@ func (x *CiPermissionInheritedFrom) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionInheritedFrom.ProtoReflect.Descriptor instead.
 func (*CiPermissionInheritedFrom) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{45}
+	return file_cmdb_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *CiPermissionInheritedFrom) GetPermissionIds() []string {
@@ -3670,7 +4515,7 @@ type CiPermissionListReq struct {
 
 func (x *CiPermissionListReq) Reset() {
 	*x = CiPermissionListReq{}
-	mi := &file_cmdb_proto_msgTypes[46]
+	mi := &file_cmdb_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3682,7 +4527,7 @@ func (x *CiPermissionListReq) String() string {
 func (*CiPermissionListReq) ProtoMessage() {}
 
 func (x *CiPermissionListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[46]
+	mi := &file_cmdb_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3695,7 +4540,7 @@ func (x *CiPermissionListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionListReq.ProtoReflect.Descriptor instead.
 func (*CiPermissionListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{46}
+	return file_cmdb_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *CiPermissionListReq) GetPage() uint64 {
@@ -4058,7 +4903,7 @@ type CiPermissionListResp struct {
 
 func (x *CiPermissionListResp) Reset() {
 	*x = CiPermissionListResp{}
-	mi := &file_cmdb_proto_msgTypes[47]
+	mi := &file_cmdb_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4070,7 +4915,7 @@ func (x *CiPermissionListResp) String() string {
 func (*CiPermissionListResp) ProtoMessage() {}
 
 func (x *CiPermissionListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[47]
+	mi := &file_cmdb_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4083,7 +4928,7 @@ func (x *CiPermissionListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionListResp.ProtoReflect.Descriptor instead.
 func (*CiPermissionListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{47}
+	return file_cmdb_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *CiPermissionListResp) GetTotal() uint64 {
@@ -4114,7 +4959,7 @@ type CiPermissionMetadata struct {
 
 func (x *CiPermissionMetadata) Reset() {
 	*x = CiPermissionMetadata{}
-	mi := &file_cmdb_proto_msgTypes[48]
+	mi := &file_cmdb_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4126,7 +4971,7 @@ func (x *CiPermissionMetadata) String() string {
 func (*CiPermissionMetadata) ProtoMessage() {}
 
 func (x *CiPermissionMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[48]
+	mi := &file_cmdb_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4139,7 +4984,7 @@ func (x *CiPermissionMetadata) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionMetadata.ProtoReflect.Descriptor instead.
 func (*CiPermissionMetadata) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{48}
+	return file_cmdb_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *CiPermissionMetadata) GetBusinessOwner() string {
@@ -4188,7 +5033,7 @@ type CiPermissionOperation struct {
 
 func (x *CiPermissionOperation) Reset() {
 	*x = CiPermissionOperation{}
-	mi := &file_cmdb_proto_msgTypes[49]
+	mi := &file_cmdb_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4200,7 +5045,7 @@ func (x *CiPermissionOperation) String() string {
 func (*CiPermissionOperation) ProtoMessage() {}
 
 func (x *CiPermissionOperation) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[49]
+	mi := &file_cmdb_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4213,7 +5058,7 @@ func (x *CiPermissionOperation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionOperation.ProtoReflect.Descriptor instead.
 func (*CiPermissionOperation) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{49}
+	return file_cmdb_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *CiPermissionOperation) GetOperation() string {
@@ -4239,7 +5084,7 @@ type CiPermissionOperations struct {
 
 func (x *CiPermissionOperations) Reset() {
 	*x = CiPermissionOperations{}
-	mi := &file_cmdb_proto_msgTypes[50]
+	mi := &file_cmdb_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4251,7 +5096,7 @@ func (x *CiPermissionOperations) String() string {
 func (*CiPermissionOperations) ProtoMessage() {}
 
 func (x *CiPermissionOperations) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[50]
+	mi := &file_cmdb_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4264,7 +5109,7 @@ func (x *CiPermissionOperations) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionOperations.ProtoReflect.Descriptor instead.
 func (*CiPermissionOperations) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{50}
+	return file_cmdb_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *CiPermissionOperations) GetOperations() []*CiPermissionOperation {
@@ -4272,6 +5117,110 @@ func (x *CiPermissionOperations) GetOperations() []*CiPermissionOperation {
 		return x.Operations
 	}
 	return nil
+}
+
+type CiPermissionReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	CiTypeId      uint64                 `protobuf:"varint,2,opt,name=ci_type_id,json=ciTypeId,proto3" json:"ci_type_id"`
+	Action        string                 `protobuf:"bytes,3,opt,name=action,proto3" json:"action"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiPermissionReq) Reset() {
+	*x = CiPermissionReq{}
+	mi := &file_cmdb_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiPermissionReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiPermissionReq) ProtoMessage() {}
+
+func (x *CiPermissionReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiPermissionReq.ProtoReflect.Descriptor instead.
+func (*CiPermissionReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *CiPermissionReq) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *CiPermissionReq) GetCiTypeId() uint64 {
+	if x != nil {
+		return x.CiTypeId
+	}
+	return 0
+}
+
+func (x *CiPermissionReq) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+type CiPermissionResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	HasPermission bool                   `protobuf:"varint,1,opt,name=has_permission,json=hasPermission,proto3" json:"has_permission"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiPermissionResp) Reset() {
+	*x = CiPermissionResp{}
+	mi := &file_cmdb_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiPermissionResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiPermissionResp) ProtoMessage() {}
+
+func (x *CiPermissionResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiPermissionResp.ProtoReflect.Descriptor instead.
+func (*CiPermissionResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{59}
+}
+
+func (x *CiPermissionResp) GetHasPermission() bool {
+	if x != nil {
+		return x.HasPermission
+	}
+	return false
 }
 
 // 安全约束条件结构
@@ -4288,7 +5237,7 @@ type CiPermissionSecurityConstraints struct {
 
 func (x *CiPermissionSecurityConstraints) Reset() {
 	*x = CiPermissionSecurityConstraints{}
-	mi := &file_cmdb_proto_msgTypes[51]
+	mi := &file_cmdb_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4300,7 +5249,7 @@ func (x *CiPermissionSecurityConstraints) String() string {
 func (*CiPermissionSecurityConstraints) ProtoMessage() {}
 
 func (x *CiPermissionSecurityConstraints) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[51]
+	mi := &file_cmdb_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4313,7 +5262,7 @@ func (x *CiPermissionSecurityConstraints) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionSecurityConstraints.ProtoReflect.Descriptor instead.
 func (*CiPermissionSecurityConstraints) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{51}
+	return file_cmdb_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *CiPermissionSecurityConstraints) GetRequireVpn() bool {
@@ -4362,7 +5311,7 @@ type CiPermissionTag struct {
 
 func (x *CiPermissionTag) Reset() {
 	*x = CiPermissionTag{}
-	mi := &file_cmdb_proto_msgTypes[52]
+	mi := &file_cmdb_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4374,7 +5323,7 @@ func (x *CiPermissionTag) String() string {
 func (*CiPermissionTag) ProtoMessage() {}
 
 func (x *CiPermissionTag) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[52]
+	mi := &file_cmdb_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4387,7 +5336,7 @@ func (x *CiPermissionTag) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionTag.ProtoReflect.Descriptor instead.
 func (*CiPermissionTag) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{52}
+	return file_cmdb_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *CiPermissionTag) GetKey() string {
@@ -4417,7 +5366,7 @@ type CiPermissionUsageStatistics struct {
 
 func (x *CiPermissionUsageStatistics) Reset() {
 	*x = CiPermissionUsageStatistics{}
-	mi := &file_cmdb_proto_msgTypes[53]
+	mi := &file_cmdb_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4429,7 +5378,7 @@ func (x *CiPermissionUsageStatistics) String() string {
 func (*CiPermissionUsageStatistics) ProtoMessage() {}
 
 func (x *CiPermissionUsageStatistics) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[53]
+	mi := &file_cmdb_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4442,7 +5391,7 @@ func (x *CiPermissionUsageStatistics) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiPermissionUsageStatistics.ProtoReflect.Descriptor instead.
 func (*CiPermissionUsageStatistics) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{53}
+	return file_cmdb_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *CiPermissionUsageStatistics) GetDailyUsage() map[string]int64 {
@@ -4473,6 +5422,297 @@ func (x *CiPermissionUsageStatistics) GetTopOperations() []*OperationStat {
 	return nil
 }
 
+// CiRelationBatchQueryReq CI实例关系批量查询请求
+type CiRelationBatchQueryReq struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// CI ID列表，批量查询这些CI的关系
+	CiIds []uint64 `protobuf:"varint,1,rep,packed,name=ci_ids,json=ciIds,proto3" json:"ci_ids"`
+	// 关系方向：source(作为源), target(作为目标), both(双向)，默认both
+	Direction *string `protobuf:"bytes,2,opt,name=direction,proto3,oneof" json:"direction"`
+	// 关系类型ID过滤
+	RelationTypeIds []uint64 `protobuf:"varint,3,rep,packed,name=relation_type_ids,json=relationTypeIds,proto3" json:"relation_type_ids"`
+	// 是否包含属性映射数据
+	IncludeAttributeMappings *bool `protobuf:"varint,4,opt,name=include_attribute_mappings,json=includeAttributeMappings,proto3,oneof" json:"include_attribute_mappings"`
+	// 是否只查询激活状态的关系
+	ActiveOnly *bool `protobuf:"varint,5,opt,name=active_only,json=activeOnly,proto3,oneof" json:"active_only"`
+	// 关系状态过滤：active, inactive, suspended
+	StatusFilter []string `protobuf:"bytes,6,rep,name=status_filter,json=statusFilter,proto3" json:"status_filter"`
+	// 发现来源过滤：manual, auto_discovery, import
+	DiscoverySourceFilter []string `protobuf:"bytes,7,rep,name=discovery_source_filter,json=discoverySourceFilter,proto3" json:"discovery_source_filter"`
+	// 深度限制，用于关系链追踪（默认1层）
+	DepthLimit    *int32 `protobuf:"varint,8,opt,name=depth_limit,json=depthLimit,proto3,oneof" json:"depth_limit"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiRelationBatchQueryReq) Reset() {
+	*x = CiRelationBatchQueryReq{}
+	mi := &file_cmdb_proto_msgTypes[63]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiRelationBatchQueryReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiRelationBatchQueryReq) ProtoMessage() {}
+
+func (x *CiRelationBatchQueryReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[63]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiRelationBatchQueryReq.ProtoReflect.Descriptor instead.
+func (*CiRelationBatchQueryReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *CiRelationBatchQueryReq) GetCiIds() []uint64 {
+	if x != nil {
+		return x.CiIds
+	}
+	return nil
+}
+
+func (x *CiRelationBatchQueryReq) GetDirection() string {
+	if x != nil && x.Direction != nil {
+		return *x.Direction
+	}
+	return ""
+}
+
+func (x *CiRelationBatchQueryReq) GetRelationTypeIds() []uint64 {
+	if x != nil {
+		return x.RelationTypeIds
+	}
+	return nil
+}
+
+func (x *CiRelationBatchQueryReq) GetIncludeAttributeMappings() bool {
+	if x != nil && x.IncludeAttributeMappings != nil {
+		return *x.IncludeAttributeMappings
+	}
+	return false
+}
+
+func (x *CiRelationBatchQueryReq) GetActiveOnly() bool {
+	if x != nil && x.ActiveOnly != nil {
+		return *x.ActiveOnly
+	}
+	return false
+}
+
+func (x *CiRelationBatchQueryReq) GetStatusFilter() []string {
+	if x != nil {
+		return x.StatusFilter
+	}
+	return nil
+}
+
+func (x *CiRelationBatchQueryReq) GetDiscoverySourceFilter() []string {
+	if x != nil {
+		return x.DiscoverySourceFilter
+	}
+	return nil
+}
+
+func (x *CiRelationBatchQueryReq) GetDepthLimit() int32 {
+	if x != nil && x.DepthLimit != nil {
+		return *x.DepthLimit
+	}
+	return 0
+}
+
+// CiRelationBatchQueryResp CI实例关系批量查询响应
+type CiRelationBatchQueryResp struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 深度限制，用于关系链追踪（默认1层）
+	RelationsByCi map[uint64]*CiRelationGroup `protobuf:"bytes,1,rep,name=relations_by_ci,json=relationsByCi,proto3" json:"relations_by_ci" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// 总关系数量
+	TotalRelations uint64 `protobuf:"varint,2,opt,name=total_relations,json=totalRelations,proto3" json:"total_relations"`
+	// 查询的CI总数
+	TotalCis      uint64 `protobuf:"varint,3,opt,name=total_cis,json=totalCis,proto3" json:"total_cis"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiRelationBatchQueryResp) Reset() {
+	*x = CiRelationBatchQueryResp{}
+	mi := &file_cmdb_proto_msgTypes[64]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiRelationBatchQueryResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiRelationBatchQueryResp) ProtoMessage() {}
+
+func (x *CiRelationBatchQueryResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[64]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiRelationBatchQueryResp.ProtoReflect.Descriptor instead.
+func (*CiRelationBatchQueryResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *CiRelationBatchQueryResp) GetRelationsByCi() map[uint64]*CiRelationGroup {
+	if x != nil {
+		return x.RelationsByCi
+	}
+	return nil
+}
+
+func (x *CiRelationBatchQueryResp) GetTotalRelations() uint64 {
+	if x != nil {
+		return x.TotalRelations
+	}
+	return 0
+}
+
+func (x *CiRelationBatchQueryResp) GetTotalCis() uint64 {
+	if x != nil {
+		return x.TotalCis
+	}
+	return 0
+}
+
+// 创建关系信息
+type CiRelationCreateInfo struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 目标CI ID
+	TargetCiId uint64 `protobuf:"varint,1,opt,name=target_ci_id,json=targetCiId,proto3" json:"target_ci_id"`
+	// 关系类型ID
+	RelationTypeId uint64 `protobuf:"varint,2,opt,name=relation_type_id,json=relationTypeId,proto3" json:"relation_type_id"`
+	// 关系方向：source_to_target, target_to_source
+	Direction string `protobuf:"bytes,3,opt,name=direction,proto3" json:"direction"`
+	// 更多CI ID（可选）
+	MoreCiId *uint64 `protobuf:"varint,4,opt,name=more_ci_id,json=moreCiId,proto3,oneof" json:"more_ci_id"`
+	// 发现来源
+	DiscoverySource *string `protobuf:"bytes,5,opt,name=discovery_source,json=discoverySource,proto3,oneof" json:"discovery_source"`
+	// 关系属性
+	Properties *string `protobuf:"bytes,6,opt,name=properties,proto3,oneof" json:"properties"`
+	// 属性映射数据
+	AttributeMappings []*AttributeMappingData `protobuf:"bytes,7,rep,name=attribute_mappings,json=attributeMappings,proto3" json:"attribute_mappings"`
+	// 关系状态
+	Status *string `protobuf:"bytes,8,opt,name=status,proto3,oneof" json:"status"`
+	// 关系强度
+	RelationStrength *string `protobuf:"bytes,9,opt,name=relation_strength,json=relationStrength,proto3,oneof" json:"relation_strength"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *CiRelationCreateInfo) Reset() {
+	*x = CiRelationCreateInfo{}
+	mi := &file_cmdb_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiRelationCreateInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiRelationCreateInfo) ProtoMessage() {}
+
+func (x *CiRelationCreateInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiRelationCreateInfo.ProtoReflect.Descriptor instead.
+func (*CiRelationCreateInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *CiRelationCreateInfo) GetTargetCiId() uint64 {
+	if x != nil {
+		return x.TargetCiId
+	}
+	return 0
+}
+
+func (x *CiRelationCreateInfo) GetRelationTypeId() uint64 {
+	if x != nil {
+		return x.RelationTypeId
+	}
+	return 0
+}
+
+func (x *CiRelationCreateInfo) GetDirection() string {
+	if x != nil {
+		return x.Direction
+	}
+	return ""
+}
+
+func (x *CiRelationCreateInfo) GetMoreCiId() uint64 {
+	if x != nil && x.MoreCiId != nil {
+		return *x.MoreCiId
+	}
+	return 0
+}
+
+func (x *CiRelationCreateInfo) GetDiscoverySource() string {
+	if x != nil && x.DiscoverySource != nil {
+		return *x.DiscoverySource
+	}
+	return ""
+}
+
+func (x *CiRelationCreateInfo) GetProperties() string {
+	if x != nil && x.Properties != nil {
+		return *x.Properties
+	}
+	return ""
+}
+
+func (x *CiRelationCreateInfo) GetAttributeMappings() []*AttributeMappingData {
+	if x != nil {
+		return x.AttributeMappings
+	}
+	return nil
+}
+
+func (x *CiRelationCreateInfo) GetStatus() string {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return ""
+}
+
+func (x *CiRelationCreateInfo) GetRelationStrength() string {
+	if x != nil && x.RelationStrength != nil {
+		return *x.RelationStrength
+	}
+	return ""
+}
+
 // 关系过滤条件
 type CiRelationFilter struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -4494,7 +5734,7 @@ type CiRelationFilter struct {
 
 func (x *CiRelationFilter) Reset() {
 	*x = CiRelationFilter{}
-	mi := &file_cmdb_proto_msgTypes[54]
+	mi := &file_cmdb_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4506,7 +5746,7 @@ func (x *CiRelationFilter) String() string {
 func (*CiRelationFilter) ProtoMessage() {}
 
 func (x *CiRelationFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[54]
+	mi := &file_cmdb_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4519,7 +5759,7 @@ func (x *CiRelationFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiRelationFilter.ProtoReflect.Descriptor instead.
 func (*CiRelationFilter) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{54}
+	return file_cmdb_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *CiRelationFilter) GetRelationType() string {
@@ -4564,30 +5804,119 @@ func (x *CiRelationFilter) GetIncludeIndirect() bool {
 	return false
 }
 
+// CiRelationGroup 单个CI的关系分组
+type CiRelationGroup struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// CI ID
+	CiId uint64 `protobuf:"varint,1,opt,name=ci_id,json=ciId,proto3" json:"ci_id"`
+	// 作为源CI的关系
+	SourceRelations []*CiRelationInfo `protobuf:"bytes,2,rep,name=source_relations,json=sourceRelations,proto3" json:"source_relations"`
+	// 作为目标CI的关系
+	TargetRelations []*CiRelationInfo `protobuf:"bytes,3,rep,name=target_relations,json=targetRelations,proto3" json:"target_relations"`
+	// 关系总数
+	TotalCount    uint64 `protobuf:"varint,4,opt,name=total_count,json=totalCount,proto3" json:"total_count"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiRelationGroup) Reset() {
+	*x = CiRelationGroup{}
+	mi := &file_cmdb_proto_msgTypes[67]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiRelationGroup) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiRelationGroup) ProtoMessage() {}
+
+func (x *CiRelationGroup) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[67]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiRelationGroup.ProtoReflect.Descriptor instead.
+func (*CiRelationGroup) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{67}
+}
+
+func (x *CiRelationGroup) GetCiId() uint64 {
+	if x != nil {
+		return x.CiId
+	}
+	return 0
+}
+
+func (x *CiRelationGroup) GetSourceRelations() []*CiRelationInfo {
+	if x != nil {
+		return x.SourceRelations
+	}
+	return nil
+}
+
+func (x *CiRelationGroup) GetTargetRelations() []*CiRelationInfo {
+	if x != nil {
+		return x.TargetRelations
+	}
+	return nil
+}
+
+func (x *CiRelationGroup) GetTotalCount() uint64 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
 type CiRelationInfo struct {
 	state     protoimpl.MessageState `protogen:"open.v1"`
 	Id        *uint64                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id"`
 	CreatedAt *int64                 `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
 	UpdatedAt *int64                 `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
-	// 外键，关联cmdb_cis.id，第一CI
-	FirstCiId *uint64 `protobuf:"varint,4,opt,name=first_ci_id,json=firstCiId,proto3,oneof" json:"first_ci_id"`
-	// 外键，关联cmdb_cis.id，第二CI
-	SecondCiId *uint64 `protobuf:"varint,5,opt,name=second_ci_id,json=secondCiId,proto3,oneof" json:"second_ci_id"`
+	// 外键，关联cmdb_cis.id，源CI
+	SourceCiId *uint64 `protobuf:"varint,4,opt,name=source_ci_id,json=sourceCiId,proto3,oneof" json:"source_ci_id"`
+	// 外键，关联cmdb_cis.id，目标CI
+	TargetCiId *uint64 `protobuf:"varint,5,opt,name=target_ci_id,json=targetCiId,proto3,oneof" json:"target_ci_id"`
 	// 外键，关联cmdb_relation_types.id
 	RelationTypeId *uint64 `protobuf:"varint,6,opt,name=relation_type_id,json=relationTypeId,proto3,oneof" json:"relation_type_id"`
 	// 更多CI，外键，关联cmdb_cis.id
 	More *uint64 `protobuf:"varint,7,opt,name=more,proto3,oneof" json:"more"`
-	// 来源，枚举类
-	Source *string `protobuf:"bytes,8,opt,name=source,proto3,oneof" json:"source"`
-	// 祖先ID
-	AncestorIds   *string `protobuf:"bytes,9,opt,name=ancestor_ids,json=ancestorIds,proto3,oneof" json:"ancestor_ids"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	// 发现来源：manual, auto_discovery, import
+	DiscoverySource *string `protobuf:"bytes,8,opt,name=discovery_source,json=discoverySource,proto3,oneof" json:"discovery_source"`
+	// 祖先关系ID链，用于关系路径追踪
+	AncestorIds *string `protobuf:"bytes,9,opt,name=ancestor_ids,json=ancestorIds,proto3,oneof" json:"ancestor_ids"`
+	// 关系属性，扩展关系的自定义信息
+	Properties *string `protobuf:"bytes,10,opt,name=properties,proto3,oneof" json:"properties"`
+	// 扩展字段：支持属性映射和关系状态管理
+	AttributeMappings []*AttributeMappingData `protobuf:"bytes,11,rep,name=attribute_mappings,json=attributeMappings,proto3" json:"attribute_mappings"`
+	// 关系状态：active, inactive, suspended
+	Status *string `protobuf:"bytes,12,opt,name=status,proto3,oneof" json:"status"`
+	// 关系验证结果
+	ValidationResult *ValidationResult `protobuf:"bytes,13,opt,name=validation_result,json=validationResult,proto3,oneof" json:"validation_result"`
+	// 最后验证时间
+	LastValidatedAt *int64 `protobuf:"varint,14,opt,name=last_validated_at,json=lastValidatedAt,proto3,oneof" json:"last_validated_at"`
+	// 是否启用属性自动同步
+	AutoSyncEnabled *bool `protobuf:"varint,15,opt,name=auto_sync_enabled,json=autoSyncEnabled,proto3,oneof" json:"auto_sync_enabled"`
+	// 同步配置
+	SyncConfig *SyncConfig `protobuf:"bytes,16,opt,name=sync_config,json=syncConfig,proto3,oneof" json:"sync_config"`
+	// 关系强度：weak, normal, strong
+	RelationStrength *string `protobuf:"bytes,17,opt,name=relation_strength,json=relationStrength,proto3,oneof" json:"relation_strength"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *CiRelationInfo) Reset() {
 	*x = CiRelationInfo{}
-	mi := &file_cmdb_proto_msgTypes[55]
+	mi := &file_cmdb_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4599,7 +5928,7 @@ func (x *CiRelationInfo) String() string {
 func (*CiRelationInfo) ProtoMessage() {}
 
 func (x *CiRelationInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[55]
+	mi := &file_cmdb_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4612,7 +5941,7 @@ func (x *CiRelationInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiRelationInfo.ProtoReflect.Descriptor instead.
 func (*CiRelationInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{55}
+	return file_cmdb_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *CiRelationInfo) GetId() uint64 {
@@ -4636,16 +5965,16 @@ func (x *CiRelationInfo) GetUpdatedAt() int64 {
 	return 0
 }
 
-func (x *CiRelationInfo) GetFirstCiId() uint64 {
-	if x != nil && x.FirstCiId != nil {
-		return *x.FirstCiId
+func (x *CiRelationInfo) GetSourceCiId() uint64 {
+	if x != nil && x.SourceCiId != nil {
+		return *x.SourceCiId
 	}
 	return 0
 }
 
-func (x *CiRelationInfo) GetSecondCiId() uint64 {
-	if x != nil && x.SecondCiId != nil {
-		return *x.SecondCiId
+func (x *CiRelationInfo) GetTargetCiId() uint64 {
+	if x != nil && x.TargetCiId != nil {
+		return *x.TargetCiId
 	}
 	return 0
 }
@@ -4664,9 +5993,9 @@ func (x *CiRelationInfo) GetMore() uint64 {
 	return 0
 }
 
-func (x *CiRelationInfo) GetSource() string {
-	if x != nil && x.Source != nil {
-		return *x.Source
+func (x *CiRelationInfo) GetDiscoverySource() string {
+	if x != nil && x.DiscoverySource != nil {
+		return *x.DiscoverySource
 	}
 	return ""
 }
@@ -4678,26 +6007,82 @@ func (x *CiRelationInfo) GetAncestorIds() string {
 	return ""
 }
 
+func (x *CiRelationInfo) GetProperties() string {
+	if x != nil && x.Properties != nil {
+		return *x.Properties
+	}
+	return ""
+}
+
+func (x *CiRelationInfo) GetAttributeMappings() []*AttributeMappingData {
+	if x != nil {
+		return x.AttributeMappings
+	}
+	return nil
+}
+
+func (x *CiRelationInfo) GetStatus() string {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return ""
+}
+
+func (x *CiRelationInfo) GetValidationResult() *ValidationResult {
+	if x != nil {
+		return x.ValidationResult
+	}
+	return nil
+}
+
+func (x *CiRelationInfo) GetLastValidatedAt() int64 {
+	if x != nil && x.LastValidatedAt != nil {
+		return *x.LastValidatedAt
+	}
+	return 0
+}
+
+func (x *CiRelationInfo) GetAutoSyncEnabled() bool {
+	if x != nil && x.AutoSyncEnabled != nil {
+		return *x.AutoSyncEnabled
+	}
+	return false
+}
+
+func (x *CiRelationInfo) GetSyncConfig() *SyncConfig {
+	if x != nil {
+		return x.SyncConfig
+	}
+	return nil
+}
+
+func (x *CiRelationInfo) GetRelationStrength() string {
+	if x != nil && x.RelationStrength != nil {
+		return *x.RelationStrength
+	}
+	return ""
+}
+
 type CiRelationListReq struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Page           uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
-	PageSize       uint64                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
-	CreatedAt      *int64                 `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
-	UpdatedAt      *int64                 `protobuf:"varint,4,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
-	DeletedAt      *int64                 `protobuf:"varint,5,opt,name=deleted_at,json=deletedAt,proto3,oneof" json:"deleted_at"`
-	FirstCiId      *uint64                `protobuf:"varint,6,opt,name=first_ci_id,json=firstCiId,proto3,oneof" json:"first_ci_id"`
-	SecondCiId     *uint64                `protobuf:"varint,7,opt,name=second_ci_id,json=secondCiId,proto3,oneof" json:"second_ci_id"`
-	RelationTypeId *uint64                `protobuf:"varint,8,opt,name=relation_type_id,json=relationTypeId,proto3,oneof" json:"relation_type_id"`
-	More           *uint64                `protobuf:"varint,9,opt,name=more,proto3,oneof" json:"more"`
-	Source         *string                `protobuf:"bytes,10,opt,name=source,proto3,oneof" json:"source"`
-	AncestorIds    *string                `protobuf:"bytes,11,opt,name=ancestor_ids,json=ancestorIds,proto3,oneof" json:"ancestor_ids"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Page            uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
+	PageSize        uint64                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	CreatedAt       *int64                 `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
+	UpdatedAt       *int64                 `protobuf:"varint,4,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
+	DeletedAt       *int64                 `protobuf:"varint,5,opt,name=deleted_at,json=deletedAt,proto3,oneof" json:"deleted_at"`
+	SourceCiId      *uint64                `protobuf:"varint,6,opt,name=source_ci_id,json=sourceCiId,proto3,oneof" json:"source_ci_id"`
+	TargetCiId      *uint64                `protobuf:"varint,7,opt,name=target_ci_id,json=targetCiId,proto3,oneof" json:"target_ci_id"`
+	RelationTypeId  *uint64                `protobuf:"varint,8,opt,name=relation_type_id,json=relationTypeId,proto3,oneof" json:"relation_type_id"`
+	More            *uint64                `protobuf:"varint,9,opt,name=more,proto3,oneof" json:"more"`
+	DiscoverySource *string                `protobuf:"bytes,10,opt,name=discovery_source,json=discoverySource,proto3,oneof" json:"discovery_source"`
+	AncestorIds     *string                `protobuf:"bytes,11,opt,name=ancestor_ids,json=ancestorIds,proto3,oneof" json:"ancestor_ids"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *CiRelationListReq) Reset() {
 	*x = CiRelationListReq{}
-	mi := &file_cmdb_proto_msgTypes[56]
+	mi := &file_cmdb_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4709,7 +6094,7 @@ func (x *CiRelationListReq) String() string {
 func (*CiRelationListReq) ProtoMessage() {}
 
 func (x *CiRelationListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[56]
+	mi := &file_cmdb_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4722,7 +6107,7 @@ func (x *CiRelationListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiRelationListReq.ProtoReflect.Descriptor instead.
 func (*CiRelationListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{56}
+	return file_cmdb_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *CiRelationListReq) GetPage() uint64 {
@@ -4760,16 +6145,16 @@ func (x *CiRelationListReq) GetDeletedAt() int64 {
 	return 0
 }
 
-func (x *CiRelationListReq) GetFirstCiId() uint64 {
-	if x != nil && x.FirstCiId != nil {
-		return *x.FirstCiId
+func (x *CiRelationListReq) GetSourceCiId() uint64 {
+	if x != nil && x.SourceCiId != nil {
+		return *x.SourceCiId
 	}
 	return 0
 }
 
-func (x *CiRelationListReq) GetSecondCiId() uint64 {
-	if x != nil && x.SecondCiId != nil {
-		return *x.SecondCiId
+func (x *CiRelationListReq) GetTargetCiId() uint64 {
+	if x != nil && x.TargetCiId != nil {
+		return *x.TargetCiId
 	}
 	return 0
 }
@@ -4788,9 +6173,9 @@ func (x *CiRelationListReq) GetMore() uint64 {
 	return 0
 }
 
-func (x *CiRelationListReq) GetSource() string {
-	if x != nil && x.Source != nil {
-		return *x.Source
+func (x *CiRelationListReq) GetDiscoverySource() string {
+	if x != nil && x.DiscoverySource != nil {
+		return *x.DiscoverySource
 	}
 	return ""
 }
@@ -4812,7 +6197,7 @@ type CiRelationListResp struct {
 
 func (x *CiRelationListResp) Reset() {
 	*x = CiRelationListResp{}
-	mi := &file_cmdb_proto_msgTypes[57]
+	mi := &file_cmdb_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4824,7 +6209,7 @@ func (x *CiRelationListResp) String() string {
 func (*CiRelationListResp) ProtoMessage() {}
 
 func (x *CiRelationListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[57]
+	mi := &file_cmdb_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4837,7 +6222,7 @@ func (x *CiRelationListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiRelationListResp.ProtoReflect.Descriptor instead.
 func (*CiRelationListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{57}
+	return file_cmdb_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *CiRelationListResp) GetTotal() uint64 {
@@ -4850,6 +6235,252 @@ func (x *CiRelationListResp) GetTotal() uint64 {
 func (x *CiRelationListResp) GetData() []*CiRelationInfo {
 	if x != nil {
 		return x.Data
+	}
+	return nil
+}
+
+// 关系查询结果
+type CiRelationQueryResult struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 作为源CI的关系
+	SourceRelations []*CiRelationInfo `protobuf:"bytes,1,rep,name=source_relations,json=sourceRelations,proto3" json:"source_relations"`
+	// 作为目标CI的关系
+	TargetRelations []*CiRelationInfo `protobuf:"bytes,2,rep,name=target_relations,json=targetRelations,proto3" json:"target_relations"`
+	// 关系总数
+	TotalCount    uint64 `protobuf:"varint,3,opt,name=total_count,json=totalCount,proto3" json:"total_count"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiRelationQueryResult) Reset() {
+	*x = CiRelationQueryResult{}
+	mi := &file_cmdb_proto_msgTypes[71]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiRelationQueryResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiRelationQueryResult) ProtoMessage() {}
+
+func (x *CiRelationQueryResult) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[71]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiRelationQueryResult.ProtoReflect.Descriptor instead.
+func (*CiRelationQueryResult) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{71}
+}
+
+func (x *CiRelationQueryResult) GetSourceRelations() []*CiRelationInfo {
+	if x != nil {
+		return x.SourceRelations
+	}
+	return nil
+}
+
+func (x *CiRelationQueryResult) GetTargetRelations() []*CiRelationInfo {
+	if x != nil {
+		return x.TargetRelations
+	}
+	return nil
+}
+
+func (x *CiRelationQueryResult) GetTotalCount() uint64 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
+// 更新关系信息
+type CiRelationUpdateInfo struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 关系ID
+	RelationId uint64 `protobuf:"varint,1,opt,name=relation_id,json=relationId,proto3" json:"relation_id"`
+	// 目标CI ID（可选，允许修改）
+	TargetCiId *uint64 `protobuf:"varint,2,opt,name=target_ci_id,json=targetCiId,proto3,oneof" json:"target_ci_id"`
+	// 关系类型ID（可选，允许修改）
+	RelationTypeId *uint64 `protobuf:"varint,3,opt,name=relation_type_id,json=relationTypeId,proto3,oneof" json:"relation_type_id"`
+	// 更多CI ID（可选）
+	MoreCiId *uint64 `protobuf:"varint,4,opt,name=more_ci_id,json=moreCiId,proto3,oneof" json:"more_ci_id"`
+	// 关系属性
+	Properties *string `protobuf:"bytes,5,opt,name=properties,proto3,oneof" json:"properties"`
+	// 属性映射数据
+	AttributeMappings []*AttributeMappingData `protobuf:"bytes,6,rep,name=attribute_mappings,json=attributeMappings,proto3" json:"attribute_mappings"`
+	// 关系状态
+	Status *string `protobuf:"bytes,7,opt,name=status,proto3,oneof" json:"status"`
+	// 关系强度
+	RelationStrength *string `protobuf:"bytes,8,opt,name=relation_strength,json=relationStrength,proto3,oneof" json:"relation_strength"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *CiRelationUpdateInfo) Reset() {
+	*x = CiRelationUpdateInfo{}
+	mi := &file_cmdb_proto_msgTypes[72]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiRelationUpdateInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiRelationUpdateInfo) ProtoMessage() {}
+
+func (x *CiRelationUpdateInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[72]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiRelationUpdateInfo.ProtoReflect.Descriptor instead.
+func (*CiRelationUpdateInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{72}
+}
+
+func (x *CiRelationUpdateInfo) GetRelationId() uint64 {
+	if x != nil {
+		return x.RelationId
+	}
+	return 0
+}
+
+func (x *CiRelationUpdateInfo) GetTargetCiId() uint64 {
+	if x != nil && x.TargetCiId != nil {
+		return *x.TargetCiId
+	}
+	return 0
+}
+
+func (x *CiRelationUpdateInfo) GetRelationTypeId() uint64 {
+	if x != nil && x.RelationTypeId != nil {
+		return *x.RelationTypeId
+	}
+	return 0
+}
+
+func (x *CiRelationUpdateInfo) GetMoreCiId() uint64 {
+	if x != nil && x.MoreCiId != nil {
+		return *x.MoreCiId
+	}
+	return 0
+}
+
+func (x *CiRelationUpdateInfo) GetProperties() string {
+	if x != nil && x.Properties != nil {
+		return *x.Properties
+	}
+	return ""
+}
+
+func (x *CiRelationUpdateInfo) GetAttributeMappings() []*AttributeMappingData {
+	if x != nil {
+		return x.AttributeMappings
+	}
+	return nil
+}
+
+func (x *CiRelationUpdateInfo) GetStatus() string {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return ""
+}
+
+func (x *CiRelationUpdateInfo) GetRelationStrength() string {
+	if x != nil && x.RelationStrength != nil {
+		return *x.RelationStrength
+	}
+	return ""
+}
+
+// CI关系数据结构
+type CiRelationsData struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 要创建的关系（创建/更新时使用）
+	CreateRelations []*CiRelationCreateInfo `protobuf:"bytes,1,rep,name=create_relations,json=createRelations,proto3" json:"create_relations"`
+	// 要更新的关系（更新时使用）
+	UpdateRelations []*CiRelationUpdateInfo `protobuf:"bytes,2,rep,name=update_relations,json=updateRelations,proto3" json:"update_relations"`
+	// 要删除的关系ID列表（更新时使用）
+	DeleteRelationIds []uint64 `protobuf:"varint,3,rep,packed,name=delete_relation_ids,json=deleteRelationIds,proto3" json:"delete_relation_ids"`
+	// 查询结果中的关系数据（查询时返回）
+	QueryResult   *CiRelationQueryResult `protobuf:"bytes,4,opt,name=query_result,json=queryResult,proto3,oneof" json:"query_result"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiRelationsData) Reset() {
+	*x = CiRelationsData{}
+	mi := &file_cmdb_proto_msgTypes[73]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiRelationsData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiRelationsData) ProtoMessage() {}
+
+func (x *CiRelationsData) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[73]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiRelationsData.ProtoReflect.Descriptor instead.
+func (*CiRelationsData) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{73}
+}
+
+func (x *CiRelationsData) GetCreateRelations() []*CiRelationCreateInfo {
+	if x != nil {
+		return x.CreateRelations
+	}
+	return nil
+}
+
+func (x *CiRelationsData) GetUpdateRelations() []*CiRelationUpdateInfo {
+	if x != nil {
+		return x.UpdateRelations
+	}
+	return nil
+}
+
+func (x *CiRelationsData) GetDeleteRelationIds() []uint64 {
+	if x != nil {
+		return x.DeleteRelationIds
+	}
+	return nil
+}
+
+func (x *CiRelationsData) GetQueryResult() *CiRelationQueryResult {
+	if x != nil {
+		return x.QueryResult
 	}
 	return nil
 }
@@ -4871,7 +6502,7 @@ type CiSortField struct {
 
 func (x *CiSortField) Reset() {
 	*x = CiSortField{}
-	mi := &file_cmdb_proto_msgTypes[58]
+	mi := &file_cmdb_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4883,7 +6514,7 @@ func (x *CiSortField) String() string {
 func (*CiSortField) ProtoMessage() {}
 
 func (x *CiSortField) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[58]
+	mi := &file_cmdb_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4896,7 +6527,7 @@ func (x *CiSortField) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiSortField.ProtoReflect.Descriptor instead.
 func (*CiSortField) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{58}
+	return file_cmdb_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *CiSortField) GetAttrId() uint64 {
@@ -4942,7 +6573,7 @@ type CiTagFilter struct {
 
 func (x *CiTagFilter) Reset() {
 	*x = CiTagFilter{}
-	mi := &file_cmdb_proto_msgTypes[59]
+	mi := &file_cmdb_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4954,7 +6585,7 @@ func (x *CiTagFilter) String() string {
 func (*CiTagFilter) ProtoMessage() {}
 
 func (x *CiTagFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[59]
+	mi := &file_cmdb_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4967,7 +6598,7 @@ func (x *CiTagFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTagFilter.ProtoReflect.Descriptor instead.
 func (*CiTagFilter) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{59}
+	return file_cmdb_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *CiTagFilter) GetKey() string {
@@ -5008,7 +6639,7 @@ type CiTimeRangeSearch struct {
 
 func (x *CiTimeRangeSearch) Reset() {
 	*x = CiTimeRangeSearch{}
-	mi := &file_cmdb_proto_msgTypes[60]
+	mi := &file_cmdb_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5020,7 +6651,7 @@ func (x *CiTimeRangeSearch) String() string {
 func (*CiTimeRangeSearch) ProtoMessage() {}
 
 func (x *CiTimeRangeSearch) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[60]
+	mi := &file_cmdb_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5033,7 +6664,7 @@ func (x *CiTimeRangeSearch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTimeRangeSearch.ProtoReflect.Descriptor instead.
 func (*CiTimeRangeSearch) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{60}
+	return file_cmdb_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *CiTimeRangeSearch) GetField() string {
@@ -5075,7 +6706,7 @@ type CiTypeAppendAttributeReq struct {
 
 func (x *CiTypeAppendAttributeReq) Reset() {
 	*x = CiTypeAppendAttributeReq{}
-	mi := &file_cmdb_proto_msgTypes[61]
+	mi := &file_cmdb_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5087,7 +6718,7 @@ func (x *CiTypeAppendAttributeReq) String() string {
 func (*CiTypeAppendAttributeReq) ProtoMessage() {}
 
 func (x *CiTypeAppendAttributeReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[61]
+	mi := &file_cmdb_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5100,7 +6731,7 @@ func (x *CiTypeAppendAttributeReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAppendAttributeReq.ProtoReflect.Descriptor instead.
 func (*CiTypeAppendAttributeReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{61}
+	return file_cmdb_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *CiTypeAppendAttributeReq) GetTypeId() uint64 {
@@ -5134,7 +6765,7 @@ type CiTypeAttributeChangeDefaultShowReq struct {
 
 func (x *CiTypeAttributeChangeDefaultShowReq) Reset() {
 	*x = CiTypeAttributeChangeDefaultShowReq{}
-	mi := &file_cmdb_proto_msgTypes[62]
+	mi := &file_cmdb_proto_msgTypes[78]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5146,7 +6777,7 @@ func (x *CiTypeAttributeChangeDefaultShowReq) String() string {
 func (*CiTypeAttributeChangeDefaultShowReq) ProtoMessage() {}
 
 func (x *CiTypeAttributeChangeDefaultShowReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[62]
+	mi := &file_cmdb_proto_msgTypes[78]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5159,7 +6790,7 @@ func (x *CiTypeAttributeChangeDefaultShowReq) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CiTypeAttributeChangeDefaultShowReq.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeChangeDefaultShowReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{62}
+	return file_cmdb_proto_rawDescGZIP(), []int{78}
 }
 
 func (x *CiTypeAttributeChangeDefaultShowReq) GetCiTypeAttributeId() uint64 {
@@ -5193,7 +6824,7 @@ type CiTypeAttributeGroupInfo struct {
 
 func (x *CiTypeAttributeGroupInfo) Reset() {
 	*x = CiTypeAttributeGroupInfo{}
-	mi := &file_cmdb_proto_msgTypes[63]
+	mi := &file_cmdb_proto_msgTypes[79]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5205,7 +6836,7 @@ func (x *CiTypeAttributeGroupInfo) String() string {
 func (*CiTypeAttributeGroupInfo) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[63]
+	mi := &file_cmdb_proto_msgTypes[79]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5218,7 +6849,7 @@ func (x *CiTypeAttributeGroupInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{63}
+	return file_cmdb_proto_rawDescGZIP(), []int{79}
 }
 
 func (x *CiTypeAttributeGroupInfo) GetId() uint64 {
@@ -5280,7 +6911,7 @@ type CiTypeAttributeGroupItemInfo struct {
 
 func (x *CiTypeAttributeGroupItemInfo) Reset() {
 	*x = CiTypeAttributeGroupItemInfo{}
-	mi := &file_cmdb_proto_msgTypes[64]
+	mi := &file_cmdb_proto_msgTypes[80]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5292,7 +6923,7 @@ func (x *CiTypeAttributeGroupItemInfo) String() string {
 func (*CiTypeAttributeGroupItemInfo) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupItemInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[64]
+	mi := &file_cmdb_proto_msgTypes[80]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5305,7 +6936,7 @@ func (x *CiTypeAttributeGroupItemInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupItemInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupItemInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{64}
+	return file_cmdb_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *CiTypeAttributeGroupItemInfo) GetId() uint64 {
@@ -5366,7 +6997,7 @@ type CiTypeAttributeGroupItemListReq struct {
 
 func (x *CiTypeAttributeGroupItemListReq) Reset() {
 	*x = CiTypeAttributeGroupItemListReq{}
-	mi := &file_cmdb_proto_msgTypes[65]
+	mi := &file_cmdb_proto_msgTypes[81]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5378,7 +7009,7 @@ func (x *CiTypeAttributeGroupItemListReq) String() string {
 func (*CiTypeAttributeGroupItemListReq) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupItemListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[65]
+	mi := &file_cmdb_proto_msgTypes[81]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5391,7 +7022,7 @@ func (x *CiTypeAttributeGroupItemListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupItemListReq.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupItemListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{65}
+	return file_cmdb_proto_rawDescGZIP(), []int{81}
 }
 
 func (x *CiTypeAttributeGroupItemListReq) GetPage() uint64 {
@@ -5460,7 +7091,7 @@ type CiTypeAttributeGroupItemListResp struct {
 
 func (x *CiTypeAttributeGroupItemListResp) Reset() {
 	*x = CiTypeAttributeGroupItemListResp{}
-	mi := &file_cmdb_proto_msgTypes[66]
+	mi := &file_cmdb_proto_msgTypes[82]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5472,7 +7103,7 @@ func (x *CiTypeAttributeGroupItemListResp) String() string {
 func (*CiTypeAttributeGroupItemListResp) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupItemListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[66]
+	mi := &file_cmdb_proto_msgTypes[82]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5485,7 +7116,7 @@ func (x *CiTypeAttributeGroupItemListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupItemListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupItemListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{66}
+	return file_cmdb_proto_rawDescGZIP(), []int{82}
 }
 
 func (x *CiTypeAttributeGroupItemListResp) GetTotal() uint64 {
@@ -5512,7 +7143,7 @@ type CiTypeAttributeGroupItemSort struct {
 
 func (x *CiTypeAttributeGroupItemSort) Reset() {
 	*x = CiTypeAttributeGroupItemSort{}
-	mi := &file_cmdb_proto_msgTypes[67]
+	mi := &file_cmdb_proto_msgTypes[83]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5524,7 +7155,7 @@ func (x *CiTypeAttributeGroupItemSort) String() string {
 func (*CiTypeAttributeGroupItemSort) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupItemSort) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[67]
+	mi := &file_cmdb_proto_msgTypes[83]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5537,7 +7168,7 @@ func (x *CiTypeAttributeGroupItemSort) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupItemSort.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupItemSort) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{67}
+	return file_cmdb_proto_rawDescGZIP(), []int{83}
 }
 
 func (x *CiTypeAttributeGroupItemSort) GetGroupId() uint64 {
@@ -5564,7 +7195,7 @@ type CiTypeAttributeGroupItemSortItem struct {
 
 func (x *CiTypeAttributeGroupItemSortItem) Reset() {
 	*x = CiTypeAttributeGroupItemSortItem{}
-	mi := &file_cmdb_proto_msgTypes[68]
+	mi := &file_cmdb_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5576,7 +7207,7 @@ func (x *CiTypeAttributeGroupItemSortItem) String() string {
 func (*CiTypeAttributeGroupItemSortItem) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupItemSortItem) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[68]
+	mi := &file_cmdb_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5589,7 +7220,7 @@ func (x *CiTypeAttributeGroupItemSortItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupItemSortItem.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupItemSortItem) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{68}
+	return file_cmdb_proto_rawDescGZIP(), []int{84}
 }
 
 func (x *CiTypeAttributeGroupItemSortItem) GetId() uint64 {
@@ -5615,7 +7246,7 @@ type CiTypeAttributeGroupItemSortReq struct {
 
 func (x *CiTypeAttributeGroupItemSortReq) Reset() {
 	*x = CiTypeAttributeGroupItemSortReq{}
-	mi := &file_cmdb_proto_msgTypes[69]
+	mi := &file_cmdb_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5627,7 +7258,7 @@ func (x *CiTypeAttributeGroupItemSortReq) String() string {
 func (*CiTypeAttributeGroupItemSortReq) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupItemSortReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[69]
+	mi := &file_cmdb_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5640,12 +7271,104 @@ func (x *CiTypeAttributeGroupItemSortReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupItemSortReq.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupItemSortReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{69}
+	return file_cmdb_proto_rawDescGZIP(), []int{85}
 }
 
 func (x *CiTypeAttributeGroupItemSortReq) GetData() []*CiTypeAttributeGroupItemSort {
 	if x != nil {
 		return x.Data
+	}
+	return nil
+}
+
+type CiTypeAttributeGroupItemWithAttrInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            *uint64                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id"`
+	GroupId       *uint64                `protobuf:"varint,2,opt,name=group_id,json=groupId,proto3,oneof" json:"group_id"`
+	AttrId        *uint64                `protobuf:"varint,3,opt,name=attr_id,json=attrId,proto3,oneof" json:"attr_id"`
+	Sort          *uint32                `protobuf:"varint,4,opt,name=sort,proto3,oneof" json:"sort"`
+	IsRequired    *bool                  `protobuf:"varint,5,opt,name=is_required,json=isRequired,proto3,oneof" json:"is_required"`
+	DefaultShow   *bool                  `protobuf:"varint,6,opt,name=default_show,json=defaultShow,proto3,oneof" json:"default_show"`
+	Attribute     *AttributeInfo         `protobuf:"bytes,7,opt,name=attribute,proto3" json:"attribute"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) Reset() {
+	*x = CiTypeAttributeGroupItemWithAttrInfo{}
+	mi := &file_cmdb_proto_msgTypes[86]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeAttributeGroupItemWithAttrInfo) ProtoMessage() {}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[86]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeAttributeGroupItemWithAttrInfo.ProtoReflect.Descriptor instead.
+func (*CiTypeAttributeGroupItemWithAttrInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{86}
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) GetId() uint64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) GetGroupId() uint64 {
+	if x != nil && x.GroupId != nil {
+		return *x.GroupId
+	}
+	return 0
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) GetAttrId() uint64 {
+	if x != nil && x.AttrId != nil {
+		return *x.AttrId
+	}
+	return 0
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) GetSort() uint32 {
+	if x != nil && x.Sort != nil {
+		return *x.Sort
+	}
+	return 0
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) GetIsRequired() bool {
+	if x != nil && x.IsRequired != nil {
+		return *x.IsRequired
+	}
+	return false
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) GetDefaultShow() bool {
+	if x != nil && x.DefaultShow != nil {
+		return *x.DefaultShow
+	}
+	return false
+}
+
+func (x *CiTypeAttributeGroupItemWithAttrInfo) GetAttribute() *AttributeInfo {
+	if x != nil {
+		return x.Attribute
 	}
 	return nil
 }
@@ -5666,7 +7389,7 @@ type CiTypeAttributeGroupListReq struct {
 
 func (x *CiTypeAttributeGroupListReq) Reset() {
 	*x = CiTypeAttributeGroupListReq{}
-	mi := &file_cmdb_proto_msgTypes[70]
+	mi := &file_cmdb_proto_msgTypes[87]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5678,7 +7401,7 @@ func (x *CiTypeAttributeGroupListReq) String() string {
 func (*CiTypeAttributeGroupListReq) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[70]
+	mi := &file_cmdb_proto_msgTypes[87]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5691,7 +7414,7 @@ func (x *CiTypeAttributeGroupListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupListReq.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{70}
+	return file_cmdb_proto_rawDescGZIP(), []int{87}
 }
 
 func (x *CiTypeAttributeGroupListReq) GetPage() uint64 {
@@ -5760,7 +7483,7 @@ type CiTypeAttributeGroupListResp struct {
 
 func (x *CiTypeAttributeGroupListResp) Reset() {
 	*x = CiTypeAttributeGroupListResp{}
-	mi := &file_cmdb_proto_msgTypes[71]
+	mi := &file_cmdb_proto_msgTypes[88]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5772,7 +7495,7 @@ func (x *CiTypeAttributeGroupListResp) String() string {
 func (*CiTypeAttributeGroupListResp) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[71]
+	mi := &file_cmdb_proto_msgTypes[88]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5785,7 +7508,7 @@ func (x *CiTypeAttributeGroupListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{71}
+	return file_cmdb_proto_rawDescGZIP(), []int{88}
 }
 
 func (x *CiTypeAttributeGroupListResp) GetTotal() uint64 {
@@ -5813,7 +7536,7 @@ type CiTypeAttributeGroupSort struct {
 
 func (x *CiTypeAttributeGroupSort) Reset() {
 	*x = CiTypeAttributeGroupSort{}
-	mi := &file_cmdb_proto_msgTypes[72]
+	mi := &file_cmdb_proto_msgTypes[89]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5825,7 +7548,7 @@ func (x *CiTypeAttributeGroupSort) String() string {
 func (*CiTypeAttributeGroupSort) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupSort) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[72]
+	mi := &file_cmdb_proto_msgTypes[89]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5838,7 +7561,7 @@ func (x *CiTypeAttributeGroupSort) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupSort.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupSort) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{72}
+	return file_cmdb_proto_rawDescGZIP(), []int{89}
 }
 
 func (x *CiTypeAttributeGroupSort) GetGroupId() uint64 {
@@ -5871,7 +7594,7 @@ type CiTypeAttributeGroupSortReq struct {
 
 func (x *CiTypeAttributeGroupSortReq) Reset() {
 	*x = CiTypeAttributeGroupSortReq{}
-	mi := &file_cmdb_proto_msgTypes[73]
+	mi := &file_cmdb_proto_msgTypes[90]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5883,7 +7606,7 @@ func (x *CiTypeAttributeGroupSortReq) String() string {
 func (*CiTypeAttributeGroupSortReq) ProtoMessage() {}
 
 func (x *CiTypeAttributeGroupSortReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[73]
+	mi := &file_cmdb_proto_msgTypes[90]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5896,10 +7619,130 @@ func (x *CiTypeAttributeGroupSortReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeGroupSortReq.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeGroupSortReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{73}
+	return file_cmdb_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *CiTypeAttributeGroupSortReq) GetData() []*CiTypeAttributeGroupSort {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type CiTypeAttributeGroupWithAttrInfo struct {
+	state         protoimpl.MessageState                  `protogen:"open.v1"`
+	Id            *uint64                                 `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id"`
+	Name          *string                                 `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name"`
+	Sort          *uint32                                 `protobuf:"varint,3,opt,name=sort,proto3,oneof" json:"sort"`
+	Items         []*CiTypeAttributeGroupItemWithAttrInfo `protobuf:"bytes,4,rep,name=items,proto3" json:"items"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiTypeAttributeGroupWithAttrInfo) Reset() {
+	*x = CiTypeAttributeGroupWithAttrInfo{}
+	mi := &file_cmdb_proto_msgTypes[91]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeAttributeGroupWithAttrInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeAttributeGroupWithAttrInfo) ProtoMessage() {}
+
+func (x *CiTypeAttributeGroupWithAttrInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[91]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeAttributeGroupWithAttrInfo.ProtoReflect.Descriptor instead.
+func (*CiTypeAttributeGroupWithAttrInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{91}
+}
+
+func (x *CiTypeAttributeGroupWithAttrInfo) GetId() uint64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CiTypeAttributeGroupWithAttrInfo) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CiTypeAttributeGroupWithAttrInfo) GetSort() uint32 {
+	if x != nil && x.Sort != nil {
+		return *x.Sort
+	}
+	return 0
+}
+
+func (x *CiTypeAttributeGroupWithAttrInfo) GetItems() []*CiTypeAttributeGroupItemWithAttrInfo {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+type CiTypeAttributeGroupWithAttrListResp struct {
+	state         protoimpl.MessageState              `protogen:"open.v1"`
+	Total         uint64                              `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
+	Data          []*CiTypeAttributeGroupWithAttrInfo `protobuf:"bytes,2,rep,name=data,proto3" json:"data"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiTypeAttributeGroupWithAttrListResp) Reset() {
+	*x = CiTypeAttributeGroupWithAttrListResp{}
+	mi := &file_cmdb_proto_msgTypes[92]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeAttributeGroupWithAttrListResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeAttributeGroupWithAttrListResp) ProtoMessage() {}
+
+func (x *CiTypeAttributeGroupWithAttrListResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[92]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeAttributeGroupWithAttrListResp.ProtoReflect.Descriptor instead.
+func (*CiTypeAttributeGroupWithAttrListResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{92}
+}
+
+func (x *CiTypeAttributeGroupWithAttrListResp) GetTotal() uint64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *CiTypeAttributeGroupWithAttrListResp) GetData() []*CiTypeAttributeGroupWithAttrInfo {
 	if x != nil {
 		return x.Data
 	}
@@ -5933,7 +7776,7 @@ type CiTypeAttributeInfo struct {
 
 func (x *CiTypeAttributeInfo) Reset() {
 	*x = CiTypeAttributeInfo{}
-	mi := &file_cmdb_proto_msgTypes[74]
+	mi := &file_cmdb_proto_msgTypes[93]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5945,7 +7788,7 @@ func (x *CiTypeAttributeInfo) String() string {
 func (*CiTypeAttributeInfo) ProtoMessage() {}
 
 func (x *CiTypeAttributeInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[74]
+	mi := &file_cmdb_proto_msgTypes[93]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5958,7 +7801,7 @@ func (x *CiTypeAttributeInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{74}
+	return file_cmdb_proto_rawDescGZIP(), []int{93}
 }
 
 func (x *CiTypeAttributeInfo) GetId() uint64 {
@@ -6059,7 +7902,7 @@ type CiTypeAttributeItem struct {
 
 func (x *CiTypeAttributeItem) Reset() {
 	*x = CiTypeAttributeItem{}
-	mi := &file_cmdb_proto_msgTypes[75]
+	mi := &file_cmdb_proto_msgTypes[94]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6071,7 +7914,7 @@ func (x *CiTypeAttributeItem) String() string {
 func (*CiTypeAttributeItem) ProtoMessage() {}
 
 func (x *CiTypeAttributeItem) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[75]
+	mi := &file_cmdb_proto_msgTypes[94]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6084,7 +7927,7 @@ func (x *CiTypeAttributeItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeItem.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeItem) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{75}
+	return file_cmdb_proto_rawDescGZIP(), []int{94}
 }
 
 func (x *CiTypeAttributeItem) GetAttribute() *AttributeInfo {
@@ -6189,7 +8032,7 @@ type CiTypeAttributeListReq struct {
 
 func (x *CiTypeAttributeListReq) Reset() {
 	*x = CiTypeAttributeListReq{}
-	mi := &file_cmdb_proto_msgTypes[76]
+	mi := &file_cmdb_proto_msgTypes[95]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6201,7 +8044,7 @@ func (x *CiTypeAttributeListReq) String() string {
 func (*CiTypeAttributeListReq) ProtoMessage() {}
 
 func (x *CiTypeAttributeListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[76]
+	mi := &file_cmdb_proto_msgTypes[95]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6214,7 +8057,7 @@ func (x *CiTypeAttributeListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeListReq.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{76}
+	return file_cmdb_proto_rawDescGZIP(), []int{95}
 }
 
 func (x *CiTypeAttributeListReq) GetPage() uint64 {
@@ -6297,7 +8140,7 @@ type CiTypeAttributeListResp struct {
 
 func (x *CiTypeAttributeListResp) Reset() {
 	*x = CiTypeAttributeListResp{}
-	mi := &file_cmdb_proto_msgTypes[77]
+	mi := &file_cmdb_proto_msgTypes[96]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6309,7 +8152,7 @@ func (x *CiTypeAttributeListResp) String() string {
 func (*CiTypeAttributeListResp) ProtoMessage() {}
 
 func (x *CiTypeAttributeListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[77]
+	mi := &file_cmdb_proto_msgTypes[96]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6322,7 +8165,7 @@ func (x *CiTypeAttributeListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{77}
+	return file_cmdb_proto_rawDescGZIP(), []int{96}
 }
 
 func (x *CiTypeAttributeListResp) GetTotal() uint64 {
@@ -6352,7 +8195,7 @@ type CiTypeAttributeListWithGroupInfo struct {
 
 func (x *CiTypeAttributeListWithGroupInfo) Reset() {
 	*x = CiTypeAttributeListWithGroupInfo{}
-	mi := &file_cmdb_proto_msgTypes[78]
+	mi := &file_cmdb_proto_msgTypes[97]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6364,7 +8207,7 @@ func (x *CiTypeAttributeListWithGroupInfo) String() string {
 func (*CiTypeAttributeListWithGroupInfo) ProtoMessage() {}
 
 func (x *CiTypeAttributeListWithGroupInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[78]
+	mi := &file_cmdb_proto_msgTypes[97]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6377,7 +8220,7 @@ func (x *CiTypeAttributeListWithGroupInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeListWithGroupInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeListWithGroupInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{78}
+	return file_cmdb_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *CiTypeAttributeListWithGroupInfo) GetGroupId() uint64 {
@@ -6424,7 +8267,7 @@ type CiTypeAttributeListWithGroupReq struct {
 
 func (x *CiTypeAttributeListWithGroupReq) Reset() {
 	*x = CiTypeAttributeListWithGroupReq{}
-	mi := &file_cmdb_proto_msgTypes[79]
+	mi := &file_cmdb_proto_msgTypes[98]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6436,7 +8279,7 @@ func (x *CiTypeAttributeListWithGroupReq) String() string {
 func (*CiTypeAttributeListWithGroupReq) ProtoMessage() {}
 
 func (x *CiTypeAttributeListWithGroupReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[79]
+	mi := &file_cmdb_proto_msgTypes[98]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6449,7 +8292,7 @@ func (x *CiTypeAttributeListWithGroupReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeListWithGroupReq.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeListWithGroupReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{79}
+	return file_cmdb_proto_rawDescGZIP(), []int{98}
 }
 
 func (x *CiTypeAttributeListWithGroupReq) GetTypeId() uint64 {
@@ -6468,7 +8311,7 @@ type CiTypeAttributeListWithGroupResp struct {
 
 func (x *CiTypeAttributeListWithGroupResp) Reset() {
 	*x = CiTypeAttributeListWithGroupResp{}
-	mi := &file_cmdb_proto_msgTypes[80]
+	mi := &file_cmdb_proto_msgTypes[99]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6480,7 +8323,7 @@ func (x *CiTypeAttributeListWithGroupResp) String() string {
 func (*CiTypeAttributeListWithGroupResp) ProtoMessage() {}
 
 func (x *CiTypeAttributeListWithGroupResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[80]
+	mi := &file_cmdb_proto_msgTypes[99]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6493,10 +8336,735 @@ func (x *CiTypeAttributeListWithGroupResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeAttributeListWithGroupResp.ProtoReflect.Descriptor instead.
 func (*CiTypeAttributeListWithGroupResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{80}
+	return file_cmdb_proto_rawDescGZIP(), []int{99}
 }
 
 func (x *CiTypeAttributeListWithGroupResp) GetData() []*CiTypeAttributeListWithGroupInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+// CiTypeBasicInfo CI类型基础信息
+type CiTypeBasicInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Alias         string                 `protobuf:"bytes,3,opt,name=alias,proto3" json:"alias"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiTypeBasicInfo) Reset() {
+	*x = CiTypeBasicInfo{}
+	mi := &file_cmdb_proto_msgTypes[100]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeBasicInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeBasicInfo) ProtoMessage() {}
+
+func (x *CiTypeBasicInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[100]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeBasicInfo.ProtoReflect.Descriptor instead.
+func (*CiTypeBasicInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{100}
+}
+
+func (x *CiTypeBasicInfo) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *CiTypeBasicInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CiTypeBasicInfo) GetAlias() string {
+	if x != nil {
+		return x.Alias
+	}
+	return ""
+}
+
+type CiTypeDiscoveryConfigInfo struct {
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	Id        *uint64                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id"`
+	CreatedAt *int64                 `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
+	UpdatedAt *int64                 `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
+	// Status 1: normal 2: ban | 状态 1 正常 2 禁用
+	Status *uint32 `protobuf:"varint,4,opt,name=status,proto3,oneof" json:"status"`
+	// Department ID | 部门 ID
+	DepartmentId *uint64 `protobuf:"varint,5,opt,name=department_id,json=departmentId,proto3,oneof" json:"department_id"`
+	// Created user's UUID | 创建者 UUID
+	CreatedBy *string `protobuf:"bytes,6,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by"`
+	// CI类型ID
+	CiTypeId *uint64 `protobuf:"varint,7,opt,name=ci_type_id,json=ciTypeId,proto3,oneof" json:"ci_type_id"`
+	// 配置名称
+	ConfigName *string `protobuf:"bytes,8,opt,name=config_name,json=configName,proto3,oneof" json:"config_name"`
+	// 配置描述
+	Description *string `protobuf:"bytes,9,opt,name=description,proto3,oneof" json:"description"`
+	// 发现模式: attribute, relation, dependency
+	DiscoveryMode *string `protobuf:"bytes,10,opt,name=discovery_mode,json=discoveryMode,proto3,oneof" json:"discovery_mode"`
+	// 发现类型: file, api, sdk, builtin, agent
+	DiscoveryType *string `protobuf:"bytes,11,opt,name=discovery_type,json=discoveryType,proto3,oneof" json:"discovery_type"`
+	// 发现提供者ID
+	ProviderId *string `protobuf:"bytes,12,opt,name=provider_id,json=providerId,proto3,oneof" json:"provider_id"`
+	// 提供者配置JSON
+	ProviderConfig *string `protobuf:"bytes,13,opt,name=provider_config,json=providerConfig,proto3,oneof" json:"provider_config"`
+	// 属性映射配置JSON
+	AttributeMappings *string `protobuf:"bytes,14,opt,name=attribute_mappings,json=attributeMappings,proto3,oneof" json:"attribute_mappings"`
+	// 发现规则JSON
+	DiscoveryRules *string `protobuf:"bytes,15,opt,name=discovery_rules,json=discoveryRules,proto3,oneof" json:"discovery_rules"`
+	// 过滤条件JSON
+	FilterConditions *string `protobuf:"bytes,16,opt,name=filter_conditions,json=filterConditions,proto3,oneof" json:"filter_conditions"`
+	// 执行模式: manual, scheduled, triggered
+	ExecutionMode *string `protobuf:"bytes,17,opt,name=execution_mode,json=executionMode,proto3,oneof" json:"execution_mode"`
+	// 调度配置JSON
+	ScheduleConfig *string `protobuf:"bytes,18,opt,name=schedule_config,json=scheduleConfig,proto3,oneof" json:"schedule_config"`
+	// 优先级(数字越小优先级越高)
+	Priority *int64 `protobuf:"varint,19,opt,name=priority,proto3,oneof" json:"priority"`
+	// 批处理大小
+	BatchSize *int64 `protobuf:"varint,20,opt,name=batch_size,json=batchSize,proto3,oneof" json:"batch_size"`
+	// 超时时间(秒)
+	TimeoutSeconds *int64 `protobuf:"varint,21,opt,name=timeout_seconds,json=timeoutSeconds,proto3,oneof" json:"timeout_seconds"`
+	// 冲突解决策略: priority, merge, latest
+	ConflictResolution *string `protobuf:"bytes,22,opt,name=conflict_resolution,json=conflictResolution,proto3,oneof" json:"conflict_resolution"`
+	// 是否自动创建CI实例
+	AutoCreateCi *bool `protobuf:"varint,23,opt,name=auto_create_ci,json=autoCreateCi,proto3,oneof" json:"auto_create_ci"`
+	// 是否自动更新属性
+	AutoUpdateAttributes *bool `protobuf:"varint,24,opt,name=auto_update_attributes,json=autoUpdateAttributes,proto3,oneof" json:"auto_update_attributes"`
+	// 通知配置JSON
+	NotificationConfig *string `protobuf:"bytes,25,opt,name=notification_config,json=notificationConfig,proto3,oneof" json:"notification_config"`
+	// 是否启用
+	Enabled *bool `protobuf:"varint,26,opt,name=enabled,proto3,oneof" json:"enabled"`
+	// 状态: active, inactive, error
+	ConfigStatus *string `protobuf:"bytes,27,opt,name=config_status,json=configStatus,proto3,oneof" json:"config_status"`
+	// 上次执行时间
+	LastExecutedAt *int64 `protobuf:"varint,28,opt,name=last_executed_at,json=lastExecutedAt,proto3,oneof" json:"last_executed_at"`
+	// 下次执行时间
+	NextExecutionAt *int64 `protobuf:"varint,29,opt,name=next_execution_at,json=nextExecutionAt,proto3,oneof" json:"next_execution_at"`
+	// 执行统计JSON
+	ExecutionStats *string `protobuf:"bytes,30,opt,name=execution_stats,json=executionStats,proto3,oneof" json:"execution_stats"`
+	// 最后错误信息
+	LastError     *string `protobuf:"bytes,31,opt,name=last_error,json=lastError,proto3,oneof" json:"last_error"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiTypeDiscoveryConfigInfo) Reset() {
+	*x = CiTypeDiscoveryConfigInfo{}
+	mi := &file_cmdb_proto_msgTypes[101]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeDiscoveryConfigInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeDiscoveryConfigInfo) ProtoMessage() {}
+
+func (x *CiTypeDiscoveryConfigInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[101]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeDiscoveryConfigInfo.ProtoReflect.Descriptor instead.
+func (*CiTypeDiscoveryConfigInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{101}
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetId() uint64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetCreatedAt() int64 {
+	if x != nil && x.CreatedAt != nil {
+		return *x.CreatedAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetUpdatedAt() int64 {
+	if x != nil && x.UpdatedAt != nil {
+		return *x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetStatus() uint32 {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetDepartmentId() uint64 {
+	if x != nil && x.DepartmentId != nil {
+		return *x.DepartmentId
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetCreatedBy() string {
+	if x != nil && x.CreatedBy != nil {
+		return *x.CreatedBy
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetCiTypeId() uint64 {
+	if x != nil && x.CiTypeId != nil {
+		return *x.CiTypeId
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetConfigName() string {
+	if x != nil && x.ConfigName != nil {
+		return *x.ConfigName
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetDiscoveryMode() string {
+	if x != nil && x.DiscoveryMode != nil {
+		return *x.DiscoveryMode
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetDiscoveryType() string {
+	if x != nil && x.DiscoveryType != nil {
+		return *x.DiscoveryType
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetProviderId() string {
+	if x != nil && x.ProviderId != nil {
+		return *x.ProviderId
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetProviderConfig() string {
+	if x != nil && x.ProviderConfig != nil {
+		return *x.ProviderConfig
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetAttributeMappings() string {
+	if x != nil && x.AttributeMappings != nil {
+		return *x.AttributeMappings
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetDiscoveryRules() string {
+	if x != nil && x.DiscoveryRules != nil {
+		return *x.DiscoveryRules
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetFilterConditions() string {
+	if x != nil && x.FilterConditions != nil {
+		return *x.FilterConditions
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetExecutionMode() string {
+	if x != nil && x.ExecutionMode != nil {
+		return *x.ExecutionMode
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetScheduleConfig() string {
+	if x != nil && x.ScheduleConfig != nil {
+		return *x.ScheduleConfig
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetPriority() int64 {
+	if x != nil && x.Priority != nil {
+		return *x.Priority
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetBatchSize() int64 {
+	if x != nil && x.BatchSize != nil {
+		return *x.BatchSize
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetTimeoutSeconds() int64 {
+	if x != nil && x.TimeoutSeconds != nil {
+		return *x.TimeoutSeconds
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetConflictResolution() string {
+	if x != nil && x.ConflictResolution != nil {
+		return *x.ConflictResolution
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetAutoCreateCi() bool {
+	if x != nil && x.AutoCreateCi != nil {
+		return *x.AutoCreateCi
+	}
+	return false
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetAutoUpdateAttributes() bool {
+	if x != nil && x.AutoUpdateAttributes != nil {
+		return *x.AutoUpdateAttributes
+	}
+	return false
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetNotificationConfig() string {
+	if x != nil && x.NotificationConfig != nil {
+		return *x.NotificationConfig
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetConfigStatus() string {
+	if x != nil && x.ConfigStatus != nil {
+		return *x.ConfigStatus
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetLastExecutedAt() int64 {
+	if x != nil && x.LastExecutedAt != nil {
+		return *x.LastExecutedAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetNextExecutionAt() int64 {
+	if x != nil && x.NextExecutionAt != nil {
+		return *x.NextExecutionAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetExecutionStats() string {
+	if x != nil && x.ExecutionStats != nil {
+		return *x.ExecutionStats
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigInfo) GetLastError() string {
+	if x != nil && x.LastError != nil {
+		return *x.LastError
+	}
+	return ""
+}
+
+type CiTypeDiscoveryConfigListReq struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	Page                 uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
+	PageSize             uint64                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	CreatedAt            *int64                 `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
+	UpdatedAt            *int64                 `protobuf:"varint,4,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
+	Status               *uint32                `protobuf:"varint,5,opt,name=status,proto3,oneof" json:"status"`
+	DeletedAt            *int64                 `protobuf:"varint,6,opt,name=deleted_at,json=deletedAt,proto3,oneof" json:"deleted_at"`
+	DepartmentId         *uint64                `protobuf:"varint,7,opt,name=department_id,json=departmentId,proto3,oneof" json:"department_id"`
+	CreatedBy            *string                `protobuf:"bytes,8,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by"`
+	CiTypeId             *uint64                `protobuf:"varint,9,opt,name=ci_type_id,json=ciTypeId,proto3,oneof" json:"ci_type_id"`
+	ConfigName           *string                `protobuf:"bytes,10,opt,name=config_name,json=configName,proto3,oneof" json:"config_name"`
+	Description          *string                `protobuf:"bytes,11,opt,name=description,proto3,oneof" json:"description"`
+	DiscoveryMode        *string                `protobuf:"bytes,12,opt,name=discovery_mode,json=discoveryMode,proto3,oneof" json:"discovery_mode"`
+	DiscoveryType        *string                `protobuf:"bytes,13,opt,name=discovery_type,json=discoveryType,proto3,oneof" json:"discovery_type"`
+	ProviderId           *string                `protobuf:"bytes,14,opt,name=provider_id,json=providerId,proto3,oneof" json:"provider_id"`
+	ProviderConfig       *string                `protobuf:"bytes,15,opt,name=provider_config,json=providerConfig,proto3,oneof" json:"provider_config"`
+	AttributeMappings    *string                `protobuf:"bytes,16,opt,name=attribute_mappings,json=attributeMappings,proto3,oneof" json:"attribute_mappings"`
+	DiscoveryRules       *string                `protobuf:"bytes,17,opt,name=discovery_rules,json=discoveryRules,proto3,oneof" json:"discovery_rules"`
+	FilterConditions     *string                `protobuf:"bytes,18,opt,name=filter_conditions,json=filterConditions,proto3,oneof" json:"filter_conditions"`
+	ExecutionMode        *string                `protobuf:"bytes,19,opt,name=execution_mode,json=executionMode,proto3,oneof" json:"execution_mode"`
+	ScheduleConfig       *string                `protobuf:"bytes,20,opt,name=schedule_config,json=scheduleConfig,proto3,oneof" json:"schedule_config"`
+	Priority             *int64                 `protobuf:"varint,21,opt,name=priority,proto3,oneof" json:"priority"`
+	BatchSize            *int64                 `protobuf:"varint,22,opt,name=batch_size,json=batchSize,proto3,oneof" json:"batch_size"`
+	TimeoutSeconds       *int64                 `protobuf:"varint,23,opt,name=timeout_seconds,json=timeoutSeconds,proto3,oneof" json:"timeout_seconds"`
+	ConflictResolution   *string                `protobuf:"bytes,24,opt,name=conflict_resolution,json=conflictResolution,proto3,oneof" json:"conflict_resolution"`
+	AutoCreateCi         *bool                  `protobuf:"varint,25,opt,name=auto_create_ci,json=autoCreateCi,proto3,oneof" json:"auto_create_ci"`
+	AutoUpdateAttributes *bool                  `protobuf:"varint,26,opt,name=auto_update_attributes,json=autoUpdateAttributes,proto3,oneof" json:"auto_update_attributes"`
+	NotificationConfig   *string                `protobuf:"bytes,27,opt,name=notification_config,json=notificationConfig,proto3,oneof" json:"notification_config"`
+	Enabled              *bool                  `protobuf:"varint,28,opt,name=enabled,proto3,oneof" json:"enabled"`
+	ConfigStatus         *string                `protobuf:"bytes,29,opt,name=config_status,json=configStatus,proto3,oneof" json:"config_status"`
+	LastExecutedAt       *int64                 `protobuf:"varint,30,opt,name=last_executed_at,json=lastExecutedAt,proto3,oneof" json:"last_executed_at"`
+	NextExecutionAt      *int64                 `protobuf:"varint,31,opt,name=next_execution_at,json=nextExecutionAt,proto3,oneof" json:"next_execution_at"`
+	ExecutionStats       *string                `protobuf:"bytes,32,opt,name=execution_stats,json=executionStats,proto3,oneof" json:"execution_stats"`
+	LastError            *string                `protobuf:"bytes,33,opt,name=last_error,json=lastError,proto3,oneof" json:"last_error"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *CiTypeDiscoveryConfigListReq) Reset() {
+	*x = CiTypeDiscoveryConfigListReq{}
+	mi := &file_cmdb_proto_msgTypes[102]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeDiscoveryConfigListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeDiscoveryConfigListReq) ProtoMessage() {}
+
+func (x *CiTypeDiscoveryConfigListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[102]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeDiscoveryConfigListReq.ProtoReflect.Descriptor instead.
+func (*CiTypeDiscoveryConfigListReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{102}
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetPage() uint64 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetPageSize() uint64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetCreatedAt() int64 {
+	if x != nil && x.CreatedAt != nil {
+		return *x.CreatedAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetUpdatedAt() int64 {
+	if x != nil && x.UpdatedAt != nil {
+		return *x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetStatus() uint32 {
+	if x != nil && x.Status != nil {
+		return *x.Status
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetDeletedAt() int64 {
+	if x != nil && x.DeletedAt != nil {
+		return *x.DeletedAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetDepartmentId() uint64 {
+	if x != nil && x.DepartmentId != nil {
+		return *x.DepartmentId
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetCreatedBy() string {
+	if x != nil && x.CreatedBy != nil {
+		return *x.CreatedBy
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetCiTypeId() uint64 {
+	if x != nil && x.CiTypeId != nil {
+		return *x.CiTypeId
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetConfigName() string {
+	if x != nil && x.ConfigName != nil {
+		return *x.ConfigName
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetDiscoveryMode() string {
+	if x != nil && x.DiscoveryMode != nil {
+		return *x.DiscoveryMode
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetDiscoveryType() string {
+	if x != nil && x.DiscoveryType != nil {
+		return *x.DiscoveryType
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetProviderId() string {
+	if x != nil && x.ProviderId != nil {
+		return *x.ProviderId
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetProviderConfig() string {
+	if x != nil && x.ProviderConfig != nil {
+		return *x.ProviderConfig
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetAttributeMappings() string {
+	if x != nil && x.AttributeMappings != nil {
+		return *x.AttributeMappings
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetDiscoveryRules() string {
+	if x != nil && x.DiscoveryRules != nil {
+		return *x.DiscoveryRules
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetFilterConditions() string {
+	if x != nil && x.FilterConditions != nil {
+		return *x.FilterConditions
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetExecutionMode() string {
+	if x != nil && x.ExecutionMode != nil {
+		return *x.ExecutionMode
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetScheduleConfig() string {
+	if x != nil && x.ScheduleConfig != nil {
+		return *x.ScheduleConfig
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetPriority() int64 {
+	if x != nil && x.Priority != nil {
+		return *x.Priority
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetBatchSize() int64 {
+	if x != nil && x.BatchSize != nil {
+		return *x.BatchSize
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetTimeoutSeconds() int64 {
+	if x != nil && x.TimeoutSeconds != nil {
+		return *x.TimeoutSeconds
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetConflictResolution() string {
+	if x != nil && x.ConflictResolution != nil {
+		return *x.ConflictResolution
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetAutoCreateCi() bool {
+	if x != nil && x.AutoCreateCi != nil {
+		return *x.AutoCreateCi
+	}
+	return false
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetAutoUpdateAttributes() bool {
+	if x != nil && x.AutoUpdateAttributes != nil {
+		return *x.AutoUpdateAttributes
+	}
+	return false
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetNotificationConfig() string {
+	if x != nil && x.NotificationConfig != nil {
+		return *x.NotificationConfig
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetConfigStatus() string {
+	if x != nil && x.ConfigStatus != nil {
+		return *x.ConfigStatus
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetLastExecutedAt() int64 {
+	if x != nil && x.LastExecutedAt != nil {
+		return *x.LastExecutedAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetNextExecutionAt() int64 {
+	if x != nil && x.NextExecutionAt != nil {
+		return *x.NextExecutionAt
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetExecutionStats() string {
+	if x != nil && x.ExecutionStats != nil {
+		return *x.ExecutionStats
+	}
+	return ""
+}
+
+func (x *CiTypeDiscoveryConfigListReq) GetLastError() string {
+	if x != nil && x.LastError != nil {
+		return *x.LastError
+	}
+	return ""
+}
+
+type CiTypeDiscoveryConfigListResp struct {
+	state         protoimpl.MessageState       `protogen:"open.v1"`
+	Total         uint64                       `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
+	Data          []*CiTypeDiscoveryConfigInfo `protobuf:"bytes,2,rep,name=data,proto3" json:"data"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiTypeDiscoveryConfigListResp) Reset() {
+	*x = CiTypeDiscoveryConfigListResp{}
+	mi := &file_cmdb_proto_msgTypes[103]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeDiscoveryConfigListResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeDiscoveryConfigListResp) ProtoMessage() {}
+
+func (x *CiTypeDiscoveryConfigListResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[103]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeDiscoveryConfigListResp.ProtoReflect.Descriptor instead.
+func (*CiTypeDiscoveryConfigListResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{103}
+}
+
+func (x *CiTypeDiscoveryConfigListResp) GetTotal() uint64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *CiTypeDiscoveryConfigListResp) GetData() []*CiTypeDiscoveryConfigInfo {
 	if x != nil {
 		return x.Data
 	}
@@ -6522,7 +9090,7 @@ type CiTypeGroupInfo struct {
 
 func (x *CiTypeGroupInfo) Reset() {
 	*x = CiTypeGroupInfo{}
-	mi := &file_cmdb_proto_msgTypes[81]
+	mi := &file_cmdb_proto_msgTypes[104]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6534,7 +9102,7 @@ func (x *CiTypeGroupInfo) String() string {
 func (*CiTypeGroupInfo) ProtoMessage() {}
 
 func (x *CiTypeGroupInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[81]
+	mi := &file_cmdb_proto_msgTypes[104]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6547,7 +9115,7 @@ func (x *CiTypeGroupInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{81}
+	return file_cmdb_proto_rawDescGZIP(), []int{104}
 }
 
 func (x *CiTypeGroupInfo) GetId() uint64 {
@@ -6618,7 +9186,7 @@ type CiTypeGroupItemInfo struct {
 
 func (x *CiTypeGroupItemInfo) Reset() {
 	*x = CiTypeGroupItemInfo{}
-	mi := &file_cmdb_proto_msgTypes[82]
+	mi := &file_cmdb_proto_msgTypes[105]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6630,7 +9198,7 @@ func (x *CiTypeGroupItemInfo) String() string {
 func (*CiTypeGroupItemInfo) ProtoMessage() {}
 
 func (x *CiTypeGroupItemInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[82]
+	mi := &file_cmdb_proto_msgTypes[105]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6643,7 +9211,7 @@ func (x *CiTypeGroupItemInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupItemInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupItemInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{82}
+	return file_cmdb_proto_rawDescGZIP(), []int{105}
 }
 
 func (x *CiTypeGroupItemInfo) GetId() uint64 {
@@ -6696,15 +9264,23 @@ func (x *CiTypeGroupItemInfo) GetName() string {
 }
 
 type CiTypeGroupItemListReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	GroupId       *uint64                `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3,oneof" json:"group_id"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state   protoimpl.MessageState `protogen:"open.v1"`
+	GroupId *uint64                `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3,oneof" json:"group_id"`
+	// 包含的CI类型ID列表 | Include specific CI type IDs
+	IncludeTypeIds []uint64 `protobuf:"varint,2,rep,packed,name=include_type_ids,json=includeTypeIds,proto3" json:"include_type_ids"`
+	// 排除的CI类型ID列表 | Exclude specific CI type IDs
+	ExcludeTypeIds []uint64 `protobuf:"varint,3,rep,packed,name=exclude_type_ids,json=excludeTypeIds,proto3" json:"exclude_type_ids"`
+	// 包含的CI类型名称列表 | Include specific CI type names
+	IncludeTypeNames []string `protobuf:"bytes,4,rep,name=include_type_names,json=includeTypeNames,proto3" json:"include_type_names"`
+	// 排除的CI类型名称列表 | Exclude specific CI type names
+	ExcludeTypeNames []string `protobuf:"bytes,5,rep,name=exclude_type_names,json=excludeTypeNames,proto3" json:"exclude_type_names"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *CiTypeGroupItemListReq) Reset() {
 	*x = CiTypeGroupItemListReq{}
-	mi := &file_cmdb_proto_msgTypes[83]
+	mi := &file_cmdb_proto_msgTypes[106]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6716,7 +9292,7 @@ func (x *CiTypeGroupItemListReq) String() string {
 func (*CiTypeGroupItemListReq) ProtoMessage() {}
 
 func (x *CiTypeGroupItemListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[83]
+	mi := &file_cmdb_proto_msgTypes[106]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6729,7 +9305,7 @@ func (x *CiTypeGroupItemListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupItemListReq.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupItemListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{83}
+	return file_cmdb_proto_rawDescGZIP(), []int{106}
 }
 
 func (x *CiTypeGroupItemListReq) GetGroupId() uint64 {
@@ -6737,6 +9313,34 @@ func (x *CiTypeGroupItemListReq) GetGroupId() uint64 {
 		return *x.GroupId
 	}
 	return 0
+}
+
+func (x *CiTypeGroupItemListReq) GetIncludeTypeIds() []uint64 {
+	if x != nil {
+		return x.IncludeTypeIds
+	}
+	return nil
+}
+
+func (x *CiTypeGroupItemListReq) GetExcludeTypeIds() []uint64 {
+	if x != nil {
+		return x.ExcludeTypeIds
+	}
+	return nil
+}
+
+func (x *CiTypeGroupItemListReq) GetIncludeTypeNames() []string {
+	if x != nil {
+		return x.IncludeTypeNames
+	}
+	return nil
+}
+
+func (x *CiTypeGroupItemListReq) GetExcludeTypeNames() []string {
+	if x != nil {
+		return x.ExcludeTypeNames
+	}
+	return nil
 }
 
 type CiTypeGroupItemListResp struct {
@@ -6748,7 +9352,7 @@ type CiTypeGroupItemListResp struct {
 
 func (x *CiTypeGroupItemListResp) Reset() {
 	*x = CiTypeGroupItemListResp{}
-	mi := &file_cmdb_proto_msgTypes[84]
+	mi := &file_cmdb_proto_msgTypes[107]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6760,7 +9364,7 @@ func (x *CiTypeGroupItemListResp) String() string {
 func (*CiTypeGroupItemListResp) ProtoMessage() {}
 
 func (x *CiTypeGroupItemListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[84]
+	mi := &file_cmdb_proto_msgTypes[107]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6773,7 +9377,7 @@ func (x *CiTypeGroupItemListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupItemListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupItemListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{84}
+	return file_cmdb_proto_rawDescGZIP(), []int{107}
 }
 
 func (x *CiTypeGroupItemListResp) GetData() []*CiTypeGroupItemInfo {
@@ -6797,7 +9401,7 @@ type CiTypeGroupItemSort struct {
 
 func (x *CiTypeGroupItemSort) Reset() {
 	*x = CiTypeGroupItemSort{}
-	mi := &file_cmdb_proto_msgTypes[85]
+	mi := &file_cmdb_proto_msgTypes[108]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6809,7 +9413,7 @@ func (x *CiTypeGroupItemSort) String() string {
 func (*CiTypeGroupItemSort) ProtoMessage() {}
 
 func (x *CiTypeGroupItemSort) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[85]
+	mi := &file_cmdb_proto_msgTypes[108]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6822,7 +9426,7 @@ func (x *CiTypeGroupItemSort) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupItemSort.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupItemSort) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{85}
+	return file_cmdb_proto_rawDescGZIP(), []int{108}
 }
 
 func (x *CiTypeGroupItemSort) GetGroupId() uint64 {
@@ -6855,7 +9459,7 @@ type CiTypeGroupItemSortReq struct {
 
 func (x *CiTypeGroupItemSortReq) Reset() {
 	*x = CiTypeGroupItemSortReq{}
-	mi := &file_cmdb_proto_msgTypes[86]
+	mi := &file_cmdb_proto_msgTypes[109]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6867,7 +9471,7 @@ func (x *CiTypeGroupItemSortReq) String() string {
 func (*CiTypeGroupItemSortReq) ProtoMessage() {}
 
 func (x *CiTypeGroupItemSortReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[86]
+	mi := &file_cmdb_proto_msgTypes[109]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6880,7 +9484,7 @@ func (x *CiTypeGroupItemSortReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupItemSortReq.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupItemSortReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{86}
+	return file_cmdb_proto_rawDescGZIP(), []int{109}
 }
 
 func (x *CiTypeGroupItemSortReq) GetSortItems() []*CiTypeGroupItemSort {
@@ -6902,7 +9506,7 @@ type CiTypeGroupItemTreeListInfo struct {
 
 func (x *CiTypeGroupItemTreeListInfo) Reset() {
 	*x = CiTypeGroupItemTreeListInfo{}
-	mi := &file_cmdb_proto_msgTypes[87]
+	mi := &file_cmdb_proto_msgTypes[110]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6914,7 +9518,7 @@ func (x *CiTypeGroupItemTreeListInfo) String() string {
 func (*CiTypeGroupItemTreeListInfo) ProtoMessage() {}
 
 func (x *CiTypeGroupItemTreeListInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[87]
+	mi := &file_cmdb_proto_msgTypes[110]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6927,7 +9531,7 @@ func (x *CiTypeGroupItemTreeListInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupItemTreeListInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupItemTreeListInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{87}
+	return file_cmdb_proto_rawDescGZIP(), []int{110}
 }
 
 func (x *CiTypeGroupItemTreeListInfo) GetGroupId() uint64 {
@@ -6967,7 +9571,7 @@ type CiTypeGroupItemTreeListResp struct {
 
 func (x *CiTypeGroupItemTreeListResp) Reset() {
 	*x = CiTypeGroupItemTreeListResp{}
-	mi := &file_cmdb_proto_msgTypes[88]
+	mi := &file_cmdb_proto_msgTypes[111]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6979,7 +9583,7 @@ func (x *CiTypeGroupItemTreeListResp) String() string {
 func (*CiTypeGroupItemTreeListResp) ProtoMessage() {}
 
 func (x *CiTypeGroupItemTreeListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[88]
+	mi := &file_cmdb_proto_msgTypes[111]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6992,7 +9596,7 @@ func (x *CiTypeGroupItemTreeListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupItemTreeListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupItemTreeListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{88}
+	return file_cmdb_proto_rawDescGZIP(), []int{111}
 }
 
 func (x *CiTypeGroupItemTreeListResp) GetData() []*CiTypeGroupItemTreeListInfo {
@@ -7017,7 +9621,7 @@ type CiTypeGroupListReq struct {
 
 func (x *CiTypeGroupListReq) Reset() {
 	*x = CiTypeGroupListReq{}
-	mi := &file_cmdb_proto_msgTypes[89]
+	mi := &file_cmdb_proto_msgTypes[112]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7029,7 +9633,7 @@ func (x *CiTypeGroupListReq) String() string {
 func (*CiTypeGroupListReq) ProtoMessage() {}
 
 func (x *CiTypeGroupListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[89]
+	mi := &file_cmdb_proto_msgTypes[112]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7042,7 +9646,7 @@ func (x *CiTypeGroupListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupListReq.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{89}
+	return file_cmdb_proto_rawDescGZIP(), []int{112}
 }
 
 func (x *CiTypeGroupListReq) GetPage() uint64 {
@@ -7104,7 +9708,7 @@ type CiTypeGroupListResp struct {
 
 func (x *CiTypeGroupListResp) Reset() {
 	*x = CiTypeGroupListResp{}
-	mi := &file_cmdb_proto_msgTypes[90]
+	mi := &file_cmdb_proto_msgTypes[113]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7116,7 +9720,7 @@ func (x *CiTypeGroupListResp) String() string {
 func (*CiTypeGroupListResp) ProtoMessage() {}
 
 func (x *CiTypeGroupListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[90]
+	mi := &file_cmdb_proto_msgTypes[113]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7129,7 +9733,7 @@ func (x *CiTypeGroupListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{90}
+	return file_cmdb_proto_rawDescGZIP(), []int{113}
 }
 
 func (x *CiTypeGroupListResp) GetTotal() uint64 {
@@ -7156,7 +9760,7 @@ type CiTypeGroupSort struct {
 
 func (x *CiTypeGroupSort) Reset() {
 	*x = CiTypeGroupSort{}
-	mi := &file_cmdb_proto_msgTypes[91]
+	mi := &file_cmdb_proto_msgTypes[114]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7168,7 +9772,7 @@ func (x *CiTypeGroupSort) String() string {
 func (*CiTypeGroupSort) ProtoMessage() {}
 
 func (x *CiTypeGroupSort) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[91]
+	mi := &file_cmdb_proto_msgTypes[114]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7181,7 +9785,7 @@ func (x *CiTypeGroupSort) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupSort.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupSort) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{91}
+	return file_cmdb_proto_rawDescGZIP(), []int{114}
 }
 
 func (x *CiTypeGroupSort) GetGroupId() uint64 {
@@ -7207,7 +9811,7 @@ type CiTypeGroupSortReq struct {
 
 func (x *CiTypeGroupSortReq) Reset() {
 	*x = CiTypeGroupSortReq{}
-	mi := &file_cmdb_proto_msgTypes[92]
+	mi := &file_cmdb_proto_msgTypes[115]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7219,7 +9823,7 @@ func (x *CiTypeGroupSortReq) String() string {
 func (*CiTypeGroupSortReq) ProtoMessage() {}
 
 func (x *CiTypeGroupSortReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[92]
+	mi := &file_cmdb_proto_msgTypes[115]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7232,7 +9836,7 @@ func (x *CiTypeGroupSortReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeGroupSortReq.ProtoReflect.Descriptor instead.
 func (*CiTypeGroupSortReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{92}
+	return file_cmdb_proto_rawDescGZIP(), []int{115}
 }
 
 func (x *CiTypeGroupSortReq) GetData() []*CiTypeGroupSort {
@@ -7279,7 +9883,7 @@ type CiTypeInfo struct {
 
 func (x *CiTypeInfo) Reset() {
 	*x = CiTypeInfo{}
-	mi := &file_cmdb_proto_msgTypes[93]
+	mi := &file_cmdb_proto_msgTypes[116]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7291,7 +9895,7 @@ func (x *CiTypeInfo) String() string {
 func (*CiTypeInfo) ProtoMessage() {}
 
 func (x *CiTypeInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[93]
+	mi := &file_cmdb_proto_msgTypes[116]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7304,7 +9908,7 @@ func (x *CiTypeInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{93}
+	return file_cmdb_proto_rawDescGZIP(), []int{116}
 }
 
 func (x *CiTypeInfo) GetId() uint64 {
@@ -7434,7 +10038,7 @@ type CiTypeInheritanceInfo struct {
 
 func (x *CiTypeInheritanceInfo) Reset() {
 	*x = CiTypeInheritanceInfo{}
-	mi := &file_cmdb_proto_msgTypes[94]
+	mi := &file_cmdb_proto_msgTypes[117]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7446,7 +10050,7 @@ func (x *CiTypeInheritanceInfo) String() string {
 func (*CiTypeInheritanceInfo) ProtoMessage() {}
 
 func (x *CiTypeInheritanceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[94]
+	mi := &file_cmdb_proto_msgTypes[117]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7459,7 +10063,7 @@ func (x *CiTypeInheritanceInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeInheritanceInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeInheritanceInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{94}
+	return file_cmdb_proto_rawDescGZIP(), []int{117}
 }
 
 func (x *CiTypeInheritanceInfo) GetId() uint64 {
@@ -7512,7 +10116,7 @@ type CiTypeInheritanceListReq struct {
 
 func (x *CiTypeInheritanceListReq) Reset() {
 	*x = CiTypeInheritanceListReq{}
-	mi := &file_cmdb_proto_msgTypes[95]
+	mi := &file_cmdb_proto_msgTypes[118]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7524,7 +10128,7 @@ func (x *CiTypeInheritanceListReq) String() string {
 func (*CiTypeInheritanceListReq) ProtoMessage() {}
 
 func (x *CiTypeInheritanceListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[95]
+	mi := &file_cmdb_proto_msgTypes[118]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7537,7 +10141,7 @@ func (x *CiTypeInheritanceListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeInheritanceListReq.ProtoReflect.Descriptor instead.
 func (*CiTypeInheritanceListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{95}
+	return file_cmdb_proto_rawDescGZIP(), []int{118}
 }
 
 func (x *CiTypeInheritanceListReq) GetPage() uint64 {
@@ -7599,7 +10203,7 @@ type CiTypeInheritanceListResp struct {
 
 func (x *CiTypeInheritanceListResp) Reset() {
 	*x = CiTypeInheritanceListResp{}
-	mi := &file_cmdb_proto_msgTypes[96]
+	mi := &file_cmdb_proto_msgTypes[119]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7611,7 +10215,7 @@ func (x *CiTypeInheritanceListResp) String() string {
 func (*CiTypeInheritanceListResp) ProtoMessage() {}
 
 func (x *CiTypeInheritanceListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[96]
+	mi := &file_cmdb_proto_msgTypes[119]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7624,7 +10228,7 @@ func (x *CiTypeInheritanceListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeInheritanceListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeInheritanceListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{96}
+	return file_cmdb_proto_rawDescGZIP(), []int{119}
 }
 
 func (x *CiTypeInheritanceListResp) GetTotal() uint64 {
@@ -7663,7 +10267,7 @@ type CiTypeListReq struct {
 
 func (x *CiTypeListReq) Reset() {
 	*x = CiTypeListReq{}
-	mi := &file_cmdb_proto_msgTypes[97]
+	mi := &file_cmdb_proto_msgTypes[120]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7675,7 +10279,7 @@ func (x *CiTypeListReq) String() string {
 func (*CiTypeListReq) ProtoMessage() {}
 
 func (x *CiTypeListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[97]
+	mi := &file_cmdb_proto_msgTypes[120]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7688,7 +10292,7 @@ func (x *CiTypeListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeListReq.ProtoReflect.Descriptor instead.
 func (*CiTypeListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{97}
+	return file_cmdb_proto_rawDescGZIP(), []int{120}
 }
 
 func (x *CiTypeListReq) GetCreatedAt() int64 {
@@ -7799,7 +10403,7 @@ type CiTypeListResp struct {
 
 func (x *CiTypeListResp) Reset() {
 	*x = CiTypeListResp{}
-	mi := &file_cmdb_proto_msgTypes[98]
+	mi := &file_cmdb_proto_msgTypes[121]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7811,7 +10415,7 @@ func (x *CiTypeListResp) String() string {
 func (*CiTypeListResp) ProtoMessage() {}
 
 func (x *CiTypeListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[98]
+	mi := &file_cmdb_proto_msgTypes[121]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7824,7 +10428,7 @@ func (x *CiTypeListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{98}
+	return file_cmdb_proto_rawDescGZIP(), []int{121}
 }
 
 func (x *CiTypeListResp) GetTotal() uint64 {
@@ -7839,6 +10443,143 @@ func (x *CiTypeListResp) GetData() []*CiTypeInfo {
 		return x.Data
 	}
 	return nil
+}
+
+// CiTypeRelationDefinitionReq 查询CI类型关系定义请求
+type CiTypeRelationDefinitionReq struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// CI类型ID，查询作为源或目标的关系定义
+	CiTypeId uint64 `protobuf:"varint,1,opt,name=ci_type_id,json=ciTypeId,proto3" json:"ci_type_id"`
+	// 关系方向：source(作为源), target(作为目标), both(双向)，默认both
+	Direction *string `protobuf:"bytes,2,opt,name=direction,proto3,oneof" json:"direction"`
+	// 是否包含属性映射信息
+	IncludeAttributeMapping *bool `protobuf:"varint,3,opt,name=include_attribute_mapping,json=includeAttributeMapping,proto3,oneof" json:"include_attribute_mapping"`
+	// 是否只查询有效的关系定义
+	ActiveOnly    *bool `protobuf:"varint,4,opt,name=active_only,json=activeOnly,proto3,oneof" json:"active_only"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiTypeRelationDefinitionReq) Reset() {
+	*x = CiTypeRelationDefinitionReq{}
+	mi := &file_cmdb_proto_msgTypes[122]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeRelationDefinitionReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeRelationDefinitionReq) ProtoMessage() {}
+
+func (x *CiTypeRelationDefinitionReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[122]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeRelationDefinitionReq.ProtoReflect.Descriptor instead.
+func (*CiTypeRelationDefinitionReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{122}
+}
+
+func (x *CiTypeRelationDefinitionReq) GetCiTypeId() uint64 {
+	if x != nil {
+		return x.CiTypeId
+	}
+	return 0
+}
+
+func (x *CiTypeRelationDefinitionReq) GetDirection() string {
+	if x != nil && x.Direction != nil {
+		return *x.Direction
+	}
+	return ""
+}
+
+func (x *CiTypeRelationDefinitionReq) GetIncludeAttributeMapping() bool {
+	if x != nil && x.IncludeAttributeMapping != nil {
+		return *x.IncludeAttributeMapping
+	}
+	return false
+}
+
+func (x *CiTypeRelationDefinitionReq) GetActiveOnly() bool {
+	if x != nil && x.ActiveOnly != nil {
+		return *x.ActiveOnly
+	}
+	return false
+}
+
+// CiTypeRelationDefinitionResp 关系定义响应
+type CiTypeRelationDefinitionResp struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 作为源CI类型的关系定义
+	SourceRelations []*CiTypeRelationInfo `protobuf:"bytes,1,rep,name=source_relations,json=sourceRelations,proto3" json:"source_relations"`
+	// 作为目标CI类型的关系定义
+	TargetRelations []*CiTypeRelationInfo `protobuf:"bytes,2,rep,name=target_relations,json=targetRelations,proto3" json:"target_relations"`
+	// 总数统计
+	TotalCount    uint64 `protobuf:"varint,3,opt,name=total_count,json=totalCount,proto3" json:"total_count"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CiTypeRelationDefinitionResp) Reset() {
+	*x = CiTypeRelationDefinitionResp{}
+	mi := &file_cmdb_proto_msgTypes[123]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CiTypeRelationDefinitionResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CiTypeRelationDefinitionResp) ProtoMessage() {}
+
+func (x *CiTypeRelationDefinitionResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[123]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CiTypeRelationDefinitionResp.ProtoReflect.Descriptor instead.
+func (*CiTypeRelationDefinitionResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{123}
+}
+
+func (x *CiTypeRelationDefinitionResp) GetSourceRelations() []*CiTypeRelationInfo {
+	if x != nil {
+		return x.SourceRelations
+	}
+	return nil
+}
+
+func (x *CiTypeRelationDefinitionResp) GetTargetRelations() []*CiTypeRelationInfo {
+	if x != nil {
+		return x.TargetRelations
+	}
+	return nil
+}
+
+func (x *CiTypeRelationDefinitionResp) GetTotalCount() uint64 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
 }
 
 type CiTypeRelationInfo struct {
@@ -7868,7 +10609,7 @@ type CiTypeRelationInfo struct {
 
 func (x *CiTypeRelationInfo) Reset() {
 	*x = CiTypeRelationInfo{}
-	mi := &file_cmdb_proto_msgTypes[99]
+	mi := &file_cmdb_proto_msgTypes[124]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7880,7 +10621,7 @@ func (x *CiTypeRelationInfo) String() string {
 func (*CiTypeRelationInfo) ProtoMessage() {}
 
 func (x *CiTypeRelationInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[99]
+	mi := &file_cmdb_proto_msgTypes[124]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7893,7 +10634,7 @@ func (x *CiTypeRelationInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeRelationInfo.ProtoReflect.Descriptor instead.
 func (*CiTypeRelationInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{99}
+	return file_cmdb_proto_rawDescGZIP(), []int{124}
 }
 
 func (x *CiTypeRelationInfo) GetId() uint64 {
@@ -7994,7 +10735,7 @@ type CiTypeRelationListReq struct {
 
 func (x *CiTypeRelationListReq) Reset() {
 	*x = CiTypeRelationListReq{}
-	mi := &file_cmdb_proto_msgTypes[100]
+	mi := &file_cmdb_proto_msgTypes[125]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8006,7 +10747,7 @@ func (x *CiTypeRelationListReq) String() string {
 func (*CiTypeRelationListReq) ProtoMessage() {}
 
 func (x *CiTypeRelationListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[100]
+	mi := &file_cmdb_proto_msgTypes[125]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8019,7 +10760,7 @@ func (x *CiTypeRelationListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeRelationListReq.ProtoReflect.Descriptor instead.
 func (*CiTypeRelationListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{100}
+	return file_cmdb_proto_rawDescGZIP(), []int{125}
 }
 
 func (x *CiTypeRelationListReq) GetPage() uint64 {
@@ -8123,7 +10864,7 @@ type CiTypeRelationListResp struct {
 
 func (x *CiTypeRelationListResp) Reset() {
 	*x = CiTypeRelationListResp{}
-	mi := &file_cmdb_proto_msgTypes[101]
+	mi := &file_cmdb_proto_msgTypes[126]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8135,7 +10876,7 @@ func (x *CiTypeRelationListResp) String() string {
 func (*CiTypeRelationListResp) ProtoMessage() {}
 
 func (x *CiTypeRelationListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[101]
+	mi := &file_cmdb_proto_msgTypes[126]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8148,7 +10889,7 @@ func (x *CiTypeRelationListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeRelationListResp.ProtoReflect.Descriptor instead.
 func (*CiTypeRelationListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{101}
+	return file_cmdb_proto_rawDescGZIP(), []int{126}
 }
 
 func (x *CiTypeRelationListResp) GetTotal() uint64 {
@@ -8174,7 +10915,7 @@ type CiTypeUniqueConst struct {
 
 func (x *CiTypeUniqueConst) Reset() {
 	*x = CiTypeUniqueConst{}
-	mi := &file_cmdb_proto_msgTypes[102]
+	mi := &file_cmdb_proto_msgTypes[127]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8186,7 +10927,7 @@ func (x *CiTypeUniqueConst) String() string {
 func (*CiTypeUniqueConst) ProtoMessage() {}
 
 func (x *CiTypeUniqueConst) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[102]
+	mi := &file_cmdb_proto_msgTypes[127]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8199,7 +10940,7 @@ func (x *CiTypeUniqueConst) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CiTypeUniqueConst.ProtoReflect.Descriptor instead.
 func (*CiTypeUniqueConst) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{102}
+	return file_cmdb_proto_rawDescGZIP(), []int{127}
 }
 
 func (x *CiTypeUniqueConst) GetAttrIds() []uint64 {
@@ -8220,7 +10961,7 @@ type CisAttributeValidateReq struct {
 
 func (x *CisAttributeValidateReq) Reset() {
 	*x = CisAttributeValidateReq{}
-	mi := &file_cmdb_proto_msgTypes[103]
+	mi := &file_cmdb_proto_msgTypes[128]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8232,7 +10973,7 @@ func (x *CisAttributeValidateReq) String() string {
 func (*CisAttributeValidateReq) ProtoMessage() {}
 
 func (x *CisAttributeValidateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[103]
+	mi := &file_cmdb_proto_msgTypes[128]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8245,7 +10986,7 @@ func (x *CisAttributeValidateReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CisAttributeValidateReq.ProtoReflect.Descriptor instead.
 func (*CisAttributeValidateReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{103}
+	return file_cmdb_proto_rawDescGZIP(), []int{128}
 }
 
 func (x *CisAttributeValidateReq) GetTypeId() uint64 {
@@ -8275,7 +11016,7 @@ type CisAttributeValidateResp struct {
 
 func (x *CisAttributeValidateResp) Reset() {
 	*x = CisAttributeValidateResp{}
-	mi := &file_cmdb_proto_msgTypes[104]
+	mi := &file_cmdb_proto_msgTypes[129]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8287,7 +11028,7 @@ func (x *CisAttributeValidateResp) String() string {
 func (*CisAttributeValidateResp) ProtoMessage() {}
 
 func (x *CisAttributeValidateResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[104]
+	mi := &file_cmdb_proto_msgTypes[129]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8300,7 +11041,7 @@ func (x *CisAttributeValidateResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CisAttributeValidateResp.ProtoReflect.Descriptor instead.
 func (*CisAttributeValidateResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{104}
+	return file_cmdb_proto_rawDescGZIP(), []int{129}
 }
 
 func (x *CisAttributeValidateResp) GetValid() bool {
@@ -8332,7 +11073,7 @@ type CisBatchOperationReq struct {
 
 func (x *CisBatchOperationReq) Reset() {
 	*x = CisBatchOperationReq{}
-	mi := &file_cmdb_proto_msgTypes[105]
+	mi := &file_cmdb_proto_msgTypes[130]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8344,7 +11085,7 @@ func (x *CisBatchOperationReq) String() string {
 func (*CisBatchOperationReq) ProtoMessage() {}
 
 func (x *CisBatchOperationReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[105]
+	mi := &file_cmdb_proto_msgTypes[130]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8357,7 +11098,7 @@ func (x *CisBatchOperationReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CisBatchOperationReq.ProtoReflect.Descriptor instead.
 func (*CisBatchOperationReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{105}
+	return file_cmdb_proto_rawDescGZIP(), []int{130}
 }
 
 func (x *CisBatchOperationReq) GetOperation() string {
@@ -8396,7 +11137,7 @@ type CisDetailInfo struct {
 
 func (x *CisDetailInfo) Reset() {
 	*x = CisDetailInfo{}
-	mi := &file_cmdb_proto_msgTypes[106]
+	mi := &file_cmdb_proto_msgTypes[131]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8408,7 +11149,7 @@ func (x *CisDetailInfo) String() string {
 func (*CisDetailInfo) ProtoMessage() {}
 
 func (x *CisDetailInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[106]
+	mi := &file_cmdb_proto_msgTypes[131]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8421,7 +11162,7 @@ func (x *CisDetailInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CisDetailInfo.ProtoReflect.Descriptor instead.
 func (*CisDetailInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{106}
+	return file_cmdb_proto_rawDescGZIP(), []int{131}
 }
 
 func (x *CisDetailInfo) GetCiInfo() *CisInfo {
@@ -8467,14 +11208,16 @@ type CisInfo struct {
 	// 自定义字段
 	CustomFields []*CisMetadata `protobuf:"bytes,11,rep,name=custom_fields,json=customFields,proto3" json:"custom_fields"`
 	// 动态属性值列表（查询时返回）
-	Attributes    []*CiAttributeValue `protobuf:"bytes,12,rep,name=attributes,proto3" json:"attributes"`
+	Attributes []*CiAttributeValue `protobuf:"bytes,12,rep,name=attributes,proto3" json:"attributes"`
+	// === 关系数据 ===
+	Relations     *CiRelationsData `protobuf:"bytes,13,opt,name=relations,proto3,oneof" json:"relations"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CisInfo) Reset() {
 	*x = CisInfo{}
-	mi := &file_cmdb_proto_msgTypes[107]
+	mi := &file_cmdb_proto_msgTypes[132]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8486,7 +11229,7 @@ func (x *CisInfo) String() string {
 func (*CisInfo) ProtoMessage() {}
 
 func (x *CisInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[107]
+	mi := &file_cmdb_proto_msgTypes[132]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8499,7 +11242,7 @@ func (x *CisInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CisInfo.ProtoReflect.Descriptor instead.
 func (*CisInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{107}
+	return file_cmdb_proto_rawDescGZIP(), []int{132}
 }
 
 func (x *CisInfo) GetId() uint64 {
@@ -8586,6 +11329,13 @@ func (x *CisInfo) GetAttributes() []*CiAttributeValue {
 	return nil
 }
 
+func (x *CisInfo) GetRelations() *CiRelationsData {
+	if x != nil {
+		return x.Relations
+	}
+	return nil
+}
+
 type CisListReq struct {
 	state    protoimpl.MessageState `protogen:"open.v1"`
 	Page     uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
@@ -8639,7 +11389,7 @@ type CisListReq struct {
 
 func (x *CisListReq) Reset() {
 	*x = CisListReq{}
-	mi := &file_cmdb_proto_msgTypes[108]
+	mi := &file_cmdb_proto_msgTypes[133]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8651,7 +11401,7 @@ func (x *CisListReq) String() string {
 func (*CisListReq) ProtoMessage() {}
 
 func (x *CisListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[108]
+	mi := &file_cmdb_proto_msgTypes[133]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8664,7 +11414,7 @@ func (x *CisListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CisListReq.ProtoReflect.Descriptor instead.
 func (*CisListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{108}
+	return file_cmdb_proto_rawDescGZIP(), []int{133}
 }
 
 func (x *CisListReq) GetPage() uint64 {
@@ -8868,7 +11618,7 @@ type CisListResp struct {
 
 func (x *CisListResp) Reset() {
 	*x = CisListResp{}
-	mi := &file_cmdb_proto_msgTypes[109]
+	mi := &file_cmdb_proto_msgTypes[134]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8880,7 +11630,7 @@ func (x *CisListResp) String() string {
 func (*CisListResp) ProtoMessage() {}
 
 func (x *CisListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[109]
+	mi := &file_cmdb_proto_msgTypes[134]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8893,7 +11643,7 @@ func (x *CisListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CisListResp.ProtoReflect.Descriptor instead.
 func (*CisListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{109}
+	return file_cmdb_proto_rawDescGZIP(), []int{134}
 }
 
 func (x *CisListResp) GetTotal() uint64 {
@@ -8927,7 +11677,7 @@ type CisMetadata struct {
 
 func (x *CisMetadata) Reset() {
 	*x = CisMetadata{}
-	mi := &file_cmdb_proto_msgTypes[110]
+	mi := &file_cmdb_proto_msgTypes[135]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8939,7 +11689,7 @@ func (x *CisMetadata) String() string {
 func (*CisMetadata) ProtoMessage() {}
 
 func (x *CisMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[110]
+	mi := &file_cmdb_proto_msgTypes[135]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8952,7 +11702,7 @@ func (x *CisMetadata) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CisMetadata.ProtoReflect.Descriptor instead.
 func (*CisMetadata) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{110}
+	return file_cmdb_proto_rawDescGZIP(), []int{135}
 }
 
 func (x *CisMetadata) GetKey() string {
@@ -8969,6 +11719,846 @@ func (x *CisMetadata) GetValue() string {
 	return ""
 }
 
+// 发现的CI数据
+type DiscoveredCIData struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// CI类型ID
+	CiTypeId *uint64 `protobuf:"varint,1,opt,name=ci_type_id,json=ciTypeId,proto3,oneof" json:"ci_type_id"`
+	// 唯一标识（用于去重）
+	UniqueKey *string `protobuf:"bytes,2,opt,name=unique_key,json=uniqueKey,proto3,oneof" json:"unique_key"`
+	// 唯一标识（用于去重）
+	Attributes map[string]string `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// 数据来源（discovery_pool_id）
+	Source *string `protobuf:"bytes,4,opt,name=source,proto3,oneof" json:"source"`
+	// 来源类型（ssh/api/file）
+	SourceType *string `protobuf:"bytes,5,opt,name=source_type,json=sourceType,proto3,oneof" json:"source_type"`
+	// 自动创建CI
+	AutoCreate *bool `protobuf:"varint,6,opt,name=auto_create,json=autoCreate,proto3,oneof" json:"auto_create"`
+	// 自动更新属性
+	AutoUpdate *bool `protobuf:"varint,7,opt,name=auto_update,json=autoUpdate,proto3,oneof" json:"auto_update"`
+	// 冲突策略（skip/update/merge）
+	ConflictResolution *string `protobuf:"bytes,8,opt,name=conflict_resolution,json=conflictResolution,proto3,oneof" json:"conflict_resolution"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *DiscoveredCIData) Reset() {
+	*x = DiscoveredCIData{}
+	mi := &file_cmdb_proto_msgTypes[136]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiscoveredCIData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiscoveredCIData) ProtoMessage() {}
+
+func (x *DiscoveredCIData) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[136]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiscoveredCIData.ProtoReflect.Descriptor instead.
+func (*DiscoveredCIData) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{136}
+}
+
+func (x *DiscoveredCIData) GetCiTypeId() uint64 {
+	if x != nil && x.CiTypeId != nil {
+		return *x.CiTypeId
+	}
+	return 0
+}
+
+func (x *DiscoveredCIData) GetUniqueKey() string {
+	if x != nil && x.UniqueKey != nil {
+		return *x.UniqueKey
+	}
+	return ""
+}
+
+func (x *DiscoveredCIData) GetAttributes() map[string]string {
+	if x != nil {
+		return x.Attributes
+	}
+	return nil
+}
+
+func (x *DiscoveredCIData) GetSource() string {
+	if x != nil && x.Source != nil {
+		return *x.Source
+	}
+	return ""
+}
+
+func (x *DiscoveredCIData) GetSourceType() string {
+	if x != nil && x.SourceType != nil {
+		return *x.SourceType
+	}
+	return ""
+}
+
+func (x *DiscoveredCIData) GetAutoCreate() bool {
+	if x != nil && x.AutoCreate != nil {
+		return *x.AutoCreate
+	}
+	return false
+}
+
+func (x *DiscoveredCIData) GetAutoUpdate() bool {
+	if x != nil && x.AutoUpdate != nil {
+		return *x.AutoUpdate
+	}
+	return false
+}
+
+func (x *DiscoveredCIData) GetConflictResolution() string {
+	if x != nil && x.ConflictResolution != nil {
+		return *x.ConflictResolution
+	}
+	return ""
+}
+
+type DiscoveryExecutionHistoryInfo struct {
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	Id        *uint64                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id"`
+	CreatedAt *int64                 `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
+	UpdatedAt *int64                 `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
+	// 发现配置ID
+	DiscoveryConfigId *uint64 `protobuf:"varint,4,opt,name=discovery_config_id,json=discoveryConfigId,proto3,oneof" json:"discovery_config_id"`
+	// 执行ID(UUID)
+	ExecutionId *string `protobuf:"bytes,5,opt,name=execution_id,json=executionId,proto3,oneof" json:"execution_id"`
+	// 触发类型: manual, scheduled, api
+	TriggerType *string `protobuf:"bytes,6,opt,name=trigger_type,json=triggerType,proto3,oneof" json:"trigger_type"`
+	// 触发人ID
+	TriggeredBy *uint64 `protobuf:"varint,7,opt,name=triggered_by,json=triggeredBy,proto3,oneof" json:"triggered_by"`
+	// 开始时间
+	StartedAt *int64 `protobuf:"varint,8,opt,name=started_at,json=startedAt,proto3,oneof" json:"started_at"`
+	// 完成时间
+	CompletedAt *int64 `protobuf:"varint,9,opt,name=completed_at,json=completedAt,proto3,oneof" json:"completed_at"`
+	// 执行时长(秒)
+	DurationSeconds *int64 `protobuf:"varint,10,opt,name=duration_seconds,json=durationSeconds,proto3,oneof" json:"duration_seconds"`
+	// 状态: running, completed, failed, cancelled
+	ExecStatus *string `protobuf:"bytes,11,opt,name=exec_status,json=execStatus,proto3,oneof" json:"exec_status"`
+	// 当前阶段: connecting, discovering, transforming, persisting
+	Stage *string `protobuf:"bytes,12,opt,name=stage,proto3,oneof" json:"stage"`
+	// 进度百分比(0-100)
+	Progress *int64 `protobuf:"varint,13,opt,name=progress,proto3,oneof" json:"progress"`
+	// 总记录数
+	TotalRecords *int64 `protobuf:"varint,14,opt,name=total_records,json=totalRecords,proto3,oneof" json:"total_records"`
+	// 已处理记录数
+	ProcessedRecords *int64 `protobuf:"varint,15,opt,name=processed_records,json=processedRecords,proto3,oneof" json:"processed_records"`
+	// 成功记录数
+	SuccessRecords *int64 `protobuf:"varint,16,opt,name=success_records,json=successRecords,proto3,oneof" json:"success_records"`
+	// 失败记录数
+	FailedRecords *int64 `protobuf:"varint,17,opt,name=failed_records,json=failedRecords,proto3,oneof" json:"failed_records"`
+	// 跳过记录数
+	SkippedRecords *int64 `protobuf:"varint,18,opt,name=skipped_records,json=skippedRecords,proto3,oneof" json:"skipped_records"`
+	// 创建的CI数量
+	CreatedCis *int64 `protobuf:"varint,19,opt,name=created_cis,json=createdCis,proto3,oneof" json:"created_cis"`
+	// 更新的CI数量
+	UpdatedCis *int64 `protobuf:"varint,20,opt,name=updated_cis,json=updatedCis,proto3,oneof" json:"updated_cis"`
+	// 错误信息
+	ErrorMessage *string `protobuf:"bytes,21,opt,name=error_message,json=errorMessage,proto3,oneof" json:"error_message"`
+	// 错误详情JSON
+	ErrorDetails *string `protobuf:"bytes,22,opt,name=error_details,json=errorDetails,proto3,oneof" json:"error_details"`
+	// 验证错误JSON
+	ValidationErrors *string `protobuf:"bytes,23,opt,name=validation_errors,json=validationErrors,proto3,oneof" json:"validation_errors"`
+	// 执行结果JSON
+	ExecutionResult *string `protobuf:"bytes,24,opt,name=execution_result,json=executionResult,proto3,oneof" json:"execution_result"`
+	// 性能指标JSON
+	PerformanceMetrics *string `protobuf:"bytes,25,opt,name=performance_metrics,json=performanceMetrics,proto3,oneof" json:"performance_metrics"`
+	// 执行时的配置快照JSON
+	ConfigSnapshot *string `protobuf:"bytes,26,opt,name=config_snapshot,json=configSnapshot,proto3,oneof" json:"config_snapshot"`
+	// 提供者信息JSON
+	ProviderInfo *string `protobuf:"bytes,27,opt,name=provider_info,json=providerInfo,proto3,oneof" json:"provider_info"`
+	// 执行日志
+	ExecutionLog *string `protobuf:"bytes,28,opt,name=execution_log,json=executionLog,proto3,oneof" json:"execution_log"`
+	// 扩展元数据JSON
+	Metadata *string `protobuf:"bytes,29,opt,name=metadata,proto3,oneof" json:"metadata"`
+	// 标签
+	Tags          *string `protobuf:"bytes,30,opt,name=tags,proto3,oneof" json:"tags"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiscoveryExecutionHistoryInfo) Reset() {
+	*x = DiscoveryExecutionHistoryInfo{}
+	mi := &file_cmdb_proto_msgTypes[137]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiscoveryExecutionHistoryInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiscoveryExecutionHistoryInfo) ProtoMessage() {}
+
+func (x *DiscoveryExecutionHistoryInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[137]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiscoveryExecutionHistoryInfo.ProtoReflect.Descriptor instead.
+func (*DiscoveryExecutionHistoryInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{137}
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetId() uint64 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetCreatedAt() int64 {
+	if x != nil && x.CreatedAt != nil {
+		return *x.CreatedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetUpdatedAt() int64 {
+	if x != nil && x.UpdatedAt != nil {
+		return *x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetDiscoveryConfigId() uint64 {
+	if x != nil && x.DiscoveryConfigId != nil {
+		return *x.DiscoveryConfigId
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetExecutionId() string {
+	if x != nil && x.ExecutionId != nil {
+		return *x.ExecutionId
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetTriggerType() string {
+	if x != nil && x.TriggerType != nil {
+		return *x.TriggerType
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetTriggeredBy() uint64 {
+	if x != nil && x.TriggeredBy != nil {
+		return *x.TriggeredBy
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetStartedAt() int64 {
+	if x != nil && x.StartedAt != nil {
+		return *x.StartedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetCompletedAt() int64 {
+	if x != nil && x.CompletedAt != nil {
+		return *x.CompletedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetDurationSeconds() int64 {
+	if x != nil && x.DurationSeconds != nil {
+		return *x.DurationSeconds
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetExecStatus() string {
+	if x != nil && x.ExecStatus != nil {
+		return *x.ExecStatus
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetStage() string {
+	if x != nil && x.Stage != nil {
+		return *x.Stage
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetProgress() int64 {
+	if x != nil && x.Progress != nil {
+		return *x.Progress
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetTotalRecords() int64 {
+	if x != nil && x.TotalRecords != nil {
+		return *x.TotalRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetProcessedRecords() int64 {
+	if x != nil && x.ProcessedRecords != nil {
+		return *x.ProcessedRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetSuccessRecords() int64 {
+	if x != nil && x.SuccessRecords != nil {
+		return *x.SuccessRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetFailedRecords() int64 {
+	if x != nil && x.FailedRecords != nil {
+		return *x.FailedRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetSkippedRecords() int64 {
+	if x != nil && x.SkippedRecords != nil {
+		return *x.SkippedRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetCreatedCis() int64 {
+	if x != nil && x.CreatedCis != nil {
+		return *x.CreatedCis
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetUpdatedCis() int64 {
+	if x != nil && x.UpdatedCis != nil {
+		return *x.UpdatedCis
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetErrorMessage() string {
+	if x != nil && x.ErrorMessage != nil {
+		return *x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetErrorDetails() string {
+	if x != nil && x.ErrorDetails != nil {
+		return *x.ErrorDetails
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetValidationErrors() string {
+	if x != nil && x.ValidationErrors != nil {
+		return *x.ValidationErrors
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetExecutionResult() string {
+	if x != nil && x.ExecutionResult != nil {
+		return *x.ExecutionResult
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetPerformanceMetrics() string {
+	if x != nil && x.PerformanceMetrics != nil {
+		return *x.PerformanceMetrics
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetConfigSnapshot() string {
+	if x != nil && x.ConfigSnapshot != nil {
+		return *x.ConfigSnapshot
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetProviderInfo() string {
+	if x != nil && x.ProviderInfo != nil {
+		return *x.ProviderInfo
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetExecutionLog() string {
+	if x != nil && x.ExecutionLog != nil {
+		return *x.ExecutionLog
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetMetadata() string {
+	if x != nil && x.Metadata != nil {
+		return *x.Metadata
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryInfo) GetTags() string {
+	if x != nil && x.Tags != nil {
+		return *x.Tags
+	}
+	return ""
+}
+
+type DiscoveryExecutionHistoryListReq struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Page               uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
+	PageSize           uint64                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
+	CreatedAt          *int64                 `protobuf:"varint,3,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at"`
+	UpdatedAt          *int64                 `protobuf:"varint,4,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at"`
+	DeletedAt          *int64                 `protobuf:"varint,5,opt,name=deleted_at,json=deletedAt,proto3,oneof" json:"deleted_at"`
+	DiscoveryConfigId  *uint64                `protobuf:"varint,6,opt,name=discovery_config_id,json=discoveryConfigId,proto3,oneof" json:"discovery_config_id"`
+	ExecutionId        *string                `protobuf:"bytes,7,opt,name=execution_id,json=executionId,proto3,oneof" json:"execution_id"`
+	TriggerType        *string                `protobuf:"bytes,8,opt,name=trigger_type,json=triggerType,proto3,oneof" json:"trigger_type"`
+	TriggeredBy        *uint64                `protobuf:"varint,9,opt,name=triggered_by,json=triggeredBy,proto3,oneof" json:"triggered_by"`
+	StartedAt          *int64                 `protobuf:"varint,10,opt,name=started_at,json=startedAt,proto3,oneof" json:"started_at"`
+	CompletedAt        *int64                 `protobuf:"varint,11,opt,name=completed_at,json=completedAt,proto3,oneof" json:"completed_at"`
+	DurationSeconds    *int64                 `protobuf:"varint,12,opt,name=duration_seconds,json=durationSeconds,proto3,oneof" json:"duration_seconds"`
+	ExecStatus         *string                `protobuf:"bytes,13,opt,name=exec_status,json=execStatus,proto3,oneof" json:"exec_status"`
+	Stage              *string                `protobuf:"bytes,14,opt,name=stage,proto3,oneof" json:"stage"`
+	Progress           *int64                 `protobuf:"varint,15,opt,name=progress,proto3,oneof" json:"progress"`
+	TotalRecords       *int64                 `protobuf:"varint,16,opt,name=total_records,json=totalRecords,proto3,oneof" json:"total_records"`
+	ProcessedRecords   *int64                 `protobuf:"varint,17,opt,name=processed_records,json=processedRecords,proto3,oneof" json:"processed_records"`
+	SuccessRecords     *int64                 `protobuf:"varint,18,opt,name=success_records,json=successRecords,proto3,oneof" json:"success_records"`
+	FailedRecords      *int64                 `protobuf:"varint,19,opt,name=failed_records,json=failedRecords,proto3,oneof" json:"failed_records"`
+	SkippedRecords     *int64                 `protobuf:"varint,20,opt,name=skipped_records,json=skippedRecords,proto3,oneof" json:"skipped_records"`
+	CreatedCis         *int64                 `protobuf:"varint,21,opt,name=created_cis,json=createdCis,proto3,oneof" json:"created_cis"`
+	UpdatedCis         *int64                 `protobuf:"varint,22,opt,name=updated_cis,json=updatedCis,proto3,oneof" json:"updated_cis"`
+	ErrorMessage       *string                `protobuf:"bytes,23,opt,name=error_message,json=errorMessage,proto3,oneof" json:"error_message"`
+	ErrorDetails       *string                `protobuf:"bytes,24,opt,name=error_details,json=errorDetails,proto3,oneof" json:"error_details"`
+	ValidationErrors   *string                `protobuf:"bytes,25,opt,name=validation_errors,json=validationErrors,proto3,oneof" json:"validation_errors"`
+	ExecutionResult    *string                `protobuf:"bytes,26,opt,name=execution_result,json=executionResult,proto3,oneof" json:"execution_result"`
+	PerformanceMetrics *string                `protobuf:"bytes,27,opt,name=performance_metrics,json=performanceMetrics,proto3,oneof" json:"performance_metrics"`
+	ConfigSnapshot     *string                `protobuf:"bytes,28,opt,name=config_snapshot,json=configSnapshot,proto3,oneof" json:"config_snapshot"`
+	ProviderInfo       *string                `protobuf:"bytes,29,opt,name=provider_info,json=providerInfo,proto3,oneof" json:"provider_info"`
+	ExecutionLog       *string                `protobuf:"bytes,30,opt,name=execution_log,json=executionLog,proto3,oneof" json:"execution_log"`
+	Metadata           *string                `protobuf:"bytes,31,opt,name=metadata,proto3,oneof" json:"metadata"`
+	Tags               *string                `protobuf:"bytes,32,opt,name=tags,proto3,oneof" json:"tags"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *DiscoveryExecutionHistoryListReq) Reset() {
+	*x = DiscoveryExecutionHistoryListReq{}
+	mi := &file_cmdb_proto_msgTypes[138]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiscoveryExecutionHistoryListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiscoveryExecutionHistoryListReq) ProtoMessage() {}
+
+func (x *DiscoveryExecutionHistoryListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[138]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiscoveryExecutionHistoryListReq.ProtoReflect.Descriptor instead.
+func (*DiscoveryExecutionHistoryListReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{138}
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetPage() uint64 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetPageSize() uint64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetCreatedAt() int64 {
+	if x != nil && x.CreatedAt != nil {
+		return *x.CreatedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetUpdatedAt() int64 {
+	if x != nil && x.UpdatedAt != nil {
+		return *x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetDeletedAt() int64 {
+	if x != nil && x.DeletedAt != nil {
+		return *x.DeletedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetDiscoveryConfigId() uint64 {
+	if x != nil && x.DiscoveryConfigId != nil {
+		return *x.DiscoveryConfigId
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetExecutionId() string {
+	if x != nil && x.ExecutionId != nil {
+		return *x.ExecutionId
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetTriggerType() string {
+	if x != nil && x.TriggerType != nil {
+		return *x.TriggerType
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetTriggeredBy() uint64 {
+	if x != nil && x.TriggeredBy != nil {
+		return *x.TriggeredBy
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetStartedAt() int64 {
+	if x != nil && x.StartedAt != nil {
+		return *x.StartedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetCompletedAt() int64 {
+	if x != nil && x.CompletedAt != nil {
+		return *x.CompletedAt
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetDurationSeconds() int64 {
+	if x != nil && x.DurationSeconds != nil {
+		return *x.DurationSeconds
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetExecStatus() string {
+	if x != nil && x.ExecStatus != nil {
+		return *x.ExecStatus
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetStage() string {
+	if x != nil && x.Stage != nil {
+		return *x.Stage
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetProgress() int64 {
+	if x != nil && x.Progress != nil {
+		return *x.Progress
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetTotalRecords() int64 {
+	if x != nil && x.TotalRecords != nil {
+		return *x.TotalRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetProcessedRecords() int64 {
+	if x != nil && x.ProcessedRecords != nil {
+		return *x.ProcessedRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetSuccessRecords() int64 {
+	if x != nil && x.SuccessRecords != nil {
+		return *x.SuccessRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetFailedRecords() int64 {
+	if x != nil && x.FailedRecords != nil {
+		return *x.FailedRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetSkippedRecords() int64 {
+	if x != nil && x.SkippedRecords != nil {
+		return *x.SkippedRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetCreatedCis() int64 {
+	if x != nil && x.CreatedCis != nil {
+		return *x.CreatedCis
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetUpdatedCis() int64 {
+	if x != nil && x.UpdatedCis != nil {
+		return *x.UpdatedCis
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetErrorMessage() string {
+	if x != nil && x.ErrorMessage != nil {
+		return *x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetErrorDetails() string {
+	if x != nil && x.ErrorDetails != nil {
+		return *x.ErrorDetails
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetValidationErrors() string {
+	if x != nil && x.ValidationErrors != nil {
+		return *x.ValidationErrors
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetExecutionResult() string {
+	if x != nil && x.ExecutionResult != nil {
+		return *x.ExecutionResult
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetPerformanceMetrics() string {
+	if x != nil && x.PerformanceMetrics != nil {
+		return *x.PerformanceMetrics
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetConfigSnapshot() string {
+	if x != nil && x.ConfigSnapshot != nil {
+		return *x.ConfigSnapshot
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetProviderInfo() string {
+	if x != nil && x.ProviderInfo != nil {
+		return *x.ProviderInfo
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetExecutionLog() string {
+	if x != nil && x.ExecutionLog != nil {
+		return *x.ExecutionLog
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetMetadata() string {
+	if x != nil && x.Metadata != nil {
+		return *x.Metadata
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionHistoryListReq) GetTags() string {
+	if x != nil && x.Tags != nil {
+		return *x.Tags
+	}
+	return ""
+}
+
+type DiscoveryExecutionHistoryListResp struct {
+	state         protoimpl.MessageState           `protogen:"open.v1"`
+	Total         uint64                           `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
+	Data          []*DiscoveryExecutionHistoryInfo `protobuf:"bytes,2,rep,name=data,proto3" json:"data"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiscoveryExecutionHistoryListResp) Reset() {
+	*x = DiscoveryExecutionHistoryListResp{}
+	mi := &file_cmdb_proto_msgTypes[139]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiscoveryExecutionHistoryListResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiscoveryExecutionHistoryListResp) ProtoMessage() {}
+
+func (x *DiscoveryExecutionHistoryListResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[139]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiscoveryExecutionHistoryListResp.ProtoReflect.Descriptor instead.
+func (*DiscoveryExecutionHistoryListResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{139}
+}
+
+func (x *DiscoveryExecutionHistoryListResp) GetTotal() uint64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionHistoryListResp) GetData() []*DiscoveryExecutionHistoryInfo {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type DiscoveryExecutionResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExecutionId   string                 `protobuf:"bytes,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id"`
+	ConfigId      uint64                 `protobuf:"varint,2,opt,name=config_id,json=configId,proto3" json:"config_id"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status"`
+	StartTime     *int64                 `protobuf:"varint,4,opt,name=start_time,json=startTime,proto3,oneof" json:"start_time"`
+	TotalRecords  *int64                 `protobuf:"varint,5,opt,name=total_records,json=totalRecords,proto3,oneof" json:"total_records"`
+	Message       *string                `protobuf:"bytes,6,opt,name=message,proto3,oneof" json:"message"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DiscoveryExecutionResp) Reset() {
+	*x = DiscoveryExecutionResp{}
+	mi := &file_cmdb_proto_msgTypes[140]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DiscoveryExecutionResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DiscoveryExecutionResp) ProtoMessage() {}
+
+func (x *DiscoveryExecutionResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[140]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DiscoveryExecutionResp.ProtoReflect.Descriptor instead.
+func (*DiscoveryExecutionResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{140}
+}
+
+func (x *DiscoveryExecutionResp) GetExecutionId() string {
+	if x != nil {
+		return x.ExecutionId
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionResp) GetConfigId() uint64 {
+	if x != nil {
+		return x.ConfigId
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionResp) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *DiscoveryExecutionResp) GetStartTime() int64 {
+	if x != nil && x.StartTime != nil {
+		return *x.StartTime
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionResp) GetTotalRecords() int64 {
+	if x != nil && x.TotalRecords != nil {
+		return *x.TotalRecords
+	}
+	return 0
+}
+
+func (x *DiscoveryExecutionResp) GetMessage() string {
+	if x != nil && x.Message != nil {
+		return *x.Message
+	}
+	return ""
+}
+
 // base message
 type Empty struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -8978,7 +12568,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_cmdb_proto_msgTypes[111]
+	mi := &file_cmdb_proto_msgTypes[141]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8990,7 +12580,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[111]
+	mi := &file_cmdb_proto_msgTypes[141]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9003,7 +12593,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{111}
+	return file_cmdb_proto_rawDescGZIP(), []int{141}
 }
 
 type IDInt32Req struct {
@@ -9015,7 +12605,7 @@ type IDInt32Req struct {
 
 func (x *IDInt32Req) Reset() {
 	*x = IDInt32Req{}
-	mi := &file_cmdb_proto_msgTypes[112]
+	mi := &file_cmdb_proto_msgTypes[142]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9027,7 +12617,7 @@ func (x *IDInt32Req) String() string {
 func (*IDInt32Req) ProtoMessage() {}
 
 func (x *IDInt32Req) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[112]
+	mi := &file_cmdb_proto_msgTypes[142]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9040,7 +12630,7 @@ func (x *IDInt32Req) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDInt32Req.ProtoReflect.Descriptor instead.
 func (*IDInt32Req) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{112}
+	return file_cmdb_proto_rawDescGZIP(), []int{142}
 }
 
 func (x *IDInt32Req) GetId() int32 {
@@ -9059,7 +12649,7 @@ type IDInt64Req struct {
 
 func (x *IDInt64Req) Reset() {
 	*x = IDInt64Req{}
-	mi := &file_cmdb_proto_msgTypes[113]
+	mi := &file_cmdb_proto_msgTypes[143]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9071,7 +12661,7 @@ func (x *IDInt64Req) String() string {
 func (*IDInt64Req) ProtoMessage() {}
 
 func (x *IDInt64Req) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[113]
+	mi := &file_cmdb_proto_msgTypes[143]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9084,7 +12674,7 @@ func (x *IDInt64Req) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDInt64Req.ProtoReflect.Descriptor instead.
 func (*IDInt64Req) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{113}
+	return file_cmdb_proto_rawDescGZIP(), []int{143}
 }
 
 func (x *IDInt64Req) GetId() int64 {
@@ -9104,7 +12694,7 @@ type IDReq struct {
 
 func (x *IDReq) Reset() {
 	*x = IDReq{}
-	mi := &file_cmdb_proto_msgTypes[114]
+	mi := &file_cmdb_proto_msgTypes[144]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9116,7 +12706,7 @@ func (x *IDReq) String() string {
 func (*IDReq) ProtoMessage() {}
 
 func (x *IDReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[114]
+	mi := &file_cmdb_proto_msgTypes[144]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9129,7 +12719,7 @@ func (x *IDReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDReq.ProtoReflect.Descriptor instead.
 func (*IDReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{114}
+	return file_cmdb_proto_rawDescGZIP(), []int{144}
 }
 
 func (x *IDReq) GetId() uint64 {
@@ -9148,7 +12738,7 @@ type IDStringReq struct {
 
 func (x *IDStringReq) Reset() {
 	*x = IDStringReq{}
-	mi := &file_cmdb_proto_msgTypes[115]
+	mi := &file_cmdb_proto_msgTypes[145]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9160,7 +12750,7 @@ func (x *IDStringReq) String() string {
 func (*IDStringReq) ProtoMessage() {}
 
 func (x *IDStringReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[115]
+	mi := &file_cmdb_proto_msgTypes[145]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9173,7 +12763,7 @@ func (x *IDStringReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDStringReq.ProtoReflect.Descriptor instead.
 func (*IDStringReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{115}
+	return file_cmdb_proto_rawDescGZIP(), []int{145}
 }
 
 func (x *IDStringReq) GetId() string {
@@ -9192,7 +12782,7 @@ type IDUint32Req struct {
 
 func (x *IDUint32Req) Reset() {
 	*x = IDUint32Req{}
-	mi := &file_cmdb_proto_msgTypes[116]
+	mi := &file_cmdb_proto_msgTypes[146]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9204,7 +12794,7 @@ func (x *IDUint32Req) String() string {
 func (*IDUint32Req) ProtoMessage() {}
 
 func (x *IDUint32Req) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[116]
+	mi := &file_cmdb_proto_msgTypes[146]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9217,7 +12807,7 @@ func (x *IDUint32Req) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDUint32Req.ProtoReflect.Descriptor instead.
 func (*IDUint32Req) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{116}
+	return file_cmdb_proto_rawDescGZIP(), []int{146}
 }
 
 func (x *IDUint32Req) GetId() uint32 {
@@ -9236,7 +12826,7 @@ type IDsInt32Req struct {
 
 func (x *IDsInt32Req) Reset() {
 	*x = IDsInt32Req{}
-	mi := &file_cmdb_proto_msgTypes[117]
+	mi := &file_cmdb_proto_msgTypes[147]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9248,7 +12838,7 @@ func (x *IDsInt32Req) String() string {
 func (*IDsInt32Req) ProtoMessage() {}
 
 func (x *IDsInt32Req) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[117]
+	mi := &file_cmdb_proto_msgTypes[147]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9261,7 +12851,7 @@ func (x *IDsInt32Req) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDsInt32Req.ProtoReflect.Descriptor instead.
 func (*IDsInt32Req) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{117}
+	return file_cmdb_proto_rawDescGZIP(), []int{147}
 }
 
 func (x *IDsInt32Req) GetIds() []int32 {
@@ -9280,7 +12870,7 @@ type IDsInt64Req struct {
 
 func (x *IDsInt64Req) Reset() {
 	*x = IDsInt64Req{}
-	mi := &file_cmdb_proto_msgTypes[118]
+	mi := &file_cmdb_proto_msgTypes[148]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9292,7 +12882,7 @@ func (x *IDsInt64Req) String() string {
 func (*IDsInt64Req) ProtoMessage() {}
 
 func (x *IDsInt64Req) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[118]
+	mi := &file_cmdb_proto_msgTypes[148]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9305,7 +12895,7 @@ func (x *IDsInt64Req) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDsInt64Req.ProtoReflect.Descriptor instead.
 func (*IDsInt64Req) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{118}
+	return file_cmdb_proto_rawDescGZIP(), []int{148}
 }
 
 func (x *IDsInt64Req) GetIds() []int64 {
@@ -9324,7 +12914,7 @@ type IDsReq struct {
 
 func (x *IDsReq) Reset() {
 	*x = IDsReq{}
-	mi := &file_cmdb_proto_msgTypes[119]
+	mi := &file_cmdb_proto_msgTypes[149]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9336,7 +12926,7 @@ func (x *IDsReq) String() string {
 func (*IDsReq) ProtoMessage() {}
 
 func (x *IDsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[119]
+	mi := &file_cmdb_proto_msgTypes[149]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9349,7 +12939,7 @@ func (x *IDsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDsReq.ProtoReflect.Descriptor instead.
 func (*IDsReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{119}
+	return file_cmdb_proto_rawDescGZIP(), []int{149}
 }
 
 func (x *IDsReq) GetIds() []uint64 {
@@ -9368,7 +12958,7 @@ type IDsStringReq struct {
 
 func (x *IDsStringReq) Reset() {
 	*x = IDsStringReq{}
-	mi := &file_cmdb_proto_msgTypes[120]
+	mi := &file_cmdb_proto_msgTypes[150]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9380,7 +12970,7 @@ func (x *IDsStringReq) String() string {
 func (*IDsStringReq) ProtoMessage() {}
 
 func (x *IDsStringReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[120]
+	mi := &file_cmdb_proto_msgTypes[150]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9393,7 +12983,7 @@ func (x *IDsStringReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDsStringReq.ProtoReflect.Descriptor instead.
 func (*IDsStringReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{120}
+	return file_cmdb_proto_rawDescGZIP(), []int{150}
 }
 
 func (x *IDsStringReq) GetIds() []string {
@@ -9412,7 +13002,7 @@ type IDsUint32Req struct {
 
 func (x *IDsUint32Req) Reset() {
 	*x = IDsUint32Req{}
-	mi := &file_cmdb_proto_msgTypes[121]
+	mi := &file_cmdb_proto_msgTypes[151]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9424,7 +13014,7 @@ func (x *IDsUint32Req) String() string {
 func (*IDsUint32Req) ProtoMessage() {}
 
 func (x *IDsUint32Req) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[121]
+	mi := &file_cmdb_proto_msgTypes[151]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9437,12 +13027,56 @@ func (x *IDsUint32Req) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IDsUint32Req.ProtoReflect.Descriptor instead.
 func (*IDsUint32Req) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{121}
+	return file_cmdb_proto_rawDescGZIP(), []int{151}
 }
 
 func (x *IDsUint32Req) GetIds() []uint32 {
 	if x != nil {
 		return x.Ids
+	}
+	return nil
+}
+
+type ListProvidersResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Providers     []*ProviderInfo        `protobuf:"bytes,1,rep,name=providers,proto3" json:"providers"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListProvidersResp) Reset() {
+	*x = ListProvidersResp{}
+	mi := &file_cmdb_proto_msgTypes[152]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListProvidersResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListProvidersResp) ProtoMessage() {}
+
+func (x *ListProvidersResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[152]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListProvidersResp.ProtoReflect.Descriptor instead.
+func (*ListProvidersResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{152}
+}
+
+func (x *ListProvidersResp) GetProviders() []*ProviderInfo {
+	if x != nil {
+		return x.Providers
 	}
 	return nil
 }
@@ -9459,7 +13093,7 @@ type LocationRestriction struct {
 
 func (x *LocationRestriction) Reset() {
 	*x = LocationRestriction{}
-	mi := &file_cmdb_proto_msgTypes[122]
+	mi := &file_cmdb_proto_msgTypes[153]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9471,7 +13105,7 @@ func (x *LocationRestriction) String() string {
 func (*LocationRestriction) ProtoMessage() {}
 
 func (x *LocationRestriction) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[122]
+	mi := &file_cmdb_proto_msgTypes[153]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9484,7 +13118,7 @@ func (x *LocationRestriction) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LocationRestriction.ProtoReflect.Descriptor instead.
 func (*LocationRestriction) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{122}
+	return file_cmdb_proto_rawDescGZIP(), []int{153}
 }
 
 func (x *LocationRestriction) GetAllowedCountries() []string {
@@ -9519,7 +13153,7 @@ type OperationStat struct {
 
 func (x *OperationStat) Reset() {
 	*x = OperationStat{}
-	mi := &file_cmdb_proto_msgTypes[123]
+	mi := &file_cmdb_proto_msgTypes[154]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9531,7 +13165,7 @@ func (x *OperationStat) String() string {
 func (*OperationStat) ProtoMessage() {}
 
 func (x *OperationStat) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[123]
+	mi := &file_cmdb_proto_msgTypes[154]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9544,7 +13178,7 @@ func (x *OperationStat) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OperationStat.ProtoReflect.Descriptor instead.
 func (*OperationStat) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{123}
+	return file_cmdb_proto_rawDescGZIP(), []int{154}
 }
 
 func (x *OperationStat) GetOperation() string {
@@ -9571,7 +13205,7 @@ type PageInfoReq struct {
 
 func (x *PageInfoReq) Reset() {
 	*x = PageInfoReq{}
-	mi := &file_cmdb_proto_msgTypes[124]
+	mi := &file_cmdb_proto_msgTypes[155]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9583,7 +13217,7 @@ func (x *PageInfoReq) String() string {
 func (*PageInfoReq) ProtoMessage() {}
 
 func (x *PageInfoReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[124]
+	mi := &file_cmdb_proto_msgTypes[155]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9596,7 +13230,7 @@ func (x *PageInfoReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PageInfoReq.ProtoReflect.Descriptor instead.
 func (*PageInfoReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{124}
+	return file_cmdb_proto_rawDescGZIP(), []int{155}
 }
 
 func (x *PageInfoReq) GetPage() uint64 {
@@ -9613,6 +13247,195 @@ func (x *PageInfoReq) GetPageSize() uint64 {
 	return 0
 }
 
+type ProviderInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ProviderType  string                 `protobuf:"bytes,1,opt,name=provider_type,json=providerType,proto3" json:"provider_type"`
+	ProviderId    string                 `protobuf:"bytes,2,opt,name=provider_id,json=providerId,proto3" json:"provider_id"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name"`
+	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProviderInfo) Reset() {
+	*x = ProviderInfo{}
+	mi := &file_cmdb_proto_msgTypes[156]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProviderInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProviderInfo) ProtoMessage() {}
+
+func (x *ProviderInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[156]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProviderInfo.ProtoReflect.Descriptor instead.
+func (*ProviderInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{156}
+}
+
+func (x *ProviderInfo) GetProviderType() string {
+	if x != nil {
+		return x.ProviderType
+	}
+	return ""
+}
+
+func (x *ProviderInfo) GetProviderId() string {
+	if x != nil {
+		return x.ProviderId
+	}
+	return ""
+}
+
+func (x *ProviderInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ProviderInfo) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+type ProviderSchemaResp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ProviderType  string                 `protobuf:"bytes,1,opt,name=provider_type,json=providerType,proto3" json:"provider_type"`
+	ProviderId    string                 `protobuf:"bytes,2,opt,name=provider_id,json=providerId,proto3" json:"provider_id"`
+	SchemaJson    string                 `protobuf:"bytes,3,opt,name=schema_json,json=schemaJson,proto3" json:"schema_json"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProviderSchemaResp) Reset() {
+	*x = ProviderSchemaResp{}
+	mi := &file_cmdb_proto_msgTypes[157]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProviderSchemaResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProviderSchemaResp) ProtoMessage() {}
+
+func (x *ProviderSchemaResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[157]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProviderSchemaResp.ProtoReflect.Descriptor instead.
+func (*ProviderSchemaResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{157}
+}
+
+func (x *ProviderSchemaResp) GetProviderType() string {
+	if x != nil {
+		return x.ProviderType
+	}
+	return ""
+}
+
+func (x *ProviderSchemaResp) GetProviderId() string {
+	if x != nil {
+		return x.ProviderId
+	}
+	return ""
+}
+
+func (x *ProviderSchemaResp) GetSchemaJson() string {
+	if x != nil {
+		return x.SchemaJson
+	}
+	return ""
+}
+
+// RelationTypeBasicInfo 关系类型基础信息
+type RelationTypeBasicInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RelationTypeBasicInfo) Reset() {
+	*x = RelationTypeBasicInfo{}
+	mi := &file_cmdb_proto_msgTypes[158]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RelationTypeBasicInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RelationTypeBasicInfo) ProtoMessage() {}
+
+func (x *RelationTypeBasicInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[158]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RelationTypeBasicInfo.ProtoReflect.Descriptor instead.
+func (*RelationTypeBasicInfo) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{158}
+}
+
+func (x *RelationTypeBasicInfo) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *RelationTypeBasicInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *RelationTypeBasicInfo) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
 type RelationTypeInfo struct {
 	state     protoimpl.MessageState `protogen:"open.v1"`
 	Id        *uint64                `protobuf:"varint,1,opt,name=id,proto3,oneof" json:"id"`
@@ -9625,14 +13448,36 @@ type RelationTypeInfo struct {
 	// 关系类型分类
 	Category *string `protobuf:"bytes,6,opt,name=category,proto3,oneof" json:"category"`
 	// 关系类型方向
-	Direction     *string `protobuf:"bytes,7,opt,name=direction,proto3,oneof" json:"direction"`
+	Direction *string `protobuf:"bytes,7,opt,name=direction,proto3,oneof" json:"direction"`
+	// 描述
+	Description *string `protobuf:"bytes,8,opt,name=description,proto3,oneof" json:"description"`
+	// 是否标准
+	IsStandard *bool `protobuf:"varint,9,opt,name=is_standard,json=isStandard,proto3,oneof" json:"is_standard"`
+	// 排序号
+	SortOrder *uint32 `protobuf:"varint,10,opt,name=sort_order,json=sortOrder,proto3,oneof" json:"sort_order"`
+	// 是否启用
+	IsEnabled *bool `protobuf:"varint,11,opt,name=is_enabled,json=isEnabled,proto3,oneof" json:"is_enabled"`
+	// 显示颜色
+	DisplayColor *string `protobuf:"bytes,12,opt,name=display_color,json=displayColor,proto3,oneof" json:"display_color"`
+	// 线条类型
+	LineType *string `protobuf:"bytes,13,opt,name=line_type,json=lineType,proto3,oneof" json:"line_type"`
+	// 图标
+	Icon *string `protobuf:"bytes,14,opt,name=icon,proto3,oneof" json:"icon"`
+	// 权重
+	Weight *uint32 `protobuf:"varint,15,opt,name=weight,proto3,oneof" json:"weight"`
+	// 显示标签
+	DisplayLabel *string `protobuf:"bytes,16,opt,name=display_label,json=displayLabel,proto3,oneof" json:"display_label"`
+	// 提示模板
+	TooltipTemplate *string `protobuf:"bytes,17,opt,name=tooltip_template,json=tooltipTemplate,proto3,oneof" json:"tooltip_template"`
+	// 显示样式
+	DisplayStyle  *string `protobuf:"bytes,18,opt,name=display_style,json=displayStyle,proto3,oneof" json:"display_style"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RelationTypeInfo) Reset() {
 	*x = RelationTypeInfo{}
-	mi := &file_cmdb_proto_msgTypes[125]
+	mi := &file_cmdb_proto_msgTypes[159]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9644,7 +13489,7 @@ func (x *RelationTypeInfo) String() string {
 func (*RelationTypeInfo) ProtoMessage() {}
 
 func (x *RelationTypeInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[125]
+	mi := &file_cmdb_proto_msgTypes[159]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9657,7 +13502,7 @@ func (x *RelationTypeInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelationTypeInfo.ProtoReflect.Descriptor instead.
 func (*RelationTypeInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{125}
+	return file_cmdb_proto_rawDescGZIP(), []int{159}
 }
 
 func (x *RelationTypeInfo) GetId() uint64 {
@@ -9709,6 +13554,83 @@ func (x *RelationTypeInfo) GetDirection() string {
 	return ""
 }
 
+func (x *RelationTypeInfo) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *RelationTypeInfo) GetIsStandard() bool {
+	if x != nil && x.IsStandard != nil {
+		return *x.IsStandard
+	}
+	return false
+}
+
+func (x *RelationTypeInfo) GetSortOrder() uint32 {
+	if x != nil && x.SortOrder != nil {
+		return *x.SortOrder
+	}
+	return 0
+}
+
+func (x *RelationTypeInfo) GetIsEnabled() bool {
+	if x != nil && x.IsEnabled != nil {
+		return *x.IsEnabled
+	}
+	return false
+}
+
+func (x *RelationTypeInfo) GetDisplayColor() string {
+	if x != nil && x.DisplayColor != nil {
+		return *x.DisplayColor
+	}
+	return ""
+}
+
+func (x *RelationTypeInfo) GetLineType() string {
+	if x != nil && x.LineType != nil {
+		return *x.LineType
+	}
+	return ""
+}
+
+func (x *RelationTypeInfo) GetIcon() string {
+	if x != nil && x.Icon != nil {
+		return *x.Icon
+	}
+	return ""
+}
+
+func (x *RelationTypeInfo) GetWeight() uint32 {
+	if x != nil && x.Weight != nil {
+		return *x.Weight
+	}
+	return 0
+}
+
+func (x *RelationTypeInfo) GetDisplayLabel() string {
+	if x != nil && x.DisplayLabel != nil {
+		return *x.DisplayLabel
+	}
+	return ""
+}
+
+func (x *RelationTypeInfo) GetTooltipTemplate() string {
+	if x != nil && x.TooltipTemplate != nil {
+		return *x.TooltipTemplate
+	}
+	return ""
+}
+
+func (x *RelationTypeInfo) GetDisplayStyle() string {
+	if x != nil && x.DisplayStyle != nil {
+		return *x.DisplayStyle
+	}
+	return ""
+}
+
 type RelationTypeListReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
@@ -9723,7 +13645,7 @@ type RelationTypeListReq struct {
 
 func (x *RelationTypeListReq) Reset() {
 	*x = RelationTypeListReq{}
-	mi := &file_cmdb_proto_msgTypes[126]
+	mi := &file_cmdb_proto_msgTypes[160]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9735,7 +13657,7 @@ func (x *RelationTypeListReq) String() string {
 func (*RelationTypeListReq) ProtoMessage() {}
 
 func (x *RelationTypeListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[126]
+	mi := &file_cmdb_proto_msgTypes[160]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9748,7 +13670,7 @@ func (x *RelationTypeListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelationTypeListReq.ProtoReflect.Descriptor instead.
 func (*RelationTypeListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{126}
+	return file_cmdb_proto_rawDescGZIP(), []int{160}
 }
 
 func (x *RelationTypeListReq) GetPage() uint64 {
@@ -9803,7 +13725,7 @@ type RelationTypeListResp struct {
 
 func (x *RelationTypeListResp) Reset() {
 	*x = RelationTypeListResp{}
-	mi := &file_cmdb_proto_msgTypes[127]
+	mi := &file_cmdb_proto_msgTypes[161]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -9815,7 +13737,7 @@ func (x *RelationTypeListResp) String() string {
 func (*RelationTypeListResp) ProtoMessage() {}
 
 func (x *RelationTypeListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[127]
+	mi := &file_cmdb_proto_msgTypes[161]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9828,7 +13750,7 @@ func (x *RelationTypeListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelationTypeListResp.ProtoReflect.Descriptor instead.
 func (*RelationTypeListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{127}
+	return file_cmdb_proto_rawDescGZIP(), []int{161}
 }
 
 func (x *RelationTypeListResp) GetTotal() uint64 {
@@ -9845,29 +13767,40 @@ func (x *RelationTypeListResp) GetData() []*RelationTypeInfo {
 	return nil
 }
 
-type TaskCancelReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	TaskId        string                 `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id"`
-	Reason        *string                `protobuf:"bytes,2,opt,name=reason,proto3,oneof" json:"reason"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+// SyncConfig 同步配置
+type SyncConfig struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 同步方向: bidirectional, source_to_target, target_to_source
+	SyncDirection string `protobuf:"bytes,1,opt,name=sync_direction,json=syncDirection,proto3" json:"sync_direction"`
+	// 同步频率: realtime, hourly, daily
+	SyncFrequency string `protobuf:"bytes,2,opt,name=sync_frequency,json=syncFrequency,proto3" json:"sync_frequency"`
+	// 冲突策略: manual, source_priority, target_priority, latest
+	ConflictPolicy string `protobuf:"bytes,3,opt,name=conflict_policy,json=conflictPolicy,proto3" json:"conflict_policy"`
+	// 重试次数
+	RetryAttempts int32 `protobuf:"varint,4,opt,name=retry_attempts,json=retryAttempts,proto3" json:"retry_attempts"`
+	// 重试间隔(秒)
+	RetryInterval int64 `protobuf:"varint,5,opt,name=retry_interval,json=retryInterval,proto3" json:"retry_interval"`
+	// 启用的映射ID列表
+	EnabledMappings []uint64 `protobuf:"varint,6,rep,packed,name=enabled_mappings,json=enabledMappings,proto3" json:"enabled_mappings"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
-func (x *TaskCancelReq) Reset() {
-	*x = TaskCancelReq{}
-	mi := &file_cmdb_proto_msgTypes[128]
+func (x *SyncConfig) Reset() {
+	*x = SyncConfig{}
+	mi := &file_cmdb_proto_msgTypes[162]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TaskCancelReq) String() string {
+func (x *SyncConfig) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TaskCancelReq) ProtoMessage() {}
+func (*SyncConfig) ProtoMessage() {}
 
-func (x *TaskCancelReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[128]
+func (x *SyncConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[162]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9878,198 +13811,77 @@ func (x *TaskCancelReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TaskCancelReq.ProtoReflect.Descriptor instead.
-func (*TaskCancelReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{128}
+// Deprecated: Use SyncConfig.ProtoReflect.Descriptor instead.
+func (*SyncConfig) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{162}
 }
 
-func (x *TaskCancelReq) GetTaskId() string {
+func (x *SyncConfig) GetSyncDirection() string {
 	if x != nil {
-		return x.TaskId
+		return x.SyncDirection
 	}
 	return ""
 }
 
-func (x *TaskCancelReq) GetReason() string {
-	if x != nil && x.Reason != nil {
-		return *x.Reason
+func (x *SyncConfig) GetSyncFrequency() string {
+	if x != nil {
+		return x.SyncFrequency
 	}
 	return ""
 }
 
-type TaskListReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page"`
-	PageSize      uint64                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size"`
-	Type          *string                `protobuf:"bytes,3,opt,name=type,proto3,oneof" json:"type"`
-	Status        *string                `protobuf:"bytes,4,opt,name=status,proto3,oneof" json:"status"`
-	CreatedBy     *string                `protobuf:"bytes,5,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by"`
-	StartTime     *int64                 `protobuf:"varint,6,opt,name=start_time,json=startTime,proto3,oneof" json:"start_time"`
-	EndTime       *int64                 `protobuf:"varint,7,opt,name=end_time,json=endTime,proto3,oneof" json:"end_time"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TaskListReq) Reset() {
-	*x = TaskListReq{}
-	mi := &file_cmdb_proto_msgTypes[129]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskListReq) ProtoMessage() {}
-
-func (x *TaskListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[129]
+func (x *SyncConfig) GetConflictPolicy() string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskListReq.ProtoReflect.Descriptor instead.
-func (*TaskListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{129}
-}
-
-func (x *TaskListReq) GetPage() uint64 {
-	if x != nil {
-		return x.Page
-	}
-	return 0
-}
-
-func (x *TaskListReq) GetPageSize() uint64 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *TaskListReq) GetType() string {
-	if x != nil && x.Type != nil {
-		return *x.Type
+		return x.ConflictPolicy
 	}
 	return ""
 }
 
-func (x *TaskListReq) GetStatus() string {
-	if x != nil && x.Status != nil {
-		return *x.Status
-	}
-	return ""
-}
-
-func (x *TaskListReq) GetCreatedBy() string {
-	if x != nil && x.CreatedBy != nil {
-		return *x.CreatedBy
-	}
-	return ""
-}
-
-func (x *TaskListReq) GetStartTime() int64 {
-	if x != nil && x.StartTime != nil {
-		return *x.StartTime
+func (x *SyncConfig) GetRetryAttempts() int32 {
+	if x != nil {
+		return x.RetryAttempts
 	}
 	return 0
 }
 
-func (x *TaskListReq) GetEndTime() int64 {
-	if x != nil && x.EndTime != nil {
-		return *x.EndTime
+func (x *SyncConfig) GetRetryInterval() int64 {
+	if x != nil {
+		return x.RetryInterval
 	}
 	return 0
 }
 
-type TaskListResp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Total         uint64                 `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
-	Tasks         []*TaskStatusInfo      `protobuf:"bytes,2,rep,name=tasks,proto3" json:"tasks"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TaskListResp) Reset() {
-	*x = TaskListResp{}
-	mi := &file_cmdb_proto_msgTypes[130]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskListResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskListResp) ProtoMessage() {}
-
-func (x *TaskListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[130]
+func (x *SyncConfig) GetEnabledMappings() []uint64 {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskListResp.ProtoReflect.Descriptor instead.
-func (*TaskListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{130}
-}
-
-func (x *TaskListResp) GetTotal() uint64 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *TaskListResp) GetTasks() []*TaskStatusInfo {
-	if x != nil {
-		return x.Tasks
+		return x.EnabledMappings
 	}
 	return nil
 }
 
-type TaskProgressInfo struct {
-	state              protoimpl.MessageState `protogen:"open.v1"`
-	TotalItems         int32                  `protobuf:"varint,1,opt,name=total_items,json=totalItems,proto3" json:"total_items"`
-	ProcessedItems     int32                  `protobuf:"varint,2,opt,name=processed_items,json=processedItems,proto3" json:"processed_items"`
-	SuccessItems       int32                  `protobuf:"varint,3,opt,name=success_items,json=successItems,proto3" json:"success_items"`
-	FailedItems        int32                  `protobuf:"varint,4,opt,name=failed_items,json=failedItems,proto3" json:"failed_items"`
-	Percentage         float32                `protobuf:"fixed32,5,opt,name=percentage,proto3" json:"percentage"`
-	CurrentStep        string                 `protobuf:"bytes,6,opt,name=current_step,json=currentStep,proto3" json:"current_step"`
-	EstimatedRemaining *int64                 `protobuf:"varint,7,opt,name=estimated_remaining,json=estimatedRemaining,proto3,oneof" json:"estimated_remaining"`
-	ThroughputPerSec   *float32               `protobuf:"fixed32,8,opt,name=throughput_per_sec,json=throughputPerSec,proto3,oneof" json:"throughput_per_sec"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
+type TestProviderConnectionReq struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	ProviderType   string                 `protobuf:"bytes,1,opt,name=provider_type,json=providerType,proto3" json:"provider_type"`
+	ProviderId     string                 `protobuf:"bytes,2,opt,name=provider_id,json=providerId,proto3" json:"provider_id"`
+	ProviderConfig string                 `protobuf:"bytes,3,opt,name=provider_config,json=providerConfig,proto3" json:"provider_config"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
-func (x *TaskProgressInfo) Reset() {
-	*x = TaskProgressInfo{}
-	mi := &file_cmdb_proto_msgTypes[131]
+func (x *TestProviderConnectionReq) Reset() {
+	*x = TestProviderConnectionReq{}
+	mi := &file_cmdb_proto_msgTypes[163]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TaskProgressInfo) String() string {
+func (x *TestProviderConnectionReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TaskProgressInfo) ProtoMessage() {}
+func (*TestProviderConnectionReq) ProtoMessage() {}
 
-func (x *TaskProgressInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[131]
+func (x *TestProviderConnectionReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[163]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10080,682 +13892,30 @@ func (x *TaskProgressInfo) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TaskProgressInfo.ProtoReflect.Descriptor instead.
-func (*TaskProgressInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{131}
+// Deprecated: Use TestProviderConnectionReq.ProtoReflect.Descriptor instead.
+func (*TestProviderConnectionReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{163}
 }
 
-func (x *TaskProgressInfo) GetTotalItems() int32 {
+func (x *TestProviderConnectionReq) GetProviderType() string {
 	if x != nil {
-		return x.TotalItems
-	}
-	return 0
-}
-
-func (x *TaskProgressInfo) GetProcessedItems() int32 {
-	if x != nil {
-		return x.ProcessedItems
-	}
-	return 0
-}
-
-func (x *TaskProgressInfo) GetSuccessItems() int32 {
-	if x != nil {
-		return x.SuccessItems
-	}
-	return 0
-}
-
-func (x *TaskProgressInfo) GetFailedItems() int32 {
-	if x != nil {
-		return x.FailedItems
-	}
-	return 0
-}
-
-func (x *TaskProgressInfo) GetPercentage() float32 {
-	if x != nil {
-		return x.Percentage
-	}
-	return 0
-}
-
-func (x *TaskProgressInfo) GetCurrentStep() string {
-	if x != nil {
-		return x.CurrentStep
+		return x.ProviderType
 	}
 	return ""
 }
 
-func (x *TaskProgressInfo) GetEstimatedRemaining() int64 {
-	if x != nil && x.EstimatedRemaining != nil {
-		return *x.EstimatedRemaining
-	}
-	return 0
-}
-
-func (x *TaskProgressInfo) GetThroughputPerSec() float32 {
-	if x != nil && x.ThroughputPerSec != nil {
-		return *x.ThroughputPerSec
-	}
-	return 0
-}
-
-type TaskResultInfo struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	Success          bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
-	ProcessedCount   int32                  `protobuf:"varint,2,opt,name=processed_count,json=processedCount,proto3" json:"processed_count"`
-	SuccessCount     int32                  `protobuf:"varint,3,opt,name=success_count,json=successCount,proto3" json:"success_count"`
-	FailedCount      int32                  `protobuf:"varint,4,opt,name=failed_count,json=failedCount,proto3" json:"failed_count"`
-	SkippedCount     int32                  `protobuf:"varint,5,opt,name=skipped_count,json=skippedCount,proto3" json:"skipped_count"`
-	ProcessTimeMs    int64                  `protobuf:"varint,6,opt,name=process_time_ms,json=processTimeMs,proto3" json:"process_time_ms"`
-	ThroughputPerSec float32                `protobuf:"fixed32,7,opt,name=throughput_per_sec,json=throughputPerSec,proto3" json:"throughput_per_sec"`
-	SuccessfulAssets []string               `protobuf:"bytes,8,rep,name=successful_assets,json=successfulAssets,proto3" json:"successful_assets"`
-	FailedAssets     []string               `protobuf:"bytes,9,rep,name=failed_assets,json=failedAssets,proto3" json:"failed_assets"`
-	Summary          *string                `protobuf:"bytes,10,opt,name=summary,proto3,oneof" json:"summary"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
-}
-
-func (x *TaskResultInfo) Reset() {
-	*x = TaskResultInfo{}
-	mi := &file_cmdb_proto_msgTypes[132]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskResultInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskResultInfo) ProtoMessage() {}
-
-func (x *TaskResultInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[132]
+func (x *TestProviderConnectionReq) GetProviderId() string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskResultInfo.ProtoReflect.Descriptor instead.
-func (*TaskResultInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{132}
-}
-
-func (x *TaskResultInfo) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *TaskResultInfo) GetProcessedCount() int32 {
-	if x != nil {
-		return x.ProcessedCount
-	}
-	return 0
-}
-
-func (x *TaskResultInfo) GetSuccessCount() int32 {
-	if x != nil {
-		return x.SuccessCount
-	}
-	return 0
-}
-
-func (x *TaskResultInfo) GetFailedCount() int32 {
-	if x != nil {
-		return x.FailedCount
-	}
-	return 0
-}
-
-func (x *TaskResultInfo) GetSkippedCount() int32 {
-	if x != nil {
-		return x.SkippedCount
-	}
-	return 0
-}
-
-func (x *TaskResultInfo) GetProcessTimeMs() int64 {
-	if x != nil {
-		return x.ProcessTimeMs
-	}
-	return 0
-}
-
-func (x *TaskResultInfo) GetThroughputPerSec() float32 {
-	if x != nil {
-		return x.ThroughputPerSec
-	}
-	return 0
-}
-
-func (x *TaskResultInfo) GetSuccessfulAssets() []string {
-	if x != nil {
-		return x.SuccessfulAssets
-	}
-	return nil
-}
-
-func (x *TaskResultInfo) GetFailedAssets() []string {
-	if x != nil {
-		return x.FailedAssets
-	}
-	return nil
-}
-
-func (x *TaskResultInfo) GetSummary() string {
-	if x != nil && x.Summary != nil {
-		return *x.Summary
+		return x.ProviderId
 	}
 	return ""
 }
 
-type TaskStatistics struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	TotalTasks            int32                  `protobuf:"varint,1,opt,name=total_tasks,json=totalTasks,proto3" json:"total_tasks"`
-	PendingTasks          int32                  `protobuf:"varint,2,opt,name=pending_tasks,json=pendingTasks,proto3" json:"pending_tasks"`
-	ProcessingTasks       int32                  `protobuf:"varint,3,opt,name=processing_tasks,json=processingTasks,proto3" json:"processing_tasks"`
-	CompletedTasks        int32                  `protobuf:"varint,4,opt,name=completed_tasks,json=completedTasks,proto3" json:"completed_tasks"`
-	FailedTasks           int32                  `protobuf:"varint,5,opt,name=failed_tasks,json=failedTasks,proto3" json:"failed_tasks"`
-	CancelledTasks        int32                  `protobuf:"varint,6,opt,name=cancelled_tasks,json=cancelledTasks,proto3" json:"cancelled_tasks"`
-	AverageProcessingTime float32                `protobuf:"fixed32,7,opt,name=average_processing_time,json=averageProcessingTime,proto3" json:"average_processing_time"`
-	SuccessRate           float32                `protobuf:"fixed32,8,opt,name=success_rate,json=successRate,proto3" json:"success_rate"`
-	TypeStats             []*TaskTypeStats       `protobuf:"bytes,9,rep,name=type_stats,json=typeStats,proto3" json:"type_stats"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
-}
-
-func (x *TaskStatistics) Reset() {
-	*x = TaskStatistics{}
-	mi := &file_cmdb_proto_msgTypes[133]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskStatistics) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskStatistics) ProtoMessage() {}
-
-func (x *TaskStatistics) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[133]
+func (x *TestProviderConnectionReq) GetProviderConfig() string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskStatistics.ProtoReflect.Descriptor instead.
-func (*TaskStatistics) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{133}
-}
-
-func (x *TaskStatistics) GetTotalTasks() int32 {
-	if x != nil {
-		return x.TotalTasks
-	}
-	return 0
-}
-
-func (x *TaskStatistics) GetPendingTasks() int32 {
-	if x != nil {
-		return x.PendingTasks
-	}
-	return 0
-}
-
-func (x *TaskStatistics) GetProcessingTasks() int32 {
-	if x != nil {
-		return x.ProcessingTasks
-	}
-	return 0
-}
-
-func (x *TaskStatistics) GetCompletedTasks() int32 {
-	if x != nil {
-		return x.CompletedTasks
-	}
-	return 0
-}
-
-func (x *TaskStatistics) GetFailedTasks() int32 {
-	if x != nil {
-		return x.FailedTasks
-	}
-	return 0
-}
-
-func (x *TaskStatistics) GetCancelledTasks() int32 {
-	if x != nil {
-		return x.CancelledTasks
-	}
-	return 0
-}
-
-func (x *TaskStatistics) GetAverageProcessingTime() float32 {
-	if x != nil {
-		return x.AverageProcessingTime
-	}
-	return 0
-}
-
-func (x *TaskStatistics) GetSuccessRate() float32 {
-	if x != nil {
-		return x.SuccessRate
-	}
-	return 0
-}
-
-func (x *TaskStatistics) GetTypeStats() []*TaskTypeStats {
-	if x != nil {
-		return x.TypeStats
-	}
-	return nil
-}
-
-//  异步任务统计信息
-type TaskStatsReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Type          *string                `protobuf:"bytes,1,opt,name=type,proto3,oneof" json:"type"`
-	StartTime     *int64                 `protobuf:"varint,2,opt,name=start_time,json=startTime,proto3,oneof" json:"start_time"`
-	EndTime       *int64                 `protobuf:"varint,3,opt,name=end_time,json=endTime,proto3,oneof" json:"end_time"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TaskStatsReq) Reset() {
-	*x = TaskStatsReq{}
-	mi := &file_cmdb_proto_msgTypes[134]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskStatsReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskStatsReq) ProtoMessage() {}
-
-func (x *TaskStatsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[134]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskStatsReq.ProtoReflect.Descriptor instead.
-func (*TaskStatsReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{134}
-}
-
-func (x *TaskStatsReq) GetType() string {
-	if x != nil && x.Type != nil {
-		return *x.Type
+		return x.ProviderConfig
 	}
 	return ""
-}
-
-func (x *TaskStatsReq) GetStartTime() int64 {
-	if x != nil && x.StartTime != nil {
-		return *x.StartTime
-	}
-	return 0
-}
-
-func (x *TaskStatsReq) GetEndTime() int64 {
-	if x != nil && x.EndTime != nil {
-		return *x.EndTime
-	}
-	return 0
-}
-
-type TaskStatsResp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Stats         *TaskStatistics        `protobuf:"bytes,1,opt,name=stats,proto3" json:"stats"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TaskStatsResp) Reset() {
-	*x = TaskStatsResp{}
-	mi := &file_cmdb_proto_msgTypes[135]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskStatsResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskStatsResp) ProtoMessage() {}
-
-func (x *TaskStatsResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[135]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskStatsResp.ProtoReflect.Descriptor instead.
-func (*TaskStatsResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{135}
-}
-
-func (x *TaskStatsResp) GetStats() *TaskStatistics {
-	if x != nil {
-		return x.Stats
-	}
-	return nil
-}
-
-type TaskStatusInfo struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
-	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type"`
-	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status"`
-	Priority      int32                  `protobuf:"varint,4,opt,name=priority,proto3" json:"priority"`
-	Progress      *TaskProgressInfo      `protobuf:"bytes,5,opt,name=progress,proto3" json:"progress"`
-	Result        *TaskResultInfo        `protobuf:"bytes,6,opt,name=result,proto3,oneof" json:"result"`
-	CreateTime    int64                  `protobuf:"varint,7,opt,name=create_time,json=createTime,proto3" json:"create_time"`
-	UpdateTime    int64                  `protobuf:"varint,8,opt,name=update_time,json=updateTime,proto3" json:"update_time"`
-	StartTime     *int64                 `protobuf:"varint,9,opt,name=start_time,json=startTime,proto3,oneof" json:"start_time"`
-	EndTime       *int64                 `protobuf:"varint,10,opt,name=end_time,json=endTime,proto3,oneof" json:"end_time"`
-	CreatedBy     string                 `protobuf:"bytes,11,opt,name=created_by,json=createdBy,proto3" json:"created_by"`
-	Error         *string                `protobuf:"bytes,12,opt,name=error,proto3,oneof" json:"error"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TaskStatusInfo) Reset() {
-	*x = TaskStatusInfo{}
-	mi := &file_cmdb_proto_msgTypes[136]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskStatusInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskStatusInfo) ProtoMessage() {}
-
-func (x *TaskStatusInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[136]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskStatusInfo.ProtoReflect.Descriptor instead.
-func (*TaskStatusInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{136}
-}
-
-func (x *TaskStatusInfo) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *TaskStatusInfo) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
-func (x *TaskStatusInfo) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-func (x *TaskStatusInfo) GetPriority() int32 {
-	if x != nil {
-		return x.Priority
-	}
-	return 0
-}
-
-func (x *TaskStatusInfo) GetProgress() *TaskProgressInfo {
-	if x != nil {
-		return x.Progress
-	}
-	return nil
-}
-
-func (x *TaskStatusInfo) GetResult() *TaskResultInfo {
-	if x != nil {
-		return x.Result
-	}
-	return nil
-}
-
-func (x *TaskStatusInfo) GetCreateTime() int64 {
-	if x != nil {
-		return x.CreateTime
-	}
-	return 0
-}
-
-func (x *TaskStatusInfo) GetUpdateTime() int64 {
-	if x != nil {
-		return x.UpdateTime
-	}
-	return 0
-}
-
-func (x *TaskStatusInfo) GetStartTime() int64 {
-	if x != nil && x.StartTime != nil {
-		return *x.StartTime
-	}
-	return 0
-}
-
-func (x *TaskStatusInfo) GetEndTime() int64 {
-	if x != nil && x.EndTime != nil {
-		return *x.EndTime
-	}
-	return 0
-}
-
-func (x *TaskStatusInfo) GetCreatedBy() string {
-	if x != nil {
-		return x.CreatedBy
-	}
-	return ""
-}
-
-func (x *TaskStatusInfo) GetError() string {
-	if x != nil && x.Error != nil {
-		return *x.Error
-	}
-	return ""
-}
-
-type TaskStatusReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	TaskId        string                 `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TaskStatusReq) Reset() {
-	*x = TaskStatusReq{}
-	mi := &file_cmdb_proto_msgTypes[137]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskStatusReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskStatusReq) ProtoMessage() {}
-
-func (x *TaskStatusReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[137]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskStatusReq.ProtoReflect.Descriptor instead.
-func (*TaskStatusReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{137}
-}
-
-func (x *TaskStatusReq) GetTaskId() string {
-	if x != nil {
-		return x.TaskId
-	}
-	return ""
-}
-
-type TaskStatusResp struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Task          *TaskStatusInfo        `protobuf:"bytes,1,opt,name=task,proto3" json:"task"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *TaskStatusResp) Reset() {
-	*x = TaskStatusResp{}
-	mi := &file_cmdb_proto_msgTypes[138]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskStatusResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskStatusResp) ProtoMessage() {}
-
-func (x *TaskStatusResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[138]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskStatusResp.ProtoReflect.Descriptor instead.
-func (*TaskStatusResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{138}
-}
-
-func (x *TaskStatusResp) GetTask() *TaskStatusInfo {
-	if x != nil {
-		return x.Task
-	}
-	return nil
-}
-
-type TaskTypeStats struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	Type              string                 `protobuf:"bytes,1,opt,name=type,proto3" json:"type"`
-	Count             int32                  `protobuf:"varint,2,opt,name=count,proto3" json:"count"`
-	SuccessRate       float32                `protobuf:"fixed32,3,opt,name=success_rate,json=successRate,proto3" json:"success_rate"`
-	AvgProcessingTime float32                `protobuf:"fixed32,4,opt,name=avg_processing_time,json=avgProcessingTime,proto3" json:"avg_processing_time"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
-}
-
-func (x *TaskTypeStats) Reset() {
-	*x = TaskTypeStats{}
-	mi := &file_cmdb_proto_msgTypes[139]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TaskTypeStats) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TaskTypeStats) ProtoMessage() {}
-
-func (x *TaskTypeStats) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[139]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TaskTypeStats.ProtoReflect.Descriptor instead.
-func (*TaskTypeStats) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{139}
-}
-
-func (x *TaskTypeStats) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
-func (x *TaskTypeStats) GetCount() int32 {
-	if x != nil {
-		return x.Count
-	}
-	return 0
-}
-
-func (x *TaskTypeStats) GetSuccessRate() float32 {
-	if x != nil {
-		return x.SuccessRate
-	}
-	return 0
-}
-
-func (x *TaskTypeStats) GetAvgProcessingTime() float32 {
-	if x != nil {
-		return x.AvgProcessingTime
-	}
-	return 0
 }
 
 // 时间限制
@@ -10770,7 +13930,7 @@ type TimeRestriction struct {
 
 func (x *TimeRestriction) Reset() {
 	*x = TimeRestriction{}
-	mi := &file_cmdb_proto_msgTypes[140]
+	mi := &file_cmdb_proto_msgTypes[164]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10782,7 +13942,7 @@ func (x *TimeRestriction) String() string {
 func (*TimeRestriction) ProtoMessage() {}
 
 func (x *TimeRestriction) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[140]
+	mi := &file_cmdb_proto_msgTypes[164]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10795,7 +13955,7 @@ func (x *TimeRestriction) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TimeRestriction.ProtoReflect.Descriptor instead.
 func (*TimeRestriction) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{140}
+	return file_cmdb_proto_rawDescGZIP(), []int{164}
 }
 
 func (x *TimeRestriction) GetAllowedHours() []int32 {
@@ -10828,7 +13988,7 @@ type UUIDReq struct {
 
 func (x *UUIDReq) Reset() {
 	*x = UUIDReq{}
-	mi := &file_cmdb_proto_msgTypes[141]
+	mi := &file_cmdb_proto_msgTypes[165]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10840,7 +14000,7 @@ func (x *UUIDReq) String() string {
 func (*UUIDReq) ProtoMessage() {}
 
 func (x *UUIDReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[141]
+	mi := &file_cmdb_proto_msgTypes[165]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10853,7 +14013,7 @@ func (x *UUIDReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UUIDReq.ProtoReflect.Descriptor instead.
 func (*UUIDReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{141}
+	return file_cmdb_proto_rawDescGZIP(), []int{165}
 }
 
 func (x *UUIDReq) GetId() string {
@@ -10872,7 +14032,7 @@ type UUIDsReq struct {
 
 func (x *UUIDsReq) Reset() {
 	*x = UUIDsReq{}
-	mi := &file_cmdb_proto_msgTypes[142]
+	mi := &file_cmdb_proto_msgTypes[166]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10884,7 +14044,7 @@ func (x *UUIDsReq) String() string {
 func (*UUIDsReq) ProtoMessage() {}
 
 func (x *UUIDsReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[142]
+	mi := &file_cmdb_proto_msgTypes[166]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10897,7 +14057,7 @@ func (x *UUIDsReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UUIDsReq.ProtoReflect.Descriptor instead.
 func (*UUIDsReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{142}
+	return file_cmdb_proto_rawDescGZIP(), []int{166}
 }
 
 func (x *UUIDsReq) GetIds() []string {
@@ -10905,6 +14065,200 @@ func (x *UUIDsReq) GetIds() []string {
 		return x.Ids
 	}
 	return nil
+}
+
+type UserPermissionScopeReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserPermissionScopeReq) Reset() {
+	*x = UserPermissionScopeReq{}
+	mi := &file_cmdb_proto_msgTypes[167]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserPermissionScopeReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserPermissionScopeReq) ProtoMessage() {}
+
+func (x *UserPermissionScopeReq) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[167]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserPermissionScopeReq.ProtoReflect.Descriptor instead.
+func (*UserPermissionScopeReq) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{167}
+}
+
+func (x *UserPermissionScopeReq) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+type UserPermissionScopeResp struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	AllowedCiTypes       []uint64               `protobuf:"varint,1,rep,packed,name=allowed_ci_types,json=allowedCiTypes,proto3" json:"allowed_ci_types"`
+	AllowedDepartmentIds []uint64               `protobuf:"varint,2,rep,packed,name=allowed_department_ids,json=allowedDepartmentIds,proto3" json:"allowed_department_ids"`
+	CustomRules          map[string]string      `protobuf:"bytes,3,rep,name=custom_rules,json=customRules,proto3" json:"custom_rules" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	DataScope            *string                `protobuf:"bytes,4,opt,name=data_scope,json=dataScope,proto3,oneof" json:"data_scope"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *UserPermissionScopeResp) Reset() {
+	*x = UserPermissionScopeResp{}
+	mi := &file_cmdb_proto_msgTypes[168]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserPermissionScopeResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserPermissionScopeResp) ProtoMessage() {}
+
+func (x *UserPermissionScopeResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[168]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserPermissionScopeResp.ProtoReflect.Descriptor instead.
+func (*UserPermissionScopeResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{168}
+}
+
+func (x *UserPermissionScopeResp) GetAllowedCiTypes() []uint64 {
+	if x != nil {
+		return x.AllowedCiTypes
+	}
+	return nil
+}
+
+func (x *UserPermissionScopeResp) GetAllowedDepartmentIds() []uint64 {
+	if x != nil {
+		return x.AllowedDepartmentIds
+	}
+	return nil
+}
+
+func (x *UserPermissionScopeResp) GetCustomRules() map[string]string {
+	if x != nil {
+		return x.CustomRules
+	}
+	return nil
+}
+
+func (x *UserPermissionScopeResp) GetDataScope() string {
+	if x != nil && x.DataScope != nil {
+		return *x.DataScope
+	}
+	return ""
+}
+
+// ValidationResult 关系验证结果
+type ValidationResult struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 是否有效
+	IsValid bool `protobuf:"varint,1,opt,name=is_valid,json=isValid,proto3" json:"is_valid"`
+	// 错误信息
+	Errors []string `protobuf:"bytes,2,rep,name=errors,proto3" json:"errors"`
+	// 警告信息
+	Warnings []string `protobuf:"bytes,3,rep,name=warnings,proto3" json:"warnings"`
+	// 验证时间
+	ValidatedAt int64 `protobuf:"varint,4,opt,name=validated_at,json=validatedAt,proto3" json:"validated_at"`
+	// 验证类型: auto, manual
+	ValidationType string `protobuf:"bytes,5,opt,name=validation_type,json=validationType,proto3" json:"validation_type"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ValidationResult) Reset() {
+	*x = ValidationResult{}
+	mi := &file_cmdb_proto_msgTypes[169]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ValidationResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValidationResult) ProtoMessage() {}
+
+func (x *ValidationResult) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[169]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValidationResult.ProtoReflect.Descriptor instead.
+func (*ValidationResult) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{169}
+}
+
+func (x *ValidationResult) GetIsValid() bool {
+	if x != nil {
+		return x.IsValid
+	}
+	return false
+}
+
+func (x *ValidationResult) GetErrors() []string {
+	if x != nil {
+		return x.Errors
+	}
+	return nil
+}
+
+func (x *ValidationResult) GetWarnings() []string {
+	if x != nil {
+		return x.Warnings
+	}
+	return nil
+}
+
+func (x *ValidationResult) GetValidatedAt() int64 {
+	if x != nil {
+		return x.ValidatedAt
+	}
+	return 0
+}
+
+func (x *ValidationResult) GetValidationType() string {
+	if x != nil {
+		return x.ValidationType
+	}
+	return ""
 }
 
 // ValidationRule 验证规则结构
@@ -10926,7 +14280,7 @@ type ValidationRule struct {
 
 func (x *ValidationRule) Reset() {
 	*x = ValidationRule{}
-	mi := &file_cmdb_proto_msgTypes[143]
+	mi := &file_cmdb_proto_msgTypes[170]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -10938,7 +14292,7 @@ func (x *ValidationRule) String() string {
 func (*ValidationRule) ProtoMessage() {}
 
 func (x *ValidationRule) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[143]
+	mi := &file_cmdb_proto_msgTypes[170]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10951,7 +14305,7 @@ func (x *ValidationRule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidationRule.ProtoReflect.Descriptor instead.
 func (*ValidationRule) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{143}
+	return file_cmdb_proto_rawDescGZIP(), []int{170}
 }
 
 func (x *ValidationRule) GetType() string {
@@ -10999,7 +14353,7 @@ type ValidationRuleParams struct {
 
 func (x *ValidationRuleParams) Reset() {
 	*x = ValidationRuleParams{}
-	mi := &file_cmdb_proto_msgTypes[144]
+	mi := &file_cmdb_proto_msgTypes[171]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11011,7 +14365,7 @@ func (x *ValidationRuleParams) String() string {
 func (*ValidationRuleParams) ProtoMessage() {}
 
 func (x *ValidationRuleParams) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[144]
+	mi := &file_cmdb_proto_msgTypes[171]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11024,7 +14378,7 @@ func (x *ValidationRuleParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidationRuleParams.ProtoReflect.Descriptor instead.
 func (*ValidationRuleParams) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{144}
+	return file_cmdb_proto_rawDescGZIP(), []int{171}
 }
 
 func (x *ValidationRuleParams) GetKey() string {
@@ -11060,7 +14414,7 @@ type ValueDatetimeInfo struct {
 
 func (x *ValueDatetimeInfo) Reset() {
 	*x = ValueDatetimeInfo{}
-	mi := &file_cmdb_proto_msgTypes[145]
+	mi := &file_cmdb_proto_msgTypes[172]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11072,7 +14426,7 @@ func (x *ValueDatetimeInfo) String() string {
 func (*ValueDatetimeInfo) ProtoMessage() {}
 
 func (x *ValueDatetimeInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[145]
+	mi := &file_cmdb_proto_msgTypes[172]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11085,7 +14439,7 @@ func (x *ValueDatetimeInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueDatetimeInfo.ProtoReflect.Descriptor instead.
 func (*ValueDatetimeInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{145}
+	return file_cmdb_proto_rawDescGZIP(), []int{172}
 }
 
 func (x *ValueDatetimeInfo) GetId() uint64 {
@@ -11153,7 +14507,7 @@ type ValueDatetimeListReq struct {
 
 func (x *ValueDatetimeListReq) Reset() {
 	*x = ValueDatetimeListReq{}
-	mi := &file_cmdb_proto_msgTypes[146]
+	mi := &file_cmdb_proto_msgTypes[173]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11165,7 +14519,7 @@ func (x *ValueDatetimeListReq) String() string {
 func (*ValueDatetimeListReq) ProtoMessage() {}
 
 func (x *ValueDatetimeListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[146]
+	mi := &file_cmdb_proto_msgTypes[173]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11178,7 +14532,7 @@ func (x *ValueDatetimeListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueDatetimeListReq.ProtoReflect.Descriptor instead.
 func (*ValueDatetimeListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{146}
+	return file_cmdb_proto_rawDescGZIP(), []int{173}
 }
 
 func (x *ValueDatetimeListReq) GetPage() uint64 {
@@ -11247,7 +14601,7 @@ type ValueDatetimeListResp struct {
 
 func (x *ValueDatetimeListResp) Reset() {
 	*x = ValueDatetimeListResp{}
-	mi := &file_cmdb_proto_msgTypes[147]
+	mi := &file_cmdb_proto_msgTypes[174]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11259,7 +14613,7 @@ func (x *ValueDatetimeListResp) String() string {
 func (*ValueDatetimeListResp) ProtoMessage() {}
 
 func (x *ValueDatetimeListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[147]
+	mi := &file_cmdb_proto_msgTypes[174]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11272,7 +14626,7 @@ func (x *ValueDatetimeListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueDatetimeListResp.ProtoReflect.Descriptor instead.
 func (*ValueDatetimeListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{147}
+	return file_cmdb_proto_rawDescGZIP(), []int{174}
 }
 
 func (x *ValueDatetimeListResp) GetTotal() uint64 {
@@ -11308,7 +14662,7 @@ type ValueFloatInfo struct {
 
 func (x *ValueFloatInfo) Reset() {
 	*x = ValueFloatInfo{}
-	mi := &file_cmdb_proto_msgTypes[148]
+	mi := &file_cmdb_proto_msgTypes[175]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11320,7 +14674,7 @@ func (x *ValueFloatInfo) String() string {
 func (*ValueFloatInfo) ProtoMessage() {}
 
 func (x *ValueFloatInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[148]
+	mi := &file_cmdb_proto_msgTypes[175]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11333,7 +14687,7 @@ func (x *ValueFloatInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueFloatInfo.ProtoReflect.Descriptor instead.
 func (*ValueFloatInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{148}
+	return file_cmdb_proto_rawDescGZIP(), []int{175}
 }
 
 func (x *ValueFloatInfo) GetId() uint64 {
@@ -11401,7 +14755,7 @@ type ValueFloatListReq struct {
 
 func (x *ValueFloatListReq) Reset() {
 	*x = ValueFloatListReq{}
-	mi := &file_cmdb_proto_msgTypes[149]
+	mi := &file_cmdb_proto_msgTypes[176]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11413,7 +14767,7 @@ func (x *ValueFloatListReq) String() string {
 func (*ValueFloatListReq) ProtoMessage() {}
 
 func (x *ValueFloatListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[149]
+	mi := &file_cmdb_proto_msgTypes[176]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11426,7 +14780,7 @@ func (x *ValueFloatListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueFloatListReq.ProtoReflect.Descriptor instead.
 func (*ValueFloatListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{149}
+	return file_cmdb_proto_rawDescGZIP(), []int{176}
 }
 
 func (x *ValueFloatListReq) GetPage() uint64 {
@@ -11495,7 +14849,7 @@ type ValueFloatListResp struct {
 
 func (x *ValueFloatListResp) Reset() {
 	*x = ValueFloatListResp{}
-	mi := &file_cmdb_proto_msgTypes[150]
+	mi := &file_cmdb_proto_msgTypes[177]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11507,7 +14861,7 @@ func (x *ValueFloatListResp) String() string {
 func (*ValueFloatListResp) ProtoMessage() {}
 
 func (x *ValueFloatListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[150]
+	mi := &file_cmdb_proto_msgTypes[177]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11520,7 +14874,7 @@ func (x *ValueFloatListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueFloatListResp.ProtoReflect.Descriptor instead.
 func (*ValueFloatListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{150}
+	return file_cmdb_proto_rawDescGZIP(), []int{177}
 }
 
 func (x *ValueFloatListResp) GetTotal() uint64 {
@@ -11556,7 +14910,7 @@ type ValueIntegerInfo struct {
 
 func (x *ValueIntegerInfo) Reset() {
 	*x = ValueIntegerInfo{}
-	mi := &file_cmdb_proto_msgTypes[151]
+	mi := &file_cmdb_proto_msgTypes[178]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11568,7 +14922,7 @@ func (x *ValueIntegerInfo) String() string {
 func (*ValueIntegerInfo) ProtoMessage() {}
 
 func (x *ValueIntegerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[151]
+	mi := &file_cmdb_proto_msgTypes[178]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11581,7 +14935,7 @@ func (x *ValueIntegerInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueIntegerInfo.ProtoReflect.Descriptor instead.
 func (*ValueIntegerInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{151}
+	return file_cmdb_proto_rawDescGZIP(), []int{178}
 }
 
 func (x *ValueIntegerInfo) GetId() uint64 {
@@ -11649,7 +15003,7 @@ type ValueIntegerListReq struct {
 
 func (x *ValueIntegerListReq) Reset() {
 	*x = ValueIntegerListReq{}
-	mi := &file_cmdb_proto_msgTypes[152]
+	mi := &file_cmdb_proto_msgTypes[179]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11661,7 +15015,7 @@ func (x *ValueIntegerListReq) String() string {
 func (*ValueIntegerListReq) ProtoMessage() {}
 
 func (x *ValueIntegerListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[152]
+	mi := &file_cmdb_proto_msgTypes[179]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11674,7 +15028,7 @@ func (x *ValueIntegerListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueIntegerListReq.ProtoReflect.Descriptor instead.
 func (*ValueIntegerListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{152}
+	return file_cmdb_proto_rawDescGZIP(), []int{179}
 }
 
 func (x *ValueIntegerListReq) GetPage() uint64 {
@@ -11743,7 +15097,7 @@ type ValueIntegerListResp struct {
 
 func (x *ValueIntegerListResp) Reset() {
 	*x = ValueIntegerListResp{}
-	mi := &file_cmdb_proto_msgTypes[153]
+	mi := &file_cmdb_proto_msgTypes[180]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11755,7 +15109,7 @@ func (x *ValueIntegerListResp) String() string {
 func (*ValueIntegerListResp) ProtoMessage() {}
 
 func (x *ValueIntegerListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[153]
+	mi := &file_cmdb_proto_msgTypes[180]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11768,7 +15122,7 @@ func (x *ValueIntegerListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueIntegerListResp.ProtoReflect.Descriptor instead.
 func (*ValueIntegerListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{153}
+	return file_cmdb_proto_rawDescGZIP(), []int{180}
 }
 
 func (x *ValueIntegerListResp) GetTotal() uint64 {
@@ -11804,7 +15158,7 @@ type ValueJSONInfo struct {
 
 func (x *ValueJSONInfo) Reset() {
 	*x = ValueJSONInfo{}
-	mi := &file_cmdb_proto_msgTypes[154]
+	mi := &file_cmdb_proto_msgTypes[181]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11816,7 +15170,7 @@ func (x *ValueJSONInfo) String() string {
 func (*ValueJSONInfo) ProtoMessage() {}
 
 func (x *ValueJSONInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[154]
+	mi := &file_cmdb_proto_msgTypes[181]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11829,7 +15183,7 @@ func (x *ValueJSONInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueJSONInfo.ProtoReflect.Descriptor instead.
 func (*ValueJSONInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{154}
+	return file_cmdb_proto_rawDescGZIP(), []int{181}
 }
 
 func (x *ValueJSONInfo) GetId() uint64 {
@@ -11897,7 +15251,7 @@ type ValueJSONListReq struct {
 
 func (x *ValueJSONListReq) Reset() {
 	*x = ValueJSONListReq{}
-	mi := &file_cmdb_proto_msgTypes[155]
+	mi := &file_cmdb_proto_msgTypes[182]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -11909,7 +15263,7 @@ func (x *ValueJSONListReq) String() string {
 func (*ValueJSONListReq) ProtoMessage() {}
 
 func (x *ValueJSONListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[155]
+	mi := &file_cmdb_proto_msgTypes[182]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11922,7 +15276,7 @@ func (x *ValueJSONListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueJSONListReq.ProtoReflect.Descriptor instead.
 func (*ValueJSONListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{155}
+	return file_cmdb_proto_rawDescGZIP(), []int{182}
 }
 
 func (x *ValueJSONListReq) GetPage() uint64 {
@@ -11991,7 +15345,7 @@ type ValueJSONListResp struct {
 
 func (x *ValueJSONListResp) Reset() {
 	*x = ValueJSONListResp{}
-	mi := &file_cmdb_proto_msgTypes[156]
+	mi := &file_cmdb_proto_msgTypes[183]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12003,7 +15357,7 @@ func (x *ValueJSONListResp) String() string {
 func (*ValueJSONListResp) ProtoMessage() {}
 
 func (x *ValueJSONListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[156]
+	mi := &file_cmdb_proto_msgTypes[183]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12016,7 +15370,7 @@ func (x *ValueJSONListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueJSONListResp.ProtoReflect.Descriptor instead.
 func (*ValueJSONListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{156}
+	return file_cmdb_proto_rawDescGZIP(), []int{183}
 }
 
 func (x *ValueJSONListResp) GetTotal() uint64 {
@@ -12052,7 +15406,7 @@ type ValueTextInfo struct {
 
 func (x *ValueTextInfo) Reset() {
 	*x = ValueTextInfo{}
-	mi := &file_cmdb_proto_msgTypes[157]
+	mi := &file_cmdb_proto_msgTypes[184]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12064,7 +15418,7 @@ func (x *ValueTextInfo) String() string {
 func (*ValueTextInfo) ProtoMessage() {}
 
 func (x *ValueTextInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[157]
+	mi := &file_cmdb_proto_msgTypes[184]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12077,7 +15431,7 @@ func (x *ValueTextInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueTextInfo.ProtoReflect.Descriptor instead.
 func (*ValueTextInfo) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{157}
+	return file_cmdb_proto_rawDescGZIP(), []int{184}
 }
 
 func (x *ValueTextInfo) GetId() uint64 {
@@ -12145,7 +15499,7 @@ type ValueTextListReq struct {
 
 func (x *ValueTextListReq) Reset() {
 	*x = ValueTextListReq{}
-	mi := &file_cmdb_proto_msgTypes[158]
+	mi := &file_cmdb_proto_msgTypes[185]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12157,7 +15511,7 @@ func (x *ValueTextListReq) String() string {
 func (*ValueTextListReq) ProtoMessage() {}
 
 func (x *ValueTextListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[158]
+	mi := &file_cmdb_proto_msgTypes[185]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12170,7 +15524,7 @@ func (x *ValueTextListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueTextListReq.ProtoReflect.Descriptor instead.
 func (*ValueTextListReq) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{158}
+	return file_cmdb_proto_rawDescGZIP(), []int{185}
 }
 
 func (x *ValueTextListReq) GetPage() uint64 {
@@ -12239,7 +15593,7 @@ type ValueTextListResp struct {
 
 func (x *ValueTextListResp) Reset() {
 	*x = ValueTextListResp{}
-	mi := &file_cmdb_proto_msgTypes[159]
+	mi := &file_cmdb_proto_msgTypes[186]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -12251,7 +15605,7 @@ func (x *ValueTextListResp) String() string {
 func (*ValueTextListResp) ProtoMessage() {}
 
 func (x *ValueTextListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_cmdb_proto_msgTypes[159]
+	mi := &file_cmdb_proto_msgTypes[186]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12264,7 +15618,7 @@ func (x *ValueTextListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValueTextListResp.ProtoReflect.Descriptor instead.
 func (*ValueTextListResp) Descriptor() ([]byte, []int) {
-	return file_cmdb_proto_rawDescGZIP(), []int{159}
+	return file_cmdb_proto_rawDescGZIP(), []int{186}
 }
 
 func (x *ValueTextListResp) GetTotal() uint64 {
@@ -12281,31 +15635,81 @@ func (x *ValueTextListResp) GetData() []*ValueTextInfo {
 	return nil
 }
 
+// 写入发现CI的响应
+type WriteDiscoveredCIResp struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 创建/更新的CI ID
+	CiId *uint64 `protobuf:"varint,1,opt,name=ci_id,json=ciId,proto3,oneof" json:"ci_id"`
+	// 操作类型（created/updated/skipped）
+	Action *string `protobuf:"bytes,2,opt,name=action,proto3,oneof" json:"action"`
+	// 处理信息
+	Message       *string `protobuf:"bytes,3,opt,name=message,proto3,oneof" json:"message"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WriteDiscoveredCIResp) Reset() {
+	*x = WriteDiscoveredCIResp{}
+	mi := &file_cmdb_proto_msgTypes[187]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WriteDiscoveredCIResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WriteDiscoveredCIResp) ProtoMessage() {}
+
+func (x *WriteDiscoveredCIResp) ProtoReflect() protoreflect.Message {
+	mi := &file_cmdb_proto_msgTypes[187]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WriteDiscoveredCIResp.ProtoReflect.Descriptor instead.
+func (*WriteDiscoveredCIResp) Descriptor() ([]byte, []int) {
+	return file_cmdb_proto_rawDescGZIP(), []int{187}
+}
+
+func (x *WriteDiscoveredCIResp) GetCiId() uint64 {
+	if x != nil && x.CiId != nil {
+		return *x.CiId
+	}
+	return 0
+}
+
+func (x *WriteDiscoveredCIResp) GetAction() string {
+	if x != nil && x.Action != nil {
+		return *x.Action
+	}
+	return ""
+}
+
+func (x *WriteDiscoveredCIResp) GetMessage() string {
+	if x != nil && x.Message != nil {
+		return *x.Message
+	}
+	return ""
+}
+
 var File_cmdb_proto protoreflect.FileDescriptor
 
 const file_cmdb_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"cmdb.proto\x12\x04cmdb\"\x82\x02\n" +
-	"\fAsyncTaskReq\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\tR\x04type\x12\x1c\n" +
-	"\toperation\x18\x02 \x01(\tR\toperation\x12\x15\n" +
-	"\x06ci_ids\x18\x03 \x03(\x04R\x05ciIds\x12\x1b\n" +
-	"\x06params\x18\x04 \x01(\tH\x00R\x06params\x88\x01\x01\x12\x17\n" +
-	"\x04data\x18\x05 \x01(\tH\x01R\x04data\x88\x01\x01\x12\x1f\n" +
-	"\bpriority\x18\x06 \x01(\x05H\x02R\bpriority\x88\x01\x01\x12\"\n" +
-	"\n" +
-	"created_by\x18\a \x01(\tH\x03R\tcreatedBy\x88\x01\x01B\t\n" +
-	"\a_paramsB\a\n" +
-	"\x05_dataB\v\n" +
-	"\t_priorityB\r\n" +
-	"\v_created_by\"\xb1\x01\n" +
-	"\rAsyncTaskResp\x12\x17\n" +
-	"\atask_id\x18\x01 \x01(\tR\x06taskId\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x12\x18\n" +
-	"\asuccess\x18\x03 \x01(\bR\asuccess\x12@\n" +
-	"\x0einitial_status\x18\x04 \x01(\v2\x14.cmdb.TaskStatusInfoH\x00R\rinitialStatus\x88\x01\x01B\x11\n" +
-	"\x0f_initial_status\"z\n" +
+	"cmdb.proto\x12\x04cmdb\"k\n" +
+	"\x12AttributeBasicInfo\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05alias\x18\x03 \x01(\tR\x05alias\x12\x1b\n" +
+	"\tdata_type\x18\x04 \x01(\tR\bdataType\"z\n" +
 	"\x13AttributeChoiceItem\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value\x121\n" +
@@ -12423,7 +15827,174 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x06_alias\"R\n" +
 	"\x11AttributeListResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\x04R\x05total\x12'\n" +
-	"\x04data\x18\x02 \x03(\v2\x13.cmdb.AttributeInfoR\x04data\"\xa0\x01\n" +
+	"\x04data\x18\x02 \x03(\v2\x13.cmdb.AttributeInfoR\x04data\"\xd1\x03\n" +
+	"\x1aAttributeMappingConfigInfo\x12\x1f\n" +
+	"\vrelation_id\x18\x01 \x01(\x04R\n" +
+	"relationId\x12;\n" +
+	"\x0esource_ci_type\x18\x02 \x01(\v2\x15.cmdb.CiTypeBasicInfoR\fsourceCiType\x12;\n" +
+	"\x0etarget_ci_type\x18\x03 \x01(\v2\x15.cmdb.CiTypeBasicInfoR\ftargetCiType\x12@\n" +
+	"\rrelation_type\x18\x04 \x01(\v2\x1b.cmdb.RelationTypeBasicInfoR\frelationType\x12F\n" +
+	"\x0esingle_mapping\x18\x05 \x01(\v2\x1a.cmdb.AttributeMappingPairH\x00R\rsingleMapping\x88\x01\x01\x12G\n" +
+	"\x11multiple_mappings\x18\x06 \x03(\v2\x1a.cmdb.AttributeMappingPairR\x10multipleMappings\x12#\n" +
+	"\n" +
+	"constraint\x18\a \x01(\tH\x01R\n" +
+	"constraint\x88\x01\x01B\x11\n" +
+	"\x0f_single_mappingB\r\n" +
+	"\v_constraint\"\x8c\x03\n" +
+	"\x19AttributeMappingConfigReq\x12.\n" +
+	"\x11source_ci_type_id\x18\x01 \x01(\x04H\x00R\x0esourceCiTypeId\x88\x01\x01\x12.\n" +
+	"\x11target_ci_type_id\x18\x02 \x01(\x04H\x01R\x0etargetCiTypeId\x88\x01\x01\x12-\n" +
+	"\x10relation_type_id\x18\x03 \x01(\x04H\x02R\x0erelationTypeId\x88\x01\x01\x12?\n" +
+	"\x19include_attribute_details\x18\x04 \x01(\bH\x03R\x17includeAttributeDetails\x88\x01\x01\x12,\n" +
+	"\x0fconfigured_only\x18\x05 \x01(\bH\x04R\x0econfiguredOnly\x88\x01\x01B\x14\n" +
+	"\x12_source_ci_type_idB\x14\n" +
+	"\x12_target_ci_type_idB\x13\n" +
+	"\x11_relation_type_idB\x1c\n" +
+	"\x1a_include_attribute_detailsB\x12\n" +
+	"\x10_configured_only\"y\n" +
+	"\x1aAttributeMappingConfigResp\x12:\n" +
+	"\aconfigs\x18\x01 \x03(\v2 .cmdb.AttributeMappingConfigInfoR\aconfigs\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x04R\n" +
+	"totalCount\"\x84\x03\n" +
+	"\x14AttributeMappingData\x12$\n" +
+	"\x0esource_attr_id\x18\x01 \x01(\x04R\fsourceAttrId\x12$\n" +
+	"\x0etarget_attr_id\x18\x02 \x01(\x04R\ftargetAttrId\x12&\n" +
+	"\fsource_value\x18\x03 \x01(\tH\x00R\vsourceValue\x88\x01\x01\x12&\n" +
+	"\ftarget_value\x18\x04 \x01(\tH\x01R\vtargetValue\x88\x01\x01\x12%\n" +
+	"\flast_sync_at\x18\x05 \x01(\x03H\x02R\n" +
+	"lastSyncAt\x88\x01\x01\x12$\n" +
+	"\vsync_status\x18\x06 \x01(\tH\x03R\n" +
+	"syncStatus\x88\x01\x01\x12,\n" +
+	"\x0fconflict_reason\x18\a \x01(\tH\x04R\x0econflictReason\x88\x01\x01B\x0f\n" +
+	"\r_source_valueB\x0f\n" +
+	"\r_target_valueB\x0f\n" +
+	"\r_last_sync_atB\x0e\n" +
+	"\f_sync_statusB\x12\n" +
+	"\x10_conflict_reason\"\xa0\x01\n" +
+	"\x14AttributeMappingPair\x12C\n" +
+	"\x10source_attribute\x18\x01 \x01(\v2\x18.cmdb.AttributeBasicInfoR\x0fsourceAttribute\x12C\n" +
+	"\x10target_attribute\x18\x02 \x01(\v2\x18.cmdb.AttributeBasicInfoR\x0ftargetAttribute\"\xec\n" +
+	"\n" +
+	"\x18AttributeMappingRuleInfo\x12\x13\n" +
+	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"created_at\x18\x02 \x01(\x03H\x01R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\x03H\x02R\tupdatedAt\x88\x01\x01\x12\x1b\n" +
+	"\x06status\x18\x04 \x01(\rH\x03R\x06status\x88\x01\x01\x123\n" +
+	"\x13discovery_config_id\x18\x05 \x01(\x04H\x04R\x11discoveryConfigId\x88\x01\x01\x12+\n" +
+	"\x0fci_attribute_id\x18\x06 \x01(\x04H\x05R\rciAttributeId\x88\x01\x01\x12&\n" +
+	"\fsource_field\x18\a \x01(\tH\x06R\vsourceField\x88\x01\x01\x12$\n" +
+	"\vsource_path\x18\b \x01(\tH\aR\n" +
+	"sourcePath\x88\x01\x01\x12.\n" +
+	"\x10target_attribute\x18\t \x01(\tH\bR\x0ftargetAttribute\x88\x01\x01\x12*\n" +
+	"\x0etransform_type\x18\n" +
+	" \x01(\tH\tR\rtransformType\x88\x01\x01\x12.\n" +
+	"\x10transform_config\x18\v \x01(\tH\n" +
+	"R\x0ftransformConfig\x88\x01\x01\x12(\n" +
+	"\rdefault_value\x18\f \x01(\tH\vR\fdefaultValue\x88\x01\x01\x12.\n" +
+	"\x10validation_rules\x18\r \x01(\tH\fR\x0fvalidationRules\x88\x01\x01\x12.\n" +
+	"\x10validation_regex\x18\x0e \x01(\tH\rR\x0fvalidationRegex\x88\x01\x01\x12$\n" +
+	"\vis_required\x18\x0f \x01(\bH\x0eR\n" +
+	"isRequired\x88\x01\x01\x12 \n" +
+	"\tis_unique\x18\x10 \x01(\bH\x0fR\bisUnique\x88\x01\x01\x12\x1f\n" +
+	"\bpriority\x18\x11 \x01(\x03H\x10R\bpriority\x88\x01\x01\x12\x1d\n" +
+	"\aenabled\x18\x12 \x01(\bH\x11R\aenabled\x88\x01\x01\x12,\n" +
+	"\x0fupdate_strategy\x18\x13 \x01(\tH\x12R\x0eupdateStrategy\x88\x01\x01\x12(\n" +
+	"\rsuccess_count\x18\x14 \x01(\x03H\x13R\fsuccessCount\x88\x01\x01\x12&\n" +
+	"\ffailed_count\x18\x15 \x01(\x03H\x14R\vfailedCount\x88\x01\x01\x12+\n" +
+	"\x0flast_success_at\x18\x16 \x01(\x03H\x15R\rlastSuccessAt\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\x17 \x01(\tH\x16R\vdescription\x88\x01\x01\x12\x1f\n" +
+	"\bmetadata\x18\x18 \x01(\tH\x17R\bmetadata\x88\x01\x01B\x05\n" +
+	"\x03_idB\r\n" +
+	"\v_created_atB\r\n" +
+	"\v_updated_atB\t\n" +
+	"\a_statusB\x16\n" +
+	"\x14_discovery_config_idB\x12\n" +
+	"\x10_ci_attribute_idB\x0f\n" +
+	"\r_source_fieldB\x0e\n" +
+	"\f_source_pathB\x13\n" +
+	"\x11_target_attributeB\x11\n" +
+	"\x0f_transform_typeB\x13\n" +
+	"\x11_transform_configB\x10\n" +
+	"\x0e_default_valueB\x13\n" +
+	"\x11_validation_rulesB\x13\n" +
+	"\x11_validation_regexB\x0e\n" +
+	"\f_is_requiredB\f\n" +
+	"\n" +
+	"_is_uniqueB\v\n" +
+	"\t_priorityB\n" +
+	"\n" +
+	"\b_enabledB\x12\n" +
+	"\x10_update_strategyB\x10\n" +
+	"\x0e_success_countB\x0f\n" +
+	"\r_failed_countB\x12\n" +
+	"\x10_last_success_atB\x0e\n" +
+	"\f_descriptionB\v\n" +
+	"\t_metadata\"\xb7\v\n" +
+	"\x1bAttributeMappingRuleListReq\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\x12\"\n" +
+	"\n" +
+	"created_at\x18\x03 \x01(\x03H\x00R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"updated_at\x18\x04 \x01(\x03H\x01R\tupdatedAt\x88\x01\x01\x12\x1b\n" +
+	"\x06status\x18\x05 \x01(\rH\x02R\x06status\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"deleted_at\x18\x06 \x01(\x03H\x03R\tdeletedAt\x88\x01\x01\x123\n" +
+	"\x13discovery_config_id\x18\a \x01(\x04H\x04R\x11discoveryConfigId\x88\x01\x01\x12+\n" +
+	"\x0fci_attribute_id\x18\b \x01(\x04H\x05R\rciAttributeId\x88\x01\x01\x12&\n" +
+	"\fsource_field\x18\t \x01(\tH\x06R\vsourceField\x88\x01\x01\x12$\n" +
+	"\vsource_path\x18\n" +
+	" \x01(\tH\aR\n" +
+	"sourcePath\x88\x01\x01\x12.\n" +
+	"\x10target_attribute\x18\v \x01(\tH\bR\x0ftargetAttribute\x88\x01\x01\x12*\n" +
+	"\x0etransform_type\x18\f \x01(\tH\tR\rtransformType\x88\x01\x01\x12.\n" +
+	"\x10transform_config\x18\r \x01(\tH\n" +
+	"R\x0ftransformConfig\x88\x01\x01\x12(\n" +
+	"\rdefault_value\x18\x0e \x01(\tH\vR\fdefaultValue\x88\x01\x01\x12.\n" +
+	"\x10validation_rules\x18\x0f \x01(\tH\fR\x0fvalidationRules\x88\x01\x01\x12.\n" +
+	"\x10validation_regex\x18\x10 \x01(\tH\rR\x0fvalidationRegex\x88\x01\x01\x12$\n" +
+	"\vis_required\x18\x11 \x01(\bH\x0eR\n" +
+	"isRequired\x88\x01\x01\x12 \n" +
+	"\tis_unique\x18\x12 \x01(\bH\x0fR\bisUnique\x88\x01\x01\x12\x1f\n" +
+	"\bpriority\x18\x13 \x01(\x03H\x10R\bpriority\x88\x01\x01\x12\x1d\n" +
+	"\aenabled\x18\x14 \x01(\bH\x11R\aenabled\x88\x01\x01\x12,\n" +
+	"\x0fupdate_strategy\x18\x15 \x01(\tH\x12R\x0eupdateStrategy\x88\x01\x01\x12(\n" +
+	"\rsuccess_count\x18\x16 \x01(\x03H\x13R\fsuccessCount\x88\x01\x01\x12&\n" +
+	"\ffailed_count\x18\x17 \x01(\x03H\x14R\vfailedCount\x88\x01\x01\x12+\n" +
+	"\x0flast_success_at\x18\x18 \x01(\x03H\x15R\rlastSuccessAt\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\x19 \x01(\tH\x16R\vdescription\x88\x01\x01\x12\x1f\n" +
+	"\bmetadata\x18\x1a \x01(\tH\x17R\bmetadata\x88\x01\x01B\r\n" +
+	"\v_created_atB\r\n" +
+	"\v_updated_atB\t\n" +
+	"\a_statusB\r\n" +
+	"\v_deleted_atB\x16\n" +
+	"\x14_discovery_config_idB\x12\n" +
+	"\x10_ci_attribute_idB\x0f\n" +
+	"\r_source_fieldB\x0e\n" +
+	"\f_source_pathB\x13\n" +
+	"\x11_target_attributeB\x11\n" +
+	"\x0f_transform_typeB\x13\n" +
+	"\x11_transform_configB\x10\n" +
+	"\x0e_default_valueB\x13\n" +
+	"\x11_validation_rulesB\x13\n" +
+	"\x11_validation_regexB\x0e\n" +
+	"\f_is_requiredB\f\n" +
+	"\n" +
+	"_is_uniqueB\v\n" +
+	"\t_priorityB\n" +
+	"\n" +
+	"\b_enabledB\x12\n" +
+	"\x10_update_strategyB\x10\n" +
+	"\x0e_success_countB\x0f\n" +
+	"\r_failed_countB\x12\n" +
+	"\x10_last_success_atB\x0e\n" +
+	"\f_descriptionB\v\n" +
+	"\t_metadata\"h\n" +
+	"\x1cAttributeMappingRuleListResp\x12\x14\n" +
+	"\x05total\x18\x01 \x01(\x04R\x05total\x122\n" +
+	"\x04data\x18\x02 \x03(\v2\x1e.cmdb.AttributeMappingRuleInfoR\x04data\"\xa0\x01\n" +
 	"\x0fAttributeOption\x12>\n" +
 	"\n" +
 	"fontOption\x18\x01 \x01(\v2\x19.cmdb.AttributeFontOptionH\x00R\n" +
@@ -12920,7 +16491,14 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x16CiPermissionOperations\x12;\n" +
 	"\n" +
 	"operations\x18\x01 \x03(\v2\x1b.cmdb.CiPermissionOperationR\n" +
-	"operations\"\x98\x02\n" +
+	"operations\"`\n" +
+	"\x0fCiPermissionReq\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x1c\n" +
+	"\n" +
+	"ci_type_id\x18\x02 \x01(\x04R\bciTypeId\x12\x16\n" +
+	"\x06action\x18\x03 \x01(\tR\x06action\"9\n" +
+	"\x10CiPermissionResp\x12%\n" +
+	"\x0ehas_permission\x18\x01 \x01(\bR\rhasPermission\"\x98\x02\n" +
 	"\x1fCiPermissionSecurityConstraints\x12\x1f\n" +
 	"\vrequire_vpn\x18\x01 \x01(\bR\n" +
 	"requireVpn\x12\x1f\n" +
@@ -12947,7 +16525,49 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a?\n" +
 	"\x11MonthlyUsageEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xa5\x02\n" +
+	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\"\xb8\x03\n" +
+	"\x17CiRelationBatchQueryReq\x12\x15\n" +
+	"\x06ci_ids\x18\x01 \x03(\x04R\x05ciIds\x12!\n" +
+	"\tdirection\x18\x02 \x01(\tH\x00R\tdirection\x88\x01\x01\x12*\n" +
+	"\x11relation_type_ids\x18\x03 \x03(\x04R\x0frelationTypeIds\x12A\n" +
+	"\x1ainclude_attribute_mappings\x18\x04 \x01(\bH\x01R\x18includeAttributeMappings\x88\x01\x01\x12$\n" +
+	"\vactive_only\x18\x05 \x01(\bH\x02R\n" +
+	"activeOnly\x88\x01\x01\x12#\n" +
+	"\rstatus_filter\x18\x06 \x03(\tR\fstatusFilter\x126\n" +
+	"\x17discovery_source_filter\x18\a \x03(\tR\x15discoverySourceFilter\x12$\n" +
+	"\vdepth_limit\x18\b \x01(\x05H\x03R\n" +
+	"depthLimit\x88\x01\x01B\f\n" +
+	"\n" +
+	"_directionB\x1d\n" +
+	"\x1b_include_attribute_mappingsB\x0e\n" +
+	"\f_active_onlyB\x0e\n" +
+	"\f_depth_limit\"\x94\x02\n" +
+	"\x18CiRelationBatchQueryResp\x12Y\n" +
+	"\x0frelations_by_ci\x18\x01 \x03(\v21.cmdb.CiRelationBatchQueryResp.RelationsByCiEntryR\rrelationsByCi\x12'\n" +
+	"\x0ftotal_relations\x18\x02 \x01(\x04R\x0etotalRelations\x12\x1b\n" +
+	"\ttotal_cis\x18\x03 \x01(\x04R\btotalCis\x1aW\n" +
+	"\x12RelationsByCiEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\x04R\x03key\x12+\n" +
+	"\x05value\x18\x02 \x01(\v2\x15.cmdb.CiRelationGroupR\x05value:\x028\x01\"\xe6\x03\n" +
+	"\x14CiRelationCreateInfo\x12 \n" +
+	"\ftarget_ci_id\x18\x01 \x01(\x04R\n" +
+	"targetCiId\x12(\n" +
+	"\x10relation_type_id\x18\x02 \x01(\x04R\x0erelationTypeId\x12\x1c\n" +
+	"\tdirection\x18\x03 \x01(\tR\tdirection\x12!\n" +
+	"\n" +
+	"more_ci_id\x18\x04 \x01(\x04H\x00R\bmoreCiId\x88\x01\x01\x12.\n" +
+	"\x10discovery_source\x18\x05 \x01(\tH\x01R\x0fdiscoverySource\x88\x01\x01\x12#\n" +
+	"\n" +
+	"properties\x18\x06 \x01(\tH\x02R\n" +
+	"properties\x88\x01\x01\x12I\n" +
+	"\x12attribute_mappings\x18\a \x03(\v2\x1a.cmdb.AttributeMappingDataR\x11attributeMappings\x12\x1b\n" +
+	"\x06status\x18\b \x01(\tH\x03R\x06status\x88\x01\x01\x120\n" +
+	"\x11relation_strength\x18\t \x01(\tH\x04R\x10relationStrength\x88\x01\x01B\r\n" +
+	"\v_more_ci_idB\x13\n" +
+	"\x11_discovery_sourceB\r\n" +
+	"\v_propertiesB\t\n" +
+	"\a_statusB\x14\n" +
+	"\x12_relation_strength\"\xa5\x02\n" +
 	"\x10CiRelationFilter\x12#\n" +
 	"\rrelation_type\x18\x01 \x01(\tR\frelationType\x12\x1c\n" +
 	"\tdirection\x18\x02 \x01(\tR\tdirection\x12\"\n" +
@@ -12956,29 +16576,56 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x0erelation_depth\x18\x05 \x01(\x05H\x00R\rrelationDepth\x88\x01\x01\x12.\n" +
 	"\x10include_indirect\x18\x06 \x01(\bH\x01R\x0fincludeIndirect\x88\x01\x01B\x11\n" +
 	"\x0f_relation_depthB\x13\n" +
-	"\x11_include_indirect\"\xc6\x03\n" +
+	"\x11_include_indirect\"\xc9\x01\n" +
+	"\x0fCiRelationGroup\x12\x13\n" +
+	"\x05ci_id\x18\x01 \x01(\x04R\x04ciId\x12?\n" +
+	"\x10source_relations\x18\x02 \x03(\v2\x14.cmdb.CiRelationInfoR\x0fsourceRelations\x12?\n" +
+	"\x10target_relations\x18\x03 \x03(\v2\x14.cmdb.CiRelationInfoR\x0ftargetRelations\x12\x1f\n" +
+	"\vtotal_count\x18\x04 \x01(\x04R\n" +
+	"totalCount\"\x8b\b\n" +
 	"\x0eCiRelationInfo\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\n" +
 	"created_at\x18\x02 \x01(\x03H\x01R\tcreatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\x03H\x02R\tupdatedAt\x88\x01\x01\x12#\n" +
-	"\vfirst_ci_id\x18\x04 \x01(\x04H\x03R\tfirstCiId\x88\x01\x01\x12%\n" +
-	"\fsecond_ci_id\x18\x05 \x01(\x04H\x04R\n" +
-	"secondCiId\x88\x01\x01\x12-\n" +
+	"updated_at\x18\x03 \x01(\x03H\x02R\tupdatedAt\x88\x01\x01\x12%\n" +
+	"\fsource_ci_id\x18\x04 \x01(\x04H\x03R\n" +
+	"sourceCiId\x88\x01\x01\x12%\n" +
+	"\ftarget_ci_id\x18\x05 \x01(\x04H\x04R\n" +
+	"targetCiId\x88\x01\x01\x12-\n" +
 	"\x10relation_type_id\x18\x06 \x01(\x04H\x05R\x0erelationTypeId\x88\x01\x01\x12\x17\n" +
-	"\x04more\x18\a \x01(\x04H\x06R\x04more\x88\x01\x01\x12\x1b\n" +
-	"\x06source\x18\b \x01(\tH\aR\x06source\x88\x01\x01\x12&\n" +
-	"\fancestor_ids\x18\t \x01(\tH\bR\vancestorIds\x88\x01\x01B\x05\n" +
+	"\x04more\x18\a \x01(\x04H\x06R\x04more\x88\x01\x01\x12.\n" +
+	"\x10discovery_source\x18\b \x01(\tH\aR\x0fdiscoverySource\x88\x01\x01\x12&\n" +
+	"\fancestor_ids\x18\t \x01(\tH\bR\vancestorIds\x88\x01\x01\x12#\n" +
+	"\n" +
+	"properties\x18\n" +
+	" \x01(\tH\tR\n" +
+	"properties\x88\x01\x01\x12I\n" +
+	"\x12attribute_mappings\x18\v \x03(\v2\x1a.cmdb.AttributeMappingDataR\x11attributeMappings\x12\x1b\n" +
+	"\x06status\x18\f \x01(\tH\n" +
+	"R\x06status\x88\x01\x01\x12H\n" +
+	"\x11validation_result\x18\r \x01(\v2\x16.cmdb.ValidationResultH\vR\x10validationResult\x88\x01\x01\x12/\n" +
+	"\x11last_validated_at\x18\x0e \x01(\x03H\fR\x0flastValidatedAt\x88\x01\x01\x12/\n" +
+	"\x11auto_sync_enabled\x18\x0f \x01(\bH\rR\x0fautoSyncEnabled\x88\x01\x01\x126\n" +
+	"\vsync_config\x18\x10 \x01(\v2\x10.cmdb.SyncConfigH\x0eR\n" +
+	"syncConfig\x88\x01\x01\x120\n" +
+	"\x11relation_strength\x18\x11 \x01(\tH\x0fR\x10relationStrength\x88\x01\x01B\x05\n" +
 	"\x03_idB\r\n" +
 	"\v_created_atB\r\n" +
-	"\v_updated_atB\x0e\n" +
-	"\f_first_ci_idB\x0f\n" +
-	"\r_second_ci_idB\x13\n" +
+	"\v_updated_atB\x0f\n" +
+	"\r_source_ci_idB\x0f\n" +
+	"\r_target_ci_idB\x13\n" +
 	"\x11_relation_type_idB\a\n" +
-	"\x05_moreB\t\n" +
-	"\a_sourceB\x0f\n" +
-	"\r_ancestor_ids\"\x91\x04\n" +
+	"\x05_moreB\x13\n" +
+	"\x11_discovery_sourceB\x0f\n" +
+	"\r_ancestor_idsB\r\n" +
+	"\v_propertiesB\t\n" +
+	"\a_statusB\x14\n" +
+	"\x12_validation_resultB\x14\n" +
+	"\x12_last_validated_atB\x14\n" +
+	"\x12_auto_sync_enabledB\x0e\n" +
+	"\f_sync_configB\x14\n" +
+	"\x12_relation_strength\"\xb1\x04\n" +
 	"\x11CiRelationListReq\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\x12\"\n" +
@@ -12987,27 +16634,59 @@ const file_cmdb_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x04 \x01(\x03H\x01R\tupdatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"deleted_at\x18\x05 \x01(\x03H\x02R\tdeletedAt\x88\x01\x01\x12#\n" +
-	"\vfirst_ci_id\x18\x06 \x01(\x04H\x03R\tfirstCiId\x88\x01\x01\x12%\n" +
-	"\fsecond_ci_id\x18\a \x01(\x04H\x04R\n" +
-	"secondCiId\x88\x01\x01\x12-\n" +
+	"deleted_at\x18\x05 \x01(\x03H\x02R\tdeletedAt\x88\x01\x01\x12%\n" +
+	"\fsource_ci_id\x18\x06 \x01(\x04H\x03R\n" +
+	"sourceCiId\x88\x01\x01\x12%\n" +
+	"\ftarget_ci_id\x18\a \x01(\x04H\x04R\n" +
+	"targetCiId\x88\x01\x01\x12-\n" +
 	"\x10relation_type_id\x18\b \x01(\x04H\x05R\x0erelationTypeId\x88\x01\x01\x12\x17\n" +
-	"\x04more\x18\t \x01(\x04H\x06R\x04more\x88\x01\x01\x12\x1b\n" +
-	"\x06source\x18\n" +
-	" \x01(\tH\aR\x06source\x88\x01\x01\x12&\n" +
+	"\x04more\x18\t \x01(\x04H\x06R\x04more\x88\x01\x01\x12.\n" +
+	"\x10discovery_source\x18\n" +
+	" \x01(\tH\aR\x0fdiscoverySource\x88\x01\x01\x12&\n" +
 	"\fancestor_ids\x18\v \x01(\tH\bR\vancestorIds\x88\x01\x01B\r\n" +
 	"\v_created_atB\r\n" +
 	"\v_updated_atB\r\n" +
-	"\v_deleted_atB\x0e\n" +
-	"\f_first_ci_idB\x0f\n" +
-	"\r_second_ci_idB\x13\n" +
+	"\v_deleted_atB\x0f\n" +
+	"\r_source_ci_idB\x0f\n" +
+	"\r_target_ci_idB\x13\n" +
 	"\x11_relation_type_idB\a\n" +
-	"\x05_moreB\t\n" +
-	"\a_sourceB\x0f\n" +
+	"\x05_moreB\x13\n" +
+	"\x11_discovery_sourceB\x0f\n" +
 	"\r_ancestor_ids\"T\n" +
 	"\x12CiRelationListResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\x04R\x05total\x12(\n" +
-	"\x04data\x18\x02 \x03(\v2\x14.cmdb.CiRelationInfoR\x04data\"\xaa\x01\n" +
+	"\x04data\x18\x02 \x03(\v2\x14.cmdb.CiRelationInfoR\x04data\"\xba\x01\n" +
+	"\x15CiRelationQueryResult\x12?\n" +
+	"\x10source_relations\x18\x01 \x03(\v2\x14.cmdb.CiRelationInfoR\x0fsourceRelations\x12?\n" +
+	"\x10target_relations\x18\x02 \x03(\v2\x14.cmdb.CiRelationInfoR\x0ftargetRelations\x12\x1f\n" +
+	"\vtotal_count\x18\x03 \x01(\x04R\n" +
+	"totalCount\"\xd4\x03\n" +
+	"\x14CiRelationUpdateInfo\x12\x1f\n" +
+	"\vrelation_id\x18\x01 \x01(\x04R\n" +
+	"relationId\x12%\n" +
+	"\ftarget_ci_id\x18\x02 \x01(\x04H\x00R\n" +
+	"targetCiId\x88\x01\x01\x12-\n" +
+	"\x10relation_type_id\x18\x03 \x01(\x04H\x01R\x0erelationTypeId\x88\x01\x01\x12!\n" +
+	"\n" +
+	"more_ci_id\x18\x04 \x01(\x04H\x02R\bmoreCiId\x88\x01\x01\x12#\n" +
+	"\n" +
+	"properties\x18\x05 \x01(\tH\x03R\n" +
+	"properties\x88\x01\x01\x12I\n" +
+	"\x12attribute_mappings\x18\x06 \x03(\v2\x1a.cmdb.AttributeMappingDataR\x11attributeMappings\x12\x1b\n" +
+	"\x06status\x18\a \x01(\tH\x04R\x06status\x88\x01\x01\x120\n" +
+	"\x11relation_strength\x18\b \x01(\tH\x05R\x10relationStrength\x88\x01\x01B\x0f\n" +
+	"\r_target_ci_idB\x13\n" +
+	"\x11_relation_type_idB\r\n" +
+	"\v_more_ci_idB\r\n" +
+	"\v_propertiesB\t\n" +
+	"\a_statusB\x14\n" +
+	"\x12_relation_strength\"\xa5\x02\n" +
+	"\x0fCiRelationsData\x12E\n" +
+	"\x10create_relations\x18\x01 \x03(\v2\x1a.cmdb.CiRelationCreateInfoR\x0fcreateRelations\x12E\n" +
+	"\x10update_relations\x18\x02 \x03(\v2\x1a.cmdb.CiRelationUpdateInfoR\x0fupdateRelations\x12.\n" +
+	"\x13delete_relation_ids\x18\x03 \x03(\x04R\x11deleteRelationIds\x12C\n" +
+	"\fquery_result\x18\x04 \x01(\v2\x1b.cmdb.CiRelationQueryResultH\x00R\vqueryResult\x88\x01\x01B\x0f\n" +
+	"\r_query_result\"\xaa\x01\n" +
 	"\vCiSortField\x12\x17\n" +
 	"\aattr_id\x18\x01 \x01(\x04R\x06attrId\x12\"\n" +
 	"\n" +
@@ -13101,7 +16780,23 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04sort\x18\x02 \x01(\rR\x04sort\"Y\n" +
 	"\x1fCiTypeAttributeGroupItemSortReq\x126\n" +
-	"\x04data\x18\x01 \x03(\v2\".cmdb.CiTypeAttributeGroupItemSortR\x04data\"\xd5\x02\n" +
+	"\x04data\x18\x01 \x03(\v2\".cmdb.CiTypeAttributeGroupItemSortR\x04data\"\xdd\x02\n" +
+	"$CiTypeAttributeGroupItemWithAttrInfo\x12\x13\n" +
+	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\x1e\n" +
+	"\bgroup_id\x18\x02 \x01(\x04H\x01R\agroupId\x88\x01\x01\x12\x1c\n" +
+	"\aattr_id\x18\x03 \x01(\x04H\x02R\x06attrId\x88\x01\x01\x12\x17\n" +
+	"\x04sort\x18\x04 \x01(\rH\x03R\x04sort\x88\x01\x01\x12$\n" +
+	"\vis_required\x18\x05 \x01(\bH\x04R\n" +
+	"isRequired\x88\x01\x01\x12&\n" +
+	"\fdefault_show\x18\x06 \x01(\bH\x05R\vdefaultShow\x88\x01\x01\x121\n" +
+	"\tattribute\x18\a \x01(\v2\x13.cmdb.AttributeInfoR\tattributeB\x05\n" +
+	"\x03_idB\v\n" +
+	"\t_group_idB\n" +
+	"\n" +
+	"\b_attr_idB\a\n" +
+	"\x05_sortB\x0e\n" +
+	"\f_is_requiredB\x0f\n" +
+	"\r_default_show\"\xd5\x02\n" +
 	"\x1bCiTypeAttributeGroupListReq\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\x12\"\n" +
@@ -13129,7 +16824,18 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04sort\x18\x03 \x01(\rR\x04sort\"Q\n" +
 	"\x1bCiTypeAttributeGroupSortReq\x122\n" +
-	"\x04data\x18\x01 \x03(\v2\x1e.cmdb.CiTypeAttributeGroupSortR\x04data\"\x8b\x04\n" +
+	"\x04data\x18\x01 \x03(\v2\x1e.cmdb.CiTypeAttributeGroupSortR\x04data\"\xc4\x01\n" +
+	" CiTypeAttributeGroupWithAttrInfo\x12\x13\n" +
+	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\x17\n" +
+	"\x04name\x18\x02 \x01(\tH\x01R\x04name\x88\x01\x01\x12\x17\n" +
+	"\x04sort\x18\x03 \x01(\rH\x02R\x04sort\x88\x01\x01\x12@\n" +
+	"\x05items\x18\x04 \x03(\v2*.cmdb.CiTypeAttributeGroupItemWithAttrInfoR\x05itemsB\x05\n" +
+	"\x03_idB\a\n" +
+	"\x05_nameB\a\n" +
+	"\x05_sort\"x\n" +
+	"$CiTypeAttributeGroupWithAttrListResp\x12\x14\n" +
+	"\x05total\x18\x01 \x01(\x04R\x05total\x12:\n" +
+	"\x04data\x18\x02 \x03(\v2&.cmdb.CiTypeAttributeGroupWithAttrInfoR\x04data\"\x8b\x04\n" +
 	"\x13CiTypeAttributeInfo\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\n" +
@@ -13235,7 +16941,165 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x1fCiTypeAttributeListWithGroupReq\x12\x17\n" +
 	"\atype_id\x18\x01 \x01(\x04R\x06typeId\"^\n" +
 	" CiTypeAttributeListWithGroupResp\x12:\n" +
-	"\x04data\x18\x01 \x03(\v2&.cmdb.CiTypeAttributeListWithGroupInfoR\x04data\"\xb0\x02\n" +
+	"\x04data\x18\x01 \x03(\v2&.cmdb.CiTypeAttributeListWithGroupInfoR\x04data\"K\n" +
+	"\x0fCiTypeBasicInfo\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05alias\x18\x03 \x01(\tR\x05alias\"\xd9\x0e\n" +
+	"\x19CiTypeDiscoveryConfigInfo\x12\x13\n" +
+	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"created_at\x18\x02 \x01(\x03H\x01R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\x03H\x02R\tupdatedAt\x88\x01\x01\x12\x1b\n" +
+	"\x06status\x18\x04 \x01(\rH\x03R\x06status\x88\x01\x01\x12(\n" +
+	"\rdepartment_id\x18\x05 \x01(\x04H\x04R\fdepartmentId\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"created_by\x18\x06 \x01(\tH\x05R\tcreatedBy\x88\x01\x01\x12!\n" +
+	"\n" +
+	"ci_type_id\x18\a \x01(\x04H\x06R\bciTypeId\x88\x01\x01\x12$\n" +
+	"\vconfig_name\x18\b \x01(\tH\aR\n" +
+	"configName\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\t \x01(\tH\bR\vdescription\x88\x01\x01\x12*\n" +
+	"\x0ediscovery_mode\x18\n" +
+	" \x01(\tH\tR\rdiscoveryMode\x88\x01\x01\x12*\n" +
+	"\x0ediscovery_type\x18\v \x01(\tH\n" +
+	"R\rdiscoveryType\x88\x01\x01\x12$\n" +
+	"\vprovider_id\x18\f \x01(\tH\vR\n" +
+	"providerId\x88\x01\x01\x12,\n" +
+	"\x0fprovider_config\x18\r \x01(\tH\fR\x0eproviderConfig\x88\x01\x01\x122\n" +
+	"\x12attribute_mappings\x18\x0e \x01(\tH\rR\x11attributeMappings\x88\x01\x01\x12,\n" +
+	"\x0fdiscovery_rules\x18\x0f \x01(\tH\x0eR\x0ediscoveryRules\x88\x01\x01\x120\n" +
+	"\x11filter_conditions\x18\x10 \x01(\tH\x0fR\x10filterConditions\x88\x01\x01\x12*\n" +
+	"\x0eexecution_mode\x18\x11 \x01(\tH\x10R\rexecutionMode\x88\x01\x01\x12,\n" +
+	"\x0fschedule_config\x18\x12 \x01(\tH\x11R\x0escheduleConfig\x88\x01\x01\x12\x1f\n" +
+	"\bpriority\x18\x13 \x01(\x03H\x12R\bpriority\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"batch_size\x18\x14 \x01(\x03H\x13R\tbatchSize\x88\x01\x01\x12,\n" +
+	"\x0ftimeout_seconds\x18\x15 \x01(\x03H\x14R\x0etimeoutSeconds\x88\x01\x01\x124\n" +
+	"\x13conflict_resolution\x18\x16 \x01(\tH\x15R\x12conflictResolution\x88\x01\x01\x12)\n" +
+	"\x0eauto_create_ci\x18\x17 \x01(\bH\x16R\fautoCreateCi\x88\x01\x01\x129\n" +
+	"\x16auto_update_attributes\x18\x18 \x01(\bH\x17R\x14autoUpdateAttributes\x88\x01\x01\x124\n" +
+	"\x13notification_config\x18\x19 \x01(\tH\x18R\x12notificationConfig\x88\x01\x01\x12\x1d\n" +
+	"\aenabled\x18\x1a \x01(\bH\x19R\aenabled\x88\x01\x01\x12(\n" +
+	"\rconfig_status\x18\x1b \x01(\tH\x1aR\fconfigStatus\x88\x01\x01\x12-\n" +
+	"\x10last_executed_at\x18\x1c \x01(\x03H\x1bR\x0elastExecutedAt\x88\x01\x01\x12/\n" +
+	"\x11next_execution_at\x18\x1d \x01(\x03H\x1cR\x0fnextExecutionAt\x88\x01\x01\x12,\n" +
+	"\x0fexecution_stats\x18\x1e \x01(\tH\x1dR\x0eexecutionStats\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"last_error\x18\x1f \x01(\tH\x1eR\tlastError\x88\x01\x01B\x05\n" +
+	"\x03_idB\r\n" +
+	"\v_created_atB\r\n" +
+	"\v_updated_atB\t\n" +
+	"\a_statusB\x10\n" +
+	"\x0e_department_idB\r\n" +
+	"\v_created_byB\r\n" +
+	"\v_ci_type_idB\x0e\n" +
+	"\f_config_nameB\x0e\n" +
+	"\f_descriptionB\x11\n" +
+	"\x0f_discovery_modeB\x11\n" +
+	"\x0f_discovery_typeB\x0e\n" +
+	"\f_provider_idB\x12\n" +
+	"\x10_provider_configB\x15\n" +
+	"\x13_attribute_mappingsB\x12\n" +
+	"\x10_discovery_rulesB\x14\n" +
+	"\x12_filter_conditionsB\x11\n" +
+	"\x0f_execution_modeB\x12\n" +
+	"\x10_schedule_configB\v\n" +
+	"\t_priorityB\r\n" +
+	"\v_batch_sizeB\x12\n" +
+	"\x10_timeout_secondsB\x16\n" +
+	"\x14_conflict_resolutionB\x11\n" +
+	"\x0f_auto_create_ciB\x19\n" +
+	"\x17_auto_update_attributesB\x16\n" +
+	"\x14_notification_configB\n" +
+	"\n" +
+	"\b_enabledB\x10\n" +
+	"\x0e_config_statusB\x13\n" +
+	"\x11_last_executed_atB\x14\n" +
+	"\x12_next_execution_atB\x12\n" +
+	"\x10_execution_statsB\r\n" +
+	"\v_last_error\"\xa4\x0f\n" +
+	"\x1cCiTypeDiscoveryConfigListReq\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\x12\"\n" +
+	"\n" +
+	"created_at\x18\x03 \x01(\x03H\x00R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"updated_at\x18\x04 \x01(\x03H\x01R\tupdatedAt\x88\x01\x01\x12\x1b\n" +
+	"\x06status\x18\x05 \x01(\rH\x02R\x06status\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"deleted_at\x18\x06 \x01(\x03H\x03R\tdeletedAt\x88\x01\x01\x12(\n" +
+	"\rdepartment_id\x18\a \x01(\x04H\x04R\fdepartmentId\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"created_by\x18\b \x01(\tH\x05R\tcreatedBy\x88\x01\x01\x12!\n" +
+	"\n" +
+	"ci_type_id\x18\t \x01(\x04H\x06R\bciTypeId\x88\x01\x01\x12$\n" +
+	"\vconfig_name\x18\n" +
+	" \x01(\tH\aR\n" +
+	"configName\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\v \x01(\tH\bR\vdescription\x88\x01\x01\x12*\n" +
+	"\x0ediscovery_mode\x18\f \x01(\tH\tR\rdiscoveryMode\x88\x01\x01\x12*\n" +
+	"\x0ediscovery_type\x18\r \x01(\tH\n" +
+	"R\rdiscoveryType\x88\x01\x01\x12$\n" +
+	"\vprovider_id\x18\x0e \x01(\tH\vR\n" +
+	"providerId\x88\x01\x01\x12,\n" +
+	"\x0fprovider_config\x18\x0f \x01(\tH\fR\x0eproviderConfig\x88\x01\x01\x122\n" +
+	"\x12attribute_mappings\x18\x10 \x01(\tH\rR\x11attributeMappings\x88\x01\x01\x12,\n" +
+	"\x0fdiscovery_rules\x18\x11 \x01(\tH\x0eR\x0ediscoveryRules\x88\x01\x01\x120\n" +
+	"\x11filter_conditions\x18\x12 \x01(\tH\x0fR\x10filterConditions\x88\x01\x01\x12*\n" +
+	"\x0eexecution_mode\x18\x13 \x01(\tH\x10R\rexecutionMode\x88\x01\x01\x12,\n" +
+	"\x0fschedule_config\x18\x14 \x01(\tH\x11R\x0escheduleConfig\x88\x01\x01\x12\x1f\n" +
+	"\bpriority\x18\x15 \x01(\x03H\x12R\bpriority\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"batch_size\x18\x16 \x01(\x03H\x13R\tbatchSize\x88\x01\x01\x12,\n" +
+	"\x0ftimeout_seconds\x18\x17 \x01(\x03H\x14R\x0etimeoutSeconds\x88\x01\x01\x124\n" +
+	"\x13conflict_resolution\x18\x18 \x01(\tH\x15R\x12conflictResolution\x88\x01\x01\x12)\n" +
+	"\x0eauto_create_ci\x18\x19 \x01(\bH\x16R\fautoCreateCi\x88\x01\x01\x129\n" +
+	"\x16auto_update_attributes\x18\x1a \x01(\bH\x17R\x14autoUpdateAttributes\x88\x01\x01\x124\n" +
+	"\x13notification_config\x18\x1b \x01(\tH\x18R\x12notificationConfig\x88\x01\x01\x12\x1d\n" +
+	"\aenabled\x18\x1c \x01(\bH\x19R\aenabled\x88\x01\x01\x12(\n" +
+	"\rconfig_status\x18\x1d \x01(\tH\x1aR\fconfigStatus\x88\x01\x01\x12-\n" +
+	"\x10last_executed_at\x18\x1e \x01(\x03H\x1bR\x0elastExecutedAt\x88\x01\x01\x12/\n" +
+	"\x11next_execution_at\x18\x1f \x01(\x03H\x1cR\x0fnextExecutionAt\x88\x01\x01\x12,\n" +
+	"\x0fexecution_stats\x18  \x01(\tH\x1dR\x0eexecutionStats\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"last_error\x18! \x01(\tH\x1eR\tlastError\x88\x01\x01B\r\n" +
+	"\v_created_atB\r\n" +
+	"\v_updated_atB\t\n" +
+	"\a_statusB\r\n" +
+	"\v_deleted_atB\x10\n" +
+	"\x0e_department_idB\r\n" +
+	"\v_created_byB\r\n" +
+	"\v_ci_type_idB\x0e\n" +
+	"\f_config_nameB\x0e\n" +
+	"\f_descriptionB\x11\n" +
+	"\x0f_discovery_modeB\x11\n" +
+	"\x0f_discovery_typeB\x0e\n" +
+	"\f_provider_idB\x12\n" +
+	"\x10_provider_configB\x15\n" +
+	"\x13_attribute_mappingsB\x12\n" +
+	"\x10_discovery_rulesB\x14\n" +
+	"\x12_filter_conditionsB\x11\n" +
+	"\x0f_execution_modeB\x12\n" +
+	"\x10_schedule_configB\v\n" +
+	"\t_priorityB\r\n" +
+	"\v_batch_sizeB\x12\n" +
+	"\x10_timeout_secondsB\x16\n" +
+	"\x14_conflict_resolutionB\x11\n" +
+	"\x0f_auto_create_ciB\x19\n" +
+	"\x17_auto_update_attributesB\x16\n" +
+	"\x14_notification_configB\n" +
+	"\n" +
+	"\b_enabledB\x10\n" +
+	"\x0e_config_statusB\x13\n" +
+	"\x11_last_executed_atB\x14\n" +
+	"\x12_next_execution_atB\x12\n" +
+	"\x10_execution_statsB\r\n" +
+	"\v_last_error\"j\n" +
+	"\x1dCiTypeDiscoveryConfigListResp\x12\x14\n" +
+	"\x05total\x18\x01 \x01(\x04R\x05total\x123\n" +
+	"\x04data\x18\x02 \x03(\v2\x1f.cmdb.CiTypeDiscoveryConfigInfoR\x04data\"\xb0\x02\n" +
 	"\x0fCiTypeGroupInfo\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\n" +
@@ -13270,9 +17134,13 @@ const file_cmdb_proto_rawDesc = "" +
 	"\t_group_idB\n" +
 	"\n" +
 	"\b_type_idB\a\n" +
-	"\x05_name\"E\n" +
+	"\x05_name\"\xf5\x01\n" +
 	"\x16CiTypeGroupItemListReq\x12\x1e\n" +
-	"\bgroup_id\x18\x01 \x01(\x04H\x00R\agroupId\x88\x01\x01B\v\n" +
+	"\bgroup_id\x18\x01 \x01(\x04H\x00R\agroupId\x88\x01\x01\x12(\n" +
+	"\x10include_type_ids\x18\x02 \x03(\x04R\x0eincludeTypeIds\x12(\n" +
+	"\x10exclude_type_ids\x18\x03 \x03(\x04R\x0eexcludeTypeIds\x12,\n" +
+	"\x12include_type_names\x18\x04 \x03(\tR\x10includeTypeNames\x12,\n" +
+	"\x12exclude_type_names\x18\x05 \x03(\tR\x10excludeTypeNamesB\v\n" +
 	"\t_group_id\"H\n" +
 	"\x17CiTypeGroupItemListResp\x12-\n" +
 	"\x04data\x18\x01 \x03(\v2\x19.cmdb.CiTypeGroupItemInfoR\x04data\"\x8e\x01\n" +
@@ -13433,7 +17301,23 @@ const file_cmdb_proto_rawDesc = "" +
 	"\t_group_id\"L\n" +
 	"\x0eCiTypeListResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\x04R\x05total\x12$\n" +
-	"\x04data\x18\x02 \x03(\v2\x10.cmdb.CiTypeInfoR\x04data\"\xb2\x04\n" +
+	"\x04data\x18\x02 \x03(\v2\x10.cmdb.CiTypeInfoR\x04data\"\x81\x02\n" +
+	"\x1bCiTypeRelationDefinitionReq\x12\x1c\n" +
+	"\n" +
+	"ci_type_id\x18\x01 \x01(\x04R\bciTypeId\x12!\n" +
+	"\tdirection\x18\x02 \x01(\tH\x00R\tdirection\x88\x01\x01\x12?\n" +
+	"\x19include_attribute_mapping\x18\x03 \x01(\bH\x01R\x17includeAttributeMapping\x88\x01\x01\x12$\n" +
+	"\vactive_only\x18\x04 \x01(\bH\x02R\n" +
+	"activeOnly\x88\x01\x01B\f\n" +
+	"\n" +
+	"_directionB\x1c\n" +
+	"\x1a_include_attribute_mappingB\x0e\n" +
+	"\f_active_only\"\xc9\x01\n" +
+	"\x1cCiTypeRelationDefinitionResp\x12C\n" +
+	"\x10source_relations\x18\x01 \x03(\v2\x18.cmdb.CiTypeRelationInfoR\x0fsourceRelations\x12C\n" +
+	"\x10target_relations\x18\x02 \x03(\v2\x18.cmdb.CiTypeRelationInfoR\x0ftargetRelations\x12\x1f\n" +
+	"\vtotal_count\x18\x03 \x01(\x04R\n" +
+	"totalCount\"\xb2\x04\n" +
 	"\x12CiTypeRelationInfo\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\n" +
@@ -13513,7 +17397,7 @@ const file_cmdb_proto_rawDesc = "" +
 	"\aci_info\x18\x01 \x01(\v2\r.cmdb.CisInfoR\x06ciInfo\x12 \n" +
 	"\fci_type_name\x18\x02 \x01(\tR\n" +
 	"ciTypeName\x12\"\n" +
-	"\rci_type_alias\x18\x03 \x01(\tR\vciTypeAlias\"\xa5\x04\n" +
+	"\rci_type_alias\x18\x03 \x01(\tR\vciTypeAlias\"\xed\x04\n" +
 	"\aCisInfo\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\n" +
@@ -13532,7 +17416,8 @@ const file_cmdb_proto_rawDesc = "" +
 	"\rcustom_fields\x18\v \x03(\v2\x11.cmdb.CisMetadataR\fcustomFields\x126\n" +
 	"\n" +
 	"attributes\x18\f \x03(\v2\x16.cmdb.CiAttributeValueR\n" +
-	"attributesB\x05\n" +
+	"attributes\x128\n" +
+	"\trelations\x18\r \x01(\v2\x15.cmdb.CiRelationsDataH\bR\trelations\x88\x01\x01B\x05\n" +
 	"\x03_idB\r\n" +
 	"\v_created_atB\r\n" +
 	"\v_updated_atB\n" +
@@ -13543,7 +17428,9 @@ const file_cmdb_proto_rawDesc = "" +
 	"_heartbeatB\f\n" +
 	"\n" +
 	"_availableB\r\n" +
-	"\v_created_by\"\xf6\v\n" +
+	"\v_created_byB\f\n" +
+	"\n" +
+	"_relations\"\xf6\v\n" +
 	"\n" +
 	"CisListReq\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
@@ -13608,7 +17495,189 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tH\x00R\x03key\x88\x01\x01\x12\x19\n" +
 	"\x05value\x18\x02 \x01(\tH\x01R\x05value\x88\x01\x01B\x06\n" +
 	"\x04_keyB\b\n" +
-	"\x06_value\"\a\n" +
+	"\x06_value\"\x96\x04\n" +
+	"\x10DiscoveredCIData\x12!\n" +
+	"\n" +
+	"ci_type_id\x18\x01 \x01(\x04H\x00R\bciTypeId\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"unique_key\x18\x02 \x01(\tH\x01R\tuniqueKey\x88\x01\x01\x12F\n" +
+	"\n" +
+	"attributes\x18\x03 \x03(\v2&.cmdb.DiscoveredCIData.AttributesEntryR\n" +
+	"attributes\x12\x1b\n" +
+	"\x06source\x18\x04 \x01(\tH\x02R\x06source\x88\x01\x01\x12$\n" +
+	"\vsource_type\x18\x05 \x01(\tH\x03R\n" +
+	"sourceType\x88\x01\x01\x12$\n" +
+	"\vauto_create\x18\x06 \x01(\bH\x04R\n" +
+	"autoCreate\x88\x01\x01\x12$\n" +
+	"\vauto_update\x18\a \x01(\bH\x05R\n" +
+	"autoUpdate\x88\x01\x01\x124\n" +
+	"\x13conflict_resolution\x18\b \x01(\tH\x06R\x12conflictResolution\x88\x01\x01\x1a=\n" +
+	"\x0fAttributesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\r\n" +
+	"\v_ci_type_idB\r\n" +
+	"\v_unique_keyB\t\n" +
+	"\a_sourceB\x0e\n" +
+	"\f_source_typeB\x0e\n" +
+	"\f_auto_createB\x0e\n" +
+	"\f_auto_updateB\x16\n" +
+	"\x14_conflict_resolution\"\xe3\r\n" +
+	"\x1dDiscoveryExecutionHistoryInfo\x12\x13\n" +
+	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"created_at\x18\x02 \x01(\x03H\x01R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"updated_at\x18\x03 \x01(\x03H\x02R\tupdatedAt\x88\x01\x01\x123\n" +
+	"\x13discovery_config_id\x18\x04 \x01(\x04H\x03R\x11discoveryConfigId\x88\x01\x01\x12&\n" +
+	"\fexecution_id\x18\x05 \x01(\tH\x04R\vexecutionId\x88\x01\x01\x12&\n" +
+	"\ftrigger_type\x18\x06 \x01(\tH\x05R\vtriggerType\x88\x01\x01\x12&\n" +
+	"\ftriggered_by\x18\a \x01(\x04H\x06R\vtriggeredBy\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"started_at\x18\b \x01(\x03H\aR\tstartedAt\x88\x01\x01\x12&\n" +
+	"\fcompleted_at\x18\t \x01(\x03H\bR\vcompletedAt\x88\x01\x01\x12.\n" +
+	"\x10duration_seconds\x18\n" +
+	" \x01(\x03H\tR\x0fdurationSeconds\x88\x01\x01\x12$\n" +
+	"\vexec_status\x18\v \x01(\tH\n" +
+	"R\n" +
+	"execStatus\x88\x01\x01\x12\x19\n" +
+	"\x05stage\x18\f \x01(\tH\vR\x05stage\x88\x01\x01\x12\x1f\n" +
+	"\bprogress\x18\r \x01(\x03H\fR\bprogress\x88\x01\x01\x12(\n" +
+	"\rtotal_records\x18\x0e \x01(\x03H\rR\ftotalRecords\x88\x01\x01\x120\n" +
+	"\x11processed_records\x18\x0f \x01(\x03H\x0eR\x10processedRecords\x88\x01\x01\x12,\n" +
+	"\x0fsuccess_records\x18\x10 \x01(\x03H\x0fR\x0esuccessRecords\x88\x01\x01\x12*\n" +
+	"\x0efailed_records\x18\x11 \x01(\x03H\x10R\rfailedRecords\x88\x01\x01\x12,\n" +
+	"\x0fskipped_records\x18\x12 \x01(\x03H\x11R\x0eskippedRecords\x88\x01\x01\x12$\n" +
+	"\vcreated_cis\x18\x13 \x01(\x03H\x12R\n" +
+	"createdCis\x88\x01\x01\x12$\n" +
+	"\vupdated_cis\x18\x14 \x01(\x03H\x13R\n" +
+	"updatedCis\x88\x01\x01\x12(\n" +
+	"\rerror_message\x18\x15 \x01(\tH\x14R\ferrorMessage\x88\x01\x01\x12(\n" +
+	"\rerror_details\x18\x16 \x01(\tH\x15R\ferrorDetails\x88\x01\x01\x120\n" +
+	"\x11validation_errors\x18\x17 \x01(\tH\x16R\x10validationErrors\x88\x01\x01\x12.\n" +
+	"\x10execution_result\x18\x18 \x01(\tH\x17R\x0fexecutionResult\x88\x01\x01\x124\n" +
+	"\x13performance_metrics\x18\x19 \x01(\tH\x18R\x12performanceMetrics\x88\x01\x01\x12,\n" +
+	"\x0fconfig_snapshot\x18\x1a \x01(\tH\x19R\x0econfigSnapshot\x88\x01\x01\x12(\n" +
+	"\rprovider_info\x18\x1b \x01(\tH\x1aR\fproviderInfo\x88\x01\x01\x12(\n" +
+	"\rexecution_log\x18\x1c \x01(\tH\x1bR\fexecutionLog\x88\x01\x01\x12\x1f\n" +
+	"\bmetadata\x18\x1d \x01(\tH\x1cR\bmetadata\x88\x01\x01\x12\x17\n" +
+	"\x04tags\x18\x1e \x01(\tH\x1dR\x04tags\x88\x01\x01B\x05\n" +
+	"\x03_idB\r\n" +
+	"\v_created_atB\r\n" +
+	"\v_updated_atB\x16\n" +
+	"\x14_discovery_config_idB\x0f\n" +
+	"\r_execution_idB\x0f\n" +
+	"\r_trigger_typeB\x0f\n" +
+	"\r_triggered_byB\r\n" +
+	"\v_started_atB\x0f\n" +
+	"\r_completed_atB\x13\n" +
+	"\x11_duration_secondsB\x0e\n" +
+	"\f_exec_statusB\b\n" +
+	"\x06_stageB\v\n" +
+	"\t_progressB\x10\n" +
+	"\x0e_total_recordsB\x14\n" +
+	"\x12_processed_recordsB\x12\n" +
+	"\x10_success_recordsB\x11\n" +
+	"\x0f_failed_recordsB\x12\n" +
+	"\x10_skipped_recordsB\x0e\n" +
+	"\f_created_cisB\x0e\n" +
+	"\f_updated_cisB\x10\n" +
+	"\x0e_error_messageB\x10\n" +
+	"\x0e_error_detailsB\x14\n" +
+	"\x12_validation_errorsB\x13\n" +
+	"\x11_execution_resultB\x16\n" +
+	"\x14_performance_metricsB\x12\n" +
+	"\x10_config_snapshotB\x10\n" +
+	"\x0e_provider_infoB\x10\n" +
+	"\x0e_execution_logB\v\n" +
+	"\t_metadataB\a\n" +
+	"\x05_tags\"\xae\x0e\n" +
+	" DiscoveryExecutionHistoryListReq\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\x12\"\n" +
+	"\n" +
+	"created_at\x18\x03 \x01(\x03H\x00R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"updated_at\x18\x04 \x01(\x03H\x01R\tupdatedAt\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"deleted_at\x18\x05 \x01(\x03H\x02R\tdeletedAt\x88\x01\x01\x123\n" +
+	"\x13discovery_config_id\x18\x06 \x01(\x04H\x03R\x11discoveryConfigId\x88\x01\x01\x12&\n" +
+	"\fexecution_id\x18\a \x01(\tH\x04R\vexecutionId\x88\x01\x01\x12&\n" +
+	"\ftrigger_type\x18\b \x01(\tH\x05R\vtriggerType\x88\x01\x01\x12&\n" +
+	"\ftriggered_by\x18\t \x01(\x04H\x06R\vtriggeredBy\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"started_at\x18\n" +
+	" \x01(\x03H\aR\tstartedAt\x88\x01\x01\x12&\n" +
+	"\fcompleted_at\x18\v \x01(\x03H\bR\vcompletedAt\x88\x01\x01\x12.\n" +
+	"\x10duration_seconds\x18\f \x01(\x03H\tR\x0fdurationSeconds\x88\x01\x01\x12$\n" +
+	"\vexec_status\x18\r \x01(\tH\n" +
+	"R\n" +
+	"execStatus\x88\x01\x01\x12\x19\n" +
+	"\x05stage\x18\x0e \x01(\tH\vR\x05stage\x88\x01\x01\x12\x1f\n" +
+	"\bprogress\x18\x0f \x01(\x03H\fR\bprogress\x88\x01\x01\x12(\n" +
+	"\rtotal_records\x18\x10 \x01(\x03H\rR\ftotalRecords\x88\x01\x01\x120\n" +
+	"\x11processed_records\x18\x11 \x01(\x03H\x0eR\x10processedRecords\x88\x01\x01\x12,\n" +
+	"\x0fsuccess_records\x18\x12 \x01(\x03H\x0fR\x0esuccessRecords\x88\x01\x01\x12*\n" +
+	"\x0efailed_records\x18\x13 \x01(\x03H\x10R\rfailedRecords\x88\x01\x01\x12,\n" +
+	"\x0fskipped_records\x18\x14 \x01(\x03H\x11R\x0eskippedRecords\x88\x01\x01\x12$\n" +
+	"\vcreated_cis\x18\x15 \x01(\x03H\x12R\n" +
+	"createdCis\x88\x01\x01\x12$\n" +
+	"\vupdated_cis\x18\x16 \x01(\x03H\x13R\n" +
+	"updatedCis\x88\x01\x01\x12(\n" +
+	"\rerror_message\x18\x17 \x01(\tH\x14R\ferrorMessage\x88\x01\x01\x12(\n" +
+	"\rerror_details\x18\x18 \x01(\tH\x15R\ferrorDetails\x88\x01\x01\x120\n" +
+	"\x11validation_errors\x18\x19 \x01(\tH\x16R\x10validationErrors\x88\x01\x01\x12.\n" +
+	"\x10execution_result\x18\x1a \x01(\tH\x17R\x0fexecutionResult\x88\x01\x01\x124\n" +
+	"\x13performance_metrics\x18\x1b \x01(\tH\x18R\x12performanceMetrics\x88\x01\x01\x12,\n" +
+	"\x0fconfig_snapshot\x18\x1c \x01(\tH\x19R\x0econfigSnapshot\x88\x01\x01\x12(\n" +
+	"\rprovider_info\x18\x1d \x01(\tH\x1aR\fproviderInfo\x88\x01\x01\x12(\n" +
+	"\rexecution_log\x18\x1e \x01(\tH\x1bR\fexecutionLog\x88\x01\x01\x12\x1f\n" +
+	"\bmetadata\x18\x1f \x01(\tH\x1cR\bmetadata\x88\x01\x01\x12\x17\n" +
+	"\x04tags\x18  \x01(\tH\x1dR\x04tags\x88\x01\x01B\r\n" +
+	"\v_created_atB\r\n" +
+	"\v_updated_atB\r\n" +
+	"\v_deleted_atB\x16\n" +
+	"\x14_discovery_config_idB\x0f\n" +
+	"\r_execution_idB\x0f\n" +
+	"\r_trigger_typeB\x0f\n" +
+	"\r_triggered_byB\r\n" +
+	"\v_started_atB\x0f\n" +
+	"\r_completed_atB\x13\n" +
+	"\x11_duration_secondsB\x0e\n" +
+	"\f_exec_statusB\b\n" +
+	"\x06_stageB\v\n" +
+	"\t_progressB\x10\n" +
+	"\x0e_total_recordsB\x14\n" +
+	"\x12_processed_recordsB\x12\n" +
+	"\x10_success_recordsB\x11\n" +
+	"\x0f_failed_recordsB\x12\n" +
+	"\x10_skipped_recordsB\x0e\n" +
+	"\f_created_cisB\x0e\n" +
+	"\f_updated_cisB\x10\n" +
+	"\x0e_error_messageB\x10\n" +
+	"\x0e_error_detailsB\x14\n" +
+	"\x12_validation_errorsB\x13\n" +
+	"\x11_execution_resultB\x16\n" +
+	"\x14_performance_metricsB\x12\n" +
+	"\x10_config_snapshotB\x10\n" +
+	"\x0e_provider_infoB\x10\n" +
+	"\x0e_execution_logB\v\n" +
+	"\t_metadataB\a\n" +
+	"\x05_tags\"r\n" +
+	"!DiscoveryExecutionHistoryListResp\x12\x14\n" +
+	"\x05total\x18\x01 \x01(\x04R\x05total\x127\n" +
+	"\x04data\x18\x02 \x03(\v2#.cmdb.DiscoveryExecutionHistoryInfoR\x04data\"\x8a\x02\n" +
+	"\x16DiscoveryExecutionResp\x12!\n" +
+	"\fexecution_id\x18\x01 \x01(\tR\vexecutionId\x12\x1b\n" +
+	"\tconfig_id\x18\x02 \x01(\x04R\bconfigId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12\"\n" +
+	"\n" +
+	"start_time\x18\x04 \x01(\x03H\x00R\tstartTime\x88\x01\x01\x12(\n" +
+	"\rtotal_records\x18\x05 \x01(\x03H\x01R\ftotalRecords\x88\x01\x01\x12\x1d\n" +
+	"\amessage\x18\x06 \x01(\tH\x02R\amessage\x88\x01\x01B\r\n" +
+	"\v_start_timeB\x10\n" +
+	"\x0e_total_recordsB\n" +
+	"\n" +
+	"\b_message\"\a\n" +
 	"\x05Empty\"\x1c\n" +
 	"\n" +
 	"IDInt32Req\x12\x0e\n" +
@@ -13631,7 +17700,9 @@ const file_cmdb_proto_rawDesc = "" +
 	"\fIDsStringReq\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\tR\x03ids\" \n" +
 	"\fIDsUint32Req\x12\x10\n" +
-	"\x03ids\x18\x01 \x03(\rR\x03ids\"\x92\x01\n" +
+	"\x03ids\x18\x01 \x03(\rR\x03ids\"E\n" +
+	"\x11ListProvidersResp\x120\n" +
+	"\tproviders\x18\x01 \x03(\v2\x12.cmdb.ProviderInfoR\tproviders\"\x92\x01\n" +
 	"\x13LocationRestriction\x12+\n" +
 	"\x11allowed_countries\x18\x01 \x03(\tR\x10allowedCountries\x12'\n" +
 	"\x0fallowed_regions\x18\x02 \x03(\tR\x0eallowedRegions\x12%\n" +
@@ -13641,7 +17712,23 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x05count\x18\x02 \x01(\x03R\x05count\">\n" +
 	"\vPageInfoReq\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\"\xb7\x02\n" +
+	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\"\x8a\x01\n" +
+	"\fProviderInfo\x12#\n" +
+	"\rprovider_type\x18\x01 \x01(\tR\fproviderType\x12\x1f\n" +
+	"\vprovider_id\x18\x02 \x01(\tR\n" +
+	"providerId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\"{\n" +
+	"\x12ProviderSchemaResp\x12#\n" +
+	"\rprovider_type\x18\x01 \x01(\tR\fproviderType\x12\x1f\n" +
+	"\vprovider_id\x18\x02 \x01(\tR\n" +
+	"providerId\x12\x1f\n" +
+	"\vschema_json\x18\x03 \x01(\tR\n" +
+	"schemaJson\"O\n" +
+	"\x15RelationTypeBasicInfo\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\"\xfd\x06\n" +
 	"\x10RelationTypeInfo\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\x04H\x00R\x02id\x88\x01\x01\x12\"\n" +
 	"\n" +
@@ -13651,7 +17738,23 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x04name\x18\x04 \x01(\tH\x03R\x04name\x88\x01\x01\x12\x17\n" +
 	"\x04code\x18\x05 \x01(\tH\x04R\x04code\x88\x01\x01\x12\x1f\n" +
 	"\bcategory\x18\x06 \x01(\tH\x05R\bcategory\x88\x01\x01\x12!\n" +
-	"\tdirection\x18\a \x01(\tH\x06R\tdirection\x88\x01\x01B\x05\n" +
+	"\tdirection\x18\a \x01(\tH\x06R\tdirection\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\b \x01(\tH\aR\vdescription\x88\x01\x01\x12$\n" +
+	"\vis_standard\x18\t \x01(\bH\bR\n" +
+	"isStandard\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"sort_order\x18\n" +
+	" \x01(\rH\tR\tsortOrder\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"is_enabled\x18\v \x01(\bH\n" +
+	"R\tisEnabled\x88\x01\x01\x12(\n" +
+	"\rdisplay_color\x18\f \x01(\tH\vR\fdisplayColor\x88\x01\x01\x12 \n" +
+	"\tline_type\x18\r \x01(\tH\fR\blineType\x88\x01\x01\x12\x17\n" +
+	"\x04icon\x18\x0e \x01(\tH\rR\x04icon\x88\x01\x01\x12\x1b\n" +
+	"\x06weight\x18\x0f \x01(\rH\x0eR\x06weight\x88\x01\x01\x12(\n" +
+	"\rdisplay_label\x18\x10 \x01(\tH\x0fR\fdisplayLabel\x88\x01\x01\x12.\n" +
+	"\x10tooltip_template\x18\x11 \x01(\tH\x10R\x0ftooltipTemplate\x88\x01\x01\x12(\n" +
+	"\rdisplay_style\x18\x12 \x01(\tH\x11R\fdisplayStyle\x88\x01\x01B\x05\n" +
 	"\x03_idB\r\n" +
 	"\v_created_atB\r\n" +
 	"\v_updated_atB\a\n" +
@@ -13659,7 +17762,19 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x05_codeB\v\n" +
 	"\t_categoryB\f\n" +
 	"\n" +
-	"_direction\"\x81\x02\n" +
+	"_directionB\x0e\n" +
+	"\f_descriptionB\x0e\n" +
+	"\f_is_standardB\r\n" +
+	"\v_sort_orderB\r\n" +
+	"\v_is_enabledB\x10\n" +
+	"\x0e_display_colorB\f\n" +
+	"\n" +
+	"_line_typeB\a\n" +
+	"\x05_iconB\t\n" +
+	"\a_weightB\x10\n" +
+	"\x0e_display_labelB\x13\n" +
+	"\x11_tooltip_templateB\x10\n" +
+	"\x0e_display_style\"\x81\x02\n" +
 	"\x13RelationTypeListReq\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\x12\"\n" +
@@ -13676,110 +17791,20 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x05_name\"X\n" +
 	"\x14RelationTypeListResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\x04R\x05total\x12*\n" +
-	"\x04data\x18\x02 \x03(\v2\x16.cmdb.RelationTypeInfoR\x04data\"P\n" +
-	"\rTaskCancelReq\x12\x17\n" +
-	"\atask_id\x18\x01 \x01(\tR\x06taskId\x12\x1b\n" +
-	"\x06reason\x18\x02 \x01(\tH\x00R\x06reason\x88\x01\x01B\t\n" +
-	"\a_reason\"\x9b\x02\n" +
-	"\vTaskListReq\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\x12\x17\n" +
-	"\x04type\x18\x03 \x01(\tH\x00R\x04type\x88\x01\x01\x12\x1b\n" +
-	"\x06status\x18\x04 \x01(\tH\x01R\x06status\x88\x01\x01\x12\"\n" +
+	"\x04data\x18\x02 \x03(\v2\x16.cmdb.RelationTypeInfoR\x04data\"\xfc\x01\n" +
 	"\n" +
-	"created_by\x18\x05 \x01(\tH\x02R\tcreatedBy\x88\x01\x01\x12\"\n" +
-	"\n" +
-	"start_time\x18\x06 \x01(\x03H\x03R\tstartTime\x88\x01\x01\x12\x1e\n" +
-	"\bend_time\x18\a \x01(\x03H\x04R\aendTime\x88\x01\x01B\a\n" +
-	"\x05_typeB\t\n" +
-	"\a_statusB\r\n" +
-	"\v_created_byB\r\n" +
-	"\v_start_timeB\v\n" +
-	"\t_end_time\"P\n" +
-	"\fTaskListResp\x12\x14\n" +
-	"\x05total\x18\x01 \x01(\x04R\x05total\x12*\n" +
-	"\x05tasks\x18\x02 \x03(\v2\x14.cmdb.TaskStatusInfoR\x05tasks\"\xff\x02\n" +
-	"\x10TaskProgressInfo\x12\x1f\n" +
-	"\vtotal_items\x18\x01 \x01(\x05R\n" +
-	"totalItems\x12'\n" +
-	"\x0fprocessed_items\x18\x02 \x01(\x05R\x0eprocessedItems\x12#\n" +
-	"\rsuccess_items\x18\x03 \x01(\x05R\fsuccessItems\x12!\n" +
-	"\ffailed_items\x18\x04 \x01(\x05R\vfailedItems\x12\x1e\n" +
-	"\n" +
-	"percentage\x18\x05 \x01(\x02R\n" +
-	"percentage\x12!\n" +
-	"\fcurrent_step\x18\x06 \x01(\tR\vcurrentStep\x124\n" +
-	"\x13estimated_remaining\x18\a \x01(\x03H\x00R\x12estimatedRemaining\x88\x01\x01\x121\n" +
-	"\x12throughput_per_sec\x18\b \x01(\x02H\x01R\x10throughputPerSec\x88\x01\x01B\x16\n" +
-	"\x14_estimated_remainingB\x15\n" +
-	"\x13_throughput_per_sec\"\x93\x03\n" +
-	"\x0eTaskResultInfo\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12'\n" +
-	"\x0fprocessed_count\x18\x02 \x01(\x05R\x0eprocessedCount\x12#\n" +
-	"\rsuccess_count\x18\x03 \x01(\x05R\fsuccessCount\x12!\n" +
-	"\ffailed_count\x18\x04 \x01(\x05R\vfailedCount\x12#\n" +
-	"\rskipped_count\x18\x05 \x01(\x05R\fskippedCount\x12&\n" +
-	"\x0fprocess_time_ms\x18\x06 \x01(\x03R\rprocessTimeMs\x12,\n" +
-	"\x12throughput_per_sec\x18\a \x01(\x02R\x10throughputPerSec\x12+\n" +
-	"\x11successful_assets\x18\b \x03(\tR\x10successfulAssets\x12#\n" +
-	"\rfailed_assets\x18\t \x03(\tR\ffailedAssets\x12\x1d\n" +
-	"\asummary\x18\n" +
-	" \x01(\tH\x00R\asummary\x88\x01\x01B\n" +
-	"\n" +
-	"\b_summary\"\x85\x03\n" +
-	"\x0eTaskStatistics\x12\x1f\n" +
-	"\vtotal_tasks\x18\x01 \x01(\x05R\n" +
-	"totalTasks\x12#\n" +
-	"\rpending_tasks\x18\x02 \x01(\x05R\fpendingTasks\x12)\n" +
-	"\x10processing_tasks\x18\x03 \x01(\x05R\x0fprocessingTasks\x12'\n" +
-	"\x0fcompleted_tasks\x18\x04 \x01(\x05R\x0ecompletedTasks\x12!\n" +
-	"\ffailed_tasks\x18\x05 \x01(\x05R\vfailedTasks\x12'\n" +
-	"\x0fcancelled_tasks\x18\x06 \x01(\x05R\x0ecancelledTasks\x126\n" +
-	"\x17average_processing_time\x18\a \x01(\x02R\x15averageProcessingTime\x12!\n" +
-	"\fsuccess_rate\x18\b \x01(\x02R\vsuccessRate\x122\n" +
-	"\n" +
-	"type_stats\x18\t \x03(\v2\x13.cmdb.TaskTypeStatsR\ttypeStats\"\x90\x01\n" +
-	"\fTaskStatsReq\x12\x17\n" +
-	"\x04type\x18\x01 \x01(\tH\x00R\x04type\x88\x01\x01\x12\"\n" +
-	"\n" +
-	"start_time\x18\x02 \x01(\x03H\x01R\tstartTime\x88\x01\x01\x12\x1e\n" +
-	"\bend_time\x18\x03 \x01(\x03H\x02R\aendTime\x88\x01\x01B\a\n" +
-	"\x05_typeB\r\n" +
-	"\v_start_timeB\v\n" +
-	"\t_end_time\";\n" +
-	"\rTaskStatsResp\x12*\n" +
-	"\x05stats\x18\x01 \x01(\v2\x14.cmdb.TaskStatisticsR\x05stats\"\xc0\x03\n" +
-	"\x0eTaskStatusInfo\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04type\x18\x02 \x01(\tR\x04type\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\x12\x1a\n" +
-	"\bpriority\x18\x04 \x01(\x05R\bpriority\x122\n" +
-	"\bprogress\x18\x05 \x01(\v2\x16.cmdb.TaskProgressInfoR\bprogress\x121\n" +
-	"\x06result\x18\x06 \x01(\v2\x14.cmdb.TaskResultInfoH\x00R\x06result\x88\x01\x01\x12\x1f\n" +
-	"\vcreate_time\x18\a \x01(\x03R\n" +
-	"createTime\x12\x1f\n" +
-	"\vupdate_time\x18\b \x01(\x03R\n" +
-	"updateTime\x12\"\n" +
-	"\n" +
-	"start_time\x18\t \x01(\x03H\x01R\tstartTime\x88\x01\x01\x12\x1e\n" +
-	"\bend_time\x18\n" +
-	" \x01(\x03H\x02R\aendTime\x88\x01\x01\x12\x1d\n" +
-	"\n" +
-	"created_by\x18\v \x01(\tR\tcreatedBy\x12\x19\n" +
-	"\x05error\x18\f \x01(\tH\x03R\x05error\x88\x01\x01B\t\n" +
-	"\a_resultB\r\n" +
-	"\v_start_timeB\v\n" +
-	"\t_end_timeB\b\n" +
-	"\x06_error\"(\n" +
-	"\rTaskStatusReq\x12\x17\n" +
-	"\atask_id\x18\x01 \x01(\tR\x06taskId\":\n" +
-	"\x0eTaskStatusResp\x12(\n" +
-	"\x04task\x18\x01 \x01(\v2\x14.cmdb.TaskStatusInfoR\x04task\"\x8c\x01\n" +
-	"\rTaskTypeStats\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\tR\x04type\x12\x14\n" +
-	"\x05count\x18\x02 \x01(\x05R\x05count\x12!\n" +
-	"\fsuccess_rate\x18\x03 \x01(\x02R\vsuccessRate\x12.\n" +
-	"\x13avg_processing_time\x18\x04 \x01(\x02R\x11avgProcessingTime\"u\n" +
+	"SyncConfig\x12%\n" +
+	"\x0esync_direction\x18\x01 \x01(\tR\rsyncDirection\x12%\n" +
+	"\x0esync_frequency\x18\x02 \x01(\tR\rsyncFrequency\x12'\n" +
+	"\x0fconflict_policy\x18\x03 \x01(\tR\x0econflictPolicy\x12%\n" +
+	"\x0eretry_attempts\x18\x04 \x01(\x05R\rretryAttempts\x12%\n" +
+	"\x0eretry_interval\x18\x05 \x01(\x03R\rretryInterval\x12)\n" +
+	"\x10enabled_mappings\x18\x06 \x03(\x04R\x0fenabledMappings\"\x8a\x01\n" +
+	"\x19TestProviderConnectionReq\x12#\n" +
+	"\rprovider_type\x18\x01 \x01(\tR\fproviderType\x12\x1f\n" +
+	"\vprovider_id\x18\x02 \x01(\tR\n" +
+	"providerId\x12'\n" +
+	"\x0fprovider_config\x18\x03 \x01(\tR\x0eproviderConfig\"u\n" +
 	"\x0fTimeRestriction\x12#\n" +
 	"\rallowed_hours\x18\x01 \x03(\x05R\fallowedHours\x12!\n" +
 	"\fallowed_days\x18\x02 \x03(\tR\vallowedDays\x12\x1a\n" +
@@ -13787,7 +17812,25 @@ const file_cmdb_proto_rawDesc = "" +
 	"\aUUIDReq\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\x1c\n" +
 	"\bUUIDsReq\x12\x10\n" +
-	"\x03ids\x18\x01 \x03(\tR\x03ids\"\x81\x02\n" +
+	"\x03ids\x18\x01 \x03(\tR\x03ids\"1\n" +
+	"\x16UserPermissionScopeReq\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\"\xbf\x02\n" +
+	"\x17UserPermissionScopeResp\x12(\n" +
+	"\x10allowed_ci_types\x18\x01 \x03(\x04R\x0eallowedCiTypes\x124\n" +
+	"\x16allowed_department_ids\x18\x02 \x03(\x04R\x14allowedDepartmentIds\x12Q\n" +
+	"\fcustom_rules\x18\x03 \x03(\v2..cmdb.UserPermissionScopeResp.CustomRulesEntryR\vcustomRules\x12\"\n" +
+	"\n" +
+	"data_scope\x18\x04 \x01(\tH\x00R\tdataScope\x88\x01\x01\x1a>\n" +
+	"\x10CustomRulesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\r\n" +
+	"\v_data_scope\"\xad\x01\n" +
+	"\x10ValidationResult\x12\x19\n" +
+	"\bis_valid\x18\x01 \x01(\bR\aisValid\x12\x16\n" +
+	"\x06errors\x18\x02 \x03(\tR\x06errors\x12\x1a\n" +
+	"\bwarnings\x18\x03 \x03(\tR\bwarnings\x12!\n" +
+	"\fvalidated_at\x18\x04 \x01(\x03R\vvalidatedAt\x12'\n" +
+	"\x0fvalidation_type\x18\x05 \x01(\tR\x0evalidationType\"\x81\x02\n" +
 	"\x0eValidationRule\x12\x17\n" +
 	"\x04type\x18\x01 \x01(\tH\x00R\x04type\x88\x01\x01\x122\n" +
 	"\x06params\x18\x02 \x03(\v2\x1a.cmdb.ValidationRuleParamsR\x06params\x12\x1d\n" +
@@ -14004,20 +18047,27 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x06_value\"R\n" +
 	"\x11ValueTextListResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\x04R\x05total\x12'\n" +
-	"\x04data\x18\x02 \x03(\v2\x13.cmdb.ValueTextInfoR\x04data2\xa4>\n" +
-	"\x04Cmdb\x12:\n" +
-	"\x0fSubmitAsyncTask\x12\x12.cmdb.AsyncTaskReq\x1a\x13.cmdb.AsyncTaskResp\x12:\n" +
-	"\rGetTaskStatus\x12\x13.cmdb.TaskStatusReq\x1a\x14.cmdb.TaskStatusResp\x121\n" +
+	"\x04data\x18\x02 \x03(\v2\x13.cmdb.ValueTextInfoR\x04data\"\x8e\x01\n" +
+	"\x15WriteDiscoveredCIResp\x12\x18\n" +
+	"\x05ci_id\x18\x01 \x01(\x04H\x00R\x04ciId\x88\x01\x01\x12\x1b\n" +
+	"\x06action\x18\x02 \x01(\tH\x01R\x06action\x88\x01\x01\x12\x1d\n" +
+	"\amessage\x18\x03 \x01(\tH\x02R\amessage\x88\x01\x01B\b\n" +
+	"\x06_ci_idB\t\n" +
+	"\a_actionB\n" +
 	"\n" +
-	"CancelTask\x12\x13.cmdb.TaskCancelReq\x1a\x0e.cmdb.BaseResp\x124\n" +
-	"\vGetTaskList\x12\x11.cmdb.TaskListReq\x1a\x12.cmdb.TaskListResp\x127\n" +
-	"\fGetTaskStats\x12\x12.cmdb.TaskStatsReq\x1a\x13.cmdb.TaskStatsResp\x128\n" +
+	"\b_message2\xdeL\n" +
+	"\x04Cmdb\x128\n" +
 	"\x0fcreateAttribute\x12\x13.cmdb.AttributeInfo\x1a\x10.cmdb.BaseIDResp\x128\n" +
 	"\x0fupdateAttribute\x12\x13.cmdb.AttributeInfo\x1a\x10.cmdb.BaseIDResp\x12C\n" +
 	"\x10getAttributeList\x12\x16.cmdb.AttributeListReq\x1a\x17.cmdb.AttributeListResp\x12U\n" +
 	"\x16getAttributeSimpleList\x12\x1c.cmdb.AttributeSimpleListReq\x1a\x1d.cmdb.AttributeSimpleListResp\x124\n" +
 	"\x10getAttributeById\x12\v.cmdb.IDReq\x1a\x13.cmdb.AttributeInfo\x12/\n" +
-	"\x0fdeleteAttribute\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12+\n" +
+	"\x0fdeleteAttribute\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12N\n" +
+	"\x1acreateAttributeMappingRule\x12\x1e.cmdb.AttributeMappingRuleInfo\x1a\x10.cmdb.BaseIDResp\x12L\n" +
+	"\x1aupdateAttributeMappingRule\x12\x1e.cmdb.AttributeMappingRuleInfo\x1a\x0e.cmdb.BaseResp\x12d\n" +
+	"\x1bgetAttributeMappingRuleList\x12!.cmdb.AttributeMappingRuleListReq\x1a\".cmdb.AttributeMappingRuleListResp\x12J\n" +
+	"\x1bgetAttributeMappingRuleById\x12\v.cmdb.IDReq\x1a\x1e.cmdb.AttributeMappingRuleInfo\x12:\n" +
+	"\x1adeleteAttributeMappingRule\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12+\n" +
 	"\finitDatabase\x12\v.cmdb.Empty\x1a\x0e.cmdb.BaseResp\x12<\n" +
 	"\x11createChoiceFloat\x12\x15.cmdb.ChoiceFloatInfo\x1a\x10.cmdb.BaseIDResp\x12:\n" +
 	"\x11updateChoiceFloat\x12\x15.cmdb.ChoiceFloatInfo\x1a\x0e.cmdb.BaseResp\x12I\n" +
@@ -14038,12 +18088,15 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x12updateCiPermission\x12\x16.cmdb.CiPermissionInfo\x1a\x0e.cmdb.BaseResp\x12L\n" +
 	"\x13getCiPermissionList\x12\x19.cmdb.CiPermissionListReq\x1a\x1a.cmdb.CiPermissionListResp\x12:\n" +
 	"\x13getCiPermissionById\x12\v.cmdb.IDReq\x1a\x16.cmdb.CiPermissionInfo\x122\n" +
-	"\x12deleteCiPermission\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12:\n" +
+	"\x12deleteCiPermission\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12F\n" +
+	"\x15checkCiTypePermission\x12\x15.cmdb.CiPermissionReq\x1a\x16.cmdb.CiPermissionResp\x12U\n" +
+	"\x16getUserPermissionScope\x12\x1c.cmdb.UserPermissionScopeReq\x1a\x1d.cmdb.UserPermissionScopeResp\x12:\n" +
 	"\x10createCiRelation\x12\x14.cmdb.CiRelationInfo\x1a\x10.cmdb.BaseIDResp\x128\n" +
 	"\x10updateCiRelation\x12\x14.cmdb.CiRelationInfo\x1a\x0e.cmdb.BaseResp\x12F\n" +
 	"\x11getCiRelationList\x12\x17.cmdb.CiRelationListReq\x1a\x18.cmdb.CiRelationListResp\x126\n" +
 	"\x11getCiRelationById\x12\v.cmdb.IDReq\x1a\x14.cmdb.CiRelationInfo\x120\n" +
-	"\x10deleteCiRelation\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12,\n" +
+	"\x10deleteCiRelation\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12T\n" +
+	"\x13getCiRelationsBatch\x12\x1d.cmdb.CiRelationBatchQueryReq\x1a\x1e.cmdb.CiRelationBatchQueryResp\x12,\n" +
 	"\tcreateCis\x12\r.cmdb.CisInfo\x1a\x10.cmdb.BaseIDResp\x12*\n" +
 	"\tupdateCis\x12\r.cmdb.CisInfo\x1a\x0e.cmdb.BaseResp\x121\n" +
 	"\n" +
@@ -14053,7 +18106,8 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x10getCisDetailById\x12\v.cmdb.IDReq\x1a\x13.cmdb.CisDetailInfo\x12)\n" +
 	"\tdeleteCis\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12?\n" +
 	"\x11cisBatchOperation\x12\x1a.cmdb.CisBatchOperationReq\x1a\x0e.cmdb.BaseResp\x12V\n" +
-	"\x15validateCisAttributes\x12\x1d.cmdb.CisAttributeValidateReq\x1a\x1e.cmdb.CisAttributeValidateResp\x122\n" +
+	"\x15validateCisAttributes\x12\x1d.cmdb.CisAttributeValidateReq\x1a\x1e.cmdb.CisAttributeValidateResp\x12H\n" +
+	"\x11writeDiscoveredCI\x12\x16.cmdb.DiscoveredCIData\x1a\x1b.cmdb.WriteDiscoveredCIResp\x122\n" +
 	"\fcreateCiType\x12\x10.cmdb.CiTypeInfo\x1a\x10.cmdb.BaseIDResp\x120\n" +
 	"\fupdateCiType\x12\x10.cmdb.CiTypeInfo\x1a\x0e.cmdb.BaseResp\x12:\n" +
 	"\rgetCiTypeList\x12\x13.cmdb.CiTypeListReq\x1a\x14.cmdb.CiTypeListResp\x12.\n" +
@@ -14072,13 +18126,23 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x1bgetCiTypeAttributeGroupList\x12!.cmdb.CiTypeAttributeGroupListReq\x1a\".cmdb.CiTypeAttributeGroupListResp\x12J\n" +
 	"\x1bgetCiTypeAttributeGroupById\x12\v.cmdb.IDReq\x1a\x1e.cmdb.CiTypeAttributeGroupInfo\x12:\n" +
 	"\x1adeleteCiTypeAttributeGroup\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12M\n" +
-	"\x18sortCiTypeAttributeGroup\x12!.cmdb.CiTypeAttributeGroupSortReq\x1a\x0e.cmdb.BaseResp\x12V\n" +
+	"\x18sortCiTypeAttributeGroup\x12!.cmdb.CiTypeAttributeGroupSortReq\x1a\x0e.cmdb.BaseResp\x12Z\n" +
+	"\x1flistAttributeGroupWithAttribute\x12\v.cmdb.IDReq\x1a*.cmdb.CiTypeAttributeGroupWithAttrListResp\x12V\n" +
 	"\x1ecreateCiTypeAttributeGroupItem\x12\".cmdb.CiTypeAttributeGroupItemInfo\x1a\x10.cmdb.BaseIDResp\x12T\n" +
 	"\x1eupdateCiTypeAttributeGroupItem\x12\".cmdb.CiTypeAttributeGroupItemInfo\x1a\x0e.cmdb.BaseResp\x12p\n" +
 	"\x1fgetCiTypeAttributeGroupItemList\x12%.cmdb.CiTypeAttributeGroupItemListReq\x1a&.cmdb.CiTypeAttributeGroupItemListResp\x12R\n" +
 	"\x1fgetCiTypeAttributeGroupItemById\x12\v.cmdb.IDReq\x1a\".cmdb.CiTypeAttributeGroupItemInfo\x12>\n" +
 	"\x1edeleteCiTypeAttributeGroupItem\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12U\n" +
-	"\x1csortCiTypeAttributeGroupItem\x12%.cmdb.CiTypeAttributeGroupItemSortReq\x1a\x0e.cmdb.BaseResp\x12<\n" +
+	"\x1csortCiTypeAttributeGroupItem\x12%.cmdb.CiTypeAttributeGroupItemSortReq\x1a\x0e.cmdb.BaseResp\x12P\n" +
+	"\x1bcreateCiTypeDiscoveryConfig\x12\x1f.cmdb.CiTypeDiscoveryConfigInfo\x1a\x10.cmdb.BaseIDResp\x12N\n" +
+	"\x1bupdateCiTypeDiscoveryConfig\x12\x1f.cmdb.CiTypeDiscoveryConfigInfo\x1a\x0e.cmdb.BaseResp\x12g\n" +
+	"\x1cgetCiTypeDiscoveryConfigList\x12\".cmdb.CiTypeDiscoveryConfigListReq\x1a#.cmdb.CiTypeDiscoveryConfigListResp\x12L\n" +
+	"\x1cgetCiTypeDiscoveryConfigById\x12\v.cmdb.IDReq\x1a\x1f.cmdb.CiTypeDiscoveryConfigInfo\x12;\n" +
+	"\x1bdeleteCiTypeDiscoveryConfig\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12=\n" +
+	"\x10executeDiscovery\x12\v.cmdb.IDReq\x1a\x1c.cmdb.DiscoveryExecutionResp\x12I\n" +
+	"\x16testProviderConnection\x12\x1f.cmdb.TestProviderConnectionReq\x1a\x0e.cmdb.BaseResp\x12N\n" +
+	"\x11getProviderSchema\x12\x1f.cmdb.TestProviderConnectionReq\x1a\x18.cmdb.ProviderSchemaResp\x125\n" +
+	"\rlistProviders\x12\v.cmdb.Empty\x1a\x17.cmdb.ListProvidersResp\x12<\n" +
 	"\x11createCiTypeGroup\x12\x15.cmdb.CiTypeGroupInfo\x1a\x10.cmdb.BaseIDResp\x12:\n" +
 	"\x11updateCiTypeGroup\x12\x15.cmdb.CiTypeGroupInfo\x1a\x0e.cmdb.BaseResp\x12I\n" +
 	"\x12getCiTypeGroupList\x12\x18.cmdb.CiTypeGroupListReq\x1a\x19.cmdb.CiTypeGroupListResp\x128\n" +
@@ -14101,7 +18165,14 @@ const file_cmdb_proto_rawDesc = "" +
 	"\x14updateCiTypeRelation\x12\x18.cmdb.CiTypeRelationInfo\x1a\x0e.cmdb.BaseResp\x12R\n" +
 	"\x15getCiTypeRelationList\x12\x1b.cmdb.CiTypeRelationListReq\x1a\x1c.cmdb.CiTypeRelationListResp\x12>\n" +
 	"\x15getCiTypeRelationById\x12\v.cmdb.IDReq\x1a\x18.cmdb.CiTypeRelationInfo\x124\n" +
-	"\x14deleteCiTypeRelation\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12>\n" +
+	"\x14deleteCiTypeRelation\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12e\n" +
+	"\x1cgetCiTypeRelationDefinitions\x12!.cmdb.CiTypeRelationDefinitionReq\x1a\".cmdb.CiTypeRelationDefinitionResp\x12_\n" +
+	"\x1agetAttributeMappingConfigs\x12\x1f.cmdb.AttributeMappingConfigReq\x1a .cmdb.AttributeMappingConfigResp\x12X\n" +
+	"\x1fcreateDiscoveryExecutionHistory\x12#.cmdb.DiscoveryExecutionHistoryInfo\x1a\x10.cmdb.BaseIDResp\x12V\n" +
+	"\x1fupdateDiscoveryExecutionHistory\x12#.cmdb.DiscoveryExecutionHistoryInfo\x1a\x0e.cmdb.BaseResp\x12s\n" +
+	" getDiscoveryExecutionHistoryList\x12&.cmdb.DiscoveryExecutionHistoryListReq\x1a'.cmdb.DiscoveryExecutionHistoryListResp\x12T\n" +
+	" getDiscoveryExecutionHistoryById\x12\v.cmdb.IDReq\x1a#.cmdb.DiscoveryExecutionHistoryInfo\x12?\n" +
+	"\x1fdeleteDiscoveryExecutionHistory\x12\f.cmdb.IDsReq\x1a\x0e.cmdb.BaseResp\x12>\n" +
 	"\x12createRelationType\x12\x16.cmdb.RelationTypeInfo\x1a\x10.cmdb.BaseIDResp\x12<\n" +
 	"\x12updateRelationType\x12\x16.cmdb.RelationTypeInfo\x1a\x0e.cmdb.BaseResp\x12L\n" +
 	"\x13getRelationTypeList\x12\x19.cmdb.RelationTypeListReq\x1a\x1a.cmdb.RelationTypeListResp\x12:\n" +
@@ -14145,530 +18216,630 @@ func file_cmdb_proto_rawDescGZIP() []byte {
 	return file_cmdb_proto_rawDescData
 }
 
-var file_cmdb_proto_msgTypes = make([]protoimpl.MessageInfo, 165)
+var file_cmdb_proto_msgTypes = make([]protoimpl.MessageInfo, 196)
 var file_cmdb_proto_goTypes = []any{
-	(*AsyncTaskReq)(nil),                        // 0: cmdb.AsyncTaskReq
-	(*AsyncTaskResp)(nil),                       // 1: cmdb.AsyncTaskResp
-	(*AttributeChoiceItem)(nil),                 // 2: cmdb.AttributeChoiceItem
-	(*AttributeChoiceItemMeta)(nil),             // 3: cmdb.AttributeChoiceItemMeta
-	(*AttributeChoiceOther)(nil),                // 4: cmdb.AttributeChoiceOther
-	(*AttributeChoiceWebHook)(nil),              // 5: cmdb.AttributeChoiceWebHook
-	(*AttributeDefault)(nil),                    // 6: cmdb.AttributeDefault
-	(*AttributeFontOption)(nil),                 // 7: cmdb.AttributeFontOption
-	(*AttributeImageOption)(nil),                // 8: cmdb.AttributeImageOption
-	(*AttributeInfo)(nil),                       // 9: cmdb.AttributeInfo
-	(*AttributeListReq)(nil),                    // 10: cmdb.AttributeListReq
-	(*AttributeListResp)(nil),                   // 11: cmdb.AttributeListResp
-	(*AttributeOption)(nil),                     // 12: cmdb.AttributeOption
-	(*AttributeSimple)(nil),                     // 13: cmdb.AttributeSimple
-	(*AttributeSimpleListReq)(nil),              // 14: cmdb.AttributeSimpleListReq
-	(*AttributeSimpleListResp)(nil),             // 15: cmdb.AttributeSimpleListResp
-	(*BaseIDInt32Resp)(nil),                     // 16: cmdb.BaseIDInt32Resp
-	(*BaseIDInt64Resp)(nil),                     // 17: cmdb.BaseIDInt64Resp
-	(*BaseIDResp)(nil),                          // 18: cmdb.BaseIDResp
-	(*BaseIDStringResp)(nil),                    // 19: cmdb.BaseIDStringResp
-	(*BaseIDUint32Resp)(nil),                    // 20: cmdb.BaseIDUint32Resp
-	(*BaseResp)(nil),                            // 21: cmdb.BaseResp
-	(*BaseUUIDResp)(nil),                        // 22: cmdb.BaseUUIDResp
-	(*ChoiceFloatInfo)(nil),                     // 23: cmdb.ChoiceFloatInfo
-	(*ChoiceFloatListReq)(nil),                  // 24: cmdb.ChoiceFloatListReq
-	(*ChoiceFloatListResp)(nil),                 // 25: cmdb.ChoiceFloatListResp
-	(*ChoiceIntegerInfo)(nil),                   // 26: cmdb.ChoiceIntegerInfo
-	(*ChoiceIntegerListReq)(nil),                // 27: cmdb.ChoiceIntegerListReq
-	(*ChoiceIntegerListResp)(nil),               // 28: cmdb.ChoiceIntegerListResp
-	(*ChoiceTextInfo)(nil),                      // 29: cmdb.ChoiceTextInfo
-	(*ChoiceTextListReq)(nil),                   // 30: cmdb.ChoiceTextListReq
-	(*ChoiceTextListResp)(nil),                  // 31: cmdb.ChoiceTextListResp
-	(*CiAttributeError)(nil),                    // 32: cmdb.CiAttributeError
-	(*CiAttributeFilter)(nil),                   // 33: cmdb.CiAttributeFilter
-	(*CiAttributeValue)(nil),                    // 34: cmdb.CiAttributeValue
-	(*CiFacetSearch)(nil),                       // 35: cmdb.CiFacetSearch
-	(*CiFilterGroup)(nil),                       // 36: cmdb.CiFilterGroup
-	(*CiInheritanceSearch)(nil),                 // 37: cmdb.CiInheritanceSearch
-	(*CiMetadataFilter)(nil),                    // 38: cmdb.CiMetadataFilter
-	(*CiPermissionAllowedValues)(nil),           // 39: cmdb.CiPermissionAllowedValues
-	(*CiPermissionConditions)(nil),              // 40: cmdb.CiPermissionConditions
-	(*CiPermissionDataFilters)(nil),             // 41: cmdb.CiPermissionDataFilters
-	(*CiPermissionFieldMasks)(nil),              // 42: cmdb.CiPermissionFieldMasks
-	(*CiPermissionFilterRule)(nil),              // 43: cmdb.CiPermissionFilterRule
-	(*CiPermissionInfo)(nil),                    // 44: cmdb.CiPermissionInfo
-	(*CiPermissionInheritedFrom)(nil),           // 45: cmdb.CiPermissionInheritedFrom
-	(*CiPermissionListReq)(nil),                 // 46: cmdb.CiPermissionListReq
-	(*CiPermissionListResp)(nil),                // 47: cmdb.CiPermissionListResp
-	(*CiPermissionMetadata)(nil),                // 48: cmdb.CiPermissionMetadata
-	(*CiPermissionOperation)(nil),               // 49: cmdb.CiPermissionOperation
-	(*CiPermissionOperations)(nil),              // 50: cmdb.CiPermissionOperations
-	(*CiPermissionSecurityConstraints)(nil),     // 51: cmdb.CiPermissionSecurityConstraints
-	(*CiPermissionTag)(nil),                     // 52: cmdb.CiPermissionTag
-	(*CiPermissionUsageStatistics)(nil),         // 53: cmdb.CiPermissionUsageStatistics
-	(*CiRelationFilter)(nil),                    // 54: cmdb.CiRelationFilter
-	(*CiRelationInfo)(nil),                      // 55: cmdb.CiRelationInfo
-	(*CiRelationListReq)(nil),                   // 56: cmdb.CiRelationListReq
-	(*CiRelationListResp)(nil),                  // 57: cmdb.CiRelationListResp
-	(*CiSortField)(nil),                         // 58: cmdb.CiSortField
-	(*CiTagFilter)(nil),                         // 59: cmdb.CiTagFilter
-	(*CiTimeRangeSearch)(nil),                   // 60: cmdb.CiTimeRangeSearch
-	(*CiTypeAppendAttributeReq)(nil),            // 61: cmdb.CiTypeAppendAttributeReq
-	(*CiTypeAttributeChangeDefaultShowReq)(nil), // 62: cmdb.CiTypeAttributeChangeDefaultShowReq
-	(*CiTypeAttributeGroupInfo)(nil),            // 63: cmdb.CiTypeAttributeGroupInfo
-	(*CiTypeAttributeGroupItemInfo)(nil),        // 64: cmdb.CiTypeAttributeGroupItemInfo
-	(*CiTypeAttributeGroupItemListReq)(nil),     // 65: cmdb.CiTypeAttributeGroupItemListReq
-	(*CiTypeAttributeGroupItemListResp)(nil),    // 66: cmdb.CiTypeAttributeGroupItemListResp
-	(*CiTypeAttributeGroupItemSort)(nil),        // 67: cmdb.CiTypeAttributeGroupItemSort
-	(*CiTypeAttributeGroupItemSortItem)(nil),    // 68: cmdb.CiTypeAttributeGroupItemSortItem
-	(*CiTypeAttributeGroupItemSortReq)(nil),     // 69: cmdb.CiTypeAttributeGroupItemSortReq
-	(*CiTypeAttributeGroupListReq)(nil),         // 70: cmdb.CiTypeAttributeGroupListReq
-	(*CiTypeAttributeGroupListResp)(nil),        // 71: cmdb.CiTypeAttributeGroupListResp
-	(*CiTypeAttributeGroupSort)(nil),            // 72: cmdb.CiTypeAttributeGroupSort
-	(*CiTypeAttributeGroupSortReq)(nil),         // 73: cmdb.CiTypeAttributeGroupSortReq
-	(*CiTypeAttributeInfo)(nil),                 // 74: cmdb.CiTypeAttributeInfo
-	(*CiTypeAttributeItem)(nil),                 // 75: cmdb.CiTypeAttributeItem
-	(*CiTypeAttributeListReq)(nil),              // 76: cmdb.CiTypeAttributeListReq
-	(*CiTypeAttributeListResp)(nil),             // 77: cmdb.CiTypeAttributeListResp
-	(*CiTypeAttributeListWithGroupInfo)(nil),    // 78: cmdb.CiTypeAttributeListWithGroupInfo
-	(*CiTypeAttributeListWithGroupReq)(nil),     // 79: cmdb.CiTypeAttributeListWithGroupReq
-	(*CiTypeAttributeListWithGroupResp)(nil),    // 80: cmdb.CiTypeAttributeListWithGroupResp
-	(*CiTypeGroupInfo)(nil),                     // 81: cmdb.CiTypeGroupInfo
-	(*CiTypeGroupItemInfo)(nil),                 // 82: cmdb.CiTypeGroupItemInfo
-	(*CiTypeGroupItemListReq)(nil),              // 83: cmdb.CiTypeGroupItemListReq
-	(*CiTypeGroupItemListResp)(nil),             // 84: cmdb.CiTypeGroupItemListResp
-	(*CiTypeGroupItemSort)(nil),                 // 85: cmdb.CiTypeGroupItemSort
-	(*CiTypeGroupItemSortReq)(nil),              // 86: cmdb.CiTypeGroupItemSortReq
-	(*CiTypeGroupItemTreeListInfo)(nil),         // 87: cmdb.CiTypeGroupItemTreeListInfo
-	(*CiTypeGroupItemTreeListResp)(nil),         // 88: cmdb.CiTypeGroupItemTreeListResp
-	(*CiTypeGroupListReq)(nil),                  // 89: cmdb.CiTypeGroupListReq
-	(*CiTypeGroupListResp)(nil),                 // 90: cmdb.CiTypeGroupListResp
-	(*CiTypeGroupSort)(nil),                     // 91: cmdb.CiTypeGroupSort
-	(*CiTypeGroupSortReq)(nil),                  // 92: cmdb.CiTypeGroupSortReq
-	(*CiTypeInfo)(nil),                          // 93: cmdb.CiTypeInfo
-	(*CiTypeInheritanceInfo)(nil),               // 94: cmdb.CiTypeInheritanceInfo
-	(*CiTypeInheritanceListReq)(nil),            // 95: cmdb.CiTypeInheritanceListReq
-	(*CiTypeInheritanceListResp)(nil),           // 96: cmdb.CiTypeInheritanceListResp
-	(*CiTypeListReq)(nil),                       // 97: cmdb.CiTypeListReq
-	(*CiTypeListResp)(nil),                      // 98: cmdb.CiTypeListResp
-	(*CiTypeRelationInfo)(nil),                  // 99: cmdb.CiTypeRelationInfo
-	(*CiTypeRelationListReq)(nil),               // 100: cmdb.CiTypeRelationListReq
-	(*CiTypeRelationListResp)(nil),              // 101: cmdb.CiTypeRelationListResp
-	(*CiTypeUniqueConst)(nil),                   // 102: cmdb.CiTypeUniqueConst
-	(*CisAttributeValidateReq)(nil),             // 103: cmdb.CisAttributeValidateReq
-	(*CisAttributeValidateResp)(nil),            // 104: cmdb.CisAttributeValidateResp
-	(*CisBatchOperationReq)(nil),                // 105: cmdb.CisBatchOperationReq
-	(*CisDetailInfo)(nil),                       // 106: cmdb.CisDetailInfo
-	(*CisInfo)(nil),                             // 107: cmdb.CisInfo
-	(*CisListReq)(nil),                          // 108: cmdb.CisListReq
-	(*CisListResp)(nil),                         // 109: cmdb.CisListResp
-	(*CisMetadata)(nil),                         // 110: cmdb.CisMetadata
-	(*Empty)(nil),                               // 111: cmdb.Empty
-	(*IDInt32Req)(nil),                          // 112: cmdb.IDInt32Req
-	(*IDInt64Req)(nil),                          // 113: cmdb.IDInt64Req
-	(*IDReq)(nil),                               // 114: cmdb.IDReq
-	(*IDStringReq)(nil),                         // 115: cmdb.IDStringReq
-	(*IDUint32Req)(nil),                         // 116: cmdb.IDUint32Req
-	(*IDsInt32Req)(nil),                         // 117: cmdb.IDsInt32Req
-	(*IDsInt64Req)(nil),                         // 118: cmdb.IDsInt64Req
-	(*IDsReq)(nil),                              // 119: cmdb.IDsReq
-	(*IDsStringReq)(nil),                        // 120: cmdb.IDsStringReq
-	(*IDsUint32Req)(nil),                        // 121: cmdb.IDsUint32Req
-	(*LocationRestriction)(nil),                 // 122: cmdb.LocationRestriction
-	(*OperationStat)(nil),                       // 123: cmdb.OperationStat
-	(*PageInfoReq)(nil),                         // 124: cmdb.PageInfoReq
-	(*RelationTypeInfo)(nil),                    // 125: cmdb.RelationTypeInfo
-	(*RelationTypeListReq)(nil),                 // 126: cmdb.RelationTypeListReq
-	(*RelationTypeListResp)(nil),                // 127: cmdb.RelationTypeListResp
-	(*TaskCancelReq)(nil),                       // 128: cmdb.TaskCancelReq
-	(*TaskListReq)(nil),                         // 129: cmdb.TaskListReq
-	(*TaskListResp)(nil),                        // 130: cmdb.TaskListResp
-	(*TaskProgressInfo)(nil),                    // 131: cmdb.TaskProgressInfo
-	(*TaskResultInfo)(nil),                      // 132: cmdb.TaskResultInfo
-	(*TaskStatistics)(nil),                      // 133: cmdb.TaskStatistics
-	(*TaskStatsReq)(nil),                        // 134: cmdb.TaskStatsReq
-	(*TaskStatsResp)(nil),                       // 135: cmdb.TaskStatsResp
-	(*TaskStatusInfo)(nil),                      // 136: cmdb.TaskStatusInfo
-	(*TaskStatusReq)(nil),                       // 137: cmdb.TaskStatusReq
-	(*TaskStatusResp)(nil),                      // 138: cmdb.TaskStatusResp
-	(*TaskTypeStats)(nil),                       // 139: cmdb.TaskTypeStats
-	(*TimeRestriction)(nil),                     // 140: cmdb.TimeRestriction
-	(*UUIDReq)(nil),                             // 141: cmdb.UUIDReq
-	(*UUIDsReq)(nil),                            // 142: cmdb.UUIDsReq
-	(*ValidationRule)(nil),                      // 143: cmdb.ValidationRule
-	(*ValidationRuleParams)(nil),                // 144: cmdb.ValidationRuleParams
-	(*ValueDatetimeInfo)(nil),                   // 145: cmdb.ValueDatetimeInfo
-	(*ValueDatetimeListReq)(nil),                // 146: cmdb.ValueDatetimeListReq
-	(*ValueDatetimeListResp)(nil),               // 147: cmdb.ValueDatetimeListResp
-	(*ValueFloatInfo)(nil),                      // 148: cmdb.ValueFloatInfo
-	(*ValueFloatListReq)(nil),                   // 149: cmdb.ValueFloatListReq
-	(*ValueFloatListResp)(nil),                  // 150: cmdb.ValueFloatListResp
-	(*ValueIntegerInfo)(nil),                    // 151: cmdb.ValueIntegerInfo
-	(*ValueIntegerListReq)(nil),                 // 152: cmdb.ValueIntegerListReq
-	(*ValueIntegerListResp)(nil),                // 153: cmdb.ValueIntegerListResp
-	(*ValueJSONInfo)(nil),                       // 154: cmdb.ValueJSONInfo
-	(*ValueJSONListReq)(nil),                    // 155: cmdb.ValueJSONListReq
-	(*ValueJSONListResp)(nil),                   // 156: cmdb.ValueJSONListResp
-	(*ValueTextInfo)(nil),                       // 157: cmdb.ValueTextInfo
-	(*ValueTextListReq)(nil),                    // 158: cmdb.ValueTextListReq
-	(*ValueTextListResp)(nil),                   // 159: cmdb.ValueTextListResp
-	nil,                                         // 160: cmdb.CiPermissionAllowedValues.FieldValuesEntry
-	nil,                                         // 161: cmdb.CiPermissionMetadata.CustomFieldsEntry
-	nil,                                         // 162: cmdb.CiPermissionUsageStatistics.DailyUsageEntry
-	nil,                                         // 163: cmdb.CiPermissionUsageStatistics.WeeklyUsageEntry
-	nil,                                         // 164: cmdb.CiPermissionUsageStatistics.MonthlyUsageEntry
+	(*AttributeBasicInfo)(nil),                   // 0: cmdb.AttributeBasicInfo
+	(*AttributeChoiceItem)(nil),                  // 1: cmdb.AttributeChoiceItem
+	(*AttributeChoiceItemMeta)(nil),              // 2: cmdb.AttributeChoiceItemMeta
+	(*AttributeChoiceOther)(nil),                 // 3: cmdb.AttributeChoiceOther
+	(*AttributeChoiceWebHook)(nil),               // 4: cmdb.AttributeChoiceWebHook
+	(*AttributeDefault)(nil),                     // 5: cmdb.AttributeDefault
+	(*AttributeFontOption)(nil),                  // 6: cmdb.AttributeFontOption
+	(*AttributeImageOption)(nil),                 // 7: cmdb.AttributeImageOption
+	(*AttributeInfo)(nil),                        // 8: cmdb.AttributeInfo
+	(*AttributeListReq)(nil),                     // 9: cmdb.AttributeListReq
+	(*AttributeListResp)(nil),                    // 10: cmdb.AttributeListResp
+	(*AttributeMappingConfigInfo)(nil),           // 11: cmdb.AttributeMappingConfigInfo
+	(*AttributeMappingConfigReq)(nil),            // 12: cmdb.AttributeMappingConfigReq
+	(*AttributeMappingConfigResp)(nil),           // 13: cmdb.AttributeMappingConfigResp
+	(*AttributeMappingData)(nil),                 // 14: cmdb.AttributeMappingData
+	(*AttributeMappingPair)(nil),                 // 15: cmdb.AttributeMappingPair
+	(*AttributeMappingRuleInfo)(nil),             // 16: cmdb.AttributeMappingRuleInfo
+	(*AttributeMappingRuleListReq)(nil),          // 17: cmdb.AttributeMappingRuleListReq
+	(*AttributeMappingRuleListResp)(nil),         // 18: cmdb.AttributeMappingRuleListResp
+	(*AttributeOption)(nil),                      // 19: cmdb.AttributeOption
+	(*AttributeSimple)(nil),                      // 20: cmdb.AttributeSimple
+	(*AttributeSimpleListReq)(nil),               // 21: cmdb.AttributeSimpleListReq
+	(*AttributeSimpleListResp)(nil),              // 22: cmdb.AttributeSimpleListResp
+	(*BaseIDInt32Resp)(nil),                      // 23: cmdb.BaseIDInt32Resp
+	(*BaseIDInt64Resp)(nil),                      // 24: cmdb.BaseIDInt64Resp
+	(*BaseIDResp)(nil),                           // 25: cmdb.BaseIDResp
+	(*BaseIDStringResp)(nil),                     // 26: cmdb.BaseIDStringResp
+	(*BaseIDUint32Resp)(nil),                     // 27: cmdb.BaseIDUint32Resp
+	(*BaseResp)(nil),                             // 28: cmdb.BaseResp
+	(*BaseUUIDResp)(nil),                         // 29: cmdb.BaseUUIDResp
+	(*ChoiceFloatInfo)(nil),                      // 30: cmdb.ChoiceFloatInfo
+	(*ChoiceFloatListReq)(nil),                   // 31: cmdb.ChoiceFloatListReq
+	(*ChoiceFloatListResp)(nil),                  // 32: cmdb.ChoiceFloatListResp
+	(*ChoiceIntegerInfo)(nil),                    // 33: cmdb.ChoiceIntegerInfo
+	(*ChoiceIntegerListReq)(nil),                 // 34: cmdb.ChoiceIntegerListReq
+	(*ChoiceIntegerListResp)(nil),                // 35: cmdb.ChoiceIntegerListResp
+	(*ChoiceTextInfo)(nil),                       // 36: cmdb.ChoiceTextInfo
+	(*ChoiceTextListReq)(nil),                    // 37: cmdb.ChoiceTextListReq
+	(*ChoiceTextListResp)(nil),                   // 38: cmdb.ChoiceTextListResp
+	(*CiAttributeError)(nil),                     // 39: cmdb.CiAttributeError
+	(*CiAttributeFilter)(nil),                    // 40: cmdb.CiAttributeFilter
+	(*CiAttributeValue)(nil),                     // 41: cmdb.CiAttributeValue
+	(*CiFacetSearch)(nil),                        // 42: cmdb.CiFacetSearch
+	(*CiFilterGroup)(nil),                        // 43: cmdb.CiFilterGroup
+	(*CiInheritanceSearch)(nil),                  // 44: cmdb.CiInheritanceSearch
+	(*CiMetadataFilter)(nil),                     // 45: cmdb.CiMetadataFilter
+	(*CiPermissionAllowedValues)(nil),            // 46: cmdb.CiPermissionAllowedValues
+	(*CiPermissionConditions)(nil),               // 47: cmdb.CiPermissionConditions
+	(*CiPermissionDataFilters)(nil),              // 48: cmdb.CiPermissionDataFilters
+	(*CiPermissionFieldMasks)(nil),               // 49: cmdb.CiPermissionFieldMasks
+	(*CiPermissionFilterRule)(nil),               // 50: cmdb.CiPermissionFilterRule
+	(*CiPermissionInfo)(nil),                     // 51: cmdb.CiPermissionInfo
+	(*CiPermissionInheritedFrom)(nil),            // 52: cmdb.CiPermissionInheritedFrom
+	(*CiPermissionListReq)(nil),                  // 53: cmdb.CiPermissionListReq
+	(*CiPermissionListResp)(nil),                 // 54: cmdb.CiPermissionListResp
+	(*CiPermissionMetadata)(nil),                 // 55: cmdb.CiPermissionMetadata
+	(*CiPermissionOperation)(nil),                // 56: cmdb.CiPermissionOperation
+	(*CiPermissionOperations)(nil),               // 57: cmdb.CiPermissionOperations
+	(*CiPermissionReq)(nil),                      // 58: cmdb.CiPermissionReq
+	(*CiPermissionResp)(nil),                     // 59: cmdb.CiPermissionResp
+	(*CiPermissionSecurityConstraints)(nil),      // 60: cmdb.CiPermissionSecurityConstraints
+	(*CiPermissionTag)(nil),                      // 61: cmdb.CiPermissionTag
+	(*CiPermissionUsageStatistics)(nil),          // 62: cmdb.CiPermissionUsageStatistics
+	(*CiRelationBatchQueryReq)(nil),              // 63: cmdb.CiRelationBatchQueryReq
+	(*CiRelationBatchQueryResp)(nil),             // 64: cmdb.CiRelationBatchQueryResp
+	(*CiRelationCreateInfo)(nil),                 // 65: cmdb.CiRelationCreateInfo
+	(*CiRelationFilter)(nil),                     // 66: cmdb.CiRelationFilter
+	(*CiRelationGroup)(nil),                      // 67: cmdb.CiRelationGroup
+	(*CiRelationInfo)(nil),                       // 68: cmdb.CiRelationInfo
+	(*CiRelationListReq)(nil),                    // 69: cmdb.CiRelationListReq
+	(*CiRelationListResp)(nil),                   // 70: cmdb.CiRelationListResp
+	(*CiRelationQueryResult)(nil),                // 71: cmdb.CiRelationQueryResult
+	(*CiRelationUpdateInfo)(nil),                 // 72: cmdb.CiRelationUpdateInfo
+	(*CiRelationsData)(nil),                      // 73: cmdb.CiRelationsData
+	(*CiSortField)(nil),                          // 74: cmdb.CiSortField
+	(*CiTagFilter)(nil),                          // 75: cmdb.CiTagFilter
+	(*CiTimeRangeSearch)(nil),                    // 76: cmdb.CiTimeRangeSearch
+	(*CiTypeAppendAttributeReq)(nil),             // 77: cmdb.CiTypeAppendAttributeReq
+	(*CiTypeAttributeChangeDefaultShowReq)(nil),  // 78: cmdb.CiTypeAttributeChangeDefaultShowReq
+	(*CiTypeAttributeGroupInfo)(nil),             // 79: cmdb.CiTypeAttributeGroupInfo
+	(*CiTypeAttributeGroupItemInfo)(nil),         // 80: cmdb.CiTypeAttributeGroupItemInfo
+	(*CiTypeAttributeGroupItemListReq)(nil),      // 81: cmdb.CiTypeAttributeGroupItemListReq
+	(*CiTypeAttributeGroupItemListResp)(nil),     // 82: cmdb.CiTypeAttributeGroupItemListResp
+	(*CiTypeAttributeGroupItemSort)(nil),         // 83: cmdb.CiTypeAttributeGroupItemSort
+	(*CiTypeAttributeGroupItemSortItem)(nil),     // 84: cmdb.CiTypeAttributeGroupItemSortItem
+	(*CiTypeAttributeGroupItemSortReq)(nil),      // 85: cmdb.CiTypeAttributeGroupItemSortReq
+	(*CiTypeAttributeGroupItemWithAttrInfo)(nil), // 86: cmdb.CiTypeAttributeGroupItemWithAttrInfo
+	(*CiTypeAttributeGroupListReq)(nil),          // 87: cmdb.CiTypeAttributeGroupListReq
+	(*CiTypeAttributeGroupListResp)(nil),         // 88: cmdb.CiTypeAttributeGroupListResp
+	(*CiTypeAttributeGroupSort)(nil),             // 89: cmdb.CiTypeAttributeGroupSort
+	(*CiTypeAttributeGroupSortReq)(nil),          // 90: cmdb.CiTypeAttributeGroupSortReq
+	(*CiTypeAttributeGroupWithAttrInfo)(nil),     // 91: cmdb.CiTypeAttributeGroupWithAttrInfo
+	(*CiTypeAttributeGroupWithAttrListResp)(nil), // 92: cmdb.CiTypeAttributeGroupWithAttrListResp
+	(*CiTypeAttributeInfo)(nil),                  // 93: cmdb.CiTypeAttributeInfo
+	(*CiTypeAttributeItem)(nil),                  // 94: cmdb.CiTypeAttributeItem
+	(*CiTypeAttributeListReq)(nil),               // 95: cmdb.CiTypeAttributeListReq
+	(*CiTypeAttributeListResp)(nil),              // 96: cmdb.CiTypeAttributeListResp
+	(*CiTypeAttributeListWithGroupInfo)(nil),     // 97: cmdb.CiTypeAttributeListWithGroupInfo
+	(*CiTypeAttributeListWithGroupReq)(nil),      // 98: cmdb.CiTypeAttributeListWithGroupReq
+	(*CiTypeAttributeListWithGroupResp)(nil),     // 99: cmdb.CiTypeAttributeListWithGroupResp
+	(*CiTypeBasicInfo)(nil),                      // 100: cmdb.CiTypeBasicInfo
+	(*CiTypeDiscoveryConfigInfo)(nil),            // 101: cmdb.CiTypeDiscoveryConfigInfo
+	(*CiTypeDiscoveryConfigListReq)(nil),         // 102: cmdb.CiTypeDiscoveryConfigListReq
+	(*CiTypeDiscoveryConfigListResp)(nil),        // 103: cmdb.CiTypeDiscoveryConfigListResp
+	(*CiTypeGroupInfo)(nil),                      // 104: cmdb.CiTypeGroupInfo
+	(*CiTypeGroupItemInfo)(nil),                  // 105: cmdb.CiTypeGroupItemInfo
+	(*CiTypeGroupItemListReq)(nil),               // 106: cmdb.CiTypeGroupItemListReq
+	(*CiTypeGroupItemListResp)(nil),              // 107: cmdb.CiTypeGroupItemListResp
+	(*CiTypeGroupItemSort)(nil),                  // 108: cmdb.CiTypeGroupItemSort
+	(*CiTypeGroupItemSortReq)(nil),               // 109: cmdb.CiTypeGroupItemSortReq
+	(*CiTypeGroupItemTreeListInfo)(nil),          // 110: cmdb.CiTypeGroupItemTreeListInfo
+	(*CiTypeGroupItemTreeListResp)(nil),          // 111: cmdb.CiTypeGroupItemTreeListResp
+	(*CiTypeGroupListReq)(nil),                   // 112: cmdb.CiTypeGroupListReq
+	(*CiTypeGroupListResp)(nil),                  // 113: cmdb.CiTypeGroupListResp
+	(*CiTypeGroupSort)(nil),                      // 114: cmdb.CiTypeGroupSort
+	(*CiTypeGroupSortReq)(nil),                   // 115: cmdb.CiTypeGroupSortReq
+	(*CiTypeInfo)(nil),                           // 116: cmdb.CiTypeInfo
+	(*CiTypeInheritanceInfo)(nil),                // 117: cmdb.CiTypeInheritanceInfo
+	(*CiTypeInheritanceListReq)(nil),             // 118: cmdb.CiTypeInheritanceListReq
+	(*CiTypeInheritanceListResp)(nil),            // 119: cmdb.CiTypeInheritanceListResp
+	(*CiTypeListReq)(nil),                        // 120: cmdb.CiTypeListReq
+	(*CiTypeListResp)(nil),                       // 121: cmdb.CiTypeListResp
+	(*CiTypeRelationDefinitionReq)(nil),          // 122: cmdb.CiTypeRelationDefinitionReq
+	(*CiTypeRelationDefinitionResp)(nil),         // 123: cmdb.CiTypeRelationDefinitionResp
+	(*CiTypeRelationInfo)(nil),                   // 124: cmdb.CiTypeRelationInfo
+	(*CiTypeRelationListReq)(nil),                // 125: cmdb.CiTypeRelationListReq
+	(*CiTypeRelationListResp)(nil),               // 126: cmdb.CiTypeRelationListResp
+	(*CiTypeUniqueConst)(nil),                    // 127: cmdb.CiTypeUniqueConst
+	(*CisAttributeValidateReq)(nil),              // 128: cmdb.CisAttributeValidateReq
+	(*CisAttributeValidateResp)(nil),             // 129: cmdb.CisAttributeValidateResp
+	(*CisBatchOperationReq)(nil),                 // 130: cmdb.CisBatchOperationReq
+	(*CisDetailInfo)(nil),                        // 131: cmdb.CisDetailInfo
+	(*CisInfo)(nil),                              // 132: cmdb.CisInfo
+	(*CisListReq)(nil),                           // 133: cmdb.CisListReq
+	(*CisListResp)(nil),                          // 134: cmdb.CisListResp
+	(*CisMetadata)(nil),                          // 135: cmdb.CisMetadata
+	(*DiscoveredCIData)(nil),                     // 136: cmdb.DiscoveredCIData
+	(*DiscoveryExecutionHistoryInfo)(nil),        // 137: cmdb.DiscoveryExecutionHistoryInfo
+	(*DiscoveryExecutionHistoryListReq)(nil),     // 138: cmdb.DiscoveryExecutionHistoryListReq
+	(*DiscoveryExecutionHistoryListResp)(nil),    // 139: cmdb.DiscoveryExecutionHistoryListResp
+	(*DiscoveryExecutionResp)(nil),               // 140: cmdb.DiscoveryExecutionResp
+	(*Empty)(nil),                                // 141: cmdb.Empty
+	(*IDInt32Req)(nil),                           // 142: cmdb.IDInt32Req
+	(*IDInt64Req)(nil),                           // 143: cmdb.IDInt64Req
+	(*IDReq)(nil),                                // 144: cmdb.IDReq
+	(*IDStringReq)(nil),                          // 145: cmdb.IDStringReq
+	(*IDUint32Req)(nil),                          // 146: cmdb.IDUint32Req
+	(*IDsInt32Req)(nil),                          // 147: cmdb.IDsInt32Req
+	(*IDsInt64Req)(nil),                          // 148: cmdb.IDsInt64Req
+	(*IDsReq)(nil),                               // 149: cmdb.IDsReq
+	(*IDsStringReq)(nil),                         // 150: cmdb.IDsStringReq
+	(*IDsUint32Req)(nil),                         // 151: cmdb.IDsUint32Req
+	(*ListProvidersResp)(nil),                    // 152: cmdb.ListProvidersResp
+	(*LocationRestriction)(nil),                  // 153: cmdb.LocationRestriction
+	(*OperationStat)(nil),                        // 154: cmdb.OperationStat
+	(*PageInfoReq)(nil),                          // 155: cmdb.PageInfoReq
+	(*ProviderInfo)(nil),                         // 156: cmdb.ProviderInfo
+	(*ProviderSchemaResp)(nil),                   // 157: cmdb.ProviderSchemaResp
+	(*RelationTypeBasicInfo)(nil),                // 158: cmdb.RelationTypeBasicInfo
+	(*RelationTypeInfo)(nil),                     // 159: cmdb.RelationTypeInfo
+	(*RelationTypeListReq)(nil),                  // 160: cmdb.RelationTypeListReq
+	(*RelationTypeListResp)(nil),                 // 161: cmdb.RelationTypeListResp
+	(*SyncConfig)(nil),                           // 162: cmdb.SyncConfig
+	(*TestProviderConnectionReq)(nil),            // 163: cmdb.TestProviderConnectionReq
+	(*TimeRestriction)(nil),                      // 164: cmdb.TimeRestriction
+	(*UUIDReq)(nil),                              // 165: cmdb.UUIDReq
+	(*UUIDsReq)(nil),                             // 166: cmdb.UUIDsReq
+	(*UserPermissionScopeReq)(nil),               // 167: cmdb.UserPermissionScopeReq
+	(*UserPermissionScopeResp)(nil),              // 168: cmdb.UserPermissionScopeResp
+	(*ValidationResult)(nil),                     // 169: cmdb.ValidationResult
+	(*ValidationRule)(nil),                       // 170: cmdb.ValidationRule
+	(*ValidationRuleParams)(nil),                 // 171: cmdb.ValidationRuleParams
+	(*ValueDatetimeInfo)(nil),                    // 172: cmdb.ValueDatetimeInfo
+	(*ValueDatetimeListReq)(nil),                 // 173: cmdb.ValueDatetimeListReq
+	(*ValueDatetimeListResp)(nil),                // 174: cmdb.ValueDatetimeListResp
+	(*ValueFloatInfo)(nil),                       // 175: cmdb.ValueFloatInfo
+	(*ValueFloatListReq)(nil),                    // 176: cmdb.ValueFloatListReq
+	(*ValueFloatListResp)(nil),                   // 177: cmdb.ValueFloatListResp
+	(*ValueIntegerInfo)(nil),                     // 178: cmdb.ValueIntegerInfo
+	(*ValueIntegerListReq)(nil),                  // 179: cmdb.ValueIntegerListReq
+	(*ValueIntegerListResp)(nil),                 // 180: cmdb.ValueIntegerListResp
+	(*ValueJSONInfo)(nil),                        // 181: cmdb.ValueJSONInfo
+	(*ValueJSONListReq)(nil),                     // 182: cmdb.ValueJSONListReq
+	(*ValueJSONListResp)(nil),                    // 183: cmdb.ValueJSONListResp
+	(*ValueTextInfo)(nil),                        // 184: cmdb.ValueTextInfo
+	(*ValueTextListReq)(nil),                     // 185: cmdb.ValueTextListReq
+	(*ValueTextListResp)(nil),                    // 186: cmdb.ValueTextListResp
+	(*WriteDiscoveredCIResp)(nil),                // 187: cmdb.WriteDiscoveredCIResp
+	nil,                                          // 188: cmdb.CiPermissionAllowedValues.FieldValuesEntry
+	nil,                                          // 189: cmdb.CiPermissionMetadata.CustomFieldsEntry
+	nil,                                          // 190: cmdb.CiPermissionUsageStatistics.DailyUsageEntry
+	nil,                                          // 191: cmdb.CiPermissionUsageStatistics.WeeklyUsageEntry
+	nil,                                          // 192: cmdb.CiPermissionUsageStatistics.MonthlyUsageEntry
+	nil,                                          // 193: cmdb.CiRelationBatchQueryResp.RelationsByCiEntry
+	nil,                                          // 194: cmdb.DiscoveredCIData.AttributesEntry
+	nil,                                          // 195: cmdb.UserPermissionScopeResp.CustomRulesEntry
 }
 var file_cmdb_proto_depIdxs = []int32{
-	136, // 0: cmdb.AsyncTaskResp.initial_status:type_name -> cmdb.TaskStatusInfo
-	3,   // 1: cmdb.AttributeChoiceItem.meta:type_name -> cmdb.AttributeChoiceItemMeta
-	7,   // 2: cmdb.AttributeChoiceItemMeta.style:type_name -> cmdb.AttributeFontOption
-	5,   // 3: cmdb.AttributeInfo.choice_web_hook:type_name -> cmdb.AttributeChoiceWebHook
-	12,  // 4: cmdb.AttributeInfo.option:type_name -> cmdb.AttributeOption
-	6,   // 5: cmdb.AttributeInfo.default:type_name -> cmdb.AttributeDefault
-	4,   // 6: cmdb.AttributeInfo.choice_other:type_name -> cmdb.AttributeChoiceOther
-	2,   // 7: cmdb.AttributeInfo.choices:type_name -> cmdb.AttributeChoiceItem
-	143, // 8: cmdb.AttributeInfo.validator_rules:type_name -> cmdb.ValidationRule
-	9,   // 9: cmdb.AttributeListResp.data:type_name -> cmdb.AttributeInfo
-	7,   // 10: cmdb.AttributeOption.fontOption:type_name -> cmdb.AttributeFontOption
-	8,   // 11: cmdb.AttributeOption.imageOptions:type_name -> cmdb.AttributeImageOption
-	13,  // 12: cmdb.AttributeSimpleListResp.data:type_name -> cmdb.AttributeSimple
-	3,   // 13: cmdb.ChoiceFloatInfo.option:type_name -> cmdb.AttributeChoiceItemMeta
-	3,   // 14: cmdb.ChoiceFloatListReq.option:type_name -> cmdb.AttributeChoiceItemMeta
-	23,  // 15: cmdb.ChoiceFloatListResp.data:type_name -> cmdb.ChoiceFloatInfo
-	3,   // 16: cmdb.ChoiceIntegerInfo.option:type_name -> cmdb.AttributeChoiceItemMeta
-	3,   // 17: cmdb.ChoiceIntegerListReq.option:type_name -> cmdb.AttributeChoiceItemMeta
-	26,  // 18: cmdb.ChoiceIntegerListResp.data:type_name -> cmdb.ChoiceIntegerInfo
-	3,   // 19: cmdb.ChoiceTextInfo.option:type_name -> cmdb.AttributeChoiceItemMeta
-	3,   // 20: cmdb.ChoiceTextListReq.option:type_name -> cmdb.AttributeChoiceItemMeta
-	29,  // 21: cmdb.ChoiceTextListResp.data:type_name -> cmdb.ChoiceTextInfo
-	33,  // 22: cmdb.CiFilterGroup.filters:type_name -> cmdb.CiAttributeFilter
-	36,  // 23: cmdb.CiFilterGroup.groups:type_name -> cmdb.CiFilterGroup
-	160, // 24: cmdb.CiPermissionAllowedValues.field_values:type_name -> cmdb.CiPermissionAllowedValues.FieldValuesEntry
-	43,  // 25: cmdb.CiPermissionDataFilters.rules:type_name -> cmdb.CiPermissionFilterRule
-	50,  // 26: cmdb.CiPermissionInfo.operations:type_name -> cmdb.CiPermissionOperations
-	40,  // 27: cmdb.CiPermissionInfo.conditions:type_name -> cmdb.CiPermissionConditions
-	41,  // 28: cmdb.CiPermissionInfo.data_filters:type_name -> cmdb.CiPermissionDataFilters
-	42,  // 29: cmdb.CiPermissionInfo.field_masks:type_name -> cmdb.CiPermissionFieldMasks
-	39,  // 30: cmdb.CiPermissionInfo.allowed_values:type_name -> cmdb.CiPermissionAllowedValues
-	53,  // 31: cmdb.CiPermissionInfo.usage_statistics:type_name -> cmdb.CiPermissionUsageStatistics
-	45,  // 32: cmdb.CiPermissionInfo.inherited_from:type_name -> cmdb.CiPermissionInheritedFrom
-	51,  // 33: cmdb.CiPermissionInfo.security_constraints:type_name -> cmdb.CiPermissionSecurityConstraints
-	48,  // 34: cmdb.CiPermissionInfo.metadata:type_name -> cmdb.CiPermissionMetadata
-	52,  // 35: cmdb.CiPermissionInfo.tags:type_name -> cmdb.CiPermissionTag
-	50,  // 36: cmdb.CiPermissionListReq.operations:type_name -> cmdb.CiPermissionOperations
-	40,  // 37: cmdb.CiPermissionListReq.conditions:type_name -> cmdb.CiPermissionConditions
-	41,  // 38: cmdb.CiPermissionListReq.data_filters:type_name -> cmdb.CiPermissionDataFilters
-	42,  // 39: cmdb.CiPermissionListReq.field_masks:type_name -> cmdb.CiPermissionFieldMasks
-	39,  // 40: cmdb.CiPermissionListReq.allowed_values:type_name -> cmdb.CiPermissionAllowedValues
-	53,  // 41: cmdb.CiPermissionListReq.usage_statistics:type_name -> cmdb.CiPermissionUsageStatistics
-	45,  // 42: cmdb.CiPermissionListReq.inherited_from:type_name -> cmdb.CiPermissionInheritedFrom
-	51,  // 43: cmdb.CiPermissionListReq.security_constraints:type_name -> cmdb.CiPermissionSecurityConstraints
-	48,  // 44: cmdb.CiPermissionListReq.metadata:type_name -> cmdb.CiPermissionMetadata
-	52,  // 45: cmdb.CiPermissionListReq.tags:type_name -> cmdb.CiPermissionTag
-	44,  // 46: cmdb.CiPermissionListResp.data:type_name -> cmdb.CiPermissionInfo
-	161, // 47: cmdb.CiPermissionMetadata.custom_fields:type_name -> cmdb.CiPermissionMetadata.CustomFieldsEntry
-	49,  // 48: cmdb.CiPermissionOperations.operations:type_name -> cmdb.CiPermissionOperation
-	140, // 49: cmdb.CiPermissionSecurityConstraints.time_restrictions:type_name -> cmdb.TimeRestriction
-	122, // 50: cmdb.CiPermissionSecurityConstraints.location_restrictions:type_name -> cmdb.LocationRestriction
-	162, // 51: cmdb.CiPermissionUsageStatistics.daily_usage:type_name -> cmdb.CiPermissionUsageStatistics.DailyUsageEntry
-	163, // 52: cmdb.CiPermissionUsageStatistics.weekly_usage:type_name -> cmdb.CiPermissionUsageStatistics.WeeklyUsageEntry
-	164, // 53: cmdb.CiPermissionUsageStatistics.monthly_usage:type_name -> cmdb.CiPermissionUsageStatistics.MonthlyUsageEntry
-	123, // 54: cmdb.CiPermissionUsageStatistics.top_operations:type_name -> cmdb.OperationStat
-	55,  // 55: cmdb.CiRelationListResp.data:type_name -> cmdb.CiRelationInfo
-	64,  // 56: cmdb.CiTypeAttributeGroupItemListResp.data:type_name -> cmdb.CiTypeAttributeGroupItemInfo
-	68,  // 57: cmdb.CiTypeAttributeGroupItemSort.items:type_name -> cmdb.CiTypeAttributeGroupItemSortItem
-	67,  // 58: cmdb.CiTypeAttributeGroupItemSortReq.data:type_name -> cmdb.CiTypeAttributeGroupItemSort
-	63,  // 59: cmdb.CiTypeAttributeGroupListResp.data:type_name -> cmdb.CiTypeAttributeGroupInfo
-	72,  // 60: cmdb.CiTypeAttributeGroupSortReq.data:type_name -> cmdb.CiTypeAttributeGroupSort
-	9,   // 61: cmdb.CiTypeAttributeItem.attribute:type_name -> cmdb.AttributeInfo
-	75,  // 62: cmdb.CiTypeAttributeListResp.data:type_name -> cmdb.CiTypeAttributeItem
-	75,  // 63: cmdb.CiTypeAttributeListWithGroupInfo.attributes:type_name -> cmdb.CiTypeAttributeItem
-	78,  // 64: cmdb.CiTypeAttributeListWithGroupResp.data:type_name -> cmdb.CiTypeAttributeListWithGroupInfo
-	82,  // 65: cmdb.CiTypeGroupItemListResp.data:type_name -> cmdb.CiTypeGroupItemInfo
-	85,  // 66: cmdb.CiTypeGroupItemSortReq.sort_items:type_name -> cmdb.CiTypeGroupItemSort
-	82,  // 67: cmdb.CiTypeGroupItemTreeListInfo.items:type_name -> cmdb.CiTypeGroupItemInfo
-	87,  // 68: cmdb.CiTypeGroupItemTreeListResp.data:type_name -> cmdb.CiTypeGroupItemTreeListInfo
-	81,  // 69: cmdb.CiTypeGroupListResp.data:type_name -> cmdb.CiTypeGroupInfo
-	91,  // 70: cmdb.CiTypeGroupSortReq.data:type_name -> cmdb.CiTypeGroupSort
-	102, // 71: cmdb.CiTypeInfo.unique_const:type_name -> cmdb.CiTypeUniqueConst
-	94,  // 72: cmdb.CiTypeInheritanceListResp.data:type_name -> cmdb.CiTypeInheritanceInfo
-	93,  // 73: cmdb.CiTypeListResp.data:type_name -> cmdb.CiTypeInfo
-	99,  // 74: cmdb.CiTypeRelationListResp.data:type_name -> cmdb.CiTypeRelationInfo
-	34,  // 75: cmdb.CisAttributeValidateReq.attributes:type_name -> cmdb.CiAttributeValue
-	32,  // 76: cmdb.CisAttributeValidateResp.errors:type_name -> cmdb.CiAttributeError
-	107, // 77: cmdb.CisDetailInfo.ci_info:type_name -> cmdb.CisInfo
-	110, // 78: cmdb.CisInfo.metadata:type_name -> cmdb.CisMetadata
-	110, // 79: cmdb.CisInfo.custom_fields:type_name -> cmdb.CisMetadata
-	34,  // 80: cmdb.CisInfo.attributes:type_name -> cmdb.CiAttributeValue
-	33,  // 81: cmdb.CisListReq.attribute_filters:type_name -> cmdb.CiAttributeFilter
-	36,  // 82: cmdb.CisListReq.filter_groups:type_name -> cmdb.CiFilterGroup
-	54,  // 83: cmdb.CisListReq.relation_filters:type_name -> cmdb.CiRelationFilter
-	37,  // 84: cmdb.CisListReq.inheritance_search:type_name -> cmdb.CiInheritanceSearch
-	59,  // 85: cmdb.CisListReq.tag_filters:type_name -> cmdb.CiTagFilter
-	38,  // 86: cmdb.CisListReq.metadata_filters:type_name -> cmdb.CiMetadataFilter
-	60,  // 87: cmdb.CisListReq.time_range_search:type_name -> cmdb.CiTimeRangeSearch
-	35,  // 88: cmdb.CisListReq.facet_search:type_name -> cmdb.CiFacetSearch
-	58,  // 89: cmdb.CisListReq.sort_fields:type_name -> cmdb.CiSortField
-	107, // 90: cmdb.CisListResp.data:type_name -> cmdb.CisInfo
-	125, // 91: cmdb.RelationTypeListResp.data:type_name -> cmdb.RelationTypeInfo
-	136, // 92: cmdb.TaskListResp.tasks:type_name -> cmdb.TaskStatusInfo
-	139, // 93: cmdb.TaskStatistics.type_stats:type_name -> cmdb.TaskTypeStats
-	133, // 94: cmdb.TaskStatsResp.stats:type_name -> cmdb.TaskStatistics
-	131, // 95: cmdb.TaskStatusInfo.progress:type_name -> cmdb.TaskProgressInfo
-	132, // 96: cmdb.TaskStatusInfo.result:type_name -> cmdb.TaskResultInfo
-	136, // 97: cmdb.TaskStatusResp.task:type_name -> cmdb.TaskStatusInfo
-	144, // 98: cmdb.ValidationRule.params:type_name -> cmdb.ValidationRuleParams
-	145, // 99: cmdb.ValueDatetimeListResp.data:type_name -> cmdb.ValueDatetimeInfo
-	148, // 100: cmdb.ValueFloatListResp.data:type_name -> cmdb.ValueFloatInfo
-	151, // 101: cmdb.ValueIntegerListResp.data:type_name -> cmdb.ValueIntegerInfo
-	154, // 102: cmdb.ValueJSONListResp.data:type_name -> cmdb.ValueJSONInfo
-	157, // 103: cmdb.ValueTextListResp.data:type_name -> cmdb.ValueTextInfo
-	0,   // 104: cmdb.Cmdb.SubmitAsyncTask:input_type -> cmdb.AsyncTaskReq
-	137, // 105: cmdb.Cmdb.GetTaskStatus:input_type -> cmdb.TaskStatusReq
-	128, // 106: cmdb.Cmdb.CancelTask:input_type -> cmdb.TaskCancelReq
-	129, // 107: cmdb.Cmdb.GetTaskList:input_type -> cmdb.TaskListReq
-	134, // 108: cmdb.Cmdb.GetTaskStats:input_type -> cmdb.TaskStatsReq
-	9,   // 109: cmdb.Cmdb.createAttribute:input_type -> cmdb.AttributeInfo
-	9,   // 110: cmdb.Cmdb.updateAttribute:input_type -> cmdb.AttributeInfo
-	10,  // 111: cmdb.Cmdb.getAttributeList:input_type -> cmdb.AttributeListReq
-	14,  // 112: cmdb.Cmdb.getAttributeSimpleList:input_type -> cmdb.AttributeSimpleListReq
-	114, // 113: cmdb.Cmdb.getAttributeById:input_type -> cmdb.IDReq
-	119, // 114: cmdb.Cmdb.deleteAttribute:input_type -> cmdb.IDsReq
-	111, // 115: cmdb.Cmdb.initDatabase:input_type -> cmdb.Empty
-	23,  // 116: cmdb.Cmdb.createChoiceFloat:input_type -> cmdb.ChoiceFloatInfo
-	23,  // 117: cmdb.Cmdb.updateChoiceFloat:input_type -> cmdb.ChoiceFloatInfo
-	24,  // 118: cmdb.Cmdb.getChoiceFloatList:input_type -> cmdb.ChoiceFloatListReq
-	114, // 119: cmdb.Cmdb.getChoiceFloatById:input_type -> cmdb.IDReq
-	119, // 120: cmdb.Cmdb.deleteChoiceFloat:input_type -> cmdb.IDsReq
-	26,  // 121: cmdb.Cmdb.createChoiceInteger:input_type -> cmdb.ChoiceIntegerInfo
-	26,  // 122: cmdb.Cmdb.updateChoiceInteger:input_type -> cmdb.ChoiceIntegerInfo
-	27,  // 123: cmdb.Cmdb.getChoiceIntegerList:input_type -> cmdb.ChoiceIntegerListReq
-	114, // 124: cmdb.Cmdb.getChoiceIntegerById:input_type -> cmdb.IDReq
-	119, // 125: cmdb.Cmdb.deleteChoiceInteger:input_type -> cmdb.IDsReq
-	29,  // 126: cmdb.Cmdb.createChoiceText:input_type -> cmdb.ChoiceTextInfo
-	29,  // 127: cmdb.Cmdb.updateChoiceText:input_type -> cmdb.ChoiceTextInfo
-	30,  // 128: cmdb.Cmdb.getChoiceTextList:input_type -> cmdb.ChoiceTextListReq
-	114, // 129: cmdb.Cmdb.getChoiceTextById:input_type -> cmdb.IDReq
-	119, // 130: cmdb.Cmdb.deleteChoiceText:input_type -> cmdb.IDsReq
-	44,  // 131: cmdb.Cmdb.createCiPermission:input_type -> cmdb.CiPermissionInfo
-	44,  // 132: cmdb.Cmdb.updateCiPermission:input_type -> cmdb.CiPermissionInfo
-	46,  // 133: cmdb.Cmdb.getCiPermissionList:input_type -> cmdb.CiPermissionListReq
-	114, // 134: cmdb.Cmdb.getCiPermissionById:input_type -> cmdb.IDReq
-	119, // 135: cmdb.Cmdb.deleteCiPermission:input_type -> cmdb.IDsReq
-	55,  // 136: cmdb.Cmdb.createCiRelation:input_type -> cmdb.CiRelationInfo
-	55,  // 137: cmdb.Cmdb.updateCiRelation:input_type -> cmdb.CiRelationInfo
-	56,  // 138: cmdb.Cmdb.getCiRelationList:input_type -> cmdb.CiRelationListReq
-	114, // 139: cmdb.Cmdb.getCiRelationById:input_type -> cmdb.IDReq
-	119, // 140: cmdb.Cmdb.deleteCiRelation:input_type -> cmdb.IDsReq
-	107, // 141: cmdb.Cmdb.createCis:input_type -> cmdb.CisInfo
-	107, // 142: cmdb.Cmdb.updateCis:input_type -> cmdb.CisInfo
-	108, // 143: cmdb.Cmdb.getCisList:input_type -> cmdb.CisListReq
-	114, // 144: cmdb.Cmdb.getCisById:input_type -> cmdb.IDReq
-	114, // 145: cmdb.Cmdb.getCisDetailById:input_type -> cmdb.IDReq
-	119, // 146: cmdb.Cmdb.deleteCis:input_type -> cmdb.IDsReq
-	105, // 147: cmdb.Cmdb.cisBatchOperation:input_type -> cmdb.CisBatchOperationReq
-	103, // 148: cmdb.Cmdb.validateCisAttributes:input_type -> cmdb.CisAttributeValidateReq
-	93,  // 149: cmdb.Cmdb.createCiType:input_type -> cmdb.CiTypeInfo
-	93,  // 150: cmdb.Cmdb.updateCiType:input_type -> cmdb.CiTypeInfo
-	97,  // 151: cmdb.Cmdb.getCiTypeList:input_type -> cmdb.CiTypeListReq
-	114, // 152: cmdb.Cmdb.getCiTypeById:input_type -> cmdb.IDReq
-	119, // 153: cmdb.Cmdb.deleteCiType:input_type -> cmdb.IDsReq
-	61,  // 154: cmdb.Cmdb.appendAttribute:input_type -> cmdb.CiTypeAppendAttributeReq
-	75,  // 155: cmdb.Cmdb.createCiTypeAttribute:input_type -> cmdb.CiTypeAttributeItem
-	75,  // 156: cmdb.Cmdb.updateCiTypeAttribute:input_type -> cmdb.CiTypeAttributeItem
-	76,  // 157: cmdb.Cmdb.getCiTypeAttributeList:input_type -> cmdb.CiTypeAttributeListReq
-	114, // 158: cmdb.Cmdb.getCiTypeAttributeById:input_type -> cmdb.IDReq
-	119, // 159: cmdb.Cmdb.deleteCiTypeAttribute:input_type -> cmdb.IDsReq
-	79,  // 160: cmdb.Cmdb.getCiTypeAttributeListWithGroup:input_type -> cmdb.CiTypeAttributeListWithGroupReq
-	62,  // 161: cmdb.Cmdb.changeCiTypeAttributeDefaultShow:input_type -> cmdb.CiTypeAttributeChangeDefaultShowReq
-	63,  // 162: cmdb.Cmdb.createCiTypeAttributeGroup:input_type -> cmdb.CiTypeAttributeGroupInfo
-	63,  // 163: cmdb.Cmdb.updateCiTypeAttributeGroup:input_type -> cmdb.CiTypeAttributeGroupInfo
-	70,  // 164: cmdb.Cmdb.getCiTypeAttributeGroupList:input_type -> cmdb.CiTypeAttributeGroupListReq
-	114, // 165: cmdb.Cmdb.getCiTypeAttributeGroupById:input_type -> cmdb.IDReq
-	119, // 166: cmdb.Cmdb.deleteCiTypeAttributeGroup:input_type -> cmdb.IDsReq
-	73,  // 167: cmdb.Cmdb.sortCiTypeAttributeGroup:input_type -> cmdb.CiTypeAttributeGroupSortReq
-	64,  // 168: cmdb.Cmdb.createCiTypeAttributeGroupItem:input_type -> cmdb.CiTypeAttributeGroupItemInfo
-	64,  // 169: cmdb.Cmdb.updateCiTypeAttributeGroupItem:input_type -> cmdb.CiTypeAttributeGroupItemInfo
-	65,  // 170: cmdb.Cmdb.getCiTypeAttributeGroupItemList:input_type -> cmdb.CiTypeAttributeGroupItemListReq
-	114, // 171: cmdb.Cmdb.getCiTypeAttributeGroupItemById:input_type -> cmdb.IDReq
-	119, // 172: cmdb.Cmdb.deleteCiTypeAttributeGroupItem:input_type -> cmdb.IDsReq
-	69,  // 173: cmdb.Cmdb.sortCiTypeAttributeGroupItem:input_type -> cmdb.CiTypeAttributeGroupItemSortReq
-	81,  // 174: cmdb.Cmdb.createCiTypeGroup:input_type -> cmdb.CiTypeGroupInfo
-	81,  // 175: cmdb.Cmdb.updateCiTypeGroup:input_type -> cmdb.CiTypeGroupInfo
-	89,  // 176: cmdb.Cmdb.getCiTypeGroupList:input_type -> cmdb.CiTypeGroupListReq
-	114, // 177: cmdb.Cmdb.getCiTypeGroupById:input_type -> cmdb.IDReq
-	119, // 178: cmdb.Cmdb.deleteCiTypeGroup:input_type -> cmdb.IDsReq
-	92,  // 179: cmdb.Cmdb.updateCiTypeGroupSort:input_type -> cmdb.CiTypeGroupSortReq
-	82,  // 180: cmdb.Cmdb.createCiTypeGroupItem:input_type -> cmdb.CiTypeGroupItemInfo
-	82,  // 181: cmdb.Cmdb.updateCiTypeGroupItem:input_type -> cmdb.CiTypeGroupItemInfo
-	83,  // 182: cmdb.Cmdb.getCiTypeGroupItemList:input_type -> cmdb.CiTypeGroupItemListReq
-	83,  // 183: cmdb.Cmdb.getCiTypeGroupItemTreeList:input_type -> cmdb.CiTypeGroupItemListReq
-	114, // 184: cmdb.Cmdb.getCiTypeGroupItemById:input_type -> cmdb.IDReq
-	119, // 185: cmdb.Cmdb.deleteCiTypeGroupItem:input_type -> cmdb.IDsReq
-	86,  // 186: cmdb.Cmdb.updateCiTypeGroupItemSort:input_type -> cmdb.CiTypeGroupItemSortReq
-	94,  // 187: cmdb.Cmdb.createCiTypeInheritance:input_type -> cmdb.CiTypeInheritanceInfo
-	94,  // 188: cmdb.Cmdb.updateCiTypeInheritance:input_type -> cmdb.CiTypeInheritanceInfo
-	95,  // 189: cmdb.Cmdb.getCiTypeInheritanceList:input_type -> cmdb.CiTypeInheritanceListReq
-	114, // 190: cmdb.Cmdb.getCiTypeInheritanceById:input_type -> cmdb.IDReq
-	119, // 191: cmdb.Cmdb.deleteCiTypeInheritance:input_type -> cmdb.IDsReq
-	99,  // 192: cmdb.Cmdb.createCiTypeRelation:input_type -> cmdb.CiTypeRelationInfo
-	99,  // 193: cmdb.Cmdb.updateCiTypeRelation:input_type -> cmdb.CiTypeRelationInfo
-	100, // 194: cmdb.Cmdb.getCiTypeRelationList:input_type -> cmdb.CiTypeRelationListReq
-	114, // 195: cmdb.Cmdb.getCiTypeRelationById:input_type -> cmdb.IDReq
-	119, // 196: cmdb.Cmdb.deleteCiTypeRelation:input_type -> cmdb.IDsReq
-	125, // 197: cmdb.Cmdb.createRelationType:input_type -> cmdb.RelationTypeInfo
-	125, // 198: cmdb.Cmdb.updateRelationType:input_type -> cmdb.RelationTypeInfo
-	126, // 199: cmdb.Cmdb.getRelationTypeList:input_type -> cmdb.RelationTypeListReq
-	114, // 200: cmdb.Cmdb.getRelationTypeById:input_type -> cmdb.IDReq
-	119, // 201: cmdb.Cmdb.deleteRelationType:input_type -> cmdb.IDsReq
-	145, // 202: cmdb.Cmdb.createValueDatetime:input_type -> cmdb.ValueDatetimeInfo
-	145, // 203: cmdb.Cmdb.updateValueDatetime:input_type -> cmdb.ValueDatetimeInfo
-	146, // 204: cmdb.Cmdb.getValueDatetimeList:input_type -> cmdb.ValueDatetimeListReq
-	114, // 205: cmdb.Cmdb.getValueDatetimeById:input_type -> cmdb.IDReq
-	119, // 206: cmdb.Cmdb.deleteValueDatetime:input_type -> cmdb.IDsReq
-	148, // 207: cmdb.Cmdb.createValueFloat:input_type -> cmdb.ValueFloatInfo
-	148, // 208: cmdb.Cmdb.updateValueFloat:input_type -> cmdb.ValueFloatInfo
-	149, // 209: cmdb.Cmdb.getValueFloatList:input_type -> cmdb.ValueFloatListReq
-	114, // 210: cmdb.Cmdb.getValueFloatById:input_type -> cmdb.IDReq
-	119, // 211: cmdb.Cmdb.deleteValueFloat:input_type -> cmdb.IDsReq
-	151, // 212: cmdb.Cmdb.createValueInteger:input_type -> cmdb.ValueIntegerInfo
-	151, // 213: cmdb.Cmdb.updateValueInteger:input_type -> cmdb.ValueIntegerInfo
-	152, // 214: cmdb.Cmdb.getValueIntegerList:input_type -> cmdb.ValueIntegerListReq
-	114, // 215: cmdb.Cmdb.getValueIntegerById:input_type -> cmdb.IDReq
-	119, // 216: cmdb.Cmdb.deleteValueInteger:input_type -> cmdb.IDsReq
-	154, // 217: cmdb.Cmdb.createValueJSON:input_type -> cmdb.ValueJSONInfo
-	154, // 218: cmdb.Cmdb.updateValueJSON:input_type -> cmdb.ValueJSONInfo
-	155, // 219: cmdb.Cmdb.getValueJSONList:input_type -> cmdb.ValueJSONListReq
-	114, // 220: cmdb.Cmdb.getValueJSONById:input_type -> cmdb.IDReq
-	119, // 221: cmdb.Cmdb.deleteValueJSON:input_type -> cmdb.IDsReq
-	157, // 222: cmdb.Cmdb.createValueText:input_type -> cmdb.ValueTextInfo
-	157, // 223: cmdb.Cmdb.updateValueText:input_type -> cmdb.ValueTextInfo
-	158, // 224: cmdb.Cmdb.getValueTextList:input_type -> cmdb.ValueTextListReq
-	114, // 225: cmdb.Cmdb.getValueTextById:input_type -> cmdb.IDReq
-	119, // 226: cmdb.Cmdb.deleteValueText:input_type -> cmdb.IDsReq
-	1,   // 227: cmdb.Cmdb.SubmitAsyncTask:output_type -> cmdb.AsyncTaskResp
-	138, // 228: cmdb.Cmdb.GetTaskStatus:output_type -> cmdb.TaskStatusResp
-	21,  // 229: cmdb.Cmdb.CancelTask:output_type -> cmdb.BaseResp
-	130, // 230: cmdb.Cmdb.GetTaskList:output_type -> cmdb.TaskListResp
-	135, // 231: cmdb.Cmdb.GetTaskStats:output_type -> cmdb.TaskStatsResp
-	18,  // 232: cmdb.Cmdb.createAttribute:output_type -> cmdb.BaseIDResp
-	18,  // 233: cmdb.Cmdb.updateAttribute:output_type -> cmdb.BaseIDResp
-	11,  // 234: cmdb.Cmdb.getAttributeList:output_type -> cmdb.AttributeListResp
-	15,  // 235: cmdb.Cmdb.getAttributeSimpleList:output_type -> cmdb.AttributeSimpleListResp
-	9,   // 236: cmdb.Cmdb.getAttributeById:output_type -> cmdb.AttributeInfo
-	21,  // 237: cmdb.Cmdb.deleteAttribute:output_type -> cmdb.BaseResp
-	21,  // 238: cmdb.Cmdb.initDatabase:output_type -> cmdb.BaseResp
-	18,  // 239: cmdb.Cmdb.createChoiceFloat:output_type -> cmdb.BaseIDResp
-	21,  // 240: cmdb.Cmdb.updateChoiceFloat:output_type -> cmdb.BaseResp
-	25,  // 241: cmdb.Cmdb.getChoiceFloatList:output_type -> cmdb.ChoiceFloatListResp
-	23,  // 242: cmdb.Cmdb.getChoiceFloatById:output_type -> cmdb.ChoiceFloatInfo
-	21,  // 243: cmdb.Cmdb.deleteChoiceFloat:output_type -> cmdb.BaseResp
-	18,  // 244: cmdb.Cmdb.createChoiceInteger:output_type -> cmdb.BaseIDResp
-	21,  // 245: cmdb.Cmdb.updateChoiceInteger:output_type -> cmdb.BaseResp
-	28,  // 246: cmdb.Cmdb.getChoiceIntegerList:output_type -> cmdb.ChoiceIntegerListResp
-	26,  // 247: cmdb.Cmdb.getChoiceIntegerById:output_type -> cmdb.ChoiceIntegerInfo
-	21,  // 248: cmdb.Cmdb.deleteChoiceInteger:output_type -> cmdb.BaseResp
-	18,  // 249: cmdb.Cmdb.createChoiceText:output_type -> cmdb.BaseIDResp
-	21,  // 250: cmdb.Cmdb.updateChoiceText:output_type -> cmdb.BaseResp
-	31,  // 251: cmdb.Cmdb.getChoiceTextList:output_type -> cmdb.ChoiceTextListResp
-	29,  // 252: cmdb.Cmdb.getChoiceTextById:output_type -> cmdb.ChoiceTextInfo
-	21,  // 253: cmdb.Cmdb.deleteChoiceText:output_type -> cmdb.BaseResp
-	18,  // 254: cmdb.Cmdb.createCiPermission:output_type -> cmdb.BaseIDResp
-	21,  // 255: cmdb.Cmdb.updateCiPermission:output_type -> cmdb.BaseResp
-	47,  // 256: cmdb.Cmdb.getCiPermissionList:output_type -> cmdb.CiPermissionListResp
-	44,  // 257: cmdb.Cmdb.getCiPermissionById:output_type -> cmdb.CiPermissionInfo
-	21,  // 258: cmdb.Cmdb.deleteCiPermission:output_type -> cmdb.BaseResp
-	18,  // 259: cmdb.Cmdb.createCiRelation:output_type -> cmdb.BaseIDResp
-	21,  // 260: cmdb.Cmdb.updateCiRelation:output_type -> cmdb.BaseResp
-	57,  // 261: cmdb.Cmdb.getCiRelationList:output_type -> cmdb.CiRelationListResp
-	55,  // 262: cmdb.Cmdb.getCiRelationById:output_type -> cmdb.CiRelationInfo
-	21,  // 263: cmdb.Cmdb.deleteCiRelation:output_type -> cmdb.BaseResp
-	18,  // 264: cmdb.Cmdb.createCis:output_type -> cmdb.BaseIDResp
-	21,  // 265: cmdb.Cmdb.updateCis:output_type -> cmdb.BaseResp
-	109, // 266: cmdb.Cmdb.getCisList:output_type -> cmdb.CisListResp
-	107, // 267: cmdb.Cmdb.getCisById:output_type -> cmdb.CisInfo
-	106, // 268: cmdb.Cmdb.getCisDetailById:output_type -> cmdb.CisDetailInfo
-	21,  // 269: cmdb.Cmdb.deleteCis:output_type -> cmdb.BaseResp
-	21,  // 270: cmdb.Cmdb.cisBatchOperation:output_type -> cmdb.BaseResp
-	104, // 271: cmdb.Cmdb.validateCisAttributes:output_type -> cmdb.CisAttributeValidateResp
-	18,  // 272: cmdb.Cmdb.createCiType:output_type -> cmdb.BaseIDResp
-	21,  // 273: cmdb.Cmdb.updateCiType:output_type -> cmdb.BaseResp
-	98,  // 274: cmdb.Cmdb.getCiTypeList:output_type -> cmdb.CiTypeListResp
-	93,  // 275: cmdb.Cmdb.getCiTypeById:output_type -> cmdb.CiTypeInfo
-	21,  // 276: cmdb.Cmdb.deleteCiType:output_type -> cmdb.BaseResp
-	21,  // 277: cmdb.Cmdb.appendAttribute:output_type -> cmdb.BaseResp
-	21,  // 278: cmdb.Cmdb.createCiTypeAttribute:output_type -> cmdb.BaseResp
-	21,  // 279: cmdb.Cmdb.updateCiTypeAttribute:output_type -> cmdb.BaseResp
-	77,  // 280: cmdb.Cmdb.getCiTypeAttributeList:output_type -> cmdb.CiTypeAttributeListResp
-	75,  // 281: cmdb.Cmdb.getCiTypeAttributeById:output_type -> cmdb.CiTypeAttributeItem
-	21,  // 282: cmdb.Cmdb.deleteCiTypeAttribute:output_type -> cmdb.BaseResp
-	80,  // 283: cmdb.Cmdb.getCiTypeAttributeListWithGroup:output_type -> cmdb.CiTypeAttributeListWithGroupResp
-	21,  // 284: cmdb.Cmdb.changeCiTypeAttributeDefaultShow:output_type -> cmdb.BaseResp
-	18,  // 285: cmdb.Cmdb.createCiTypeAttributeGroup:output_type -> cmdb.BaseIDResp
-	21,  // 286: cmdb.Cmdb.updateCiTypeAttributeGroup:output_type -> cmdb.BaseResp
-	71,  // 287: cmdb.Cmdb.getCiTypeAttributeGroupList:output_type -> cmdb.CiTypeAttributeGroupListResp
-	63,  // 288: cmdb.Cmdb.getCiTypeAttributeGroupById:output_type -> cmdb.CiTypeAttributeGroupInfo
-	21,  // 289: cmdb.Cmdb.deleteCiTypeAttributeGroup:output_type -> cmdb.BaseResp
-	21,  // 290: cmdb.Cmdb.sortCiTypeAttributeGroup:output_type -> cmdb.BaseResp
-	18,  // 291: cmdb.Cmdb.createCiTypeAttributeGroupItem:output_type -> cmdb.BaseIDResp
-	21,  // 292: cmdb.Cmdb.updateCiTypeAttributeGroupItem:output_type -> cmdb.BaseResp
-	66,  // 293: cmdb.Cmdb.getCiTypeAttributeGroupItemList:output_type -> cmdb.CiTypeAttributeGroupItemListResp
-	64,  // 294: cmdb.Cmdb.getCiTypeAttributeGroupItemById:output_type -> cmdb.CiTypeAttributeGroupItemInfo
-	21,  // 295: cmdb.Cmdb.deleteCiTypeAttributeGroupItem:output_type -> cmdb.BaseResp
-	21,  // 296: cmdb.Cmdb.sortCiTypeAttributeGroupItem:output_type -> cmdb.BaseResp
-	18,  // 297: cmdb.Cmdb.createCiTypeGroup:output_type -> cmdb.BaseIDResp
-	21,  // 298: cmdb.Cmdb.updateCiTypeGroup:output_type -> cmdb.BaseResp
-	90,  // 299: cmdb.Cmdb.getCiTypeGroupList:output_type -> cmdb.CiTypeGroupListResp
-	81,  // 300: cmdb.Cmdb.getCiTypeGroupById:output_type -> cmdb.CiTypeGroupInfo
-	21,  // 301: cmdb.Cmdb.deleteCiTypeGroup:output_type -> cmdb.BaseResp
-	21,  // 302: cmdb.Cmdb.updateCiTypeGroupSort:output_type -> cmdb.BaseResp
-	18,  // 303: cmdb.Cmdb.createCiTypeGroupItem:output_type -> cmdb.BaseIDResp
-	21,  // 304: cmdb.Cmdb.updateCiTypeGroupItem:output_type -> cmdb.BaseResp
-	84,  // 305: cmdb.Cmdb.getCiTypeGroupItemList:output_type -> cmdb.CiTypeGroupItemListResp
-	88,  // 306: cmdb.Cmdb.getCiTypeGroupItemTreeList:output_type -> cmdb.CiTypeGroupItemTreeListResp
-	82,  // 307: cmdb.Cmdb.getCiTypeGroupItemById:output_type -> cmdb.CiTypeGroupItemInfo
-	21,  // 308: cmdb.Cmdb.deleteCiTypeGroupItem:output_type -> cmdb.BaseResp
-	21,  // 309: cmdb.Cmdb.updateCiTypeGroupItemSort:output_type -> cmdb.BaseResp
-	18,  // 310: cmdb.Cmdb.createCiTypeInheritance:output_type -> cmdb.BaseIDResp
-	21,  // 311: cmdb.Cmdb.updateCiTypeInheritance:output_type -> cmdb.BaseResp
-	96,  // 312: cmdb.Cmdb.getCiTypeInheritanceList:output_type -> cmdb.CiTypeInheritanceListResp
-	94,  // 313: cmdb.Cmdb.getCiTypeInheritanceById:output_type -> cmdb.CiTypeInheritanceInfo
-	21,  // 314: cmdb.Cmdb.deleteCiTypeInheritance:output_type -> cmdb.BaseResp
-	18,  // 315: cmdb.Cmdb.createCiTypeRelation:output_type -> cmdb.BaseIDResp
-	21,  // 316: cmdb.Cmdb.updateCiTypeRelation:output_type -> cmdb.BaseResp
-	101, // 317: cmdb.Cmdb.getCiTypeRelationList:output_type -> cmdb.CiTypeRelationListResp
-	99,  // 318: cmdb.Cmdb.getCiTypeRelationById:output_type -> cmdb.CiTypeRelationInfo
-	21,  // 319: cmdb.Cmdb.deleteCiTypeRelation:output_type -> cmdb.BaseResp
-	18,  // 320: cmdb.Cmdb.createRelationType:output_type -> cmdb.BaseIDResp
-	21,  // 321: cmdb.Cmdb.updateRelationType:output_type -> cmdb.BaseResp
-	127, // 322: cmdb.Cmdb.getRelationTypeList:output_type -> cmdb.RelationTypeListResp
-	125, // 323: cmdb.Cmdb.getRelationTypeById:output_type -> cmdb.RelationTypeInfo
-	21,  // 324: cmdb.Cmdb.deleteRelationType:output_type -> cmdb.BaseResp
-	18,  // 325: cmdb.Cmdb.createValueDatetime:output_type -> cmdb.BaseIDResp
-	21,  // 326: cmdb.Cmdb.updateValueDatetime:output_type -> cmdb.BaseResp
-	147, // 327: cmdb.Cmdb.getValueDatetimeList:output_type -> cmdb.ValueDatetimeListResp
-	145, // 328: cmdb.Cmdb.getValueDatetimeById:output_type -> cmdb.ValueDatetimeInfo
-	21,  // 329: cmdb.Cmdb.deleteValueDatetime:output_type -> cmdb.BaseResp
-	18,  // 330: cmdb.Cmdb.createValueFloat:output_type -> cmdb.BaseIDResp
-	21,  // 331: cmdb.Cmdb.updateValueFloat:output_type -> cmdb.BaseResp
-	150, // 332: cmdb.Cmdb.getValueFloatList:output_type -> cmdb.ValueFloatListResp
-	148, // 333: cmdb.Cmdb.getValueFloatById:output_type -> cmdb.ValueFloatInfo
-	21,  // 334: cmdb.Cmdb.deleteValueFloat:output_type -> cmdb.BaseResp
-	18,  // 335: cmdb.Cmdb.createValueInteger:output_type -> cmdb.BaseIDResp
-	21,  // 336: cmdb.Cmdb.updateValueInteger:output_type -> cmdb.BaseResp
-	153, // 337: cmdb.Cmdb.getValueIntegerList:output_type -> cmdb.ValueIntegerListResp
-	151, // 338: cmdb.Cmdb.getValueIntegerById:output_type -> cmdb.ValueIntegerInfo
-	21,  // 339: cmdb.Cmdb.deleteValueInteger:output_type -> cmdb.BaseResp
-	18,  // 340: cmdb.Cmdb.createValueJSON:output_type -> cmdb.BaseIDResp
-	21,  // 341: cmdb.Cmdb.updateValueJSON:output_type -> cmdb.BaseResp
-	156, // 342: cmdb.Cmdb.getValueJSONList:output_type -> cmdb.ValueJSONListResp
-	154, // 343: cmdb.Cmdb.getValueJSONById:output_type -> cmdb.ValueJSONInfo
-	21,  // 344: cmdb.Cmdb.deleteValueJSON:output_type -> cmdb.BaseResp
-	18,  // 345: cmdb.Cmdb.createValueText:output_type -> cmdb.BaseIDResp
-	21,  // 346: cmdb.Cmdb.updateValueText:output_type -> cmdb.BaseResp
-	159, // 347: cmdb.Cmdb.getValueTextList:output_type -> cmdb.ValueTextListResp
-	157, // 348: cmdb.Cmdb.getValueTextById:output_type -> cmdb.ValueTextInfo
-	21,  // 349: cmdb.Cmdb.deleteValueText:output_type -> cmdb.BaseResp
-	227, // [227:350] is the sub-list for method output_type
-	104, // [104:227] is the sub-list for method input_type
-	104, // [104:104] is the sub-list for extension type_name
-	104, // [104:104] is the sub-list for extension extendee
-	0,   // [0:104] is the sub-list for field type_name
+	2,   // 0: cmdb.AttributeChoiceItem.meta:type_name -> cmdb.AttributeChoiceItemMeta
+	6,   // 1: cmdb.AttributeChoiceItemMeta.style:type_name -> cmdb.AttributeFontOption
+	4,   // 2: cmdb.AttributeInfo.choice_web_hook:type_name -> cmdb.AttributeChoiceWebHook
+	19,  // 3: cmdb.AttributeInfo.option:type_name -> cmdb.AttributeOption
+	5,   // 4: cmdb.AttributeInfo.default:type_name -> cmdb.AttributeDefault
+	3,   // 5: cmdb.AttributeInfo.choice_other:type_name -> cmdb.AttributeChoiceOther
+	1,   // 6: cmdb.AttributeInfo.choices:type_name -> cmdb.AttributeChoiceItem
+	170, // 7: cmdb.AttributeInfo.validator_rules:type_name -> cmdb.ValidationRule
+	8,   // 8: cmdb.AttributeListResp.data:type_name -> cmdb.AttributeInfo
+	100, // 9: cmdb.AttributeMappingConfigInfo.source_ci_type:type_name -> cmdb.CiTypeBasicInfo
+	100, // 10: cmdb.AttributeMappingConfigInfo.target_ci_type:type_name -> cmdb.CiTypeBasicInfo
+	158, // 11: cmdb.AttributeMappingConfigInfo.relation_type:type_name -> cmdb.RelationTypeBasicInfo
+	15,  // 12: cmdb.AttributeMappingConfigInfo.single_mapping:type_name -> cmdb.AttributeMappingPair
+	15,  // 13: cmdb.AttributeMappingConfigInfo.multiple_mappings:type_name -> cmdb.AttributeMappingPair
+	11,  // 14: cmdb.AttributeMappingConfigResp.configs:type_name -> cmdb.AttributeMappingConfigInfo
+	0,   // 15: cmdb.AttributeMappingPair.source_attribute:type_name -> cmdb.AttributeBasicInfo
+	0,   // 16: cmdb.AttributeMappingPair.target_attribute:type_name -> cmdb.AttributeBasicInfo
+	16,  // 17: cmdb.AttributeMappingRuleListResp.data:type_name -> cmdb.AttributeMappingRuleInfo
+	6,   // 18: cmdb.AttributeOption.fontOption:type_name -> cmdb.AttributeFontOption
+	7,   // 19: cmdb.AttributeOption.imageOptions:type_name -> cmdb.AttributeImageOption
+	20,  // 20: cmdb.AttributeSimpleListResp.data:type_name -> cmdb.AttributeSimple
+	2,   // 21: cmdb.ChoiceFloatInfo.option:type_name -> cmdb.AttributeChoiceItemMeta
+	2,   // 22: cmdb.ChoiceFloatListReq.option:type_name -> cmdb.AttributeChoiceItemMeta
+	30,  // 23: cmdb.ChoiceFloatListResp.data:type_name -> cmdb.ChoiceFloatInfo
+	2,   // 24: cmdb.ChoiceIntegerInfo.option:type_name -> cmdb.AttributeChoiceItemMeta
+	2,   // 25: cmdb.ChoiceIntegerListReq.option:type_name -> cmdb.AttributeChoiceItemMeta
+	33,  // 26: cmdb.ChoiceIntegerListResp.data:type_name -> cmdb.ChoiceIntegerInfo
+	2,   // 27: cmdb.ChoiceTextInfo.option:type_name -> cmdb.AttributeChoiceItemMeta
+	2,   // 28: cmdb.ChoiceTextListReq.option:type_name -> cmdb.AttributeChoiceItemMeta
+	36,  // 29: cmdb.ChoiceTextListResp.data:type_name -> cmdb.ChoiceTextInfo
+	40,  // 30: cmdb.CiFilterGroup.filters:type_name -> cmdb.CiAttributeFilter
+	43,  // 31: cmdb.CiFilterGroup.groups:type_name -> cmdb.CiFilterGroup
+	188, // 32: cmdb.CiPermissionAllowedValues.field_values:type_name -> cmdb.CiPermissionAllowedValues.FieldValuesEntry
+	50,  // 33: cmdb.CiPermissionDataFilters.rules:type_name -> cmdb.CiPermissionFilterRule
+	57,  // 34: cmdb.CiPermissionInfo.operations:type_name -> cmdb.CiPermissionOperations
+	47,  // 35: cmdb.CiPermissionInfo.conditions:type_name -> cmdb.CiPermissionConditions
+	48,  // 36: cmdb.CiPermissionInfo.data_filters:type_name -> cmdb.CiPermissionDataFilters
+	49,  // 37: cmdb.CiPermissionInfo.field_masks:type_name -> cmdb.CiPermissionFieldMasks
+	46,  // 38: cmdb.CiPermissionInfo.allowed_values:type_name -> cmdb.CiPermissionAllowedValues
+	62,  // 39: cmdb.CiPermissionInfo.usage_statistics:type_name -> cmdb.CiPermissionUsageStatistics
+	52,  // 40: cmdb.CiPermissionInfo.inherited_from:type_name -> cmdb.CiPermissionInheritedFrom
+	60,  // 41: cmdb.CiPermissionInfo.security_constraints:type_name -> cmdb.CiPermissionSecurityConstraints
+	55,  // 42: cmdb.CiPermissionInfo.metadata:type_name -> cmdb.CiPermissionMetadata
+	61,  // 43: cmdb.CiPermissionInfo.tags:type_name -> cmdb.CiPermissionTag
+	57,  // 44: cmdb.CiPermissionListReq.operations:type_name -> cmdb.CiPermissionOperations
+	47,  // 45: cmdb.CiPermissionListReq.conditions:type_name -> cmdb.CiPermissionConditions
+	48,  // 46: cmdb.CiPermissionListReq.data_filters:type_name -> cmdb.CiPermissionDataFilters
+	49,  // 47: cmdb.CiPermissionListReq.field_masks:type_name -> cmdb.CiPermissionFieldMasks
+	46,  // 48: cmdb.CiPermissionListReq.allowed_values:type_name -> cmdb.CiPermissionAllowedValues
+	62,  // 49: cmdb.CiPermissionListReq.usage_statistics:type_name -> cmdb.CiPermissionUsageStatistics
+	52,  // 50: cmdb.CiPermissionListReq.inherited_from:type_name -> cmdb.CiPermissionInheritedFrom
+	60,  // 51: cmdb.CiPermissionListReq.security_constraints:type_name -> cmdb.CiPermissionSecurityConstraints
+	55,  // 52: cmdb.CiPermissionListReq.metadata:type_name -> cmdb.CiPermissionMetadata
+	61,  // 53: cmdb.CiPermissionListReq.tags:type_name -> cmdb.CiPermissionTag
+	51,  // 54: cmdb.CiPermissionListResp.data:type_name -> cmdb.CiPermissionInfo
+	189, // 55: cmdb.CiPermissionMetadata.custom_fields:type_name -> cmdb.CiPermissionMetadata.CustomFieldsEntry
+	56,  // 56: cmdb.CiPermissionOperations.operations:type_name -> cmdb.CiPermissionOperation
+	164, // 57: cmdb.CiPermissionSecurityConstraints.time_restrictions:type_name -> cmdb.TimeRestriction
+	153, // 58: cmdb.CiPermissionSecurityConstraints.location_restrictions:type_name -> cmdb.LocationRestriction
+	190, // 59: cmdb.CiPermissionUsageStatistics.daily_usage:type_name -> cmdb.CiPermissionUsageStatistics.DailyUsageEntry
+	191, // 60: cmdb.CiPermissionUsageStatistics.weekly_usage:type_name -> cmdb.CiPermissionUsageStatistics.WeeklyUsageEntry
+	192, // 61: cmdb.CiPermissionUsageStatistics.monthly_usage:type_name -> cmdb.CiPermissionUsageStatistics.MonthlyUsageEntry
+	154, // 62: cmdb.CiPermissionUsageStatistics.top_operations:type_name -> cmdb.OperationStat
+	193, // 63: cmdb.CiRelationBatchQueryResp.relations_by_ci:type_name -> cmdb.CiRelationBatchQueryResp.RelationsByCiEntry
+	14,  // 64: cmdb.CiRelationCreateInfo.attribute_mappings:type_name -> cmdb.AttributeMappingData
+	68,  // 65: cmdb.CiRelationGroup.source_relations:type_name -> cmdb.CiRelationInfo
+	68,  // 66: cmdb.CiRelationGroup.target_relations:type_name -> cmdb.CiRelationInfo
+	14,  // 67: cmdb.CiRelationInfo.attribute_mappings:type_name -> cmdb.AttributeMappingData
+	169, // 68: cmdb.CiRelationInfo.validation_result:type_name -> cmdb.ValidationResult
+	162, // 69: cmdb.CiRelationInfo.sync_config:type_name -> cmdb.SyncConfig
+	68,  // 70: cmdb.CiRelationListResp.data:type_name -> cmdb.CiRelationInfo
+	68,  // 71: cmdb.CiRelationQueryResult.source_relations:type_name -> cmdb.CiRelationInfo
+	68,  // 72: cmdb.CiRelationQueryResult.target_relations:type_name -> cmdb.CiRelationInfo
+	14,  // 73: cmdb.CiRelationUpdateInfo.attribute_mappings:type_name -> cmdb.AttributeMappingData
+	65,  // 74: cmdb.CiRelationsData.create_relations:type_name -> cmdb.CiRelationCreateInfo
+	72,  // 75: cmdb.CiRelationsData.update_relations:type_name -> cmdb.CiRelationUpdateInfo
+	71,  // 76: cmdb.CiRelationsData.query_result:type_name -> cmdb.CiRelationQueryResult
+	80,  // 77: cmdb.CiTypeAttributeGroupItemListResp.data:type_name -> cmdb.CiTypeAttributeGroupItemInfo
+	84,  // 78: cmdb.CiTypeAttributeGroupItemSort.items:type_name -> cmdb.CiTypeAttributeGroupItemSortItem
+	83,  // 79: cmdb.CiTypeAttributeGroupItemSortReq.data:type_name -> cmdb.CiTypeAttributeGroupItemSort
+	8,   // 80: cmdb.CiTypeAttributeGroupItemWithAttrInfo.attribute:type_name -> cmdb.AttributeInfo
+	79,  // 81: cmdb.CiTypeAttributeGroupListResp.data:type_name -> cmdb.CiTypeAttributeGroupInfo
+	89,  // 82: cmdb.CiTypeAttributeGroupSortReq.data:type_name -> cmdb.CiTypeAttributeGroupSort
+	86,  // 83: cmdb.CiTypeAttributeGroupWithAttrInfo.items:type_name -> cmdb.CiTypeAttributeGroupItemWithAttrInfo
+	91,  // 84: cmdb.CiTypeAttributeGroupWithAttrListResp.data:type_name -> cmdb.CiTypeAttributeGroupWithAttrInfo
+	8,   // 85: cmdb.CiTypeAttributeItem.attribute:type_name -> cmdb.AttributeInfo
+	94,  // 86: cmdb.CiTypeAttributeListResp.data:type_name -> cmdb.CiTypeAttributeItem
+	94,  // 87: cmdb.CiTypeAttributeListWithGroupInfo.attributes:type_name -> cmdb.CiTypeAttributeItem
+	97,  // 88: cmdb.CiTypeAttributeListWithGroupResp.data:type_name -> cmdb.CiTypeAttributeListWithGroupInfo
+	101, // 89: cmdb.CiTypeDiscoveryConfigListResp.data:type_name -> cmdb.CiTypeDiscoveryConfigInfo
+	105, // 90: cmdb.CiTypeGroupItemListResp.data:type_name -> cmdb.CiTypeGroupItemInfo
+	108, // 91: cmdb.CiTypeGroupItemSortReq.sort_items:type_name -> cmdb.CiTypeGroupItemSort
+	105, // 92: cmdb.CiTypeGroupItemTreeListInfo.items:type_name -> cmdb.CiTypeGroupItemInfo
+	110, // 93: cmdb.CiTypeGroupItemTreeListResp.data:type_name -> cmdb.CiTypeGroupItemTreeListInfo
+	104, // 94: cmdb.CiTypeGroupListResp.data:type_name -> cmdb.CiTypeGroupInfo
+	114, // 95: cmdb.CiTypeGroupSortReq.data:type_name -> cmdb.CiTypeGroupSort
+	127, // 96: cmdb.CiTypeInfo.unique_const:type_name -> cmdb.CiTypeUniqueConst
+	117, // 97: cmdb.CiTypeInheritanceListResp.data:type_name -> cmdb.CiTypeInheritanceInfo
+	116, // 98: cmdb.CiTypeListResp.data:type_name -> cmdb.CiTypeInfo
+	124, // 99: cmdb.CiTypeRelationDefinitionResp.source_relations:type_name -> cmdb.CiTypeRelationInfo
+	124, // 100: cmdb.CiTypeRelationDefinitionResp.target_relations:type_name -> cmdb.CiTypeRelationInfo
+	124, // 101: cmdb.CiTypeRelationListResp.data:type_name -> cmdb.CiTypeRelationInfo
+	41,  // 102: cmdb.CisAttributeValidateReq.attributes:type_name -> cmdb.CiAttributeValue
+	39,  // 103: cmdb.CisAttributeValidateResp.errors:type_name -> cmdb.CiAttributeError
+	132, // 104: cmdb.CisDetailInfo.ci_info:type_name -> cmdb.CisInfo
+	135, // 105: cmdb.CisInfo.metadata:type_name -> cmdb.CisMetadata
+	135, // 106: cmdb.CisInfo.custom_fields:type_name -> cmdb.CisMetadata
+	41,  // 107: cmdb.CisInfo.attributes:type_name -> cmdb.CiAttributeValue
+	73,  // 108: cmdb.CisInfo.relations:type_name -> cmdb.CiRelationsData
+	40,  // 109: cmdb.CisListReq.attribute_filters:type_name -> cmdb.CiAttributeFilter
+	43,  // 110: cmdb.CisListReq.filter_groups:type_name -> cmdb.CiFilterGroup
+	66,  // 111: cmdb.CisListReq.relation_filters:type_name -> cmdb.CiRelationFilter
+	44,  // 112: cmdb.CisListReq.inheritance_search:type_name -> cmdb.CiInheritanceSearch
+	75,  // 113: cmdb.CisListReq.tag_filters:type_name -> cmdb.CiTagFilter
+	45,  // 114: cmdb.CisListReq.metadata_filters:type_name -> cmdb.CiMetadataFilter
+	76,  // 115: cmdb.CisListReq.time_range_search:type_name -> cmdb.CiTimeRangeSearch
+	42,  // 116: cmdb.CisListReq.facet_search:type_name -> cmdb.CiFacetSearch
+	74,  // 117: cmdb.CisListReq.sort_fields:type_name -> cmdb.CiSortField
+	132, // 118: cmdb.CisListResp.data:type_name -> cmdb.CisInfo
+	194, // 119: cmdb.DiscoveredCIData.attributes:type_name -> cmdb.DiscoveredCIData.AttributesEntry
+	137, // 120: cmdb.DiscoveryExecutionHistoryListResp.data:type_name -> cmdb.DiscoveryExecutionHistoryInfo
+	156, // 121: cmdb.ListProvidersResp.providers:type_name -> cmdb.ProviderInfo
+	159, // 122: cmdb.RelationTypeListResp.data:type_name -> cmdb.RelationTypeInfo
+	195, // 123: cmdb.UserPermissionScopeResp.custom_rules:type_name -> cmdb.UserPermissionScopeResp.CustomRulesEntry
+	171, // 124: cmdb.ValidationRule.params:type_name -> cmdb.ValidationRuleParams
+	172, // 125: cmdb.ValueDatetimeListResp.data:type_name -> cmdb.ValueDatetimeInfo
+	175, // 126: cmdb.ValueFloatListResp.data:type_name -> cmdb.ValueFloatInfo
+	178, // 127: cmdb.ValueIntegerListResp.data:type_name -> cmdb.ValueIntegerInfo
+	181, // 128: cmdb.ValueJSONListResp.data:type_name -> cmdb.ValueJSONInfo
+	184, // 129: cmdb.ValueTextListResp.data:type_name -> cmdb.ValueTextInfo
+	67,  // 130: cmdb.CiRelationBatchQueryResp.RelationsByCiEntry.value:type_name -> cmdb.CiRelationGroup
+	8,   // 131: cmdb.Cmdb.createAttribute:input_type -> cmdb.AttributeInfo
+	8,   // 132: cmdb.Cmdb.updateAttribute:input_type -> cmdb.AttributeInfo
+	9,   // 133: cmdb.Cmdb.getAttributeList:input_type -> cmdb.AttributeListReq
+	21,  // 134: cmdb.Cmdb.getAttributeSimpleList:input_type -> cmdb.AttributeSimpleListReq
+	144, // 135: cmdb.Cmdb.getAttributeById:input_type -> cmdb.IDReq
+	149, // 136: cmdb.Cmdb.deleteAttribute:input_type -> cmdb.IDsReq
+	16,  // 137: cmdb.Cmdb.createAttributeMappingRule:input_type -> cmdb.AttributeMappingRuleInfo
+	16,  // 138: cmdb.Cmdb.updateAttributeMappingRule:input_type -> cmdb.AttributeMappingRuleInfo
+	17,  // 139: cmdb.Cmdb.getAttributeMappingRuleList:input_type -> cmdb.AttributeMappingRuleListReq
+	144, // 140: cmdb.Cmdb.getAttributeMappingRuleById:input_type -> cmdb.IDReq
+	149, // 141: cmdb.Cmdb.deleteAttributeMappingRule:input_type -> cmdb.IDsReq
+	141, // 142: cmdb.Cmdb.initDatabase:input_type -> cmdb.Empty
+	30,  // 143: cmdb.Cmdb.createChoiceFloat:input_type -> cmdb.ChoiceFloatInfo
+	30,  // 144: cmdb.Cmdb.updateChoiceFloat:input_type -> cmdb.ChoiceFloatInfo
+	31,  // 145: cmdb.Cmdb.getChoiceFloatList:input_type -> cmdb.ChoiceFloatListReq
+	144, // 146: cmdb.Cmdb.getChoiceFloatById:input_type -> cmdb.IDReq
+	149, // 147: cmdb.Cmdb.deleteChoiceFloat:input_type -> cmdb.IDsReq
+	33,  // 148: cmdb.Cmdb.createChoiceInteger:input_type -> cmdb.ChoiceIntegerInfo
+	33,  // 149: cmdb.Cmdb.updateChoiceInteger:input_type -> cmdb.ChoiceIntegerInfo
+	34,  // 150: cmdb.Cmdb.getChoiceIntegerList:input_type -> cmdb.ChoiceIntegerListReq
+	144, // 151: cmdb.Cmdb.getChoiceIntegerById:input_type -> cmdb.IDReq
+	149, // 152: cmdb.Cmdb.deleteChoiceInteger:input_type -> cmdb.IDsReq
+	36,  // 153: cmdb.Cmdb.createChoiceText:input_type -> cmdb.ChoiceTextInfo
+	36,  // 154: cmdb.Cmdb.updateChoiceText:input_type -> cmdb.ChoiceTextInfo
+	37,  // 155: cmdb.Cmdb.getChoiceTextList:input_type -> cmdb.ChoiceTextListReq
+	144, // 156: cmdb.Cmdb.getChoiceTextById:input_type -> cmdb.IDReq
+	149, // 157: cmdb.Cmdb.deleteChoiceText:input_type -> cmdb.IDsReq
+	51,  // 158: cmdb.Cmdb.createCiPermission:input_type -> cmdb.CiPermissionInfo
+	51,  // 159: cmdb.Cmdb.updateCiPermission:input_type -> cmdb.CiPermissionInfo
+	53,  // 160: cmdb.Cmdb.getCiPermissionList:input_type -> cmdb.CiPermissionListReq
+	144, // 161: cmdb.Cmdb.getCiPermissionById:input_type -> cmdb.IDReq
+	149, // 162: cmdb.Cmdb.deleteCiPermission:input_type -> cmdb.IDsReq
+	58,  // 163: cmdb.Cmdb.checkCiTypePermission:input_type -> cmdb.CiPermissionReq
+	167, // 164: cmdb.Cmdb.getUserPermissionScope:input_type -> cmdb.UserPermissionScopeReq
+	68,  // 165: cmdb.Cmdb.createCiRelation:input_type -> cmdb.CiRelationInfo
+	68,  // 166: cmdb.Cmdb.updateCiRelation:input_type -> cmdb.CiRelationInfo
+	69,  // 167: cmdb.Cmdb.getCiRelationList:input_type -> cmdb.CiRelationListReq
+	144, // 168: cmdb.Cmdb.getCiRelationById:input_type -> cmdb.IDReq
+	149, // 169: cmdb.Cmdb.deleteCiRelation:input_type -> cmdb.IDsReq
+	63,  // 170: cmdb.Cmdb.getCiRelationsBatch:input_type -> cmdb.CiRelationBatchQueryReq
+	132, // 171: cmdb.Cmdb.createCis:input_type -> cmdb.CisInfo
+	132, // 172: cmdb.Cmdb.updateCis:input_type -> cmdb.CisInfo
+	133, // 173: cmdb.Cmdb.getCisList:input_type -> cmdb.CisListReq
+	144, // 174: cmdb.Cmdb.getCisById:input_type -> cmdb.IDReq
+	144, // 175: cmdb.Cmdb.getCisDetailById:input_type -> cmdb.IDReq
+	149, // 176: cmdb.Cmdb.deleteCis:input_type -> cmdb.IDsReq
+	130, // 177: cmdb.Cmdb.cisBatchOperation:input_type -> cmdb.CisBatchOperationReq
+	128, // 178: cmdb.Cmdb.validateCisAttributes:input_type -> cmdb.CisAttributeValidateReq
+	136, // 179: cmdb.Cmdb.writeDiscoveredCI:input_type -> cmdb.DiscoveredCIData
+	116, // 180: cmdb.Cmdb.createCiType:input_type -> cmdb.CiTypeInfo
+	116, // 181: cmdb.Cmdb.updateCiType:input_type -> cmdb.CiTypeInfo
+	120, // 182: cmdb.Cmdb.getCiTypeList:input_type -> cmdb.CiTypeListReq
+	144, // 183: cmdb.Cmdb.getCiTypeById:input_type -> cmdb.IDReq
+	149, // 184: cmdb.Cmdb.deleteCiType:input_type -> cmdb.IDsReq
+	77,  // 185: cmdb.Cmdb.appendAttribute:input_type -> cmdb.CiTypeAppendAttributeReq
+	94,  // 186: cmdb.Cmdb.createCiTypeAttribute:input_type -> cmdb.CiTypeAttributeItem
+	94,  // 187: cmdb.Cmdb.updateCiTypeAttribute:input_type -> cmdb.CiTypeAttributeItem
+	95,  // 188: cmdb.Cmdb.getCiTypeAttributeList:input_type -> cmdb.CiTypeAttributeListReq
+	144, // 189: cmdb.Cmdb.getCiTypeAttributeById:input_type -> cmdb.IDReq
+	149, // 190: cmdb.Cmdb.deleteCiTypeAttribute:input_type -> cmdb.IDsReq
+	98,  // 191: cmdb.Cmdb.getCiTypeAttributeListWithGroup:input_type -> cmdb.CiTypeAttributeListWithGroupReq
+	78,  // 192: cmdb.Cmdb.changeCiTypeAttributeDefaultShow:input_type -> cmdb.CiTypeAttributeChangeDefaultShowReq
+	79,  // 193: cmdb.Cmdb.createCiTypeAttributeGroup:input_type -> cmdb.CiTypeAttributeGroupInfo
+	79,  // 194: cmdb.Cmdb.updateCiTypeAttributeGroup:input_type -> cmdb.CiTypeAttributeGroupInfo
+	87,  // 195: cmdb.Cmdb.getCiTypeAttributeGroupList:input_type -> cmdb.CiTypeAttributeGroupListReq
+	144, // 196: cmdb.Cmdb.getCiTypeAttributeGroupById:input_type -> cmdb.IDReq
+	149, // 197: cmdb.Cmdb.deleteCiTypeAttributeGroup:input_type -> cmdb.IDsReq
+	90,  // 198: cmdb.Cmdb.sortCiTypeAttributeGroup:input_type -> cmdb.CiTypeAttributeGroupSortReq
+	144, // 199: cmdb.Cmdb.listAttributeGroupWithAttribute:input_type -> cmdb.IDReq
+	80,  // 200: cmdb.Cmdb.createCiTypeAttributeGroupItem:input_type -> cmdb.CiTypeAttributeGroupItemInfo
+	80,  // 201: cmdb.Cmdb.updateCiTypeAttributeGroupItem:input_type -> cmdb.CiTypeAttributeGroupItemInfo
+	81,  // 202: cmdb.Cmdb.getCiTypeAttributeGroupItemList:input_type -> cmdb.CiTypeAttributeGroupItemListReq
+	144, // 203: cmdb.Cmdb.getCiTypeAttributeGroupItemById:input_type -> cmdb.IDReq
+	149, // 204: cmdb.Cmdb.deleteCiTypeAttributeGroupItem:input_type -> cmdb.IDsReq
+	85,  // 205: cmdb.Cmdb.sortCiTypeAttributeGroupItem:input_type -> cmdb.CiTypeAttributeGroupItemSortReq
+	101, // 206: cmdb.Cmdb.createCiTypeDiscoveryConfig:input_type -> cmdb.CiTypeDiscoveryConfigInfo
+	101, // 207: cmdb.Cmdb.updateCiTypeDiscoveryConfig:input_type -> cmdb.CiTypeDiscoveryConfigInfo
+	102, // 208: cmdb.Cmdb.getCiTypeDiscoveryConfigList:input_type -> cmdb.CiTypeDiscoveryConfigListReq
+	144, // 209: cmdb.Cmdb.getCiTypeDiscoveryConfigById:input_type -> cmdb.IDReq
+	149, // 210: cmdb.Cmdb.deleteCiTypeDiscoveryConfig:input_type -> cmdb.IDsReq
+	144, // 211: cmdb.Cmdb.executeDiscovery:input_type -> cmdb.IDReq
+	163, // 212: cmdb.Cmdb.testProviderConnection:input_type -> cmdb.TestProviderConnectionReq
+	163, // 213: cmdb.Cmdb.getProviderSchema:input_type -> cmdb.TestProviderConnectionReq
+	141, // 214: cmdb.Cmdb.listProviders:input_type -> cmdb.Empty
+	104, // 215: cmdb.Cmdb.createCiTypeGroup:input_type -> cmdb.CiTypeGroupInfo
+	104, // 216: cmdb.Cmdb.updateCiTypeGroup:input_type -> cmdb.CiTypeGroupInfo
+	112, // 217: cmdb.Cmdb.getCiTypeGroupList:input_type -> cmdb.CiTypeGroupListReq
+	144, // 218: cmdb.Cmdb.getCiTypeGroupById:input_type -> cmdb.IDReq
+	149, // 219: cmdb.Cmdb.deleteCiTypeGroup:input_type -> cmdb.IDsReq
+	115, // 220: cmdb.Cmdb.updateCiTypeGroupSort:input_type -> cmdb.CiTypeGroupSortReq
+	105, // 221: cmdb.Cmdb.createCiTypeGroupItem:input_type -> cmdb.CiTypeGroupItemInfo
+	105, // 222: cmdb.Cmdb.updateCiTypeGroupItem:input_type -> cmdb.CiTypeGroupItemInfo
+	106, // 223: cmdb.Cmdb.getCiTypeGroupItemList:input_type -> cmdb.CiTypeGroupItemListReq
+	106, // 224: cmdb.Cmdb.getCiTypeGroupItemTreeList:input_type -> cmdb.CiTypeGroupItemListReq
+	144, // 225: cmdb.Cmdb.getCiTypeGroupItemById:input_type -> cmdb.IDReq
+	149, // 226: cmdb.Cmdb.deleteCiTypeGroupItem:input_type -> cmdb.IDsReq
+	109, // 227: cmdb.Cmdb.updateCiTypeGroupItemSort:input_type -> cmdb.CiTypeGroupItemSortReq
+	117, // 228: cmdb.Cmdb.createCiTypeInheritance:input_type -> cmdb.CiTypeInheritanceInfo
+	117, // 229: cmdb.Cmdb.updateCiTypeInheritance:input_type -> cmdb.CiTypeInheritanceInfo
+	118, // 230: cmdb.Cmdb.getCiTypeInheritanceList:input_type -> cmdb.CiTypeInheritanceListReq
+	144, // 231: cmdb.Cmdb.getCiTypeInheritanceById:input_type -> cmdb.IDReq
+	149, // 232: cmdb.Cmdb.deleteCiTypeInheritance:input_type -> cmdb.IDsReq
+	124, // 233: cmdb.Cmdb.createCiTypeRelation:input_type -> cmdb.CiTypeRelationInfo
+	124, // 234: cmdb.Cmdb.updateCiTypeRelation:input_type -> cmdb.CiTypeRelationInfo
+	125, // 235: cmdb.Cmdb.getCiTypeRelationList:input_type -> cmdb.CiTypeRelationListReq
+	144, // 236: cmdb.Cmdb.getCiTypeRelationById:input_type -> cmdb.IDReq
+	149, // 237: cmdb.Cmdb.deleteCiTypeRelation:input_type -> cmdb.IDsReq
+	122, // 238: cmdb.Cmdb.getCiTypeRelationDefinitions:input_type -> cmdb.CiTypeRelationDefinitionReq
+	12,  // 239: cmdb.Cmdb.getAttributeMappingConfigs:input_type -> cmdb.AttributeMappingConfigReq
+	137, // 240: cmdb.Cmdb.createDiscoveryExecutionHistory:input_type -> cmdb.DiscoveryExecutionHistoryInfo
+	137, // 241: cmdb.Cmdb.updateDiscoveryExecutionHistory:input_type -> cmdb.DiscoveryExecutionHistoryInfo
+	138, // 242: cmdb.Cmdb.getDiscoveryExecutionHistoryList:input_type -> cmdb.DiscoveryExecutionHistoryListReq
+	144, // 243: cmdb.Cmdb.getDiscoveryExecutionHistoryById:input_type -> cmdb.IDReq
+	149, // 244: cmdb.Cmdb.deleteDiscoveryExecutionHistory:input_type -> cmdb.IDsReq
+	159, // 245: cmdb.Cmdb.createRelationType:input_type -> cmdb.RelationTypeInfo
+	159, // 246: cmdb.Cmdb.updateRelationType:input_type -> cmdb.RelationTypeInfo
+	160, // 247: cmdb.Cmdb.getRelationTypeList:input_type -> cmdb.RelationTypeListReq
+	144, // 248: cmdb.Cmdb.getRelationTypeById:input_type -> cmdb.IDReq
+	149, // 249: cmdb.Cmdb.deleteRelationType:input_type -> cmdb.IDsReq
+	172, // 250: cmdb.Cmdb.createValueDatetime:input_type -> cmdb.ValueDatetimeInfo
+	172, // 251: cmdb.Cmdb.updateValueDatetime:input_type -> cmdb.ValueDatetimeInfo
+	173, // 252: cmdb.Cmdb.getValueDatetimeList:input_type -> cmdb.ValueDatetimeListReq
+	144, // 253: cmdb.Cmdb.getValueDatetimeById:input_type -> cmdb.IDReq
+	149, // 254: cmdb.Cmdb.deleteValueDatetime:input_type -> cmdb.IDsReq
+	175, // 255: cmdb.Cmdb.createValueFloat:input_type -> cmdb.ValueFloatInfo
+	175, // 256: cmdb.Cmdb.updateValueFloat:input_type -> cmdb.ValueFloatInfo
+	176, // 257: cmdb.Cmdb.getValueFloatList:input_type -> cmdb.ValueFloatListReq
+	144, // 258: cmdb.Cmdb.getValueFloatById:input_type -> cmdb.IDReq
+	149, // 259: cmdb.Cmdb.deleteValueFloat:input_type -> cmdb.IDsReq
+	178, // 260: cmdb.Cmdb.createValueInteger:input_type -> cmdb.ValueIntegerInfo
+	178, // 261: cmdb.Cmdb.updateValueInteger:input_type -> cmdb.ValueIntegerInfo
+	179, // 262: cmdb.Cmdb.getValueIntegerList:input_type -> cmdb.ValueIntegerListReq
+	144, // 263: cmdb.Cmdb.getValueIntegerById:input_type -> cmdb.IDReq
+	149, // 264: cmdb.Cmdb.deleteValueInteger:input_type -> cmdb.IDsReq
+	181, // 265: cmdb.Cmdb.createValueJSON:input_type -> cmdb.ValueJSONInfo
+	181, // 266: cmdb.Cmdb.updateValueJSON:input_type -> cmdb.ValueJSONInfo
+	182, // 267: cmdb.Cmdb.getValueJSONList:input_type -> cmdb.ValueJSONListReq
+	144, // 268: cmdb.Cmdb.getValueJSONById:input_type -> cmdb.IDReq
+	149, // 269: cmdb.Cmdb.deleteValueJSON:input_type -> cmdb.IDsReq
+	184, // 270: cmdb.Cmdb.createValueText:input_type -> cmdb.ValueTextInfo
+	184, // 271: cmdb.Cmdb.updateValueText:input_type -> cmdb.ValueTextInfo
+	185, // 272: cmdb.Cmdb.getValueTextList:input_type -> cmdb.ValueTextListReq
+	144, // 273: cmdb.Cmdb.getValueTextById:input_type -> cmdb.IDReq
+	149, // 274: cmdb.Cmdb.deleteValueText:input_type -> cmdb.IDsReq
+	25,  // 275: cmdb.Cmdb.createAttribute:output_type -> cmdb.BaseIDResp
+	25,  // 276: cmdb.Cmdb.updateAttribute:output_type -> cmdb.BaseIDResp
+	10,  // 277: cmdb.Cmdb.getAttributeList:output_type -> cmdb.AttributeListResp
+	22,  // 278: cmdb.Cmdb.getAttributeSimpleList:output_type -> cmdb.AttributeSimpleListResp
+	8,   // 279: cmdb.Cmdb.getAttributeById:output_type -> cmdb.AttributeInfo
+	28,  // 280: cmdb.Cmdb.deleteAttribute:output_type -> cmdb.BaseResp
+	25,  // 281: cmdb.Cmdb.createAttributeMappingRule:output_type -> cmdb.BaseIDResp
+	28,  // 282: cmdb.Cmdb.updateAttributeMappingRule:output_type -> cmdb.BaseResp
+	18,  // 283: cmdb.Cmdb.getAttributeMappingRuleList:output_type -> cmdb.AttributeMappingRuleListResp
+	16,  // 284: cmdb.Cmdb.getAttributeMappingRuleById:output_type -> cmdb.AttributeMappingRuleInfo
+	28,  // 285: cmdb.Cmdb.deleteAttributeMappingRule:output_type -> cmdb.BaseResp
+	28,  // 286: cmdb.Cmdb.initDatabase:output_type -> cmdb.BaseResp
+	25,  // 287: cmdb.Cmdb.createChoiceFloat:output_type -> cmdb.BaseIDResp
+	28,  // 288: cmdb.Cmdb.updateChoiceFloat:output_type -> cmdb.BaseResp
+	32,  // 289: cmdb.Cmdb.getChoiceFloatList:output_type -> cmdb.ChoiceFloatListResp
+	30,  // 290: cmdb.Cmdb.getChoiceFloatById:output_type -> cmdb.ChoiceFloatInfo
+	28,  // 291: cmdb.Cmdb.deleteChoiceFloat:output_type -> cmdb.BaseResp
+	25,  // 292: cmdb.Cmdb.createChoiceInteger:output_type -> cmdb.BaseIDResp
+	28,  // 293: cmdb.Cmdb.updateChoiceInteger:output_type -> cmdb.BaseResp
+	35,  // 294: cmdb.Cmdb.getChoiceIntegerList:output_type -> cmdb.ChoiceIntegerListResp
+	33,  // 295: cmdb.Cmdb.getChoiceIntegerById:output_type -> cmdb.ChoiceIntegerInfo
+	28,  // 296: cmdb.Cmdb.deleteChoiceInteger:output_type -> cmdb.BaseResp
+	25,  // 297: cmdb.Cmdb.createChoiceText:output_type -> cmdb.BaseIDResp
+	28,  // 298: cmdb.Cmdb.updateChoiceText:output_type -> cmdb.BaseResp
+	38,  // 299: cmdb.Cmdb.getChoiceTextList:output_type -> cmdb.ChoiceTextListResp
+	36,  // 300: cmdb.Cmdb.getChoiceTextById:output_type -> cmdb.ChoiceTextInfo
+	28,  // 301: cmdb.Cmdb.deleteChoiceText:output_type -> cmdb.BaseResp
+	25,  // 302: cmdb.Cmdb.createCiPermission:output_type -> cmdb.BaseIDResp
+	28,  // 303: cmdb.Cmdb.updateCiPermission:output_type -> cmdb.BaseResp
+	54,  // 304: cmdb.Cmdb.getCiPermissionList:output_type -> cmdb.CiPermissionListResp
+	51,  // 305: cmdb.Cmdb.getCiPermissionById:output_type -> cmdb.CiPermissionInfo
+	28,  // 306: cmdb.Cmdb.deleteCiPermission:output_type -> cmdb.BaseResp
+	59,  // 307: cmdb.Cmdb.checkCiTypePermission:output_type -> cmdb.CiPermissionResp
+	168, // 308: cmdb.Cmdb.getUserPermissionScope:output_type -> cmdb.UserPermissionScopeResp
+	25,  // 309: cmdb.Cmdb.createCiRelation:output_type -> cmdb.BaseIDResp
+	28,  // 310: cmdb.Cmdb.updateCiRelation:output_type -> cmdb.BaseResp
+	70,  // 311: cmdb.Cmdb.getCiRelationList:output_type -> cmdb.CiRelationListResp
+	68,  // 312: cmdb.Cmdb.getCiRelationById:output_type -> cmdb.CiRelationInfo
+	28,  // 313: cmdb.Cmdb.deleteCiRelation:output_type -> cmdb.BaseResp
+	64,  // 314: cmdb.Cmdb.getCiRelationsBatch:output_type -> cmdb.CiRelationBatchQueryResp
+	25,  // 315: cmdb.Cmdb.createCis:output_type -> cmdb.BaseIDResp
+	28,  // 316: cmdb.Cmdb.updateCis:output_type -> cmdb.BaseResp
+	134, // 317: cmdb.Cmdb.getCisList:output_type -> cmdb.CisListResp
+	132, // 318: cmdb.Cmdb.getCisById:output_type -> cmdb.CisInfo
+	131, // 319: cmdb.Cmdb.getCisDetailById:output_type -> cmdb.CisDetailInfo
+	28,  // 320: cmdb.Cmdb.deleteCis:output_type -> cmdb.BaseResp
+	28,  // 321: cmdb.Cmdb.cisBatchOperation:output_type -> cmdb.BaseResp
+	129, // 322: cmdb.Cmdb.validateCisAttributes:output_type -> cmdb.CisAttributeValidateResp
+	187, // 323: cmdb.Cmdb.writeDiscoveredCI:output_type -> cmdb.WriteDiscoveredCIResp
+	25,  // 324: cmdb.Cmdb.createCiType:output_type -> cmdb.BaseIDResp
+	28,  // 325: cmdb.Cmdb.updateCiType:output_type -> cmdb.BaseResp
+	121, // 326: cmdb.Cmdb.getCiTypeList:output_type -> cmdb.CiTypeListResp
+	116, // 327: cmdb.Cmdb.getCiTypeById:output_type -> cmdb.CiTypeInfo
+	28,  // 328: cmdb.Cmdb.deleteCiType:output_type -> cmdb.BaseResp
+	28,  // 329: cmdb.Cmdb.appendAttribute:output_type -> cmdb.BaseResp
+	28,  // 330: cmdb.Cmdb.createCiTypeAttribute:output_type -> cmdb.BaseResp
+	28,  // 331: cmdb.Cmdb.updateCiTypeAttribute:output_type -> cmdb.BaseResp
+	96,  // 332: cmdb.Cmdb.getCiTypeAttributeList:output_type -> cmdb.CiTypeAttributeListResp
+	94,  // 333: cmdb.Cmdb.getCiTypeAttributeById:output_type -> cmdb.CiTypeAttributeItem
+	28,  // 334: cmdb.Cmdb.deleteCiTypeAttribute:output_type -> cmdb.BaseResp
+	99,  // 335: cmdb.Cmdb.getCiTypeAttributeListWithGroup:output_type -> cmdb.CiTypeAttributeListWithGroupResp
+	28,  // 336: cmdb.Cmdb.changeCiTypeAttributeDefaultShow:output_type -> cmdb.BaseResp
+	25,  // 337: cmdb.Cmdb.createCiTypeAttributeGroup:output_type -> cmdb.BaseIDResp
+	28,  // 338: cmdb.Cmdb.updateCiTypeAttributeGroup:output_type -> cmdb.BaseResp
+	88,  // 339: cmdb.Cmdb.getCiTypeAttributeGroupList:output_type -> cmdb.CiTypeAttributeGroupListResp
+	79,  // 340: cmdb.Cmdb.getCiTypeAttributeGroupById:output_type -> cmdb.CiTypeAttributeGroupInfo
+	28,  // 341: cmdb.Cmdb.deleteCiTypeAttributeGroup:output_type -> cmdb.BaseResp
+	28,  // 342: cmdb.Cmdb.sortCiTypeAttributeGroup:output_type -> cmdb.BaseResp
+	92,  // 343: cmdb.Cmdb.listAttributeGroupWithAttribute:output_type -> cmdb.CiTypeAttributeGroupWithAttrListResp
+	25,  // 344: cmdb.Cmdb.createCiTypeAttributeGroupItem:output_type -> cmdb.BaseIDResp
+	28,  // 345: cmdb.Cmdb.updateCiTypeAttributeGroupItem:output_type -> cmdb.BaseResp
+	82,  // 346: cmdb.Cmdb.getCiTypeAttributeGroupItemList:output_type -> cmdb.CiTypeAttributeGroupItemListResp
+	80,  // 347: cmdb.Cmdb.getCiTypeAttributeGroupItemById:output_type -> cmdb.CiTypeAttributeGroupItemInfo
+	28,  // 348: cmdb.Cmdb.deleteCiTypeAttributeGroupItem:output_type -> cmdb.BaseResp
+	28,  // 349: cmdb.Cmdb.sortCiTypeAttributeGroupItem:output_type -> cmdb.BaseResp
+	25,  // 350: cmdb.Cmdb.createCiTypeDiscoveryConfig:output_type -> cmdb.BaseIDResp
+	28,  // 351: cmdb.Cmdb.updateCiTypeDiscoveryConfig:output_type -> cmdb.BaseResp
+	103, // 352: cmdb.Cmdb.getCiTypeDiscoveryConfigList:output_type -> cmdb.CiTypeDiscoveryConfigListResp
+	101, // 353: cmdb.Cmdb.getCiTypeDiscoveryConfigById:output_type -> cmdb.CiTypeDiscoveryConfigInfo
+	28,  // 354: cmdb.Cmdb.deleteCiTypeDiscoveryConfig:output_type -> cmdb.BaseResp
+	140, // 355: cmdb.Cmdb.executeDiscovery:output_type -> cmdb.DiscoveryExecutionResp
+	28,  // 356: cmdb.Cmdb.testProviderConnection:output_type -> cmdb.BaseResp
+	157, // 357: cmdb.Cmdb.getProviderSchema:output_type -> cmdb.ProviderSchemaResp
+	152, // 358: cmdb.Cmdb.listProviders:output_type -> cmdb.ListProvidersResp
+	25,  // 359: cmdb.Cmdb.createCiTypeGroup:output_type -> cmdb.BaseIDResp
+	28,  // 360: cmdb.Cmdb.updateCiTypeGroup:output_type -> cmdb.BaseResp
+	113, // 361: cmdb.Cmdb.getCiTypeGroupList:output_type -> cmdb.CiTypeGroupListResp
+	104, // 362: cmdb.Cmdb.getCiTypeGroupById:output_type -> cmdb.CiTypeGroupInfo
+	28,  // 363: cmdb.Cmdb.deleteCiTypeGroup:output_type -> cmdb.BaseResp
+	28,  // 364: cmdb.Cmdb.updateCiTypeGroupSort:output_type -> cmdb.BaseResp
+	25,  // 365: cmdb.Cmdb.createCiTypeGroupItem:output_type -> cmdb.BaseIDResp
+	28,  // 366: cmdb.Cmdb.updateCiTypeGroupItem:output_type -> cmdb.BaseResp
+	107, // 367: cmdb.Cmdb.getCiTypeGroupItemList:output_type -> cmdb.CiTypeGroupItemListResp
+	111, // 368: cmdb.Cmdb.getCiTypeGroupItemTreeList:output_type -> cmdb.CiTypeGroupItemTreeListResp
+	105, // 369: cmdb.Cmdb.getCiTypeGroupItemById:output_type -> cmdb.CiTypeGroupItemInfo
+	28,  // 370: cmdb.Cmdb.deleteCiTypeGroupItem:output_type -> cmdb.BaseResp
+	28,  // 371: cmdb.Cmdb.updateCiTypeGroupItemSort:output_type -> cmdb.BaseResp
+	25,  // 372: cmdb.Cmdb.createCiTypeInheritance:output_type -> cmdb.BaseIDResp
+	28,  // 373: cmdb.Cmdb.updateCiTypeInheritance:output_type -> cmdb.BaseResp
+	119, // 374: cmdb.Cmdb.getCiTypeInheritanceList:output_type -> cmdb.CiTypeInheritanceListResp
+	117, // 375: cmdb.Cmdb.getCiTypeInheritanceById:output_type -> cmdb.CiTypeInheritanceInfo
+	28,  // 376: cmdb.Cmdb.deleteCiTypeInheritance:output_type -> cmdb.BaseResp
+	25,  // 377: cmdb.Cmdb.createCiTypeRelation:output_type -> cmdb.BaseIDResp
+	28,  // 378: cmdb.Cmdb.updateCiTypeRelation:output_type -> cmdb.BaseResp
+	126, // 379: cmdb.Cmdb.getCiTypeRelationList:output_type -> cmdb.CiTypeRelationListResp
+	124, // 380: cmdb.Cmdb.getCiTypeRelationById:output_type -> cmdb.CiTypeRelationInfo
+	28,  // 381: cmdb.Cmdb.deleteCiTypeRelation:output_type -> cmdb.BaseResp
+	123, // 382: cmdb.Cmdb.getCiTypeRelationDefinitions:output_type -> cmdb.CiTypeRelationDefinitionResp
+	13,  // 383: cmdb.Cmdb.getAttributeMappingConfigs:output_type -> cmdb.AttributeMappingConfigResp
+	25,  // 384: cmdb.Cmdb.createDiscoveryExecutionHistory:output_type -> cmdb.BaseIDResp
+	28,  // 385: cmdb.Cmdb.updateDiscoveryExecutionHistory:output_type -> cmdb.BaseResp
+	139, // 386: cmdb.Cmdb.getDiscoveryExecutionHistoryList:output_type -> cmdb.DiscoveryExecutionHistoryListResp
+	137, // 387: cmdb.Cmdb.getDiscoveryExecutionHistoryById:output_type -> cmdb.DiscoveryExecutionHistoryInfo
+	28,  // 388: cmdb.Cmdb.deleteDiscoveryExecutionHistory:output_type -> cmdb.BaseResp
+	25,  // 389: cmdb.Cmdb.createRelationType:output_type -> cmdb.BaseIDResp
+	28,  // 390: cmdb.Cmdb.updateRelationType:output_type -> cmdb.BaseResp
+	161, // 391: cmdb.Cmdb.getRelationTypeList:output_type -> cmdb.RelationTypeListResp
+	159, // 392: cmdb.Cmdb.getRelationTypeById:output_type -> cmdb.RelationTypeInfo
+	28,  // 393: cmdb.Cmdb.deleteRelationType:output_type -> cmdb.BaseResp
+	25,  // 394: cmdb.Cmdb.createValueDatetime:output_type -> cmdb.BaseIDResp
+	28,  // 395: cmdb.Cmdb.updateValueDatetime:output_type -> cmdb.BaseResp
+	174, // 396: cmdb.Cmdb.getValueDatetimeList:output_type -> cmdb.ValueDatetimeListResp
+	172, // 397: cmdb.Cmdb.getValueDatetimeById:output_type -> cmdb.ValueDatetimeInfo
+	28,  // 398: cmdb.Cmdb.deleteValueDatetime:output_type -> cmdb.BaseResp
+	25,  // 399: cmdb.Cmdb.createValueFloat:output_type -> cmdb.BaseIDResp
+	28,  // 400: cmdb.Cmdb.updateValueFloat:output_type -> cmdb.BaseResp
+	177, // 401: cmdb.Cmdb.getValueFloatList:output_type -> cmdb.ValueFloatListResp
+	175, // 402: cmdb.Cmdb.getValueFloatById:output_type -> cmdb.ValueFloatInfo
+	28,  // 403: cmdb.Cmdb.deleteValueFloat:output_type -> cmdb.BaseResp
+	25,  // 404: cmdb.Cmdb.createValueInteger:output_type -> cmdb.BaseIDResp
+	28,  // 405: cmdb.Cmdb.updateValueInteger:output_type -> cmdb.BaseResp
+	180, // 406: cmdb.Cmdb.getValueIntegerList:output_type -> cmdb.ValueIntegerListResp
+	178, // 407: cmdb.Cmdb.getValueIntegerById:output_type -> cmdb.ValueIntegerInfo
+	28,  // 408: cmdb.Cmdb.deleteValueInteger:output_type -> cmdb.BaseResp
+	25,  // 409: cmdb.Cmdb.createValueJSON:output_type -> cmdb.BaseIDResp
+	28,  // 410: cmdb.Cmdb.updateValueJSON:output_type -> cmdb.BaseResp
+	183, // 411: cmdb.Cmdb.getValueJSONList:output_type -> cmdb.ValueJSONListResp
+	181, // 412: cmdb.Cmdb.getValueJSONById:output_type -> cmdb.ValueJSONInfo
+	28,  // 413: cmdb.Cmdb.deleteValueJSON:output_type -> cmdb.BaseResp
+	25,  // 414: cmdb.Cmdb.createValueText:output_type -> cmdb.BaseIDResp
+	28,  // 415: cmdb.Cmdb.updateValueText:output_type -> cmdb.BaseResp
+	186, // 416: cmdb.Cmdb.getValueTextList:output_type -> cmdb.ValueTextListResp
+	184, // 417: cmdb.Cmdb.getValueTextById:output_type -> cmdb.ValueTextInfo
+	28,  // 418: cmdb.Cmdb.deleteValueText:output_type -> cmdb.BaseResp
+	275, // [275:419] is the sub-list for method output_type
+	131, // [131:275] is the sub-list for method input_type
+	131, // [131:131] is the sub-list for extension type_name
+	131, // [131:131] is the sub-list for extension extendee
+	0,   // [0:131] is the sub-list for field type_name
 }
 
 func init() { file_cmdb_proto_init() }
@@ -14676,88 +18847,100 @@ func file_cmdb_proto_init() {
 	if File_cmdb_proto != nil {
 		return
 	}
-	file_cmdb_proto_msgTypes[0].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[1].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[2].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[3].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[4].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[5].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[6].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[7].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[8].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[9].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[10].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[11].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[12].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[13].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[14].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[23].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[24].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[26].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[27].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[29].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[16].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[17].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[19].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[20].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[21].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[30].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[31].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[33].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[34].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[35].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[36].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[37].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[38].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[40].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[41].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[42].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[44].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[46].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[54].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[55].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[56].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[58].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[60].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[61].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[45].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[51].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[53].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[63].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[64].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[65].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[70].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[66].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[68].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[69].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[72].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[73].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[74].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[75].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[76].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[77].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[79].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[80].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[81].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[82].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[83].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[85].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[86].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[87].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[89].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[91].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[93].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[94].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[95].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[97].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[99].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[100].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[101].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[102].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[104].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[105].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[107].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[106].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[108].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[109].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[110].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[112].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[116].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[117].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[118].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[120].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[122].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[124].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[125].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[126].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[128].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[129].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[131].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[130].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[132].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[133].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[134].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[135].OneofWrappers = []any{}
 	file_cmdb_proto_msgTypes[136].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[143].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[144].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[145].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[146].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[148].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[149].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[151].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[152].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[154].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[155].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[157].OneofWrappers = []any{}
-	file_cmdb_proto_msgTypes[158].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[137].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[138].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[140].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[159].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[160].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[168].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[170].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[171].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[172].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[173].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[175].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[176].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[178].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[179].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[181].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[182].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[184].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[185].OneofWrappers = []any{}
+	file_cmdb_proto_msgTypes[187].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cmdb_proto_rawDesc), len(file_cmdb_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   165,
+			NumMessages:   196,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

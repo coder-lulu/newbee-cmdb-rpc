@@ -7,7 +7,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/utils/dberrorhandler"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
 
-	"github.com/coder-lulu/newbee-common/utils/pointy"
+	"github.com/coder-lulu/newbee-common/v2/utils/pointy"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -31,15 +31,24 @@ func (l *GetCiRelationByIdLogic) GetCiRelationById(in *cmdb.IDReq) (*cmdb.CiRela
 		return nil, dberrorhandler.DefaultEntError(l.Logger, err, in)
 	}
 
+	// 构建properties JSON字符串
+	var propertiesStr *string
+	if result.Properties != nil {
+		if raw, ok := result.Properties["raw"].(string); ok {
+			propertiesStr = &raw
+		}
+	}
+
 	return &cmdb.CiRelationInfo{
-		Id:             &result.ID,
-		CreatedAt:      pointy.GetPointer(result.CreatedAt.UnixMilli()),
-		UpdatedAt:      pointy.GetPointer(result.UpdatedAt.UnixMilli()),
-		FirstCiId:      &result.FirstCiID,
-		SecondCiId:     &result.SecondCiID,
-		RelationTypeId: &result.RelationTypeID,
-		More:           &result.More,
-		Source:         &result.Source,
-		AncestorIds:    &result.AncestorIds,
+		Id:              &result.ID,
+		CreatedAt:       pointy.GetPointer(result.CreatedAt.UnixMilli()),
+		UpdatedAt:       pointy.GetPointer(result.UpdatedAt.UnixMilli()),
+		SourceCiId:      &result.SourceCiID,
+		TargetCiId:      &result.TargetCiID,
+		RelationTypeId:  &result.RelationTypeID,
+		More:            &result.More,
+		DiscoverySource: &result.DiscoverySource,
+		AncestorIds:     &result.AncestorIds,
+		Properties:      propertiesStr,
 	}, nil
 }

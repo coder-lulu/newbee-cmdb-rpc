@@ -12,25 +12,33 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/aggregationcache"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attributemappingrule"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciapprovalflow"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/ciattributedistribution"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cidimension"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cilifecyclestate"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cioperation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cipermission"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirecords"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cirelation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cis"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cistatisticsfact"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroupitem"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypediscoveryconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroup"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/discoveryexecutionhistory"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/dynamicaggregationconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importerror"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importrecord"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/importtask"
@@ -41,6 +49,8 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissionoperation"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/permissiontemplate"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/relationtype"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/timedimension"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/useractivityfact"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuedatetime"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueindextext"
@@ -107,41 +117,51 @@ var (
 func checkColumn(t, c string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			attribute.Table:                attribute.ValidColumn,
-			choicefloat.Table:              choicefloat.ValidColumn,
-			choiceinteger.Table:            choiceinteger.ValidColumn,
-			choicetext.Table:               choicetext.ValidColumn,
-			ciapprovalflow.Table:           ciapprovalflow.ValidColumn,
-			cilifecyclestate.Table:         cilifecyclestate.ValidColumn,
-			cioperation.Table:              cioperation.ValidColumn,
-			cipermission.Table:             cipermission.ValidColumn,
-			cirecords.Table:                cirecords.ValidColumn,
-			cirelation.Table:               cirelation.ValidColumn,
-			citype.Table:                   citype.ValidColumn,
-			citypeattribute.Table:          citypeattribute.ValidColumn,
-			citypeattributegroup.Table:     citypeattributegroup.ValidColumn,
-			citypeattributegroupitem.Table: citypeattributegroupitem.ValidColumn,
-			citypegroup.Table:              citypegroup.ValidColumn,
-			citypegroupitem.Table:          citypegroupitem.ValidColumn,
-			citypeinheritance.Table:        citypeinheritance.ValidColumn,
-			cityperelation.Table:           cityperelation.ValidColumn,
-			cis.Table:                      cis.ValidColumn,
-			importerror.Table:              importerror.ValidColumn,
-			importrecord.Table:             importrecord.ValidColumn,
-			importtask.Table:               importtask.ValidColumn,
-			importtemplate.Table:           importtemplate.ValidColumn,
-			permissioncache.Table:          permissioncache.ValidColumn,
-			permissiondatafilter.Table:     permissiondatafilter.ValidColumn,
-			permissionfieldmask.Table:      permissionfieldmask.ValidColumn,
-			permissionoperation.Table:      permissionoperation.ValidColumn,
-			permissiontemplate.Table:       permissiontemplate.ValidColumn,
-			relationtype.Table:             relationtype.ValidColumn,
-			valuedatetime.Table:            valuedatetime.ValidColumn,
-			valuefloat.Table:               valuefloat.ValidColumn,
-			valueindextext.Table:           valueindextext.ValidColumn,
-			valueinteger.Table:             valueinteger.ValidColumn,
-			valuejson.Table:                valuejson.ValidColumn,
-			valuetext.Table:                valuetext.ValidColumn,
+			aggregationcache.Table:          aggregationcache.ValidColumn,
+			attribute.Table:                 attribute.ValidColumn,
+			attributemappingrule.Table:      attributemappingrule.ValidColumn,
+			choicefloat.Table:               choicefloat.ValidColumn,
+			choiceinteger.Table:             choiceinteger.ValidColumn,
+			choicetext.Table:                choicetext.ValidColumn,
+			ciapprovalflow.Table:            ciapprovalflow.ValidColumn,
+			ciattributedistribution.Table:   ciattributedistribution.ValidColumn,
+			cidimension.Table:               cidimension.ValidColumn,
+			cilifecyclestate.Table:          cilifecyclestate.ValidColumn,
+			cioperation.Table:               cioperation.ValidColumn,
+			cipermission.Table:              cipermission.ValidColumn,
+			cirecords.Table:                 cirecords.ValidColumn,
+			cirelation.Table:                cirelation.ValidColumn,
+			cistatisticsfact.Table:          cistatisticsfact.ValidColumn,
+			citype.Table:                    citype.ValidColumn,
+			citypeattribute.Table:           citypeattribute.ValidColumn,
+			citypeattributegroup.Table:      citypeattributegroup.ValidColumn,
+			citypeattributegroupitem.Table:  citypeattributegroupitem.ValidColumn,
+			citypediscoveryconfig.Table:     citypediscoveryconfig.ValidColumn,
+			citypegroup.Table:               citypegroup.ValidColumn,
+			citypegroupitem.Table:           citypegroupitem.ValidColumn,
+			citypeinheritance.Table:         citypeinheritance.ValidColumn,
+			cityperelation.Table:            cityperelation.ValidColumn,
+			cis.Table:                       cis.ValidColumn,
+			discoveryexecutionhistory.Table: discoveryexecutionhistory.ValidColumn,
+			dynamicaggregationconfig.Table:  dynamicaggregationconfig.ValidColumn,
+			importerror.Table:               importerror.ValidColumn,
+			importrecord.Table:              importrecord.ValidColumn,
+			importtask.Table:                importtask.ValidColumn,
+			importtemplate.Table:            importtemplate.ValidColumn,
+			permissioncache.Table:           permissioncache.ValidColumn,
+			permissiondatafilter.Table:      permissiondatafilter.ValidColumn,
+			permissionfieldmask.Table:       permissionfieldmask.ValidColumn,
+			permissionoperation.Table:       permissionoperation.ValidColumn,
+			permissiontemplate.Table:        permissiontemplate.ValidColumn,
+			relationtype.Table:              relationtype.ValidColumn,
+			timedimension.Table:             timedimension.ValidColumn,
+			useractivityfact.Table:          useractivityfact.ValidColumn,
+			valuedatetime.Table:             valuedatetime.ValidColumn,
+			valuefloat.Table:                valuefloat.ValidColumn,
+			valueindextext.Table:            valueindextext.ValidColumn,
+			valueinteger.Table:              valueinteger.ValidColumn,
+			valuejson.Table:                 valuejson.ValidColumn,
+			valuetext.Table:                 valuetext.ValidColumn,
 		})
 	})
 	return columnCheck(t, c)

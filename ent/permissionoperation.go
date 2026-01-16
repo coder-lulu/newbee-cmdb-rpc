@@ -24,6 +24,8 @@ type PermissionOperation struct {
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 权限ID
 	PermissionID uint64 `json:"permission_id,omitempty"`
 	// 操作代码：read/write/delete/approve等
@@ -65,7 +67,7 @@ func (*PermissionOperation) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case permissionoperation.FieldIsAllowed:
 			values[i] = new(sql.NullBool)
-		case permissionoperation.FieldID, permissionoperation.FieldTenantID, permissionoperation.FieldPermissionID:
+		case permissionoperation.FieldID, permissionoperation.FieldTenantID, permissionoperation.FieldDepartmentID, permissionoperation.FieldPermissionID:
 			values[i] = new(sql.NullInt64)
 		case permissionoperation.FieldOperationCode, permissionoperation.FieldOperationName:
 			values[i] = new(sql.NullString)
@@ -109,6 +111,12 @@ func (_m *PermissionOperation) assignValues(columns []string, values []any) erro
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case permissionoperation.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case permissionoperation.FieldPermissionID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -183,6 +191,9 @@ func (_m *PermissionOperation) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("permission_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.PermissionID))

@@ -113,6 +113,26 @@ func (_u *ImportTemplateUpdate) ClearDepartmentID() *ImportTemplateUpdate {
 	return _u
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_u *ImportTemplateUpdate) SetCreatedBy(v uuid.UUID) *ImportTemplateUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *ImportTemplateUpdate) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *ImportTemplateUpdate) ClearCreatedBy() *ImportTemplateUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
+}
+
 // SetName sets the "name" field.
 func (_u *ImportTemplateUpdate) SetName(v string) *ImportTemplateUpdate {
 	_u.mutation.SetName(v)
@@ -878,26 +898,6 @@ func (_u *ImportTemplateUpdate) ClearSharedWith() *ImportTemplateUpdate {
 	return _u
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_u *ImportTemplateUpdate) SetCreatedBy(v uuid.UUID) *ImportTemplateUpdate {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *ImportTemplateUpdate) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateUpdate {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *ImportTemplateUpdate) ClearCreatedBy() *ImportTemplateUpdate {
-	_u.mutation.ClearCreatedBy()
-	return _u
-}
-
 // SetCreatedByName sets the "created_by_name" field.
 func (_u *ImportTemplateUpdate) SetCreatedByName(v string) *ImportTemplateUpdate {
 	_u.mutation.SetCreatedByName(v)
@@ -1196,6 +1196,12 @@ func (_u *ImportTemplateUpdate) sqlSave(ctx context.Context) (_node int, err err
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importtemplate.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(importtemplate.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(importtemplate.FieldName, field.TypeString, value)
 	}
@@ -1462,12 +1468,6 @@ func (_u *ImportTemplateUpdate) sqlSave(ctx context.Context) (_node int, err err
 	if _u.mutation.SharedWithCleared() {
 		_spec.ClearField(importtemplate.FieldSharedWith, field.TypeJSON)
 	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(importtemplate.FieldCreatedBy, field.TypeUUID)
-	}
 	if value, ok := _u.mutation.CreatedByName(); ok {
 		_spec.SetField(importtemplate.FieldCreatedByName, field.TypeString, value)
 	}
@@ -1663,6 +1663,26 @@ func (_u *ImportTemplateUpdateOne) AddDepartmentID(v int64) *ImportTemplateUpdat
 // ClearDepartmentID clears the value of the "department_id" field.
 func (_u *ImportTemplateUpdateOne) ClearDepartmentID() *ImportTemplateUpdateOne {
 	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
+// SetCreatedBy sets the "created_by" field.
+func (_u *ImportTemplateUpdateOne) SetCreatedBy(v uuid.UUID) *ImportTemplateUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *ImportTemplateUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *ImportTemplateUpdateOne) ClearCreatedBy() *ImportTemplateUpdateOne {
+	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -2431,26 +2451,6 @@ func (_u *ImportTemplateUpdateOne) ClearSharedWith() *ImportTemplateUpdateOne {
 	return _u
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_u *ImportTemplateUpdateOne) SetCreatedBy(v uuid.UUID) *ImportTemplateUpdateOne {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *ImportTemplateUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *ImportTemplateUpdateOne {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *ImportTemplateUpdateOne) ClearCreatedBy() *ImportTemplateUpdateOne {
-	_u.mutation.ClearCreatedBy()
-	return _u
-}
-
 // SetCreatedByName sets the "created_by_name" field.
 func (_u *ImportTemplateUpdateOne) SetCreatedByName(v string) *ImportTemplateUpdateOne {
 	_u.mutation.SetCreatedByName(v)
@@ -2779,6 +2779,12 @@ func (_u *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *ImportTe
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importtemplate.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(importtemplate.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(importtemplate.FieldName, field.TypeString, value)
 	}
@@ -3044,12 +3050,6 @@ func (_u *ImportTemplateUpdateOne) sqlSave(ctx context.Context) (_node *ImportTe
 	}
 	if _u.mutation.SharedWithCleared() {
 		_spec.ClearField(importtemplate.FieldSharedWith, field.TypeJSON)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(importtemplate.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(importtemplate.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.CreatedByName(); ok {
 		_spec.SetField(importtemplate.FieldCreatedByName, field.TypeString, value)

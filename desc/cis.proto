@@ -157,6 +157,74 @@ message CisInfo {
   
   // 动态属性值列表（查询时返回）
   repeated CiAttributeValue attributes = 12;
+  
+  // === 关系数据 ===
+  // 关系数据（创建/更新时传入，查询时返回）
+  optional CiRelationsData relations = 13;
+}
+
+// CI关系数据结构
+message CiRelationsData {
+  // 要创建的关系（创建/更新时使用）
+  repeated CiRelationCreateInfo create_relations = 1;
+  // 要更新的关系（更新时使用）
+  repeated CiRelationUpdateInfo update_relations = 2;
+  // 要删除的关系ID列表（更新时使用）
+  repeated uint64 delete_relation_ids = 3;
+  // 查询结果中的关系数据（查询时返回）
+  optional CiRelationQueryResult query_result = 4;
+}
+
+// 创建关系信息
+message CiRelationCreateInfo {
+  // 目标CI ID
+  uint64 target_ci_id = 1;
+  // 关系类型ID
+  uint64 relation_type_id = 2;
+  // 关系方向：source_to_target, target_to_source
+  string direction = 3;
+  // 更多CI ID（可选）
+  optional uint64 more_ci_id = 4;
+  // 发现来源
+  optional string discovery_source = 5;
+  // 关系属性
+  optional string properties = 6;
+  // 属性映射数据
+  repeated AttributeMappingData attribute_mappings = 7;
+  // 关系状态
+  optional string status = 8;
+  // 关系强度
+  optional string relation_strength = 9;
+}
+
+// 更新关系信息
+message CiRelationUpdateInfo {
+  // 关系ID
+  uint64 relation_id = 1;
+  // 目标CI ID（可选，允许修改）
+  optional uint64 target_ci_id = 2;
+  // 关系类型ID（可选，允许修改）
+  optional uint64 relation_type_id = 3;
+  // 更多CI ID（可选）
+  optional uint64 more_ci_id = 4;
+  // 关系属性
+  optional string properties = 5;
+  // 属性映射数据
+  repeated AttributeMappingData attribute_mappings = 6;
+  // 关系状态
+  optional string status = 7;
+  // 关系强度
+  optional string relation_strength = 8;
+}
+
+// 关系查询结果
+message CiRelationQueryResult {
+  // 作为源CI的关系
+  repeated CiRelationInfo source_relations = 1;
+  // 作为目标CI的关系
+  repeated CiRelationInfo target_relations = 2;
+  // 关系总数
+  uint64 total_count = 3;
 }
 
 message CisListResp {
@@ -297,6 +365,36 @@ message BaseResp {
   string msg = 1;
 }
 
+// 发现的CI数据
+message DiscoveredCIData {
+  // CI类型ID
+  optional uint64 ci_type_id = 1;
+  // 唯一标识（用于去重）
+  optional string unique_key = 2;
+  // 属性键值对
+  map<string, string> attributes = 3;
+  // 数据来源（discovery_pool_id）
+  optional string source = 4;
+  // 来源类型（ssh/api/file）
+  optional string source_type = 5;
+  // 自动创建CI
+  optional bool auto_create = 6;
+  // 自动更新属性
+  optional bool auto_update = 7;
+  // 冲突策略（skip/update/merge）
+  optional string conflict_resolution = 8;
+}
+
+// 写入发现CI的响应
+message WriteDiscoveredCIResp {
+  // 创建/更新的CI ID
+  optional uint64 ci_id = 1;
+  // 操作类型（created/updated/skipped）
+  optional string action = 2;
+  // 处理信息
+  optional string message = 3;
+}
+
 service Cmdb {
 
   // Cis management
@@ -316,5 +414,7 @@ service Cmdb {
   rpc cisBatchOperation (CisBatchOperationReq) returns (BaseResp);
   // group: cis
   rpc validateCisAttributes (CisAttributeValidateReq) returns (CisAttributeValidateResp);
+  // group: cis
+  rpc writeDiscoveredCI (DiscoveredCIData) returns (WriteDiscoveredCIResp);
 
 }

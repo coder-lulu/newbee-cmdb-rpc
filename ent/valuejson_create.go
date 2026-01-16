@@ -79,6 +79,20 @@ func (_c *ValueJSONCreate) SetNillableTenantID(v *uint64) *ValueJSONCreate {
 	return _c
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_c *ValueJSONCreate) SetDepartmentID(v uint64) *ValueJSONCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_c *ValueJSONCreate) SetNillableDepartmentID(v *uint64) *ValueJSONCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
+	}
+	return _c
+}
+
 // SetCiID sets the "ci_id" field.
 func (_c *ValueJSONCreate) SetCiID(v uint64) *ValueJSONCreate {
 	_c.mutation.SetCiID(v)
@@ -271,6 +285,10 @@ func (_c *ValueJSONCreate) createSpec() (*ValueJSON, *sqlgraph.CreateSpec) {
 	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(valuejson.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.DepartmentID(); ok {
+		_spec.SetField(valuejson.FieldDepartmentID, field.TypeUint64, value)
+		_node.DepartmentID = value
 	}
 	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(valuejson.FieldValue, field.TypeJSON, value)

@@ -7,9 +7,8 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
-	"github.com/coder-lulu/newbee-common/utils/validator"
-	"github.com/gofrs/uuid/v5"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/utils/validator"
 )
 
 // Attribute 对应于数据库cmdb_attributes
@@ -24,6 +23,7 @@ func (Attribute) Mixin() []ent.Mixin {
 		mixins2.SoftDeleteMixin{},
 		mixins.TenantMixin{},
 		mixins.DepartmentMixin{},
+		mixins.CreatedByMixin{},
 	}
 }
 
@@ -35,7 +35,6 @@ func (Attribute) Fields() []ent.Field {
 		field.Enum("value_type").Values("int", "float", "text", "longtext", "datetime", "date", "time", "json", "password", "link", "reference", "boolean", "image").Comment("值类型，枚举").Default("text"),
 		field.Bool("is_choice").Optional().Comment("是否为选项").Default(false),
 		field.Bool("is_list").Optional().Comment("是否为列表").Default(false),
-		field.UUID("created_by", uuid.UUID{}).Optional().Nillable().Comment("用户ID/创建者"),
 		field.Bool("is_computed").Optional().Comment("是否计算属性").Default(false),
 		field.JSON("choice_web_hook", AttributeChoiceWebHookS{}).Optional().Comment("选项webhook"),
 		field.JSON("option", AttributeOptionS{}).Optional().Comment("选项内容"),
@@ -125,6 +124,9 @@ func (Attribute) Edges() []ent.Edge {
 
 		// 属性组关系
 		edge.To("group_items", CiTypeAttributeGroupItem.Type),
+
+		// 发现映射关系
+		edge.To("mapping_rules", AttributeMappingRule.Type),
 	}
 }
 

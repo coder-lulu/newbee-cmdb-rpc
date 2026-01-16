@@ -11,6 +11,7 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attributemappingrule"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
@@ -23,7 +24,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
-	"github.com/coder-lulu/newbee-common/utils/validator"
+	"github.com/coder-lulu/newbee-common/v2/utils/validator"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -104,6 +105,20 @@ func (_c *AttributeCreate) SetNillableDepartmentID(v *uint64) *AttributeCreate {
 	return _c
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_c *AttributeCreate) SetCreatedBy(v uuid.UUID) *AttributeCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_c *AttributeCreate) SetNillableCreatedBy(v *uuid.UUID) *AttributeCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
+	}
+	return _c
+}
+
 // SetName sets the "name" field.
 func (_c *AttributeCreate) SetName(v string) *AttributeCreate {
 	_c.mutation.SetName(v)
@@ -154,20 +169,6 @@ func (_c *AttributeCreate) SetIsList(v bool) *AttributeCreate {
 func (_c *AttributeCreate) SetNillableIsList(v *bool) *AttributeCreate {
 	if v != nil {
 		_c.SetIsList(*v)
-	}
-	return _c
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_c *AttributeCreate) SetCreatedBy(v uuid.UUID) *AttributeCreate {
-	_c.mutation.SetCreatedBy(v)
-	return _c
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_c *AttributeCreate) SetNillableCreatedBy(v *uuid.UUID) *AttributeCreate {
-	if v != nil {
-		_c.SetCreatedBy(*v)
 	}
 	return _c
 }
@@ -517,6 +518,21 @@ func (_c *AttributeCreate) AddGroupItems(v ...*CiTypeAttributeGroupItem) *Attrib
 	return _c.AddGroupItemIDs(ids...)
 }
 
+// AddMappingRuleIDs adds the "mapping_rules" edge to the AttributeMappingRule entity by IDs.
+func (_c *AttributeCreate) AddMappingRuleIDs(ids ...uint64) *AttributeCreate {
+	_c.mutation.AddMappingRuleIDs(ids...)
+	return _c
+}
+
+// AddMappingRules adds the "mapping_rules" edges to the AttributeMappingRule entity.
+func (_c *AttributeCreate) AddMappingRules(v ...*AttributeMappingRule) *AttributeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _c.AddMappingRuleIDs(ids...)
+}
+
 // Mutation returns the AttributeMutation object of the builder.
 func (_c *AttributeCreate) Mutation() *AttributeMutation {
 	return _c.mutation
@@ -694,6 +710,10 @@ func (_c *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 		_spec.SetField(attribute.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
+	if value, ok := _c.mutation.CreatedBy(); ok {
+		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
+		_node.CreatedBy = &value
+	}
 	if value, ok := _c.mutation.Name(); ok {
 		_spec.SetField(attribute.FieldName, field.TypeString, value)
 		_node.Name = value
@@ -713,10 +733,6 @@ func (_c *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 	if value, ok := _c.mutation.IsList(); ok {
 		_spec.SetField(attribute.FieldIsList, field.TypeBool, value)
 		_node.IsList = value
-	}
-	if value, ok := _c.mutation.CreatedBy(); ok {
-		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
-		_node.CreatedBy = &value
 	}
 	if value, ok := _c.mutation.IsComputed(); ok {
 		_spec.SetField(attribute.FieldIsComputed, field.TypeBool, value)
@@ -939,6 +955,22 @@ func (_c *AttributeCreate) createSpec() (*Attribute, *sqlgraph.CreateSpec) {
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(citypeattributegroupitem.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges = append(_spec.Edges, edge)
+	}
+	if nodes := _c.mutation.MappingRulesIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.MappingRulesTable,
+			Columns: []string{attribute.MappingRulesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(attributemappingrule.FieldID, field.TypeUint64),
 			},
 		}
 		for _, k := range nodes {

@@ -2,6 +2,27 @@ syntax = "proto3";
 
 // CiPermission message
 
+message CiPermissionReq {
+  uint64 user_id = 1;
+  uint64 ci_type_id = 2;
+  string action = 3;
+}
+
+message CiPermissionResp {
+  bool has_permission = 1;
+}
+
+message UserPermissionScopeReq {
+  uint64 user_id = 1;
+}
+
+message UserPermissionScopeResp {
+  repeated uint64 allowed_ci_types = 1;
+  repeated uint64 allowed_department_ids = 2;
+  map<string, string> custom_rules = 3;
+  optional string data_scope = 4;
+}
+
 // 权限操作结构
 message CiPermissionOperation {
   string operation = 1;
@@ -270,6 +291,9 @@ service Cmdb {
   rpc getCiPermissionById (IDReq) returns (CiPermissionInfo);
   // group: cipermission
   rpc deleteCiPermission (IDsReq) returns (BaseResp);
-
+  // group: cipermission
+  rpc checkCiTypePermission(CiPermissionReq) returns (CiPermissionResp);
+  // group: cipermission
+  rpc getUserPermissionScope(UserPermissionScopeReq) returns (UserPermissionScopeResp);
 
 }

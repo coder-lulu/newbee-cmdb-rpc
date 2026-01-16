@@ -86,6 +86,11 @@ func DepartmentID(v uint64) predicate.ImportTemplate {
 	return predicate.ImportTemplate(sql.FieldEQ(FieldDepartmentID, v))
 }
 
+// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
+func CreatedBy(v uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldEQ(FieldCreatedBy, v))
+}
+
 // Name applies equality check predicate on the "name" field. It's identical to NameEQ.
 func Name(v string) predicate.ImportTemplate {
 	return predicate.ImportTemplate(sql.FieldEQ(FieldName, v))
@@ -214,11 +219,6 @@ func IsPublic(v bool) predicate.ImportTemplate {
 // IsSystem applies equality check predicate on the "is_system" field. It's identical to IsSystemEQ.
 func IsSystem(v bool) predicate.ImportTemplate {
 	return predicate.ImportTemplate(sql.FieldEQ(FieldIsSystem, v))
-}
-
-// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
-func CreatedBy(v uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldEQ(FieldCreatedBy, v))
 }
 
 // CreatedByName applies equality check predicate on the "created_by_name" field. It's identical to CreatedByNameEQ.
@@ -509,6 +509,56 @@ func DepartmentIDIsNil() predicate.ImportTemplate {
 // DepartmentIDNotNil applies the NotNil predicate on the "department_id" field.
 func DepartmentIDNotNil() predicate.ImportTemplate {
 	return predicate.ImportTemplate(sql.FieldNotNull(FieldDepartmentID))
+}
+
+// CreatedByEQ applies the EQ predicate on the "created_by" field.
+func CreatedByEQ(v uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldEQ(FieldCreatedBy, v))
+}
+
+// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
+func CreatedByNEQ(v uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldNEQ(FieldCreatedBy, v))
+}
+
+// CreatedByIn applies the In predicate on the "created_by" field.
+func CreatedByIn(vs ...uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
+func CreatedByNotIn(vs ...uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldNotIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByGT applies the GT predicate on the "created_by" field.
+func CreatedByGT(v uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldGT(FieldCreatedBy, v))
+}
+
+// CreatedByGTE applies the GTE predicate on the "created_by" field.
+func CreatedByGTE(v uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldGTE(FieldCreatedBy, v))
+}
+
+// CreatedByLT applies the LT predicate on the "created_by" field.
+func CreatedByLT(v uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldLT(FieldCreatedBy, v))
+}
+
+// CreatedByLTE applies the LTE predicate on the "created_by" field.
+func CreatedByLTE(v uuid.UUID) predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldLTE(FieldCreatedBy, v))
+}
+
+// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
+func CreatedByIsNil() predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldIsNull(FieldCreatedBy))
+}
+
+// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
+func CreatedByNotNil() predicate.ImportTemplate {
+	return predicate.ImportTemplate(sql.FieldNotNull(FieldCreatedBy))
 }
 
 // NameEQ applies the EQ predicate on the "name" field.
@@ -1949,56 +1999,6 @@ func SharedWithIsNil() predicate.ImportTemplate {
 // SharedWithNotNil applies the NotNil predicate on the "shared_with" field.
 func SharedWithNotNil() predicate.ImportTemplate {
 	return predicate.ImportTemplate(sql.FieldNotNull(FieldSharedWith))
-}
-
-// CreatedByEQ applies the EQ predicate on the "created_by" field.
-func CreatedByEQ(v uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldEQ(FieldCreatedBy, v))
-}
-
-// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
-func CreatedByNEQ(v uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldNEQ(FieldCreatedBy, v))
-}
-
-// CreatedByIn applies the In predicate on the "created_by" field.
-func CreatedByIn(vs ...uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
-func CreatedByNotIn(vs ...uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldNotIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByGT applies the GT predicate on the "created_by" field.
-func CreatedByGT(v uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldGT(FieldCreatedBy, v))
-}
-
-// CreatedByGTE applies the GTE predicate on the "created_by" field.
-func CreatedByGTE(v uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldGTE(FieldCreatedBy, v))
-}
-
-// CreatedByLT applies the LT predicate on the "created_by" field.
-func CreatedByLT(v uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldLT(FieldCreatedBy, v))
-}
-
-// CreatedByLTE applies the LTE predicate on the "created_by" field.
-func CreatedByLTE(v uuid.UUID) predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldLTE(FieldCreatedBy, v))
-}
-
-// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
-func CreatedByIsNil() predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldIsNull(FieldCreatedBy))
-}
-
-// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
-func CreatedByNotNil() predicate.ImportTemplate {
-	return predicate.ImportTemplate(sql.FieldNotNull(FieldCreatedBy))
 }
 
 // CreatedByNameEQ applies the EQ predicate on the "created_by_name" field.

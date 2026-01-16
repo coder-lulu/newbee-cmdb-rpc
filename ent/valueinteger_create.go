@@ -78,6 +78,20 @@ func (_c *ValueIntegerCreate) SetNillableTenantID(v *uint64) *ValueIntegerCreate
 	return _c
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_c *ValueIntegerCreate) SetDepartmentID(v uint64) *ValueIntegerCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_c *ValueIntegerCreate) SetNillableDepartmentID(v *uint64) *ValueIntegerCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
+	}
+	return _c
+}
+
 // SetCiID sets the "ci_id" field.
 func (_c *ValueIntegerCreate) SetCiID(v uint64) *ValueIntegerCreate {
 	_c.mutation.SetCiID(v)
@@ -270,6 +284,10 @@ func (_c *ValueIntegerCreate) createSpec() (*ValueInteger, *sqlgraph.CreateSpec)
 	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(valueinteger.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.DepartmentID(); ok {
+		_spec.SetField(valueinteger.FieldDepartmentID, field.TypeUint64, value)
+		_node.DepartmentID = value
 	}
 	if value, ok := _c.mutation.Value(); ok {
 		_spec.SetField(valueinteger.FieldValue, field.TypeInt, value)

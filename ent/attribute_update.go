@@ -13,6 +13,7 @@ import (
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attributemappingrule"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicefloat"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choiceinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/choicetext"
@@ -26,7 +27,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valueinteger"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuejson"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/valuetext"
-	"github.com/coder-lulu/newbee-common/utils/validator"
+	"github.com/coder-lulu/newbee-common/v2/utils/validator"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -93,6 +94,26 @@ func (_u *AttributeUpdate) AddDepartmentID(v int64) *AttributeUpdate {
 // ClearDepartmentID clears the value of the "department_id" field.
 func (_u *AttributeUpdate) ClearDepartmentID() *AttributeUpdate {
 	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
+// SetCreatedBy sets the "created_by" field.
+func (_u *AttributeUpdate) SetCreatedBy(v uuid.UUID) *AttributeUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *AttributeUpdate) SetNillableCreatedBy(v *uuid.UUID) *AttributeUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *AttributeUpdate) ClearCreatedBy() *AttributeUpdate {
+	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -175,26 +196,6 @@ func (_u *AttributeUpdate) SetNillableIsList(v *bool) *AttributeUpdate {
 // ClearIsList clears the value of the "is_list" field.
 func (_u *AttributeUpdate) ClearIsList() *AttributeUpdate {
 	_u.mutation.ClearIsList()
-	return _u
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_u *AttributeUpdate) SetCreatedBy(v uuid.UUID) *AttributeUpdate {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *AttributeUpdate) SetNillableCreatedBy(v *uuid.UUID) *AttributeUpdate {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *AttributeUpdate) ClearCreatedBy() *AttributeUpdate {
-	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -628,6 +629,21 @@ func (_u *AttributeUpdate) AddGroupItems(v ...*CiTypeAttributeGroupItem) *Attrib
 	return _u.AddGroupItemIDs(ids...)
 }
 
+// AddMappingRuleIDs adds the "mapping_rules" edge to the AttributeMappingRule entity by IDs.
+func (_u *AttributeUpdate) AddMappingRuleIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.AddMappingRuleIDs(ids...)
+	return _u
+}
+
+// AddMappingRules adds the "mapping_rules" edges to the AttributeMappingRule entity.
+func (_u *AttributeUpdate) AddMappingRules(v ...*AttributeMappingRule) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddMappingRuleIDs(ids...)
+}
+
 // Mutation returns the AttributeMutation object of the builder.
 func (_u *AttributeUpdate) Mutation() *AttributeMutation {
 	return _u.mutation
@@ -864,6 +880,27 @@ func (_u *AttributeUpdate) RemoveGroupItems(v ...*CiTypeAttributeGroupItem) *Att
 	return _u.RemoveGroupItemIDs(ids...)
 }
 
+// ClearMappingRules clears all "mapping_rules" edges to the AttributeMappingRule entity.
+func (_u *AttributeUpdate) ClearMappingRules() *AttributeUpdate {
+	_u.mutation.ClearMappingRules()
+	return _u
+}
+
+// RemoveMappingRuleIDs removes the "mapping_rules" edge to AttributeMappingRule entities by IDs.
+func (_u *AttributeUpdate) RemoveMappingRuleIDs(ids ...uint64) *AttributeUpdate {
+	_u.mutation.RemoveMappingRuleIDs(ids...)
+	return _u
+}
+
+// RemoveMappingRules removes "mapping_rules" edges to AttributeMappingRule entities.
+func (_u *AttributeUpdate) RemoveMappingRules(v ...*AttributeMappingRule) *AttributeUpdate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveMappingRuleIDs(ids...)
+}
+
 // Save executes the query and returns the number of nodes affected by the update operation.
 func (_u *AttributeUpdate) Save(ctx context.Context) (int, error) {
 	if err := _u.defaults(); err != nil {
@@ -956,6 +993,12 @@ func (_u *AttributeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(attribute.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(attribute.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(attribute.FieldName, field.TypeString, value)
 	}
@@ -976,12 +1019,6 @@ func (_u *AttributeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	}
 	if _u.mutation.IsListCleared() {
 		_spec.ClearField(attribute.FieldIsList, field.TypeBool)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(attribute.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.IsComputed(); ok {
 		_spec.SetField(attribute.FieldIsComputed, field.TypeBool, value)
@@ -1564,6 +1601,51 @@ func (_u *AttributeUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
+	if _u.mutation.MappingRulesCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.MappingRulesTable,
+			Columns: []string{attribute.MappingRulesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(attributemappingrule.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.RemovedMappingRulesIDs(); len(nodes) > 0 && !_u.mutation.MappingRulesCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.MappingRulesTable,
+			Columns: []string{attribute.MappingRulesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(attributemappingrule.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.MappingRulesIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.MappingRulesTable,
+			Columns: []string{attribute.MappingRulesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(attributemappingrule.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
 	if _node, err = sqlgraph.UpdateNodes(ctx, _u.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{attribute.Label}
@@ -1634,6 +1716,26 @@ func (_u *AttributeUpdateOne) AddDepartmentID(v int64) *AttributeUpdateOne {
 // ClearDepartmentID clears the value of the "department_id" field.
 func (_u *AttributeUpdateOne) ClearDepartmentID() *AttributeUpdateOne {
 	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
+// SetCreatedBy sets the "created_by" field.
+func (_u *AttributeUpdateOne) SetCreatedBy(v uuid.UUID) *AttributeUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *AttributeUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *AttributeUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *AttributeUpdateOne) ClearCreatedBy() *AttributeUpdateOne {
+	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -1716,26 +1818,6 @@ func (_u *AttributeUpdateOne) SetNillableIsList(v *bool) *AttributeUpdateOne {
 // ClearIsList clears the value of the "is_list" field.
 func (_u *AttributeUpdateOne) ClearIsList() *AttributeUpdateOne {
 	_u.mutation.ClearIsList()
-	return _u
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_u *AttributeUpdateOne) SetCreatedBy(v uuid.UUID) *AttributeUpdateOne {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *AttributeUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *AttributeUpdateOne {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *AttributeUpdateOne) ClearCreatedBy() *AttributeUpdateOne {
-	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -2169,6 +2251,21 @@ func (_u *AttributeUpdateOne) AddGroupItems(v ...*CiTypeAttributeGroupItem) *Att
 	return _u.AddGroupItemIDs(ids...)
 }
 
+// AddMappingRuleIDs adds the "mapping_rules" edge to the AttributeMappingRule entity by IDs.
+func (_u *AttributeUpdateOne) AddMappingRuleIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.AddMappingRuleIDs(ids...)
+	return _u
+}
+
+// AddMappingRules adds the "mapping_rules" edges to the AttributeMappingRule entity.
+func (_u *AttributeUpdateOne) AddMappingRules(v ...*AttributeMappingRule) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.AddMappingRuleIDs(ids...)
+}
+
 // Mutation returns the AttributeMutation object of the builder.
 func (_u *AttributeUpdateOne) Mutation() *AttributeMutation {
 	return _u.mutation
@@ -2405,6 +2502,27 @@ func (_u *AttributeUpdateOne) RemoveGroupItems(v ...*CiTypeAttributeGroupItem) *
 	return _u.RemoveGroupItemIDs(ids...)
 }
 
+// ClearMappingRules clears all "mapping_rules" edges to the AttributeMappingRule entity.
+func (_u *AttributeUpdateOne) ClearMappingRules() *AttributeUpdateOne {
+	_u.mutation.ClearMappingRules()
+	return _u
+}
+
+// RemoveMappingRuleIDs removes the "mapping_rules" edge to AttributeMappingRule entities by IDs.
+func (_u *AttributeUpdateOne) RemoveMappingRuleIDs(ids ...uint64) *AttributeUpdateOne {
+	_u.mutation.RemoveMappingRuleIDs(ids...)
+	return _u
+}
+
+// RemoveMappingRules removes "mapping_rules" edges to AttributeMappingRule entities.
+func (_u *AttributeUpdateOne) RemoveMappingRules(v ...*AttributeMappingRule) *AttributeUpdateOne {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _u.RemoveMappingRuleIDs(ids...)
+}
+
 // Where appends a list predicates to the AttributeUpdate builder.
 func (_u *AttributeUpdateOne) Where(ps ...predicate.Attribute) *AttributeUpdateOne {
 	_u.mutation.Where(ps...)
@@ -2527,6 +2645,12 @@ func (_u *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, er
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(attribute.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(attribute.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.Name(); ok {
 		_spec.SetField(attribute.FieldName, field.TypeString, value)
 	}
@@ -2547,12 +2671,6 @@ func (_u *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, er
 	}
 	if _u.mutation.IsListCleared() {
 		_spec.ClearField(attribute.FieldIsList, field.TypeBool)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(attribute.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(attribute.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.IsComputed(); ok {
 		_spec.SetField(attribute.FieldIsComputed, field.TypeBool, value)
@@ -3128,6 +3246,51 @@ func (_u *AttributeUpdateOne) sqlSave(ctx context.Context) (_node *Attribute, er
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(citypeattributegroupitem.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if _u.mutation.MappingRulesCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.MappingRulesTable,
+			Columns: []string{attribute.MappingRulesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(attributemappingrule.FieldID, field.TypeUint64),
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.RemovedMappingRulesIDs(); len(nodes) > 0 && !_u.mutation.MappingRulesCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.MappingRulesTable,
+			Columns: []string{attribute.MappingRulesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(attributemappingrule.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := _u.mutation.MappingRulesIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   attribute.MappingRulesTable,
+			Columns: []string{attribute.MappingRulesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(attributemappingrule.FieldID, field.TypeUint64),
 			},
 		}
 		for _, k := range nodes {

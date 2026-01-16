@@ -62,6 +62,20 @@ func (_c *PermissionCacheCreate) SetNillableTenantID(v *uint64) *PermissionCache
 	return _c
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_c *PermissionCacheCreate) SetDepartmentID(v uint64) *PermissionCacheCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_c *PermissionCacheCreate) SetNillableDepartmentID(v *uint64) *PermissionCacheCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
+	}
+	return _c
+}
+
 // SetCacheKey sets the "cache_key" field.
 func (_c *PermissionCacheCreate) SetCacheKey(v string) *PermissionCacheCreate {
 	_c.mutation.SetCacheKey(v)
@@ -356,6 +370,10 @@ func (_c *PermissionCacheCreate) createSpec() (*PermissionCache, *sqlgraph.Creat
 	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(permissioncache.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.DepartmentID(); ok {
+		_spec.SetField(permissioncache.FieldDepartmentID, field.TypeUint64, value)
+		_node.DepartmentID = value
 	}
 	if value, ok := _c.mutation.CacheKey(); ok {
 		_spec.SetField(permissioncache.FieldCacheKey, field.TypeString, value)

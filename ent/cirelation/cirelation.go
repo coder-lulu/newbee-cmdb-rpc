@@ -25,42 +25,58 @@ const (
 	FieldTenantID = "tenant_id"
 	// FieldDepartmentID holds the string denoting the department_id field in the database.
 	FieldDepartmentID = "department_id"
-	// FieldFirstCiID holds the string denoting the first_ci_id field in the database.
-	FieldFirstCiID = "first_ci_id"
-	// FieldSecondCiID holds the string denoting the second_ci_id field in the database.
-	FieldSecondCiID = "second_ci_id"
+	// FieldSourceCiID holds the string denoting the source_ci_id field in the database.
+	FieldSourceCiID = "source_ci_id"
+	// FieldTargetCiID holds the string denoting the target_ci_id field in the database.
+	FieldTargetCiID = "target_ci_id"
 	// FieldRelationTypeID holds the string denoting the relation_type_id field in the database.
 	FieldRelationTypeID = "relation_type_id"
 	// FieldMore holds the string denoting the more field in the database.
 	FieldMore = "more"
-	// FieldSource holds the string denoting the source field in the database.
-	FieldSource = "source"
+	// FieldDiscoverySource holds the string denoting the discovery_source field in the database.
+	FieldDiscoverySource = "discovery_source"
 	// FieldAncestorIds holds the string denoting the ancestor_ids field in the database.
 	FieldAncestorIds = "ancestor_ids"
-	// EdgeFirstCi holds the string denoting the first_ci edge name in mutations.
-	EdgeFirstCi = "first_ci"
-	// EdgeSecondCi holds the string denoting the second_ci edge name in mutations.
-	EdgeSecondCi = "second_ci"
+	// FieldProperties holds the string denoting the properties field in the database.
+	FieldProperties = "properties"
+	// FieldAttributeMappings holds the string denoting the attribute_mappings field in the database.
+	FieldAttributeMappings = "attribute_mappings"
+	// FieldStatus holds the string denoting the status field in the database.
+	FieldStatus = "status"
+	// FieldValidationResult holds the string denoting the validation_result field in the database.
+	FieldValidationResult = "validation_result"
+	// FieldLastValidatedAt holds the string denoting the last_validated_at field in the database.
+	FieldLastValidatedAt = "last_validated_at"
+	// FieldAutoSyncEnabled holds the string denoting the auto_sync_enabled field in the database.
+	FieldAutoSyncEnabled = "auto_sync_enabled"
+	// FieldSyncConfig holds the string denoting the sync_config field in the database.
+	FieldSyncConfig = "sync_config"
+	// FieldRelationStrength holds the string denoting the relation_strength field in the database.
+	FieldRelationStrength = "relation_strength"
+	// EdgeSourceCi holds the string denoting the source_ci edge name in mutations.
+	EdgeSourceCi = "source_ci"
+	// EdgeTargetCi holds the string denoting the target_ci edge name in mutations.
+	EdgeTargetCi = "target_ci"
 	// EdgeRelationType holds the string denoting the relation_type edge name in mutations.
 	EdgeRelationType = "relation_type"
 	// EdgeMoreCi holds the string denoting the more_ci edge name in mutations.
 	EdgeMoreCi = "more_ci"
 	// Table holds the table name of the cirelation in the database.
 	Table = "cmdb_ci_relations"
-	// FirstCiTable is the table that holds the first_ci relation/edge.
-	FirstCiTable = "cmdb_ci_relations"
-	// FirstCiInverseTable is the table name for the Cis entity.
+	// SourceCiTable is the table that holds the source_ci relation/edge.
+	SourceCiTable = "cmdb_ci_relations"
+	// SourceCiInverseTable is the table name for the Cis entity.
 	// It exists in this package in order to avoid circular dependency with the "cis" package.
-	FirstCiInverseTable = "cmdb_cis"
-	// FirstCiColumn is the table column denoting the first_ci relation/edge.
-	FirstCiColumn = "first_ci_id"
-	// SecondCiTable is the table that holds the second_ci relation/edge.
-	SecondCiTable = "cmdb_ci_relations"
-	// SecondCiInverseTable is the table name for the Cis entity.
+	SourceCiInverseTable = "cmdb_cis"
+	// SourceCiColumn is the table column denoting the source_ci relation/edge.
+	SourceCiColumn = "source_ci_id"
+	// TargetCiTable is the table that holds the target_ci relation/edge.
+	TargetCiTable = "cmdb_ci_relations"
+	// TargetCiInverseTable is the table name for the Cis entity.
 	// It exists in this package in order to avoid circular dependency with the "cis" package.
-	SecondCiInverseTable = "cmdb_cis"
-	// SecondCiColumn is the table column denoting the second_ci relation/edge.
-	SecondCiColumn = "second_ci_id"
+	TargetCiInverseTable = "cmdb_cis"
+	// TargetCiColumn is the table column denoting the target_ci relation/edge.
+	TargetCiColumn = "target_ci_id"
 	// RelationTypeTable is the table that holds the relation_type relation/edge.
 	RelationTypeTable = "cmdb_ci_relations"
 	// RelationTypeInverseTable is the table name for the RelationType entity.
@@ -85,12 +101,20 @@ var Columns = []string{
 	FieldDeletedAt,
 	FieldTenantID,
 	FieldDepartmentID,
-	FieldFirstCiID,
-	FieldSecondCiID,
+	FieldSourceCiID,
+	FieldTargetCiID,
 	FieldRelationTypeID,
 	FieldMore,
-	FieldSource,
+	FieldDiscoverySource,
 	FieldAncestorIds,
+	FieldProperties,
+	FieldAttributeMappings,
+	FieldStatus,
+	FieldValidationResult,
+	FieldLastValidatedAt,
+	FieldAutoSyncEnabled,
+	FieldSyncConfig,
+	FieldRelationStrength,
 }
 
 // ValidColumn reports if the column name is valid (part of the table columns).
@@ -121,6 +145,12 @@ var (
 	DefaultTenantID uint64
 	// AncestorIdsValidator is a validator for the "ancestor_ids" field. It is called by the builders before save.
 	AncestorIdsValidator func(string) error
+	// DefaultStatus holds the default value on creation for the "status" field.
+	DefaultStatus string
+	// DefaultAutoSyncEnabled holds the default value on creation for the "auto_sync_enabled" field.
+	DefaultAutoSyncEnabled bool
+	// DefaultRelationStrength holds the default value on creation for the "relation_strength" field.
+	DefaultRelationStrength string
 )
 
 // OrderOption defines the ordering options for the CiRelation queries.
@@ -156,14 +186,14 @@ func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
 }
 
-// ByFirstCiID orders the results by the first_ci_id field.
-func ByFirstCiID(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldFirstCiID, opts...).ToFunc()
+// BySourceCiID orders the results by the source_ci_id field.
+func BySourceCiID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldSourceCiID, opts...).ToFunc()
 }
 
-// BySecondCiID orders the results by the second_ci_id field.
-func BySecondCiID(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldSecondCiID, opts...).ToFunc()
+// ByTargetCiID orders the results by the target_ci_id field.
+func ByTargetCiID(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldTargetCiID, opts...).ToFunc()
 }
 
 // ByRelationTypeID orders the results by the relation_type_id field.
@@ -176,9 +206,9 @@ func ByMore(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldMore, opts...).ToFunc()
 }
 
-// BySource orders the results by the source field.
-func BySource(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldSource, opts...).ToFunc()
+// ByDiscoverySource orders the results by the discovery_source field.
+func ByDiscoverySource(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldDiscoverySource, opts...).ToFunc()
 }
 
 // ByAncestorIds orders the results by the ancestor_ids field.
@@ -186,17 +216,37 @@ func ByAncestorIds(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldAncestorIds, opts...).ToFunc()
 }
 
-// ByFirstCiField orders the results by first_ci field.
-func ByFirstCiField(field string, opts ...sql.OrderTermOption) OrderOption {
+// ByStatus orders the results by the status field.
+func ByStatus(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldStatus, opts...).ToFunc()
+}
+
+// ByLastValidatedAt orders the results by the last_validated_at field.
+func ByLastValidatedAt(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldLastValidatedAt, opts...).ToFunc()
+}
+
+// ByAutoSyncEnabled orders the results by the auto_sync_enabled field.
+func ByAutoSyncEnabled(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldAutoSyncEnabled, opts...).ToFunc()
+}
+
+// ByRelationStrength orders the results by the relation_strength field.
+func ByRelationStrength(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldRelationStrength, opts...).ToFunc()
+}
+
+// BySourceCiField orders the results by source_ci field.
+func BySourceCiField(field string, opts ...sql.OrderTermOption) OrderOption {
 	return func(s *sql.Selector) {
-		sqlgraph.OrderByNeighborTerms(s, newFirstCiStep(), sql.OrderByField(field, opts...))
+		sqlgraph.OrderByNeighborTerms(s, newSourceCiStep(), sql.OrderByField(field, opts...))
 	}
 }
 
-// BySecondCiField orders the results by second_ci field.
-func BySecondCiField(field string, opts ...sql.OrderTermOption) OrderOption {
+// ByTargetCiField orders the results by target_ci field.
+func ByTargetCiField(field string, opts ...sql.OrderTermOption) OrderOption {
 	return func(s *sql.Selector) {
-		sqlgraph.OrderByNeighborTerms(s, newSecondCiStep(), sql.OrderByField(field, opts...))
+		sqlgraph.OrderByNeighborTerms(s, newTargetCiStep(), sql.OrderByField(field, opts...))
 	}
 }
 
@@ -213,18 +263,18 @@ func ByMoreCiField(field string, opts ...sql.OrderTermOption) OrderOption {
 		sqlgraph.OrderByNeighborTerms(s, newMoreCiStep(), sql.OrderByField(field, opts...))
 	}
 }
-func newFirstCiStep() *sqlgraph.Step {
+func newSourceCiStep() *sqlgraph.Step {
 	return sqlgraph.NewStep(
 		sqlgraph.From(Table, FieldID),
-		sqlgraph.To(FirstCiInverseTable, FieldID),
-		sqlgraph.Edge(sqlgraph.M2O, true, FirstCiTable, FirstCiColumn),
+		sqlgraph.To(SourceCiInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.M2O, true, SourceCiTable, SourceCiColumn),
 	)
 }
-func newSecondCiStep() *sqlgraph.Step {
+func newTargetCiStep() *sqlgraph.Step {
 	return sqlgraph.NewStep(
 		sqlgraph.From(Table, FieldID),
-		sqlgraph.To(SecondCiInverseTable, FieldID),
-		sqlgraph.Edge(sqlgraph.M2O, true, SecondCiTable, SecondCiColumn),
+		sqlgraph.To(TargetCiInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.M2O, true, TargetCiTable, TargetCiColumn),
 	)
 }
 func newRelationTypeStep() *sqlgraph.Step {

@@ -81,6 +81,11 @@ func DepartmentID(v uint64) predicate.Attribute {
 	return predicate.Attribute(sql.FieldEQ(FieldDepartmentID, v))
 }
 
+// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
+func CreatedBy(v uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldEQ(FieldCreatedBy, v))
+}
+
 // Name applies equality check predicate on the "name" field. It's identical to NameEQ.
 func Name(v string) predicate.Attribute {
 	return predicate.Attribute(sql.FieldEQ(FieldName, v))
@@ -99,11 +104,6 @@ func IsChoice(v bool) predicate.Attribute {
 // IsList applies equality check predicate on the "is_list" field. It's identical to IsListEQ.
 func IsList(v bool) predicate.Attribute {
 	return predicate.Attribute(sql.FieldEQ(FieldIsList, v))
-}
-
-// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
-func CreatedBy(v uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldEQ(FieldCreatedBy, v))
 }
 
 // IsComputed applies equality check predicate on the "is_computed" field. It's identical to IsComputedEQ.
@@ -366,6 +366,56 @@ func DepartmentIDNotNil() predicate.Attribute {
 	return predicate.Attribute(sql.FieldNotNull(FieldDepartmentID))
 }
 
+// CreatedByEQ applies the EQ predicate on the "created_by" field.
+func CreatedByEQ(v uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldEQ(FieldCreatedBy, v))
+}
+
+// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
+func CreatedByNEQ(v uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldNEQ(FieldCreatedBy, v))
+}
+
+// CreatedByIn applies the In predicate on the "created_by" field.
+func CreatedByIn(vs ...uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
+func CreatedByNotIn(vs ...uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldNotIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByGT applies the GT predicate on the "created_by" field.
+func CreatedByGT(v uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldGT(FieldCreatedBy, v))
+}
+
+// CreatedByGTE applies the GTE predicate on the "created_by" field.
+func CreatedByGTE(v uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldGTE(FieldCreatedBy, v))
+}
+
+// CreatedByLT applies the LT predicate on the "created_by" field.
+func CreatedByLT(v uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldLT(FieldCreatedBy, v))
+}
+
+// CreatedByLTE applies the LTE predicate on the "created_by" field.
+func CreatedByLTE(v uuid.UUID) predicate.Attribute {
+	return predicate.Attribute(sql.FieldLTE(FieldCreatedBy, v))
+}
+
+// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
+func CreatedByIsNil() predicate.Attribute {
+	return predicate.Attribute(sql.FieldIsNull(FieldCreatedBy))
+}
+
+// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
+func CreatedByNotNil() predicate.Attribute {
+	return predicate.Attribute(sql.FieldNotNull(FieldCreatedBy))
+}
+
 // NameEQ applies the EQ predicate on the "name" field.
 func NameEQ(v string) predicate.Attribute {
 	return predicate.Attribute(sql.FieldEQ(FieldName, v))
@@ -554,56 +604,6 @@ func IsListIsNil() predicate.Attribute {
 // IsListNotNil applies the NotNil predicate on the "is_list" field.
 func IsListNotNil() predicate.Attribute {
 	return predicate.Attribute(sql.FieldNotNull(FieldIsList))
-}
-
-// CreatedByEQ applies the EQ predicate on the "created_by" field.
-func CreatedByEQ(v uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldEQ(FieldCreatedBy, v))
-}
-
-// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
-func CreatedByNEQ(v uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldNEQ(FieldCreatedBy, v))
-}
-
-// CreatedByIn applies the In predicate on the "created_by" field.
-func CreatedByIn(vs ...uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
-func CreatedByNotIn(vs ...uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldNotIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByGT applies the GT predicate on the "created_by" field.
-func CreatedByGT(v uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldGT(FieldCreatedBy, v))
-}
-
-// CreatedByGTE applies the GTE predicate on the "created_by" field.
-func CreatedByGTE(v uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldGTE(FieldCreatedBy, v))
-}
-
-// CreatedByLT applies the LT predicate on the "created_by" field.
-func CreatedByLT(v uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldLT(FieldCreatedBy, v))
-}
-
-// CreatedByLTE applies the LTE predicate on the "created_by" field.
-func CreatedByLTE(v uuid.UUID) predicate.Attribute {
-	return predicate.Attribute(sql.FieldLTE(FieldCreatedBy, v))
-}
-
-// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
-func CreatedByIsNil() predicate.Attribute {
-	return predicate.Attribute(sql.FieldIsNull(FieldCreatedBy))
-}
-
-// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
-func CreatedByNotNil() predicate.Attribute {
-	return predicate.Attribute(sql.FieldNotNull(FieldCreatedBy))
 }
 
 // IsComputedEQ applies the EQ predicate on the "is_computed" field.
@@ -1201,6 +1201,29 @@ func HasGroupItems() predicate.Attribute {
 func HasGroupItemsWith(preds ...predicate.CiTypeAttributeGroupItem) predicate.Attribute {
 	return predicate.Attribute(func(s *sql.Selector) {
 		step := newGroupItemsStep()
+		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
+			for _, p := range preds {
+				p(s)
+			}
+		})
+	})
+}
+
+// HasMappingRules applies the HasEdge predicate on the "mapping_rules" edge.
+func HasMappingRules() predicate.Attribute {
+	return predicate.Attribute(func(s *sql.Selector) {
+		step := sqlgraph.NewStep(
+			sqlgraph.From(Table, FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, MappingRulesTable, MappingRulesColumn),
+		)
+		sqlgraph.HasNeighbors(s, step)
+	})
+}
+
+// HasMappingRulesWith applies the HasEdge predicate on the "mapping_rules" edge with a given conditions (other predicates).
+func HasMappingRulesWith(preds ...predicate.AttributeMappingRule) predicate.Attribute {
+	return predicate.Attribute(func(s *sql.Selector) {
+		step := newMappingRulesStep()
 		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
 			for _, p := range preds {
 				p(s)

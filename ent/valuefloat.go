@@ -27,6 +27,8 @@ type ValueFloat struct {
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 外键，关联cmdb_cis.id
 	CiID uint64 `json:"ci_id,omitempty"`
 	// 外键，关联cmdb_attributes.id
@@ -83,7 +85,7 @@ func (*ValueFloat) scanValues(columns []string) ([]any, error) {
 			values[i] = new(sql.NullBool)
 		case valuefloat.FieldValue:
 			values[i] = new(sql.NullFloat64)
-		case valuefloat.FieldID, valuefloat.FieldTenantID, valuefloat.FieldCiID, valuefloat.FieldAttrID:
+		case valuefloat.FieldID, valuefloat.FieldTenantID, valuefloat.FieldDepartmentID, valuefloat.FieldCiID, valuefloat.FieldAttrID:
 			values[i] = new(sql.NullInt64)
 		case valuefloat.FieldCreatedAt, valuefloat.FieldUpdatedAt, valuefloat.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -131,6 +133,12 @@ func (_m *ValueFloat) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case valuefloat.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case valuefloat.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -213,6 +221,9 @@ func (_m *ValueFloat) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.CiID))

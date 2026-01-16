@@ -75,6 +75,11 @@ func DepartmentID(v uint64) predicate.CiLifecycleState {
 	return predicate.CiLifecycleState(sql.FieldEQ(FieldDepartmentID, v))
 }
 
+// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
+func CreatedBy(v uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldEQ(FieldCreatedBy, v))
+}
+
 // StateID applies equality check predicate on the "state_id" field. It's identical to StateIDEQ.
 func StateID(v string) predicate.CiLifecycleState {
 	return predicate.CiLifecycleState(sql.FieldEQ(FieldStateID, v))
@@ -270,11 +275,6 @@ func Comments(v string) predicate.CiLifecycleState {
 	return predicate.CiLifecycleState(sql.FieldEQ(FieldComments, v))
 }
 
-// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
-func CreatedBy(v uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldEQ(FieldCreatedBy, v))
-}
-
 // UpdatedBy applies equality check predicate on the "updated_by" field. It's identical to UpdatedByEQ.
 func UpdatedBy(v uuid.UUID) predicate.CiLifecycleState {
 	return predicate.CiLifecycleState(sql.FieldEQ(FieldUpdatedBy, v))
@@ -448,6 +448,56 @@ func DepartmentIDIsNil() predicate.CiLifecycleState {
 // DepartmentIDNotNil applies the NotNil predicate on the "department_id" field.
 func DepartmentIDNotNil() predicate.CiLifecycleState {
 	return predicate.CiLifecycleState(sql.FieldNotNull(FieldDepartmentID))
+}
+
+// CreatedByEQ applies the EQ predicate on the "created_by" field.
+func CreatedByEQ(v uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldEQ(FieldCreatedBy, v))
+}
+
+// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
+func CreatedByNEQ(v uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldNEQ(FieldCreatedBy, v))
+}
+
+// CreatedByIn applies the In predicate on the "created_by" field.
+func CreatedByIn(vs ...uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
+func CreatedByNotIn(vs ...uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldNotIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByGT applies the GT predicate on the "created_by" field.
+func CreatedByGT(v uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldGT(FieldCreatedBy, v))
+}
+
+// CreatedByGTE applies the GTE predicate on the "created_by" field.
+func CreatedByGTE(v uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldGTE(FieldCreatedBy, v))
+}
+
+// CreatedByLT applies the LT predicate on the "created_by" field.
+func CreatedByLT(v uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldLT(FieldCreatedBy, v))
+}
+
+// CreatedByLTE applies the LTE predicate on the "created_by" field.
+func CreatedByLTE(v uuid.UUID) predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldLTE(FieldCreatedBy, v))
+}
+
+// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
+func CreatedByIsNil() predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldIsNull(FieldCreatedBy))
+}
+
+// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
+func CreatedByNotNil() predicate.CiLifecycleState {
+	return predicate.CiLifecycleState(sql.FieldNotNull(FieldCreatedBy))
 }
 
 // StateIDEQ applies the EQ predicate on the "state_id" field.
@@ -2628,56 +2678,6 @@ func CommentsEqualFold(v string) predicate.CiLifecycleState {
 // CommentsContainsFold applies the ContainsFold predicate on the "comments" field.
 func CommentsContainsFold(v string) predicate.CiLifecycleState {
 	return predicate.CiLifecycleState(sql.FieldContainsFold(FieldComments, v))
-}
-
-// CreatedByEQ applies the EQ predicate on the "created_by" field.
-func CreatedByEQ(v uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldEQ(FieldCreatedBy, v))
-}
-
-// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
-func CreatedByNEQ(v uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldNEQ(FieldCreatedBy, v))
-}
-
-// CreatedByIn applies the In predicate on the "created_by" field.
-func CreatedByIn(vs ...uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
-func CreatedByNotIn(vs ...uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldNotIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByGT applies the GT predicate on the "created_by" field.
-func CreatedByGT(v uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldGT(FieldCreatedBy, v))
-}
-
-// CreatedByGTE applies the GTE predicate on the "created_by" field.
-func CreatedByGTE(v uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldGTE(FieldCreatedBy, v))
-}
-
-// CreatedByLT applies the LT predicate on the "created_by" field.
-func CreatedByLT(v uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldLT(FieldCreatedBy, v))
-}
-
-// CreatedByLTE applies the LTE predicate on the "created_by" field.
-func CreatedByLTE(v uuid.UUID) predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldLTE(FieldCreatedBy, v))
-}
-
-// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
-func CreatedByIsNil() predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldIsNull(FieldCreatedBy))
-}
-
-// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
-func CreatedByNotNil() predicate.CiLifecycleState {
-	return predicate.CiLifecycleState(sql.FieldNotNull(FieldCreatedBy))
 }
 
 // UpdatedByEQ applies the EQ predicate on the "updated_by" field.

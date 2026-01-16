@@ -58,6 +58,33 @@ func (_u *ValueJSONUpdate) ClearDeletedAt() *ValueJSONUpdate {
 	return _u
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_u *ValueJSONUpdate) SetDepartmentID(v uint64) *ValueJSONUpdate {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_u *ValueJSONUpdate) SetNillableDepartmentID(v *uint64) *ValueJSONUpdate {
+	if v != nil {
+		_u.SetDepartmentID(*v)
+	}
+	return _u
+}
+
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ValueJSONUpdate) AddDepartmentID(v int64) *ValueJSONUpdate {
+	_u.mutation.AddDepartmentID(v)
+	return _u
+}
+
+// ClearDepartmentID clears the value of the "department_id" field.
+func (_u *ValueJSONUpdate) ClearDepartmentID() *ValueJSONUpdate {
+	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
 // SetCiID sets the "ci_id" field.
 func (_u *ValueJSONUpdate) SetCiID(v uint64) *ValueJSONUpdate {
 	_u.mutation.SetCiID(v)
@@ -219,6 +246,15 @@ func (_u *ValueJSONUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuejson.FieldDeletedAt, field.TypeTime)
 	}
+	if value, ok := _u.mutation.DepartmentID(); ok {
+		_spec.SetField(valuejson.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
+		_spec.AddField(valuejson.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if _u.mutation.DepartmentIDCleared() {
+		_spec.ClearField(valuejson.FieldDepartmentID, field.TypeUint64)
+	}
 	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuejson.FieldValue, field.TypeJSON, value)
 	}
@@ -331,6 +367,33 @@ func (_u *ValueJSONUpdateOne) SetNillableDeletedAt(v *time.Time) *ValueJSONUpdat
 // ClearDeletedAt clears the value of the "deleted_at" field.
 func (_u *ValueJSONUpdateOne) ClearDeletedAt() *ValueJSONUpdateOne {
 	_u.mutation.ClearDeletedAt()
+	return _u
+}
+
+// SetDepartmentID sets the "department_id" field.
+func (_u *ValueJSONUpdateOne) SetDepartmentID(v uint64) *ValueJSONUpdateOne {
+	_u.mutation.ResetDepartmentID()
+	_u.mutation.SetDepartmentID(v)
+	return _u
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_u *ValueJSONUpdateOne) SetNillableDepartmentID(v *uint64) *ValueJSONUpdateOne {
+	if v != nil {
+		_u.SetDepartmentID(*v)
+	}
+	return _u
+}
+
+// AddDepartmentID adds value to the "department_id" field.
+func (_u *ValueJSONUpdateOne) AddDepartmentID(v int64) *ValueJSONUpdateOne {
+	_u.mutation.AddDepartmentID(v)
+	return _u
+}
+
+// ClearDepartmentID clears the value of the "department_id" field.
+func (_u *ValueJSONUpdateOne) ClearDepartmentID() *ValueJSONUpdateOne {
+	_u.mutation.ClearDepartmentID()
 	return _u
 }
 
@@ -524,6 +587,15 @@ func (_u *ValueJSONUpdateOne) sqlSave(ctx context.Context) (_node *ValueJSON, er
 	}
 	if _u.mutation.DeletedAtCleared() {
 		_spec.ClearField(valuejson.FieldDeletedAt, field.TypeTime)
+	}
+	if value, ok := _u.mutation.DepartmentID(); ok {
+		_spec.SetField(valuejson.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if value, ok := _u.mutation.AddedDepartmentID(); ok {
+		_spec.AddField(valuejson.FieldDepartmentID, field.TypeUint64, value)
+	}
+	if _u.mutation.DepartmentIDCleared() {
+		_spec.ClearField(valuejson.FieldDepartmentID, field.TypeUint64)
 	}
 	if value, ok := _u.mutation.Value(); ok {
 		_spec.SetField(valuejson.FieldValue, field.TypeJSON, value)

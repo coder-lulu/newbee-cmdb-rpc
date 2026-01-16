@@ -75,6 +75,11 @@ func TenantID(v uint64) predicate.CiTypeRelation {
 	return predicate.CiTypeRelation(sql.FieldEQ(FieldTenantID, v))
 }
 
+// DepartmentID applies equality check predicate on the "department_id" field. It's identical to DepartmentIDEQ.
+func DepartmentID(v uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldEQ(FieldDepartmentID, v))
+}
+
 // ParentID applies equality check predicate on the "parent_id" field. It's identical to ParentIDEQ.
 func ParentID(v uint64) predicate.CiTypeRelation {
 	return predicate.CiTypeRelation(sql.FieldEQ(FieldParentID, v))
@@ -273,6 +278,56 @@ func TenantIDLT(v uint64) predicate.CiTypeRelation {
 // TenantIDLTE applies the LTE predicate on the "tenant_id" field.
 func TenantIDLTE(v uint64) predicate.CiTypeRelation {
 	return predicate.CiTypeRelation(sql.FieldLTE(FieldTenantID, v))
+}
+
+// DepartmentIDEQ applies the EQ predicate on the "department_id" field.
+func DepartmentIDEQ(v uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldEQ(FieldDepartmentID, v))
+}
+
+// DepartmentIDNEQ applies the NEQ predicate on the "department_id" field.
+func DepartmentIDNEQ(v uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldNEQ(FieldDepartmentID, v))
+}
+
+// DepartmentIDIn applies the In predicate on the "department_id" field.
+func DepartmentIDIn(vs ...uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldIn(FieldDepartmentID, vs...))
+}
+
+// DepartmentIDNotIn applies the NotIn predicate on the "department_id" field.
+func DepartmentIDNotIn(vs ...uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldNotIn(FieldDepartmentID, vs...))
+}
+
+// DepartmentIDGT applies the GT predicate on the "department_id" field.
+func DepartmentIDGT(v uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldGT(FieldDepartmentID, v))
+}
+
+// DepartmentIDGTE applies the GTE predicate on the "department_id" field.
+func DepartmentIDGTE(v uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldGTE(FieldDepartmentID, v))
+}
+
+// DepartmentIDLT applies the LT predicate on the "department_id" field.
+func DepartmentIDLT(v uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldLT(FieldDepartmentID, v))
+}
+
+// DepartmentIDLTE applies the LTE predicate on the "department_id" field.
+func DepartmentIDLTE(v uint64) predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldLTE(FieldDepartmentID, v))
+}
+
+// DepartmentIDIsNil applies the IsNil predicate on the "department_id" field.
+func DepartmentIDIsNil() predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldIsNull(FieldDepartmentID))
+}
+
+// DepartmentIDNotNil applies the NotNil predicate on the "department_id" field.
+func DepartmentIDNotNil() predicate.CiTypeRelation {
+	return predicate.CiTypeRelation(sql.FieldNotNull(FieldDepartmentID))
 }
 
 // ParentIDEQ applies the EQ predicate on the "parent_id" field.

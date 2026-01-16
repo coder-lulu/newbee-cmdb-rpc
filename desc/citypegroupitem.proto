@@ -34,6 +34,14 @@ message CiTypeGroupItemTreeListResp {
 
 message CiTypeGroupItemListReq {
   optional uint64 group_id = 1;
+  // 包含的CI类型ID列表 | Include specific CI type IDs
+  repeated uint64 include_type_ids = 2;
+  // 排除的CI类型ID列表 | Exclude specific CI type IDs  
+  repeated uint64 exclude_type_ids = 3;
+  // 包含的CI类型名称列表 | Include specific CI type names
+  repeated string include_type_names = 4;
+  // 排除的CI类型名称列表 | Exclude specific CI type names
+  repeated string exclude_type_names = 5;
 }
 
 message CiTypeGroupItemSort {

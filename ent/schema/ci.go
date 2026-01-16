@@ -7,8 +7,7 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
-	"github.com/gofrs/uuid/v5"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 )
 
 // Ci 对应于数据库cmdb_cis
@@ -23,6 +22,7 @@ func (Cis) Mixin() []ent.Mixin {
 		mixins2.SoftDeleteMixin{},
 		mixins.TenantMixin{},
 		mixins.DepartmentMixin{},
+		mixins.CreatedByMixin{},
 	}
 }
 
@@ -31,7 +31,6 @@ func (Cis) Fields() []ent.Field {
 	return []ent.Field{
 		field.Uint64("type_id").Comment("外键，关联cmdb_ci_types.id"),
 		field.Uint32("status").Optional().Comment("状态，枚举类型").Default(1),
-		field.UUID("created_by", uuid.UUID{}).Optional().Nillable().Comment("创建者"),
 		field.JSON("tags", []CiTag{}).Optional().Comment("标签"),
 		field.JSON("metadata", map[string]interface{}{}).Optional().Comment("元数据"),
 		field.JSON("custom_fields", map[string]interface{}{}).Optional().Comment("自定义字段"),
@@ -57,8 +56,8 @@ func (Cis) Edges() []ent.Edge {
 		edge.To("value_datetimes", ValueDatetime.Type),
 
 		// 关系
-		edge.To("first_relations", CiRelation.Type),
-		edge.To("second_relations", CiRelation.Type),
+		edge.To("source_relations", CiRelation.Type),
+		edge.To("target_relations", CiRelation.Type),
 		edge.To("more_relations", CiRelation.Type),
 
 		// 导入相关关系

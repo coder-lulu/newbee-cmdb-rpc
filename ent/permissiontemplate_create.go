@@ -62,6 +62,20 @@ func (_c *PermissionTemplateCreate) SetNillableTenantID(v *uint64) *PermissionTe
 	return _c
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_c *PermissionTemplateCreate) SetDepartmentID(v uint64) *PermissionTemplateCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_c *PermissionTemplateCreate) SetNillableDepartmentID(v *uint64) *PermissionTemplateCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
+	}
+	return _c
+}
+
 // SetTemplateID sets the "template_id" field.
 func (_c *PermissionTemplateCreate) SetTemplateID(v string) *PermissionTemplateCreate {
 	_c.mutation.SetTemplateID(v)
@@ -379,6 +393,10 @@ func (_c *PermissionTemplateCreate) createSpec() (*PermissionTemplate, *sqlgraph
 	if value, ok := _c.mutation.TenantID(); ok {
 		_spec.SetField(permissiontemplate.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
+	}
+	if value, ok := _c.mutation.DepartmentID(); ok {
+		_spec.SetField(permissiontemplate.FieldDepartmentID, field.TypeUint64, value)
+		_node.DepartmentID = value
 	}
 	if value, ok := _c.mutation.TemplateID(); ok {
 		_spec.SetField(permissiontemplate.FieldTemplateID, field.TypeString, value)

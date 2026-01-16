@@ -69,6 +69,11 @@ func TenantID(v uint64) predicate.PermissionCache {
 	return predicate.PermissionCache(sql.FieldEQ(FieldTenantID, v))
 }
 
+// DepartmentID applies equality check predicate on the "department_id" field. It's identical to DepartmentIDEQ.
+func DepartmentID(v uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldEQ(FieldDepartmentID, v))
+}
+
 // CacheKey applies equality check predicate on the "cache_key" field. It's identical to CacheKeyEQ.
 func CacheKey(v string) predicate.PermissionCache {
 	return predicate.PermissionCache(sql.FieldEQ(FieldCacheKey, v))
@@ -242,6 +247,56 @@ func TenantIDLT(v uint64) predicate.PermissionCache {
 // TenantIDLTE applies the LTE predicate on the "tenant_id" field.
 func TenantIDLTE(v uint64) predicate.PermissionCache {
 	return predicate.PermissionCache(sql.FieldLTE(FieldTenantID, v))
+}
+
+// DepartmentIDEQ applies the EQ predicate on the "department_id" field.
+func DepartmentIDEQ(v uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldEQ(FieldDepartmentID, v))
+}
+
+// DepartmentIDNEQ applies the NEQ predicate on the "department_id" field.
+func DepartmentIDNEQ(v uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldNEQ(FieldDepartmentID, v))
+}
+
+// DepartmentIDIn applies the In predicate on the "department_id" field.
+func DepartmentIDIn(vs ...uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldIn(FieldDepartmentID, vs...))
+}
+
+// DepartmentIDNotIn applies the NotIn predicate on the "department_id" field.
+func DepartmentIDNotIn(vs ...uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldNotIn(FieldDepartmentID, vs...))
+}
+
+// DepartmentIDGT applies the GT predicate on the "department_id" field.
+func DepartmentIDGT(v uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldGT(FieldDepartmentID, v))
+}
+
+// DepartmentIDGTE applies the GTE predicate on the "department_id" field.
+func DepartmentIDGTE(v uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldGTE(FieldDepartmentID, v))
+}
+
+// DepartmentIDLT applies the LT predicate on the "department_id" field.
+func DepartmentIDLT(v uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldLT(FieldDepartmentID, v))
+}
+
+// DepartmentIDLTE applies the LTE predicate on the "department_id" field.
+func DepartmentIDLTE(v uint64) predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldLTE(FieldDepartmentID, v))
+}
+
+// DepartmentIDIsNil applies the IsNil predicate on the "department_id" field.
+func DepartmentIDIsNil() predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldIsNull(FieldDepartmentID))
+}
+
+// DepartmentIDNotNil applies the NotNil predicate on the "department_id" field.
+func DepartmentIDNotNil() predicate.PermissionCache {
+	return predicate.PermissionCache(sql.FieldNotNull(FieldDepartmentID))
 }
 
 // CacheKeyEQ applies the EQ predicate on the "cache_key" field.

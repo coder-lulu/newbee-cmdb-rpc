@@ -85,6 +85,26 @@ func (_u *ImportTaskUpdate) ClearDepartmentID() *ImportTaskUpdate {
 	return _u
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_u *ImportTaskUpdate) SetCreatedBy(v uuid.UUID) *ImportTaskUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *ImportTaskUpdate) SetNillableCreatedBy(v *uuid.UUID) *ImportTaskUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *ImportTaskUpdate) ClearCreatedBy() *ImportTaskUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
+}
+
 // SetTaskID sets the "task_id" field.
 func (_u *ImportTaskUpdate) SetTaskID(v string) *ImportTaskUpdate {
 	_u.mutation.SetTaskID(v)
@@ -527,26 +547,6 @@ func (_u *ImportTaskUpdate) ClearResultFilePath() *ImportTaskUpdate {
 	return _u
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_u *ImportTaskUpdate) SetCreatedBy(v uuid.UUID) *ImportTaskUpdate {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *ImportTaskUpdate) SetNillableCreatedBy(v *uuid.UUID) *ImportTaskUpdate {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *ImportTaskUpdate) ClearCreatedBy() *ImportTaskUpdate {
-	_u.mutation.ClearCreatedBy()
-	return _u
-}
-
 // SetCreatedByName sets the "created_by_name" field.
 func (_u *ImportTaskUpdate) SetCreatedByName(v string) *ImportTaskUpdate {
 	_u.mutation.SetCreatedByName(v)
@@ -782,6 +782,12 @@ func (_u *ImportTaskUpdate) sqlSave(ctx context.Context) (_node int, err error) 
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importtask.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(importtask.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(importtask.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.TaskID(); ok {
 		_spec.SetField(importtask.FieldTaskID, field.TypeString, value)
 	}
@@ -904,12 +910,6 @@ func (_u *ImportTaskUpdate) sqlSave(ctx context.Context) (_node int, err error) 
 	}
 	if _u.mutation.ResultFilePathCleared() {
 		_spec.ClearField(importtask.FieldResultFilePath, field.TypeString)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(importtask.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(importtask.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.CreatedByName(); ok {
 		_spec.SetField(importtask.FieldCreatedByName, field.TypeString, value)
@@ -1106,6 +1106,26 @@ func (_u *ImportTaskUpdateOne) AddDepartmentID(v int64) *ImportTaskUpdateOne {
 // ClearDepartmentID clears the value of the "department_id" field.
 func (_u *ImportTaskUpdateOne) ClearDepartmentID() *ImportTaskUpdateOne {
 	_u.mutation.ClearDepartmentID()
+	return _u
+}
+
+// SetCreatedBy sets the "created_by" field.
+func (_u *ImportTaskUpdateOne) SetCreatedBy(v uuid.UUID) *ImportTaskUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *ImportTaskUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *ImportTaskUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *ImportTaskUpdateOne) ClearCreatedBy() *ImportTaskUpdateOne {
+	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -1551,26 +1571,6 @@ func (_u *ImportTaskUpdateOne) ClearResultFilePath() *ImportTaskUpdateOne {
 	return _u
 }
 
-// SetCreatedBy sets the "created_by" field.
-func (_u *ImportTaskUpdateOne) SetCreatedBy(v uuid.UUID) *ImportTaskUpdateOne {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *ImportTaskUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *ImportTaskUpdateOne {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *ImportTaskUpdateOne) ClearCreatedBy() *ImportTaskUpdateOne {
-	_u.mutation.ClearCreatedBy()
-	return _u
-}
-
 // SetCreatedByName sets the "created_by_name" field.
 func (_u *ImportTaskUpdateOne) SetCreatedByName(v string) *ImportTaskUpdateOne {
 	_u.mutation.SetCreatedByName(v)
@@ -1836,6 +1836,12 @@ func (_u *ImportTaskUpdateOne) sqlSave(ctx context.Context) (_node *ImportTask, 
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(importtask.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(importtask.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(importtask.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.TaskID(); ok {
 		_spec.SetField(importtask.FieldTaskID, field.TypeString, value)
 	}
@@ -1958,12 +1964,6 @@ func (_u *ImportTaskUpdateOne) sqlSave(ctx context.Context) (_node *ImportTask, 
 	}
 	if _u.mutation.ResultFilePathCleared() {
 		_spec.ClearField(importtask.FieldResultFilePath, field.TypeString)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(importtask.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(importtask.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.CreatedByName(); ok {
 		_spec.SetField(importtask.FieldCreatedByName, field.TypeString, value)

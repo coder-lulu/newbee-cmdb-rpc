@@ -3,6 +3,7 @@
 package ent
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 	"time"
@@ -25,14 +26,38 @@ type RelationType struct {
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 关系类型名称
 	Name string `json:"name,omitempty"`
 	// 关系类型编码
 	Code string `json:"code,omitempty"`
-	// Category holds the value of the "category" field.
+	// 关系分类
 	Category relationtype.Category `json:"category,omitempty"`
-	// Direction holds the value of the "direction" field.
+	// 关系方向
 	Direction relationtype.Direction `json:"direction,omitempty"`
+	// 关系描述
+	Description string `json:"description,omitempty"`
+	// 是否为标准关系类型
+	IsStandard bool `json:"is_standard,omitempty"`
+	// 排序顺序
+	SortOrder int `json:"sort_order,omitempty"`
+	// 是否启用
+	IsEnabled bool `json:"is_enabled,omitempty"`
+	// 显示颜色(HEX格式)
+	DisplayColor string `json:"display_color,omitempty"`
+	// 线条类型
+	LineType relationtype.LineType `json:"line_type,omitempty"`
+	// 关系图标
+	Icon string `json:"icon,omitempty"`
+	// 关系权重(1-10,影响显示粗细)
+	Weight int `json:"weight,omitempty"`
+	// 显示标签
+	DisplayLabel string `json:"display_label,omitempty"`
+	// 悬浮提示模板
+	TooltipTemplate string `json:"tooltip_template,omitempty"`
+	// 扩展显示样式配置
+	DisplayStyle map[string]interface{} `json:"display_style,omitempty"`
 	// Edges holds the relations/edges for other nodes in the graph.
 	// The values are being populated by the RelationTypeQuery when eager-loading is set.
 	Edges        RelationTypeEdges `json:"edges"`
@@ -73,9 +98,13 @@ func (*RelationType) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case relationtype.FieldID, relationtype.FieldTenantID:
+		case relationtype.FieldDisplayStyle:
+			values[i] = new([]byte)
+		case relationtype.FieldIsStandard, relationtype.FieldIsEnabled:
+			values[i] = new(sql.NullBool)
+		case relationtype.FieldID, relationtype.FieldTenantID, relationtype.FieldDepartmentID, relationtype.FieldSortOrder, relationtype.FieldWeight:
 			values[i] = new(sql.NullInt64)
-		case relationtype.FieldName, relationtype.FieldCode, relationtype.FieldCategory, relationtype.FieldDirection:
+		case relationtype.FieldName, relationtype.FieldCode, relationtype.FieldCategory, relationtype.FieldDirection, relationtype.FieldDescription, relationtype.FieldDisplayColor, relationtype.FieldLineType, relationtype.FieldIcon, relationtype.FieldDisplayLabel, relationtype.FieldTooltipTemplate:
 			values[i] = new(sql.NullString)
 		case relationtype.FieldCreatedAt, relationtype.FieldUpdatedAt, relationtype.FieldDeletedAt:
 			values[i] = new(sql.NullTime)
@@ -124,6 +153,12 @@ func (_m *RelationType) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
 			}
+		case relationtype.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
+			}
 		case relationtype.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
@@ -147,6 +182,74 @@ func (_m *RelationType) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field direction", values[i])
 			} else if value.Valid {
 				_m.Direction = relationtype.Direction(value.String)
+			}
+		case relationtype.FieldDescription:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field description", values[i])
+			} else if value.Valid {
+				_m.Description = value.String
+			}
+		case relationtype.FieldIsStandard:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field is_standard", values[i])
+			} else if value.Valid {
+				_m.IsStandard = value.Bool
+			}
+		case relationtype.FieldSortOrder:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field sort_order", values[i])
+			} else if value.Valid {
+				_m.SortOrder = int(value.Int64)
+			}
+		case relationtype.FieldIsEnabled:
+			if value, ok := values[i].(*sql.NullBool); !ok {
+				return fmt.Errorf("unexpected type %T for field is_enabled", values[i])
+			} else if value.Valid {
+				_m.IsEnabled = value.Bool
+			}
+		case relationtype.FieldDisplayColor:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field display_color", values[i])
+			} else if value.Valid {
+				_m.DisplayColor = value.String
+			}
+		case relationtype.FieldLineType:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field line_type", values[i])
+			} else if value.Valid {
+				_m.LineType = relationtype.LineType(value.String)
+			}
+		case relationtype.FieldIcon:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field icon", values[i])
+			} else if value.Valid {
+				_m.Icon = value.String
+			}
+		case relationtype.FieldWeight:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field weight", values[i])
+			} else if value.Valid {
+				_m.Weight = int(value.Int64)
+			}
+		case relationtype.FieldDisplayLabel:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field display_label", values[i])
+			} else if value.Valid {
+				_m.DisplayLabel = value.String
+			}
+		case relationtype.FieldTooltipTemplate:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field tooltip_template", values[i])
+			} else if value.Valid {
+				_m.TooltipTemplate = value.String
+			}
+		case relationtype.FieldDisplayStyle:
+			if value, ok := values[i].(*[]byte); !ok {
+				return fmt.Errorf("unexpected type %T for field display_style", values[i])
+			} else if value != nil && len(*value) > 0 {
+				if err := json.Unmarshal(*value, &_m.DisplayStyle); err != nil {
+					return fmt.Errorf("unmarshal field display_style: %w", err)
+				}
 			}
 		default:
 			_m.selectValues.Set(columns[i], values[i])
@@ -206,6 +309,9 @@ func (_m *RelationType) String() string {
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
 	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
+	builder.WriteString(", ")
 	builder.WriteString("name=")
 	builder.WriteString(_m.Name)
 	builder.WriteString(", ")
@@ -217,6 +323,39 @@ func (_m *RelationType) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("direction=")
 	builder.WriteString(fmt.Sprintf("%v", _m.Direction))
+	builder.WriteString(", ")
+	builder.WriteString("description=")
+	builder.WriteString(_m.Description)
+	builder.WriteString(", ")
+	builder.WriteString("is_standard=")
+	builder.WriteString(fmt.Sprintf("%v", _m.IsStandard))
+	builder.WriteString(", ")
+	builder.WriteString("sort_order=")
+	builder.WriteString(fmt.Sprintf("%v", _m.SortOrder))
+	builder.WriteString(", ")
+	builder.WriteString("is_enabled=")
+	builder.WriteString(fmt.Sprintf("%v", _m.IsEnabled))
+	builder.WriteString(", ")
+	builder.WriteString("display_color=")
+	builder.WriteString(_m.DisplayColor)
+	builder.WriteString(", ")
+	builder.WriteString("line_type=")
+	builder.WriteString(fmt.Sprintf("%v", _m.LineType))
+	builder.WriteString(", ")
+	builder.WriteString("icon=")
+	builder.WriteString(_m.Icon)
+	builder.WriteString(", ")
+	builder.WriteString("weight=")
+	builder.WriteString(fmt.Sprintf("%v", _m.Weight))
+	builder.WriteString(", ")
+	builder.WriteString("display_label=")
+	builder.WriteString(_m.DisplayLabel)
+	builder.WriteString(", ")
+	builder.WriteString("tooltip_template=")
+	builder.WriteString(_m.TooltipTemplate)
+	builder.WriteString(", ")
+	builder.WriteString("display_style=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DisplayStyle))
 	builder.WriteByte(')')
 	return builder.String()
 }

@@ -12,7 +12,7 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/attribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/schema"
-	"github.com/coder-lulu/newbee-common/utils/validator"
+	"github.com/coder-lulu/newbee-common/v2/utils/validator"
 	uuid "github.com/gofrs/uuid/v5"
 )
 
@@ -31,6 +31,8 @@ type Attribute struct {
 	TenantID uint64 `json:"tenant_id,omitempty"`
 	// Department ID | 部门 ID
 	DepartmentID uint64 `json:"department_id,omitempty"`
+	// Created user's UUID | 创建者 UUID
+	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 属性名
 	Name string `json:"name,omitempty"`
 	// 属性别名
@@ -41,8 +43,6 @@ type Attribute struct {
 	IsChoice bool `json:"is_choice,omitempty"`
 	// 是否为列表
 	IsList bool `json:"is_list,omitempty"`
-	// 用户ID/创建者
-	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 是否计算属性
 	IsComputed bool `json:"is_computed,omitempty"`
 	// 选项webhook
@@ -99,9 +99,11 @@ type AttributeEdges struct {
 	TypeAttributes []*CiTypeAttribute `json:"type_attributes,omitempty"`
 	// GroupItems holds the value of the group_items edge.
 	GroupItems []*CiTypeAttributeGroupItem `json:"group_items,omitempty"`
+	// MappingRules holds the value of the mapping_rules edge.
+	MappingRules []*AttributeMappingRule `json:"mapping_rules,omitempty"`
 	// loadedTypes holds the information for reporting if a
 	// type was loaded (or requested) in eager-loading or not.
-	loadedTypes [11]bool
+	loadedTypes [12]bool
 }
 
 // ValueTextsOrErr returns the ValueTexts value or an error if the edge
@@ -203,6 +205,15 @@ func (e AttributeEdges) GroupItemsOrErr() ([]*CiTypeAttributeGroupItem, error) {
 	return nil, &NotLoadedError{edge: "group_items"}
 }
 
+// MappingRulesOrErr returns the MappingRules value or an error if the edge
+// was not loaded in eager-loading.
+func (e AttributeEdges) MappingRulesOrErr() ([]*AttributeMappingRule, error) {
+	if e.loadedTypes[11] {
+		return e.MappingRules, nil
+	}
+	return nil, &NotLoadedError{edge: "mapping_rules"}
+}
+
 // scanValues returns the types for scanning values from sql.Rows.
 func (*Attribute) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
@@ -271,6 +282,13 @@ func (_m *Attribute) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.DepartmentID = uint64(value.Int64)
 			}
+		case attribute.FieldCreatedBy:
+			if value, ok := values[i].(*sql.NullScanner); !ok {
+				return fmt.Errorf("unexpected type %T for field created_by", values[i])
+			} else if value.Valid {
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
+			}
 		case attribute.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
@@ -300,13 +318,6 @@ func (_m *Attribute) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field is_list", values[i])
 			} else if value.Valid {
 				_m.IsList = value.Bool
-			}
-		case attribute.FieldCreatedBy:
-			if value, ok := values[i].(*sql.NullScanner); !ok {
-				return fmt.Errorf("unexpected type %T for field created_by", values[i])
-			} else if value.Valid {
-				_m.CreatedBy = new(uuid.UUID)
-				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case attribute.FieldIsComputed:
 			if value, ok := values[i].(*sql.NullBool); !ok {
@@ -464,6 +475,11 @@ func (_m *Attribute) QueryGroupItems() *CiTypeAttributeGroupItemQuery {
 	return NewAttributeClient(_m.config).QueryGroupItems(_m)
 }
 
+// QueryMappingRules queries the "mapping_rules" edge of the Attribute entity.
+func (_m *Attribute) QueryMappingRules() *AttributeMappingRuleQuery {
+	return NewAttributeClient(_m.config).QueryMappingRules(_m)
+}
+
 // Update returns a builder for updating this Attribute.
 // Note that you need to call Attribute.Unwrap() before calling this method if this Attribute
 // was returned from a transaction, and the transaction was committed or rolled back.
@@ -502,6 +518,11 @@ func (_m *Attribute) String() string {
 	builder.WriteString("department_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
+	if v := _m.CreatedBy; v != nil {
+		builder.WriteString("created_by=")
+		builder.WriteString(fmt.Sprintf("%v", *v))
+	}
+	builder.WriteString(", ")
 	builder.WriteString("name=")
 	builder.WriteString(_m.Name)
 	builder.WriteString(", ")
@@ -516,11 +537,6 @@ func (_m *Attribute) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("is_list=")
 	builder.WriteString(fmt.Sprintf("%v", _m.IsList))
-	builder.WriteString(", ")
-	if v := _m.CreatedBy; v != nil {
-		builder.WriteString("created_by=")
-		builder.WriteString(fmt.Sprintf("%v", *v))
-	}
 	builder.WriteString(", ")
 	builder.WriteString("is_computed=")
 	builder.WriteString(fmt.Sprintf("%v", _m.IsComputed))

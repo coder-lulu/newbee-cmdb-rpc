@@ -7,8 +7,7 @@ import (
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
-	"github.com/gofrs/uuid/v5"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 )
 
 // CiType 对应于数据库cmdb_ci_types
@@ -25,6 +24,7 @@ func (CiType) Mixin() []ent.Mixin {
 		mixins2.SoftDeleteMixin{},
 		mixins.TenantMixin{},
 		mixins.DepartmentMixin{},
+		mixins.CreatedByMixin{},
 	}
 }
 
@@ -35,7 +35,6 @@ func (CiType) Fields() []ent.Field {
 		field.String("alias").MaxLen(32).NotEmpty().Comment("别名"),
 		field.Uint64("unique_id").Comment("外键，关联c_attributes.id"),
 		field.Bool("is_inherited").Comment("是否继承").Optional().Nillable().Default(false),
-		field.UUID("created_by", uuid.UUID{}).Optional().Nillable().Comment("创建者"),
 		field.String("icon").Optional().Nillable().Comment("图标"),
 		field.Uint64("default_order_attr_id").Optional().Nillable().Comment("默认排序属性"),
 		field.Uint64("show_id").Optional().Nillable().Comment("展示ID"),
@@ -76,6 +75,9 @@ func (CiType) Edges() []ent.Edge {
 
 		// 变更记录关系
 		edge.To("ci_records", CiRecords.Type),
+
+		// 自动发现配置关系
+		edge.To("discovery_configs", CiTypeDiscoveryConfig.Type),
 	}
 }
 

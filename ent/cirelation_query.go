@@ -24,8 +24,8 @@ type CiRelationQuery struct {
 	order            []cirelation.OrderOption
 	inters           []Interceptor
 	predicates       []predicate.CiRelation
-	withFirstCi      *CisQuery
-	withSecondCi     *CisQuery
+	withSourceCi     *CisQuery
+	withTargetCi     *CisQuery
 	withRelationType *RelationTypeQuery
 	withMoreCi       *CisQuery
 	// intermediate query (i.e. traversal path).
@@ -64,8 +64,8 @@ func (_q *CiRelationQuery) Order(o ...cirelation.OrderOption) *CiRelationQuery {
 	return _q
 }
 
-// QueryFirstCi chains the current query on the "first_ci" edge.
-func (_q *CiRelationQuery) QueryFirstCi() *CisQuery {
+// QuerySourceCi chains the current query on the "source_ci" edge.
+func (_q *CiRelationQuery) QuerySourceCi() *CisQuery {
 	query := (&CisClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
 		if err := _q.prepareQuery(ctx); err != nil {
@@ -78,7 +78,7 @@ func (_q *CiRelationQuery) QueryFirstCi() *CisQuery {
 		step := sqlgraph.NewStep(
 			sqlgraph.From(cirelation.Table, cirelation.FieldID, selector),
 			sqlgraph.To(cis.Table, cis.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, true, cirelation.FirstCiTable, cirelation.FirstCiColumn),
+			sqlgraph.Edge(sqlgraph.M2O, true, cirelation.SourceCiTable, cirelation.SourceCiColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
@@ -86,8 +86,8 @@ func (_q *CiRelationQuery) QueryFirstCi() *CisQuery {
 	return query
 }
 
-// QuerySecondCi chains the current query on the "second_ci" edge.
-func (_q *CiRelationQuery) QuerySecondCi() *CisQuery {
+// QueryTargetCi chains the current query on the "target_ci" edge.
+func (_q *CiRelationQuery) QueryTargetCi() *CisQuery {
 	query := (&CisClient{config: _q.config}).Query()
 	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
 		if err := _q.prepareQuery(ctx); err != nil {
@@ -100,7 +100,7 @@ func (_q *CiRelationQuery) QuerySecondCi() *CisQuery {
 		step := sqlgraph.NewStep(
 			sqlgraph.From(cirelation.Table, cirelation.FieldID, selector),
 			sqlgraph.To(cis.Table, cis.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, true, cirelation.SecondCiTable, cirelation.SecondCiColumn),
+			sqlgraph.Edge(sqlgraph.M2O, true, cirelation.TargetCiTable, cirelation.TargetCiColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
 		return fromU, nil
@@ -344,8 +344,8 @@ func (_q *CiRelationQuery) Clone() *CiRelationQuery {
 		order:            append([]cirelation.OrderOption{}, _q.order...),
 		inters:           append([]Interceptor{}, _q.inters...),
 		predicates:       append([]predicate.CiRelation{}, _q.predicates...),
-		withFirstCi:      _q.withFirstCi.Clone(),
-		withSecondCi:     _q.withSecondCi.Clone(),
+		withSourceCi:     _q.withSourceCi.Clone(),
+		withTargetCi:     _q.withTargetCi.Clone(),
 		withRelationType: _q.withRelationType.Clone(),
 		withMoreCi:       _q.withMoreCi.Clone(),
 		// clone intermediate query.
@@ -354,25 +354,25 @@ func (_q *CiRelationQuery) Clone() *CiRelationQuery {
 	}
 }
 
-// WithFirstCi tells the query-builder to eager-load the nodes that are connected to
-// the "first_ci" edge. The optional arguments are used to configure the query builder of the edge.
-func (_q *CiRelationQuery) WithFirstCi(opts ...func(*CisQuery)) *CiRelationQuery {
+// WithSourceCi tells the query-builder to eager-load the nodes that are connected to
+// the "source_ci" edge. The optional arguments are used to configure the query builder of the edge.
+func (_q *CiRelationQuery) WithSourceCi(opts ...func(*CisQuery)) *CiRelationQuery {
 	query := (&CisClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	_q.withFirstCi = query
+	_q.withSourceCi = query
 	return _q
 }
 
-// WithSecondCi tells the query-builder to eager-load the nodes that are connected to
-// the "second_ci" edge. The optional arguments are used to configure the query builder of the edge.
-func (_q *CiRelationQuery) WithSecondCi(opts ...func(*CisQuery)) *CiRelationQuery {
+// WithTargetCi tells the query-builder to eager-load the nodes that are connected to
+// the "target_ci" edge. The optional arguments are used to configure the query builder of the edge.
+func (_q *CiRelationQuery) WithTargetCi(opts ...func(*CisQuery)) *CiRelationQuery {
 	query := (&CisClient{config: _q.config}).Query()
 	for _, opt := range opts {
 		opt(query)
 	}
-	_q.withSecondCi = query
+	_q.withTargetCi = query
 	return _q
 }
 
@@ -477,8 +477,8 @@ func (_q *CiRelationQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*C
 		nodes       = []*CiRelation{}
 		_spec       = _q.querySpec()
 		loadedTypes = [4]bool{
-			_q.withFirstCi != nil,
-			_q.withSecondCi != nil,
+			_q.withSourceCi != nil,
+			_q.withTargetCi != nil,
 			_q.withRelationType != nil,
 			_q.withMoreCi != nil,
 		}
@@ -501,15 +501,15 @@ func (_q *CiRelationQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*C
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
-	if query := _q.withFirstCi; query != nil {
-		if err := _q.loadFirstCi(ctx, query, nodes, nil,
-			func(n *CiRelation, e *Cis) { n.Edges.FirstCi = e }); err != nil {
+	if query := _q.withSourceCi; query != nil {
+		if err := _q.loadSourceCi(ctx, query, nodes, nil,
+			func(n *CiRelation, e *Cis) { n.Edges.SourceCi = e }); err != nil {
 			return nil, err
 		}
 	}
-	if query := _q.withSecondCi; query != nil {
-		if err := _q.loadSecondCi(ctx, query, nodes, nil,
-			func(n *CiRelation, e *Cis) { n.Edges.SecondCi = e }); err != nil {
+	if query := _q.withTargetCi; query != nil {
+		if err := _q.loadTargetCi(ctx, query, nodes, nil,
+			func(n *CiRelation, e *Cis) { n.Edges.TargetCi = e }); err != nil {
 			return nil, err
 		}
 	}
@@ -528,11 +528,11 @@ func (_q *CiRelationQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*C
 	return nodes, nil
 }
 
-func (_q *CiRelationQuery) loadFirstCi(ctx context.Context, query *CisQuery, nodes []*CiRelation, init func(*CiRelation), assign func(*CiRelation, *Cis)) error {
+func (_q *CiRelationQuery) loadSourceCi(ctx context.Context, query *CisQuery, nodes []*CiRelation, init func(*CiRelation), assign func(*CiRelation, *Cis)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*CiRelation)
 	for i := range nodes {
-		fk := nodes[i].FirstCiID
+		fk := nodes[i].SourceCiID
 		if _, ok := nodeids[fk]; !ok {
 			ids = append(ids, fk)
 		}
@@ -549,7 +549,7 @@ func (_q *CiRelationQuery) loadFirstCi(ctx context.Context, query *CisQuery, nod
 	for _, n := range neighbors {
 		nodes, ok := nodeids[n.ID]
 		if !ok {
-			return fmt.Errorf(`unexpected foreign-key "first_ci_id" returned %v`, n.ID)
+			return fmt.Errorf(`unexpected foreign-key "source_ci_id" returned %v`, n.ID)
 		}
 		for i := range nodes {
 			assign(nodes[i], n)
@@ -557,11 +557,11 @@ func (_q *CiRelationQuery) loadFirstCi(ctx context.Context, query *CisQuery, nod
 	}
 	return nil
 }
-func (_q *CiRelationQuery) loadSecondCi(ctx context.Context, query *CisQuery, nodes []*CiRelation, init func(*CiRelation), assign func(*CiRelation, *Cis)) error {
+func (_q *CiRelationQuery) loadTargetCi(ctx context.Context, query *CisQuery, nodes []*CiRelation, init func(*CiRelation), assign func(*CiRelation, *Cis)) error {
 	ids := make([]uint64, 0, len(nodes))
 	nodeids := make(map[uint64][]*CiRelation)
 	for i := range nodes {
-		fk := nodes[i].SecondCiID
+		fk := nodes[i].TargetCiID
 		if _, ok := nodeids[fk]; !ok {
 			ids = append(ids, fk)
 		}
@@ -578,7 +578,7 @@ func (_q *CiRelationQuery) loadSecondCi(ctx context.Context, query *CisQuery, no
 	for _, n := range neighbors {
 		nodes, ok := nodeids[n.ID]
 		if !ok {
-			return fmt.Errorf(`unexpected foreign-key "second_ci_id" returned %v`, n.ID)
+			return fmt.Errorf(`unexpected foreign-key "target_ci_id" returned %v`, n.ID)
 		}
 		for i := range nodes {
 			assign(nodes[i], n)
@@ -670,11 +670,11 @@ func (_q *CiRelationQuery) querySpec() *sqlgraph.QuerySpec {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
-		if _q.withFirstCi != nil {
-			_spec.Node.AddColumnOnce(cirelation.FieldFirstCiID)
+		if _q.withSourceCi != nil {
+			_spec.Node.AddColumnOnce(cirelation.FieldSourceCiID)
 		}
-		if _q.withSecondCi != nil {
-			_spec.Node.AddColumnOnce(cirelation.FieldSecondCiID)
+		if _q.withTargetCi != nil {
+			_spec.Node.AddColumnOnce(cirelation.FieldTargetCiID)
 		}
 		if _q.withRelationType != nil {
 			_spec.Node.AddColumnOnce(cirelation.FieldRelationTypeID)

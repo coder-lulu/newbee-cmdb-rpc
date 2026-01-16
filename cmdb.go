@@ -26,6 +26,7 @@ func main() {
 	ctx := svc.NewServiceContext(c)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
+		// 注册CMDB服务
 		cmdb.RegisterCmdbServer(grpcServer, server.NewCmdbServer(ctx))
 
 		if c.Mode == service.DevMode || c.Mode == service.TestMode {

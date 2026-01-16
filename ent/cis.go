@@ -31,12 +31,12 @@ type Cis struct {
 	TenantID uint64 `json:"tenant_id,omitempty"`
 	// Department ID | 部门 ID
 	DepartmentID uint64 `json:"department_id,omitempty"`
+	// Created user's UUID | 创建者 UUID
+	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 外键，关联cmdb_ci_types.id
 	TypeID uint64 `json:"type_id,omitempty"`
 	// 状态，枚举类型
 	Status uint32 `json:"status,omitempty"`
-	// 创建者
-	CreatedBy *uuid.UUID `json:"created_by,omitempty"`
 	// 标签
 	Tags []schema.CiTag `json:"tags,omitempty"`
 	// 元数据
@@ -65,10 +65,10 @@ type CisEdges struct {
 	ValueFloats []*ValueFloat `json:"value_floats,omitempty"`
 	// ValueDatetimes holds the value of the value_datetimes edge.
 	ValueDatetimes []*ValueDatetime `json:"value_datetimes,omitempty"`
-	// FirstRelations holds the value of the first_relations edge.
-	FirstRelations []*CiRelation `json:"first_relations,omitempty"`
-	// SecondRelations holds the value of the second_relations edge.
-	SecondRelations []*CiRelation `json:"second_relations,omitempty"`
+	// SourceRelations holds the value of the source_relations edge.
+	SourceRelations []*CiRelation `json:"source_relations,omitempty"`
+	// TargetRelations holds the value of the target_relations edge.
+	TargetRelations []*CiRelation `json:"target_relations,omitempty"`
 	// MoreRelations holds the value of the more_relations edge.
 	MoreRelations []*CiRelation `json:"more_relations,omitempty"`
 	// ImportRecords holds the value of the import_records edge.
@@ -145,22 +145,22 @@ func (e CisEdges) ValueDatetimesOrErr() ([]*ValueDatetime, error) {
 	return nil, &NotLoadedError{edge: "value_datetimes"}
 }
 
-// FirstRelationsOrErr returns the FirstRelations value or an error if the edge
+// SourceRelationsOrErr returns the SourceRelations value or an error if the edge
 // was not loaded in eager-loading.
-func (e CisEdges) FirstRelationsOrErr() ([]*CiRelation, error) {
+func (e CisEdges) SourceRelationsOrErr() ([]*CiRelation, error) {
 	if e.loadedTypes[7] {
-		return e.FirstRelations, nil
+		return e.SourceRelations, nil
 	}
-	return nil, &NotLoadedError{edge: "first_relations"}
+	return nil, &NotLoadedError{edge: "source_relations"}
 }
 
-// SecondRelationsOrErr returns the SecondRelations value or an error if the edge
+// TargetRelationsOrErr returns the TargetRelations value or an error if the edge
 // was not loaded in eager-loading.
-func (e CisEdges) SecondRelationsOrErr() ([]*CiRelation, error) {
+func (e CisEdges) TargetRelationsOrErr() ([]*CiRelation, error) {
 	if e.loadedTypes[8] {
-		return e.SecondRelations, nil
+		return e.TargetRelations, nil
 	}
-	return nil, &NotLoadedError{edge: "second_relations"}
+	return nil, &NotLoadedError{edge: "target_relations"}
 }
 
 // MoreRelationsOrErr returns the MoreRelations value or an error if the edge
@@ -254,6 +254,13 @@ func (_m *Cis) assignValues(columns []string, values []any) error {
 			} else if value.Valid {
 				_m.DepartmentID = uint64(value.Int64)
 			}
+		case cis.FieldCreatedBy:
+			if value, ok := values[i].(*sql.NullScanner); !ok {
+				return fmt.Errorf("unexpected type %T for field created_by", values[i])
+			} else if value.Valid {
+				_m.CreatedBy = new(uuid.UUID)
+				*_m.CreatedBy = *value.S.(*uuid.UUID)
+			}
 		case cis.FieldTypeID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field type_id", values[i])
@@ -265,13 +272,6 @@ func (_m *Cis) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field status", values[i])
 			} else if value.Valid {
 				_m.Status = uint32(value.Int64)
-			}
-		case cis.FieldCreatedBy:
-			if value, ok := values[i].(*sql.NullScanner); !ok {
-				return fmt.Errorf("unexpected type %T for field created_by", values[i])
-			} else if value.Valid {
-				_m.CreatedBy = new(uuid.UUID)
-				*_m.CreatedBy = *value.S.(*uuid.UUID)
 			}
 		case cis.FieldTags:
 			if value, ok := values[i].(*[]byte); !ok {
@@ -345,14 +345,14 @@ func (_m *Cis) QueryValueDatetimes() *ValueDatetimeQuery {
 	return NewCisClient(_m.config).QueryValueDatetimes(_m)
 }
 
-// QueryFirstRelations queries the "first_relations" edge of the Cis entity.
-func (_m *Cis) QueryFirstRelations() *CiRelationQuery {
-	return NewCisClient(_m.config).QueryFirstRelations(_m)
+// QuerySourceRelations queries the "source_relations" edge of the Cis entity.
+func (_m *Cis) QuerySourceRelations() *CiRelationQuery {
+	return NewCisClient(_m.config).QuerySourceRelations(_m)
 }
 
-// QuerySecondRelations queries the "second_relations" edge of the Cis entity.
-func (_m *Cis) QuerySecondRelations() *CiRelationQuery {
-	return NewCisClient(_m.config).QuerySecondRelations(_m)
+// QueryTargetRelations queries the "target_relations" edge of the Cis entity.
+func (_m *Cis) QueryTargetRelations() *CiRelationQuery {
+	return NewCisClient(_m.config).QueryTargetRelations(_m)
 }
 
 // QueryMoreRelations queries the "more_relations" edge of the Cis entity.
@@ -408,16 +408,16 @@ func (_m *Cis) String() string {
 	builder.WriteString("department_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
+	if v := _m.CreatedBy; v != nil {
+		builder.WriteString("created_by=")
+		builder.WriteString(fmt.Sprintf("%v", *v))
+	}
+	builder.WriteString(", ")
 	builder.WriteString("type_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TypeID))
 	builder.WriteString(", ")
 	builder.WriteString("status=")
 	builder.WriteString(fmt.Sprintf("%v", _m.Status))
-	builder.WriteString(", ")
-	if v := _m.CreatedBy; v != nil {
-		builder.WriteString("created_by=")
-		builder.WriteString(fmt.Sprintf("%v", *v))
-	}
 	builder.WriteString(", ")
 	builder.WriteString("tags=")
 	builder.WriteString(fmt.Sprintf("%v", _m.Tags))

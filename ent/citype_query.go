@@ -18,6 +18,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypediscoveryconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
@@ -29,22 +30,23 @@ import (
 // CiTypeQuery is the builder for querying CiType entities.
 type CiTypeQuery struct {
 	config
-	ctx                 *QueryContext
-	order               []citype.OrderOption
-	inters              []Interceptor
-	predicates          []predicate.CiType
-	withAttributes      *AttributeQuery
-	withCis             *CisQuery
-	withTypeAttributes  *CiTypeAttributeQuery
-	withAttributeGroups *CiTypeAttributeGroupQuery
-	withGroupItems      *CiTypeGroupItemQuery
-	withChildren        *CiTypeInheritanceQuery
-	withParents         *CiTypeInheritanceQuery
-	withChildRelations  *CiTypeRelationQuery
-	withParentRelations *CiTypeRelationQuery
-	withImportTemplates *ImportTemplateQuery
-	withImportRecords   *ImportRecordQuery
-	withCiRecords       *CiRecordsQuery
+	ctx                  *QueryContext
+	order                []citype.OrderOption
+	inters               []Interceptor
+	predicates           []predicate.CiType
+	withAttributes       *AttributeQuery
+	withCis              *CisQuery
+	withTypeAttributes   *CiTypeAttributeQuery
+	withAttributeGroups  *CiTypeAttributeGroupQuery
+	withGroupItems       *CiTypeGroupItemQuery
+	withChildren         *CiTypeInheritanceQuery
+	withParents          *CiTypeInheritanceQuery
+	withChildRelations   *CiTypeRelationQuery
+	withParentRelations  *CiTypeRelationQuery
+	withImportTemplates  *ImportTemplateQuery
+	withImportRecords    *ImportRecordQuery
+	withCiRecords        *CiRecordsQuery
+	withDiscoveryConfigs *CiTypeDiscoveryConfigQuery
 	// intermediate query (i.e. traversal path).
 	sql  *sql.Selector
 	path func(context.Context) (*sql.Selector, error)
@@ -345,6 +347,28 @@ func (_q *CiTypeQuery) QueryCiRecords() *CiRecordsQuery {
 	return query
 }
 
+// QueryDiscoveryConfigs chains the current query on the "discovery_configs" edge.
+func (_q *CiTypeQuery) QueryDiscoveryConfigs() *CiTypeDiscoveryConfigQuery {
+	query := (&CiTypeDiscoveryConfigClient{config: _q.config}).Query()
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := _q.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := _q.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(citype.Table, citype.FieldID, selector),
+			sqlgraph.To(citypediscoveryconfig.Table, citypediscoveryconfig.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, citype.DiscoveryConfigsTable, citype.DiscoveryConfigsColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(_q.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
+}
+
 // First returns the first CiType entity from the query.
 // Returns a *NotFoundError when no CiType was found.
 func (_q *CiTypeQuery) First(ctx context.Context) (*CiType, error) {
@@ -532,23 +556,24 @@ func (_q *CiTypeQuery) Clone() *CiTypeQuery {
 		return nil
 	}
 	return &CiTypeQuery{
-		config:              _q.config,
-		ctx:                 _q.ctx.Clone(),
-		order:               append([]citype.OrderOption{}, _q.order...),
-		inters:              append([]Interceptor{}, _q.inters...),
-		predicates:          append([]predicate.CiType{}, _q.predicates...),
-		withAttributes:      _q.withAttributes.Clone(),
-		withCis:             _q.withCis.Clone(),
-		withTypeAttributes:  _q.withTypeAttributes.Clone(),
-		withAttributeGroups: _q.withAttributeGroups.Clone(),
-		withGroupItems:      _q.withGroupItems.Clone(),
-		withChildren:        _q.withChildren.Clone(),
-		withParents:         _q.withParents.Clone(),
-		withChildRelations:  _q.withChildRelations.Clone(),
-		withParentRelations: _q.withParentRelations.Clone(),
-		withImportTemplates: _q.withImportTemplates.Clone(),
-		withImportRecords:   _q.withImportRecords.Clone(),
-		withCiRecords:       _q.withCiRecords.Clone(),
+		config:               _q.config,
+		ctx:                  _q.ctx.Clone(),
+		order:                append([]citype.OrderOption{}, _q.order...),
+		inters:               append([]Interceptor{}, _q.inters...),
+		predicates:           append([]predicate.CiType{}, _q.predicates...),
+		withAttributes:       _q.withAttributes.Clone(),
+		withCis:              _q.withCis.Clone(),
+		withTypeAttributes:   _q.withTypeAttributes.Clone(),
+		withAttributeGroups:  _q.withAttributeGroups.Clone(),
+		withGroupItems:       _q.withGroupItems.Clone(),
+		withChildren:         _q.withChildren.Clone(),
+		withParents:          _q.withParents.Clone(),
+		withChildRelations:   _q.withChildRelations.Clone(),
+		withParentRelations:  _q.withParentRelations.Clone(),
+		withImportTemplates:  _q.withImportTemplates.Clone(),
+		withImportRecords:    _q.withImportRecords.Clone(),
+		withCiRecords:        _q.withCiRecords.Clone(),
+		withDiscoveryConfigs: _q.withDiscoveryConfigs.Clone(),
 		// clone intermediate query.
 		sql:  _q.sql.Clone(),
 		path: _q.path,
@@ -687,6 +712,17 @@ func (_q *CiTypeQuery) WithCiRecords(opts ...func(*CiRecordsQuery)) *CiTypeQuery
 	return _q
 }
 
+// WithDiscoveryConfigs tells the query-builder to eager-load the nodes that are connected to
+// the "discovery_configs" edge. The optional arguments are used to configure the query builder of the edge.
+func (_q *CiTypeQuery) WithDiscoveryConfigs(opts ...func(*CiTypeDiscoveryConfigQuery)) *CiTypeQuery {
+	query := (&CiTypeDiscoveryConfigClient{config: _q.config}).Query()
+	for _, opt := range opts {
+		opt(query)
+	}
+	_q.withDiscoveryConfigs = query
+	return _q
+}
+
 // GroupBy is used to group vertices by one or more fields/columns.
 // It is often used with aggregate functions, like: count, max, mean, min, sum.
 //
@@ -765,7 +801,7 @@ func (_q *CiTypeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTyp
 	var (
 		nodes       = []*CiType{}
 		_spec       = _q.querySpec()
-		loadedTypes = [12]bool{
+		loadedTypes = [13]bool{
 			_q.withAttributes != nil,
 			_q.withCis != nil,
 			_q.withTypeAttributes != nil,
@@ -778,6 +814,7 @@ func (_q *CiTypeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTyp
 			_q.withImportTemplates != nil,
 			_q.withImportRecords != nil,
 			_q.withCiRecords != nil,
+			_q.withDiscoveryConfigs != nil,
 		}
 	)
 	_spec.ScanValues = func(columns []string) ([]any, error) {
@@ -878,6 +915,15 @@ func (_q *CiTypeQuery) sqlAll(ctx context.Context, hooks ...queryHook) ([]*CiTyp
 		if err := _q.loadCiRecords(ctx, query, nodes,
 			func(n *CiType) { n.Edges.CiRecords = []*CiRecords{} },
 			func(n *CiType, e *CiRecords) { n.Edges.CiRecords = append(n.Edges.CiRecords, e) }); err != nil {
+			return nil, err
+		}
+	}
+	if query := _q.withDiscoveryConfigs; query != nil {
+		if err := _q.loadDiscoveryConfigs(ctx, query, nodes,
+			func(n *CiType) { n.Edges.DiscoveryConfigs = []*CiTypeDiscoveryConfig{} },
+			func(n *CiType, e *CiTypeDiscoveryConfig) {
+				n.Edges.DiscoveryConfigs = append(n.Edges.DiscoveryConfigs, e)
+			}); err != nil {
 			return nil, err
 		}
 	}
@@ -1228,6 +1274,36 @@ func (_q *CiTypeQuery) loadCiRecords(ctx context.Context, query *CiRecordsQuery,
 	}
 	query.Where(predicate.CiRecords(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(citype.CiRecordsColumn), fks...))
+	}))
+	neighbors, err := query.All(ctx)
+	if err != nil {
+		return err
+	}
+	for _, n := range neighbors {
+		fk := n.CiTypeID
+		node, ok := nodeids[fk]
+		if !ok {
+			return fmt.Errorf(`unexpected referenced foreign-key "ci_type_id" returned %v for node %v`, fk, n.ID)
+		}
+		assign(node, n)
+	}
+	return nil
+}
+func (_q *CiTypeQuery) loadDiscoveryConfigs(ctx context.Context, query *CiTypeDiscoveryConfigQuery, nodes []*CiType, init func(*CiType), assign func(*CiType, *CiTypeDiscoveryConfig)) error {
+	fks := make([]driver.Value, 0, len(nodes))
+	nodeids := make(map[uint64]*CiType)
+	for i := range nodes {
+		fks = append(fks, nodes[i].ID)
+		nodeids[nodes[i].ID] = nodes[i]
+		if init != nil {
+			init(nodes[i])
+		}
+	}
+	if len(query.ctx.Fields) > 0 {
+		query.ctx.AppendFieldOnce(citypediscoveryconfig.FieldCiTypeID)
+	}
+	query.Where(predicate.CiTypeDiscoveryConfig(func(s *sql.Selector) {
+		s.Where(sql.InValues(s.C(citype.DiscoveryConfigsColumn), fks...))
 	}))
 	neighbors, err := query.All(ctx)
 	if err != nil {

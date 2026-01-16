@@ -1,0 +1,44 @@
+
+// Attribute Group with Attribute
+message CiTypeAttributeGroupItemWithAttrInfo {
+  optional uint64 id = 1;
+  optional uint64 group_id = 2;
+  optional uint64 attr_id = 3;
+  optional uint32 sort = 4;
+  optional bool is_required = 5;
+  optional bool default_show = 6;
+  AttributeInfo attribute = 7;
+}
+
+message CiTypeAttributeGroupWithAttrInfo {
+  optional uint64 id = 1;
+  optional string name = 2;
+  optional uint32 sort = 3;
+  repeated CiTypeAttributeGroupItemWithAttrInfo items = 4;
+}
+
+message CiTypeAttributeGroupWithAttrListResp {
+  uint64 total = 1;
+  repeated CiTypeAttributeGroupWithAttrInfo data = 2;
+}
+
+// Permission
+message CiPermissionReq {
+  uint64 user_id = 1;
+  uint64 ci_type_id = 2;
+  string action = 3;
+}
+
+message CiPermissionResp {
+  bool has_permission = 1;
+}
+
+message UserPermissionScopeReq {
+  uint64 user_id = 1;
+}
+
+message UserPermissionScopeResp {
+  repeated uint64 allowed_ci_types = 1;
+  repeated string allowed_department_ids = 2;
+  map<string, string> custom_rules = 3;
+}

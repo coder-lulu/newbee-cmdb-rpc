@@ -8,7 +8,7 @@ import (
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
 	mixins2 "github.com/coder-lulu/newbee-cmdb-rpc/ent/schema/mixins"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 	"github.com/gofrs/uuid/v5"
 )
 
@@ -25,6 +25,7 @@ func (ImportTemplate) Mixin() []ent.Mixin {
 		mixins2.SoftDeleteMixin{},
 		mixins.TenantMixin{},
 		mixins.DepartmentMixin{},
+		mixins.CreatedByMixin{},
 	}
 }
 
@@ -101,7 +102,6 @@ func (ImportTemplate) Fields() []ent.Field {
 		field.JSON("shared_with", []string{}).Optional().Comment("共享给用户列表"),
 
 		// 审核信息
-		field.UUID("created_by", uuid.UUID{}).Optional().Comment("创建者ID"),
 		field.String("created_by_name").MaxLen(100).Optional().Comment("创建者姓名"),
 		field.UUID("approved_by", uuid.UUID{}).Optional().Comment("审核者ID"),
 		field.String("approved_by_name").MaxLen(100).Optional().Comment("审核者姓名"),

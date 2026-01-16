@@ -94,6 +94,26 @@ func (_u *CisUpdate) ClearDepartmentID() *CisUpdate {
 	return _u
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_u *CisUpdate) SetCreatedBy(v uuid.UUID) *CisUpdate {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *CisUpdate) SetNillableCreatedBy(v *uuid.UUID) *CisUpdate {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *CisUpdate) ClearCreatedBy() *CisUpdate {
+	_u.mutation.ClearCreatedBy()
+	return _u
+}
+
 // SetTypeID sets the "type_id" field.
 func (_u *CisUpdate) SetTypeID(v uint64) *CisUpdate {
 	_u.mutation.SetTypeID(v)
@@ -132,26 +152,6 @@ func (_u *CisUpdate) AddStatus(v int32) *CisUpdate {
 // ClearStatus clears the value of the "status" field.
 func (_u *CisUpdate) ClearStatus() *CisUpdate {
 	_u.mutation.ClearStatus()
-	return _u
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_u *CisUpdate) SetCreatedBy(v uuid.UUID) *CisUpdate {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *CisUpdate) SetNillableCreatedBy(v *uuid.UUID) *CisUpdate {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *CisUpdate) ClearCreatedBy() *CisUpdate {
-	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -298,34 +298,34 @@ func (_u *CisUpdate) AddValueDatetimes(v ...*ValueDatetime) *CisUpdate {
 	return _u.AddValueDatetimeIDs(ids...)
 }
 
-// AddFirstRelationIDs adds the "first_relations" edge to the CiRelation entity by IDs.
-func (_u *CisUpdate) AddFirstRelationIDs(ids ...uint64) *CisUpdate {
-	_u.mutation.AddFirstRelationIDs(ids...)
+// AddSourceRelationIDs adds the "source_relations" edge to the CiRelation entity by IDs.
+func (_u *CisUpdate) AddSourceRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddSourceRelationIDs(ids...)
 	return _u
 }
 
-// AddFirstRelations adds the "first_relations" edges to the CiRelation entity.
-func (_u *CisUpdate) AddFirstRelations(v ...*CiRelation) *CisUpdate {
+// AddSourceRelations adds the "source_relations" edges to the CiRelation entity.
+func (_u *CisUpdate) AddSourceRelations(v ...*CiRelation) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _u.AddFirstRelationIDs(ids...)
+	return _u.AddSourceRelationIDs(ids...)
 }
 
-// AddSecondRelationIDs adds the "second_relations" edge to the CiRelation entity by IDs.
-func (_u *CisUpdate) AddSecondRelationIDs(ids ...uint64) *CisUpdate {
-	_u.mutation.AddSecondRelationIDs(ids...)
+// AddTargetRelationIDs adds the "target_relations" edge to the CiRelation entity by IDs.
+func (_u *CisUpdate) AddTargetRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.AddTargetRelationIDs(ids...)
 	return _u
 }
 
-// AddSecondRelations adds the "second_relations" edges to the CiRelation entity.
-func (_u *CisUpdate) AddSecondRelations(v ...*CiRelation) *CisUpdate {
+// AddTargetRelations adds the "target_relations" edges to the CiRelation entity.
+func (_u *CisUpdate) AddTargetRelations(v ...*CiRelation) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _u.AddSecondRelationIDs(ids...)
+	return _u.AddTargetRelationIDs(ids...)
 }
 
 // AddMoreRelationIDs adds the "more_relations" edge to the CiRelation entity by IDs.
@@ -510,46 +510,46 @@ func (_u *CisUpdate) RemoveValueDatetimes(v ...*ValueDatetime) *CisUpdate {
 	return _u.RemoveValueDatetimeIDs(ids...)
 }
 
-// ClearFirstRelations clears all "first_relations" edges to the CiRelation entity.
-func (_u *CisUpdate) ClearFirstRelations() *CisUpdate {
-	_u.mutation.ClearFirstRelations()
+// ClearSourceRelations clears all "source_relations" edges to the CiRelation entity.
+func (_u *CisUpdate) ClearSourceRelations() *CisUpdate {
+	_u.mutation.ClearSourceRelations()
 	return _u
 }
 
-// RemoveFirstRelationIDs removes the "first_relations" edge to CiRelation entities by IDs.
-func (_u *CisUpdate) RemoveFirstRelationIDs(ids ...uint64) *CisUpdate {
-	_u.mutation.RemoveFirstRelationIDs(ids...)
+// RemoveSourceRelationIDs removes the "source_relations" edge to CiRelation entities by IDs.
+func (_u *CisUpdate) RemoveSourceRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveSourceRelationIDs(ids...)
 	return _u
 }
 
-// RemoveFirstRelations removes "first_relations" edges to CiRelation entities.
-func (_u *CisUpdate) RemoveFirstRelations(v ...*CiRelation) *CisUpdate {
+// RemoveSourceRelations removes "source_relations" edges to CiRelation entities.
+func (_u *CisUpdate) RemoveSourceRelations(v ...*CiRelation) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _u.RemoveFirstRelationIDs(ids...)
+	return _u.RemoveSourceRelationIDs(ids...)
 }
 
-// ClearSecondRelations clears all "second_relations" edges to the CiRelation entity.
-func (_u *CisUpdate) ClearSecondRelations() *CisUpdate {
-	_u.mutation.ClearSecondRelations()
+// ClearTargetRelations clears all "target_relations" edges to the CiRelation entity.
+func (_u *CisUpdate) ClearTargetRelations() *CisUpdate {
+	_u.mutation.ClearTargetRelations()
 	return _u
 }
 
-// RemoveSecondRelationIDs removes the "second_relations" edge to CiRelation entities by IDs.
-func (_u *CisUpdate) RemoveSecondRelationIDs(ids ...uint64) *CisUpdate {
-	_u.mutation.RemoveSecondRelationIDs(ids...)
+// RemoveTargetRelationIDs removes the "target_relations" edge to CiRelation entities by IDs.
+func (_u *CisUpdate) RemoveTargetRelationIDs(ids ...uint64) *CisUpdate {
+	_u.mutation.RemoveTargetRelationIDs(ids...)
 	return _u
 }
 
-// RemoveSecondRelations removes "second_relations" edges to CiRelation entities.
-func (_u *CisUpdate) RemoveSecondRelations(v ...*CiRelation) *CisUpdate {
+// RemoveTargetRelations removes "target_relations" edges to CiRelation entities.
+func (_u *CisUpdate) RemoveTargetRelations(v ...*CiRelation) *CisUpdate {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _u.RemoveSecondRelationIDs(ids...)
+	return _u.RemoveTargetRelationIDs(ids...)
 }
 
 // ClearMoreRelations clears all "more_relations" edges to the CiRelation entity.
@@ -695,6 +695,12 @@ func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cis.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(cis.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(cis.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(cis.FieldStatus, field.TypeUint32, value)
 	}
@@ -703,12 +709,6 @@ func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 	}
 	if _u.mutation.StatusCleared() {
 		_spec.ClearField(cis.FieldStatus, field.TypeUint32)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(cis.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(cis.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(cis.FieldTags, field.TypeJSON, value)
@@ -1032,12 +1032,12 @@ func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if _u.mutation.FirstRelationsCleared() {
+	if _u.mutation.SourceRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
+			Table:   cis.SourceRelationsTable,
+			Columns: []string{cis.SourceRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -1045,12 +1045,12 @@ func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.RemovedFirstRelationsIDs(); len(nodes) > 0 && !_u.mutation.FirstRelationsCleared() {
+	if nodes := _u.mutation.RemovedSourceRelationsIDs(); len(nodes) > 0 && !_u.mutation.SourceRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
+			Table:   cis.SourceRelationsTable,
+			Columns: []string{cis.SourceRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -1061,12 +1061,12 @@ func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.FirstRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.SourceRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
+			Table:   cis.SourceRelationsTable,
+			Columns: []string{cis.SourceRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -1077,12 +1077,12 @@ func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if _u.mutation.SecondRelationsCleared() {
+	if _u.mutation.TargetRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.SecondRelationsTable,
-			Columns: []string{cis.SecondRelationsColumn},
+			Table:   cis.TargetRelationsTable,
+			Columns: []string{cis.TargetRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -1090,12 +1090,12 @@ func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.RemovedSecondRelationsIDs(); len(nodes) > 0 && !_u.mutation.SecondRelationsCleared() {
+	if nodes := _u.mutation.RemovedTargetRelationsIDs(); len(nodes) > 0 && !_u.mutation.TargetRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.SecondRelationsTable,
-			Columns: []string{cis.SecondRelationsColumn},
+			Table:   cis.TargetRelationsTable,
+			Columns: []string{cis.TargetRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -1106,12 +1106,12 @@ func (_u *CisUpdate) sqlSave(ctx context.Context) (_node int, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.SecondRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TargetRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.SecondRelationsTable,
-			Columns: []string{cis.SecondRelationsColumn},
+			Table:   cis.TargetRelationsTable,
+			Columns: []string{cis.TargetRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -1330,6 +1330,26 @@ func (_u *CisUpdateOne) ClearDepartmentID() *CisUpdateOne {
 	return _u
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_u *CisUpdateOne) SetCreatedBy(v uuid.UUID) *CisUpdateOne {
+	_u.mutation.SetCreatedBy(v)
+	return _u
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_u *CisUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CisUpdateOne {
+	if v != nil {
+		_u.SetCreatedBy(*v)
+	}
+	return _u
+}
+
+// ClearCreatedBy clears the value of the "created_by" field.
+func (_u *CisUpdateOne) ClearCreatedBy() *CisUpdateOne {
+	_u.mutation.ClearCreatedBy()
+	return _u
+}
+
 // SetTypeID sets the "type_id" field.
 func (_u *CisUpdateOne) SetTypeID(v uint64) *CisUpdateOne {
 	_u.mutation.SetTypeID(v)
@@ -1368,26 +1388,6 @@ func (_u *CisUpdateOne) AddStatus(v int32) *CisUpdateOne {
 // ClearStatus clears the value of the "status" field.
 func (_u *CisUpdateOne) ClearStatus() *CisUpdateOne {
 	_u.mutation.ClearStatus()
-	return _u
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_u *CisUpdateOne) SetCreatedBy(v uuid.UUID) *CisUpdateOne {
-	_u.mutation.SetCreatedBy(v)
-	return _u
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_u *CisUpdateOne) SetNillableCreatedBy(v *uuid.UUID) *CisUpdateOne {
-	if v != nil {
-		_u.SetCreatedBy(*v)
-	}
-	return _u
-}
-
-// ClearCreatedBy clears the value of the "created_by" field.
-func (_u *CisUpdateOne) ClearCreatedBy() *CisUpdateOne {
-	_u.mutation.ClearCreatedBy()
 	return _u
 }
 
@@ -1534,34 +1534,34 @@ func (_u *CisUpdateOne) AddValueDatetimes(v ...*ValueDatetime) *CisUpdateOne {
 	return _u.AddValueDatetimeIDs(ids...)
 }
 
-// AddFirstRelationIDs adds the "first_relations" edge to the CiRelation entity by IDs.
-func (_u *CisUpdateOne) AddFirstRelationIDs(ids ...uint64) *CisUpdateOne {
-	_u.mutation.AddFirstRelationIDs(ids...)
+// AddSourceRelationIDs adds the "source_relations" edge to the CiRelation entity by IDs.
+func (_u *CisUpdateOne) AddSourceRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddSourceRelationIDs(ids...)
 	return _u
 }
 
-// AddFirstRelations adds the "first_relations" edges to the CiRelation entity.
-func (_u *CisUpdateOne) AddFirstRelations(v ...*CiRelation) *CisUpdateOne {
+// AddSourceRelations adds the "source_relations" edges to the CiRelation entity.
+func (_u *CisUpdateOne) AddSourceRelations(v ...*CiRelation) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _u.AddFirstRelationIDs(ids...)
+	return _u.AddSourceRelationIDs(ids...)
 }
 
-// AddSecondRelationIDs adds the "second_relations" edge to the CiRelation entity by IDs.
-func (_u *CisUpdateOne) AddSecondRelationIDs(ids ...uint64) *CisUpdateOne {
-	_u.mutation.AddSecondRelationIDs(ids...)
+// AddTargetRelationIDs adds the "target_relations" edge to the CiRelation entity by IDs.
+func (_u *CisUpdateOne) AddTargetRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.AddTargetRelationIDs(ids...)
 	return _u
 }
 
-// AddSecondRelations adds the "second_relations" edges to the CiRelation entity.
-func (_u *CisUpdateOne) AddSecondRelations(v ...*CiRelation) *CisUpdateOne {
+// AddTargetRelations adds the "target_relations" edges to the CiRelation entity.
+func (_u *CisUpdateOne) AddTargetRelations(v ...*CiRelation) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _u.AddSecondRelationIDs(ids...)
+	return _u.AddTargetRelationIDs(ids...)
 }
 
 // AddMoreRelationIDs adds the "more_relations" edge to the CiRelation entity by IDs.
@@ -1746,46 +1746,46 @@ func (_u *CisUpdateOne) RemoveValueDatetimes(v ...*ValueDatetime) *CisUpdateOne 
 	return _u.RemoveValueDatetimeIDs(ids...)
 }
 
-// ClearFirstRelations clears all "first_relations" edges to the CiRelation entity.
-func (_u *CisUpdateOne) ClearFirstRelations() *CisUpdateOne {
-	_u.mutation.ClearFirstRelations()
+// ClearSourceRelations clears all "source_relations" edges to the CiRelation entity.
+func (_u *CisUpdateOne) ClearSourceRelations() *CisUpdateOne {
+	_u.mutation.ClearSourceRelations()
 	return _u
 }
 
-// RemoveFirstRelationIDs removes the "first_relations" edge to CiRelation entities by IDs.
-func (_u *CisUpdateOne) RemoveFirstRelationIDs(ids ...uint64) *CisUpdateOne {
-	_u.mutation.RemoveFirstRelationIDs(ids...)
+// RemoveSourceRelationIDs removes the "source_relations" edge to CiRelation entities by IDs.
+func (_u *CisUpdateOne) RemoveSourceRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveSourceRelationIDs(ids...)
 	return _u
 }
 
-// RemoveFirstRelations removes "first_relations" edges to CiRelation entities.
-func (_u *CisUpdateOne) RemoveFirstRelations(v ...*CiRelation) *CisUpdateOne {
+// RemoveSourceRelations removes "source_relations" edges to CiRelation entities.
+func (_u *CisUpdateOne) RemoveSourceRelations(v ...*CiRelation) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _u.RemoveFirstRelationIDs(ids...)
+	return _u.RemoveSourceRelationIDs(ids...)
 }
 
-// ClearSecondRelations clears all "second_relations" edges to the CiRelation entity.
-func (_u *CisUpdateOne) ClearSecondRelations() *CisUpdateOne {
-	_u.mutation.ClearSecondRelations()
+// ClearTargetRelations clears all "target_relations" edges to the CiRelation entity.
+func (_u *CisUpdateOne) ClearTargetRelations() *CisUpdateOne {
+	_u.mutation.ClearTargetRelations()
 	return _u
 }
 
-// RemoveSecondRelationIDs removes the "second_relations" edge to CiRelation entities by IDs.
-func (_u *CisUpdateOne) RemoveSecondRelationIDs(ids ...uint64) *CisUpdateOne {
-	_u.mutation.RemoveSecondRelationIDs(ids...)
+// RemoveTargetRelationIDs removes the "target_relations" edge to CiRelation entities by IDs.
+func (_u *CisUpdateOne) RemoveTargetRelationIDs(ids ...uint64) *CisUpdateOne {
+	_u.mutation.RemoveTargetRelationIDs(ids...)
 	return _u
 }
 
-// RemoveSecondRelations removes "second_relations" edges to CiRelation entities.
-func (_u *CisUpdateOne) RemoveSecondRelations(v ...*CiRelation) *CisUpdateOne {
+// RemoveTargetRelations removes "target_relations" edges to CiRelation entities.
+func (_u *CisUpdateOne) RemoveTargetRelations(v ...*CiRelation) *CisUpdateOne {
 	ids := make([]uint64, len(v))
 	for i := range v {
 		ids[i] = v[i].ID
 	}
-	return _u.RemoveSecondRelationIDs(ids...)
+	return _u.RemoveTargetRelationIDs(ids...)
 }
 
 // ClearMoreRelations clears all "more_relations" edges to the CiRelation entity.
@@ -1961,6 +1961,12 @@ func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 	if _u.mutation.DepartmentIDCleared() {
 		_spec.ClearField(cis.FieldDepartmentID, field.TypeUint64)
 	}
+	if value, ok := _u.mutation.CreatedBy(); ok {
+		_spec.SetField(cis.FieldCreatedBy, field.TypeUUID, value)
+	}
+	if _u.mutation.CreatedByCleared() {
+		_spec.ClearField(cis.FieldCreatedBy, field.TypeUUID)
+	}
 	if value, ok := _u.mutation.Status(); ok {
 		_spec.SetField(cis.FieldStatus, field.TypeUint32, value)
 	}
@@ -1969,12 +1975,6 @@ func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 	}
 	if _u.mutation.StatusCleared() {
 		_spec.ClearField(cis.FieldStatus, field.TypeUint32)
-	}
-	if value, ok := _u.mutation.CreatedBy(); ok {
-		_spec.SetField(cis.FieldCreatedBy, field.TypeUUID, value)
-	}
-	if _u.mutation.CreatedByCleared() {
-		_spec.ClearField(cis.FieldCreatedBy, field.TypeUUID)
 	}
 	if value, ok := _u.mutation.Tags(); ok {
 		_spec.SetField(cis.FieldTags, field.TypeJSON, value)
@@ -2298,12 +2298,12 @@ func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if _u.mutation.FirstRelationsCleared() {
+	if _u.mutation.SourceRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
+			Table:   cis.SourceRelationsTable,
+			Columns: []string{cis.SourceRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -2311,12 +2311,12 @@ func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.RemovedFirstRelationsIDs(); len(nodes) > 0 && !_u.mutation.FirstRelationsCleared() {
+	if nodes := _u.mutation.RemovedSourceRelationsIDs(); len(nodes) > 0 && !_u.mutation.SourceRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
+			Table:   cis.SourceRelationsTable,
+			Columns: []string{cis.SourceRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -2327,12 +2327,12 @@ func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.FirstRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.SourceRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.FirstRelationsTable,
-			Columns: []string{cis.FirstRelationsColumn},
+			Table:   cis.SourceRelationsTable,
+			Columns: []string{cis.SourceRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -2343,12 +2343,12 @@ func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
-	if _u.mutation.SecondRelationsCleared() {
+	if _u.mutation.TargetRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.SecondRelationsTable,
-			Columns: []string{cis.SecondRelationsColumn},
+			Table:   cis.TargetRelationsTable,
+			Columns: []string{cis.TargetRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -2356,12 +2356,12 @@ func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.RemovedSecondRelationsIDs(); len(nodes) > 0 && !_u.mutation.SecondRelationsCleared() {
+	if nodes := _u.mutation.RemovedTargetRelationsIDs(); len(nodes) > 0 && !_u.mutation.TargetRelationsCleared() {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.SecondRelationsTable,
-			Columns: []string{cis.SecondRelationsColumn},
+			Table:   cis.TargetRelationsTable,
+			Columns: []string{cis.TargetRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),
@@ -2372,12 +2372,12 @@ func (_u *CisUpdateOne) sqlSave(ctx context.Context) (_node *Cis, err error) {
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
 	}
-	if nodes := _u.mutation.SecondRelationsIDs(); len(nodes) > 0 {
+	if nodes := _u.mutation.TargetRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   cis.SecondRelationsTable,
-			Columns: []string{cis.SecondRelationsColumn},
+			Table:   cis.TargetRelationsTable,
+			Columns: []string{cis.TargetRelationsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirelation.FieldID, field.TypeUint64),

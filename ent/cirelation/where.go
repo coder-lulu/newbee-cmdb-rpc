@@ -80,14 +80,14 @@ func DepartmentID(v uint64) predicate.CiRelation {
 	return predicate.CiRelation(sql.FieldEQ(FieldDepartmentID, v))
 }
 
-// FirstCiID applies equality check predicate on the "first_ci_id" field. It's identical to FirstCiIDEQ.
-func FirstCiID(v uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldEQ(FieldFirstCiID, v))
+// SourceCiID applies equality check predicate on the "source_ci_id" field. It's identical to SourceCiIDEQ.
+func SourceCiID(v uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldSourceCiID, v))
 }
 
-// SecondCiID applies equality check predicate on the "second_ci_id" field. It's identical to SecondCiIDEQ.
-func SecondCiID(v uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldEQ(FieldSecondCiID, v))
+// TargetCiID applies equality check predicate on the "target_ci_id" field. It's identical to TargetCiIDEQ.
+func TargetCiID(v uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldTargetCiID, v))
 }
 
 // RelationTypeID applies equality check predicate on the "relation_type_id" field. It's identical to RelationTypeIDEQ.
@@ -100,14 +100,34 @@ func More(v uint64) predicate.CiRelation {
 	return predicate.CiRelation(sql.FieldEQ(FieldMore, v))
 }
 
-// Source applies equality check predicate on the "source" field. It's identical to SourceEQ.
-func Source(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldEQ(FieldSource, v))
+// DiscoverySource applies equality check predicate on the "discovery_source" field. It's identical to DiscoverySourceEQ.
+func DiscoverySource(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldDiscoverySource, v))
 }
 
 // AncestorIds applies equality check predicate on the "ancestor_ids" field. It's identical to AncestorIdsEQ.
 func AncestorIds(v string) predicate.CiRelation {
 	return predicate.CiRelation(sql.FieldEQ(FieldAncestorIds, v))
+}
+
+// Status applies equality check predicate on the "status" field. It's identical to StatusEQ.
+func Status(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldStatus, v))
+}
+
+// LastValidatedAt applies equality check predicate on the "last_validated_at" field. It's identical to LastValidatedAtEQ.
+func LastValidatedAt(v time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldLastValidatedAt, v))
+}
+
+// AutoSyncEnabled applies equality check predicate on the "auto_sync_enabled" field. It's identical to AutoSyncEnabledEQ.
+func AutoSyncEnabled(v bool) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldAutoSyncEnabled, v))
+}
+
+// RelationStrength applies equality check predicate on the "relation_strength" field. It's identical to RelationStrengthEQ.
+func RelationStrength(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldRelationStrength, v))
 }
 
 // CreatedAtEQ applies the EQ predicate on the "created_at" field.
@@ -330,44 +350,44 @@ func DepartmentIDNotNil() predicate.CiRelation {
 	return predicate.CiRelation(sql.FieldNotNull(FieldDepartmentID))
 }
 
-// FirstCiIDEQ applies the EQ predicate on the "first_ci_id" field.
-func FirstCiIDEQ(v uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldEQ(FieldFirstCiID, v))
+// SourceCiIDEQ applies the EQ predicate on the "source_ci_id" field.
+func SourceCiIDEQ(v uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldSourceCiID, v))
 }
 
-// FirstCiIDNEQ applies the NEQ predicate on the "first_ci_id" field.
-func FirstCiIDNEQ(v uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldNEQ(FieldFirstCiID, v))
+// SourceCiIDNEQ applies the NEQ predicate on the "source_ci_id" field.
+func SourceCiIDNEQ(v uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNEQ(FieldSourceCiID, v))
 }
 
-// FirstCiIDIn applies the In predicate on the "first_ci_id" field.
-func FirstCiIDIn(vs ...uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldIn(FieldFirstCiID, vs...))
+// SourceCiIDIn applies the In predicate on the "source_ci_id" field.
+func SourceCiIDIn(vs ...uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIn(FieldSourceCiID, vs...))
 }
 
-// FirstCiIDNotIn applies the NotIn predicate on the "first_ci_id" field.
-func FirstCiIDNotIn(vs ...uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldNotIn(FieldFirstCiID, vs...))
+// SourceCiIDNotIn applies the NotIn predicate on the "source_ci_id" field.
+func SourceCiIDNotIn(vs ...uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotIn(FieldSourceCiID, vs...))
 }
 
-// SecondCiIDEQ applies the EQ predicate on the "second_ci_id" field.
-func SecondCiIDEQ(v uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldEQ(FieldSecondCiID, v))
+// TargetCiIDEQ applies the EQ predicate on the "target_ci_id" field.
+func TargetCiIDEQ(v uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldTargetCiID, v))
 }
 
-// SecondCiIDNEQ applies the NEQ predicate on the "second_ci_id" field.
-func SecondCiIDNEQ(v uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldNEQ(FieldSecondCiID, v))
+// TargetCiIDNEQ applies the NEQ predicate on the "target_ci_id" field.
+func TargetCiIDNEQ(v uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNEQ(FieldTargetCiID, v))
 }
 
-// SecondCiIDIn applies the In predicate on the "second_ci_id" field.
-func SecondCiIDIn(vs ...uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldIn(FieldSecondCiID, vs...))
+// TargetCiIDIn applies the In predicate on the "target_ci_id" field.
+func TargetCiIDIn(vs ...uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIn(FieldTargetCiID, vs...))
 }
 
-// SecondCiIDNotIn applies the NotIn predicate on the "second_ci_id" field.
-func SecondCiIDNotIn(vs ...uint64) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldNotIn(FieldSecondCiID, vs...))
+// TargetCiIDNotIn applies the NotIn predicate on the "target_ci_id" field.
+func TargetCiIDNotIn(vs ...uint64) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotIn(FieldTargetCiID, vs...))
 }
 
 // RelationTypeIDEQ applies the EQ predicate on the "relation_type_id" field.
@@ -420,79 +440,79 @@ func MoreNotNil() predicate.CiRelation {
 	return predicate.CiRelation(sql.FieldNotNull(FieldMore))
 }
 
-// SourceEQ applies the EQ predicate on the "source" field.
-func SourceEQ(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldEQ(FieldSource, v))
+// DiscoverySourceEQ applies the EQ predicate on the "discovery_source" field.
+func DiscoverySourceEQ(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldDiscoverySource, v))
 }
 
-// SourceNEQ applies the NEQ predicate on the "source" field.
-func SourceNEQ(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldNEQ(FieldSource, v))
+// DiscoverySourceNEQ applies the NEQ predicate on the "discovery_source" field.
+func DiscoverySourceNEQ(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNEQ(FieldDiscoverySource, v))
 }
 
-// SourceIn applies the In predicate on the "source" field.
-func SourceIn(vs ...string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldIn(FieldSource, vs...))
+// DiscoverySourceIn applies the In predicate on the "discovery_source" field.
+func DiscoverySourceIn(vs ...string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIn(FieldDiscoverySource, vs...))
 }
 
-// SourceNotIn applies the NotIn predicate on the "source" field.
-func SourceNotIn(vs ...string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldNotIn(FieldSource, vs...))
+// DiscoverySourceNotIn applies the NotIn predicate on the "discovery_source" field.
+func DiscoverySourceNotIn(vs ...string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotIn(FieldDiscoverySource, vs...))
 }
 
-// SourceGT applies the GT predicate on the "source" field.
-func SourceGT(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldGT(FieldSource, v))
+// DiscoverySourceGT applies the GT predicate on the "discovery_source" field.
+func DiscoverySourceGT(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldGT(FieldDiscoverySource, v))
 }
 
-// SourceGTE applies the GTE predicate on the "source" field.
-func SourceGTE(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldGTE(FieldSource, v))
+// DiscoverySourceGTE applies the GTE predicate on the "discovery_source" field.
+func DiscoverySourceGTE(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldGTE(FieldDiscoverySource, v))
 }
 
-// SourceLT applies the LT predicate on the "source" field.
-func SourceLT(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldLT(FieldSource, v))
+// DiscoverySourceLT applies the LT predicate on the "discovery_source" field.
+func DiscoverySourceLT(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldLT(FieldDiscoverySource, v))
 }
 
-// SourceLTE applies the LTE predicate on the "source" field.
-func SourceLTE(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldLTE(FieldSource, v))
+// DiscoverySourceLTE applies the LTE predicate on the "discovery_source" field.
+func DiscoverySourceLTE(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldLTE(FieldDiscoverySource, v))
 }
 
-// SourceContains applies the Contains predicate on the "source" field.
-func SourceContains(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldContains(FieldSource, v))
+// DiscoverySourceContains applies the Contains predicate on the "discovery_source" field.
+func DiscoverySourceContains(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldContains(FieldDiscoverySource, v))
 }
 
-// SourceHasPrefix applies the HasPrefix predicate on the "source" field.
-func SourceHasPrefix(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldHasPrefix(FieldSource, v))
+// DiscoverySourceHasPrefix applies the HasPrefix predicate on the "discovery_source" field.
+func DiscoverySourceHasPrefix(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldHasPrefix(FieldDiscoverySource, v))
 }
 
-// SourceHasSuffix applies the HasSuffix predicate on the "source" field.
-func SourceHasSuffix(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldHasSuffix(FieldSource, v))
+// DiscoverySourceHasSuffix applies the HasSuffix predicate on the "discovery_source" field.
+func DiscoverySourceHasSuffix(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldHasSuffix(FieldDiscoverySource, v))
 }
 
-// SourceIsNil applies the IsNil predicate on the "source" field.
-func SourceIsNil() predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldIsNull(FieldSource))
+// DiscoverySourceIsNil applies the IsNil predicate on the "discovery_source" field.
+func DiscoverySourceIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldDiscoverySource))
 }
 
-// SourceNotNil applies the NotNil predicate on the "source" field.
-func SourceNotNil() predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldNotNull(FieldSource))
+// DiscoverySourceNotNil applies the NotNil predicate on the "discovery_source" field.
+func DiscoverySourceNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldDiscoverySource))
 }
 
-// SourceEqualFold applies the EqualFold predicate on the "source" field.
-func SourceEqualFold(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldEqualFold(FieldSource, v))
+// DiscoverySourceEqualFold applies the EqualFold predicate on the "discovery_source" field.
+func DiscoverySourceEqualFold(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEqualFold(FieldDiscoverySource, v))
 }
 
-// SourceContainsFold applies the ContainsFold predicate on the "source" field.
-func SourceContainsFold(v string) predicate.CiRelation {
-	return predicate.CiRelation(sql.FieldContainsFold(FieldSource, v))
+// DiscoverySourceContainsFold applies the ContainsFold predicate on the "discovery_source" field.
+func DiscoverySourceContainsFold(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldContainsFold(FieldDiscoverySource, v))
 }
 
 // AncestorIdsEQ applies the EQ predicate on the "ancestor_ids" field.
@@ -570,21 +590,281 @@ func AncestorIdsContainsFold(v string) predicate.CiRelation {
 	return predicate.CiRelation(sql.FieldContainsFold(FieldAncestorIds, v))
 }
 
-// HasFirstCi applies the HasEdge predicate on the "first_ci" edge.
-func HasFirstCi() predicate.CiRelation {
+// PropertiesIsNil applies the IsNil predicate on the "properties" field.
+func PropertiesIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldProperties))
+}
+
+// PropertiesNotNil applies the NotNil predicate on the "properties" field.
+func PropertiesNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldProperties))
+}
+
+// AttributeMappingsIsNil applies the IsNil predicate on the "attribute_mappings" field.
+func AttributeMappingsIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldAttributeMappings))
+}
+
+// AttributeMappingsNotNil applies the NotNil predicate on the "attribute_mappings" field.
+func AttributeMappingsNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldAttributeMappings))
+}
+
+// StatusEQ applies the EQ predicate on the "status" field.
+func StatusEQ(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldStatus, v))
+}
+
+// StatusNEQ applies the NEQ predicate on the "status" field.
+func StatusNEQ(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNEQ(FieldStatus, v))
+}
+
+// StatusIn applies the In predicate on the "status" field.
+func StatusIn(vs ...string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIn(FieldStatus, vs...))
+}
+
+// StatusNotIn applies the NotIn predicate on the "status" field.
+func StatusNotIn(vs ...string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotIn(FieldStatus, vs...))
+}
+
+// StatusGT applies the GT predicate on the "status" field.
+func StatusGT(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldGT(FieldStatus, v))
+}
+
+// StatusGTE applies the GTE predicate on the "status" field.
+func StatusGTE(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldGTE(FieldStatus, v))
+}
+
+// StatusLT applies the LT predicate on the "status" field.
+func StatusLT(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldLT(FieldStatus, v))
+}
+
+// StatusLTE applies the LTE predicate on the "status" field.
+func StatusLTE(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldLTE(FieldStatus, v))
+}
+
+// StatusContains applies the Contains predicate on the "status" field.
+func StatusContains(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldContains(FieldStatus, v))
+}
+
+// StatusHasPrefix applies the HasPrefix predicate on the "status" field.
+func StatusHasPrefix(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldHasPrefix(FieldStatus, v))
+}
+
+// StatusHasSuffix applies the HasSuffix predicate on the "status" field.
+func StatusHasSuffix(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldHasSuffix(FieldStatus, v))
+}
+
+// StatusIsNil applies the IsNil predicate on the "status" field.
+func StatusIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldStatus))
+}
+
+// StatusNotNil applies the NotNil predicate on the "status" field.
+func StatusNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldStatus))
+}
+
+// StatusEqualFold applies the EqualFold predicate on the "status" field.
+func StatusEqualFold(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEqualFold(FieldStatus, v))
+}
+
+// StatusContainsFold applies the ContainsFold predicate on the "status" field.
+func StatusContainsFold(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldContainsFold(FieldStatus, v))
+}
+
+// ValidationResultIsNil applies the IsNil predicate on the "validation_result" field.
+func ValidationResultIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldValidationResult))
+}
+
+// ValidationResultNotNil applies the NotNil predicate on the "validation_result" field.
+func ValidationResultNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldValidationResult))
+}
+
+// LastValidatedAtEQ applies the EQ predicate on the "last_validated_at" field.
+func LastValidatedAtEQ(v time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldLastValidatedAt, v))
+}
+
+// LastValidatedAtNEQ applies the NEQ predicate on the "last_validated_at" field.
+func LastValidatedAtNEQ(v time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNEQ(FieldLastValidatedAt, v))
+}
+
+// LastValidatedAtIn applies the In predicate on the "last_validated_at" field.
+func LastValidatedAtIn(vs ...time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIn(FieldLastValidatedAt, vs...))
+}
+
+// LastValidatedAtNotIn applies the NotIn predicate on the "last_validated_at" field.
+func LastValidatedAtNotIn(vs ...time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotIn(FieldLastValidatedAt, vs...))
+}
+
+// LastValidatedAtGT applies the GT predicate on the "last_validated_at" field.
+func LastValidatedAtGT(v time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldGT(FieldLastValidatedAt, v))
+}
+
+// LastValidatedAtGTE applies the GTE predicate on the "last_validated_at" field.
+func LastValidatedAtGTE(v time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldGTE(FieldLastValidatedAt, v))
+}
+
+// LastValidatedAtLT applies the LT predicate on the "last_validated_at" field.
+func LastValidatedAtLT(v time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldLT(FieldLastValidatedAt, v))
+}
+
+// LastValidatedAtLTE applies the LTE predicate on the "last_validated_at" field.
+func LastValidatedAtLTE(v time.Time) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldLTE(FieldLastValidatedAt, v))
+}
+
+// LastValidatedAtIsNil applies the IsNil predicate on the "last_validated_at" field.
+func LastValidatedAtIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldLastValidatedAt))
+}
+
+// LastValidatedAtNotNil applies the NotNil predicate on the "last_validated_at" field.
+func LastValidatedAtNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldLastValidatedAt))
+}
+
+// AutoSyncEnabledEQ applies the EQ predicate on the "auto_sync_enabled" field.
+func AutoSyncEnabledEQ(v bool) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldAutoSyncEnabled, v))
+}
+
+// AutoSyncEnabledNEQ applies the NEQ predicate on the "auto_sync_enabled" field.
+func AutoSyncEnabledNEQ(v bool) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNEQ(FieldAutoSyncEnabled, v))
+}
+
+// AutoSyncEnabledIsNil applies the IsNil predicate on the "auto_sync_enabled" field.
+func AutoSyncEnabledIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldAutoSyncEnabled))
+}
+
+// AutoSyncEnabledNotNil applies the NotNil predicate on the "auto_sync_enabled" field.
+func AutoSyncEnabledNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldAutoSyncEnabled))
+}
+
+// SyncConfigIsNil applies the IsNil predicate on the "sync_config" field.
+func SyncConfigIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldSyncConfig))
+}
+
+// SyncConfigNotNil applies the NotNil predicate on the "sync_config" field.
+func SyncConfigNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldSyncConfig))
+}
+
+// RelationStrengthEQ applies the EQ predicate on the "relation_strength" field.
+func RelationStrengthEQ(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEQ(FieldRelationStrength, v))
+}
+
+// RelationStrengthNEQ applies the NEQ predicate on the "relation_strength" field.
+func RelationStrengthNEQ(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNEQ(FieldRelationStrength, v))
+}
+
+// RelationStrengthIn applies the In predicate on the "relation_strength" field.
+func RelationStrengthIn(vs ...string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIn(FieldRelationStrength, vs...))
+}
+
+// RelationStrengthNotIn applies the NotIn predicate on the "relation_strength" field.
+func RelationStrengthNotIn(vs ...string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotIn(FieldRelationStrength, vs...))
+}
+
+// RelationStrengthGT applies the GT predicate on the "relation_strength" field.
+func RelationStrengthGT(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldGT(FieldRelationStrength, v))
+}
+
+// RelationStrengthGTE applies the GTE predicate on the "relation_strength" field.
+func RelationStrengthGTE(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldGTE(FieldRelationStrength, v))
+}
+
+// RelationStrengthLT applies the LT predicate on the "relation_strength" field.
+func RelationStrengthLT(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldLT(FieldRelationStrength, v))
+}
+
+// RelationStrengthLTE applies the LTE predicate on the "relation_strength" field.
+func RelationStrengthLTE(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldLTE(FieldRelationStrength, v))
+}
+
+// RelationStrengthContains applies the Contains predicate on the "relation_strength" field.
+func RelationStrengthContains(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldContains(FieldRelationStrength, v))
+}
+
+// RelationStrengthHasPrefix applies the HasPrefix predicate on the "relation_strength" field.
+func RelationStrengthHasPrefix(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldHasPrefix(FieldRelationStrength, v))
+}
+
+// RelationStrengthHasSuffix applies the HasSuffix predicate on the "relation_strength" field.
+func RelationStrengthHasSuffix(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldHasSuffix(FieldRelationStrength, v))
+}
+
+// RelationStrengthIsNil applies the IsNil predicate on the "relation_strength" field.
+func RelationStrengthIsNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldIsNull(FieldRelationStrength))
+}
+
+// RelationStrengthNotNil applies the NotNil predicate on the "relation_strength" field.
+func RelationStrengthNotNil() predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldNotNull(FieldRelationStrength))
+}
+
+// RelationStrengthEqualFold applies the EqualFold predicate on the "relation_strength" field.
+func RelationStrengthEqualFold(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldEqualFold(FieldRelationStrength, v))
+}
+
+// RelationStrengthContainsFold applies the ContainsFold predicate on the "relation_strength" field.
+func RelationStrengthContainsFold(v string) predicate.CiRelation {
+	return predicate.CiRelation(sql.FieldContainsFold(FieldRelationStrength, v))
+}
+
+// HasSourceCi applies the HasEdge predicate on the "source_ci" edge.
+func HasSourceCi() predicate.CiRelation {
 	return predicate.CiRelation(func(s *sql.Selector) {
 		step := sqlgraph.NewStep(
 			sqlgraph.From(Table, FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, true, FirstCiTable, FirstCiColumn),
+			sqlgraph.Edge(sqlgraph.M2O, true, SourceCiTable, SourceCiColumn),
 		)
 		sqlgraph.HasNeighbors(s, step)
 	})
 }
 
-// HasFirstCiWith applies the HasEdge predicate on the "first_ci" edge with a given conditions (other predicates).
-func HasFirstCiWith(preds ...predicate.Cis) predicate.CiRelation {
+// HasSourceCiWith applies the HasEdge predicate on the "source_ci" edge with a given conditions (other predicates).
+func HasSourceCiWith(preds ...predicate.Cis) predicate.CiRelation {
 	return predicate.CiRelation(func(s *sql.Selector) {
-		step := newFirstCiStep()
+		step := newSourceCiStep()
 		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
 			for _, p := range preds {
 				p(s)
@@ -593,21 +873,21 @@ func HasFirstCiWith(preds ...predicate.Cis) predicate.CiRelation {
 	})
 }
 
-// HasSecondCi applies the HasEdge predicate on the "second_ci" edge.
-func HasSecondCi() predicate.CiRelation {
+// HasTargetCi applies the HasEdge predicate on the "target_ci" edge.
+func HasTargetCi() predicate.CiRelation {
 	return predicate.CiRelation(func(s *sql.Selector) {
 		step := sqlgraph.NewStep(
 			sqlgraph.From(Table, FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, true, SecondCiTable, SecondCiColumn),
+			sqlgraph.Edge(sqlgraph.M2O, true, TargetCiTable, TargetCiColumn),
 		)
 		sqlgraph.HasNeighbors(s, step)
 	})
 }
 
-// HasSecondCiWith applies the HasEdge predicate on the "second_ci" edge with a given conditions (other predicates).
-func HasSecondCiWith(preds ...predicate.Cis) predicate.CiRelation {
+// HasTargetCiWith applies the HasEdge predicate on the "target_ci" edge with a given conditions (other predicates).
+func HasTargetCiWith(preds ...predicate.Cis) predicate.CiRelation {
 	return predicate.CiRelation(func(s *sql.Selector) {
-		step := newSecondCiStep()
+		step := newTargetCiStep()
 		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
 			for _, p := range preds {
 				p(s)

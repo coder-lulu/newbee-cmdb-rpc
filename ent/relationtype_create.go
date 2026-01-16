@@ -78,6 +78,20 @@ func (_c *RelationTypeCreate) SetNillableTenantID(v *uint64) *RelationTypeCreate
 	return _c
 }
 
+// SetDepartmentID sets the "department_id" field.
+func (_c *RelationTypeCreate) SetDepartmentID(v uint64) *RelationTypeCreate {
+	_c.mutation.SetDepartmentID(v)
+	return _c
+}
+
+// SetNillableDepartmentID sets the "department_id" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableDepartmentID(v *uint64) *RelationTypeCreate {
+	if v != nil {
+		_c.SetDepartmentID(*v)
+	}
+	return _c
+}
+
 // SetName sets the "name" field.
 func (_c *RelationTypeCreate) SetName(v string) *RelationTypeCreate {
 	_c.mutation.SetName(v)
@@ -115,6 +129,152 @@ func (_c *RelationTypeCreate) SetNillableDirection(v *relationtype.Direction) *R
 	if v != nil {
 		_c.SetDirection(*v)
 	}
+	return _c
+}
+
+// SetDescription sets the "description" field.
+func (_c *RelationTypeCreate) SetDescription(v string) *RelationTypeCreate {
+	_c.mutation.SetDescription(v)
+	return _c
+}
+
+// SetNillableDescription sets the "description" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableDescription(v *string) *RelationTypeCreate {
+	if v != nil {
+		_c.SetDescription(*v)
+	}
+	return _c
+}
+
+// SetIsStandard sets the "is_standard" field.
+func (_c *RelationTypeCreate) SetIsStandard(v bool) *RelationTypeCreate {
+	_c.mutation.SetIsStandard(v)
+	return _c
+}
+
+// SetNillableIsStandard sets the "is_standard" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableIsStandard(v *bool) *RelationTypeCreate {
+	if v != nil {
+		_c.SetIsStandard(*v)
+	}
+	return _c
+}
+
+// SetSortOrder sets the "sort_order" field.
+func (_c *RelationTypeCreate) SetSortOrder(v int) *RelationTypeCreate {
+	_c.mutation.SetSortOrder(v)
+	return _c
+}
+
+// SetNillableSortOrder sets the "sort_order" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableSortOrder(v *int) *RelationTypeCreate {
+	if v != nil {
+		_c.SetSortOrder(*v)
+	}
+	return _c
+}
+
+// SetIsEnabled sets the "is_enabled" field.
+func (_c *RelationTypeCreate) SetIsEnabled(v bool) *RelationTypeCreate {
+	_c.mutation.SetIsEnabled(v)
+	return _c
+}
+
+// SetNillableIsEnabled sets the "is_enabled" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableIsEnabled(v *bool) *RelationTypeCreate {
+	if v != nil {
+		_c.SetIsEnabled(*v)
+	}
+	return _c
+}
+
+// SetDisplayColor sets the "display_color" field.
+func (_c *RelationTypeCreate) SetDisplayColor(v string) *RelationTypeCreate {
+	_c.mutation.SetDisplayColor(v)
+	return _c
+}
+
+// SetNillableDisplayColor sets the "display_color" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableDisplayColor(v *string) *RelationTypeCreate {
+	if v != nil {
+		_c.SetDisplayColor(*v)
+	}
+	return _c
+}
+
+// SetLineType sets the "line_type" field.
+func (_c *RelationTypeCreate) SetLineType(v relationtype.LineType) *RelationTypeCreate {
+	_c.mutation.SetLineType(v)
+	return _c
+}
+
+// SetNillableLineType sets the "line_type" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableLineType(v *relationtype.LineType) *RelationTypeCreate {
+	if v != nil {
+		_c.SetLineType(*v)
+	}
+	return _c
+}
+
+// SetIcon sets the "icon" field.
+func (_c *RelationTypeCreate) SetIcon(v string) *RelationTypeCreate {
+	_c.mutation.SetIcon(v)
+	return _c
+}
+
+// SetNillableIcon sets the "icon" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableIcon(v *string) *RelationTypeCreate {
+	if v != nil {
+		_c.SetIcon(*v)
+	}
+	return _c
+}
+
+// SetWeight sets the "weight" field.
+func (_c *RelationTypeCreate) SetWeight(v int) *RelationTypeCreate {
+	_c.mutation.SetWeight(v)
+	return _c
+}
+
+// SetNillableWeight sets the "weight" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableWeight(v *int) *RelationTypeCreate {
+	if v != nil {
+		_c.SetWeight(*v)
+	}
+	return _c
+}
+
+// SetDisplayLabel sets the "display_label" field.
+func (_c *RelationTypeCreate) SetDisplayLabel(v string) *RelationTypeCreate {
+	_c.mutation.SetDisplayLabel(v)
+	return _c
+}
+
+// SetNillableDisplayLabel sets the "display_label" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableDisplayLabel(v *string) *RelationTypeCreate {
+	if v != nil {
+		_c.SetDisplayLabel(*v)
+	}
+	return _c
+}
+
+// SetTooltipTemplate sets the "tooltip_template" field.
+func (_c *RelationTypeCreate) SetTooltipTemplate(v string) *RelationTypeCreate {
+	_c.mutation.SetTooltipTemplate(v)
+	return _c
+}
+
+// SetNillableTooltipTemplate sets the "tooltip_template" field if the given value is not nil.
+func (_c *RelationTypeCreate) SetNillableTooltipTemplate(v *string) *RelationTypeCreate {
+	if v != nil {
+		_c.SetTooltipTemplate(*v)
+	}
+	return _c
+}
+
+// SetDisplayStyle sets the "display_style" field.
+func (_c *RelationTypeCreate) SetDisplayStyle(v map[string]interface{}) *RelationTypeCreate {
+	_c.mutation.SetDisplayStyle(v)
 	return _c
 }
 
@@ -217,6 +377,30 @@ func (_c *RelationTypeCreate) defaults() error {
 		v := relationtype.DefaultDirection
 		_c.mutation.SetDirection(v)
 	}
+	if _, ok := _c.mutation.IsStandard(); !ok {
+		v := relationtype.DefaultIsStandard
+		_c.mutation.SetIsStandard(v)
+	}
+	if _, ok := _c.mutation.SortOrder(); !ok {
+		v := relationtype.DefaultSortOrder
+		_c.mutation.SetSortOrder(v)
+	}
+	if _, ok := _c.mutation.IsEnabled(); !ok {
+		v := relationtype.DefaultIsEnabled
+		_c.mutation.SetIsEnabled(v)
+	}
+	if _, ok := _c.mutation.DisplayColor(); !ok {
+		v := relationtype.DefaultDisplayColor
+		_c.mutation.SetDisplayColor(v)
+	}
+	if _, ok := _c.mutation.LineType(); !ok {
+		v := relationtype.DefaultLineType
+		_c.mutation.SetLineType(v)
+	}
+	if _, ok := _c.mutation.Weight(); !ok {
+		v := relationtype.DefaultWeight
+		_c.mutation.SetWeight(v)
+	}
 	return nil
 }
 
@@ -261,6 +445,44 @@ func (_c *RelationTypeCreate) check() error {
 	if v, ok := _c.mutation.Direction(); ok {
 		if err := relationtype.DirectionValidator(v); err != nil {
 			return &ValidationError{Name: "direction", err: fmt.Errorf(`ent: validator failed for field "RelationType.direction": %w`, err)}
+		}
+	}
+	if _, ok := _c.mutation.IsStandard(); !ok {
+		return &ValidationError{Name: "is_standard", err: errors.New(`ent: missing required field "RelationType.is_standard"`)}
+	}
+	if _, ok := _c.mutation.SortOrder(); !ok {
+		return &ValidationError{Name: "sort_order", err: errors.New(`ent: missing required field "RelationType.sort_order"`)}
+	}
+	if _, ok := _c.mutation.IsEnabled(); !ok {
+		return &ValidationError{Name: "is_enabled", err: errors.New(`ent: missing required field "RelationType.is_enabled"`)}
+	}
+	if _, ok := _c.mutation.DisplayColor(); !ok {
+		return &ValidationError{Name: "display_color", err: errors.New(`ent: missing required field "RelationType.display_color"`)}
+	}
+	if v, ok := _c.mutation.DisplayColor(); ok {
+		if err := relationtype.DisplayColorValidator(v); err != nil {
+			return &ValidationError{Name: "display_color", err: fmt.Errorf(`ent: validator failed for field "RelationType.display_color": %w`, err)}
+		}
+	}
+	if _, ok := _c.mutation.LineType(); !ok {
+		return &ValidationError{Name: "line_type", err: errors.New(`ent: missing required field "RelationType.line_type"`)}
+	}
+	if v, ok := _c.mutation.LineType(); ok {
+		if err := relationtype.LineTypeValidator(v); err != nil {
+			return &ValidationError{Name: "line_type", err: fmt.Errorf(`ent: validator failed for field "RelationType.line_type": %w`, err)}
+		}
+	}
+	if v, ok := _c.mutation.Icon(); ok {
+		if err := relationtype.IconValidator(v); err != nil {
+			return &ValidationError{Name: "icon", err: fmt.Errorf(`ent: validator failed for field "RelationType.icon": %w`, err)}
+		}
+	}
+	if _, ok := _c.mutation.Weight(); !ok {
+		return &ValidationError{Name: "weight", err: errors.New(`ent: missing required field "RelationType.weight"`)}
+	}
+	if v, ok := _c.mutation.DisplayLabel(); ok {
+		if err := relationtype.DisplayLabelValidator(v); err != nil {
+			return &ValidationError{Name: "display_label", err: fmt.Errorf(`ent: validator failed for field "RelationType.display_label": %w`, err)}
 		}
 	}
 	return nil
@@ -311,6 +533,10 @@ func (_c *RelationTypeCreate) createSpec() (*RelationType, *sqlgraph.CreateSpec)
 		_spec.SetField(relationtype.FieldTenantID, field.TypeUint64, value)
 		_node.TenantID = value
 	}
+	if value, ok := _c.mutation.DepartmentID(); ok {
+		_spec.SetField(relationtype.FieldDepartmentID, field.TypeUint64, value)
+		_node.DepartmentID = value
+	}
 	if value, ok := _c.mutation.Name(); ok {
 		_spec.SetField(relationtype.FieldName, field.TypeString, value)
 		_node.Name = value
@@ -326,6 +552,50 @@ func (_c *RelationTypeCreate) createSpec() (*RelationType, *sqlgraph.CreateSpec)
 	if value, ok := _c.mutation.Direction(); ok {
 		_spec.SetField(relationtype.FieldDirection, field.TypeEnum, value)
 		_node.Direction = value
+	}
+	if value, ok := _c.mutation.Description(); ok {
+		_spec.SetField(relationtype.FieldDescription, field.TypeString, value)
+		_node.Description = value
+	}
+	if value, ok := _c.mutation.IsStandard(); ok {
+		_spec.SetField(relationtype.FieldIsStandard, field.TypeBool, value)
+		_node.IsStandard = value
+	}
+	if value, ok := _c.mutation.SortOrder(); ok {
+		_spec.SetField(relationtype.FieldSortOrder, field.TypeInt, value)
+		_node.SortOrder = value
+	}
+	if value, ok := _c.mutation.IsEnabled(); ok {
+		_spec.SetField(relationtype.FieldIsEnabled, field.TypeBool, value)
+		_node.IsEnabled = value
+	}
+	if value, ok := _c.mutation.DisplayColor(); ok {
+		_spec.SetField(relationtype.FieldDisplayColor, field.TypeString, value)
+		_node.DisplayColor = value
+	}
+	if value, ok := _c.mutation.LineType(); ok {
+		_spec.SetField(relationtype.FieldLineType, field.TypeEnum, value)
+		_node.LineType = value
+	}
+	if value, ok := _c.mutation.Icon(); ok {
+		_spec.SetField(relationtype.FieldIcon, field.TypeString, value)
+		_node.Icon = value
+	}
+	if value, ok := _c.mutation.Weight(); ok {
+		_spec.SetField(relationtype.FieldWeight, field.TypeInt, value)
+		_node.Weight = value
+	}
+	if value, ok := _c.mutation.DisplayLabel(); ok {
+		_spec.SetField(relationtype.FieldDisplayLabel, field.TypeString, value)
+		_node.DisplayLabel = value
+	}
+	if value, ok := _c.mutation.TooltipTemplate(); ok {
+		_spec.SetField(relationtype.FieldTooltipTemplate, field.TypeString, value)
+		_node.TooltipTemplate = value
+	}
+	if value, ok := _c.mutation.DisplayStyle(); ok {
+		_spec.SetField(relationtype.FieldDisplayStyle, field.TypeJSON, value)
+		_node.DisplayStyle = value
 	}
 	if nodes := _c.mutation.CiRelationsIDs(); len(nodes) > 0 {
 		edge := &sqlgraph.EdgeSpec{

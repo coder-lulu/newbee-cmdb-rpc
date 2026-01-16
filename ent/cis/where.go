@@ -81,6 +81,11 @@ func DepartmentID(v uint64) predicate.Cis {
 	return predicate.Cis(sql.FieldEQ(FieldDepartmentID, v))
 }
 
+// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
+func CreatedBy(v uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldEQ(FieldCreatedBy, v))
+}
+
 // TypeID applies equality check predicate on the "type_id" field. It's identical to TypeIDEQ.
 func TypeID(v uint64) predicate.Cis {
 	return predicate.Cis(sql.FieldEQ(FieldTypeID, v))
@@ -89,11 +94,6 @@ func TypeID(v uint64) predicate.Cis {
 // Status applies equality check predicate on the "status" field. It's identical to StatusEQ.
 func Status(v uint32) predicate.Cis {
 	return predicate.Cis(sql.FieldEQ(FieldStatus, v))
-}
-
-// CreatedBy applies equality check predicate on the "created_by" field. It's identical to CreatedByEQ.
-func CreatedBy(v uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldEQ(FieldCreatedBy, v))
 }
 
 // CreatedAtEQ applies the EQ predicate on the "created_at" field.
@@ -316,6 +316,56 @@ func DepartmentIDNotNil() predicate.Cis {
 	return predicate.Cis(sql.FieldNotNull(FieldDepartmentID))
 }
 
+// CreatedByEQ applies the EQ predicate on the "created_by" field.
+func CreatedByEQ(v uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldEQ(FieldCreatedBy, v))
+}
+
+// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
+func CreatedByNEQ(v uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldNEQ(FieldCreatedBy, v))
+}
+
+// CreatedByIn applies the In predicate on the "created_by" field.
+func CreatedByIn(vs ...uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
+func CreatedByNotIn(vs ...uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldNotIn(FieldCreatedBy, vs...))
+}
+
+// CreatedByGT applies the GT predicate on the "created_by" field.
+func CreatedByGT(v uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldGT(FieldCreatedBy, v))
+}
+
+// CreatedByGTE applies the GTE predicate on the "created_by" field.
+func CreatedByGTE(v uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldGTE(FieldCreatedBy, v))
+}
+
+// CreatedByLT applies the LT predicate on the "created_by" field.
+func CreatedByLT(v uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldLT(FieldCreatedBy, v))
+}
+
+// CreatedByLTE applies the LTE predicate on the "created_by" field.
+func CreatedByLTE(v uuid.UUID) predicate.Cis {
+	return predicate.Cis(sql.FieldLTE(FieldCreatedBy, v))
+}
+
+// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
+func CreatedByIsNil() predicate.Cis {
+	return predicate.Cis(sql.FieldIsNull(FieldCreatedBy))
+}
+
+// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
+func CreatedByNotNil() predicate.Cis {
+	return predicate.Cis(sql.FieldNotNull(FieldCreatedBy))
+}
+
 // TypeIDEQ applies the EQ predicate on the "type_id" field.
 func TypeIDEQ(v uint64) predicate.Cis {
 	return predicate.Cis(sql.FieldEQ(FieldTypeID, v))
@@ -384,56 +434,6 @@ func StatusIsNil() predicate.Cis {
 // StatusNotNil applies the NotNil predicate on the "status" field.
 func StatusNotNil() predicate.Cis {
 	return predicate.Cis(sql.FieldNotNull(FieldStatus))
-}
-
-// CreatedByEQ applies the EQ predicate on the "created_by" field.
-func CreatedByEQ(v uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldEQ(FieldCreatedBy, v))
-}
-
-// CreatedByNEQ applies the NEQ predicate on the "created_by" field.
-func CreatedByNEQ(v uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldNEQ(FieldCreatedBy, v))
-}
-
-// CreatedByIn applies the In predicate on the "created_by" field.
-func CreatedByIn(vs ...uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByNotIn applies the NotIn predicate on the "created_by" field.
-func CreatedByNotIn(vs ...uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldNotIn(FieldCreatedBy, vs...))
-}
-
-// CreatedByGT applies the GT predicate on the "created_by" field.
-func CreatedByGT(v uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldGT(FieldCreatedBy, v))
-}
-
-// CreatedByGTE applies the GTE predicate on the "created_by" field.
-func CreatedByGTE(v uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldGTE(FieldCreatedBy, v))
-}
-
-// CreatedByLT applies the LT predicate on the "created_by" field.
-func CreatedByLT(v uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldLT(FieldCreatedBy, v))
-}
-
-// CreatedByLTE applies the LTE predicate on the "created_by" field.
-func CreatedByLTE(v uuid.UUID) predicate.Cis {
-	return predicate.Cis(sql.FieldLTE(FieldCreatedBy, v))
-}
-
-// CreatedByIsNil applies the IsNil predicate on the "created_by" field.
-func CreatedByIsNil() predicate.Cis {
-	return predicate.Cis(sql.FieldIsNull(FieldCreatedBy))
-}
-
-// CreatedByNotNil applies the NotNil predicate on the "created_by" field.
-func CreatedByNotNil() predicate.Cis {
-	return predicate.Cis(sql.FieldNotNull(FieldCreatedBy))
 }
 
 // TagsIsNil applies the IsNil predicate on the "tags" field.
@@ -627,21 +627,21 @@ func HasValueDatetimesWith(preds ...predicate.ValueDatetime) predicate.Cis {
 	})
 }
 
-// HasFirstRelations applies the HasEdge predicate on the "first_relations" edge.
-func HasFirstRelations() predicate.Cis {
+// HasSourceRelations applies the HasEdge predicate on the "source_relations" edge.
+func HasSourceRelations() predicate.Cis {
 	return predicate.Cis(func(s *sql.Selector) {
 		step := sqlgraph.NewStep(
 			sqlgraph.From(Table, FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, FirstRelationsTable, FirstRelationsColumn),
+			sqlgraph.Edge(sqlgraph.O2M, false, SourceRelationsTable, SourceRelationsColumn),
 		)
 		sqlgraph.HasNeighbors(s, step)
 	})
 }
 
-// HasFirstRelationsWith applies the HasEdge predicate on the "first_relations" edge with a given conditions (other predicates).
-func HasFirstRelationsWith(preds ...predicate.CiRelation) predicate.Cis {
+// HasSourceRelationsWith applies the HasEdge predicate on the "source_relations" edge with a given conditions (other predicates).
+func HasSourceRelationsWith(preds ...predicate.CiRelation) predicate.Cis {
 	return predicate.Cis(func(s *sql.Selector) {
-		step := newFirstRelationsStep()
+		step := newSourceRelationsStep()
 		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
 			for _, p := range preds {
 				p(s)
@@ -650,21 +650,21 @@ func HasFirstRelationsWith(preds ...predicate.CiRelation) predicate.Cis {
 	})
 }
 
-// HasSecondRelations applies the HasEdge predicate on the "second_relations" edge.
-func HasSecondRelations() predicate.Cis {
+// HasTargetRelations applies the HasEdge predicate on the "target_relations" edge.
+func HasTargetRelations() predicate.Cis {
 	return predicate.Cis(func(s *sql.Selector) {
 		step := sqlgraph.NewStep(
 			sqlgraph.From(Table, FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, SecondRelationsTable, SecondRelationsColumn),
+			sqlgraph.Edge(sqlgraph.O2M, false, TargetRelationsTable, TargetRelationsColumn),
 		)
 		sqlgraph.HasNeighbors(s, step)
 	})
 }
 
-// HasSecondRelationsWith applies the HasEdge predicate on the "second_relations" edge with a given conditions (other predicates).
-func HasSecondRelationsWith(preds ...predicate.CiRelation) predicate.Cis {
+// HasTargetRelationsWith applies the HasEdge predicate on the "target_relations" edge with a given conditions (other predicates).
+func HasTargetRelationsWith(preds ...predicate.CiRelation) predicate.Cis {
 	return predicate.Cis(func(s *sql.Selector) {
-		step := newSecondRelationsStep()
+		step := newTargetRelationsStep()
 		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
 			for _, p := range preds {
 				p(s)

@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+// DiscoveryExecutionHistory message
+
+message DiscoveryExecutionHistoryInfo {
+  optional uint64 id = 1;
+  optional int64 created_at = 2;
+  optional int64 updated_at = 3;
+  // 发现配置ID
+  optional uint64 discovery_config_id = 4;
+  // 执行ID(UUID)
+  optional string execution_id = 5;
+  // 触发类型: manual, scheduled, api
+  optional string trigger_type = 6;
+  // 触发人ID
+  optional uint64 triggered_by = 7;
+  // 开始时间
+  optional int64  started_at = 8;
+  // 完成时间
+  optional int64  completed_at = 9;
+  // 执行时长(秒)
+  optional int64 duration_seconds = 10;
+  // 状态: running, completed, failed, cancelled
+  optional string exec_status = 11;
+  // 当前阶段: connecting, discovering, transforming, persisting
+  optional string stage = 12;
+  // 进度百分比(0-100)
+  optional int64 progress = 13;
+  // 总记录数
+  optional int64 total_records = 14;
+  // 已处理记录数
+  optional int64 processed_records = 15;
+  // 成功记录数
+  optional int64 success_records = 16;
+  // 失败记录数
+  optional int64 failed_records = 17;
+  // 跳过记录数
+  optional int64 skipped_records = 18;
+  // 创建的CI数量
+  optional int64 created_cis = 19;
+  // 更新的CI数量
+  optional int64 updated_cis = 20;
+  // 错误信息
+  optional string error_message = 21;
+  // 错误详情JSON
+  optional string error_details = 22;
+  // 验证错误JSON
+  optional string validation_errors = 23;
+  // 执行结果JSON
+  optional string execution_result = 24;
+  // 性能指标JSON
+  optional string performance_metrics = 25;
+  // 执行时的配置快照JSON
+  optional string config_snapshot = 26;
+  // 提供者信息JSON
+  optional string provider_info = 27;
+  // 执行日志
+  optional string execution_log = 28;
+  // 扩展元数据JSON
+  optional string metadata = 29;
+  // 标签
+  optional string tags = 30;
+}
+
+message DiscoveryExecutionHistoryListResp {
+  uint64 total = 1;
+  repeated DiscoveryExecutionHistoryInfo data = 2;
+}
+
+message DiscoveryExecutionHistoryListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int64 created_at = 3;
+  optional int64 updated_at = 4;
+  optional int64 deleted_at = 5;
+  optional uint64 discovery_config_id = 6;
+  optional string execution_id = 7;
+  optional string trigger_type = 8;
+  optional uint64 triggered_by = 9;
+  optional int64 started_at = 10;
+  optional int64 completed_at = 11;
+  optional int64 duration_seconds = 12;
+  optional string exec_status = 13;
+  optional string stage = 14;
+  optional int64 progress = 15;
+  optional int64 total_records = 16;
+  optional int64 processed_records = 17;
+  optional int64 success_records = 18;
+  optional int64 failed_records = 19;
+  optional int64 skipped_records = 20;
+  optional int64 created_cis = 21;
+  optional int64 updated_cis = 22;
+  optional string error_message = 23;
+  optional string error_details = 24;
+  optional string validation_errors = 25;
+  optional string execution_result = 26;
+  optional string performance_metrics = 27;
+  optional string config_snapshot = 28;
+  optional string provider_info = 29;
+  optional string execution_log = 30;
+  optional string metadata = 31;
+  optional string tags = 32;
+}
+
+
+service Cmdb {
+
+  // DiscoveryExecutionHistory management
+  // group: discoveryexecutionhistory
+  rpc createDiscoveryExecutionHistory (DiscoveryExecutionHistoryInfo) returns (BaseIDResp);
+  // group: discoveryexecutionhistory
+  rpc updateDiscoveryExecutionHistory (DiscoveryExecutionHistoryInfo) returns (BaseResp);
+  // group: discoveryexecutionhistory
+  rpc getDiscoveryExecutionHistoryList (DiscoveryExecutionHistoryListReq) returns (DiscoveryExecutionHistoryListResp);
+  // group: discoveryexecutionhistory
+  rpc getDiscoveryExecutionHistoryById (IDReq) returns (DiscoveryExecutionHistoryInfo);
+  // group: discoveryexecutionhistory
+  rpc deleteDiscoveryExecutionHistory (IDsReq) returns (BaseResp);
+
+
+}

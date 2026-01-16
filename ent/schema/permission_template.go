@@ -6,7 +6,7 @@ import (
 	"entgo.io/ent/schema"
 	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/index"
-	"github.com/coder-lulu/newbee-common/orm/ent/mixins"
+	"github.com/coder-lulu/newbee-common/v2/orm/ent/mixins"
 )
 
 // PermissionTemplate 权限模板表 - 简化配置复杂度
@@ -19,6 +19,7 @@ func (PermissionTemplate) Mixin() []ent.Mixin {
 	return []ent.Mixin{
 		mixins.IDMixin{},
 		mixins.TenantMixin{},
+		mixins.DepartmentMixin{},
 	}
 }
 

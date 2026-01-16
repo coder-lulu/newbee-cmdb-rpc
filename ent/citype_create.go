@@ -16,6 +16,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citype"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeattributegroup"
+	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypediscoveryconfig"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypegroupitem"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/citypeinheritance"
 	"github.com/coder-lulu/newbee-cmdb-rpc/ent/cityperelation"
@@ -130,6 +131,20 @@ func (_c *CiTypeCreate) SetNillableDepartmentID(v *uint64) *CiTypeCreate {
 	return _c
 }
 
+// SetCreatedBy sets the "created_by" field.
+func (_c *CiTypeCreate) SetCreatedBy(v uuid.UUID) *CiTypeCreate {
+	_c.mutation.SetCreatedBy(v)
+	return _c
+}
+
+// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
+func (_c *CiTypeCreate) SetNillableCreatedBy(v *uuid.UUID) *CiTypeCreate {
+	if v != nil {
+		_c.SetCreatedBy(*v)
+	}
+	return _c
+}
+
 // SetName sets the "name" field.
 func (_c *CiTypeCreate) SetName(v string) *CiTypeCreate {
 	_c.mutation.SetName(v)
@@ -158,20 +173,6 @@ func (_c *CiTypeCreate) SetIsInherited(v bool) *CiTypeCreate {
 func (_c *CiTypeCreate) SetNillableIsInherited(v *bool) *CiTypeCreate {
 	if v != nil {
 		_c.SetIsInherited(*v)
-	}
-	return _c
-}
-
-// SetCreatedBy sets the "created_by" field.
-func (_c *CiTypeCreate) SetCreatedBy(v uuid.UUID) *CiTypeCreate {
-	_c.mutation.SetCreatedBy(v)
-	return _c
-}
-
-// SetNillableCreatedBy sets the "created_by" field if the given value is not nil.
-func (_c *CiTypeCreate) SetNillableCreatedBy(v *uuid.UUID) *CiTypeCreate {
-	if v != nil {
-		_c.SetCreatedBy(*v)
 	}
 	return _c
 }
@@ -406,6 +407,21 @@ func (_c *CiTypeCreate) AddCiRecords(v ...*CiRecords) *CiTypeCreate {
 	return _c.AddCiRecordIDs(ids...)
 }
 
+// AddDiscoveryConfigIDs adds the "discovery_configs" edge to the CiTypeDiscoveryConfig entity by IDs.
+func (_c *CiTypeCreate) AddDiscoveryConfigIDs(ids ...uint64) *CiTypeCreate {
+	_c.mutation.AddDiscoveryConfigIDs(ids...)
+	return _c
+}
+
+// AddDiscoveryConfigs adds the "discovery_configs" edges to the CiTypeDiscoveryConfig entity.
+func (_c *CiTypeCreate) AddDiscoveryConfigs(v ...*CiTypeDiscoveryConfig) *CiTypeCreate {
+	ids := make([]uint64, len(v))
+	for i := range v {
+		ids[i] = v[i].ID
+	}
+	return _c.AddDiscoveryConfigIDs(ids...)
+}
+
 // Mutation returns the CiTypeMutation object of the builder.
 func (_c *CiTypeCreate) Mutation() *CiTypeMutation {
 	return _c.mutation
@@ -572,6 +588,10 @@ func (_c *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 		_spec.SetField(citype.FieldDepartmentID, field.TypeUint64, value)
 		_node.DepartmentID = value
 	}
+	if value, ok := _c.mutation.CreatedBy(); ok {
+		_spec.SetField(citype.FieldCreatedBy, field.TypeUUID, value)
+		_node.CreatedBy = &value
+	}
 	if value, ok := _c.mutation.Name(); ok {
 		_spec.SetField(citype.FieldName, field.TypeString, value)
 		_node.Name = value
@@ -583,10 +603,6 @@ func (_c *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 	if value, ok := _c.mutation.IsInherited(); ok {
 		_spec.SetField(citype.FieldIsInherited, field.TypeBool, value)
 		_node.IsInherited = &value
-	}
-	if value, ok := _c.mutation.CreatedBy(); ok {
-		_spec.SetField(citype.FieldCreatedBy, field.TypeUUID, value)
-		_node.CreatedBy = &value
 	}
 	if value, ok := _c.mutation.Icon(); ok {
 		_spec.SetField(citype.FieldIcon, field.TypeString, value)
@@ -790,6 +806,22 @@ func (_c *CiTypeCreate) createSpec() (*CiType, *sqlgraph.CreateSpec) {
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
 				IDSpec: sqlgraph.NewFieldSpec(cirecords.FieldID, field.TypeUint64),
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges = append(_spec.Edges, edge)
+	}
+	if nodes := _c.mutation.DiscoveryConfigsIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   citype.DiscoveryConfigsTable,
+			Columns: []string{citype.DiscoveryConfigsColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: sqlgraph.NewFieldSpec(citypediscoveryconfig.FieldID, field.TypeUint64),
 			},
 		}
 		for _, k := range nodes {

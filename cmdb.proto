@@ -3,22 +3,12 @@ syntax = "proto3";
 package cmdb;
 option go_package = "./cmdb";
 
-//  异步任务相关消息定义
-message AsyncTaskReq {
-  string type = 1;
-  string operation = 2;
-  repeated uint64 ci_ids = 3;
-  optional string params = 4;
-  optional string data = 5;
-  optional int32 priority = 6;
-  optional string created_by = 7;
-}
-
-message AsyncTaskResp {
-  string task_id = 1;
-  string message = 2;
-  bool success = 3;
-  optional TaskStatusInfo initial_status = 4;
+//  AttributeBasicInfo 属性基础信息
+message AttributeBasicInfo {
+  uint64 id = 1;
+  string name = 2;
+  string alias = 3;
+  string data_type = 4;
 }
 
 //  选项
@@ -127,6 +117,154 @@ message AttributeListReq {
 message AttributeListResp {
   uint64 total = 1;
   repeated AttributeInfo data = 2;
+}
+
+//  AttributeMappingConfigInfo 属性映射配置信息
+message AttributeMappingConfigInfo {
+  //  关系定义ID
+  uint64 relation_id = 1;
+  //  源CI类型信息
+  CiTypeBasicInfo source_ci_type = 2;
+  //  目标CI类型信息
+  CiTypeBasicInfo target_ci_type = 3;
+  //  关系类型信息
+  RelationTypeBasicInfo relation_type = 4;
+  //  单属性映射
+  optional AttributeMappingPair single_mapping = 5;
+  //  多属性映射
+  repeated AttributeMappingPair multiple_mappings = 6;
+  //  约束条件
+  optional string constraint = 7;
+}
+
+//  AttributeMappingConfigReq 属性映射配置查询请求
+message AttributeMappingConfigReq {
+  //  源CI类型ID
+  optional uint64 source_ci_type_id = 1;
+  //  目标CI类型ID  
+  optional uint64 target_ci_type_id = 2;
+  //  关系类型ID
+  optional uint64 relation_type_id = 3;
+  //  是否包含详细的属性信息
+  optional bool include_attribute_details = 4;
+  //  是否只返回已配置映射的关系
+  optional bool configured_only = 5;
+}
+
+//  AttributeMappingConfigResp 属性映射配置响应
+message AttributeMappingConfigResp {
+  //  映射配置列表
+  repeated AttributeMappingConfigInfo configs = 1;
+  //  总数
+  uint64 total_count = 2;
+}
+
+//  AttributeMappingData 属性映射数据结构
+message AttributeMappingData {
+  //  源属性ID
+  uint64 source_attr_id = 1;
+  //  目标属性ID
+  uint64 target_attr_id = 2;
+  //  源属性值
+  optional string source_value = 3;
+  //  目标属性值
+  optional string target_value = 4;
+  //  最后同步时间
+  optional int64 last_sync_at = 5;
+  //  同步状态: synced, pending, failed
+  optional string sync_status = 6;
+  //  冲突原因
+  optional string conflict_reason = 7;
+}
+
+//  AttributeMappingPair 属性映射对
+message AttributeMappingPair {
+  //  源属性信息
+  AttributeBasicInfo source_attribute = 1;
+  //  目标属性信息
+  AttributeBasicInfo target_attribute = 2;
+}
+
+message AttributeMappingRuleInfo {
+  optional uint64 id = 1;
+  optional int64 created_at = 2;
+  optional int64 updated_at = 3;
+  //  Status 1: normal 2: ban | 状态 1 正常 2 禁用
+  optional uint32 status = 4;
+  //  发现配置ID
+  optional uint64 discovery_config_id = 5;
+  //  CI属性ID
+  optional uint64 ci_attribute_id = 6;
+  //  源字段名
+  optional string source_field = 7;
+  //  源字段路径(支持JSON路径)
+  optional string source_path = 8;
+  //  目标属性名
+  optional string target_attribute = 9;
+  //  转换类型: direct, lookup, script, template
+  optional string transform_type = 10;
+  //  转换配置JSON
+  optional string transform_config = 11;
+  //  默认值
+  optional string default_value = 12;
+  //  验证规则JSON
+  optional string validation_rules = 13;
+  //  验证正则表达式
+  optional string validation_regex = 14;
+  //  是否必填
+  optional bool is_required = 15;
+  //  是否唯一
+  optional bool is_unique = 16;
+  //  映射优先级
+  optional int64 priority = 17;
+  //  是否启用
+  optional bool enabled = 18;
+  //  更新策略: overwrite, merge, append
+  optional string update_strategy = 19;
+  //  成功次数
+  optional int64 success_count = 20;
+  //  失败次数
+  optional int64 failed_count = 21;
+  //  上次成功时间
+  optional int64 last_success_at = 22;
+  //  映射描述
+  optional string description = 23;
+  //  扩展元数据JSON
+  optional string metadata = 24;
+}
+
+message AttributeMappingRuleListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int64 created_at = 3;
+  optional int64 updated_at = 4;
+  optional uint32 status = 5;
+  optional int64 deleted_at = 6;
+  optional uint64 discovery_config_id = 7;
+  optional uint64 ci_attribute_id = 8;
+  optional string source_field = 9;
+  optional string source_path = 10;
+  optional string target_attribute = 11;
+  optional string transform_type = 12;
+  optional string transform_config = 13;
+  optional string default_value = 14;
+  optional string validation_rules = 15;
+  optional string validation_regex = 16;
+  optional bool is_required = 17;
+  optional bool is_unique = 18;
+  optional int64 priority = 19;
+  optional bool enabled = 20;
+  optional string update_strategy = 21;
+  optional int64 success_count = 22;
+  optional int64 failed_count = 23;
+  optional int64 last_success_at = 24;
+  optional string description = 25;
+  optional string metadata = 26;
+}
+
+message AttributeMappingRuleListResp {
+  uint64 total = 1;
+  repeated AttributeMappingRuleInfo data = 2;
 }
 
 message AttributeOption {
@@ -564,6 +702,16 @@ message CiPermissionOperations {
   repeated CiPermissionOperation operations = 1;
 }
 
+message CiPermissionReq {
+  uint64 user_id = 1;
+  uint64 ci_type_id = 2;
+  string action = 3;
+}
+
+message CiPermissionResp {
+  bool has_permission = 1;
+}
+
 //  安全约束条件结构
 message CiPermissionSecurityConstraints {
   bool require_vpn = 1;
@@ -587,6 +735,58 @@ message CiPermissionUsageStatistics {
   repeated OperationStat top_operations = 4;
 }
 
+//  CiRelationBatchQueryReq CI实例关系批量查询请求
+message CiRelationBatchQueryReq {
+  //  CI ID列表，批量查询这些CI的关系
+  repeated uint64 ci_ids = 1;
+  //  关系方向：source(作为源), target(作为目标), both(双向)，默认both
+  optional string direction = 2;
+  //  关系类型ID过滤
+  repeated uint64 relation_type_ids = 3;
+  //  是否包含属性映射数据
+  optional bool include_attribute_mappings = 4;
+  //  是否只查询激活状态的关系
+  optional bool active_only = 5;
+  //  关系状态过滤：active, inactive, suspended
+  repeated string status_filter = 6;
+  //  发现来源过滤：manual, auto_discovery, import
+  repeated string discovery_source_filter = 7;
+  //  深度限制，用于关系链追踪（默认1层）
+  optional int32 depth_limit = 8;
+}
+
+//  CiRelationBatchQueryResp CI实例关系批量查询响应
+message CiRelationBatchQueryResp {
+  //  深度限制，用于关系链追踪（默认1层）
+  map<uint64,CiRelationGroup> relations_by_ci = 1;
+  //  总关系数量
+  uint64 total_relations = 2;
+  //  查询的CI总数
+  uint64 total_cis = 3;
+}
+
+//  创建关系信息
+message CiRelationCreateInfo {
+  //  目标CI ID
+  uint64 target_ci_id = 1;
+  //  关系类型ID
+  uint64 relation_type_id = 2;
+  //  关系方向：source_to_target, target_to_source
+  string direction = 3;
+  //  更多CI ID（可选）
+  optional uint64 more_ci_id = 4;
+  //  发现来源
+  optional string discovery_source = 5;
+  //  关系属性
+  optional string properties = 6;
+  //  属性映射数据
+  repeated AttributeMappingData attribute_mappings = 7;
+  //  关系状态
+  optional string status = 8;
+  //  关系强度
+  optional string relation_strength = 9;
+}
+
 //  关系过滤条件
 message CiRelationFilter {
   //  关系类型编码
@@ -603,22 +803,50 @@ message CiRelationFilter {
   optional bool include_indirect = 6;
 }
 
+//  CiRelationGroup 单个CI的关系分组
+message CiRelationGroup {
+  //  CI ID
+  uint64 ci_id = 1;
+  //  作为源CI的关系
+  repeated CiRelationInfo source_relations = 2;
+  //  作为目标CI的关系  
+  repeated CiRelationInfo target_relations = 3;
+  //  关系总数
+  uint64 total_count = 4;
+}
+
 message CiRelationInfo {
   optional uint64 id = 1;
   optional int64 created_at = 2;
   optional int64 updated_at = 3;
-  //  外键，关联cmdb_cis.id，第一CI
-  optional uint64 first_ci_id = 4;
-  //  外键，关联cmdb_cis.id，第二CI
-  optional uint64 second_ci_id = 5;
+  //  外键，关联cmdb_cis.id，源CI
+  optional uint64 source_ci_id = 4;
+  //  外键，关联cmdb_cis.id，目标CI
+  optional uint64 target_ci_id = 5;
   //  外键，关联cmdb_relation_types.id
   optional uint64 relation_type_id = 6;
   //  更多CI，外键，关联cmdb_cis.id
   optional uint64 more = 7;
-  //  来源，枚举类
-  optional string source = 8;
-  //  祖先ID
+  //  发现来源：manual, auto_discovery, import
+  optional string discovery_source = 8;
+  //  祖先关系ID链，用于关系路径追踪
   optional string ancestor_ids = 9;
+  //  关系属性，扩展关系的自定义信息
+  optional string properties = 10;
+  //  扩展字段：支持属性映射和关系状态管理
+  repeated AttributeMappingData attribute_mappings = 11;
+  //  关系状态：active, inactive, suspended
+  optional string status = 12;
+  //  关系验证结果
+  optional ValidationResult validation_result = 13;
+  //  最后验证时间
+  optional int64 last_validated_at = 14;
+  //  是否启用属性自动同步
+  optional bool auto_sync_enabled = 15;
+  //  同步配置
+  optional SyncConfig sync_config = 16;
+  //  关系强度：weak, normal, strong
+  optional string relation_strength = 17;
 }
 
 message CiRelationListReq {
@@ -627,17 +855,59 @@ message CiRelationListReq {
   optional int64 created_at = 3;
   optional int64 updated_at = 4;
   optional int64 deleted_at = 5;
-  optional uint64 first_ci_id = 6;
-  optional uint64 second_ci_id = 7;
+  optional uint64 source_ci_id = 6;
+  optional uint64 target_ci_id = 7;
   optional uint64 relation_type_id = 8;
   optional uint64 more = 9;
-  optional string source = 10;
+  optional string discovery_source = 10;
   optional string ancestor_ids = 11;
 }
 
 message CiRelationListResp {
   uint64 total = 1;
   repeated CiRelationInfo data = 2;
+}
+
+//  关系查询结果
+message CiRelationQueryResult {
+  //  作为源CI的关系
+  repeated CiRelationInfo source_relations = 1;
+  //  作为目标CI的关系
+  repeated CiRelationInfo target_relations = 2;
+  //  关系总数
+  uint64 total_count = 3;
+}
+
+//  更新关系信息
+message CiRelationUpdateInfo {
+  //  关系ID
+  uint64 relation_id = 1;
+  //  目标CI ID（可选，允许修改）
+  optional uint64 target_ci_id = 2;
+  //  关系类型ID（可选，允许修改）
+  optional uint64 relation_type_id = 3;
+  //  更多CI ID（可选）
+  optional uint64 more_ci_id = 4;
+  //  关系属性
+  optional string properties = 5;
+  //  属性映射数据
+  repeated AttributeMappingData attribute_mappings = 6;
+  //  关系状态
+  optional string status = 7;
+  //  关系强度
+  optional string relation_strength = 8;
+}
+
+//  CI关系数据结构
+message CiRelationsData {
+  //  要创建的关系（创建/更新时使用）
+  repeated CiRelationCreateInfo create_relations = 1;
+  //  要更新的关系（更新时使用）
+  repeated CiRelationUpdateInfo update_relations = 2;
+  //  要删除的关系ID列表（更新时使用）
+  repeated uint64 delete_relation_ids = 3;
+  //  查询结果中的关系数据（查询时返回）
+  optional CiRelationQueryResult query_result = 4;
 }
 
 //  排序条件
@@ -739,6 +1009,16 @@ message CiTypeAttributeGroupItemSortReq {
   repeated CiTypeAttributeGroupItemSort data = 1;
 }
 
+message CiTypeAttributeGroupItemWithAttrInfo {
+  optional uint64 id = 1;
+  optional uint64 group_id = 2;
+  optional uint64 attr_id = 3;
+  optional uint32 sort = 4;
+  optional bool is_required = 5;
+  optional bool default_show = 6;
+  AttributeInfo attribute = 7;
+}
+
 message CiTypeAttributeGroupListReq {
   uint64 page = 1;
   uint64 page_size = 2;
@@ -763,6 +1043,18 @@ message CiTypeAttributeGroupSort {
 
 message CiTypeAttributeGroupSortReq {
   repeated CiTypeAttributeGroupSort data = 1;
+}
+
+message CiTypeAttributeGroupWithAttrInfo {
+  optional uint64 id = 1;
+  optional string name = 2;
+  optional uint32 sort = 3;
+  repeated CiTypeAttributeGroupItemWithAttrInfo items = 4;
+}
+
+message CiTypeAttributeGroupWithAttrListResp {
+  uint64 total = 1;
+  repeated CiTypeAttributeGroupWithAttrInfo data = 2;
 }
 
 message CiTypeAttributeInfo {
@@ -837,6 +1129,116 @@ message CiTypeAttributeListWithGroupResp {
   repeated CiTypeAttributeListWithGroupInfo data = 1;
 }
 
+//  CiTypeBasicInfo CI类型基础信息
+message CiTypeBasicInfo {
+  uint64 id = 1;
+  string name = 2;
+  string alias = 3;
+}
+
+message CiTypeDiscoveryConfigInfo {
+  optional uint64 id = 1;
+  optional int64 created_at = 2;
+  optional int64 updated_at = 3;
+  //  Status 1: normal 2: ban | 状态 1 正常 2 禁用
+  optional uint32 status = 4;
+  //  Department ID | 部门 ID
+  optional uint64 department_id = 5;
+  //  Created user's UUID | 创建者 UUID
+  optional string created_by = 6;
+  //  CI类型ID
+  optional uint64 ci_type_id = 7;
+  //  配置名称
+  optional string config_name = 8;
+  //  配置描述
+  optional string description = 9;
+  //  发现模式: attribute, relation, dependency
+  optional string discovery_mode = 10;
+  //  发现类型: file, api, sdk, builtin, agent
+  optional string discovery_type = 11;
+  //  发现提供者ID
+  optional string provider_id = 12;
+  //  提供者配置JSON
+  optional string provider_config = 13;
+  //  属性映射配置JSON
+  optional string attribute_mappings = 14;
+  //  发现规则JSON
+  optional string discovery_rules = 15;
+  //  过滤条件JSON
+  optional string filter_conditions = 16;
+  //  执行模式: manual, scheduled, triggered
+  optional string execution_mode = 17;
+  //  调度配置JSON
+  optional string schedule_config = 18;
+  //  优先级(数字越小优先级越高)
+  optional int64 priority = 19;
+  //  批处理大小
+  optional int64 batch_size = 20;
+  //  超时时间(秒)
+  optional int64 timeout_seconds = 21;
+  //  冲突解决策略: priority, merge, latest
+  optional string conflict_resolution = 22;
+  //  是否自动创建CI实例
+  optional bool auto_create_ci = 23;
+  //  是否自动更新属性
+  optional bool auto_update_attributes = 24;
+  //  通知配置JSON
+  optional string notification_config = 25;
+  //  是否启用
+  optional bool enabled = 26;
+  //  状态: active, inactive, error
+  optional string config_status = 27;
+  //  上次执行时间
+  optional int64 last_executed_at = 28;
+  //  下次执行时间
+  optional int64 next_execution_at = 29;
+  //  执行统计JSON
+  optional string execution_stats = 30;
+  //  最后错误信息
+  optional string last_error = 31;
+}
+
+message CiTypeDiscoveryConfigListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int64 created_at = 3;
+  optional int64 updated_at = 4;
+  optional uint32 status = 5;
+  optional int64 deleted_at = 6;
+  optional uint64 department_id = 7;
+  optional string created_by = 8;
+  optional uint64 ci_type_id = 9;
+  optional string config_name = 10;
+  optional string description = 11;
+  optional string discovery_mode = 12;
+  optional string discovery_type = 13;
+  optional string provider_id = 14;
+  optional string provider_config = 15;
+  optional string attribute_mappings = 16;
+  optional string discovery_rules = 17;
+  optional string filter_conditions = 18;
+  optional string execution_mode = 19;
+  optional string schedule_config = 20;
+  optional int64 priority = 21;
+  optional int64 batch_size = 22;
+  optional int64 timeout_seconds = 23;
+  optional string conflict_resolution = 24;
+  optional bool auto_create_ci = 25;
+  optional bool auto_update_attributes = 26;
+  optional string notification_config = 27;
+  optional bool enabled = 28;
+  optional string config_status = 29;
+  optional int64 last_executed_at = 30;
+  optional int64 next_execution_at = 31;
+  optional string execution_stats = 32;
+  optional string last_error = 33;
+}
+
+message CiTypeDiscoveryConfigListResp {
+  uint64 total = 1;
+  repeated CiTypeDiscoveryConfigInfo data = 2;
+}
+
 message CiTypeGroupInfo {
   optional uint64 id = 1;
   optional int64 created_at = 2;
@@ -867,6 +1269,14 @@ message CiTypeGroupItemInfo {
 
 message CiTypeGroupItemListReq {
   optional uint64 group_id = 1;
+  //  包含的CI类型ID列表 | Include specific CI type IDs
+  repeated uint64 include_type_ids = 2;
+  //  排除的CI类型ID列表 | Exclude specific CI type IDs  
+  repeated uint64 exclude_type_ids = 3;
+  //  包含的CI类型名称列表 | Include specific CI type names
+  repeated string include_type_names = 4;
+  //  排除的CI类型名称列表 | Exclude specific CI type names
+  repeated string exclude_type_names = 5;
 }
 
 message CiTypeGroupItemListResp {
@@ -1000,6 +1410,28 @@ message CiTypeListResp {
   repeated CiTypeInfo data = 2;
 }
 
+//  CiTypeRelationDefinitionReq 查询CI类型关系定义请求
+message CiTypeRelationDefinitionReq {
+  //  CI类型ID，查询作为源或目标的关系定义
+  uint64 ci_type_id = 1;
+  //  关系方向：source(作为源), target(作为目标), both(双向)，默认both
+  optional string direction = 2;
+  //  是否包含属性映射信息
+  optional bool include_attribute_mapping = 3;
+  //  是否只查询有效的关系定义
+  optional bool active_only = 4;
+}
+
+//  CiTypeRelationDefinitionResp 关系定义响应
+message CiTypeRelationDefinitionResp {
+  //  作为源CI类型的关系定义
+  repeated CiTypeRelationInfo source_relations = 1;
+  //  作为目标CI类型的关系定义
+  repeated CiTypeRelationInfo target_relations = 2;
+  //  总数统计
+  uint64 total_count = 3;
+}
+
 message CiTypeRelationInfo {
   optional uint64 id = 1;
   optional int64 created_at = 2;
@@ -1103,6 +1535,8 @@ message CisInfo {
   repeated CisMetadata custom_fields = 11;
   //  动态属性值列表（查询时返回）
   repeated CiAttributeValue attributes = 12;
+  //  === 关系数据 ===
+  optional CiRelationsData relations = 13;
 }
 
 message CisListReq {
@@ -1165,6 +1599,135 @@ message CisMetadata {
   optional string value = 2;
 }
 
+//  发现的CI数据
+message DiscoveredCIData {
+  //  CI类型ID
+  optional uint64 ci_type_id = 1;
+  //  唯一标识（用于去重）
+  optional string unique_key = 2;
+  //  唯一标识（用于去重）
+  map<string,string> attributes = 3;
+  //  数据来源（discovery_pool_id）
+  optional string source = 4;
+  //  来源类型（ssh/api/file）
+  optional string source_type = 5;
+  //  自动创建CI
+  optional bool auto_create = 6;
+  //  自动更新属性
+  optional bool auto_update = 7;
+  //  冲突策略（skip/update/merge）
+  optional string conflict_resolution = 8;
+}
+
+message DiscoveryExecutionHistoryInfo {
+  optional uint64 id = 1;
+  optional int64 created_at = 2;
+  optional int64 updated_at = 3;
+  //  发现配置ID
+  optional uint64 discovery_config_id = 4;
+  //  执行ID(UUID)
+  optional string execution_id = 5;
+  //  触发类型: manual, scheduled, api
+  optional string trigger_type = 6;
+  //  触发人ID
+  optional uint64 triggered_by = 7;
+  //  开始时间
+  optional int64 started_at = 8;
+  //  完成时间
+  optional int64 completed_at = 9;
+  //  执行时长(秒)
+  optional int64 duration_seconds = 10;
+  //  状态: running, completed, failed, cancelled
+  optional string exec_status = 11;
+  //  当前阶段: connecting, discovering, transforming, persisting
+  optional string stage = 12;
+  //  进度百分比(0-100)
+  optional int64 progress = 13;
+  //  总记录数
+  optional int64 total_records = 14;
+  //  已处理记录数
+  optional int64 processed_records = 15;
+  //  成功记录数
+  optional int64 success_records = 16;
+  //  失败记录数
+  optional int64 failed_records = 17;
+  //  跳过记录数
+  optional int64 skipped_records = 18;
+  //  创建的CI数量
+  optional int64 created_cis = 19;
+  //  更新的CI数量
+  optional int64 updated_cis = 20;
+  //  错误信息
+  optional string error_message = 21;
+  //  错误详情JSON
+  optional string error_details = 22;
+  //  验证错误JSON
+  optional string validation_errors = 23;
+  //  执行结果JSON
+  optional string execution_result = 24;
+  //  性能指标JSON
+  optional string performance_metrics = 25;
+  //  执行时的配置快照JSON
+  optional string config_snapshot = 26;
+  //  提供者信息JSON
+  optional string provider_info = 27;
+  //  执行日志
+  optional string execution_log = 28;
+  //  扩展元数据JSON
+  optional string metadata = 29;
+  //  标签
+  optional string tags = 30;
+}
+
+message DiscoveryExecutionHistoryListReq {
+  uint64 page = 1;
+  uint64 page_size = 2;
+  optional int64 created_at = 3;
+  optional int64 updated_at = 4;
+  optional int64 deleted_at = 5;
+  optional uint64 discovery_config_id = 6;
+  optional string execution_id = 7;
+  optional string trigger_type = 8;
+  optional uint64 triggered_by = 9;
+  optional int64 started_at = 10;
+  optional int64 completed_at = 11;
+  optional int64 duration_seconds = 12;
+  optional string exec_status = 13;
+  optional string stage = 14;
+  optional int64 progress = 15;
+  optional int64 total_records = 16;
+  optional int64 processed_records = 17;
+  optional int64 success_records = 18;
+  optional int64 failed_records = 19;
+  optional int64 skipped_records = 20;
+  optional int64 created_cis = 21;
+  optional int64 updated_cis = 22;
+  optional string error_message = 23;
+  optional string error_details = 24;
+  optional string validation_errors = 25;
+  optional string execution_result = 26;
+  optional string performance_metrics = 27;
+  optional string config_snapshot = 28;
+  optional string provider_info = 29;
+  optional string execution_log = 30;
+  optional string metadata = 31;
+  optional string tags = 32;
+}
+
+message DiscoveryExecutionHistoryListResp {
+  uint64 total = 1;
+  repeated DiscoveryExecutionHistoryInfo data = 2;
+}
+
+message DiscoveryExecutionResp {
+  string execution_id = 1;
+  uint64 config_id = 2;
+  string status = 3;
+  optional int64 start_time = 4;
+  optional int64 total_records = 5;
+  optional string message = 6;
+}
+
 //  base message
 message Empty {}
 
@@ -1209,6 +1772,10 @@ message IDsUint32Req {
   repeated uint32 ids = 1;
 }
 
+message ListProvidersResp {
+  repeated ProviderInfo providers = 1;
+}
+
 //  地理位置限制
 message LocationRestriction {
   repeated string allowed_countries = 1;
@@ -1227,6 +1794,26 @@ message PageInfoReq {
   uint64 page_size = 2;
 }
 
+message ProviderInfo {
+  string provider_type = 1;
+  string provider_id = 2;
+  string name = 3;
+  string description = 4;
+}
+
+message ProviderSchemaResp {
+  string provider_type = 1;
+  string provider_id = 2;
+  string schema_json = 3;
+}
+
+//  RelationTypeBasicInfo 关系类型基础信息
+message RelationTypeBasicInfo {
+  uint64 id = 1;
+  string name = 2;
+  string code = 3;
+}
+
 message RelationTypeInfo {
   optional uint64 id = 1;
   optional int64 created_at = 2;
@@ -1239,6 +1826,28 @@ message RelationTypeInfo {
   optional string category = 6;
   //  关系类型方向
   optional string direction = 7;
+  //  描述
+  optional string description = 8;
+  //  是否标准
+  optional bool is_standard = 9;
+  //  排序号
+  optional uint32 sort_order = 10;
+  //  是否启用
+  optional bool is_enabled = 11;
+  //  显示颜色
+  optional string display_color = 12;
+  //  线条类型
+  optional string line_type = 13;
+  //  图标
+  optional string icon = 14;
+  //  权重
+  optional uint32 weight = 15;
+  //  显示标签
+  optional string display_label = 16;
+  //  提示模板
+  optional string tooltip_template = 17;
+  //  显示样式
+  optional string display_style = 18;
 }
 
 message RelationTypeListReq {
@@ -1255,101 +1864,26 @@ message RelationTypeListResp {
   repeated RelationTypeInfo data = 2;
 }
 
-message TaskCancelReq {
-  string task_id = 1;
-  optional string reason = 2;
+//  SyncConfig 同步配置
+message SyncConfig {
+  //  同步方向: bidirectional, source_to_target, target_to_source
+  string sync_direction = 1;
+  //  同步频率: realtime, hourly, daily
+  string sync_frequency = 2;
+  //  冲突策略: manual, source_priority, target_priority, latest
+  string conflict_policy = 3;
+  //  重试次数
+  int32 retry_attempts = 4;
+  //  重试间隔(秒)
+  int64 retry_interval = 5;
+  //  启用的映射ID列表
+  repeated uint64 enabled_mappings = 6;
 }
 
-message TaskListReq {
-  uint64 page = 1;
-  uint64 page_size = 2;
-  optional string type = 3;
-  optional string status = 4;
-  optional string created_by = 5;
-  optional int64 start_time = 6;
-  optional int64 end_time = 7;
-}
-
-message TaskListResp {
-  uint64 total = 1;
-  repeated TaskStatusInfo tasks = 2;
-}
-
-message TaskProgressInfo {
-  int32 total_items = 1;
-  int32 processed_items = 2;
-  int32 success_items = 3;
-  int32 failed_items = 4;
-  float percentage = 5;
-  string current_step = 6;
-  optional int64 estimated_remaining = 7;
-  optional float throughput_per_sec = 8;
-}
-
-message TaskResultInfo {
-  bool success = 1;
-  int32 processed_count = 2;
-  int32 success_count = 3;
-  int32 failed_count = 4;
-  int32 skipped_count = 5;
-  int64 process_time_ms = 6;
-  float throughput_per_sec = 7;
-  repeated string successful_assets = 8;
-  repeated string failed_assets = 9;
-  optional string summary = 10;
-}
-
-message TaskStatistics {
-  int32 total_tasks = 1;
-  int32 pending_tasks = 2;
-  int32 processing_tasks = 3;
-  int32 completed_tasks = 4;
-  int32 failed_tasks = 5;
-  int32 cancelled_tasks = 6;
-  float average_processing_time = 7;
-  float success_rate = 8;
-  repeated TaskTypeStats type_stats = 9;
-}
-
-//  异步任务统计信息
-message TaskStatsReq {
-  optional string type = 1;
-  optional int64 start_time = 2;
-  optional int64 end_time = 3;
-}
-
-message TaskStatsResp {
-  TaskStatistics stats = 1;
-}
-
-message TaskStatusInfo {
-  string id = 1;
-  string type = 2;
-  string status = 3;
-  int32 priority = 4;
-  TaskProgressInfo progress = 5;
-  optional TaskResultInfo result = 6;
-  int64 create_time = 7;
-  int64 update_time = 8;
-  optional int64 start_time = 9;
-  optional int64 end_time = 10;
-  string created_by = 11;
-  optional string error = 12;
-}
-
-message TaskStatusReq {
-  string task_id = 1;
-}
-
-message TaskStatusResp {
-  TaskStatusInfo task = 1;
-}
-
-message TaskTypeStats {
-  string type = 1;
-  int32 count = 2;
-  float success_rate = 3;
-  float avg_processing_time = 4;
+message TestProviderConnectionReq {
+  string provider_type = 1;
+  string provider_id = 2;
+  string provider_config = 3;
 }
 
 //  时间限制
@@ -1365,6 +1899,31 @@ message UUIDReq {
 
 message UUIDsReq {
   repeated string ids = 1;
+}
+
+message UserPermissionScopeReq {
+  uint64 user_id = 1;
+}
+
+message UserPermissionScopeResp {
+  repeated uint64 allowed_ci_types = 1;
+  repeated uint64 allowed_department_ids = 2;
+  map<string,string> custom_rules = 3;
+  optional string data_scope = 4;
+}
+
+//  ValidationResult 关系验证结果
+message ValidationResult {
+  //  是否有效
+  bool is_valid = 1;
+  //  错误信息
+  repeated string errors = 2;
+  //  警告信息
+  repeated string warnings = 3;
+  //  验证时间
+  int64 validated_at = 4;
+  //  验证类型: auto, manual
+  string validation_type = 5;
 }
 
 //  ValidationRule 验证规则结构
@@ -1536,18 +2095,17 @@ message ValueTextListResp {
   repeated ValueTextInfo data = 2;
 }
 
+//  写入发现CI的响应
+message WriteDiscoveredCIResp {
+  //  创建/更新的CI ID
+  optional uint64 ci_id = 1;
+  //  操作类型（created/updated/skipped）
+  optional string action = 2;
+  //  处理信息
+  optional string message = 3;
+}
+
 service Cmdb {
-  //  异步任务管理接口
-  //  group: async_task
-  rpc SubmitAsyncTask(AsyncTaskReq) returns (AsyncTaskResp);
-  //  group: async_task
-  rpc GetTaskStatus(TaskStatusReq) returns (TaskStatusResp);
-  //  group: async_task
-  rpc CancelTask(TaskCancelReq) returns (BaseResp);
-  //  group: async_task
-  rpc GetTaskList(TaskListReq) returns (TaskListResp);
-  //  group: async_task
-  rpc GetTaskStats(TaskStatsReq) returns (TaskStatsResp);
   //  Attribute management
   //  group: attribute
   rpc createAttribute(AttributeInfo) returns (BaseIDResp);
@@ -1561,6 +2119,17 @@ service Cmdb {
   rpc getAttributeById(IDReq) returns (AttributeInfo);
   //  group: attribute
   rpc deleteAttribute(IDsReq) returns (BaseResp);
+  //  AttributeMappingRule management
+  //  group: attributemappingrule
+  rpc createAttributeMappingRule(AttributeMappingRuleInfo) returns (BaseIDResp);
+  //  group: attributemappingrule
+  rpc updateAttributeMappingRule(AttributeMappingRuleInfo) returns (BaseResp);
+  //  group: attributemappingrule
+  rpc getAttributeMappingRuleList(AttributeMappingRuleListReq) returns (AttributeMappingRuleListResp);
+  //  group: attributemappingrule
+  rpc getAttributeMappingRuleById(IDReq) returns (AttributeMappingRuleInfo);
+  //  group: attributemappingrule
+  rpc deleteAttributeMappingRule(IDsReq) returns (BaseResp);
   //  group: base
   rpc initDatabase(Empty) returns (BaseResp);
   //  ChoiceFloat management
@@ -1607,6 +2176,10 @@ service Cmdb {
   rpc getCiPermissionById(IDReq) returns (CiPermissionInfo);
   //  group: cipermission
   rpc deleteCiPermission(IDsReq) returns (BaseResp);
+  //  group: cipermission
+  rpc checkCiTypePermission(CiPermissionReq) returns (CiPermissionResp);
+  //  group: cipermission
+  rpc getUserPermissionScope(UserPermissionScopeReq) returns (UserPermissionScopeResp);
   //  CiRelation management
   //  group: cirelation
   rpc createCiRelation(CiRelationInfo) returns (BaseIDResp);
@@ -1618,6 +2191,8 @@ service Cmdb {
   rpc getCiRelationById(IDReq) returns (CiRelationInfo);
   //  group: cirelation
   rpc deleteCiRelation(IDsReq) returns (BaseResp);
+  //  group: cirelation
+  rpc getCiRelationsBatch(CiRelationBatchQueryReq) returns (CiRelationBatchQueryResp);
   //  Cis management
   //  group: cis
   rpc createCis(CisInfo) returns (BaseIDResp);
@@ -1635,6 +2210,8 @@ service Cmdb {
   rpc cisBatchOperation(CisBatchOperationReq) returns (BaseResp);
   //  group: cis
   rpc validateCisAttributes(CisAttributeValidateReq) returns (CisAttributeValidateResp);
+  //  group: cis
+  rpc writeDiscoveredCI(DiscoveredCIData) returns (WriteDiscoveredCIResp);
   //  CiType management
   //  group: citype
   rpc createCiType(CiTypeInfo) returns (BaseIDResp);
@@ -1676,6 +2253,8 @@ service Cmdb {
   rpc deleteCiTypeAttributeGroup(IDsReq) returns (BaseResp);
   //  group: citypeattributegroup
   rpc sortCiTypeAttributeGroup(CiTypeAttributeGroupSortReq) returns (BaseResp);
+  //  group: citypeattributegroup
+  rpc listAttributeGroupWithAttribute(IDReq) returns (CiTypeAttributeGroupWithAttrListResp);
   //  CiTypeAttributeGroupItem management
   //  group: citypeattributegroupitem
   rpc createCiTypeAttributeGroupItem(CiTypeAttributeGroupItemInfo) returns (BaseIDResp);
@@ -1689,6 +2268,25 @@ service Cmdb {
   rpc deleteCiTypeAttributeGroupItem(IDsReq) returns (BaseResp);
   //  group: citypeattributegroupitem
   rpc sortCiTypeAttributeGroupItem(CiTypeAttributeGroupItemSortReq) returns (BaseResp);
+  //  CiTypeDiscoveryConfig management
+  //  group: citypediscoveryconfig
+  rpc createCiTypeDiscoveryConfig(CiTypeDiscoveryConfigInfo) returns (BaseIDResp);
+  //  group: citypediscoveryconfig
+  rpc updateCiTypeDiscoveryConfig(CiTypeDiscoveryConfigInfo) returns (BaseResp);
+  //  group: citypediscoveryconfig
+  rpc getCiTypeDiscoveryConfigList(CiTypeDiscoveryConfigListReq) returns (CiTypeDiscoveryConfigListResp);
+  //  group: citypediscoveryconfig
+  rpc getCiTypeDiscoveryConfigById(IDReq) returns (CiTypeDiscoveryConfigInfo);
+  //  group: citypediscoveryconfig
+  rpc deleteCiTypeDiscoveryConfig(IDsReq) returns (BaseResp);
+  //  group: citypediscoveryconfig
+  rpc executeDiscovery(IDReq) returns (DiscoveryExecutionResp);
+  //  group: citypediscoveryconfig
+  rpc testProviderConnection(TestProviderConnectionReq) returns (BaseResp);
+  //  group: citypediscoveryconfig
+  rpc getProviderSchema(TestProviderConnectionReq) returns (ProviderSchemaResp);
+  //  group: citypediscoveryconfig
+  rpc listProviders(Empty) returns (ListProvidersResp);
   //  CiTypeGroup management
   //  group: citypegroup
   rpc createCiTypeGroup(CiTypeGroupInfo) returns (BaseIDResp);
@@ -1739,6 +2337,21 @@ service Cmdb {
   rpc getCiTypeRelationById(IDReq) returns (CiTypeRelationInfo);
   //  group: cityperelation
   rpc deleteCiTypeRelation(IDsReq) returns (BaseResp);
+  //  group: cityperelation
+  rpc getCiTypeRelationDefinitions(CiTypeRelationDefinitionReq) returns (CiTypeRelationDefinitionResp);
+  //  group: cityperelation
+  rpc getAttributeMappingConfigs(AttributeMappingConfigReq) returns (AttributeMappingConfigResp);
+  //  DiscoveryExecutionHistory management
+  //  group: discoveryexecutionhistory
+  rpc createDiscoveryExecutionHistory(DiscoveryExecutionHistoryInfo) returns (BaseIDResp);
+  //  group: discoveryexecutionhistory
+  rpc updateDiscoveryExecutionHistory(DiscoveryExecutionHistoryInfo) returns (BaseResp);
+  //  group: discoveryexecutionhistory
+  rpc getDiscoveryExecutionHistoryList(DiscoveryExecutionHistoryListReq) returns (DiscoveryExecutionHistoryListResp);
+  //  group: discoveryexecutionhistory
+  rpc getDiscoveryExecutionHistoryById(IDReq) returns (DiscoveryExecutionHistoryInfo);
+  //  group: discoveryexecutionhistory
+  rpc deleteDiscoveryExecutionHistory(IDsReq) returns (BaseResp);
   //  RelationType management
   //  group: relationtype
   rpc createRelationType(RelationTypeInfo) returns (BaseIDResp);

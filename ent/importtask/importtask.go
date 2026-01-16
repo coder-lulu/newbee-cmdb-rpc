@@ -26,6 +26,8 @@ const (
 	FieldTenantID = "tenant_id"
 	// FieldDepartmentID holds the string denoting the department_id field in the database.
 	FieldDepartmentID = "department_id"
+	// FieldCreatedBy holds the string denoting the created_by field in the database.
+	FieldCreatedBy = "created_by"
 	// FieldTaskID holds the string denoting the task_id field in the database.
 	FieldTaskID = "task_id"
 	// FieldName holds the string denoting the name field in the database.
@@ -72,8 +74,6 @@ const (
 	FieldErrorMessage = "error_message"
 	// FieldResultFilePath holds the string denoting the result_file_path field in the database.
 	FieldResultFilePath = "result_file_path"
-	// FieldCreatedBy holds the string denoting the created_by field in the database.
-	FieldCreatedBy = "created_by"
 	// FieldCreatedByName holds the string denoting the created_by_name field in the database.
 	FieldCreatedByName = "created_by_name"
 	// EdgeTemplate holds the string denoting the template edge name in mutations.
@@ -115,6 +115,7 @@ var Columns = []string{
 	FieldDeletedAt,
 	FieldTenantID,
 	FieldDepartmentID,
+	FieldCreatedBy,
 	FieldTaskID,
 	FieldName,
 	FieldDescription,
@@ -138,7 +139,6 @@ var Columns = []string{
 	FieldEndTime,
 	FieldErrorMessage,
 	FieldResultFilePath,
-	FieldCreatedBy,
 	FieldCreatedByName,
 }
 
@@ -318,6 +318,11 @@ func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
 }
 
+// ByCreatedBy orders the results by the created_by field.
+func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
+}
+
 // ByTaskID orders the results by the task_id field.
 func ByTaskID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldTaskID, opts...).ToFunc()
@@ -426,11 +431,6 @@ func ByErrorMessage(opts ...sql.OrderTermOption) OrderOption {
 // ByResultFilePath orders the results by the result_file_path field.
 func ByResultFilePath(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldResultFilePath, opts...).ToFunc()
-}
-
-// ByCreatedBy orders the results by the created_by field.
-func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
 // ByCreatedByName orders the results by the created_by_name field.

@@ -11,7 +11,7 @@ import (
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/logic/attribute"
 	"github.com/coder-lulu/newbee-cmdb-rpc/internal/svc"
 	"github.com/coder-lulu/newbee-cmdb-rpc/types/cmdb"
-	"github.com/suyuan32/simple-admin-common/utils/pointy"
+	"github.com/coder-lulu/newbee-common/v2/utils/pointy"
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

@@ -27,6 +27,8 @@ type ValueDatetime struct {
 	DeletedAt time.Time `json:"deleted_at,omitempty"`
 	// Tenant ID | 租户 ID
 	TenantID uint64 `json:"tenant_id,omitempty"`
+	// Department ID | 部门 ID
+	DepartmentID uint64 `json:"department_id,omitempty"`
 	// 外键，关联cmdb_cis.id
 	CiID uint64 `json:"ci_id,omitempty"`
 	// 外键，关联cmdb_attributes.id
@@ -81,7 +83,7 @@ func (*ValueDatetime) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case valuedatetime.FieldIsCover:
 			values[i] = new(sql.NullBool)
-		case valuedatetime.FieldID, valuedatetime.FieldTenantID, valuedatetime.FieldCiID, valuedatetime.FieldAttrID:
+		case valuedatetime.FieldID, valuedatetime.FieldTenantID, valuedatetime.FieldDepartmentID, valuedatetime.FieldCiID, valuedatetime.FieldAttrID:
 			values[i] = new(sql.NullInt64)
 		case valuedatetime.FieldCreatedAt, valuedatetime.FieldUpdatedAt, valuedatetime.FieldDeletedAt, valuedatetime.FieldValue:
 			values[i] = new(sql.NullTime)
@@ -129,6 +131,12 @@ func (_m *ValueDatetime) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field tenant_id", values[i])
 			} else if value.Valid {
 				_m.TenantID = uint64(value.Int64)
+			}
+		case valuedatetime.FieldDepartmentID:
+			if value, ok := values[i].(*sql.NullInt64); !ok {
+				return fmt.Errorf("unexpected type %T for field department_id", values[i])
+			} else if value.Valid {
+				_m.DepartmentID = uint64(value.Int64)
 			}
 		case valuedatetime.FieldCiID:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
@@ -211,6 +219,9 @@ func (_m *ValueDatetime) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("tenant_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.TenantID))
+	builder.WriteString(", ")
+	builder.WriteString("department_id=")
+	builder.WriteString(fmt.Sprintf("%v", _m.DepartmentID))
 	builder.WriteString(", ")
 	builder.WriteString("ci_id=")
 	builder.WriteString(fmt.Sprintf("%v", _m.CiID))

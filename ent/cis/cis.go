@@ -25,12 +25,12 @@ const (
 	FieldTenantID = "tenant_id"
 	// FieldDepartmentID holds the string denoting the department_id field in the database.
 	FieldDepartmentID = "department_id"
+	// FieldCreatedBy holds the string denoting the created_by field in the database.
+	FieldCreatedBy = "created_by"
 	// FieldTypeID holds the string denoting the type_id field in the database.
 	FieldTypeID = "type_id"
 	// FieldStatus holds the string denoting the status field in the database.
 	FieldStatus = "status"
-	// FieldCreatedBy holds the string denoting the created_by field in the database.
-	FieldCreatedBy = "created_by"
 	// FieldTags holds the string denoting the tags field in the database.
 	FieldTags = "tags"
 	// FieldMetadata holds the string denoting the metadata field in the database.
@@ -51,10 +51,10 @@ const (
 	EdgeValueFloats = "value_floats"
 	// EdgeValueDatetimes holds the string denoting the value_datetimes edge name in mutations.
 	EdgeValueDatetimes = "value_datetimes"
-	// EdgeFirstRelations holds the string denoting the first_relations edge name in mutations.
-	EdgeFirstRelations = "first_relations"
-	// EdgeSecondRelations holds the string denoting the second_relations edge name in mutations.
-	EdgeSecondRelations = "second_relations"
+	// EdgeSourceRelations holds the string denoting the source_relations edge name in mutations.
+	EdgeSourceRelations = "source_relations"
+	// EdgeTargetRelations holds the string denoting the target_relations edge name in mutations.
+	EdgeTargetRelations = "target_relations"
 	// EdgeMoreRelations holds the string denoting the more_relations edge name in mutations.
 	EdgeMoreRelations = "more_relations"
 	// EdgeImportRecords holds the string denoting the import_records edge name in mutations.
@@ -112,20 +112,20 @@ const (
 	ValueDatetimesInverseTable = "cmdb_value_datetimes"
 	// ValueDatetimesColumn is the table column denoting the value_datetimes relation/edge.
 	ValueDatetimesColumn = "ci_id"
-	// FirstRelationsTable is the table that holds the first_relations relation/edge.
-	FirstRelationsTable = "cmdb_ci_relations"
-	// FirstRelationsInverseTable is the table name for the CiRelation entity.
+	// SourceRelationsTable is the table that holds the source_relations relation/edge.
+	SourceRelationsTable = "cmdb_ci_relations"
+	// SourceRelationsInverseTable is the table name for the CiRelation entity.
 	// It exists in this package in order to avoid circular dependency with the "cirelation" package.
-	FirstRelationsInverseTable = "cmdb_ci_relations"
-	// FirstRelationsColumn is the table column denoting the first_relations relation/edge.
-	FirstRelationsColumn = "first_ci_id"
-	// SecondRelationsTable is the table that holds the second_relations relation/edge.
-	SecondRelationsTable = "cmdb_ci_relations"
-	// SecondRelationsInverseTable is the table name for the CiRelation entity.
+	SourceRelationsInverseTable = "cmdb_ci_relations"
+	// SourceRelationsColumn is the table column denoting the source_relations relation/edge.
+	SourceRelationsColumn = "source_ci_id"
+	// TargetRelationsTable is the table that holds the target_relations relation/edge.
+	TargetRelationsTable = "cmdb_ci_relations"
+	// TargetRelationsInverseTable is the table name for the CiRelation entity.
 	// It exists in this package in order to avoid circular dependency with the "cirelation" package.
-	SecondRelationsInverseTable = "cmdb_ci_relations"
-	// SecondRelationsColumn is the table column denoting the second_relations relation/edge.
-	SecondRelationsColumn = "second_ci_id"
+	TargetRelationsInverseTable = "cmdb_ci_relations"
+	// TargetRelationsColumn is the table column denoting the target_relations relation/edge.
+	TargetRelationsColumn = "target_ci_id"
 	// MoreRelationsTable is the table that holds the more_relations relation/edge.
 	MoreRelationsTable = "cmdb_ci_relations"
 	// MoreRelationsInverseTable is the table name for the CiRelation entity.
@@ -157,9 +157,9 @@ var Columns = []string{
 	FieldDeletedAt,
 	FieldTenantID,
 	FieldDepartmentID,
+	FieldCreatedBy,
 	FieldTypeID,
 	FieldStatus,
-	FieldCreatedBy,
 	FieldTags,
 	FieldMetadata,
 	FieldCustomFields,
@@ -228,6 +228,11 @@ func ByDepartmentID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldDepartmentID, opts...).ToFunc()
 }
 
+// ByCreatedBy orders the results by the created_by field.
+func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
+	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
+}
+
 // ByTypeID orders the results by the type_id field.
 func ByTypeID(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldTypeID, opts...).ToFunc()
@@ -236,11 +241,6 @@ func ByTypeID(opts ...sql.OrderTermOption) OrderOption {
 // ByStatus orders the results by the status field.
 func ByStatus(opts ...sql.OrderTermOption) OrderOption {
 	return sql.OrderByField(FieldStatus, opts...).ToFunc()
-}
-
-// ByCreatedBy orders the results by the created_by field.
-func ByCreatedBy(opts ...sql.OrderTermOption) OrderOption {
-	return sql.OrderByField(FieldCreatedBy, opts...).ToFunc()
 }
 
 // ByCiTypeField orders the results by ci_type field.
@@ -334,31 +334,31 @@ func ByValueDatetimes(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
 	}
 }
 
-// ByFirstRelationsCount orders the results by first_relations count.
-func ByFirstRelationsCount(opts ...sql.OrderTermOption) OrderOption {
+// BySourceRelationsCount orders the results by source_relations count.
+func BySourceRelationsCount(opts ...sql.OrderTermOption) OrderOption {
 	return func(s *sql.Selector) {
-		sqlgraph.OrderByNeighborsCount(s, newFirstRelationsStep(), opts...)
+		sqlgraph.OrderByNeighborsCount(s, newSourceRelationsStep(), opts...)
 	}
 }
 
-// ByFirstRelations orders the results by first_relations terms.
-func ByFirstRelations(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
+// BySourceRelations orders the results by source_relations terms.
+func BySourceRelations(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
 	return func(s *sql.Selector) {
-		sqlgraph.OrderByNeighborTerms(s, newFirstRelationsStep(), append([]sql.OrderTerm{term}, terms...)...)
+		sqlgraph.OrderByNeighborTerms(s, newSourceRelationsStep(), append([]sql.OrderTerm{term}, terms...)...)
 	}
 }
 
-// BySecondRelationsCount orders the results by second_relations count.
-func BySecondRelationsCount(opts ...sql.OrderTermOption) OrderOption {
+// ByTargetRelationsCount orders the results by target_relations count.
+func ByTargetRelationsCount(opts ...sql.OrderTermOption) OrderOption {
 	return func(s *sql.Selector) {
-		sqlgraph.OrderByNeighborsCount(s, newSecondRelationsStep(), opts...)
+		sqlgraph.OrderByNeighborsCount(s, newTargetRelationsStep(), opts...)
 	}
 }
 
-// BySecondRelations orders the results by second_relations terms.
-func BySecondRelations(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
+// ByTargetRelations orders the results by target_relations terms.
+func ByTargetRelations(term sql.OrderTerm, terms ...sql.OrderTerm) OrderOption {
 	return func(s *sql.Selector) {
-		sqlgraph.OrderByNeighborTerms(s, newSecondRelationsStep(), append([]sql.OrderTerm{term}, terms...)...)
+		sqlgraph.OrderByNeighborTerms(s, newTargetRelationsStep(), append([]sql.OrderTerm{term}, terms...)...)
 	}
 }
 
@@ -452,18 +452,18 @@ func newValueDatetimesStep() *sqlgraph.Step {
 		sqlgraph.Edge(sqlgraph.O2M, false, ValueDatetimesTable, ValueDatetimesColumn),
 	)
 }
-func newFirstRelationsStep() *sqlgraph.Step {
+func newSourceRelationsStep() *sqlgraph.Step {
 	return sqlgraph.NewStep(
 		sqlgraph.From(Table, FieldID),
-		sqlgraph.To(FirstRelationsInverseTable, FieldID),
-		sqlgraph.Edge(sqlgraph.O2M, false, FirstRelationsTable, FirstRelationsColumn),
+		sqlgraph.To(SourceRelationsInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.O2M, false, SourceRelationsTable, SourceRelationsColumn),
 	)
 }
-func newSecondRelationsStep() *sqlgraph.Step {
+func newTargetRelationsStep() *sqlgraph.Step {
 	return sqlgraph.NewStep(
 		sqlgraph.From(Table, FieldID),
-		sqlgraph.To(SecondRelationsInverseTable, FieldID),
-		sqlgraph.Edge(sqlgraph.O2M, false, SecondRelationsTable, SecondRelationsColumn),
+		sqlgraph.To(TargetRelationsInverseTable, FieldID),
+		sqlgraph.Edge(sqlgraph.O2M, false, TargetRelationsTable, TargetRelationsColumn),
 	)
 }
 func newMoreRelationsStep() *sqlgraph.Step {
