@@ -10,6 +10,7 @@ import (
 	"github.com/coder-lulu/newbee-common/v2/utils/uuidx"
 	"github.com/gofrs/uuid/v5"
 	"github.com/zeromicro/go-zero/core/logx"
+	"google.golang.org/protobuf/proto"
 )
 
 // permissionCheckerImpl 权限检查器实现
@@ -385,19 +386,19 @@ func (d *dataPersisterImpl) HealthCheck(ctx context.Context) error {
 func (d *dataPersisterImpl) Create(ctx context.Context, data *cmdb.CisInfo) (*cmdb.CisInfo, error) {
 	// TODO: 调用现有的CreateCisLogic进行数据创建
 	// 这里暂时返回模拟数据
-	createdData := *data
+	createdData := proto.Clone(data).(*cmdb.CisInfo)
 	id := uint64(time.Now().UnixNano()) // 模拟生成的ID
 	createdData.Id = &id
 
-	return &createdData, nil
+	return createdData, nil
 }
 
 func (d *dataPersisterImpl) Update(ctx context.Context, ciID uint64, data *cmdb.CisInfo) (*cmdb.CisInfo, error) {
 	// TODO: 调用现有的UpdateCisLogic进行数据更新
-	updatedData := *data
+	updatedData := proto.Clone(data).(*cmdb.CisInfo)
 	updatedData.Id = &ciID
 
-	return &updatedData, nil
+	return updatedData, nil
 }
 
 func (d *dataPersisterImpl) Delete(ctx context.Context, ciID uint64) error {

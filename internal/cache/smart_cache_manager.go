@@ -328,9 +328,15 @@ func (m *SmartCacheManager) GetStats() *CacheStats {
 	m.stats.mu.RLock()
 	defer m.stats.mu.RUnlock()
 
-	// 复制统计信息
-	stats := *m.stats
-	return &stats
+	// Return an independent snapshot without copying the active mutex.
+	return &CacheStats{
+		LocalHits:         m.stats.LocalHits,
+		LocalMisses:       m.stats.LocalMisses,
+		DistributedHits:   m.stats.DistributedHits,
+		DistributedMisses: m.stats.DistributedMisses,
+		TotalRequests:     m.stats.TotalRequests,
+		LastResetTime:     m.stats.LastResetTime,
+	}
 }
 
 // ResetStats 重置缓存统计信息

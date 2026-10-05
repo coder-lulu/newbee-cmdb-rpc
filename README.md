@@ -41,6 +41,12 @@ cp etc/cmdb.yaml.example etc/cmdb.yaml
 go run . -f etc/cmdb.yaml
 ```
 
+## 首次数据库初始化
+
+先初始化 Core，并配置 `CoreRpc`（支持 `Endpoints`、`Target` 或 Etcd 服务发现）。在平台根目录运行 `bash init-databases.sh -s cmdb`。初始化按 Ent 模型创建表并保留已有数据，补齐基础模型数据后，通过 Core RPC 为默认租户登记当前 API 目录和 CMDB 菜单。已有菜单按路径或组件复用，新增菜单使用数据库分配 ID；仅合并默认 `superadmin` 的菜单授权，保留原授权，普通角色需单独授权。
+
+Core 不可用、默认角色缺失或目录登记失败会返回错误；修复后可重复初始化。请在启动 API 前完成初始化。无需导入本机数据库备份或手动执行历史固定菜单 ID 脚本。
+
 ## 构建与验证
 
 在当前模块目录执行：

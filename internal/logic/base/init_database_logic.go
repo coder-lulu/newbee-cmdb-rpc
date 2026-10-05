@@ -45,11 +45,14 @@ func (l *InitDatabaseLogic) InitDatabase(in *cmdb.Empty) (*cmdb.BaseResp, error)
 	}
 
 	// 使用默认租户上下文（tenant_id = 1）初始化数据
-	tenantCtx := hooks.SetTenantIDToContext(context.Background(), entenum.TenantDefaultId)
+	tenantCtx := hooks.SetTenantIDToContext(l.ctx, entenum.TenantDefaultId)
 
 	// 插入初始数据
 	err := l.InsertInitData(tenantCtx)
 	if err != nil {
+		return errHandler(err)
+	}
+	if err := l.insertCoreData(); err != nil {
 		return errHandler(err)
 	}
 
